@@ -1,11 +1,8 @@
 <?php
 /*
 Plugin Name: Machiavel
-Plugin URI: https://wprock.fr/
 description: Aussi est-il nécessaire au Prince qui se veut conserver qu'il apprenne à pouvoir n'être pas bon...
 Version: 0.1
-Author: Julien JACOB
-Author URI: https://wprock.fr/
 */
 
 // If this file is called directly, abort.
@@ -15,14 +12,20 @@ if ( ! defined( 'WPINC' ) ) {
 
 
 define( 'MCV_UPLOADS_PATH', WP_CONTENT_DIR . '/uploads/machiavel/' );
+define( 'MCV_API', 'http://machiavel-api.local/v0.1/last/' );
 
 // require_once 'inc/translation-storage.php';
 
+add_action('wp_enqueue_scripts', function() {
+	wp_enqueue_script( 'jquery' );
+});
 
-wp_enqueue_script('jquery');
 
 global $machiavel_language_target;
 $machiavel_language_target = false;
+
+// var_dump(mcv_translate( 'fr', 'en', 'machiavel' ));
+// die;
 
 function mcv_get_language_source() {
 	return 'fr';
@@ -77,12 +80,13 @@ function mcv_after_body() {
 }
 
 
-function mcv_multiexplode ($delimiters,$string) {
 
-    $ready = str_replace($delimiters, $delimiters[0], $string);
-    $launch = explode($delimiters[0], $ready);
-    return  $launch;
-}
+// function mcv_multiexplode( $delimiters, $string ) {
+
+// 	$ready  = str_replace( $delimiters, $delimiters[0], $string );
+// 	$launch = explode( $delimiters[0], $ready );
+// 	return $launch;
+// }
 
 
 
@@ -126,20 +130,17 @@ function mcv_ob_callback( $html ) {
 	$strings = [];
 	foreach ( $dom->find( 'text' ) as $element ) {
 
-		$s = $element->innertext();
+		$s         = $element->innertext();
 		$strings[] = $s;
-		
+
 	}
 
 	foreach ( $strings as $key => $string ) {
 		$strings[ $key ] = trim( $string );
 	}
 
-
-
 	$strings = array_filter( $strings ); // Remove empty
 	$strings = array_unique( $strings ); // Remove duplicate
-
 
 	$dir_uploads = WP_CONTENT_DIR . '/uploads/machiavel/';
 
@@ -220,65 +221,41 @@ function mcv_ob_callback( $html ) {
 
 function mcv_translate( $language_source, $language_target, $text ) {
 
-	// $url = 'https://translate.googleapis.com/translate_a/single?client=gtx&sl=' . $language_source . '&tl=' . $language_target . '&dt=t&q=' . esc_attr( $text );
-
-	// $s = mcv_multiexplode(array("!",".","?",":"), $s);
-
-	if (strlen($text) < 80) {
-		return mcv_translate_api_call( $language_source, $language_target, $text );
-	} 
-
-	$strings = mcv_multiexplode(array("!",".","?",":"), $text);
-
-	foreach ($strings as $key => $string) {
-
-		$string = trim($string);
-
-		if ($string != '') {
-			$strings[$key] = mcv_translate_api_call( $language_source, $language_target, $string);
-		}
-
-	}
-
-	$translation = '';
-	foreach ($strings as $key => $string) {
-		$translation .= $string . ' ';
-	}
-
-	return $translation;
-}
-
-
-
-
-
-function mcv_translate_api_call( $language_source, $language_target, $text ) {
-
-	$url = add_query_arg(
-		array(
-			'client' => 'gtx',
-			'sl'     => $language_source,
-			'tl'     => $language_target,
-			'dt'     => 't',
-			'q'      => urlencode( $text ),
-		), 'https://translate.googleapis.com/translate_a/single'
+	$body = array(
+		'api-key' => '1111111111111111',
+		'r'       => 'translate',
+		'source'  => $language_source,
+		'target'  => $language_target,
+		'text'    => $text,
+	);
+	$args = array(
+		'method' => 'POST',
+		'timeout' => 20,
+		'sslverify' => false,
+		'body'   => $body,
 	);
 
-	// $url = urlencode($url);
-	$x = wp_remote_get( $url );
+	error_log(var_export($body, true));
 
-	if ( ! empty( $x['body'] ) ) {
-		$x = json_decode( $x['body'] );
+	$request = wp_remote_post( MCV_API, $args );
+
+	if ( is_wp_error( $request ) || wp_remote_retrieve_response_code( $request ) != 200 ) {
+		error_log( print_r( $request, true ) );
+		return '';
 	}
 
-	if ( ! empty( $x[0][0][0] ) ) {
-		$x = $x[0][0][0];
-	} else {
-		$x = 'ERROR';
+	// return (wp_remote_retrieve_body( $request ));
+	$response = json_decode( wp_remote_retrieve_body( $request ), true );
+
+	if ( ! isset( $response['translation'] ) ) {
+		return 'Erreur :: [' . $text . ']';
 	}
 
-	return $x;
+	return (string) $response['translation'];
 }
+
+
+
 
 
 add_action( 'wp_footer', 'mcv_inline_script' );
