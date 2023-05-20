@@ -25,7 +25,7 @@ function mcvapi_request_translate() {
 		'translation' => $translation,
 	);
 
-	echo json_encode($response);
+	return json_encode( $response );
 
 }
 
@@ -39,7 +39,7 @@ function mcvapi_multiexplode( $delimiters, $string ) {
 
 function mcvapi_translate( $language_source, $language_target, $text ) {
 
-	return $text;
+	return strtoupper( $text );
 
 	if ( strlen( $text ) < 80 ) {
 		return mcvapi_translate_google( $language_source, $language_target, $text );
