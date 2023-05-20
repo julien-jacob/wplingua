@@ -16,9 +16,49 @@ define( 'MCV_API', 'http://machiavel-api.local/v0.1/last/' );
 
 // require_once 'inc/translation-storage.php';
 
-add_action('wp_enqueue_scripts', function() {
+
+
+
+
+
+
+
+
+add_action( 'wp_enqueue_scripts', 'mcv_register_assets' );
+function mcv_register_assets() {
+
+	if ( is_admin() ) {
+		return;
+	}
+
 	wp_enqueue_script( 'jquery' );
-});
+
+	wp_enqueue_script(
+		'machiavel',
+		plugins_url( 'js/script.js' , __FILE__ ),
+		array( 'jquery' ),
+		'1.0',
+		true
+	);
+
+	wp_enqueue_style(
+		'machiavel',
+		plugins_url( 'css/front.css' , __FILE__ )
+	);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 global $machiavel_language_target;
@@ -80,13 +120,6 @@ function mcv_after_body() {
 }
 
 
-
-// function mcv_multiexplode( $delimiters, $string ) {
-
-// 	$ready  = str_replace( $delimiters, $delimiters[0], $string );
-// 	$launch = explode( $delimiters[0], $ready );
-// 	return $launch;
-// }
 
 
 
@@ -229,13 +262,13 @@ function mcv_translate( $language_source, $language_target, $text ) {
 		'text'    => $text,
 	);
 	$args = array(
-		'method' => 'POST',
-		'timeout' => 20,
+		'method'    => 'POST',
+		'timeout'   => 5,
 		'sslverify' => false,
-		'body'   => $body,
+		'body'      => $body,
 	);
 
-	error_log(var_export($body, true));
+	error_log( var_export( $body, true ) );
 
 	$request = wp_remote_post( MCV_API, $args );
 
@@ -258,117 +291,3 @@ function mcv_translate( $language_source, $language_target, $text ) {
 
 
 
-add_action( 'wp_footer', 'mcv_inline_script' );
-function mcv_inline_script() {
-
-	if ( is_admin() ) {
-		return;
-	}
-
-	?>
-<script>
-jQuery(document).ready(function($) {
-	var path = window.location.pathname;
-	var currentLanguage = false;
-	var languages = [
-		'en',
-		'de',
-		'pt',
-		'es'
-	];
-
-	var emojiFlags = {
-		"fr" : "🇫🇷",
-		"en" : "🇺🇸",
-		"de" : "🇩🇪",
-		"pt" : "🇧🇷",
-		"es" : "🇲🇽"
-	};
-
-	languages.forEach(language => {
-		if (path.startsWith('/' + language + '/')) {
-			currentLanguage = language;
-		}
-	});
-	
-	var sourcePath = "";
-	if (currentLanguage === false) {
-		sourcePath = path;
-	} else {
-		sourcePath = path.substring(3);
-	}
-
-
-	$("body").append('<div class="mcv-switcher"></div>');
-
-	$(".mcv-switcher").append('<a class="mcv-language" href="' + window.location.protocol + "//" + window.location.host + sourcePath + '">🇫🇷 fr</a>');
-	
-	languages.forEach(language => {
-		
-		$(".mcv-switcher").append('<a class="mcv-language" href="' + window.location.protocol + "//" + window.location.host + '/' + language + sourcePath + '">' + emojiFlags[language] + ' ' + language + '</a>');
-	});
-
-	$('a:not(.mcv-language)').each(function() {
-		var href = this.href;
-		if (href.indexOf('?') != -1) {
-			href = href + '&redirect_lang=' + currentLanguage;
-		} else {
-			href = href + '?redirect_lang=' + currentLanguage;
-		}
-		
-		$(this).attr('href', href);
-	});
-
-}); // End jQuery loaded event
-</script>
-	<?php
-}
-
-add_action( 'wp_head', 'mcv_inline_style' );
-function mcv_inline_style() {
-
-	if ( is_admin() ) {
-		return;
-	}
-
-	?>
-	<script>
-		var $_GET = [];
-		var parts = window.location.search.substr(1).split("&");
-		for (var i = 0; i < parts.length; i++) {
-			var temp = parts[i].split("=");
-			$_GET[decodeURIComponent(temp[0])] = decodeURIComponent(temp[1]);
-		}
-
-		if ($_GET["redirect_lang"] != undefined) {
-			window.location.href = window.location.protocol + "//" + window.location.host + '/' + $_GET["redirect_lang"] + window.location.pathname;
-		}
-
-	</script>
-	<style>
-		.mcv-switcher {
-			position: fixed;
-			bottom: 20px;
-			background-color: black;
-			border-radius: 16px;
-			padding: 20px 10px;
-			right: 30px;
-			border: 2px gray solid;
-			z-index: 9999;
-		}
-
-		.mcv-language {
-			border: 2px solid gray;
-			border-radius: 16px;
-			padding: 10px 15px;
-			margin: 2px;
-			text-transform: uppercase;
-			text-decoration: none;
-		}
-
-		.mcv-language:hover {
-			background-color: lightgray;
-		}
-	</style>
-	<?php
-}
