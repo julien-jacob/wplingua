@@ -13,7 +13,7 @@ if ( ! defined( 'WPINC' ) ) {
 define( 'MCV_UPLOADS_PATH', WP_CONTENT_DIR . '/uploads/machiavel/' );
 define( 'MCV_API', 'http://machiavel-api.local/v0.1/last/' );
 
-// require_once 'inc/translation-storage.php';
+require_once 'inc/api.php';
 
 global $machiavel_language_target;
 $machiavel_language_target = false;
@@ -23,9 +23,9 @@ function mcv_get_language_source() {
 	return 'fr';
 }
 
+
 function mcv_get_language_target() {
-	// return 'de';
-	// var_dump($_SERVER); die;
+
 	global $machiavel_language_target;
 
 	if ( $machiavel_language_target !== false ) {
@@ -41,7 +41,7 @@ function mcv_get_language_target() {
 		'es',
 	];
 
-	foreach ( $mcv_languages_target as $key => $language ) {
+	foreach ( $mcv_languages_target as $language ) {
 		if ( str_starts_with( $current_path, '/' . $language . '/' ) ) {
 			$mcv_language_target = $language;
 			break;
@@ -52,6 +52,7 @@ function mcv_get_language_target() {
 
 	return $mcv_language_target;
 }
+
 
 add_action( 'init', 'mcv_init' );
 function mcv_init() {
@@ -66,45 +67,11 @@ function mcv_init() {
 	ob_start( 'mcv_ob_callback' );
 }
 
+
 add_action( 'after_body', 'mcv_after_body' );
 function mcv_after_body() {
 	ob_end_flush();
 }
-
-
-
-function mcv_parser( $html ) {
-
-	$body = array(
-		'api-key' => '1111111111111111',
-		'r'       => 'parser',
-		'source'  => 'fr',
-		'target'  => 'pt',
-		'text'    => $html,
-	);
-	$args = array(
-		'method'    => 'POST',
-		'timeout'   => 5,
-		'sslverify' => false,
-		'body'      => $body,
-	);
-
-	error_log( var_export( $body, true ) );
-
-	$request = wp_remote_post( MCV_API, $args );
-
-	if ( is_wp_error( $request ) || wp_remote_retrieve_response_code( $request ) != 200 ) {
-		error_log( print_r( $request, true ) );
-		return '';
-	}
-
-	// return (wp_remote_retrieve_body( $request ));
-	$response = json_decode( wp_remote_retrieve_body( $request ), true );
-
-	return $response;
-
-}
-
 
 
 function mcv_ob_callback( $html ) {
@@ -119,8 +86,8 @@ function mcv_ob_callback( $html ) {
 	$html = preg_replace( '/<script.*<\/script>/Uis', '', $html );
 	$html = preg_replace( '/<svg.*<\/svg>/Uis', '', $html );
 
-	$json_path = MCV_UPLOADS_PATH . 'translations-' . $mcv_language_target . '.json';
-	$translations = [];
+	$json_path        = MCV_UPLOADS_PATH . 'translations-' . $mcv_language_target . '.json';
+	$translations     = [];
 	$translations_new = [];
 
 	// Get know translations
@@ -140,15 +107,14 @@ function mcv_ob_callback( $html ) {
 	}
 
 	// Clear HTML of know translation
-	foreach ($translations as $key => $translation) {
+	foreach ( $translations as $translation ) {
 
-		if ( 
-			! isset( $translation['source'] ) 
-			|| ! isset( $translation['translation'] ) 
-			|| ! isset( $translation['sb'] ) 
-			|| ! isset( $translation['sa'] ) 
-			|| ! isset( $translation['rb'] ) 
-			|| ! isset( $translation['ra'] ) 
+		if ( ! isset( $translation['source'] )
+			|| ! isset( $translation['translation'] )
+			|| ! isset( $translation['sb'] )
+			|| ! isset( $translation['sa'] )
+			|| ! isset( $translation['rb'] )
+			|| ! isset( $translation['ra'] )
 		) {
 			continue;
 		}
@@ -168,23 +134,22 @@ function mcv_ob_callback( $html ) {
 	// TODO : Save new translation in WP
 
 	// Merge know and new translations
-	$translations = array_merge($translations, $translations_new);
+	$translations = array_merge( $translations, $translations_new );
 
 	// Replace original texts by translations
-	foreach ( $translations as $key => $translation ) {
+	foreach ( $translations as $translation ) {
 
-		if ( 
-			! isset( $translation['source'] ) 
-			|| ! isset( $translation['translation'] ) 
-			|| ! isset( $translation['sb'] ) 
-			|| ! isset( $translation['sa'] ) 
-			|| ! isset( $translation['rb'] ) 
-			|| ! isset( $translation['ra'] ) 
+		if ( ! isset( $translation['source'] )
+			|| ! isset( $translation['translation'] )
+			|| ! isset( $translation['sb'] )
+			|| ! isset( $translation['sa'] )
+			|| ! isset( $translation['rb'] )
+			|| ! isset( $translation['ra'] )
 		) {
 			continue;
 		}
 
-		$regex = $translation['sb'] . preg_quote( $translation['source'] ) . $translation['sa'];
+		$regex   = $translation['sb'] . preg_quote( $translation['source'] ) . $translation['sa'];
 		$replace = $translation['rb'] . $translation['translation'] . $translation['ra'];
 
 		$html_translated = preg_replace(
@@ -195,10 +160,10 @@ function mcv_ob_callback( $html ) {
 	}
 
 	// Save new translation file
-	if (!empty($translations_new)) {
+	if ( ! empty( $translations_new ) ) {
 		file_put_contents( $json_path, json_encode( array_merge( $translations, $translations_new ) ) );
 	}
-	
+
 	// Set "<html lang=""> for current languages
 	// TODO : Check if wp hook exist
 	$html_translated = preg_replace(
@@ -212,40 +177,6 @@ function mcv_ob_callback( $html ) {
 }
 
 
-function mcv_translate( $language_source, $language_target, $text ) {
-
-	$body = array(
-		'api-key' => '1111111111111111',
-		'r'       => 'translate',
-		'source'  => $language_source,
-		'target'  => $language_target,
-		'text'    => $text,
-	);
-	$args = array(
-		'method'    => 'POST',
-		'timeout'   => 5,
-		'sslverify' => false,
-		'body'      => $body,
-	);
-
-	error_log( var_export( $body, true ) );
-
-	$request = wp_remote_post( MCV_API, $args );
-
-	if ( is_wp_error( $request ) || wp_remote_retrieve_response_code( $request ) != 200 ) {
-		error_log( print_r( $request, true ) );
-		return '';
-	}
-
-	$response = json_decode( wp_remote_retrieve_body( $request ), true );
-
-	if ( ! isset( $response['translation'] ) ) {
-		return 'Erreur :: [' . $text . ']';
-	}
-
-	return (string) $response['translation'];
-}
-
 add_action( 'wp_enqueue_scripts', 'mcv_register_assets' );
 function mcv_register_assets() {
 
@@ -258,9 +189,7 @@ function mcv_register_assets() {
 	wp_enqueue_script(
 		'machiavel',
 		plugins_url( 'js/script.js', __FILE__ ),
-		array( 'jquery' ),
-		'1.0',
-		true
+		array( 'jquery' )
 	);
 
 	wp_enqueue_style(
