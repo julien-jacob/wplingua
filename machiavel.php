@@ -10,62 +10,14 @@ if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
-
 define( 'MCV_UPLOADS_PATH', WP_CONTENT_DIR . '/uploads/machiavel/' );
 define( 'MCV_API', 'http://machiavel-api.local/v0.1/last/' );
 
 // require_once 'inc/translation-storage.php';
 
-
-
-
-
-
-
-
-
-add_action( 'wp_enqueue_scripts', 'mcv_register_assets' );
-function mcv_register_assets() {
-
-	if ( is_admin() ) {
-		return;
-	}
-
-	wp_enqueue_script( 'jquery' );
-
-	wp_enqueue_script(
-		'machiavel',
-		plugins_url( 'js/script.js' , __FILE__ ),
-		array( 'jquery' ),
-		'1.0',
-		true
-	);
-
-	wp_enqueue_style(
-		'machiavel',
-		plugins_url( 'css/front.css' , __FILE__ )
-	);
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 global $machiavel_language_target;
 $machiavel_language_target = false;
 
-// var_dump(mcv_translate( 'fr', 'en', 'machiavel' ));
-// die;
 
 function mcv_get_language_source() {
 	return 'fr';
@@ -121,135 +73,143 @@ function mcv_after_body() {
 
 
 
+function mcv_parser( $html ) {
+
+	$body = array(
+		'api-key' => '1111111111111111',
+		'r'       => 'parser',
+		'source'  => 'fr',
+		'target'  => 'pt',
+		'text'    => $html,
+	);
+	$args = array(
+		'method'    => 'POST',
+		'timeout'   => 5,
+		'sslverify' => false,
+		'body'      => $body,
+	);
+
+	error_log( var_export( $body, true ) );
+
+	$request = wp_remote_post( MCV_API, $args );
+
+	if ( is_wp_error( $request ) || wp_remote_retrieve_response_code( $request ) != 200 ) {
+		error_log( print_r( $request, true ) );
+		return '';
+	}
+
+	// return (wp_remote_retrieve_body( $request ));
+	$response = json_decode( wp_remote_retrieve_body( $request ), true );
+
+	return $response;
+
+}
+
 
 
 function mcv_ob_callback( $html ) {
 
 	$mcv_language_target = mcv_get_language_target();
+	$html_translated     = $html;
 
-	// Prepare HTML
-
-	// Remove tab and break line
+	// Clear useless part for HTML parsing
 	// $html = str_replace( array( "\r", "\n", '  ', "\t" ), '', $html );
-	$html = preg_replace( '#<!--.*-->#', '', $html );
+	$html = preg_replace( '/<!--.*-->/Uis', '', $html );
+	$html = preg_replace( '/<style.*<\/style>/Uis', '', $html );
+	$html = preg_replace( '/<script.*<\/script>/Uis', '', $html );
+	$html = preg_replace( '/<svg.*<\/svg>/Uis', '', $html );
 
-	require_once 'simple_html_dom.php';
+	$json_path = MCV_UPLOADS_PATH . 'translations-' . $mcv_language_target . '.json';
+	$translations = [];
+	$translations_new = [];
 
-	$dom = str_get_html( $html );
-
-	if ( $dom === false ) {
-		return $html;
-	}
-
-	foreach ( $dom->find( '#wpadminbar' ) as $element ) {
-		$element->outertext = '';
-	}
-
-	foreach ( $dom->find( '.mcv-switcher' ) as $element ) {
-		$element->outertext = '';
-	}
-
-	foreach ( $dom->find( 'style' ) as $element ) {
-		$element->outertext = '';
-	}
-
-	foreach ( $dom->find( 'script' ) as $element ) {
-		$element->outertext = '';
-	}
-
-	$dom->save();
-	$dom = str_get_html( $dom );
-
-	$strings = [];
-	foreach ( $dom->find( 'text' ) as $element ) {
-
-		$s         = $element->innertext();
-		$strings[] = $s;
-
-	}
-
-	foreach ( $strings as $key => $string ) {
-		$strings[ $key ] = trim( $string );
-	}
-
-	$strings = array_filter( $strings ); // Remove empty
-	$strings = array_unique( $strings ); // Remove duplicate
-
-	$dir_uploads = WP_CONTENT_DIR . '/uploads/machiavel/';
-
-	$translations         = [];
-	$translations_current = [];
-
-	if ( file_exists( $dir_uploads ) ) {
-		$translations = json_decode( file_get_contents( $dir_uploads . 'translations-' . $mcv_language_target . '.json' ), true );
+	// Get know translations
+	if ( file_exists( $json_path ) ) {
+		$translations = json_decode( file_get_contents( $json_path ), true );
 		if ( empty( $translations ) ) {
 			$translations = [];
 		}
 	} else {
-
 		$default_json = json_encode(
 			[
 				'wpRock' => 'wpRock',
 			]
 		);
-		mkdir( $dir_uploads );
-		file_put_contents( $dir_uploads . 'translations-' . $mcv_language_target . '.json', $default_json );
+		mkdir( MCV_UPLOADS_PATH );
+		file_put_contents( $json_path, $default_json );
 	}
 
-	foreach ( $strings as $key => $string ) {
-		if ( ! empty( $translations[ $string ] ) ) {
-			// if ( ! empty( $translations[ $string ][ $mcv_language_target ] ) ) {
-				unset( $strings[ $key ] );
-				$translations_current[ $string ] = $translations[ $string ];
-			// }
-		}
-	}
+	// Clear HTML of know translation
+	foreach ($translations as $key => $translation) {
 
-	foreach ( $strings as $key => $string ) {
-		$translations_current[ $string ] = mcv_translate( 'fr', $mcv_language_target, $string );
-	}
-
-	// $translations = array_merge($translations_current, $translations);
-
-	file_put_contents( $dir_uploads . 'translations-' . $mcv_language_target . '.json', json_encode( array_merge( $translations_current, $translations ) ) );
-	// return '<pre>' . esc_html( var_export( array_merge($translations_current, $translations), true ) ) . '</pre>';
-
-	$dom = str_get_html( $html );
-
-	foreach ( $dom->find( 'text' ) as $element ) {
-
-		if ( empty( $element->innertext ) || ctype_space( $element->innertext ) ) {
+		if ( 
+			! isset( $translation['source'] ) 
+			|| ! isset( $translation['translation'] ) 
+			|| ! isset( $translation['sb'] ) 
+			|| ! isset( $translation['sa'] ) 
+			|| ! isset( $translation['rb'] ) 
+			|| ! isset( $translation['ra'] ) 
+		) {
 			continue;
 		}
 
-		$text = trim( $element->innertext );
+		$regex = $translation['sb'] . preg_quote( $translation['source'] ) . $translation['sa'];
 
-		foreach ( $translations_current as $key => $translation ) {
-			if ( $text == $key ) {
-				$element->innertext = $translation;
-			}
-		}
+		$html = preg_replace(
+			$regex,
+			'',
+			$html
+		);
 	}
 
-	// foreach ( $dom->find( 'a' ) as $element ) {
-	// 	$element->href;
+	// Get new translation from API
+	$translations_new = mcv_parser( $html );
 
-	// }
+	// TODO : Save new translation in WP
 
-	$dom->save();
+	// Merge know and new translations
+	$translations = array_merge($translations, $translations_new);
 
-	$dom = (string) $dom;
+	// Replace original texts by translations
+	foreach ( $translations as $key => $translation ) {
 
-	$dom = preg_replace(
+		if ( 
+			! isset( $translation['source'] ) 
+			|| ! isset( $translation['translation'] ) 
+			|| ! isset( $translation['sb'] ) 
+			|| ! isset( $translation['sa'] ) 
+			|| ! isset( $translation['rb'] ) 
+			|| ! isset( $translation['ra'] ) 
+		) {
+			continue;
+		}
+
+		$regex = $translation['sb'] . preg_quote( $translation['source'] ) . $translation['sa'];
+		$replace = $translation['rb'] . $translation['translation'] . $translation['ra'];
+
+		$html_translated = preg_replace(
+			$regex,
+			$replace,
+			$html_translated
+		);
+	}
+
+	// Save new translation file
+	if (!empty($translations_new)) {
+		file_put_contents( $json_path, json_encode( array_merge( $translations, $translations_new ) ) );
+	}
+	
+	// Set "<html lang=""> for current languages
+	// TODO : Check if wp hook exist
+	$html_translated = preg_replace(
 		'/<html (.*?)?lang=(\"|\')(\S*)(\"|\')/',
 		'<html $1lang=$2' . $mcv_language_target . '$4',
-		$dom
+		$html_translated
 	);
 
-	return $dom;
-	return '<pre>' . esc_html( var_export( $translations_current, true ) ) . '</pre>';
+	return $html_translated;
+	// return '<pre>' . esc_html( var_export( $translations, true ) ) . '</pre>';
 }
-
 
 
 function mcv_translate( $language_source, $language_target, $text ) {
@@ -277,7 +237,6 @@ function mcv_translate( $language_source, $language_target, $text ) {
 		return '';
 	}
 
-	// return (wp_remote_retrieve_body( $request ));
 	$response = json_decode( wp_remote_retrieve_body( $request ), true );
 
 	if ( ! isset( $response['translation'] ) ) {
@@ -287,7 +246,25 @@ function mcv_translate( $language_source, $language_target, $text ) {
 	return (string) $response['translation'];
 }
 
+add_action( 'wp_enqueue_scripts', 'mcv_register_assets' );
+function mcv_register_assets() {
 
+	if ( is_admin() ) {
+		return;
+	}
 
+	wp_enqueue_script( 'jquery' );
 
+	wp_enqueue_script(
+		'machiavel',
+		plugins_url( 'js/script.js', __FILE__ ),
+		array( 'jquery' ),
+		'1.0',
+		true
+	);
 
+	wp_enqueue_style(
+		'machiavel',
+		plugins_url( 'css/front.css', __FILE__ )
+	);
+}
