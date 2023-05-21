@@ -1,0 +1,23 @@
+.mcv-switcher {
+    position: fixed;
+    bottom: 20px;
+    background-color: black;
+    border-radius: 16px;
+    padding: 20px 10px;
+    right: 30px;
+    border: 2px gray solid;
+    z-index: 9999;
+}
+
+.mcv-language {
+    border: 2px solid gray;
+    border-radius: 16px;
+    padding: 10px 15px;
+    margin: 2px;
+    text-transform: uppercase;
+    text-decoration: none;
+}
+
+.mcv-language:hover {
+    background-color: lightgray;
+}

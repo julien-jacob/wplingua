@@ -1,0 +1,72 @@
+<?php
+
+// If this file is called directly, abort.
+if ( ! defined( 'WPINC' ) ) {
+	die;
+}
+
+
+function mcv_translate( $language_source, $language_target, $text ) {
+
+	$body = array(
+		'api-key' => '1111111111111111',
+		'r'       => 'translate',
+		'source'  => $language_source,
+		'target'  => $language_target,
+		'text'    => $text,
+	);
+	$args = array(
+		'method'    => 'POST',
+		'timeout'   => 5,
+		'sslverify' => false,
+		'body'      => $body,
+	);
+
+	error_log( var_export( $body, true ) );
+
+	$request = wp_remote_post( MCV_API, $args );
+
+	if ( is_wp_error( $request ) || wp_remote_retrieve_response_code( $request ) != 200 ) {
+		error_log( print_r( $request, true ) );
+		return '';
+	}
+
+	$response = json_decode( wp_remote_retrieve_body( $request ), true );
+
+	if ( ! isset( $response['translation'] ) ) {
+		return 'Erreur :: [' . $text . ']';
+	}
+
+	return (string) $response['translation'];
+}
+
+
+function mcv_parser( $html ) {
+
+	$body = array(
+		'api-key' => '1111111111111111',
+		'r'       => 'parser',
+		'source'  => 'fr',
+		'target'  => 'pt',
+		'text'    => $html,
+	);
+	$args = array(
+		'method'    => 'POST',
+		'timeout'   => 5,
+		'sslverify' => false,
+		'body'      => $body,
+	);
+
+	error_log( var_export( $body, true ) );
+
+	$request = wp_remote_post( MCV_API, $args );
+
+	if ( is_wp_error( $request ) || wp_remote_retrieve_response_code( $request ) != 200 ) {
+		error_log( print_r( $request, true ) );
+		return '';
+	}
+
+	$response = json_decode( wp_remote_retrieve_body( $request ), true );
+
+	return $response;
+}
