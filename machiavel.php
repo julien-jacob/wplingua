@@ -14,9 +14,15 @@ define( 'MCV_UPLOADS_PATH', WP_CONTENT_DIR . '/uploads/machiavel/' );
 define( 'MCV_API', 'http://machiavel-api.local/v0.1/last/' );
 
 require_once 'inc/api.php';
+require_once 'inc/languages.php';
+require_once 'inc/assets.php';
+require_once 'inc/option-page.php';
 
 global $machiavel_language_target;
 $machiavel_language_target = false;
+
+add_action( 'admin_menu', 'mcv_create_menu' );
+add_action( 'admin_init', 'mcv_register_settings' );
 
 
 function mcv_get_language_source() {
@@ -176,24 +182,3 @@ function mcv_ob_callback( $html ) {
 	// return '<pre>' . esc_html( var_export( $translations, true ) ) . '</pre>';
 }
 
-
-add_action( 'wp_enqueue_scripts', 'mcv_register_assets' );
-function mcv_register_assets() {
-
-	if ( is_admin() ) {
-		return;
-	}
-
-	wp_enqueue_script( 'jquery' );
-
-	wp_enqueue_script(
-		'machiavel',
-		plugins_url( 'js/script.js', __FILE__ ),
-		array( 'jquery' )
-	);
-
-	wp_enqueue_style(
-		'machiavel',
-		plugins_url( 'css/front.css', __FILE__ )
-	);
-}
