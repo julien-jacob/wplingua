@@ -25,9 +25,14 @@ add_action( 'admin_menu', 'mcv_create_menu' );
 add_action( 'admin_init', 'mcv_register_settings' );
 
 
-function mcv_get_language_source() {
-	return 'fr';
+function mcv_get_language_source_id() {
+	return get_option( 'mcv_website_language' );
 }
+
+function mcv_get_language_source_flag() {
+	return get_option( 'mcv_website_flag' );
+}
+
 
 
 function mcv_get_language_target() {

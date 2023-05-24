@@ -1,23 +1,25 @@
 #mcv-target-language-template,
-#mcv_target_languages,
+/* #mcv_target_languages, */
 #mcv-flags-radio-original-website-custom {
     display: none;
 }
-
+.mcv-flag-target-container,
 #mcv-website-flag-container {
     display: none;
 }
 
 
 .mcv-target-language img.mcv-target-language,
-.mcv-flags-radio img {
+.mcv-flags-radio img,
+.mcv-subflags-radio img {
     width: 20px;
     height: 20px;
     margin-bottom: -6px;
 }
 
 
-.mcv-flags-radio {
+.mcv-flags-radio,
+.mcv-subflags-radio {
     padding-left: 15px;
     display: inline-block;
 }

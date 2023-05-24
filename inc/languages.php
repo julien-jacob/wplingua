@@ -7,11 +7,20 @@ if ( ! defined( 'WPINC' ) ) {
 
 
 function mcv_get_language_by_ids( $language_ids ) {
+	// echo '<pre>';
+	// var_dump($language_ids);
+	// echo '</pre>';
 	$all_languages = mcv_get_all_languages();
 	$languages     = array();
 
 	foreach ( $language_ids as $key => $language_id ) {
+
+		// echo '<pre>';
+		// 	var_dump($language['id'], $language_id);
+		// 	echo '</pre>';
+
 		foreach ( $all_languages as $key => $language ) {
+			
 			if ( ! empty( $language['id'] ) && $language['id'] === $language_id ) {
 				$languages[] = $language;
 				break;
@@ -107,12 +116,27 @@ function mcv_get_all_languages() {
 		),
 	);
 
+	$source_language = mcv_get_language_source_id();
+	$source_flag = mcv_get_language_source_flag();
+	// $target_flags = mcv_get_language_target_flags();
+
 	foreach ( $languages as $key => $language ) {
-		$languages[ $key ]['flag'] = plugins_url() . '/machiavel/images/rounded/' . $language['id'] . '.png';
+
+		// Set custom source flag if defined
+		if ( $languages[ $key ]['id'] == $source_language && ! empty($source_flag) ) {
+			$languages[ $key ]['flag'] = $source_flag;
+		} else {
+			$languages[ $key ]['flag'] = plugins_url() . '/machiavel/images/rounded/' . $language['id'] . '.png';
+		}
+
+		
+		// Transform flags to URL
 		foreach ( $languages[ $key ]['flags'] as $key_flag => $flag ) {
 			$languages[ $key ]['flags'][ $key_flag ]['flag'] = plugins_url() . '/machiavel/images/rounded/' . $flag['flag'] . '.png';
 		}
 	}
+
+	// TODO : Set custom flag for targets
 
 	return $languages;
 }

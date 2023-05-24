@@ -29,7 +29,7 @@ function mcv_enqueue_callback( $hook ) {
 
 add_action( 'toplevel_page_machiavel/inc/option-page', 'mcv_inline_script_all_language' );
 function mcv_inline_script_all_language() {
-	?><script>var mcvAllLanguages = JSON.parse('<?php echo mcv_all_language_json(); ?>'); console.log(mcvAllLanguages);</script><?php
+	?><script>var mcvAllLanguages = JSON.parse('<?php echo mcv_all_language_json(); ?>');</script><?php
 }
 
 

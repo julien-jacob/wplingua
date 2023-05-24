@@ -45,6 +45,7 @@ function mcv_register_settings() {
 	register_setting( 'mcv_settings', 'mcv_website_language' );
 	register_setting( 'mcv_settings', 'mcv_website_flag' );
 	register_setting( 'mcv_settings', 'mcv_target_languages' );
+	// register_setting( 'mcv_settings', 'languages_target_flags' );
 
 }
 
@@ -78,18 +79,27 @@ function mcv_settings_link( $settings ) {
  */
 function mcv_settings() {
 
-	$all_languages   = mcv_get_all_languages();
-	$language_source = mcv_get_language_source();
+	// $all_languages   = mcv_get_all_languages();
+	// $language_source = mcv_get_language_source_id();
 
+	// get the list of targeted languages
 	$languages_target_json = get_option( 'mcv_target_languages' );
-	$languages_target = json_decode($languages_target_json);
-	$languages_target = mcv_get_language_by_ids($languages_target);
-
-
-
-	// var_dump($all_languages); die;
-
-
+	if ( empty( $languages_target_json ) ) {
+		$languages_target_json = '[]';
+	}
+	$languages_target = json_decode( $languages_target_json, true );
+	$languages_target_ids = array();
+	foreach ($languages_target as $key => $language_target) {
+		if (!empty($language_target['id'])) {
+			// var_dump($language_target['id']);
+			$languages_target_ids[] = $language_target['id'];
+		}
+	}
+	$languages_target = mcv_get_language_by_ids( $languages_target_ids );
+	// echo '<pre>';
+	// var_dump($languages_target_ids);
+	// echo '</pre>';
+	// die;
 
 	?>
 	<div class="wrap">
@@ -117,13 +127,13 @@ function mcv_settings() {
 							</label>
 
 							<select id="mcv_website_language" name="mcv_website_language">
-								<?php 
+								<?php
 								$website_language_saved = true;
-								if ( empty( get_option( 'mcv_website_language' ) ) ) {
+								if ( empty( mcv_get_language_source_id() ) ) {
 									$website_language_saved = false;
 								} else {
 
-									$website_language_id = get_option( 'mcv_website_language' );
+									$website_language_id = mcv_get_language_source_id();
 									$website_language    = mcv_get_language_by_id( $website_language_id );
 
 									if ( ! empty( $website_language['id'] )
@@ -138,7 +148,7 @@ function mcv_settings() {
 								if ( ! $website_language_saved ) {
 									echo '<option value="">' . __( 'Please choose an option', 'machiavel' ) . '</option>';
 								}
-								 ?>
+								?>
 							</select>
 
 							<br>
@@ -160,15 +170,12 @@ function mcv_settings() {
 
 							<span><?php _e( 'The original website flag: ', 'machiavel' ); ?></span>
 							<span id="mcv-flags-radio-original-website"></span>
-							
-
-
 
 							<br>
 							<br>
 							<div id="mcv-website-flag-container">
 								<?php _e( 'Custom flag URL (64px*64px recommended) : ', 'machiavel' ); ?>
-								<input type="url" name="mcv_website_flag" id="mcv_website_flag" value="<?php echo esc_url( get_option( 'mcv_website_flag' ) ); ?>" />
+								<input type="url" name="mcv_website_flag" id="mcv_website_flag" value="<?php echo esc_url( mcv_get_language_source_flag() ); ?>" />
 							</div>
 
 
@@ -208,14 +215,23 @@ function mcv_settings() {
 							<div id="mcv-target-language-template">
 								<div class="mcv-target-language">
 									[FLAG][NAME] - <a href="javascript:void(0);" class="mcv-target-lang-update-flag" mcv-target-lang="[LANG]"><?php _e( 'Edit flag', 'machiavel' ); ?></a> - <a href="javascript:void(0);" class="mcv-target-lang-remove" mcv-target-lang="[LANG]"><?php _e( 'Remove', 'machiavel' ); ?></a>
+
+									<div class="mcv-flag-target-container" mcv-target-lang="[LANG]">
+										<br>
+										<span><?php _e( 'Flag: ', 'machiavel' ); ?></span>
+										<span class="mcv-subflags-radio-target-website">[FLAGS_OPTIONS]</span>
+										<div class="mcv-subflag-target-custom">
+											<?php _e( 'Custom flag URL (64px*64px recommended) : ', 'machiavel' ); ?>
+											<input type="url" class="mcv-target-subflag" mcv-target-lang="[LANG]" value="" />
+										</div>
+									</div>
+
 									<hr>
 								</div>
 							</div>
-						
 
 							<div id="mcv-target-languages-list"></div>
-
-
+							
 							<input type="text" name="mcv_target_languages" id="mcv_target_languages" value="<?php echo esc_attr( $languages_target_json ); ?>" />
 
 						</fieldset>
