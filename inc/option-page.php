@@ -43,12 +43,8 @@ function mcv_create_menu() {
 function mcv_register_settings() {
 
 	register_setting( 'mcv_settings', 'mcv_website_language' );
+	register_setting( 'mcv_settings', 'mcv_website_flag' );
 	register_setting( 'mcv_settings', 'mcv_target_languages' );
-	// register_setting( 'mcv_settings', 'mcv_disable_files_editor' );
-	// register_setting( 'mcv_settings', 'mcv_show_reusable_blocks' );
-	// register_setting( 'mcv_settings', 'mcv_show_navigation_menu' );
-	// register_setting( 'mcv_settings', 'mcv_show_templates' );
-	// register_setting( 'mcv_settings', 'mcv_show_template_parts' );
 
 }
 
@@ -91,7 +87,7 @@ function mcv_settings() {
 
 
 
-	// var_dump($languages_target); die;
+	// var_dump($all_languages); die;
 
 
 
@@ -106,7 +102,7 @@ function mcv_settings() {
 			?>
 
 			<table class="form-table">
-
+				
 				<tr>
 					<th scope="row"><?php _e( 'Website language', 'machiavel' ); ?></th>
 					<td>
@@ -121,9 +117,7 @@ function mcv_settings() {
 							</label>
 
 							<select id="mcv_website_language" name="mcv_website_language">
-
 								<?php 
-
 								$website_language_saved = true;
 								if ( empty( get_option( 'mcv_website_language' ) ) ) {
 									$website_language_saved = false;
@@ -144,25 +138,39 @@ function mcv_settings() {
 								if ( ! $website_language_saved ) {
 									echo '<option value="">' . __( 'Please choose an option', 'machiavel' ) . '</option>';
 								}
-
-								/*
-
-								foreach ( $all_languages as $language ) {
-									if ( ! empty( $language['id'] )
-										&& ! empty( $language['name'] )
-									) {
-
-										if ( $website_language_saved
-											&& $website_language_id === $language['id']
-										) {
-											continue;
-										}
-
-										echo '<option  value="' . esc_attr( $language['id'] ) . '">' . esc_html( $language['name'] ) . '</option>';
-									}
-								}
-								*/ ?>
+								 ?>
 							</select>
+
+							<br>
+							<br>
+
+
+
+
+
+
+
+
+
+							<legend class="screen-reader-text">
+								<span><?php _e( 'Website flag', 'machiavel' ); ?></span>
+							</legend>
+
+							<div id="mcv-flags-radio-original-website-custom"><?php _e( 'Custom', 'machiavel' ); ?></div>
+
+							<span><?php _e( 'The original website flag: ', 'machiavel' ); ?></span>
+							<span id="mcv-flags-radio-original-website"></span>
+							
+
+
+
+							<br>
+							<br>
+							<div id="mcv-website-flag-container">
+								<?php _e( 'Custom flag URL (64px*64px recommended) : ', 'machiavel' ); ?>
+								<input type="url" name="mcv_website_flag" id="mcv_website_flag" value="<?php echo esc_url( get_option( 'mcv_website_flag' ) ); ?>" />
+							</div>
+
 
 							<hr>
 
@@ -185,26 +193,7 @@ function mcv_settings() {
 								<?php _e( 'Add new target Language: ', 'machiavel' ); ?>
 							</label>							
 
-							<select id="mcv_add_new_target_language" name="mcv_add_new_target_language">
-
-								<?php
-
-								// if ( ! empty( get_option( 'mcv_target_language' ) ) {
-
-								// }
-								// TODO : Retirer langues déjà sélectionnées + langue courante du site
-								/*
-								foreach ( $all_languages as $language ) {
-									if ( ! empty( $language['id'] )
-										&& ! empty( $language['name'] )
-									) {
-
-										echo '<option value="' . esc_attr( $language['id'] ) . '">' . esc_html( $language['name'] ) . '</option>';
-									}
-								}
-								*/
-								?>
-							</select>
+							<select id="mcv_add_new_target_language" name="mcv_add_new_target_language"></select>
 
 							<button class="button button-primary" id="mcv-target-lang-add">
 								<?php _e( 'Add', 'machiavel' ); ?>
@@ -212,32 +201,26 @@ function mcv_settings() {
 
 							<hr>
 							<br>
+							
 							<p><strong><?php _e( 'Current target languages: ', 'machiavel' ); ?></strong></p>
 							<hr>
 
-							<?php
-							echo '<div id="mcv-target-language-template"><div class="mcv-target-language">[NAME] - <a href="javascript:void(0);" class="mcv-target-lang-remove" mcv-target-lang="[LANG]">' . __( 'Remove', 'machiavel' ) . '</a><hr></div></div>';
-							?>
+							<div id="mcv-target-language-template">
+								<div class="mcv-target-language">
+									[FLAG][NAME] - <a href="javascript:void(0);" class="mcv-target-lang-update-flag" mcv-target-lang="[LANG]"><?php _e( 'Edit flag', 'machiavel' ); ?></a> - <a href="javascript:void(0);" class="mcv-target-lang-remove" mcv-target-lang="[LANG]"><?php _e( 'Remove', 'machiavel' ); ?></a>
+									<hr>
+								</div>
+							</div>
 						
 
-							<div id="mcv-target-languages-list">
-								<?php
-								// foreach ($languages_target as $language_target) {
-								// 	$remove_link = '<a href="javascript:void(0);" class="mcv-target-lang-remove" mcv-target-lang="' . esc_attr($language_target['id']) . '">' . __( 'Remove', 'machiavel' ) . '</a>';
+							<div id="mcv-target-languages-list"></div>
 
-								// 	echo '<div class="mcv-target-language">';
-								// 	echo esc_html($language_target['name']) . ' - ' . $remove_link . '<hr>';
-								// 	echo '</div>';
-								// }
-								?>
-							</div>
 
 							<input type="text" name="mcv_target_languages" id="mcv_target_languages" value="<?php echo esc_attr( $languages_target_json ); ?>" />
 
 						</fieldset>
 					</td>
 				</tr>
-
 
 			</table>
 			

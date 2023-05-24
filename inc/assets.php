@@ -14,22 +14,22 @@ function mcv_enqueue_callback( $hook ) {
 	}
 
 	wp_enqueue_script( 'jquery' );
-
+	
 	wp_enqueue_script(
-		'machiavel',
+		'machiavel-option',
 		plugins_url() . '/machiavel/js/option-page.js',
 		array( 'jquery' )
 	);
 
 	wp_enqueue_style(
-		'machiavel',
+		'machiavel-option',
 		plugins_url() . '/machiavel/css/option-page.css'
 	);
 }
 
 add_action( 'toplevel_page_machiavel/inc/option-page', 'mcv_inline_script_all_language' );
 function mcv_inline_script_all_language() {
-	?><script>var mcvAllLanguages = JSON.parse('<?php echo mcv_all_language_json(); ?>');</script><?php
+	?><script>var mcvAllLanguages = JSON.parse('<?php echo mcv_all_language_json(); ?>'); console.log(mcvAllLanguages);</script><?php
 }
 
 
