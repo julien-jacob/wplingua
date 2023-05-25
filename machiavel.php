@@ -29,10 +29,19 @@ function mcv_get_language_source_id() {
 	return get_option( 'mcv_website_language' );
 }
 
+
 function mcv_get_language_source_flag() {
 	return get_option( 'mcv_website_flag' );
 }
 
+
+function mcv_get_languages_target() {
+	$json = get_option( 'mcv_target_languages' );
+	if (empty($json)) {
+		$json = "[]";
+	}
+	return json_decode($json, true);
+}
 
 
 function mcv_get_language_target() {

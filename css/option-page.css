@@ -1,10 +1,11 @@
 #mcv-target-language-template,
-/* #mcv_target_languages, */
+#mcv_target_languages,
 #mcv-flags-radio-original-website-custom {
     display: none;
 }
 .mcv-flag-target-container,
-#mcv-website-flag-container {
+#mcv-website-flag-container,
+.mcv-subflag-target-custom {
     display: none;
 }
 
