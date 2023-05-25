@@ -18,66 +18,25 @@ require_once 'inc/languages.php';
 require_once 'inc/assets.php';
 require_once 'inc/option-page.php';
 
-global $machiavel_language_target;
-$machiavel_language_target = false;
+// global $machiavel_language_current;
+// $machiavel_language_current = false;
 
 add_action( 'admin_menu', 'mcv_create_menu' );
 add_action( 'admin_init', 'mcv_register_settings' );
 
 
-function mcv_get_language_source_id() {
-	return get_option( 'mcv_website_language' );
-}
+// add_filter('language_attributes', function( $attr ) {
+// 	$attr = preg_replace('/lang=(\"|\')(..)-(..)(\"|\')/i', 'lang=$1$2$4', $attr);
+// 	var_dump('-' . $attr . '-'); die;
+// 	return $attr;
+// });
 
-
-function mcv_get_language_source_flag() {
-	return get_option( 'mcv_website_flag' );
-}
-
-
-function mcv_get_languages_target() {
-	$json = get_option( 'mcv_target_languages' );
-	if (empty($json)) {
-		$json = "[]";
-	}
-	return json_decode($json, true);
-}
-
-
-function mcv_get_language_target() {
-
-	global $machiavel_language_target;
-
-	if ( $machiavel_language_target !== false ) {
-		return $machiavel_language_target;
-	}
-
-	$current_path         = $_SERVER['REQUEST_URI'];
-	$mcv_language_target  = false;
-	$mcv_languages_target = [
-		'en',
-		'de',
-		'pt',
-		'es',
-	];
-
-	foreach ( $mcv_languages_target as $language ) {
-		if ( str_starts_with( $current_path, '/' . $language . '/' ) ) {
-			$mcv_language_target = $language;
-			break;
-		}
-	}
-
-	$machiavel_language_target = $mcv_language_target;
-
-	return $mcv_language_target;
-}
 
 
 add_action( 'init', 'mcv_init' );
 function mcv_init() {
 
-	if ( is_admin() || empty( mcv_get_language_target() ) ) {
+	if ( is_admin() || empty( mcv_get_language_current_id() ) ) {
 		return;
 	}
 
@@ -88,15 +47,16 @@ function mcv_init() {
 }
 
 
-add_action( 'after_body', 'mcv_after_body' );
-function mcv_after_body() {
-	ob_end_flush();
-}
+add_action( 'after_body', 'ob_end_flush' );
+// add_action( 'after_body', 'mcv_after_body' );
+// function mcv_after_body() {
+// 	ob_end_flush();
+// }
 
 
 function mcv_ob_callback( $html ) {
 
-	$mcv_language_target = mcv_get_language_target();
+	$mcv_language_target = mcv_get_language_current_id();
 	$html_translated     = $html;
 
 	// Clear useless part for HTML parsing
@@ -186,11 +146,11 @@ function mcv_ob_callback( $html ) {
 
 	// Set "<html lang=""> for current languages
 	// TODO : Check if wp hook exist
-	$html_translated = preg_replace(
-		'/<html (.*?)?lang=(\"|\')(\S*)(\"|\')/',
-		'<html $1lang=$2' . $mcv_language_target . '$4',
-		$html_translated
-	);
+	// $html_translated = preg_replace(
+	// 	'/<html (.*?)?lang=(\"|\')(\S*)(\"|\')/',
+	// 	'<html $1lang=$2' . $mcv_language_target . '$4',
+	// 	$html_translated
+	// );
 
 	return $html_translated;
 	// return '<pre>' . esc_html( var_export( $translations, true ) ) . '</pre>';

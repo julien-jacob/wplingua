@@ -1,14 +1,11 @@
 #mcv-target-language-template,
 #mcv_target_languages,
-#mcv-flags-radio-original-website-custom {
-    display: none;
-}
-.mcv-flag-target-container,
+#mcv-flags-radio-original-website-custom,
 #mcv-website-flag-container,
+.mcv-flag-target-container,
 .mcv-subflag-target-custom {
     display: none;
 }
-
 
 .mcv-target-language img.mcv-target-language,
 .mcv-flags-radio img,
@@ -17,7 +14,6 @@
     height: 20px;
     margin-bottom: -6px;
 }
-
 
 .mcv-flags-radio,
 .mcv-subflags-radio {
@@ -29,4 +25,3 @@
     padding-right: 15px;
     width: auto;
 }
-

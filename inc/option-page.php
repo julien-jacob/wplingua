@@ -78,11 +78,11 @@ function mcv_settings_link( $settings ) {
  */
 function mcv_settings() {
 
-	$languages_target = mcv_get_languages_target();
+	$languages_target     = mcv_get_languages_target();
 	$languages_target_ids = array();
 
-	foreach ($languages_target as $key => $language_target) {
-		if (!empty($language_target['id'])) {
+	foreach ( $languages_target as $key => $language_target ) {
+		if ( ! empty( $language_target['id'] ) ) {
 			$languages_target_ids[] = $language_target['id'];
 		}
 	}
@@ -117,11 +117,11 @@ function mcv_settings() {
 							<select id="mcv_website_language" name="mcv_website_language">
 								<?php
 								$website_language_saved = true;
-								if ( empty( mcv_get_language_source_id() ) ) {
+								if ( empty( mcv_get_language_website_id() ) ) {
 									$website_language_saved = false;
 								} else {
 
-									$website_language_id = mcv_get_language_source_id();
+									$website_language_id = mcv_get_language_website_id();
 									$website_language    = mcv_get_language_by_id( $website_language_id );
 
 									if ( ! empty( $website_language['id'] )
@@ -156,7 +156,7 @@ function mcv_settings() {
 
 							<div id="mcv-website-flag-container">
 								<?php _e( 'Custom flag URL (64px*64px recommended) : ', 'machiavel' ); ?>
-								<input type="url" name="mcv_website_flag" id="mcv_website_flag" value="<?php echo esc_url( mcv_get_language_source_flag() ); ?>" />
+								<input type="url" name="mcv_website_flag" id="mcv_website_flag" value="<?php echo esc_url( mcv_get_language_website_flag() ); ?>" />
 							</div>
 
 							<hr>
@@ -186,7 +186,7 @@ function mcv_settings() {
 							<br>
 							
 							<p><strong><?php _e( 'Current target languages: ', 'machiavel' ); ?></strong></p>
-							
+
 							<hr>
 
 							<div id="mcv-target-language-template">
@@ -207,7 +207,7 @@ function mcv_settings() {
 
 							<div id="mcv-target-languages-list"></div>
 							
-							<textarea name="mcv_target_languages" id="mcv_target_languages"><?php echo esc_textarea( json_encode($languages_target, true) ); ?></textarea>
+							<textarea name="mcv_target_languages" id="mcv_target_languages"><?php echo esc_textarea( json_encode( $languages_target, true ) ); ?></textarea>
 
 						</fieldset>
 					</td>

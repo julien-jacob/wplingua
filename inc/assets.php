@@ -14,7 +14,7 @@ function mcv_enqueue_callback( $hook ) {
 	}
 
 	wp_enqueue_script( 'jquery' );
-	
+
 	wp_enqueue_script(
 		'machiavel-option',
 		plugins_url() . '/machiavel/js/option-page.js',
@@ -29,7 +29,8 @@ function mcv_enqueue_callback( $hook ) {
 
 add_action( 'toplevel_page_machiavel/inc/option-page', 'mcv_inline_script_all_language' );
 function mcv_inline_script_all_language() {
-	?><script>var mcvAllLanguages = JSON.parse('<?php echo mcv_all_language_json(); ?>');</script><?php
+	?><script>var mcvAllLanguages = JSON.parse('<?php echo mcv_get_languages_all_json(); ?>');</script>
+	<?php
 }
 
 
@@ -44,12 +45,12 @@ function mcv_register_assets() {
 
 	wp_enqueue_script(
 		'machiavel',
-		plugins_url( 'js/script.js', __FILE__ ),
+		plugins_url() . '/machiavel/js/script.js',
 		array( 'jquery' )
 	);
 
 	wp_enqueue_style(
 		'machiavel',
-		plugins_url( 'css/front.css', __FILE__ )
+		plugins_url() . '/machiavel/css/front.css'
 	);
 }
