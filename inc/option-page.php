@@ -60,8 +60,8 @@ function mcv_settings_link( $settings ) {
 	$url = esc_url(
 		add_query_arg(
 			'page',
-			'mcv-settings',
-			get_admin_url() . 'options-general.php'
+			'machiavel/inc/option-page.php',
+			get_admin_url() . 'admin.php'
 		)
 	);
 

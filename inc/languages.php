@@ -6,6 +6,9 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 
+function mcv_get_language_website() {
+	return mcv_get_language_by_id(mcv_get_language_website_id());
+}
 
 function mcv_get_language_website_id() {
 

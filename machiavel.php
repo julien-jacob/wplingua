@@ -18,11 +18,51 @@ require_once 'inc/languages.php';
 require_once 'inc/assets.php';
 require_once 'inc/option-page.php';
 
-// global $machiavel_language_current;
-// $machiavel_language_current = false;
 
-add_action( 'admin_menu', 'mcv_create_menu' );
-add_action( 'admin_init', 'mcv_register_settings' );
+function mcv_start() {
+
+	/**
+	 * Back office
+	 */
+
+	// Register plugin settings
+	add_action( 'admin_init', 'mcv_register_settings' );
+
+	// Add menu in back office
+	add_action( 'admin_menu', 'mcv_create_menu' );
+
+	// Add settings link in plugin list
+	add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), 'mcv_settings_link' );
+
+	// Enqueue CSS and JS files
+	add_action( 'admin_enqueue_scripts', 'mcv_enqueue_callback' );
+
+	// Print head script (JSON with all languages informations)
+	add_action( 'toplevel_page_machiavel/inc/option-page', 'mcv_inline_script_all_language' );
+
+
+	/**
+	 * Front
+	 */
+
+	// Enqueue CSS and JS files
+	add_action( 'wp_enqueue_scripts', 'mcv_register_assets' );
+
+
+	/**
+	 * OB and REQUEST_URI
+	 */
+
+	 // Manage URL with REQUEST_URI and start OB
+	add_action( 'init', 'mcv_init' );
+
+	// Stop OB at the end of the HTML
+	add_action( 'after_body', 'ob_end_flush' );
+
+}
+mcv_start();
+
+
 
 
 // add_filter('language_attributes', function( $attr ) {
@@ -33,7 +73,6 @@ add_action( 'admin_init', 'mcv_register_settings' );
 
 
 
-add_action( 'init', 'mcv_init' );
 function mcv_init() {
 
 	if ( is_admin() || empty( mcv_get_language_current_id() ) ) {
@@ -43,15 +82,11 @@ function mcv_init() {
 	$current_path           = $_SERVER['REQUEST_URI'];
 	$origin_path            = '/' . substr( $current_path, 4, strlen( $current_path ) - 1 );
 	$_SERVER['REQUEST_URI'] = $origin_path;
+
 	ob_start( 'mcv_ob_callback' );
 }
 
 
-add_action( 'after_body', 'ob_end_flush' );
-// add_action( 'after_body', 'mcv_after_body' );
-// function mcv_after_body() {
-// 	ob_end_flush();
-// }
 
 
 function mcv_ob_callback( $html ) {

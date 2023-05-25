@@ -6,7 +6,7 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 
-add_action( 'admin_enqueue_scripts', 'mcv_enqueue_callback' );
+
 function mcv_enqueue_callback( $hook ) {
 
 	if ( ! is_admin() || $hook !== 'toplevel_page_machiavel/inc/option-page' ) {
@@ -27,14 +27,14 @@ function mcv_enqueue_callback( $hook ) {
 	);
 }
 
-add_action( 'toplevel_page_machiavel/inc/option-page', 'mcv_inline_script_all_language' );
+
 function mcv_inline_script_all_language() {
 	?><script>var mcvAllLanguages = JSON.parse('<?php echo mcv_get_languages_all_json(); ?>');</script>
 	<?php
 }
 
 
-add_action( 'wp_enqueue_scripts', 'mcv_register_assets' );
+
 function mcv_register_assets() {
 
 	if ( is_admin() ) {
