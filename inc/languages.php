@@ -35,7 +35,7 @@ function mcv_get_language_website_flag() {
 }
 
 
-function mcv_get_languages_target() {
+function mcv_get_languages_target_simplified() {
 
 	$json = get_option( 'mcv_target_languages' );
 
@@ -43,7 +43,15 @@ function mcv_get_languages_target() {
 		$json = '[]';
 	}
 
-	$languages_target       = json_decode( $json, true );
+	$languages_target = json_decode( $json, true );
+
+	return $languages_target;
+}
+
+
+function mcv_get_languages_target() {
+
+	$languages_target       = mcv_get_languages_target_simplified();
 	$languages_target_clear = array();
 
 	// Check each $languages_target
@@ -52,10 +60,15 @@ function mcv_get_languages_target() {
 		if ( ! empty( $language_target['id'] ) && isset( $language_target['flag'] ) ) {
 			// Check if language is valid
 			if ( mcv_is_valid_language_id( $language_target['id'] ) ) {
-				$languages_target_clear[] = array(
-					'id'   => $language_target['id'],
-					'flag' => $language_target['flag'],
-				);
+				$language = mcv_get_language_by_id($language_target['id']);
+				if (false !== $language) {
+					$languages_target_clear[] = $language;
+				}
+
+				// $languages_target_clear[] = array(
+				// 	'id'   => $language_target['id'],
+				// 	'flag' => $language_target['flag'],
+				// );
 			}
 		}
 	}
@@ -78,7 +91,9 @@ function mcv_get_languages_target_ids() {
 
 function mcv_get_language_current_id() {
 
-	$current_path         = $_SERVER['REQUEST_URI'];
+	global $mcv_request_uri;
+	$current_path         = $mcv_request_uri;
+	
 	$mcv_language_target  = false;
 	$mcv_languages_target = mcv_get_languages_target_ids();
 
@@ -143,6 +158,66 @@ function mcv_is_valid_language_id( $language_id ) {
 
 	return false;
 }
+
+
+function mcv_get_languages_all() {
+
+	
+
+
+	$languages       = mcv_get_languages_data();
+	// $source_language = mcv_get_language_website_id();
+	$source_flag     = get_option( 'mcv_website_flag' );
+	// $target_flags    = mcv_get_languages_target();
+
+	$target_flags = get_option( 'mcv_website_language' );
+
+	$target_flags = get_option( 'mcv_target_languages' );
+
+	if ( empty( $target_flags ) ) {
+		$target_flags = '[]';
+	}
+
+	$target_flags = json_decode( $target_flags, true );
+
+
+
+	foreach ( $languages as $key => $language ) {
+
+		// Set custom website flag if defined
+		if ( !empty($source_language) 
+			&& $language['id'] == $source_language 
+			&& ! empty( $source_flag ) 
+		) {
+			$languages[ $key ]['flag'] = $source_flag;
+		} else {
+			$languages[ $key ]['flag'] = plugins_url() . '/machiavel/images/rounded/' . $language['id'] . '.png';
+		}
+
+		// Set custom target flag if defined
+		foreach ( $target_flags as $target_key => $target_flag ) {
+			if ( ! empty( $target_flag['id'] ) && $target_flag['id'] == $language['id'] ) {
+				$languages[ $key ]['flag'] = $target_flag['flag'];
+				break;
+			}
+		}
+
+		// Transform flags to URL
+		foreach ( $languages[ $key ]['flags'] as $key_flag => $flag ) {
+			$languages[ $key ]['flags'][ $key_flag ]['flag'] = plugins_url() . '/machiavel/images/rounded/' . $flag['flag'] . '.png';
+		}
+	}
+
+	// TODO : Ajouter un filtre ici
+
+	return $languages;
+}
+
+
+function mcv_get_languages_all_json() {
+	return json_encode( mcv_get_languages_all() );
+}
+
 
 function mcv_get_languages_data() {
 	return array(
@@ -215,45 +290,4 @@ function mcv_get_languages_data() {
 			),
 		),
 	);
-}
-
-
-function mcv_get_languages_all() {
-
-	$languages       = mcv_get_languages_data();
-	$source_language = mcv_get_language_website_id();
-	$source_flag     = mcv_get_language_website_flag();
-	$target_flags    = mcv_get_languages_target();
-
-	foreach ( $languages as $key => $language ) {
-
-		// Set custom website flag if defined
-		if ( $language['id'] == $source_language && ! empty( $source_flag ) ) {
-			$languages[ $key ]['flag'] = $source_flag;
-		} else {
-			$languages[ $key ]['flag'] = plugins_url() . '/machiavel/images/rounded/' . $language['id'] . '.png';
-		}
-
-		// Set custom target flag if defined
-		foreach ( $target_flags as $target_key => $target_flag ) {
-			if ( ! empty( $target_flag['id'] ) && $target_flag['id'] == $language['id'] ) {
-				$languages[ $key ]['flag'] = $target_flag['flag'];
-				break;
-			}
-		}
-
-		// Transform flags to URL
-		foreach ( $languages[ $key ]['flags'] as $key_flag => $flag ) {
-			$languages[ $key ]['flags'][ $key_flag ]['flag'] = plugins_url() . '/machiavel/images/rounded/' . $flag['flag'] . '.png';
-		}
-	}
-
-	// TODO : Ajouter un filtre ici
-
-	return $languages;
-}
-
-
-function mcv_get_languages_all_json() {
-	return json_encode( mcv_get_languages_all() );
 }

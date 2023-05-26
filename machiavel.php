@@ -14,10 +14,19 @@ define( 'MCV_UPLOADS_PATH', WP_CONTENT_DIR . '/uploads/machiavel/' );
 define( 'MCV_API', 'http://machiavel-api.local/v0.1/last/' );
 
 require_once 'inc/api.php';
-require_once 'inc/languages.php';
 require_once 'inc/assets.php';
+require_once 'inc/languages.php';
 require_once 'inc/option-page.php';
+require_once 'inc/switcher.php';
+require_once 'inc/url.php';
 
+// echo '<pre>';
+// var_dump(mcv_get_url_current());
+// echo '</pre>';
+// die;
+
+global $mcv_request_uri;
+$mcv_request_uri = $_SERVER['REQUEST_URI'];
 
 function mcv_start() {
 
@@ -48,6 +57,9 @@ function mcv_start() {
 	// Enqueue CSS and JS files
 	add_action( 'wp_enqueue_scripts', 'mcv_register_assets' );
 
+	// Add languages switcher before </body>
+	add_action( 'wp_footer', 'mcv_switcher_wp_footer' );
+
 
 	/**
 	 * OB and REQUEST_URI
@@ -74,12 +86,14 @@ mcv_start();
 
 
 function mcv_init() {
-
+	
 	if ( is_admin() || empty( mcv_get_language_current_id() ) ) {
 		return;
 	}
 
-	$current_path           = $_SERVER['REQUEST_URI'];
+	global $mcv_request_uri;
+
+	$current_path           = $mcv_request_uri;
 	$origin_path            = '/' . substr( $current_path, 4, strlen( $current_path ) - 1 );
 	$_SERVER['REQUEST_URI'] = $origin_path;
 
@@ -91,15 +105,18 @@ function mcv_init() {
 
 function mcv_ob_callback( $html ) {
 
+	// return $html;
+	// return '<pre>' . var_export(mcv_get_url_current(), true) . '</pre>';
+
 	$mcv_language_target = mcv_get_language_current_id();
 	$html_translated     = $html;
 
 	// Clear useless part for HTML parsing
-	// $html = str_replace( array( "\r", "\n", '  ', "\t" ), '', $html );
 	$html = preg_replace( '/<!--.*-->/Uis', '', $html );
 	$html = preg_replace( '/<style.*<\/style>/Uis', '', $html );
 	$html = preg_replace( '/<script.*<\/script>/Uis', '', $html );
 	$html = preg_replace( '/<svg.*<\/svg>/Uis', '', $html );
+	// $html = str_replace( array( "\r", "\n", '  ', "\t" ), '', $html );
 
 	$json_path        = MCV_UPLOADS_PATH . 'translations-' . $mcv_language_target . '.json';
 	$translations     = [];
@@ -124,23 +141,21 @@ function mcv_ob_callback( $html ) {
 	// Clear HTML of know translation
 	foreach ( $translations as $translation ) {
 
-		if ( ! isset( $translation['source'] )
-			|| ! isset( $translation['translation'] )
-			|| ! isset( $translation['sb'] )
-			|| ! isset( $translation['sa'] )
-			|| ! isset( $translation['rb'] )
-			|| ! isset( $translation['ra'] )
+		// Check if translaton data is valid
+		if ( ! isset( $translation['source'] ) // Original text
+			|| ! isset( $translation['translation'] ) // Translater text
+			|| ! isset( $translation['sb'] ) // Search before
+			|| ! isset( $translation['sa'] ) // Search after
+			|| ! isset( $translation['rb'] ) // Replace before
+			|| ! isset( $translation['ra'] ) // Replace after
 		) {
 			continue;
 		}
 
+		// Replace knowing translation by empty string
 		$regex = $translation['sb'] . preg_quote( $translation['source'] ) . $translation['sa'];
 
-		$html = preg_replace(
-			$regex,
-			'',
-			$html
-		);
+		$html = preg_replace( $regex, '', $html );
 	}
 
 	// Get new translation from API
@@ -150,28 +165,30 @@ function mcv_ob_callback( $html ) {
 
 	// Merge know and new translations
 	$translations = array_merge( $translations, $translations_new );
-
+// return '<pre>' . var_export($translations, true) . '</pre>';
 	// Replace original texts by translations
 	foreach ( $translations as $translation ) {
 
-		if ( ! isset( $translation['source'] )
-			|| ! isset( $translation['translation'] )
-			|| ! isset( $translation['sb'] )
-			|| ! isset( $translation['sa'] )
-			|| ! isset( $translation['rb'] )
-			|| ! isset( $translation['ra'] )
+		// Check if translaton data is valid
+		if ( ! isset( $translation['source'] ) // Original text
+			|| ! isset( $translation['translation'] ) // Translater text
+			|| ! isset( $translation['sb'] ) // Search before
+			|| ! isset( $translation['sa'] ) // Search after
+			|| ! isset( $translation['rb'] ) // Replace before
+			|| ! isset( $translation['ra'] ) // Replace after
 		) {
 			continue;
 		}
 
-		$regex   = $translation['sb'] . preg_quote( $translation['source'] ) . $translation['sa'];
-		$replace = $translation['rb'] . $translation['translation'] . $translation['ra'];
+		if (!empty($translation['source'])) {
+			$regex   = $translation['sb'] . preg_quote( $translation['source'] ) . $translation['sa'];
+			$replace = $translation['rb'] . $translation['translation'] . $translation['ra'];
+	
+			// Replace original text in HTML by translation
+			$html_translated = preg_replace( $regex, $replace, $html_translated );
+		}
 
-		$html_translated = preg_replace(
-			$regex,
-			$replace,
-			$html_translated
-		);
+		
 	}
 
 	// Save new translation file

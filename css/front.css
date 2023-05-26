@@ -2,8 +2,8 @@
     position: fixed;
     bottom: 20px;
     background-color: black;
-    border-radius: 16px;
-    padding: 20px 10px;
+    border-radius: 12px;
+    padding: 12px 4px;
     right: 30px;
     border: 2px gray solid;
     z-index: 9999;
@@ -11,11 +11,20 @@
 
 .mcv-language {
     border: 2px solid gray;
-    border-radius: 16px;
-    padding: 10px 15px;
+    border-radius: 10px;
+    padding: 6px 8px;
     margin: 2px;
     text-transform: uppercase;
     text-decoration: none;
+    font-size: 16px;
+
+}
+
+.mcv-language img {
+    width: 22px;
+    height: 22px;
+    margin-right: 8px;
+    margin-bottom: -4px;
 }
 
 .mcv-language:hover {
