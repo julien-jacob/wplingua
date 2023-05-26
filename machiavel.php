@@ -93,10 +93,6 @@ function mcv_replace_og_local($html) {
 		return $html;
 	}
 
-	// $mcv_language_target = mcv_get_language_current_id();
-
-		// '<meta property="og:locale" content="en">'
-
 	$html = preg_replace(
 		'/<meta (.*?)?property=(\"|\')og:locale(\"|\') (.*?)?>/',
 		'<meta property=$2og:locale$2 content=$2' . $language_current_id . '$2>',
@@ -127,12 +123,6 @@ function mcv_language_attributes( $attr ) {
 
 
 function mcv_link_alternate_hreflang() {
-
-	$language_current_id = mcv_get_language_current_id();
-
-	if ( is_admin() || empty( $language_current_id ) ) {
-		return;
-	}
 
 	$html = '';
 
