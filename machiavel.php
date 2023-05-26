@@ -192,16 +192,14 @@ function mcv_ob_callback( $html ) {
 		// Check if translaton data is valid
 		if ( ! isset( $translation['source'] ) // Original text
 			|| ! isset( $translation['translation'] ) // Translater text
-			|| ! isset( $translation['sb'] ) // Search before
-			|| ! isset( $translation['sa'] ) // Search after
-			|| ! isset( $translation['rb'] ) // Replace before
-			|| ! isset( $translation['ra'] ) // Replace after
+			|| ! isset( $translation['search'] ) // Search 
+			|| ! isset( $translation['replace'] ) // Replace 
 		) {
 			continue;
 		}
 
+		$regex = str_replace('MCV', preg_quote( $translation['source'] ), $translation['search'] );
 		// Replace knowing translation by empty string
-		$regex = $translation['sb'] . preg_quote( $translation['source'] ) . $translation['sa'];
 
 		$html = preg_replace( $regex, '', $html );
 	}
@@ -220,17 +218,16 @@ function mcv_ob_callback( $html ) {
 		// Check if translaton data is valid
 		if ( ! isset( $translation['source'] ) // Original text
 			|| ! isset( $translation['translation'] ) // Translater text
-			|| ! isset( $translation['sb'] ) // Search before
-			|| ! isset( $translation['sa'] ) // Search after
-			|| ! isset( $translation['rb'] ) // Replace before
-			|| ! isset( $translation['ra'] ) // Replace after
+			|| ! isset( $translation['search'] ) // Search 
+			|| ! isset( $translation['replace'] ) // Replace 
 		) {
 			continue;
 		}
 
 		if ( ! empty( $translation['source'] ) ) {
-			$regex   = $translation['sb'] . preg_quote( $translation['source'] ) . $translation['sa'];
-			$replace = $translation['rb'] . $translation['translation'] . $translation['ra'];
+
+			$regex = str_replace('MCV', preg_quote( $translation['source'] ), $translation['search'] );
+			$replace = str_replace('MCV', $translation['translation'], $translation['replace'] );
 
 			// Replace original text in HTML by translation
 			$html_translated = preg_replace( $regex, $replace, $html_translated );

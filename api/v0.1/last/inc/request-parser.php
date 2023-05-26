@@ -73,10 +73,8 @@ function mcvapi_request_parser() {
 		$translations[] = array(
 			'source' => $s,
 			'translation' => strtoupper($s),
-			'sb'  => '/>\s*',
-			'sa'  => '\s*</Us',
-			'rb'  => '>',
-			'ra'  => '<',
+			'search'  => '/>\s*MCV\s*</Us',
+			'replace'  => '>MCV<',
 		);
 	}
 
