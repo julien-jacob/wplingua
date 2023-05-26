@@ -60,6 +60,15 @@ function mcv_start() {
 	// Add languages switcher before </body>
 	add_action( 'wp_footer', 'mcv_switcher_wp_footer' );
 
+	// Change <html lang=""> if translated content
+	add_filter('language_attributes', 'mcv_language_attributes' );
+
+	// Set alternate links with hreflang parametters
+	add_action( 'wp_head', 'mcv_link_alternate_hreflang');
+
+	// Set OG Local
+	add_filter('mcv_html_translated', 'mcv_replace_og_local');
+
 
 	/**
 	 * OB and REQUEST_URI
@@ -76,12 +85,70 @@ mcv_start();
 
 
 
+function mcv_replace_og_local($html) {
 
-// add_filter('language_attributes', function( $attr ) {
-// 	$attr = preg_replace('/lang=(\"|\')(..)-(..)(\"|\')/i', 'lang=$1$2$4', $attr);
-// 	var_dump('-' . $attr . '-'); die;
-// 	return $attr;
-// });
+	$language_current_id = mcv_get_language_current_id();
+
+	if ( is_admin() || empty( $language_current_id ) ) {
+		return $html;
+	}
+
+	// $mcv_language_target = mcv_get_language_current_id();
+
+		// '<meta property="og:locale" content="en">'
+
+	$html = preg_replace(
+		'/<meta (.*?)?property=(\"|\')og:locale(\"|\') (.*?)?>/',
+		'<meta property=$2og:locale$2 content=$2' . $language_current_id . '$2>',
+		$html
+	);
+
+	return $html;
+}
+
+
+function mcv_language_attributes( $attr ) {
+
+	$language_current_id = mcv_get_language_current_id();
+
+	if ( is_admin() || empty( $language_current_id ) ) {
+		return $attr;
+	}
+
+	$attr = preg_replace(
+		'/lang=(\"|\')(..)-(..)(\"|\')/i', 
+		'lang=$1' . esc_attr($language_current_id) . '$4', 
+		$attr
+	);
+
+	return $attr;
+}
+
+
+
+function mcv_link_alternate_hreflang() {
+
+	$language_current_id = mcv_get_language_current_id();
+
+	if ( is_admin() || empty( $language_current_id ) ) {
+		return;
+	}
+
+	$html = '';
+
+	// Create alternate link for website language
+	$language_website = mcv_get_language_website();
+	$html .= '<link rel="alternate" hreflang="' . esc_attr($language_website['id']) . '" href="' . esc_url( mcv_get_url_original() ) . '">';
+
+	// Create alternate link for each target languages
+	$languages_target = mcv_get_languages_target();
+	foreach ( $languages_target as $key => $language_target ) {
+		$url   = mcv_get_url_current_for_language( $language_target['id'] );
+		$html .= '<link rel="alternate" hreflang="' . esc_attr($language_target['id']) . '" href="' . esc_url( $url ) . '">';
+	}
+
+	echo $html;
+}
 
 
 
@@ -101,12 +168,7 @@ function mcv_init() {
 }
 
 
-
-
 function mcv_ob_callback( $html ) {
-
-	// return $html;
-	// return '<pre>' . var_export(mcv_get_url_current(), true) . '</pre>';
 
 	$mcv_language_target = mcv_get_language_current_id();
 	$html_translated     = $html;
@@ -165,7 +227,7 @@ function mcv_ob_callback( $html ) {
 
 	// Merge know and new translations
 	$translations = array_merge( $translations, $translations_new );
-// return '<pre>' . var_export($translations, true) . '</pre>';
+	
 	// Replace original texts by translations
 	foreach ( $translations as $translation ) {
 
@@ -196,13 +258,7 @@ function mcv_ob_callback( $html ) {
 		file_put_contents( $json_path, json_encode( array_merge( $translations, $translations_new ) ) );
 	}
 
-	// Set "<html lang=""> for current languages
-	// TODO : Check if wp hook exist
-	// $html_translated = preg_replace(
-	// 	'/<html (.*?)?lang=(\"|\')(\S*)(\"|\')/',
-	// 	'<html $1lang=$2' . $mcv_language_target . '$4',
-	// 	$html_translated
-	// );
+	$html_translated = apply_filters( 'mcv_html_translated', $html_translated );
 
 	return $html_translated;
 	// return '<pre>' . esc_html( var_export( $translations, true ) ) . '</pre>';
