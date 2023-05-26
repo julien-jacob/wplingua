@@ -7,7 +7,7 @@ if ( ! defined( 'WPINC' ) ) {
 
 
 function mcv_get_language_website() {
-	return mcv_get_language_by_id(mcv_get_language_website_id());
+	return mcv_get_language_by_id( mcv_get_language_website_id() );
 }
 
 function mcv_get_language_website_id() {
@@ -60,8 +60,8 @@ function mcv_get_languages_target() {
 		if ( ! empty( $language_target['id'] ) && isset( $language_target['flag'] ) ) {
 			// Check if language is valid
 			if ( mcv_is_valid_language_id( $language_target['id'] ) ) {
-				$language = mcv_get_language_by_id($language_target['id']);
-				if (false !== $language) {
+				$language = mcv_get_language_by_id( $language_target['id'] );
+				if ( false !== $language ) {
 					$languages_target_clear[] = $language;
 				}
 
@@ -92,8 +92,8 @@ function mcv_get_languages_target_ids() {
 function mcv_get_language_current_id() {
 
 	global $mcv_request_uri;
-	$current_path         = $mcv_request_uri;
-	
+	$current_path = $mcv_request_uri;
+
 	$mcv_language_target  = false;
 	$mcv_languages_target = mcv_get_languages_target_ids();
 
@@ -104,7 +104,7 @@ function mcv_get_language_current_id() {
 		}
 	}
 
-	return $mcv_language_target;
+	return mcv_get_language_website_id();
 }
 
 
@@ -162,16 +162,9 @@ function mcv_is_valid_language_id( $language_id ) {
 
 function mcv_get_languages_all() {
 
-	
-
-
-	$languages       = mcv_get_languages_data();
-	// $source_language = mcv_get_language_website_id();
-	$source_flag     = get_option( 'mcv_website_flag' );
-	// $target_flags    = mcv_get_languages_target();
-
+	$languages    = mcv_get_languages_data();
+	$source_flag  = get_option( 'mcv_website_flag' );
 	$target_flags = get_option( 'mcv_website_language' );
-
 	$target_flags = get_option( 'mcv_target_languages' );
 
 	if ( empty( $target_flags ) ) {
@@ -180,14 +173,12 @@ function mcv_get_languages_all() {
 
 	$target_flags = json_decode( $target_flags, true );
 
-
-
 	foreach ( $languages as $key => $language ) {
 
 		// Set custom website flag if defined
-		if ( !empty($source_language) 
-			&& $language['id'] == $source_language 
-			&& ! empty( $source_flag ) 
+		if ( ! empty( $source_language )
+			&& $language['id'] == $source_language
+			&& ! empty( $source_flag )
 		) {
 			$languages[ $key ]['flag'] = $source_flag;
 		} else {
@@ -256,7 +247,7 @@ function mcv_get_languages_data() {
 			),
 		),
 		array(
-			'name'  => 'Spain',
+			'name'  => 'Spanish',
 			'id'    => 'es',
 			'flag'  => 'es',
 			'flags' => array(

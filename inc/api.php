@@ -34,6 +34,7 @@ function mcv_translate( $language_source, $language_target, $text ) {
 	$response = json_decode( wp_remote_retrieve_body( $request ), true );
 
 	if ( ! isset( $response['translation'] ) ) {
+		// TODO : Check for remove or update
 		return 'Erreur :: [' . $text . ']';
 	}
 

@@ -1,7 +1,7 @@
 .mcv-switcher {
     position: fixed;
     bottom: 20px;
-    background-color: black;
+    background-color: lightgray;
     border-radius: 12px;
     padding: 12px 4px;
     right: 30px;
@@ -14,10 +14,9 @@
     border-radius: 10px;
     padding: 6px 8px;
     margin: 2px;
-    text-transform: uppercase;
     text-decoration: none;
     font-size: 16px;
-
+    color: black;
 }
 
 .mcv-language img {
@@ -28,5 +27,5 @@
 }
 
 .mcv-language:hover {
-    background-color: lightgray;
+    background-color: rgba(0,0,0,.05);
 }

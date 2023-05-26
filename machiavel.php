@@ -49,7 +49,6 @@ function mcv_start() {
 	// Print head script (JSON with all languages informations)
 	add_action( 'toplevel_page_machiavel/inc/option-page', 'mcv_inline_script_all_language' );
 
-
 	/**
 	 * Front
 	 */
@@ -61,14 +60,13 @@ function mcv_start() {
 	add_action( 'wp_footer', 'mcv_switcher_wp_footer' );
 
 	// Change <html lang=""> if translated content
-	add_filter('language_attributes', 'mcv_language_attributes' );
+	add_filter( 'language_attributes', 'mcv_language_attributes' );
 
 	// Set alternate links with hreflang parametters
-	add_action( 'wp_head', 'mcv_link_alternate_hreflang');
+	add_action( 'wp_head', 'mcv_link_alternate_hreflang' );
 
 	// Set OG Local
-	add_filter('mcv_html_translated', 'mcv_replace_og_local');
-
+	add_filter( 'mcv_html_translated', 'mcv_replace_og_local' );
 
 	/**
 	 * OB and REQUEST_URI
@@ -85,17 +83,15 @@ mcv_start();
 
 
 
-function mcv_replace_og_local($html) {
+function mcv_replace_og_local( $html ) {
 
-	$language_current_id = mcv_get_language_current_id();
-
-	if ( is_admin() || empty( $language_current_id ) ) {
+	if ( ! mcv_url_current_is_translatable() ) {
 		return $html;
 	}
 
 	$html = preg_replace(
 		'/<meta (.*?)?property=(\"|\')og:locale(\"|\') (.*?)?>/',
-		'<meta property=$2og:locale$2 content=$2' . $language_current_id . '$2>',
+		'<meta property=$2og:locale$2 content=$2' . mcv_get_language_current_id() . '$2>',
 		$html
 	);
 
@@ -112,8 +108,8 @@ function mcv_language_attributes( $attr ) {
 	}
 
 	$attr = preg_replace(
-		'/lang=(\"|\')(..)-(..)(\"|\')/i', 
-		'lang=$1' . esc_attr($language_current_id) . '$4', 
+		'/lang=(\"|\')(..)-(..)(\"|\')/i',
+		'lang=$1' . esc_attr( $language_current_id ) . '$4',
 		$attr
 	);
 
@@ -128,13 +124,13 @@ function mcv_link_alternate_hreflang() {
 
 	// Create alternate link for website language
 	$language_website = mcv_get_language_website();
-	$html .= '<link rel="alternate" hreflang="' . esc_attr($language_website['id']) . '" href="' . esc_url( mcv_get_url_original() ) . '">';
+	$html            .= '<link rel="alternate" hreflang="' . esc_attr( $language_website['id'] ) . '" href="' . esc_url( mcv_get_url_original() ) . '">';
 
 	// Create alternate link for each target languages
 	$languages_target = mcv_get_languages_target();
 	foreach ( $languages_target as $key => $language_target ) {
 		$url   = mcv_get_url_current_for_language( $language_target['id'] );
-		$html .= '<link rel="alternate" hreflang="' . esc_attr($language_target['id']) . '" href="' . esc_url( $url ) . '">';
+		$html .= '<link rel="alternate" hreflang="' . esc_attr( $language_target['id'] ) . '" href="' . esc_url( $url ) . '">';
 	}
 
 	echo $html;
@@ -143,8 +139,8 @@ function mcv_link_alternate_hreflang() {
 
 
 function mcv_init() {
-	
-	if ( is_admin() || empty( mcv_get_language_current_id() ) ) {
+
+	if ( ! mcv_url_current_is_translatable() ) {
 		return;
 	}
 
@@ -217,7 +213,7 @@ function mcv_ob_callback( $html ) {
 
 	// Merge know and new translations
 	$translations = array_merge( $translations, $translations_new );
-	
+
 	// Replace original texts by translations
 	foreach ( $translations as $translation ) {
 
@@ -232,15 +228,13 @@ function mcv_ob_callback( $html ) {
 			continue;
 		}
 
-		if (!empty($translation['source'])) {
+		if ( ! empty( $translation['source'] ) ) {
 			$regex   = $translation['sb'] . preg_quote( $translation['source'] ) . $translation['sa'];
 			$replace = $translation['rb'] . $translation['translation'] . $translation['ra'];
-	
+
 			// Replace original text in HTML by translation
 			$html_translated = preg_replace( $regex, $replace, $html_translated );
 		}
-
-		
 	}
 
 	// Save new translation file

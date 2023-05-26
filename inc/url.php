@@ -6,6 +6,20 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 
+function mcv_url_current_is_translatable() {
+
+	if ( is_admin() ) {
+		return false;
+	}
+
+	if ( mcv_get_language_website_id() === mcv_get_language_current_id() ) {
+		return false;
+	}
+
+	return true;
+}
+
+
 function mcv_get_url_original( $url = '' ) {
 
 	$language_website_id = mcv_get_language_website_id();
@@ -42,8 +56,3 @@ function mcv_get_url_current_for_language( $language_id ) {
 
 	return $url;
 }
-
-
-// function mcv_get_url_for_language( $url, $language_id ) {
-
-// }
