@@ -17,6 +17,7 @@ require_once 'inc/api.php';
 require_once 'inc/assets.php';
 require_once 'inc/languages.php';
 require_once 'inc/option-page.php';
+require_once 'inc/storage.php';
 require_once 'inc/switcher.php';
 require_once 'inc/url.php';
 
@@ -237,11 +238,31 @@ function mcv_ob_callback( $html ) {
 	// Save new translation file
 	if ( ! empty( $translations_new ) ) {
 		file_put_contents( $json_path, json_encode( array_merge( $translations, $translations_new ) ) );
+
+		foreach ($translations_new as $key => $translation) {
+
+			if ( ! isset( $translation['source'] ) // Original text
+				|| ! isset( $translation['translation'] ) // Translater text
+				|| ! isset( $translation['search'] ) // Search 
+				|| ! isset( $translation['replace'] ) // Replace 
+			) {
+				continue;
+			}
+			
+			mcv_save_translation( 
+				$mcv_language_target, 
+				$translation['source'], 
+				$translation['translation'], 
+				$translation['search'], 
+				$translation['replace']
+			);
+		}
 	}
 
 	$html_translated = apply_filters( 'mcv_html_translated', $html_translated );
 
 	return $html_translated;
+	return mcv_get_translations_for_language();
 	// return '<pre>' . esc_html( var_export( $translations, true ) ) . '</pre>';
 }
 
