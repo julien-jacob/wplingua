@@ -47,8 +47,8 @@ function mcv_parser( $html ) {
 	$body = array(
 		'api-key' => '1111111111111111',
 		'r'       => 'parser',
-		'source'  => 'fr',
-		'target'  => 'pt',
+		'source'  => mcv_get_language_website_id(),
+		'target'  => mcv_get_language_current_id(),
 		'text'    => $html,
 	);
 	$args = array(

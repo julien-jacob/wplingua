@@ -67,11 +67,11 @@ function mcv_translation_meta_box_html_output( $post ) {
 	// $translation = get_post_meta( $post->ID, 'mcv_translation_meta', true );
 	$translation = get_post_meta( $post->ID );
 
-	// echo '<pre>';
-	// var_dump( $translation );
-	// // var_dump( json_decode( $translation ) );
-	// echo '</pre>';
-	// return;
+	echo '<pre>';
+	var_dump( $translation );
+	// var_dump( json_decode( $translation ) );
+	echo '</pre>';
+	return;
 	?>
 	<p>
 		<label for="mcv_translation"><?php _e( 'Source text:', 'textdomain' ); ?></label>
@@ -195,10 +195,7 @@ function mcv_save_translation_new( $language_id, $original, $translation, $searc
 		'search'  => $search,
 		'replace' => $replace,
 	);
-	// echo '<pre>';
-	// var_dump( $sr_meta ); 
-	// echo '</pre>';
-	// die;
+	
 
 	add_post_meta( $post_id, 'mcv_translation_original_language_id', mcv_get_language_website_id() );
 	add_post_meta( $post_id, 'mcv_translation_original', $original );
@@ -259,10 +256,6 @@ function mcv_update_translation( $post, $language_id, $translation, $search, $re
 		update_post_meta( $post->ID, 'mcv_translation_translations', wp_json_encode( $translation_meta ) );
 
 	} else { // Translation is valid
-		// echo '<pre>22';
-		// var_dump( $meta['mcv_translation_sr'][0]  ); 
-		// echo '</pre>';
-		// die;
 
 		$sr_meta = ( empty( $meta['mcv_translation_sr'][0] ) )
 		? array() :
@@ -281,13 +274,6 @@ function mcv_update_translation( $post, $language_id, $translation, $search, $re
 				'replace' => $replace,
 			);
 		}
-
-		// echo '<pre>22';
-		// var_dump( $search  ); 
-		// echo '</pre>';
-		// die;
-
-		
 
 		update_post_meta( $post->ID, 'mcv_translation_sr', wp_json_encode( $sr_meta ) );
 

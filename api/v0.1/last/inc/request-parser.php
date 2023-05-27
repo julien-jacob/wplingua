@@ -70,11 +70,14 @@ function mcvapi_request_parser() {
 		}
 		// End Check if text is already in $translations
 
+		$translation = mcvapi_translate( $_POST['source'], $_POST['target'], $s );
+
+		// 'search'  => "/>\s*MCV\s*</Us",
 		$translations[] = array(
 			'source' => $s,
-			'translation' => strtoupper($s),
-			'search'  => '/>\s*MCV\s*</Us',
-			'replace'  => '>MCV<',
+			'translation' => $translation,
+			'search'  => "#>(\s*)MCV(\s*)<#Us",
+			'replace'  => '>$1MCV$2<',
 		);
 	}
 

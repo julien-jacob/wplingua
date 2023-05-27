@@ -209,6 +209,11 @@ function mcv_ob_callback( $html ) {
 	// Get new translation from API
 	$translations_new = mcv_parser( $html );
 
+	// echo '<pre>';
+	// var_dump($translations, $translations_new);
+	// echo '</pre>';
+	// die;
+
 	// TODO : Save new translation in WP
 
 	// Merge know and new translations
@@ -251,11 +256,6 @@ function mcv_ob_callback( $html ) {
 			) {
 				continue;
 			}
-
-			// echo '<pre>11';
-			// var_dump( $translation['replace']  ); 
-			// echo '</pre>';
-			// die;
 			
 			mcv_save_translation( 
 				$mcv_language_target, 
