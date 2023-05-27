@@ -183,8 +183,9 @@ function mcv_ob_callback( $html ) {
 				'wpRock' => 'wpRock',
 			]
 		);
-		mkdir( MCV_UPLOADS_PATH );
-		file_put_contents( $json_path, $default_json );
+		// TODO : comment for current test
+		// mkdir( MCV_UPLOADS_PATH );
+		// file_put_contents( $json_path, $default_json );
 	}
 
 	// Clear HTML of know translation
@@ -199,7 +200,7 @@ function mcv_ob_callback( $html ) {
 			continue;
 		}
 
-		$regex = str_replace('MCV', preg_quote( $translation['source'] ), $translation['search'] );
+		$regex = str_replace('MCV', preg_quote( $translation['source'] ), stripslashes($translation['search']) );
 		// Replace knowing translation by empty string
 
 		$html = preg_replace( $regex, '', $html );
@@ -227,7 +228,7 @@ function mcv_ob_callback( $html ) {
 
 		if ( ! empty( $translation['source'] ) ) {
 
-			$regex = str_replace('MCV', preg_quote( $translation['source'] ), $translation['search'] );
+			$regex = str_replace('MCV', preg_quote( $translation['source'] ), stripslashes($translation['search']) );
 			$replace = str_replace('MCV', $translation['translation'], $translation['replace'] );
 
 			// Replace original text in HTML by translation
@@ -237,7 +238,9 @@ function mcv_ob_callback( $html ) {
 
 	// Save new translation file
 	if ( ! empty( $translations_new ) ) {
-		file_put_contents( $json_path, json_encode( array_merge( $translations, $translations_new ) ) );
+
+		// TODO : comment for current test
+		// file_put_contents( $json_path, json_encode( array_merge( $translations, $translations_new ) ) );
 
 		foreach ($translations_new as $key => $translation) {
 
@@ -248,6 +251,11 @@ function mcv_ob_callback( $html ) {
 			) {
 				continue;
 			}
+
+			// echo '<pre>11';
+			// var_dump( $translation['replace']  ); 
+			// echo '</pre>';
+			// die;
 			
 			mcv_save_translation( 
 				$mcv_language_target, 
@@ -262,7 +270,7 @@ function mcv_ob_callback( $html ) {
 	$html_translated = apply_filters( 'mcv_html_translated', $html_translated );
 
 	return $html_translated;
-	return mcv_get_translations_for_language();
+	// return mcv_get_translations_for_language();
 	// return '<pre>' . esc_html( var_export( $translations, true ) ) . '</pre>';
 }
 
