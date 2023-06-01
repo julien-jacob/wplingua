@@ -158,6 +158,85 @@ function mcv_get_saved_translation_from_original( $original ) {
 
 
 
+function mcv_get_saved_translations( $target_language_id ) {
+
+	$translations = array();
+	$args         = array(
+		'post_type'      => 'mcv_translation',
+		'posts_per_page' => -1,
+	);
+	$the_query    = new WP_Query( $args );
+
+	// The Loop
+	while ( $the_query->have_posts() ) {
+
+		$translation = array();
+
+		$the_query->the_post();
+
+		$meta = get_post_meta( get_the_ID() );
+
+		// Get translation for current language target
+
+		if ( empty( $meta['mcv_translation_translations'][0] ) ) {
+			continue;
+		}
+
+		$translations_meta = json_decode( $meta['mcv_translation_translations'][0], true );
+
+		foreach ( $translations_meta as $key => $translation_meta ) {
+
+			if ( ! empty( $translation_meta['language_id'] )
+				&& $translation_meta['language_id'] === $target_language_id
+				&& ! empty( $translation_meta['translation'] )
+			) {
+
+				$translation['translation'] = $translation_meta['translation'];
+				break;
+
+				// TODO : Prendre ne compte ranslation == [MCV_EMPTY]
+				// TODO : Check si pas trouvé, continuer la boucle while have post
+			}
+		}
+
+		// get source
+		if ( empty( $meta['mcv_translation_original'][0] ) ) {
+			continue;
+		}
+		$translation['source'] = $meta['mcv_translation_original'][0];
+
+		if ( empty( $meta['mcv_translation_sr'][0] ) ) {
+			continue;
+		}
+
+		$search_meta = json_decode( $meta['mcv_translation_sr'][0], true );
+
+		// $translations[] = $search_meta;
+
+		foreach ( $search_meta as $key => $search ) {
+			if ( empty( $search['search'] ) || empty( $search['replace'] ) ) {
+				continue;
+			}
+
+			$translation['search']  = $search['search'];
+			$translation['replace'] = $search['replace'];
+			$translations[]         = $translation;
+		}
+
+		// ! isset( $translation['source'] ) // Original text
+		// || ! isset( $translation['translation'] ) // Translater text
+		// || ! isset( $translation['search'] ) // Search
+		// || ! isset( $translation['replace'] ) // Replace
+
+	}
+
+	wp_reset_postdata();
+
+	return $translations;
+}
+
+
+
 function mcv_save_translation_new( $language_id, $original, $translation, $search, $replace ) {
 
 	/**
@@ -209,7 +288,11 @@ function mcv_save_translation_new( $language_id, $original, $translation, $searc
 	 * Make search / replace meta
 	 */
 	// $search  = str_replace( '\\', '\\\\', preg_quote( $search ) );
-	$sr_meta = array(
+	$escapers     = array( '\\', '/', '"', "\n", "\r", "\t", "\x08", "\x0c" );
+	$replacements = array( '\\\\', '\\/', '\\"', "\\n", "\\r", "\\t", "\\f", "\\b" );
+	$search       = str_replace( $escapers, $replacements, $search );
+
+	$sr_meta[] = array(
 		'search'  => $search,
 		'replace' => $replace,
 	);
