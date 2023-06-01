@@ -28,8 +28,7 @@ function mcv_enqueue_callback( $hook ) {
 
 
 function mcv_inline_script_all_language() {
-	?><script>var mcvAllLanguages = JSON.parse('<?php echo mcv_get_languages_all_json(); ?>');</script>
-	<?php
+	?><script>var mcvAllLanguages = JSON.parse('<?php echo mcv_get_languages_all_json(); ?>');</script><?php
 }
 
 

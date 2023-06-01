@@ -91,7 +91,7 @@ function mcv_replace_og_local( $html ) {
 	}
 
 	$html = preg_replace(
-		'/<meta (.*?)?property=(\"|\')og:locale(\"|\') (.*?)?>/',
+		'#<meta (.*?)?property=(\"|\')og:locale(\"|\') (.*?)?>#',
 		'<meta property=$2og:locale$2 content=$2' . mcv_get_language_current_id() . '$2>',
 		$html
 	);
@@ -109,7 +109,7 @@ function mcv_language_attributes( $attr ) {
 	}
 
 	$attr = preg_replace(
-		'/lang=(\"|\')(..)-(..)(\"|\')/i',
+		'#lang=(\"|\')(..)-(..)(\"|\')#i',
 		'lang=$1' . esc_attr( $language_current_id ) . '$4',
 		$attr
 	);
@@ -161,10 +161,10 @@ function mcv_ob_callback( $html ) {
 	$html_translated     = $html;
 
 	// Clear useless part for HTML parsing
-	$html = preg_replace( '/<!--.*-->/Uis', '', $html );
-	$html = preg_replace( '/<style.*<\/style>/Uis', '', $html );
-	$html = preg_replace( '/<script.*<\/script>/Uis', '', $html );
-	$html = preg_replace( '/<svg.*<\/svg>/Uis', '', $html );
+	$html = preg_replace( '#<!--.*-->#Uis', '', $html );
+	$html = preg_replace( '#<style.*<\/style>#Uis', '', $html );
+	$html = preg_replace( '#<script.*<\/script>#Uis', '', $html );
+	$html = preg_replace( '#<svg.*<\/svg>#Uis', '', $html );
 	// $html = str_replace( array( "\r", "\n", '  ', "\t" ), '', $html );
 
 	$json_path        = MCV_UPLOADS_PATH . 'translations-' . $mcv_language_target . '.json';
@@ -194,13 +194,17 @@ function mcv_ob_callback( $html ) {
 		// Check if translaton data is valid
 		if ( ! isset( $translation['source'] ) // Original text
 			|| ! isset( $translation['translation'] ) // Translater text
-			|| ! isset( $translation['search'] ) // Search 
-			|| ! isset( $translation['replace'] ) // Replace 
+			|| ! isset( $translation['search'] ) // Search
+			|| ! isset( $translation['replace'] ) // Replace
 		) {
 			continue;
 		}
 
-		$regex = str_replace('MCV', preg_quote( $translation['source'] ), stripslashes($translation['search']) );
+		$regex = str_replace( 
+			'MCV', 
+			preg_quote( $translation['source'] ), 
+			stripslashes( $translation['search'] ) 
+		);
 		// Replace knowing translation by empty string
 
 		$html = preg_replace( $regex, '', $html );
@@ -214,7 +218,7 @@ function mcv_ob_callback( $html ) {
 	// echo '</pre>';
 	// die;
 
-	// TODO : Save new translation in WP
+	// TODO : Save new translation in WP (fait ?!)
 
 	// Merge know and new translations
 	$translations = array_merge( $translations, $translations_new );
@@ -225,16 +229,25 @@ function mcv_ob_callback( $html ) {
 		// Check if translaton data is valid
 		if ( ! isset( $translation['source'] ) // Original text
 			|| ! isset( $translation['translation'] ) // Translater text
-			|| ! isset( $translation['search'] ) // Search 
-			|| ! isset( $translation['replace'] ) // Replace 
+			|| ! isset( $translation['search'] ) // Search
+			|| ! isset( $translation['replace'] ) // Replace
 		) {
 			continue;
 		}
 
 		if ( ! empty( $translation['source'] ) ) {
 
-			$regex = str_replace('MCV', preg_quote( $translation['source'] ), stripslashes($translation['search']) );
-			$replace = str_replace('MCV', $translation['translation'], $translation['replace'] );
+			$regex   = str_replace( 
+				'MCV', 
+				preg_quote( $translation['source'] ), 
+				stripslashes( $translation['search'] ) 
+			);
+			
+			$replace = str_replace( 
+				'MCV', 
+				$translation['translation'], 
+				$translation['replace'] 
+			);
 
 			// Replace original text in HTML by translation
 			$html_translated = preg_replace( $regex, $replace, $html_translated );
@@ -247,21 +260,21 @@ function mcv_ob_callback( $html ) {
 		// TODO : comment for current test
 		// file_put_contents( $json_path, json_encode( array_merge( $translations, $translations_new ) ) );
 
-		foreach ($translations_new as $key => $translation) {
+		foreach ( $translations_new as $key => $translation ) {
 
 			if ( ! isset( $translation['source'] ) // Original text
 				|| ! isset( $translation['translation'] ) // Translater text
-				|| ! isset( $translation['search'] ) // Search 
-				|| ! isset( $translation['replace'] ) // Replace 
+				|| ! isset( $translation['search'] ) // Search
+				|| ! isset( $translation['replace'] ) // Replace
 			) {
 				continue;
 			}
-			
-			mcv_save_translation( 
-				$mcv_language_target, 
-				$translation['source'], 
-				$translation['translation'], 
-				$translation['search'], 
+
+			mcv_save_translation(
+				$mcv_language_target,
+				$translation['source'],
+				$translation['translation'],
+				$translation['search'],
 				$translation['replace']
 			);
 		}
