@@ -53,7 +53,7 @@ function mcv_parser( $html ) {
 	);
 	$args = array(
 		'method'    => 'POST',
-		'timeout'   => 5,
+		'timeout'   => 20,
 		'sslverify' => false,
 		'body'      => $body,
 	);

@@ -200,10 +200,10 @@ function mcv_ob_callback( $html ) {
 			continue;
 		}
 
-		$regex = str_replace( 
-			'MCV', 
-			preg_quote( $translation['source'] ), 
-			stripslashes( $translation['search'] ) 
+		$regex = str_replace(
+			'MCV',
+			preg_quote( $translation['source'] ),
+			stripslashes( $translation['search'] )
 		);
 		// Replace knowing translation by empty string
 
@@ -214,11 +214,14 @@ function mcv_ob_callback( $html ) {
 	$translations_new = mcv_parser( $html );
 
 	// echo '<pre>';
-	// var_dump($translations, $translations_new);
+	// var_dump( $translations, $translations_new );
 	// echo '</pre>';
 	// die;
 
 	// TODO : Save new translation in WP (fait ?!)
+
+	// var_dump( $translations, $translations_new );
+	// die;
 
 	// Merge know and new translations
 	$translations = array_merge( $translations, $translations_new );
@@ -237,16 +240,16 @@ function mcv_ob_callback( $html ) {
 
 		if ( ! empty( $translation['source'] ) ) {
 
-			$regex   = str_replace( 
-				'MCV', 
-				preg_quote( $translation['source'] ), 
-				stripslashes( $translation['search'] ) 
+			$regex = str_replace(
+				'MCV',
+				preg_quote( $translation['source'] ),
+				stripslashes( $translation['search'] )
 			);
-			
-			$replace = str_replace( 
-				'MCV', 
-				$translation['translation'], 
-				$translation['replace'] 
+
+			$replace = str_replace(
+				'MCV',
+				$translation['translation'],
+				$translation['replace']
 			);
 
 			// Replace original text in HTML by translation
