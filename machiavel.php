@@ -171,7 +171,7 @@ function mcv_ob_callback( $html ) {
 	$translations     = array();
 	$translations_new = array();
 
-	// $translations = mcv_get_saved_translations( $mcv_language_target );
+	$translations = mcv_get_saved_translations( $mcv_language_target );
 	// echo '<pre>';
 	// var_dump( $translations );
 	// echo '</pre>';
@@ -215,6 +215,8 @@ function mcv_ob_callback( $html ) {
 
 		$html = preg_replace( $regex, '', $html );
 	}
+
+	// return $html;
 
 	// Get new translation from API
 	$translations_new = mcv_parser( $html );
