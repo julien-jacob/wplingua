@@ -25,7 +25,7 @@ function mcv_get_switcher_html() {
 	if ( ! empty( $language_website['flag'] ) ) {
 		$html .= '<img src="' . esc_url( $language_website['flag'] ) . '" alt="' . esc_attr( $language_website['name'] ) . '">';
 	}
-	$html .= esc_html( strtoupper( $language_website['name'] ) );
+	$html .= esc_html( $language_website['name'] );
 	$html .= '</a>';
 
 	// Create link for each target languages
@@ -36,7 +36,7 @@ function mcv_get_switcher_html() {
 		if ( ! empty( $language_website['flag'] ) ) {
 			$html .= '<img src="' . esc_url( $language_target['flag'] ) . '" alt="' . esc_attr( $language_target['name'] ) . '">';
 		}
-		$html .= esc_html( strtoupper( $language_target['name'] ) );
+		$html .= esc_html( $language_target['name'] );
 		$html .= '</a>';
 	}
 
