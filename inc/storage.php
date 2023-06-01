@@ -84,7 +84,20 @@ function mcv_translation_meta_box_html_output( $post ) {
 		foreach ( $translations as $key => $translation ) :
 			if ( ! empty( $translation['language_id'] ) && ! empty( $translation['translation'] ) ) :
 
-				$label    = esc_html( $translation['language_id'] ) . __( ' - Traduction:', 'textdomain' );
+				$language = mcv_get_language_by_id( $translation['language_id'] );
+
+				// TODO : Remplacer par fonctions dédiées
+				$emoji = '';
+				if ( ! empty( $language['emoji'] ) ) {
+					$emoji = $language['emoji'];
+				}
+
+				$name = $translation['language_id'];
+				if ( ! empty( $language['name'] ) ) {
+					$name = $language['name'];
+				}
+
+				$label    = esc_html( $emoji . ' ' . $name ) . __( ' - Traduction:', 'textdomain' );
 				$textarea = esc_html( $translation['translation'] );
 
 				?>
@@ -306,8 +319,12 @@ function mcv_save_translation_new( $language_id, $original, $translation, $searc
 	add_post_meta( $post_id, 'mcv_translation_original_language_id', mcv_get_language_website_id() );
 	add_post_meta( $post_id, 'mcv_translation_original', $original );
 	add_post_meta( $post_id, 'mcv_translation_sr', wp_json_encode( $sr_meta ) );
-	add_post_meta( $post_id, 'mcv_translation_translations', wp_json_encode( $translation_meta, 
-	JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES ) );
+	add_post_meta(
+		$post_id, 'mcv_translation_translations', wp_json_encode(
+			$translation_meta,
+			JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES
+		)
+	);
 
 }
 
@@ -355,8 +372,12 @@ function mcv_update_translation( $post, $language_id, $translation, $search, $re
 			}
 		}
 
-		update_post_meta( $post->ID, 'mcv_translation_translations', wp_json_encode( $translation_meta, 
-		JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES ) );
+		update_post_meta(
+			$post->ID, 'mcv_translation_translations', wp_json_encode(
+				$translation_meta,
+				JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES
+			)
+		);
 
 	} else { // Translation is valid
 
@@ -403,8 +424,12 @@ function mcv_update_translation( $post, $language_id, $translation, $search, $re
 			);
 		}
 
-		update_post_meta( $post->ID, 'mcv_translation_translations', wp_json_encode( $translation_meta, 
-		JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES ) );
+		update_post_meta(
+			$post->ID, 'mcv_translation_translations', wp_json_encode(
+				$translation_meta,
+				JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES
+			)
+		);
 
 	}
 
