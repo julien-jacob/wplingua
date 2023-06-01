@@ -28,7 +28,7 @@ function mcv_get_language_website_flag() {
 
 	$website_flag = get_option( 'mcv_website_flag' );
 
-	if (empty($website_flag)) {
+	if ( empty( $website_flag ) ) {
 		$website_flag = mcv_get_language_by_id( 'en' );
 	}
 
@@ -163,16 +163,22 @@ function mcv_is_valid_language_id( $language_id ) {
 
 function mcv_get_languages_all() {
 
-	$languages    = mcv_get_languages_data();
-	$source_flag  = get_option( 'mcv_website_flag' );
-	$target_flags = get_option( 'mcv_website_language' );
-	$target_flags = get_option( 'mcv_target_languages' );
+	$languages       = mcv_get_languages_data();
+	$source_language = get_option( 'mcv_website_language' );
+	$source_flag     = get_option( 'mcv_website_flag' );
+	$target_flags    = get_option( 'mcv_website_language' );
+	$target_flags    = get_option( 'mcv_target_languages' );
 
+	// TODO : Remplacer par une ternaire
 	if ( empty( $target_flags ) ) {
 		$target_flags = '[]';
 	}
 
 	$target_flags = json_decode( $target_flags, true );
+
+	if ( empty( $source_language ) ) {
+		$source_language = 'en';
+	}
 
 	foreach ( $languages as $key => $language ) {
 
