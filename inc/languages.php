@@ -18,7 +18,7 @@ function mcv_get_language_website_id() {
 		return 'en';
 	}
 
-	// TODO : Ajouter un filtre ici
+	$language_id = apply_filters( 'mcv_language_website_id', $language_id );
 
 	return $language_id;
 }
@@ -28,10 +28,65 @@ function mcv_get_language_website_flag() {
 
 	$website_flag = get_option( 'mcv_website_flag' );
 
-	// TODO : Ajouter un filtre ici
-	// TODO : Mettre valeur par défaut si vide ?
+	if ( empty( $website_flag ) ) {
+		$website_flag = mcv_get_language_by_id( 'en' );
+	}
+
+	$website_flag = apply_filters( 'mcv_language_website_flag', $website_flag );
 
 	return $website_flag;
+}
+
+
+function mcv_get_language_emoji( $language ) {
+
+	// if $language is a language array, return emoji
+	if ( ! empty( $language['emoji'] ) ) {
+		return esc_html( $language['emoji'] );
+	}
+
+	// $language is a language ID
+	// convert language ID to language array
+	$language = mcv_get_language_by_id( $language );
+
+	// If $language is not a valid, return empty string
+	if ( false === $language ) {
+		return '';
+	}
+
+	// If emoji is valid, return the emoji
+	if ( ! empty( $language['emoji'] ) ) {
+		return esc_html( $language['emoji'] );
+	}
+
+	// If no emoji returned here, return empty string
+	return '';
+}
+
+
+function mcv_get_language_name( $language ) {
+
+	// if $language is a language array, return name
+	if ( ! empty( $language['name'] ) ) {
+		return esc_html( $language['name'] );
+	}
+
+	// $language is a language ID
+	// convert language ID to language array
+	$language = mcv_get_language_by_id( $language );
+
+	// If $language is not a valid, return empty string
+	if ( false === $language ) {
+		return '';
+	}
+
+	// If name is valid, return the name
+	if ( ! empty( $language['name'] ) ) {
+		return esc_html( $language['name'] );
+	}
+
+	// If no name returned here, return empty string
+	return '';
 }
 
 
@@ -92,12 +147,10 @@ function mcv_get_languages_target_ids() {
 function mcv_get_language_current_id() {
 
 	global $mcv_request_uri;
-	$current_path = $mcv_request_uri;
+	$current_path     = $mcv_request_uri;
+	$languages_target = mcv_get_languages_target_ids();
 
-	$mcv_language_target  = false;
-	$mcv_languages_target = mcv_get_languages_target_ids();
-
-	foreach ( $mcv_languages_target as $language ) {
+	foreach ( $languages_target as $language ) {
 		if ( str_starts_with( $current_path, '/' . $language . '/' ) ) {
 			return $language;
 			break;
@@ -162,16 +215,22 @@ function mcv_is_valid_language_id( $language_id ) {
 
 function mcv_get_languages_all() {
 
-	$languages    = mcv_get_languages_data();
-	$source_flag  = get_option( 'mcv_website_flag' );
-	$target_flags = get_option( 'mcv_website_language' );
-	$target_flags = get_option( 'mcv_target_languages' );
+	$languages       = mcv_get_languages_data();
+	$source_language = get_option( 'mcv_website_language' );
+	$source_flag     = get_option( 'mcv_website_flag' );
+	$target_flags    = get_option( 'mcv_website_language' );
+	$target_flags    = get_option( 'mcv_target_languages' );
 
+	// TODO : Remplacer par une ternaire
 	if ( empty( $target_flags ) ) {
 		$target_flags = '[]';
 	}
 
 	$target_flags = json_decode( $target_flags, true );
+
+	if ( empty( $source_language ) ) {
+		$source_language = 'en';
+	}
 
 	foreach ( $languages as $key => $language ) {
 
@@ -213,70 +272,82 @@ function mcv_get_languages_all_json() {
 function mcv_get_languages_data() {
 	return array(
 		array(
-			'name'  => 'French',
+			'name'  => __( 'French', 'machiavel' ),
 			'id'    => 'fr',
 			'flag'  => 'fr',
+			'emoji' => '🇫🇷',
 			'flags' => array(
 				array(
-					'name' => 'France',
-					'id'   => 'fr',
-					'flag' => 'fr',
+					'name'  => __( 'France', 'machiavel' ),
+					'id'    => 'fr',
+					'flag'  => 'fr',
+					'emoji' => '🇫🇷',
 				),
 				array(
-					'name' => 'Belgium',
-					'id'   => 'be',
-					'flag' => 'be',
+					'name'  => __( 'Belgium', 'machiavel' ),
+					'id'    => 'be',
+					'flag'  => 'be',
+					'emoji' => '🇧🇪',
 				),
 			),
 		),
 		array(
-			'name'  => 'English',
+			'name'  => __( 'English', 'machiavel' ),
 			'id'    => 'en',
 			'flag'  => 'en',
+			'emoji' => '🇬🇧',
 			'flags' => array(
 				array(
-					'name' => 'United Kingdom',
-					'id'   => 'en',
-					'flag' => 'en',
+					'name'  => __( 'United Kingdom', 'machiavel' ),
+					'id'    => 'en',
+					'flag'  => 'en',
+					'emoji' => '🇬🇧',
 				),
 				array(
-					'name' => 'United States',
-					'id'   => 'us',
-					'flag' => 'us',
+					'name'  => __( 'United States', 'machiavel' ),
+					'id'    => 'us',
+					'flag'  => 'us',
+					'emoji' => '🇺🇸',
 				),
 			),
 		),
 		array(
-			'name'  => 'Spanish',
+			'name'  => __( 'Spanish', 'machiavel' ),
 			'id'    => 'es',
 			'flag'  => 'es',
+			'emoji' => '🇪🇸',
 			'flags' => array(
 				array(
-					'name' => 'Spain',
-					'id'   => 'es',
-					'flag' => 'es',
+					'name'  => __( 'Spain', 'machiavel' ),
+					'id'    => 'es',
+					'flag'  => 'es',
+					'emoji' => '🇪🇸',
 				),
 				array(
-					'name' => 'Mexico',
-					'id'   => 'mx',
-					'flag' => 'mx',
+					'name'  => __( 'Mexico', 'machiavel' ),
+					'id'    => 'mx',
+					'flag'  => 'mx',
+					'emoji' => '🇲🇽',
 				),
 			),
 		),
 		array(
-			'name'  => 'Portuguese',
+			'name'  => __( 'Portuguese', 'machiavel' ),
 			'id'    => 'pt',
 			'flag'  => 'pt',
+			'emoji' => '🇵🇹',
 			'flags' => array(
 				array(
-					'name' => 'Portugal',
-					'id'   => 'pt',
-					'flag' => 'pt',
+					'name'  => __( 'Portugal', 'machiavel' ),
+					'id'    => 'pt',
+					'flag'  => 'pt',
+					'emoji' => '🇵🇹',
 				),
 				array(
-					'name' => 'Brazil',
-					'id'   => 'br',
-					'flag' => 'br',
+					'name'  => __( 'Brazil', 'machiavel' ),
+					'id'    => 'br',
+					'flag'  => 'br',
+					'emoji' => '🇧🇷',
 				),
 			),
 		),
