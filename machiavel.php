@@ -167,32 +167,8 @@ function mcv_ob_callback( $html ) {
 	$html = preg_replace( '#<svg.*<\/svg>#Uis', '', $html );
 	// $html = str_replace( array( "\r", "\n", '  ', "\t" ), '', $html );
 
-	$json_path        = MCV_UPLOADS_PATH . 'translations-' . $mcv_language_target . '.json';
-	$translations     = array();
 	$translations_new = array();
-
 	$translations = mcv_get_saved_translations( $mcv_language_target );
-	// echo '<pre>';
-	// var_dump( $translations );
-	// echo '</pre>';
-	// die( 'okok' );
-
-	// Get know translations
-	// if ( file_exists( $json_path ) ) {
-	// 	$translations = json_decode( file_get_contents( $json_path ), true );
-	// 	if ( empty( $translations ) ) {
-	// 		$translations = [];
-	// 	}
-	// } else {
-	// 	$default_json = json_encode(
-	// 		[
-	// 			'wpRock' => 'wpRock',
-	// 		]
-	// 	);
-	// 	// TODO : comment for current test
-	// 	// mkdir( MCV_UPLOADS_PATH );
-	// 	// file_put_contents( $json_path, $default_json );
-	// }
 
 	// Clear HTML of know translation
 	foreach ( $translations as $translation ) {

@@ -42,8 +42,8 @@ function mcv_get_switcher_html() {
 
 	$html .= '</div>';
 
-	$html = apply_filters( 
-		'mcv_switcher_html', 
+	$html = apply_filters(
+		'mcv_switcher_html',
 		$html,
 		$language_website,
 		$languages_target
