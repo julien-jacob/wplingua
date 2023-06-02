@@ -107,7 +107,44 @@ function mcv_translation_save_meta_boxes_data( $post_id ) {
 		return;
 	}
 
-	
+	$meta = get_post_meta( $post_id );
+
+	if ( ! empty( $meta['mcv_translation_translations'][0] ) ) {
+
+		$translations = json_decode( $meta['mcv_translation_translations'][0], true );
+
+		// TODO : Revoir cette condition ? return ?
+		if ( empty( $translations ) ) {
+			$translations = array();
+		}
+
+		foreach ( $translations as $key => $translation ) {
+			if ( empty( $translation['language_id'] ) ) {
+				continue;
+			}
+
+			if ( ! mcv_is_valid_language_id( $translation['language_id'] ) ) {
+				continue;
+			}
+
+			$name = 'mcv_translation_' . $translation['language_id'];
+
+			if ( ! isset( $_REQUEST[ $name ] ) ) {
+				continue;
+			}
+
+			$translations[$key]['translation'] = $_REQUEST[ $name ];
+		}
+
+		update_post_meta(
+			$post_id, 
+			'mcv_translation_translations', 
+			wp_json_encode(
+				$translations,
+				JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES
+			)
+		);
+	}
 
 	// Récupérer meta des traduction : mcv_translation_translations
 
