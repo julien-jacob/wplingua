@@ -38,6 +38,58 @@ function mcv_get_language_website_flag() {
 }
 
 
+function mcv_get_language_emoji( $language ) {
+
+	// if $language is a language array, return emoji
+	if ( ! empty( $language['emoji'] ) ) {
+		return esc_html( $language['emoji'] );
+	}
+
+	// $language is a language ID
+	// convert language ID to language array
+	$language = mcv_get_language_by_id( $language );
+
+	// If $language is not a valid, return empty string
+	if ( false === $language ) {
+		return '';
+	}
+
+	// If emoji is valid, return the emoji
+	if ( ! empty( $language['emoji'] ) ) {
+		return esc_html( $language['emoji'] );
+	}
+
+	// If no emoji returned here, return empty string
+	return '';
+}
+
+
+function mcv_get_language_name( $language ) {
+
+	// if $language is a language array, return name
+	if ( ! empty( $language['name'] ) ) {
+		return esc_html( $language['name'] );
+	}
+
+	// $language is a language ID
+	// convert language ID to language array
+	$language = mcv_get_language_by_id( $language );
+
+	// If $language is not a valid, return empty string
+	if ( false === $language ) {
+		return '';
+	}
+
+	// If name is valid, return the name
+	if ( ! empty( $language['name'] ) ) {
+		return esc_html( $language['name'] );
+	}
+
+	// If no name returned here, return empty string
+	return '';
+}
+
+
 function mcv_get_languages_target_simplified() {
 
 	$json = get_option( 'mcv_target_languages' );
@@ -223,19 +275,19 @@ function mcv_get_languages_data() {
 			'name'  => __( 'French', 'machiavel' ),
 			'id'    => 'fr',
 			'flag'  => 'fr',
-			'emoji'  => '🇫🇷',
+			'emoji' => '🇫🇷',
 			'flags' => array(
 				array(
-					'name' => __( 'France', 'machiavel' ),
-					'id'   => 'fr',
-					'flag' => 'fr',
-					'emoji'  => '🇫🇷',
+					'name'  => __( 'France', 'machiavel' ),
+					'id'    => 'fr',
+					'flag'  => 'fr',
+					'emoji' => '🇫🇷',
 				),
 				array(
-					'name' => __( 'Belgium', 'machiavel' ),
-					'id'   => 'be',
-					'flag' => 'be',
-					'emoji'  => '🇧🇪',
+					'name'  => __( 'Belgium', 'machiavel' ),
+					'id'    => 'be',
+					'flag'  => 'be',
+					'emoji' => '🇧🇪',
 				),
 			),
 		),
@@ -243,19 +295,19 @@ function mcv_get_languages_data() {
 			'name'  => __( 'English', 'machiavel' ),
 			'id'    => 'en',
 			'flag'  => 'en',
-			'emoji'  => '🇬🇧',
+			'emoji' => '🇬🇧',
 			'flags' => array(
 				array(
-					'name' => __( 'United Kingdom', 'machiavel' ),
-					'id'   => 'en',
-					'flag' => 'en',
-					'emoji'  => '🇬🇧',
+					'name'  => __( 'United Kingdom', 'machiavel' ),
+					'id'    => 'en',
+					'flag'  => 'en',
+					'emoji' => '🇬🇧',
 				),
 				array(
-					'name' => __( 'United States', 'machiavel' ),
-					'id'   => 'us',
-					'flag' => 'us',
-					'emoji'  => '🇺🇸',
+					'name'  => __( 'United States', 'machiavel' ),
+					'id'    => 'us',
+					'flag'  => 'us',
+					'emoji' => '🇺🇸',
 				),
 			),
 		),
@@ -263,19 +315,19 @@ function mcv_get_languages_data() {
 			'name'  => __( 'Spanish', 'machiavel' ),
 			'id'    => 'es',
 			'flag'  => 'es',
-			'emoji'  => '🇪🇸',
+			'emoji' => '🇪🇸',
 			'flags' => array(
 				array(
-					'name' => __( 'Spain', 'machiavel' ),
-					'id'   => 'es',
-					'flag' => 'es',
-					'emoji'  => '🇪🇸',
+					'name'  => __( 'Spain', 'machiavel' ),
+					'id'    => 'es',
+					'flag'  => 'es',
+					'emoji' => '🇪🇸',
 				),
 				array(
-					'name' => __( 'Mexico', 'machiavel' ),
-					'id'   => 'mx',
-					'flag' => 'mx',
-					'emoji'  => '🇲🇽',
+					'name'  => __( 'Mexico', 'machiavel' ),
+					'id'    => 'mx',
+					'flag'  => 'mx',
+					'emoji' => '🇲🇽',
 				),
 			),
 		),
@@ -283,19 +335,19 @@ function mcv_get_languages_data() {
 			'name'  => __( 'Portuguese', 'machiavel' ),
 			'id'    => 'pt',
 			'flag'  => 'pt',
-			'emoji'  => '🇵🇹',
+			'emoji' => '🇵🇹',
 			'flags' => array(
 				array(
-					'name' => __( 'Portugal', 'machiavel' ),
-					'id'   => 'pt',
-					'flag' => 'pt',
-					'emoji'  => '🇵🇹',
+					'name'  => __( 'Portugal', 'machiavel' ),
+					'id'    => 'pt',
+					'flag'  => 'pt',
+					'emoji' => '🇵🇹',
 				),
 				array(
-					'name' => __( 'Brazil', 'machiavel' ),
-					'id'   => 'br',
-					'flag' => 'br',
-					'emoji'  => '🇧🇷',
+					'name'  => __( 'Brazil', 'machiavel' ),
+					'id'    => 'br',
+					'flag'  => 'br',
+					'emoji' => '🇧🇷',
 				),
 			),
 		),

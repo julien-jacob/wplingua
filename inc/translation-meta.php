@@ -6,7 +6,7 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 
-add_action( 'add_meta_boxes_mcv_translation', 'meta_box_for_products' );
+
 function meta_box_for_products( $post ) {
 
 	add_meta_box(
@@ -30,14 +30,26 @@ function mcv_translation_meta_box_html_output( $post ) {
 
 	$meta = get_post_meta( $post->ID );
 
-	if ( ! empty( $meta['mcv_translation_original'][0] ) ) {
-		?>
-		<p><label for="mcv_translation"><?php _e( 'Original text:', 'textdomain' ); ?></label></p>
-		<p><strong><?php echo esc_html( $meta['mcv_translation_original'][0] ); ?></strong></p>
-		<hr>
-		<?php
+	// Display original text
+	if ( ! empty( $meta['mcv_translation_original'][0] )
+		&& ! empty( $meta['mcv_translation_original_language_id'][0] )
+	) {
+
+		$language_id   = $meta['mcv_translation_original_language_id'][0];
+		$emoji         = mcv_get_language_emoji( $language_id ); // Emoji already esc_html
+		$language_name = mcv_get_language_name( $language_id ); // Name already esc_html
+
+		$html  = '<p><label for="mcv_translation_source">';
+		$html .= $emoji . ' ' . $language_name . __( ' - Original text:', 'textdomain' );
+		$html .= '</label></p>';
+		$html .= '<p><strong>';
+		$html .= esc_html( $meta['mcv_translation_original'][0] );
+		$html .= '</strong></p><hr>';
+
+		echo $html;
 	}
 
+	// Foreach translation, display form textarea to edit
 	if ( ! empty( $meta['mcv_translation_translations'][0] ) ) {
 
 		$translations = json_decode( $meta['mcv_translation_translations'][0], true );
@@ -48,44 +60,39 @@ function mcv_translation_meta_box_html_output( $post ) {
 
 		// TODO : Compare [MCV_EMPTY]
 
-		foreach ( $translations as $key => $translation ) :
-			if ( ! empty( $translation['language_id'] ) && ! empty( $translation['translation'] ) ) :
+		foreach ( $translations as $key => $translation ) {
+			if ( ! empty( $translation['language_id'] ) && ! empty( $translation['translation'] ) ) {
 
-				$language = mcv_get_language_by_id( $translation['language_id'] );
+				$language_id   = esc_attr( $translation['language_id'] );
+				$emoji         = mcv_get_language_emoji( $language_id ); // Emoji already esc_html
+				$language_name = mcv_get_language_name( $language_id ); // Name already esc_html
+				$label         = $emoji . ' ' . $language_name . __( ' - Traduction:', 'textdomain' );
+				$textarea      = esc_html( $translation['translation'] );
+				$name          = esc_attr( 'mcv_translation_' . $language_id );
 
-				// TODO : Remplacer par fonctions dédiées
-				$emoji = '';
-				if ( ! empty( $language['emoji'] ) ) {
-					$emoji = $language['emoji'];
+				if ( '[MCV_EMPTY]' === $textarea ) {
+					$textarea = '';
 				}
 
-				$name = $translation['language_id'];
-				if ( ! empty( $language['name'] ) ) {
-					$name = $language['name'];
-				}
+				$html  = '<p>';
+				$html .= '<label for="' . $name . '">' . $label . '</label><br>';
+				$html .= '<textarea name="' . $name . '" lang="' . $language_id . '" style="width:100%;">';
+				$html .= $textarea;
+				$html .= '</textarea>';
+				$html .= '</p>';
 
-				$label    = esc_html( $emoji . ' ' . $name ) . __( ' - Traduction:', 'textdomain' );
-				$textarea = esc_html( $translation['translation'] );
-
-				?>
-				<p>
-					<label for="mcv_translation"><?php echo $label; ?></label>
-					<br>
-					<textarea name="mcv_translation" style="width:100%;"><?php echo $textarea; ?></textarea>
-				</p>
-				<?php
-			endif;
-		endforeach;
+				echo $html;
+			}
+		}
 	}
 
 	// echo '<pre>';
 	// var_dump( $meta );
 	// echo '</pre>';
 	// return;
-
 }
 
-add_action( 'save_post_mcv_translation', 'mcv_translation_save_meta_boxes_data', 10, 2 );
+
 function mcv_translation_save_meta_boxes_data( $post_id ) {
 
 	// check for nonce to top xss
@@ -100,14 +107,24 @@ function mcv_translation_save_meta_boxes_data( $post_id ) {
 		return;
 	}
 
+	
+
+	// Récupérer meta des traduction : mcv_translation_translations
+
+	// Récupérer liste language target
+	// pour chaque laguage target
+	// 		Si $_REQUEST['mcv_translation_ LANG '] est OK
+
+	// Update post meta
+
 	// update fields
-	if ( isset( $_REQUEST['mcv_translation_meta'] ) ) {
+	// if ( isset( $_REQUEST['mcv_translation_es'] ) ) {
 
-		update_post_meta(
-			$post_id,
-			'mcv_translation_meta',
-			sanitize_text_field( $_POST['mcv_translation_meta'] )
-		);
+	// 	update_post_meta(
+	// 		$post_id,
+	// 		'mcv_translation_meta',
+	// 		sanitize_text_field( $_POST['mcv_translation_es'] )
+	// 	);
 
-	}
+	// }
 }

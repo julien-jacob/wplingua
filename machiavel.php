@@ -30,6 +30,18 @@ $mcv_request_uri = $_SERVER['REQUEST_URI'];
 function mcv_start() {
 
 	/**
+	 * CPT, taxo, meta
+	 */
+	// Register mcv_translation CPT
+	add_action( 'init', 'mcv_register_post_type_translation' );
+
+	// Add metabox for mcv_translation
+	add_action( 'add_meta_boxes_mcv_translation', 'meta_box_for_products' );
+
+	// Save metabox on posts saving 
+	add_action( 'save_post_mcv_translation', 'mcv_translation_save_meta_boxes_data', 10, 2 );
+
+	/**
 	 * Back office
 	 */
 

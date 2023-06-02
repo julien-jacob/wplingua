@@ -5,7 +5,7 @@ if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
-add_action( 'init', 'mcv_register_post_type_translation' );
+
 function mcv_register_post_type_translation() {
 	register_post_type(
 		'mcv_translation',
