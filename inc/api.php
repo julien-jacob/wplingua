@@ -53,7 +53,7 @@ function mcv_parser( $html ) {
 	);
 	$args = array(
 		'method'    => 'POST',
-		'timeout'   => 20,
+		'timeout'   => 120,
 		'sslverify' => false,
 		'body'      => $body,
 	);
@@ -64,10 +64,10 @@ function mcv_parser( $html ) {
 
 	if ( is_wp_error( $request ) || wp_remote_retrieve_response_code( $request ) != 200 ) {
 		error_log( print_r( $request, true ) );
-		return '';
+		return array();
 	}
 
 	$response = json_decode( wp_remote_retrieve_body( $request ), true );
-
+// return wp_remote_retrieve_body( $request );
 	return $response;
 }

@@ -120,11 +120,14 @@ function mcv_ob_callback( $html ) {
 
 	// TODO : Save new translation in WP (fait ?!)
 
-	// var_dump( $translations, $translations_new );
+	// echo '<pre>';
+	// var_dump( $translations_new );
+	// echo '</pre>';
 	// die;
-
+	
 	// Merge know and new translations
 	$translations = array_merge( $translations, $translations_new );
+
 
 	// Replace original texts by translations
 	foreach ( $translations as $translation ) {
@@ -156,6 +159,11 @@ function mcv_ob_callback( $html ) {
 			$html_translated = preg_replace( $regex, $replace, $html_translated );
 		}
 	}
+
+	// echo '<pre>';
+	// var_dump( 'ok2', $translations_new );
+	// echo '</pre>';
+	// die;
 
 	// Save new translation file
 	if ( ! empty( $translations_new ) ) {

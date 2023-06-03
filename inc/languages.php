@@ -272,26 +272,6 @@ function mcv_get_languages_all_json() {
 function mcv_get_languages_data() {
 	return array(
 		array(
-			'name'  => __( 'French', 'machiavel' ),
-			'id'    => 'fr',
-			'flag'  => 'fr',
-			'emoji' => '🇫🇷',
-			'flags' => array(
-				array(
-					'name'  => __( 'France', 'machiavel' ),
-					'id'    => 'fr',
-					'flag'  => 'fr',
-					'emoji' => '🇫🇷',
-				),
-				array(
-					'name'  => __( 'Belgium', 'machiavel' ),
-					'id'    => 'be',
-					'flag'  => 'be',
-					'emoji' => '🇧🇪',
-				),
-			),
-		),
-		array(
 			'name'  => __( 'English', 'machiavel' ),
 			'id'    => 'en',
 			'flag'  => 'en',
@@ -312,23 +292,51 @@ function mcv_get_languages_data() {
 			),
 		),
 		array(
-			'name'  => __( 'Spanish', 'machiavel' ),
-			'id'    => 'es',
-			'flag'  => 'es',
-			'emoji' => '🇪🇸',
+			'name'  => __( 'French', 'machiavel' ),
+			'id'    => 'fr',
+			'flag'  => 'fr',
+			'emoji' => '🇫🇷',
 			'flags' => array(
 				array(
-					'name'  => __( 'Spain', 'machiavel' ),
-					'id'    => 'es',
-					'flag'  => 'es',
-					'emoji' => '🇪🇸',
+					'name'  => __( 'France', 'machiavel' ),
+					'id'    => 'fr',
+					'flag'  => 'fr',
+					'emoji' => '🇫🇷',
 				),
 				array(
-					'name'  => __( 'Mexico', 'machiavel' ),
-					'id'    => 'mx',
-					'flag'  => 'mx',
-					'emoji' => '🇲🇽',
+					'name'  => __( 'Belgium', 'machiavel' ),
+					'id'    => 'be',
+					'flag'  => 'be',
+					'emoji' => '🇧🇪',
 				),
+			),
+		),
+		array(
+			'name'  => __( 'German', 'machiavel' ),
+			'id'    => 'de',
+			'flag'  => 'de',
+			'emoji' => '🇩🇪',
+			'flags' => array(
+				array(
+					'name'  => __( 'Germany', 'machiavel' ),
+					'id'    => 'de',
+					'flag'  => 'de',
+					'emoji' => '🇩🇪',
+				)
+			),
+		),
+		array(
+			'name'  => __( 'Italian', 'machiavel' ),
+			'id'    => 'it',
+			'flag'  => 'it',
+			'emoji' => '🇮🇹',
+			'flags' => array(
+				array(
+					'name'  => __( 'Italy', 'machiavel' ),
+					'id'    => 'it',
+					'flag'  => 'it',
+					'emoji' => '🇮🇹',
+				)
 			),
 		),
 		array(
@@ -348,6 +356,26 @@ function mcv_get_languages_data() {
 					'id'    => 'br',
 					'flag'  => 'br',
 					'emoji' => '🇧🇷',
+				),
+			),
+		),
+		array(
+			'name'  => __( 'Spanish', 'machiavel' ),
+			'id'    => 'es',
+			'flag'  => 'es',
+			'emoji' => '🇪🇸',
+			'flags' => array(
+				array(
+					'name'  => __( 'Spain', 'machiavel' ),
+					'id'    => 'es',
+					'flag'  => 'es',
+					'emoji' => '🇪🇸',
+				),
+				array(
+					'name'  => __( 'Mexico', 'machiavel' ),
+					'id'    => 'mx',
+					'flag'  => 'mx',
+					'emoji' => '🇲🇽',
 				),
 			),
 		),
