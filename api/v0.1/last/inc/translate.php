@@ -6,7 +6,6 @@ if ( ! defined( 'MACHIAVEL_API' ) ) {
 
 
 
-
 function file_post_contents( $url, $data, $username = null, $password = null ) {
 	$postdata = http_build_query( $data );
 
@@ -28,24 +27,48 @@ function file_post_contents( $url, $data, $username = null, $password = null ) {
 
 
 function mcvapi_translate( $language_source, $language_target, $text ) {
-	$x = file_post_contents(
-		'https://libretranslate.com/translate',
-		array(
-			'q'       => $text,
-			'source'  => $language_source,
-			'target'  => $language_target,
-			'format'  => 'text',
-			'api_key' => '576e1336-c1d7-4dc9-a8a4-05cd75185263',
+
+	$ch = curl_init();
+	curl_setopt( $ch, CURLOPT_URL, 'https://www.libretranslate.com/translate' );
+	curl_setopt( $ch, CURLOPT_POST, 1 );
+	curl_setopt(
+		$ch,
+		CURLOPT_POSTFIELDS,
+		http_build_query(
+			[
+				'q'       => $text,
+				'source'  => $language_source,
+				'target'  => $language_target,
+				'format'  => 'html',
+				'api_key' => '576e1336-c1d7-4dc9-a8a4-05cd75185263',
+			]
 		)
 	);
 
-	$x = json_decode( $x, true );
+	curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true );
 
-	if ( ! empty( $x['translatedText'] ) ) {
-		return $x['translatedText'];
+	$server_output = json_decode( curl_exec( $ch ), true );
+	// print_r($server_output);
+	curl_close( $ch );
+
+	// $x = file_post_contents(
+	// 	'https://libretranslate.com/translate',
+	// 	array(
+	// 		'q'       => $text,
+	// 		'source'  => $language_source,
+	// 		'target'  => $language_target,
+	// 		'format'  => 'html',
+	// 		'api_key' => '576e1336-c1d7-4dc9-a8a4-05cd75185263',
+	// 	)
+	// );
+
+	// $x = json_decode( $x, true );
+
+	if ( ! empty( $server_output['translatedText'] ) ) {
+		return $server_output['translatedText'];
 	}
 
-	return false;
+	// return false;
 }
 
 

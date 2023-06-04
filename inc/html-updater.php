@@ -86,10 +86,11 @@ function mcv_ob_callback( $html ) {
 	$html = preg_replace( '#<style.*<\/style>#Uis', '', $html );
 	$html = preg_replace( '#<script.*<\/script>#Uis', '', $html );
 	$html = preg_replace( '#<svg.*<\/svg>#Uis', '', $html );
-	// $html = str_replace( array( "\r", "\n", '  ', "\t" ), '', $html );
 
 	$translations_new = array();
 	$translations     = mcv_get_saved_translations( $mcv_language_target );
+
+	// return '<pre >' . var_export( $translations, true ) . '</pre>';
 
 	// Clear HTML of know translation
 	foreach ( $translations as $translation ) {
@@ -106,28 +107,36 @@ function mcv_ob_callback( $html ) {
 		$regex = str_replace(
 			'MCV',
 			preg_quote( $translation['source'] ),
-			stripslashes( $translation['search'] )
+			// '#>(\s*)MCV(\s*)<#Uis'
+			$translation['search']
 		);
 		// Replace knowing translation by empty string
 
-		$html = preg_replace( $regex, '', $html );
+		// $html = preg_replace( $regex, str_replace( 'MCV', '', $translation['replace'] ), $html );
+		$html = preg_replace( 
+			$regex, 
+			str_replace( 
+				'MCV', 
+				'', 
+				$translation['replace'] 
+			), 
+			$html 
+		);
 	}
 
 	// return $html;
 
 	// Get new translation from API
 	$translations_new = mcv_parser( $html );
+	// $translations_new = array(); 
 
 	// TODO : Save new translation in WP (fait ?!)
 
-	// echo '<pre>';
-	// var_dump( $translations_new );
-	// echo '</pre>';
-	// die;
-	
+	// return json_encode($translations_new);
+	// return '<pre >' . var_export( $translations_new, true ) . '</pre>';
+
 	// Merge know and new translations
 	$translations = array_merge( $translations, $translations_new );
-
 
 	// Replace original texts by translations
 	foreach ( $translations as $translation ) {
@@ -146,7 +155,7 @@ function mcv_ob_callback( $html ) {
 			$regex = str_replace(
 				'MCV',
 				preg_quote( $translation['source'] ),
-				stripslashes( $translation['search'] )
+				$translation['search']
 			);
 
 			$replace = str_replace(
@@ -154,6 +163,8 @@ function mcv_ob_callback( $html ) {
 				$translation['translation'],
 				$translation['replace']
 			);
+
+			// $replace = 'okok';
 
 			// Replace original text in HTML by translation
 			$html_translated = preg_replace( $regex, $replace, $html_translated );
@@ -180,6 +191,8 @@ function mcv_ob_callback( $html ) {
 			) {
 				continue;
 			}
+
+			// $translation['translation'] = stripslashes($translation['translation'] );
 
 			mcv_save_translation(
 				$mcv_language_target,

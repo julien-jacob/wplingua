@@ -91,6 +91,8 @@ function mcv_get_saved_translations( $target_language_id ) {
 			continue;
 		}
 
+		// var_dump($meta['mcv_translation_sr'][0]);
+
 		$search_meta = json_decode( $meta['mcv_translation_sr'][0], true );
 
 		foreach ( $search_meta as $key => $search ) {

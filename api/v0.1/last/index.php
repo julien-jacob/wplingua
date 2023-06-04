@@ -12,3 +12,6 @@ require_once 'inc/translate.php'; // TODO : Move !
 
 echo mcvapi_machiavel_api();
 
+// $translation = mcvapi_translate( 'en', 'fr', 'Still Life and the power of painting – Envince' );
+// var_dump($translation);
+
