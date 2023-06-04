@@ -133,7 +133,12 @@ function mcv_translation_save_meta_boxes_data( $post_id ) {
 				continue;
 			}
 
-			$translations[$key]['translation'] = $_REQUEST[ $name ];
+			$temp = $_REQUEST[ $name ];
+			if (empty($temp)) {
+				$temp = '[MCV_EMPTY]';
+			}
+
+			$translations[$key]['translation'] = stripslashes($temp);
 		}
 
 		update_post_meta(
