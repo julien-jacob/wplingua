@@ -11,7 +11,9 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 define( 'MCV_UPLOADS_PATH', WP_CONTENT_DIR . '/uploads/machiavel/' );
-define( 'MCV_API', 'http://machiavel-api.local/v0.1/last/' );
+define( 'MCV_API', 'http://machiavel-api.local/v0.0.2/last/' );
+
+require_once 'lib/simple_html_dom.php';
 
 require_once 'inc/api.php';
 require_once 'inc/assets.php';
