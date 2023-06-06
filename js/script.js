@@ -19,20 +19,19 @@ jQuery(document).ready(function($) {
 		sourcePath = path;
 	} else {
 		sourcePath = path.substring(3);
+        $('a:not(.mcv-language)').each(function() {
+            var href = this.href;
+            if (href.indexOf('?') != -1) {
+                href = href + '&redirect_lang=' + currentLanguage;
+            } else {
+                href = href + '?redirect_lang=' + currentLanguage;
+            }
+            
+            $(this).attr('href', href);
+        });
 	}
 
-
-
-	$('a:not(.mcv-language)').each(function() {
-		var href = this.href;
-		if (href.indexOf('?') != -1) {
-			href = href + '&redirect_lang=' + currentLanguage;
-		} else {
-			href = href + '?redirect_lang=' + currentLanguage;
-		}
-		
-		$(this).attr('href', href);
-	});
+	
 
 
     var $_GET = [];
