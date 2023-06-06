@@ -61,9 +61,9 @@ function mcv_get_saved_translations( $target_language_id ) {
 			continue;
 		}
 
-		$translations_meta = json_decode( 
-			$meta['mcv_translation_translations'][0], 
-			true 
+		$translations_meta = json_decode(
+			$meta['mcv_translation_translations'][0],
+			true
 		);
 
 		foreach ( $translations_meta as $key => $translation_meta ) {
@@ -114,6 +114,10 @@ function mcv_get_saved_translations( $target_language_id ) {
 
 
 function mcv_save_translation_new( $language_id, $original, $translation, $search, $replace ) {
+
+	if ( false !== mcv_get_saved_translation_from_original( $original ) ) {
+		return;
+	}
 
 	/**
 	 * Make the title
