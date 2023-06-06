@@ -164,7 +164,7 @@ function mcv_ob_callback( $html ) {
 	 * Get new translation from API
 	 */
 	$translations_new = mcv_parser( $html_clear );
-
+	
 	// Merge know and new translations
 	$translations = array_merge( $translations, $translations_new );
 

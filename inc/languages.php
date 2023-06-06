@@ -379,5 +379,19 @@ function mcv_get_languages_data() {
 				),
 			),
 		),
+		array(
+			'name'  => __( 'Japanese', 'machiavel' ),
+			'id'    => 'ja',
+			'flag'  => 'ja',
+			'emoji' => '🇯🇵',
+			'flags' => array(
+				array(
+					'name'  => __( 'Japan', 'machiavel' ),
+					'id'    => 'ja',
+					'flag'  => 'ja',
+					'emoji' => '🇯🇵',
+				),
+			),
+		),
 	);
 }
