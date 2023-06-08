@@ -14,6 +14,7 @@ define( 'WPLNG_API', 'http://machiavel-api.local/v0.0.2/last/' );
 
 require_once 'lib/simple_html_dom.php';
 
+require_once 'inc/admin-bar.php';
 require_once 'inc/api.php';
 require_once 'inc/assets.php';
 require_once 'inc/html-updater.php';
@@ -56,6 +57,9 @@ function wplng_start() {
 
 	// Add settings link in plugin list
 	add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), 'wplng_settings_link' );
+
+	// Add admin Bar menu
+	add_action( 'admin_bar_menu', 'wplng_admin_bar_menu', 100 );
 
 	// Enqueue CSS and JS files
 	add_action( 'admin_enqueue_scripts', 'wplng_enqueue_callback' );

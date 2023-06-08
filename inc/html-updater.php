@@ -73,7 +73,7 @@ function wplng_init() {
 	$_SERVER['REQUEST_URI'] = $origin_path;
 
 
-	if ( isset( $_GET['wplng-editor'] ) ) {
+	if ( isset( $_GET['wplingua-visual-editor'] ) ) {
 		// TODO : wp_nonce ?
 		// TODO : Meilleur argument GET ?
 
