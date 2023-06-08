@@ -77,9 +77,6 @@ function mcv_init() {
 
 
 
-
-
-
 function mcv_ob_callback( $html ) {
 
 	$selector_clear = array(
@@ -127,7 +124,6 @@ function mcv_ob_callback( $html ) {
 	/**
 	 * Remove saved translation from HTML clear
 	 */
-	// Clear HTML of know translation
 	foreach ( $translations as $translation ) {
 
 		// Check if translaton data is valid
@@ -140,34 +136,72 @@ function mcv_ob_callback( $html ) {
 			continue;
 		}
 
+		// TODO : Mettre preg_quote() plutôt sur $regex ?
 		$regex = str_replace(
 			'MCV',
 			preg_quote( $translation['source'] ),
 			// '#>(\s*)MCV(\s*)<#Uis'
 			$translation['search']
 		);
-		// Replace knowing translation by empty string
 
+		$replace = str_replace(
+			'MCV',
+			'',
+			$translation['replace']
+		);
+
+		// Replace knowing translation by empty string
 		$html_clear = preg_replace(
 			$regex,
-			str_replace(
-				'MCV',
-				'',
-				$translation['replace']
-			),
+			$replace,
 			$html_clear
 		);
 	}
 	// return '<pre >' . var_export($html_clear, true) . '</pre>';
 
+
 	/**
 	 * Get new translation from API
 	 */
 	$translations_new = mcv_parser( $html_clear );
+
+
+	/**
+	 * Save new translation as mcv_translation CPT
+	 */
+	if ( ! empty( $translations_new ) ) {
+
+		foreach ( $translations_new as $key => $translation ) {
+
+			if (
+				! isset( $translation['source'] ) // Original text
+				|| ! isset( $translation['translation'] ) // Translater text
+				|| ! isset( $translation['search'] ) // Search
+				|| ! isset( $translation['replace'] ) // Replace
+			) {
+				continue;
+			}
+
+			mcv_save_translation(
+				$mcv_language_target,
+				$translation['source'],
+				$translation['translation'],
+				$translation['search'],
+				$translation['replace']
+			);
+		}
+	}
+
 	
-	// Merge know and new translations
+	/**
+	 * Merge know and new translations
+	 */
 	$translations = array_merge( $translations, $translations_new );
 
+
+	/**
+	 * Replace excluded HTML part by tab
+	 */
 	$excluded_elements = array();
 	$dom               = str_get_html( $html );
 
@@ -186,7 +220,10 @@ function mcv_ob_callback( $html ) {
 	$dom->save();
 	$html = (string) str_get_html( $dom );
 
-	// Replace original texts by translations
+	
+	/**
+	 * Replace original texts by translations
+	 */
 	foreach ( $translations as $translation ) {
 
 		// Check if translaton data is valid
@@ -218,32 +255,10 @@ function mcv_ob_callback( $html ) {
 		}
 	}
 
-	// Save new translation file
-	if ( ! empty( $translations_new ) ) {
 
-		foreach ( $translations_new as $key => $translation ) {
-
-			if (
-				! isset( $translation['source'] ) // Original text
-				|| ! isset( $translation['translation'] ) // Translater text
-				|| ! isset( $translation['search'] ) // Search
-				|| ! isset( $translation['replace'] ) // Replace
-			) {
-				continue;
-			}
-
-			// $translation['translation'] = stripslashes($translation['translation'] );
-
-			mcv_save_translation(
-				$mcv_language_target,
-				$translation['source'],
-				$translation['translation'],
-				$translation['search'],
-				$translation['replace']
-			);
-		}
-	}
-
+	/**
+	 * Replace tag by saved excluded HTML part
+	 */
 	foreach ( $excluded_elements as $key => $element ) {
 		$s    = '<div mcv-tag-exclude="' . esc_attr( $key ) . '"></div>';
 		$html = str_replace( $s, $element, $html );
