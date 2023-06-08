@@ -1,13 +1,13 @@
 jQuery(document).ready(function ($) {
 
-    var mcvWebsiteLanguage = $("#mcv_website_language").val();
-    var mcvTargetLanguages = JSON.parse($("#mcv_target_languages").val());
+    var wplngWebsiteLanguage = $("#wplng_website_language").val();
+    var wplngTargetLanguages = JSON.parse($("#wplng_target_languages").val());
 
-    function mcvTargetLanguagesIncludes(languageId) {
+    function wplngTargetLanguagesIncludes(languageId) {
 
         var returned = false;
 
-        mcvTargetLanguages.forEach(targetLanguage => {
+        wplngTargetLanguages.forEach(targetLanguage => {
             if (targetLanguage.id == languageId) {
                 returned = true;
             }
@@ -16,23 +16,23 @@ jQuery(document).ready(function ($) {
         return returned;
     }
 
-    function mcvGetOptionsWebsiteLanguageHTML() {
+    function wplngGetOptionsWebsiteLanguageHTML() {
 
         var languagesOptionsHTML = "";
 
-        mcvAllLanguages.forEach((language) => {
+        wplngAllLanguages.forEach((language) => {
 
             var selected = "";
             var disabled = "";
 
             if (
-                mcvWebsiteLanguage !== undefined &&
-                mcvWebsiteLanguage === language.id
+                wplngWebsiteLanguage !== undefined &&
+                wplngWebsiteLanguage === language.id
             ) {
                 selected = " selected";
             }
 
-            if (mcvTargetLanguagesIncludes(language.id)) {
+            if (wplngTargetLanguagesIncludes(language.id)) {
                 disabled = " disabled";
             }
 
@@ -50,20 +50,20 @@ jQuery(document).ready(function ($) {
         return languagesOptionsHTML;
     }
 
-    function mcvGetOptionstargetLanguagesHTML() {
+    function wplngGetOptionstargetLanguagesHTML() {
 
         var languagesOptionsHTML = "";
 
-        mcvAllLanguages.forEach((language) => {
+        wplngAllLanguages.forEach((language) => {
             var disabled = "";
             if (
-                mcvWebsiteLanguage !== undefined &&
-                mcvWebsiteLanguage === language.id
+                wplngWebsiteLanguage !== undefined &&
+                wplngWebsiteLanguage === language.id
             ) {
                 disabled = " disabled";
             }
 
-            if (mcvTargetLanguagesIncludes(language.id)) {
+            if (wplngTargetLanguagesIncludes(language.id)) {
                 disabled = " disabled";
             }
 
@@ -82,16 +82,16 @@ jQuery(document).ready(function ($) {
 
 
 
-    function mcvGetWebsiteLanguageFlagsHTML() {
+    function wplngGetWebsiteLanguageFlagsHTML() {
 
         var flagsRadiosHTML = "";
 
-        mcvAllLanguages.forEach((language) => {
+        wplngAllLanguages.forEach((language) => {
 
-            if (language.id == mcvWebsiteLanguage) {
+            if (language.id == wplngWebsiteLanguage) {
 
-                var textCustomRadio = $("#mcv-flags-radio-original-website-custom").text();
-                var websiteFlagUrl = $("#mcv_website_flag").val();
+                var textCustomRadio = $("#wplng-flags-radio-original-website-custom").text();
+                var websiteFlagUrl = $("#wplng_website_flag").val();
                 var flagFirstChecked = false;
                 var flagCustomChecked = " checked";
 
@@ -112,30 +112,30 @@ jQuery(document).ready(function ($) {
                         checked = " checked";
                         flagCustomChecked = "";
                         flagFirstChecked = false;
-                        $("#mcv_website_flag").val(flag.flag);
+                        $("#wplng_website_flag").val(flag.flag);
                     }
 
                     flagsRadiosHTML +=
-                        '<span class="mcv-flags-radio">' +
+                        '<span class="wplng-flags-radio">' +
                         '<input type="radio" ' +
-                        'name="mcv-website-flag" ' +
+                        'name="wplng-website-flag" ' +
                         'value="' + flag.flag + '" ' +
-                        'id="mcv-flag-' + flag.id + '"' + checked + '>' +
-                        '<label for="mcv-flag-' + flag.id + '">' +
+                        'id="wplng-flag-' + flag.id + '"' + checked + '>' +
+                        '<label for="wplng-flag-' + flag.id + '">' +
                         flag.name + ' (<img src="' + flag.flag + '">)' +
                         '</label></span>';
                 });
 
                 flagsRadiosHTML +=
-                    '<span class="mcv-flags-radio">' +
-                    '<input type="radio" name="mcv-website-flag" id="mcv-website-flag-custom" value="custom"' + flagCustomChecked + '>' +
-                    '<label for="mcv-website-flag-custom">' + textCustomRadio + '</label>' +
+                    '<span class="wplng-flags-radio">' +
+                    '<input type="radio" name="wplng-website-flag" id="wplng-website-flag-custom" value="custom"' + flagCustomChecked + '>' +
+                    '<label for="wplng-website-flag-custom">' + textCustomRadio + '</label>' +
                     '</span>';
 
                 if ("" != flagCustomChecked) {
-                    $("#mcv-website-flag-container").show();
+                    $("#wplng-website-flag-container").show();
                 } else {
-                    $("#mcv-website-flag-container").hide();
+                    $("#wplng-website-flag-container").hide();
                 }
             }
         });
@@ -145,18 +145,18 @@ jQuery(document).ready(function ($) {
 
 
 
-    function mcvGetTargetLanguagesListHTML() {
+    function wplngGetTargetLanguagesListHTML() {
 
         var html = "";
-        var htmlTemplate = $("#mcv-target-language-template").html();
+        var htmlTemplate = $("#wplng-target-language-template").html();
 
-        mcvAllLanguages.forEach((language) => {
+        wplngAllLanguages.forEach((language) => {
 
             var htmlElement = "";
 
-            if (mcvTargetLanguagesIncludes(language.id)) {
+            if (wplngTargetLanguagesIncludes(language.id)) {
 
-                var textCustomRadio = $("#mcv-flags-radio-original-website-custom").text();
+                var textCustomRadio = $("#wplng-flags-radio-original-website-custom").text();
                 var flagsRadiosHTML = "";
                 var flagFirstChecked = false;
                 var flagCustomChecked = " checked";
@@ -183,24 +183,24 @@ jQuery(document).ready(function ($) {
                     }
 
                     flagsRadiosHTML +=
-                        '<span class="mcv-subflags-radio">' +
+                        '<span class="wplng-subflags-radio">' +
                         '<input type="radio" ' +
-                        'name="mcv-target-subflag-' + language.id + '" ' +
+                        'name="wplng-target-subflag-' + language.id + '" ' +
                         'value="' + flag.flag + '" ' +
-                        'mcv-target-lang="' + language.id + '" ' +
-                        'id="mcv-subflag-' + language.id + '-' + flag.id + '"' + checked + '>' +
-                        '<label for="mcv-subflag-' + language.id + '-' + flag.id + '">' +
+                        'wplng-target-lang="' + language.id + '" ' +
+                        'id="wplng-subflag-' + language.id + '-' + flag.id + '"' + checked + '>' +
+                        '<label for="wplng-subflag-' + language.id + '-' + flag.id + '">' +
                         flag.name + ' (<img src="' + flag.flag + '">)' +
                         '</label></span>';
                 });
 
                 flagsRadiosHTML +=
-                    '<span class="mcv-flags-radio">' +
-                    '<input type="radio" name="mcv-target-subflag-' + language.id +
-                    '" id="mcv-target-flag-custom-' + language.id + '" value="custom"' +
-                    ' mcv-target-lang="' + language.id + '" ' +
+                    '<span class="wplng-flags-radio">' +
+                    '<input type="radio" name="wplng-target-subflag-' + language.id +
+                    '" id="wplng-target-flag-custom-' + language.id + '" value="custom"' +
+                    ' wplng-target-lang="' + language.id + '" ' +
                     flagCustomChecked + '>' +
-                    '<label for="mcv-target-flag-custom-' +
+                    '<label for="wplng-target-flag-custom-' +
                     language.id + '">' + textCustomRadio + '</label>' +
                     '</span>';
 
@@ -208,11 +208,11 @@ jQuery(document).ready(function ($) {
                 htmlElement = htmlElement.replaceAll("[NAME]", language.name);
                 htmlElement = htmlElement.replaceAll("[LANG]", language.id);
                 var htmlFlag =
-                    '<img src="' + targetFlagUrl + '" class="mcv-target-language">';
+                    '<img src="' + targetFlagUrl + '" class="wplng-target-language">';
                 htmlElement = htmlElement.replaceAll("[FLAG]", htmlFlag);
                 htmlElement = htmlElement.replaceAll("[FLAGS_OPTIONS]", flagsRadiosHTML);
 
-                var htmlInput = '<input type="url" class="mcv-target-subflag" mcv-target-lang="' + language.id + '" value="' + language.flag + '" />';
+                var htmlInput = '<input type="url" class="wplng-target-subflag" wplng-target-lang="' + language.id + '" value="' + language.flag + '" />';
                 htmlElement = htmlElement.replaceAll("[INPUT]", htmlInput);
                 html += htmlElement;
             }
@@ -222,12 +222,12 @@ jQuery(document).ready(function ($) {
     }
 
     // Option Page : Click on "Add" button for new language target
-    $("#mcv-target-lang-add").on("click", function () {
+    $("#wplng-target-lang-add").on("click", function () {
 
-        var newTargetId = $("#mcv_add_new_target_language").val();
+        var newTargetId = $("#wplng_add_new_target_language").val();
         var newTargetFlag = "";
 
-        mcvAllLanguages.forEach((language) => {
+        wplngAllLanguages.forEach((language) => {
             if (language.id == newTargetId) {
                 newTargetFlag = language.flag;
             }
@@ -238,71 +238,71 @@ jQuery(document).ready(function ($) {
             "flag": newTargetFlag
         };
 
-        if (!mcvTargetLanguagesIncludes(newTargetId)) {
-            mcvTargetLanguages.push(newTarget);
+        if (!wplngTargetLanguagesIncludes(newTargetId)) {
+            wplngTargetLanguages.push(newTarget);
         }
 
-        mcvUpdateOptionPage();
+        wplngUpdateOptionPage();
     });
 
-    $("#mcv-target-languages-list").on(
+    $("#wplng-target-languages-list").on(
         "click",
-        ".mcv-target-lang-remove",
+        ".wplng-target-lang-remove",
         (event) => {
 
             var newTargetLanguages = [];
-            var removed = $(event.target).attr("mcv-target-lang");
+            var removed = $(event.target).attr("wplng-target-lang");
 
-            mcvTargetLanguages.forEach((language) => {
+            wplngTargetLanguages.forEach((language) => {
                 if (language.id != removed) {
                     newTargetLanguages.push(language);
                 }
             });
 
-            mcvTargetLanguages = newTargetLanguages;
+            wplngTargetLanguages = newTargetLanguages;
 
-            mcvUpdateOptionPage();
+            wplngUpdateOptionPage();
         }
     );
 
-    $("#mcv_website_language").on("change", function () {
-        mcvWebsiteLanguage = $("#mcv_website_language").val();
-        $("#mcv_website_flag").val("");
-        $("#mcv_add_new_target_language").html(mcvGetOptionstargetLanguagesHTML());
-        $("#mcv-flags-radio-original-website").html(mcvGetWebsiteLanguageFlagsHTML());
+    $("#wplng_website_language").on("change", function () {
+        wplngWebsiteLanguage = $("#wplng_website_language").val();
+        $("#wplng_website_flag").val("");
+        $("#wplng_add_new_target_language").html(wplngGetOptionstargetLanguagesHTML());
+        $("#wplng-flags-radio-original-website").html(wplngGetWebsiteLanguageFlagsHTML());
     });
 
 
-    $('#mcv-flags-radio-original-website').on("click", "input[type=radio][name=mcv-website-flag]", function () {
-        if ($("#mcv-website-flag-custom").is(':checked')) {
-            $("#mcv-website-flag-container").slideDown("fast");
+    $('#wplng-flags-radio-original-website').on("click", "input[type=radio][name=wplng-website-flag]", function () {
+        if ($("#wplng-website-flag-custom").is(':checked')) {
+            $("#wplng-website-flag-container").slideDown("fast");
         } else {
-            $("#mcv-website-flag-container").slideUp("fast");
-            $("#mcv_website_flag").val($(this).val());
+            $("#wplng-website-flag-container").slideUp("fast");
+            $("#wplng_website_flag").val($(this).val());
         }
     });
 
-    $("#mcv-target-languages-list").on("click", ".mcv-target-lang-update-flag", function () {
-        var languageId = $(this).attr("mcv-target-lang");
-        var selector = "#mcv-target-languages-list .mcv-flag-target-container[mcv-target-lang=" + languageId + "]";
+    $("#wplng-target-languages-list").on("click", ".wplng-target-lang-update-flag", function () {
+        var languageId = $(this).attr("wplng-target-lang");
+        var selector = "#wplng-target-languages-list .wplng-flag-target-container[wplng-target-lang=" + languageId + "]";
 
         $(selector).slideToggle();
     });
 
-    $('#mcv-target-languages-list').on("click", "input[type=radio]", function () {
+    $('#wplng-target-languages-list').on("click", "input[type=radio]", function () {
 
-        var selectedFlagId = $(this).attr("mcv-target-lang");
+        var selectedFlagId = $(this).attr("wplng-target-lang");
         var selectedFlagVal = $(this).val();
-        var selectorSubflagContainer = ".mcv-subflag-target-custom[mcv-target-lang=" + selectedFlagId + "]";
+        var selectorSubflagContainer = ".wplng-subflag-target-custom[wplng-target-lang=" + selectedFlagId + "]";
 
         if (selectedFlagVal == "custom") {
             $(selectorSubflagContainer).slideDown("fast");
         } else {
             $(selectorSubflagContainer).slideUp("fast");
-            $(".mcv-target-subflag[mcv-target-lang=" + selectedFlagId + "]").val(selectedFlagVal);
+            $(".wplng-target-subflag[wplng-target-lang=" + selectedFlagId + "]").val(selectedFlagVal);
 
             var newTargetLanguages = [];
-            mcvTargetLanguages.forEach(language => {
+            wplngTargetLanguages.forEach(language => {
                 if (language.id == selectedFlagId) {
                     newTargetLanguages.push({
                         "id": language.id,
@@ -313,18 +313,18 @@ jQuery(document).ready(function ($) {
                 }
             });
 
-            mcvTargetLanguages = newTargetLanguages;
-            $("#mcv_target_languages").val(JSON.stringify(newTargetLanguages));
+            wplngTargetLanguages = newTargetLanguages;
+            $("#wplng_target_languages").val(JSON.stringify(newTargetLanguages));
         }
     });
 
-    $("#mcv-target-languages-list").on("input", ".mcv-target-subflag", function () {
+    $("#wplng-target-languages-list").on("input", ".wplng-target-subflag", function () {
 
-        var selectedFlagId = $(this).attr("mcv-target-lang");
+        var selectedFlagId = $(this).attr("wplng-target-lang");
         var selectedFlagVal = $(this).val();
         var newTargetLanguages = [];
 
-        mcvTargetLanguages.forEach(language => {
+        wplngTargetLanguages.forEach(language => {
             if (language.id == selectedFlagId) {
                 newTargetLanguages.push({
                     "id": language.id,
@@ -335,19 +335,19 @@ jQuery(document).ready(function ($) {
             }
         });
 
-        mcvTargetLanguages = newTargetLanguages;
-        $("#mcv_target_languages").val(JSON.stringify(newTargetLanguages));
+        wplngTargetLanguages = newTargetLanguages;
+        $("#wplng_target_languages").val(JSON.stringify(newTargetLanguages));
     });
 
-    function mcvUpdateOptionPage() {
-        $("#mcv_website_language").html(mcvGetOptionsWebsiteLanguageHTML());
-        $("#mcv_add_new_target_language").html(mcvGetOptionstargetLanguagesHTML());
-        $("#mcv-flags-radio-original-website").html(mcvGetWebsiteLanguageFlagsHTML());
-        $("#mcv-target-languages-list").html(mcvGetTargetLanguagesListHTML());
-        $("#mcv_target_languages").val(JSON.stringify(mcvTargetLanguages));
+    function wplngUpdateOptionPage() {
+        $("#wplng_website_language").html(wplngGetOptionsWebsiteLanguageHTML());
+        $("#wplng_add_new_target_language").html(wplngGetOptionstargetLanguagesHTML());
+        $("#wplng-flags-radio-original-website").html(wplngGetWebsiteLanguageFlagsHTML());
+        $("#wplng-target-languages-list").html(wplngGetTargetLanguagesListHTML());
+        $("#wplng_target_languages").val(JSON.stringify(wplngTargetLanguages));
     }
 
-    mcvUpdateOptionPage();
+    wplngUpdateOptionPage();
 
 }); // End jQuery loaded event
 

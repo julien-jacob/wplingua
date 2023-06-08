@@ -10,8 +10,8 @@ require_once 'inc/main.php';
 
 require_once 'inc/translate.php'; // TODO : Move !
 
-echo mcvapi_WPLINGUA_API();
+echo wplngapi_wplingua_api();
 
-// $translation = mcvapi_translate( 'en', 'fr', 'Still Life and the power of painting – Envince' );
+// $translation = wplngapi_translate( 'en', 'fr', 'Still Life and the power of painting – Envince' );
 // var_dump($translation);
 

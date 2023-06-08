@@ -7,7 +7,7 @@ if ( ! defined( 'WPLINGUA_API' ) ) {
 
 
 
-function mcvapi_translate_from_cache( $language_source, $language_target, $text ) {
+function wplngapi_translate_from_cache( $language_source, $language_target, $text ) {
 	$path = './translation-cache/' . $language_source . '-' . $language_target . '.json';
 	$json = file_get_contents( $path );
 
@@ -27,7 +27,7 @@ function mcvapi_translate_from_cache( $language_source, $language_target, $text 
 	return false;
 }
 
-function mcvapi_translate_add_cache( $language_source, $language_target, $text, $translation ) {
+function wplngapi_translate_add_cache( $language_source, $language_target, $text, $translation ) {
 
 	$path = './translation-cache/' . $language_source . '-' . $language_target . '.json';
 	$json = file_get_contents( $path );

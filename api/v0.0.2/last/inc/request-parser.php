@@ -5,18 +5,18 @@ if ( ! defined( 'WPLINGUA_API' ) ) {
 }
 
 
-function mcvapi_request_parser() {
+function wplngapi_request_parser() {
 
 	if ( empty( $_POST['source'] ) ) {
-		mcvapi_error_die( 6 );
+		wplngapi_error_die( 6 );
 	}
 
 	if ( empty( $_POST['target'] ) ) {
-		mcvapi_error_die( 7 );
+		wplngapi_error_die( 7 );
 	}
 
 	if ( empty( $_POST['text'] ) ) {
-		mcvapi_error_die( 8 );
+		wplngapi_error_die( 8 );
 	}
 
 	require_once './lib/simple_html_dom.php';
@@ -69,7 +69,7 @@ function mcvapi_request_parser() {
 	// 	}
 	// 	// End Check if text is already in $translations
 
-	// 	// $translation = mcvapi_translate( $_POST['source'], $_POST['target'], $s );
+	// 	// $translation = wplngapi_translate( $_POST['source'], $_POST['target'], $s );
 
 	// 	$translations[] = array(
 	// 		'source'      => $s,
@@ -116,8 +116,8 @@ function mcvapi_request_parser() {
 		$translations[] = array(
 			'source'      => str_replace("\\", "\\\\",$original_text),
 			'translation' => '',
-			'search'      => '#>(\s*)MCV(\s*)<#Uis',
-			'replace'     => '>$1MCV$2<',
+			'search'      => '#>(\s*)WPLNG(\s*)<#Uis',
+			'replace'     => '>$1WPLNG$2<',
 		);
 
 	}
@@ -145,7 +145,7 @@ function mcvapi_request_parser() {
 		if ( strlen( $temp ) >= 1600 ) {
 
 			// $yy .= $to_translate . "\n";
-			$translated  .= mcvapi_translate( $_POST['source'], $_POST['target'], $to_translate );
+			$translated  .= wplngapi_translate( $_POST['source'], $_POST['target'], $to_translate );
 			$to_translate = $text;
 		} else {
 			$to_translate = $temp;
@@ -153,7 +153,7 @@ function mcvapi_request_parser() {
 	}
 
 	// $yy .= $to_translate . "\n";
-	$translated .= mcvapi_translate( $_POST['source'], $_POST['target'], $to_translate );
+	$translated .= wplngapi_translate( $_POST['source'], $_POST['target'], $to_translate );
 
 	// $end_time       = microtime( true );
 	// $execution_time = $end_time - $start_time;

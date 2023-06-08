@@ -5,15 +5,15 @@ if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
-function mcv_replace_og_local( $html ) {
+function wplng_replace_og_local( $html ) {
 
-	if ( ! mcv_url_current_is_translatable() ) {
+	if ( ! wplng_url_current_is_translatable() ) {
 		return $html;
 	}
 
 	$html = preg_replace(
 		'#<meta (.*?)?property=(\"|\')og:locale(\"|\') (.*?)?>#',
-		'<meta property=$2og:locale$2 content=$2' . mcv_get_language_current_id() . '$2>',
+		'<meta property=$2og:locale$2 content=$2' . wplng_get_language_current_id() . '$2>',
 		$html
 	);
 
@@ -21,9 +21,9 @@ function mcv_replace_og_local( $html ) {
 }
 
 
-function mcv_language_attributes( $attr ) {
+function wplng_language_attributes( $attr ) {
 
-	$language_current_id = mcv_get_language_current_id();
+	$language_current_id = wplng_get_language_current_id();
 
 	if ( is_admin() || empty( $language_current_id ) ) {
 		return $attr;
@@ -40,18 +40,18 @@ function mcv_language_attributes( $attr ) {
 
 
 
-function mcv_link_alternate_hreflang() {
+function wplng_link_alternate_hreflang() {
 
 	$html = '';
 
 	// Create alternate link for website language
-	$language_website = mcv_get_language_website();
-	$html            .= '<link rel="alternate" hreflang="' . esc_attr( $language_website['id'] ) . '" href="' . esc_url( mcv_get_url_original() ) . '">';
+	$language_website = wplng_get_language_website();
+	$html            .= '<link rel="alternate" hreflang="' . esc_attr( $language_website['id'] ) . '" href="' . esc_url( wplng_get_url_original() ) . '">';
 
 	// Create alternate link for each target languages
-	$languages_target = mcv_get_languages_target();
+	$languages_target = wplng_get_languages_target();
 	foreach ( $languages_target as $key => $language_target ) {
-		$url   = mcv_get_url_current_for_language( $language_target['id'] );
+		$url   = wplng_get_url_current_for_language( $language_target['id'] );
 		$html .= '<link rel="alternate" hreflang="' . esc_attr( $language_target['id'] ) . '" href="' . esc_url( $url ) . '">';
 	}
 
@@ -60,24 +60,24 @@ function mcv_link_alternate_hreflang() {
 
 
 
-function mcv_init() {
+function wplng_init() {
 
-	if ( ! mcv_url_current_is_translatable() ) {
+	if ( ! wplng_url_current_is_translatable() ) {
 		return;
 	}
 
-	global $mcv_request_uri;
+	global $wplng_request_uri;
 
-	$current_path           = $mcv_request_uri;
+	$current_path           = $wplng_request_uri;
 	$origin_path            = '/' . substr( $current_path, 4, strlen( $current_path ) - 1 );
 	$_SERVER['REQUEST_URI'] = $origin_path;
 
-	ob_start( 'mcv_ob_callback' );
+	ob_start( 'wplng_ob_callback' );
 }
 
 
 
-function mcv_ob_callback( $html ) {
+function wplng_ob_callback( $html ) {
 
 	$selector_clear = array(
 		'style',
@@ -117,8 +117,8 @@ function mcv_ob_callback( $html ) {
 	/**
 	 * Get saved translation
 	 */
-	$mcv_language_target = mcv_get_language_current_id();
-	$translations        = mcv_get_saved_translations( $mcv_language_target );
+	$wplng_language_target = wplng_get_language_current_id();
+	$translations        = wplng_get_saved_translations( $wplng_language_target );
 	// return '<pre >' . var_export($html_clear, true) . '</pre>';
 
 	/**
@@ -138,14 +138,14 @@ function mcv_ob_callback( $html ) {
 
 		// TODO : Mettre preg_quote() plutôt sur $regex ?
 		$regex = str_replace(
-			'MCV',
+			'WPLNG',
 			preg_quote( $translation['source'] ),
-			// '#>(\s*)MCV(\s*)<#Uis'
+			// '#>(\s*)wplng(\s*)<#Uis'
 			$translation['search']
 		);
 
 		$replace = str_replace(
-			'MCV',
+			'WPLNG',
 			'',
 			$translation['replace']
 		);
@@ -157,17 +157,18 @@ function mcv_ob_callback( $html ) {
 			$html_clear
 		);
 	}
-	// return '<pre >' . var_export($html_clear, true) . '</pre>';
+	// return $html_clear;
+	
 
 
 	/**
 	 * Get new translation from API
 	 */
-	$translations_new = mcv_parser( $html_clear );
-
+	$translations_new = wplng_parser( $html_clear );
+// return '<pre >' . var_export($translations_new, true) . '</pre>';
 
 	/**
-	 * Save new translation as mcv_translation CPT
+	 * Save new translation as wplng_translation CPT
 	 */
 	if ( ! empty( $translations_new ) ) {
 
@@ -182,8 +183,8 @@ function mcv_ob_callback( $html ) {
 				continue;
 			}
 
-			mcv_save_translation(
-				$mcv_language_target,
+			wplng_save_translation(
+				$wplng_language_target,
 				$translation['source'],
 				$translation['translation'],
 				$translation['search'],
@@ -213,7 +214,7 @@ function mcv_ob_callback( $html ) {
 		foreach ( $dom->find( $selector ) as $element ) {
 			$excluded_elements[] = $element->outertext;
 			$attr                = count( $excluded_elements ) - 1;
-			$element->outertext  = '<div mcv-tag-exclude="' . esc_attr( $attr ) . '"></div>';
+			$element->outertext  = '<div wplng-tag-exclude="' . esc_attr( $attr ) . '"></div>';
 		}
 	}
 
@@ -239,13 +240,13 @@ function mcv_ob_callback( $html ) {
 		if ( ! empty( $translation['source'] ) ) {
 
 			$regex = str_replace(
-				'MCV',
+				'WPLNG',
 				preg_quote( $translation['source'] ),
 				$translation['search']
 			);
 
 			$replace = str_replace(
-				'MCV',
+				'WPLNG',
 				$translation['translation'],
 				$translation['replace']
 			);
@@ -260,11 +261,11 @@ function mcv_ob_callback( $html ) {
 	 * Replace tag by saved excluded HTML part
 	 */
 	foreach ( $excluded_elements as $key => $element ) {
-		$s    = '<div mcv-tag-exclude="' . esc_attr( $key ) . '"></div>';
+		$s    = '<div wplng-tag-exclude="' . esc_attr( $key ) . '"></div>';
 		$html = str_replace( $s, $element, $html );
 	}
 
-	$html = apply_filters( 'mcv_html_translated', $html );
+	$html = apply_filters( 'wplng_html_translated', $html );
 
 	return $html;
 }

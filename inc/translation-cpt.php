@@ -6,13 +6,13 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 
-function mcv_register_post_type_translation() {
+function wplng_register_post_type_translation() {
 	register_post_type(
-		'mcv_translation',
+		'wplng_translation',
 		array(
 			'labels'              => array(
-				'name'          => __( 'Translations', 'machiavel' ),
-				'singular_name' => __( 'Translation', 'machiavel' ),
+				'name'          => __( 'Translations', 'wplingua' ),
+				'singular_name' => __( 'Translation', 'wplingua' ),
 			),
 			'public'              => false,  // it's not public, it shouldn't have it's own permalink, and so on
 			'publicly_queryable'  => true,  // you should be able to query it

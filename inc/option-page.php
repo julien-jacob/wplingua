@@ -11,25 +11,25 @@ if ( ! defined( 'WPINC' ) ) {
  *
  * @return void
  */
-function mcv_create_menu() {
+function wplng_create_menu() {
 
 	add_menu_page(
-		__( 'Machiavel : Settings', 'machiavel' ),
-		__( 'Machiavel Settings', 'machiavel' ),
+		__( 'wpLingua : Settings', 'wplingua' ),
+		__( 'wpLingua', 'wplingua' ),
 		'administrator',
 		__FILE__,
-		'mcv_settings',
+		'wplng_settings',
 		'dashicons-admin-site'
 		// plugins_url( '/images/icon.png', __FILE__ )
 	);
 
 	// add_submenu_page(
 	// 	'options-general.php',
-	// 	__( 'Machiavel : Settings', 'machiavel' ),
-	// 	__( 'Machiavel Settings', 'machiavel' ),
+	// 	__( 'wplingua : Settings', 'wplingua' ),
+	// 	__( 'wplingua Settings', 'wplingua' ),
 	// 	'administrator',
-	// 	'mcv-settings',
-	// 	'mcv_settings'
+	// 	'wplng-settings',
+	// 	'wplng_settings'
 	// );
 
 }
@@ -40,11 +40,11 @@ function mcv_create_menu() {
  *
  * @return void
  */
-function mcv_register_settings() {
+function wplng_register_settings() {
 
-	register_setting( 'mcv_settings', 'mcv_website_language' );
-	register_setting( 'mcv_settings', 'mcv_website_flag' );
-	register_setting( 'mcv_settings', 'mcv_target_languages' );
+	register_setting( 'wplng_settings', 'wplng_website_language' );
+	register_setting( 'wplng_settings', 'wplng_website_flag' );
+	register_setting( 'wplng_settings', 'wplng_target_languages' );
 
 }
 
@@ -55,17 +55,17 @@ function mcv_register_settings() {
  * @param array $settings
  * @return array
  */
-function mcv_settings_link( $settings ) {
+function wplng_settings_link( $settings ) {
 
 	$url = esc_url(
 		add_query_arg(
 			'page',
-			'machiavel/inc/option-page.php',
+			'wplingua/inc/option-page.php',
 			get_admin_url() . 'admin.php'
 		)
 	);
 
-	$settings[] = '<a href="' . $url . '">' . __( 'Settings', 'machiavel' ) . '</a>';
+	$settings[] = '<a href="' . $url . '">' . __( 'Settings', 'wplingua' ) . '</a>';
 
 	return $settings;
 }
@@ -76,31 +76,31 @@ function mcv_settings_link( $settings ) {
  *
  * @return void
  */
-function mcv_settings() {
+function wplng_settings() {
 	?>
 	<div class="wrap">
 		
-		<h1><?php _e( 'Machiavel Translate : Multilingual solution', 'machiavel' ); ?></h1>
+		<h1><?php _e( 'wpLingua Translate : Multilingual solution', 'wplingua' ); ?></h1>
 
 		<form method="post" action="options.php">
 			<?php
-			settings_fields( 'mcv_settings' );
-			do_settings_sections( 'mcv_settings' );
+			settings_fields( 'wplng_settings' );
+			do_settings_sections( 'wplng_settings' );
 			?>
 			<table class="form-table">
 				<tr>
-					<th scope="row"><?php _e( 'Website language', 'machiavel' ); ?></th>
+					<th scope="row"><?php _e( 'Website language', 'wplingua' ); ?></th>
 					<td>
 						<fieldset>
-							<?php mcv_settings_part_language_website(); ?>
+							<?php wplng_settings_part_language_website(); ?>
 						</fieldset>
 					</td>
 				</tr>
 				<tr>
-					<th scope="row"><?php _e( 'Translated languages', 'machiavel' ); ?></th>
+					<th scope="row"><?php _e( 'Translated languages', 'wplingua' ); ?></th>
 					<td>
 						<fieldset>
-							<?php mcv_settings_part_languages_target(); ?>
+							<?php wplng_settings_part_languages_target(); ?>
 						</fieldset>
 					</td>
 				</tr>
@@ -114,25 +114,25 @@ function mcv_settings() {
 }
 
 
-function mcv_settings_part_language_website() {
+function wplng_settings_part_language_website() {
 	?>
 	<legend class="screen-reader-text">
-		<span><?php _e( 'Website language', 'machiavel' ); ?></span>
+		<span><?php _e( 'Website language', 'wplingua' ); ?></span>
 	</legend>
 
-	<label for="mcv_website_language">
-		<?php _e( 'The original website language: ', 'machiavel' ); ?>
+	<label for="wplng_website_language">
+		<?php _e( 'The original website language: ', 'wplingua' ); ?>
 	</label>
 
-	<select id="mcv_website_language" name="mcv_website_language">
+	<select id="wplng_website_language" name="wplng_website_language">
 		<?php
 		$website_language_saved = true;
-		if ( empty( mcv_get_language_website_id() ) ) {
+		if ( empty( wplng_get_language_website_id() ) ) {
 			$website_language_saved = false;
 		} else {
 
-			$website_language_id = mcv_get_language_website_id();
-			$website_language    = mcv_get_language_by_id( $website_language_id );
+			$website_language_id = wplng_get_language_website_id();
+			$website_language    = wplng_get_language_by_id( $website_language_id );
 
 			if ( ! empty( $website_language['id'] )
 				&& ! empty( $website_language['name'] )
@@ -144,7 +144,7 @@ function mcv_settings_part_language_website() {
 		}
 
 		if ( ! $website_language_saved ) {
-			echo '<option value="">' . __( 'Please choose an option', 'machiavel' ) . '</option>';
+			echo '<option value="">' . __( 'Please choose an option', 'wplingua' ) . '</option>';
 		}
 		?>
 	</select>
@@ -153,20 +153,20 @@ function mcv_settings_part_language_website() {
 	<br>
 
 	<legend class="screen-reader-text">
-		<span><?php _e( 'Website flag', 'machiavel' ); ?></span>
+		<span><?php _e( 'Website flag', 'wplingua' ); ?></span>
 	</legend>
 
-	<div id="mcv-flags-radio-original-website-custom"><?php _e( 'Custom', 'machiavel' ); ?></div>
+	<div id="wplng-flags-radio-original-website-custom"><?php _e( 'Custom', 'wplingua' ); ?></div>
 
-	<span><?php _e( 'The original website flag: ', 'machiavel' ); ?></span>
-	<span id="mcv-flags-radio-original-website"></span>
+	<span><?php _e( 'The original website flag: ', 'wplingua' ); ?></span>
+	<span id="wplng-flags-radio-original-website"></span>
 
 	<br>
 	<br>
 
-	<div id="mcv-website-flag-container">
-		<?php _e( 'Custom flag URL (64px*64px recommended) : ', 'machiavel' ); ?>
-		<input type="url" name="mcv_website_flag" id="mcv_website_flag" value="<?php echo esc_url( mcv_get_language_website_flag() ); ?>" />
+	<div id="wplng-website-flag-container">
+		<?php _e( 'Custom flag URL (64px*64px recommended) : ', 'wplingua' ); ?>
+		<input type="url" name="wplng_website_flag" id="wplng_website_flag" value="<?php echo esc_url( wplng_get_language_website_flag() ); ?>" />
 	</div>
 
 	<hr>
@@ -174,9 +174,9 @@ function mcv_settings_part_language_website() {
 }
 
 
-function mcv_settings_part_languages_target() {
+function wplng_settings_part_languages_target() {
 
-	$languages_target     = mcv_get_languages_target_simplified();
+	$languages_target     = wplng_get_languages_target_simplified();
 	$languages_target_ids = array();
 
 	foreach ( $languages_target as $key => $language_target ) {
@@ -185,37 +185,37 @@ function mcv_settings_part_languages_target() {
 		}
 	}
 
-	$languages_target = mcv_get_language_by_ids( $languages_target_ids );
+	$languages_target = wplng_get_language_by_ids( $languages_target_ids );
 
 	?>
 	<legend class="screen-reader-text">
-		<span><?php _e( 'Translated languages', 'machiavel' ); ?></span>
+		<span><?php _e( 'Translated languages', 'wplingua' ); ?></span>
 	</legend>
 
-	<label for="mcv_target_language">
-		<?php _e( 'Add new target Language: ', 'machiavel' ); ?>
+	<label for="wplng_target_language">
+		<?php _e( 'Add new target Language: ', 'wplingua' ); ?>
 	</label>							
 
-	<select id="mcv_add_new_target_language" name="mcv_add_new_target_language"></select>
+	<select id="wplng_add_new_target_language" name="wplng_add_new_target_language"></select>
 
-	<a class="button button-primary" id="mcv-target-lang-add" href="javascript:void(0);"><?php _e( 'Add', 'machiavel' ); ?></a>
+	<a class="button button-primary" id="wplng-target-lang-add" href="javascript:void(0);"><?php _e( 'Add', 'wplingua' ); ?></a>
 
 	<hr>
 	<br>
 	
-	<p><strong><?php _e( 'Current target languages: ', 'machiavel' ); ?></strong></p>
+	<p><strong><?php _e( 'Current target languages: ', 'wplingua' ); ?></strong></p>
 
 	<hr>
 
-	<div id="mcv-target-language-template">
-		<div class="mcv-target-language">
-			[FLAG][NAME] - <a href="javascript:void(0);" class="mcv-target-lang-update-flag" mcv-target-lang="[LANG]"><?php _e( 'Edit flag', 'machiavel' ); ?></a> - <a href="javascript:void(0);" class="mcv-target-lang-remove" mcv-target-lang="[LANG]"><?php _e( 'Remove', 'machiavel' ); ?></a>
-			<div class="mcv-flag-target-container" mcv-target-lang="[LANG]">
+	<div id="wplng-target-language-template">
+		<div class="wplng-target-language">
+			[FLAG][NAME] - <a href="javascript:void(0);" class="wplng-target-lang-update-flag" wplng-target-lang="[LANG]"><?php _e( 'Edit flag', 'wplingua' ); ?></a> - <a href="javascript:void(0);" class="wplng-target-lang-remove" wplng-target-lang="[LANG]"><?php _e( 'Remove', 'wplingua' ); ?></a>
+			<div class="wplng-flag-target-container" wplng-target-lang="[LANG]">
 				<br>
-				<span><?php _e( 'Flag: ', 'machiavel' ); ?></span>
-				<span class="mcv-subflags-radio-target-website">[FLAGS_OPTIONS]</span>
-				<div class="mcv-subflag-target-custom" mcv-target-lang="[LANG]">
-					<?php _e( 'Custom flag URL (64px*64px recommended) : ', 'machiavel' ); ?>
+				<span><?php _e( 'Flag: ', 'wplingua' ); ?></span>
+				<span class="wplng-subflags-radio-target-website">[FLAGS_OPTIONS]</span>
+				<div class="wplng-subflag-target-custom" wplng-target-lang="[LANG]">
+					<?php _e( 'Custom flag URL (64px*64px recommended) : ', 'wplingua' ); ?>
 					[INPUT]
 				</div>
 			</div>
@@ -223,8 +223,8 @@ function mcv_settings_part_languages_target() {
 		</div>
 	</div>
 
-	<div id="mcv-target-languages-list"></div>
+	<div id="wplng-target-languages-list"></div>
 	
-	<textarea name="mcv_target_languages" id="mcv_target_languages"><?php echo esc_textarea( json_encode( $languages_target, true ) ); ?></textarea>
+	<textarea name="wplng_target_languages" id="wplng_target_languages"><?php echo esc_textarea( json_encode( $languages_target, true ) ); ?></textarea>
 	<?php
 }
