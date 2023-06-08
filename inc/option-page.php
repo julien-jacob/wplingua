@@ -80,7 +80,9 @@ function wplng_settings() {
 	?>
 	<div class="wrap">
 		
-		<h1><?php _e( 'wpLingua Translate : Multilingual solution', 'wplingua' ); ?></h1>
+		<h1><?php _e( 'wpLingua : Translation solution for multilingual website', 'wplingua' ); ?></h1>
+
+		<br>
 
 		<form method="post" action="options.php">
 			<?php

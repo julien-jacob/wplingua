@@ -401,5 +401,39 @@ function wplng_get_languages_data() {
 				),
 			),
 		),
+		array(
+			'name'  => __( 'Russian', 'wplingua' ),
+			'id'    => 'ru',
+			'flag'  => 'ru',
+			'emoji' => '🇷🇺',
+			'flags' => array(
+				array(
+					'name'  => __( 'Russia', 'wplingua' ),
+					'id'    => 'ru',
+					'flag'  => 'ru',
+					'emoji' => '🇷🇺',
+				),
+			),
+		),
+		array(
+			'name'  => __( 'Chinese', 'wplingua' ),
+			'id'    => 'zh',
+			'flag'  => 'zh',
+			'emoji' => '🇨🇳',
+			'flags' => array(
+				array(
+					'name'  => __( 'China', 'wplingua' ),
+					'id'    => 'zh',
+					'flag'  => 'zh',
+					'emoji' => '🇨🇳',
+				),
+				array(
+					'name'  => __( 'Hong Kong', 'wplingua' ),
+					'id'    => 'hk',
+					'flag'  => 'hk',
+					'emoji' => '🇭🇰',
+				),
+			),
+		),
 	);
 }
