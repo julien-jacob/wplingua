@@ -70,7 +70,7 @@ function wplng_translation_meta_box_html_output( $post ) {
 				$textarea      = esc_html( $translation['translation'] );
 				$name          = esc_attr( 'wplng_translation_' . $language_id );
 
-				if ( '[wplng_EMPTY]' === $textarea ) {
+				if ( '[WPLNG_EMPTY]' === $textarea ) {
 					$textarea = '';
 				}
 
@@ -135,7 +135,7 @@ function wplng_translation_save_meta_boxes_data( $post_id ) {
 
 			$temp = $_REQUEST[ $name ];
 			if (empty($temp)) {
-				$temp = '[wplng_EMPTY]';
+				$temp = '[WPLNG_EMPTY]';
 			}
 
 			$translations[$key]['translation'] = stripslashes($temp);

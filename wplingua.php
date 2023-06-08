@@ -18,6 +18,8 @@ require_once 'inc/api.php';
 require_once 'inc/assets.php';
 require_once 'inc/html-updater.php';
 require_once 'inc/languages.php';
+require_once 'inc/ob-callback-editor.php';
+require_once 'inc/ob-callback-translate.php';
 require_once 'inc/option-page.php';
 require_once 'inc/switcher.php';
 require_once 'inc/translation-cpt.php';
@@ -39,7 +41,7 @@ function wplng_start() {
 	// Add metabox for wplng_translation
 	add_action( 'add_meta_boxes_wplng_translation', 'meta_box_for_products' );
 
-	// Save metabox on posts saving 
+	// Save metabox on posts saving
 	add_action( 'save_post_wplng_translation', 'wplng_translation_save_meta_boxes_data', 10, 2 );
 
 	/**

@@ -37,7 +37,7 @@ function wplng_get_saved_translation_from_original( $original ) {
 
 
 
-function wplng_get_saved_translations( $target_language_id ) {
+function wplng_get_translations_saved( $target_language_id ) {
 
 	$translations = array();
 	$args         = array(
@@ -49,11 +49,13 @@ function wplng_get_saved_translations( $target_language_id ) {
 	// The Loop
 	while ( $the_query->have_posts() ) {
 
-		$translation = array();
-
 		$the_query->the_post();
 
+		$translation = array();
+
 		$meta = get_post_meta( get_the_ID() );
+
+		$translation['post_id'] = get_the_ID();
 
 		// Get translation for current language target
 
@@ -71,7 +73,7 @@ function wplng_get_saved_translations( $target_language_id ) {
 			if ( ! empty( $translation_meta['language_id'] )
 				&& $translation_meta['language_id'] === $target_language_id
 				&& ! empty( $translation_meta['translation'] )
-				&& $translation_meta['translation'] !== '[wplng_EMPTY]'
+				&& $translation_meta['translation'] !== '[WPLNG_EMPTY]'
 			) {
 
 				$translation['translation'] = $translation_meta['translation'];
@@ -113,10 +115,13 @@ function wplng_get_saved_translations( $target_language_id ) {
 
 
 
+
+
+
 function wplng_save_translation_new( $language_id, $original, $translation, $search, $replace ) {
 
 	if ( false !== wplng_get_saved_translation_from_original( $original ) ) {
-		return;
+		return false;
 	}
 
 	/**
@@ -160,7 +165,7 @@ function wplng_save_translation_new( $language_id, $original, $translation, $sea
 		} else {
 			$translation_meta[] = array(
 				'language_id' => $target_language,
-				'translation' => '[wplng_EMPTY]',
+				'translation' => '[WPLNG_EMPTY]',
 			);
 		}
 	}
@@ -204,6 +209,8 @@ function wplng_save_translation_new( $language_id, $original, $translation, $sea
 		)
 	);
 
+	return $post_id;
+
 }
 
 
@@ -238,10 +245,10 @@ function wplng_update_translation( $post, $language_id, $translation, $search, $
 		$translation_meta = array();
 		foreach ( $languages_target as $key => $target_language ) {
 
-			if ( $target_language === $language_id && $translation !== '[wplng_EMPTY]' ) {
+			if ( $target_language === $language_id && $translation !== '[WPLNG_EMPTY]' ) {
 				$translation_meta[] = array(
 					'language_id' => $target_language,
-					'translation' => '[wplng_EMPTY]',
+					'translation' => '[WPLNG_EMPTY]',
 				);
 			} else {
 				$translation_meta[] = array(
@@ -314,6 +321,8 @@ function wplng_update_translation( $post, $language_id, $translation, $search, $
 
 	}
 
+	return $post->ID;
+
 }
 
 
@@ -326,7 +335,7 @@ function wplng_save_translation( $target_language_id, $original, $translation, $
 	if ( empty( $saved_translation ) ) {
 
 		// Create new translation post
-		wplng_save_translation_new(
+		return wplng_save_translation_new(
 			$target_language_id,
 			$original,
 			$translation,
@@ -335,7 +344,7 @@ function wplng_save_translation( $target_language_id, $original, $translation, $
 		);
 	} else {
 		// Update the translation post
-		wplng_update_translation(
+		return wplng_update_translation(
 			$saved_translation,
 			$target_language_id,
 			$translation,
