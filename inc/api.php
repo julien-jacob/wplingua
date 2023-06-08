@@ -6,7 +6,7 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 
-function mcv_translate( $language_source, $language_target, $text ) {
+function wplng_translate( $language_source, $language_target, $text ) {
 
 	$body = array(
 		'api-key' => '1111111111111111',
@@ -24,7 +24,7 @@ function mcv_translate( $language_source, $language_target, $text ) {
 
 	error_log( var_export( $body, true ) );
 
-	$request = wp_remote_post( MCV_API, $args );
+	$request = wp_remote_post( wplng_API, $args );
 
 	if ( is_wp_error( $request ) || wp_remote_retrieve_response_code( $request ) != 200 ) {
 		error_log( print_r( $request, true ) );
@@ -42,13 +42,13 @@ function mcv_translate( $language_source, $language_target, $text ) {
 }
 
 
-function mcv_parser( $html ) {
+function wplng_parser( $html ) {
 
 	$body = array(
 		'api-key' => '1111111111111111',
 		'r'       => 'parser',
-		'source'  => mcv_get_language_website_id(),
-		'target'  => mcv_get_language_current_id(),
+		'source'  => wplng_get_language_website_id(),
+		'target'  => wplng_get_language_current_id(),
 		'text'    => $html,
 	);
 	$args = array(
@@ -60,7 +60,7 @@ function mcv_parser( $html ) {
 
 	error_log( var_export( $body, true ) );
 
-	$request = wp_remote_post( MCV_API, $args );
+	$request = wp_remote_post( WPLNG_API, $args );
 
 	if ( is_wp_error( $request ) || wp_remote_retrieve_response_code( $request ) != 200 ) {
 		error_log( print_r( $request, true ) );

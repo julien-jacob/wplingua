@@ -6,33 +6,33 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 
-function mcv_enqueue_callback( $hook ) {
+function wplng_enqueue_callback( $hook ) {
 
-	if ( ! is_admin() || $hook !== 'toplevel_page_machiavel/inc/option-page' ) {
+	if ( ! is_admin() || $hook !== 'toplevel_page_wplingua/inc/option-page' ) {
 		return;
 	}
 
 	wp_enqueue_script( 'jquery' );
 
 	wp_enqueue_script(
-		'machiavel-option',
-		plugins_url() . '/machiavel/js/option-page.js',
+		'wplingua-option',
+		plugins_url() . '/wplingua/js/option-page.js',
 		array( 'jquery' )
 	);
 
 	wp_enqueue_style(
-		'machiavel-option',
-		plugins_url() . '/machiavel/css/option-page.css'
+		'wplingua-option',
+		plugins_url() . '/wplingua/css/option-page.css'
 	);
 }
 
 
-function mcv_inline_script_all_language() {
-	?><script>var mcvAllLanguages = JSON.parse('<?php echo mcv_get_languages_all_json(); ?>');</script><?php
+function wplng_inline_script_all_language() {
+	?><script>var wplngAllLanguages = JSON.parse('<?php echo wplng_get_languages_all_json(); ?>');</script><?php
 }
 
 
-function mcv_register_assets() {
+function wplng_register_assets() {
 
 	if ( is_admin() ) {
 		return;
@@ -41,13 +41,13 @@ function mcv_register_assets() {
 	wp_enqueue_script( 'jquery' );
 
 	wp_enqueue_script(
-		'machiavel',
-		plugins_url() . '/machiavel/js/script.js',
+		'wplingua',
+		plugins_url() . '/wplingua/js/script.js',
 		array( 'jquery' )
 	);
 
 	wp_enqueue_style(
-		'machiavel',
-		plugins_url() . '/machiavel/css/front.css'
+		'wplingua',
+		plugins_url() . '/wplingua/css/front.css'
 	);
 }

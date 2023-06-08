@@ -10,7 +10,7 @@ if ( ! defined( 'WPLINGUA_API' ) ) {
  * @param integer $code
  * @return void
  */
-function mcvapi_error_die( $code = 0 ) {
+function wplngapi_error_die( $code = 0 ) {
 
 	$prefix  = 'Error : ';
 	$message = '';

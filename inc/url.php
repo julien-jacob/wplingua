@@ -6,7 +6,7 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 
-function mcv_url_current_is_translatable() {
+function wplng_url_current_is_translatable() {
 
 	$is_translatable = true;
 
@@ -14,12 +14,12 @@ function mcv_url_current_is_translatable() {
 		$is_translatable = false;
 	}
 
-	if ( mcv_get_language_website_id() === mcv_get_language_current_id() ) {
+	if ( wplng_get_language_website_id() === wplng_get_language_current_id() ) {
 		$is_translatable = false;
 	}
 
 	$is_translatable = apply_filters(
-		'mcv_url_current_is_translatable',
+		'wplng_url_current_is_translatable',
 		$is_translatable
 	);
 
@@ -27,21 +27,21 @@ function mcv_url_current_is_translatable() {
 }
 
 
-function mcv_get_url_original( $url = '' ) {
+function wplng_get_url_original( $url = '' ) {
 
 	if ( empty( $url ) ) {
-		$url = mcv_get_url_current();
+		$url = wplng_get_url_current();
 	}
 
-	$language_website_id = mcv_get_language_website_id();
-	$language_current_id = mcv_get_language_current_id();
+	$language_website_id = wplng_get_language_website_id();
+	$language_current_id = wplng_get_language_current_id();
 
 	if ( $language_website_id !== $language_current_id ) {
 		$url = str_replace( '/' . $language_current_id . '/', '/', $url );
 	}
 
 	$url = apply_filters(
-		'mcv_url_original',
+		'wplng_url_original',
 		$url,
 		$language_website_id,
 		$language_current_id
@@ -51,20 +51,20 @@ function mcv_get_url_original( $url = '' ) {
 }
 
 
-function mcv_get_url_current() {
-	global $mcv_request_uri;
-	return ( empty( $_SERVER['HTTPS'] ) ? 'http' : 'https' ) . "://$_SERVER[HTTP_HOST]$mcv_request_uri";
+function wplng_get_url_current() {
+	global $wplng_request_uri;
+	return ( empty( $_SERVER['HTTPS'] ) ? 'http' : 'https' ) . "://$_SERVER[HTTP_HOST]$wplng_request_uri";
 }
 
 
-function mcv_get_url_current_for_language( $language_id ) {
+function wplng_get_url_current_for_language( $language_id ) {
 
 	// TODO : Revoir cette fonction ;)
 
-	$language_current_id = mcv_get_language_current_id();
+	$language_current_id = wplng_get_language_current_id();
 
-	global $mcv_request_uri;
-	$path = str_replace( '/' . $language_current_id . '/', '/', $mcv_request_uri );
+	global $wplng_request_uri;
+	$path = str_replace( '/' . $language_current_id . '/', '/', $wplng_request_uri );
 	$path = '/' . $language_id . $path;
 
 	$url = ( empty( $_SERVER['HTTPS'] ) ? 'http' : 'https' ) . "://$_SERVER[HTTP_HOST]$path";
