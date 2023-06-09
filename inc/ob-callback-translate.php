@@ -17,6 +17,7 @@ function wplng_ob_callback_translate( $html ) {
 
 	$selector_exclude = array(
 		'#wpadminbar',
+		'.wplng-switcher',
 	);
 
 	/**
@@ -144,6 +145,17 @@ function wplng_ob_callback_translate( $html ) {
 		}
 	}
 
+	$dom->load( $dom->save() );
+	// $x = array();
+
+	foreach ( $dom->find( 'a' ) as $element ) {
+		$link = $element->href;
+		$element->href = wplng_url_translate($link, $wplng_language_target);
+		// $x[] = wplng_url_translate( $link, wplng_get_language_current_id(), $wplng_language_target );
+	}
+
+	// return '<pre>' . var_export( $x, true ) . '</pre>';
+
 	$dom->save();
 	$html = (string) str_get_html( $dom );
 
@@ -180,6 +192,14 @@ function wplng_ob_callback_translate( $html ) {
 			$html = preg_replace( $regex, $replace, $html );
 		}
 	}
+
+	/**
+	 * Translate links
+	 */
+
+	// $x = array();
+	// preg_match_all('#<a href="(.*)" .*</a>#Uis', $html, $x);
+	// return '<pre>' . var_export($x[1], true) . '</pre>';
 
 	/**
 	 * Replace tag by saved excluded HTML part

@@ -6,6 +6,42 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 
+function wplng_url_translate( $url, $language_id_target ) {
+
+	if ( $url == '' ) {
+		return '';
+	}
+
+	if ( substr( $url, 0, 1 ) == '#' ) {
+		return $url;
+	}
+
+	$domain = $_SERVER['HTTP_HOST'];
+
+	if ( preg_match( '#^(http:\/\/|https:\/\/)?' . $domain . '(.*)$#', $url ) ) {
+
+		// Check if URL is already translated
+		$languages_target = wplng_get_languages_target();
+		foreach ( $languages_target as $key => $language_target ) {
+			if (str_contains($url, '/' . $language_target['id'] . '/' )) {
+				return $url;
+			}
+		}
+
+
+		$url = preg_replace(
+			'#^(http:\/\/|https:\/\/)?' . $domain . '(.*)$#',
+			'$1' . $domain . '/' . $language_id_target . '$2',
+			$url
+		);
+		return esc_url(trailingslashit($url));
+	}
+
+
+	return $url;
+}
+
+
 function wplng_url_current_is_translatable() {
 
 	$is_translatable = true;
