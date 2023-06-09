@@ -50,9 +50,7 @@ function wplng_url_current_is_translatable() {
 		$is_translatable = false;
 	}
 
-	if ( wplng_get_language_website_id() === wplng_get_language_current_id() ) {
-		$is_translatable = false;
-	}
+	
 
 	$is_translatable = apply_filters(
 		'wplng_url_current_is_translatable',
