@@ -11,7 +11,7 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 // define( 'WPLNG_API', 'http://machiavel-api.local/v0.0.2/last/' );
-define( 'WPLNG_API', 'https://api.wplingua.com/v0.0/last/' );
+define( 'WPLNG_API', 'https://api.wplingua.com/v0.0/2/' );
 
 require_once 'lib/simple_html_dom.php';
 
