@@ -1,10 +1,10 @@
 <?php
 
-if ( ! defined( 'WPLINGUA_API' ) ) {
+if ( ! defined( 'MACHIAVEL_API' ) ) {
 	die;
 }
 
-function mcvapi_WPLINGUA_API() {
+function mcvapi_machiavel_api() {
 	$json = '';
 
 	$grade = mcvapi_get_grade();

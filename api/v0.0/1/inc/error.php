@@ -1,6 +1,6 @@
 <?php
 
-if ( ! defined( 'WPLINGUA_API' ) ) {
+if ( ! defined( 'MACHIAVEL_API' ) ) {
 	die;
 }
 

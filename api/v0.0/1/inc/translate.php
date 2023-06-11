@@ -1,6 +1,6 @@
 <?php
 
-if ( ! defined( 'WPLINGUA_API' ) ) {
+if ( ! defined( 'MACHIAVEL_API' ) ) {
 	die;
 }
 
@@ -26,7 +26,7 @@ function file_post_contents( $url, $data, $username = null, $password = null ) {
 }
 
 
-function wplngapi_translate( $language_source, $language_target, $text ) {
+function mcvapi_translate( $language_source, $language_target, $text ) {
 
 	$ch = curl_init();
 	curl_setopt( $ch, CURLOPT_URL, 'https://www.libretranslate.com/translate' );
@@ -98,7 +98,7 @@ function wplngapi_translate( $language_source, $language_target, $text ) {
 
 
 
-// function wplngapi_multiexplode( $delimiters, $string ) {
+// function mcvapi_multiexplode( $delimiters, $string ) {
 // 	$ready  = str_replace( $delimiters, $delimiters[0], $string );
 // 	$launch = explode( $delimiters[0], $ready );
 // 	return $launch;
@@ -107,9 +107,9 @@ function wplngapi_translate( $language_source, $language_target, $text ) {
 
 
 
-// function wplngapi_translate( $language_source, $language_target, $text ) {
+// function mcvapi_translate( $language_source, $language_target, $text ) {
 
-// 	// $translaton_from_cache = wplngapi_translate_from_cache( $language_source, $language_target, $text );
+// 	// $translaton_from_cache = mcvapi_translate_from_cache( $language_source, $language_target, $text );
 
 // 	// if ( $translaton_from_cache !== false ) {
 // 	// 	return $translaton_from_cache;
@@ -118,17 +118,17 @@ function wplngapi_translate( $language_source, $language_target, $text ) {
 // 	// ---------------------
 
 // 	// if ( strlen( $text ) < 80 ) {
-// 	// 	return wplngapi_translate_google( $language_source, $language_target, $text );
+// 	// 	return mcvapi_translate_google( $language_source, $language_target, $text );
 // 	// }
 
-// 	// $strings = wplngapi_multiexplode( array( '!', '.', '?', ':' ), $text );
+// 	// $strings = mcvapi_multiexplode( array( '!', '.', '?', ':' ), $text );
 
 // 	// foreach ( $strings as $key => $string ) {
 
 // 	// 	$string = trim( $string );
 
 // 	// 	if ( $string != '' ) {
-// 	// 		$strings[ $key ] = wplngapi_translate_google( $language_source, $language_target, $string );
+// 	// 		$strings[ $key ] = mcvapi_translate_google( $language_source, $language_target, $string );
 // 	// 	}
 // 	// }
 
@@ -141,7 +141,7 @@ function wplngapi_translate( $language_source, $language_target, $text ) {
 
 // 	// $translation = strtoupper( $text );
 
-// 	// wplngapi_translate_add_cache(
+// 	// mcvapi_translate_add_cache(
 // 	// 	$language_source,
 // 	// 	$language_target,
 // 	// 	$text,
@@ -154,7 +154,7 @@ function wplngapi_translate( $language_source, $language_target, $text ) {
 
 
 
-// function wplngapi_translate_google( $language_source, $language_target, $text ) {
+// function mcvapi_translate_google( $language_source, $language_target, $text ) {
 
 // 	return 'lock';
 
