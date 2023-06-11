@@ -45,12 +45,20 @@ function wplng_ob_callback_translate( $html ) {
 	$dom->save();
 	$html_clear = (string) str_get_html( $dom );
 
+	// Clear HTML from multiple space and tab
+	$html_clear = preg_replace('#\s+#', ' ', $html_clear);
+
+	// Clear HTML from useless attributes
+	$html_clear = preg_replace('# (src|srcset|rel|class|href)=(\"|\').*(\"|\')#Uis', '', $html_clear);
+
+	// return $html_clear;
+
 	/**
 	 * Get saved translation
 	 */
 	$wplng_language_target = wplng_get_language_current_id();
 	$translations          = wplng_get_translations_saved( $wplng_language_target );
-	// return '<pre >' . var_export($html_clear, true) . '</pre>';
+	// return '<pre >' . var_export($translations, true) . '</pre>';
 
 	/**
 	 * Remove saved translation from HTML clear
@@ -71,7 +79,7 @@ function wplng_ob_callback_translate( $html ) {
 		$regex = str_replace(
 			'WPLNG',
 			preg_quote( $translation['source'] ),
-			// '#>(\s*)wplng(\s*)<#Uis'
+			// '#>(\s*?)WPLNG(\s*?)<#Uis'
 			$translation['search']
 		);
 
@@ -90,10 +98,23 @@ function wplng_ob_callback_translate( $html ) {
 	}
 	// return $html_clear;
 
+	
+	// return strlen($html_clear) . ' -- ' . strlen($html);
 	/**
 	 * Get new translation from API
 	 */
+	$start_time = microtime(true);
 	$translations_new = wplng_parser( $html_clear );
+	// End clock time in seconds
+	$end_time = microtime(true);
+	
+	// Calculate script execution time
+	$execution_time = ($end_time - $start_time);
+
+	// return $html_clear;
+	
+	// return var_export($translations_new, true) . " Execution time of script = ".$execution_time." sec";
+	// $translations_new = array();
 	// return '<pre >' . var_export($translations_new, true) . '</pre>';
 
 	/**
@@ -148,9 +169,12 @@ function wplng_ob_callback_translate( $html ) {
 	$dom->load( $dom->save() );
 	// $x = array();
 
+	/**
+	 * Translate links
+	 */
 	foreach ( $dom->find( 'a' ) as $element ) {
-		$link = $element->href;
-		$element->href = wplng_url_translate($link, $wplng_language_target);
+		$link          = $element->href;
+		$element->href = wplng_url_translate( $link, $wplng_language_target );
 		// $x[] = wplng_url_translate( $link, wplng_get_language_current_id(), $wplng_language_target );
 	}
 
@@ -192,14 +216,6 @@ function wplng_ob_callback_translate( $html ) {
 			$html = preg_replace( $regex, $replace, $html );
 		}
 	}
-
-	/**
-	 * Translate links
-	 */
-
-	// $x = array();
-	// preg_match_all('#<a href="(.*)" .*</a>#Uis', $html, $x);
-	// return '<pre>' . var_export($x[1], true) . '</pre>';
 
 	/**
 	 * Replace tag by saved excluded HTML part

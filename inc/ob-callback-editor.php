@@ -158,7 +158,6 @@ function wplng_ob_callback_editor( $html ) {
 	}
 	$html_head = $html_head[0];
 
-
 	// TODO : Changer de place ?
 	$translations_sidebar = array();
 
@@ -195,7 +194,7 @@ function wplng_ob_callback_editor( $html ) {
 			// $html = preg_replace( $regex, $replace, $html );
 
 			if ( preg_match( $regex, $html_head ) ) {
-				$html_head = preg_replace( $regex, $replace, $html_head );
+				$html_head              = preg_replace( $regex, $replace, $html_head );
 				$translations_sidebar[] = $translation;
 			}
 		}
@@ -245,12 +244,12 @@ function wplng_ob_callback_editor( $html ) {
 
 			$edit_link = '';
 			if ( ! empty( $translation['post_id'] ) ) {
-				$edit_link = get_edit_post_link($translation['post_id']);
+				$edit_link = get_edit_post_link( $translation['post_id'] );
 			}
 
 			$replace = str_replace(
 				'WPLNG',
-				'<a href="' . esc_url($edit_link) . '" target="_blank">[' . $translation['translation'] . ' <span class="dashicons dashicons-translation"></span>] </a>',
+				'<a href="' . esc_url( $edit_link ) . '" target="_blank">[' . $translation['translation'] . ' <span class="dashicons dashicons-translation"></span>] </a>',
 				$translation['replace']
 			);
 
@@ -261,7 +260,7 @@ function wplng_ob_callback_editor( $html ) {
 
 				$html_body = preg_replace( $regex, $replace, $html_body );
 
-			} 
+			}
 		}
 	}
 
