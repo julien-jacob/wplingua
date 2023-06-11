@@ -1,4 +1,4 @@
-.mcv-switcher {
+.wplng-switcher {
     position: fixed;
     bottom: 20px;
     background-color: lightgray;
@@ -9,7 +9,7 @@
     z-index: 9999;
 }
 
-.mcv-language {
+.wplng-language {
     border: 2px solid gray;
     border-radius: 10px;
     padding: 6px 8px;
@@ -19,13 +19,13 @@
     color: black;
 }
 
-.mcv-language img {
+.wplng-language img {
     width: 22px;
     height: 22px;
     margin-right: 8px;
-    margin-bottom: -4px;
+    margin-bottom: 2px;
 }
 
-.mcv-language:hover {
+.wplng-language:hover {
     background-color: rgba(0,0,0,.05);
 }
