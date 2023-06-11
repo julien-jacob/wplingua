@@ -58,7 +58,7 @@ function wplng_parser( $html ) {
 		'body'      => $body,
 	);
 
-	error_log( var_export( $body, true ) );
+	// error_log( var_export( $body, true ) );
 
 	$request = wp_remote_post( WPLNG_API, $args );
 

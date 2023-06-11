@@ -80,8 +80,6 @@ function wplng_get_translations_saved( $target_language_id ) {
 			true
 		);
 
-		
-
 
 		foreach ( $translations_meta as $key => $translation_meta ) {
 
@@ -120,8 +118,8 @@ function wplng_get_translations_saved( $target_language_id ) {
 
 		// TODO : Vérifier cette ligne !
 		
-		// $translations[] = ($meta['wplng_translation_sr'][0]);
-		// $translations[] = json_decode( ($meta['wplng_translation_sr'][0]), true );
+		// $translations[] = stripslashes($meta['wplng_translation_sr'][0]);
+		// $translations[] = json_decode( stripslashes($meta['wplng_translation_sr'][0]), true );
 
 		// TODO : Ajouter vérification du json_decode
 		$search_meta = json_decode( $meta['wplng_translation_sr'][0], true );
@@ -306,37 +304,49 @@ function wplng_update_translation( $post, $language_id, $translation, $search, $
 
 	} else { // Translation is valid
 
+		
+
 		// TODO : Fix this !!!
-		// $sr_meta = ( empty( $meta['wplng_translation_sr'][0] ) )
-		// ? array() :
-		// json_decode( $meta['wplng_translation_sr'][0], true );
+		$sr_meta = ( empty( $meta['wplng_translation_sr'][0] ) )
+		? array() :
+		json_decode( $meta['wplng_translation_sr'][0], true );
 
-		// $sr_already_in = false;
-		// foreach ( $sr_meta as $key => $sr ) {
-		// 	if ( ! empty( $sr['search'] ) && $sr['search'] === $search ) {
-		// 		$sr_already_in = true;
-		// 		break;
-		// 	}
-		// }
-		// if ( ! $sr_already_in ) {
-		// 	$escapers     = array( '\\', '/', '"', "\n", "\r", "\t", "\x08", "\x0c" );
-		// 	$replacements = array( '\\\\', '\\/', '\\"', "\\n", "\\r", "\\t", "\\f", "\\b" );
-		// 	$search       = str_replace( $escapers, $replacements, $search );
+		$escapers     = array( '\\', '/', '"', "\n", "\r", "\t", "\x08", "\x0c" );
+		$replacements = array( '\\\\', '\\/', '\\"', "\\n", "\\r", "\\t", "\\f", "\\b" );
+		$search       = str_replace( $escapers, $replacements, $search );
+		
 
-		// 	$sr_meta[] = array(
-		// 		'search'  => $search, //str_replace( '\\', '\\\\', preg_quote( $search ) ),
-		// 		'replace' => $replace,
-		// 	);
-		// }
+		$sr_already_in = false;
+		foreach ( $sr_meta as $key => $sr ) {
 
-		// update_post_meta( 
-		// 	$post->ID, 
-		// 	'wplng_translation_sr', 
-		// 	wp_json_encode(
-		// 		$sr_meta,
-		// 		JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES
-		// 	)
-		// );
+			$sr['search'] = str_replace( $escapers, $replacements, $sr['search'] );
+
+			if ( ! empty( $sr['search'] ) && $sr['search'] === $search ) {
+				$sr_already_in = true;
+				break;
+			}
+		}
+		if ( ! $sr_already_in ) {
+
+			$search = str_replace( $escapers, $replacements, $search );
+
+			$sr_meta[] = array(
+				'search'  => $search, //str_replace( '\\', '\\\\', preg_quote( $search ) ),
+				'replace' => $replace,
+			);
+		}
+
+
+
+		update_post_meta( 
+			$post->ID, 
+			'wplng_translation_sr', 
+			preg_quote(wp_json_encode(
+				$sr_meta,
+				JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES
+			))
+		);
+
 
 		// Set or update new translation
 		$translation_already_in = false;
