@@ -8,7 +8,7 @@ if ( ! defined( 'WPINC' ) ) {
 
 
 function wplng_ob_callback_translate( $html ) {
-
+// return $html;
 	$selector_clear = array(
 		'style',
 		'script',
@@ -46,10 +46,10 @@ function wplng_ob_callback_translate( $html ) {
 	$html_clear = (string) str_get_html( $dom );
 
 	// Clear HTML from multiple space and tab
-	$html_clear = preg_replace('#\s+#', ' ', $html_clear);
+	$html_clear = preg_replace( '#\s+#', ' ', $html_clear );
 
 	// Clear HTML from useless attributes
-	$html_clear = preg_replace('# (src|srcset|rel|class|href)=(\"|\').*(\"|\')#Uis', '', $html_clear);
+	$html_clear = preg_replace( '# (src|srcset|rel|class|href)=(\"|\').*(\"|\')#Uis', '', $html_clear );
 
 	// return $html_clear;
 
@@ -58,7 +58,7 @@ function wplng_ob_callback_translate( $html ) {
 	 */
 	$wplng_language_target = wplng_get_language_current_id();
 	$translations          = wplng_get_translations_saved( $wplng_language_target );
-	// return '<pre >' . var_export($translations, true) . '</pre>';
+	// return '<pre >' . var_export( $translations, true ) . '</pre>';
 
 	/**
 	 * Remove saved translation from HTML clear
@@ -98,55 +98,56 @@ function wplng_ob_callback_translate( $html ) {
 	}
 	// return $html_clear;
 
-	
 	// return strlen($html_clear) . ' -- ' . strlen($html);
 	/**
 	 * Get new translation from API
 	 */
-	$start_time = microtime(true);
+	$start_time       = microtime( true );
 	$translations_new = wplng_parser( $html_clear );
 	// End clock time in seconds
-	$end_time = microtime(true);
-	
+	$end_time = microtime( true );
+
 	// Calculate script execution time
-	$execution_time = ($end_time - $start_time);
+	$execution_time = ( $end_time - $start_time );
 
 	// return $html_clear;
-	
-	// return var_export($translations_new, true) . " Execution time of script = ".$execution_time." sec";
+
+	// return var_export( $translations_new, true ) . ' Execution time of script = ' . $execution_time . ' sec';
 	// $translations_new = array();
 	// return '<pre >' . var_export($translations_new, true) . '</pre>';
 
 	/**
 	 * Save new translation as wplng_translation CPT
 	 */
-	if ( ! empty( $translations_new ) ) {
+	// if ( ! empty( $translations_new ) ) {
 
-		foreach ( $translations_new as $key => $translation ) {
+	// 	foreach ( $translations_new as $key => $translation ) {
 
-			if (
-				! isset( $translation['source'] ) // Original text
-				|| ! isset( $translation['translation'] ) // Translater text
-				|| ! isset( $translation['search'] ) // Search
-				|| ! isset( $translation['replace'] ) // Replace
-			) {
-				continue;
-			}
+	// 		if (
+	// 			! isset( $translation['source'] ) // Original text
+	// 			|| ! isset( $translation['translation'] ) // Translater text
+	// 			|| ! isset( $translation['search'] ) // Search
+	// 			|| ! isset( $translation['replace'] ) // Replace
+	// 		) {
+	// 			continue;
+	// 		}
 
-			wplng_save_translation(
-				$wplng_language_target,
-				$translation['source'],
-				$translation['translation'],
-				$translation['search'],
-				$translation['replace']
-			);
-		}
-	}
+	// 		wplng_save_translation(
+	// 			$wplng_language_target,
+	// 			$translation['source'],
+	// 			$translation['translation'],
+	// 			$translation['search'],
+	// 			$translation['replace']
+	// 		);
+	// 	}
+	// }
 
 	/**
 	 * Merge know and new translations
 	 */
 	$translations = array_merge( $translations, $translations_new );
+	return var_export($translations, true);
+	// $translations = $translations_new;
 
 	/**
 	 * Replace excluded HTML part by tab
