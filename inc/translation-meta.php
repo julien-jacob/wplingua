@@ -93,9 +93,9 @@ function wplng_translation_meta_box_html_output( $post ) {
 		}
 	}
 
-	// echo '<pre>';
-	// var_dump( $meta );
-	// echo '</pre>';
+	echo '<pre>';
+	var_dump( json_decode($meta['wplng_translation_sr'][0], true) );
+	echo '</pre>';
 	// return;
 }
 

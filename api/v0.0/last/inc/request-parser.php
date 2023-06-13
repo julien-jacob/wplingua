@@ -89,7 +89,11 @@ function wplngapi_request_parser() {
 	// $html = preg_replace( '#<svg.*<\/svg>#Uis', '', $html );
 	// $html = str_replace( array( "\r", "\n", '  ', "\t" ), '', $html );
 
+	/**
+	 * Get text node
+	 */
 	$originals_text = array();
+	$sources = array();
 	preg_match_all( '#>\s*(.*)\s*<#Uis', $html, $originals_text );
 
 	// TODO : Check
@@ -110,26 +114,107 @@ function wplngapi_request_parser() {
 	$originals_text = array_values( array_filter( $originals_text ) ); // Remove empty
 	$originals_text = array_unique( $originals_text ); // Remove duplicate
 
-	$translations = array();
+	
 	foreach ( $originals_text as $key => $original_text ) {
 
-		$translations[] = array(
-			'source'      => str_replace("\\", "\\\\",$original_text),
-			'translation' => '',
+		$sources[] = array(
+			'source'      => str_replace( '\\', '\\\\', $original_text ),
 			'search'      => '#>(\s*)?WPLNG(\s*)?<#Uis',
 			'replace'     => '>$1WPLNG$2<',
 		);
 
 	}
 
-	// return json_encode( $translations );
+	// $sources = array();
+
+
+	/**
+	 * Get attribute ALT
+	 */
+	$originals_text = array();
+	preg_match_all( '# alt=[\'|\"](.*)[\'|\"]#Uis', $html, $originals_text );
+
+	// TODO : Check
+	$originals_text = $originals_text[0];
+
+	foreach ( $originals_text as $key => $original_text ) {
+		$s = array(
+			'# alt=[\'|\"](.*)[\'|\"]#Uis',
+		);
+		$r = array(
+			'$1',
+		);
+
+		$originals_text[ $key ] = preg_replace( $s, $r, $original_text );
+		$originals_text[ $key ] = trim( $originals_text[ $key ] );
+	}
+
+	$originals_text = array_values( array_filter( $originals_text ) ); // Remove empty
+	$originals_text = array_unique( $originals_text ); // Remove duplicate
+
+	// $sources = array();
+	foreach ( $originals_text as $key => $original_text ) {
+
+		$sources[] = array(
+			'source'      => str_replace( '\\', '\\\\', $original_text ),
+			'search'      => "# alt=('|\")(\s*?)WPLNG(\s*?)('|\")#Uis",
+			'replace'     => ' alt=$1$2WPLNG$3$4',
+		);
+
+	}
+
+
+
+
+
+
+
+
+
+	
+
+	$translations_formated = array();
+
+	foreach ( $sources as $key => $source ) {
+
+		$already_in = false;
+		foreach ($translations_formated as $key => $translation) {
+			if ($translation['source'] == $source['source']) {
+				$translations_formated[$key]['sr'][] = array(
+					'search' => $source['search'],
+					'replace' => $source['replace'],
+				);
+				$already_in = true;
+			}
+		}
+
+		if (!$already_in) {
+
+			$translations_formated[] = array(
+				'source'      => $source['source'],
+				'translation' => '',
+				'sr'          => array(
+					array(
+						'search' => $source['search'],
+						'replace' => $source['replace'],
+					),
+				)
+			);
+		}
+
+
+		// $translations_formated[] = $translation_formated;
+
+	}
+
+	// return json_encode( $translations_formated );
 
 	// $start_time = microtime( true );
 
 	$translated   = '';
 	$to_translate = '';
 	// $temp         = '';
-	foreach ( $translations as $key => $translation ) {
+	foreach ( $translations_formated as $key => $translation ) {
 
 		$text = '';
 		if ( strlen( $translation['source'] ) >= 1600 ) {
@@ -164,13 +249,13 @@ function wplngapi_request_parser() {
 
 	$translated = explode( '</p><p>', $translated );
 
-	foreach ( $translations as $key => $translation ) {
+	foreach ( $translations_formated as $key => $translation ) {
 		if ( isset( $translated[ $key ] ) ) {
-			$translations[ $key ]['translation'] = str_replace("\\", "\\\\", $translated[ $key ]);
+			$translations_formated[ $key ]['translation'] = str_replace( '\\', '\\\\', $translated[ $key ] );
 		}
 	}
 
-	return json_encode( $translations );
+	return json_encode( $translations_formated );
 
 }
 

@@ -63,38 +63,46 @@ function wplng_ob_callback_translate( $html ) {
 	/**
 	 * Remove saved translation from HTML clear
 	 */
+	// $test = '';
 	foreach ( $translations as $translation ) {
 
 		// Check if translaton data is valid
 		if (
 			! isset( $translation['source'] ) // Original text
 			|| ! isset( $translation['translation'] ) // Translater text
-			|| ! isset( $translation['search'] ) // Search
-			|| ! isset( $translation['replace'] ) // Replace
+			|| ! isset( $translation['sr'] ) // Search Replace
 		) {
 			continue;
 		}
 
-		// TODO : Mettre preg_quote() plutôt sur $regex ?
-		$regex = str_replace(
-			'WPLNG',
-			preg_quote( $translation['source'] ),
-			// '#>(\s*?)WPLNG(\s*?)<#Uis'
-			$translation['search']
-		);
+		// return var_export($translation['sr'], true);
 
-		$replace = str_replace(
-			'WPLNG',
-			'',
-			$translation['replace']
-		);
+		foreach ($translation['sr'] as $key => $sr) {
+			// TODO : Mettre preg_quote() plutôt sur $regex ?
+			$regex = str_replace(
+				'WPLNG',
+				preg_quote( $translation['source'] ),
+				// '#>(\s*?)WPLNG(\s*?)<#Uis'
+				$sr['search']
+			);
 
-		// Replace knowing translation by empty string
-		$html_clear = preg_replace(
-			$regex,
-			$replace,
-			$html_clear
-		);
+			$replace = str_replace(
+				'WPLNG',
+				'',
+				$sr['replace']
+			);
+
+			// Replace knowing translation by empty string
+			$html_clear = preg_replace(
+				$regex,
+				$replace,
+				$html_clear
+			);
+
+			// $test .= $html_clear; // . '---------------------' . var_export($translation['sr'], true) . '------------';
+			// $test .= '---------------------' . var_export($translation, true) . '------------';
+		}
+		
 	}
 	// return $html_clear;
 
@@ -119,34 +127,32 @@ function wplng_ob_callback_translate( $html ) {
 	/**
 	 * Save new translation as wplng_translation CPT
 	 */
-	// if ( ! empty( $translations_new ) ) {
+	if ( ! empty( $translations_new ) ) {
 
-	// 	foreach ( $translations_new as $key => $translation ) {
+		foreach ( $translations_new as $key => $translation ) {
 
-	// 		if (
-	// 			! isset( $translation['source'] ) // Original text
-	// 			|| ! isset( $translation['translation'] ) // Translater text
-	// 			|| ! isset( $translation['search'] ) // Search
-	// 			|| ! isset( $translation['replace'] ) // Replace
-	// 		) {
-	// 			continue;
-	// 		}
+			if (
+				! isset( $translation['source'] ) // Original text
+				|| ! isset( $translation['translation'] ) // Translater text
+				|| ! isset( $translation['sr'] ) // Search Replace
+			) {
+				continue;
+			}
 
-	// 		wplng_save_translation(
-	// 			$wplng_language_target,
-	// 			$translation['source'],
-	// 			$translation['translation'],
-	// 			$translation['search'],
-	// 			$translation['replace']
-	// 		);
-	// 	}
-	// }
+			wplng_save_translation(
+				$wplng_language_target,
+				$translation['source'],
+				$translation['translation'],
+				$translation['sr']
+			);
+		}
+	}
 
 	/**
 	 * Merge know and new translations
 	 */
 	$translations = array_merge( $translations, $translations_new );
-	return var_export($translations, true);
+	// return var_export($translations, true);
 	// $translations = $translations_new;
 
 	/**
@@ -193,28 +199,30 @@ function wplng_ob_callback_translate( $html ) {
 		if (
 			! isset( $translation['source'] ) // Original text
 			|| ! isset( $translation['translation'] ) // Translater text
-			|| ! isset( $translation['search'] ) // Search
-			|| ! isset( $translation['replace'] ) // Replace
+			|| ! isset( $translation['sr'] ) // Search Replace
 		) {
 			continue;
 		}
 
 		if ( ! empty( $translation['source'] ) ) {
 
-			$regex = str_replace(
-				'WPLNG',
-				preg_quote( $translation['source'] ),
-				$translation['search']
-			);
-
-			$replace = str_replace(
-				'WPLNG',
-				$translation['translation'],
-				$translation['replace']
-			);
-
-			// Replace original text in HTML by translation
-			$html = preg_replace( $regex, $replace, $html );
+			foreach ($translation['sr'] as $key => $sr) {
+				$regex = str_replace(
+					'WPLNG',
+					preg_quote( $translation['source'] ),
+					$sr['search']
+				);
+	
+				$replace = str_replace(
+					'WPLNG',
+					$translation['translation'],
+					$sr['replace']
+				);
+	
+				// Replace original text in HTML by translation
+				$html = preg_replace( $regex, $replace, $html );
+			}
+			
 		}
 	}
 
