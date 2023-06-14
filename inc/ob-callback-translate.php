@@ -49,7 +49,7 @@ function wplng_ob_callback_translate( $html ) {
 	$html_clear = preg_replace( '#\s+#', ' ', $html_clear );
 
 	// Clear HTML from useless attributes
-	$html_clear = preg_replace( '# (src|srcset|rel|class|href)=(\"|\').*(\"|\')#Uis', '', $html_clear );
+	$html_clear = preg_replace( '# (src|srcset|rel|class|href|target|itemscope|style|name|media|loading|decoding|role|height|width|itemprop|type|itemtype|sizes|onchange|onclick|datetime|selected|value)=(\"|\').*(\"|\')#Uis', '', $html_clear );
 
 	// return $html_clear;
 
@@ -104,12 +104,14 @@ function wplng_ob_callback_translate( $html ) {
 		}
 		
 	}
-	// return $html_clear;
+	$html_clear = preg_replace('#>\s*<#Uis', '><', $html_clear);
+	// return ($html_clear);
 
 	// return strlen($html_clear) . ' -- ' . strlen($html);
 	/**
 	 * Get new translation from API
 	 */
+	
 	$start_time       = microtime( true );
 	$translations_new = wplng_parser( $html_clear );
 	// End clock time in seconds
