@@ -63,6 +63,54 @@ function wplng_link_alternate_hreflang() {
 
 
 
+function wplng_html_translate_links($html, $language_target) {
+	$dom               = str_get_html( $html );
+	foreach ( $dom->find( 'a' ) as $element ) {
+		$link          = $element->href;
+		$element->href = wplng_url_translate( $link, $language_target );
+	}
+
+	$dom->save();
+	return (string) str_get_html( $dom );
+}
+
+function wplng_html_set_exclude_tag($html, &$excluded_elements) {
+
+	$selector_exclude = array(
+		'#wpadminbar',
+		'.wplng-switcher',
+	);
+
+	$dom               = str_get_html( $html );
+
+	if ( $dom === false ) {
+		return $html;
+	}
+
+	foreach ( $selector_exclude as $key => $selector ) {
+		foreach ( $dom->find( $selector ) as $element ) {
+			$excluded_elements[] = $element->outertext;
+			$attr                = count( $excluded_elements ) - 1;
+			$element->outertext  = '<div wplng-tag-exclude="' . esc_attr( $attr ) . '"></div>';
+		}
+	}
+
+	$dom->load( $dom->save() );
+
+	return (string) str_get_html( $dom );
+}
+
+function wplng_html_replace_exclude_tag($html, $excluded_elements) {
+
+	foreach ( $excluded_elements as $key => $element ) {
+		$s    = '<div wplng-tag-exclude="' . esc_attr( $key ) . '"></div>';
+		$html = str_replace( $s, $element, $html );
+	}
+
+	return $html;
+}
+
+
 function wplng_init() {
 
 	if ( 
@@ -82,6 +130,7 @@ function wplng_init() {
 	if ( isset( $_GET['wplingua-visual-editor'] ) ) {
 		// TODO : wp_nonce ?
 		// TODO : Meilleur argument GET ?
+		// TODO : Check user can edit post
 
 		ob_start( 'wplng_ob_callback_editor' );
 	} else {
