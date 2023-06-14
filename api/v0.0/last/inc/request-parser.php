@@ -5,6 +5,23 @@ if ( ! defined( 'WPLINGUA_API' ) ) {
 }
 
 
+function wplngapi_is_translatable_text( $text ) {
+
+	$match = array(
+		'#^(\*|\$|\.|\,|\-|\_)*$#',
+		'#^([0-9]*(\.|\,|\-)?)*$#', // Numbers separate by ',', '.' or '-'
+	);
+
+	foreach ( $match as $key => $match_element ) {
+		if ( preg_match( $match_element, $text ) ) {
+			return false;
+		}
+	}
+
+	return true;
+}
+
+
 function wplngapi_request_parser() {
 
 	if ( empty( $_POST['source'] ) ) {
@@ -114,54 +131,81 @@ function wplngapi_request_parser() {
 	$originals_text = array_values( array_filter( $originals_text ) ); // Remove empty
 	$originals_text = array_unique( $originals_text ); // Remove duplicate
 
+	$originals_text_temp = array();
+
+	foreach ($originals_text as $key => $text) {
+		if (wplngapi_is_translatable_text($text)) {
+			$originals_text_temp[] = $text;
+ 		}
+	}
+
+	$originals_text = $originals_text_temp;
+
 	
 	foreach ( $originals_text as $key => $original_text ) {
 
 		$sources[] = array(
 			'source'      => str_replace( '\\', '\\\\', $original_text ),
 			'search'      => '#>(\s*)?WPLNG(\s*)?<#Uis',
-			'replace'     => '>$1WPLNG$2<',
+			'replace'     => '>${1}WPLNG${2}<',
 		);
 
 	}
 
-	// $sources = array();
 
 
 	/**
 	 * Get attribute ALT
 	 */
-	$originals_text = array();
-	preg_match_all( '# alt=[\'|\"](.*)[\'|\"]#Uis', $html, $originals_text );
 
-	// TODO : Check
-	$originals_text = $originals_text[0];
+	$attributes_to_translate = array(
+		'alt',
+		'title',
+		// 'aria-label',
+	);
 
-	foreach ( $originals_text as $key => $original_text ) {
-		$s = array(
-			'# alt=[\'|\"](.*)[\'|\"]#Uis',
-		);
-		$r = array(
-			'$1',
-		);
+	foreach ($attributes_to_translate as $key => $attrubute) {
+		$originals_text = array();
+		preg_match_all( '# ' . $attrubute . '=[\'|\"](.*)[\'|\"]#Uis', $html, $originals_text );
 
-		$originals_text[ $key ] = preg_replace( $s, $r, $original_text );
-		$originals_text[ $key ] = trim( $originals_text[ $key ] );
+		// TODO : Check
+		$originals_text = $originals_text[0];
+
+		foreach ( $originals_text as $key => $original_text ) {
+			$s = array(
+				'# ' . $attrubute . '=[\'|\"](.*)[\'|\"]#Uis',
+			);
+			$r = array(
+				'$1',
+			);
+
+			$originals_text[ $key ] = preg_replace( $s, $r, $original_text );
+			$originals_text[ $key ] = trim( $originals_text[ $key ] );
+		}
+
+		$originals_text = array_values( array_filter( $originals_text ) ); // Remove empty
+		$originals_text = array_unique( $originals_text ); // Remove duplicate
+
+		// $sources = array();
+		foreach ( $originals_text as $key => $original_text ) {
+
+			$sources[] = array(
+				'source'      => str_replace( '\\', '\\\\', $original_text ),
+				'search'      => '# ' . $attrubute . "=('|\")(\s*?)WPLNG(\s*?)('|\")#Uis",
+				'replace'     => ' ' . $attrubute . '=${1}${2}WPLNG${3}${4}',
+			);
+
+		}
 	}
 
-	$originals_text = array_values( array_filter( $originals_text ) ); // Remove empty
-	$originals_text = array_unique( $originals_text ); // Remove duplicate
+	
 
-	// $sources = array();
-	foreach ( $originals_text as $key => $original_text ) {
 
-		$sources[] = array(
-			'source'      => str_replace( '\\', '\\\\', $original_text ),
-			'search'      => "# alt=('|\")(\s*?)WPLNG(\s*?)('|\")#Uis",
-			'replace'     => ' alt=$1$2WPLNG$3$4',
-		);
 
-	}
+
+
+
+
 
 
 

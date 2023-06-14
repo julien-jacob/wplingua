@@ -10,6 +10,10 @@ require_once 'inc/main.php';
 
 require_once 'inc/translate.php'; // TODO : Move !
 
+
+
+// echo var_export( wplngapi_is_translatable_text( '..,$' ), true );
+
 echo wplngapi_wplingua_api();
 
 // $translation = wplngapi_translate( 'en', 'fr', 'Still Life and the power of painting – Envince' );
