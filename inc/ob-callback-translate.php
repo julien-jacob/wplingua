@@ -219,11 +219,10 @@ function wplng_ob_callback_translate( $html ) {
 					$sr['search']
 				);
 	
-				// TODO : Gérer si $translation['translation'] contient $1, $2, ...
-				// TODO : ou contient ${1}, ${2}, ...
+				
 				$replace = str_replace(
 					'WPLNG',
-					str_replace('$', '&amp;#36;',$translation['translation']),
+					str_replace('$', '&#36;',$translation['translation']),
 					$sr['replace']
 				);
 
