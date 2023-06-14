@@ -8,9 +8,6 @@ if ( ! defined( 'WPINC' ) ) {
 
 
 function wplng_ob_callback_translate( $html ) {
-// return $html;
-
-	// return ('Copyright © 2023 Envince » 1 – Les légumes verts:');
 
 	$selector_clear = array(
 		'style',
@@ -66,7 +63,6 @@ function wplng_ob_callback_translate( $html ) {
 	/**
 	 * Remove saved translation from HTML clear
 	 */
-	// $test = '';
 	foreach ( $translations as $translation ) {
 
 		// Check if translaton data is valid
@@ -78,14 +74,11 @@ function wplng_ob_callback_translate( $html ) {
 			continue;
 		}
 
-		// return var_export($translation['sr'], true);
+		foreach ( $translation['sr'] as $key => $sr ) {
 
-		foreach ($translation['sr'] as $key => $sr) {
-			// TODO : Mettre preg_quote() plutôt sur $regex ?
 			$regex = str_replace(
 				'WPLNG',
 				preg_quote( $translation['source'] ),
-				// '#>(\s*?)WPLNG(\s*?)<#Uis'
 				$sr['search']
 			);
 
@@ -102,32 +95,22 @@ function wplng_ob_callback_translate( $html ) {
 				$html_clear
 			);
 
-			// $test .= $html_clear; // . '---------------------' . var_export($translation['sr'], true) . '------------';
-			// $test .= '---------------------' . var_export($translation, true) . '------------';
 		}
-		
 	}
-	$html_clear = preg_replace('#>\s*<#Uis', '><', $html_clear);
+	$html_clear = preg_replace( '#>\s*<#Uis', '><', $html_clear );
 	// return ($html_clear);
 
-	// return strlen($html_clear) . ' -- ' . strlen($html);
 	/**
 	 * Get new translation from API
 	 */
-	
+
 	$start_time       = microtime( true );
 	$translations_new = wplng_parser( $html_clear );
-	// End clock time in seconds
-	$end_time = microtime( true );
 
 	// Calculate script execution time
+	$end_time       = microtime( true );
 	$execution_time = ( $end_time - $start_time );
-
-	// return $html_clear;
-
 	// return var_export( $translations_new, true ) . ' Execution time of script = ' . $execution_time . ' sec';
-	// $translations_new = array();
-	// return '<pre >' . var_export($translations_new, true) . '</pre>';
 
 	/**
 	 * Save new translation as wplng_translation CPT
@@ -158,7 +141,6 @@ function wplng_ob_callback_translate( $html ) {
 	 */
 	$translations = array_merge( $translations, $translations_new );
 	// return var_export($translations, true);
-	// $translations = $translations_new;
 
 	/**
 	 * Replace excluded HTML part by tab
@@ -179,7 +161,6 @@ function wplng_ob_callback_translate( $html ) {
 	}
 
 	$dom->load( $dom->save() );
-	// $x = array();
 
 	/**
 	 * Translate links
@@ -187,10 +168,7 @@ function wplng_ob_callback_translate( $html ) {
 	foreach ( $dom->find( 'a' ) as $element ) {
 		$link          = $element->href;
 		$element->href = wplng_url_translate( $link, $wplng_language_target );
-		// $x[] = wplng_url_translate( $link, wplng_get_language_current_id(), $wplng_language_target );
 	}
-
-	// return '<pre>' . var_export( $x, true ) . '</pre>';
 
 	$dom->save();
 	$html = (string) str_get_html( $dom );
@@ -212,29 +190,27 @@ function wplng_ob_callback_translate( $html ) {
 
 		if ( ! empty( $translation['source'] ) ) {
 
-			foreach ($translation['sr'] as $key => $sr) {
+			foreach ( $translation['sr'] as $key => $sr ) {
 				$regex = str_replace(
 					'WPLNG',
 					preg_quote( $translation['source'] ),
 					$sr['search']
 				);
-	
-				
+
 				$replace = str_replace(
 					'WPLNG',
-					str_replace('$', '&#36;',$translation['translation']),
+					str_replace( '$', '&#36;', $translation['translation'] ),
 					$sr['replace']
 				);
 
 				$test .= "$replace \n";
-	
+
 				// Replace original text in HTML by translation
 				$html = preg_replace( $regex, $replace, $html );
 			}
-			
 		}
 	}
-// return $test;
+
 	/**
 	 * Replace tag by saved excluded HTML part
 	 */
