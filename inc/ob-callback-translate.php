@@ -9,6 +9,9 @@ if ( ! defined( 'WPINC' ) ) {
 
 function wplng_ob_callback_translate( $html ) {
 // return $html;
+
+	// return ('Copyright © 2023 Envince » 1 – Les légumes verts:');
+
 	$selector_clear = array(
 		'style',
 		'script',
@@ -195,6 +198,7 @@ function wplng_ob_callback_translate( $html ) {
 	/**
 	 * Replace original texts by translations
 	 */
+	$test = '';
 	foreach ( $translations as $translation ) {
 
 		// Check if translaton data is valid
@@ -215,11 +219,15 @@ function wplng_ob_callback_translate( $html ) {
 					$sr['search']
 				);
 	
+				// TODO : Gérer si $translation['translation'] contient $1, $2, ...
+				// TODO : ou contient ${1}, ${2}, ...
 				$replace = str_replace(
 					'WPLNG',
-					$translation['translation'],
+					str_replace('$', '&amp;#36;',$translation['translation']),
 					$sr['replace']
 				);
+
+				$test .= "$replace \n";
 	
 				// Replace original text in HTML by translation
 				$html = preg_replace( $regex, $replace, $html );
@@ -227,7 +235,7 @@ function wplng_ob_callback_translate( $html ) {
 			
 		}
 	}
-
+// return $test;
 	/**
 	 * Replace tag by saved excluded HTML part
 	 */
