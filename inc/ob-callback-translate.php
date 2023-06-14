@@ -9,13 +9,14 @@ if ( ! defined( 'WPINC' ) ) {
 
 function wplng_ob_callback_translate( $html ) {
 
+	$html = apply_filters( 'wplng_html_intercepted', $html );
+
 	/**
 	 * Get saved translation
 	 */
 	$language_target_id = wplng_get_language_current_id();
-	$translations          = wplng_get_translations_saved( $language_target_id );
+	$translations       = wplng_get_translations_saved( $language_target_id );
 	// return '<pre >' . var_export( $translations, true ) . '</pre>';
-
 
 	/**
 	 * Get new translation from API
@@ -43,13 +44,13 @@ function wplng_ob_callback_translate( $html ) {
 	 * Replace excluded HTML part by tab
 	 */
 	$excluded_elements = array();
-	$html = wplng_html_set_exclude_tag($html, $excluded_elements);
+	$html              = wplng_html_set_exclude_tag( $html, $excluded_elements );
 	// return '<pre >' . var_export( $excluded_elements, true ) . '</pre>';
 
 	/**
 	 * Translate links
 	 */
-	$html = wplng_html_translate_links($html, $language_target_id);
+	$html = wplng_html_translate_links( $html, $language_target_id );
 
 	/**
 	 * Replace original texts by translations
@@ -80,7 +81,6 @@ function wplng_ob_callback_translate( $html ) {
 					$sr['replace']
 				);
 
-
 				// Replace original text in HTML by translation
 				$html = preg_replace( $regex, $replace, $html );
 			}
@@ -90,7 +90,7 @@ function wplng_ob_callback_translate( $html ) {
 	/**
 	 * Replace tag by saved excluded HTML part
 	 */
-	$html = wplng_html_replace_exclude_tag($html, $excluded_elements);
+	$html = wplng_html_replace_exclude_tag( $html, $excluded_elements );
 
 	$html = apply_filters( 'wplng_html_translated', $html );
 
