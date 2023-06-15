@@ -23,20 +23,18 @@ function wplng_url_translate( $url, $language_id_target ) {
 		// Check if URL is already translated
 		$languages_target = wplng_get_languages_target();
 		foreach ( $languages_target as $key => $language_target ) {
-			if (str_contains($url, '/' . $language_target['id'] . '/' )) {
+			if ( str_contains( $url, '/' . $language_target['id'] . '/' ) ) {
 				return $url;
 			}
 		}
-
 
 		$url = preg_replace(
 			'#^(http:\/\/|https:\/\/)?' . $domain . '(.*)$#',
 			'$1' . $domain . '/' . $language_id_target . '$2',
 			$url
 		);
-		return esc_url(trailingslashit($url));
+		return esc_url( trailingslashit( $url ) );
 	}
-
 
 	return $url;
 }
@@ -50,14 +48,25 @@ function wplng_url_current_is_translatable() {
 		$is_translatable = false;
 	}
 
-	
-
 	$is_translatable = apply_filters(
 		'wplng_url_current_is_translatable',
 		$is_translatable
 	);
 
 	return $is_translatable;
+}
+
+
+function wplng_get_slug( $slug = '' ) {
+
+	if ( empty( $slug ) ) {
+		$slug = wplng_get_url_original();
+	}
+
+	$slug = wp_make_link_relative( $slug );
+	$slug = sanitize_title( $slug );
+
+	return $slug;
 }
 
 

@@ -62,6 +62,7 @@ function wplng_ob_callback_translate( $html ) {
 			! isset( $translation['source'] ) // Original text
 			|| ! isset( $translation['translation'] ) // Translater text
 			|| ! isset( $translation['sr'] ) // Search Replace
+			|| ! isset( $translation['post_id'] ) // Search Replace
 		) {
 			continue;
 		}
@@ -82,10 +83,41 @@ function wplng_ob_callback_translate( $html ) {
 				);
 
 				// Replace original text in HTML by translation
-				$html = preg_replace( $regex, $replace, $html );
+				// $html = preg_replace( $regex, $replace, $html );
+				
+
+				if (preg_match($regex, $html)) {
+
+					// Replace original text in HTML by translation
+					$html = preg_replace( $regex, $replace, $html );
+
+					// return wplng_get_slug();
+					
+					// MANAGE CAT
+					if ( ! term_exists( wplng_get_slug(), 'wprock_htmlentity_cat' ) ) {
+						wp_insert_term(
+							wp_make_link_relative(wplng_get_url_original()),
+							'wplng_url',
+							array(
+								'description' => '',
+								'slug'        => wplng_get_slug(),
+							)
+						);
+					}
+					wp_set_object_terms( 
+						$translation['post_id'], 
+						array( wplng_get_slug() ), 
+						'wplng_url',
+						true
+					);
+
+				}
+
 			}
 		}
 	}
+
+
 
 	/**
 	 * Replace tag by saved excluded HTML part

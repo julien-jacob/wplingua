@@ -29,7 +29,17 @@ function wplng_register_post_type_translation() {
 			'capabilities'        => array(
 				'create_posts' => false, // Removes support for the "Add New" function ( use 'do_not_allow' instead of false for multisite set ups )
 			),
+			'taxonomies' => array('wplng_url'),
 			'map_meta_cap'        => true, // Set to `false`, if users are not allowed to edit/delete existing posts
 		)
 	);
 }
+
+
+// add_filter("manage_edit-plugin_filter_sortable_columns", 'plugin_filter_sort');
+// function plugin_filter_sort($columns) {
+//    $custom = array(
+//        'taxonomy-filter_group' => 'taxonomy-filter_group'
+//    );
+//    return wp_parse_args($custom, $columns);
+// }

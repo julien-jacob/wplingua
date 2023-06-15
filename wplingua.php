@@ -27,6 +27,7 @@ require_once 'inc/switcher.php';
 require_once 'inc/translation-cpt.php';
 require_once 'inc/translation-meta.php';
 require_once 'inc/translation.php';
+require_once 'inc/url-taxo.php';
 require_once 'inc/url.php';
 
 global $wplng_request_uri;
