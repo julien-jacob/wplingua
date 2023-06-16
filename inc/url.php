@@ -69,6 +69,11 @@ function wplng_url_is_translatable( $url = '' ) {
 		$is_translatable = false;
 	}
 
+	// Check if is in wp-uploads
+	if ( str_contains( $url, wp_make_link_relative( content_url() ) ) ) {
+		$is_translatable = false;
+	}
+
 	$is_translatable = apply_filters(
 		'wplng_url_is_translatable',
 		$is_translatable
