@@ -22,7 +22,7 @@ function wplng_ob_callback_translate( $html ) {
 	 * Get new translation from API
 	 */
 	$start_time       = microtime( true );
-	$translations_new = wplng_parser( $html, $translations );
+	$translations_new = wplng_parser( $html, '', '', $translations );
 
 	// Calculate script execution time
 	$end_time       = microtime( true );

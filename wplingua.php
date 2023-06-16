@@ -20,6 +20,7 @@ require_once 'inc/api.php';
 require_once 'inc/assets.php';
 require_once 'inc/html-updater.php';
 require_once 'inc/languages.php';
+require_once 'inc/mail.php';
 require_once 'inc/ob-callback-editor.php';
 require_once 'inc/ob-callback-translate.php';
 require_once 'inc/option-page.php';

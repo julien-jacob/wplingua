@@ -6,13 +6,23 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 
-function wplng_translate( $language_source, $language_target, $text ) {
+function wplng_translate( $text, $language_source_id = '', $language_target_id = '' ) {
+
+	// TODO : Replacer par ternaire
+	if (empty($language_target_id)) {
+		$language_target_id = wplng_get_language_current_id();
+	}
+
+	// TODO : Replacer par ternaire
+	if (empty($language_source_id)) {
+		$language_source_id = wplng_get_language_website_id();
+	}
 
 	$body = array(
 		'api-key' => '1111111111111111',
 		'r'       => 'translate',
-		'source'  => $language_source,
-		'target'  => $language_target,
+		'source'  => $language_source_id,
+		'target'  => $language_target_id,
 		'text'    => $text,
 	);
 	$args = array(
@@ -22,27 +32,27 @@ function wplng_translate( $language_source, $language_target, $text ) {
 		'body'      => $body,
 	);
 
-	error_log( var_export( $body, true ) );
+	// error_log( var_export( $body, true ) );
 
 	$request = wp_remote_post( WPLNG_API, $args );
 
 	if ( is_wp_error( $request ) || wp_remote_retrieve_response_code( $request ) != 200 ) {
 		error_log( print_r( $request, true ) );
-		return '';
+		return $text;
 	}
 
 	$response = json_decode( wp_remote_retrieve_body( $request ), true );
 
 	if ( ! isset( $response['translation'] ) ) {
 		// TODO : Check for remove or update
-		return 'Erreur :: [' . $text . ']';
+		return $text;
 	}
 
 	return (string) $response['translation'];
 }
 
 
-function wplng_parser_clear_html($html, $translations = array()) {
+function wplng_parser_clear_html( $html, $translations = array() ) {
 
 	$selector_clear = array(
 		'style',
@@ -85,7 +95,6 @@ function wplng_parser_clear_html($html, $translations = array()) {
 
 	// Clear HTML from useless attributes
 	$html_clear = preg_replace( '# (src|srcset|rel|class|href|target|itemscope|style|name|media|loading|decoding|role|height|width|itemprop|type|itemtype|sizes|onchange|onclick|datetime|selected|value)=(\"|\').*(\"|\')#Uis', '', $html_clear );
-
 
 	/**
 	 * Remove saved translation from HTML clear
@@ -130,19 +139,30 @@ function wplng_parser_clear_html($html, $translations = array()) {
 }
 
 
-function wplng_parser( $html, $translations = array() ) {
+function wplng_parser( $html, $language_source_id = '', $language_target_id = '', $translations = array() ) {
 
-	$html = wplng_parser_clear_html($html, $translations);
+	$html = wplng_parser_clear_html( $html, $translations );
 
-	if (empty($html)) {
+	if ( empty( $html ) ) {
 		return array();
 	}
+
+	// TODO : Replacer par ternaire
+	if (empty($language_target_id)) {
+		$language_target_id = wplng_get_language_current_id();
+	}
+
+	// TODO : Replacer par ternaire
+	if (empty($language_source_id)) {
+		$language_source_id = wplng_get_language_website_id();
+	}
+
 
 	$body = array(
 		'api-key' => '1111111111111111',
 		'r'       => 'parser',
-		'source'  => wplng_get_language_website_id(),
-		'target'  => wplng_get_language_current_id(),
+		'source'  => $language_source_id,
+		'target'  => $language_target_id,
 		'text'    => $html,
 	);
 	$args = array(
@@ -160,8 +180,8 @@ function wplng_parser( $html, $translations = array() ) {
 	}
 
 	$response = json_decode( wp_remote_retrieve_body( $request ), true );
-	
-	if (NULL == $response) {
+
+	if ( null == $response ) {
 		// TODO : Bad Json - Error log
 		return array();
 	}

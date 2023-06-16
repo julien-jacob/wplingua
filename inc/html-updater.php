@@ -69,6 +69,10 @@ function wplng_html_translate_links($html, $language_target) {
 		$link          = $element->href;
 		$element->href = wplng_url_translate( $link, $language_target );
 	}
+	foreach ( $dom->find( 'form' ) as $element ) {
+		$link          = $element->action;
+		$element->action = wplng_url_translate( $link, $language_target );
+	}
 
 	$dom->save();
 	return (string) str_get_html( $dom );
