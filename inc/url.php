@@ -8,10 +8,17 @@ if ( ! defined( 'WPINC' ) ) {
 
 function wplng_url_translate( $url, $language_id_target ) {
 
+	// Check if URL is an empty string
 	if ( $url == '' ) {
 		return '';
 	}
 
+	// Check if URL is translatable (exclude /admin/...)
+	if ( ! wplng_url_is_translatable( $url ) ) {
+		return $url;
+	}
+
+	// Check if URL is an anchor link for the current page
 	if ( substr( $url, 0, 1 ) == '#' ) {
 		return $url;
 	}
@@ -23,37 +30,47 @@ function wplng_url_translate( $url, $language_id_target ) {
 		// Check if URL is already translated
 		$languages_target = wplng_get_languages_target();
 		foreach ( $languages_target as $key => $language_target ) {
-			if (str_contains($url, '/' . $language_target['id'] . '/' )) {
+			if ( str_contains( $url, '/' . $language_target['id'] . '/' ) ) {
 				return $url;
 			}
 		}
-
 
 		$url = preg_replace(
 			'#^(http:\/\/|https:\/\/)?' . $domain . '(.*)$#',
 			'$1' . $domain . '/' . $language_id_target . '$2',
 			$url
 		);
-		return esc_url(trailingslashit($url));
+		$url = esc_url( trailingslashit( $url ) );
 	}
 
+	$url = apply_filters(
+		'wplng_url_translate',
+		$url
+	);
 
 	return $url;
 }
 
 
-function wplng_url_current_is_translatable() {
+function wplng_url_is_translatable( $url = '' ) {
 
+	global $wplng_request_uri;
 	$is_translatable = true;
 
-	if ( is_admin() ) {
+	// Get current URL if $url is empty
+	if ( empty( $url ) ) {
+		$url = $wplng_request_uri;
+	}
+
+	$url = wp_make_link_relative( $url );
+
+	// Check if is an admin page
+	if ( str_contains( $url, wp_make_link_relative( get_admin_url() ) ) ) {
 		$is_translatable = false;
 	}
 
-	
-
 	$is_translatable = apply_filters(
-		'wplng_url_current_is_translatable',
+		'wplng_url_is_translatable',
 		$is_translatable
 	);
 

@@ -8,7 +8,7 @@ if ( ! defined( 'WPINC' ) ) {
 function wplng_replace_og_local( $html ) {
 
 	if ( 
-		! wplng_url_current_is_translatable() 
+		! wplng_url_is_translatable() 
 		|| wplng_get_language_website_id() === wplng_get_language_current_id()
 	) {
 		return $html;
@@ -114,7 +114,7 @@ function wplng_html_replace_exclude_tag($html, $excluded_elements) {
 function wplng_init() {
 
 	if ( 
-		! wplng_url_current_is_translatable() 
+		! wplng_url_is_translatable() 
 		|| wplng_get_language_website_id() === wplng_get_language_current_id()
 	) {
 		return;

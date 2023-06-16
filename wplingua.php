@@ -10,6 +10,8 @@ if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
+
+
 define( 'WPLNG_API', 'http://machiavel-api.local/v0.0/last/' );
 // define( 'WPLNG_API', 'https://api.wplingua.com/v0.0/last/' );
 
@@ -31,6 +33,7 @@ require_once 'inc/url.php';
 
 global $wplng_request_uri;
 $wplng_request_uri = $_SERVER['REQUEST_URI'];
+
 
 function wplng_start() {
 

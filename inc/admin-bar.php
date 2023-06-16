@@ -11,7 +11,7 @@ if ( ! defined( 'WPINC' ) ) {
 function wplng_admin_bar_menu() {
 
 	if ( 
-		! wplng_url_current_is_translatable() 
+		! wplng_url_is_translatable() 
 		|| wplng_get_language_website_id() === wplng_get_language_current_id()	
 	) {
 		return;
