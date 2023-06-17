@@ -24,6 +24,7 @@ require_once 'inc/mail.php';
 require_once 'inc/ob-callback-editor.php';
 require_once 'inc/ob-callback-translate.php';
 require_once 'inc/option-page.php';
+require_once 'inc/search.php';
 require_once 'inc/switcher.php';
 require_once 'inc/translation-cpt.php';
 require_once 'inc/translation-meta.php';
@@ -101,3 +102,5 @@ function wplng_start() {
 
 }
 wplng_start();
+
+// var_dump(wplng_translate('bonjour', 'fr', 'en')); die;

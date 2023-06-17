@@ -272,9 +272,9 @@ function wplng_get_languages_all() {
 }
 
 
-function wplng_get_languages_all_json() {
-	return json_encode( wplng_get_languages_all() );
-}
+// function wplng_get_languages_all_json() {
+// 	return json_encode( wplng_get_languages_all() );
+// }
 
 
 function wplng_get_languages_data() {

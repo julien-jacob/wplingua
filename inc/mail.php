@@ -7,7 +7,13 @@ if ( ! defined( 'WPINC' ) ) {
 
 add_filter(
 	'wp_mail', function( $args ) {
-		// error_log(var_export($args['message'], true));
+		
+		$language_website = wplng_get_language_website_id();
+		$language_current = wplng_get_language_current_id();
+
+		if ($language_website == $language_website) {
+			return $args;
+		}
 
 		if ( empty( $args['message'] ) ) {
 			return $args;
