@@ -45,7 +45,9 @@ function wplng_register_settings() {
 	register_setting( 'wplng_settings', 'wplng_website_language' );
 	register_setting( 'wplng_settings', 'wplng_website_flag' );
 	register_setting( 'wplng_settings', 'wplng_target_languages' );
-
+	register_setting( 'wplng_settings', 'wplng_translate_mail' );
+	register_setting( 'wplng_settings', 'wplng_translate_search' );
+	
 }
 
 
@@ -103,6 +105,14 @@ function wplng_settings() {
 					<td>
 						<fieldset>
 							<?php wplng_settings_part_languages_target(); ?>
+						</fieldset>
+					</td>
+				</tr>
+				<tr>
+					<th scope="row"><?php _e( 'Features', 'wplingua' ); ?></th>
+					<td>
+						<fieldset>
+							<?php wplng_settings_part_features(); ?>
 						</fieldset>
 					</td>
 				</tr>
@@ -228,5 +238,26 @@ function wplng_settings_part_languages_target() {
 	<div id="wplng-target-languages-list"></div>
 	
 	<textarea name="wplng_target_languages" id="wplng_target_languages"><?php echo esc_textarea( json_encode( $languages_target, true ) ); ?></textarea>
+	<?php
+}
+
+function wplng_settings_part_features() {
+	?>
+	<fieldset>
+		<legend class="screen-reader-text">
+			<span><?php _e( 'Translate sending mail', 'wplingua' ); ?></span>
+		</legend>
+			<label for="wplng_translate_mail">
+			<input type="checkbox" id="wplng_translate_mail" name="wplng_translate_mail" value="1" <?php checked( 1, get_option( 'wplng_translate_mail' ), true ); ?> /> <?php _e( 'Translate sending mail', 'wplingua' ); ?>
+		</label>
+	</fieldset>
+	<fieldset>
+		<legend class="screen-reader-text">
+			<span><?php _e( 'Search from translated languages', 'wplingua' ); ?></span>
+		</legend>
+			<label for="wplng_translate_search">
+			<input type="checkbox" id="wplng_translate_search" name="wplng_translate_search" value="1" <?php checked( 1, get_option( 'wplng_translate_search' ), true ); ?> /> <?php _e( 'Search from translated languages', 'wplingua' ); ?>
+		</label>
+	</fieldset>
 	<?php
 }

@@ -2,7 +2,7 @@
 /*
 Plugin Name: wpLingua
 description: Make your website multilingual and translated
-Version: 0.0.2
+Version: 0.0.4
 */
 
 // If this file is called directly, abort.
@@ -11,18 +11,20 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 // define( 'WPLNG_API', 'http://machiavel-api.local/v0.0.2/last/' );
-define( 'WPLNG_API', 'https://api.wplingua.com/v0.0/2/' );
+define( 'WPLNG_API', 'https://api.wplingua.com/v0.0/3/' );
 
 require_once 'lib/simple_html_dom.php';
 
+require_once 'inc/ob-callback/editor.php';
+require_once 'inc/ob-callback/translate.php';
 require_once 'inc/admin-bar.php';
 require_once 'inc/api.php';
 require_once 'inc/assets.php';
 require_once 'inc/html-updater.php';
 require_once 'inc/languages.php';
-require_once 'inc/ob-callback-editor.php';
-require_once 'inc/ob-callback-translate.php';
+require_once 'inc/mail.php';
 require_once 'inc/option-page.php';
+require_once 'inc/search.php';
 require_once 'inc/switcher.php';
 require_once 'inc/translation-cpt.php';
 require_once 'inc/translation-meta.php';
@@ -31,6 +33,7 @@ require_once 'inc/url.php';
 
 global $wplng_request_uri;
 $wplng_request_uri = $_SERVER['REQUEST_URI'];
+
 
 function wplng_start() {
 
@@ -96,6 +99,20 @@ function wplng_start() {
 
 	// Stop OB at the end of the HTML
 	add_action( 'after_body', 'ob_end_flush' );
+
+	/**
+	 * Features
+	 */
+
+	// Translate email
+	if ( ! empty( get_option( 'wplng_translate_mail' ) ) ) {
+		add_filter( 'wp_mail', 'wplng_translate_wp_mail' );
+	}
+
+	// Search from translated languages
+	if ( ! empty( get_option( 'wplng_translate_search' ) ) ) {
+		add_action( 'parse_query', 'wplng_translate_search_query' );
+	}
 
 }
 wplng_start();

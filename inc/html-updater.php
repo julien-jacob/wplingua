@@ -7,8 +7,7 @@ if ( ! defined( 'WPINC' ) ) {
 
 function wplng_replace_og_local( $html ) {
 
-	if ( 
-		! wplng_url_current_is_translatable() 
+	if ( ! wplng_url_is_translatable()
 		|| wplng_get_language_website_id() === wplng_get_language_current_id()
 	) {
 		return $html;
@@ -63,10 +62,92 @@ function wplng_link_alternate_hreflang() {
 
 
 
+function wplng_html_translate_links( $html, $language_target ) {
+	$dom = str_get_html( $html );
+	foreach ( $dom->find( 'a' ) as $element ) {
+		$link          = $element->href;
+		$element->href = wplng_url_translate( $link, $language_target );
+	}
+	foreach ( $dom->find( 'form' ) as $element ) {
+		$link            = $element->action;
+		$element->action = wplng_url_translate( $link, $language_target );
+	}
+
+	$dom->save();
+	return (string) str_get_html( $dom );
+}
+
+
+function wplng_get_selector_exclude() {
+
+	$selector_exclude = array(
+		'#wpadminbar',
+		'.no-translate',
+		'.wplng-switcher',
+	);
+
+	$selector_exclude = apply_filters(
+		'wplng_selector_exclude',
+		$selector_exclude
+	);
+
+	return $selector_exclude;
+}
+
+
+function wplng_get_selector_clear() {
+
+	$selector_clear = array(
+		'style',
+		'script',
+		'svg',
+	);
+
+	$selector_clear = apply_filters(
+		'wplng_selector_clear',
+		$selector_clear
+	);
+
+	return $selector_clear;
+}
+
+
+function wplng_html_set_exclude_tag( $html, &$excluded_elements ) {
+
+	$selector_exclude = wplng_get_selector_exclude();
+	$dom              = str_get_html( $html );
+
+	if ( $dom === false ) {
+		return $html;
+	}
+
+	foreach ( $selector_exclude as $key => $selector ) {
+		foreach ( $dom->find( $selector ) as $element ) {
+			$excluded_elements[] = $element->outertext;
+			$attr                = count( $excluded_elements ) - 1;
+			$element->outertext  = '<div wplng-tag-exclude="' . esc_attr( $attr ) . '"></div>';
+		}
+	}
+
+	$dom->load( $dom->save() );
+
+	return (string) str_get_html( $dom );
+}
+
+function wplng_html_replace_exclude_tag( $html, $excluded_elements ) {
+
+	foreach ( $excluded_elements as $key => $element ) {
+		$s    = '<div wplng-tag-exclude="' . esc_attr( $key ) . '"></div>';
+		$html = str_replace( $s, $element, $html );
+	}
+
+	return $html;
+}
+
+
 function wplng_init() {
 
-	if ( 
-		! wplng_url_current_is_translatable() 
+	if ( ! wplng_url_is_translatable()
 		|| wplng_get_language_website_id() === wplng_get_language_current_id()
 	) {
 		return;
@@ -78,10 +159,10 @@ function wplng_init() {
 	$origin_path            = '/' . substr( $current_path, 4, strlen( $current_path ) - 1 );
 	$_SERVER['REQUEST_URI'] = $origin_path;
 
-
 	if ( isset( $_GET['wplingua-visual-editor'] ) ) {
 		// TODO : wp_nonce ?
 		// TODO : Meilleur argument GET ?
+		// TODO : Check user can edit post
 
 		ob_start( 'wplng_ob_callback_editor' );
 	} else {
