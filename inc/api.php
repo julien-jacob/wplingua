@@ -54,16 +54,8 @@ function wplng_translate( $text, $language_source_id = '', $language_target_id =
 
 function wplng_parser_clear_html( $html, $translations = array() ) {
 
-	$selector_clear = array(
-		'style',
-		'script',
-		'svg',
-	);
-
-	$selector_exclude = array(
-		'#wpadminbar',
-		'.wplng-switcher',
-	);
+	$selector_clear   = wplng_get_selector_clear();
+	$selector_exclude = wplng_get_selector_exclude();
 
 	/**
 	 * Clear HTML for API call

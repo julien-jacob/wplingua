@@ -77,14 +77,44 @@ function wplng_html_translate_links( $html, $language_target ) {
 	return (string) str_get_html( $dom );
 }
 
-function wplng_html_set_exclude_tag( $html, &$excluded_elements ) {
+
+function wplng_get_selector_exclude() {
 
 	$selector_exclude = array(
 		'#wpadminbar',
 		'.wplng-switcher',
 	);
 
-	$dom = str_get_html( $html );
+	$selector_exclude = apply_filters(
+		'wplng_selector_exclude',
+		$selector_exclude
+	);
+
+	return $selector_exclude;
+}
+
+
+function wplng_get_selector_clear() {
+
+	$selector_clear = array(
+		'style',
+		'script',
+		'svg',
+	);
+
+	$selector_clear = apply_filters(
+		'wplng_selector_clear',
+		$selector_clear
+	);
+
+	return $selector_clear;
+}
+
+
+function wplng_html_set_exclude_tag( $html, &$excluded_elements ) {
+
+	$selector_exclude = wplng_get_selector_exclude();
+	$dom              = str_get_html( $html );
 
 	if ( $dom === false ) {
 		return $html;
