@@ -2,30 +2,31 @@
     position: fixed;
     bottom: 20px;
     background-color: lightgray;
-    border-radius: 12px;
-    padding: 12px 4px;
-    right: 30px;
+    border-radius: 22px;
+    padding: 2px;
+    right: 20px;
     border: 2px gray solid;
     z-index: 9999;
 }
 
 .wplng-language {
+    display: inline-block;
+    font-size: 16px;
+    line-height: 16px;
     border: 2px solid gray;
-    border-radius: 10px;
-    padding: 6px 8px;
+    border-radius: 22px;
+    padding: 2px 8px 2px 4px;
     margin: 2px;
     text-decoration: none;
-    font-size: 16px;
     color: black;
 }
 
 .wplng-language img {
     width: 22px;
     height: 22px;
-    margin-right: 8px;
-    margin-bottom: 2px;
+    margin-right: 4px;
 }
 
 .wplng-language:hover {
-    background-color: rgba(0,0,0,.05);
+    background-color: rgba(0, 0, 0, .05);
 }
