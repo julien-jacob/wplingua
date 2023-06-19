@@ -5,7 +5,7 @@ if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
-add_filter( 'wp_mail', 'wplng_translate_wp_mail' );
+
 function wplng_translate_wp_mail( $args ) {
 
 	$language_website = wplng_get_language_website_id();

@@ -2,7 +2,7 @@
 /*
 Plugin Name: wpLingua
 description: Make your website multilingual and translated
-Version: 0.0.2
+Version: 0.0.4
 */
 
 // If this file is called directly, abort.
@@ -99,6 +99,20 @@ function wplng_start() {
 
 	// Stop OB at the end of the HTML
 	add_action( 'after_body', 'ob_end_flush' );
+
+	/**
+	 * Features
+	 */
+
+	// Translate email
+	if ( ! empty( get_option( 'wplng_translate_mail' ) ) ) {
+		add_filter( 'wp_mail', 'wplng_translate_wp_mail' );
+	}
+
+	// Search from translated languages
+	if ( ! empty( get_option( 'wplng_translate_search' ) ) ) {
+		add_action( 'parse_query', 'wplng_translate_search_query' );
+	}
 
 }
 wplng_start();

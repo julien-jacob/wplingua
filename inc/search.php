@@ -36,4 +36,3 @@ function wplng_translate_search_query( $query_object ) {
 	}
 }
 
-add_action( 'parse_query', 'wplng_translate_search_query' );
