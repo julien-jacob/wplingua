@@ -82,6 +82,7 @@ function wplng_get_selector_exclude() {
 
 	$selector_exclude = array(
 		'#wpadminbar',
+		'.no-translate',
 		'.wplng-switcher',
 	);
 
