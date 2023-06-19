@@ -10,7 +10,7 @@ if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
-define( 'WPLNG_API', 'http://machiavel-api.local/v0.0/last/' );
+define( 'WPLNG_API', 'http://machiavel-api.local/v0.0/3/' );
 // define( 'WPLNG_API', 'https://api.wplingua.com/v0.0/last/' );
 
 require_once 'lib/simple_html_dom.php';
