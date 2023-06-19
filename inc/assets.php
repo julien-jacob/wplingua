@@ -28,7 +28,8 @@ function wplng_enqueue_callback( $hook ) {
 
 
 function wplng_inline_script_all_language() {
-	?><script>var wplngAllLanguages = JSON.parse('<?php echo wplng_get_languages_all_json(); ?>');</script><?php
+	?><script>var wplngAllLanguages = JSON.parse('<?php echo wplng_get_languages_all_json(); ?>');</script>
+	<?php
 }
 
 

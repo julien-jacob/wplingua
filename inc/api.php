@@ -9,12 +9,12 @@ if ( ! defined( 'WPINC' ) ) {
 function wplng_translate( $text, $language_source_id = '', $language_target_id = '' ) {
 
 	// TODO : Replacer par ternaire
-	if (empty($language_target_id)) {
+	if ( empty( $language_target_id ) ) {
 		$language_target_id = wplng_get_language_current_id();
 	}
 
 	// TODO : Replacer par ternaire
-	if (empty($language_source_id)) {
+	if ( empty( $language_source_id ) ) {
 		$language_source_id = wplng_get_language_website_id();
 	}
 
@@ -148,15 +148,14 @@ function wplng_parser( $html, $language_source_id = '', $language_target_id = ''
 	}
 
 	// TODO : Replacer par ternaire
-	if (empty($language_target_id)) {
+	if ( empty( $language_target_id ) ) {
 		$language_target_id = wplng_get_language_current_id();
 	}
 
 	// TODO : Replacer par ternaire
-	if (empty($language_source_id)) {
+	if ( empty( $language_source_id ) ) {
 		$language_source_id = wplng_get_language_website_id();
 	}
-
 
 	$body = array(
 		'api-key' => '1111111111111111',

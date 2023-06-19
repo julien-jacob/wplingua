@@ -6,10 +6,10 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 
-
 function wplng_ob_callback_translate( $html ) {
 
 	$html = apply_filters( 'wplng_html_intercepted', $html );
+	// return $html;
 
 	/**
 	 * Get saved translation

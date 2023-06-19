@@ -6,13 +6,6 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 
-
-
-
-
-
-
-
 function wplng_get_saved_translation_from_original( $original ) {
 
 	$returned  = false;
@@ -51,25 +44,19 @@ function wplng_get_translations_saved( $target_language_id ) {
 		$the_query->the_post();
 
 		$translation = array();
-		$meta = get_post_meta( get_the_ID() );
+		$meta        = get_post_meta( get_the_ID() );
 
-		
 		$translation['post_id'] = get_the_ID();
-		
 
 		// Get translation for current language target
-
 		if ( empty( $meta['wplng_translation_translations'][0] ) ) {
 			continue;
 		}
-
-		
 
 		$translations_meta = json_decode(
 			$meta['wplng_translation_translations'][0],
 			true
 		);
-
 
 		foreach ( $translations_meta as $key => $translation_meta ) {
 
@@ -86,19 +73,15 @@ function wplng_get_translations_saved( $target_language_id ) {
 			}
 		}
 
-		if (empty($translation['translation'])) {
+		if ( empty( $translation['translation'] ) ) {
 			continue;
 		}
-
-		
 
 		// get source
 		if ( empty( $meta['wplng_translation_original'][0] ) ) {
 			continue;
 		}
 		$translation['source'] = $meta['wplng_translation_original'][0];
-
-		
 
 		if ( empty( $meta['wplng_translation_sr'][0] ) ) {
 			continue;
@@ -107,12 +90,12 @@ function wplng_get_translations_saved( $target_language_id ) {
 		// var_dump($meta['wplng_translation_sr'][0]);
 
 		// TODO : Vérifier cette ligne !
-		
+
 		// $translations[] = stripslashes($meta['wplng_translation_sr'][0]);
 		// $translations[] = json_decode( stripslashes($meta['wplng_translation_sr'][0]), true );
 
 		// TODO : Ajouter vérification du json_decode
-		$search_meta = json_decode( $meta['wplng_translation_sr'][0], true );
+		$search_meta       = json_decode( $meta['wplng_translation_sr'][0], true );
 		$translation['sr'] = $search_meta; //$meta['wplng_translation_sr'][0];
 
 		// $translations[] = json_decode( $meta['wplng_translation_sr'][0], true );
@@ -135,10 +118,6 @@ function wplng_get_translations_saved( $target_language_id ) {
 
 	return $translations;
 }
-
-
-
-
 
 
 function wplng_save_translation_new( $language_id, $original, $translation, $sr ) {
@@ -208,7 +187,6 @@ function wplng_save_translation_new( $language_id, $original, $translation, $sr 
 	// 		)
 	// 	);
 	// }
-	
 
 	add_post_meta(
 		$post_id,
@@ -219,10 +197,12 @@ function wplng_save_translation_new( $language_id, $original, $translation, $sr 
 	add_post_meta(
 		$post_id,
 		'wplng_translation_sr',
-		str_replace('\\', '\\\\', wp_json_encode(
-			$sr,
-			JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES
-		))
+		str_replace(
+			'\\', '\\\\', wp_json_encode(
+				$sr,
+				JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES
+			)
+		)
 	);
 
 	add_post_meta(
@@ -290,8 +270,8 @@ function wplng_update_translation( $post, $language_id, $translation, $sr ) {
 		}
 
 		update_post_meta(
-			$post->ID, 
-			'wplng_translation_translations', 
+			$post->ID,
+			'wplng_translation_translations',
 			wp_json_encode(
 				$translation_meta,
 				JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES
@@ -300,21 +280,18 @@ function wplng_update_translation( $post, $language_id, $translation, $sr ) {
 
 	} else { // Translation is valid
 
-		
-
 		// TODO : Fix this !!!
 		$sr_meta = ( empty( $meta['wplng_translation_sr'][0] ) )
 		? array() :
 		json_decode( $meta['wplng_translation_sr'][0], true );
 
-		$sr_meta = array_merge($sr_meta, $sr);
+		$sr_meta = array_merge( $sr_meta, $sr );
 
-		$sr_meta = array_unique($sr_meta, SORT_REGULAR);
+		$sr_meta = array_unique( $sr_meta, SORT_REGULAR );
 
 		// $escapers     = array( '\\', '/', '"', "\n", "\r", "\t", "\x08", "\x0c" );
 		// $replacements = array( '\\\\', '\\/', '\\"', "\\n", "\\r", "\\t", "\\f", "\\b" );
 		// $sr['search']       = str_replace( $escapers, $replacements, $sr['search'] );
-		
 
 		// $sr_already_in = false;
 		// foreach ( $sr_meta as $key => $sr ) {
@@ -338,17 +315,16 @@ function wplng_update_translation( $post, $language_id, $translation, $sr ) {
 		// 	);
 		// }
 
-
-
-		update_post_meta( 
-			$post->ID, 
-			'wplng_translation_sr', 
-			str_replace('\\', '\\\\', wp_json_encode(
-				$sr_meta,
-				JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES
-			))
+		update_post_meta(
+			$post->ID,
+			'wplng_translation_sr',
+			str_replace(
+				'\\', '\\\\', wp_json_encode(
+					$sr_meta,
+					JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES
+				)
+			)
 		);
-
 
 		// Set or update new translation
 		$translation_already_in = false;

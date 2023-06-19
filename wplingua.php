@@ -15,14 +15,14 @@ define( 'WPLNG_API', 'http://machiavel-api.local/v0.0/last/' );
 
 require_once 'lib/simple_html_dom.php';
 
+require_once 'inc/ob-callback/editor.php';
+require_once 'inc/ob-callback/translate.php';
 require_once 'inc/admin-bar.php';
 require_once 'inc/api.php';
 require_once 'inc/assets.php';
 require_once 'inc/html-updater.php';
 require_once 'inc/languages.php';
 require_once 'inc/mail.php';
-require_once 'inc/ob-callback-editor.php';
-require_once 'inc/ob-callback-translate.php';
 require_once 'inc/option-page.php';
 require_once 'inc/search.php';
 require_once 'inc/switcher.php';
@@ -102,5 +102,3 @@ function wplng_start() {
 
 }
 wplng_start();
-
-// var_dump(wplng_translate('bonjour', 'fr', 'en')); die;
