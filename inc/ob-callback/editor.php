@@ -121,9 +121,15 @@ function wplng_ob_callback_editor( $html ) {
 	// TODO : Remplacer les liens dans $html_body
 	$html_body = preg_replace(
 		'#<a (.*)<\/a>#Uis',
-		'<span $1</span>',
+		'<span wplingua-editor-link $1</span>',
 		$html_body
 	);
+
+	// $html_body = preg_replace(
+	// 	'#<a .*>(.*)<\/a>#Uis',
+	// 	'$1',
+	// 	$html_body
+	// );
 
 	/**
 	 * Manage translation for <body>
@@ -164,7 +170,7 @@ function wplng_ob_callback_editor( $html ) {
 
 					$replace = str_replace(
 						'WPLNG',
-						'<a href="' . esc_url( $edit_link ) . '" target="_blank">[' . str_replace( '$', '&#36;', $translation['translation'] ) . ' <span class="dashicons dashicons-translation"></span>] </a>',
+						'<a href="' . esc_url( $edit_link ) . '" class="wplng-edit-link" target="_blank">' . str_replace( '$', '&#36;', $translation['translation'] ) . ' </a>',
 						$sr['replace']
 					);
 				} else {

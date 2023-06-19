@@ -1,3 +1,7 @@
+/*
+ * Language Switcher
+ */
+
 .wplng-switcher {
     position: fixed;
     bottom: 20px;
@@ -29,4 +33,35 @@
 
 .wplng-language:hover {
     background-color: rgba(0, 0, 0, .05);
+}
+
+/*
+ * Style for editor
+ */
+.wplng-edit-link {
+    color: inherit;
+    font-weight: inherit;
+    font-size: inherit;
+    text-decoration: inherit;
+    line-height: inherit;
+    border: 1px dashed gray;
+}
+
+.wplng-edit-link::after {
+    content: "\f326";
+    font-family: dashicons;
+    display: inline-block;
+    line-height: inherit;
+    font-weight: 400;
+    font-style: normal;
+    speak: never;
+    text-decoration: inherit;
+    text-decoration-color: inherit;
+    text-transform: none;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    vertical-align: bottom;
+    text-align: center;
+    margin: 0 4px;
 }
