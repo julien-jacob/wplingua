@@ -30,7 +30,7 @@ function wplng_get_language_website_flag() {
 
 	if ( empty( $website_flag ) ) {
 		$website_flag = wplng_get_language_by_id( 'en' );
-		if (!empty($website_flag['flags'][0]['flag'])) {
+		if ( ! empty( $website_flag['flags'][0]['flag'] ) ) {
 			$website_flag = $website_flag['flags'][0]['flag'];
 		} else {
 			$website_flag = ''; // Return empty string if no valid flag
@@ -107,8 +107,22 @@ function wplng_get_languages_target_simplified() {
 	}
 
 	$languages_target = json_decode( $json, true );
+	$all_languages    = wplng_get_languages_all();
+	$ordered          = array();
 
-	return $languages_target;
+	foreach ( $all_languages as $key => $language ) {
+		foreach ( $languages_target as $key => $language_target ) {
+			if (
+				! empty( $language['id'] )
+				&& ! empty( $language_target['id'] )
+				&& $language['id'] === $language_target['id']
+			) {
+				$ordered[] = $language_target;
+			}
+		}
+	}
+
+	return $ordered;
 }
 
 
@@ -330,7 +344,7 @@ function wplng_get_languages_data() {
 					'id'    => 'de',
 					'flag'  => 'de',
 					'emoji' => '🇩🇪',
-				)
+				),
 			),
 		),
 		array(
@@ -344,7 +358,7 @@ function wplng_get_languages_data() {
 					'id'    => 'it',
 					'flag'  => 'it',
 					'emoji' => '🇮🇹',
-				)
+				),
 			),
 		),
 		array(
