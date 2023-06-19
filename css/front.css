@@ -44,8 +44,14 @@
     font-size: inherit;
     text-decoration: inherit;
     line-height: inherit;
-    border: 1px dashed gray;
+    border: 2px dotted gray;
+    padding: 0 4px;
 }
+
+.entry-content p > .wplng-edit-link {
+    display: flex;
+}
+
 
 .wplng-edit-link::after {
     content: "\f326";
