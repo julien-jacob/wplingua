@@ -10,7 +10,7 @@ if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
-define( 'WPLNG_API', 'http://machiavel-api.local/v0.0/3/' );
+define( 'WPLNG_API', 'http://machiavel-api.local/v0.0/last/' );
 // define( 'WPLNG_API', 'https://api.wplingua.com/v0.0/last/' );
 
 require_once 'lib/simple_html_dom.php';
@@ -20,6 +20,8 @@ require_once 'inc/ob-callback/translate.php';
 require_once 'inc/admin-bar.php';
 require_once 'inc/api.php';
 require_once 'inc/assets.php';
+require_once 'inc/dictionary-cpt.php';
+require_once 'inc/dictionary-meta.php';
 require_once 'inc/html-updater.php';
 require_once 'inc/languages.php';
 require_once 'inc/mail.php';
@@ -38,16 +40,38 @@ $wplng_request_uri = $_SERVER['REQUEST_URI'];
 function wplng_start() {
 
 	/**
-	 * CPT, taxo, meta
+	 * wplng_translation : CPT, taxo, meta
 	 */
+
 	// Register wplng_translation CPT
 	add_action( 'init', 'wplng_register_post_type_translation' );
 
 	// Add metabox for wplng_translation
-	add_action( 'add_meta_boxes_wplng_translation', 'meta_box_for_products' );
+	add_action( 'add_meta_boxes_wplng_translation', 'wplng_translation_add_meta_box' );
 
 	// Save metabox on posts saving
 	add_action( 'save_post_wplng_translation', 'wplng_translation_save_meta_boxes_data', 10, 2 );
+
+	// Enqueue Script for wplng_translation admin
+	add_action( 'admin_print_scripts-post-new.php', 'wplng_translation_assets' );
+	add_action( 'admin_print_scripts-post.php', 'wplng_translation_assets' );
+
+	/**
+	 * wplng_dictionary : CPT, taxo, meta
+	 */
+
+	// Register wplng_dictionary CPT
+	add_action( 'init', 'wplng_register_post_type_dictionary' );
+
+	// Add metabox for wplng_dictionary
+	add_action( 'add_meta_boxes_wplng_dictionary', 'wplng_dictionary_add_meta_box' );
+
+	// Save metabox on posts saving
+	add_action( 'save_post_wplng_dictionary', 'wplng_dictionary_save_meta_boxes_data', 10, 2 );
+
+	// Enqueue Script for wplng_dictionary admin
+	add_action( 'admin_print_scripts-post-new.php', 'wplng_dictionary_assets' );
+	add_action( 'admin_print_scripts-post.php', 'wplng_dictionary_assets' );
 
 	/**
 	 * Back office

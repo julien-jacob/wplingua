@@ -7,10 +7,10 @@ if ( ! defined( 'WPINC' ) ) {
 
 
 
-function meta_box_for_products( $post ) {
+function wplng_translation_add_meta_box( $post ) {
 
 	add_meta_box(
-		'wplng_meta_box_id',
+		'wplng_meta_box_translation',
 		__( 'Translation', 'wplingua' ),
 		'wplng_translation_meta_box_html_output',
 		'wplng_translation',
@@ -46,7 +46,6 @@ function wplng_translation_meta_box_html_output( $post ) {
 		$html .= esc_html( $meta['wplng_translation_original'][0] );
 		$html .= '</strong></p><hr>';
 
-		echo $html;
 	}
 
 	// Foreach translation, display form textarea to edit
@@ -72,7 +71,7 @@ function wplng_translation_meta_box_html_output( $post ) {
 					$language_id   = esc_attr( $translation['language_id'] );
 					$emoji         = wplng_get_language_emoji( $language_id ); // Emoji already esc_html
 					$language_name = wplng_get_language_name( $language_id ); // Name already esc_html
-					$label         = $emoji . ' ' . $language_name . __( ' - Traduction:', 'textdomain' );
+					$label         = $emoji . ' ' . $language_name . __( ' - Translation:', 'textdomain' );
 					$textarea      = esc_html( $translation['translation'] );
 					$name          = esc_attr( 'wplng_translation_' . $language_id );
 
@@ -80,18 +79,20 @@ function wplng_translation_meta_box_html_output( $post ) {
 						$textarea = '';
 					}
 
-					$html  = '<p>';
+					$html .= '<p>';
 					$html .= '<label for="' . $name . '">' . $label . '</label><br>';
 					$html .= '<textarea name="' . $name . '" lang="' . $language_id . '" style="width:100%;">';
 					$html .= $textarea;
 					$html .= '</textarea>';
 					$html .= '</p>';
 
-					echo $html;
+					
 				}
 			}
 		}
 	}
+
+	echo $html;
 
 	// echo '<pre>';
 	// var_dump( json_decode($meta['wplng_translation_sr'][0], true) );
