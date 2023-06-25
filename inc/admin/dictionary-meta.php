@@ -31,7 +31,6 @@ function wplng_dictionary_meta_box_html_output( $post ) {
 	$meta = get_post_meta( $post->ID );
 	$html = '';
 
-
 	// Display original text
 	if ( ! empty( $meta['wplng_dictionary_original'][0] )
 		&& ! empty( $meta['wplng_dictionary_original_language_id'][0] )
@@ -48,7 +47,6 @@ function wplng_dictionary_meta_box_html_output( $post ) {
 		$html .= '<p><strong>';
 		$html .= esc_html( $meta['wplng_dictionary_original'][0] );
 		$html .= '</strong></p><hr>';
-
 
 		// Foreach translation, display form textarea to edit
 		$translations     = json_decode( $meta['wplng_translation_translations'][0], true );
@@ -85,14 +83,10 @@ function wplng_dictionary_meta_box_html_output( $post ) {
 					$html .= $textarea;
 					$html .= '</textarea>';
 					$html .= '</p>';
-					
+
 				}
 			}
-
-		} 
-
-		
-
+		}
 	} else {
 
 		$language_id   = wplng_get_language_current_id();
@@ -116,52 +110,25 @@ function wplng_dictionary_meta_box_html_output( $post ) {
 
 		// $html .= '</fieldset><hr>';
 
+		$html .= '<span>' . __( 'Action:', 'wplingua' ) . '</span>';
 
+		$html .= '<fieldset>';
+		$html .= '	<legend class="screen-reader-text">';
+		$html .= '		<span>' . __( 'Never translate', 'wplingua' ) . '</span>';
+		$html .= '	</legend>';
+		$html .= '	<label for="wplng_dictionary_action_never_translate">';
+		$html .= '		<input type="radio" id="wplng_dictionary_action_never_translate" name="wplng_dictionary_action" /> ' . __( 'Never translate', 'wplingua' );
+		$html .= '	</label>';
+		$html .= '</fieldset>';
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-$html .= '<span>' . __('Action:', 'wplingua') . '</span>';
-
-$html .= '<fieldset>';
-$html .= '	<legend class="screen-reader-text">';
-$html .= '		<span>' . __('Never translate', 'wplingua') . '</span>';
-$html .= '	</legend>';
-$html .= '	<label for="wplng_dictionary_action_never_translate">';
-$html .= '		<input type="radio" id="wplng_dictionary_action_never_translate" name="wplng_dictionary_action" /> ' . __('Never translate', 'wplingua');
-$html .= '	</label>';
-$html .= '</fieldset>';
-
-
-$html .= '<fieldset>';
-$html .= '	<legend class="screen-reader-text">';
-$html .= '		<span>' . __('Always translate', 'wplingua') . '</span>';
-$html .= '	</legend>';
-$html .= '	<label for="wplng_dictionary_action_always_translate">';
-$html .= '		<input type="radio" id="wplng_dictionary_action_always_translate" name="wplng_dictionary_action" /> ' . __('Always translate', 'wplingua');
-$html .= '	</label>';
-$html .= '</fieldset>';
-
-
-
-
-
-
-
-
-
-
-
+		$html .= '<fieldset>';
+		$html .= '	<legend class="screen-reader-text">';
+		$html .= '		<span>' . __( 'Always translate', 'wplingua' ) . '</span>';
+		$html .= '	</legend>';
+		$html .= '	<label for="wplng_dictionary_action_always_translate">';
+		$html .= '		<input type="radio" id="wplng_dictionary_action_always_translate" name="wplng_dictionary_action" /> ' . __( 'Always translate', 'wplingua' );
+		$html .= '	</label>';
+		$html .= '</fieldset>';
 
 		// Foreach translation, display form textarea to edit
 		$languages_target = wplng_get_languages_target_ids();
@@ -176,7 +143,6 @@ $html .= '</fieldset>';
 			$language_name = wplng_get_language_name( $language_id ); // Name already esc_html
 			$label         = $emoji . ' ' . $language_name . __( ' - Translation:', 'textdomain' );
 
-			
 			// $name          = esc_attr( 'wplng_translation_' . $language_id );
 
 			$name = 'okok';
@@ -187,8 +153,8 @@ $html .= '</fieldset>';
 
 			$html .= '</input>';
 			$html .= '</p>';
-			
-		} 
+
+		}
 
 		$html .= '</div>';
 

@@ -6,6 +6,7 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 
+
 /**
  * Create a menu link for the plugin settings in the admin area
  *
@@ -23,16 +24,18 @@ function wplng_create_menu() {
 		// plugins_url( '/images/icon.png', __FILE__ )
 	);
 
-	// add_submenu_page(
-	// 	'options-general.php',
-	// 	__( 'wplingua : Settings', 'wplingua' ),
-	// 	__( 'wplingua Settings', 'wplingua' ),
-	// 	'administrator',
-	// 	'wplng-settings',
-	// 	'wplng_settings'
-	// );
+	add_submenu_page(
+		__FILE__,
+		__( 'wplingua : Exclusion', 'wplingua' ),
+		__( 'Exclusion', 'wplingua' ),
+		'administrator',
+		'wplng-exclude',
+		'wplng_exclude'
+	);
 
 }
+
+
 
 
 /**
@@ -47,7 +50,7 @@ function wplng_register_settings() {
 	register_setting( 'wplng_settings', 'wplng_target_languages' );
 	register_setting( 'wplng_settings', 'wplng_translate_mail' );
 	register_setting( 'wplng_settings', 'wplng_translate_search' );
-	
+
 }
 
 
@@ -259,5 +262,43 @@ function wplng_settings_part_features() {
 			<input type="checkbox" id="wplng_translate_search" name="wplng_translate_search" value="1" <?php checked( 1, get_option( 'wplng_translate_search' ), true ); ?> /> <?php _e( 'Search from translated languages', 'wplingua' ); ?>
 		</label>
 	</fieldset>
+	<?php
+}
+
+
+function wplng_exclude() {
+	?>
+	<div class="wrap">
+		
+		<h1><?php _e( 'wpLingua : Exclusion rules', 'wplingua' ); ?></h1>
+
+		<br>
+
+		<form method="post" action="options.php">
+			<?php
+			settings_fields( 'wplng_settings' );
+			do_settings_sections( 'wplng_settings' );
+			?>
+			<table class="form-table">
+				<tr>
+					<th scope="row"><?php _e( 'Exclude elements', 'wplingua' ); ?></th>
+					<td>
+						<fieldset>
+						</fieldset>
+					</td>
+				</tr>
+				<tr>
+					<th scope="row"><?php _e( 'Exclude URL', 'wplingua' ); ?></th>
+					<td>
+						<fieldset>
+						</fieldset>
+					</td>
+				</tr>
+			</table>
+			
+			<?php submit_button(); ?>
+		
+		</form>
+	</div>
 	<?php
 }

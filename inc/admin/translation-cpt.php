@@ -21,7 +21,7 @@ function wplng_register_post_type_translation() {
 			'show_in_nav_menus'   => false,  // you shouldn't be able to add it to menus
 			'has_archive'         => false,  // it shouldn't have archive page
 			'rewrite'             => false,  // it shouldn't have rewrite rules
-			'menu_icon' => 'dashicons-translation',
+			'menu_icon'           => 'dashicons-translation',
 			'supports'            => array(
 				'title',
 				'revisions',

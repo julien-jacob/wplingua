@@ -10,31 +10,40 @@ if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
+global $wplng_request_uri;
+$wplng_request_uri = $_SERVER['REQUEST_URI'];
+
 define( 'WPLNG_API', 'http://machiavel-api.local/v0.0/last/' );
 // define( 'WPLNG_API', 'https://api.wplingua.com/v0.0/last/' );
 
+// Require files in /lib/ folder 
 require_once 'lib/simple_html_dom.php';
 
+// Require files in /inc/admin/ folder 
+require_once 'inc/admin/admin-bar.php';
+require_once 'inc/admin/assets.php';
+require_once 'inc/admin/dictionary-cpt.php';
+require_once 'inc/admin/dictionary-meta.php';
+require_once 'inc/admin/option-page.php';
+require_once 'inc/admin/translation-cpt.php';
+require_once 'inc/admin/translation-meta.php';
+
+// Require files in /inc/ob-callback/ folder 
 require_once 'inc/ob-callback/editor.php';
 require_once 'inc/ob-callback/translate.php';
-require_once 'inc/admin-bar.php';
+
+// Require files in /inc/ folder 
 require_once 'inc/api.php';
 require_once 'inc/assets.php';
-require_once 'inc/dictionary-cpt.php';
-require_once 'inc/dictionary-meta.php';
 require_once 'inc/html-updater.php';
 require_once 'inc/languages.php';
 require_once 'inc/mail.php';
-require_once 'inc/option-page.php';
 require_once 'inc/search.php';
 require_once 'inc/switcher.php';
-require_once 'inc/translation-cpt.php';
-require_once 'inc/translation-meta.php';
 require_once 'inc/translation.php';
 require_once 'inc/url.php';
 
-global $wplng_request_uri;
-$wplng_request_uri = $_SERVER['REQUEST_URI'];
+
 
 
 function wplng_start() {
@@ -93,7 +102,7 @@ function wplng_start() {
 	add_action( 'admin_enqueue_scripts', 'wplng_enqueue_callback' );
 
 	// Print head script (JSON with all languages informations)
-	add_action( 'toplevel_page_wplingua/inc/option-page', 'wplng_inline_script_all_language' );
+	add_action( 'toplevel_page_wplingua/inc/admin/option-page', 'wplng_inline_script_all_language' );
 
 	/**
 	 * Front

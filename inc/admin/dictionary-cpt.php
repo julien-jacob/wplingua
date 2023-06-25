@@ -21,14 +21,14 @@ function wplng_register_post_type_dictionary() {
 			'show_in_nav_menus'   => false,  // you shouldn't be able to add it to menus
 			'has_archive'         => false,  // it shouldn't have archive page
 			'rewrite'             => false,  // it shouldn't have rewrite rules
-			'menu_icon' => 'dashicons-book-alt',
+			'menu_icon'           => 'dashicons-book-alt',
 			'supports'            => array(
 				'title',
 				'revisions',
 			),
 			'capability_type'     => 'post',
 			'capabilities'        => array(
-				'create_posts' => true, 
+				'create_posts' => true,
 			),
 			'map_meta_cap'        => true, // Set to `false`, if users are not allowed to edit/delete existing posts
 		)
