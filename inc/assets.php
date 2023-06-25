@@ -16,20 +16,14 @@ function wplng_enqueue_callback( $hook ) {
 
 	wp_enqueue_script(
 		'wplingua-option',
-		plugins_url() . '/wplingua/js/option-page.js',
+		plugins_url() . '/wplingua/js/admin/option-page.js',
 		array( 'jquery' )
 	);
 
 	wp_enqueue_style(
 		'wplingua-option',
-		plugins_url() . '/wplingua/css/option-page.css'
+		plugins_url() . '/wplingua/css/admin/option-page.css'
 	);
-}
-
-
-function wplng_inline_script_all_language() {
-	?><script>var wplngAllLanguages = JSON.parse('<?php echo wplng_get_languages_all_json(); ?>');</script>
-	<?php
 }
 
 
@@ -51,4 +45,50 @@ function wplng_register_assets() {
 		'wplingua',
 		plugins_url() . '/wplingua/css/front.css'
 	);
+}
+
+
+function wplng_dictionary_assets() {
+	global $post_type;
+	if ( 'wplng_dictionary' === $post_type ) {
+
+		wp_enqueue_script(
+			'wplingua-dictionary',
+			plugins_url() . '/wplingua/js/admin/dictionary.js',
+			array( 'jquery' )
+		);
+
+		wp_enqueue_style(
+			'wplingua-dictionary',
+			plugins_url() . '/wplingua/css/admin/dictionary.css'
+		);
+
+	}
+
+}
+
+
+function wplng_translation_assets() {
+	global $post_type;
+	if ( 'wplng_translation' === $post_type ) {
+
+		wp_enqueue_script(
+			'wplingua-translation',
+			plugins_url() . '/wplingua/js/admin/translation.js',
+			array( 'jquery' )
+		);
+
+		wp_enqueue_style(
+			'wplingua-translation',
+			plugins_url() . '/wplingua/css/admin/translation.css'
+		);
+
+	}
+
+}
+
+
+function wplng_inline_script_all_language() {
+	?><script>var wplngAllLanguages = JSON.parse('<?php echo wplng_get_languages_all_json(); ?>');</script>
+	<?php
 }
