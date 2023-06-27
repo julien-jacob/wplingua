@@ -22,8 +22,6 @@ require_once 'lib/simple_html_dom.php';
 // Require files in /inc/admin/ folder 
 require_once 'inc/admin/admin-bar.php';
 require_once 'inc/admin/assets.php';
-require_once 'inc/admin/dictionary-cpt.php';
-require_once 'inc/admin/dictionary-meta.php';
 require_once 'inc/admin/option-page-exclusions.php';
 require_once 'inc/admin/option-page-wplingua.php';
 require_once 'inc/admin/option-page.php';
@@ -66,23 +64,6 @@ function wplng_start() {
 	// Enqueue Script for wplng_translation admin
 	add_action( 'admin_print_scripts-post-new.php', 'wplng_translation_assets' );
 	add_action( 'admin_print_scripts-post.php', 'wplng_translation_assets' );
-
-	/**
-	 * wplng_dictionary : CPT, taxo, meta
-	 */
-
-	// Register wplng_dictionary CPT
-	add_action( 'init', 'wplng_register_post_type_dictionary' );
-
-	// Add metabox for wplng_dictionary
-	add_action( 'add_meta_boxes_wplng_dictionary', 'wplng_dictionary_add_meta_box' );
-
-	// Save metabox on posts saving
-	add_action( 'save_post_wplng_dictionary', 'wplng_dictionary_save_meta_boxes_data', 10, 2 );
-
-	// Enqueue Script for wplng_dictionary admin
-	add_action( 'admin_print_scripts-post-new.php', 'wplng_dictionary_assets' );
-	add_action( 'admin_print_scripts-post.php', 'wplng_dictionary_assets' );
 
 	/**
 	 * Back office
