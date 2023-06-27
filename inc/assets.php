@@ -6,7 +6,6 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 
-
 function wplng_register_assets() {
 
 	if ( is_admin() ) {

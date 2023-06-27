@@ -100,7 +100,6 @@ function wplng_dictionary_meta_box_html_output( $post ) {
 		$html .= '</input></p>';
 
 		// $html .= '<fieldset>';
-		// $html .= '	<legend>Action : </legend>';
 
 		// $html .= '	<input type="radio" id="wplng_dictionary_action_never_translate" name="wplng_dictionary_action" />';
 		// $html .= '	<label for="wplng_dictionary_action_never_translate">Never translate</label>';
@@ -113,18 +112,12 @@ function wplng_dictionary_meta_box_html_output( $post ) {
 		$html .= '<span>' . __( 'Action:', 'wplingua' ) . '</span>';
 
 		$html .= '<fieldset>';
-		$html .= '	<legend class="screen-reader-text">';
-		$html .= '		<span>' . __( 'Never translate', 'wplingua' ) . '</span>';
-		$html .= '	</legend>';
 		$html .= '	<label for="wplng_dictionary_action_never_translate">';
 		$html .= '		<input type="radio" id="wplng_dictionary_action_never_translate" name="wplng_dictionary_action" /> ' . __( 'Never translate', 'wplingua' );
 		$html .= '	</label>';
 		$html .= '</fieldset>';
 
 		$html .= '<fieldset>';
-		$html .= '	<legend class="screen-reader-text">';
-		$html .= '		<span>' . __( 'Always translate', 'wplingua' ) . '</span>';
-		$html .= '	</legend>';
 		$html .= '	<label for="wplng_dictionary_action_always_translate">';
 		$html .= '		<input type="radio" id="wplng_dictionary_action_always_translate" name="wplng_dictionary_action" /> ' . __( 'Always translate', 'wplingua' );
 		$html .= '	</label>';

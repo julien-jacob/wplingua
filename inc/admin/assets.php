@@ -6,7 +6,31 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 
-function wplng_enqueue_callback( $hook ) {
+function wplng_option_page_settings_assets( $hook ) {
+
+	if ( ! is_admin()
+		|| $hook !== 'toplevel_page_wplng-settings'
+	) {
+		return;
+	}
+
+	wp_enqueue_script( 'jquery' );
+
+	wp_enqueue_script(
+		'wplingua-settings',
+		plugins_url() . '/wplingua/js/admin/option-page-settings.js',
+		array( 'jquery' )
+	);
+
+	wp_enqueue_style(
+		'wplingua-settings',
+		plugins_url() . '/wplingua/css/admin/option-page-settings.css'
+	);
+}
+
+
+
+function wplng_option_page_exclusions_assets( $hook ) {
 
 	if ( ! is_admin()
 		|| $hook !== 'toplevel_page_wplingua/inc/admin/option-page'

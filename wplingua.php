@@ -24,6 +24,8 @@ require_once 'inc/admin/admin-bar.php';
 require_once 'inc/admin/assets.php';
 require_once 'inc/admin/dictionary-cpt.php';
 require_once 'inc/admin/dictionary-meta.php';
+require_once 'inc/admin/option-page-exclusions.php';
+require_once 'inc/admin/option-page-wplingua.php';
 require_once 'inc/admin/option-page.php';
 require_once 'inc/admin/translation-cpt.php';
 require_once 'inc/admin/translation-meta.php';
@@ -98,11 +100,12 @@ function wplng_start() {
 	// Add admin Bar menu
 	add_action( 'admin_bar_menu', 'wplng_admin_bar_menu', 100 );
 
-	// Enqueue CSS and JS files
-	add_action( 'admin_enqueue_scripts', 'wplng_enqueue_callback' );
+	// Enqueue CSS and JS files for option pages
+	add_action( 'admin_enqueue_scripts', 'wplng_option_page_settings_assets' );
+	add_action( 'admin_enqueue_scripts', 'wplng_option_page_exclusions_assets' );
 
 	// Print head script (JSON with all languages informations)
-	add_action( 'toplevel_page_wplingua/inc/admin/option-page', 'wplng_inline_script_all_language' );
+	add_action( 'toplevel_page_wplng-settings', 'wplng_inline_script_all_language' );
 
 	/**
 	 * Front
