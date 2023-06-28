@@ -88,8 +88,23 @@ function wplng_url_is_translatable( $url = '' ) {
 	}
 
 	// Check if is in wp-uploads
-	if ( str_contains( $url, wp_make_link_relative( content_url() ) ) ) {
+	if (
+		$is_translatable
+		&& str_contains( $url, wp_make_link_relative( content_url() ) )
+	) {
 		$is_translatable = false;
+	}
+
+	// Check if URL is excluded in option page
+	if ( $is_translatable ) {
+		$url_exclude = wplng_get_url_exclude();
+
+		foreach ( $url_exclude as $key => $url_exclude_element ) {
+			if ( preg_match( '#' . $url_exclude_element . '#', $url ) ) {
+				$is_translatable = false;
+				break;
+			}
+		}
 	}
 
 	$is_translatable = apply_filters(
@@ -98,6 +113,33 @@ function wplng_url_is_translatable( $url = '' ) {
 	);
 
 	return $is_translatable;
+}
+
+
+function wplng_get_url_exclude() {
+
+	$url_exclude = explode(
+		PHP_EOL,
+		get_option( 'wplng_excluded_url' )
+	);
+
+	// Remove empty
+	$url_exclude = array_values( array_filter( $url_exclude ) );
+
+	// Remove duplicate
+	$url_exclude = array_unique( $url_exclude );
+
+	// Clear with esc_url
+	foreach ( $url_exclude as $key => $url ) {
+		$url_exclude[ $key ] = esc_url( $url );
+	}
+
+	$url_exclude = apply_filters(
+		'wplng_url_exclude',
+		$url_exclude
+	);
+
+	return $url_exclude;
 }
 
 

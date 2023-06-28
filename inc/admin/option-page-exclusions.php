@@ -21,22 +21,13 @@ function wplng_exclude() {
 			?>
 			<table class="form-table">
 				<tr>
-					<th scope="row"><?php _e( 'Exclude texts', 'wplingua' ); ?></th>
-					<td>
-						<fieldset>
-							<label for=""><?php _e( 'Exclude texts:', 'wplingua' ); ?></label>
-							<textarea name="" id="" rows="6" style="width:100%;"></textarea>
-						</fieldset>
-						<br>
-						<hr>
-					</td>
-				</tr>
-				<tr>
 					<th scope="row"><?php _e( 'Exclude elements', 'wplingua' ); ?></th>
 					<td>
 						<fieldset>
-							<label for=""><?php _e( 'Exclude elements with selector:', 'wplingua' ); ?></label>
-							<textarea name="" id="" rows="6" style="width:100%;"></textarea>
+							<label for=""><strong><?php _e( 'Exclude HTML elements:', 'wplingua' ); ?></strong></label>
+							<p><?php echo __( 'You can leave some elements of your web pages untranslated. To do this, list the element selectors to be excluded below. For example, use ' ) . '<code>#website-main-title</code>' . __( ' to exclude an element by ID attribute, or ' ) . '<code>.author-name</code>' . __( ' to exclude an element by class.', 'wplingua' ); ?></p>
+							<br>
+							<textarea name="wplng_excluded_selectors" id="wplng_excluded_selectors" rows="6" style="width:100%;"><?php echo esc_textarea( get_option( 'wplng_excluded_selectors' )); ?></textarea>
 						</fieldset>
 						<br>
 						<hr>
@@ -46,11 +37,11 @@ function wplng_exclude() {
 					<th scope="row"><?php _e( 'Exclude URL', 'wplingua' ); ?></th>
 					<td>
 						<fieldset>
-							<label for=""><?php _e( 'Exclude URL with regex:', 'wplingua' ); ?></label>
-							<textarea name="" id="" rows="6" style="width:100%;"></textarea>
+							<label for=""><strong><?php _e( 'Exclude URLs from translation:', 'wplingua' ); ?></strong></label>
+							<p><?php echo __( 'You can exclude from translations pages you wish to offer only in the site\'s original language. To do this, list the URLs to be excluded below, one per line. For example  ' ) . '<code>/my-page/</code>' . __( '. You can also use REGEX. For example, use ' ) . '<code>/author/.*</code>' . __( ' to exclude author pages or ', 'wplingua' ) . '<code>/?s=.*</code>'. __( ' to exclude search pages.', 'wplingua' ); ?></p>
+							<br>
+							<textarea name="wplng_excluded_url" id="wplng_excluded_url" rows="6" style="width:100%;"><?php echo esc_textarea( get_option( 'wplng_excluded_url' )); ?></textarea>
 						</fieldset>
-						<br>
-						<hr>
 					</td>
 				</tr>
 			</table>
