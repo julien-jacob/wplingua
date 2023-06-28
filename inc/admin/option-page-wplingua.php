@@ -66,7 +66,7 @@ function wplng_settings_part_language_website() {
 	?>
 
 	<label for="wplng_website_language">
-		<?php _e( 'The original website language: ', 'wplingua' ); ?>
+		<strong><?php _e( 'The original website language: ', 'wplingua' ); ?></strong>
 	</label>
 
 	<select id="wplng_website_language" name="wplng_website_language">
@@ -99,7 +99,7 @@ function wplng_settings_part_language_website() {
 
 	<div id="wplng-flags-radio-original-website-custom"><?php _e( 'Custom', 'wplingua' ); ?></div>
 
-	<span><?php _e( 'The original website flag: ', 'wplingua' ); ?></span>
+	<strong><?php _e( 'The original website flag: ', 'wplingua' ); ?></strong>
 	<span id="wplng-flags-radio-original-website"></span>
 
 	<br>
@@ -131,7 +131,7 @@ function wplng_settings_part_languages_target() {
 	?>
 
 	<label for="wplng_target_language">
-		<?php _e( 'Add new target Language: ', 'wplingua' ); ?>
+		<strong><?php _e( 'Add new target Language: ', 'wplingua' ); ?></strong>
 	</label>							
 
 	<select id="wplng_add_new_target_language" name="wplng_add_new_target_language"></select>
@@ -169,11 +169,15 @@ function wplng_settings_part_languages_target() {
 
 function wplng_settings_part_features() {
 	?>
+
+	<p><strong><?php _e( 'Translation features:', 'wplingua' ); ?></strong></p>
+	<br>
 	<fieldset>
 		<label for="wplng_translate_mail">
 			<input type="checkbox" id="wplng_translate_mail" name="wplng_translate_mail" value="1" <?php checked( 1, get_option( 'wplng_translate_mail' ), true ); ?> /> <?php _e( 'Translate sending mail', 'wplingua' ); ?>
 		</label>
 	</fieldset>
+
 	<fieldset>
 		<label for="wplng_translate_search">
 			<input type="checkbox" id="wplng_translate_search" name="wplng_translate_search" value="1" <?php checked( 1, get_option( 'wplng_translate_search' ), true ); ?> /> <?php _e( 'Search from translated languages', 'wplingua' ); ?>
