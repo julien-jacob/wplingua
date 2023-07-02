@@ -52,6 +52,30 @@ function wplngapi_error_die( $code = 0 ) {
 			$message = 'Translate API - Empty text';
 			break;
 
+		case 9:
+			$message = 'Register API key - Empty website URL';
+			break;
+
+		case 10:
+			$message = 'Register API key - Empty mail address';
+			break;
+
+		case 11:
+			$message = 'Register API key - Empty original language';
+			break;
+
+		case 12:
+			$message = 'Register API key - Empty target languages';
+			break;
+
+		case 13:
+			$message = 'Validate API key - Empty API Key';
+			break;
+
+		case 14:
+			$message = 'Validate API key - API Key unknown';
+			break;
+
 		default:
 			$message = 'Unknown error';
 			break;

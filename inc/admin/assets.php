@@ -10,6 +10,7 @@ function wplng_option_page_settings_assets( $hook ) {
 
 	if ( ! is_admin()
 		|| $hook !== 'toplevel_page_wplng-settings'
+		|| empty( wplng_get_api_key() )
 	) {
 		return;
 	}

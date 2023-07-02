@@ -14,24 +14,40 @@ if ( ! defined( 'WPINC' ) ) {
  */
 function wplng_create_menu() {
 
-	add_menu_page(
-		__( 'wpLingua : Settings', 'wplingua' ),
-		__( 'wpLingua', 'wplingua' ),
-		'administrator',
-		'wplng-settings',
-		'wplng_settings',
-		'dashicons-admin-site'
-		// plugins_url( '/images/icon.png', __FILE__ )
-	);
+	if ( empty( wplng_get_api_key_data() ) ) {
 
-	add_submenu_page(
-		'wplng-settings',
-		__( 'wplingua : Exclusion', 'wplingua' ),
-		__( 'Exclusion', 'wplingua' ),
-		'administrator',
-		'wplng-exclude',
-		'wplng_exclude'
-	);
+		add_menu_page(
+			__( 'wpLingua : Register', 'wplingua' ),
+			__( 'wpLingua', 'wplingua' ),
+			'administrator',
+			'wplng-settings',
+			'wplng_option_page_register',
+			'dashicons-admin-site'
+			// plugins_url( '/images/icon.png', __FILE__ )
+		);
+
+	} else {
+
+		add_menu_page(
+			__( 'wpLingua : Settings', 'wplingua' ),
+			__( 'wpLingua', 'wplingua' ),
+			'administrator',
+			'wplng-settings',
+			'wplng_option_page_settings',
+			'dashicons-admin-site'
+			// plugins_url( '/images/icon.png', __FILE__ )
+		);
+
+		add_submenu_page(
+			'wplng-settings',
+			__( 'wplingua : Exclusion', 'wplingua' ),
+			__( 'Exclusion', 'wplingua' ),
+			'administrator',
+			'wplng-exclusions',
+			'wplng_option_page_exclusions'
+		);
+
+	}
 
 }
 
@@ -44,6 +60,8 @@ function wplng_create_menu() {
  * @return void
  */
 function wplng_register_settings() {
+
+	register_setting( 'wplng_settings', 'wplng_api_key' );
 
 	register_setting( 'wplng_settings', 'wplng_website_language' );
 	register_setting( 'wplng_settings', 'wplng_website_flag' );
