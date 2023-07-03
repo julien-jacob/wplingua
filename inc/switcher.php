@@ -11,6 +11,12 @@ function wplng_switcher_wp_footer() {
 		return;
 	}
 
+	// Return if automatic insert is false
+
+	// $switcher_style -> list, block, dropdown
+	// $show_flag -> true, false
+	// $languages_name_style -> no, id, name
+
 	echo wplng_get_switcher_html();
 }
 
@@ -23,7 +29,7 @@ function wplng_get_switcher_html() {
 	// TODO : Check if language original and target is OK, else return
 
 	$html = '<div class="wplng-switcher">';
-	$html .= '<div class="wplng-language-main">';
+	$html .= '<div class="wplng-language-current">';
 
 	// Create link for website language
 	$language_website = wplng_get_language_website();
