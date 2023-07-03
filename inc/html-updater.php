@@ -80,11 +80,31 @@ function wplng_html_translate_links( $html, $language_target ) {
 
 function wplng_get_selector_exclude() {
 
-	$selector_exclude = array(
-		'#wpadminbar',
-		'.no-translate',
-		'.wplng-switcher',
+	$selector_exclude = explode(
+		PHP_EOL,
+		get_option( 'wplng_excluded_selectors' )
 	);
+
+	// Remove empty
+	$selector_exclude = array_values( array_filter( $selector_exclude ) );
+
+	// Add default selectors
+	$selector_exclude = array_merge(
+		$selector_exclude,
+		array(
+			'#wpadminbar',
+			'.no-translate',
+			'.wplng-switcher',
+		)
+	);
+
+	// Remove duplicate
+	$selector_exclude = array_unique( $selector_exclude );
+
+	// TODO : Faire le code ci-dessous ?
+	// foreach ($selector_exclude as $key => $selector) {
+	// 	$selector_exclude[$key] = esc_attr($selector_exclude);
+	// }
 
 	$selector_exclude = apply_filters(
 		'wplng_selector_exclude',

@@ -7,7 +7,7 @@ if ( ! defined( 'WPINC' ) ) {
 
 function wplng_switcher_wp_footer() {
 
-	if ( is_admin() ) {
+	if ( ! wplng_url_is_translatable() ) {
 		return;
 	}
 

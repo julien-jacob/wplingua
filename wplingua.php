@@ -10,68 +10,47 @@ if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
-define( 'WPLNG_API', 'http://machiavel-api.local/v0.0/last/' );
-// define( 'WPLNG_API', 'https://api.wplingua.com/v0.0/last/' );
-
-require_once 'lib/simple_html_dom.php';
-
-require_once 'inc/ob-callback/editor.php';
-require_once 'inc/ob-callback/translate.php';
-require_once 'inc/admin-bar.php';
-require_once 'inc/api.php';
-require_once 'inc/assets.php';
-require_once 'inc/dictionary-cpt.php';
-require_once 'inc/dictionary-meta.php';
-require_once 'inc/html-updater.php';
-require_once 'inc/languages.php';
-require_once 'inc/mail.php';
-require_once 'inc/option-page.php';
-require_once 'inc/search.php';
-require_once 'inc/switcher.php';
-require_once 'inc/translation-cpt.php';
-require_once 'inc/translation-meta.php';
-require_once 'inc/translation.php';
-require_once 'inc/url.php';
 
 global $wplng_request_uri;
 $wplng_request_uri = $_SERVER['REQUEST_URI'];
 
+define( 'WPLNG_API', 'http://machiavel-api.local/v0.0/last/' );
+// define( 'WPLNG_API', 'https://api.wplingua.com/v0.0/last/' );
+
+// Require files in /lib/ folder
+require_once 'lib/simple_html_dom.php';
+
+// Require files in /inc/admin/ folder
+require_once 'inc/admin/admin-bar.php';
+require_once 'inc/admin/assets.php';
+require_once 'inc/admin/option-page-exclusions.php';
+require_once 'inc/admin/option-page-register.php';
+require_once 'inc/admin/option-page-settings.php';
+require_once 'inc/admin/option-page.php';
+require_once 'inc/admin/translation-cpt.php';
+require_once 'inc/admin/translation-meta.php';
+
+// Require files in /inc/ob-callback/ folder
+require_once 'inc/ob-callback/editor.php';
+require_once 'inc/ob-callback/translate.php';
+
+// Require files in /inc/ folder
+require_once 'inc/api-key.php';
+require_once 'inc/api.php';
+require_once 'inc/assets.php';
+require_once 'inc/html-updater.php';
+require_once 'inc/languages.php';
+require_once 'inc/mail.php';
+require_once 'inc/search.php';
+require_once 'inc/switcher.php';
+require_once 'inc/translation.php';
+require_once 'inc/url.php';
+
+
+
+
 
 function wplng_start() {
-
-	/**
-	 * wplng_translation : CPT, taxo, meta
-	 */
-
-	// Register wplng_translation CPT
-	add_action( 'init', 'wplng_register_post_type_translation' );
-
-	// Add metabox for wplng_translation
-	add_action( 'add_meta_boxes_wplng_translation', 'wplng_translation_add_meta_box' );
-
-	// Save metabox on posts saving
-	add_action( 'save_post_wplng_translation', 'wplng_translation_save_meta_boxes_data', 10, 2 );
-
-	// Enqueue Script for wplng_translation admin
-	add_action( 'admin_print_scripts-post-new.php', 'wplng_translation_assets' );
-	add_action( 'admin_print_scripts-post.php', 'wplng_translation_assets' );
-
-	/**
-	 * wplng_dictionary : CPT, taxo, meta
-	 */
-
-	// Register wplng_dictionary CPT
-	add_action( 'init', 'wplng_register_post_type_dictionary' );
-
-	// Add metabox for wplng_dictionary
-	add_action( 'add_meta_boxes_wplng_dictionary', 'wplng_dictionary_add_meta_box' );
-
-	// Save metabox on posts saving
-	add_action( 'save_post_wplng_dictionary', 'wplng_dictionary_save_meta_boxes_data', 10, 2 );
-
-	// Enqueue Script for wplng_dictionary admin
-	add_action( 'admin_print_scripts-post-new.php', 'wplng_dictionary_assets' );
-	add_action( 'admin_print_scripts-post.php', 'wplng_dictionary_assets' );
 
 	/**
 	 * Back office
@@ -89,11 +68,29 @@ function wplng_start() {
 	// Add admin Bar menu
 	add_action( 'admin_bar_menu', 'wplng_admin_bar_menu', 100 );
 
-	// Enqueue CSS and JS files
-	add_action( 'admin_enqueue_scripts', 'wplng_enqueue_callback' );
+	// Enqueue CSS and JS files for option pages
+	add_action( 'admin_enqueue_scripts', 'wplng_option_page_settings_assets' );
+	add_action( 'admin_enqueue_scripts', 'wplng_option_page_exclusions_assets' );
 
 	// Print head script (JSON with all languages informations)
-	add_action( 'toplevel_page_wplingua/inc/option-page', 'wplng_inline_script_all_language' );
+	add_action( 'toplevel_page_wplng-settings', 'wplng_inline_script_all_language' );
+
+	/**
+	 * wplng_translation : CPT, taxo, meta
+	 */
+
+	// Register wplng_translation CPT
+	add_action( 'init', 'wplng_register_post_type_translation' );
+
+	// Add metabox for wplng_translation
+	add_action( 'add_meta_boxes_wplng_translation', 'wplng_translation_add_meta_box' );
+
+	// Save metabox on posts saving
+	add_action( 'save_post_wplng_translation', 'wplng_translation_save_meta_boxes_data', 10, 2 );
+
+	// Enqueue Script for wplng_translation admin
+	add_action( 'admin_print_scripts-post-new.php', 'wplng_translation_assets' );
+	add_action( 'admin_print_scripts-post.php', 'wplng_translation_assets' );
 
 	/**
 	 * Front

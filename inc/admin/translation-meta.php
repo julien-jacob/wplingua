@@ -86,7 +86,6 @@ function wplng_translation_meta_box_html_output( $post ) {
 					$html .= '</textarea>';
 					$html .= '</p>';
 
-					
 				}
 			}
 		}

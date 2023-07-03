@@ -6,6 +6,49 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 
+function wplng_validate_api_key( $api_key = '' ) {
+
+	if ( empty( $api_key ) ) {
+		$api_key = wplng_get_api_key();
+	}
+
+	// TODO : Check API key format
+
+	// if (empty($api_key)) {
+	// 	$api_key = wplng_get_api_key();
+	// }
+
+	$body = array(
+		'r'       => 'api_key',
+		'api_key' => $api_key,
+	);
+	$args = array(
+		'method'    => 'POST',
+		'timeout'   => 5,
+		'sslverify' => false,
+		'body'      => $body,
+	);
+
+	// error_log( var_export( $body, true ) );
+
+	$request = wp_remote_post( WPLNG_API, $args );
+
+	if ( is_wp_error( $request ) || wp_remote_retrieve_response_code( $request ) != 200 ) {
+		error_log( print_r( $request, true ) );
+		return false;
+	}
+
+	$response = json_decode( wp_remote_retrieve_body( $request ), true );
+
+	if ( ! empty( $response['error'] ) ) {
+		// TODO : Check for remove or update
+		return false;
+	}
+
+	return (string) wp_remote_retrieve_body( $request );
+}
+
+
 function wplng_translate( $text, $language_source_id = '', $language_target_id = '' ) {
 
 	// TODO : Replacer par ternaire

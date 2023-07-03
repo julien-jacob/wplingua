@@ -6,71 +6,7 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 
-/**
- * Create a menu link for the plugin settings in the admin area
- *
- * @return void
- */
-function wplng_create_menu() {
 
-	add_menu_page(
-		__( 'wpLingua : Settings', 'wplingua' ),
-		__( 'wpLingua', 'wplingua' ),
-		'administrator',
-		__FILE__,
-		'wplng_settings',
-		'dashicons-admin-site'
-		// plugins_url( '/images/icon.png', __FILE__ )
-	);
-
-	// add_submenu_page(
-	// 	'options-general.php',
-	// 	__( 'wplingua : Settings', 'wplingua' ),
-	// 	__( 'wplingua Settings', 'wplingua' ),
-	// 	'administrator',
-	// 	'wplng-settings',
-	// 	'wplng_settings'
-	// );
-
-}
-
-
-/**
- * register settings
- *
- * @return void
- */
-function wplng_register_settings() {
-
-	register_setting( 'wplng_settings', 'wplng_website_language' );
-	register_setting( 'wplng_settings', 'wplng_website_flag' );
-	register_setting( 'wplng_settings', 'wplng_target_languages' );
-	register_setting( 'wplng_settings', 'wplng_translate_mail' );
-	register_setting( 'wplng_settings', 'wplng_translate_search' );
-	
-}
-
-
-/**
- * Add 'Settings' link on the plugin list
- *
- * @param array $settings
- * @return array
- */
-function wplng_settings_link( $settings ) {
-
-	$url = esc_url(
-		add_query_arg(
-			'page',
-			'wplingua/inc/option-page.php',
-			get_admin_url() . 'admin.php'
-		)
-	);
-
-	$settings[] = '<a href="' . $url . '">' . __( 'Settings', 'wplingua' ) . '</a>';
-
-	return $settings;
-}
 
 
 /**
@@ -78,7 +14,7 @@ function wplng_settings_link( $settings ) {
  *
  * @return void
  */
-function wplng_settings() {
+function wplng_option_page_settings() {
 	?>
 	<div class="wrap">
 		
@@ -116,6 +52,14 @@ function wplng_settings() {
 						</fieldset>
 					</td>
 				</tr>
+				<tr>
+					<th scope="row"><?php _e( 'API Key', 'wplingua' ); ?></th>
+					<td>
+						<fieldset>
+							<?php wplng_settings_part_api_key(); ?>
+						</fieldset>
+					</td>
+				</tr>
 			</table>
 			
 			<?php submit_button(); ?>
@@ -128,12 +72,9 @@ function wplng_settings() {
 
 function wplng_settings_part_language_website() {
 	?>
-	<legend class="screen-reader-text">
-		<span><?php _e( 'Website language', 'wplingua' ); ?></span>
-	</legend>
 
 	<label for="wplng_website_language">
-		<?php _e( 'The original website language: ', 'wplingua' ); ?>
+		<strong><?php _e( 'The original website language: ', 'wplingua' ); ?></strong>
 	</label>
 
 	<select id="wplng_website_language" name="wplng_website_language">
@@ -164,13 +105,9 @@ function wplng_settings_part_language_website() {
 	<br>
 	<br>
 
-	<legend class="screen-reader-text">
-		<span><?php _e( 'Website flag', 'wplingua' ); ?></span>
-	</legend>
-
 	<div id="wplng-flags-radio-original-website-custom"><?php _e( 'Custom', 'wplingua' ); ?></div>
 
-	<span><?php _e( 'The original website flag: ', 'wplingua' ); ?></span>
+	<strong><?php _e( 'The original website flag: ', 'wplingua' ); ?></strong>
 	<span id="wplng-flags-radio-original-website"></span>
 
 	<br>
@@ -200,12 +137,9 @@ function wplng_settings_part_languages_target() {
 	$languages_target = wplng_get_language_by_ids( $languages_target_ids );
 
 	?>
-	<legend class="screen-reader-text">
-		<span><?php _e( 'Translated languages', 'wplingua' ); ?></span>
-	</legend>
 
 	<label for="wplng_target_language">
-		<?php _e( 'Add new target Language: ', 'wplingua' ); ?>
+		<strong><?php _e( 'Add new target Language: ', 'wplingua' ); ?></strong>
 	</label>							
 
 	<select id="wplng_add_new_target_language" name="wplng_add_new_target_language"></select>
@@ -241,23 +175,34 @@ function wplng_settings_part_languages_target() {
 	<?php
 }
 
+
 function wplng_settings_part_features() {
 	?>
+
+	<p><strong><?php _e( 'Translation features:', 'wplingua' ); ?></strong></p>
+	<br>
 	<fieldset>
-		<legend class="screen-reader-text">
-			<span><?php _e( 'Translate sending mail', 'wplingua' ); ?></span>
-		</legend>
 		<label for="wplng_translate_mail">
 			<input type="checkbox" id="wplng_translate_mail" name="wplng_translate_mail" value="1" <?php checked( 1, get_option( 'wplng_translate_mail' ), true ); ?> /> <?php _e( 'Translate sending mail', 'wplingua' ); ?>
 		</label>
 	</fieldset>
+
 	<fieldset>
-		<legend class="screen-reader-text">
-			<span><?php _e( 'Search from translated languages', 'wplingua' ); ?></span>
-		</legend>
 		<label for="wplng_translate_search">
 			<input type="checkbox" id="wplng_translate_search" name="wplng_translate_search" value="1" <?php checked( 1, get_option( 'wplng_translate_search' ), true ); ?> /> <?php _e( 'Search from translated languages', 'wplingua' ); ?>
 		</label>
+	</fieldset>
+	<?php
+}
+
+
+
+function wplng_settings_part_api_key() {
+	?>
+	<fieldset>
+		<label for="wplng_api_key"><strong><?php _e( 'Website API key:', 'wplingua' ); ?></strong></label>
+		<br>
+		<input type="text" name="wplng_api_key" id="wplng_api_key" value="<?php echo esc_attr( get_option( 'wplng_api_key' ) ); ?>" style="max-width: 100%; width: 32em;"></input>
 	</fieldset>
 	<?php
 }

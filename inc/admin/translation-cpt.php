@@ -6,13 +6,13 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 
-function wplng_register_post_type_dictionary() {
+function wplng_register_post_type_translation() {
 	register_post_type(
-		'wplng_dictionary',
+		'wplng_translation',
 		array(
 			'labels'              => array(
-				'name'          => __( 'Translation rules', 'wplingua' ),
-				'singular_name' => __( 'Translation rule', 'wplingua' ),
+				'name'          => __( 'Translations', 'wplingua' ),
+				'singular_name' => __( 'Translation', 'wplingua' ),
 			),
 			'public'              => false,  // it's not public, it shouldn't have it's own permalink, and so on
 			'publicly_queryable'  => true,  // you should be able to query it
@@ -21,14 +21,14 @@ function wplng_register_post_type_dictionary() {
 			'show_in_nav_menus'   => false,  // you shouldn't be able to add it to menus
 			'has_archive'         => false,  // it shouldn't have archive page
 			'rewrite'             => false,  // it shouldn't have rewrite rules
-			'menu_icon' => 'dashicons-book-alt',
+			'menu_icon'           => 'dashicons-translation',
 			'supports'            => array(
 				'title',
 				'revisions',
 			),
 			'capability_type'     => 'post',
 			'capabilities'        => array(
-				'create_posts' => true, 
+				'create_posts' => false, // Removes support for the "Add New" function ( use 'do_not_allow' instead of false for multisite set ups )
 			),
 			'map_meta_cap'        => true, // Set to `false`, if users are not allowed to edit/delete existing posts
 		)
