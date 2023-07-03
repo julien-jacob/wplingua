@@ -17,7 +17,13 @@ function wplng_switcher_wp_footer() {
 
 function wplng_get_switcher_html() {
 
+	$language_website = wplng_get_language_website();
+	$languages_target = wplng_get_languages_target();
+
+	// TODO : Check if language original and target is OK, else return
+
 	$html = '<div class="wplng-switcher">';
+	$html .= '<div class="wplng-language-main">';
 
 	// Create link for website language
 	$language_website = wplng_get_language_website();
@@ -27,6 +33,8 @@ function wplng_get_switcher_html() {
 	}
 	$html .= esc_html( $language_website['name'] );
 	$html .= '</a>';
+	$html .= '</div>';
+	$html .= '<div class="wplng-languages-target">';
 
 	// Create link for each target languages
 	$languages_target = wplng_get_languages_target();
@@ -40,6 +48,7 @@ function wplng_get_switcher_html() {
 		$html .= '</a>';
 	}
 
+	$html .= '</div>';
 	$html .= '</div>';
 
 	$html = apply_filters(
