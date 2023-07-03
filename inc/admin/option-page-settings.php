@@ -202,7 +202,7 @@ function wplng_settings_part_api_key() {
 	<fieldset>
 		<label for="wplng_api_key"><strong><?php _e( 'Website API key:', 'wplingua' ); ?></strong></label>
 		<br>
-		<input type="text" name="wplng_api_key" id="wplng_api_key" value="<?php echo esc_attr( get_option( 'wplng_api_key' ) ); ?>"></input>
+		<input type="text" name="wplng_api_key" id="wplng_api_key" value="<?php echo esc_attr( get_option( 'wplng_api_key' ) ); ?>" style="max-width: 100%; width: 32em;"></input>
 	</fieldset>
 	<?php
 }
