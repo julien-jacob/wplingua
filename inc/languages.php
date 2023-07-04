@@ -240,7 +240,6 @@ function wplng_get_languages_all() {
 	$languages       = wplng_get_languages_data();
 	$source_language = get_option( 'wplng_website_language' );
 	$source_flag     = get_option( 'wplng_website_flag' );
-	$target_flags    = get_option( 'wplng_website_language' );
 	$target_flags    = get_option( 'wplng_target_languages' );
 
 	// TODO : Remplacer par une ternaire
@@ -256,6 +255,8 @@ function wplng_get_languages_all() {
 
 	foreach ( $languages as $key => $language ) {
 
+		$flags_style = wplng_get_switcher_flags_style() . '/';
+
 		// Set custom website flag if defined
 		if ( ! empty( $source_language )
 			&& $language['id'] == $source_language
@@ -263,7 +264,7 @@ function wplng_get_languages_all() {
 		) {
 			$languages[ $key ]['flag'] = $source_flag;
 		} else {
-			$languages[ $key ]['flag'] = plugins_url() . '/wplingua/images/rounded/' . $language['id'] . '.png';
+			$languages[ $key ]['flag'] = plugins_url() . '/wplingua/images/' . $flags_style . $language['id'] . '.png';
 		}
 
 		// Set custom target flag if defined
@@ -276,7 +277,7 @@ function wplng_get_languages_all() {
 
 		// Transform flags to URL
 		foreach ( $languages[ $key ]['flags'] as $key_flag => $flag ) {
-			$languages[ $key ]['flags'][ $key_flag ]['flag'] = plugins_url() . '/wplingua/images/rounded/' . $flag['flag'] . '.png';
+			$languages[ $key ]['flags'][ $key_flag ]['flag'] = plugins_url() . '/wplingua/images/' . $flags_style . $flag['flag'] . '.png';
 		}
 	}
 

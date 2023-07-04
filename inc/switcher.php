@@ -171,8 +171,8 @@ function wplng_get_switcher_flags_style() {
 	if ( ! empty( $flags_style ) ) {
 
 		$valid_flags_style = array(
-			'light',
-			'dark',
+			'circle',
+			'rectangular',
 		);
 
 		foreach ( $valid_flags_style as $key => $valid ) {
@@ -184,7 +184,7 @@ function wplng_get_switcher_flags_style() {
 	}
 
 	if ( ! $is_valid ) {
-		$flags_style = 'light';
+		$flags_style = 'circle';
 	}
 
 	$flags_style = apply_filters(

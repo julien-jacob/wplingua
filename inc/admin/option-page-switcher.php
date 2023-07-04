@@ -199,7 +199,6 @@ function wplng_option_page_switcher() {
 
 								$flags_style_options = array(
 									'circle'      => __( 'Circle', 'wplingua' ),
-									'rounded'     => __( 'Rounded', 'wplingua' ),
 									'rectangular' => __( 'Rectangular', 'wplingua' ),
 								);
 
@@ -230,3 +229,33 @@ function wplng_option_page_switcher() {
 	</div>
 	<?php
 }
+
+function wplng_options_switcher_update_flags_style( $old_flags_style, $new_flags_style ) {
+
+	error_log($old_flags_style);
+	error_log($new_flags_style);
+	error_log('-------');
+
+	if ( $old_flags_style !== $new_flags_style ) {
+
+		$website_flag = wplng_get_language_website_flag();
+		$website_flag = str_replace(
+			'/wplingua/images/' . $old_flags_style . '/', 
+			'/wplingua/images/' . $new_flags_style . '/', 
+			$website_flag
+		);
+		update_option('wplng_website_flag', $website_flag);
+
+
+		$target_languages = get_option( 'wplng_target_languages' );
+		$target_languages = str_replace(
+			'/' . $old_flags_style . '/', 
+			'/' . $new_flags_style . '/', 
+			$target_languages
+		);
+		update_option('wplng_target_languages', $target_languages);
+
+	}
+
+}
+add_action( 'update_option_wplng_flags_style', 'wplng_options_switcher_update_flags_style', 10, 2 );
