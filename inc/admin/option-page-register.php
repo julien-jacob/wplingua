@@ -127,7 +127,7 @@ function km_hook_into_options_page_after_save( $old_value, $new_value ) {
 	}
 
 }
-add_action( 'update_option_wplng_api_key', 'km_hook_into_options_page_after_save', 10, 2 );
+// add_action( 'update_option_wplng_api_key', 'km_hook_into_options_page_after_save', 10, 2 );
 
 function sample_admin_notice__success() {
 	?>
