@@ -1,48 +1,113 @@
 /*
  * Language Switcher
  */
-
+ 
 .wplng-switcher {
-    position: fixed;
-    bottom: 20px;
-    background-color: lightgray;
     border-radius: 22px;
     padding: 2px;
-    right: 20px;
-    border: 2px gray solid;
-    z-index: 9999;
 }
 
 .wplng-language {
-    display: inline-block;
     font-size: 16px;
     line-height: 16px;
-    border: 2px solid gray;
     border-radius: 22px;
-    padding: 2px 8px 2px 4px;
+    padding: 2px 4px;
     margin: 2px;
     text-decoration: none;
-    color: black;
 }
 
 .wplng-language img {
     width: 22px;
     height: 22px;
-    margin-right: 4px;
 }
 
 .wplng-language:hover {
     background-color: rgba(0, 0, 0, .05);
 }
 
+/*
+ * Insert
+ */
+ .wplng-switcher.insert-auto {
+    position: fixed;
+    z-index: 9999;
+    bottom: 20px;
+}
+.wplng-switcher.insert-auto.insert-bottom-right {
+    right: 20px;
+}
+.wplng-switcher.insert-auto.insert-bottom-left {
+    left: 20px;
+}
 
 
+/*
+ * Themes Light
+ */
+
+ .wplng-switcher.theme-light {
+    background-color: lightgray;
+    border: 2px gray solid;
+ }
 
 
+ .wplng-switcher.theme-light .wplng-language {
+    border: 2px solid gray;
+    color: black;
+}
 
 
+/*
+ * Themes Dark
+ */
+
+ .wplng-switcher.theme-dark {
+    background-color: darkslategray;
+    border: 2px gray solid;
+ }
 
 
+ .wplng-switcher.theme-dark .wplng-language {
+    border: 2px solid gray;
+    color: white;
+}
+
+/*
+ * Switcher style
+ */
+.wplng-switcher.style-list .wplng-language-current,
+.wplng-switcher.style-block .wplng-language-current {
+     display: none;
+}
+
+.wplng-switcher.style-list .wplng-languages .wplng-language {
+    display: inline-block;
+}
+
+.wplng-switcher.style-block .wplng-languages .wplng-language {
+    display: block;
+}
+
+/*
+ * Name Format
+ */ 
+.wplng-switcher .language-name,
+.wplng-switcher .language-id {
+    padding-right: 8px;
+    padding-left: 6px;
+    display: inline-block;
+}
+
+.wplng-switcher .language-id {
+    text-transform: uppercase;
+}
+
+.wplng-switcher.title-id .language-name,
+.wplng-switcher.title-name .language-id,
+.wplng-switcher.title-none .language-id,
+.wplng-switcher.title-none .language-name {
+    display: none;
+}
 
 /*
  * Style for editor

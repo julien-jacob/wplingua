@@ -79,10 +79,10 @@ function wplng_register_settings() {
 	register_setting( 'wplng_exclusions', 'wplng_excluded_selectors' );
 	register_setting( 'wplng_exclusions', 'wplng_excluded_url' );
 
-	register_setting( 'wplng_switcher', 'wplng_automatic_insertion' );
+	register_setting( 'wplng_switcher', 'wplng_insert' );
 	register_setting( 'wplng_switcher', 'wplng_theme' );
 	register_setting( 'wplng_switcher', 'wplng_style' );
-	register_setting( 'wplng_switcher', 'wplng_name_style' );
+	register_setting( 'wplng_switcher', 'wplng_name_format' );
 	register_setting( 'wplng_switcher', 'wplng_flags_show' );
 	register_setting( 'wplng_switcher', 'wplng_flags_style' );
 

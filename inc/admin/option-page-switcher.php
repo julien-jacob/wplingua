@@ -7,6 +7,14 @@ if ( ! defined( 'WPINC' ) ) {
 
 
 function wplng_option_page_switcher() {
+
+	$insert     = wplng_get_switcher_insert();
+	$theme      = wplng_get_switcher_theme();
+	$style      = wplng_get_switcher_style();
+	$name_format = wplng_get_switcher_name_format();
+	$flags_show = wplng_get_switcher_flags_show();
+	$flags_style = wplng_get_switcher_flags_style();
+
 	?>
 	<div class="wrap">
 		
@@ -25,16 +33,31 @@ function wplng_option_page_switcher() {
 					<td>
 						<fieldset>
 
-							<label for="wplng_automatic_insertion">
+							<label for="wplng_insert">
 								<strong><?php _e( 'Position for automatic switcher insertion: ', 'wplingua' ); ?></strong>
 							</label>
+							
+							<select id="wplng_insert" name="wplng_insert">
+								<?php
 
-							<select id="wplng_automatic_insertion" name="wplng_automatic_insertion">
-								<option value="bottom-left"><?php _e( 'Bottom left', 'wplingua' ); ?></option>
-								<option value="bottom-right"><?php _e( 'Bottom right', 'wplingua' ); ?></option>
-								<option value="none"><?php _e( 'None', 'wplingua' ); ?></option>
+								$insert_options = array(
+									'bottom-left'  => __( 'Bottom left', 'wplingua' ),
+									'bottom-right' => __( 'Bottom right', 'wplingua' ),
+									'none'         => __( 'None', 'wplingua' ),
+								);
+
+								foreach ( $insert_options as $option_value => $option_name ) {
+									if ( $insert === $option_value ) {
+										echo '<option value="' . esc_attr( $option_value ) . '" selected>';
+									} else {
+										echo '<option value="' . esc_attr( $option_value ) . '">';
+									}
+									echo esc_html( $option_name );
+									echo '</option>';
+								}
+
+								?>
 							</select>
-
 
 						</fieldset>
 						<p><?php _e( 'Shortcode switcher: ', 'wplingua' ); ?><code>[wplng-switcher]</code></p>
@@ -47,12 +70,28 @@ function wplng_option_page_switcher() {
 					<td>
 						<fieldset>
 							<label for="wplng_theme">
-								<strong><?php _e( 'Theme color: ', 'wplingua' ); ?></strong>
+								<strong><?php _e( 'Theme: ', 'wplingua' ); ?></strong>
 							</label>
 
 							<select id="wplng_theme" name="wplng_theme">
-								<option value="light"><?php _e( 'light', 'wplingua' ); ?></option>
-								<option value="dark"><?php _e( 'dark', 'wplingua' ); ?></option>
+								<?php
+
+								$theme_options = array(
+									'light' => __( 'Light', 'wplingua' ),
+									'dark'  => __( 'Dark', 'wplingua' ),
+								);
+
+								foreach ( $theme_options as $option_value => $option_name ) {
+									if ( $theme === $option_value ) {
+										echo '<option value="' . esc_attr( $option_value ) . '" selected>';
+									} else {
+										echo '<option value="' . esc_attr( $option_value ) . '">';
+									}
+									echo esc_html( $option_name );
+									echo '</option>';
+								}
+
+								?>
 							</select>
 						</fieldset>
 						<hr>
@@ -69,9 +108,24 @@ function wplng_option_page_switcher() {
 							</label>
 
 							<select id="wplng_style" name="wplng_style">
-								<option value="dropdown"><?php _e( 'Dropdown', 'wplingua' ); ?></option>
-								<option value="list"><?php _e( 'List', 'wplingua' ); ?></option>
-								<option value="block"><?php _e( 'Block', 'wplingua' ); ?></option>
+								<?php
+
+								$style_options = array(
+									'list'  => __( 'List', 'wplingua' ),
+									'block' => __( 'Block', 'wplingua' ),
+								);
+
+								foreach ( $style_options as $option_value => $option_name ) {
+									if ( $style === $option_value ) {
+										echo '<option value="' . esc_attr( $option_value ) . '" selected>';
+									} else {
+										echo '<option value="' . esc_attr( $option_value ) . '">';
+									}
+									echo esc_html( $option_name );
+									echo '</option>';
+								}
+
+								?>
 							</select>
 
 						</fieldset>
@@ -79,13 +133,29 @@ function wplng_option_page_switcher() {
 						<br>
 
 						<fieldset>
-							<label for="wplng_name_style">
+							<label for="wplng_name_format">
 								<strong><?php _e( 'Displayed name: ', 'wplingua' ); ?></strong>
 							</label>
-							<select id="wplng_name_style" name="wplng_name_style">
-								<option value="bottom-left"><?php _e( 'Complete name', 'wplingua' ); ?></option>
-								<option value="bottom-right"><?php _e( 'Language ID', 'wplingua' ); ?></option>
-								<option value="bottom-right"><?php _e( 'No display', 'wplingua' ); ?></option>
+							<select id="wplng_name_format" name="wplng_name_format">
+								<?php
+
+								$name_format_options = array(
+									'name' => __( 'Complete name', 'wplingua' ),
+									'id'   => __( 'Language ID', 'wplingua' ),
+									'none' => __( 'No display', 'wplingua' ),
+								);
+
+								foreach ( $name_format_options as $option_value => $option_name ) {
+									if ( $name_format === $option_value ) {
+										echo '<option value="' . esc_attr( $option_value ) . '" selected>';
+									} else {
+										echo '<option value="' . esc_attr( $option_value ) . '">';
+									}
+									echo esc_html( $option_name );
+									echo '</option>';
+								}
+
+								?>
 							</select>
 						</fieldset>
 
@@ -96,8 +166,25 @@ function wplng_option_page_switcher() {
 								<strong><?php _e( 'Displayed Flags: ', 'wplingua' ); ?></strong>
 							</label>
 							<select id="wplng_flags_show" name="wplng_flags_show">
-								<option value="show"><?php _e( 'Show', 'wplingua' ); ?></option>
-								<option value="hide"><?php _e( 'Hide', 'wplingua' ); ?></option>
+								<?php
+
+								if ( $flags_show ) {
+									echo '<option value="show" selected>';
+									echo __( 'Show', 'wplingua' );
+									echo '</option>';
+									echo '<option value="hide">';
+									echo __( 'Hide', 'wplingua' );
+									echo '</option>';
+								} else {
+									echo '<option value="show">';
+									echo __( 'Show', 'wplingua' );
+									echo '</option>';
+									echo '<option value="hide" selected>';
+									echo __( 'Hide', 'wplingua' );
+									echo '</option>';
+								}
+
+								?>
 							</select>
 						</fieldset>
 
@@ -108,9 +195,25 @@ function wplng_option_page_switcher() {
 								<strong><?php _e( 'Flag style: ', 'wplingua' ); ?></strong>
 							</label>
 							<select id="wplng_flags_style" name="wplng_flags_style">
-								<option value="circle"><?php _e( 'Circle', 'wplingua' ); ?></option>
-								<option value="rounded"><?php _e( 'Rounded', 'wplingua' ); ?></option>
-								<option value="rectangular"><?php _e( 'Rectangular', 'wplingua' ); ?></option>
+								<?php
+
+								$flags_style_options = array(
+									'circle'      => __( 'Circle', 'wplingua' ),
+									'rounded'     => __( 'Rounded', 'wplingua' ),
+									'rectangular' => __( 'Rectangular', 'wplingua' ),
+								);
+
+								foreach ( $flags_style_options as $option_value => $option_name ) {
+									if ( $flags_style === $option_value ) {
+										echo '<option value="' . esc_attr( $option_value ) . '" selected>';
+									} else {
+										echo '<option value="' . esc_attr( $option_value ) . '">';
+									}
+									echo esc_html( $option_name );
+									echo '</option>';
+								}
+
+								?>
 							</select>
 						</fieldset>
 						
