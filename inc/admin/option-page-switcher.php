@@ -39,10 +39,11 @@ function wplng_option_page_switcher() {
 							
 							<select id="wplng_insert" name="wplng_insert">
 								<?php
-
+								
 								$insert_options = array(
-									'bottom-left'  => __( 'Bottom left', 'wplingua' ),
 									'bottom-right' => __( 'Bottom right', 'wplingua' ),
+									'bottom-left'  => __( 'Bottom left', 'wplingua' ),
+									'bottom-center' => __( 'Bottom center', 'wplingua' ),
 									'none'         => __( 'None', 'wplingua' ),
 								);
 

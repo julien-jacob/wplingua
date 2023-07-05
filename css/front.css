@@ -2,7 +2,7 @@
  * Language Switcher
  */
  
-.wplng-switcher {
+.switcher-content {
     border-radius: 22px;
     padding: 2px;
 }
@@ -33,11 +33,21 @@
     z-index: 9999;
     bottom: 20px;
 }
+/* Insert Bottom Right */
 .wplng-switcher.insert-auto.insert-bottom-right {
     right: 20px;
 }
+/* Insert Bottom Left */
 .wplng-switcher.insert-auto.insert-bottom-left {
     left: 20px;
+}
+/* Insert Bottom Center */
+.wplng-switcher.insert-auto.insert-bottom-center {
+    width: 100%;
+    text-align: center;
+}
+.wplng-switcher.insert-auto.insert-bottom-center .switcher-content {
+    display: inline-block;
 }
 
 
@@ -45,7 +55,7 @@
  * Themes Light
  */
 
- .wplng-switcher.theme-light {
+ .wplng-switcher.theme-light .switcher-content {
     background-color: lightgray;
     border: 2px gray solid;
  }
@@ -61,7 +71,7 @@
  * Themes Dark
  */
 
- .wplng-switcher.theme-dark {
+ .wplng-switcher.theme-dark .switcher-content {
     background-color: darkslategray;
     border: 2px gray solid;
  }

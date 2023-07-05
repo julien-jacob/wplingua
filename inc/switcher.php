@@ -15,6 +15,7 @@ function wplng_get_switcher_insert() {
 		$valid_insert = array(
 			'bottom-left',
 			'bottom-right',
+			'bottom-center',
 			'none',
 		);
 
@@ -229,6 +230,7 @@ function wplng_get_switcher_html( $class = '', $flags_show = true ) {
 	}
 
 	$html = '<div class="' . esc_attr( 'wplng-switcher ' . $class ) . '">';
+	$html .= '<div class="switcher-content">';
 
 	// Create link for current language
 	if ( $language_website['id'] === $language_current_id ) {
@@ -291,6 +293,7 @@ function wplng_get_switcher_html( $class = '', $flags_show = true ) {
 		$html .= '</a>';
 	}
 
+	$html .= '</div>';
 	$html .= '</div>';
 	$html .= '</div>';
 
