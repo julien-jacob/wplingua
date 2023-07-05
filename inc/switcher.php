@@ -5,41 +5,296 @@ if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
+function wplng_get_switcher_insert() {
+
+	$insert   = get_option( 'wplng_insert' );
+	$is_valid = false;
+
+	if ( ! empty( $insert ) ) {
+
+		$valid_insert = array(
+			'bottom-left',
+			'bottom-right',
+			'bottom-center',
+			'none',
+		);
+
+		foreach ( $valid_insert as $key => $valid ) {
+			if ( $insert === $valid ) {
+				$is_valid = true;
+				break;
+			}
+		}
+	}
+
+	if ( ! $is_valid ) {
+		$insert = 'bottom-left';
+	}
+
+	$insert = apply_filters(
+		'wplng_switcher_insert',
+		$insert
+	);
+
+	return $insert;
+}
+
+
+function wplng_get_switcher_theme() {
+
+	$theme    = get_option( 'wplng_theme' );
+	$is_valid = false;
+
+	if ( ! empty( $theme ) ) {
+
+		$valid_theme = array(
+			'light',
+			'dark',
+		);
+
+		foreach ( $valid_theme as $key => $valid ) {
+			if ( $theme === $valid ) {
+				$is_valid = true;
+				break;
+			}
+		}
+	}
+
+	if ( ! $is_valid ) {
+		$theme = 'light';
+	}
+
+	$theme = apply_filters(
+		'wplng_switcher_theme',
+		$theme
+	);
+
+	return $theme;
+}
+
+
+function wplng_get_switcher_style() {
+
+	$style    = get_option( 'wplng_style' );
+	$is_valid = false;
+
+	if ( ! empty( $style ) ) {
+
+		$valid_style = array(
+			// 'dropdown',
+			'list',
+			'block',
+		);
+
+		foreach ( $valid_style as $key => $valid ) {
+			if ( $style === $valid ) {
+				$is_valid = true;
+				break;
+			}
+		}
+	}
+
+	if ( ! $is_valid ) {
+		$style = 'list';
+	}
+
+	$style = apply_filters(
+		'wplng_switcher_style',
+		$style
+	);
+
+	return $style;
+}
+
+
+function wplng_get_switcher_name_format() {
+
+	$name_format = get_option( 'wplng_name_format' );
+	$is_valid    = false;
+
+	if ( ! empty( $name_format ) ) {
+
+		$valid_name_format = array(
+			'id',
+			'name',
+			'none',
+		);
+
+		foreach ( $valid_name_format as $key => $valid ) {
+			if ( $name_format === $valid ) {
+				$is_valid = true;
+				break;
+			}
+		}
+	}
+
+	if ( ! $is_valid ) {
+		$name_format = 'name';
+	}
+
+	if ( ! wplng_get_switcher_flags_show() && 'none' === $name_format ) {
+		$name_format = 'name';
+	}
+
+	$name_format = apply_filters(
+		'wplng_switcher_name_format',
+		$name_format
+	);
+
+	return $name_format;
+}
+
+
+function wplng_get_switcher_flags_show() {
+
+	$flags_show = get_option( 'wplng_flags_show' );
+
+	if ( 'hide' === $flags_show ) {
+		$flags_show = false;
+	} else {
+		$flags_show = true;
+	}
+
+	$flags_show = apply_filters(
+		'wplng_switcher_flags_show',
+		$flags_show
+	);
+
+	return $flags_show;
+}
+
+
+function wplng_get_switcher_flags_style() {
+
+	$flags_style = get_option( 'wplng_flags_style' );
+	$is_valid    = false;
+
+	if ( ! empty( $flags_style ) ) {
+
+		$valid_flags_style = array(
+			'circle',
+			'rectangular',
+		);
+
+		foreach ( $valid_flags_style as $key => $valid ) {
+			if ( $flags_style === $valid ) {
+				$is_valid = true;
+				break;
+			}
+		}
+	}
+
+	if ( ! $is_valid ) {
+		$flags_style = 'circle';
+	}
+
+	$flags_style = apply_filters(
+		'wplng_switcher_flags_style',
+		$flags_style
+	);
+
+	return $flags_style;
+}
+
+
 function wplng_switcher_wp_footer() {
 
 	if ( ! wplng_url_is_translatable() ) {
 		return;
 	}
 
-	echo wplng_get_switcher_html();
+	if ( 'none' === wplng_get_switcher_insert() ) {
+		return;
+	}
+
+	$class  = 'insert-auto insert-' . wplng_get_switcher_insert();
+	$class .= ' style-' . wplng_get_switcher_style();
+	$class .= ' theme-' . wplng_get_switcher_theme();
+	$class .= ' title-' . wplng_get_switcher_name_format();
+
+	echo wplng_get_switcher_html(
+		$class,
+		wplng_get_switcher_flags_show()
+	);
 }
 
 
-function wplng_get_switcher_html() {
+function wplng_get_switcher_html( $class = '', $flags_show = true ) {
 
-	$html = '<div class="wplng-switcher">';
+	$language_website    = wplng_get_language_website();
+	$language_current_id = wplng_get_language_current_id();
+	$languages_target    = wplng_get_languages_target();
+
+	if ( empty( $languages_target ) ) {
+		return '';
+	}
+
+	$html = '<div class="' . esc_attr( 'wplng-switcher ' . $class ) . '">';
+	$html .= '<div class="switcher-content">';
+
+	// Create link for current language
+	if ( $language_website['id'] === $language_current_id ) {
+
+		$url   = wplng_get_url_current_for_language( $language_website['id'] );
+		$html .= '<a class="wplng-language wplng-language-current" href="' . esc_url( $url ) . '">';
+		if ( ! empty( $language_website['flag'] ) && $flags_show ) {
+			$html .= '<img src="' . esc_url( $language_website['flag'] ) . '" alt="' . esc_attr( $language_website['name'] ) . '">';
+		}
+		$html .= '<span class="language-id">' . esc_html( $language_website['id'] ) . '</span> ';
+		$html .= '<span class="language-name">' . esc_html( $language_website['name'] ) . '</span>';
+		$html .= '</a>';
+
+	} else {
+
+		foreach ( $languages_target as $key => $language_target ) {
+
+			if ( $language_target['id'] !== $language_current_id ) {
+				continue;
+			}
+
+			$url   = wplng_get_url_current_for_language( $language_target['id'] );
+			$html .= '<a class="wplng-language wplng-language-current" href="' . esc_url( $url ) . '">';
+			if ( ! empty( $language_website['flag'] ) && $flags_show ) {
+				$html .= '<img src="' . esc_url( $language_target['flag'] ) . '" alt="' . esc_attr( $language_target['name'] ) . '">';
+			}
+			$html .= '<span class="language-id">' . esc_html( $language_target['id'] ) . '</span> ';
+			$html .= '<span class="language-name">' . esc_html( $language_target['name'] ) . '</span>';
+			$html .= '</a>';
+			break;
+		}
+	}
+
+	$html .= '<div class="wplng-languages">';
 
 	// Create link for website language
-	$language_website = wplng_get_language_website();
-	$html            .= '<a class="wplng-language" href="' . esc_url( wplng_get_url_original() ) . '">';
-	if ( ! empty( $language_website['flag'] ) ) {
+	$html .= '<a class="wplng-language website" href="' . esc_url( wplng_get_url_original() ) . '">';
+	if ( ! empty( $language_website['flag'] && $flags_show ) ) {
 		$html .= '<img src="' . esc_url( $language_website['flag'] ) . '" alt="' . esc_attr( $language_website['name'] ) . '">';
 	}
-	$html .= esc_html( $language_website['name'] );
+	$html .= '<span class="language-id">' . esc_html( $language_website['id'] ) . '</span> ';
+	$html .= '<span class="language-name">' . esc_html( $language_website['name'] ) . '</span>';
 	$html .= '</a>';
 
 	// Create link for each target languages
-	$languages_target = wplng_get_languages_target();
 	foreach ( $languages_target as $key => $language_target ) {
+
+		$class = '';
+		if ( $language_target['id'] === $language_current_id ) {
+			$class = ' current';
+		}
+
 		$url   = wplng_get_url_current_for_language( $language_target['id'] );
-		$html .= '<a class="wplng-language" href="' . esc_url( $url ) . '">';
-		if ( ! empty( $language_website['flag'] ) ) {
+		$html .= '<a class="wplng-language' . $class . '" href="' . esc_url( $url ) . '">';
+		if ( ! empty( $language_website['flag'] ) && $flags_show ) {
 			$html .= '<img src="' . esc_url( $language_target['flag'] ) . '" alt="' . esc_attr( $language_target['name'] ) . '">';
 		}
-		$html .= esc_html( $language_target['name'] );
+		$html .= '<span class="language-id">' . esc_html( $language_target['id'] ) . '</span> ';
+		$html .= '<span class="language-name">' . esc_html( $language_target['name'] ) . '</span>';
 		$html .= '</a>';
 	}
 
+	$html .= '</div>';
+	$html .= '</div>';
 	$html .= '</div>';
 
 	$html = apply_filters(

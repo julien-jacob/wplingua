@@ -26,6 +26,7 @@ require_once 'inc/admin/assets.php';
 require_once 'inc/admin/option-page-exclusions.php';
 require_once 'inc/admin/option-page-register.php';
 require_once 'inc/admin/option-page-settings.php';
+require_once 'inc/admin/option-page-switcher.php';
 require_once 'inc/admin/option-page.php';
 require_once 'inc/admin/translation-cpt.php';
 require_once 'inc/admin/translation-meta.php';
