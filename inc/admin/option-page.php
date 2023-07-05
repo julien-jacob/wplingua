@@ -13,7 +13,7 @@ if ( ! defined( 'WPINC' ) ) {
  */
 function wplng_create_menu() {
 
-	if ( empty( wplng_get_api_key_data() ) ) {
+	if ( empty( wplng_get_api_data() ) ) {
 
 		add_menu_page(
 			__( 'wpLingua : Register', 'wplingua' ),

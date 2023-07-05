@@ -71,37 +71,53 @@ function wplng_option_page_settings() {
 
 
 function wplng_settings_part_language_website() {
-	?>
 
+	?>
 	<label for="wplng_website_language">
 		<strong><?php _e( 'The original website language: ', 'wplingua' ); ?></strong>
 	</label>
+	<?php
 
-	<select id="wplng_website_language" name="wplng_website_language">
-		<?php
-		$website_language_saved = true;
-		if ( empty( wplng_get_language_website_id() ) ) {
-			$website_language_saved = false;
+	$api_language_website = wplng_get_api_language_website();
+	$website_language_disabled = '';
+
+	if ( false !== $api_language_website ) {
+		$website_language_disabled = ' disabled';
+	}
+
+
+	echo '<select id="wplng_website_language" name="wplng_website_language"' . $website_language_disabled . '>';
+	$website_language_saved = true;
+	if ( empty( wplng_get_language_website_id() ) ) {
+		$website_language_saved = false;
+	} else {
+
+		$website_language_id = wplng_get_language_website_id();
+		$website_language    = wplng_get_language_by_id( $website_language_id );
+
+		if ( ! empty( $website_language['id'] )
+			&& ! empty( $website_language['name'] )
+		) {
+			echo '<option value="' . esc_attr( $website_language['id'] ) . '">';
+			echo esc_html( $website_language['name'] );
+			echo '</option>';
 		} else {
-
-			$website_language_id = wplng_get_language_website_id();
-			$website_language    = wplng_get_language_by_id( $website_language_id );
-
-			if ( ! empty( $website_language['id'] )
-				&& ! empty( $website_language['name'] )
-			) {
-				echo '<option value="' . esc_attr( $website_language['id'] ) . '">' . esc_html( $website_language['name'] ) . '</option>';
-			} else {
-				$website_language_saved = false;
-			}
+			$website_language_saved = false;
 		}
+	}
 
-		if ( ! $website_language_saved ) {
-			echo '<option value="">' . __( 'Please choose an option', 'wplingua' ) . '</option>';
-		}
-		?>
-	</select>
+	if ( ! $website_language_saved ) {
+		echo '<option value="">' . __( 'Please choose an option', 'wplingua' ) . '</option>';
+	}
+	echo '</select>';
 
+	if ( false !== $api_language_website ) {
+		// $website_language_saved = ' disabled';
+		// echo wplng_get_language_name( $api_language_website ) . ' ';
+		_e( ' (Defined by API key)', 'wplingua' );
+	}
+	?>
+	
 	<br>
 	<br>
 

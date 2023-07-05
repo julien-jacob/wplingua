@@ -52,9 +52,10 @@
 
 
 /*
- * Themes Light
+ * Themes Light / Dark
  */
 
+/* Themes Light */
  .wplng-switcher.theme-light .switcher-content {
     background-color: lightgray;
     border: 2px gray solid;
@@ -66,13 +67,9 @@
     color: black;
 }
 
-
-/*
- * Themes Dark
- */
-
- .wplng-switcher.theme-dark .switcher-content {
-    background-color: darkslategray;
+/* Themes Dark */
+.wplng-switcher.theme-dark .switcher-content {
+    background-color: black;
     border: 2px gray solid;
  }
 
