@@ -292,6 +292,24 @@ function wplng_get_languages_all_json() {
 }
 
 
+// function wplng_get_languages_allow() {
+// 	$languages_alow = wplng_get_api_languages_target();
+// 	$languages      = array();
+
+// 	if ( 'all' === $languages_alow ) {
+// 		return wplng_get_languages_all();
+// 	} elseif ( false === $languages_alow || ! is_array( $languages_alow ) ) {
+// 		return array();
+// 	}
+
+// 	foreach ( $languages_alow as $key => $language_id_alow ) {
+// 		$languages[] = wplng_get_language_by_id( $language_id_alow );
+// 	}
+
+// 	return $languages;
+// }
+
+
 function wplng_get_languages_data() {
 	return array(
 		array(

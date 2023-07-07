@@ -96,7 +96,9 @@ function wplng_option_page_register() {
 
 function km_hook_into_options_page_after_save( $old_value, $new_value ) {
 
-	if ( $old_value !== $new_value ) {
+	error_log($new_value);
+
+	// if ( $old_value !== $new_value ) {
 
 		delete_transient( 'wplng_api_key_data' );
 
@@ -124,10 +126,10 @@ function km_hook_into_options_page_after_save( $old_value, $new_value ) {
 
 		set_transient( 'wplng_api_key_data', $api_key_data_json, 5 );
 		// update_setting('wplng_api', 'wplng_api', $api_key_data_json );
-	}
+	// }
 
 }
-// add_action( 'update_option_wplng_api_key', 'km_hook_into_options_page_after_save', 10, 2 );
+add_action( 'update_option_wplng_api_key', 'km_hook_into_options_page_after_save', 10, 2 );
 
 function sample_admin_notice__success() {
 	?>

@@ -74,7 +74,7 @@ function wplng_start() {
 	add_action( 'admin_enqueue_scripts', 'wplng_option_page_exclusions_assets' );
 
 	// Print head script (JSON with all languages informations)
-	add_action( 'toplevel_page_wplng-settings', 'wplng_inline_script_all_language' );
+	add_action( 'toplevel_page_wplng-settings', 'wplng_inline_script_languages_all' );
 
 	/**
 	 * wplng_translation : CPT, taxo, meta

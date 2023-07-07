@@ -94,7 +94,7 @@ function wplng_translation_assets() {
 }
 
 
-function wplng_inline_script_all_language() {
+function wplng_inline_script_languages_all() {
 	?><script>var wplngAllLanguages = JSON.parse('<?php echo wplng_get_languages_all_json(); ?>');</script>
 	<?php
 }

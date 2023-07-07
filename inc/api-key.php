@@ -22,7 +22,10 @@ function wplng_get_api_data() {
 
 	if ( empty( $api_key_data ) ) {
 		$api_key_data = wplng_validate_api_key();
+		set_transient( 'wplng_api_key_data', $api_key_data );
 	}
+
+	$api_key_data = json_decode($api_key_data, true);
 
 	// var_dump($api_key_data); die;
 
@@ -32,7 +35,7 @@ function wplng_get_api_data() {
 
 function wplng_get_api_language_website() {
 
-	$data = json_decode(wplng_get_api_data(), true);
+	$data = wplng_get_api_data();
 
 	if (
 		! empty( $data['language_original'] )
