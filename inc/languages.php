@@ -12,13 +12,19 @@ function wplng_get_language_website() {
 
 function wplng_get_language_website_id() {
 
-	$language_id = get_option( 'wplng_website_language' );
+	$language_api = wplng_get_api_language_website();
+
+	if ('all' === $language_api) {
+		$language_id = get_option( 'wplng_website_language' );
+	} elseif (false === $language_api) {
+		return 'en';
+	} else {
+		$language_id = wplng_get_api_language_website();
+	}
 
 	if ( ! wplng_is_valid_language_id( $language_id ) ) {
 		return 'en';
 	}
-
-	$language_id = apply_filters( 'wplng_language_website_id', $language_id );
 
 	return $language_id;
 }

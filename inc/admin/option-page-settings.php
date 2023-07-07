@@ -27,10 +27,7 @@ function wplng_option_page_settings() {
 			settings_fields( 'wplng_settings' );
 			do_settings_sections( 'wplng_settings' );
 			?>
-			<pre><?php var_dump( get_transient( 'wplng_api_key_data' ) ); ?></pre>
-			<pre><?php var_dump( wplng_get_api_data() ); ?></pre>
-			<pre><?php var_dump( wplng_get_api_language_website() ); ?></pre>
-
+			
 			<table class="form-table">
 				<tr>
 					<th scope="row"><?php _e( 'Website language', 'wplingua' ); ?></th>
@@ -74,20 +71,20 @@ function wplng_option_page_settings() {
 
 function wplng_settings_part_language_website() {
 
-	?>
-	<label for="wplng_website_language">
-		<strong><?php _e( 'The original website language: ', 'wplingua' ); ?></strong>
-	</label>
-	<?php
+	$api_language_website   = wplng_get_api_language_website();
+	$website_language_style = '';
 
-	$api_language_website      = wplng_get_api_language_website();
-	$website_language_disabled = '';
-
-	if ( false !== $api_language_website ) {
-		$website_language_disabled = ' disabled';
+	if ( 'all' !== $api_language_website ) {
+		$website_language_style = ' style="display: none;"';
 	}
 
-	echo '<select id="wplng_website_language" name="wplng_website_language"' . $website_language_disabled . '>';
+	echo '<fieldset' . $website_language_style . '>';
+
+	echo '<label for="wplng_website_language">';
+	echo '<strong>' . __( 'The original website language: ', 'wplingua' ) . '</strong>';
+	echo '</label>';
+
+	echo '<select id="wplng_website_language" name="wplng_website_language">';
 	$website_language_saved = true;
 	if ( empty( wplng_get_language_website_id() ) ) {
 		$website_language_saved = false;
@@ -111,11 +108,16 @@ function wplng_settings_part_language_website() {
 		echo '<option value="">' . __( 'Please choose an option', 'wplingua' ) . '</option>';
 	}
 	echo '</select>';
+	echo '</fieldset>';
+	
 
-	if ( false !== $api_language_website ) {
+	if ( 'all' !== $api_language_website ) {
 		// $website_language_saved = ' disabled';
-		// echo wplng_get_language_name( $api_language_website ) . ' ';
-		_e( ' (Defined by API key)', 'wplingua' );
+		echo '<strong>';
+		echo __( 'The original website language, defined by API key:', 'wplingua' );
+		echo ' </strong>';
+		echo wplng_get_language_name( $api_language_website );
+		var_dump($api_language_website);
 	}
 	?>
 	
