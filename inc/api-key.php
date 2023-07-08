@@ -25,7 +25,7 @@ function wplng_get_api_data() {
 		set_transient( 'wplng_api_key_data', $api_key_data );
 	}
 
-	$api_key_data = json_decode($api_key_data, true);
+	$api_key_data = json_decode( $api_key_data, true );
 
 	// var_dump($api_key_data); die;
 
@@ -69,4 +69,25 @@ function wplng_get_api_languages_target() {
 	}
 
 	return false;
+}
+
+function wplng_get_api_feature() {
+
+	$data     = wplng_get_api_data();
+	$all      = array( 'search', 'mail', 'woocommerce' );
+	$features = array();
+
+	if ( ! empty( $data['features'] ) && is_array( $data['features'] ) ) {
+		foreach ( $data['features'] as $feature_name => $feature_allow ) {
+			if ( $feature_allow && in_array( $feature_name, $all ) ) {
+				$features[] = $feature_name;
+			}
+		}
+	}
+
+	return $features;
+}
+
+function wplng_api_feature_is_allow( $feature_name ) {
+	return in_array($feature_name, wplng_get_api_feature());
 }
