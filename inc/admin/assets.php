@@ -95,6 +95,26 @@ function wplng_translation_assets() {
 
 
 function wplng_inline_script_languages_all() {
-	?><script>var wplngAllLanguages = JSON.parse('<?php echo wplng_get_languages_all_json(); ?>');</script>
+
+	$languages_json  = array();
+	$languages_allow = wplng_get_languages_allow();
+
+	if ( is_array( $languages_allow ) ) {
+		$language_website = wplng_get_language_website();
+		if (!in_array($language_website, $languages_allow, true)) {
+			$languages_allow[] = $language_website;
+		}
+		$languages_json    = wp_json_encode( $languages_allow );
+	} else {
+		$languages_json = wplng_get_languages_all_json();
+	}
+
+	// $languages_json = wplng_get_languages_all_json();
+
+	// echo '<pre>' . var_export( wp_json_encode( $languages_allow ), true ) . '</pre>';
+	// echo '<pre>' . var_export(wplng_get_languages_all_json(), true) . '</pre>';
+	// die;
+
+	?><script>var wplngAllLanguages = JSON.parse('<?php echo $languages_json; ?>');</script>
 	<?php
 }

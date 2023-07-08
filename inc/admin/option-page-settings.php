@@ -15,6 +15,9 @@ if ( ! defined( 'WPINC' ) ) {
  * @return void
  */
 function wplng_option_page_settings() {
+	set_transient('wplng_api_key_data', false);
+	wplng_get_api_data();
+	// echo '<pre>' . var_export(wplng_get_api_data(), true) . '</pre>';
 	?>
 	<div class="wrap">
 		
@@ -81,7 +84,7 @@ function wplng_settings_part_language_website() {
 	echo '<fieldset' . $website_language_style . '>';
 
 	echo '<label for="wplng_website_language">';
-	echo '<strong>' . __( 'The original website language: ', 'wplingua' ) . '</strong>';
+	echo '<strong>' . __( 'The original website language: ', 'wplingua' ) . ' </strong>';
 	echo '</label>';
 
 	echo '<select id="wplng_website_language" name="wplng_website_language">';
@@ -117,7 +120,6 @@ function wplng_settings_part_language_website() {
 		echo __( 'The original website language, defined by API key:', 'wplingua' );
 		echo ' </strong>';
 		echo wplng_get_language_name( $api_language_website );
-		var_dump($api_language_website);
 	}
 	?>
 	
@@ -197,7 +199,6 @@ function wplng_settings_part_languages_target() {
 
 function wplng_settings_part_features() {
 	?>
-
 	<p><strong><?php _e( 'Translation features:', 'wplingua' ); ?></strong></p>
 	<br>
 	<fieldset>
