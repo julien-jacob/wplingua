@@ -10,7 +10,19 @@ if ( ! defined( 'WPINC' ) ) {
 
 
 function wplng_option_page_register() {
+
+	$api_key = wplng_get_api_key();
+
+	if ( get_option( 'wplng_api_key' ) !== $api_key
+		&& empty( wplng_get_api_data() )
+	) : 
+		update_option('wplng_api_key', '');
 	?>
+	<div class="notice notice-error is-dismissible">
+		<p><?php _e( 'Invalid API key.', 'wplingua' ); ?></p>
+	</div>
+	<?php endif; ?>
+
 	<div class="wrap">
 		
 		<h1><?php _e( 'wpLingua : Register API key', 'wplingua' ); ?></h1>
@@ -30,7 +42,7 @@ function wplng_option_page_register() {
 							<label for="wplng_api_key"><strong><?php _e( 'Set API key:', 'wplingua' ); ?></strong></label>
 							<p><?php _e( 'If you already have an API key, enter it below. If you\'ve forgotten your site\'s API key, visit ', 'wplingua' ); ?><a href="#"><?php _e( 'the API key retrieval page', 'wplingua' ); ?></a>.</p>
 							<br>
-							<input type="text" name="wplng_api_key" id="wplng_api_key" value="<?php echo esc_attr( wplng_get_api_key() ); ?>"></input>
+							<input type="text" name="wplng_api_key" id="wplng_api_key" value="<?php echo esc_attr( $api_key ); ?>"></input>
 
 							<?php
 							submit_button(
@@ -116,33 +128,33 @@ function wplng_option_page_register() {
 
 function km_hook_into_options_page_after_save( $old_value, $new_value ) {
 
-	error_log($new_value);
+	error_log( $new_value );
 
 	// if ( $old_value !== $new_value ) {
 
 		delete_transient( 'wplng_api_key_data' );
 
-		if ( strlen( $new_value ) != 32 ) {
-			// set_transient( 'wplng_notice_api_key_bad_format', true, 5 );
-			return;
-		}
+	if ( strlen( $new_value ) != 32 ) {
+		// set_transient( 'wplng_notice_api_key_bad_format', true, 5 );
+		return;
+	}
 
 		$api_key_data_json = wplng_validate_api_key( $new_value );
 
-		if ( empty( $api_key_data_json ) ) {
-			return;
-		}
+	if ( empty( $api_key_data_json ) ) {
+		return;
+	}
 
 		$api_key_data = json_decode( $api_key_data_json, true );
 
-		if ( empty( $api_key_data ) ) {
-			return;
-		}
+	if ( empty( $api_key_data ) ) {
+		return;
+	}
 
-		if ( ! empty( $api_key_data['error'] ) ) {
-			// TODO : Gérer
-			return;
-		}
+	if ( ! empty( $api_key_data['error'] ) ) {
+		// TODO : Gérer
+		return;
+	}
 
 		set_transient( 'wplng_api_key_data', $api_key_data_json, 5 );
 		// update_setting('wplng_api', 'wplng_api', $api_key_data_json );

@@ -53,87 +53,95 @@ require_once 'inc/url.php';
 
 function wplng_start() {
 
-	/**
-	 * Back office
-	 */
-
 	// Register plugin settings
 	add_action( 'admin_init', 'wplng_register_settings' );
-
-	// Add menu in back office
-	add_action( 'admin_menu', 'wplng_create_menu' );
 
 	// Add settings link in plugin list
 	add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), 'wplng_settings_link' );
 
-	// Add admin Bar menu
-	add_action( 'admin_bar_menu', 'wplng_admin_bar_menu', 100 );
+	if ( empty( wplng_get_api_data() ) ) {
 
-	// Enqueue CSS and JS files for option pages
-	add_action( 'admin_enqueue_scripts', 'wplng_option_page_settings_assets' );
-	add_action( 'admin_enqueue_scripts', 'wplng_option_page_exclusions_assets' );
+		// Add Register option page in back office menu
+		add_action( 'admin_menu', 'wplng_create_menu_register' );
+		
+	} else {
 
-	// Print head script (JSON with all languages informations)
-	add_action( 'toplevel_page_wplng-settings', 'wplng_inline_script_languages_all' );
+		/**
+		 * Back office 
+		 */
 
-	/**
-	 * wplng_translation : CPT, taxo, meta
-	 */
+		// Add menu in back office
+		add_action( 'admin_menu', 'wplng_create_menu' );
 
-	// Register wplng_translation CPT
-	add_action( 'init', 'wplng_register_post_type_translation' );
-
-	// Add metabox for wplng_translation
-	add_action( 'add_meta_boxes_wplng_translation', 'wplng_translation_add_meta_box' );
-
-	// Save metabox on posts saving
-	add_action( 'save_post_wplng_translation', 'wplng_translation_save_meta_boxes_data', 10, 2 );
-
-	// Enqueue Script for wplng_translation admin
-	add_action( 'admin_print_scripts-post-new.php', 'wplng_translation_assets' );
-	add_action( 'admin_print_scripts-post.php', 'wplng_translation_assets' );
-
-	/**
-	 * Front
-	 */
-
-	// Enqueue CSS and JS files
-	add_action( 'wp_enqueue_scripts', 'wplng_register_assets' );
-
-	// Add languages switcher before </body>
-	add_action( 'wp_footer', 'wplng_switcher_wp_footer' );
-
-	// Change <html lang=""> if translated content
-	add_filter( 'language_attributes', 'wplng_language_attributes' );
-
-	// Set alternate links with hreflang parametters
-	add_action( 'wp_head', 'wplng_link_alternate_hreflang' );
-
-	// Set OG Local
-	add_filter( 'wplng_html_translated', 'wplng_replace_og_local' );
-
-	/**
-	 * OB and REQUEST_URI
-	 */
-
-	 // Manage URL with REQUEST_URI and start OB
-	add_action( 'init', 'wplng_init' );
-
-	// Stop OB at the end of the HTML
-	add_action( 'after_body', 'ob_end_flush' );
-
-	/**
-	 * Features
-	 */
-
-	// Translate email
-	if ( ! empty( get_option( 'wplng_translate_mail' ) ) ) {
-		add_filter( 'wp_mail', 'wplng_translate_wp_mail' );
-	}
-
-	// Search from translated languages
-	if ( ! empty( get_option( 'wplng_translate_search' ) ) ) {
-		add_action( 'parse_query', 'wplng_translate_search_query' );
+		// Add admin Bar menu
+		add_action( 'admin_bar_menu', 'wplng_admin_bar_menu', 100 );
+	
+		// Enqueue CSS and JS files for option pages
+		add_action( 'admin_enqueue_scripts', 'wplng_option_page_settings_assets' );
+		add_action( 'admin_enqueue_scripts', 'wplng_option_page_exclusions_assets' );
+	
+		// Print head script (JSON with all languages informations)
+		add_action( 'toplevel_page_wplng-settings', 'wplng_inline_script_languages_all' );
+	
+		/**
+		 * wplng_translation : CPT, taxo, meta
+		 */
+	
+		// Register wplng_translation CPT
+		add_action( 'init', 'wplng_register_post_type_translation' );
+	
+		// Add metabox for wplng_translation
+		add_action( 'add_meta_boxes_wplng_translation', 'wplng_translation_add_meta_box' );
+	
+		// Save metabox on posts saving
+		add_action( 'save_post_wplng_translation', 'wplng_translation_save_meta_boxes_data', 10, 2 );
+	
+		// Enqueue Script for wplng_translation admin
+		add_action( 'admin_print_scripts-post-new.php', 'wplng_translation_assets' );
+		add_action( 'admin_print_scripts-post.php', 'wplng_translation_assets' );
+	
+		/**
+		 * Front
+		 */
+	
+		// Enqueue CSS and JS files
+		add_action( 'wp_enqueue_scripts', 'wplng_register_assets' );
+	
+		// Add languages switcher before </body>
+		add_action( 'wp_footer', 'wplng_switcher_wp_footer' );
+	
+		// Change <html lang=""> if translated content
+		add_filter( 'language_attributes', 'wplng_language_attributes' );
+	
+		// Set alternate links with hreflang parametters
+		add_action( 'wp_head', 'wplng_link_alternate_hreflang' );
+	
+		// Set OG Local
+		add_filter( 'wplng_html_translated', 'wplng_replace_og_local' );
+	
+		/**
+		 * OB and REQUEST_URI
+		 */
+	
+		 // Manage URL with REQUEST_URI and start OB
+		add_action( 'init', 'wplng_init' );
+	
+		// Stop OB at the end of the HTML
+		add_action( 'after_body', 'ob_end_flush' );
+	
+		/**
+		 * Features
+		 */
+	
+		// Translate email
+		if ( ! empty( get_option( 'wplng_translate_mail' ) ) ) {
+			add_filter( 'wp_mail', 'wplng_translate_wp_mail' );
+		}
+	
+		// Search from translated languages
+		if ( ! empty( get_option( 'wplng_translate_search' ) ) ) {
+			add_action( 'parse_query', 'wplng_translate_search_query' );
+		}
 	}
 
 }

@@ -11,51 +11,54 @@ if ( ! defined( 'WPINC' ) ) {
  *
  * @return void
  */
+
+ 
+ function wplng_create_menu_register() {
+
+	add_menu_page(
+		__( 'wpLingua : Register', 'wplingua' ),
+		__( 'wpLingua', 'wplingua' ),
+		'administrator',
+		'wplng-settings',
+		'wplng_option_page_register',
+		'dashicons-admin-site'
+		// plugins_url( '/images/icon.png', __FILE__ )
+	);
+
+}
+
+
+
+
 function wplng_create_menu() {
 
-	if ( empty( wplng_get_api_data() ) ) {
+	add_menu_page(
+		__( 'wpLingua : Settings', 'wplingua' ),
+		__( 'wpLingua', 'wplingua' ),
+		'administrator',
+		'wplng-settings',
+		'wplng_option_page_settings',
+		'dashicons-admin-site'
+		// plugins_url( '/images/icon.png', __FILE__ )
+	);
 
-		add_menu_page(
-			__( 'wpLingua : Register', 'wplingua' ),
-			__( 'wpLingua', 'wplingua' ),
-			'administrator',
-			'wplng-settings',
-			'wplng_option_page_register',
-			'dashicons-admin-site'
-			// plugins_url( '/images/icon.png', __FILE__ )
-		);
+	add_submenu_page(
+		'wplng-settings',
+		__( 'wplingua : Switcher', 'wplingua' ),
+		__( 'Switcher', 'wplingua' ),
+		'administrator',
+		'wplng-switcher',
+		'wplng_option_page_switcher'
+	);
 
-	} else {
-
-		add_menu_page(
-			__( 'wpLingua : Settings', 'wplingua' ),
-			__( 'wpLingua', 'wplingua' ),
-			'administrator',
-			'wplng-settings',
-			'wplng_option_page_settings',
-			'dashicons-admin-site'
-			// plugins_url( '/images/icon.png', __FILE__ )
-		);
-
-		add_submenu_page(
-			'wplng-settings',
-			__( 'wplingua : Switcher', 'wplingua' ),
-			__( 'Switcher', 'wplingua' ),
-			'administrator',
-			'wplng-switcher',
-			'wplng_option_page_switcher'
-		);
-
-		add_submenu_page(
-			'wplng-settings',
-			__( 'wplingua : Exclusion', 'wplingua' ),
-			__( 'Exclusion', 'wplingua' ),
-			'administrator',
-			'wplng-exclusions',
-			'wplng_option_page_exclusions'
-		);
-
-	}
+	add_submenu_page(
+		'wplng-settings',
+		__( 'wplingua : Exclusion', 'wplingua' ),
+		__( 'Exclusion', 'wplingua' ),
+		'administrator',
+		'wplng-exclusions',
+		'wplng_option_page_exclusions'
+	);
 
 }
 
