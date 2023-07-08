@@ -6,9 +6,27 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 
+function wplng_is_valid_api_key_format( $api_key ) {
+
+	if (
+		empty( $api_key )
+		|| ! is_string( $api_key )
+		|| 32 !== strlen( $api_key )
+	) {
+		return false;
+	}
+
+	return true;
+}
+
+
 function wplng_get_api_key() {
 
 	$api_key = get_option( 'wplng_api_key' );
+
+	if ( ! wplng_is_valid_api_key_format( $api_key ) ) {
+		$api_key = '';
+	}
 
 	return $api_key;
 }
@@ -20,6 +38,10 @@ function wplng_get_api_data() {
 
 	$api_key_data = get_transient( 'wplng_api_key_data' );
 
+	if ( empty(wplng_get_api_key()) ) {
+		return array();
+	}
+
 	if ( empty( $api_key_data ) ) {
 		$api_key_data = wplng_validate_api_key();
 		set_transient( 'wplng_api_key_data', $api_key_data );
@@ -27,7 +49,9 @@ function wplng_get_api_data() {
 
 	$api_key_data = json_decode( $api_key_data, true );
 
-	// var_dump($api_key_data); die;
+	if ( empty( $api_key_data ) ) {
+		return array();
+	}
 
 	return $api_key_data;
 }
@@ -89,5 +113,5 @@ function wplng_get_api_feature() {
 }
 
 function wplng_api_feature_is_allow( $feature_name ) {
-	return in_array($feature_name, wplng_get_api_feature());
+	return in_array( $feature_name, wplng_get_api_feature() );
 }

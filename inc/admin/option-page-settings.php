@@ -15,9 +15,14 @@ if ( ! defined( 'WPINC' ) ) {
  * @return void
  */
 function wplng_option_page_settings() {
+
 	set_transient( 'wplng_api_key_data', false );
-	wplng_get_api_data();
-	// echo '<pre>' . var_export(wplng_get_api_data(), true) . '</pre>';
+
+	if ( empty( wplng_get_api_data() ) ) {
+		wplng_option_page_register();
+		return;
+	}
+
 	?>
 	<div class="wrap">
 		
@@ -227,7 +232,7 @@ function wplng_settings_part_api_key() {
 	<fieldset>
 		<label for="wplng_api_key"><strong><?php _e( 'Website API key:', 'wplingua' ); ?></strong></label>
 		<br>
-		<input type="text" name="wplng_api_key" id="wplng_api_key" value="<?php echo esc_attr( get_option( 'wplng_api_key' ) ); ?>" style="max-width: 100%; width: 32em;"></input>
+		<input type="text" name="wplng_api_key" id="wplng_api_key" value="<?php echo esc_attr( wplng_get_api_key() ); ?>" style="max-width: 100%; width: 32em;"></input>
 	</fieldset>
 	<?php
 }

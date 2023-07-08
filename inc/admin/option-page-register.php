@@ -30,7 +30,7 @@ function wplng_option_page_register() {
 							<label for="wplng_api_key"><strong><?php _e( 'Set API key:', 'wplingua' ); ?></strong></label>
 							<p><?php _e( 'If you already have an API key, enter it below. If you\'ve forgotten your site\'s API key, visit ', 'wplingua' ); ?><a href="#"><?php _e( 'the API key retrieval page', 'wplingua' ); ?></a>.</p>
 							<br>
-							<input type="text" name="wplng_api_key" id="wplng_api_key" value="<?php echo esc_attr( get_option( 'wplng_api_key' ) ); ?>"></input>
+							<input type="text" name="wplng_api_key" id="wplng_api_key" value="<?php echo esc_attr( wplng_get_api_key() ); ?>"></input>
 
 							<?php
 							submit_button(
