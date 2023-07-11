@@ -5,13 +5,6 @@ if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
-
-/**
- * Create a menu link for the plugin settings in the admin area
- *
- * @return void
- */
-
  
  function wplng_create_menu_register() {
 

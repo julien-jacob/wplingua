@@ -76,6 +76,14 @@ function wplngapi_error_die( $code = 0 ) {
 			$message = 'Validate API key - API Key unknown';
 			break;
 
+		case 15:
+			$message = 'Register API key - Mail sending error';
+			break;
+
+		case 16:
+			$message = 'Request API key - API key corrupted ';
+			break;
+
 		default:
 			$message = 'Unknown error';
 			break;

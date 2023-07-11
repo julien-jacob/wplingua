@@ -32,12 +32,18 @@ function wplngapi_request_register() {
 		'website'           => $_POST['website'],
 		'mail_address'      => $_POST['mail_address'],
 		'language_original' => $_POST['language_original'],
-		'languages_target'  => $_POST['languages_target'],
+		'languages_target'  => array(
+			$_POST['languages_target'],
+		),
 		'features'          => array(
 			'search'      => false,
 			'mail'        => false,
 			'woocommerce' => false,
 		),
+		'created'           => date( 'd/m/Y H:i:s' ),
+		'validated'         => false,
+		'used'              => false,
+		'ban'               => false,
 	);
 
 	$api_key = wplngapi_get_new_api_key();
@@ -47,21 +53,33 @@ function wplngapi_request_register() {
 		json_encode( $api_key_data )
 	);
 
+	// Get Website name
+	$url_parsed   = parse_url( $_POST['website'] );
+	$website_name = $_POST['website'];
+	if ( ! empty( $url_parsed['host'] ) ) {
+		$website_name = $url_parsed['host'];
+	}
+
+	$mail_subject = 'wpLingua : API key for ' . $website_name;
+	$mail_message = 'Your wpLingua API key : ' . $api_key;
+	$mail_headers = 'From: no-reply@wplingua.com';
+
+	$mail_sending = mail(
+		$_POST['mail_address'],
+		$mail_subject,
+		$mail_message,
+		$mail_headers
+	);
+
+	if ( ! $mail_sending ) {
+		wplngapi_error_die( 15 );
+	}
+
 	$response = array(
-		'website'           => $_POST['website'],
-		'mail_address'      => $_POST['mail_address'],
-		'language_original' => $_POST['language_original'],
-		'languages_target'  => $_POST['languages_target'],
-		'api_key'           => $api_key,
-		'features'          => array(
-			'search'      => false,
-			'mail'        => false,
-			'woocommerce' => false,
-		),
+		'register' => true,
 	);
 
 	return json_encode( $response );
-
 }
 
 
