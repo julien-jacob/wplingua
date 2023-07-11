@@ -8,11 +8,11 @@ if ( ! defined( 'WPINC' ) ) {
 
 function wplng_option_page_switcher() {
 
-	$insert     = wplng_get_switcher_insert();
-	$theme      = wplng_get_switcher_theme();
-	$style      = wplng_get_switcher_style();
+	$insert      = wplng_get_switcher_insert();
+	$theme       = wplng_get_switcher_theme();
+	$style       = wplng_get_switcher_style();
 	$name_format = wplng_get_switcher_name_format();
-	$flags_show = wplng_get_switcher_flags_show();
+	$flags_show  = wplng_get_switcher_flags_show();
 	$flags_style = wplng_get_switcher_flags_style();
 
 	?>
@@ -39,12 +39,12 @@ function wplng_option_page_switcher() {
 							
 							<select id="wplng_insert" name="wplng_insert">
 								<?php
-								
+
 								$insert_options = array(
-									'bottom-right' => __( 'Bottom right', 'wplingua' ),
-									'bottom-left'  => __( 'Bottom left', 'wplingua' ),
+									'bottom-right'  => __( 'Bottom right', 'wplingua' ),
 									'bottom-center' => __( 'Bottom center', 'wplingua' ),
-									'none'         => __( 'None', 'wplingua' ),
+									'bottom-left'   => __( 'Bottom left', 'wplingua' ),
+									'none'          => __( 'None', 'wplingua' ),
 								);
 
 								foreach ( $insert_options as $option_value => $option_name ) {
@@ -233,28 +233,27 @@ function wplng_option_page_switcher() {
 
 function wplng_options_switcher_update_flags_style( $old_flags_style, $new_flags_style ) {
 
-	error_log($old_flags_style);
-	error_log($new_flags_style);
-	error_log('-------');
+	error_log( $old_flags_style );
+	error_log( $new_flags_style );
+	error_log( '-------' );
 
 	if ( $old_flags_style !== $new_flags_style ) {
 
 		$website_flag = wplng_get_language_website_flag();
 		$website_flag = str_replace(
-			'/wplingua/images/' . $old_flags_style . '/', 
-			'/wplingua/images/' . $new_flags_style . '/', 
+			'/wplingua/images/' . $old_flags_style . '/',
+			'/wplingua/images/' . $new_flags_style . '/',
 			$website_flag
 		);
-		update_option('wplng_website_flag', $website_flag);
-
+		update_option( 'wplng_website_flag', $website_flag );
 
 		$target_languages = get_option( 'wplng_target_languages' );
 		$target_languages = str_replace(
-			'/' . $old_flags_style . '/', 
-			'/' . $new_flags_style . '/', 
+			'/' . $old_flags_style . '/',
+			'/' . $new_flags_style . '/',
 			$target_languages
 		);
-		update_option('wplng_target_languages', $target_languages);
+		update_option( 'wplng_target_languages', $target_languages );
 
 	}
 

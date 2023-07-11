@@ -25,3 +25,17 @@
     padding-right: 15px;
     width: auto;
 }
+
+.dashicons.spin {
+    animation: dashicons-spin 1s infinite;
+    animation-timing-function: linear;
+ }
+ 
+ @keyframes dashicons-spin {
+    0% {
+       transform: rotate( 0deg );
+    }
+    100% {
+       transform: rotate( 360deg );
+    }
+ }

@@ -12,13 +12,19 @@ function wplng_get_language_website() {
 
 function wplng_get_language_website_id() {
 
-	$language_id = get_option( 'wplng_website_language' );
+	$language_api = wplng_get_api_language_website();
+
+	if ('all' === $language_api) {
+		$language_id = get_option( 'wplng_website_language' );
+	} elseif (false === $language_api) {
+		return 'en';
+	} else {
+		$language_id = wplng_get_api_language_website();
+	}
 
 	if ( ! wplng_is_valid_language_id( $language_id ) ) {
 		return 'en';
 	}
-
-	$language_id = apply_filters( 'wplng_language_website_id', $language_id );
 
 	return $language_id;
 }
@@ -102,7 +108,7 @@ function wplng_get_languages_target_simplified() {
 
 	$json = get_option( 'wplng_target_languages' );
 
-	if ( empty( $json ) ) {
+	if ( empty( $json ) || ! is_string($json) ) {
 		$json = '[]';
 	}
 
@@ -243,7 +249,7 @@ function wplng_get_languages_all() {
 	$target_flags    = get_option( 'wplng_target_languages' );
 
 	// TODO : Remplacer par une ternaire
-	if ( empty( $target_flags ) ) {
+	if ( empty( $target_flags ) || ! is_string($target_flags) ) {
 		$target_flags = '[]';
 	}
 
@@ -289,6 +295,24 @@ function wplng_get_languages_all() {
 
 function wplng_get_languages_all_json() {
 	return json_encode( wplng_get_languages_all() );
+}
+
+
+function wplng_get_languages_allow() {
+	$languages_alow = wplng_get_api_languages_target();
+	$languages      = array();
+
+	if ( 'all' === $languages_alow ) {
+		return wplng_get_languages_all();
+	} elseif ( false === $languages_alow || ! is_array( $languages_alow ) ) {
+		return array();
+	}
+
+	foreach ( $languages_alow as $key => $language_id_alow ) {
+		$languages[] = wplng_get_language_by_id( $language_id_alow );
+	}
+
+	return $languages;
 }
 
 

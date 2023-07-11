@@ -15,6 +15,16 @@ if ( ! defined( 'WPINC' ) ) {
  * @return void
  */
 function wplng_option_page_settings() {
+
+	delete_transient( 'wplng_api_key_data' );
+
+	if ( empty( wplng_get_api_data() ) ) {
+		wplng_option_page_register();
+		return;
+	}
+
+	wplng_settings_part_first_use();
+
 	?>
 	<div class="wrap">
 		
@@ -27,21 +37,18 @@ function wplng_option_page_settings() {
 			settings_fields( 'wplng_settings' );
 			do_settings_sections( 'wplng_settings' );
 			?>
+			
 			<table class="form-table">
 				<tr>
 					<th scope="row"><?php _e( 'Website language', 'wplingua' ); ?></th>
 					<td>
-						<fieldset>
-							<?php wplng_settings_part_language_website(); ?>
-						</fieldset>
+						<?php wplng_settings_part_language_website(); ?>
 					</td>
 				</tr>
 				<tr>
 					<th scope="row"><?php _e( 'Translated languages', 'wplingua' ); ?></th>
 					<td>
-						<fieldset>
-							<?php wplng_settings_part_languages_target(); ?>
-						</fieldset>
+						<?php wplng_settings_part_languages_target(); ?>
 					</td>
 				</tr>
 				<tr>
@@ -55,9 +62,7 @@ function wplng_option_page_settings() {
 				<tr>
 					<th scope="row"><?php _e( 'API Key', 'wplingua' ); ?></th>
 					<td>
-						<fieldset>
-							<?php wplng_settings_part_api_key(); ?>
-						</fieldset>
+						<?php wplng_settings_part_api_key(); ?>
 					</td>
 				</tr>
 			</table>
@@ -70,38 +75,101 @@ function wplng_option_page_settings() {
 }
 
 
-function wplng_settings_part_language_website() {
+function wplng_settings_part_first_use() {
+
+	if ( ! empty( get_option( 'wplng_website_language' ) ) ) {
+		return;
+	}
+
+	update_option( 'wplng_website_language', wplng_get_api_language_website() );
+
+	$data = wplng_get_api_data();
+
+	if ( empty( $data['languages_target'][0] ) ) {
+		return;
+	}
+
+	// Set option for target language
+	$language_target = wplng_get_language_by_id( $data['languages_target'][0] );
+	if ( ! empty( $language_target ) ) {
+		update_option(
+			'wplng_target_languages',
+			wp_json_encode(
+				array( $language_target )
+			)
+		);
+	} else {
+		return;
+	}
+
+	$url_front_page_translated = wplng_url_translate(
+		get_site_url(),
+		$language_target['id']
+	);
+
 	?>
+	<div class="notice notice-info" id="wplng-notice-first-loading-loading">
+		<iframe src="<?php echo esc_url( $url_front_page_translated ); ?>" frameborder="0" id="wplng-first-load-iframe"></iframe>
+		<p><span class="dashicons dashicons-update spin"></span> <?php _e( 'Your site is being translated and will be ready soon.', 'wplingua' ); ?></p>
+	</div>
 
-	<label for="wplng_website_language">
-		<strong><?php _e( 'The original website language: ', 'wplingua' ); ?></strong>
-	</label>
+	<div class="notice notice-success" id="wplng-notice-first-loading-loaded" style="display: none;">
+		<p><?php _e( 'Your website is now multilingual. You can start visiting the translated version!', 'wplingua' ); ?> <a href="<?php echo esc_url( $url_front_page_translated ); ?>" target="_blank"><?php _e( 'visit the translated site', 'wplingua' ); ?></a></p>
+	</div>
+	<?php
+}
 
-	<select id="wplng_website_language" name="wplng_website_language">
-		<?php
-		$website_language_saved = true;
-		if ( empty( wplng_get_language_website_id() ) ) {
-			$website_language_saved = false;
+
+function wplng_settings_part_language_website() {
+
+	$api_language_website   = wplng_get_api_language_website();
+	$website_language_style = '';
+
+	if ( 'all' !== $api_language_website ) {
+		$website_language_style = ' style="display: none;"';
+	}
+
+	echo '<fieldset' . $website_language_style . '>';
+
+	echo '<label for="wplng_website_language">';
+	echo '<strong>' . __( 'The original website language: ', 'wplingua' ) . ' </strong>';
+	echo '</label>';
+
+	echo '<select id="wplng_website_language" name="wplng_website_language">';
+	$website_language_saved = true;
+	if ( empty( wplng_get_language_website_id() ) ) {
+		$website_language_saved = false;
+	} else {
+
+		$website_language_id = wplng_get_language_website_id();
+		$website_language    = wplng_get_language_by_id( $website_language_id );
+
+		if ( ! empty( $website_language['id'] )
+			&& ! empty( $website_language['name'] )
+		) {
+			echo '<option value="' . esc_attr( $website_language['id'] ) . '">';
+			echo esc_html( $website_language['name'] );
+			echo '</option>';
 		} else {
-
-			$website_language_id = wplng_get_language_website_id();
-			$website_language    = wplng_get_language_by_id( $website_language_id );
-
-			if ( ! empty( $website_language['id'] )
-				&& ! empty( $website_language['name'] )
-			) {
-				echo '<option value="' . esc_attr( $website_language['id'] ) . '">' . esc_html( $website_language['name'] ) . '</option>';
-			} else {
-				$website_language_saved = false;
-			}
+			$website_language_saved = false;
 		}
+	}
 
-		if ( ! $website_language_saved ) {
-			echo '<option value="">' . __( 'Please choose an option', 'wplingua' ) . '</option>';
-		}
-		?>
-	</select>
+	if ( ! $website_language_saved ) {
+		echo '<option value="">' . __( 'Please choose an option', 'wplingua' ) . '</option>';
+	}
+	echo '</select>';
+	echo '</fieldset>';
 
+	if ( 'all' !== $api_language_website ) {
+		// $website_language_saved = ' disabled';
+		echo '<strong>';
+		echo __( 'The original website language, defined by API key:', 'wplingua' );
+		echo ' </strong>';
+		echo wplng_get_language_name( $api_language_website );
+	}
+	?>
+	
 	<br>
 	<br>
 
@@ -137,17 +205,17 @@ function wplng_settings_part_languages_target() {
 	$languages_target = wplng_get_language_by_ids( $languages_target_ids );
 
 	?>
+	<fieldset id="fieldset-add-target-language">
+		<label for="wplng_add_new_target_language">
+			<strong><?php _e( 'Add new target Language: ', 'wplingua' ); ?></strong>
+		</label>							
 
-	<label for="wplng_target_language">
-		<strong><?php _e( 'Add new target Language: ', 'wplingua' ); ?></strong>
-	</label>							
+		<select id="wplng_add_new_target_language" name="wplng_add_new_target_language"></select>
 
-	<select id="wplng_add_new_target_language" name="wplng_add_new_target_language"></select>
-
-	<a class="button button-primary" id="wplng-target-lang-add" href="javascript:void(0);"><?php _e( 'Add', 'wplingua' ); ?></a>
-
-	<hr>
-	<br>
+		<a class="button button-primary" id="wplng-target-lang-add" href="javascript:void(0);"><?php _e( 'Add', 'wplingua' ); ?></a>
+		<hr>
+		<br>
+	</fieldset>
 	
 	<p><strong><?php _e( 'Current target languages: ', 'wplingua' ); ?></strong></p>
 
@@ -177,19 +245,28 @@ function wplng_settings_part_languages_target() {
 
 
 function wplng_settings_part_features() {
-	?>
 
+	$api_features = wplng_get_api_feature();
+	// disabled( false, in_array( 'woocommerce', $api_features ), true );
+	// var_dump(in_array( 'woocommerce', $api_features ));
+	?>
 	<p><strong><?php _e( 'Translation features:', 'wplingua' ); ?></strong></p>
 	<br>
 	<fieldset>
 		<label for="wplng_translate_mail">
-			<input type="checkbox" id="wplng_translate_mail" name="wplng_translate_mail" value="1" <?php checked( 1, get_option( 'wplng_translate_mail' ), true ); ?> /> <?php _e( 'Translate sending mail', 'wplingua' ); ?>
+			<input type="checkbox" id="wplng_translate_mail" name="wplng_translate_mail" value="1" <?php checked( 1, get_option( 'wplng_translate_mail' ) && in_array( 'mail', $api_features ), true ); ?> <?php disabled( false, in_array( 'mail', $api_features ), true ); ?>/> <?php _e( 'Premium: Translate sending mail', 'wplingua' ); ?>
 		</label>
 	</fieldset>
 
 	<fieldset>
 		<label for="wplng_translate_search">
-			<input type="checkbox" id="wplng_translate_search" name="wplng_translate_search" value="1" <?php checked( 1, get_option( 'wplng_translate_search' ), true ); ?> /> <?php _e( 'Search from translated languages', 'wplingua' ); ?>
+			<input type="checkbox" id="wplng_translate_search" name="wplng_translate_search" value="1" <?php checked( 1, get_option( 'wplng_translate_search' ) && in_array( 'search', $api_features ), true ); ?>  <?php disabled( false, in_array( 'search', $api_features ), true ); ?>/> <?php _e( 'Premium: Search from translated languages', 'wplingua' ); ?>
+		</label>
+	</fieldset>
+
+	<fieldset>
+		<label for="wplng_translate_woocommerce">
+			<input type="checkbox" id="wplng_translate_woocommerce" name="wplng_translate_woocommerce" value="1" <?php checked( 1, get_option( 'wplng_translate_woocommerce' ) && in_array( 'woocommerce', $api_features ), true ); ?>  <?php disabled( false, in_array( 'woocommerce', $api_features ), true ); ?>/> <?php _e( 'Premium: Translate Woocommerce shop', 'wplingua' ); ?>
 		</label>
 	</fieldset>
 	<?php
@@ -202,7 +279,7 @@ function wplng_settings_part_api_key() {
 	<fieldset>
 		<label for="wplng_api_key"><strong><?php _e( 'Website API key:', 'wplingua' ); ?></strong></label>
 		<br>
-		<input type="text" name="wplng_api_key" id="wplng_api_key" value="<?php echo esc_attr( get_option( 'wplng_api_key' ) ); ?>" style="max-width: 100%; width: 32em;"></input>
+		<input type="text" name="wplng_api_key" id="wplng_api_key" value="<?php echo esc_attr( wplng_get_api_key() ); ?>" style="max-width: 100%; width: 32em;"></input>
 	</fieldset>
 	<?php
 }

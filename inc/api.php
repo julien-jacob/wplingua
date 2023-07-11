@@ -6,6 +6,57 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 
+function wplng_api_request_free_api_key( $data ) {
+
+	if ( empty( $data['r'] )
+		|| $data['r'] !== 'register'
+		|| empty( $data['mail_address'] )
+		|| empty( $data['website'] )
+		|| empty( $data['language_original'] )
+		|| ! wplng_is_valid_language_id( $data['language_original'] )
+		|| empty( $data['languages_target'] )
+		|| ! wplng_is_valid_language_id( $data['languages_target'] )
+		|| empty( $data['accept_eula'] )
+		|| $data['accept_eula'] !== true
+		|| $data['language_original'] === $data['languages_target']
+	) {
+		return array(
+			'error' => true,
+			'message' => __('Error - Invalid data.', 'wplingua')
+		);
+	}
+
+
+	$body = array(
+		'r'                 => 'register',
+		'website'           => $data['website'],
+		'mail_address'      => $data['mail_address'],
+		'language_original' => $data['language_original'],
+		'languages_target'  => $data['languages_target'],
+		'accept_eula'       => true,
+	);
+	$args = array(
+		'method'    => 'POST',
+		'timeout'   => 5,
+		'sslverify' => false,
+		'body'      => $body,
+	);
+
+	$request = wp_remote_post( WPLNG_API, $args );
+
+	if ( is_wp_error( $request ) || wp_remote_retrieve_response_code( $request ) != 200 ) {
+		return array(
+			'error' => true,
+			'message' => __('Error - API response not valid.', 'wplingua')
+		);
+	}
+
+	$response = json_decode( wp_remote_retrieve_body( $request ), true );
+
+	return $response;
+}
+
+
 function wplng_validate_api_key( $api_key = '' ) {
 
 	if ( empty( $api_key ) ) {
@@ -45,7 +96,7 @@ function wplng_validate_api_key( $api_key = '' ) {
 		return false;
 	}
 
-	return (string) wp_remote_retrieve_body( $request );
+	return $response;
 }
 
 

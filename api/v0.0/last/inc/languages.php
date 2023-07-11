@@ -9,35 +9,19 @@ function wplngapi_get_all_languages_data() {
 	return array(
 		array(
 			'name' => 'French',
-			'id'   => 'fr',
-			'flag' => array(
-				'France',
-				'Belgium',
-			),
+			'id'   => 'fr'
 		),
 		array(
 			'name' => 'English',
-			'id'   => 'fr',
-			'flag' => array(
-				'United Kingdom',
-				'United States',
-			),
+			'id'   => 'fr'
 		),
 		array(
 			'name' => 'Spain',
-			'id'   => 'es',
-			'flag' => array(
-				'Spain',
-				'Mexico',
-			),
+			'id'   => 'es'
 		),
 		array(
 			'name' => 'Portuguese',
-			'id'   => 'pt',
-			'flag' => array(
-				'Portugal',
-				'Brazil',
-			),
+			'id'   => 'pt'
 		),
 	);
 }

@@ -53,19 +53,22 @@ jQuery(document).ready(function ($) {
     function wplngGetOptionstargetLanguagesHTML() {
 
         var languagesOptionsHTML = "";
+        var hideFieldset = true;
 
         wplngAllLanguages.forEach((language) => {
             var disabled = "";
             if (
-                wplngWebsiteLanguage !== undefined &&
-                wplngWebsiteLanguage === language.id
+                ( 
+                    wplngWebsiteLanguage !== undefined 
+                    && wplngWebsiteLanguage === language.id 
+                )
+                || wplngTargetLanguagesIncludes(language.id)
             ) {
                 disabled = " disabled";
+            } else {
+                hideFieldset = false;
             }
 
-            if (wplngTargetLanguagesIncludes(language.id)) {
-                disabled = " disabled";
-            }
 
             languagesOptionsHTML +=
                 '<option value="' +
@@ -76,6 +79,12 @@ jQuery(document).ready(function ($) {
                 language.name +
                 "</option>";
         });
+
+        if (hideFieldset) {
+            $("#fieldset-add-target-language").hide();
+        } else {
+            $("#fieldset-add-target-language").show();
+        }
 
         return languagesOptionsHTML;
     }
@@ -349,6 +358,13 @@ jQuery(document).ready(function ($) {
 
     wplngUpdateOptionPage();
 
-}); // End jQuery loaded event
+    /**
+     * Code for first loading
+     */
+    $("#wplng-first-load-iframe").load(function() {
+        $("#wplng-notice-first-loading-loading").hide();
+        $("#wplng-notice-first-loading-loaded").show();
+    });
 
+}); // End jQuery loaded event
 
