@@ -80,7 +80,7 @@ function wplng_api_request_free_api_key( $data ) {
 	// 	return '2';
 	// }
 
-	return (string) wp_remote_retrieve_body( $request );
+	return $response;
 }
 
 

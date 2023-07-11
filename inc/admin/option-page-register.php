@@ -15,14 +15,14 @@ function wplng_option_page_register() {
 
 	if ( get_option( 'wplng_api_key' ) !== $api_key
 		&& empty( wplng_get_api_data() )
-	) {
+	) :
 		update_option( 'wplng_api_key', '' );
 		?>
 		<div class="notice notice-error is-dismissible">
 			<p><?php _e( 'Invalid API key.', 'wplingua' ); ?></p>
 		</div>
 		<?php
-	} elseif ( ! empty( $json_request_key ) ) {
+	elseif ( ! empty( $json_request_key ) ) :
 
 		$data_request_key = json_decode( $json_request_key, true );
 
@@ -37,7 +37,7 @@ function wplng_option_page_register() {
 			<p><?php _e( 'Check mail box.', 'wplingua' ); ?></p>
 		</div>
 		<?php
-	}
+	endif;
 	?>
 	
 
@@ -72,7 +72,7 @@ function wplng_option_page_register() {
 				<tr>
 					<th scope="row"><?php _e( 'Get free API key', 'wplingua' ); ?></th>
 					<td>
-					<?php wplng_register_part_free_api_key(); ?>
+						<?php wplng_register_part_free_api_key(); ?>
 					</td>
 				</tr>
 				
@@ -175,7 +175,7 @@ function wplng_register_part_free_api_key() {
 			<strong><?php _e( 'I have read and accept the', 'wplingua' ); ?> <a href="#"><?php _e( 'general conditions of use', 'wplingua' ); ?></a> </strong>
 		</label>
 	</fieldset>
-	<textarea name="wplng_request_free_key" id="wplng_request_free_key"></textarea>
+	<textarea name="wplng_request_free_key" id="wplng_request_free_key" style="display: none;"></textarea>
 	<br>
 
 

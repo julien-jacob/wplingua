@@ -1,25 +1,41 @@
 jQuery(document).ready(function ($) {
 
-    // console.log(wplngAllLanguages);
-
-    var html = "";
+    var wplngHtmlLanguagesOptions = "";
 
     wplngAllLanguages.forEach((language) => {
-
-        html += '<option value="' + language.id + '">' + language.name + "</option>";
+        wplngHtmlLanguagesOptions += '<option value="' + language.id + '">' + language.name + "</option>";
     });
-    $("#wplng-language-website").html(html);
-    $("#wplng-language-target").html(html);
 
-    // var wplngRegisterInputSelector = "#wplng-website-url, #wplng-email, #wplng-language-website, #wplng-language-target, #wplng-accept-eula";
-    // var wplngRegisterInputSelector = "#submit[get-free-api=1]";
-    var wplngRegisterInputSelector = "#wplng-get-free-api-submit";
-    
-    $(wplngRegisterInputSelector).on("click", function(event) {
+    $("#wplng-language-website").html(wplngHtmlLanguagesOptions);
+    $("#wplng-language-target").html(wplngHtmlLanguagesOptions);
+
+
+    wplngDisableLanguagesOptions();
+    $("#wplng-language-website").on("input", function(event) {
+        wplngDisableLanguagesOptions();
+    });
+
+    function wplngDisableLanguagesOptions() {
+        var selectedLanguage = $("#wplng-language-website").val();
+        $("#wplng-language-target option").attr("disabled", false);
+        $("#wplng-language-target option[value=" + selectedLanguage + "]").attr("disabled", true);
+
+        if ($("#wplng-language-website").val() == selectedLanguage) {
+            $("#wplng-language-target option").attr("selected", false);
+            $("#wplng-language-target option[value!=" + selectedLanguage + "]").first().attr("selected", true);
+        }
+    }
+
+    $("#wplng-get-free-api-submit").on("click", function(event) {
         wplngUpdateRegisterInput();
     });
-
+    
     function wplngUpdateRegisterInput() {
+
+        var wplngRegisterInputSelector = "#wplng-website-url, #wplng-email, #wplng-language-website, #wplng-language-target, #wplng-accept-eula";
+
+        $(wplngRegisterInputSelector).attr('required', true);
+
         var registerData = {
             r: 'register',
             mail_address: $("#wplng-email").val(),
@@ -31,7 +47,6 @@ jQuery(document).ready(function ($) {
 
         $("#wplng_request_free_key").val(JSON.stringify(registerData))
     }
-
 
 }); // End jQuery loaded event
 
