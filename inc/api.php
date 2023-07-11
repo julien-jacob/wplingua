@@ -20,7 +20,10 @@ function wplng_api_request_free_api_key( $data ) {
 		|| $data['accept_eula'] !== true
 		|| $data['language_original'] === $data['languages_target']
 	) {
-		return '1';
+		return array(
+			'error' => true,
+			'message' => __('Error - Invalid data.', 'wplingua')
+		);
 	}
 
 	/**
@@ -39,7 +42,7 @@ function wplng_api_request_free_api_key( $data ) {
 	$language_target = wplng_get_language_by_id( $data['languages_target'] );
 	if ( ! empty( $language_target['id'] ) && ! empty( $language_target['flag'] ) ) {
 		update_option(
-			'wplng_website_language',
+			'wplng_target_languages',
 			wp_json_encode(
 				array(
 					'id'   => $language_target['id'],
@@ -64,21 +67,16 @@ function wplng_api_request_free_api_key( $data ) {
 		'body'      => $body,
 	);
 
-	// error_log( var_export( $body, true ) );
-
 	$request = wp_remote_post( WPLNG_API, $args );
 
 	if ( is_wp_error( $request ) || wp_remote_retrieve_response_code( $request ) != 200 ) {
-		error_log( print_r( $request, true ) );
-		return false;
+		return array(
+			'error' => true,
+			'message' => __('Error - API response not valid.', 'wplingua')
+		);
 	}
 
 	$response = json_decode( wp_remote_retrieve_body( $request ), true );
-
-	// if ( ! empty( $response['error'] ) ) {
-	// 	// TODO : Check for remove or update
-	// 	return '2';
-	// }
 
 	return $response;
 }
@@ -123,7 +121,7 @@ function wplng_validate_api_key( $api_key = '' ) {
 		return false;
 	}
 
-	return (string) wp_remote_retrieve_body( $request );
+	return $response;
 }
 
 

@@ -22,7 +22,7 @@ function wplng_is_valid_api_key_format( $api_key ) {
 
 function wplng_get_api_key() {
 
-	$api_key = get_option( 'wplng_api_key' );
+	$api_key = trim( get_option( 'wplng_api_key' ) );
 
 	if ( ! wplng_is_valid_api_key_format( $api_key ) ) {
 		$api_key = '';
@@ -36,21 +36,24 @@ function wplng_get_api_data() {
 
 	// TODO : Revoir cette fonction
 
-	$api_key_data = get_transient( 'wplng_api_key_data' );
-
-	if ( empty(wplng_get_api_key()) ) {
+	if ( empty( wplng_get_api_key() ) ) {
 		return array();
 	}
 
-	if ( empty( $api_key_data ) ) {
-		$api_key_data = wplng_validate_api_key();
-		set_transient( 'wplng_api_key_data', $api_key_data );
-	}
-
+	$api_key_data = get_transient( 'wplng_api_key_data' );
 	$api_key_data = json_decode( $api_key_data, true );
 
 	if ( empty( $api_key_data ) ) {
-		return array();
+		$api_key_data = wplng_validate_api_key();
+
+		if ( empty( $api_key_data ) ) {
+			return array();
+		}
+
+		set_transient(
+			'wplng_api_key_data',
+			wp_json_encode( $api_key_data )
+		);
 	}
 
 	return $api_key_data;

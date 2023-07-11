@@ -24,19 +24,35 @@ function wplng_option_page_register() {
 		<?php
 	elseif ( ! empty( $json_request_key ) ) :
 
+		delete_option( 'wplng_request_free_key' );
 		$data_request_key = json_decode( $json_request_key, true );
+		$response         = wplng_api_request_free_api_key( $data_request_key );
 
-		// TODO Check data and show error if not valid
-
-		?>
-		<div class="notice notice-error is-dismissible">
-			<?php
-			var_dump( wplng_api_request_free_api_key( $data_request_key ) );
-			update_option( 'wplng_request_free_key', false );
+		if ( ! empty( $response['error'] ) ) {
+			$message = '';
+			if ( ! empty( $response['message'] ) ) {
+				$message .= '<p>';
+				$message .= __( 'Message :', 'wplingua' );
+				$message .= ' ' . esc_html( $response['message'] );
+				$message .= '</p>';
+			}
 			?>
-			<p><?php _e( 'Check mail box.', 'wplingua' ); ?></p>
-		</div>
-		<?php
+			<div class="notice notice-error is-dismissible">
+				<p><?php _e( 'An error occurred while creating the API key..', 'wplingua' ); ?></p>
+				<?php echo $message; ?>
+			</div>
+			<?php
+		} elseif ( ! empty( $response['register'] ) ) {
+			$mail = '';
+			if ( ! empty( $data_request_key['mail_address'] ) ) {
+				$mail = ' ' . esc_html( $data_request_key['mail_address'] );
+			}
+			?>
+			<div class="notice notice-success is-dismissible">
+				<p><?php _e( 'The API key has been correctly created and sent to the following e-mail address:', 'wplingua' ); echo $mail; ?> </p>
+			</div>
+			<?php
+		}
 	endif;
 	?>
 	
@@ -133,8 +149,7 @@ function wplng_register_part_premium() {
 
 function wplng_register_part_free_api_key() {
 
-	$website_locale = substr(get_locale(), 0, 2);
-	
+	$website_locale = substr( get_locale(), 0, 2 );
 
 	?>
 	<p for="wplng_api_key"><strong><?php _e( 'The API key:', 'wplingua' ); ?></strong></p>
@@ -177,7 +192,7 @@ function wplng_register_part_free_api_key() {
 		</label>
 	</fieldset>
 	<fieldset style="display: none;">
-		<p><?php _e( 'Website Locale:', 'wplingua' ); ?> <span id="wplng-website-locale"><?php echo esc_html($website_locale); ?></span></p>
+		<p><?php _e( 'Website Locale:', 'wplingua' ); ?> <span id="wplng-website-locale"><?php echo esc_html( $website_locale ); ?></span></p>
 		<textarea name="wplng_request_free_key" id="wplng_request_free_key"></textarea>
 	</fieldset>
 	<br>
