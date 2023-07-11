@@ -25,7 +25,7 @@ function wplng_option_page_exclusions() {
 					<td>
 						<fieldset>
 							<label for="wplng_excluded_selectors"><strong><?php _e( 'Exclude HTML elements:', 'wplingua' ); ?></strong></label>
-							<p><?php echo __( 'You can leave some elements of your web pages untranslated. To do this, list the element selectors to be excluded below. For example, use ', 'wplingua' ) . '<code>#website-main-title</code>' . __( ' to exclude an element by ID attribute, or ', 'wplingua' ) . '<code>.author-name</code>' . __( ' to exclude an element by class.', 'wplingua' ); ?></p>
+							<p><?php echo __( 'You can leave some elements of your web pages untranslated. To do this, list the element selectors to be excluded below, one per line. For example, use ', 'wplingua' ) . '<code>#website-main-title</code>' . __( ' to exclude an element by ID attribute, or ', 'wplingua' ) . '<code>.author-name</code>' . __( ' to exclude an element by class.', 'wplingua' ); ?></p>
 							<br>
 							<textarea name="wplng_excluded_selectors" id="wplng_excluded_selectors" rows="6" style="width:100%;"><?php echo esc_textarea( get_option( 'wplng_excluded_selectors' ) ); ?></textarea>
 						</fieldset>
