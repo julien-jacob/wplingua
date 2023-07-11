@@ -59,10 +59,16 @@ function wplng_start() {
 	// Add settings link in plugin list
 	add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), 'wplng_settings_link' );
 
+	// Print head script (JSON with all languages informations)
+	add_action( 'toplevel_page_wplng-settings', 'wplng_inline_script_languages' );
+
 	if ( empty( wplng_get_api_data() ) ) {
 
 		// Add Register option page in back office menu
 		add_action( 'admin_menu', 'wplng_create_menu_register' );
+
+		// Enqueue CSS and JS files for register option pages
+		add_action( 'admin_enqueue_scripts', 'wplng_option_page_register_assets' );
 		
 	} else {
 
@@ -80,8 +86,7 @@ function wplng_start() {
 		add_action( 'admin_enqueue_scripts', 'wplng_option_page_settings_assets' );
 		add_action( 'admin_enqueue_scripts', 'wplng_option_page_exclusions_assets' );
 	
-		// Print head script (JSON with all languages informations)
-		add_action( 'toplevel_page_wplng-settings', 'wplng_inline_script_languages_all' );
+		
 	
 		/**
 		 * wplng_translation : CPT, taxo, meta

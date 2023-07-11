@@ -6,6 +6,84 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 
+function wplng_api_request_free_api_key( $data ) {
+
+	if ( empty( $data['r'] )
+		|| $data['r'] !== 'register'
+		|| empty( $data['mail_address'] )
+		|| empty( $data['website'] )
+		|| empty( $data['language_original'] )
+		|| ! wplng_is_valid_language_id( $data['language_original'] )
+		|| empty( $data['languages_target'] )
+		|| ! wplng_is_valid_language_id( $data['languages_target'] )
+		|| empty( $data['accept_eula'] )
+		|| $data['accept_eula'] !== true
+		|| $data['language_original'] === $data['languages_target']
+	) {
+		return '1';
+	}
+
+	/**
+	 * Set default options
+	 */
+	// Set option for website language
+	// $language_website = wplng_get_language_by_id( $data['language_original'] );
+	// if ( ! empty( $language_website['id'] ) ) {
+	// 	update_option( 'wplng_website_language', $language_website['id'] );
+	// }
+	// if ( ! empty( $language_website['flag'] ) ) {
+	// 	update_option( 'wplng_website_flag', $language_website['flag'] );
+	// }
+
+	// Set option for target language
+	$language_target = wplng_get_language_by_id( $data['languages_target'] );
+	if ( ! empty( $language_target['id'] ) && ! empty( $language_target['flag'] ) ) {
+		update_option(
+			'wplng_website_language',
+			wp_json_encode(
+				array(
+					'id'   => $language_target['id'],
+					'flag' => $language_target['flag'],
+				)
+			)
+		);
+	}
+
+	$body = array(
+		'r'                 => 'register',
+		'website'           => $data['website'],
+		'mail_address'      => $data['mail_address'],
+		'language_original' => $data['language_original'],
+		'languages_target'  => $data['languages_target'],
+		'accept_eula'       => true,
+	);
+	$args = array(
+		'method'    => 'POST',
+		'timeout'   => 5,
+		'sslverify' => false,
+		'body'      => $body,
+	);
+
+	// error_log( var_export( $body, true ) );
+
+	$request = wp_remote_post( WPLNG_API, $args );
+
+	if ( is_wp_error( $request ) || wp_remote_retrieve_response_code( $request ) != 200 ) {
+		error_log( print_r( $request, true ) );
+		return false;
+	}
+
+	$response = json_decode( wp_remote_retrieve_body( $request ), true );
+
+	// if ( ! empty( $response['error'] ) ) {
+	// 	// TODO : Check for remove or update
+	// 	return '2';
+	// }
+
+	return (string) wp_remote_retrieve_body( $request );
+}
+
+
 function wplng_validate_api_key( $api_key = '' ) {
 
 	if ( empty( $api_key ) ) {
