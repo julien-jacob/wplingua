@@ -358,6 +358,13 @@ jQuery(document).ready(function ($) {
 
     wplngUpdateOptionPage();
 
-}); // End jQuery loaded event
+    /**
+     * Code for first loading
+     */
+    $("#wplng-first-load-iframe").load(function() {
+        $("#wplng-notice-first-loading-loading").hide();
+        $("#wplng-notice-first-loading-loaded").show();
+    });
 
+}); // End jQuery loaded event
 

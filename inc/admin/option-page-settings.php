@@ -23,6 +23,8 @@ function wplng_option_page_settings() {
 		return;
 	}
 
+	wplng_settings_part_first_use();
+
 	?>
 	<div class="wrap">
 		
@@ -68,6 +70,51 @@ function wplng_option_page_settings() {
 			<?php submit_button(); ?>
 		
 		</form>
+	</div>
+	<?php
+}
+
+
+function wplng_settings_part_first_use() {
+
+	if ( ! empty( get_option( 'wplng_website_language' ) ) ) {
+		return;
+	}
+
+	update_option( 'wplng_website_language', wplng_get_api_language_website() );
+
+	$data = wplng_get_api_data();
+
+	if ( empty( $data['languages_target'][0] ) ) {
+		return;
+	}
+
+	// Set option for target language
+	$language_target = wplng_get_language_by_id( $data['languages_target'][0] );
+	if ( ! empty( $language_target ) ) {
+		update_option(
+			'wplng_target_languages',
+			wp_json_encode(
+				array( $language_target )
+			)
+		);
+	} else {
+		return;
+	}
+
+	$url_front_page_translated = wplng_url_translate(
+		get_site_url(),
+		$language_target['id']
+	);
+
+	?>
+	<div class="notice notice-info" id="wplng-notice-first-loading-loading">
+		<iframe src="<?php echo esc_url( $url_front_page_translated ); ?>" frameborder="0" id="wplng-first-load-iframe"></iframe>
+		<p><span class="dashicons dashicons-update spin"></span> <?php _e( 'Your site is being translated and will be ready soon.', 'wplingua' ); ?></p>
+	</div>
+
+	<div class="notice notice-success" id="wplng-notice-first-loading-loaded" style="display: none;">
+		<p><?php _e( 'Your website is now multilingual. You can start visiting the translated version!', 'wplingua' ); ?> <a href="<?php echo esc_url( $url_front_page_translated ); ?>" target="_blank"><?php _e( 'visit the translated site', 'wplingua' ); ?></a></p>
 	</div>
 	<?php
 }

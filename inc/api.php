@@ -26,31 +26,6 @@ function wplng_api_request_free_api_key( $data ) {
 		);
 	}
 
-	/**
-	 * Set default options
-	 */
-	// Set option for website language
-	// $language_website = wplng_get_language_by_id( $data['language_original'] );
-	// if ( ! empty( $language_website['id'] ) ) {
-	// 	update_option( 'wplng_website_language', $language_website['id'] );
-	// }
-	// if ( ! empty( $language_website['flag'] ) ) {
-	// 	update_option( 'wplng_website_flag', $language_website['flag'] );
-	// }
-
-	// Set option for target language
-	$language_target = wplng_get_language_by_id( $data['languages_target'] );
-	if ( ! empty( $language_target['id'] ) && ! empty( $language_target['flag'] ) ) {
-		update_option(
-			'wplng_target_languages',
-			wp_json_encode(
-				array(
-					'id'   => $language_target['id'],
-					'flag' => $language_target['flag'],
-				)
-			)
-		);
-	}
 
 	$body = array(
 		'r'                 => 'register',

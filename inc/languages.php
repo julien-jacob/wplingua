@@ -108,7 +108,7 @@ function wplng_get_languages_target_simplified() {
 
 	$json = get_option( 'wplng_target_languages' );
 
-	if ( empty( $json ) ) {
+	if ( empty( $json ) || ! is_string($json) ) {
 		$json = '[]';
 	}
 
@@ -249,7 +249,7 @@ function wplng_get_languages_all() {
 	$target_flags    = get_option( 'wplng_target_languages' );
 
 	// TODO : Remplacer par une ternaire
-	if ( empty( $target_flags ) ) {
+	if ( empty( $target_flags ) || ! is_string($target_flags) ) {
 		$target_flags = '[]';
 	}
 
