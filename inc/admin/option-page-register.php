@@ -133,7 +133,8 @@ function wplng_register_part_premium() {
 
 function wplng_register_part_free_api_key() {
 
-	// echo get_locale();
+	$website_locale = substr(get_locale(), 0, 2);
+	
 
 	?>
 	<p for="wplng_api_key"><strong><?php _e( 'The API key:', 'wplingua' ); ?></strong></p>
@@ -175,7 +176,10 @@ function wplng_register_part_free_api_key() {
 			<strong><?php _e( 'I have read and accept the', 'wplingua' ); ?> <a href="#"><?php _e( 'general conditions of use', 'wplingua' ); ?></a> </strong>
 		</label>
 	</fieldset>
-	<textarea name="wplng_request_free_key" id="wplng_request_free_key" style="display: none;"></textarea>
+	<fieldset style="display: none;">
+		<p><?php _e( 'Website Locale:', 'wplingua' ); ?> <span id="wplng-website-locale"><?php echo esc_html($website_locale); ?></span></p>
+		<textarea name="wplng_request_free_key" id="wplng_request_free_key"></textarea>
+	</fieldset>
 	<br>
 
 
