@@ -55,14 +55,9 @@ function wplng_option_page_register() {
 		}
 	endif;
 	?>
-	
-
 	<div class="wrap">
-		
 		<h1><?php _e( 'wpLingua : Register API key', 'wplingua' ); ?></h1>
-
 		<br>
-
 		<form method="post" action="options.php">
 			<?php
 			settings_fields( 'wplng_settings' );
@@ -76,6 +71,12 @@ function wplng_option_page_register() {
 					</td>
 				</tr>
 
+				<tr>
+					<th scope="row"><?php _e( 'Get free API key', 'wplingua' ); ?></th>
+					<td>
+						<?php wplng_register_part_free_api_key(); ?>
+					</td>
+				</tr>
 
 				<tr>
 					<th scope="row"><?php _e( 'Get premium API Key', 'wplingua' ); ?></th>
@@ -83,18 +84,8 @@ function wplng_option_page_register() {
 						<?php wplng_register_part_premium(); ?>
 					</td>
 				</tr>
-
-
-				<tr>
-					<th scope="row"><?php _e( 'Get free API key', 'wplingua' ); ?></th>
-					<td>
-						<?php wplng_register_part_free_api_key(); ?>
-					</td>
-				</tr>
 				
 			</table>
-			
-		
 		</form>
 	</div>
 	<?php
@@ -124,36 +115,13 @@ function wplng_register_part_api_key( $api_key ) {
 }
 
 
-
-function wplng_register_part_premium() {
-	?>
-	<p><strong><?php _e( 'Get more target languages and premium features', 'wplingua' ); ?></strong></p>
-						
-	<p><?php _e( 'To translate your site into more languages and access premium features, visit wpLingua plans.', 'wplingua' ); ?></p>
-	<ul style="list-style: inside; padding: 0 0 0 15px;">
-		<li><?php _e( 'Multilingual Woocommerce store', 'wplingua' ); ?></li>
-		<li><?php _e( 'Automatic e-mail translation', 'wplingua' ); ?></li>
-		<li><?php _e( 'Allow search from all languages', 'wplingua' ); ?></li>
-		<li><?php _e( 'Get more target languages', 'wplingua' ); ?></li>
-	</ul>
-	<br>
-
-	<a class="button button-primary" href="#"><?php _e( 'Visit wpLingua plans', 'wplingua' ); ?></a>
-
-	<br>
-	<br>
-	<hr>
-	<?php
-}
-
-
 function wplng_register_part_free_api_key() {
 
 	$website_locale = substr( get_locale(), 0, 2 );
 
 	?>
-	<p for="wplng_api_key"><strong><?php _e( 'The API key:', 'wplingua' ); ?></strong></p>
-	<p><?php _e( 'API key premium text...', 'wplingua' ); ?></p>
+	<p for="wplng_api_key"><strong><?php _e( 'Register free wpLingua API key:', 'wplingua' ); ?></strong></p>
+	<p><?php _e( 'Get a free wpLingua API key and make your website bilingual in a minute!', 'wplingua' ); ?></p>
 	<br>
 	<br>
 
@@ -196,23 +164,30 @@ function wplng_register_part_free_api_key() {
 		<textarea name="wplng_request_free_key" id="wplng_request_free_key"></textarea>
 	</fieldset>
 	<br>
-
-
 	<button id="wplng-get-free-api-submit" class="button button-primary">
 		<?php _e( 'Get a free API key', 'wplingua' ); ?>
 	</button>
-	<?php
-	// submit_button(
-	// 	__( 'Get a free API key', 'wplingua' ),
-	// 	'primary',
-	// 	'submit',
-	// 	false,
-	// 	array(
-	// 		'get-free-api' => '1'
-	// 	)
-	// );
-	?>
+	<br>
 	<br>
 	<hr>
+	<?php
+}
+
+function wplng_register_part_premium() {
+	?>
+	<p><strong><?php _e( 'Get more target languages and premium features:', 'wplingua' ); ?></strong></p>
+						
+	<p><?php _e( 'To translate your site into more languages and access premium features, visit wpLingua plans.', 'wplingua' ); ?></p>
+	<ul style="list-style: inside; padding: 0 0 0 15px;">
+		<li><?php _e( 'Multilingual Woocommerce store', 'wplingua' ); ?></li>
+		<li><?php _e( 'Automatic e-mail translation', 'wplingua' ); ?></li>
+		<li><?php _e( 'Allow search from all languages', 'wplingua' ); ?></li>
+		<li><?php _e( 'Get more target languages', 'wplingua' ); ?></li>
+	</ul>
+	<br>
+
+	<a class="button button-primary" href="#"><?php _e( 'Visit wpLingua plans', 'wplingua' ); ?></a>
+
+	<br>
 	<?php
 }
