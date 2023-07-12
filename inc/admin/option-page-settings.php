@@ -109,7 +109,7 @@ function wplng_settings_part_first_use() {
 
 	?>
 	<div class="notice notice-info" id="wplng-notice-first-loading-loading">
-		<iframe src="<?php echo esc_url( $url_front_page_translated ); ?>" frameborder="0" id="wplng-first-load-iframe"></iframe>
+		<iframe src="<?php echo esc_url( $url_front_page_translated ); ?>" frameborder="0" id="wplng-first-load-iframe" style="display: none;"></iframe>
 		<p><span class="dashicons dashicons-update spin"></span> <?php _e( 'Your site is being translated and will be ready soon.', 'wplingua' ); ?></p>
 	</div>
 

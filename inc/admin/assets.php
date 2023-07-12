@@ -34,7 +34,6 @@ function wplng_option_page_register_assets( $hook ) {
 
 	if ( ! is_admin()
 		|| $hook !== 'toplevel_page_wplng-settings'
-		// || empty( wplng_get_api_key() )
 	) {
 		return;
 	}
@@ -54,11 +53,10 @@ function wplng_option_page_register_assets( $hook ) {
 }
 
 
-
-function wplng_option_page_exclusions_assets( $hook ) {
-
+function wplng_option_page_switcher_assets( $hook ) {
+	
 	if ( ! is_admin()
-		|| $hook !== 'toplevel_page_wplingua/inc/admin/option-page'
+		|| $hook !== 'wplingua_page_wplng-switcher'
 	) {
 		return;
 	}
@@ -67,14 +65,45 @@ function wplng_option_page_exclusions_assets( $hook ) {
 
 	wp_enqueue_script(
 		'wplingua-option',
-		plugins_url() . '/wplingua/js/admin/option-page.js',
+		plugins_url() . '/wplingua/js/admin/option-page-switcher.js',
 		array( 'jquery' )
 	);
 
 	wp_enqueue_style(
 		'wplingua-option',
-		plugins_url() . '/wplingua/css/admin/option-page.css'
+		plugins_url() . '/wplingua/css/admin/option-page-switcher.css'
 	);
+
+	if ( function_exists( 'wp_enqueue_code_editor' ) ) {
+		$cm_settings['codeEditor'] = wp_enqueue_code_editor( array( 'type' => 'text/css' ) );
+		wp_localize_script( 'jquery', 'cm_settings', $cm_settings );
+		wp_enqueue_script( 'wp-theme-plugin-editor' );
+		wp_enqueue_style( 'wp-codemirror' );
+	}
+}
+
+
+function wplng_option_page_exclusions_assets( $hook ) {
+
+	if ( ! is_admin()
+		|| $hook !== 'wplingua_page_wplng-exclusions'
+	) {
+		return;
+	}
+
+	wp_enqueue_script( 'jquery' );
+
+	wp_enqueue_script(
+		'wplingua-option',
+		plugins_url() . '/wplingua/js/admin/option-page-exclusions.js',
+		array( 'jquery' )
+	);
+
+	wp_enqueue_style(
+		'wplingua-option',
+		plugins_url() . '/wplingua/css/admin/option-page-exclusions.css'
+	);
+
 }
 
 
@@ -112,14 +141,6 @@ function wplng_inline_script_languages() {
 	} else {
 		$languages_json = wplng_get_languages_all_json();
 	}
-
-	// $languages_json = wplng_get_languages_all_json();
-
-	// echo '<pre>' . var_export( wp_json_encode( $languages_allow ), true ) . '</pre>';
-	// echo '<pre>' . var_export($languages_json, true) . '</pre>';
-	// echo '<pre>' . var_export(! in_array( $language_website, $languages_allow, true ), true) . '</pre>';
-	
-	// die;
 
 	?><script>var wplngAllLanguages = JSON.parse('<?php echo $languages_json; ?>');</script>
 	<?php

@@ -24,5 +24,11 @@ function wplng_register_assets() {
 		'wplingua',
 		plugins_url() . '/wplingua/css/front.css'
 	);
-}
 
+	$custom_css = get_option( 'wplng_custom_css' );
+
+	if ( ! empty( $custom_css ) ) {
+		wp_add_inline_style( 'wplingua', $custom_css );
+	}
+
+}

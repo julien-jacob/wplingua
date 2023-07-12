@@ -220,6 +220,22 @@ function wplng_option_page_switcher() {
 					</td>
 				</tr>
 
+				<tr>
+					<th scope="row"><?php _e( 'Custom CSS', 'wplingua' ); ?></th>
+					<td>
+						<fieldset>
+
+							<label for="wplng_custom_css">
+								<strong><?php _e( 'Set custom CSS:', 'wplingua' ); ?></strong>
+							</label>
+							<br>
+							<textarea name="wplng_custom_css" id="wplng_custom_css"><?php echo get_option('wplng_custom_css'); ?></textarea>
+
+						</fieldset>
+						<hr>
+					</td>
+				</tr>
+
 				
 				
 			</table>
@@ -232,10 +248,6 @@ function wplng_option_page_switcher() {
 }
 
 function wplng_options_switcher_update_flags_style( $old_flags_style, $new_flags_style ) {
-
-	error_log( $old_flags_style );
-	error_log( $new_flags_style );
-	error_log( '-------' );
 
 	if ( $old_flags_style !== $new_flags_style ) {
 

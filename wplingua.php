@@ -85,6 +85,7 @@ function wplng_start() {
 		// Enqueue CSS and JS files for option pages
 		add_action( 'admin_enqueue_scripts', 'wplng_option_page_settings_assets' );
 		add_action( 'admin_enqueue_scripts', 'wplng_option_page_exclusions_assets' );
+		add_action( 'admin_enqueue_scripts', 'wplng_option_page_switcher_assets' );
 	
 		
 	

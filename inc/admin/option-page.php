@@ -83,6 +83,7 @@ function wplng_register_settings() {
 	register_setting( 'wplng_switcher', 'wplng_name_format' );
 	register_setting( 'wplng_switcher', 'wplng_flags_show' );
 	register_setting( 'wplng_switcher', 'wplng_flags_style' );
+	register_setting( 'wplng_switcher', 'wplng_custom_css' );
 
 }
 
