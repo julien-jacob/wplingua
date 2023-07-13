@@ -169,7 +169,7 @@ function wplng_get_switcher_flags_style() {
 	}
 
 	if ( ! $is_valid ) {
-		$flags_style = 'circle';
+		$flags_style = 'rectangular';
 	}
 
 	$flags_style = apply_filters(

@@ -14,9 +14,9 @@ function wplng_get_language_website_id() {
 
 	$language_api = wplng_get_api_language_website();
 
-	if ('all' === $language_api) {
+	if ( 'all' === $language_api ) {
 		$language_id = get_option( 'wplng_website_language' );
-	} elseif (false === $language_api) {
+	} elseif ( false === $language_api ) {
 		return 'en';
 	} else {
 		$language_id = wplng_get_api_language_website();
@@ -108,7 +108,7 @@ function wplng_get_languages_target_simplified() {
 
 	$json = get_option( 'wplng_target_languages' );
 
-	if ( empty( $json ) || ! is_string($json) ) {
+	if ( empty( $json ) || ! is_string( $json ) ) {
 		$json = '[]';
 	}
 
@@ -249,7 +249,7 @@ function wplng_get_languages_all() {
 	$target_flags    = get_option( 'wplng_target_languages' );
 
 	// TODO : Remplacer par une ternaire
-	if ( empty( $target_flags ) || ! is_string($target_flags) ) {
+	if ( empty( $target_flags ) || ! is_string( $target_flags ) ) {
 		$target_flags = '[]';
 	}
 
@@ -262,6 +262,10 @@ function wplng_get_languages_all() {
 	foreach ( $languages as $key => $language ) {
 
 		$flags_style = wplng_get_switcher_flags_style() . '/';
+
+		if ( 'none/' === $flags_style ) {
+			$flags_style = 'rectangular/';
+		}
 
 		// Set custom website flag if defined
 		if ( ! empty( $source_language )

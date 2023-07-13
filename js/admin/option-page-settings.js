@@ -223,6 +223,19 @@ jQuery(document).ready(function ($) {
 
                 var htmlInput = '<input type="url" class="wplng-target-subflag" wplng-target-lang="' + language.id + '" value="' + language.flag + '" />';
                 htmlElement = htmlElement.replaceAll("[INPUT]", htmlInput);
+
+                if (flagCustomChecked == "") {
+                    htmlElement = htmlElement.replaceAll(
+                        'class="wplng-subflag-target-custom"', 
+                        'class="wplng-subflag-target-custom hide"'
+                    );
+                } else {
+                    htmlElement = htmlElement.replaceAll(
+                        'class="wplng-subflag-target-custom"', 
+                        'class="wplng-subflag-target-custom show"'
+                    );
+                }
+                
                 html += htmlElement;
             }
         });

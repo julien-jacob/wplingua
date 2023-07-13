@@ -222,6 +222,14 @@ function wplng_options_switcher_update_flags_style( $old_flags_style, $new_flags
 
 	if ( $old_flags_style !== $new_flags_style ) {
 
+		if ('none' === $new_flags_style ) {
+			$new_flags_style = 'rectangular';
+		}
+
+		if ('none' === $old_flags_style ) {
+			$old_flags_style = 'rectangular';
+		}
+
 		$website_flag = wplng_get_language_website_flag();
 		$website_flag = str_replace(
 			'/wplingua/images/' . $old_flags_style . '/',
