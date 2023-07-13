@@ -279,7 +279,14 @@ function wplng_settings_part_api_key() {
 	<fieldset>
 		<label for="wplng_api_key"><strong><?php _e( 'Website API key:', 'wplingua' ); ?></strong></label>
 		<br>
-		<input type="text" name="wplng_api_key" id="wplng_api_key" value="<?php echo esc_attr( wplng_get_api_key() ); ?>" style="max-width: 100%; width: 32em;"></input>
+		
+		<input type="text" id="wplng-api-key-fake" value="●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●" style="max-width: 100%; width: 26em;"></input>
+
+		<input type="text" name="wplng_api_key" id="wplng_api_key" value="<?php echo esc_attr( wplng_get_api_key() ); ?>" style="max-width: 100%; width: 26em;  display: none;"></input>
+		
+		<a class="button button-primary" id="wplng-api-key-show" href="javascript:void(0);"><span class="dashicons dashicons-visibility"></span></a>
+
+		<a class="button button-primary" id="wplng-api-key-hide" href="javascript:void(0);" style="display: none;"><span class="dashicons dashicons-hidden"></span></a>
 	</fieldset>
 	<?php
 }

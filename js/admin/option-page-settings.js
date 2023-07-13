@@ -359,6 +359,24 @@ jQuery(document).ready(function ($) {
     wplngUpdateOptionPage();
 
     /**
+     * Show / Hide API key
+     */
+
+    $("#wplng-api-key-show").click(function() {
+        $("#wplng-api-key-show").hide();
+        $("#wplng-api-key-hide").show();
+        $("#wplng-api-key-fake").hide();
+        $("#wplng_api_key").show();
+    });
+
+    $("#wplng-api-key-hide").click(function() {
+        $("#wplng-api-key-hide").hide();
+        $("#wplng-api-key-show").show();
+        $("#wplng-api-key-fake").show();
+        $("#wplng_api_key").hide();
+    });
+
+    /**
      * Code for first loading
      */
     $("#wplng-first-load-iframe").load(function() {

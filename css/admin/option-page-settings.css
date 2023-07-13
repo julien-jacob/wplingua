@@ -26,6 +26,10 @@
     width: auto;
 }
 
+.button .dashicons {
+    line-height: 1.4em;
+}
+
 .dashicons.spin {
     animation: dashicons-spin 1s infinite;
     animation-timing-function: linear;
