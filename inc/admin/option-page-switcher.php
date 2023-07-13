@@ -12,7 +12,6 @@ function wplng_option_page_switcher() {
 	$theme       = wplng_get_switcher_theme();
 	$style       = wplng_get_switcher_style();
 	$name_format = wplng_get_switcher_name_format();
-	$flags_show  = wplng_get_switcher_flags_show();
 	$flags_style = wplng_get_switcher_flags_style();
 
 	?>
@@ -163,35 +162,6 @@ function wplng_option_page_switcher() {
 						<br>
 
 						<fieldset>
-							<label for="wplng_flags_show" class="wplng-fe-50">
-								<strong><?php _e( 'Displayed Flags: ', 'wplingua' ); ?></strong>
-							</label>
-							<select id="wplng_flags_show" name="wplng_flags_show" class="wplng-fe-50">
-								<?php
-
-								if ( $flags_show ) {
-									echo '<option value="show" selected>';
-									echo __( 'Show', 'wplingua' );
-									echo '</option>';
-									echo '<option value="hide">';
-									echo __( 'Hide', 'wplingua' );
-									echo '</option>';
-								} else {
-									echo '<option value="show">';
-									echo __( 'Show', 'wplingua' );
-									echo '</option>';
-									echo '<option value="hide" selected>';
-									echo __( 'Hide', 'wplingua' );
-									echo '</option>';
-								}
-
-								?>
-							</select>
-						</fieldset>
-
-						<br>
-
-						<fieldset>
 							<label for="wplng_flags_style" class="wplng-fe-50">
 								<strong><?php _e( 'Flag style: ', 'wplingua' ); ?></strong>
 							</label>
@@ -201,6 +171,7 @@ function wplng_option_page_switcher() {
 								$flags_style_options = array(
 									'circle'      => __( 'Circle', 'wplingua' ),
 									'rectangular' => __( 'Rectangular', 'wplingua' ),
+									'none'        => __( 'No display', 'wplingua' ),
 								);
 
 								foreach ( $flags_style_options as $option_value => $option_name ) {
@@ -229,7 +200,7 @@ function wplng_option_page_switcher() {
 								<strong><?php _e( 'Set custom CSS:', 'wplingua' ); ?></strong>
 							</label>
 							<br>
-							<textarea name="wplng_custom_css" id="wplng_custom_css"><?php echo get_option('wplng_custom_css'); ?></textarea>
+							<textarea name="wplng_custom_css" id="wplng_custom_css"><?php echo get_option( 'wplng_custom_css' ); ?></textarea>
 
 						</fieldset>
 						<hr>

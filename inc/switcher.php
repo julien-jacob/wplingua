@@ -132,7 +132,9 @@ function wplng_get_switcher_name_format() {
 		$name_format = 'name';
 	}
 
-	if ( ! wplng_get_switcher_flags_show() && 'none' === $name_format ) {
+	if ( wplng_get_switcher_flags_style() === 'none'
+		&& 'none' === $name_format
+	) {
 		$name_format = 'name';
 	}
 
@@ -142,25 +144,6 @@ function wplng_get_switcher_name_format() {
 	);
 
 	return $name_format;
-}
-
-
-function wplng_get_switcher_flags_show() {
-
-	$flags_show = get_option( 'wplng_flags_show' );
-
-	if ( 'hide' === $flags_show ) {
-		$flags_show = false;
-	} else {
-		$flags_show = true;
-	}
-
-	$flags_show = apply_filters(
-		'wplng_switcher_flags_show',
-		$flags_show
-	);
-
-	return $flags_show;
 }
 
 
@@ -174,6 +157,7 @@ function wplng_get_switcher_flags_style() {
 		$valid_flags_style = array(
 			'circle',
 			'rectangular',
+			'none',
 		);
 
 		foreach ( $valid_flags_style as $key => $valid ) {
@@ -214,7 +198,7 @@ function wplng_switcher_wp_footer() {
 
 	echo wplng_get_switcher_html(
 		$class,
-		wplng_get_switcher_flags_show()
+		wplng_get_switcher_flags_style() !== 'none'
 	);
 }
 
@@ -229,7 +213,7 @@ function wplng_get_switcher_html( $class = '', $flags_show = true ) {
 		return '';
 	}
 
-	$html = '<div class="' . esc_attr( 'wplng-switcher ' . $class ) . '">';
+	$html  = '<div class="' . esc_attr( 'wplng-switcher ' . $class ) . '">';
 	$html .= '<div class="switcher-content">';
 
 	// Create link for current language
