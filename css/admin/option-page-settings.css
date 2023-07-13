@@ -7,6 +7,10 @@
     display: none;
 }
 
+.wplng-subflag-target-custom {
+    margin-top: 15px;
+}
+
 .wplng-target-language img.wplng-target-language,
 .wplng-flags-radio img,
 .wplng-subflags-radio img {

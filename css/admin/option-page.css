@@ -10,3 +10,13 @@ h1 .dashicons {
     width: 1.1em;
     height: 1.1em;
 }
+
+#wpbody label {
+    vertical-align: top;
+}
+
+#wplng-api-key-fake,
+#wplng_api_key {
+    max-width: 100%; 
+    width: 26em;
+}

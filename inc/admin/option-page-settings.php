@@ -175,14 +175,14 @@ function wplng_settings_part_language_website() {
 
 	<div id="wplng-flags-radio-original-website-custom"><?php _e( 'Custom', 'wplingua' ); ?></div>
 
-	<strong><?php _e( 'The original website flag: ', 'wplingua' ); ?></strong>
+	<strong><?php _e( 'Original website flag: ', 'wplingua' ); ?></strong>
 	<span id="wplng-flags-radio-original-website"></span>
 
 	<br>
 	<br>
 
 	<div id="wplng-website-flag-container">
-		<?php _e( 'Custom flag URL (64px*64px recommended) : ', 'wplingua' ); ?>
+		<?php _e( 'Custom flag URL : ', 'wplingua' ); ?>
 		<input type="url" name="wplng_website_flag" id="wplng_website_flag" value="<?php echo esc_url( wplng_get_language_website_flag() ); ?>" />
 	</div>
 
@@ -229,7 +229,7 @@ function wplng_settings_part_languages_target() {
 				<span><?php _e( 'Flag: ', 'wplingua' ); ?></span>
 				<span class="wplng-subflags-radio-target-website">[FLAGS_OPTIONS]</span>
 				<div class="wplng-subflag-target-custom" wplng-target-lang="[LANG]">
-					<?php _e( 'Custom flag URL (64px*64px recommended) : ', 'wplingua' ); ?>
+					<?php _e( 'Custom flag URL : ', 'wplingua' ); ?>
 					[INPUT]
 				</div>
 			</div>
@@ -280,9 +280,9 @@ function wplng_settings_part_api_key() {
 		<label for="wplng_api_key"><strong><?php _e( 'Website API key:', 'wplingua' ); ?></strong></label>
 		<br>
 		
-		<input type="text" id="wplng-api-key-fake" value="●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●" style="max-width: 100%; width: 26em;"></input>
+		<input type="text" id="wplng-api-key-fake" value="●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●" disabled></input>
 
-		<input type="text" name="wplng_api_key" id="wplng_api_key" value="<?php echo esc_attr( wplng_get_api_key() ); ?>" style="max-width: 100%; width: 26em;  display: none;"></input>
+		<input type="text" name="wplng_api_key" id="wplng_api_key" value="<?php echo esc_attr( wplng_get_api_key() ); ?>" style="display: none;"></input>
 		
 		<a class="button button-primary" id="wplng-api-key-show" href="javascript:void(0);"><span class="dashicons dashicons-visibility"></span></a>
 
