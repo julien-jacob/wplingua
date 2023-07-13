@@ -43,7 +43,9 @@ function wplng_get_api_data() {
 	$api_key_data = get_transient( 'wplng_api_key_data' );
 	$api_key_data = json_decode( $api_key_data, true );
 
-	if ( empty( $api_key_data ) ) {
+	if ( empty( $api_key_data ) 
+		|| ! wplng_is_valid_api_key_format( $api_key_data ) 
+	) {
 		$api_key_data = wplng_validate_api_key();
 
 		if ( empty( $api_key_data ) ) {
