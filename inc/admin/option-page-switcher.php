@@ -18,7 +18,7 @@ function wplng_option_page_switcher() {
 	?>
 	<div class="wrap">
 		
-		<h1><?php _e( 'wpLingua : Switcher settings', 'wplingua' ); ?></h1>
+		<h1><span class="dashicons dashicons-translation"></span> <?php _e( 'wpLingua : Switcher settings', 'wplingua' ); ?></h1>
 
 		<br>
 
@@ -33,11 +33,11 @@ function wplng_option_page_switcher() {
 					<td>
 						<fieldset>
 
-							<label for="wplng_insert">
-								<strong><?php _e( 'Position for automatic switcher insertion: ', 'wplingua' ); ?></strong>
+							<label for="wplng_insert" class="wplng-fe-50">
+								<strong><?php _e( 'Switcher insert position: ', 'wplingua' ); ?></strong>
 							</label>
 							
-							<select id="wplng_insert" name="wplng_insert">
+							<select id="wplng_insert" name="wplng_insert" class="wplng-fe-50">
 								<?php
 
 								$insert_options = array(
@@ -70,11 +70,11 @@ function wplng_option_page_switcher() {
 					<th scope="row"><?php _e( 'Theme', 'wplingua' ); ?></th>
 					<td>
 						<fieldset>
-							<label for="wplng_theme">
-								<strong><?php _e( 'Theme: ', 'wplingua' ); ?></strong>
+							<label for="wplng_theme" class="wplng-fe-50">
+								<strong><?php _e( 'Switcher theme: ', 'wplingua' ); ?></strong>
 							</label>
 
-							<select id="wplng_theme" name="wplng_theme">
+							<select id="wplng_theme" name="wplng_theme" class="wplng-fe-50">
 								<?php
 
 								$theme_options = array(
@@ -104,11 +104,11 @@ function wplng_option_page_switcher() {
 					<td>
 						<fieldset>
 
-							<label for="wplng_style">
+							<label for="wplng_style" class="wplng-fe-50">
 								<strong><?php _e( 'Switcher style: ', 'wplingua' ); ?></strong>
 							</label>
 
-							<select id="wplng_style" name="wplng_style">
+							<select id="wplng_style" name="wplng_style" class="wplng-fe-50">
 								<?php
 
 								$style_options = array(
@@ -134,10 +134,10 @@ function wplng_option_page_switcher() {
 						<br>
 
 						<fieldset>
-							<label for="wplng_name_format">
+							<label for="wplng_name_format" class="wplng-fe-50">
 								<strong><?php _e( 'Displayed name: ', 'wplingua' ); ?></strong>
 							</label>
-							<select id="wplng_name_format" name="wplng_name_format">
+							<select id="wplng_name_format" name="wplng_name_format" class="wplng-fe-50">
 								<?php
 
 								$name_format_options = array(
@@ -163,10 +163,10 @@ function wplng_option_page_switcher() {
 						<br>
 
 						<fieldset>
-							<label for="wplng_flags_show">
+							<label for="wplng_flags_show" class="wplng-fe-50">
 								<strong><?php _e( 'Displayed Flags: ', 'wplingua' ); ?></strong>
 							</label>
-							<select id="wplng_flags_show" name="wplng_flags_show">
+							<select id="wplng_flags_show" name="wplng_flags_show" class="wplng-fe-50">
 								<?php
 
 								if ( $flags_show ) {
@@ -192,10 +192,10 @@ function wplng_option_page_switcher() {
 						<br>
 
 						<fieldset>
-							<label for="wplng_flags_style">
+							<label for="wplng_flags_style" class="wplng-fe-50">
 								<strong><?php _e( 'Flag style: ', 'wplingua' ); ?></strong>
 							</label>
-							<select id="wplng_flags_style" name="wplng_flags_style">
+							<select id="wplng_flags_style" name="wplng_flags_style" class="wplng-fe-50">
 								<?php
 
 								$flags_style_options = array(

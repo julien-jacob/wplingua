@@ -56,7 +56,7 @@ function wplng_option_page_register() {
 	endif;
 	?>
 	<div class="wrap">
-		<h1><?php _e( 'wpLingua : Register API key', 'wplingua' ); ?></h1>
+		<h1><span class="dashicons dashicons-translation"></span> <?php _e( 'wpLingua : Register API key', 'wplingua' ); ?></h1>
 		<br>
 		<form method="post" action="options.php">
 			<?php
@@ -126,31 +126,31 @@ function wplng_register_part_free_api_key() {
 	<br>
 
 	<fieldset>
-		<label for="wplng-website-url">
+		<label for="wplng-website-url" class="wplng-fe-50">
 			<strong><?php _e( 'Website URL:', 'wplingua' ); ?> </strong>
 		</label>
-		<input type="url" name="wplng-website-url" id="wplng-website-url" value="<?php echo esc_url( get_site_url() ); ?>">
+		<input type="url" name="wplng-website-url" id="wplng-website-url" class="wplng-fe-50" value="<?php echo esc_url( get_site_url() ); ?>">
 	</fieldset>
 	<br>
 	<fieldset>
-		<label for="wplng-email">
+		<label for="wplng-email" class="wplng-fe-50">
 			<strong><?php _e( 'Mail address:', 'wplingua' ); ?> </strong>
 		</label>
-		<input type="email" name="wplng-email" id="wplng-email" value="<?php echo esc_attr( get_bloginfo( 'admin_email' ) ); ?>">
+		<input type="email" name="wplng-email" id="wplng-email" class="wplng-fe-50" value="<?php echo esc_attr( get_bloginfo( 'admin_email' ) ); ?>">
 	</fieldset>
 	<br>
 	<fieldset>
-		<label for="wplng-language-website">
+		<label for="wplng-language-website" class="wplng-fe-50">
 			<strong><?php _e( 'Website language:', 'wplingua' ); ?> </strong>
 		</label>
-		<select name="wplng-language-website" id="wplng-language-website"></select>
+		<select name="wplng-language-website" id="wplng-language-website" class="wplng-fe-50"></select>
 	</fieldset>
 	<br>
 	<fieldset>
-		<label for="wplng-language-target">
+		<label for="wplng-language-target" class="wplng-fe-50">
 			<strong><?php _e( 'Target language:', 'wplingua' ); ?> </strong>
 		</label>
-		<select name="wplng-language-target" id="wplng-language-target"></select>
+		<select name="wplng-language-target" id="wplng-language-target" class="wplng-fe-50"></select>
 	</fieldset>
 	<br>
 	<fieldset>

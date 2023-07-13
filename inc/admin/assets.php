@@ -18,14 +18,19 @@ function wplng_option_page_settings_assets( $hook ) {
 	wp_enqueue_script( 'jquery' );
 
 	wp_enqueue_script(
-		'wplingua-settings',
+		'wplingua-option-settings',
 		plugins_url() . '/wplingua/js/admin/option-page-settings.js',
 		array( 'jquery' )
 	);
 
 	wp_enqueue_style(
-		'wplingua-settings',
+		'wplingua-option-settings',
 		plugins_url() . '/wplingua/css/admin/option-page-settings.css'
+	);
+
+	wp_enqueue_style(
+		'wplingua-option-pages',
+		plugins_url() . '/wplingua/css/admin/option-page.css'
 	);
 }
 
@@ -41,14 +46,19 @@ function wplng_option_page_register_assets( $hook ) {
 	wp_enqueue_script( 'jquery' );
 
 	wp_enqueue_script(
-		'wplingua-register',
+		'wplingua-option-register',
 		plugins_url() . '/wplingua/js/admin/option-page-register.js',
 		array( 'jquery' )
 	);
 
 	wp_enqueue_style(
-		'wplingua-register',
+		'wplingua-option-register',
 		plugins_url() . '/wplingua/css/admin/option-page-register.css'
+	);
+
+	wp_enqueue_style(
+		'wplingua-option-pages',
+		plugins_url() . '/wplingua/css/admin/option-page.css'
 	);
 }
 
@@ -64,14 +74,19 @@ function wplng_option_page_switcher_assets( $hook ) {
 	wp_enqueue_script( 'jquery' );
 
 	wp_enqueue_script(
-		'wplingua-option',
+		'wplingua-option-switcher',
 		plugins_url() . '/wplingua/js/admin/option-page-switcher.js',
 		array( 'jquery' )
 	);
 
 	wp_enqueue_style(
-		'wplingua-option',
+		'wplingua-option-switcher',
 		plugins_url() . '/wplingua/css/admin/option-page-switcher.css'
+	);
+
+	wp_enqueue_style(
+		'wplingua-option-pages',
+		plugins_url() . '/wplingua/css/admin/option-page.css'
 	);
 
 	if ( function_exists( 'wp_enqueue_code_editor' ) ) {
@@ -94,14 +109,19 @@ function wplng_option_page_exclusions_assets( $hook ) {
 	wp_enqueue_script( 'jquery' );
 
 	wp_enqueue_script(
-		'wplingua-option',
+		'wplingua-option-exclusions',
 		plugins_url() . '/wplingua/js/admin/option-page-exclusions.js',
 		array( 'jquery' )
 	);
 
 	wp_enqueue_style(
-		'wplingua-option',
+		'wplingua-option-exclusions',
 		plugins_url() . '/wplingua/css/admin/option-page-exclusions.css'
+	);
+
+	wp_enqueue_style(
+		'wplingua-option-pages',
+		plugins_url() . '/wplingua/css/admin/option-page.css'
 	);
 
 }

@@ -1,0 +1,12 @@
+
+.wplng-fe-50 {
+    min-width: 200px;
+    max-width: 100%;
+}
+
+h1 .dashicons {
+    font-size: 1.1em;
+    line-height: inherit;
+    width: 1.1em;
+    height: 1.1em;
+}

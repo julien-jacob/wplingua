@@ -28,7 +28,7 @@ function wplng_option_page_settings() {
 	?>
 	<div class="wrap">
 		
-		<h1><?php _e( 'wpLingua : Translation solution for multilingual website', 'wplingua' ); ?></h1>
+		<h1><span class="dashicons dashicons-translation"></span> <?php _e( 'wpLingua : Translation solution for multilingual website', 'wplingua' ); ?></h1>
 
 		<br>
 
@@ -132,7 +132,7 @@ function wplng_settings_part_language_website() {
 	echo '<fieldset' . $website_language_style . '>';
 
 	echo '<label for="wplng_website_language">';
-	echo '<strong>' . __( 'The original website language: ', 'wplingua' ) . ' </strong>';
+	echo '<strong>' . __( 'Original website language: ', 'wplingua' ) . ' </strong>';
 	echo '</label>';
 
 	echo '<select id="wplng_website_language" name="wplng_website_language">';
@@ -164,7 +164,7 @@ function wplng_settings_part_language_website() {
 	if ( 'all' !== $api_language_website ) {
 		// $website_language_saved = ' disabled';
 		echo '<strong>';
-		echo __( 'The original website language, defined by API key:', 'wplingua' );
+		echo __( 'Original website language, defined by API key:', 'wplingua' );
 		echo ' </strong>';
 		echo wplng_get_language_name( $api_language_website );
 	}

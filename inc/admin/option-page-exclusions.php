@@ -10,7 +10,7 @@ function wplng_option_page_exclusions() {
 	?>
 	<div class="wrap">
 		
-		<h1><?php _e( 'wpLingua : Exclusion rules', 'wplingua' ); ?></h1>
+		<h1><span class="dashicons dashicons-translation"></span> <?php _e( 'wpLingua : Exclusion rules', 'wplingua' ); ?></h1>
 
 		<br>
 

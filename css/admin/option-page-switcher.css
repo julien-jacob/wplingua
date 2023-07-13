@@ -1,3 +1,5 @@
-h1 {
-    border: 1px solid red;
+
+
+.CodeMirror.CodeMirror-wrap {
+    max-width: 400px;
 }
