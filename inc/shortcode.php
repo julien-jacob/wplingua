@@ -8,7 +8,21 @@ if ( ! defined( 'WPINC' ) ) {
 
 // TODO : Shortcode no translate
 
-// TODO : Shortcode switcher
+function wplng_shortcode_notranslate( $atts, $content ) {
+
+	$attributes = shortcode_atts(
+		array(
+			'tag' => 'span',
+		), $atts
+	);
+
+	$html  = '<' . $attributes['tag'] . ' class="notranslate">';
+	$html .= $content;
+	$html .= '</' . $attributes['tag'] . '>';
+
+	return $html;
+}
+
 function wplng_shortcode_switcher( $atts ) {
 
 	$attributes = shortcode_atts(
@@ -22,10 +36,13 @@ function wplng_shortcode_switcher( $atts ) {
 		), $atts
 	);
 
-	$class = 'insert-shortcode';
-
+	if ( ! empty( $attributes['class'] ) ) {
+		$attributes['class'] .= ' insert-shortcode';
+	} else {
+		$attributes['class'] = 'insert-shortcode';
+	}
 
 	return wplng_get_switcher_html( $attributes );
 
 }
-add_shortcode( 'wplingua-switcher', 'wplng_shortcode_switcher' );
+
