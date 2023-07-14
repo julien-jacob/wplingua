@@ -94,6 +94,7 @@ function wplng_get_selector_exclude() {
 		array(
 			'#wpadminbar',
 			'.no-translate',
+			'.notranslate',
 			'.wplng-switcher',
 		)
 	);

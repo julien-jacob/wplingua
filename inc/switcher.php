@@ -5,6 +5,15 @@ if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
+function wplng_get_switcher_valid_insert() {
+	return array(
+		'bottom-left',
+		'bottom-right',
+		'bottom-center',
+		'none',
+	);
+}
+
 function wplng_get_switcher_insert() {
 
 	$insert   = get_option( 'wplng_insert' );
@@ -12,12 +21,7 @@ function wplng_get_switcher_insert() {
 
 	if ( ! empty( $insert ) ) {
 
-		$valid_insert = array(
-			'bottom-left',
-			'bottom-right',
-			'bottom-center',
-			'none',
-		);
+		$valid_insert = wplng_get_switcher_valid_insert();
 
 		foreach ( $valid_insert as $key => $valid ) {
 			if ( $insert === $valid ) {
@@ -39,6 +43,12 @@ function wplng_get_switcher_insert() {
 	return $insert;
 }
 
+function wplng_get_switcher_valid_theme() {
+	return array(
+		'light',
+		'dark',
+	);
+}
 
 function wplng_get_switcher_theme() {
 
@@ -47,10 +57,7 @@ function wplng_get_switcher_theme() {
 
 	if ( ! empty( $theme ) ) {
 
-		$valid_theme = array(
-			'light',
-			'dark',
-		);
+		$valid_theme = wplng_get_switcher_valid_theme();
 
 		foreach ( $valid_theme as $key => $valid ) {
 			if ( $theme === $valid ) {
@@ -72,6 +79,14 @@ function wplng_get_switcher_theme() {
 	return $theme;
 }
 
+function wplng_get_switcher_valid_style() {
+	return array(
+		// 'dropdown',
+		'list',
+		'block',
+	);
+}
+
 
 function wplng_get_switcher_style() {
 
@@ -80,11 +95,7 @@ function wplng_get_switcher_style() {
 
 	if ( ! empty( $style ) ) {
 
-		$valid_style = array(
-			// 'dropdown',
-			'list',
-			'block',
-		);
+		$valid_style = wplng_get_switcher_valid_style();
 
 		foreach ( $valid_style as $key => $valid ) {
 			if ( $style === $valid ) {
@@ -106,6 +117,14 @@ function wplng_get_switcher_style() {
 	return $style;
 }
 
+function wplng_get_switcher_valid_name_format() {
+	return array(
+		'id',
+		'name',
+		'none',
+	);
+}
+
 
 function wplng_get_switcher_name_format() {
 
@@ -114,11 +133,7 @@ function wplng_get_switcher_name_format() {
 
 	if ( ! empty( $name_format ) ) {
 
-		$valid_name_format = array(
-			'id',
-			'name',
-			'none',
-		);
+		$valid_name_format = wplng_get_switcher_valid_name_format();
 
 		foreach ( $valid_name_format as $key => $valid ) {
 			if ( $name_format === $valid ) {
@@ -146,6 +161,14 @@ function wplng_get_switcher_name_format() {
 	return $name_format;
 }
 
+function wplng_get_switcher_valid_flags_style() {
+	return array(
+		'circle',
+		'rectangular',
+		'none',
+	);
+}
+
 
 function wplng_get_switcher_flags_style() {
 
@@ -154,11 +177,7 @@ function wplng_get_switcher_flags_style() {
 
 	if ( ! empty( $flags_style ) ) {
 
-		$valid_flags_style = array(
-			'circle',
-			'rectangular',
-			'none',
-		);
+		$valid_flags_style = wplng_get_switcher_valid_flags_style();
 
 		foreach ( $valid_flags_style as $key => $valid ) {
 			if ( $flags_style === $valid ) {
@@ -183,31 +202,108 @@ function wplng_get_switcher_flags_style() {
 
 function wplng_switcher_wp_footer() {
 
-	if ( ! wplng_url_is_translatable() ) {
+	if ( ! wplng_url_is_translatable()
+		|| 'none' === wplng_get_switcher_insert()
+	) {
 		return;
 	}
 
-	if ( 'none' === wplng_get_switcher_insert() ) {
-		return;
-	}
-
-	$class  = 'insert-auto insert-' . wplng_get_switcher_insert();
-	$class .= ' style-' . wplng_get_switcher_style();
-	$class .= ' theme-' . wplng_get_switcher_theme();
-	$class .= ' title-' . wplng_get_switcher_name_format();
+	// $class  = 'insert-auto insert-' . wplng_get_switcher_insert();
+	// $class .= ' style-' . wplng_get_switcher_style();
+	// $class .= ' theme-' . wplng_get_switcher_theme();
+	// $class .= ' title-' . wplng_get_switcher_name_format();
 
 	echo wplng_get_switcher_html(
-		$class,
-		wplng_get_switcher_flags_style() !== 'none'
+		array(
+			'class' => 'insert-auto',
+		)
 	);
 }
 
 
-function wplng_get_switcher_html( $class = '', $flags_show = true ) {
+function wplng_get_switcher_class( $arg = array() ) {
+
+	$class = '';
+
+	/**
+	 * Define insert class (list, block)
+	 */
+	if ( ! empty( $arg['insert'] )
+		&& in_array( $arg['insert'], wplng_get_switcher_valid_insert() )
+	) {
+		$class = 'insert-' . $arg['insert'];
+	} else {
+		$class = 'insert-' . wplng_get_switcher_insert();
+	}
+
+	/**
+	 * Define style class (list, block)
+	 */
+	if ( ! empty( $arg['style'] )
+		&& in_array( $arg['style'], wplng_get_switcher_valid_style() )
+	) {
+		$class .= ' style-' . $arg['style'];
+	} else {
+		$class .= ' style-' . wplng_get_switcher_style();
+	}
+
+	/**
+	 * Define language name class (id, name, none)
+	 */
+
+	if ( ! empty( $arg['title'] )
+		&& in_array( $arg['title'], wplng_get_switcher_valid_name_format() )
+	) {
+		$class .= ' title-' . $arg['title'];
+	} else {
+		$class .= ' title-' . wplng_get_switcher_name_format();
+	}
+
+	/**
+	 * Define theme class (light, dark)
+	 */
+	if ( ! empty( $arg['theme'] )
+		&& in_array( $arg['theme'], wplng_get_switcher_valid_theme() )
+	) {
+		$class .= ' theme-' . $arg['theme'];
+	} else {
+		$class .= ' theme-' . wplng_get_switcher_theme();
+	}
+
+	/**
+	 * Define flags theme class (id, name, none)
+	 */
+	if ( ! empty( $arg['flags'] )
+		&& in_array( $arg['flags'], wplng_get_switcher_valid_flags_style() )
+	) {
+		$class .= ' flags-' . $arg['flags'];
+	} else {
+		$class .= ' flags-' . wplng_get_switcher_flags_style();
+	}
+
+	/**
+	 * Define additional class (id, name, none)
+	 */
+	if ( ! empty( $arg['class'] ) ) {
+		$class .= ' ' . $arg['class'];
+	}
+
+	return esc_attr( $class );
+}
+
+
+// $class = '', $flags_show = true
+function wplng_get_switcher_html( $arg = array() ) {
 
 	$language_website    = wplng_get_language_website();
 	$language_current_id = wplng_get_language_current_id();
 	$languages_target    = wplng_get_languages_target();
+	$class               = wplng_get_switcher_class( $arg );
+	$flags_show          = true;
+
+	if ( ! empty( $arg['flags'] ) && 'none' === $arg['flags'] ) {
+		$flags_show = false;
+	}
 
 	if ( empty( $languages_target ) ) {
 		return '';
@@ -280,6 +376,19 @@ function wplng_get_switcher_html( $class = '', $flags_show = true ) {
 	$html .= '</div>';
 	$html .= '</div>';
 	$html .= '</div>';
+
+	if ( ! empty( $arg['flags'] )
+		&& 'none' !== $arg['flags']
+	) {
+		$flags_style = wplng_get_switcher_flags_style();
+		if ( $flags_style !== $arg['flags'] ) {
+			$html = str_replace(
+				'/wplingua/images/' . $flags_style . '/',
+				'/wplingua/images/' . $arg['flags'] . '/',
+				$html
+			);
+		}
+	}
 
 	$html = apply_filters(
 		'wplng_switcher_html',
