@@ -43,6 +43,7 @@ require_once 'inc/html-updater.php';
 require_once 'inc/languages.php';
 require_once 'inc/mail.php';
 require_once 'inc/search.php';
+require_once 'inc/shortcode.php';
 require_once 'inc/switcher.php';
 require_once 'inc/translation.php';
 require_once 'inc/url.php';

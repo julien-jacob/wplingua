@@ -183,11 +183,9 @@ function wplng_get_switcher_flags_style() {
 
 function wplng_switcher_wp_footer() {
 
-	if ( ! wplng_url_is_translatable() ) {
-		return;
-	}
-
-	if ( 'none' === wplng_get_switcher_insert() ) {
+	if ( ! wplng_url_is_translatable() 
+		|| 'none' === wplng_get_switcher_insert() 
+	) {
 		return;
 	}
 
