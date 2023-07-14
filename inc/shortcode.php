@@ -6,7 +6,6 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 
-// TODO : Shortcode no translate
 
 function wplng_shortcode_notranslate( $atts, $content ) {
 

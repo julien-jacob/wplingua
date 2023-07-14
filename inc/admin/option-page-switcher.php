@@ -60,7 +60,7 @@ function wplng_option_page_switcher() {
 							</select>
 
 						</fieldset>
-						<p><?php _e( 'Shortcode switcher: ', 'wplingua' ); ?><code>[wplng-switcher]</code></p>
+						<p><?php _e( 'Shortcode switcher: ', 'wplingua' ); ?><code>[wplingua-switcher]</code></p>
 						<hr>
 					</td>
 				</tr>

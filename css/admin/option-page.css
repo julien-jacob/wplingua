@@ -1,6 +1,6 @@
 
 .wplng-fe-50 {
-    min-width: 200px;
+    min-width: 220px;
     max-width: 100%;
 }
 
@@ -12,7 +12,7 @@ h1 .dashicons {
 }
 
 #wpbody label {
-    vertical-align: top;
+    vertical-align: baseline;
 }
 
 #wplng-api-key-fake,
