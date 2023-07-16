@@ -47,9 +47,7 @@ require_once 'inc/shortcode.php';
 require_once 'inc/switcher.php';
 require_once 'inc/translation.php';
 require_once 'inc/url.php';
-
-
-
+require_once 'inc/woocommerce.php';
 
 
 function wplng_start() {
@@ -161,7 +159,7 @@ function wplng_start() {
 			empty( get_option( 'wplng_translate_woocommerce' ) ) 
 			|| ! wplng_api_feature_is_allow('woocommerce')
 		) {
-			add_filter('wplng_url_is_translatable', 'wplng_exclude_woocommerce', 20 );
+			// add_filter('wplng_url_is_translatable', 'wplng_exclude_woocommerce', 20 );
 		} 
 
 		/**
