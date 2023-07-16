@@ -54,7 +54,8 @@ function wplng_get_api_data() {
 
 		set_transient(
 			'wplng_api_key_data',
-			wp_json_encode( $api_key_data )
+			wp_json_encode( $api_key_data ),
+			60 * 60 * 24
 		);
 	}
 
