@@ -1,11 +1,16 @@
 /*
  * Language Switcher
  */
+
+.wplng-switcher {
+    pointer-events:none;
+}
  
 .switcher-content {
     border-radius: 22px;
     padding: 2px;
     text-align: center;
+    pointer-events: auto;
 }
 
 .wplng-language {
