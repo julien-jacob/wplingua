@@ -103,10 +103,10 @@ function wplng_get_selector_exclude() {
 	// Remove duplicate
 	$selector_exclude = array_unique( $selector_exclude );
 
-	// TODO : Faire le code ci-dessous ?
-	// foreach ($selector_exclude as $key => $selector) {
-	// 	$selector_exclude[$key] = esc_attr($selector_exclude);
-	// }
+	// Sanitize selectors
+	foreach ($selector_exclude as $key => $selector) {
+		$selector_exclude[$key] = esc_attr($selector_exclude);
+	}
 
 	$selector_exclude = apply_filters(
 		'wplng_selector_exclude',
@@ -185,10 +185,12 @@ function wplng_init() {
 
 	$_SERVER['REQUEST_URI'] = $origin_path;
 
-	if ( isset( $_GET['wplingua-visual-editor'] ) ) {
-		// TODO : wp_nonce ?
-		// TODO : Meilleur argument GET ?
-		// TODO : Check user can edit post
+	if ( 
+		isset( $_GET['wplingua-visual-editor'] ) 
+		&& current_user_can( 'edit_posts' )
+		&& isset( $_GET['_wpnonce'] )
+		&& wp_verify_nonce( $_GET['_wpnonce'], 'wplng_editor' )
+	) {
 
 		ob_start( 'wplng_ob_callback_editor' );
 	} else {

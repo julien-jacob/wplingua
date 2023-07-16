@@ -33,7 +33,7 @@ function wplng_admin_bar_menu() {
 				'id'     => 'wplangua-visual-editor',
 				'parent' => 'wplingua-menu',
 				'title'  => __( 'Visual editor', 'wplingua' ),
-				'href'   => esc_url( $url ),
+				'href'   => esc_url( wp_nonce_url( $url, 'wplng_editor' ) ),
 			// 'meta' => array( 'target'=>'_blank' )
 			)
 		);

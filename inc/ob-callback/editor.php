@@ -16,18 +16,11 @@ function wplng_ob_callback_editor( $html ) {
 	 */
 	$language_target_id = wplng_get_language_current_id();
 	$translations       = wplng_get_translations_saved( $language_target_id );
-	// return '<pre >' . var_export( $translations, true ) . '</pre>';
 
 	/**
 	 * Get new translation from API
 	 */
-	$start_time       = microtime( true );
 	$translations_new = wplng_parser( $html, '', '', $translations );
-
-	// Calculate script execution time
-	$end_time       = microtime( true );
-	$execution_time = ( $end_time - $start_time );
-	// return var_export( $translations_new, true ) . ' Execution time of script = ' . $execution_time . ' sec';
 
 	/**
 	 * Save new translation as wplng_translation CPT
@@ -38,14 +31,12 @@ function wplng_ob_callback_editor( $html ) {
 	 * Merge know and new translations
 	 */
 	$translations = array_merge( $translations, $translations_new );
-	// return '<pre >' . var_export($translations, true) . '</pre>';
 
 	/**
 	 * Replace excluded HTML part by tab
 	 */
 	$excluded_elements = array();
 	$html              = wplng_html_set_exclude_tag( $html, $excluded_elements );
-	// return '<pre >' . var_export( $excluded_elements, true ) . '</pre>';
 
 	/**
 	 * Translate links
@@ -96,8 +87,6 @@ function wplng_ob_callback_editor( $html ) {
 				);
 
 				// Replace original text in HTML by translation
-				// $html = preg_replace( $regex, $replace, $html_head );
-
 				if ( preg_match( $regex, $html_head ) ) {
 					$html_head              = preg_replace( $regex, $replace, $html_head );
 					$translations_sidebar[] = $translation;
@@ -106,19 +95,20 @@ function wplng_ob_callback_editor( $html ) {
 		}
 	}
 
-	// return var_export( $translations_sidebar, true );
+	// return '<pre>' . var_export( $translations_sidebar, true ) . '</pre>';
 
 	/**
 	 * Get <body>
 	 */
-	// TODO : Revoir regex
 	preg_match( '#<body .*>(.*)</body>#Uis', $html, $html_body );
 	if ( empty( $html_body[0] ) ) {
 		return $html;
 	}
 	$html_body = $html_body[0];
 
-	// TODO : Remplacer les liens dans $html_body
+	/**
+	 * Transform links
+	 */
 	$html_body = preg_replace(
 		'#<a (.*)<\/a>#Uis',
 		'<span wplingua-editor-link $1</span>',
