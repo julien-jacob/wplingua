@@ -168,9 +168,7 @@ function wplng_html_replace_exclude_tag( $html, $excluded_elements ) {
 
 function wplng_init() {
 
-	if ( ! wplng_url_is_translatable()
-		|| wplng_get_language_website_id() === wplng_get_language_current_id()
-	) {
+	if ( wplng_get_language_website_id() === wplng_get_language_current_id() ) {
 		return;
 	}
 
@@ -178,6 +176,12 @@ function wplng_init() {
 
 	$current_path           = $wplng_request_uri;
 	$origin_path            = '/' . substr( $current_path, 4, strlen( $current_path ) - 1 );
+
+	if (! wplng_url_is_translatable()) {
+		wp_redirect($origin_path);
+		exit;
+	}
+
 	$_SERVER['REQUEST_URI'] = $origin_path;
 
 	if ( isset( $_GET['wplingua-visual-editor'] ) ) {
