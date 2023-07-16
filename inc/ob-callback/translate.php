@@ -9,7 +9,6 @@ if ( ! defined( 'WPINC' ) ) {
 function wplng_ob_callback_translate( $html ) {
 
 	$html = apply_filters( 'wplng_html_intercepted', $html );
-	// return $html;
 
 	/**
 	 * Get saved translation
@@ -21,13 +20,7 @@ function wplng_ob_callback_translate( $html ) {
 	/**
 	 * Get new translation from API
 	 */
-	$start_time       = microtime( true );
 	$translations_new = wplng_parser( $html, '', '', $translations );
-
-	// Calculate script execution time
-	$end_time       = microtime( true );
-	$execution_time = ( $end_time - $start_time );
-	// return var_export( $translations_new, true ) . ' Execution time of script = ' . $execution_time . ' sec';
 
 	/**
 	 * Save new translation as wplng_translation CPT
