@@ -6,9 +6,6 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 
-
-
-
 /**
  * Option page for the plugin
  *
@@ -216,10 +213,6 @@ function wplng_settings_part_languages_target() {
 		<hr>
 		<br>
 	</fieldset>
-	
-	<p><strong><?php _e( 'Current target languages: ', 'wplingua' ); ?></strong></p>
-
-	<hr>
 
 	<div id="wplng-target-language-template">
 		<div class="wplng-target-language">
@@ -237,9 +230,12 @@ function wplng_settings_part_languages_target() {
 		</div>
 	</div>
 
-	<div id="wplng-target-languages-list"></div>
-	
-	<textarea name="wplng_target_languages" id="wplng_target_languages"><?php echo esc_textarea( json_encode( $languages_target, true ) ); ?></textarea>
+	<div id="wplng-target-languages-container">
+		<p><strong><?php _e( 'Current target languages: ', 'wplingua' ); ?></strong></p>
+		<hr>
+		<div id="wplng-target-languages-list"></div>
+		<textarea name="wplng_target_languages" id="wplng_target_languages"><?php echo esc_textarea( json_encode( $languages_target, true ) ); ?></textarea>
+	</div>
 	<?php
 }
 

@@ -240,6 +240,12 @@ jQuery(document).ready(function ($) {
             }
         });
 
+        if (html == "") {
+            $("#wplng-target-languages-container").hide();
+        } else {
+            $("#wplng-target-languages-container").show();
+        }
+
         return html;
     }
 
