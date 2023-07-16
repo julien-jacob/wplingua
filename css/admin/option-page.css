@@ -20,3 +20,11 @@ h1 .dashicons {
     max-width: 100%; 
     width: 26em;
 }
+
+notice {
+    display: none;
+}
+
+.notice.wplng-notice {
+    display: block;
+}

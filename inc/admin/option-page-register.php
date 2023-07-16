@@ -18,7 +18,7 @@ function wplng_option_page_register() {
 	) :
 		update_option( 'wplng_api_key', '' );
 		?>
-		<div class="notice notice-error is-dismissible">
+		<div class="wplng-notice notice notice-error is-dismissible">
 			<p><?php _e( 'Invalid API key.', 'wplingua' ); ?></p>
 		</div>
 		<?php
@@ -37,7 +37,7 @@ function wplng_option_page_register() {
 				$message .= '</p>';
 			}
 			?>
-			<div class="notice notice-error is-dismissible">
+			<div class="wplng-notice notice notice-error is-dismissible">
 				<p><?php _e( 'An error occurred while creating the API key..', 'wplingua' ); ?></p>
 				<?php echo $message; ?>
 			</div>
@@ -48,7 +48,7 @@ function wplng_option_page_register() {
 				$mail = ' ' . esc_html( $data_request_key['mail_address'] );
 			}
 			?>
-			<div class="notice notice-success is-dismissible">
+			<div class="wplng-notice notice notice-success is-dismissible">
 				<p><?php _e( 'The API key has been correctly created and sent to the following e-mail address:', 'wplingua' ); echo $mail; ?> </p>
 			</div>
 			<?php
