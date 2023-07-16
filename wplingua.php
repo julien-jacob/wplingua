@@ -156,6 +156,14 @@ function wplng_start() {
 			add_filter('wplng_url_is_translatable', 'wplng_exclude_search', 20 );
 		}
 
+		// Woocommerce
+		if ( 
+			empty( get_option( 'wplng_translate_woocommerce' ) ) 
+			|| ! wplng_api_feature_is_allow('woocommerce')
+		) {
+			add_filter('wplng_url_is_translatable', 'wplng_exclude_woocommerce', 20 );
+		} 
+
 		/**
 		 * Shortcode
 		 */
