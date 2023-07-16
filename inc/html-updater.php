@@ -5,6 +5,7 @@ if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
+
 function wplng_replace_og_local( $html ) {
 
 	if ( ! wplng_url_is_translatable()
@@ -41,7 +42,6 @@ function wplng_language_attributes( $attr ) {
 }
 
 
-
 function wplng_link_alternate_hreflang() {
 
 	$html = '';
@@ -59,7 +59,6 @@ function wplng_link_alternate_hreflang() {
 
 	echo $html;
 }
-
 
 
 function wplng_html_translate_links( $html, $language_target ) {
@@ -104,8 +103,8 @@ function wplng_get_selector_exclude() {
 	$selector_exclude = array_unique( $selector_exclude );
 
 	// Sanitize selectors
-	foreach ($selector_exclude as $key => $selector) {
-		$selector_exclude[$key] = esc_attr($selector_exclude);
+	foreach ( $selector_exclude as $key => $selector ) {
+		$selector_exclude[ $key ] = esc_attr( $selector );
 	}
 
 	$selector_exclude = apply_filters(
@@ -156,6 +155,7 @@ function wplng_html_set_exclude_tag( $html, &$excluded_elements ) {
 	return (string) str_get_html( $dom );
 }
 
+
 function wplng_html_replace_exclude_tag( $html, $excluded_elements ) {
 
 	foreach ( $excluded_elements as $key => $element ) {
@@ -185,13 +185,11 @@ function wplng_init() {
 
 	$_SERVER['REQUEST_URI'] = $origin_path;
 
-	if ( 
-		isset( $_GET['wplingua-visual-editor'] ) 
+	if ( isset( $_GET['wplingua-visual-editor'] )
 		&& current_user_can( 'edit_posts' )
 		&& isset( $_GET['_wpnonce'] )
 		&& wp_verify_nonce( $_GET['_wpnonce'], 'wplng_editor' )
 	) {
-
 		ob_start( 'wplng_ob_callback_editor' );
 	} else {
 		ob_start( 'wplng_ob_callback_translate' );

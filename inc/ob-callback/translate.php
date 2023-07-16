@@ -15,7 +15,6 @@ function wplng_ob_callback_translate( $html ) {
 	 */
 	$language_target_id = wplng_get_language_current_id();
 	$translations       = wplng_get_translations_saved( $language_target_id );
-	// return '<pre >' . var_export( $translations, true ) . '</pre>';
 
 	/**
 	 * Get new translation from API
@@ -31,14 +30,12 @@ function wplng_ob_callback_translate( $html ) {
 	 * Merge know and new translations
 	 */
 	$translations = array_merge( $translations, $translations_new );
-	// return var_export($translations, true);
 
 	/**
 	 * Replace excluded HTML part by tab
 	 */
 	$excluded_elements = array();
 	$html              = wplng_html_set_exclude_tag( $html, $excluded_elements );
-	// return '<pre >' . var_export( $excluded_elements, true ) . '</pre>';
 
 	/**
 	 * Translate links

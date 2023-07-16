@@ -9,7 +9,15 @@ if ( ! defined( 'WPINC' ) ) {
 
 function wplng_ob_callback_editor( $html ) {
 
+	$translations_sidebar = array();
+	$excluded_elements    = array();
+
 	$html = apply_filters( 'wplng_html_intercepted', $html );
+
+	/**
+	 * Replace excluded HTML part by tag
+	 */
+	$html = wplng_html_set_exclude_tag( $html, $excluded_elements );
 
 	/**
 	 * Get saved translation
@@ -33,18 +41,6 @@ function wplng_ob_callback_editor( $html ) {
 	$translations = array_merge( $translations, $translations_new );
 
 	/**
-	 * Replace excluded HTML part by tab
-	 */
-	$excluded_elements = array();
-	$html              = wplng_html_set_exclude_tag( $html, $excluded_elements );
-
-	/**
-	 * Translate links
-	 */
-	// TODO : Faire la ligne suivante ?
-	// $html = wplng_html_translate_links( $html, $language_target_id );
-
-	/**
 	 * Get <head>
 	 */
 	// TODO : Revoir regex
@@ -53,9 +49,6 @@ function wplng_ob_callback_editor( $html ) {
 		return $html;
 	}
 	$html_head = $html_head[0];
-
-	// TODO : Changer de place ?
-	$translations_sidebar = array();
 
 	/**
 	 * Manage translation for <head>
@@ -95,8 +88,6 @@ function wplng_ob_callback_editor( $html ) {
 		}
 	}
 
-	// return '<pre>' . var_export( $translations_sidebar, true ) . '</pre>';
-
 	/**
 	 * Get <body>
 	 */
@@ -114,12 +105,6 @@ function wplng_ob_callback_editor( $html ) {
 		'<span wplingua-editor-link $1</span>',
 		$html_body
 	);
-
-	// $html_body = preg_replace(
-	// 	'#<a .*>(.*)<\/a>#Uis',
-	// 	'$1',
-	// 	$html_body
-	// );
 
 	/**
 	 * Manage translation for <body>
@@ -182,8 +167,6 @@ function wplng_ob_callback_editor( $html ) {
 			}
 		}
 	}
-
-	// return '<pre >' . var_export($translations_sidebar, true) . '</pre>';
 
 	$html = preg_replace(
 		'#<body .*>.*</body>#Uis',

@@ -39,6 +39,7 @@ function wplng_admin_bar_menu() {
 		);
 	} else {
 		$url = remove_query_arg( 'wplingua-visual-editor', wplng_get_url_current() );
+		$url = remove_query_arg( '_wpnonce', $url );
 
 		// Sub menu to open facebook (external link) in new window
 		$wp_admin_bar->add_menu(
