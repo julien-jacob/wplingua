@@ -81,8 +81,12 @@ function wplngapi_error_die( $code = 0 ) {
 			break;
 
 		case 16:
-			$message = 'Request API key - API key corrupted ';
+			$message = 'Request API key - API key corrupted';
 			break;
+
+		// case 17:
+		// 	$message = 'API - Response not valid';
+		// 	break;
 
 		default:
 			$message = 'Unknown error';
