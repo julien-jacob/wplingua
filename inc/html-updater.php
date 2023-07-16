@@ -96,6 +96,7 @@ function wplng_get_selector_exclude() {
 			'.no-translate',
 			'.notranslate',
 			'.wplng-switcher',
+			'address',
 		)
 	);
 
@@ -174,11 +175,11 @@ function wplng_init() {
 
 	global $wplng_request_uri;
 
-	$current_path           = $wplng_request_uri;
-	$origin_path            = '/' . substr( $current_path, 4, strlen( $current_path ) - 1 );
+	$current_path = $wplng_request_uri;
+	$origin_path  = '/' . substr( $current_path, 4, strlen( $current_path ) - 1 );
 
-	if (! wplng_url_is_translatable()) {
-		wp_redirect($origin_path);
+	if ( ! wplng_url_is_translatable() ) {
+		wp_redirect( $origin_path );
 		exit;
 	}
 

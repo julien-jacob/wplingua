@@ -137,30 +137,25 @@ function wplng_start() {
 		 */
 
 		// Translate email
-		if ( 
-			! empty( get_option( 'wplng_translate_mail' ) ) 
-			&& wplng_api_feature_is_allow('mail')
+		if ( ! empty( get_option( 'wplng_translate_mail' ) )
+			&& wplng_api_feature_is_allow( 'mail' )
 		) {
 			add_filter( 'wp_mail', 'wplng_translate_wp_mail' );
 		}
 
 		// Search from translated languages
-		if ( 
-			! empty( get_option( 'wplng_translate_search' ) ) 
-			&& wplng_api_feature_is_allow('search')
+		if ( ! empty( get_option( 'wplng_translate_search' ) )
+			&& wplng_api_feature_is_allow( 'search' )
 		) {
 			add_action( 'parse_query', 'wplng_translate_search_query' );
 		} else {
-			add_filter('wplng_url_is_translatable', 'wplng_exclude_search', 20 );
+			add_filter( 'wplng_url_is_translatable', 'wplng_exclude_search', 20 );
 		}
 
 		// Woocommerce
-		if ( 
-			empty( get_option( 'wplng_translate_woocommerce' ) ) 
-			|| ! wplng_api_feature_is_allow('woocommerce')
-		) {
-			add_filter('wplng_url_is_translatable', 'wplng_exclude_woocommerce', 20 );
-		} 
+		if ( empty( get_option( 'wplng_translate_woocommerce' ) ) ) {
+			add_filter( 'wplng_url_is_translatable', 'wplng_exclude_woocommerce', 20 );
+		}
 
 		/**
 		 * Shortcode

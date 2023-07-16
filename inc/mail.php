@@ -11,13 +11,17 @@ function wplng_translate_wp_mail( $args ) {
 	$language_website = wplng_get_language_website_id();
 	$language_current = wplng_get_language_current_id();
 
-	if ( $language_website == $language_website ) {
+	if ( $language_website === $language_current ) {
 		return $args;
 	}
 
 	if ( empty( $args['message'] ) ) {
 		return $args;
 	}
+
+
+	// $args['message'] != strip_tags(args['message']) ? true:false;
+
 
 	$translations = wplng_parser( $args['message'] );
 	// error_log(var_export($translations, true));
