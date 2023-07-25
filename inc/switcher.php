@@ -383,8 +383,8 @@ function wplng_get_switcher_html( $arg = array() ) {
 		$flags_style = wplng_get_switcher_flags_style();
 		if ( $flags_style !== $arg['flags'] ) {
 			$html = str_replace(
-				'/wplingua/images/' . $flags_style . '/',
-				'/wplingua/images/' . $arg['flags'] . '/',
+				'/wplingua/assets/images/' . $flags_style . '/',
+				'/wplingua/assets/images/' . $arg['flags'] . '/',
 				$html
 			);
 		}

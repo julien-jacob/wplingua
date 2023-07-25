@@ -12,9 +12,6 @@ var jsmin        = require("gulp-jsmin");
 var zip          = require('gulp-zip');
 var del          = require('del');
 
-
-
-
 /* JS script */
 gulp.task("js", () => {
     return gulp.src("src/js/**/*.js")
