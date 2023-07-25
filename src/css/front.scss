@@ -2,10 +2,12 @@
  * Language Switcher
  */
 
+@import "header";
+
 .wplng-switcher {
-    pointer-events:none;
+    pointer-events: none;
 }
- 
+
 .switcher-content {
     border-radius: 22px;
     padding: 2px;
@@ -35,24 +37,28 @@
 /*
  * Insert
  */
- .wplng-switcher.insert-auto {
+.wplng-switcher.insert-auto {
     position: fixed;
     z-index: 9999;
     bottom: 20px;
 }
+
 /* Insert Bottom Right */
 .wplng-switcher.insert-auto.insert-bottom-right {
     right: 20px;
 }
+
 /* Insert Bottom Left */
 .wplng-switcher.insert-auto.insert-bottom-left {
     left: 20px;
 }
+
 /* Insert Bottom Center */
 .wplng-switcher.insert-auto.insert-bottom-center {
     width: 100%;
     text-align: center;
 }
+
 .wplng-switcher.insert-auto.insert-bottom-center .switcher-content {
     display: inline-block;
 }
@@ -63,13 +69,13 @@
  */
 
 /* Themes Light */
- .wplng-switcher.theme-light .switcher-content {
+.wplng-switcher.theme-light .switcher-content {
     background-color: lightgray;
     border: 2px gray solid;
- }
+}
 
 
- .wplng-switcher.theme-light .wplng-language {
+.wplng-switcher.theme-light .wplng-language {
     border: 2px solid gray;
     color: black;
 }
@@ -78,10 +84,10 @@
 .wplng-switcher.theme-dark .switcher-content {
     background-color: black;
     border: 2px gray solid;
- }
+}
 
 
- .wplng-switcher.theme-dark .wplng-language {
+.wplng-switcher.theme-dark .wplng-language {
     border: 2px solid gray;
     color: white;
 }
@@ -91,7 +97,7 @@
  */
 .wplng-switcher.style-list .wplng-language-current,
 .wplng-switcher.style-block .wplng-language-current {
-     display: none;
+    display: none;
 }
 
 .wplng-switcher.style-list .wplng-languages .wplng-language {
@@ -104,7 +110,7 @@
 
 /*
  * Name Format
- */ 
+ */
 .wplng-switcher .language-name,
 .wplng-switcher .language-id {
     padding-right: 8px;
@@ -136,7 +142,7 @@
     padding: 0 4px;
 }
 
-.entry-content p > .wplng-edit-link {
+.entry-content p>.wplng-edit-link {
     display: flex;
 }
 
@@ -159,5 +165,3 @@
     text-align: center;
     margin: 0 4px;
 }
-
-
