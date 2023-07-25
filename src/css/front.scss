@@ -6,33 +6,35 @@
 
 .wplng-switcher {
     pointer-events: none;
+
+    .switcher-content {
+        border-radius: 22px;
+        padding: 2px;
+        text-align: center;
+        pointer-events: auto;
+
+        .wplng-language {
+            font-size: 16px;
+            line-height: 16px;
+            border-radius: 22px;
+            padding: 2px 4px;
+            margin: 2px;
+            text-decoration: none;
+            text-align: left;
+
+            &:hover {
+                background-color: rgba(0, 0, 0, .05);
+            }
+
+            img {
+                width: 22px;
+                height: 22px;
+            }
+        }
+    }
 }
 
-.switcher-content {
-    border-radius: 22px;
-    padding: 2px;
-    text-align: center;
-    pointer-events: auto;
-}
 
-.wplng-language {
-    font-size: 16px;
-    line-height: 16px;
-    border-radius: 22px;
-    padding: 2px 4px;
-    margin: 2px;
-    text-decoration: none;
-    text-align: left;
-}
-
-.wplng-language img {
-    width: 22px;
-    height: 22px;
-}
-
-.wplng-language:hover {
-    background-color: rgba(0, 0, 0, .05);
-}
 
 /*
  * Insert
@@ -41,27 +43,29 @@
     position: fixed;
     z-index: 9999;
     bottom: 20px;
+
+    /* Insert Bottom Right */
+    &.insert-bottom-right {
+        right: 20px;
+    }
+
+    /* Insert Bottom Left */
+    &.insert-bottom-left {
+        left: 20px;
+    }
+
+    /* Insert Bottom Center */
+    &.insert-bottom-center {
+        width: 100%;
+        text-align: center;
+
+        .switcher-content {
+            display: inline-block;
+        }
+    }
+
 }
 
-/* Insert Bottom Right */
-.wplng-switcher.insert-auto.insert-bottom-right {
-    right: 20px;
-}
-
-/* Insert Bottom Left */
-.wplng-switcher.insert-auto.insert-bottom-left {
-    left: 20px;
-}
-
-/* Insert Bottom Center */
-.wplng-switcher.insert-auto.insert-bottom-center {
-    width: 100%;
-    text-align: center;
-}
-
-.wplng-switcher.insert-auto.insert-bottom-center .switcher-content {
-    display: inline-block;
-}
 
 
 /*
@@ -69,28 +73,32 @@
  */
 
 /* Themes Light */
-.wplng-switcher.theme-light .switcher-content {
-    background-color: lightgray;
-    border: 2px gray solid;
+.wplng-switcher.theme-light {
+    .switcher-content {
+        background-color: lightgray;
+        border: 2px gray solid;
+
+        .wplng-language {
+            border: 2px solid gray;
+            color: black;
+        }
+    }
 }
 
-
-.wplng-switcher.theme-light .wplng-language {
-    border: 2px solid gray;
-    color: black;
-}
 
 /* Themes Dark */
-.wplng-switcher.theme-dark .switcher-content {
-    background-color: black;
-    border: 2px gray solid;
+.wplng-switcher.theme-dark {
+    .switcher-content {
+        background-color: black;
+        border: 2px gray solid;
+
+        .wplng-language {
+            border: 2px solid gray;
+            color: white;
+        }
+    }
 }
 
-
-.wplng-switcher.theme-dark .wplng-language {
-    border: 2px solid gray;
-    color: white;
-}
 
 /*
  * Switcher style
