@@ -38,7 +38,7 @@ function wplng_option_page_exclusions() {
 					<td>
 						<fieldset>
 							<label for="wplng_excluded_url"><strong><?php _e( 'Exclude URLs from translation:', 'wplingua' ); ?></strong></label>
-							<p><?php echo __( 'You can exclude from translations pages you wish to offer only in the site\'s original language. To do this, list the URLs to be excluded below, one per line. For example  ', 'wplingua' ) . '<code>/my-page/</code>' . __( '. You can also use REGEX. For example, use ', 'wplingua' ) . '<code>/author/.*</code>' . __( ' to exclude author pages or ', 'wplingua' ) . '<code>/?s=.*</code>' . __( ' to exclude search pages.', 'wplingua' ); ?></p>
+							<p><?php echo __( 'You can exclude from translations pages you wish to offer only in the site\'s original language. To do this, list the URLs to be excluded below, one per line. For example  ', 'wplingua' ) . '<code>/my-page/</code>' . __( '. You can also use REGEX. For example, use ', 'wplingua' ) . '<code>/author/.*</code>' . __( ' to exclude author pages.', 'wplingua' ); ?></p>
 							<br>
 							<textarea name="wplng_excluded_url" id="wplng_excluded_url" rows="6" style="width:100%;"><?php echo esc_textarea( get_option( 'wplng_excluded_url' ) ); ?></textarea>
 						</fieldset>
