@@ -103,6 +103,9 @@ function wplng_start() {
 		add_action( 'admin_print_scripts-post-new.php', 'wplng_translation_assets' );
 		add_action( 'admin_print_scripts-post.php', 'wplng_translation_assets' );
 
+		// Remove Quick edit from translations list
+		add_filter( 'post_row_actions', 'wplng_translation_remove_quick_edit', 10, 2 );
+
 		/**
 		 * Front
 		 */
