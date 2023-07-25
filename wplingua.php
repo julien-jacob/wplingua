@@ -17,8 +17,8 @@ $wplng_request_uri = $_SERVER['REQUEST_URI'];
 define( 'WPLNG_API', 'http://machiavel-api.local/v0.0/last/' );
 // define( 'WPLNG_API', 'https://api.wplingua.com/v0.0/last/' );
 
-// Require files in /lib/ folder
-require_once 'lib/simple_html_dom.php';
+// Require files in /inc/lib/ folder
+require_once 'inc/lib/simple_html_dom.php';
 
 // Require files in /inc/admin/ folder
 require_once 'inc/admin/admin-bar.php';

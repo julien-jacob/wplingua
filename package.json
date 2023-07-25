@@ -1,0 +1,27 @@
+{
+  "name": "wprock-gulp-config",
+  "description": "Gulp configuration for wprock.fr WordPress theme",
+  "main": "gulpfile.js",
+  "scripts": {
+    "build": "gulp",
+    "gulp": "gulp",
+    "watch": "gulp watch"
+  },
+  "devDependencies": {
+    "del": "^6.0.0",
+    "gulp": "latest",
+    "gulp-autoprefixer": "latest",
+    "gulp-clean-css": "latest",
+    "gulp-imagemin": "latest",
+    "gulp-jsmin": "latest",
+    "gulp-postcss": "latest",
+    "gulp-rename": "latest",
+    "gulp-sass": "^5.0.0",
+    "gulp-zip": "latest",
+    "node-sass": "latest",
+    "sass": "^1.45.0"
+  },
+  "dependencies": {
+    "npm": "latest"
+  }
+}
