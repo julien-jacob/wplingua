@@ -70,7 +70,7 @@ function wplng_get_switcher_theme() {
 	}
 
 	if ( ! $is_valid ) {
-		$theme = 'light';
+		$theme = 'square-light';
 	}
 
 	$theme = apply_filters(
