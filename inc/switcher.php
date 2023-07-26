@@ -46,10 +46,10 @@ function wplng_get_switcher_insert() {
 function wplng_get_switcher_valid_theme() {
 	return array(
 		'smooth-light' => __( 'Smooth Light', 'wplingua' ),
-		'smooth-grey' => __( 'Smooth Grey', 'wplingua' ),
+		'smooth-grey'  => __( 'Smooth Grey', 'wplingua' ),
 		'smooth-dark'  => __( 'Smooth Dark', 'wplingua' ),
 		'square-light' => __( 'Square Light', 'wplingua' ),
-		'square-grey' => __( 'Square Grey', 'wplingua' ),
+		'square-grey'  => __( 'Square Grey', 'wplingua' ),
 		'square-dark'  => __( 'Square Dark', 'wplingua' ),
 	);
 }
@@ -85,8 +85,8 @@ function wplng_get_switcher_theme() {
 
 function wplng_get_switcher_valid_style() {
 	return array(
-		'list'  => __( 'List', 'wplingua' ),
-		'block' => __( 'Block', 'wplingua' ),
+		'list'     => __( 'List', 'wplingua' ),
+		'block'    => __( 'Block', 'wplingua' ),
 		'dropdown' => __( 'Dropdown', 'wplingua' ),
 	);
 }
@@ -310,13 +310,17 @@ function wplng_get_switcher_html( $arg = array() ) {
 
 	$html  = '<div class="' . esc_attr( 'wplng-switcher ' . $class ) . '">';
 	$html .= '<div class="switcher-content">';
-
-	
-
 	$html .= '<div class="wplng-languages">';
 
 	// Create link for website language
-	$html .= '<a class="wplng-language website" href="' . esc_url( wplng_get_url_original() ) . '">';
+	if (
+		! empty( $language_website['id'] )
+		&& ( $language_website['id'] === $language_current_id )
+	) {
+		$html .= '<a class="wplng-language website current" href="' . esc_url( wplng_get_url_original() ) . '">';
+	} else {
+		$html .= '<a class="wplng-language website" href="' . esc_url( wplng_get_url_original() ) . '">';
+	}
 	if ( ! empty( $language_website['flag'] && $flags_show ) ) {
 		$html .= '<img src="' . esc_url( $language_website['flag'] ) . '" alt="' . esc_attr( $language_website['name'] ) . '">';
 	}
@@ -343,6 +347,7 @@ function wplng_get_switcher_html( $arg = array() ) {
 	}
 
 	$html .= '</div>';
+
 	// Create link for current language
 	if ( $language_website['id'] === $language_current_id ) {
 
@@ -376,7 +381,6 @@ function wplng_get_switcher_html( $arg = array() ) {
 	}
 	$html .= '</div>';
 
-	
 	$html .= '</div>';
 
 	if ( ! empty( $arg['flags'] )
