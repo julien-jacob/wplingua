@@ -2,15 +2,15 @@ jQuery(document).ready(function ($) {
 
     wp.codeEditor.initialize($('#wplng_custom_css'), cm_settings);
 
-    $("#wplng_insert").on("input", function() {
+    function wplngSwitcherUpdateInsert(val) {
         $(".wplng-switcher")
-            .removeClass("insert-bottom-right")
-            .removeClass("insert-bottom-center")
-            .removeClass("insert-bottom-left")
-            .addClass("insert-" + $(this).val());
-    });
+        .removeClass("insert-bottom-right")
+        .removeClass("insert-bottom-center")
+        .removeClass("insert-bottom-left")
+        .addClass("insert-" + val);
+    }
 
-    $("#wplng_theme").on("input", function() {
+    function wplngSwitcherUpdateTheme(val) {
         $(".wplng-switcher")
             .removeClass("theme-smooth-light")
             .removeClass("theme-smooth-grey")
@@ -18,28 +18,38 @@ jQuery(document).ready(function ($) {
             .removeClass("theme-square-light")
             .removeClass("theme-square-grey")
             .removeClass("theme-square-dark")
-            .addClass("theme-" + $(this).val());
-    });
+            .addClass("theme-" + val);
+    }
 
-    $("#wplng_style").on("input", function() {
+    function wplngSwitcherUpdateStyle(val) {
         $(".wplng-switcher")
-            .removeClass("style-list")
-            .removeClass("style-block")
-            .removeClass("style-dropdown")
-            .addClass("style-" + $(this).val());
-    });
+        .removeClass("style-list")
+        .removeClass("style-block")
+        .removeClass("style-dropdown")
+        .addClass("style-" + val);
+    }
 
-    $("#wplng_name_format").on("input", function() {
+    function wplngSwitcherUpdateTitle(val) {
+
+        if ("none" == val && "none" == $("#wplng_flags_style").val()) {
+            $("#wplng_flags_style").val("rectangular");
+            wplngSwitcherUpdateFlagsStyle("rectangular");
+        }
+
         $(".wplng-switcher")
             .removeClass("title-name")
             .removeClass("title-id")
             .removeClass("title-none")
-            .addClass("title-" + $(this).val());
-    });
+            .addClass("title-" + val);
+    }
 
-    $("#wplng_flags_style").on("input", function() {
+    function wplngSwitcherUpdateFlagsStyle(val) {
 
-        var val = $(this).val();
+        if ("none" == val && "none" == $("#wplng_name_format").val()) {
+            $("#wplng_name_format").val("name");
+            wplngSwitcherUpdateTitle("name");
+        }
+
 
         $(".wplng-switcher")
             .removeClass("flags-circle")
@@ -62,9 +72,41 @@ jQuery(document).ready(function ($) {
     
             $(".wplng-switcher").html(html);
         }
- 
-        
+    }
+
+    /**
+     * Bind event
+     */
+
+    $("#wplng_insert").on("input", function() {
+        wplngSwitcherUpdateInsert($(this).val());
     });
+
+    $("#wplng_theme").on("input", function() {
+        wplngSwitcherUpdateTheme($(this).val());
+    });
+
+    $("#wplng_style").on("input", function() {
+        wplngSwitcherUpdateStyle($(this).val());
+    });
+
+    $("#wplng_name_format").on("input", function() {
+        wplngSwitcherUpdateTitle($(this).val());        
+    });
+
+    $("#wplng_flags_style").on("input", function() {
+        wplngSwitcherUpdateFlagsStyle($(this).val());
+    });
+
+    /**
+     * Init
+     */
+
+    wplngSwitcherUpdateInsert($("#wplng_insert").val());
+    wplngSwitcherUpdateTheme($("#wplng_theme").val());
+    wplngSwitcherUpdateStyle($("#wplng_style").val());
+    wplngSwitcherUpdateTitle($("#wplng_name_format").val());
+    wplngSwitcherUpdateFlagsStyle($("#wplng_flags_style").val());
 
 }); // End jQuery loaded event
 
