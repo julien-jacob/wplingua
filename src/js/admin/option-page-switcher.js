@@ -38,11 +38,32 @@ jQuery(document).ready(function ($) {
     });
 
     $("#wplng_flags_style").on("input", function() {
+
+        var val = $(this).val();
+
         $(".wplng-switcher")
             .removeClass("flags-circle")
             .removeClass("flags-rectangular")
             .removeClass("flags-none")
-            .addClass("flags-" + $(this).val());
+            .addClass("flags-" + val);
+
+        if ("none" != val) {
+            var html = $(".wplng-switcher").html();
+
+            html = html.replaceAll(
+                "/wplingua/assets/images/circle/", 
+                "/wplingua/assets/images/" + val + "/", 
+            );
+    
+            html = html.replaceAll(
+                "/wplingua/assets/images/rectangular/", 
+                "/wplingua/assets/images/" + val + "/", 
+            );
+    
+            $(".wplng-switcher").html(html);
+        }
+ 
+        
     });
 
 }); // End jQuery loaded event

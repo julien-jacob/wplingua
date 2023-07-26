@@ -10,7 +10,6 @@ if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
-
 global $wplng_request_uri;
 $wplng_request_uri = $_SERVER['REQUEST_URI'];
 

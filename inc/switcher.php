@@ -302,6 +302,12 @@ function wplng_get_switcher_html( $arg = array() ) {
 
 	if ( ! empty( $arg['flags'] ) && 'none' === $arg['flags'] ) {
 		$flags_show = false;
+	} elseif ('none' === wplng_get_switcher_flags_style()) {
+		$flags_show = false;
+	}
+	
+	if ( is_admin() ) {
+		$flags_show = true;
 	}
 
 	if ( empty( $languages_target ) ) {
@@ -380,7 +386,6 @@ function wplng_get_switcher_html( $arg = array() ) {
 		}
 	}
 
-	
 	$html .= '</div>';
 
 	$html .= '</div>';
