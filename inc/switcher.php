@@ -317,9 +317,9 @@ function wplng_get_switcher_html( $arg = array() ) {
 		! empty( $language_website['id'] )
 		&& ( $language_website['id'] === $language_current_id )
 	) {
-		$html .= '<a class="wplng-language website current" href="' . esc_url( wplng_get_url_original() ) . '">';
+		$html .= '<a class="wplng-language website after current" href="' . esc_url( wplng_get_url_original() ) . '">';
 	} else {
-		$html .= '<a class="wplng-language website" href="' . esc_url( wplng_get_url_original() ) . '">';
+		$html .= '<a class="wplng-language website after" href="' . esc_url( wplng_get_url_original() ) . '">';
 	}
 	if ( ! empty( $language_website['flag'] && $flags_show ) ) {
 		$html .= '<img src="' . esc_url( $language_website['flag'] ) . '" alt="' . esc_attr( $language_website['name'] ) . '">';
@@ -379,6 +379,8 @@ function wplng_get_switcher_html( $arg = array() ) {
 			break;
 		}
 	}
+
+	
 	$html .= '</div>';
 
 	$html .= '</div>';

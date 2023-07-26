@@ -172,7 +172,7 @@ function wplng_option_page_switcher() {
 								?>
 							</select>
 						</fieldset>
-						
+						<hr>
 					</td>
 				</tr>
 
@@ -188,7 +188,6 @@ function wplng_option_page_switcher() {
 							<textarea name="wplng_custom_css" id="wplng_custom_css"><?php echo get_option( 'wplng_custom_css' ); ?></textarea>
 
 						</fieldset>
-						<hr>
 					</td>
 				</tr>
 
