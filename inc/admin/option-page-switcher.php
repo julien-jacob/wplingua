@@ -77,8 +77,10 @@ function wplng_option_page_switcher() {
 								<?php
 
 								$theme_options = array(
-									'light' => __( 'Light', 'wplingua' ),
-									'dark'  => __( 'Dark', 'wplingua' ),
+									'smooth-light' => __( 'Smooth Light', 'wplingua' ),
+									'smooth-dark'  => __( 'Smooth Dark', 'wplingua' ),
+									'square-light' => __( 'Square Light', 'wplingua' ),
+									'square-dark'  => __( 'Square Dark', 'wplingua' ),
 								);
 
 								foreach ( $theme_options as $option_value => $option_name ) {
@@ -113,6 +115,7 @@ function wplng_option_page_switcher() {
 								$style_options = array(
 									'list'  => __( 'List', 'wplingua' ),
 									'block' => __( 'Block', 'wplingua' ),
+									'dropdown' => __( 'Dropdown', 'wplingua' ),
 								);
 
 								foreach ( $style_options as $option_value => $option_name ) {

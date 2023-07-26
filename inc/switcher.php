@@ -45,8 +45,10 @@ function wplng_get_switcher_insert() {
 
 function wplng_get_switcher_valid_theme() {
 	return array(
-		'light',
-		'dark',
+		'smooth-light',
+		'smooth-dark',
+		'square-light',
+		'square-dark',
 	);
 }
 
@@ -81,7 +83,7 @@ function wplng_get_switcher_theme() {
 
 function wplng_get_switcher_valid_style() {
 	return array(
-		// 'dropdown',
+		'dropdown',
 		'list',
 		'block',
 	);
@@ -208,11 +210,6 @@ function wplng_switcher_wp_footer() {
 		return;
 	}
 
-	// $class  = 'insert-auto insert-' . wplng_get_switcher_insert();
-	// $class .= ' style-' . wplng_get_switcher_style();
-	// $class .= ' theme-' . wplng_get_switcher_theme();
-	// $class .= ' title-' . wplng_get_switcher_name_format();
-
 	echo wplng_get_switcher_html(
 		array(
 			'class' => 'insert-auto',
@@ -312,37 +309,7 @@ function wplng_get_switcher_html( $arg = array() ) {
 	$html  = '<div class="' . esc_attr( 'wplng-switcher ' . $class ) . '">';
 	$html .= '<div class="switcher-content">';
 
-	// Create link for current language
-	if ( $language_website['id'] === $language_current_id ) {
-
-		$url   = wplng_get_url_current_for_language( $language_website['id'] );
-		$html .= '<a class="wplng-language wplng-language-current" href="' . esc_url( $url ) . '">';
-		if ( ! empty( $language_website['flag'] ) && $flags_show ) {
-			$html .= '<img src="' . esc_url( $language_website['flag'] ) . '" alt="' . esc_attr( $language_website['name'] ) . '">';
-		}
-		$html .= '<span class="language-id">' . esc_html( $language_website['id'] ) . '</span> ';
-		$html .= '<span class="language-name">' . esc_html( $language_website['name'] ) . '</span>';
-		$html .= '</a>';
-
-	} else {
-
-		foreach ( $languages_target as $key => $language_target ) {
-
-			if ( $language_target['id'] !== $language_current_id ) {
-				continue;
-			}
-
-			$url   = wplng_get_url_current_for_language( $language_target['id'] );
-			$html .= '<a class="wplng-language wplng-language-current" href="' . esc_url( $url ) . '">';
-			if ( ! empty( $language_website['flag'] ) && $flags_show ) {
-				$html .= '<img src="' . esc_url( $language_target['flag'] ) . '" alt="' . esc_attr( $language_target['name'] ) . '">';
-			}
-			$html .= '<span class="language-id">' . esc_html( $language_target['id'] ) . '</span> ';
-			$html .= '<span class="language-name">' . esc_html( $language_target['name'] ) . '</span>';
-			$html .= '</a>';
-			break;
-		}
-	}
+	
 
 	$html .= '<div class="wplng-languages">';
 
@@ -374,7 +341,40 @@ function wplng_get_switcher_html( $arg = array() ) {
 	}
 
 	$html .= '</div>';
+	// Create link for current language
+	if ( $language_website['id'] === $language_current_id ) {
+
+		$url   = wplng_get_url_current_for_language( $language_website['id'] );
+		$html .= '<a class="wplng-language wplng-language-current" href="' . esc_url( $url ) . '">';
+		if ( ! empty( $language_website['flag'] ) && $flags_show ) {
+			$html .= '<img src="' . esc_url( $language_website['flag'] ) . '" alt="' . esc_attr( $language_website['name'] ) . '">';
+		}
+		$html .= '<span class="language-id">' . esc_html( $language_website['id'] ) . '</span> ';
+		$html .= '<span class="language-name">' . esc_html( $language_website['name'] ) . '</span>';
+		$html .= '</a>';
+
+	} else {
+
+		foreach ( $languages_target as $key => $language_target ) {
+
+			if ( $language_target['id'] !== $language_current_id ) {
+				continue;
+			}
+
+			$url   = wplng_get_url_current_for_language( $language_target['id'] );
+			$html .= '<a class="wplng-language wplng-language-current" href="' . esc_url( $url ) . '">';
+			if ( ! empty( $language_website['flag'] ) && $flags_show ) {
+				$html .= '<img src="' . esc_url( $language_target['flag'] ) . '" alt="' . esc_attr( $language_target['name'] ) . '">';
+			}
+			$html .= '<span class="language-id">' . esc_html( $language_target['id'] ) . '</span> ';
+			$html .= '<span class="language-name">' . esc_html( $language_target['name'] ) . '</span>';
+			$html .= '</a>';
+			break;
+		}
+	}
 	$html .= '</div>';
+
+	
 	$html .= '</div>';
 
 	if ( ! empty( $arg['flags'] )

@@ -8,7 +8,7 @@
     pointer-events: none;
 
     .switcher-content {
-        border-radius: 22px;
+        // border-radius: 22px;
         padding: 2px;
         text-align: center;
         pointer-events: auto;
@@ -16,7 +16,7 @@
         .wplng-language {
             font-size: 16px;
             line-height: 16px;
-            border-radius: 22px;
+            // border-radius: 22px;
             padding: 2px 4px;
             margin: 2px;
             text-decoration: none;
@@ -75,11 +75,11 @@
 /* Themes Light */
 .wplng-switcher.theme-light {
     .switcher-content {
-        background-color: lightgray;
-        border: 2px gray solid;
+        background-color: white;
+        border: 1px solid rgba(0,0,0,.25);
 
         .wplng-language {
-            border: 2px solid gray;
+            border: 1px solid rgba(0,0,0,.25);
             color: black;
         }
     }
@@ -89,11 +89,11 @@
 /* Themes Dark */
 .wplng-switcher.theme-dark {
     .switcher-content {
-        background-color: black;
-        border: 2px gray solid;
+        background-color: #1d2327;
+        border: 1px solid rgba(256, 256, 256, .25);;
 
         .wplng-language {
-            border: 2px solid gray;
+            border: 1px solid rgba(256, 256, 256, .24);;
             color: white;
         }
     }
@@ -103,18 +103,57 @@
 /*
  * Switcher style
  */
-.wplng-switcher.style-list .wplng-language-current,
-.wplng-switcher.style-block .wplng-language-current {
-    display: none;
+.wplng-switcher {
+
+    &.style-list .wplng-language-current,
+    &.style-block .wplng-language-current {
+        display: none;
+    }
+
+    &.style-list .wplng-languages .wplng-language {
+        display: inline-block;
+    }
+
+    &.style-block .wplng-languages .wplng-language {
+        display: block;
+    }
+
+
+
+
+    &.style-dropdown {
+
+        .wplng-language {
+            display: block;
+        }
+
+        .wplng-languages {
+            height: 0;
+            overflow: hidden;
+            
+            .wplng-language.current {
+                display: none;
+            }
+            
+        }
+
+        .switcher-content:hover {
+            .wplng-languages {
+                height: auto;
+            }
+        }
+
+        .wplng-language-current {
+            background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20width%3D%2220%22%20height%3D%2220%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M5%206l5%205%205-5%202%201-7%207-7-7%202-1z%22%20fill%3D%22%23555%22%2F%3E%3C%2Fsvg%3E');
+            background-repeat: no-repeat;
+            background-position: calc(100% - 4px) center;
+            padding-right: 22px;
+        }
+
+    }
 }
 
-.wplng-switcher.style-list .wplng-languages .wplng-language {
-    display: inline-block;
-}
 
-.wplng-switcher.style-block .wplng-languages .wplng-language {
-    display: block;
-}
 
 /*
  * Name Format
