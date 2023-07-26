@@ -78,8 +78,10 @@ function wplng_option_page_switcher() {
 
 								$theme_options = array(
 									'smooth-light' => __( 'Smooth Light', 'wplingua' ),
+									'smooth-grey' => __( 'Smooth Grey', 'wplingua' ),
 									'smooth-dark'  => __( 'Smooth Dark', 'wplingua' ),
 									'square-light' => __( 'Square Light', 'wplingua' ),
+									'square-grey' => __( 'Square Grey', 'wplingua' ),
 									'square-dark'  => __( 'Square Dark', 'wplingua' ),
 								);
 

@@ -46,8 +46,10 @@ function wplng_get_switcher_insert() {
 function wplng_get_switcher_valid_theme() {
 	return array(
 		'smooth-light',
+		'smooth-grey',
 		'smooth-dark',
 		'square-light',
+		'square-grey',
 		'square-dark',
 	);
 }
