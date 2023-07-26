@@ -27,6 +27,25 @@ function wplng_option_page_switcher() {
 			do_settings_sections( 'wplng_switcher' );
 			?>
 			<table class="form-table">
+
+
+
+			
+			<tr>
+					<th scope="row"><?php _e( 'Switcher preview', 'wplingua' ); ?></th>
+					<td>
+						<div class="wplng-switcher-preview">
+							<?php
+							echo wplng_get_switcher_html( array( 'class' => 'switcher-preview' ) );
+							?>
+						</div>
+						<hr>
+					</td>
+				</tr>
+
+
+
+
 				<tr>
 					<th scope="row"><?php _e( 'Automatic insertion', 'wplingua' ); ?></th>
 					<td>
@@ -206,11 +225,11 @@ function wplng_options_switcher_update_flags_style( $old_flags_style, $new_flags
 
 	if ( $old_flags_style !== $new_flags_style ) {
 
-		if ('none' === $new_flags_style ) {
+		if ( 'none' === $new_flags_style ) {
 			$new_flags_style = 'rectangular';
 		}
 
-		if ('none' === $old_flags_style ) {
+		if ( 'none' === $old_flags_style ) {
 			$old_flags_style = 'rectangular';
 		}
 

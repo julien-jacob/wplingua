@@ -40,6 +40,10 @@ jQuery(document).ready(function ($) {
         wplngUpdateSwitcherOpening();
     });
 
+    $("#wplng_style").on("input", function() {
+        wplngUpdateSwitcherOpening();
+    });
+
     wplngUpdateSwitcherOpening();
 
 
