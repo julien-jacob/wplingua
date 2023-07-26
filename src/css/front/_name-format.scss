@@ -1,0 +1,20 @@
+/*
+ * Name Format
+ */
+ .wplng-switcher .language-name,
+ .wplng-switcher .language-id {
+     padding-right: 8px;
+     padding-left: 6px;
+     display: inline-block;
+ }
+ 
+ .wplng-switcher .language-id {
+     text-transform: uppercase;
+ }
+ 
+ .wplng-switcher.title-id .language-name,
+ .wplng-switcher.title-name .language-id,
+ .wplng-switcher.title-none .language-id,
+ .wplng-switcher.title-none .language-name {
+     display: none;
+ }

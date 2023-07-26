@@ -1,0 +1,29 @@
+/*
+ * Insert
+ */
+.wplng-switcher.insert-auto {
+    position: fixed;
+    z-index: 9999;
+    bottom: 20px;
+
+    /* Insert Bottom Right */
+    &.insert-bottom-right {
+        right: 20px;
+    }
+
+    /* Insert Bottom Left */
+    &.insert-bottom-left {
+        left: 20px;
+    }
+
+    /* Insert Bottom Center */
+    &.insert-bottom-center {
+        width: 100%;
+        text-align: center;
+
+        .switcher-content {
+            display: inline-block;
+        }
+    }
+
+}

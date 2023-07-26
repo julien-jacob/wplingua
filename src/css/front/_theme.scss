@@ -1,0 +1,95 @@
+/*
+ * Themes Light / Dark
+ */
+
+/* Themes Square Light */
+.wplng-switcher.theme-square-light {
+    .switcher-content {
+        background-color: white;
+        border: 1px solid rgba(0, 0, 0, .25);
+        border-radius: 0;
+
+        .wplng-language {
+            border: 1px solid rgba(0, 0, 0, .25);
+            color: #1d2327;
+            border-radius: 0;
+        }
+    }
+}
+
+/* Themes Square Grey */
+.wplng-switcher.theme-square-grey {
+    .switcher-content {
+        background-color: #f0f0f1;
+        border: 1px solid rgba(0, 0, 0, .25);
+        border-radius: 0;
+
+        .wplng-language {
+            border: 1px solid rgba(0, 0, 0, .25);
+            color: #1d2327;
+            border-radius: 0;
+        }
+    }
+}
+
+
+/* Themes Square Dark */
+.wplng-switcher.theme-square-dark {
+    .switcher-content {
+        background-color: #1d2327;
+        border: 1px solid rgba(256, 256, 256, .25);
+        border-radius: 0;
+
+        .wplng-language {
+            border: 1px solid rgba(256, 256, 256, .24);
+            color: white;
+            border-radius: 0;
+        }
+    }
+}
+
+
+/* Themes Smooth Light */
+.wplng-switcher.theme-smooth-light {
+    .switcher-content {
+        background-color: white;
+        border: 1px solid rgba(0, 0, 0, .25);
+        border-radius: 9px;
+
+        .wplng-language {
+            border: 1px solid rgba(0, 0, 0, .25);
+            color: #1d2327;
+            border-radius: 6px;
+        }
+    }
+}
+
+/* Themes Smooth Grey */
+.wplng-switcher.theme-smooth-grey {
+    .switcher-content {
+        background-color: #f0f0f1;
+        border: 1px solid rgba(0, 0, 0, .25);
+        border-radius: 9px;
+
+        .wplng-language {
+            border: 1px solid rgba(0, 0, 0, .25);
+            color: #1d2327;
+            border-radius: 6px;
+        }
+    }
+}
+
+/* Themes Smooth Dark */
+.wplng-switcher.theme-smooth-dark {
+    .switcher-content {
+        background-color: #1d2327;
+        border: 1px solid rgba(256, 256, 256, .25);
+        border-radius: 9px;
+
+        .wplng-language {
+            border: 1px solid rgba(256, 256, 256, .24);
+            color: white;
+            border-radius: 6px;
+        }
+    }
+}
