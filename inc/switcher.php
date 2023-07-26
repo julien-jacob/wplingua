@@ -7,10 +7,10 @@ if ( ! defined( 'WPINC' ) ) {
 
 function wplng_get_switcher_valid_insert() {
 	return array(
-		'bottom-left',
-		'bottom-right',
-		'bottom-center',
-		'none',
+		'bottom-right'  => __( 'Bottom right', 'wplingua' ),
+		'bottom-center' => __( 'Bottom center', 'wplingua' ),
+		'bottom-left'   => __( 'Bottom left', 'wplingua' ),
+		'none'          => __( 'None', 'wplingua' ),
 	);
 }
 
@@ -23,8 +23,8 @@ function wplng_get_switcher_insert() {
 
 		$valid_insert = wplng_get_switcher_valid_insert();
 
-		foreach ( $valid_insert as $key => $valid ) {
-			if ( $insert === $valid ) {
+		foreach ( $valid_insert as $id => $name ) {
+			if ( $insert === $id ) {
 				$is_valid = true;
 				break;
 			}
@@ -45,12 +45,12 @@ function wplng_get_switcher_insert() {
 
 function wplng_get_switcher_valid_theme() {
 	return array(
-		'smooth-light',
-		'smooth-grey',
-		'smooth-dark',
-		'square-light',
-		'square-grey',
-		'square-dark',
+		'smooth-light' => __( 'Smooth Light', 'wplingua' ),
+		'smooth-grey' => __( 'Smooth Grey', 'wplingua' ),
+		'smooth-dark'  => __( 'Smooth Dark', 'wplingua' ),
+		'square-light' => __( 'Square Light', 'wplingua' ),
+		'square-grey' => __( 'Square Grey', 'wplingua' ),
+		'square-dark'  => __( 'Square Dark', 'wplingua' ),
 	);
 }
 
@@ -63,8 +63,8 @@ function wplng_get_switcher_theme() {
 
 		$valid_theme = wplng_get_switcher_valid_theme();
 
-		foreach ( $valid_theme as $key => $valid ) {
-			if ( $theme === $valid ) {
+		foreach ( $valid_theme as $id => $name ) {
+			if ( $theme === $id ) {
 				$is_valid = true;
 				break;
 			}
@@ -85,9 +85,9 @@ function wplng_get_switcher_theme() {
 
 function wplng_get_switcher_valid_style() {
 	return array(
-		'dropdown',
-		'list',
-		'block',
+		'list'  => __( 'List', 'wplingua' ),
+		'block' => __( 'Block', 'wplingua' ),
+		'dropdown' => __( 'Dropdown', 'wplingua' ),
 	);
 }
 
@@ -101,8 +101,8 @@ function wplng_get_switcher_style() {
 
 		$valid_style = wplng_get_switcher_valid_style();
 
-		foreach ( $valid_style as $key => $valid ) {
-			if ( $style === $valid ) {
+		foreach ( $valid_style as $id => $name ) {
+			if ( $style === $id ) {
 				$is_valid = true;
 				break;
 			}
@@ -123,9 +123,9 @@ function wplng_get_switcher_style() {
 
 function wplng_get_switcher_valid_name_format() {
 	return array(
-		'id',
-		'name',
-		'none',
+		'name' => __( 'Complete name', 'wplingua' ),
+		'id'   => __( 'Language ID', 'wplingua' ),
+		'none' => __( 'No display', 'wplingua' ),
 	);
 }
 
@@ -139,8 +139,8 @@ function wplng_get_switcher_name_format() {
 
 		$valid_name_format = wplng_get_switcher_valid_name_format();
 
-		foreach ( $valid_name_format as $key => $valid ) {
-			if ( $name_format === $valid ) {
+		foreach ( $valid_name_format as $id => $name ) {
+			if ( $name_format === $id ) {
 				$is_valid = true;
 				break;
 			}

@@ -39,12 +39,7 @@ function wplng_option_page_switcher() {
 							<select id="wplng_insert" name="wplng_insert" class="wplng-fe-50">
 								<?php
 
-								$insert_options = array(
-									'bottom-right'  => __( 'Bottom right', 'wplingua' ),
-									'bottom-center' => __( 'Bottom center', 'wplingua' ),
-									'bottom-left'   => __( 'Bottom left', 'wplingua' ),
-									'none'          => __( 'None', 'wplingua' ),
-								);
+								$insert_options = wplng_get_switcher_valid_insert();
 
 								foreach ( $insert_options as $option_value => $option_name ) {
 									if ( $insert === $option_value ) {
@@ -76,14 +71,7 @@ function wplng_option_page_switcher() {
 							<select id="wplng_theme" name="wplng_theme" class="wplng-fe-50">
 								<?php
 
-								$theme_options = array(
-									'smooth-light' => __( 'Smooth Light', 'wplingua' ),
-									'smooth-grey' => __( 'Smooth Grey', 'wplingua' ),
-									'smooth-dark'  => __( 'Smooth Dark', 'wplingua' ),
-									'square-light' => __( 'Square Light', 'wplingua' ),
-									'square-grey' => __( 'Square Grey', 'wplingua' ),
-									'square-dark'  => __( 'Square Dark', 'wplingua' ),
-								);
+								$theme_options = wplng_get_switcher_valid_theme();
 
 								foreach ( $theme_options as $option_value => $option_name ) {
 									if ( $theme === $option_value ) {
@@ -114,11 +102,7 @@ function wplng_option_page_switcher() {
 							<select id="wplng_style" name="wplng_style" class="wplng-fe-50">
 								<?php
 
-								$style_options = array(
-									'list'  => __( 'List', 'wplingua' ),
-									'block' => __( 'Block', 'wplingua' ),
-									'dropdown' => __( 'Dropdown', 'wplingua' ),
-								);
+								$style_options = wplng_get_switcher_valid_style();
 
 								foreach ( $style_options as $option_value => $option_name ) {
 									if ( $style === $option_value ) {
@@ -144,11 +128,7 @@ function wplng_option_page_switcher() {
 							<select id="wplng_name_format" name="wplng_name_format" class="wplng-fe-50">
 								<?php
 
-								$name_format_options = array(
-									'name' => __( 'Complete name', 'wplingua' ),
-									'id'   => __( 'Language ID', 'wplingua' ),
-									'none' => __( 'No display', 'wplingua' ),
-								);
+								$name_format_options = wplng_get_switcher_valid_name_format();
 
 								foreach ( $name_format_options as $option_value => $option_name ) {
 									if ( $name_format === $option_value ) {
