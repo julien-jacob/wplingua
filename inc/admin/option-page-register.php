@@ -49,7 +49,12 @@ function wplng_option_page_register() {
 			}
 			?>
 			<div class="wplng-notice notice notice-success is-dismissible">
-				<p><?php _e( 'The API key has been correctly created and sent to the following e-mail address:', 'wplingua' ); echo $mail; ?> </p>
+				<p>
+				<?php
+				_e( 'The API key has been correctly created and sent to the following e-mail address:', 'wplingua' );
+				echo $mail;
+				?>
+				 </p>
 			</div>
 			<?php
 		}
@@ -124,7 +129,6 @@ function wplng_register_part_free_api_key() {
 	<p><?php _e( 'Get a free wpLingua API key and make your website bilingual in a minute!', 'wplingua' ); ?></p>
 	<br>
 	<br>
-
 	<fieldset>
 		<label for="wplng-website-url" class="wplng-fe-50">
 			<strong><?php _e( 'Website URL:', 'wplingua' ); ?> </strong>
@@ -175,8 +179,7 @@ function wplng_register_part_free_api_key() {
 
 function wplng_register_part_premium() {
 	?>
-	<p><strong><?php _e( 'Get more target languages and premium features:', 'wplingua' ); ?></strong></p>
-						
+	<p><strong><?php _e( 'Get more target languages and premium features:', 'wplingua' ); ?></strong></p>		
 	<p><?php _e( 'To translate your site into more languages and access premium features, visit wpLingua plans.', 'wplingua' ); ?></p>
 	<ul style="list-style: inside; padding: 0 0 0 15px;">
 		<li><?php _e( 'Multilingual Woocommerce store', 'wplingua' ); ?></li>
@@ -185,9 +188,7 @@ function wplng_register_part_premium() {
 		<li><?php _e( 'Get more target languages', 'wplingua' ); ?></li>
 	</ul>
 	<br>
-
 	<a class="button button-primary" href="#"><?php _e( 'Visit wpLingua plans', 'wplingua' ); ?></a>
-
 	<br>
 	<?php
 }

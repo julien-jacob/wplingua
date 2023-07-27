@@ -233,4 +233,3 @@ function wplng_options_switcher_update_flags_style( $old_flags_style, $new_flags
 	}
 
 }
-add_action( 'update_option_wplng_flags_style', 'wplng_options_switcher_update_flags_style', 10, 2 );

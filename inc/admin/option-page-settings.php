@@ -243,8 +243,7 @@ function wplng_settings_part_languages_target() {
 function wplng_settings_part_features() {
 
 	$api_features = wplng_get_api_feature();
-	// disabled( false, in_array( 'woocommerce', $api_features ), true );
-	// var_dump(in_array( 'woocommerce', $api_features ));
+
 	?>
 	<p><strong><?php _e( 'Translation features:', 'wplingua' ); ?></strong></p>
 	<br>

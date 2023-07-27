@@ -1,11 +1,8 @@
 /*
  * Switcher style
  */
- // Option page preview
-
 
 .wplng-switcher {
-
 
     &.style-list .wplng-language-current,
     &.style-block .wplng-language-current {
@@ -67,9 +64,6 @@
             background-position: calc(100% - 4px) center;
             padding-right: 22px;
         }
-
-
-        
 
     }
 }

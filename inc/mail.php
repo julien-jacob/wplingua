@@ -19,14 +19,14 @@ function wplng_translate_wp_mail( $args ) {
 
 	if ( strip_tags( $args['message'] ) === $args['message'] ) {
 		/**
-		 * If is text 
+		 * If is text
 		 */
 		$args['message'] = wplng_translate( $args['message'] );
 	} else {
 		/**
-		 * If is HTML 
+		 * If is HTML
 		 */
-		$args['message'] = wplng_ob_callback_translate($args['message']);
+		$args['message'] = wplng_ob_callback_translate( $args['message'] );
 	}
 
 	if ( ! empty( $args['subject'] ) ) {

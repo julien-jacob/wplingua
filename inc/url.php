@@ -9,7 +9,7 @@ if ( ! defined( 'WPINC' ) ) {
 function wplng_url_translate( $url, $language_id_target ) {
 
 	// Check if URL is an empty string
-	if ( $url == '' ) {
+	if ( '' === $url ) {
 		return '';
 	}
 

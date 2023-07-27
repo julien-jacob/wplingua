@@ -6,7 +6,6 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 
-
 function wplng_translation_add_meta_box( $post ) {
 
 	add_meta_box(
@@ -19,6 +18,7 @@ function wplng_translation_add_meta_box( $post ) {
 	);
 
 }
+
 
 function wplng_translation_meta_box_html_output( $post ) {
 
@@ -92,11 +92,6 @@ function wplng_translation_meta_box_html_output( $post ) {
 	}
 
 	echo $html;
-
-	// echo '<pre>';
-	// var_dump( json_decode($meta['wplng_translation_sr'][0], true) );
-	// echo '</pre>';
-	// return;
 }
 
 
@@ -120,7 +115,6 @@ function wplng_translation_save_meta_boxes_data( $post_id ) {
 
 		$translations = json_decode( $meta['wplng_translation_translations'][0], true );
 
-		// TODO : Revoir cette condition ? return ?
 		if ( empty( $translations ) ) {
 			$translations = array();
 		}
@@ -158,22 +152,4 @@ function wplng_translation_save_meta_boxes_data( $post_id ) {
 		);
 	}
 
-	// Récupérer meta des traduction : wplng_translation_translations
-
-	// Récupérer liste language target
-	// pour chaque laguage target
-	// 		Si $_REQUEST['wplng_translation_ LANG '] est OK
-
-	// Update post meta
-
-	// update fields
-	// if ( isset( $_REQUEST['wplng_translation_es'] ) ) {
-
-	// 	update_post_meta(
-	// 		$post_id,
-	// 		'wplng_translation_meta',
-	// 		sanitize_text_field( $_POST['wplng_translation_es'] )
-	// 	);
-
-	// }
 }

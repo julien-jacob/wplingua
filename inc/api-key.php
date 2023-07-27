@@ -34,29 +34,30 @@ function wplng_get_api_key() {
 
 function wplng_get_api_data() {
 
-	// TODO : Revoir cette fonction
-
 	if ( empty( wplng_get_api_key() ) ) {
 		return array();
 	}
 
 	$api_key_data = get_transient( 'wplng_api_key_data' );
-	$api_key_data = json_decode( $api_key_data, true );
 
-	if ( empty( $api_key_data ) 
-		|| ! wplng_is_valid_api_key_format( $api_key_data ) 
-	) {
-		$api_key_data = wplng_validate_api_key();
+	if ( ! empty( $api_key_data ) ) {
+		$api_key_data = json_decode( $api_key_data, true );
 
-		if ( empty( $api_key_data ) ) {
-			return array();
+		if ( empty( $api_key_data )
+			|| ! wplng_is_valid_api_key_format( $api_key_data )
+		) {
+			$api_key_data = wplng_validate_api_key();
+
+			if ( empty( $api_key_data ) ) {
+				return array();
+			}
+
+			set_transient(
+				'wplng_api_key_data',
+				wp_json_encode( $api_key_data ),
+				60 * 60 * 24
+			);
 		}
-
-		set_transient(
-			'wplng_api_key_data',
-			wp_json_encode( $api_key_data ),
-			60 * 60 * 24
-		);
 	}
 
 	return $api_key_data;
@@ -101,6 +102,7 @@ function wplng_get_api_languages_target() {
 	return false;
 }
 
+
 function wplng_get_api_feature() {
 
 	$data     = wplng_get_api_data();
@@ -117,6 +119,7 @@ function wplng_get_api_feature() {
 
 	return $features;
 }
+
 
 function wplng_api_feature_is_allow( $feature_name ) {
 	return in_array( $feature_name, wplng_get_api_feature() );

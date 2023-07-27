@@ -196,4 +196,3 @@ function wplng_init() {
 	}
 
 }
-

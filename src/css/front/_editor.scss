@@ -1,7 +1,7 @@
 /*
  * Style for editor
  */
- .wplng-edit-link {
+.wplng-edit-link {
     color: inherit;
     font-weight: inherit;
     font-size: inherit;
@@ -14,7 +14,6 @@
 .entry-content p>.wplng-edit-link {
     display: flex;
 }
-
 
 .wplng-edit-link::after {
     content: "\f326";

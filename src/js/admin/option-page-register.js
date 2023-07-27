@@ -22,7 +22,7 @@ jQuery(document).ready(function ($) {
      * depend #wplng-language-website 
      */
     wplngDisableLanguagesOptions();
-    $("#wplng-language-website").on("input", function(event) {
+    $("#wplng-language-website").on("input", function (event) {
         wplngDisableLanguagesOptions();
     });
 
@@ -41,9 +41,10 @@ jQuery(document).ready(function ($) {
     /**
      * Prepare data for free reister submit
      */
-    $("#wplng-get-free-api-submit").on("click", function(event) {
+    $("#wplng-get-free-api-submit").on("click", function (event) {
         wplngUpdateRegisterInput();
     });
+    
     function wplngUpdateRegisterInput() {
 
         var wplngRegisterInputSelector = "#wplng-website-url, #wplng-email, #wplng-language-website, #wplng-language-target, #wplng-accept-eula";
@@ -63,5 +64,3 @@ jQuery(document).ready(function ($) {
     }
 
 }); // End jQuery loaded event
-
-

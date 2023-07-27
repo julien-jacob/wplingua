@@ -108,10 +108,8 @@ function wplng_option_page_switcher_assets( $hook ) {
 	);
 
 	$custom_css = get_option( 'wplng_custom_css' );
+	wp_add_inline_style( 'wplingua', $custom_css );
 
-	// if ( ! empty( $custom_css ) ) {
-		wp_add_inline_style( 'wplingua', $custom_css );
-	// }
 }
 
 

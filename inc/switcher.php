@@ -5,6 +5,7 @@ if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
+
 function wplng_get_switcher_valid_insert() {
 	return array(
 		'bottom-right'  => __( 'Bottom right', 'wplingua' ),
@@ -14,15 +15,14 @@ function wplng_get_switcher_valid_insert() {
 	);
 }
 
+
 function wplng_get_switcher_insert() {
 
 	$insert   = get_option( 'wplng_insert' );
 	$is_valid = false;
 
 	if ( ! empty( $insert ) ) {
-
 		$valid_insert = wplng_get_switcher_valid_insert();
-
 		foreach ( $valid_insert as $id => $name ) {
 			if ( $insert === $id ) {
 				$is_valid = true;
@@ -43,6 +43,7 @@ function wplng_get_switcher_insert() {
 	return $insert;
 }
 
+
 function wplng_get_switcher_valid_theme() {
 	return array(
 		'smooth-light' => __( 'Smooth Light', 'wplingua' ),
@@ -53,6 +54,7 @@ function wplng_get_switcher_valid_theme() {
 		'square-dark'  => __( 'Square Dark', 'wplingua' ),
 	);
 }
+
 
 function wplng_get_switcher_theme() {
 
@@ -82,6 +84,7 @@ function wplng_get_switcher_theme() {
 
 	return $theme;
 }
+
 
 function wplng_get_switcher_valid_style() {
 	return array(
@@ -120,6 +123,7 @@ function wplng_get_switcher_style() {
 
 	return $style;
 }
+
 
 function wplng_get_switcher_valid_name_format() {
 	return array(
@@ -164,6 +168,7 @@ function wplng_get_switcher_name_format() {
 
 	return $name_format;
 }
+
 
 function wplng_get_switcher_valid_flags_style() {
 	return array(
@@ -345,7 +350,7 @@ function wplng_get_switcher_html( $arg = array() ) {
 		$url   = 'javascript:void(0);';
 		if ( $language_target['id'] === $language_current_id ) {
 			$class = ' current';
-		} elseif (!is_admin()) {
+		} elseif ( ! is_admin() ) {
 			$url = wplng_get_url_current_for_language( $language_target['id'] );
 		}
 

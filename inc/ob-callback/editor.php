@@ -6,7 +6,6 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 
-
 function wplng_ob_callback_editor( $html ) {
 
 	$translations_sidebar = array();

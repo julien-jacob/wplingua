@@ -11,14 +11,11 @@ jQuery(document).ready(function ($) {
 
             var offsetFromWindow = $(this).offset().top - $(window).scrollTop();
 
-            // wplng-language
-            
-
             if (offsetFromWindow < windowMiddle) {
                 if (!$(this).hasClass("open-bottom")) {
                     $(this).addClass("open-bottom");
                     $(this).removeClass("open-top");
-                    
+
                     var htmlLanguages = $(".wplng-languages", this).prop('outerHTML');
                     var htmlLanguagecurrent = $(".wplng-language-current", this).prop('outerHTML');
                     $(".switcher-content", this).html(htmlLanguagecurrent + htmlLanguages);
@@ -40,7 +37,7 @@ jQuery(document).ready(function ($) {
         wplngUpdateSwitcherOpening();
     });
 
-    $("#wplng_style").on("input", function() {
+    $("#wplng_style").on("input", function () {
         wplngUpdateSwitcherOpening();
     });
 

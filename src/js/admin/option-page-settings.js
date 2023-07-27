@@ -3,6 +3,7 @@ jQuery(document).ready(function ($) {
     var wplngWebsiteLanguage = $("#wplng_website_language").val();
     var wplngTargetLanguages = JSON.parse($("#wplng_target_languages").val());
 
+
     function wplngTargetLanguagesIncludes(languageId) {
 
         var returned = false;
@@ -15,6 +16,7 @@ jQuery(document).ready(function ($) {
 
         return returned;
     }
+
 
     function wplngGetOptionsWebsiteLanguageHTML() {
 
@@ -50,6 +52,7 @@ jQuery(document).ready(function ($) {
         return languagesOptionsHTML;
     }
 
+
     function wplngGetOptionstargetLanguagesHTML() {
 
         var languagesOptionsHTML = "";
@@ -58,9 +61,9 @@ jQuery(document).ready(function ($) {
         wplngAllLanguages.forEach((language) => {
             var disabled = "";
             if (
-                ( 
-                    wplngWebsiteLanguage !== undefined 
-                    && wplngWebsiteLanguage === language.id 
+                (
+                    wplngWebsiteLanguage !== undefined
+                    && wplngWebsiteLanguage === language.id
                 )
                 || wplngTargetLanguagesIncludes(language.id)
             ) {
@@ -88,7 +91,6 @@ jQuery(document).ready(function ($) {
 
         return languagesOptionsHTML;
     }
-
 
 
     function wplngGetWebsiteLanguageFlagsHTML() {
@@ -151,7 +153,6 @@ jQuery(document).ready(function ($) {
 
         return flagsRadiosHTML;
     }
-
 
 
     function wplngGetTargetLanguagesListHTML() {
@@ -226,21 +227,21 @@ jQuery(document).ready(function ($) {
 
                 if (flagCustomChecked == "") {
                     htmlElement = htmlElement.replaceAll(
-                        'class="wplng-subflag-target-custom"', 
+                        'class="wplng-subflag-target-custom"',
                         'class="wplng-subflag-target-custom hide"'
                     );
                 } else {
                     htmlElement = htmlElement.replaceAll(
-                        'class="wplng-subflag-target-custom"', 
+                        'class="wplng-subflag-target-custom"',
                         'class="wplng-subflag-target-custom show"'
                     );
                 }
-                
+
                 html += htmlElement;
             }
         });
 
-        if (html == "") {
+        if ("" == html) {
             $("#wplng-target-languages-container").hide();
         } else {
             $("#wplng-target-languages-container").show();
@@ -293,6 +294,7 @@ jQuery(document).ready(function ($) {
         }
     );
 
+
     $("#wplng_website_language").on("change", function () {
         wplngWebsiteLanguage = $("#wplng_website_language").val();
         $("#wplng_website_flag").val("");
@@ -310,12 +312,14 @@ jQuery(document).ready(function ($) {
         }
     });
 
+
     $("#wplng-target-languages-list").on("click", ".wplng-target-lang-update-flag", function () {
         var languageId = $(this).attr("wplng-target-lang");
         var selector = "#wplng-target-languages-list .wplng-flag-target-container[wplng-target-lang=" + languageId + "]";
 
         $(selector).slideToggle();
     });
+
 
     $('#wplng-target-languages-list').on("click", "input[type=radio]", function () {
 
@@ -346,6 +350,7 @@ jQuery(document).ready(function ($) {
         }
     });
 
+
     $("#wplng-target-languages-list").on("input", ".wplng-target-subflag", function () {
 
         var selectedFlagId = $(this).attr("wplng-target-lang");
@@ -367,6 +372,7 @@ jQuery(document).ready(function ($) {
         $("#wplng_target_languages").val(JSON.stringify(newTargetLanguages));
     });
 
+
     function wplngUpdateOptionPage() {
         $("#wplng_website_language").html(wplngGetOptionsWebsiteLanguageHTML());
         $("#wplng_add_new_target_language").html(wplngGetOptionstargetLanguagesHTML());
@@ -381,24 +387,25 @@ jQuery(document).ready(function ($) {
      * Show / Hide API key
      */
 
-    $("#wplng-api-key-show").click(function() {
+    $("#wplng-api-key-show").click(function () {
         $("#wplng-api-key-show").hide();
         $("#wplng-api-key-hide").show();
         $("#wplng-api-key-fake").hide();
         $("#wplng_api_key").show();
     });
 
-    $("#wplng-api-key-hide").click(function() {
+    $("#wplng-api-key-hide").click(function () {
         $("#wplng-api-key-hide").hide();
         $("#wplng-api-key-show").show();
         $("#wplng-api-key-fake").show();
         $("#wplng_api_key").hide();
     });
 
+
     /**
      * Code for first loading
      */
-    $("#wplng-first-load-iframe").load(function() {
+    $("#wplng-first-load-iframe").load(function () {
         $("#wplng-notice-first-loading-loading").hide();
         $("#wplng-notice-first-loading-loaded").show();
     });

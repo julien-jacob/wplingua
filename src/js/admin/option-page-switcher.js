@@ -110,18 +110,16 @@ jQuery(document).ready(function ($) {
      * CodeMirror CSS editor
      */
 
-    var editor = wp.codeEditor.initialize($('#wplng_custom_css'), cm_settings);
+    var editor = wp.codeEditor.initialize($("#wplng_custom_css"), cm_settings);
 
-    $(document).on('keypress', '.CodeMirror', function () {
+    $(document).on("keypress", ".CodeMirror", function () {
         $("#wplingua-inline-css").html(editor.codemirror.doc.getValue());
     });
-    $(document).on('mouseup', '.CodeMirror', function () {
+    $(document).on("mouseup", ".CodeMirror", function () {
         $("#wplingua-inline-css").html(editor.codemirror.doc.getValue());
     });
-    $(document).on('blur', '.CodeMirror', function () {
+    $(document).on("blur", ".CodeMirror", function () {
         $("#wplingua-inline-css").html(editor.codemirror.doc.getValue());
     });
-
 
 }); // End jQuery loaded event
-
