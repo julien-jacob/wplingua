@@ -1,7 +1,5 @@
 jQuery(document).ready(function ($) {
 
-    wp.codeEditor.initialize($('#wplng_custom_css'), cm_settings);
-
     function wplngSwitcherUpdateInsert(val) {
         $(".wplng-switcher")
         .removeClass("insert-bottom-right")
@@ -49,7 +47,6 @@ jQuery(document).ready(function ($) {
             $("#wplng_name_format").val("name");
             wplngSwitcherUpdateTitle("name");
         }
-
 
         $(".wplng-switcher")
             .removeClass("flags-circle")
@@ -107,6 +104,24 @@ jQuery(document).ready(function ($) {
     wplngSwitcherUpdateStyle($("#wplng_style").val());
     wplngSwitcherUpdateTitle($("#wplng_name_format").val());
     wplngSwitcherUpdateFlagsStyle($("#wplng_flags_style").val());
+    
+    
+    /**
+     * CodeMirror CSS editor
+     */
+
+    var editor = wp.codeEditor.initialize($('#wplng_custom_css'), cm_settings);
+
+    $(document).on('keypress', '.CodeMirror', function() {
+        $("#wplingua-inline-css").html(editor.codemirror.doc.getValue());
+    });
+    $(document).on('mouseup', '.CodeMirror', function() {
+        $("#wplingua-inline-css").html(editor.codemirror.doc.getValue());
+    });
+    $(document).on('blur', '.CodeMirror', function() {
+        $("#wplingua-inline-css").html(editor.codemirror.doc.getValue());
+    });
+    
 
 }); // End jQuery loaded event
 

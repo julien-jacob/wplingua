@@ -167,9 +167,9 @@ function wplng_get_switcher_name_format() {
 
 function wplng_get_switcher_valid_flags_style() {
 	return array(
-		'circle',
-		'rectangular',
-		'none',
+		'circle'      => __( 'Circle', 'wplingua' ),
+		'rectangular' => __( 'Rectangular', 'wplingua' ),
+		'none'        => __( 'No display', 'wplingua' ),
 	);
 }
 
@@ -183,8 +183,8 @@ function wplng_get_switcher_flags_style() {
 
 		$valid_flags_style = wplng_get_switcher_valid_flags_style();
 
-		foreach ( $valid_flags_style as $key => $valid ) {
-			if ( $flags_style === $valid ) {
+		foreach ( $valid_flags_style as $id => $name ) {
+			if ( $flags_style === $id ) {
 				$is_valid = true;
 				break;
 			}

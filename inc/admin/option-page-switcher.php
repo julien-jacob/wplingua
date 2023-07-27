@@ -129,11 +129,7 @@ function wplng_option_page_switcher() {
 							<select id="wplng_flags_style" name="wplng_flags_style" class="wplng-fe-50">
 								<?php
 
-								$flags_style_options = array(
-									'circle'      => __( 'Circle', 'wplingua' ),
-									'rectangular' => __( 'Rectangular', 'wplingua' ),
-									'none'        => __( 'No display', 'wplingua' ),
-								);
+								$flags_style_options = wplng_get_switcher_valid_flags_style();
 
 								foreach ( $flags_style_options as $option_value => $option_name ) {
 									if ( $flags_style === $option_value ) {
@@ -199,12 +195,8 @@ function wplng_option_page_switcher() {
 					</td>
 				</tr>
 
-				
-				
 			</table>
-			
 			<?php submit_button(); ?>
-		
 		</form>
 	</div>
 	<?php
