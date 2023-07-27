@@ -2,10 +2,10 @@ jQuery(document).ready(function ($) {
 
     function wplngSwitcherUpdateInsert(val) {
         $(".wplng-switcher")
-        .removeClass("insert-bottom-right")
-        .removeClass("insert-bottom-center")
-        .removeClass("insert-bottom-left")
-        .addClass("insert-" + val);
+            .removeClass("insert-bottom-right")
+            .removeClass("insert-bottom-center")
+            .removeClass("insert-bottom-left")
+            .addClass("insert-" + val);
     }
 
     function wplngSwitcherUpdateTheme(val) {
@@ -21,10 +21,10 @@ jQuery(document).ready(function ($) {
 
     function wplngSwitcherUpdateStyle(val) {
         $(".wplng-switcher")
-        .removeClass("style-list")
-        .removeClass("style-block")
-        .removeClass("style-dropdown")
-        .addClass("style-" + val);
+            .removeClass("style-list")
+            .removeClass("style-block")
+            .removeClass("style-dropdown")
+            .addClass("style-" + val);
     }
 
     function wplngSwitcherUpdateTitle(val) {
@@ -58,15 +58,15 @@ jQuery(document).ready(function ($) {
             var html = $(".wplng-switcher").html();
 
             html = html.replaceAll(
-                "/wplingua/assets/images/circle/", 
-                "/wplingua/assets/images/" + val + "/", 
+                "/wplingua/assets/images/circle/",
+                "/wplingua/assets/images/" + val + "/",
             );
-    
+
             html = html.replaceAll(
-                "/wplingua/assets/images/rectangular/", 
-                "/wplingua/assets/images/" + val + "/", 
+                "/wplingua/assets/images/rectangular/",
+                "/wplingua/assets/images/" + val + "/",
             );
-    
+
             $(".wplng-switcher").html(html);
         }
     }
@@ -75,23 +75,23 @@ jQuery(document).ready(function ($) {
      * Bind event
      */
 
-    $("#wplng_insert").on("input", function() {
+    $("#wplng_insert").on("input", function () {
         wplngSwitcherUpdateInsert($(this).val());
     });
 
-    $("#wplng_theme").on("input", function() {
+    $("#wplng_theme").on("input", function () {
         wplngSwitcherUpdateTheme($(this).val());
     });
 
-    $("#wplng_style").on("input", function() {
+    $("#wplng_style").on("input", function () {
         wplngSwitcherUpdateStyle($(this).val());
     });
 
-    $("#wplng_name_format").on("input", function() {
-        wplngSwitcherUpdateTitle($(this).val());        
+    $("#wplng_name_format").on("input", function () {
+        wplngSwitcherUpdateTitle($(this).val());
     });
 
-    $("#wplng_flags_style").on("input", function() {
+    $("#wplng_flags_style").on("input", function () {
         wplngSwitcherUpdateFlagsStyle($(this).val());
     });
 
@@ -104,24 +104,24 @@ jQuery(document).ready(function ($) {
     wplngSwitcherUpdateStyle($("#wplng_style").val());
     wplngSwitcherUpdateTitle($("#wplng_name_format").val());
     wplngSwitcherUpdateFlagsStyle($("#wplng_flags_style").val());
-    
-    
+
+
     /**
      * CodeMirror CSS editor
      */
 
     var editor = wp.codeEditor.initialize($('#wplng_custom_css'), cm_settings);
 
-    $(document).on('keypress', '.CodeMirror', function() {
+    $(document).on('keypress', '.CodeMirror', function () {
         $("#wplingua-inline-css").html(editor.codemirror.doc.getValue());
     });
-    $(document).on('mouseup', '.CodeMirror', function() {
+    $(document).on('mouseup', '.CodeMirror', function () {
         $("#wplingua-inline-css").html(editor.codemirror.doc.getValue());
     });
-    $(document).on('blur', '.CodeMirror', function() {
+    $(document).on('blur', '.CodeMirror', function () {
         $("#wplingua-inline-css").html(editor.codemirror.doc.getValue());
     });
-    
+
 
 }); // End jQuery loaded event
 
