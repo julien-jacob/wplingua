@@ -39,12 +39,14 @@ function wplng_translation_meta_box_html_output( $post ) {
 		$emoji         = wplng_get_language_emoji( $language_id ); // Emoji already esc_html
 		$language_name = wplng_get_language_name( $language_id ); // Name already esc_html
 
-		$html  = '<p><label for="wplng_translation_source">';
+		$html  = '<div class="wplng-original-language">';
+		$html .= '<label for="wplng_translation_source">';
 		$html .= $emoji . ' ' . $language_name . __( ' - Original text:', 'textdomain' );
-		$html .= '</label></p>';
-		$html .= '<p><strong>';
+		$html .= '</label>';
+		$html .= '<div class="wplng-source">';
 		$html .= esc_html( $meta['wplng_translation_original'][0] );
-		$html .= '</strong></p><hr>';
+		$html .= '</div>';
+		$html .= '</div>';
 
 	}
 
@@ -74,17 +76,57 @@ function wplng_translation_meta_box_html_output( $post ) {
 					$label         = $emoji . ' ' . $language_name . __( ' - Translation:', 'textdomain' );
 					$textarea      = esc_html( $translation['translation'] );
 					$name          = esc_attr( 'wplng_translation_' . $language_id );
+					$container_id  = esc_attr( 'wplng_translation_' . $language_id );
 
 					if ( '[WPLNG_EMPTY]' === $textarea ) {
 						$textarea = '';
 					}
 
-					$html .= '<p>';
-					$html .= '<label for="' . $name . '">' . $label . '</label><br>';
+					$html .= '<div id="' . $container_id . '" class="wplng-edit-language">';
+
+					$html .= '<label for="' . $name . '">' . $label . '</label>';
+
 					$html .= '<textarea name="' . $name . '" id="' . $name . '" lang="' . $language_id . '">';
 					$html .= $textarea;
 					$html .= '</textarea>';
-					$html .= '</p>';
+
+					if ( ! empty( $translation['state'] ) ) {
+						switch ( $translation['state'] ) {
+							case 'ungenerated':
+								$html .= '<span>';
+								$html .= __( 'State: Ungenerated', 'wplingua' );
+								$html .= '</span>';
+								break;
+
+							case 'generated':
+								$html .= '<span>';
+								$html .= __( 'State: Generated', 'wplingua' );
+								$html .= '</span>';
+								break;
+
+							default:
+								if ( is_int( $translation['state'] ) ) {
+									$html .= '<span>';
+									$html .= __( 'State: Edited on', 'wplingua' ) . ' ';
+									$html .= esc_html(
+										date(
+											get_option( 'date_format' ),
+											$translation['state']
+										)
+									);
+									$html .= ', ' . esc_html(
+										date(
+											get_option( 'time_format' ),
+											$translation['state']
+										)
+									);
+									$html .= '</span>';
+								}
+								break;
+						}
+					}
+
+					$html .= '</div>';
 
 				}
 			}
@@ -111,45 +153,48 @@ function wplng_translation_save_meta_boxes_data( $post_id ) {
 
 	$meta = get_post_meta( $post_id );
 
-	if ( ! empty( $meta['wplng_translation_translations'][0] ) ) {
-
-		$translations = json_decode( $meta['wplng_translation_translations'][0], true );
-
-		if ( empty( $translations ) ) {
-			$translations = array();
-		}
-
-		foreach ( $translations as $key => $translation ) {
-			if ( empty( $translation['language_id'] ) ) {
-				continue;
-			}
-
-			if ( ! wplng_is_valid_language_id( $translation['language_id'] ) ) {
-				continue;
-			}
-
-			$name = 'wplng_translation_' . $translation['language_id'];
-
-			if ( ! isset( $_REQUEST[ $name ] ) ) {
-				continue;
-			}
-
-			$temp = $_REQUEST[ $name ];
-			if ( empty( $temp ) ) {
-				$temp = '[WPLNG_EMPTY]';
-			}
-
-			$translations[ $key ]['translation'] = stripslashes( $temp );
-		}
-
-		update_post_meta(
-			$post_id,
-			'wplng_translation_translations',
-			wp_json_encode(
-				$translations,
-				JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES
-			)
-		);
+	if ( empty( $meta['wplng_translation_translations'][0] ) ) {
+		return;
 	}
+
+	$translations = json_decode( $meta['wplng_translation_translations'][0], true );
+
+	if ( empty( $translations ) ) {
+		$translations = array();
+	}
+
+	foreach ( $translations as $key => $translation ) {
+
+		if ( empty( $translation['language_id'] )
+			|| ! wplng_is_valid_language_id( $translation['language_id'] )
+		) {
+			continue;
+		}
+
+		$name = 'wplng_translation_' . $translation['language_id'];
+
+		if ( ! isset( $_REQUEST[ $name ] ) ) {
+			continue;
+		}
+
+		$temp = stripslashes( $_REQUEST[ $name ] );
+
+		if ( empty( $temp ) ) {
+			$temp = '[WPLNG_EMPTY]';
+		} elseif ( $temp !== $translation['translation'] ) {
+			$translations[ $key ]['state'] = time();
+		}
+
+		$translations[ $key ]['translation'] = $temp;
+	}
+
+	update_post_meta(
+		$post_id,
+		'wplng_translation_translations',
+		wp_json_encode(
+			$translations,
+			JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES
+		)
+	);
 
 }
