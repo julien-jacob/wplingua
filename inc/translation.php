@@ -278,6 +278,7 @@ function wplng_update_translation( $post, $language_id, $translation, $sr ) {
 				$translation_meta[ $key ] = array(
 					'language_id' => $language_id,
 					'translation' => $translation,
+					'state'       => 'generated',
 				);
 				break;
 			}
@@ -287,6 +288,7 @@ function wplng_update_translation( $post, $language_id, $translation, $sr ) {
 			$translation_meta[] = array(
 				'language_id' => $language_id,
 				'translation' => $translation,
+				'state'       => 'generated',
 			);
 		}
 
