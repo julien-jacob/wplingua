@@ -81,7 +81,7 @@ function wplng_translation_meta_box_html_output( $post ) {
 
 					$html .= '<p>';
 					$html .= '<label for="' . $name . '">' . $label . '</label><br>';
-					$html .= '<textarea name="' . $name . '" lang="' . $language_id . '" style="width:100%;">';
+					$html .= '<textarea name="' . $name . '" id="' . $name . '" lang="' . $language_id . '">';
 					$html .= $textarea;
 					$html .= '</textarea>';
 					$html .= '</p>';
