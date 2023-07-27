@@ -10,7 +10,6 @@ if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
-
 global $wplng_request_uri;
 $wplng_request_uri = $_SERVER['REQUEST_URI'];
 
@@ -85,6 +84,9 @@ function wplng_start() {
 		add_action( 'admin_enqueue_scripts', 'wplng_option_page_settings_assets' );
 		add_action( 'admin_enqueue_scripts', 'wplng_option_page_exclusions_assets' );
 		add_action( 'admin_enqueue_scripts', 'wplng_option_page_switcher_assets' );
+
+		// Update flags URL
+		add_action( 'update_option_wplng_flags_style', 'wplng_options_switcher_update_flags_style', 10, 2 );
 
 		/**
 		 * wplng_translation : CPT, taxo, meta

@@ -32,7 +32,6 @@ function wplng_translate_search_query( $query_object ) {
 }
 
 
-
 function wplng_exclude_search( $is_translatable ) {
 	return $is_translatable && ! ( is_search() || isset( $_GET['s'] ) );
 }

@@ -6,7 +6,6 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 
-
 function wplng_shortcode_notranslate( $atts, $content ) {
 
 	$attributes = shortcode_atts(
@@ -21,6 +20,7 @@ function wplng_shortcode_notranslate( $atts, $content ) {
 
 	return $html;
 }
+
 
 function wplng_shortcode_switcher( $atts ) {
 
@@ -42,6 +42,4 @@ function wplng_shortcode_switcher( $atts ) {
 	}
 
 	return wplng_get_switcher_html( $attributes );
-
 }
-

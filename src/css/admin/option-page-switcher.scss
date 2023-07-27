@@ -3,3 +3,22 @@
 .CodeMirror.CodeMirror-wrap {
     max-width: 440px;
 }
+
+.wplng-switcher-preview .wplng-switcher.switcher-preview {
+
+    position: relative;
+
+    .switcher-content {
+        display: inline-block;
+    }
+
+    &.style-dropdown {
+        height: 38px;
+
+        .switcher-content {
+            position: absolute;
+            right: auto;
+            left: auto;
+        }
+    }
+}

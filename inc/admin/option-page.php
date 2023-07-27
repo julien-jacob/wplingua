@@ -5,8 +5,8 @@ if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
- 
- function wplng_create_menu_register() {
+
+function wplng_create_menu_register() {
 
 	add_menu_page(
 		__( 'wpLingua : Register', 'wplingua' ),
@@ -15,12 +15,9 @@ if ( ! defined( 'WPINC' ) ) {
 		'wplng-settings',
 		'wplng_option_page_register',
 		'dashicons-admin-site'
-		// plugins_url( '/images/icon.png', __FILE__ )
 	);
 
 }
-
-
 
 
 function wplng_create_menu() {
@@ -32,7 +29,6 @@ function wplng_create_menu() {
 		'wplng-settings',
 		'wplng_option_page_settings',
 		'dashicons-admin-site'
-		// plugins_url( '/images/icon.png', __FILE__ )
 	);
 
 	add_submenu_page(
@@ -73,7 +69,7 @@ function wplng_register_settings() {
 	register_setting( 'wplng_settings', 'wplng_translate_woocommerce' );
 	register_setting( 'wplng_settings', 'wplng_api_key' );
 	register_setting( 'wplng_settings', 'wplng_request_free_key' );
-	
+
 	register_setting( 'wplng_exclusions', 'wplng_excluded_selectors' );
 	register_setting( 'wplng_exclusions', 'wplng_excluded_url' );
 

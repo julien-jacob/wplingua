@@ -27,41 +27,21 @@ function wplng_option_page_switcher() {
 			do_settings_sections( 'wplng_switcher' );
 			?>
 			<table class="form-table">
+			
 				<tr>
-					<th scope="row"><?php _e( 'Automatic insertion', 'wplingua' ); ?></th>
+					<th scope="row"><?php _e( 'Switcher preview', 'wplingua' ); ?></th>
 					<td>
-						<fieldset>
-
-							<label for="wplng_insert" class="wplng-fe-50">
-								<strong><?php _e( 'Switcher insert position: ', 'wplingua' ); ?></strong>
-							</label>
-							
-							<select id="wplng_insert" name="wplng_insert" class="wplng-fe-50">
-								<?php
-
-								$insert_options = wplng_get_switcher_valid_insert();
-
-								foreach ( $insert_options as $option_value => $option_name ) {
-									if ( $insert === $option_value ) {
-										echo '<option value="' . esc_attr( $option_value ) . '" selected>';
-									} else {
-										echo '<option value="' . esc_attr( $option_value ) . '">';
-									}
-									echo esc_html( $option_name );
-									echo '</option>';
-								}
-
-								?>
-							</select>
-
-						</fieldset>
-						<p><?php _e( 'Shortcode switcher: ', 'wplingua' ); ?><code>[wplingua-switcher]</code></p>
+						<div class="wplng-switcher-preview">
+							<?php
+							echo wplng_get_switcher_html( array( 'class' => 'switcher-preview' ) );
+							?>
+						</div>
 						<hr>
 					</td>
 				</tr>
 
 				<tr>
-					<th scope="row"><?php _e( 'Theme', 'wplingua' ); ?></th>
+					<th scope="row"><?php _e( 'Switcher design', 'wplingua' ); ?></th>
 					<td>
 						<fieldset>
 							<label for="wplng_theme" class="wplng-fe-50">
@@ -86,13 +66,9 @@ function wplng_option_page_switcher() {
 								?>
 							</select>
 						</fieldset>
-						<hr>
-					</td>
-				</tr>
-
-				<tr>
-					<th scope="row"><?php _e( 'Elements', 'wplingua' ); ?></th>
-					<td>
+						
+						<br>
+						
 						<fieldset>
 
 							<label for="wplng_style" class="wplng-fe-50">
@@ -153,11 +129,7 @@ function wplng_option_page_switcher() {
 							<select id="wplng_flags_style" name="wplng_flags_style" class="wplng-fe-50">
 								<?php
 
-								$flags_style_options = array(
-									'circle'      => __( 'Circle', 'wplingua' ),
-									'rectangular' => __( 'Rectangular', 'wplingua' ),
-									'none'        => __( 'No display', 'wplingua' ),
-								);
+								$flags_style_options = wplng_get_switcher_valid_flags_style();
 
 								foreach ( $flags_style_options as $option_value => $option_name ) {
 									if ( $flags_style === $option_value ) {
@@ -180,23 +152,51 @@ function wplng_option_page_switcher() {
 					<th scope="row"><?php _e( 'Custom CSS', 'wplingua' ); ?></th>
 					<td>
 						<fieldset>
-
 							<label for="wplng_custom_css">
 								<strong><?php _e( 'Set custom CSS:', 'wplingua' ); ?></strong>
 							</label>
 							<br>
 							<textarea name="wplng_custom_css" id="wplng_custom_css"><?php echo get_option( 'wplng_custom_css' ); ?></textarea>
-
 						</fieldset>
+						<hr>
 					</td>
 				</tr>
 
-				
-				
+				<tr>
+					<th scope="row"><?php _e( 'Switcher insertion', 'wplingua' ); ?></th>
+					<td>
+						<fieldset>
+
+							<label for="wplng_insert" class="wplng-fe-50">
+								<strong><?php _e( 'Automatic insert: ', 'wplingua' ); ?></strong>
+							</label>
+							
+							<select id="wplng_insert" name="wplng_insert" class="wplng-fe-50">
+								<?php
+
+								$insert_options = wplng_get_switcher_valid_insert();
+
+								foreach ( $insert_options as $option_value => $option_name ) {
+									if ( $insert === $option_value ) {
+										echo '<option value="' . esc_attr( $option_value ) . '" selected>';
+									} else {
+										echo '<option value="' . esc_attr( $option_value ) . '">';
+									}
+									echo esc_html( $option_name );
+									echo '</option>';
+								}
+
+								?>
+							</select>
+
+						</fieldset>
+						<p><?php _e( 'Shortcode switcher: ', 'wplingua' ); ?><code>[wplingua-switcher]</code></p>
+						
+					</td>
+				</tr>
+
 			</table>
-			
 			<?php submit_button(); ?>
-		
 		</form>
 	</div>
 	<?php
@@ -206,11 +206,11 @@ function wplng_options_switcher_update_flags_style( $old_flags_style, $new_flags
 
 	if ( $old_flags_style !== $new_flags_style ) {
 
-		if ('none' === $new_flags_style ) {
+		if ( 'none' === $new_flags_style ) {
 			$new_flags_style = 'rectangular';
 		}
 
-		if ('none' === $old_flags_style ) {
+		if ( 'none' === $old_flags_style ) {
 			$old_flags_style = 'rectangular';
 		}
 
@@ -233,4 +233,3 @@ function wplng_options_switcher_update_flags_style( $old_flags_style, $new_flags
 	}
 
 }
-add_action( 'update_option_wplng_flags_style', 'wplng_options_switcher_update_flags_style', 10, 2 );

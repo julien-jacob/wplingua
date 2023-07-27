@@ -5,6 +5,7 @@ if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
+
 function wplng_get_switcher_valid_insert() {
 	return array(
 		'bottom-right'  => __( 'Bottom right', 'wplingua' ),
@@ -14,15 +15,14 @@ function wplng_get_switcher_valid_insert() {
 	);
 }
 
+
 function wplng_get_switcher_insert() {
 
 	$insert   = get_option( 'wplng_insert' );
 	$is_valid = false;
 
 	if ( ! empty( $insert ) ) {
-
 		$valid_insert = wplng_get_switcher_valid_insert();
-
 		foreach ( $valid_insert as $id => $name ) {
 			if ( $insert === $id ) {
 				$is_valid = true;
@@ -43,6 +43,7 @@ function wplng_get_switcher_insert() {
 	return $insert;
 }
 
+
 function wplng_get_switcher_valid_theme() {
 	return array(
 		'smooth-light' => __( 'Smooth Light', 'wplingua' ),
@@ -53,6 +54,7 @@ function wplng_get_switcher_valid_theme() {
 		'square-dark'  => __( 'Square Dark', 'wplingua' ),
 	);
 }
+
 
 function wplng_get_switcher_theme() {
 
@@ -82,6 +84,7 @@ function wplng_get_switcher_theme() {
 
 	return $theme;
 }
+
 
 function wplng_get_switcher_valid_style() {
 	return array(
@@ -120,6 +123,7 @@ function wplng_get_switcher_style() {
 
 	return $style;
 }
+
 
 function wplng_get_switcher_valid_name_format() {
 	return array(
@@ -165,11 +169,12 @@ function wplng_get_switcher_name_format() {
 	return $name_format;
 }
 
+
 function wplng_get_switcher_valid_flags_style() {
 	return array(
-		'circle',
-		'rectangular',
-		'none',
+		'circle'      => __( 'Circle', 'wplingua' ),
+		'rectangular' => __( 'Rectangular', 'wplingua' ),
+		'none'        => __( 'No display', 'wplingua' ),
 	);
 }
 
@@ -183,8 +188,8 @@ function wplng_get_switcher_flags_style() {
 
 		$valid_flags_style = wplng_get_switcher_valid_flags_style();
 
-		foreach ( $valid_flags_style as $key => $valid ) {
-			if ( $flags_style === $valid ) {
+		foreach ( $valid_flags_style as $id => $name ) {
+			if ( $flags_style === $id ) {
 				$is_valid = true;
 				break;
 			}
@@ -291,7 +296,6 @@ function wplng_get_switcher_class( $arg = array() ) {
 }
 
 
-// $class = '', $flags_show = true
 function wplng_get_switcher_html( $arg = array() ) {
 
 	$language_website    = wplng_get_language_website();
@@ -300,7 +304,11 @@ function wplng_get_switcher_html( $arg = array() ) {
 	$class               = wplng_get_switcher_class( $arg );
 	$flags_show          = true;
 
-	if ( ! empty( $arg['flags'] ) && 'none' === $arg['flags'] ) {
+	if ( is_admin() ) {
+		$flags_show = true;
+	} elseif ( ! empty( $arg['flags'] ) && 'none' === $arg['flags'] ) {
+		$flags_show = false;
+	} elseif ( 'none' === wplng_get_switcher_flags_style() ) {
 		$flags_show = false;
 	}
 
@@ -317,10 +325,17 @@ function wplng_get_switcher_html( $arg = array() ) {
 		! empty( $language_website['id'] )
 		&& ( $language_website['id'] === $language_current_id )
 	) {
-		$html .= '<a class="wplng-language website after current" href="' . esc_url( wplng_get_url_original() ) . '">';
+		$html .= '<a class="wplng-language website after current" href="javascript:void(0);">';
 	} else {
-		$html .= '<a class="wplng-language website after" href="' . esc_url( wplng_get_url_original() ) . '">';
+		$url = '';
+		if ( is_admin() ) {
+			$url = 'javascript:void(0);';
+		} else {
+			$url = esc_url( wplng_get_url_original() );
+		}
+		$html .= '<a class="wplng-language website after" href="' . $url . '">';
 	}
+
 	if ( ! empty( $language_website['flag'] && $flags_show ) ) {
 		$html .= '<img src="' . esc_url( $language_website['flag'] ) . '" alt="' . esc_attr( $language_website['name'] ) . '">';
 	}
@@ -332,12 +347,14 @@ function wplng_get_switcher_html( $arg = array() ) {
 	foreach ( $languages_target as $key => $language_target ) {
 
 		$class = '';
+		$url   = 'javascript:void(0);';
 		if ( $language_target['id'] === $language_current_id ) {
 			$class = ' current';
+		} elseif ( ! is_admin() ) {
+			$url = wplng_get_url_current_for_language( $language_target['id'] );
 		}
 
-		$url   = wplng_get_url_current_for_language( $language_target['id'] );
-		$html .= '<a class="wplng-language' . $class . '" href="' . esc_url( $url ) . '">';
+		$html .= '<a class="wplng-language' . $class . '" href="' . $url . '">';
 		if ( ! empty( $language_website['flag'] ) && $flags_show ) {
 			$html .= '<img src="' . esc_url( $language_target['flag'] ) . '" alt="' . esc_attr( $language_target['name'] ) . '">';
 		}
@@ -351,8 +368,7 @@ function wplng_get_switcher_html( $arg = array() ) {
 	// Create link for current language
 	if ( $language_website['id'] === $language_current_id ) {
 
-		$url   = wplng_get_url_current_for_language( $language_website['id'] );
-		$html .= '<a class="wplng-language wplng-language-current" href="' . esc_url( $url ) . '">';
+		$html .= '<a class="wplng-language wplng-language-current" href="javascript:void(0);">';
 		if ( ! empty( $language_website['flag'] ) && $flags_show ) {
 			$html .= '<img src="' . esc_url( $language_website['flag'] ) . '" alt="' . esc_attr( $language_website['name'] ) . '">';
 		}
@@ -368,8 +384,7 @@ function wplng_get_switcher_html( $arg = array() ) {
 				continue;
 			}
 
-			$url   = wplng_get_url_current_for_language( $language_target['id'] );
-			$html .= '<a class="wplng-language wplng-language-current" href="' . esc_url( $url ) . '">';
+			$html .= '<a class="wplng-language wplng-language-current" href="javascript:void(0);">';
 			if ( ! empty( $language_website['flag'] ) && $flags_show ) {
 				$html .= '<img src="' . esc_url( $language_target['flag'] ) . '" alt="' . esc_attr( $language_target['name'] ) . '">';
 			}
@@ -380,7 +395,6 @@ function wplng_get_switcher_html( $arg = array() ) {
 		}
 	}
 
-	
 	$html .= '</div>';
 
 	$html .= '</div>';
