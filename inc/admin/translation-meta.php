@@ -90,13 +90,18 @@ function wplng_translation_meta_box_html_output( $post ) {
 					$html .= $textarea;
 					$html .= '</textarea>';
 
-					
+
 					if ( ! empty( $translation['state'] ) ) {
 						switch ( $translation['state'] ) {
 							case 'ungenerated':
 								$html .= '<span>';
 								$html .= __( 'State: Ungenerated', 'wplingua' );
 								$html .= '</span>';
+								
+								// TODO !!!
+								// $html .= '<a href="">';
+								// $html .= __( 'Generate automatic translation', 'wplingua' );
+								// $html .= '</a>';
 								break;
 
 							case 'generated':
@@ -107,7 +112,7 @@ function wplng_translation_meta_box_html_output( $post ) {
 
 							default:
 								if ( is_int( $translation['state'] ) ) {
-									$html .= '<span>';
+									$html .= '<span class="wplng-status">';
 									$html .= __( 'State: Edited on', 'wplingua' ) . ' ';
 									$html .= esc_html(
 										date(

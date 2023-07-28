@@ -1,3 +1,3 @@
 
 jQuery(document).ready(function($){function wplngResizeTextArea($element){$element.height(0);$element.height($element[0].scrollHeight);}
-var $wplngTextArea=$("#wplng_meta_box_translation textarea");$wplngTextArea.off("keyup.textarea").on("keyup.textarea",function(){wplngResizeTextArea($(this));});$wplngTextArea.each(function(){wplngResizeTextArea($(this));});});
+var $wplngTextArea=$("#wplng_meta_box_translation textarea");$wplngTextArea.off("keyup.textarea").on("keyup.textarea",function(){wplngResizeTextArea($(this));});$(window).resize(function(){$wplngTextArea.each(function(){wplngResizeTextArea($(this));});});$wplngTextArea.each(function(){wplngResizeTextArea($(this));});});

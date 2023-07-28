@@ -15,6 +15,12 @@ jQuery(document).ready(function ($) {
         wplngResizeTextArea($(this));
     });
 
+    $(window).resize(function(){
+        $wplngTextArea.each(function () {
+            wplngResizeTextArea($(this));
+        });
+    });
+
     $wplngTextArea.each(function () {
         wplngResizeTextArea($(this));
     });

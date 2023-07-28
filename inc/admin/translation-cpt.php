@@ -13,6 +13,9 @@ function wplng_register_post_type_translation() {
 			'labels'              => array(
 				'name'          => __( 'Translations', 'wplingua' ),
 				'singular_name' => __( 'Translation', 'wplingua' ),
+				'all_items'     => __( 'All translations', 'wplingua' ),
+				'edit_item'     => __( 'Edit translation', 'wplingua' ),
+				'menu_name'     => __( 'Translations', 'wplingua' ),
 			),
 			'public'              => false,
 			'publicly_queryable'  => false,
