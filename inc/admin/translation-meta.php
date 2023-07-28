@@ -105,6 +105,7 @@ function wplng_translation_meta_box_html_output( $post ) {
 						
 						$html .= ' - ';
 
+						$html .= '<span class="dashicons dashicons-update wplng-spin wplng-generate-spin" style="display: none;"></span> ';
 						$html .= '<a href="javascript:void(0);" class="wplng-generate" wplng-lang="' . $language_id . '">';
 						$html .= __( 'Generate translation', 'wplingua' );
 						$html .= '</a>';

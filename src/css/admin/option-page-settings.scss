@@ -1,4 +1,5 @@
 @import "../header";
+@import "../dashicons-spin";
 
 #wplng-target-language-template,
 #wplng_target_languages,
@@ -34,19 +35,4 @@
 
 .button .dashicons {
     line-height: 1.4em;
-}
-
-.dashicons.spin {
-    animation: dashicons-spin 1s infinite;
-    animation-timing-function: linear;
-}
-
-@keyframes dashicons-spin {
-    0% {
-        transform: rotate(0deg);
-    }
-
-    100% {
-        transform: rotate(360deg);
-    }
 }

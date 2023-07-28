@@ -15,7 +15,7 @@ jQuery(document).ready(function ($) {
         wplngResizeTextArea($(this));
     });
 
-    $(window).resize(function(){
+    $(window).resize(function () {
         $wplngTextArea.each(function () {
             wplngResizeTextArea($(this));
         });
@@ -29,8 +29,14 @@ jQuery(document).ready(function ($) {
      * Ajax translation
      */
 
-    $(".wplng-generate").on("click", function() {
-        
+    $(".wplng-generate-spin").hide();
+
+    $(".wplng-generate").on("click", function () {
+
+        if ("disabled" == $(this).attr("disabled")) {
+            return;
+        }
+
         var source = $("#wplng-original-language").attr("wplng-lang");
         var target = $(this).attr("wplng-lang");
         var text = $("#wplng-original-language .wplng-source").html();
@@ -39,27 +45,42 @@ jQuery(document).ready(function ($) {
             return;
         }
 
+        $(".wplng-generate").attr("disabled", true);
+        $(".wplng-generate-spin").show();
+
         $.ajax({
-            url : adminAjax.ajaxurl,
-            method : 'POST',
-            data : {
-                action : 'wplng_ajax_translation',
-                text : text,
-                language_source : source,
-                language_target : target
+            url: adminAjax.ajaxurl,
+            method: 'POST',
+            data: {
+                action: 'wplng_ajax_translation',
+                text: text,
+                language_source: source,
+                language_target: target
             },
-            success : function( data ) {
-                console.log( data );
-                if ( data.success ) {
+            success: function (data) {
+                if (data.success) {
                     var selector = "#wplng_translation_" + target;
-                    $(selector).text(data.data);
+                    $(selector).val(data.data);
+                    $(".wplng-generate-spin").hide();
+                    setTimeout(function () {
+                        $(".wplng-generate").attr("disabled", false);
+                    }, 8000);
                 } else {
-                    console.log( "wpLingua - Error" );
-                    console.log( data.data );
+                    console.log("wpLingua - Error:");
+                    console.log(data);
+                    $(".wplng-generate-spin")
+                        .removeClass("dashicons-update")
+                        .removeClass("wplng-spin")
+                        .addClass("dashicons-no");
                 }
             },
-            error : function( data ) {
-                console.log( "wpLingua - Error" );
+            error: function (data) {
+                console.log("wpLingua - Error:");
+                console.log(data);
+                $(".wplng-generate-spin")
+                    .removeClass("dashicons-update")
+                    .removeClass("wplng-spin")
+                    .addClass("dashicons-no");
             }
         });
 

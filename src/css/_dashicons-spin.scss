@@ -1,0 +1,14 @@
+.dashicons.wplng-spin {
+    animation: wplingua-dashicons-spin 1s infinite;
+    animation-timing-function: linear;
+}
+
+@keyframes wplingua-dashicons-spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
