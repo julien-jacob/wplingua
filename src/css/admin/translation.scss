@@ -31,15 +31,23 @@
             resize: none;
         }
 
-        .wplng-status {
-            color: #8c8f94;
+        .wplng-translation-footer {
 
-            transition: all .8s;
+            // color: #8c8f94;
+            color: #3c434a;
 
-            &:hover {
-                color: #3c434a;
+            .wplng-status,
+            .wplng-generate {
+                opacity: .6;
+                transition: all .8s;
+    
+                &:hover {
+                    opacity: 1;
+                }
             }
+
         }
+
 
         
     }

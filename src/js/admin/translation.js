@@ -45,8 +45,10 @@ jQuery(document).ready(function ($) {
             return;
         }
 
-        $(".wplng-generate").attr("disabled", true);
-        $(".wplng-generate-spin").show();
+        var container = "#wplng-translation-" + target;
+
+        $(container + " .wplng-generate").attr("disabled", true);
+        $(container + " .wplng-generate-spin").show();
 
         $.ajax({
             url: adminAjax.ajaxurl,
@@ -59,16 +61,16 @@ jQuery(document).ready(function ($) {
             },
             success: function (data) {
                 if (data.success) {
-                    var selector = "#wplng_translation_" + target;
-                    $(selector).val(data.data);
-                    $(".wplng-generate-spin").hide();
+                    var textarea = "#wplng_translation_" + target;
+                    $(textarea).val(data.data);
+                    $(container + " .wplng-generate-spin").hide();
                     setTimeout(function () {
-                        $(".wplng-generate").attr("disabled", false);
+                        $(container + " .wplng-generate").attr("disabled", false);
                     }, 8000);
                 } else {
                     console.log("wpLingua - Error:");
                     console.log(data);
-                    $(".wplng-generate-spin")
+                    $(container + " .wplng-generate-spin")
                         .removeClass("dashicons-update")
                         .removeClass("wplng-spin")
                         .addClass("dashicons-no");
@@ -77,7 +79,7 @@ jQuery(document).ready(function ($) {
             error: function (data) {
                 console.log("wpLingua - Error:");
                 console.log(data);
-                $(".wplng-generate-spin")
+                $(container + " .wplng-generate-spin")
                     .removeClass("dashicons-update")
                     .removeClass("wplng-spin")
                     .addClass("dashicons-no");
