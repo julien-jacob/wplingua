@@ -91,11 +91,11 @@ function wplng_translation_meta_box_html_output( $post ) {
 					$html .= '</textarea>';
 
 
-					if ( ! empty( $translation['state'] ) ) {
-						switch ( $translation['state'] ) {
+					if ( ! empty( $translation['status'] ) ) {
+						switch ( $translation['status'] ) {
 							case 'ungenerated':
 								$html .= '<span>';
-								$html .= __( 'State: Ungenerated', 'wplingua' );
+								$html .= __( 'Status: Ungenerated', 'wplingua' );
 								$html .= '</span>';
 								
 								// TODO !!!
@@ -106,24 +106,24 @@ function wplng_translation_meta_box_html_output( $post ) {
 
 							case 'generated':
 								$html .= '<span>';
-								$html .= __( 'State: Generated', 'wplingua' );
+								$html .= __( 'Status: Generated', 'wplingua' );
 								$html .= '</span>';
 								break;
 
 							default:
-								if ( is_int( $translation['state'] ) ) {
+								if ( is_int( $translation['status'] ) ) {
 									$html .= '<span class="wplng-status">';
-									$html .= __( 'State: Edited on', 'wplingua' ) . ' ';
+									$html .= __( 'Status: Edited on', 'wplingua' ) . ' ';
 									$html .= esc_html(
 										date(
 											get_option( 'date_format' ),
-											$translation['state']
+											$translation['status']
 										)
 									);
 									$html .= ', ' . esc_html(
 										date(
 											get_option( 'time_format' ),
-											$translation['state']
+											$translation['status']
 										)
 									);
 									$html .= '</span>';
@@ -188,7 +188,7 @@ function wplng_translation_save_meta_boxes_data( $post_id ) {
 		if ( empty( $temp ) ) {
 			$temp = '[WPLNG_EMPTY]';
 		} elseif ( $temp !== $translation['translation'] ) {
-			$translations[ $key ]['state'] = time();
+			$translations[ $key ]['status'] = time();
 		}
 
 		$translations[ $key ]['translation'] = $temp;
