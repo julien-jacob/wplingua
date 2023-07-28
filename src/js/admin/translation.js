@@ -25,4 +25,44 @@ jQuery(document).ready(function ($) {
         wplngResizeTextArea($(this));
     });
 
+    /**
+     * Ajax translation
+     */
+
+    $(".wplng-generate").on("click", function() {
+        
+        var source = $("#wplng-original-language").attr("wplng-lang");
+        var target = $(this).attr("wplng-lang");
+        var text = $("#wplng-original-language .wplng-source").html();
+
+        if (undefined == source || undefined == target || undefined == text) {
+            return;
+        }
+
+        $.ajax({
+            url : adminAjax.ajaxurl,
+            method : 'POST',
+            data : {
+                action : 'wplng_ajax_translation',
+                text : text,
+                language_source : source,
+                language_target : target
+            },
+            success : function( data ) {
+                console.log( data );
+                if ( data.success ) {
+                    var selector = "#wplng_translation_" + target;
+                    $(selector).text(data.data);
+                } else {
+                    console.log( "wpLingua - Error" );
+                    console.log( data.data );
+                }
+            },
+            error : function( data ) {
+                console.log( "wpLingua - Error" );
+            }
+        });
+
+    });
+
 }); // End jQuery loaded event
