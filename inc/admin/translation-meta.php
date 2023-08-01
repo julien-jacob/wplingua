@@ -212,8 +212,7 @@ function wplng_translation_save_meta_boxes_data( $post_id ) {
 
 }
 
-add_action( 'wp_ajax_wplng_ajax_translation', 'wplng_ajax_generate_translation' );
-// add_action( 'wp_ajax_nopriv_wplng_ajax_translation', 'wplng_ajax_generate_translation' );
+
 function wplng_ajax_generate_translation() {
 
 	if ( ! empty( $_POST['language_source'] )

@@ -108,6 +108,10 @@ function wplng_start() {
 		// Remove Quick edit from translations list
 		add_filter( 'post_row_actions', 'wplng_translation_remove_quick_edit', 10, 2 );
 
+		// Ajax function for regenerate translation on edit page
+		add_action( 'wp_ajax_wplng_ajax_translation', 'wplng_ajax_generate_translation' );
+		// add_action( 'wp_ajax_nopriv_wplng_ajax_translation', 'wplng_ajax_generate_translation' );
+
 		/**
 		 * Front
 		 */
