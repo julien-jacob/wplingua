@@ -36,7 +36,6 @@ function wplng_option_page_switcher() {
 							echo wplng_get_switcher_html( array( 'class' => 'switcher-preview' ) );
 							?>
 						</div>
-						<hr>
 					</td>
 				</tr>
 
@@ -144,7 +143,6 @@ function wplng_option_page_switcher() {
 								?>
 							</select>
 						</fieldset>
-						<hr>
 					</td>
 				</tr>
 
@@ -155,10 +153,8 @@ function wplng_option_page_switcher() {
 							<label for="wplng_custom_css">
 								<strong><?php _e( 'Set custom CSS:', 'wplingua' ); ?></strong>
 							</label>
-							<br>
 							<textarea name="wplng_custom_css" id="wplng_custom_css"><?php echo get_option( 'wplng_custom_css' ); ?></textarea>
 						</fieldset>
-						<hr>
 					</td>
 				</tr>
 
@@ -190,7 +186,11 @@ function wplng_option_page_switcher() {
 							</select>
 
 						</fieldset>
-						<p><?php _e( 'Shortcode switcher: ', 'wplingua' ); ?><code>[wplingua-switcher]</code></p>
+						<br>
+						<p>
+							<strong class="wplng-fe-50"><?php _e( 'Shortcode switcher: ', 'wplingua' ); ?></strong>
+							<code class="wplng-fe-50">[wplingua-switcher]</code>
+						</p>
 						
 					</td>
 				</tr>

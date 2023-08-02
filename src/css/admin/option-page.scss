@@ -1,8 +1,9 @@
 @import "../header";
 
 .wplng-fe-50 {
-    min-width: 220px;
-    max-width: 100%;
+    min-width: 49%;
+    // max-width: 100%;
+    display: inline-block;
 }
 
 h1 .dashicons {
@@ -12,10 +13,18 @@ h1 .dashicons {
     height: 1.1em;
 }
 
+.wplng-icon-button {
+    width: 45px;
+    text-align: center;
+
+    .dashicons {
+        line-height: 1.4em;
+    }
+}
+
 #wpbody label {
     vertical-align: baseline;
 }
-
 
 .notice {
 
@@ -26,15 +35,30 @@ h1 .dashicons {
     }
 }
 
-#wplng-api-key-fake,
-#wplng_api_key {
-    max-width: 100%;
-    width: 26em;
-}
+.wplng-form-table {
 
-.form-table {
+    border-collapse: initial;
 
-    .button {
-        vertical-align: bottom;
+    * {
+        box-sizing: border-box;
     }
+
+    td {
+
+        .button {
+            vertical-align: bottom;
+        }
+    
+        p {
+            padding-bottom: 8px;
+        }
+
+        padding: 15px;
+        background-color: #f6f7f7;
+        display: block;
+        margin-bottom: 25px;
+        border: 1px solid #c3c4c7;
+        max-width: 520px;
+    }
+
 }

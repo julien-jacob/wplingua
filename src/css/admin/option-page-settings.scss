@@ -14,17 +14,20 @@
     margin-top: 15px;
 }
 
+#wplng_add_new_target_language {
+    width: calc(50% - 55px);
+}
+
 #wplng-target-languages-list {
 
-    padding-top: 5px;
 
     .wplng-target-language {
         border: 1px solid #8c8f94;
-        padding: 5px 5px 8px;
+        padding: 5px 10px 8px 6px;
         margin-top: 10px;
         background-color: white;
         border-radius: 3px;
-        max-width: 410px;
+        // max-width: 100%;
     
         .wplng-target-language-displayed {
     
@@ -75,6 +78,9 @@
     width: auto;
 }
 
-.button .dashicons {
-    line-height: 1.4em;
+
+#wplng-api-key-fake,
+#wplng_api_key {
+    width: calc(100% - 55px);
+    // width: 26em;
 }
