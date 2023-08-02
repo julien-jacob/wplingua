@@ -19,7 +19,7 @@ function wplng_option_page_exclusions() {
 			settings_fields( 'wplng_exclusions' );
 			do_settings_sections( 'wplng_exclusions' );
 			?>
-			<table class="form-table">
+			<table class="form-table wplng-form-table">
 				<tr>
 					<th scope="row"><?php _e( 'Exclude elements', 'wplingua' ); ?></th>
 					<td>

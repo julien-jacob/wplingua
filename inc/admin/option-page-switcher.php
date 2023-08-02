@@ -26,7 +26,7 @@ function wplng_option_page_switcher() {
 			settings_fields( 'wplng_switcher' );
 			do_settings_sections( 'wplng_switcher' );
 			?>
-			<table class="form-table">
+			<table class="form-table wplng-form-table">
 			
 				<tr>
 					<th scope="row"><?php _e( 'Switcher preview', 'wplingua' ); ?></th>

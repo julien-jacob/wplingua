@@ -35,7 +35,7 @@ function wplng_option_page_settings() {
 			do_settings_sections( 'wplng_settings' );
 			?>
 			
-			<table class="form-table">
+			<table class="form-table wplng-form-table">
 				<tr>
 					<th scope="row"><?php _e( 'Website language', 'wplingua' ); ?></th>
 					<td>
@@ -160,19 +160,20 @@ function wplng_settings_part_language_website() {
 
 	if ( 'all' !== $api_language_website ) {
 		// $website_language_saved = ' disabled';
+		echo '<p>';
 		echo '<strong>';
 		echo __( 'Original website language, defined by API key:', 'wplingua' );
 		echo ' </strong>';
 		echo wplng_get_language_name( $api_language_website );
+		echo ' </p>';
 	}
 	?>
 	
 	<br>
-	<br>
 
 	<div id="wplng-flags-radio-original-website-custom"><?php _e( 'Custom', 'wplingua' ); ?></div>
 
-	<strong><?php _e( 'Original website flag: ', 'wplingua' ); ?></strong>
+	<strong><?php _e( 'Flag:', 'wplingua' ); ?></strong>
 	<span id="wplng-flags-radio-original-website"></span>
 
 	<br>
@@ -206,35 +207,52 @@ function wplng_settings_part_languages_target() {
 		<label for="wplng_add_new_target_language">
 			<strong><?php _e( 'Add new target Language: ', 'wplingua' ); ?></strong>
 		</label>							
-
+		
 		<select id="wplng_add_new_target_language" name="wplng_add_new_target_language"></select>
 
-		<a class="button button-primary" id="wplng-target-lang-add" href="javascript:void(0);"><?php _e( 'Add', 'wplingua' ); ?></a>
-		<hr>
+		<a class="button button-primary" id="wplng-target-lang-add" href="javascript:void(0);">
+			<?php _e( 'Add', 'wplingua' ); ?>
+		</a>
+
+		<br>
 		<br>
 	</fieldset>
 
 	<div id="wplng-target-language-template">
 		<div class="wplng-target-language">
-			[FLAG][NAME] - <a href="javascript:void(0);" class="wplng-target-lang-update-flag" wplng-target-lang="[LANG]"><?php _e( 'Edit flag', 'wplingua' ); ?></a> - <a href="javascript:void(0);" class="wplng-target-lang-remove" wplng-target-lang="[LANG]"><?php _e( 'Remove', 'wplingua' ); ?></a>
+
+			<div class="wplng-target-language-displayed">
+				<div class="wplng-target-language-left">
+					[FLAG][NAME]
+				</div>
+
+				<div class="wplng-target-language-right">
+					<a href="javascript:void(0);" class="wplng-target-lang-update-flag" wplng-target-lang="[LANG]"><?php _e( 'Edit flag', 'wplingua' ); ?></a>
+					<a href="javascript:void(0);" class="wplng-target-lang-remove" wplng-target-lang="[LANG]"><?php _e( 'Remove', 'wplingua' ); ?></a>
+				</div>
+			</div>
+
+			
+			
+			
+			
 			<div class="wplng-flag-target-container" wplng-target-lang="[LANG]">
-				<br>
-				<span><?php _e( 'Flag: ', 'wplingua' ); ?></span>
+				<strong><?php _e( 'Flag: ', 'wplingua' ); ?></strong>
 				<span class="wplng-subflags-radio-target-website">[FLAGS_OPTIONS]</span>
 				<div class="wplng-subflag-target-custom" wplng-target-lang="[LANG]">
 					<?php _e( 'Custom flag URL : ', 'wplingua' ); ?>
 					[INPUT]
 				</div>
 			</div>
-			<hr>
 		</div>
 	</div>
 
 	<div id="wplng-target-languages-container">
 		<p><strong><?php _e( 'Current target languages: ', 'wplingua' ); ?></strong></p>
-		<hr>
 		<div id="wplng-target-languages-list"></div>
 		<textarea name="wplng_target_languages" id="wplng_target_languages"><?php echo esc_textarea( json_encode( $languages_target, true ) ); ?></textarea>
+		<br>
+		<hr>
 	</div>
 	<?php
 }
@@ -264,6 +282,8 @@ function wplng_settings_part_features() {
 			<input type="checkbox" id="wplng_translate_woocommerce" name="wplng_translate_woocommerce" value="1" <?php checked( 1, get_option( 'wplng_translate_woocommerce' ) && in_array( 'woocommerce', $api_features ), true ); ?>  <?php disabled( false, in_array( 'woocommerce', $api_features ), true ); ?>/> <?php _e( 'Premium: Translate Woocommerce shop', 'wplingua' ); ?>
 		</label>
 	</fieldset>
+	<br>
+	<hr>
 	<?php
 }
 

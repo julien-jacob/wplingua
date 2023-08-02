@@ -218,7 +218,7 @@ jQuery(document).ready(function ($) {
                 htmlElement = htmlElement.replaceAll("[NAME]", language.name);
                 htmlElement = htmlElement.replaceAll("[LANG]", language.id);
                 var htmlFlag =
-                    '<img src="' + targetFlagUrl + '" class="wplng-target-language">';
+                    '<img src="' + targetFlagUrl + '" class="wplng-target-flag">';
                 htmlElement = htmlElement.replaceAll("[FLAG]", htmlFlag);
                 htmlElement = htmlElement.replaceAll("[FLAGS_OPTIONS]", flagsRadiosHTML);
 
