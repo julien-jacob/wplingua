@@ -16,16 +16,25 @@ h1 .dashicons {
     vertical-align: baseline;
 }
 
+
+.notice {
+
+    display: none;
+
+    &.wplng-notice {
+        display: block;
+    }
+}
+
 #wplng-api-key-fake,
 #wplng_api_key {
     max-width: 100%;
     width: 26em;
 }
 
-notice {
-    display: none;
-}
+.form-table {
 
-.notice.wplng-notice {
-    display: block;
+    .button {
+        vertical-align: bottom;
+    }
 }

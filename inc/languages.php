@@ -325,7 +325,7 @@ function wplng_get_languages_data() {
 					'emoji' => '🇬🇧',
 				),
 				array(
-					'name'  => __( 'United States', 'wplingua' ),
+					'name'  => __( 'USA', 'wplingua' ),
 					'id'    => 'us',
 					'flag'  => 'us',
 					'emoji' => '🇺🇸',

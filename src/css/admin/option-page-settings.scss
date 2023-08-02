@@ -1,4 +1,5 @@
 @import "../header";
+@import "../dashicons-spin";
 
 #wplng-target-language-template,
 #wplng_target_languages,
@@ -13,12 +14,54 @@
     margin-top: 15px;
 }
 
-.wplng-target-language img.wplng-target-language,
+#wplng-target-languages-list {
+
+    padding-top: 5px;
+
+    .wplng-target-language {
+        border: 1px solid #8c8f94;
+        padding: 5px 5px 8px;
+        margin-top: 10px;
+        background-color: white;
+        border-radius: 3px;
+        max-width: 410px;
+    
+        .wplng-target-language-displayed {
+    
+            display: flex;
+            justify-content: space-between;
+    
+            .wplng-target-lang-remove {
+    
+                &::before {
+                    content: "|";
+                    display: inline;
+                    color: #8c8f94;
+                    text-decoration: none;
+                    margin-right: 5px;
+                    font-weight: lighter;
+                }
+            }
+        
+        }
+    
+        .wplng-flag-target-container {
+            
+            text-align: center;
+            border-top: 1px solid lightgray;
+            padding: 10px 0 6px;
+            margin-top: 8px;
+        }
+    }
+}
+
+.wplng-target-language img.wplng-target-flag,
 .wplng-flags-radio img,
 .wplng-subflags-radio img {
     width: 20px;
     height: 20px;
     margin-bottom: -6px;
+    filter: drop-shadow(0 0 2px rgba(0, 0, 0, .2));
 }
 
 .wplng-flags-radio,
@@ -27,26 +70,11 @@
     display: inline-block;
 }
 
-.wplng-target-language {
-    padding-right: 15px;
+.wplng-target-flag {
+    padding-right: 5px;
     width: auto;
 }
 
 .button .dashicons {
     line-height: 1.4em;
-}
-
-.dashicons.spin {
-    animation: dashicons-spin 1s infinite;
-    animation-timing-function: linear;
-}
-
-@keyframes dashicons-spin {
-    0% {
-        transform: rotate(0deg);
-    }
-
-    100% {
-        transform: rotate(360deg);
-    }
 }

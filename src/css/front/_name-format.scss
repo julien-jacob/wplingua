@@ -6,16 +6,16 @@
 
     .language-name,
     .language-id {
-        padding-right: 8px;
-        padding-left: 6px;
         display: inline-block;
         line-height: normal;
-        vertical-align: top;
+        vertical-align: super;
+        margin-right: 6px;
     }
 
     .language-id {
         text-transform: uppercase;
     }
+
 }
 
 .wplng-switcher.title-id .language-name,

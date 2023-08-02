@@ -152,6 +152,14 @@ function wplng_translation_assets() {
 			array( 'jquery' )
 		);
 
+		wp_localize_script( 
+			'wplingua-translation', 
+			'adminAjax', 
+			array(
+				'ajaxurl' => admin_url( 'admin-ajax.php' )
+			)
+		);
+
 		wp_enqueue_style(
 			'wplingua-translation',
 			plugins_url() . '/wplingua/assets/css/admin/translation.css'

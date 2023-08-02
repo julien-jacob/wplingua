@@ -68,7 +68,7 @@ function wplng_option_page_register() {
 			settings_fields( 'wplng_settings' );
 			do_settings_sections( 'wplng_settings' );
 			?>
-			<table class="form-table">
+			<table class="form-table wplng-form-table">
 				<tr>
 					<th scope="row"><?php _e( 'API Key', 'wplingua' ); ?></th>
 					<td>
