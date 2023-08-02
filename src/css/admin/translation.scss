@@ -33,11 +33,17 @@
 
         .wplng-translation-footer {
 
-            // color: #8c8f94;
             color: #3c434a;
+            display: flex;
+            justify-content: space-between;
+
+            a:focus {
+                box-shadow: none;
+            }
 
             .wplng-status,
             .wplng-generate {
+                
                 opacity: .6;
                 transition: all .8s;
     
@@ -50,5 +56,15 @@
 
 
         
+    }
+}
+
+@media only screen and (max-width: 850px) {
+    #wplng_meta_box_translation {
+        .wplng-edit-language {
+            .wplng-translation-footer {
+                display: block;
+            }
+        }
     }
 }

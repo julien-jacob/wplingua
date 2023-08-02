@@ -95,6 +95,7 @@ function wplng_translation_meta_box_html_output( $post ) {
 				}
 
 				$html .= '<div class="wplng-translation-footer">';
+				$html .= '<div class="wplng-translation-footer-left">';
 
 				switch ( $translation['status'] ) {
 					case 'ungenerated':
@@ -133,13 +134,16 @@ function wplng_translation_meta_box_html_output( $post ) {
 						}
 						break;
 				}
+				$html .= '</div>'; // End .wplng-translation-footer-right
 
-				$html .= ' - <span class="dashicons dashicons-update wplng-spin wplng-generate-spin" style="display: none;"></span> ';
+				$html .= '<div class="wplng-translation-footer-right">';
 
+				$html .= '<span class="dashicons dashicons-update wplng-spin wplng-generate-spin" style="display: none;"></span> ';
 				$html .= '<a href="javascript:void(0);" class="wplng-generate" wplng-lang="' . $language_id . '">';
 				$html .= $generate_link_text;
 				$html .= '</a>';
 
+				$html .= '</div>'; // End .wplng-translation-footer-right
 				$html .= '</div>'; // End .wplng-translation-footer
 				$html .= '</div>'; // End .wplng-edit-language
 			}
