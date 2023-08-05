@@ -67,3 +67,48 @@ h1 .dashicons {
     }
 
 }
+
+@media screen and (max-width: 782px) {
+
+    #wpbody-content {
+        h1 {
+            text-align: center;
+        }
+    }
+
+    .wplng-form-table {
+
+        th, 
+        td {
+            max-width: 520px;
+            margin-right: auto;
+            margin-left: auto;
+        }
+            
+        th {
+            padding: 25px 0 20px;
+            font-size: 1.2em;
+        }
+    
+        td {
+            .button.wplng-icon-button {
+                vertical-align: top;
+                padding: 0;
+        
+                .dashicons {
+                    vertical-align: middle;
+                    line-height: .8em;
+                }
+            }
+        }
+    }
+
+    #submit {
+        max-width: 520px;
+        margin-left: auto;
+        margin-right: auto;
+        width: 100%;
+        display: block;
+    }
+
+}
