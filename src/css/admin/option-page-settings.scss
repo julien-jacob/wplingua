@@ -14,17 +14,20 @@
     margin-top: 15px;
 }
 
+#wplng_add_new_target_language {
+    width: calc(50% - 55px);
+}
+
 #wplng-target-languages-list {
 
-    padding-top: 5px;
 
     .wplng-target-language {
         border: 1px solid #8c8f94;
-        padding: 5px 5px 8px;
+        padding: 5px 10px 8px 6px;
         margin-top: 10px;
         background-color: white;
         border-radius: 3px;
-        max-width: 410px;
+        // max-width: 100%;
     
         .wplng-target-language-displayed {
     
@@ -58,6 +61,7 @@
 .wplng-target-language img.wplng-target-flag,
 .wplng-flags-radio img,
 .wplng-subflags-radio img {
+    box-sizing: content-box;
     width: 20px;
     height: 20px;
     margin-bottom: -6px;
@@ -71,10 +75,40 @@
 }
 
 .wplng-target-flag {
-    padding-right: 5px;
+    padding-right: 7px;
     width: auto;
 }
 
-.button .dashicons {
-    line-height: 1.4em;
+
+#wplng-api-key-fake,
+#wplng_api_key {
+    width: calc(100% - 55px);
+    // width: 26em;
+}
+
+@media screen and (max-width: 782px) {
+
+    .wplng-form-table {
+
+        #wplng-api-key-fake,
+        #wplng_api_key,
+        #wplng_add_new_target_language {
+            width: calc(100% - 55px);
+            max-width: calc(100% - 55px);
+            display: inline-block;
+        }
+
+        #wplng-flags-radio-original-website,
+        .wplng-subflags-radio-target-website {
+            line-height: 2.5em;
+        }
+
+        #wplng-target-languages-list {
+            .wplng-target-language {
+                padding: 15px 15px 18px 10px;
+            }
+        }
+    }
+
+    
 }

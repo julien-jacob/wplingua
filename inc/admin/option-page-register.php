@@ -114,8 +114,6 @@ function wplng_register_part_api_key( $api_key ) {
 		);
 		?>
 	</fieldset>
-	<br>
-	<hr>
 	<?php
 }
 
@@ -167,13 +165,9 @@ function wplng_register_part_free_api_key() {
 		<p><?php _e( 'Website Locale:', 'wplingua' ); ?> <span id="wplng-website-locale"><?php echo esc_html( $website_locale ); ?></span></p>
 		<textarea name="wplng_request_free_key" id="wplng_request_free_key"></textarea>
 	</fieldset>
-	<br>
 	<button id="wplng-get-free-api-submit" class="button button-primary">
 		<?php _e( 'Get a free API key', 'wplingua' ); ?>
 	</button>
-	<br>
-	<br>
-	<hr>
 	<?php
 }
 
@@ -187,8 +181,6 @@ function wplng_register_part_premium() {
 		<li><?php _e( 'Allow search from all languages', 'wplingua' ); ?></li>
 		<li><?php _e( 'Get more target languages', 'wplingua' ); ?></li>
 	</ul>
-	<br>
 	<a class="button button-primary" href="#"><?php _e( 'Visit wpLingua plans', 'wplingua' ); ?></a>
-	<br>
 	<?php
 }

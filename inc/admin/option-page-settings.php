@@ -168,23 +168,18 @@ function wplng_settings_part_language_website() {
 		echo ' </p>';
 	}
 	?>
-	
-	<br>
 
 	<div id="wplng-flags-radio-original-website-custom"><?php _e( 'Custom', 'wplingua' ); ?></div>
 
-	<strong><?php _e( 'Flag:', 'wplingua' ); ?></strong>
-	<span id="wplng-flags-radio-original-website"></span>
-
-	<br>
-	<br>
+	<p>
+		<strong><?php _e( 'Flag:', 'wplingua' ); ?></strong>
+		<span id="wplng-flags-radio-original-website"></span>
+	</p>
 
 	<div id="wplng-website-flag-container">
-		<?php _e( 'Custom flag URL : ', 'wplingua' ); ?>
+		<strong><?php _e( 'Custom flag URL : ', 'wplingua' ); ?></strong>
 		<input type="url" name="wplng_website_flag" id="wplng_website_flag" value="<?php echo esc_url( wplng_get_language_website_flag() ); ?>" />
 	</div>
-
-	<hr>
 	<?php
 }
 
@@ -204,17 +199,16 @@ function wplng_settings_part_languages_target() {
 
 	?>
 	<fieldset id="fieldset-add-target-language">
-		<label for="wplng_add_new_target_language">
+		<label for="wplng_add_new_target_language" class="wplng-fe-50">
 			<strong><?php _e( 'Add new target Language: ', 'wplingua' ); ?></strong>
 		</label>							
 		
 		<select id="wplng_add_new_target_language" name="wplng_add_new_target_language"></select>
 
-		<a class="button button-primary" id="wplng-target-lang-add" href="javascript:void(0);">
-			<?php _e( 'Add', 'wplingua' ); ?>
+		<a class="button button-primary wplng-icon-button" id="wplng-target-lang-add" title="<?php _e( 'Add language', 'wplingua' ); ?>" href="javascript:void(0);">
+			<span class="dashicons dashicons-insert"></span>
 		</a>
 
-		<br>
 		<br>
 	</fieldset>
 
@@ -231,16 +225,14 @@ function wplng_settings_part_languages_target() {
 					<a href="javascript:void(0);" class="wplng-target-lang-remove" wplng-target-lang="[LANG]"><?php _e( 'Remove', 'wplingua' ); ?></a>
 				</div>
 			</div>
-
-			
-			
-			
 			
 			<div class="wplng-flag-target-container" wplng-target-lang="[LANG]">
-				<strong><?php _e( 'Flag: ', 'wplingua' ); ?></strong>
-				<span class="wplng-subflags-radio-target-website">[FLAGS_OPTIONS]</span>
+				<p>
+					<strong><?php _e( 'Flag: ', 'wplingua' ); ?></strong>
+					<span class="wplng-subflags-radio-target-website">[FLAGS_OPTIONS]</span>
+				</p>
 				<div class="wplng-subflag-target-custom" wplng-target-lang="[LANG]">
-					<?php _e( 'Custom flag URL : ', 'wplingua' ); ?>
+					<strong><?php _e( 'Custom flag URL : ', 'wplingua' ); ?></strong>
 					[INPUT]
 				</div>
 			</div>
@@ -251,8 +243,7 @@ function wplng_settings_part_languages_target() {
 		<p><strong><?php _e( 'Current target languages: ', 'wplingua' ); ?></strong></p>
 		<div id="wplng-target-languages-list"></div>
 		<textarea name="wplng_target_languages" id="wplng_target_languages"><?php echo esc_textarea( json_encode( $languages_target, true ) ); ?></textarea>
-		<br>
-		<hr>
+
 	</div>
 	<?php
 }
@@ -264,7 +255,7 @@ function wplng_settings_part_features() {
 
 	?>
 	<p><strong><?php _e( 'Translation features:', 'wplingua' ); ?></strong></p>
-	<br>
+	
 	<fieldset>
 		<label for="wplng_translate_mail">
 			<input type="checkbox" id="wplng_translate_mail" name="wplng_translate_mail" value="1" <?php checked( 1, get_option( 'wplng_translate_mail' ) && in_array( 'mail', $api_features ), true ); ?> <?php disabled( false, in_array( 'mail', $api_features ), true ); ?>/> <?php _e( 'Premium: Translate sending mail', 'wplingua' ); ?>
@@ -282,8 +273,7 @@ function wplng_settings_part_features() {
 			<input type="checkbox" id="wplng_translate_woocommerce" name="wplng_translate_woocommerce" value="1" <?php checked( 1, get_option( 'wplng_translate_woocommerce' ) && in_array( 'woocommerce', $api_features ), true ); ?>  <?php disabled( false, in_array( 'woocommerce', $api_features ), true ); ?>/> <?php _e( 'Premium: Translate Woocommerce shop', 'wplingua' ); ?>
 		</label>
 	</fieldset>
-	<br>
-	<hr>
+	
 	<?php
 }
 
@@ -292,16 +282,15 @@ function wplng_settings_part_features() {
 function wplng_settings_part_api_key() {
 	?>
 	<fieldset>
-		<label for="wplng_api_key"><strong><?php _e( 'Website API key:', 'wplingua' ); ?></strong></label>
-		<br>
+		<p><label for="wplng_api_key"><strong><?php _e( 'Website API key:', 'wplingua' ); ?></strong></label></p>
 		
 		<input type="text" id="wplng-api-key-fake" value="●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●" disabled></input>
 
 		<input type="text" name="wplng_api_key" id="wplng_api_key" value="<?php echo esc_attr( wplng_get_api_key() ); ?>" style="display: none;"></input>
 		
-		<a class="button button-primary" id="wplng-api-key-show" href="javascript:void(0);"><span class="dashicons dashicons-visibility"></span></a>
+		<a class="button button-primary wplng-icon-button" id="wplng-api-key-show" href="javascript:void(0);" title="<?php _e( 'Show API key', 'wplingua' ); ?>"><span class="dashicons dashicons-visibility"></span></a>
 
-		<a class="button button-primary" id="wplng-api-key-hide" href="javascript:void(0);" style="display: none;"><span class="dashicons dashicons-hidden"></span></a>
+		<a class="button button-primary wplng-icon-button" id="wplng-api-key-hide" href="javascript:void(0);" title="<?php _e( 'Hide API key', 'wplingua' ); ?>" style="display: none;"><span class="dashicons dashicons-hidden"></span></a>
 	</fieldset>
 	<?php
 }
