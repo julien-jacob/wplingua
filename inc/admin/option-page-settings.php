@@ -288,9 +288,9 @@ function wplng_settings_part_api_key() {
 
 		<input type="text" name="wplng_api_key" id="wplng_api_key" value="<?php echo esc_attr( wplng_get_api_key() ); ?>" style="display: none;"></input>
 		
-		<a class="button button-primary wplng-icon-button" id="wplng-api-key-show" href="javascript:void(0);"><span class="dashicons dashicons-visibility"></span></a>
+		<a class="button button-primary wplng-icon-button" id="wplng-api-key-show" href="javascript:void(0);" title="<?php _e( 'Show API key', 'wplingua' ); ?>"><span class="dashicons dashicons-visibility"></span></a>
 
-		<a class="button button-primary wplng-icon-button" id="wplng-api-key-hide" href="javascript:void(0);" style="display: none;"><span class="dashicons dashicons-hidden"></span></a>
+		<a class="button button-primary wplng-icon-button" id="wplng-api-key-hide" href="javascript:void(0);" title="<?php _e( 'Hide API key', 'wplingua' ); ?>" style="display: none;"><span class="dashicons dashicons-hidden"></span></a>
 	</fieldset>
 	<?php
 }

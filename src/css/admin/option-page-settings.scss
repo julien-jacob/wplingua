@@ -61,6 +61,7 @@
 .wplng-target-language img.wplng-target-flag,
 .wplng-flags-radio img,
 .wplng-subflags-radio img {
+    box-sizing: content-box;
     width: 20px;
     height: 20px;
     margin-bottom: -6px;
@@ -74,7 +75,7 @@
 }
 
 .wplng-target-flag {
-    padding-right: 5px;
+    padding-right: 7%;
     width: auto;
 }
 
