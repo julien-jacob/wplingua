@@ -78,7 +78,7 @@ function wplng_translation_meta_box_html_output( $post ) {
 				$textarea           = esc_html( $translation['translation'] );
 				$name               = esc_attr( 'wplng_translation_' . $language_id );
 				$container_id       = esc_attr( 'wplng-translation-' . $language_id );
-				$generate_link_text = __( 'Generate translation', 'wplingua' );
+				$generate_link_text = __( 'Regenerate translation', 'wplingua' );
 
 				if ( '[WPLNG_EMPTY]' === $textarea ) {
 					$textarea = '';
@@ -99,7 +99,7 @@ function wplng_translation_meta_box_html_output( $post ) {
 
 				switch ( $translation['status'] ) {
 					case 'ungenerated':
-						$generate_link_text = __( 'Regenerate translation', 'wplingua' );
+						$generate_link_text = __( 'Generate translation', 'wplingua' );
 
 						$html .= '<span class="wplng-status">';
 						$html .= __( 'Status: Ungenerated', 'wplingua' );
@@ -114,7 +114,7 @@ function wplng_translation_meta_box_html_output( $post ) {
 
 					default:
 						if ( is_int( $translation['status'] ) ) {
-							$generate_link_text = __( 'Regenerate translation', 'wplingua' );
+							// $generate_link_text = __( 'Regenerate translation', 'wplingua' );
 
 							$html .= '<span class="wplng-status">';
 							$html .= __( 'Status: Edited on', 'wplingua' ) . ' ';
