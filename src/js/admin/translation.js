@@ -63,6 +63,9 @@ jQuery(document).ready(function ($) {
                 if (data.success) {
                     var textarea = "#wplng_translation_" + target;
                     $(textarea).val(data.data);
+
+                    wplngResizeTextArea($(textarea));
+
                     $(container + " .wplng-generate-spin").hide();
                     setTimeout(function () {
                         $(container + " .wplng-generate").attr("disabled", false);
