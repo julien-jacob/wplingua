@@ -37,6 +37,7 @@ function wplng_admin_bar_menu() {
 	} else {
 		$url = remove_query_arg( 'wplingua-visual-editor', wplng_get_url_current() );
 		$url = remove_query_arg( '_wpnonce', $url );
+		
 		$wp_admin_bar->add_menu(
 			array(
 				'id'     => 'wplangua-visual-editor-disable',
@@ -45,6 +46,16 @@ function wplng_admin_bar_menu() {
 				'href'   => esc_url( $url ),
 			)
 		);
+
+		$wp_admin_bar->add_menu(
+			array(
+				'id'     => 'wplangua-visual-editor-1',
+				'parent' => 'wplingua-menu',
+				'title'  => __( 'All translations on page', 'wplingua' ),
+				'href'   => add_query_arg( 'wplingua-visual-editor', '1', wplng_get_url_current() ),
+			)
+		);
+
 	}
 
 }

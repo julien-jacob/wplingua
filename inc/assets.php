@@ -31,4 +31,20 @@ function wplng_register_assets() {
 		wp_add_inline_style( 'wplingua', $custom_css );
 	}
 
+	/**
+	 * Load assets for visual editor
+	 */
+	if ( isset( $_GET['wplingua-visual-editor'] ) ) {
+		wp_enqueue_script(
+			'wplingua-editor',
+			plugins_url() . '/wplingua/assets/js/editor.js',
+			array( 'jquery' )
+		);
+	
+		wp_enqueue_style(
+			'wplingua-editor',
+			plugins_url() . '/wplingua/assets/css/editor.css'
+		);
+	}
+
 }

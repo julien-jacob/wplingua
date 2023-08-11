@@ -8,8 +8,8 @@ if ( ! defined( 'WPINC' ) ) {
 
 function wplng_ob_callback_editor( $html ) {
 
-	$translations_sidebar = array();
-	$excluded_elements    = array();
+	// $translations_sidebar = array();
+	$excluded_elements = array();
 
 	$html = apply_filters( 'wplng_html_intercepted', $html );
 
@@ -80,8 +80,8 @@ function wplng_ob_callback_editor( $html ) {
 
 				// Replace original text in HTML by translation
 				if ( preg_match( $regex, $html_head ) ) {
-					$html_head              = preg_replace( $regex, $replace, $html_head );
-					$translations_sidebar[] = $translation;
+					$html_head = preg_replace( $regex, $replace, $html_head );
+					// $translations_sidebar[] = $translation;
 				}
 			}
 		}
@@ -159,13 +159,59 @@ function wplng_ob_callback_editor( $html ) {
 
 					$html_body = preg_replace( $regex, $replace, $html_body );
 
-					if ( ! $replace_by_link ) {
-						$translations_sidebar[] = $translation;
-					}
+					// if ( ! $replace_by_link && ! in_array( $translation, $translations_sidebar ) ) {
+					// 	$translations_sidebar[] = $translation;
+					// }
 				}
 			}
 		}
 	}
+
+	$html_popup = '<div id="wplng-popup-container">';
+
+	$html_popup .= '<div id="wplng-popup">';
+
+	$html_popup .= '<div id="wplng-popup-header">';
+	$html_popup .= '<h2>Hello Header</h2>';
+
+	$html_popup .= '</div>';
+
+	$html_popup .= '<div id="wplng-popup-items">';
+
+	foreach ( $translations as $key => $translation ) {
+
+		$html_popup .= '<div class="wplng-popup-item">';
+		$html_popup .= __( 'Original:', 'wplingua' ) . $translation['source'];
+		$html_popup .= '<br>';
+		$html_popup .= __( 'Translation:', 'wplingua' ) . $translation['translation'];
+		$html_popup .= '<br>';
+
+		$edit_link = '';
+		if ( ! empty( $translation['post_id'] ) ) {
+			$edit_link = get_edit_post_link( $translation['post_id'] );
+		}
+
+		$html_popup .= '<a href="' . esc_url( $edit_link ) . '" class="wplng-edit-link" target="_blank">Edit </a>';
+
+		$html_popup .= '</div>';
+	}
+
+	$html_popup .= '</div>';
+	$html_popup .= '</div>';
+	$html_popup .= '</div>';
+	// $html_popup .= '</div>';
+
+	$html_body = str_replace(
+		'</body>',
+		$html_popup . '</body>',
+		$html_body
+	);
+
+	// $html_body = str_replace(
+	// 	'</body>',
+	// 	'<pre>' . var_export($translations_sidebar, true) . '</pre></body>',
+	// 	$html_body
+	// );
 
 	$html = preg_replace(
 		'#<body .*>.*</body>#Uis',

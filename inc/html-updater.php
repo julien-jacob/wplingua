@@ -95,6 +95,7 @@ function wplng_get_selector_exclude() {
 			'.no-translate',
 			'.notranslate',
 			// '.wplng-switcher',
+			'.wplng-switcher .language-id',
 			'address',
 		)
 	);

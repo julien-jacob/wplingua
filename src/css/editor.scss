@@ -1,0 +1,91 @@
+/*
+ * Style for editor
+ */
+ .wplng-edit-link {
+    color: inherit;
+    font-weight: inherit;
+    font-size: inherit;
+    text-decoration: inherit;
+    line-height: inherit;
+    border: 2px dotted gray;
+    padding: 0 4px;
+}
+
+.entry-content p>.wplng-edit-link {
+    display: flex;
+}
+
+.wplng-edit-link::after {
+    content: "\f326";
+    font-family: dashicons;
+    display: inline-block;
+    line-height: inherit;
+    font-weight: 400;
+    font-style: normal;
+    speak: never;
+    text-decoration: inherit;
+    text-decoration-color: inherit;
+    text-transform: none;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    vertical-align: bottom;
+    text-align: center;
+    margin: 0 4px;
+}
+
+
+
+/** 
+ ** Popup
+ **/
+
+#wplng-popup-container {
+
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0,0,0,.75);
+    padding: 15px;
+    z-index: 99998; // Admin ar z-index - 1
+
+
+    #wplng-popup {
+    
+        border: 1px solid #c3c4c7;
+        background-color: white;
+        // position: absolute;
+        max-width: 820px;
+        // left: calc(50vw - 260px);
+        height: 70vh;
+        margin: 15vh auto;
+        padding: 15px;
+        position: relative;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        overflow-x: auto;
+
+        #wplng-popup-items {
+
+            // padding: 15px;
+            // overflow-x: auto;
+            // position: absolute;
+            top: 0;
+            bottom: 0;
+
+
+            .wplng-popup-item {
+                border: 1px solid #c3c4c7;
+                padding: 10px;
+                margin-bottom: 15px;
+                background-color: #f6f7f7;
+                box-shadow: rgba(0,0,0,.04) 0 1px 1px 0;
+            }
+        }
+        
+    }
+}
