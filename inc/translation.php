@@ -36,6 +36,7 @@ function wplng_get_translations_saved( $target_language_id ) {
 		'post_type'      => 'wplng_translation',
 		'posts_per_page' => -1,
 	);
+	// TODO : Inverser l'ordre
 	$the_query    = new WP_Query( $args );
 
 	while ( $the_query->have_posts() ) {
