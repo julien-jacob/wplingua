@@ -40,7 +40,46 @@
  ** modal
  **/
 
+.wplng-button-icon {
+    display: block;
+    font-size: 13px;
+    cursor: pointer;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 3px;
+    white-space: nowrap;
+    box-sizing: border-box;
+
+    background: #2271b1;
+    border-color: #2271b1;
+    color: #fff;
+    text-decoration: none;
+    text-shadow: none;
+
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    padding: 4px;
+
+    &:focus,
+    &:hover {
+        background: #135e96;
+        border-color: #135e96;
+        color: #fff;
+    }
+}
+
+body.wplingua-modal-open {
+    overflow: hidden;
+
+    #wplng-modal-container {
+        display: block;
+    }
+}
+
 #wplng-modal-container {
+
+    display: none;
 
     background-color: rgba(255, 255, 255, .8);
     padding: 0 15px;
@@ -112,27 +151,7 @@
                 .wplng-item-edit {
                     padding: 0 10px;
                     
-                    a {
-                        display: block;
-                        font-size: 13px;
-                        cursor: pointer;
-                        border-width: 1px;
-                        border-style: solid;
-                        border-radius: 3px;
-                        white-space: nowrap;
-                        box-sizing: border-box;
-
-                        background: #2271b1;
-                        border-color: #2271b1;
-                        color: #fff;
-                        text-decoration: none;
-                        text-shadow: none;
-
-                        width: 30px;
-                        height: 30px;
-                        text-align: center;
-                        padding: 4px;
-                    }
+                    
                 }
             }
         }
@@ -140,6 +159,3 @@
     }
 }
 
-// body {
-//     overflow: hidden;
-// }

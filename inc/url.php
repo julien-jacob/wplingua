@@ -169,7 +169,10 @@ function wplng_get_url_original( $url = '' ) {
 
 function wplng_get_url_current() {
 	global $wplng_request_uri;
-	return ( empty( $_SERVER['HTTPS'] ) ? 'http' : 'https' ) . "://$_SERVER[HTTP_HOST]$wplng_request_uri";
+	$url = ( empty( $_SERVER['HTTPS'] ) ? 'http' : 'https' ) . "://$_SERVER[HTTP_HOST]$wplng_request_uri";
+	$url = remove_query_arg( 'wplingua-visual-editor', $url );
+	$url = remove_query_arg( '_wpnonce', $url );
+	return $url;
 }
 
 
