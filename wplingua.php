@@ -32,6 +32,7 @@ require_once 'inc/admin/translation-meta.php';
 
 // Require files in /inc/ob-callback/ folder
 require_once 'inc/ob-callback/editor.php';
+require_once 'inc/ob-callback/list.php';
 require_once 'inc/ob-callback/translate.php';
 
 // Require files in /inc/ folder

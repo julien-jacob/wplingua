@@ -24,47 +24,47 @@ function wplng_admin_bar_menu() {
 		)
 	);
 
-	if ( ! isset( $_GET['wplingua-visual-editor'] ) ) {
-		$url = add_query_arg( 'wplingua-visual-editor', '1', wplng_get_url_current() );
+	$url = wplng_get_url_current();
+
+	$url_original = $url;
+	$url_original = remove_query_arg( 'wplingua-editor', $url_original );
+	$url_original = remove_query_arg( 'wplingua-list', $url_original );
+
+	if ( isset( $_GET['wplingua-editor'] )
+		|| isset( $_GET['wplingua-list'] )
+	) {
+		
+
 		$wp_admin_bar->add_menu(
 			array(
-				'id'     => 'wplangua-visual-editor',
+				'id'     => 'wplangua-return',
+				'parent' => 'wplingua-menu',
+				'title'  => __( 'Return on page', 'wplingua' ),
+				'href'   => $url_original,
+			)
+		);
+	}
+
+	if ( ! isset( $_GET['wplingua-editor'] ) ) {
+		$wp_admin_bar->add_menu(
+			array(
+				'id'     => 'wplangua-editor',
 				'parent' => 'wplingua-menu',
 				'title'  => __( 'Visual editor', 'wplingua' ),
-				'href'   => wp_nonce_url( $url, 'wplng_editor' ),
+				'href'   => add_query_arg( 'wplingua-editor', '1', $url_original ),
 			)
 		);
-	} else {
-		// $url = remove_query_arg( 'wplingua-visual-editor', wplng_get_url_current() );
-		// $url = remove_query_arg( '_wpnonce', $url );
+	}
 
-		$url = wplng_get_url_current();
-		
+	if ( ! isset( $_GET['wplingua-list'] ) ) {
 		$wp_admin_bar->add_menu(
 			array(
-				'id'     => 'wplangua-visual-editor-disable',
-				'parent' => 'wplingua-menu',
-				'title'  => __( 'Disable visual editor', 'wplingua' ),
-				'href'   => esc_url( $url ),
-			)
-		);
-
-		$url = add_query_arg( array(
-			'wplingua-visual-editor' => '1',
-			'wplingua-list' => '1',
-		), $url );
-		
-		$url = wp_nonce_url( $url, 'wplng_editor' ) ;
-
-		$wp_admin_bar->add_menu(
-			array(
-				'id'     => 'wplangua-all-translation',
+				'id'     => 'wplangua-list',
 				'parent' => 'wplingua-menu',
 				'title'  => __( 'All translations on page', 'wplingua' ),
-				'href'   => $url,
+				'href'   => add_query_arg( 'wplingua-list', '1', $url_original ),
 			)
 		);
-
 	}
 
 }

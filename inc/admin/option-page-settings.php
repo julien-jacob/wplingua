@@ -128,11 +128,11 @@ function wplng_settings_part_language_website() {
 
 	echo '<fieldset' . $website_language_style . '>';
 
-	echo '<label for="wplng_website_language">';
+	echo '<label for="wplng_website_language" class="wplng-fe-50">';
 	echo '<strong>' . __( 'Original website language: ', 'wplingua' ) . ' </strong>';
 	echo '</label>';
 
-	echo '<select id="wplng_website_language" name="wplng_website_language">';
+	echo '<select id="wplng_website_language" name="wplng_website_language" class="wplng-fe-50">';
 	$website_language_saved = true;
 	if ( empty( wplng_get_language_website_id() ) ) {
 		$website_language_saved = false;
@@ -258,7 +258,7 @@ function wplng_settings_part_features() {
 	
 	<fieldset>
 		<label for="wplng_translate_mail">
-			<input type="checkbox" id="wplng_translate_mail" name="wplng_translate_mail" value="1" <?php checked( 1, get_option( 'wplng_translate_mail' ) && in_array( 'mail', $api_features ), true ); ?> <?php disabled( false, in_array( 'mail', $api_features ), true ); ?>/> <?php _e( 'Premium: Translate sending mail', 'wplingua' ); ?>
+			<input type="checkbox" id="wplng_translate_mail" name="wplng_translate_mail" value="1" <?php checked( 1, get_option( 'wplng_translate_mail' ) && in_array( 'mail', $api_features ), true ); ?> <?php disabled( false, in_array( 'mail', $api_features ), true ); ?>/> <?php _e( 'Premium: Translate mail sending from translated pages', 'wplingua' ); ?>
 		</label>
 	</fieldset>
 

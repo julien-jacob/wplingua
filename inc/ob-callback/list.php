@@ -6,15 +6,18 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 
-function wplng_ob_callback_editor( $html ) {
+function wplng_ob_callback_list( $html ) {
 
 	if ( empty( $html ) ) {
 		return $html;
 	}
 
-	$excluded_elements = array();
+	$translations_modal = array();
+	$excluded_elements  = array();
 
 	$html = apply_filters( 'wplng_html_intercepted', $html );
+
+	$html_saved = $html;
 
 	/**
 	 * Replace excluded HTML part by tag
@@ -82,6 +85,12 @@ function wplng_ob_callback_editor( $html ) {
 					$sr['replace']
 				);
 
+				// Replace original text in HTML by translation
+				if ( preg_match( $regex, $html_head ) ) {
+					$html_head = preg_replace( $regex, $replace, $html_head );
+					$translations_modal[] = $translation;
+					// $translations_modal[] = array_merge( $translation, array( 'is_view' => false ) );
+				}
 			}
 		}
 	}
@@ -94,15 +103,6 @@ function wplng_ob_callback_editor( $html ) {
 		return $html;
 	}
 	$html_body = $html_body[0];
-
-	/**
-	 * Transform links
-	 */
-	$html_body = preg_replace(
-		'#<a (.*)<\/a>#Uis',
-		'<span wplingua-editor-link $1</span>',
-		$html_body
-	);
 
 	/**
 	 * Manage translation for <body>
@@ -135,52 +135,90 @@ function wplng_ob_callback_editor( $html ) {
 					$replace_by_link = true;
 				}
 
-				if ( $replace_by_link ) {
-					$edit_link = '';
-					if ( ! empty( $translation['post_id'] ) ) {
-						$edit_link = get_edit_post_link( $translation['post_id'] );
-					}
-
-					$replace = str_replace(
-						'WPLNG',
-						'<a href="' . esc_url( $edit_link ) . '" class="wplng-edit-link" target="_blank">' . str_replace( '$', '&#36;', $translation['translation'] ) . ' </a>',
-						$sr['replace']
-					);
-				} else {
-					$replace = str_replace(
-						'WPLNG',
-						str_replace( '$', '&#36;', $translation['translation'] ),
-						$sr['replace']
-					);
-				}
-
-				// if ( preg_match( $regex, $html_body ) ) {
+				if ( preg_match( $regex, $html_body ) ) {
 
 					$html_body = preg_replace( $regex, $replace, $html_body );
 
-				// }
+					if ( ! $replace_by_link && ! in_array( $translation, $translations_modal ) ) {
+						$translations_modal[] = $translation;
+						// $translations_modal[] = array_merge( $translation, array( 'is_view' => false ) );
+					}
+
+					if ( ! in_array( $translation, $translations_modal ) ) {
+						$translations_modal[] = $translation;
+					} 
+
+				}
 			}
 		}
 	}
 
-	$html = preg_replace(
-		'#<body .*>.*</body>#Uis',
-		$html_body,
-		$html
+	$html_saved = str_replace(
+		'</body>',
+		wplng_get_editor_modal_html( $translations_modal ) . '</body>',
+		$html_saved
 	);
 
-	$html = preg_replace(
-		'#<head>.*</head>#Uis',
-		$html_head,
-		$html
-	);
+	$html = apply_filters( 'wplng_html_list', $html );
 
-	/**
-	 * Replace tag by saved excluded HTML part
-	 */
-	$html = wplng_html_replace_exclude_tag( $html, $excluded_elements );
+	return $html_saved;
+}
 
-	$html = apply_filters( 'wplng_html_editor', $html );
+
+function wplng_get_editor_modal_html( $translations ) {
+
+	if ( empty( $translations ) ) {
+		return '';
+	}
+
+	$html = '<div id="wplng-modal-container">';
+
+	$html .= '<div id="wplng-modal">';
+
+	// $html .= '<div id="wplng-modal-header">';
+	// // $html .= '<pre>' . var_export($translations, true) . '</pre>';
+	// $html .= '<h2>Hello Header</h2>';
+	// $html .= '<a href="" class="wplng-button-icon"><span class="dashicons dashicons-no"></span></a>';
+	// $html .= '</div>';
+
+	$html .= '<div id="wplng-modal-items">';
+
+	foreach ( $translations as $key => $translation ) {
+
+		$html .= '<div class="wplng-modal-item">';
+
+		$html .= '<div class="wplng-item-text">';
+
+		$html .= '<div class="wplng-item-source">';
+		$html .= $translation['source'];
+		$html .= '</div>'; // End .wplng-item-source
+
+		$html .= '<div class="wplng-item-translation">';
+		$html .= $translation['translation'];
+		$html .= '</div>'; // End .wplng-item-translation
+
+		$html .= '</div>'; // End .wplng-item-text
+
+		$html     .= '<div class="wplng-item-edit">';
+		$edit_link = '';
+		if ( ! empty( $translation['post_id'] ) ) {
+			$edit_link = get_edit_post_link( $translation['post_id'] );
+		}
+
+		// title="<?php _e( 'Hide API key', 'wplingua' );
+		$html .= '<a href="' . esc_url( $edit_link ) . '" class="wplng-button-icon" target="_blank">';
+
+		$html .= '<span class="dashicons dashicons-edit"></span></a>';
+		$html .= '</a>';
+
+		$html .= '</div>'; // End .wplng-item-edit
+
+		$html .= '</div>';
+	}
+
+	$html .= '</div>';
+	$html .= '</div>';
+	$html .= '</div>';
 
 	return $html;
 }
