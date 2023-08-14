@@ -12,14 +12,16 @@ function wplng_ob_callback_editor( $html ) {
 		return $html;
 	}
 
-	$excluded_elements = array();
-
 	$html = apply_filters( 'wplng_html_intercepted', $html );
 
 	/**
 	 * Replace excluded HTML part by tag
 	 */
-	$html = wplng_html_set_exclude_tag( $html, $excluded_elements );
+	$excluded_elements = array();
+	$html              = wplng_html_set_exclude_tag(
+		$html,
+		$excluded_elements
+	);
 
 	/**
 	 * Get saved translation
@@ -35,17 +37,16 @@ function wplng_ob_callback_editor( $html ) {
 	/**
 	 * Save new translation as wplng_translation CPT
 	 */
-	wplng_save_translations( $translations_new, $language_target_id );
+	$translations_new = wplng_save_translations( $translations_new, $language_target_id );
 
 	/**
 	 * Merge know and new translations
 	 */
-	$translations = array_merge( $translations, $translations_new );
+	$translations = array_merge( $translations_new, $translations );
 
 	/**
 	 * Get <head>
 	 */
-	// TODO : Revoir regex
 	preg_match( '#<head>(.*)</head>#Uis', $html, $html_head );
 	if ( empty( $html_head[0] ) ) {
 		return $html;
@@ -77,7 +78,7 @@ function wplng_ob_callback_editor( $html ) {
 
 				$replace = str_replace(
 					'WPLNG',
-					str_replace( '$', '&#36;', $translation['translation'] ),
+					str_replace( '$', '&#36;', esc_attr( $translation['translation'] ) ),
 					$sr['replace']
 				);
 
@@ -129,7 +130,7 @@ function wplng_ob_callback_editor( $html ) {
 				$replace_by_link = false;
 				if (
 					str_contains( $sr['replace'], '>' )
-					|| str_contains( $sr['replace'], '<' )
+					&& str_contains( $sr['replace'], '<' )
 				) {
 					$replace_by_link = true;
 				}
@@ -142,22 +143,19 @@ function wplng_ob_callback_editor( $html ) {
 
 					$replace = str_replace(
 						'WPLNG',
-						'<a href="' . esc_url( $edit_link ) . '" class="wplng-edit-link" target="_blank">' . str_replace( '$', '&#36;', $translation['translation'] ) . ' </a>',
+						'<a href="' . esc_url( $edit_link ) . '" class="wplng-edit-link" target="_blank">' . str_replace( '$', '&#36;', esc_html( $translation['translation'] ) ) . ' </a>',
 						$sr['replace']
 					);
 				} else {
 					$replace = str_replace(
 						'WPLNG',
-						str_replace( '$', '&#36;', $translation['translation'] ),
+						str_replace( '$', '&#36;', esc_html( $translation['translation'] ) ),
 						$sr['replace']
 					);
 				}
 
-				// if ( preg_match( $regex, $html_body ) ) {
+				$html_body = preg_replace( $regex, $replace, $html_body );
 
-					$html_body = preg_replace( $regex, $replace, $html_body );
-
-				// }
 			}
 		}
 	}

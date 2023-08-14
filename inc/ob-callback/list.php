@@ -45,8 +45,6 @@ function wplng_ob_callback_list( $html ) {
 	 */
 	$translations = array_merge( $translations_new, $translations );
 
-	// error_log(var_export($translations, true));
-
 	/**
 	 * Get <head>
 	 */
@@ -81,7 +79,6 @@ function wplng_ob_callback_list( $html ) {
 
 				// Replace original text in HTML by translation
 				if ( preg_match( $regex, $html_head ) ) {
-					// $html_head = preg_replace( $regex, $replace, $html_head );
 					$translations_modal[] = $translation;
 				}
 			}
@@ -123,7 +120,7 @@ function wplng_ob_callback_list( $html ) {
 				$replace_by_link = false;
 				if (
 					str_contains( $sr['replace'], '>' )
-					|| str_contains( $sr['replace'], '<' ) // TODO : Replace || by && ?
+					&& str_contains( $sr['replace'], '<' )
 				) {
 					$replace_by_link = true;
 				}
@@ -180,10 +177,10 @@ function wplng_get_editor_modal_html( $translations ) {
 		$html .= '<div class="wplng-modal-item">';
 		$html .= '<div class="wplng-item-text">';
 		$html .= '<div class="wplng-item-source">';
-		$html .= esc_html( $translation['source'] );
+		$html .= esc_attr( $translation['source'] );
 		$html .= '</div>'; // End .wplng-item-source
 		$html .= '<div class="wplng-item-translation">';
-		$html .= esc_html( $translation['translation'] );
+		$html .= esc_attr( $translation['translation'] );
 		$html .= '</div>'; // End .wplng-item-translation
 		$html .= '</div>'; // End .wplng-item-text
 		$html .= '<div class="wplng-item-edit">';
