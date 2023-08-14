@@ -187,14 +187,15 @@ function wplng_init() {
 	$_SERVER['REQUEST_URI'] = $origin_path;
 
 	if ( current_user_can( 'edit_posts' ) ) {
-
 		if ( isset( $_GET['wplingua-editor'] ) ) {
 			ob_start( 'wplng_ob_callback_editor' );
 		} elseif ( isset( $_GET['wplingua-list'] ) ) {
 			ob_start( 'wplng_ob_callback_list' );
+		} else {
+			ob_start( 'wplng_ob_callback_translate' );
 		}
+	} else {
+		ob_start( 'wplng_ob_callback_translate' );
 	}
-
-	ob_start( 'wplng_ob_callback_translate' );
 
 }

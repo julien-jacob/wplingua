@@ -79,15 +79,9 @@ function wplng_ob_callback_list( $html ) {
 					$sr['search']
 				);
 
-				$replace = str_replace(
-					'WPLNG',
-					str_replace( '$', '&#36;', $translation['translation'] ),
-					$sr['replace']
-				);
-
 				// Replace original text in HTML by translation
 				if ( preg_match( $regex, $html_head ) ) {
-					$html_head = preg_replace( $regex, $replace, $html_head );
+					// $html_head = preg_replace( $regex, $replace, $html_head );
 					$translations_modal[] = $translation;
 					// $translations_modal[] = array_merge( $translation, array( 'is_view' => false ) );
 				}
@@ -137,17 +131,13 @@ function wplng_ob_callback_list( $html ) {
 
 				if ( preg_match( $regex, $html_body ) ) {
 
-					$html_body = preg_replace( $regex, $replace, $html_body );
-
 					if ( ! $replace_by_link && ! in_array( $translation, $translations_modal ) ) {
 						$translations_modal[] = $translation;
-						// $translations_modal[] = array_merge( $translation, array( 'is_view' => false ) );
 					}
 
 					if ( ! in_array( $translation, $translations_modal ) ) {
 						$translations_modal[] = $translation;
-					} 
-
+					}
 				}
 			}
 		}
@@ -159,7 +149,7 @@ function wplng_ob_callback_list( $html ) {
 		$html_saved
 	);
 
-	$html = apply_filters( 'wplng_html_list', $html );
+	$html_saved = apply_filters( 'wplng_html_list', $html_saved );
 
 	return $html_saved;
 }
@@ -172,53 +162,42 @@ function wplng_get_editor_modal_html( $translations ) {
 	}
 
 	$html = '<div id="wplng-modal-container">';
-
 	$html .= '<div id="wplng-modal">';
-
-	// $html .= '<div id="wplng-modal-header">';
-	// // $html .= '<pre>' . var_export($translations, true) . '</pre>';
-	// $html .= '<h2>Hello Header</h2>';
-	// $html .= '<a href="" class="wplng-button-icon"><span class="dashicons dashicons-no"></span></a>';
-	// $html .= '</div>';
-
+	// $html .= '<div id="wplng-modal-header"></div>';
 	$html .= '<div id="wplng-modal-items">';
 
 	foreach ( $translations as $key => $translation ) {
 
-		$html .= '<div class="wplng-modal-item">';
-
-		$html .= '<div class="wplng-item-text">';
-
-		$html .= '<div class="wplng-item-source">';
-		$html .= $translation['source'];
-		$html .= '</div>'; // End .wplng-item-source
-
-		$html .= '<div class="wplng-item-translation">';
-		$html .= $translation['translation'];
-		$html .= '</div>'; // End .wplng-item-translation
-
-		$html .= '</div>'; // End .wplng-item-text
-
-		$html     .= '<div class="wplng-item-edit">';
 		$edit_link = '';
-		if ( ! empty( $translation['post_id'] ) ) {
+		if ( empty( $translation['post_id'] ) ) {
+			// TODO : Check source et translations
+			continue;
+		} else {
 			$edit_link = get_edit_post_link( $translation['post_id'] );
 		}
 
-		// title="<?php _e( 'Hide API key', 'wplingua' );
-		$html .= '<a href="' . esc_url( $edit_link ) . '" class="wplng-button-icon" target="_blank">';
-
+		$html .= '<div class="wplng-modal-item">';
+		$html .= '<div class="wplng-item-text">';
+		$html .= '<div class="wplng-item-source">';
+		$html .= $translation['source'];
+		$html .= '</div>'; // End .wplng-item-source
+		$html .= '<div class="wplng-item-translation">';
+		$html .= $translation['translation'];
+		$html .= '</div>'; // End .wplng-item-translation
+		$html .= '</div>'; // End .wplng-item-text
+		$html     .= '<div class="wplng-item-edit">';
+		$html .= '<a href="' . esc_url( $edit_link ) . '" ';
+		$html .= 'title="' . __( 'Edit', 'wplingua' ) . '" ';
+		$html .= 'class="wplng-button-icon" target="_blank">';
 		$html .= '<span class="dashicons dashicons-edit"></span></a>';
 		$html .= '</a>';
-
 		$html .= '</div>'; // End .wplng-item-edit
-
-		$html .= '</div>';
+		$html .= '</div>'; // ENd .wplng-modal-item
 	}
 
-	$html .= '</div>';
-	$html .= '</div>';
-	$html .= '</div>';
+	$html .= '</div>'; // End #wplng-modal-items
+	$html .= '</div>'; // End #wplng-modal
+	$html .= '</div>'; // End #wplng-modal-container
 
 	return $html;
 }
