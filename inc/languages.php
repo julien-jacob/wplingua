@@ -102,6 +102,53 @@ function wplng_get_language_name( $language ) {
 }
 
 
+
+
+function wplng_get_language_id( $language ) {
+
+	// If $language is a language array
+	if ( ! empty( $language['id'] ) && wplng_is_valid_language_id( $language['id'] ) ) {
+		return $language['id'];
+	}
+
+	// If $language is a language ID, get language array
+	$language = wplng_get_language_by_id( $language );
+
+	// If language ID is invalid, return a default value
+	if ( false === $language || empty( $language['id'] ) ) {
+		return 'en';
+	}
+
+	return $language['id'];
+}
+
+
+function wplng_get_language_name_translated( $language, $language_target = '' ) {
+
+	// Get target language ID
+	if ( empty( $language_target ) ) {
+		$language_target = wplng_get_language_current_id();
+	} else {
+		$language_target_id = wplng_get_language_id( $language_target );
+	}
+
+	// Get language array
+	if ( empty( $language['id'] ) ) {
+		$language = wplng_get_language_by_id( $language );
+	}
+
+	$translated_language_name = '';
+
+	if ( ! empty( $language['name_translation'][ $language_target_id ] ) ) {
+		$translated_language_name = esc_html( $language['name_translation'][ $language_target_id ] );
+	} else {
+		$translated_language_name = wplng_get_language_name( $language );
+	}
+
+	return esc_html($translated_language_name);
+}
+
+
 function wplng_get_languages_target_simplified() {
 
 	$json = get_option( 'wplng_target_languages' );
