@@ -35,27 +35,31 @@ function wplng_register_assets() {
 	 * Load assets for visual editor
 	 */
 	if ( isset( $_GET['wplingua-editor'] ) ) {
+
 		wp_enqueue_script(
 			'wplingua-editor',
 			plugins_url() . '/wplingua/assets/js/editor.js',
 			array( 'jquery' )
 		);
-	
+
 		wp_enqueue_style(
 			'wplingua-editor',
 			plugins_url() . '/wplingua/assets/css/editor.css'
 		);
+
 	} elseif ( isset( $_GET['wplingua-list'] ) ) {
+
 		wp_enqueue_script(
 			'wplingua-list',
 			plugins_url() . '/wplingua/assets/js/list.js',
 			array( 'jquery' )
 		);
-	
+
 		wp_enqueue_style(
 			'wplingua-list',
 			plugins_url() . '/wplingua/assets/css/list.css'
 		);
+
 	}
 
 }

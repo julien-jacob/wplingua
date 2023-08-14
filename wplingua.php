@@ -40,6 +40,7 @@ require_once 'inc/api-key.php';
 require_once 'inc/api.php';
 require_once 'inc/assets.php';
 require_once 'inc/html-updater.php';
+require_once 'inc/languages-data.php';
 require_once 'inc/languages.php';
 require_once 'inc/mail.php';
 require_once 'inc/search.php';

@@ -19,7 +19,7 @@ function wplng_ob_callback_translate( $html ) {
 	/**
 	 * Get new translation from API
 	 */
-	$translations_new = wplng_parser( $html, '', '', $translations );
+	$translations_new = wplng_parser( $html, false, false, $translations );
 
 	/**
 	 * Save new translation as wplng_translation CPT

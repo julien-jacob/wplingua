@@ -170,26 +170,16 @@ function wplng_get_url_original( $url = '' ) {
 function wplng_get_url_current() {
 	global $wplng_request_uri;
 	$url = ( empty( $_SERVER['HTTPS'] ) ? 'http' : 'https' ) . "://$_SERVER[HTTP_HOST]$wplng_request_uri";
-	// $url = remove_query_arg( 'wplingua-visual-editor', $url );
-	// $url = remove_query_arg( '_wpnonce', $url );
 	return $url;
 }
 
 
 function wplng_get_url_current_for_language( $language_id ) {
 
-	// TODO : Revoir cette fonction ;)
-
-	// $language_current_id = wplng_get_language_current_id();
-	$language_website_id = wplng_get_language_website_id();
-
 	global $wplng_request_uri;
 	$path = wplng_get_url_original( $wplng_request_uri );
-	// $path = $wplng_request_uri;
 
-	// $path = str_replace( '/' . $language_current_id . '/', '/', $wplng_request_uri );
-
-	if ($language_website_id !== $language_id) {
+	if ( wplng_get_language_website_id() !== $language_id ) {
 		$path = '/' . $language_id . $path;
 	}
 

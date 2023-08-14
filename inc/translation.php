@@ -35,9 +35,10 @@ function wplng_get_translations_saved( $target_language_id ) {
 	$args         = array(
 		'post_type'      => 'wplng_translation',
 		'posts_per_page' => -1,
+		'order'          => 'ASC',
 	);
-	// TODO : Inverser l'ordre
-	$the_query    = new WP_Query( $args );
+
+	$the_query = new WP_Query( $args );
 
 	while ( $the_query->have_posts() ) {
 
@@ -69,7 +70,6 @@ function wplng_get_translations_saved( $target_language_id ) {
 				$translation['translation'] = $translation_meta['translation'];
 				break;
 
-				// TODO : Check si pas trouvé, continuer la boucle while have post
 			}
 		}
 
@@ -146,13 +146,13 @@ function wplng_save_translation_new( $language_id, $original, $translation, $sr 
 			$translation_meta[] = array(
 				'language_id' => $target_language,
 				'translation' => $translation,
-				'status'       => 'generated',
+				'status'      => 'generated',
 			);
 		} else {
 			$translation_meta[] = array(
 				'language_id' => $target_language,
 				'translation' => '[WPLNG_EMPTY]',
-				'status'       => 'ungenerated',
+				'status'      => 'ungenerated',
 			);
 		}
 	}
@@ -229,13 +229,13 @@ function wplng_update_translation( $post, $language_id, $translation, $sr ) {
 				$translation_meta[] = array(
 					'language_id' => $target_language,
 					'translation' => '[WPLNG_EMPTY]',
-					'status'       => 'ungenerated',
+					'status'      => 'ungenerated',
 				);
 			} else {
 				$translation_meta[] = array(
 					'language_id' => $target_language,
 					'translation' => $translation,
-					'status'       => 'generated',
+					'status'      => 'generated',
 				);
 			}
 		}
@@ -251,7 +251,6 @@ function wplng_update_translation( $post, $language_id, $translation, $sr ) {
 
 	} else { // Translation is valid
 
-		// TODO : Fix this !!!
 		$sr_meta = ( empty( $meta['wplng_translation_sr'][0] ) )
 		? array() :
 		json_decode( $meta['wplng_translation_sr'][0], true );
@@ -279,7 +278,7 @@ function wplng_update_translation( $post, $language_id, $translation, $sr ) {
 				$translation_meta[ $key ] = array(
 					'language_id' => $language_id,
 					'translation' => $translation,
-					'status'       => 'generated',
+					'status'      => 'generated',
 				);
 				break;
 			}
@@ -289,7 +288,7 @@ function wplng_update_translation( $post, $language_id, $translation, $sr ) {
 			$translation_meta[] = array(
 				'language_id' => $language_id,
 				'translation' => $translation,
-				'status'       => 'generated',
+				'status'      => 'generated',
 			);
 		}
 

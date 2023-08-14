@@ -7,8 +7,8 @@ if ( ! defined( 'WPINC' ) ) {
 
 
 function wplng_exclude_woocommerce( $is_translatable ) {
-	
-	if ( ! function_exists('is_woocommerce') ) {
+
+	if ( ! function_exists( 'is_woocommerce' ) ) {
 		return $is_translatable;
 	}
 

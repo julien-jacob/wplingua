@@ -33,8 +33,7 @@ function wplng_ob_callback_list( $html ) {
 	/**
 	 * Get new translation from API
 	 */
-	$translations_new = wplng_parser( $html, '', '', $translations );
-	// TODO : Test replace > $translations_new = wplng_parser( $html, false, false, $translations );
+	$translations_new = wplng_parser( $html, false, false, $translations );
 
 	/**
 	 * Save new translation as wplng_translation CPT
