@@ -12,12 +12,6 @@ function wplng_admin_bar_menu() {
 		return;
 	}
 
-	// if ( ! wplng_url_is_translatable()
-	// 	|| wplng_get_language_website_id() === wplng_get_language_current_id()
-	// ) {
-	// 	return;
-	// }
-
 	global $wp_admin_bar;
 
 	$wp_admin_bar->add_menu(
