@@ -308,26 +308,30 @@ function wplng_update_translation( $post, $language_id, $translation, $sr ) {
 
 
 function wplng_save_translations( $translations, $language_target_id ) {
-	if ( ! empty( $translations ) ) {
 
-		foreach ( $translations as $translation ) {
-
-			if (
-				! isset( $translation['source'] ) // Original text
-				|| ! isset( $translation['translation'] ) // Translater text
-				|| ! isset( $translation['sr'] ) // Search Replace
-			) {
-				continue;
-			}
-
-			wplng_save_translation(
-				$language_target_id,
-				$translation['source'],
-				$translation['translation'],
-				$translation['sr']
-			);
-		}
+	if ( empty( $translations ) || ! is_array( $translations ) ) {
+		return array();
 	}
+
+	foreach ( $translations as $key => $translation ) {
+
+		if (
+			! isset( $translation['source'] ) // Original text
+			|| ! isset( $translation['translation'] ) // Translater text
+			|| ! isset( $translation['sr'] ) // Search Replace
+		) {
+			continue;
+		}
+
+		$translations[$key]['post_id'] = wplng_save_translation(
+			$language_target_id,
+			$translation['source'],
+			$translation['translation'],
+			$translation['sr']
+		);
+	}
+
+	return $translations;
 }
 
 

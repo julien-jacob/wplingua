@@ -38,17 +38,18 @@ function wplng_ob_callback_list( $html ) {
 	/**
 	 * Save new translation as wplng_translation CPT
 	 */
-	wplng_save_translations( $translations_new, $language_target_id );
+	$translations_new = wplng_save_translations( $translations_new, $language_target_id );
 
 	/**
 	 * Merge know and new translations
 	 */
-	$translations = array_merge( $translations, $translations_new );
+	$translations = array_merge( $translations_new, $translations );
+
+	// error_log(var_export($translations, true));
 
 	/**
 	 * Get <head>
 	 */
-	// TODO : Revoir regex
 	preg_match( '#<head>(.*)</head>#Uis', $html, $html_head );
 	if ( empty( $html_head[0] ) ) {
 		return $html;
@@ -82,7 +83,6 @@ function wplng_ob_callback_list( $html ) {
 				if ( preg_match( $regex, $html_head ) ) {
 					// $html_head = preg_replace( $regex, $replace, $html_head );
 					$translations_modal[] = $translation;
-					// $translations_modal[] = array_merge( $translation, array( 'is_view' => false ) );
 				}
 			}
 		}
@@ -123,7 +123,7 @@ function wplng_ob_callback_list( $html ) {
 				$replace_by_link = false;
 				if (
 					str_contains( $sr['replace'], '>' )
-					|| str_contains( $sr['replace'], '<' )
+					|| str_contains( $sr['replace'], '<' ) // TODO : Replace || by && ?
 				) {
 					$replace_by_link = true;
 				}
@@ -160,7 +160,7 @@ function wplng_get_editor_modal_html( $translations ) {
 		return '';
 	}
 
-	$html = '<div id="wplng-modal-container">';
+	$html  = '<div id="wplng-modal-container">';
 	$html .= '<div id="wplng-modal">';
 	// $html .= '<div id="wplng-modal-header"></div>';
 	$html .= '<div id="wplng-modal-items">';
@@ -168,8 +168,10 @@ function wplng_get_editor_modal_html( $translations ) {
 	foreach ( $translations as $key => $translation ) {
 
 		$edit_link = '';
-		if ( empty( $translation['post_id'] ) ) {
-			// TODO : Check source et translations
+		if ( empty( $translation['post_id'] )
+			|| empty( $translation['source'] )
+			|| empty( $translation['translation'] )
+		) {
 			continue;
 		} else {
 			$edit_link = get_edit_post_link( $translation['post_id'] );
@@ -178,13 +180,13 @@ function wplng_get_editor_modal_html( $translations ) {
 		$html .= '<div class="wplng-modal-item">';
 		$html .= '<div class="wplng-item-text">';
 		$html .= '<div class="wplng-item-source">';
-		$html .= $translation['source'];
+		$html .= esc_html( $translation['source'] );
 		$html .= '</div>'; // End .wplng-item-source
 		$html .= '<div class="wplng-item-translation">';
-		$html .= $translation['translation'];
+		$html .= esc_html( $translation['translation'] );
 		$html .= '</div>'; // End .wplng-item-translation
 		$html .= '</div>'; // End .wplng-item-text
-		$html     .= '<div class="wplng-item-edit">';
+		$html .= '<div class="wplng-item-edit">';
 		$html .= '<a href="' . esc_url( $edit_link ) . '" ';
 		$html .= 'title="' . __( 'Edit', 'wplingua' ) . '" ';
 		$html .= 'class="wplng-button-icon" target="_blank">';
