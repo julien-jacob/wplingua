@@ -94,7 +94,7 @@ function wplng_settings_link( $settings ) {
 	$url = esc_url(
 		add_query_arg(
 			'page',
-			'wplingua/inc/admin/option-page.php',
+			'wplng-settings',
 			get_admin_url() . 'admin.php'
 		)
 	);
