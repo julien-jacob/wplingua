@@ -10,9 +10,9 @@ if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
-global $wplng_request_uri;
-$wplng_request_uri = $_SERVER['REQUEST_URI'];
 
+// TODO : 2 url d'api ?
+// TODO : define une version ? version API ?
 define( 'WPLNG_API', 'http://machiavel-api.local/v0.0/last/' );
 // define( 'WPLNG_API', 'https://api.wplingua.com/v0.0/last/' );
 
@@ -52,6 +52,9 @@ require_once 'inc/woocommerce.php';
 
 
 function wplng_start() {
+
+	global $wplng_request_uri;
+	$wplng_request_uri = $_SERVER['REQUEST_URI'];
 
 	// Register plugin settings
 	add_action( 'admin_init', 'wplng_register_settings' );
