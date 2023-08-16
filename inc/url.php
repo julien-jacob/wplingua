@@ -87,6 +87,11 @@ function wplng_url_is_translatable( $url = '' ) {
 		$is_translatable = false;
 	}
 
+	// Check if is wp-comments-post.php
+	if ( str_contains( $url, 'wp-comments-post.php' ) ) {
+		$is_translatable = false;
+	}
+
 	// Check if is in wp-uploads
 	if (
 		$is_translatable
