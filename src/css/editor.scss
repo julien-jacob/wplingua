@@ -1,0 +1,35 @@
+/*
+ * Style for editor
+ */
+ .wplng-edit-link {
+    color: inherit;
+    font-weight: inherit;
+    font-size: inherit;
+    text-decoration: inherit;
+    line-height: inherit;
+    border: 2px dotted gray;
+    padding: 0 4px;
+}
+
+.entry-content p>.wplng-edit-link {
+    display: flex;
+}
+
+.wplng-edit-link::after {
+    content: "\f326";
+    font-family: dashicons;
+    display: inline-block;
+    line-height: inherit;
+    font-weight: 400;
+    font-style: normal;
+    speak: never;
+    text-decoration: inherit;
+    text-decoration-color: inherit;
+    text-transform: none;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    vertical-align: bottom;
+    text-align: center;
+    margin: 0 4px;
+}

@@ -6,65 +6,52 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 
-
 function wplng_ob_callback_editor( $html ) {
 
+	if ( empty( $html ) ) {
+		return $html;
+	}
+
 	$html = apply_filters( 'wplng_html_intercepted', $html );
+
+	/**
+	 * Replace excluded HTML part by tag
+	 */
+	$excluded_elements = array();
+	$html              = wplng_html_set_exclude_tag(
+		$html,
+		$excluded_elements
+	);
 
 	/**
 	 * Get saved translation
 	 */
 	$language_target_id = wplng_get_language_current_id();
 	$translations       = wplng_get_translations_saved( $language_target_id );
-	// return '<pre >' . var_export( $translations, true ) . '</pre>';
 
 	/**
 	 * Get new translation from API
 	 */
-	$start_time       = microtime( true );
-	$translations_new = wplng_parser( $html, '', '', $translations );
-
-	// Calculate script execution time
-	$end_time       = microtime( true );
-	$execution_time = ( $end_time - $start_time );
-	// return var_export( $translations_new, true ) . ' Execution time of script = ' . $execution_time . ' sec';
+	$translations_new = wplng_parser( $html, false, false, $translations );
 
 	/**
 	 * Save new translation as wplng_translation CPT
 	 */
-	wplng_save_translations( $translations_new, $language_target_id );
+	$translations_new = wplng_save_translations( $translations_new, $language_target_id );
 
 	/**
 	 * Merge know and new translations
 	 */
-	$translations = array_merge( $translations, $translations_new );
-	// return '<pre >' . var_export($translations, true) . '</pre>';
-
-	/**
-	 * Replace excluded HTML part by tab
-	 */
-	$excluded_elements = array();
-	$html              = wplng_html_set_exclude_tag( $html, $excluded_elements );
-	// return '<pre >' . var_export( $excluded_elements, true ) . '</pre>';
-
-	/**
-	 * Translate links
-	 */
-	// TODO : Faire la ligne suivante ?
-	// $html = wplng_html_translate_links( $html, $language_target_id );
+	$translations = array_merge( $translations_new, $translations );
 
 	/**
 	 * Get <head>
 	 */
-	// TODO : Revoir regex
 	preg_match( '#<head>(.*)</head>#Uis', $html, $html_head );
 	if ( empty( $html_head[0] ) ) {
 		return $html;
 	}
 	$html_head = $html_head[0];
-
-	// TODO : Changer de place ?
-	$translations_sidebar = array();
 
 	/**
 	 * Manage translation for <head>
@@ -91,45 +78,31 @@ function wplng_ob_callback_editor( $html ) {
 
 				$replace = str_replace(
 					'WPLNG',
-					str_replace( '$', '&#36;', $translation['translation'] ),
+					str_replace( '$', '&#36;', esc_attr( $translation['translation'] ) ),
 					$sr['replace']
 				);
 
-				// Replace original text in HTML by translation
-				// $html = preg_replace( $regex, $replace, $html_head );
-
-				if ( preg_match( $regex, $html_head ) ) {
-					$html_head              = preg_replace( $regex, $replace, $html_head );
-					$translations_sidebar[] = $translation;
-				}
 			}
 		}
 	}
 
-	// return var_export( $translations_sidebar, true );
-
 	/**
 	 * Get <body>
 	 */
-	// TODO : Revoir regex
 	preg_match( '#<body .*>(.*)</body>#Uis', $html, $html_body );
 	if ( empty( $html_body[0] ) ) {
 		return $html;
 	}
 	$html_body = $html_body[0];
 
-	// TODO : Remplacer les liens dans $html_body
+	/**
+	 * Transform links
+	 */
 	$html_body = preg_replace(
 		'#<a (.*)<\/a>#Uis',
 		'<span wplingua-editor-link $1</span>',
 		$html_body
 	);
-
-	// $html_body = preg_replace(
-	// 	'#<a .*>(.*)<\/a>#Uis',
-	// 	'$1',
-	// 	$html_body
-	// );
 
 	/**
 	 * Manage translation for <body>
@@ -157,7 +130,7 @@ function wplng_ob_callback_editor( $html ) {
 				$replace_by_link = false;
 				if (
 					str_contains( $sr['replace'], '>' )
-					|| str_contains( $sr['replace'], '<' )
+					&& str_contains( $sr['replace'], '<' )
 				) {
 					$replace_by_link = true;
 				}
@@ -170,30 +143,22 @@ function wplng_ob_callback_editor( $html ) {
 
 					$replace = str_replace(
 						'WPLNG',
-						'<a href="' . esc_url( $edit_link ) . '" class="wplng-edit-link" target="_blank">' . str_replace( '$', '&#36;', $translation['translation'] ) . ' </a>',
+						'<a href="' . esc_url( $edit_link ) . '" class="wplng-edit-link" target="_blank">' . str_replace( '$', '&#36;', esc_html( $translation['translation'] ) ) . ' </a>',
 						$sr['replace']
 					);
 				} else {
 					$replace = str_replace(
 						'WPLNG',
-						str_replace( '$', '&#36;', $translation['translation'] ),
+						str_replace( '$', '&#36;', esc_html( $translation['translation'] ) ),
 						$sr['replace']
 					);
 				}
 
-				if ( preg_match( $regex, $html_body ) ) {
+				$html_body = preg_replace( $regex, $replace, $html_body );
 
-					$html_body = preg_replace( $regex, $replace, $html_body );
-
-					if ( ! $replace_by_link ) {
-						$translations_sidebar[] = $translation;
-					}
-				}
 			}
 		}
 	}
-
-	// return '<pre >' . var_export($translations_sidebar, true) . '</pre>';
 
 	$html = preg_replace(
 		'#<body .*>.*</body>#Uis',

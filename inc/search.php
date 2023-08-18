@@ -1,9 +1,4 @@
 <?php
-/*
-Plugin Name: wpLingua
-description: Make your website multilingual and translated
-Version: 0.0.2
-*/
 
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {
@@ -36,3 +31,7 @@ function wplng_translate_search_query( $query_object ) {
 	}
 }
 
+
+function wplng_exclude_search( $is_translatable ) {
+	return $is_translatable && ! ( is_search() || isset( $_GET['s'] ) );
+}

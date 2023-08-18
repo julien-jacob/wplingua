@@ -1,0 +1,21 @@
+
+#wp-admin-bar-wplingua-menu {
+    & > .ab-item::before {
+        content: "\f326";
+        top: 2px;
+        position: relative;
+        transition: color .1s ease-in-out;
+        color: #a7aaad;
+        color: rgba(240,246,252,.6);
+        position: relative;
+        float: left;
+        font: normal 20px/1 dashicons;
+        speak: never;
+        padding: 4px 0;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        background-image: none !important;
+        margin-right: 6px;
+    }
+}
+

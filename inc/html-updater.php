@@ -5,6 +5,7 @@ if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
+
 function wplng_replace_og_local( $html ) {
 
 	if ( ! wplng_url_is_translatable()
@@ -41,7 +42,6 @@ function wplng_language_attributes( $attr ) {
 }
 
 
-
 function wplng_link_alternate_hreflang() {
 
 	$html = '';
@@ -59,7 +59,6 @@ function wplng_link_alternate_hreflang() {
 
 	echo $html;
 }
-
 
 
 function wplng_html_translate_links( $html, $language_target ) {
@@ -80,11 +79,33 @@ function wplng_html_translate_links( $html, $language_target ) {
 
 function wplng_get_selector_exclude() {
 
-	$selector_exclude = array(
-		'#wpadminbar',
-		'.no-translate',
-		'.wplng-switcher',
+	$selector_exclude = explode(
+		PHP_EOL,
+		get_option( 'wplng_excluded_selectors' )
 	);
+
+	// Remove empty
+	$selector_exclude = array_values( array_filter( $selector_exclude ) );
+
+	// Add default selectors
+	$selector_exclude = array_merge(
+		$selector_exclude,
+		array(
+			'#wpadminbar',
+			'.no-translate',
+			'.notranslate',
+			'.wplng-switcher',
+			'address',
+		)
+	);
+
+	// Remove duplicate
+	$selector_exclude = array_unique( $selector_exclude );
+
+	// Sanitize selectors
+	foreach ( $selector_exclude as $key => $selector ) {
+		$selector_exclude[ $key ] = esc_attr( $selector );
+	}
 
 	$selector_exclude = apply_filters(
 		'wplng_selector_exclude',
@@ -134,6 +155,7 @@ function wplng_html_set_exclude_tag( $html, &$excluded_elements ) {
 	return (string) str_get_html( $dom );
 }
 
+
 function wplng_html_replace_exclude_tag( $html, $excluded_elements ) {
 
 	foreach ( $excluded_elements as $key => $element ) {
@@ -147,27 +169,32 @@ function wplng_html_replace_exclude_tag( $html, $excluded_elements ) {
 
 function wplng_init() {
 
-	if ( ! wplng_url_is_translatable()
-		|| wplng_get_language_website_id() === wplng_get_language_current_id()
-	) {
+	if ( wplng_get_language_website_id() === wplng_get_language_current_id() ) {
 		return;
 	}
 
 	global $wplng_request_uri;
 
-	$current_path           = $wplng_request_uri;
-	$origin_path            = '/' . substr( $current_path, 4, strlen( $current_path ) - 1 );
+	$current_path = $wplng_request_uri;
+	$origin_path  = '/' . substr( $current_path, 4, strlen( $current_path ) - 1 );
+
+	if ( ! wplng_url_is_translatable() ) {
+		wp_redirect( $origin_path );
+		exit;
+	}
+
 	$_SERVER['REQUEST_URI'] = $origin_path;
 
-	if ( isset( $_GET['wplingua-visual-editor'] ) ) {
-		// TODO : wp_nonce ?
-		// TODO : Meilleur argument GET ?
-		// TODO : Check user can edit post
-
-		ob_start( 'wplng_ob_callback_editor' );
+	if ( current_user_can( 'edit_posts' ) ) {
+		if ( isset( $_GET['wplingua-editor'] ) ) {
+			ob_start( 'wplng_ob_callback_editor' );
+		} elseif ( isset( $_GET['wplingua-list'] ) ) {
+			ob_start( 'wplng_ob_callback_list' );
+		} else {
+			ob_start( 'wplng_ob_callback_translate' );
+		}
 	} else {
 		ob_start( 'wplng_ob_callback_translate' );
 	}
 
 }
-

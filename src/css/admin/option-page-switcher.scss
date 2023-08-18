@@ -1,0 +1,29 @@
+@import "../header";
+
+.CodeMirror.CodeMirror-wrap {
+    // max-width: calc(100% - 8px);
+    width: 100%;
+    margin-top: 10px;
+    // margin-bottom: 5px;
+    border: 1px solid #8c8f94;
+    border-radius: 3px;
+}
+
+.wplng-switcher-preview .wplng-switcher.switcher-preview {
+
+    position: relative;
+
+    .switcher-content {
+        display: inline-block;
+    }
+
+    &.style-dropdown {
+        height: 38px;
+
+        .switcher-content {
+            position: absolute;
+            right: auto;
+            left: auto;
+        }
+    }
+}

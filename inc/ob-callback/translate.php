@@ -9,43 +9,33 @@ if ( ! defined( 'WPINC' ) ) {
 function wplng_ob_callback_translate( $html ) {
 
 	$html = apply_filters( 'wplng_html_intercepted', $html );
-	// return $html;
 
 	/**
 	 * Get saved translation
 	 */
 	$language_target_id = wplng_get_language_current_id();
 	$translations       = wplng_get_translations_saved( $language_target_id );
-	// return '<pre >' . var_export( $translations, true ) . '</pre>';
 
 	/**
 	 * Get new translation from API
 	 */
-	$start_time       = microtime( true );
-	$translations_new = wplng_parser( $html, '', '', $translations );
-
-	// Calculate script execution time
-	$end_time       = microtime( true );
-	$execution_time = ( $end_time - $start_time );
-	// return var_export( $translations_new, true ) . ' Execution time of script = ' . $execution_time . ' sec';
+	$translations_new = wplng_parser( $html, false, false, $translations );
 
 	/**
 	 * Save new translation as wplng_translation CPT
 	 */
-	wplng_save_translations( $translations_new, $language_target_id );
+	$translations_new = wplng_save_translations( $translations_new, $language_target_id );
 
 	/**
 	 * Merge know and new translations
 	 */
-	$translations = array_merge( $translations, $translations_new );
-	// return var_export($translations, true);
+	$translations = array_merge( $translations_new, $translations );
 
 	/**
 	 * Replace excluded HTML part by tab
 	 */
 	$excluded_elements = array();
 	$html              = wplng_html_set_exclude_tag( $html, $excluded_elements );
-	// return '<pre >' . var_export( $excluded_elements, true ) . '</pre>';
 
 	/**
 	 * Translate links
@@ -68,7 +58,7 @@ function wplng_ob_callback_translate( $html ) {
 
 		if ( ! empty( $translation['source'] ) ) {
 
-			foreach ( $translation['sr'] as $key => $sr ) {
+			foreach ( $translation['sr'] as $sr ) {
 				$regex = str_replace(
 					'WPLNG',
 					preg_quote( $translation['source'] ),
@@ -77,7 +67,7 @@ function wplng_ob_callback_translate( $html ) {
 
 				$replace = str_replace(
 					'WPLNG',
-					str_replace( '$', '&#36;', $translation['translation'] ),
+					str_replace( '$', '&#36;', esc_html( esc_attr( $translation['translation'] ) ) ),
 					$sr['replace']
 				);
 

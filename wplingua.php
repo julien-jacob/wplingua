@@ -10,108 +10,174 @@ if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
-// define( 'WPLNG_API', 'http://machiavel-api.local/v0.0.2/last/' );
-define( 'WPLNG_API', 'https://api.wplingua.com/v0.0/3/' );
 
-require_once 'lib/simple_html_dom.php';
+// TODO : 2 url d'api ?
+// TODO : define une version ? version API ?
+// define( 'WPLNG_API', 'http://machiavel-api.local/v0.0/last/' );
+define( 'WPLNG_API', 'https://api.wplingua.com/v0.0/last/' );
 
+// Require files in /inc/lib/ folder
+require_once 'inc/lib/simple_html_dom.php';
+
+// Require files in /inc/admin/ folder
+require_once 'inc/admin/admin-bar.php';
+require_once 'inc/admin/assets.php';
+require_once 'inc/admin/option-page-exclusions.php';
+require_once 'inc/admin/option-page-register.php';
+require_once 'inc/admin/option-page-settings.php';
+require_once 'inc/admin/option-page-switcher.php';
+require_once 'inc/admin/option-page.php';
+require_once 'inc/admin/translation-cpt.php';
+require_once 'inc/admin/translation-meta.php';
+
+// Require files in /inc/ob-callback/ folder
 require_once 'inc/ob-callback/editor.php';
+require_once 'inc/ob-callback/list.php';
 require_once 'inc/ob-callback/translate.php';
-require_once 'inc/admin-bar.php';
+
+// Require files in /inc/ folder
+require_once 'inc/api-key.php';
 require_once 'inc/api.php';
 require_once 'inc/assets.php';
 require_once 'inc/html-updater.php';
+require_once 'inc/languages-data.php';
 require_once 'inc/languages.php';
 require_once 'inc/mail.php';
-require_once 'inc/option-page.php';
 require_once 'inc/search.php';
+require_once 'inc/shortcode.php';
 require_once 'inc/switcher.php';
-require_once 'inc/translation-cpt.php';
-require_once 'inc/translation-meta.php';
 require_once 'inc/translation.php';
 require_once 'inc/url.php';
-
-global $wplng_request_uri;
-$wplng_request_uri = $_SERVER['REQUEST_URI'];
+require_once 'inc/woocommerce.php';
 
 
 function wplng_start() {
 
-	/**
-	 * CPT, taxo, meta
-	 */
-	// Register wplng_translation CPT
-	add_action( 'init', 'wplng_register_post_type_translation' );
-
-	// Add metabox for wplng_translation
-	add_action( 'add_meta_boxes_wplng_translation', 'meta_box_for_products' );
-
-	// Save metabox on posts saving
-	add_action( 'save_post_wplng_translation', 'wplng_translation_save_meta_boxes_data', 10, 2 );
-
-	/**
-	 * Back office
-	 */
+	global $wplng_request_uri;
+	$wplng_request_uri = $_SERVER['REQUEST_URI'];
 
 	// Register plugin settings
 	add_action( 'admin_init', 'wplng_register_settings' );
 
-	// Add menu in back office
-	add_action( 'admin_menu', 'wplng_create_menu' );
-
 	// Add settings link in plugin list
 	add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), 'wplng_settings_link' );
 
-	// Add admin Bar menu
-	add_action( 'admin_bar_menu', 'wplng_admin_bar_menu', 100 );
-
-	// Enqueue CSS and JS files
-	add_action( 'admin_enqueue_scripts', 'wplng_enqueue_callback' );
-
 	// Print head script (JSON with all languages informations)
-	add_action( 'toplevel_page_wplingua/inc/option-page', 'wplng_inline_script_all_language' );
+	add_action( 'toplevel_page_wplng-settings', 'wplng_inline_script_languages' );
 
-	/**
-	 * Front
-	 */
+	if ( empty( wplng_get_api_data() ) ) {
 
-	// Enqueue CSS and JS files
-	add_action( 'wp_enqueue_scripts', 'wplng_register_assets' );
+		// Add Register option page in back office menu
+		add_action( 'admin_menu', 'wplng_create_menu_register' );
 
-	// Add languages switcher before </body>
-	add_action( 'wp_footer', 'wplng_switcher_wp_footer' );
+		// Enqueue CSS and JS files for register option pages
+		add_action( 'admin_enqueue_scripts', 'wplng_option_page_register_assets' );
 
-	// Change <html lang=""> if translated content
-	add_filter( 'language_attributes', 'wplng_language_attributes' );
+	} else {
 
-	// Set alternate links with hreflang parametters
-	add_action( 'wp_head', 'wplng_link_alternate_hreflang' );
+		/**
+		 * Back office
+		 */
 
-	// Set OG Local
-	add_filter( 'wplng_html_translated', 'wplng_replace_og_local' );
+		// Add menu in back office
+		add_action( 'admin_menu', 'wplng_create_menu' );
 
-	/**
-	 * OB and REQUEST_URI
-	 */
+		// Add admin Bar menu
+		add_action( 'admin_bar_menu', 'wplng_admin_bar_menu', 100 );
 
-	 // Manage URL with REQUEST_URI and start OB
-	add_action( 'init', 'wplng_init' );
+		// Enqueue CSS and JS files for option pages
+		add_action( 'admin_enqueue_scripts', 'wplng_option_page_settings_assets' );
+		add_action( 'admin_enqueue_scripts', 'wplng_option_page_exclusions_assets' );
+		add_action( 'admin_enqueue_scripts', 'wplng_option_page_switcher_assets' );
 
-	// Stop OB at the end of the HTML
-	add_action( 'after_body', 'ob_end_flush' );
+		// Update flags URL
+		add_action( 'update_option_wplng_flags_style', 'wplng_options_switcher_update_flags_style', 10, 2 );
 
-	/**
-	 * Features
-	 */
+		/**
+		 * wplng_translation : CPT, taxo, meta
+		 */
 
-	// Translate email
-	if ( ! empty( get_option( 'wplng_translate_mail' ) ) ) {
-		add_filter( 'wp_mail', 'wplng_translate_wp_mail' );
-	}
+		// Register wplng_translation CPT
+		add_action( 'init', 'wplng_register_post_type_translation' );
 
-	// Search from translated languages
-	if ( ! empty( get_option( 'wplng_translate_search' ) ) ) {
-		add_action( 'parse_query', 'wplng_translate_search_query' );
+		// Add metabox for wplng_translation
+		add_action( 'add_meta_boxes_wplng_translation', 'wplng_translation_add_meta_box' );
+
+		// Save metabox on posts saving
+		add_action( 'save_post_wplng_translation', 'wplng_translation_save_meta_boxes_data', 10, 2 );
+
+		// Enqueue Script for wplng_translation admin
+		add_action( 'admin_print_scripts-post-new.php', 'wplng_translation_assets' );
+		add_action( 'admin_print_scripts-post.php', 'wplng_translation_assets' );
+
+		// Remove Quick edit from translations list
+		add_filter( 'post_row_actions', 'wplng_translation_remove_quick_edit', 10, 2 );
+
+		// Ajax function for regenerate translation on edit page
+		add_action( 'wp_ajax_wplng_ajax_translation', 'wplng_ajax_generate_translation' );
+		// add_action( 'wp_ajax_nopriv_wplng_ajax_translation', 'wplng_ajax_generate_translation' );
+
+		/**
+		 * Front
+		 */
+
+		// Enqueue CSS and JS files
+		add_action( 'wp_enqueue_scripts', 'wplng_register_assets' );
+
+		// Add languages switcher before </body>
+		add_action( 'wp_footer', 'wplng_switcher_wp_footer' );
+
+		// Change <html lang=""> if translated content
+		add_filter( 'language_attributes', 'wplng_language_attributes' );
+
+		// Set alternate links with hreflang parametters
+		add_action( 'wp_head', 'wplng_link_alternate_hreflang' );
+
+		// Set OG Local
+		add_filter( 'wplng_html_translated', 'wplng_replace_og_local' );
+
+		/**
+		 * OB and REQUEST_URI
+		 */
+
+		 // Manage URL with REQUEST_URI and start OB
+		add_action( 'init', 'wplng_init' );
+
+		// Stop OB at the end of the HTML
+		add_action( 'after_body', 'ob_end_flush' );
+
+		/**
+		 * Features
+		 */
+
+		// Translate email
+		if ( ! empty( get_option( 'wplng_translate_mail' ) )
+			&& wplng_api_feature_is_allow( 'mail' )
+		) {
+			add_filter( 'wp_mail', 'wplng_translate_wp_mail' );
+		}
+
+		// Search from translated languages
+		if ( ! empty( get_option( 'wplng_translate_search' ) )
+			&& wplng_api_feature_is_allow( 'search' )
+		) {
+			add_action( 'parse_query', 'wplng_translate_search_query' );
+		} else {
+			add_filter( 'wplng_url_is_translatable', 'wplng_exclude_search', 20 );
+		}
+
+		// Woocommerce
+		if ( empty( get_option( 'wplng_translate_woocommerce' ) ) ) {
+			add_filter( 'wplng_url_is_translatable', 'wplng_exclude_woocommerce', 20 );
+		}
+
+		/**
+		 * Shortcode
+		 */
+		add_shortcode( 'wplingua-switcher', 'wplng_shortcode_switcher' );
+		add_shortcode( 'wplingua-notranslate', 'wplng_shortcode_notranslate' );
+		add_shortcode( 'notranslate', 'wplng_shortcode_notranslate' );
+
 	}
 
 }
