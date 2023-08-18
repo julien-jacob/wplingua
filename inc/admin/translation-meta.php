@@ -75,7 +75,7 @@ function wplng_translation_meta_box_html_output( $post ) {
 				$emoji              = wplng_get_language_emoji( $language_id ); // Emoji already esc_html
 				$language_name      = wplng_get_language_name( $language_id ); // Name already esc_html
 				$label              = $emoji . ' ' . $language_name . __( ' - Translation:', 'textdomain' );
-				$textarea           = esc_html( $translation['translation'] );
+				$textarea           = esc_html( esc_attr($translation['translation']) );
 				$name               = esc_attr( 'wplng_translation_' . $language_id );
 				$container_id       = esc_attr( 'wplng-translation-' . $language_id );
 				$generate_link_text = __( 'Regenerate translation', 'wplingua' );
@@ -86,7 +86,11 @@ function wplng_translation_meta_box_html_output( $post ) {
 
 				$html .= '<div id="' . $container_id . '" class="wplng-edit-language">';
 				$html .= '<label for="' . $name . '">' . $label . '</label>';
-				$html .= '<textarea name="' . $name . '" id="' . $name . '" lang="' . $language_id . '" spellcheck="false">';
+
+				$html .= '<textarea name="' . $name . '" ';
+				$html .= 'id="' . $name . '" ';
+				$html .= 'lang="' . $language_id . '" ';
+				$html .= 'spellcheck="false">';
 				$html .= $textarea;
 				$html .= '</textarea>';
 
@@ -114,8 +118,6 @@ function wplng_translation_meta_box_html_output( $post ) {
 
 					default:
 						if ( is_int( $translation['status'] ) ) {
-							// $generate_link_text = __( 'Regenerate translation', 'wplingua' );
-
 							$html .= '<span class="wplng-status">';
 							$html .= __( 'Status: Edited on', 'wplingua' ) . ' ';
 							$html .= esc_html(
@@ -135,9 +137,7 @@ function wplng_translation_meta_box_html_output( $post ) {
 						break;
 				}
 				$html .= '</div>'; // End .wplng-translation-footer-right
-
 				$html .= '<div class="wplng-translation-footer-right">';
-
 				$html .= '<span class="dashicons dashicons-update wplng-spin wplng-generate-spin" style="display: none;"></span> ';
 				$html .= '<a href="javascript:void(0);" class="wplng-generate" wplng-lang="' . $language_id . '">';
 				$html .= $generate_link_text;
@@ -149,6 +149,8 @@ function wplng_translation_meta_box_html_output( $post ) {
 			}
 		}
 	}
+
+	// $html .= '<pre>' . var_export($meta, true) . '</pre>';
 
 	echo $html;
 }
@@ -202,7 +204,7 @@ function wplng_translation_save_meta_boxes_data( $post_id ) {
 			$translations[ $key ]['status'] = time();
 		}
 
-		$translations[ $key ]['translation'] = $temp;
+		$translations[ $key ]['translation'] = esc_html(esc_attr($temp));
 	}
 
 	update_post_meta(

@@ -10,9 +10,9 @@ if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
-global $wplng_request_uri;
-$wplng_request_uri = $_SERVER['REQUEST_URI'];
 
+// TODO : 2 url d'api ?
+// TODO : define une version ? version API ?
 define( 'WPLNG_API', 'http://machiavel-api.local/v0.0/last/' );
 // define( 'WPLNG_API', 'https://api.wplingua.com/v0.0/last/' );
 
@@ -32,6 +32,7 @@ require_once 'inc/admin/translation-meta.php';
 
 // Require files in /inc/ob-callback/ folder
 require_once 'inc/ob-callback/editor.php';
+require_once 'inc/ob-callback/list.php';
 require_once 'inc/ob-callback/translate.php';
 
 // Require files in /inc/ folder
@@ -39,6 +40,7 @@ require_once 'inc/api-key.php';
 require_once 'inc/api.php';
 require_once 'inc/assets.php';
 require_once 'inc/html-updater.php';
+require_once 'inc/languages-data.php';
 require_once 'inc/languages.php';
 require_once 'inc/mail.php';
 require_once 'inc/search.php';
@@ -50,6 +52,9 @@ require_once 'inc/woocommerce.php';
 
 
 function wplng_start() {
+
+	global $wplng_request_uri;
+	$wplng_request_uri = $_SERVER['REQUEST_URI'];
 
 	// Register plugin settings
 	add_action( 'admin_init', 'wplng_register_settings' );

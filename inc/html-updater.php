@@ -94,7 +94,7 @@ function wplng_get_selector_exclude() {
 			'#wpadminbar',
 			'.no-translate',
 			'.notranslate',
-			// '.wplng-switcher',
+			'.wplng-switcher',
 			'address',
 		)
 	);
@@ -185,12 +185,14 @@ function wplng_init() {
 
 	$_SERVER['REQUEST_URI'] = $origin_path;
 
-	if ( isset( $_GET['wplingua-visual-editor'] )
-		&& current_user_can( 'edit_posts' )
-		&& isset( $_GET['_wpnonce'] )
-		&& wp_verify_nonce( $_GET['_wpnonce'], 'wplng_editor' )
-	) {
-		ob_start( 'wplng_ob_callback_editor' );
+	if ( current_user_can( 'edit_posts' ) ) {
+		if ( isset( $_GET['wplingua-editor'] ) ) {
+			ob_start( 'wplng_ob_callback_editor' );
+		} elseif ( isset( $_GET['wplingua-list'] ) ) {
+			ob_start( 'wplng_ob_callback_list' );
+		} else {
+			ob_start( 'wplng_ob_callback_translate' );
+		}
 	} else {
 		ob_start( 'wplng_ob_callback_translate' );
 	}

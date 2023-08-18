@@ -8,9 +8,7 @@ if ( ! defined( 'WPINC' ) ) {
 
 function wplng_admin_bar_menu() {
 
-	if ( ! wplng_url_is_translatable()
-		|| wplng_get_language_website_id() === wplng_get_language_current_id()
-	) {
+	if ( is_admin() ) {
 		return;
 	}
 
@@ -24,27 +22,111 @@ function wplng_admin_bar_menu() {
 		)
 	);
 
-	if ( ! isset( $_GET['wplingua-visual-editor'] ) ) {
-		$url = add_query_arg( 'wplingua-visual-editor', '1', wplng_get_url_current() );
+	if ( ! wplng_url_is_translatable() ) {
 		$wp_admin_bar->add_menu(
 			array(
-				'id'     => 'wplangua-visual-editor',
+				'id'     => 'wplingua-url-exclude',
 				'parent' => 'wplingua-menu',
-				'title'  => __( 'Visual editor', 'wplingua' ),
-				'href'   => esc_url( wp_nonce_url( $url, 'wplng_editor' ) ),
+				'title'  => __( 'This URL is excluded from translation', 'wplingua' ),
+				'href'   => esc_url(
+					add_query_arg(
+						'page',
+						'wplng-exclusions',
+						get_admin_url() . 'admin.php'
+					)
+				),
 			)
 		);
-	} else {
-		$url = remove_query_arg( 'wplingua-visual-editor', wplng_get_url_current() );
-		$url = remove_query_arg( '_wpnonce', $url );
+		return;
+	}
+
+	$url = wplng_get_url_current();
+
+	$url_original = $url;
+	$url_original = remove_query_arg( 'wplingua-editor', $url_original );
+	$url_original = remove_query_arg( 'wplingua-list', $url_original );
+
+	if ( isset( $_GET['wplingua-editor'] )
+		|| isset( $_GET['wplingua-list'] )
+	) {
+
 		$wp_admin_bar->add_menu(
 			array(
-				'id'     => 'wplangua-visual-editor-disable',
+				'id'     => 'wplingua-return',
 				'parent' => 'wplingua-menu',
-				'title'  => __( 'Disable visual editor', 'wplingua' ),
-				'href'   => esc_url( $url ),
+				'title'  => __( 'Return on page', 'wplingua' ),
+				'href'   => $url_original,
 			)
 		);
 	}
+
+
+	$wp_admin_bar->add_menu(
+		array(
+			'id'     => 'wplingua-editor',
+			'parent' => 'wplingua-menu',
+			'title'  => __( 'Visual editor', 'wplingua' ),
+			'href'   => false,
+		)
+	);
+
+	$wp_admin_bar->add_menu(
+		array(
+			'id'     => 'wplingua-list',
+			'parent' => 'wplingua-menu',
+			'title'  => __( 'All translations on page', 'wplingua' ),
+			'href'   => false,
+		)
+	);
+
+	$languages_target = wplng_get_languages_target();
+
+	if ( ! empty( $languages_target ) ) {
+		foreach ( $languages_target as $key => $language ) {
+			if ( empty( $language['name'] )
+				|| empty( $language['id'] )
+			) {
+				continue;
+			}
+
+
+
+			$wp_admin_bar->add_menu(
+				array(
+					'id'     => 'wplingua-editor-' . $language['id'],
+					'parent' => 'wplingua-editor',
+					'title'  => $language['name'],
+					'href'   => add_query_arg(
+						'wplingua-editor',
+						'1',
+						wplng_url_translate(
+							wplng_get_url_original( $url_original ),
+							$language['id']
+						)
+					),
+				)
+			);
+
+
+			$wp_admin_bar->add_menu(
+				array(
+					'id'     => 'wplingua-list-' . $language['id'],
+					'parent' => 'wplingua-list',
+					'title'  => $language['name'],
+					'href'   => add_query_arg(
+						'wplingua-list',
+						'1',
+						wplng_url_translate(
+							wplng_get_url_original( $url_original ),
+							$language['id']
+						)
+					),
+				)
+			);
+
+		}
+
+	}
+
 
 }

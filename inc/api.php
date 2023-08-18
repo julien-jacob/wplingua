@@ -270,7 +270,6 @@ function wplng_parser( $html, $language_source_id = '', $language_target_id = ''
 	if ( is_wp_error( $request )
 		|| wp_remote_retrieve_response_code( $request ) != 200
 	) {
-		error_log( print_r( $request, true ) );
 		return array();
 	}
 

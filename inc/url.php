@@ -87,6 +87,11 @@ function wplng_url_is_translatable( $url = '' ) {
 		$is_translatable = false;
 	}
 
+	// Check if is wp-comments-post.php
+	if ( str_contains( $url, 'wp-comments-post.php' ) ) {
+		$is_translatable = false;
+	}
+
 	// Check if is in wp-uploads
 	if (
 		$is_translatable
@@ -169,19 +174,19 @@ function wplng_get_url_original( $url = '' ) {
 
 function wplng_get_url_current() {
 	global $wplng_request_uri;
-	return ( empty( $_SERVER['HTTPS'] ) ? 'http' : 'https' ) . "://$_SERVER[HTTP_HOST]$wplng_request_uri";
+	$url = ( empty( $_SERVER['HTTPS'] ) ? 'http' : 'https' ) . "://$_SERVER[HTTP_HOST]$wplng_request_uri";
+	return $url;
 }
 
 
 function wplng_get_url_current_for_language( $language_id ) {
 
-	// TODO : Revoir cette fonction ;)
-
-	$language_current_id = wplng_get_language_current_id();
-
 	global $wplng_request_uri;
-	$path = str_replace( '/' . $language_current_id . '/', '/', $wplng_request_uri );
-	$path = '/' . $language_id . $path;
+	$path = wplng_get_url_original( $wplng_request_uri );
+
+	if ( wplng_get_language_website_id() !== $language_id ) {
+		$path = '/' . $language_id . $path;
+	}
 
 	$url = ( empty( $_SERVER['HTTPS'] ) ? 'http' : 'https' ) . "://$_SERVER[HTTP_HOST]$path";
 

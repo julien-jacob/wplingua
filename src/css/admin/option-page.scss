@@ -45,6 +45,13 @@ h1 .dashicons {
 
     td {
 
+        padding: 15px;
+        background-color: #f6f7f7;
+        display: block;
+        margin-bottom: 25px;
+        border: 1px solid #c3c4c7;
+        max-width: 520px;
+
         .button {
             vertical-align: bottom;
         }
@@ -57,13 +64,6 @@ h1 .dashicons {
             display: block;
             // margin-bottom: 10px;
         }
-
-        padding: 15px;
-        background-color: #f6f7f7;
-        display: block;
-        margin-bottom: 25px;
-        border: 1px solid #c3c4c7;
-        max-width: 520px;
     }
 
 }

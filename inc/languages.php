@@ -10,6 +10,7 @@ function wplng_get_language_website() {
 	return wplng_get_language_by_id( wplng_get_language_website_id() );
 }
 
+
 function wplng_get_language_website_id() {
 
 	$language_api = wplng_get_api_language_website();
@@ -98,6 +99,53 @@ function wplng_get_language_name( $language ) {
 
 	// If no name returned here, return empty string
 	return '';
+}
+
+
+
+
+function wplng_get_language_id( $language ) {
+
+	// If $language is a language array
+	if ( ! empty( $language['id'] ) && wplng_is_valid_language_id( $language['id'] ) ) {
+		return $language['id'];
+	}
+
+	// If $language is a language ID, get language array
+	$language = wplng_get_language_by_id( $language );
+
+	// If language ID is invalid, return a default value
+	if ( false === $language || empty( $language['id'] ) ) {
+		return 'en';
+	}
+
+	return $language['id'];
+}
+
+
+function wplng_get_language_name_translated( $language, $language_target = '' ) {
+
+	// Get target language ID
+	if ( empty( $language_target ) ) {
+		$language_target = wplng_get_language_current_id();
+	} else {
+		$language_target_id = wplng_get_language_id( $language_target );
+	}
+
+	// Get language array
+	if ( empty( $language['id'] ) ) {
+		$language = wplng_get_language_by_id( $language );
+	}
+
+	$translated_language_name = '';
+
+	if ( ! empty( $language['name_translation'][ $language_target_id ] ) ) {
+		$translated_language_name = esc_html( $language['name_translation'][ $language_target_id ] );
+	} else {
+		$translated_language_name = wplng_get_language_name( $language );
+	}
+
+	return esc_html($translated_language_name);
 }
 
 
@@ -307,166 +355,4 @@ function wplng_get_languages_allow() {
 	}
 
 	return $languages;
-}
-
-
-function wplng_get_languages_data() {
-	return array(
-		array(
-			'name'  => __( 'English', 'wplingua' ),
-			'id'    => 'en',
-			'flag'  => 'en',
-			'emoji' => '🇬🇧',
-			'flags' => array(
-				array(
-					'name'  => __( 'United Kingdom', 'wplingua' ),
-					'id'    => 'en',
-					'flag'  => 'en',
-					'emoji' => '🇬🇧',
-				),
-				array(
-					'name'  => __( 'USA', 'wplingua' ),
-					'id'    => 'us',
-					'flag'  => 'us',
-					'emoji' => '🇺🇸',
-				),
-			),
-		),
-		array(
-			'name'  => __( 'French', 'wplingua' ),
-			'id'    => 'fr',
-			'flag'  => 'fr',
-			'emoji' => '🇫🇷',
-			'flags' => array(
-				array(
-					'name'  => __( 'France', 'wplingua' ),
-					'id'    => 'fr',
-					'flag'  => 'fr',
-					'emoji' => '🇫🇷',
-				),
-				array(
-					'name'  => __( 'Belgium', 'wplingua' ),
-					'id'    => 'be',
-					'flag'  => 'be',
-					'emoji' => '🇧🇪',
-				),
-			),
-		),
-		array(
-			'name'  => __( 'German', 'wplingua' ),
-			'id'    => 'de',
-			'flag'  => 'de',
-			'emoji' => '🇩🇪',
-			'flags' => array(
-				array(
-					'name'  => __( 'Germany', 'wplingua' ),
-					'id'    => 'de',
-					'flag'  => 'de',
-					'emoji' => '🇩🇪',
-				),
-			),
-		),
-		array(
-			'name'  => __( 'Italian', 'wplingua' ),
-			'id'    => 'it',
-			'flag'  => 'it',
-			'emoji' => '🇮🇹',
-			'flags' => array(
-				array(
-					'name'  => __( 'Italy', 'wplingua' ),
-					'id'    => 'it',
-					'flag'  => 'it',
-					'emoji' => '🇮🇹',
-				),
-			),
-		),
-		array(
-			'name'  => __( 'Portuguese', 'wplingua' ),
-			'id'    => 'pt',
-			'flag'  => 'pt',
-			'emoji' => '🇵🇹',
-			'flags' => array(
-				array(
-					'name'  => __( 'Portugal', 'wplingua' ),
-					'id'    => 'pt',
-					'flag'  => 'pt',
-					'emoji' => '🇵🇹',
-				),
-				array(
-					'name'  => __( 'Brazil', 'wplingua' ),
-					'id'    => 'br',
-					'flag'  => 'br',
-					'emoji' => '🇧🇷',
-				),
-			),
-		),
-		array(
-			'name'  => __( 'Spanish', 'wplingua' ),
-			'id'    => 'es',
-			'flag'  => 'es',
-			'emoji' => '🇪🇸',
-			'flags' => array(
-				array(
-					'name'  => __( 'Spain', 'wplingua' ),
-					'id'    => 'es',
-					'flag'  => 'es',
-					'emoji' => '🇪🇸',
-				),
-				array(
-					'name'  => __( 'Mexico', 'wplingua' ),
-					'id'    => 'mx',
-					'flag'  => 'mx',
-					'emoji' => '🇲🇽',
-				),
-			),
-		),
-		array(
-			'name'  => __( 'Japanese', 'wplingua' ),
-			'id'    => 'ja',
-			'flag'  => 'ja',
-			'emoji' => '🇯🇵',
-			'flags' => array(
-				array(
-					'name'  => __( 'Japan', 'wplingua' ),
-					'id'    => 'ja',
-					'flag'  => 'ja',
-					'emoji' => '🇯🇵',
-				),
-			),
-		),
-		array(
-			'name'  => __( 'Russian', 'wplingua' ),
-			'id'    => 'ru',
-			'flag'  => 'ru',
-			'emoji' => '🇷🇺',
-			'flags' => array(
-				array(
-					'name'  => __( 'Russia', 'wplingua' ),
-					'id'    => 'ru',
-					'flag'  => 'ru',
-					'emoji' => '🇷🇺',
-				),
-			),
-		),
-		array(
-			'name'  => __( 'Chinese', 'wplingua' ),
-			'id'    => 'zh',
-			'flag'  => 'zh',
-			'emoji' => '🇨🇳',
-			'flags' => array(
-				array(
-					'name'  => __( 'China', 'wplingua' ),
-					'id'    => 'zh',
-					'flag'  => 'zh',
-					'emoji' => '🇨🇳',
-				),
-				array(
-					'name'  => __( 'Hong Kong', 'wplingua' ),
-					'id'    => 'hk',
-					'flag'  => 'hk',
-					'emoji' => '🇭🇰',
-				),
-			),
-		),
-	);
 }

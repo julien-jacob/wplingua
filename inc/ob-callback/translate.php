@@ -19,17 +19,17 @@ function wplng_ob_callback_translate( $html ) {
 	/**
 	 * Get new translation from API
 	 */
-	$translations_new = wplng_parser( $html, '', '', $translations );
+	$translations_new = wplng_parser( $html, false, false, $translations );
 
 	/**
 	 * Save new translation as wplng_translation CPT
 	 */
-	wplng_save_translations( $translations_new, $language_target_id );
+	$translations_new = wplng_save_translations( $translations_new, $language_target_id );
 
 	/**
 	 * Merge know and new translations
 	 */
-	$translations = array_merge( $translations, $translations_new );
+	$translations = array_merge( $translations_new, $translations );
 
 	/**
 	 * Replace excluded HTML part by tab
@@ -58,7 +58,7 @@ function wplng_ob_callback_translate( $html ) {
 
 		if ( ! empty( $translation['source'] ) ) {
 
-			foreach ( $translation['sr'] as $key => $sr ) {
+			foreach ( $translation['sr'] as $sr ) {
 				$regex = str_replace(
 					'WPLNG',
 					preg_quote( $translation['source'] ),
@@ -67,7 +67,7 @@ function wplng_ob_callback_translate( $html ) {
 
 				$replace = str_replace(
 					'WPLNG',
-					str_replace( '$', '&#36;', $translation['translation'] ),
+					str_replace( '$', '&#36;', esc_html( esc_attr( $translation['translation'] ) ) ),
 					$sr['replace']
 				);
 
