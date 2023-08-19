@@ -13,8 +13,11 @@ if ( ! defined( 'WPINC' ) ) {
 
 // TODO : 2 url d'api ?
 // TODO : define une version ? version API ?
-// define( 'WPLNG_API', 'http://machiavel-api.local/v0.0/last/' );
-define( 'WPLNG_API', 'https://api.wplingua.com/v0.0/last/' );
+define( 'WPLNG_API_URL', 'http://machiavel-api.local' );
+define( 'WPLNG_API_VERSION', 'last' );
+
+// define( 'WPLNG_API_URL', 'http://machiavel-api.local/' );
+// define( 'WPLNG_API_URL', 'https://api.wplingua.com/v0.0/last/' );
 
 // Require files in /inc/lib/ folder
 require_once 'inc/lib/simple_html_dom.php';

@@ -28,6 +28,7 @@ function wplng_api_request_free_api_key( $data ) {
 
 	$body = array(
 		'r'                 => 'register',
+		'v'                 => WPLNG_API_VERSION,
 		'website'           => $data['website'],
 		'mail_address'      => $data['mail_address'],
 		'language_original' => $data['language_original'],
@@ -42,7 +43,10 @@ function wplng_api_request_free_api_key( $data ) {
 		'body'      => $body,
 	);
 
-	$request = wp_remote_post( WPLNG_API, $args );
+	$request = wp_remote_post(
+		WPLNG_API_URL . '/account/',
+		$args
+	);
 
 	if ( is_wp_error( $request )
 		|| wp_remote_retrieve_response_code( $request ) != 200
@@ -60,20 +64,21 @@ function wplng_api_request_free_api_key( $data ) {
 
 
 function wplng_validate_api_key( $api_key = '' ) {
-
+	
 	if ( empty( $api_key ) ) {
 		$api_key = wplng_get_api_key();
 		if ( empty( $api_key ) ) {
 			return array();
 		}
 	}
-
+	
 	if ( ! wplng_is_valid_api_key_format( $api_key ) ) {
 		return array();
 	}
-
+	
 	$body = array(
 		'r'       => 'api_key',
+		'v'       => WPLNG_API_VERSION,
 		'api_key' => $api_key,
 	);
 
@@ -84,20 +89,22 @@ function wplng_validate_api_key( $api_key = '' ) {
 		'body'      => $body,
 	);
 
-	$request = wp_remote_post( WPLNG_API, $args );
-
+	$request = wp_remote_post(
+		WPLNG_API_URL . '/app/',
+		$args
+	);
+	
 	if ( is_wp_error( $request )
 		|| wp_remote_retrieve_response_code( $request ) != 200
 	) {
 		return array();
 	}
-
 	$response = json_decode( wp_remote_retrieve_body( $request ), true );
 
 	if ( ! empty( $response['error'] ) ) {
 		return array();
 	}
-
+	
 	return $response;
 }
 
@@ -121,6 +128,7 @@ function wplng_translate( $text, $language_source_id = '', $language_target_id =
 	$body = array(
 		'api-key' => $api_key,
 		'r'       => 'translate',
+		'v'       => WPLNG_API_VERSION,
 		'source'  => $language_source_id,
 		'target'  => $language_target_id,
 		'text'    => $text,
@@ -133,7 +141,10 @@ function wplng_translate( $text, $language_source_id = '', $language_target_id =
 		'body'      => $body,
 	);
 
-	$request = wp_remote_post( WPLNG_API, $args );
+	$request = wp_remote_post(
+		WPLNG_API_URL . '/app/',
+		$args
+	);
 
 	if ( is_wp_error( $request )
 		|| wp_remote_retrieve_response_code( $request ) != 200
@@ -254,6 +265,7 @@ function wplng_parser( $html, $language_source_id = '', $language_target_id = ''
 	$body = array(
 		'api-key' => $api_key,
 		'r'       => 'parser',
+		'v'       => WPLNG_API_VERSION,
 		'source'  => $language_source_id,
 		'target'  => $language_target_id,
 		'text'    => $html,
@@ -265,7 +277,10 @@ function wplng_parser( $html, $language_source_id = '', $language_target_id = ''
 		'body'      => $body,
 	);
 
-	$request = wp_remote_post( WPLNG_API, $args );
+	$request = wp_remote_post(
+		WPLNG_API_URL . '/app/',
+		$args
+	);
 
 	if ( is_wp_error( $request )
 		|| wp_remote_retrieve_response_code( $request ) != 200
