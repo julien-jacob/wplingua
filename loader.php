@@ -20,6 +20,12 @@ require_once WPLNG_PLUGIN_PATH . '/inc/admin/option-page.php';
 require_once WPLNG_PLUGIN_PATH . '/inc/admin/translation-cpt.php';
 require_once WPLNG_PLUGIN_PATH . '/inc/admin/translation-meta.php';
 
+// Require files in /inc/api-call/ folder
+require_once WPLNG_PLUGIN_PATH . '/inc/api-call/parser.php';
+require_once WPLNG_PLUGIN_PATH . '/inc/api-call/request-free-key.php';
+require_once WPLNG_PLUGIN_PATH . '/inc/api-call/translate.php';
+require_once WPLNG_PLUGIN_PATH . '/inc/api-call/validate-api-key.php';
+
 // Require files in /inc/ob-callback/ folder
 require_once WPLNG_PLUGIN_PATH . '/inc/ob-callback/editor.php';
 require_once WPLNG_PLUGIN_PATH . '/inc/ob-callback/list.php';
@@ -27,7 +33,6 @@ require_once WPLNG_PLUGIN_PATH . '/inc/ob-callback/translate.php';
 
 // Require files in /inc/ folder
 require_once WPLNG_PLUGIN_PATH . '/inc/api-key.php';
-require_once WPLNG_PLUGIN_PATH . '/inc/api.php';
 require_once WPLNG_PLUGIN_PATH . '/inc/assets.php';
 require_once WPLNG_PLUGIN_PATH . '/inc/html-updater.php';
 require_once WPLNG_PLUGIN_PATH . '/inc/languages-data.php';
