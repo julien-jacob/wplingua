@@ -126,7 +126,7 @@ function wplng_translate( $text, $language_source_id = '', $language_target_id =
 	}
 
 	$body = array(
-		'api-key' => $api_key,
+		'api_key' => $api_key,
 		'r'       => 'translate',
 		'v'       => WPLNG_API_VERSION,
 		'source'  => $language_source_id,
@@ -263,7 +263,7 @@ function wplng_parser( $html, $language_source_id = '', $language_target_id = ''
 	}
 
 	$body = array(
-		'api-key' => $api_key,
+		'api_key' => $api_key,
 		'r'       => 'parser',
 		'v'       => WPLNG_API_VERSION,
 		'source'  => $language_source_id,
@@ -287,6 +287,8 @@ function wplng_parser( $html, $language_source_id = '', $language_target_id = ''
 	) {
 		return array();
 	}
+
+	error_log(wp_remote_retrieve_body( $request ));
 
 	$response = json_decode( wp_remote_retrieve_body( $request ), true );
 
