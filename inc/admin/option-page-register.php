@@ -26,7 +26,7 @@ function wplng_option_page_register() {
 
 		delete_option( 'wplng_request_free_key' );
 		$data_request_key = json_decode( $json_request_key, true );
-		$response         = wplng_api_request_free_key( $data_request_key );
+		$response         = wplng_api_request_api_key( $data_request_key );
 
 		if ( ! empty( $response['error'] ) ) {
 			$message = '';
