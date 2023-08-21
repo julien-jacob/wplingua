@@ -288,8 +288,6 @@ function wplng_parser( $html, $language_source_id = '', $language_target_id = ''
 		return array();
 	}
 
-	error_log(wp_remote_retrieve_body( $request ));
-
 	$response = json_decode( wp_remote_retrieve_body( $request ), true );
 
 	if ( empty( $response ) ) {
