@@ -158,7 +158,7 @@ function wplng_get_languages_target_simplified() {
 	}
 
 	$languages_target = json_decode( $json, true );
-	$all_languages    = wplng_get_languages_all();
+	$all_languages    = wplng_get_languages_allow();
 	$ordered          = array();
 
 	foreach ( $all_languages as $key => $language ) {
