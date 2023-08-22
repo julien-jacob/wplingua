@@ -8,6 +8,15 @@ if ( ! defined( 'WPINC' ) ) {
 
 function wplng_api_informations() {
 
+	$cached_info = json_decode(
+		get_transient( 'wplng_api_informations' ),
+		true
+	);
+
+	if ( ! empty( $cached_info ) ) {
+		return $cached_info;
+	}
+
 	$args = array(
 		'method'    => 'POST',
 		'timeout'   => 5,
@@ -30,6 +39,14 @@ function wplng_api_informations() {
 	}
 
 	$response = json_decode( wp_remote_retrieve_body( $request ), true );
+
+	if ( empty( $response['error'] ) ) {
+		set_transient(
+			'wplng_api_informations',
+			wp_json_encode( $response ),
+			60 * 60
+		);
+	}
 
 	return $response;
 }
