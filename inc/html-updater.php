@@ -28,6 +28,7 @@ function wplng_language_attributes( $attr ) {
 
 	$language_current_id = wplng_get_language_current_id();
 
+	// TODO : Check if untranslatable page ? 
 	if ( is_admin() || empty( $language_current_id ) ) {
 		return $attr;
 	}
@@ -37,6 +38,24 @@ function wplng_language_attributes( $attr ) {
 		'lang=$1' . esc_attr( $language_current_id ) . '$4',
 		$attr
 	);
+
+	// Remove dir attr 
+	$attr = preg_replace(
+		'#dir=(\"|\')(...)(\"|\')#i',
+		'',
+		$attr
+	);
+
+	$language_current = wplng_get_language_by_id(
+		wplng_get_language_current_id()
+	);
+
+	// Add dir attribute if necessary
+	if ( ! empty( $language_current['dir'] )
+		&& 'rtl' === $language_current['dir']
+	) {
+		$attr .= ' dir="rtl"';
+	}
 
 	return $attr;
 }

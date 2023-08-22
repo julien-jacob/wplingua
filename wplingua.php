@@ -10,45 +10,12 @@ if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
+define( 'WPLNG_API_URL', 'http://machiavel-api.local' );
+define( 'WPLNG_API_VERSION', 'last' );
+define( 'WPLNG_PLUGIN_VERSION', '0.0.4' );
+define( 'WPLNG_PLUGIN_PATH', dirname( __FILE__ ) );
 
-// TODO : 2 url d'api ?
-// TODO : define une version ? version API ?
-// define( 'WPLNG_API', 'http://machiavel-api.local/v0.0/last/' );
-define( 'WPLNG_API', 'https://api.wplingua.com/v0.0/last/' );
-
-// Require files in /inc/lib/ folder
-require_once 'inc/lib/simple_html_dom.php';
-
-// Require files in /inc/admin/ folder
-require_once 'inc/admin/admin-bar.php';
-require_once 'inc/admin/assets.php';
-require_once 'inc/admin/option-page-exclusions.php';
-require_once 'inc/admin/option-page-register.php';
-require_once 'inc/admin/option-page-settings.php';
-require_once 'inc/admin/option-page-switcher.php';
-require_once 'inc/admin/option-page.php';
-require_once 'inc/admin/translation-cpt.php';
-require_once 'inc/admin/translation-meta.php';
-
-// Require files in /inc/ob-callback/ folder
-require_once 'inc/ob-callback/editor.php';
-require_once 'inc/ob-callback/list.php';
-require_once 'inc/ob-callback/translate.php';
-
-// Require files in /inc/ folder
-require_once 'inc/api-key.php';
-require_once 'inc/api.php';
-require_once 'inc/assets.php';
-require_once 'inc/html-updater.php';
-require_once 'inc/languages-data.php';
-require_once 'inc/languages.php';
-require_once 'inc/mail.php';
-require_once 'inc/search.php';
-require_once 'inc/shortcode.php';
-require_once 'inc/switcher.php';
-require_once 'inc/translation.php';
-require_once 'inc/url.php';
-require_once 'inc/woocommerce.php';
+require_once WPLNG_PLUGIN_PATH . '/loader.php';
 
 
 function wplng_start() {
@@ -92,6 +59,9 @@ function wplng_start() {
 
 		// Update flags URL
 		add_action( 'update_option_wplng_flags_style', 'wplng_options_switcher_update_flags_style', 10, 2 );
+
+		// Reset API data on API key changing
+		add_action( 'update_option_wplng_api_key', 'wplng_on_update_option_wplng_api_key', 10, 2 );
 
 		/**
 		 * wplng_translation : CPT, taxo, meta

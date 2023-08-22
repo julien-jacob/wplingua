@@ -17,7 +17,7 @@ function wplng_option_page_switcher() {
 	?>
 	<div class="wrap">
 		
-		<h1><span class="dashicons dashicons-translation"></span> <?php _e( 'wpLingua : Switcher settings', 'wplingua' ); ?></h1>
+		<h1><span class="dashicons dashicons-translation"></span> <?php _e( 'wpLingua / Beta : Switcher settings', 'wplingua' ); ?></h1>
 
 		<br>
 

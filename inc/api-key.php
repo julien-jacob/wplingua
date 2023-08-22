@@ -120,3 +120,7 @@ function wplng_get_api_feature() {
 function wplng_api_feature_is_allow( $feature_name ) {
 	return in_array( $feature_name, wplng_get_api_feature() );
 }
+
+function wplng_on_update_option_wplng_api_key( $old_value, $new_value ) {
+	delete_transient('wplng_api_key_data');
+}
