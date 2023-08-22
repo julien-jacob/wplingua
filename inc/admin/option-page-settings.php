@@ -78,6 +78,10 @@ function wplng_settings_part_first_use() {
 		return;
 	}
 
+	if ('all' === wplng_get_api_language_website()) {
+		return;
+	}
+
 	update_option( 'wplng_website_language', wplng_get_api_language_website() );
 
 	$data = wplng_get_api_data();
