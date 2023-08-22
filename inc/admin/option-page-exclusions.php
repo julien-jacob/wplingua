@@ -7,6 +7,9 @@ if ( ! defined( 'WPINC' ) ) {
 
 
 function wplng_option_page_exclusions() {
+
+	wplng_show_api_message();
+	
 	?>
 	<div class="wrap">
 		
