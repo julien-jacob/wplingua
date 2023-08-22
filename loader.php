@@ -21,6 +21,7 @@ require_once WPLNG_PLUGIN_PATH . '/inc/admin/translation-cpt.php';
 require_once WPLNG_PLUGIN_PATH . '/inc/admin/translation-meta.php';
 
 // Require files in /inc/api-call/ folder
+require_once WPLNG_PLUGIN_PATH . '/inc/api-call/api-informations.php';
 require_once WPLNG_PLUGIN_PATH . '/inc/api-call/parser.php';
 require_once WPLNG_PLUGIN_PATH . '/inc/api-call/request-api-key.php';
 require_once WPLNG_PLUGIN_PATH . '/inc/api-call/translate.php';
