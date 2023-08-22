@@ -10,10 +10,28 @@ function wplng_option_page_register() {
 
 	$api_key          = wplng_get_api_key();
 	$json_request_key = get_option( 'wplng_request_free_key' );
+	$error_validation = get_transient( 'wplng_api_key_error' );
 
 	delete_transient( 'wplng_api_key_data' );
 
-	if ( get_option( 'wplng_api_key' ) !== $api_key
+
+	if ( ! empty( $error_validation ) ) :
+		delete_transient( 'wplng_api_key_error' );
+		$message = '';
+		if ( ! empty( $error_validation ) ) {
+			$message .= '<p>';
+			$message .= __( 'Message :', 'wplingua' );
+			$message .= ' ' . esc_html( $error_validation );
+			$message .= '</p>';
+		}
+		?>
+		<div class="wplng-notice notice notice-error is-dismissible">
+			<p><?php _e( 'An error occurred with API key..', 'wplingua' ); ?></p>
+			<?php echo $message; ?>
+		</div>
+		<?php
+
+	elseif ( get_option( 'wplng_api_key' ) !== $api_key
 		&& empty( wplng_get_api_data() )
 	) :
 		update_option( 'wplng_api_key', '' );

@@ -44,7 +44,17 @@ function wplng_validate_api_key( $api_key = '' ) {
 	}
 	$response = json_decode( wp_remote_retrieve_body( $request ), true );
 
-	if ( ! empty( $response['error'] ) ) {
+	if ( ! empty( $response['error'] ) 
+		&& ! empty( $response['message'] ) 
+		&& isset( $response['code'] ) 
+	) {
+		$error_message = __('Code', 'wplingua') . ' ' . esc_html($response['code']);
+		$error_message .= ' - ' . esc_html($response['message']);
+		set_transient(
+			'wplng_api_key_error',
+			$error_message,
+			60 * 5
+		);
 		return array();
 	}
 	

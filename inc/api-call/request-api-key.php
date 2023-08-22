@@ -32,7 +32,7 @@ function wplng_api_request_api_key( $data ) {
 		'website'           => $data['website'],
 		'mail_address'      => $data['mail_address'],
 		'language_original' => $data['language_original'],
-		'languages_target'  => $data['languages_target'],
+		'languages_target'  => array( $data['languages_target'] ),
 		'accept_eula'       => true,
 	);
 
