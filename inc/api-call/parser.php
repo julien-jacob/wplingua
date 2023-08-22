@@ -108,11 +108,11 @@ function wplng_parser( $html, $language_source_id = '', $language_target_id = ''
 
 	$body = array(
 		'api_key' => $api_key,
-		'r'       => 'parser',
-		'v'       => WPLNG_API_VERSION,
+		'request'       => 'parser',
+		'version'       => WPLNG_API_VERSION,
 		'source'  => $language_source_id,
 		'target'  => $language_target_id,
-		'text'    => $html,
+		'html'    => $html,
 	);
 	$args = array(
 		'method'    => 'POST',

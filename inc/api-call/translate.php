@@ -25,8 +25,8 @@ function wplng_translate( $text, $language_source_id = '', $language_target_id =
 
 	$body = array(
 		'api_key' => $api_key,
-		'r'       => 'translate',
-		'v'       => WPLNG_API_VERSION,
+		'request'       => 'translate',
+		'version'       => WPLNG_API_VERSION,
 		'source'  => $language_source_id,
 		'target'  => $language_target_id,
 		'text'    => $text,

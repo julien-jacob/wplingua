@@ -20,8 +20,8 @@ function wplng_validate_api_key( $api_key = '' ) {
 	}
 	
 	$body = array(
-		'r'       => 'api_key',
-		'v'       => WPLNG_API_VERSION,
+		'request'       => 'api_key',
+		'version'       => WPLNG_API_VERSION,
 		'api_key' => $api_key,
 	);
 

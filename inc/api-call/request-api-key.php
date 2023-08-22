@@ -8,8 +8,8 @@ if ( ! defined( 'WPINC' ) ) {
 
 function wplng_api_request_api_key( $data ) {
 
-	if ( empty( $data['r'] )
-		|| $data['r'] !== 'register'
+	if ( empty( $data['request'] )
+		|| $data['request'] !== 'register'
 		|| empty( $data['mail_address'] )
 		|| empty( $data['website'] )
 		|| empty( $data['language_original'] )
@@ -27,8 +27,8 @@ function wplng_api_request_api_key( $data ) {
 	}
 
 	$body = array(
-		'r'                 => 'register',
-		'v'                 => WPLNG_API_VERSION,
+		'request'                 => 'register',
+		'version'                 => WPLNG_API_VERSION,
 		'website'           => $data['website'],
 		'mail_address'      => $data['mail_address'],
 		'language_original' => $data['language_original'],
