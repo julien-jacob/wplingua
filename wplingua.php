@@ -60,6 +60,9 @@ function wplng_start() {
 		// Update flags URL
 		add_action( 'update_option_wplng_flags_style', 'wplng_options_switcher_update_flags_style', 10, 2 );
 
+		// Reset API data on API key changing
+		add_action( 'update_option_wplng_api_key', 'wplng_on_update_option_wplng_api_key', 10, 2 );
+
 		/**
 		 * wplng_translation : CPT, taxo, meta
 		 */
