@@ -15,6 +15,11 @@ function wplng_ob_callback_editor( $html ) {
 	$html = apply_filters( 'wplng_html_intercepted', $html );
 
 	/**
+	 * Remove tabulation in $html
+	 */
+	$html = preg_replace( '#\t#', '', $html );
+
+	/**
 	 * Replace excluded HTML part by tag
 	 */
 	$excluded_elements = array();
