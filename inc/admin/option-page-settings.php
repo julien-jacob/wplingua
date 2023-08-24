@@ -175,23 +175,36 @@ function wplng_settings_part_language_website() {
 		echo '<strong>';
 		echo __( 'Original website language, defined by API key:', 'wplingua' );
 		echo ' </strong>';
-		echo wplng_get_language_name( $api_language_website );
 		echo ' </p>';
-		echo ' <hr>';
 	}
 	?>
 
 	<div id="wplng-flags-radio-original-website-custom"><?php _e( 'Custom', 'wplingua' ); ?></div>
 
-	<p>
-		<strong><?php _e( 'Flag:', 'wplingua' ); ?></strong>
-		<span id="wplng-flags-radio-original-website"></span>
-	</p>
+	<div id="wplng-website-language-box">
 
-	<div id="wplng-website-flag-container">
-		<hr>
-		<strong class="wplng-fe-50"><?php _e( 'Custom flag URL : ', 'wplingua' ); ?></strong>
-		<input type="url" name="wplng_website_flag" id="wplng_website_flag" value="<?php echo esc_url( wplng_get_language_website_flag() ); ?>" class="wplng-fe-50"/>
+		<div class="wplng-website-language-displayed">
+			<div class="wplng-website-language-left">
+				<img src="<?php echo wplng_get_language_website_flag() ?>" id="wplng-website-flag">
+				<?php echo esc_html( $website_language['name'] ); ?>
+			</div>
+			<div class="wplng-target-language-right">
+				<a href="javascript:void(0);" id="wplng-website-lang-update-flag"><?php _e( 'Edit flag', 'wplingua' ); ?></a>
+			</div>
+		</div>
+
+		<div id="wplng-flag-website-container">
+			<p>
+				<strong><?php _e( 'Flag:', 'wplingua' ); ?></strong>
+				<span id="wplng-flags-radio-original-website"></span>
+			</p>
+
+			<div id="wplng-website-flag-container">
+				<strong><?php _e( 'Custom flag URL : ', 'wplingua' ); ?></strong>
+				<input type="url" name="wplng_website_flag" id="wplng_website_flag" value="<?php echo esc_url( wplng_get_language_website_flag() ); ?>"/>
+			</div>
+		</div>
+
 	</div>
 	<?php
 }

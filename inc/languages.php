@@ -46,7 +46,7 @@ function wplng_get_language_website_flag() {
 
 	$website_flag = apply_filters( 'wplng_language_website_flag', $website_flag );
 
-	return $website_flag;
+	return esc_url($website_flag);
 }
 
 
