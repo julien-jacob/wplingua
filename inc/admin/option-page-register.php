@@ -70,8 +70,12 @@ function wplng_option_page_register() {
 			}
 			?>
 			<div class="wplng-notice notice notice-success is-dismissible">
-				<p><strong><?php _e( 'The API key has been correctly created and sent to the following e-mail address:', 'wplingua' );
-				echo $mail; ?></strong></p>
+				<p><strong>
+				<?php
+				_e( 'The API key has been correctly created and sent to the following e-mail address:', 'wplingua' );
+				echo $mail;
+				?>
+				</strong></p>
 			</div>
 			<?php
 		}

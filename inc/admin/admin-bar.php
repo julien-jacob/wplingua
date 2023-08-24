@@ -60,7 +60,6 @@ function wplng_admin_bar_menu() {
 		);
 	}
 
-
 	$wp_admin_bar->add_menu(
 		array(
 			'id'     => 'wplingua-editor',
@@ -89,8 +88,6 @@ function wplng_admin_bar_menu() {
 				continue;
 			}
 
-
-
 			$wp_admin_bar->add_menu(
 				array(
 					'id'     => 'wplingua-editor-' . $language['id'],
@@ -106,7 +103,6 @@ function wplng_admin_bar_menu() {
 					),
 				)
 			);
-
 
 			$wp_admin_bar->add_menu(
 				array(
@@ -125,8 +121,6 @@ function wplng_admin_bar_menu() {
 			);
 
 		}
-
 	}
-
 
 }

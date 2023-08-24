@@ -332,11 +332,11 @@ function wplng_get_languages_all() {
 		}
 
 		// Add default DIR as LTR if not specified or invalid
-		if ( empty( $language['dir'] ) 
-			|| 'rtl' !== $language['dir'] 
+		if ( empty( $language['dir'] )
+			|| 'rtl' !== $language['dir']
 		) {
 			$languages[ $key ]['dir'] = 'ltr';
-		} 
+		}
 	}
 
 	return $languages;

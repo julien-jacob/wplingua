@@ -321,22 +321,21 @@ function wplng_get_switcher_html( $arg = array() ) {
 	 */
 
 	// Translate target language names
-	foreach ($languages_target as $key => $language_target) {
-		$languages_target[$key]['name'] = wplng_get_language_name_translated(
-			$language_target, 
+	foreach ( $languages_target as $key => $language_target ) {
+		$languages_target[ $key ]['name'] = wplng_get_language_name_translated(
+			$language_target,
 			$language_current_id
 		);
 	}
 
 	// Translate website language name
 	$language_website['name'] = wplng_get_language_name_translated(
-		$language_website, 
+		$language_website,
 		$language_current_id
 	);
-	
 
 	/**
-	 * Create the switcher HTML 
+	 * Create the switcher HTML
 	 */
 
 	$html  = '<div class="' . esc_attr( 'wplng-switcher ' . $class ) . '">';

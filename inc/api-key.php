@@ -122,5 +122,5 @@ function wplng_api_feature_is_allow( $feature_name ) {
 }
 
 function wplng_on_update_option_wplng_api_key( $old_value, $new_value ) {
-	delete_transient('wplng_api_key_data');
+	delete_transient( 'wplng_api_key_data' );
 }

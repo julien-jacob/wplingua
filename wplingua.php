@@ -15,6 +15,7 @@ define( 'WPLNG_API_VERSION', 'last' );
 define( 'WPLNG_PLUGIN_VERSION', '0.0.4' );
 define( 'WPLNG_PLUGIN_PATH', dirname( __FILE__ ) );
 
+
 require_once WPLNG_PLUGIN_PATH . '/loader.php';
 
 
@@ -85,7 +86,6 @@ function wplng_start() {
 
 		// Ajax function for regenerate translation on edit page
 		add_action( 'wp_ajax_wplng_ajax_translation', 'wplng_ajax_generate_translation' );
-		// add_action( 'wp_ajax_nopriv_wplng_ajax_translation', 'wplng_ajax_generate_translation' );
 
 		/**
 		 * Front

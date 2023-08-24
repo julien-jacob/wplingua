@@ -7,21 +7,21 @@ if ( ! defined( 'WPINC' ) ) {
 
 
 function wplng_validate_api_key( $api_key = '' ) {
-	
+
 	if ( empty( $api_key ) ) {
 		$api_key = wplng_get_api_key();
 		if ( empty( $api_key ) ) {
 			return array();
 		}
 	}
-	
+
 	if ( ! wplng_is_valid_api_key_format( $api_key ) ) {
 		return array();
 	}
-	
+
 	$body = array(
-		'request'       => 'api_key',
-		'version'       => WPLNG_API_VERSION,
+		'request' => 'api_key',
+		'version' => WPLNG_API_VERSION,
 		'api_key' => $api_key,
 	);
 
@@ -36,7 +36,7 @@ function wplng_validate_api_key( $api_key = '' ) {
 		WPLNG_API_URL . '/app/',
 		$args
 	);
-	
+
 	if ( is_wp_error( $request )
 		|| wp_remote_retrieve_response_code( $request ) != 200
 	) {
@@ -44,12 +44,12 @@ function wplng_validate_api_key( $api_key = '' ) {
 	}
 	$response = json_decode( wp_remote_retrieve_body( $request ), true );
 
-	if ( ! empty( $response['error'] ) 
-		&& ! empty( $response['message'] ) 
-		&& isset( $response['code'] ) 
+	if ( ! empty( $response['error'] )
+		&& ! empty( $response['message'] )
+		&& isset( $response['code'] )
 	) {
-		$error_message = __('Code', 'wplingua') . ' ' . esc_html($response['code']);
-		$error_message .= ' - ' . esc_html($response['message']);
+		$error_message  = __( 'Code', 'wplingua' ) . ' ' . esc_html( $response['code'] );
+		$error_message .= ' - ' . esc_html( $response['message'] );
 		set_transient(
 			'wplng_api_key_error',
 			$error_message,
@@ -57,6 +57,6 @@ function wplng_validate_api_key( $api_key = '' ) {
 		);
 		return array();
 	}
-	
+
 	return $response;
 }

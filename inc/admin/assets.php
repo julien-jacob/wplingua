@@ -152,11 +152,11 @@ function wplng_translation_assets() {
 			array( 'jquery' )
 		);
 
-		wp_localize_script( 
-			'wplingua-translation', 
-			'adminAjax', 
+		wp_localize_script(
+			'wplingua-translation',
+			'adminAjax',
 			array(
-				'ajaxurl' => admin_url( 'admin-ajax.php' )
+				'ajaxurl' => admin_url( 'admin-ajax.php' ),
 			)
 		);
 

@@ -5,6 +5,9 @@ if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
+/**
+ * Require all wpLingua PHP files
+ */
 
 // Require files in /inc/lib/ folder
 require_once WPLNG_PLUGIN_PATH . '/inc/lib/simple_html_dom.php';

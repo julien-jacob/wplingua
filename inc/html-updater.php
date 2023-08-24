@@ -28,7 +28,7 @@ function wplng_language_attributes( $attr ) {
 
 	$language_current_id = wplng_get_language_current_id();
 
-	// TODO : Check if untranslatable page ? 
+	// TODO : Check if untranslatable page ?
 	if ( is_admin() || empty( $language_current_id ) ) {
 		return $attr;
 	}
@@ -39,7 +39,7 @@ function wplng_language_attributes( $attr ) {
 		$attr
 	);
 
-	// Remove dir attr 
+	// Remove dir attr
 	$attr = preg_replace(
 		'#dir=(\"|\')(...)(\"|\')#i',
 		'',

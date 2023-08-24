@@ -6,7 +6,6 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 
-
 function wplng_translate( $text, $language_source_id = '', $language_target_id = '' ) {
 
 	$api_key = wplng_get_api_key();
@@ -25,8 +24,8 @@ function wplng_translate( $text, $language_source_id = '', $language_target_id =
 
 	$body = array(
 		'api_key' => $api_key,
-		'request'       => 'translate',
-		'version'       => WPLNG_API_VERSION,
+		'request' => 'translate',
+		'version' => WPLNG_API_VERSION,
 		'source'  => $language_source_id,
 		'target'  => $language_target_id,
 		'text'    => $text,
