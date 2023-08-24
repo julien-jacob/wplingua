@@ -53,7 +53,7 @@ jQuery(document).ready(function ($) {
     }
 
 
-    function wplngGetOptionstargetLanguagesHTML() {
+    function wplngGetOptionsTargetLanguagesHTML() {
 
         var languagesOptionsHTML = "";
         var hideFieldset = true;
@@ -298,8 +298,10 @@ jQuery(document).ready(function ($) {
     $("#wplng_website_language").on("change", function () {
         wplngWebsiteLanguage = $("#wplng_website_language").val();
         $("#wplng_website_flag").val("");
-        $("#wplng_add_new_target_language").html(wplngGetOptionstargetLanguagesHTML());
+        $("#wplng_add_new_target_language").html(wplngGetOptionsTargetLanguagesHTML());
         $("#wplng-flags-radio-original-website").html(wplngGetWebsiteLanguageFlagsHTML());
+
+        // wplng-website-flag
     });
 
 
@@ -310,6 +312,15 @@ jQuery(document).ready(function ($) {
             $("#wplng-website-flag-container").slideUp("fast");
             $("#wplng_website_flag").val($(this).val());
         }
+    });
+
+
+    $("#wplng-website-lang-update-flag").on("click", function () {
+        // var languageId = $(this).attr("wplng-target-lang");
+        // var selector = "#wplng-target-languages-list .wplng-flag-target-container[wplng-target-lang=" + languageId + "]";
+
+        $("#wplng-flag-website-container").slideToggle();
+        // alert('ok');
     });
 
 
@@ -375,7 +386,7 @@ jQuery(document).ready(function ($) {
 
     function wplngUpdateOptionPage() {
         $("#wplng_website_language").html(wplngGetOptionsWebsiteLanguageHTML());
-        $("#wplng_add_new_target_language").html(wplngGetOptionstargetLanguagesHTML());
+        $("#wplng_add_new_target_language").html(wplngGetOptionsTargetLanguagesHTML());
         $("#wplng-flags-radio-original-website").html(wplngGetWebsiteLanguageFlagsHTML());
         $("#wplng-target-languages-list").html(wplngGetTargetLanguagesListHTML());
         $("#wplng_target_languages").val(JSON.stringify(wplngTargetLanguages));

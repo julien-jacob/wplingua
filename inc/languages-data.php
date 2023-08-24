@@ -15,7 +15,7 @@ function wplng_get_languages_data() {
 			'emoji'            => '🇬🇧',
 			'flags'            => array(
 				array(
-					'name'  => __( 'United Kingdom', 'wplingua' ),
+					'name'  => __( 'UK', 'wplingua' ),
 					'id'    => 'en',
 					'flag'  => 'en',
 					'emoji' => '🇬🇧',
