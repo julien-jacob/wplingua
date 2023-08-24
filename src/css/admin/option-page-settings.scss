@@ -10,6 +10,12 @@
     display: none;
 }
 
+#wplng_website_language {
+    position: relative;
+    left: 7px;
+}
+
+
 #wplng-website-language-box {
     border: 1px solid #8c8f94;
     padding: 5px 10px 8px 6px;
@@ -132,6 +138,14 @@
 @media screen and (max-width: 782px) {
 
     .wplng-form-table {
+
+        #wplng_website_language {
+            position: unset;
+        }
+
+        #wplng-website-language-box {
+            padding: 15px 15px 18px 10px;
+        }
 
         #wplng-api-key-fake,
         #wplng_api_key,
