@@ -109,7 +109,7 @@ function wplng_show_api_message() {
 			<strong><?php _e( 'A new version of the wpLingua WordPress plugin is now available! You can download it from', 'wplingua' ); ?> <a href="https://wplingua.com/download/" target="_blank">https://wplingua.com/download/</a>.</strong>
 			<br>
 			<?php echo __( 'Installed version:', 'wplingua' ) . ' ' . esc_html( WPLNG_PLUGIN_VERSION ) . ' - '; ?> 
-			<?php echo __( 'Available version:', 'wplingua' ) . esc_html( $api_info['wp_plugin_version'] ); ?> 
+			<?php echo __( 'Available version:', 'wplingua' ) . ' ' . esc_html( $api_info['wp_plugin_version'] ); ?> 
 		</p>
 	</div>
 	<?php
