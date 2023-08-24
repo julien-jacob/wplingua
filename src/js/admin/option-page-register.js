@@ -44,7 +44,7 @@ jQuery(document).ready(function ($) {
     $("#wplng-get-free-api-submit").on("click", function (event) {
         wplngUpdateRegisterInput();
     });
-    
+
     function wplngUpdateRegisterInput() {
 
         var wplngRegisterInputSelector = "#wplng-website-url, #wplng-email, #wplng-language-website, #wplng-language-target, #wplng-accept-eula";
