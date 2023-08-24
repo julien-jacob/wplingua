@@ -28,14 +28,14 @@
         background-color: white;
         border-radius: 3px;
         // max-width: 100%;
-    
+
         .wplng-target-language-displayed {
-    
+
             display: flex;
             justify-content: space-between;
-    
+
             .wplng-target-lang-remove {
-    
+
                 &::before {
                     content: "|";
                     display: inline;
@@ -45,11 +45,11 @@
                     font-weight: lighter;
                 }
             }
-        
+
         }
-    
+
         .wplng-flag-target-container {
-            
+
             text-align: center;
             border-top: 1px solid lightgray;
             padding: 10px 0 6px;
@@ -110,5 +110,5 @@
         }
     }
 
-    
+
 }
