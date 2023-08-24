@@ -44,7 +44,7 @@ function wplng_api_informations() {
 		set_transient(
 			'wplng_api_informations',
 			wp_json_encode( $response ),
-			60 * 60
+			60 * 10
 		);
 	}
 
