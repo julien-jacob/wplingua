@@ -12,5 +12,5 @@ function wplng_exclude_woocommerce( $is_translatable ) {
 		return $is_translatable;
 	}
 
-	return $is_translatable && ! is_woocommerce();
+	return $is_translatable && ! is_woocommerce() && ! is_cart();
 }
