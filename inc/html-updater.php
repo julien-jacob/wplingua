@@ -186,6 +186,28 @@ function wplng_html_replace_exclude_tag( $html, $excluded_elements ) {
 }
 
 
+function wplng_clear_intercepted_html( $html ) {
+
+	$regex_search = array(
+		'#\s+#', // Remove multiple space
+		'#\t#', // Remove tabulation in $html
+	);
+
+	$regex_replace = array(
+		' ',
+		'',
+	);
+
+	$html = preg_replace(
+		$regex_search,
+		$regex_replace,
+		trim( $html )
+	);
+
+	return $html;
+}
+
+
 function wplng_init() {
 
 	if ( wplng_get_language_website_id() === wplng_get_language_current_id() ) {

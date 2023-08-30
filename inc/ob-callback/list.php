@@ -20,11 +20,6 @@ function wplng_ob_callback_list( $html ) {
 	$html_saved = $html;
 
 	/**
-	 * Remove tabulation in $html
-	 */
-	$html = preg_replace( '#\t#', '', $html );
-
-	/**
 	 * Replace excluded HTML part by tag
 	 */
 	$html = wplng_html_set_exclude_tag( $html, $excluded_elements );

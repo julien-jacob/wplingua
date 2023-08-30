@@ -11,11 +11,6 @@ function wplng_ob_callback_translate( $html ) {
 	$html = apply_filters( 'wplng_html_intercepted', $html );
 
 	/**
-	 * Remove tabulation in $html
-	 */
-	$html = preg_replace( '#\t#', '', $html );
-
-	/**
 	 * Get saved translation
 	 */
 	$language_target_id = wplng_get_language_current_id();

@@ -10,8 +10,8 @@ if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
-define( 'WPLNG_API_URL', 'https://api.wplingua.com' );
-define( 'WPLNG_API_VERSION', '0.1' );
+define( 'WPLNG_API_URL', 'http://machiavel-api.local' );
+define( 'WPLNG_API_VERSION', 'last' );
 define( 'WPLNG_PLUGIN_VERSION', '0.0.6' );
 define( 'WPLNG_PLUGIN_PATH', dirname( __FILE__ ) );
 
@@ -105,6 +105,9 @@ function wplng_start() {
 
 		// Set OG Local
 		add_filter( 'wplng_html_translated', 'wplng_replace_og_local' );
+
+		// Clear intercepted HTML
+		add_filter( 'wplng_html_intercepted', 'wplng_clear_intercepted_html' );
 
 		/**
 		 * OB and REQUEST_URI
