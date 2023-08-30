@@ -2,7 +2,7 @@
 /*
 Plugin Name: wpLingua
 description: Make your website multilingual and translated
-Version: 0.0.4
+Version: 0.0.6
 */
 
 // If this file is called directly, abort.
@@ -10,9 +10,9 @@ if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
-define( 'WPLNG_API_URL', 'http://machiavel-api.local' );
-define( 'WPLNG_API_VERSION', 'last' );
-define( 'WPLNG_PLUGIN_VERSION', '0.0.4' );
+define( 'WPLNG_API_URL', 'https://api.wplingua.com' );
+define( 'WPLNG_API_VERSION', '0.1' );
+define( 'WPLNG_PLUGIN_VERSION', '0.0.6' );
 define( 'WPLNG_PLUGIN_PATH', dirname( __FILE__ ) );
 
 
