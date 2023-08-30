@@ -9,13 +9,13 @@ if ( ! defined( 'WPINC' ) ) {
 function wplng_get_languages_data() {
 	return array(
 		array(
-			'name'  => __( 'English', 'wplingua' ),
-			'id'    => 'en',
-			'flag'  => 'en',
-			'emoji' => '🇬🇧',
-			'flags' => array(
+			'name'             => __( 'English', 'wplingua' ),
+			'id'               => 'en',
+			'flag'             => 'en',
+			'emoji'            => '🇬🇧',
+			'flags'            => array(
 				array(
-					'name'  => __( 'United Kingdom', 'wplingua' ),
+					'name'  => __( 'UK', 'wplingua' ),
 					'id'    => 'en',
 					'flag'  => 'en',
 					'emoji' => '🇬🇧',
@@ -40,11 +40,11 @@ function wplng_get_languages_data() {
 			),
 		),
 		array(
-			'name'  => __( 'French', 'wplingua' ),
-			'id'    => 'fr',
-			'flag'  => 'fr',
-			'emoji' => '🇫🇷',
-			'flags' => array(
+			'name'             => __( 'French', 'wplingua' ),
+			'id'               => 'fr',
+			'flag'             => 'fr',
+			'emoji'            => '🇫🇷',
+			'flags'            => array(
 				array(
 					'name'  => __( 'France', 'wplingua' ),
 					'id'    => 'fr',
@@ -71,11 +71,11 @@ function wplng_get_languages_data() {
 			),
 		),
 		array(
-			'name'  => __( 'German', 'wplingua' ),
-			'id'    => 'de',
-			'flag'  => 'de',
-			'emoji' => '🇩🇪',
-			'flags' => array(
+			'name'             => __( 'German', 'wplingua' ),
+			'id'               => 'de',
+			'flag'             => 'de',
+			'emoji'            => '🇩🇪',
+			'flags'            => array(
 				array(
 					'name'  => __( 'Germany', 'wplingua' ),
 					'id'    => 'de',
@@ -96,11 +96,11 @@ function wplng_get_languages_data() {
 			),
 		),
 		array(
-			'name'  => __( 'Italian', 'wplingua' ),
-			'id'    => 'it',
-			'flag'  => 'it',
-			'emoji' => '🇮🇹',
-			'flags' => array(
+			'name'             => __( 'Italian', 'wplingua' ),
+			'id'               => 'it',
+			'flag'             => 'it',
+			'emoji'            => '🇮🇹',
+			'flags'            => array(
 				array(
 					'name'  => __( 'Italy', 'wplingua' ),
 					'id'    => 'it',
@@ -121,11 +121,11 @@ function wplng_get_languages_data() {
 			),
 		),
 		array(
-			'name'  => __( 'Portuguese', 'wplingua' ),
-			'id'    => 'pt',
-			'flag'  => 'pt',
-			'emoji' => '🇵🇹',
-			'flags' => array(
+			'name'             => __( 'Portuguese', 'wplingua' ),
+			'id'               => 'pt',
+			'flag'             => 'pt',
+			'emoji'            => '🇵🇹',
+			'flags'            => array(
 				array(
 					'name'  => __( 'Portugal', 'wplingua' ),
 					'id'    => 'pt',
@@ -152,11 +152,11 @@ function wplng_get_languages_data() {
 			),
 		),
 		array(
-			'name'  => __( 'Spanish', 'wplingua' ),
-			'id'    => 'es',
-			'flag'  => 'es',
-			'emoji' => '🇪🇸',
-			'flags' => array(
+			'name'             => __( 'Spanish', 'wplingua' ),
+			'id'               => 'es',
+			'flag'             => 'es',
+			'emoji'            => '🇪🇸',
+			'flags'            => array(
 				array(
 					'name'  => __( 'Spain', 'wplingua' ),
 					'id'    => 'es',
@@ -183,11 +183,11 @@ function wplng_get_languages_data() {
 			),
 		),
 		array(
-			'name'  => __( 'Japanese', 'wplingua' ),
-			'id'    => 'ja',
-			'flag'  => 'ja',
-			'emoji' => '🇯🇵',
-			'flags' => array(
+			'name'             => __( 'Japanese', 'wplingua' ),
+			'id'               => 'ja',
+			'flag'             => 'ja',
+			'emoji'            => '🇯🇵',
+			'flags'            => array(
 				array(
 					'name'  => __( 'Japan', 'wplingua' ),
 					'id'    => 'ja',
@@ -208,11 +208,11 @@ function wplng_get_languages_data() {
 			),
 		),
 		array(
-			'name'  => __( 'Russian', 'wplingua' ),
-			'id'    => 'ru',
-			'flag'  => 'ru',
-			'emoji' => '🇷🇺',
-			'flags' => array(
+			'name'             => __( 'Russian', 'wplingua' ),
+			'id'               => 'ru',
+			'flag'             => 'ru',
+			'emoji'            => '🇷🇺',
+			'flags'            => array(
 				array(
 					'name'  => __( 'Russia', 'wplingua' ),
 					'id'    => 'ru',
@@ -233,11 +233,11 @@ function wplng_get_languages_data() {
 			),
 		),
 		array(
-			'name'  => __( 'Chinese', 'wplingua' ),
-			'id'    => 'zh',
-			'flag'  => 'zh',
-			'emoji' => '🇨🇳',
-			'flags' => array(
+			'name'             => __( 'Chinese', 'wplingua' ),
+			'id'               => 'zh',
+			'flag'             => 'zh',
+			'emoji'            => '🇨🇳',
+			'flags'            => array(
 				array(
 					'name'  => __( 'China', 'wplingua' ),
 					'id'    => 'zh',

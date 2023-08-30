@@ -10,36 +10,57 @@ function wplng_option_page_register() {
 
 	$api_key          = wplng_get_api_key();
 	$json_request_key = get_option( 'wplng_request_free_key' );
+	$error_validation = get_transient( 'wplng_api_key_error' );
 
 	delete_transient( 'wplng_api_key_data' );
 
-	if ( get_option( 'wplng_api_key' ) !== $api_key
+	wplng_show_api_message();
+
+	if ( ! empty( $error_validation ) ) :
+		delete_transient( 'wplng_api_key_error' );
+		$message = '';
+		if ( ! empty( $error_validation ) ) {
+			$message .= __( 'Message :', 'wplingua' );
+			$message .= ' ' . esc_html( $error_validation );
+		}
+		?>
+		<div class="wplng-notice notice notice-error is-dismissible">
+			<p>
+				<strong><?php _e( 'An error occurred with API key..', 'wplingua' ); ?></strong>
+				<br>
+				<?php echo $message; ?>
+			</p>
+		</div>
+		<?php
+
+	elseif ( get_option( 'wplng_api_key' ) !== $api_key
 		&& empty( wplng_get_api_data() )
 	) :
 		update_option( 'wplng_api_key', '' );
 		?>
 		<div class="wplng-notice notice notice-error is-dismissible">
-			<p><?php _e( 'Invalid API key.', 'wplingua' ); ?></p>
+			<p><strong><?php _e( 'Invalid API key.', 'wplingua' ); ?></strong></p>
 		</div>
 		<?php
 	elseif ( ! empty( $json_request_key ) ) :
 
 		delete_option( 'wplng_request_free_key' );
 		$data_request_key = json_decode( $json_request_key, true );
-		$response         = wplng_api_request_free_api_key( $data_request_key );
+		$response         = wplng_api_request_api_key( $data_request_key );
 
 		if ( ! empty( $response['error'] ) ) {
 			$message = '';
 			if ( ! empty( $response['message'] ) ) {
-				$message .= '<p>';
 				$message .= __( 'Message :', 'wplingua' );
 				$message .= ' ' . esc_html( $response['message'] );
-				$message .= '</p>';
 			}
 			?>
 			<div class="wplng-notice notice notice-error is-dismissible">
-				<p><?php _e( 'An error occurred while creating the API key..', 'wplingua' ); ?></p>
-				<?php echo $message; ?>
+				<p>
+					<strong><?php _e( 'An error occurred while creating the API key..', 'wplingua' ); ?></strong>
+					<br>
+					<?php echo $message; ?>
+				</p>
 			</div>
 			<?php
 		} elseif ( ! empty( $response['register'] ) ) {
@@ -49,19 +70,19 @@ function wplng_option_page_register() {
 			}
 			?>
 			<div class="wplng-notice notice notice-success is-dismissible">
-				<p>
+				<p><strong>
 				<?php
 				_e( 'The API key has been correctly created and sent to the following e-mail address:', 'wplingua' );
 				echo $mail;
 				?>
-				 </p>
+				</strong></p>
 			</div>
 			<?php
 		}
 	endif;
 	?>
 	<div class="wrap">
-		<h1><span class="dashicons dashicons-translation"></span> <?php _e( 'wpLingua : Register API key', 'wplingua' ); ?></h1>
+		<h1><span class="dashicons dashicons-translation"></span> <?php _e( 'wpLingua / Beta : Register API key', 'wplingua' ); ?></h1>
 		<br>
 		<form method="post" action="options.php">
 			<?php

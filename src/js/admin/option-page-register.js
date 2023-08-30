@@ -44,7 +44,7 @@ jQuery(document).ready(function ($) {
     $("#wplng-get-free-api-submit").on("click", function (event) {
         wplngUpdateRegisterInput();
     });
-    
+
     function wplngUpdateRegisterInput() {
 
         var wplngRegisterInputSelector = "#wplng-website-url, #wplng-email, #wplng-language-website, #wplng-language-target, #wplng-accept-eula";
@@ -52,7 +52,7 @@ jQuery(document).ready(function ($) {
         $(wplngRegisterInputSelector).attr('required', true);
 
         var registerData = {
-            r: 'register',
+            request: 'register',
             mail_address: $("#wplng-email").val(),
             website: $("#wplng-website-url").val(),
             language_original: $("#wplng-language-website").val(),

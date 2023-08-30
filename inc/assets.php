@@ -17,12 +17,15 @@ function wplng_register_assets() {
 	wp_enqueue_script(
 		'wplingua',
 		plugins_url() . '/wplingua/assets/js/script.js',
-		array( 'jquery' )
+		array( 'jquery' ),
+		WPLNG_API_VERSION
 	);
 
 	wp_enqueue_style(
 		'wplingua',
-		plugins_url() . '/wplingua/assets/css/front.css'
+		plugins_url() . '/wplingua/assets/css/front.css',
+		array(),
+		WPLNG_API_VERSION
 	);
 
 	$custom_css = get_option( 'wplng_custom_css' );
@@ -39,12 +42,15 @@ function wplng_register_assets() {
 		wp_enqueue_script(
 			'wplingua-editor',
 			plugins_url() . '/wplingua/assets/js/editor.js',
-			array( 'jquery' )
+			array( 'jquery' ),
+			WPLNG_API_VERSION
 		);
 
 		wp_enqueue_style(
 			'wplingua-editor',
-			plugins_url() . '/wplingua/assets/css/editor.css'
+			plugins_url() . '/wplingua/assets/css/editor.css',
+			array(),
+			WPLNG_API_VERSION
 		);
 
 	} elseif ( isset( $_GET['wplingua-list'] ) ) {
@@ -52,12 +58,15 @@ function wplng_register_assets() {
 		wp_enqueue_script(
 			'wplingua-list',
 			plugins_url() . '/wplingua/assets/js/list.js',
-			array( 'jquery' )
+			array( 'jquery' ),
+			WPLNG_API_VERSION
 		);
 
 		wp_enqueue_style(
 			'wplingua-list',
-			plugins_url() . '/wplingua/assets/css/list.css'
+			plugins_url() . '/wplingua/assets/css/list.css',
+			array(),
+			WPLNG_API_VERSION
 		);
 
 	}

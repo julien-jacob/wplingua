@@ -7,10 +7,13 @@ if ( ! defined( 'WPINC' ) ) {
 
 
 function wplng_option_page_exclusions() {
+
+	wplng_show_api_message();
+
 	?>
 	<div class="wrap">
 		
-		<h1><span class="dashicons dashicons-translation"></span> <?php _e( 'wpLingua : Exclusion rules', 'wplingua' ); ?></h1>
+		<h1><span class="dashicons dashicons-translation"></span> <?php _e( 'wpLingua / Beta : Exclusion rules', 'wplingua' ); ?></h1>
 
 		<br>
 

@@ -20,17 +20,22 @@ function wplng_option_page_settings_assets( $hook ) {
 	wp_enqueue_script(
 		'wplingua-option-settings',
 		plugins_url() . '/wplingua/assets/js/admin/option-page-settings.js',
-		array( 'jquery' )
+		array( 'jquery' ),
+		WPLNG_API_VERSION
 	);
 
 	wp_enqueue_style(
 		'wplingua-option-settings',
-		plugins_url() . '/wplingua/assets/css/admin/option-page-settings.css'
+		plugins_url() . '/wplingua/assets/css/admin/option-page-settings.css',
+		array(),
+		WPLNG_API_VERSION
 	);
 
 	wp_enqueue_style(
 		'wplingua-option-pages',
-		plugins_url() . '/wplingua/assets/css/admin/option-page.css'
+		plugins_url() . '/wplingua/assets/css/admin/option-page.css',
+		array(),
+		WPLNG_API_VERSION
 	);
 }
 
@@ -48,17 +53,22 @@ function wplng_option_page_register_assets( $hook ) {
 	wp_enqueue_script(
 		'wplingua-option-register',
 		plugins_url() . '/wplingua/assets/js/admin/option-page-register.js',
-		array( 'jquery' )
+		array( 'jquery' ),
+		WPLNG_API_VERSION
 	);
 
 	wp_enqueue_style(
 		'wplingua-option-register',
-		plugins_url() . '/wplingua/assets/css/admin/option-page-register.css'
+		plugins_url() . '/wplingua/assets/css/admin/option-page-register.css',
+		array(),
+		WPLNG_API_VERSION
 	);
 
 	wp_enqueue_style(
 		'wplingua-option-pages',
-		plugins_url() . '/wplingua/assets/css/admin/option-page.css'
+		plugins_url() . '/wplingua/assets/css/admin/option-page.css',
+		array(),
+		WPLNG_API_VERSION
 	);
 }
 
@@ -76,17 +86,22 @@ function wplng_option_page_switcher_assets( $hook ) {
 	wp_enqueue_script(
 		'wplingua-option-switcher',
 		plugins_url() . '/wplingua/assets/js/admin/option-page-switcher.js',
-		array( 'jquery' )
+		array( 'jquery' ),
+		WPLNG_API_VERSION
 	);
 
 	wp_enqueue_style(
 		'wplingua-option-switcher',
-		plugins_url() . '/wplingua/assets/css/admin/option-page-switcher.css'
+		plugins_url() . '/wplingua/assets/css/admin/option-page-switcher.css',
+		array(),
+		WPLNG_API_VERSION
 	);
 
 	wp_enqueue_style(
 		'wplingua-option-pages',
-		plugins_url() . '/wplingua/assets/css/admin/option-page.css'
+		plugins_url() . '/wplingua/assets/css/admin/option-page.css',
+		array(),
+		WPLNG_API_VERSION
 	);
 
 	if ( function_exists( 'wp_enqueue_code_editor' ) ) {
@@ -99,12 +114,15 @@ function wplng_option_page_switcher_assets( $hook ) {
 	wp_enqueue_script(
 		'wplingua',
 		plugins_url() . '/wplingua/assets/js/script.js',
-		array( 'jquery' )
+		array( 'jquery' ),
+		WPLNG_API_VERSION
 	);
 
 	wp_enqueue_style(
 		'wplingua',
-		plugins_url() . '/wplingua/assets/css/front.css'
+		plugins_url() . '/wplingua/assets/css/front.css',
+		array(),
+		WPLNG_API_VERSION
 	);
 
 	$custom_css = get_option( 'wplng_custom_css' );
@@ -126,17 +144,22 @@ function wplng_option_page_exclusions_assets( $hook ) {
 	wp_enqueue_script(
 		'wplingua-option-exclusions',
 		plugins_url() . '/wplingua/assets/js/admin/option-page-exclusions.js',
-		array( 'jquery' )
+		array( 'jquery' ),
+		WPLNG_API_VERSION
 	);
 
 	wp_enqueue_style(
 		'wplingua-option-exclusions',
-		plugins_url() . '/wplingua/assets/css/admin/option-page-exclusions.css'
+		plugins_url() . '/wplingua/assets/css/admin/option-page-exclusions.css',
+		array(),
+		WPLNG_API_VERSION
 	);
 
 	wp_enqueue_style(
 		'wplingua-option-pages',
-		plugins_url() . '/wplingua/assets/css/admin/option-page.css'
+		plugins_url() . '/wplingua/assets/css/admin/option-page.css',
+		array(),
+		WPLNG_API_VERSION
 	);
 
 }
@@ -149,20 +172,23 @@ function wplng_translation_assets() {
 		wp_enqueue_script(
 			'wplingua-translation',
 			plugins_url() . '/wplingua/assets/js/admin/translation.js',
-			array( 'jquery' )
+			array( 'jquery' ),
+			WPLNG_API_VERSION
 		);
 
-		wp_localize_script( 
-			'wplingua-translation', 
-			'adminAjax', 
+		wp_localize_script(
+			'wplingua-translation',
+			'adminAjax',
 			array(
-				'ajaxurl' => admin_url( 'admin-ajax.php' )
+				'ajaxurl' => admin_url( 'admin-ajax.php' ),
 			)
 		);
 
 		wp_enqueue_style(
 			'wplingua-translation',
-			plugins_url() . '/wplingua/assets/css/admin/translation.css'
+			plugins_url() . '/wplingua/assets/css/admin/translation.css',
+			array(),
+			WPLNG_API_VERSION
 		);
 
 	}

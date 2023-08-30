@@ -1,13 +1,13 @@
 /*
  * Style for editor
  */
- .wplng-edit-link {
+.wplng-edit-link {
     color: inherit;
     font-weight: inherit;
     font-size: inherit;
     text-decoration: inherit;
     line-height: inherit;
-    border: 2px dotted gray;
+    border: 2px dotted gray !important;
     padding: 0 4px;
 }
 
@@ -16,8 +16,8 @@
 }
 
 .wplng-edit-link::after {
-    content: "\f326";
-    font-family: dashicons;
+    content: "\f326" !important;
+    font-family: dashicons !important;
     display: inline-block;
     line-height: inherit;
     font-weight: 400;

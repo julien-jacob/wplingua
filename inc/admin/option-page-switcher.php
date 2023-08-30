@@ -14,10 +14,12 @@ function wplng_option_page_switcher() {
 	$name_format = wplng_get_switcher_name_format();
 	$flags_style = wplng_get_switcher_flags_style();
 
+	wplng_show_api_message();
+
 	?>
 	<div class="wrap">
 		
-		<h1><span class="dashicons dashicons-translation"></span> <?php _e( 'wpLingua : Switcher settings', 'wplingua' ); ?></h1>
+		<h1><span class="dashicons dashicons-translation"></span> <?php _e( 'wpLingua / Beta : Switcher settings', 'wplingua' ); ?></h1>
 
 		<br>
 

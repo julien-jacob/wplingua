@@ -46,7 +46,7 @@ function wplng_get_language_website_flag() {
 
 	$website_flag = apply_filters( 'wplng_language_website_flag', $website_flag );
 
-	return $website_flag;
+	return esc_url($website_flag);
 }
 
 
@@ -145,7 +145,7 @@ function wplng_get_language_name_translated( $language, $language_target = '' ) 
 		$translated_language_name = wplng_get_language_name( $language );
 	}
 
-	return esc_html($translated_language_name);
+	return esc_html( $translated_language_name );
 }
 
 
@@ -158,7 +158,7 @@ function wplng_get_languages_target_simplified() {
 	}
 
 	$languages_target = json_decode( $json, true );
-	$all_languages    = wplng_get_languages_all();
+	$all_languages    = wplng_get_languages_allow();
 	$ordered          = array();
 
 	foreach ( $all_languages as $key => $language ) {
@@ -228,6 +228,7 @@ function wplng_get_language_current_id() {
 
 	return wplng_get_language_website_id();
 }
+
 
 
 
@@ -328,6 +329,13 @@ function wplng_get_languages_all() {
 		// Transform flags to URL
 		foreach ( $languages[ $key ]['flags'] as $key_flag => $flag ) {
 			$languages[ $key ]['flags'][ $key_flag ]['flag'] = plugins_url() . '/wplingua/assets/images/' . $flags_style . $flag['flag'] . '.png';
+		}
+
+		// Add default DIR as LTR if not specified or invalid
+		if ( empty( $language['dir'] )
+			|| 'rtl' !== $language['dir']
+		) {
+			$languages[ $key ]['dir'] = 'ltr';
 		}
 	}
 
