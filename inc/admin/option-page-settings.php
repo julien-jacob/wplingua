@@ -184,7 +184,7 @@ function wplng_settings_part_language_website() {
 	<div id="wplng-website-language-box">
 
 		<div class="wplng-website-language-displayed">
-			<div class="wplng-website-language-left">
+			<div id="wplng-website-language" class="wplng-website-language-left">
 				<img src="<?php echo wplng_get_language_website_flag() ?>" id="wplng-website-flag">
 				<?php echo esc_html( $website_language['name'] ); ?>
 			</div>

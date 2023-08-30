@@ -92,6 +92,76 @@ jQuery(document).ready(function ($) {
         return languagesOptionsHTML;
     }
 
+    function wplngGetWebsiteLanguageNameHTML() {
+
+        var html = "";
+        
+        wplngAllLanguages.forEach((language) => {
+
+            if (language.id == wplngWebsiteLanguage) {
+
+                // console.log(language);
+
+                // <img src="http://machiavel.local/wp-content/plugins/wplingua/assets/images/circle/us.png" id="wplng-website-flag"></img>
+
+                html += '<img src="' + language.flag + '" id="wplng-website-flag"></img> ';
+
+                html += language.name;
+
+                // var textCustomRadio = $("#wplng-flags-radio-original-website-custom").text();
+                // var websiteFlagUrl = $("#wplng_website_flag").val();
+                // var flagFirstChecked = false;
+                // var flagCustomChecked = " checked";
+
+                // if (websiteFlagUrl == "") {
+                //     flagFirstChecked = true;
+                // }
+
+                // language.flags.forEach(flag => {
+
+                //     var checked = "";
+
+                //     if (websiteFlagUrl == flag.flag) {
+                //         checked = " checked";
+                //         flagCustomChecked = "";
+                //     }
+
+                //     if (flagFirstChecked) {
+                //         checked = " checked";
+                //         flagCustomChecked = "";
+                //         flagFirstChecked = false;
+                //         $("#wplng_website_flag").val(flag.flag);
+                //     }
+
+                //     flagsRadiosHTML +=
+                //         '<span class="wplng-flags-radio">' +
+                //         '<input type="radio" ' +
+                //         'name="wplng-website-flag" ' +
+                //         'value="' + flag.flag + '" ' +
+                //         'id="wplng-flag-' + flag.id + '"' + checked + '>' +
+                //         '<label for="wplng-flag-' + flag.id + '">' +
+                //         flag.name + ' (<img src="' + flag.flag + '">)' +
+                //         '</label></span>';
+                // });
+
+                // flagsRadiosHTML +=
+                //     '<span class="wplng-flags-radio">' +
+                //     '<input type="radio" name="wplng-website-flag" id="wplng-website-flag-custom" value="custom"' + flagCustomChecked + '>' +
+                //     '<label for="wplng-website-flag-custom">' + textCustomRadio + '</label>' +
+                //     '</span>';
+
+                // if ("" != flagCustomChecked) {
+                //     $("#wplng-website-flag-container").show();
+                // } else {
+                //     $("#wplng-website-flag-container").hide();
+                // }
+            }
+        });
+
+        return html;
+        
+    }
+
 
     function wplngGetWebsiteLanguageFlagsHTML() {
 
@@ -301,6 +371,8 @@ jQuery(document).ready(function ($) {
         $("#wplng_add_new_target_language").html(wplngGetOptionsTargetLanguagesHTML());
         $("#wplng-flags-radio-original-website").html(wplngGetWebsiteLanguageFlagsHTML());
 
+        $("#wplng-website-language").html(wplngGetWebsiteLanguageNameHTML());
+        // wplngGetWebsiteLanguageNameHTML();
         // wplng-website-flag
     });
 
@@ -316,11 +388,7 @@ jQuery(document).ready(function ($) {
 
 
     $("#wplng-website-lang-update-flag").on("click", function () {
-        // var languageId = $(this).attr("wplng-target-lang");
-        // var selector = "#wplng-target-languages-list .wplng-flag-target-container[wplng-target-lang=" + languageId + "]";
-
         $("#wplng-flag-website-container").slideToggle();
-        // alert('ok');
     });
 
 
