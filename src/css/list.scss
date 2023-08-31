@@ -1,3 +1,20 @@
+@import "editor-list";
+
+/** 
+ ** Compatibility
+ **/
+
+ // Some themes 
+html {
+    overflow: hidden !important;
+}
+
+// Divi
+body.Divi #main-header {
+    z-index: 99997 !important;
+}
+
+
 /** 
  ** modal
  **/
@@ -53,7 +70,7 @@ body {
     left: 0;
     right: 0;
     bottom: 0;
-    z-index: 999999;  // (Admin bar z-index = 99999)
+    z-index: 99998;  // Admin bar z-index - 1
     overflow: auto;
 
     #wplng-modal {
