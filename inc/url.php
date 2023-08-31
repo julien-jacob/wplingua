@@ -123,6 +123,7 @@ function wplng_url_is_translatable( $url = '' ) {
 
 function wplng_get_url_exclude() {
 
+	// Get user excluded URLs
 	$url_exclude = explode(
 		PHP_EOL,
 		get_option( 'wplng_excluded_url' )
