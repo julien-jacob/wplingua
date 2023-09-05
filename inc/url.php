@@ -88,7 +88,9 @@ function wplng_url_is_translatable( $url = '' ) {
 	}
 
 	// Check if is wp-comments-post.php
-	if ( str_contains( $url, 'wp-comments-post.php' ) ) {
+	if ( $is_translatable
+		&& str_contains( $url, 'wp-comments-post.php' )
+	) {
 		$is_translatable = false;
 	}
 
@@ -110,6 +112,12 @@ function wplng_url_is_translatable( $url = '' ) {
 				break;
 			}
 		}
+	}
+
+	// Exclude files URL
+	$regex_is_file = '#\.(avi|css|doc|exe|gif|html|jpg|jpeg|mid|midi|mp3|mpg|mpeg|mov|qt|pdf|png|ram|rar|tiff|txt|wav|zip)$#Uis';
+	if ( $is_translatable && preg_match( $regex_is_file, $url ) ) {
+		$is_translatable = false;
 	}
 
 	$is_translatable = apply_filters(
