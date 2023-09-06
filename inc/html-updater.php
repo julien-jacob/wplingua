@@ -189,13 +189,15 @@ function wplng_html_replace_exclude_tag( $html, $excluded_elements ) {
 function wplng_clear_intercepted_html( $html ) {
 
 	$regex_search = array(
-		'#\s+#', // Remove multiple space
-		'#\t#', // Remove tabulation in $html
+		'# +#U', // Remove multiple space
+		'#\t#U', // Remove tabulation in $html
+		'#>\s+<#',
 	);
 
 	$regex_replace = array(
 		' ',
 		'',
+		'> <'
 	);
 
 	$html = preg_replace(
