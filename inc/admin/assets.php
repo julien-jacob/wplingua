@@ -211,6 +211,6 @@ function wplng_inline_script_languages() {
 		$languages_json = wplng_get_languages_all_json();
 	}
 
-	?><script>var wplngAllLanguages = JSON.parse('<?php echo $languages_json; ?>');</script>
+	?><script>var wplngAllLanguages = <?php echo $languages_json; ?>;</script>
 	<?php
 }
