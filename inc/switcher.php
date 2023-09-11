@@ -298,6 +298,10 @@ function wplng_get_switcher_class( $arg = array() ) {
 
 function wplng_get_switcher_html( $arg = array() ) {
 
+	if ( ! wplng_url_is_translatable() ) {
+		return '';
+	}
+
 	$language_website    = wplng_get_language_website();
 	$language_current_id = wplng_get_language_current_id();
 	$languages_target    = wplng_get_languages_target();
