@@ -82,6 +82,12 @@ function wplng_link_alternate_hreflang() {
 
 function wplng_html_translate_links( $html, $language_target ) {
 	$dom = str_get_html( $html );
+
+	if ( empty( $dom ) ) {
+		// Return empty string if $html is not valid
+		return '';
+	}
+
 	foreach ( $dom->find( 'a' ) as $element ) {
 		$link          = $element->href;
 		$element->href = wplng_url_translate( $link, $language_target );
@@ -139,8 +145,10 @@ function wplng_get_selector_clear() {
 
 	$selector_clear = array(
 		'style',
-		'script',
 		'svg',
+		'script',
+		'canvas',
+		'link',
 	);
 
 	$selector_clear = apply_filters(
@@ -186,31 +194,69 @@ function wplng_html_replace_exclude_tag( $html, $excluded_elements ) {
 }
 
 
-function wplng_clear_intercepted_html( $html ) {
+// function wplng_clear_intercepted_html( $html ) {
 
-	$regex_search = array(
-		'# +#U', // Remove multiple space
-		'#\t#U', // Remove tabulation in $html
-		'#>\s+<#',
-	);
+// 	return str_replace( 'sspan', 'span', $html );
 
-	$regex_replace = array(
-		' ',
-		'',
-		'> <'
-	);
+// 	$search = array(
+// 		'#\s\s+#s',
+// 		'#\s+>#',
+// 		'#\s+/>#',
+// 		'#(\n|^)(\x20+|\t)#',
+// 		'#(\n|^)\/\/(.*?)(\n|$)#',
+// 		'#\n+#', // Multiple end of line
+// 		'#(\x20+|\t)#', // Delete multispace (Without \n)
+// 		'#\>\s+\<#', // strip whitespaces between tags
+// 		'#(\"|\')\s+\>#', // strip whitespaces between quotation ("') and end tags
+// 		'#=\s+(\"|\')#', // strip whitespaces between = "'
+// 		'#\s*<!--(?!\[if\s).*?-->\s*|(?<!\>)\n+(?=\<[^!])#s', // Remove HTML comment(s) except IE comment(s)
+// 	);
 
-	$html = preg_replace(
-		$regex_search,
-		$regex_replace,
-		trim( $html )
-	);
+// 	$replace = array(
+// 		' ',
+// 		'>',
+// 		'/>',
+// 		"\n",
+// 		"\n",
+// 		"\n",
+// 		' ',
+// 		'><',
+// 		'$1>',
+// 		'=$1',
+// 		'',
+// 	);
 
-	return $html;
-}
+// 	$html = preg_replace(
+// 		$search,
+// 		$replace,
+// 		trim( $html )
+// 	);
+
+// 	// while ( str_contains( $html, '  ' ) ) {
+// 	// 	$html = str_replace( '  ', ' ', $html );
+// 	// }
+
+// 	$html = str_replace( 'sspan', 'span', $html );
+
+// 	return $html;
+// }
+
+
+// function wplng_ob_callback_ajax( $output ) {
+
+// 	error_log( $output );
+
+// 	return $output;
+// }
 
 
 function wplng_init() {
+
+	// error_log( var_export( defined( 'DOING_AJAX' ) && DOING_AJAX, true ) );
+	// if ( defined( 'DOING_AJAX' ) && DOING_AJAX ) {
+	// 	ob_start( 'wplng_ob_callback_ajax' );
+	// 	return;
+	// }
 
 	if ( wplng_get_language_website_id() === wplng_get_language_current_id() ) {
 		return;

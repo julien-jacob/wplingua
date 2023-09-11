@@ -106,9 +106,6 @@ function wplng_start() {
 		// Set OG Local
 		add_filter( 'wplng_html_translated', 'wplng_replace_og_local' );
 
-		// Clear intercepted HTML
-		add_filter( 'wplng_html_intercepted', 'wplng_clear_intercepted_html' );
-
 		/**
 		 * OB and REQUEST_URI
 		 */

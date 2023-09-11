@@ -65,9 +65,15 @@ function wplng_ob_callback_translate( $html ) {
 					$sr['search']
 				);
 
+				$clear_translation = str_replace(
+					'$',
+					'&#36;',
+					esc_html( esc_attr( $translation['translation'] ) )
+				);
+
 				$replace = str_replace(
 					'WPLNG',
-					str_replace( '$', '&#36;', esc_html( esc_attr( $translation['translation'] ) ) ),
+					$clear_translation,
 					$sr['replace']
 				);
 
@@ -80,7 +86,10 @@ function wplng_ob_callback_translate( $html ) {
 	/**
 	 * Replace tag by saved excluded HTML part
 	 */
-	$html = wplng_html_replace_exclude_tag( $html, $excluded_elements );
+	$html = wplng_html_replace_exclude_tag(
+		$html,
+		$excluded_elements
+	);
 
 	$html = apply_filters( 'wplng_html_translated', $html );
 

@@ -22,7 +22,7 @@ function wplng_parser_clear_html( $html, $translations = array() ) {
 	$dom = str_get_html( $html_clear );
 
 	if ( $dom === false ) {
-		return $html;
+		return '';
 	}
 
 	$selector_to_remove = array_merge( $selector_exclude, $selector_clear );
@@ -37,10 +37,10 @@ function wplng_parser_clear_html( $html, $translations = array() ) {
 	$html_clear = (string) str_get_html( $dom );
 
 	// Clear HTML from multiple space and tab
-	$html_clear = preg_replace( '#\s+#', ' ', $html_clear );
+	// $html_clear = preg_replace( '#\s+#', ' ', $html_clear );
 
 	// Clear HTML from useless attributes
-	$html_clear = preg_replace( '# (src|srcset|rel|class|href|target|itemscope|style|name|media|loading|decoding|role|height|width|itemprop|type|itemtype|sizes|onchange|onclick|datetime|selected|value)=(\"|\').*(\"|\')#Uis', '', $html_clear );
+	$html_clear = preg_replace( '# (src|srcset|rel|class|href|target|itemscope|style|name|media|loading|decoding|role|height|width|itemprop|type|itemtype|sizes|onchange|onclick|datetime|selected|id|method|action)=(\"|\').*(\"|\')#Uis', '', $html_clear );
 
 	/**
 	 * Remove saved translation from HTML clear
@@ -49,9 +49,9 @@ function wplng_parser_clear_html( $html, $translations = array() ) {
 
 		// Check if translaton data is valid
 		if (
-			! isset( $translation['source'] ) // Original text
-			|| ! isset( $translation['translation'] ) // Translater text
-			|| ! isset( $translation['sr'] ) // Search Replace
+		! isset( $translation['source'] ) // Original text
+		|| ! isset( $translation['translation'] ) // Translater text
+		|| ! isset( $translation['sr'] ) // Search Replace
 		) {
 			continue;
 		}
@@ -79,7 +79,6 @@ function wplng_parser_clear_html( $html, $translations = array() ) {
 
 		}
 	}
-	$html_clear = preg_replace( '#>\s*<#Uis', '><', $html_clear );
 
 	return $html_clear;
 }
