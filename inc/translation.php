@@ -217,7 +217,11 @@ function wplng_update_translation( $post, $language_id, $translation, $sr ) {
 		/**
 		 * $original_language_id_meta must be the same as in option page
 		 */
-		update_post_meta( $post->ID, 'wplng_translation_original_language_id', $website_language );
+		update_post_meta(
+			$post->ID,
+			'wplng_translation_original_language_id',
+			$website_language
+		);
 
 		/**
 		 * Make $translation_meta
