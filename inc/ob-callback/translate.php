@@ -34,8 +34,8 @@ function wplng_ob_callback_translate( $html ) {
 	/**
 	 * Replace excluded HTML part by tab
 	 */
-	$excluded_elements = array();
-	$html              = wplng_html_set_exclude_tag( $html, $excluded_elements );
+	$excluded = array();
+	$html     = wplng_html_set_exclude_tag( $html, $excluded );
 
 	/**
 	 * Translate links
@@ -88,7 +88,7 @@ function wplng_ob_callback_translate( $html ) {
 	 */
 	$html = wplng_html_replace_exclude_tag(
 		$html,
-		$excluded_elements
+		$excluded
 	);
 
 	$html = apply_filters( 'wplng_html_translated', $html );

@@ -18,30 +18,6 @@ function wplng_parser_clear_html( $html, $translations = array() ) {
 	// Remove comments from HTML Clear
 	$html_clear = preg_replace( '#<!--.*-->#Uis', '', $html );
 
-	// Remove useless and excluded elements from HTML clear
-	$dom = str_get_html( $html_clear );
-
-	if ( $dom === false ) {
-		return '';
-	}
-
-	$selector_to_remove = array_merge( $selector_exclude, $selector_clear );
-
-	foreach ( $selector_to_remove as $key => $selector ) {
-		foreach ( $dom->find( $selector ) as $element ) {
-			$element->outertext = '';
-		}
-	}
-
-	$dom->save();
-	$html_clear = (string) str_get_html( $dom );
-
-	// Clear HTML from multiple space and tab
-	// $html_clear = preg_replace( '#\s+#', ' ', $html_clear );
-
-	// Clear HTML from useless attributes
-	$html_clear = preg_replace( '# (src|srcset|rel|class|href|target|itemscope|style|name|media|loading|decoding|role|height|width|itemprop|type|itemtype|sizes|onchange|onclick|datetime|selected|id|method|action)=(\"|\').*(\"|\')#Uis', '', $html_clear );
-
 	/**
 	 * Remove saved translation from HTML clear
 	 */
@@ -79,6 +55,57 @@ function wplng_parser_clear_html( $html, $translations = array() ) {
 
 		}
 	}
+
+	// Remove useless and excluded elements from HTML clear
+	$dom = str_get_html( $html_clear );
+
+	if ( $dom === false ) {
+		return '';
+	}
+
+	$selector_to_remove = array_merge( $selector_exclude, $selector_clear );
+
+	foreach ( $selector_to_remove as $key => $selector ) {
+		foreach ( $dom->find( $selector ) as $element ) {
+			$element->outertext = '';
+		}
+	}
+
+	foreach ( $dom->find( '*' ) as $element ) {
+
+		foreach ( $element->attr as $attr => $value ) {
+			if ( ! in_array( $attr, array( 'alt', 'title', 'placeholder', 'aria-label' ) ) || empty( $value ) ) {
+				unset( $element->attr[ $attr ] );
+			}
+		}
+	}
+
+	// for ($i=0; $i < 10; $i++) { 
+	// 	// $x = true;
+	// 	// while ($x) {
+	// 	// 	$x = false;
+
+	// 	foreach ( $dom->find( '*' ) as $element ) {
+		
+	// 		if ( in_array( $element, array( 'html', 'head', 'body', 'br', 'hr' ) ) ) {
+	// 			continue;
+	// 		}
+
+	// 		if ( '' === trim( $element->innertext ) && empty( $element->attr ) ) {
+	// 			$element->outertext = '';
+	// 			// return var_export( $element->tag, true );
+	// 			$x = true;
+	// 		}
+	// 	}
+	// // 	$dom->save();
+	// // }
+	// }
+	
+
+	$dom->save();
+	$html_clear = (string) str_get_html( $dom );
+	// Clear HTML from multiple space and tab
+	// $html_clear = preg_replace( '#\s+#', ' ', $html_clear );
 
 	return $html_clear;
 }
