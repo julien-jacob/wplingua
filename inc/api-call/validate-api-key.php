@@ -6,7 +6,7 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 
-function wplng_validate_api_key( $api_key = '' ) {
+function wplng_api_call_validate_api_key( $api_key = '' ) {
 
 	if ( empty( $api_key ) ) {
 		$api_key = wplng_get_api_key();

@@ -21,7 +21,7 @@ function wplng_translate_wp_mail( $args ) {
 		/**
 		 * If is text
 		 */
-		$args['message'] = wplng_translate( $args['message'] );
+		$args['message'] = wplng_api_call_translate( array( $args['message'] ) );
 	} else {
 		/**
 		 * If is HTML
@@ -30,7 +30,7 @@ function wplng_translate_wp_mail( $args ) {
 	}
 
 	if ( ! empty( $args['subject'] ) ) {
-		$args['subject'] = wplng_translate( $args['subject'] );
+		$args['subject'] = wplng_api_call_translate( array( $args['subject'] ) );
 	}
 
 	return $args;

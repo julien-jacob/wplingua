@@ -14,6 +14,7 @@ define( 'WPLNG_API_URL', 'http://machiavel-api.local' );
 define( 'WPLNG_API_VERSION', 'last' );
 define( 'WPLNG_PLUGIN_VERSION', '0.0.6' );
 define( 'WPLNG_PLUGIN_PATH', dirname( __FILE__ ) );
+define( 'WPLNG_MAX_TRANSLATIONS', 256 );
 
 
 require_once WPLNG_PLUGIN_PATH . '/loader.php';

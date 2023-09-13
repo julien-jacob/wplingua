@@ -9,6 +9,10 @@ if ( ! defined( 'WPINC' ) ) {
 function wplng_translate_search_query( $query_object ) {
 	if ( $query_object->is_search() ) {
 
+		if ( ! wplng_text_is_translatable( $query_object->query['s'] ) ) {
+			return;
+		}
+
 		$language_website = wplng_get_language_website_id();
 		$language_current = wplng_get_language_current_id();
 
@@ -16,8 +20,8 @@ function wplng_translate_search_query( $query_object ) {
 			return;
 		}
 
-		$translated_search = wplng_translate(
-			$query_object->query['s'],
+		$translated_search = wplng_api_call_translate(
+			array( $query_object->query['s'] ),
 			$language_current,
 			$language_website
 		);

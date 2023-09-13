@@ -85,7 +85,7 @@ function wplng_register_settings() {
 
 function wplng_show_api_message() {
 
-	$api_info = wplng_api_informations();
+	$api_info = wplng_api_call_api_informations();
 
 	if ( ! empty( $api_info['global_message'] )
 		&& is_string( $api_info['global_message'] )

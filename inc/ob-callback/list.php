@@ -12,17 +12,11 @@ function wplng_ob_callback_list( $html ) {
 		return $html;
 	}
 
-	$translations_modal = array();
-	$excluded_elements  = array();
-
 	$html = apply_filters( 'wplng_html_intercepted', $html );
 
-	$html_saved = $html;
-
-	/**
-	 * Replace excluded HTML part by tag
-	 */
-	$html = wplng_html_set_exclude_tag( $html, $excluded_elements );
+	$html_saved   = $html;
+	$texts_unknow = array();
+	$excluded     = array();
 
 	/**
 	 * Get saved translation
@@ -31,14 +25,70 @@ function wplng_ob_callback_list( $html ) {
 	$translations       = wplng_get_translations_saved( $language_target_id );
 
 	/**
-	 * Get new translation from API
+	 * Replace excluded HTML part by tag
 	 */
-	$translations_new = wplng_parser( $html, false, false, $translations );
+	$excluded = array();
+	$html     = wplng_html_set_exclude_tag(
+		$html,
+		$excluded
+	);
+
+	/**
+	 * Get all texts in HTML
+	 */
+	$texts = wplng_parse_html( $html );
+
+	/**
+	 * Get unknow texts
+	 */
+	foreach ( $texts as $text ) {
+		$is_in = false;
+		foreach ( $translations as $translation ) {
+			if ( $text === $translation['source'] ) {
+				$is_in = true;
+				break;
+			}
+		}
+		if ( ! $is_in ) {
+			$texts_unknow[] = $text;
+		}
+	}
+
+	$texts_unknow = array_splice(
+		$texts_unknow,
+		0,
+		WPLNG_MAX_TRANSLATIONS + 1
+	);
+
+	/**
+	 * Get new translated text
+	 */
+	$texts_unknow_translated = wplng_api_call_translate(
+		$texts_unknow,
+		false,
+		$language_target_id,
+		$translations
+	);
 
 	/**
 	 * Save new translation as wplng_translation CPT
 	 */
-	$translations_new = wplng_save_translations( $translations_new, $language_target_id );
+	$translations_new = array();
+
+	foreach ( $texts_unknow as $key => $text_source ) {
+		// $texts_unknow_translated
+		if ( isset( $texts_unknow_translated[ $key ] ) ) {
+			$translations_new[] = array(
+				'source'      => $text_source,
+				'translation' => $texts_unknow_translated[ $key ],
+			);
+		}
+	}
+
+	$translations_new = wplng_save_translations(
+		$translations_new,
+		$language_target_id
+	);
 
 	/**
 	 * Merge know and new translations
@@ -46,106 +96,30 @@ function wplng_ob_callback_list( $html ) {
 	$translations = array_merge( $translations_new, $translations );
 
 	/**
-	 * Get <head>
+	 * Get all translation in current page
 	 */
-	preg_match( '#<head>(.*)</head>#Uis', $html, $html_head );
-	if ( empty( $html_head[0] ) ) {
-		return $html;
-	}
-	$html_head = $html_head[0];
+	$translations_in_page = array();
+	foreach ( $texts as $text ) {
 
-	/**
-	 * Manage translation for <head>
-	 */
-	foreach ( $translations as $translation ) {
-
-		// Check if translaton data is valid
-		if (
-			! isset( $translation['source'] ) // Original text
-			|| ! isset( $translation['translation'] ) // Translater text
-			|| ! isset( $translation['sr'] ) // Search Replace
-		) {
-			continue;
-		}
-
-		if ( ! empty( $translation['source'] ) ) {
-
-			foreach ( $translation['sr'] as $key => $sr ) {
-				$regex = str_replace(
-					'WPLNG',
-					preg_quote( $translation['source'] ),
-					$sr['search']
+		foreach ( $translations as $translation ) {
+			if ( $translation['source'] === $text ) {
+				$translations_in_page[] = array(
+					'post_id'     => $translation['post_id'],
+					'source'      => $translation['source'],
+					'translation' => $translation['translation'],
 				);
-
-				// Replace original text in HTML by translation
-				if ( preg_match( $regex, $html_head ) ) {
-					$translations_modal[] = $translation;
-				}
-			}
-		}
-	}
-
-	/**
-	 * Get <body>
-	 */
-	preg_match( '#<body .*>(.*)</body>#Uis', $html, $html_body );
-	if ( empty( $html_body[0] ) ) {
-		return $html;
-	}
-	$html_body = $html_body[0];
-
-	/**
-	 * Manage translation for <body>
-	 */
-	foreach ( $translations as $translation ) {
-
-		// Check if translaton data is valid
-		if (
-			! isset( $translation['source'] ) // Original text
-			|| ! isset( $translation['translation'] ) // Translater text
-			|| ! isset( $translation['sr'] ) // Search Replace
-		) {
-			continue;
-		}
-
-		if ( ! empty( $translation['source'] ) ) {
-
-			foreach ( $translation['sr'] as $key => $sr ) {
-				$regex = str_replace(
-					'WPLNG',
-					preg_quote( $translation['source'] ),
-					$sr['search']
-				);
-
-				$replace_by_link = false;
-				if (
-					str_contains( $sr['replace'], '>' )
-					&& str_contains( $sr['replace'], '<' )
-				) {
-					$replace_by_link = true;
-				}
-
-				if ( preg_match( $regex, $html_body ) ) {
-
-					if ( ! $replace_by_link && ! in_array( $translation, $translations_modal ) ) {
-						$translations_modal[] = $translation;
-					}
-
-					if ( ! in_array( $translation, $translations_modal ) ) {
-						$translations_modal[] = $translation;
-					}
-				}
+				break;
 			}
 		}
 	}
 
 	$html_saved = str_replace(
 		'</body>',
-		wplng_get_editor_modal_html( $translations_modal ) . '</body>',
+		wplng_get_editor_modal_html( $translations_in_page ) . '</body>',
 		$html_saved
 	);
 
-	$html_saved = apply_filters( 'wplng_html_list', $html_saved );
+	$html = apply_filters( 'wplng_html_translated', $html );
 
 	return $html_saved;
 }

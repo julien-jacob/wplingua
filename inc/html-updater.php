@@ -80,27 +80,6 @@ function wplng_link_alternate_hreflang() {
 }
 
 
-function wplng_html_translate_links( $html, $language_target ) {
-	$dom = str_get_html( $html );
-
-	if ( empty( $dom ) ) {
-		return $html;
-	}
-
-	foreach ( $dom->find( 'a' ) as $element ) {
-		$link          = $element->href;
-		$element->href = wplng_url_translate( $link, $language_target );
-	}
-	foreach ( $dom->find( 'form' ) as $element ) {
-		$link            = $element->action;
-		$element->action = wplng_url_translate( $link, $language_target );
-	}
-
-	$dom->save();
-	return (string) str_get_html( $dom );
-}
-
-
 function wplng_get_selector_exclude() {
 
 	$selector_exclude = explode(
@@ -139,24 +118,6 @@ function wplng_get_selector_exclude() {
 	return $selector_exclude;
 }
 
-
-function wplng_get_selector_clear() {
-
-	$selector_clear = array(
-		'style',
-		'svg',
-		'script',
-		'canvas',
-		'link',
-	);
-
-	$selector_clear = apply_filters(
-		'wplng_selector_clear',
-		$selector_clear
-	);
-
-	return $selector_clear;
-}
 
 
 function wplng_html_set_exclude_tag( $html, &$excluded_elements ) {
