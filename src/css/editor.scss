@@ -3,14 +3,28 @@
 /*
  * Style for editor
  */
-.wplng-edit-link {
-    color: inherit;
+
+.wplingua-editor-link .wplng-edit-link {
+    margin: 0 !important;
+    padding: 0 !important;
+    display: inline !important;
+}
+
+.wplng-edit-link,
+.wplng-edit-link:active,
+.wplng-edit-link:hover,
+.wplng-edit-link:link,
+.wplng-edit-link:visited {
+    color: inherit !important;
     font-weight: inherit;
     font-size: inherit;
     text-decoration: inherit;
     line-height: inherit;
     border: 2px dotted gray !important;
     padding: 0 4px;
+    margin-left: -1px;
+    margin-right: -1px;
+    // display: inline-block;
 }
 
 // .entry-content p>.wplng-edit-link {

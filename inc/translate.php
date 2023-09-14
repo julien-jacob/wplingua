@@ -14,6 +14,8 @@ function wplng_get_translated_text_from_translations( $text, $translations ) {
 		return $text;
 	}
 
+	// $text = esc_attr(esc_html( $text ));
+
 	/**
 	 * Get spaces before and after text
 	 */
@@ -25,7 +27,7 @@ function wplng_get_translated_text_from_translations( $text, $translations ) {
 	if ( ! empty( $temp[1] ) ) {
 		$spaces_before = $temp[1];
 	}
-	
+
 	preg_match( '#.*(\s*)$#U', $text, $temp );
 	if ( ! empty( $temp[1] ) ) {
 		$spaces_after = $temp[1];
@@ -40,9 +42,9 @@ function wplng_get_translated_text_from_translations( $text, $translations ) {
 			if ( ! isset( $translation['source'] ) || ! isset( $translation['source'] ) ) {
 				continue;
 			}
-	
+
 			if ( $text === $translation['source'] ) {
-				$translated = $translation['translation'];
+				$translated = esc_attr(esc_html( $translation['translation'] ));
 			}
 		}
 	}
@@ -114,7 +116,15 @@ function wplng_translate_html(
 		}
 
 		foreach ( $element->attr as $attr => $value ) {
-			if ( ! in_array( $attr, array( 'alt', 'title', 'placeholder', 'aria-label' ) )
+
+			$attr_to_translate = array( 
+				'alt', 
+				'title', 
+				'placeholder', 
+				'aria-label' 
+			);
+
+			if ( ! in_array( $attr, $attr_to_translate )
 				|| empty( $value )
 			) {
 				continue;

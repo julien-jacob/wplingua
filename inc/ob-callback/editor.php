@@ -76,7 +76,7 @@ function wplng_ob_callback_editor( $html ) {
 		if ( isset( $texts_unknow_translated[ $key ] ) ) {
 			$translations_new[] = array(
 				'source'      => $text_source,
-				'translation' => $texts_unknow_translated[ $key ],
+				'translation' => $translated = esc_attr(esc_html( $texts_unknow_translated[ $key ] )),
 			);
 		}
 	}
@@ -135,7 +135,7 @@ function wplng_ob_callback_editor( $html ) {
 	 */
 	foreach ( $dom->find( 'body text' ) as $element ) {
 
-		if ( in_array( $element->parent->tag, array( 'style', 'svg', 'script', 'canvas', 'link' ) ) ) {
+		if ( in_array( $element->parent->tag, array( 'style', 'svg', 'script', 'canvas', 'link', 'textarea' ) ) ) {
 			continue;
 		}
 
