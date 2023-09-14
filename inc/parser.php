@@ -6,6 +6,157 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 
+function wplng_get_json_signature() {
+
+	$json_signatures = array(
+		array( '@context', '@graph', 0, '@type', '@id', 'url', 'name' ),
+		array( '@context', '@graph', 0, '@type', '@id', 'url', 'name', 'thumbnailUrl', 'datePublished', 'dateModified', 'description' ),
+		array( '@context', '@graph', 2, '@type', '@id', 'itemListElement', 0, '@type', 'name' ),
+		array( '@context', '@graph', 2, '@type', '@id', 'itemListElement', 1, '@type', 'name' ),
+		array( '@context', '@graph', 3, '@type', '@id', 'url', 'name' ),
+		array( '@context', '@graph', 3, '@type', '@id', 'url', 'name', 'description' ),
+		array( '@context', '@graph', 4, '@type', '@id', 'name' ),
+		array( '@context', '@graph', 4, '@type', '@id', 'name', 'url', 'logo', '@type', 'inLanguage', '@id', 'url', 'contentUrl', 'caption' ),
+	);
+
+	$json_signatures = apply_filters(
+		'wplng_json_signatures',
+		$json_signatures
+	);
+
+	return $json_signatures;
+}
+
+
+
+function wplng_parse_json_array( $json_decoded, $parents = array() ) {
+
+	$texts = array();
+
+	foreach ( $json_decoded as $key => $value ) {
+
+		if ( is_array( $value ) ) {
+
+			$texts = array_merge(
+				$texts,
+				wplng_parse_json_array( $value, array_merge( $parents, [ $key ] ) )
+			);
+
+		} elseif ( is_string( $value ) ) {
+
+			// TODO : Continuer ici !!!
+
+			if ( wplng_str_is_html( $value ) ) {
+
+				$texts = array_merge(
+					$texts,
+					wplng_parse_html( $value, array_merge( $parents, [ $key ] ) )
+				);
+
+			} elseif ( wplng_str_is_json( $value ) ) {
+
+				$texts = array_merge(
+					$texts,
+					wplng_parse_json( $value, array_merge( $parents, [ $key ] ) )
+				);
+
+			} else {
+
+				$parents = array_merge( $parents, [ $key ] );
+
+				// error_log(
+				// 	var_export(
+				// 		array(
+				// 			'parents' => $parents,
+				// 			'value'   => $value,
+				// 		),
+				// 		true
+				// 	)
+				// );
+
+				$json_signatures = wplng_get_json_signature();
+
+				if (
+					in_array( $parents, $json_signatures, true )
+					&& wplng_text_is_translatable( $value )
+				) {
+					$texts[] = $value;
+				}
+			}
+		}
+	}
+
+	// Remove duplicate
+	$texts = array_unique( $texts );
+
+	return $texts;
+}
+
+
+
+function wplng_parse_json( $json, $parents = array() ) {
+
+	$json_decoded = json_decode( $json, true );
+
+	if ( empty( $json_decoded ) || ! is_array( $json_decoded ) ) {
+		return array();
+	}
+
+	$texts = wplng_parse_json_array( $json_decoded, $parents );
+
+	// Remove duplicate
+	$texts = array_unique( $texts );
+
+	return $texts;
+}
+
+
+
+
+
+
+
+
+
+
+
+function wplng_parse_js( $js ) {
+
+	$texts = array();
+	$json  = array();
+
+	if ( empty( trim( $js ) ) ) {
+		return array();
+	}
+
+	preg_match_all(
+		'#var\s(.*)\s?=\s?(\{.*\});#Ui',
+		$js,
+		$json
+	);
+
+	if ( ! empty( $json[1][0] ) && ! empty( $json[2][0] ) ) {
+
+		$var_name = $json[1][0];
+		$var_json = $json[2][0];
+
+		$texts[] = array(
+			'var_name' => $var_name,
+			'var_json' => $var_json,
+		);
+
+		$texts = wplng_parse_json(
+			$var_json,
+			[ $var_name ]
+		);
+
+	}
+
+	// Remove duplicate
+	$texts = array_unique( $texts );
+
+	return $texts;
+}
 
 
 function wplng_parse_html( $html ) {
@@ -16,6 +167,22 @@ function wplng_parse_html( $html ) {
 	if ( empty( $dom ) ) {
 		return $html;
 	}
+
+	
+	foreach ( $dom->find( 'script[type="application/ld+json"]' ) as $element ) {
+		$texts = array_merge(
+			$texts,
+			wplng_parse_json( $element->innertext )
+		);
+	}
+	
+	foreach ( $dom->find( 'script' ) as $element ) {
+		$texts = array_merge(
+			$texts,
+			wplng_parse_js( $element->innertext )
+		);
+	}
+	// return var_export( $texts, true );
 
 	/**
 	 * Parse Node text
@@ -33,7 +200,6 @@ function wplng_parse_html( $html ) {
 		}
 
 		$texts[] = $text;
-
 	}
 
 	/**
@@ -65,73 +231,6 @@ function wplng_parse_html( $html ) {
 	// Remove duplicate
 	$texts = array_unique( $texts );
 
+	// return var_export( $texts, true );
 	return $texts;
-	// return var_export( $x, true );
-
-	// $dom->save();
-	// $html = (string) str_get_html( $dom );
-
 }
-
-function wplng_parse_js( $html, $translations = array() ) {
-
-}
-
-function wplng_parse_json( $html, $translations = array() ) {
-
-}
-
-
-// function wplng_parser( $html, $language_source_id = '', $language_target_id = '', $translations = array() ) {
-
-// 	$api_key = wplng_get_api_key();
-// 	if ( empty( $api_key ) ) {
-// 		return array();
-// 	}
-
-// 	if ( empty( $html ) ) {
-// 		return array();
-// 	}
-
-// 	if ( empty( $language_target_id ) ) {
-// 		$language_target_id = wplng_get_language_current_id();
-// 	}
-
-// 	if ( empty( $language_source_id ) ) {
-// 		$language_source_id = wplng_get_language_website_id();
-// 	}
-
-// 	$body = array(
-// 		'api_key' => $api_key,
-// 		'request' => 'parser',
-// 		'version' => WPLNG_API_VERSION,
-// 		'source'  => $language_source_id,
-// 		'target'  => $language_target_id,
-// 		'html'    => $html,
-// 	);
-// 	$args = array(
-// 		'method'    => 'POST',
-// 		'timeout'   => 120,
-// 		'sslverify' => false,
-// 		'body'      => $body,
-// 	);
-
-// 	$request = wp_remote_post(
-// 		WPLNG_API_URL . '/app/',
-// 		$args
-// 	);
-
-// 	if ( is_wp_error( $request )
-// 		|| wp_remote_retrieve_response_code( $request ) != 200
-// 	) {
-// 		return array();
-// 	}
-
-// 	$response = json_decode( wp_remote_retrieve_body( $request ), true );
-
-// 	if ( empty( $response ) ) {
-// 		return array();
-// 	}
-
-// 	return $response;
-// }

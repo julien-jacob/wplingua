@@ -7,6 +7,7 @@ if ( ! defined( 'WPINC' ) ) {
 
 
 
+
 function wplng_get_translated_text_from_translations( $text, $translations ) {
 
 	if ( empty( trim( $text ) ) ) {
@@ -128,6 +129,16 @@ function wplng_translate_html(
 
 	$dom->save();
 	$html = (string) str_get_html( $dom );
-	return $html;
 
+	return $html;
 }
+
+
+// function wplng_translate_js(
+// 	$js,
+// 	$language_source_id = '',
+// 	$language_target_id = '',
+// 	$translations = array()
+// ) {
+
+// }

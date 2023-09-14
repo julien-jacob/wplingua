@@ -6,18 +6,12 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 
+function wplng_str_is_url($str) {
+
+	return filter_var($str, FILTER_VALIDATE_URL);
+}
 
 
-/**
- * Return true if text is translatable
- * - Not a number
- * - Not a price
- * - Not a mail
- * - ...
- *
- * @param string $text
- * @return void
- */
 function wplng_text_is_translatable( $text ) {
 
 	// Check if it's a mail address
@@ -42,4 +36,21 @@ function wplng_text_esc( $text ) {
 	$text = trim( $text );
 
 	return $text;
+}
+
+
+function wplng_str_is_html( $str ) {
+	if ( $str != strip_tags( $str ) ) {
+		// is HTML
+		return true;
+	}
+
+	// not HTML
+	return false;
+}
+
+
+
+function wplng_str_is_json( $str ) {
+	return ( json_decode( $str ) == null ) ? false : true;
 }

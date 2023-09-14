@@ -36,6 +36,7 @@ function wplng_ob_callback_translate( $html ) {
 	 * Get all texts in HTML
 	 */
 	$texts = wplng_parse_html( $html );
+	// return $texts;
 
 	/**
 	 * Get unknow texts
