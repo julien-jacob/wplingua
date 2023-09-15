@@ -6,9 +6,8 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 
-function wplng_str_is_url($str) {
-
-	return filter_var($str, FILTER_VALIDATE_URL);
+function wplng_str_is_url( $str ) {
+	return filter_var( $str, FILTER_VALIDATE_URL );
 }
 
 
@@ -22,7 +21,7 @@ function wplng_text_is_translatable( $text ) {
 	return ! empty(
 		preg_replace(
 			'#[^a-zA-Z]#',
-				'',
+			'',
 			$text
 		)
 	);

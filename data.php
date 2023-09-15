@@ -43,7 +43,7 @@ function wplng_data_excluded_editor_link() {
 }
 
 
-function wplng_data_excluded_node_text() {
+function wplng_data_excluded_selector_default() {
 	return apply_filters(
 		'wplng_excluded_node_text',
 		array(
@@ -52,6 +52,11 @@ function wplng_data_excluded_node_text() {
 			'script',
 			'canvas',
 			'link',
+			'address',
+			'#wpadminbar',
+			'.no-translate',
+			'.notranslate',
+			'.wplng-switcher',
 		)
 	);
 }

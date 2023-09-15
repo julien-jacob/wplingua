@@ -67,14 +67,19 @@ function wplng_link_alternate_hreflang() {
 
 	// Create alternate link for website language
 	$language_website = wplng_get_language_website();
-	$html            .= '<link rel="alternate" hreflang="' . esc_attr( $language_website['id'] ) . '" href="' . esc_url( wplng_get_url_original() ) . '">';
+
+	$html .= PHP_EOL;
+	$html .= PHP_EOL . '<!-- This site is make multilingual with the wpLingua plugin -->';
+	$html .= PHP_EOL . '<link rel="alternate" hreflang="' . esc_attr( $language_website['id'] ) . '" href="' . esc_url( wplng_get_url_original() ) . '">';
 
 	// Create alternate link for each target languages
 	$languages_target = wplng_get_languages_target();
 	foreach ( $languages_target as $key => $language_target ) {
 		$url   = wplng_get_url_current_for_language( $language_target['id'] );
-		$html .= '<link rel="alternate" hreflang="' . esc_attr( $language_target['id'] ) . '" href="' . esc_url( $url ) . '">';
+		$html .= PHP_EOL . '<link rel="alternate" hreflang="' . esc_attr( $language_target['id'] ) . '" href="' . esc_url( $url ) . '">';
 	}
+
+	$html .= PHP_EOL . '<!-- / wpLingua plugin. -->' . PHP_EOL . PHP_EOL;
 
 	echo $html;
 }
@@ -93,13 +98,7 @@ function wplng_get_selector_exclude() {
 	// Add default selectors
 	$selector_exclude = array_merge(
 		$selector_exclude,
-		array(
-			'#wpadminbar',
-			'.no-translate',
-			'.notranslate',
-			'.wplng-switcher',
-			'address',
-		)
+		wplng_data_excluded_selector_default() // Make HTML to parse smaller
 	);
 
 	// Remove duplicate
@@ -124,7 +123,7 @@ function wplng_html_set_exclude_tag( $html, &$excluded_elements ) {
 	$selector_exclude = wplng_get_selector_exclude();
 	$dom              = str_get_html( $html );
 
-	if ( $dom === false ) {
+	if ( false === $dom ) {
 		return $html;
 	}
 

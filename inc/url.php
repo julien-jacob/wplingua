@@ -6,11 +6,19 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 
-function wplng_url_translate( $url, $language_id_target ) {
+function wplng_url_translate( $url, $language_target_id = '' ) {
+
+	if ('' === $language_target_id) {
+		$language_target_id = wplng_get_language_current_id();
+	}
 
 	// Check if URL is an empty string
 	if ( '' === $url ) {
 		return '';
+	}
+
+	if ( ! wplng_str_is_url( $url ) ) {
+		return $url;
 	}
 
 	// Check if URL is translatable (exclude /admin/...)
@@ -37,7 +45,7 @@ function wplng_url_translate( $url, $language_id_target ) {
 
 		$url = preg_replace(
 			'#^(http:\/\/|https:\/\/)?' . $domain . '(.*)$#',
-			'$1' . $domain . '/' . $language_id_target . '$2',
+			'$1' . $domain . '/' . $language_target_id . '$2',
 			$url
 		);
 
@@ -55,9 +63,9 @@ function wplng_url_translate( $url, $language_id_target ) {
 		}
 
 		if ( substr( $url, 0, 1 ) == '/' ) {
-			$url = '/' . $language_id_target . $url;
+			$url = '/' . $language_target_id . $url;
 		} else {
-			$url = $language_id_target . '/' . $url;
+			$url = $language_target_id . '/' . $url;
 		}
 	}
 

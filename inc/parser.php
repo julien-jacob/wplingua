@@ -51,12 +51,12 @@ function wplng_parse_json_array( $json_decoded, $parents = array() ) {
 				// 	)
 				// );
 
-				$json_signatures = wplng_data_excluded_json();
+				$json_excluded = wplng_data_excluded_json();
 
 				// Todo : Ajouter filtre bool pour exclure json
 
 				if (
-					in_array( $parents, $json_signatures, true )
+					in_array( $parents, $json_excluded, true )
 					&& wplng_text_is_translatable( $value )
 				) {
 					$texts[] = $value;
@@ -109,11 +109,6 @@ function wplng_parse_js( $js ) {
 		$var_name = $json[1][0];
 		$var_json = $json[2][0];
 
-		$texts[] = array(
-			'var_name' => $var_name,
-			'var_json' => $var_json,
-		);
-
 		$texts = wplng_parse_json(
 			$var_json,
 			[ $var_name ]
@@ -137,7 +132,9 @@ function wplng_parse_html( $html ) {
 		return $html;
 	}
 
-	
+	/**
+	 * Find and parse JSON
+	 */
 	foreach ( $dom->find( 'script[type="application/ld+json"]' ) as $element ) {
 		$texts = array_merge(
 			$texts,
@@ -151,17 +148,11 @@ function wplng_parse_html( $html ) {
 			wplng_parse_js( $element->innertext )
 		);
 	}
-	// return var_export( $texts, true );
 
 	/**
 	 * Parse Node text
 	 */
-	$excluded_node_text = wplng_data_excluded_node_text();
 	foreach ( $dom->find( 'text' ) as $element ) {
-
-		if ( in_array( $element->parent->tag, $excluded_node_text ) ) {
-			continue;
-		}
 
 		$text = wplng_text_esc( $element->innertext );
 
