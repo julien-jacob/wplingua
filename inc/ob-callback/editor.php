@@ -116,12 +116,8 @@ function wplng_ob_callback_editor( $html ) {
 	foreach ( $dom->find( 'a' ) as $element ) {
 
 		$element->tag = 'span';
-		//
+		$class        = 'wplingua-editor-link';
 
-		// $element->parent->href   = esc_url( $edit_link );
-		// $element->parent->target = '_blank';
-
-		$class = 'wplingua-editor-link';
 		if ( ! empty( $element->class ) ) {
 			$class .= ' ' . $element->class;
 		}
@@ -147,7 +143,10 @@ function wplng_ob_callback_editor( $html ) {
 
 		foreach ( $translations as $key => $translation ) {
 
-			if ( ! isset( $translation['source'] ) || ! isset( $translation['source'] ) ) {
+			if ( 
+				! isset( $translation['post_id'] ) 
+				|| ! isset( $translation['translation'] ) 
+			) {
 				continue;
 			}
 
