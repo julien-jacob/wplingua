@@ -133,9 +133,10 @@ function wplng_ob_callback_editor( $html ) {
 	/**
 	 * Add edit links on text
 	 */
+	$excluded_node_text = wplng_data_excluded_editor_link();
 	foreach ( $dom->find( 'body text' ) as $element ) {
 
-		if ( in_array( $element->parent->tag, array( 'style', 'svg', 'script', 'canvas', 'link', 'textarea' ) ) ) {
+		if ( in_array( $element->parent->tag, $excluded_node_text ) ) {
 			continue;
 		}
 

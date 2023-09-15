@@ -119,7 +119,6 @@ function wplng_get_selector_exclude() {
 }
 
 
-
 function wplng_html_set_exclude_tag( $html, &$excluded_elements ) {
 
 	$selector_exclude = wplng_get_selector_exclude();

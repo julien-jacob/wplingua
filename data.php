@@ -6,7 +6,122 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 
-function wplng_get_languages_data() {
+function wplng_data_excluded_json() {
+
+	return apply_filters(
+		'wplng_excluded_json',
+		array(
+			array( '@context', '@graph', 0, '@type', '@id', 'url', 'name' ),
+			array( '@context', '@graph', 0, '@type', '@id', 'url', 'name', 'thumbnailUrl', 'datePublished', 'dateModified', 'description' ),
+			array( '@context', '@graph', 2, '@type', '@id', 'itemListElement', 0, '@type', 'name' ),
+			array( '@context', '@graph', 2, '@type', '@id', 'itemListElement', 1, '@type', 'name' ),
+			array( '@context', '@graph', 3, '@type', '@id', 'url', 'name' ),
+			array( '@context', '@graph', 3, '@type', '@id', 'url', 'name', 'description' ),
+			array( '@context', '@graph', 4, '@type', '@id', 'name' ),
+			array( '@context', '@graph', 4, '@type', '@id', 'name', 'url', 'logo', '@type', 'inLanguage', '@id', 'url', 'contentUrl', 'caption' ),
+		)
+	);
+}
+
+
+function wplng_data_excluded_editor_link() {
+	return apply_filters(
+		'wplng_excluded_editor_link',
+		array( 
+			'style', 
+			'svg', 
+			'script', 
+			'canvas', 
+			'link', 
+			'textarea' 
+		)
+	);
+}
+
+
+function wplng_data_excluded_node_text() {
+	return apply_filters(
+		'wplng_excluded_node_text',
+		array( 
+			'style', 
+			'svg', 
+			'script', 
+			'canvas', 
+			'link',
+		)
+	);
+}
+
+function wplng_data_attr_to_translate() {
+	return apply_filters(
+		'wplng_attr_to_translate',
+		array( 
+			'alt', 
+			'title', 
+			'placeholder', 
+			'aria-label',
+		)
+	);
+}
+
+
+/**
+ * Data : Switcher options
+ */
+
+ function wplng_data_switcher_valid_insert() {
+	return array(
+		'bottom-right'  => __( 'Bottom right', 'wplingua' ),
+		'bottom-center' => __( 'Bottom center', 'wplingua' ),
+		'bottom-left'   => __( 'Bottom left', 'wplingua' ),
+		'none'          => __( 'None', 'wplingua' ),
+	);
+}
+
+
+function wplng_data_switcher_valid_theme() {
+	return array(
+		'smooth-light' => __( 'Smooth Light', 'wplingua' ),
+		'smooth-grey'  => __( 'Smooth Grey', 'wplingua' ),
+		'smooth-dark'  => __( 'Smooth Dark', 'wplingua' ),
+		'square-light' => __( 'Square Light', 'wplingua' ),
+		'square-grey'  => __( 'Square Grey', 'wplingua' ),
+		'square-dark'  => __( 'Square Dark', 'wplingua' ),
+	);
+}
+
+
+function wplng_data_switcher_valid_style() {
+	return array(
+		'list'     => __( 'List', 'wplingua' ),
+		'block'    => __( 'Block', 'wplingua' ),
+		'dropdown' => __( 'Dropdown', 'wplingua' ),
+	);
+}
+
+function wplng_data_switcher_valid_name_format() {
+	return array(
+		'name' => __( 'Complete name', 'wplingua' ),
+		'id'   => __( 'Language ID', 'wplingua' ),
+		'none' => __( 'No display', 'wplingua' ),
+	);
+}
+
+
+function wplng_data_switcher_valid_flags_style() {
+	return array(
+		'circle'      => __( 'Circle', 'wplingua' ),
+		'rectangular' => __( 'Rectangular', 'wplingua' ),
+		'none'        => __( 'No display', 'wplingua' ),
+	);
+}
+
+
+/**
+ * Data : Languages
+ */
+
+ function wplng_data_languages() {
 	return array(
 		array(
 			'name'             => __( 'English', 'wplingua' ),

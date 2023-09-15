@@ -9,6 +9,8 @@ if ( ! defined( 'WPINC' ) ) {
  * Require all wpLingua PHP files
  */
 
+require_once WPLNG_PLUGIN_PATH . '/data.php';
+
 // Require files in /inc/lib/ folder
 require_once WPLNG_PLUGIN_PATH . '/inc/lib/simple_html_dom.php';
 
@@ -38,7 +40,6 @@ require_once WPLNG_PLUGIN_PATH . '/inc/ob-callback/translate.php';
 require_once WPLNG_PLUGIN_PATH . '/inc/api-key.php';
 require_once WPLNG_PLUGIN_PATH . '/inc/assets.php';
 require_once WPLNG_PLUGIN_PATH . '/inc/html-updater.php';
-require_once WPLNG_PLUGIN_PATH . '/inc/languages-data.php';
 require_once WPLNG_PLUGIN_PATH . '/inc/languages.php';
 require_once WPLNG_PLUGIN_PATH . '/inc/mail.php';
 require_once WPLNG_PLUGIN_PATH . '/inc/parser.php';

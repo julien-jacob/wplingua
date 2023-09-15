@@ -6,29 +6,6 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 
-function wplng_get_json_signature() {
-
-	$json_signatures = array(
-		array( '@context', '@graph', 0, '@type', '@id', 'url', 'name' ),
-		array( '@context', '@graph', 0, '@type', '@id', 'url', 'name', 'thumbnailUrl', 'datePublished', 'dateModified', 'description' ),
-		array( '@context', '@graph', 2, '@type', '@id', 'itemListElement', 0, '@type', 'name' ),
-		array( '@context', '@graph', 2, '@type', '@id', 'itemListElement', 1, '@type', 'name' ),
-		array( '@context', '@graph', 3, '@type', '@id', 'url', 'name' ),
-		array( '@context', '@graph', 3, '@type', '@id', 'url', 'name', 'description' ),
-		array( '@context', '@graph', 4, '@type', '@id', 'name' ),
-		array( '@context', '@graph', 4, '@type', '@id', 'name', 'url', 'logo', '@type', 'inLanguage', '@id', 'url', 'contentUrl', 'caption' ),
-	);
-
-	$json_signatures = apply_filters(
-		'wplng_json_signatures',
-		$json_signatures
-	);
-
-	return $json_signatures;
-}
-
-
-
 function wplng_parse_json_array( $json_decoded, $parents = array() ) {
 
 	$texts = array();
@@ -74,7 +51,9 @@ function wplng_parse_json_array( $json_decoded, $parents = array() ) {
 				// 	)
 				// );
 
-				$json_signatures = wplng_get_json_signature();
+				$json_signatures = wplng_data_excluded_json();
+
+				// Todo : Ajouter filtre bool pour exclure json
 
 				if (
 					in_array( $parents, $json_signatures, true )
@@ -93,7 +72,6 @@ function wplng_parse_json_array( $json_decoded, $parents = array() ) {
 }
 
 
-
 function wplng_parse_json( $json, $parents = array() ) {
 
 	$json_decoded = json_decode( $json, true );
@@ -109,15 +87,6 @@ function wplng_parse_json( $json, $parents = array() ) {
 
 	return $texts;
 }
-
-
-
-
-
-
-
-
-
 
 
 function wplng_parse_js( $js ) {
@@ -187,9 +156,10 @@ function wplng_parse_html( $html ) {
 	/**
 	 * Parse Node text
 	 */
+	$excluded_node_text = wplng_data_excluded_node_text();
 	foreach ( $dom->find( 'text' ) as $element ) {
 
-		if ( in_array( $element->parent->tag, array( 'style', 'svg', 'script', 'canvas', 'link' ) ) ) {
+		if ( in_array( $element->parent->tag, $excluded_node_text ) ) {
 			continue;
 		}
 
@@ -205,6 +175,7 @@ function wplng_parse_html( $html ) {
 	/**
 	 * Parse attr
 	 */
+	$attr_to_translate = wplng_data_attr_to_translate();
 	foreach ( $dom->find( '*' ) as $element ) {
 
 		if ( empty( $element->attr ) ) {
@@ -212,7 +183,7 @@ function wplng_parse_html( $html ) {
 		}
 
 		foreach ( $element->attr as $attr => $value ) {
-			if ( ! in_array( $attr, array( 'alt', 'title', 'placeholder', 'aria-label' ) )
+			if ( ! in_array( $attr, $attr_to_translate )
 				|| empty( $value )
 			) {
 				continue;

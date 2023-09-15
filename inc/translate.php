@@ -6,8 +6,6 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 
-
-
 function wplng_get_translated_text_from_translations( $text, $translations ) {
 
 	if ( empty( trim( $text ) ) ) {
@@ -93,9 +91,10 @@ function wplng_translate_html(
 	/**
 	 * Parse Node text
 	 */
+	$excluded_node_text = wplng_data_excluded_node_text();
 	foreach ( $dom->find( 'text' ) as $element ) {
 
-		if ( in_array( $element->parent->tag, array( 'style', 'svg', 'script', 'canvas', 'link' ) ) ) {
+		if ( in_array( $element->parent->tag, $excluded_node_text ) ) {
 			continue;
 		}
 
@@ -109,6 +108,7 @@ function wplng_translate_html(
 	/**
 	 * Parse attr
 	 */
+	$attr_to_translate = wplng_data_attr_to_translate();
 	foreach ( $dom->find( '*' ) as $element ) {
 
 		if ( empty( $element->attr ) ) {
@@ -116,13 +116,6 @@ function wplng_translate_html(
 		}
 
 		foreach ( $element->attr as $attr => $value ) {
-
-			$attr_to_translate = array( 
-				'alt', 
-				'title', 
-				'placeholder', 
-				'aria-label' 
-			);
 
 			if ( ! in_array( $attr, $attr_to_translate )
 				|| empty( $value )
@@ -142,13 +135,3 @@ function wplng_translate_html(
 
 	return $html;
 }
-
-
-// function wplng_translate_js(
-// 	$js,
-// 	$language_source_id = '',
-// 	$language_target_id = '',
-// 	$translations = array()
-// ) {
-
-// }
