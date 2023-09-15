@@ -298,7 +298,7 @@ function wplng_get_switcher_class( $arg = array() ) {
 
 function wplng_get_switcher_html( $arg = array() ) {
 
-	if ( ! wplng_url_is_translatable() ) {
+	if ( ! wplng_url_is_translatable() && ! is_admin() ) {
 		return '';
 	}
 
