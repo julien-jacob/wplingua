@@ -61,8 +61,8 @@ function wplng_ob_callback_editor( $html ) {
 	);
 
 	$texts_unknow = array_splice(
-		$texts_unknow, 
-		0, 
+		$texts_unknow,
+		0,
 		WPLNG_MAX_TRANSLATIONS + 1
 	);
 
@@ -76,7 +76,7 @@ function wplng_ob_callback_editor( $html ) {
 		if ( isset( $texts_unknow_translated[ $key ] ) ) {
 			$translations_new[] = array(
 				'source'      => $text_source,
-				'translation' => $translated = esc_attr(esc_html( $texts_unknow_translated[ $key ] )),
+				'translation' => $translated = esc_attr( esc_html( $texts_unknow_translated[ $key ] ) ),
 			);
 		}
 	}
@@ -116,7 +116,7 @@ function wplng_ob_callback_editor( $html ) {
 	foreach ( $dom->find( 'a' ) as $element ) {
 
 		$element->tag = 'span';
-		// 
+		//
 
 		// $element->parent->href   = esc_url( $edit_link );
 		// $element->parent->target = '_blank';
@@ -128,7 +128,6 @@ function wplng_ob_callback_editor( $html ) {
 
 		$element->class = $class;
 	}
-
 
 	/**
 	 * Add edit links on text
@@ -162,7 +161,7 @@ function wplng_ob_callback_editor( $html ) {
 				}
 
 				$element->innertext = '<a href="' . esc_url( $edit_link ) . '" class="wplng-edit-link" target="_blank">' . esc_html( $text ) . ' </a>';
-					
+
 			}
 		}
 	}

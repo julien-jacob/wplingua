@@ -33,7 +33,7 @@ function wplng_api_call_translate( $texts, $language_source_id = '', $language_t
 		'version' => WPLNG_API_VERSION,
 		'source'  => $language_source_id,
 		'target'  => $language_target_id,
-		'texts'    => $json_texts,
+		'texts'   => $json_texts,
 	);
 
 	$args = array(
@@ -56,9 +56,8 @@ function wplng_api_call_translate( $texts, $language_source_id = '', $language_t
 
 	$response = json_decode( wp_remote_retrieve_body( $request ), true );
 
-	if ( 
-		empty( $response['translations'] ) 
-		|| ! empty($response['error'])
+	if ( empty( $response['translations'] )
+		|| ! empty( $response['error'] )
 	) {
 		return $texts;
 	}

@@ -35,7 +35,9 @@ function wplng_option_page_switcher() {
 					<td>
 						<div class="wplng-switcher-preview">
 							<?php
-							echo wplng_get_switcher_html( array( 'class' => 'switcher-preview' ) );
+							echo wplng_get_switcher_html(
+								array( 'class' => 'switcher-preview' )
+							);
 							?>
 						</div>
 					</td>

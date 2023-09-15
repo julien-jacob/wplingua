@@ -55,8 +55,8 @@ function wplng_ob_callback_translate( $html ) {
 	}
 
 	$texts_unknow = array_splice(
-		$texts_unknow, 
-		0, 
+		$texts_unknow,
+		0,
 		WPLNG_MAX_TRANSLATIONS + 1
 	);
 
