@@ -39,11 +39,15 @@ function wplng_get_translated_text_from_translations( $text, $translations ) {
 				continue;
 			}
 
-			if ( $text === $translation['source'] ) {
-				$translated = esc_attr( esc_html( $translation['translation'] ) );
+			$source = wplng_text_esc( $translation['source'] );
+
+			if ( $text === $source ) {
+				$translated = $translation['translation'];
 			}
 		}
 	}
+
+	$translated = esc_attr( esc_html( $translation['translation'] ) );
 
 	return $spaces_before . $translated . $spaces_after;
 }

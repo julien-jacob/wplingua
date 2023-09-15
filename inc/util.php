@@ -41,6 +41,7 @@ function wplng_text_esc( $text ) {
 
 	$text = trim( $text );
 	$text = html_entity_decode( $text );
+	$text = preg_replace( '#\s+#', ' ', $text );
 
 	return $text;
 }
