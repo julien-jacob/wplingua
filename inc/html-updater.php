@@ -135,7 +135,7 @@ function wplng_html_set_exclude_tag( $html, &$excluded_elements ) {
 		}
 	}
 
-	$dom->load( $dom->save() );
+	$dom->save();
 
 	return (string) str_get_html( $dom );
 }
@@ -143,12 +143,33 @@ function wplng_html_set_exclude_tag( $html, &$excluded_elements ) {
 
 function wplng_html_replace_exclude_tag( $html, $excluded_elements ) {
 
-	foreach ( $excluded_elements as $key => $element ) {
-		$s    = '<div wplng-tag-exclude="' . esc_attr( $key ) . '"></div>';
-		$html = str_replace( $s, $element, $html );
+	// foreach ( $excluded_elements as $key => $element ) {
+	// 	$s    = '<div wplng-tag-exclude="' . esc_attr( $key ) . '"></div>';
+	// 	$html = str_replace( $s, $element, $html );
+	// }
+	// return $html;
+
+	$dom = str_get_html( $html );
+
+	if ( false === $dom ) {
+		return $html;
 	}
 
-	return $html;
+	foreach ( $dom->find( '[wplng-tag-exclude]' ) as $element ) {
+
+		if ( isset( $element->attr['wplng-tag-exclude'] ) ) {
+			$exclude_index = (int) $element->attr['wplng-tag-exclude'];
+
+			if ( isset( $excluded_elements[ $exclude_index ] ) ) {
+				$element->outertext = $excluded_elements[ $exclude_index ];
+			}
+		}
+
+	}
+
+	$dom->save();
+
+	return (string) str_get_html( $dom );
 }
 
 
