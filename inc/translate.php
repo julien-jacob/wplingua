@@ -68,9 +68,9 @@ function wplng_translate_json_array( $json_decoded, $translations, $parents = ar
 			$locale  = get_locale();                    // Ex: fr_FR
 			$locales = array(
 				$locale,                                // Ex: fr_FR
-				str_replace( '_', '-', $locale ),       // Ex: frFR
-				substr( $locale, 0, 2 ),                // Ex: fr
-				strtoupper( substr( $locale, 0, 2 ) ),  // Ex: FR
+				str_replace( '_', '-', $locale ),       // Ex: fr-FR
+				substr( $locale, 0, 2 ),                // Ex: FR
+				strtolower( substr( $locale, 0, 2 ) ),  // Ex: fr
 			);
 
 			if ( in_array( $value, $locales ) ) {
@@ -179,8 +179,6 @@ function wplng_translate_js( $js, $translations ) {
 				$js
 			);
 
-			// TODO : Check ici !!
-			// error_log( $js_translated );
 		}
 	}
 
@@ -228,12 +226,15 @@ function wplng_translate_html(
 	}
 
 	/**
-	 * Find and parse JSON
+	 * Find and parse JS
 	 */
 	foreach ( $dom->find( 'script[type="application/ld+json"]' ) as $element ) {
 		$element->innertext = wplng_translate_json( $element->innertext, $translations );
 	}
 
+	/**
+	 * Find and translate JS
+	 */
 	foreach ( $dom->find( 'script' ) as $element ) {
 		$element->innertext = wplng_translate_js( $element->innertext, $translations );
 	}
@@ -242,12 +243,10 @@ function wplng_translate_html(
 	 * Parse Node text
 	 */
 	foreach ( $dom->find( 'text' ) as $element ) {
-
 		$element->innertext = wplng_get_translated_text_from_translations(
 			$element->innertext,
 			$translations
 		);
-
 	}
 
 	/**
@@ -268,7 +267,7 @@ function wplng_translate_html(
 				continue;
 			}
 
-			$element->innertext = wplng_get_translated_text_from_translations(
+			$element->attr[ $attr ] = wplng_get_translated_text_from_translations(
 				$element->innertext,
 				$translations
 			);
@@ -276,7 +275,6 @@ function wplng_translate_html(
 	}
 
 	$dom->save();
-	$html = (string) str_get_html( $dom );
 
-	return $html;
+	return (string) str_get_html( $dom );
 }

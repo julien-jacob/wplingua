@@ -32,11 +32,6 @@ function wplng_data_excluded_editor_link() {
 	return apply_filters(
 		'wplng_excluded_editor_link',
 		array(
-			'style',
-			'svg',
-			'script',
-			'canvas',
-			'link',
 			'textarea',
 		)
 	);
@@ -44,20 +39,17 @@ function wplng_data_excluded_editor_link() {
 
 
 function wplng_data_excluded_selector_default() {
-	return apply_filters(
-		'wplng_excluded_node_text',
-		array(
-			'style',
-			'svg',
-			'script',
-			'canvas',
-			'link',
-			'address',
-			'#wpadminbar',
-			'.no-translate',
-			'.notranslate',
-			'.wplng-switcher',
-		)
+	return array(
+		'style',
+		'svg',
+		'script',
+		'canvas',
+		'link',
+		'address',
+		'#wpadminbar',
+		'.no-translate',
+		'.notranslate',
+		'.wplng-switcher',
 	);
 }
 

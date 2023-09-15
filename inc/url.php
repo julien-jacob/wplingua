@@ -8,17 +8,9 @@ if ( ! defined( 'WPINC' ) ) {
 
 function wplng_url_translate( $url, $language_target_id = '' ) {
 
-	if ('' === $language_target_id) {
-		$language_target_id = wplng_get_language_current_id();
-	}
-
 	// Check if URL is an empty string
 	if ( '' === $url ) {
 		return '';
-	}
-
-	if ( ! wplng_str_is_url( $url ) ) {
-		return $url;
 	}
 
 	// Check if URL is translatable (exclude /admin/...)
@@ -27,12 +19,16 @@ function wplng_url_translate( $url, $language_target_id = '' ) {
 	}
 
 	// Check if URL is an anchor link for the current page
-	if ( substr( $url, 0, 1 ) == '#' ) {
+	if ( '#' === substr( $url, 0, 1 ) ) {
 		return $url;
 	}
 
 	$domain           = $_SERVER['HTTP_HOST'];
 	$languages_target = wplng_get_languages_target();
+
+	if ( '' === $language_target_id ) {
+		$language_target_id = wplng_get_language_current_id();
+	}
 
 	if ( preg_match( '#^(http:\/\/|https:\/\/)?' . $domain . '(.*)$#', $url ) ) {
 

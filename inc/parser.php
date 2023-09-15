@@ -142,6 +142,9 @@ function wplng_parse_html( $html ) {
 		);
 	}
 	
+	/**
+	 * Find and translate JS
+	 */
 	foreach ( $dom->find( 'script' ) as $element ) {
 		$texts = array_merge(
 			$texts,

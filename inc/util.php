@@ -7,7 +7,16 @@ if ( ! defined( 'WPINC' ) ) {
 
 
 function wplng_str_is_url( $str ) {
-	return filter_var( $str, FILTER_VALIDATE_URL );
+
+	if (parse_url($str, PHP_URL_SCHEME) != '') {
+        // URL has http/https/...
+        return !(filter_var($str, FILTER_VALIDATE_URL) === false);
+    }else{
+        // PHP filter_var does not support relative urls, so we simulate a full URL
+        // Feel free to replace example.com with any other URL, it won't matter!
+        return !(filter_var('http://www.example.com/'.ltrim($str,'/'), FILTER_VALIDATE_URL) === false);
+    }
+
 }
 
 
