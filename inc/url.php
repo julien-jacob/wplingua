@@ -122,7 +122,7 @@ function wplng_url_is_translatable( $url = '' ) {
 
 	$is_translatable = apply_filters(
 		'wplng_url_is_translatable',
-		$is_translatable, 
+		$is_translatable,
 		$url
 	);
 

@@ -4,17 +4,17 @@
 
 .wplng-switcher.style-dropdown {
 
-    &.theme-square-light,
-    &.theme-square-grey,
-    &.theme-smooth-light,
-    &.theme-smooth-grey {
+    &.theme-light-double-square,
+    &.theme-grey-double-square,
+    &.theme-light-double-smooth,
+    &.theme-grey-double-smooth {
         .wplng-language-current {
             background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20width%3D%2220%22%20height%3D%2220%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M5%206l5%205%205-5%202%201-7%207-7-7%202-1z%22%20fill%3D%22%23555%22%2F%3E%3C%2Fsvg%3E');
         }
     }
 
-    &.theme-square-dark,
-    &.theme-smooth-dark {
+    &.theme-dark-double-square,
+    &.theme-dark-double-smooth {
         .wplng-language-current {
             background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB3aWR0aD0iMjAiIGhlaWdodD0iMjAiPjxkZWZzPjxmaWx0ZXIgaWQ9ImRhcmtyZWFkZXItaW1hZ2UtZmlsdGVyIj48ZmVDb2xvck1hdHJpeCB0eXBlPSJtYXRyaXgiIHZhbHVlcz0iMC4yNDkgLTAuNjE0IC0wLjY3MiAwLjAwMCAxLjAzNSAtMC42NDYgMC4yODggLTAuNjY0IDAuMDAwIDEuMDIwIC0wLjYzNiAtMC42MDkgMC4yNTAgMC4wMDAgMC45OTQgMC4wMDAgMC4wMDAgMC4wMDAgMS4wMDAgMC4wMDAiIC8+PC9maWx0ZXI+PC9kZWZzPjxpbWFnZSB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIGZpbHRlcj0idXJsKCNkYXJrcmVhZGVyLWltYWdlLWZpbHRlcikiIHhsaW5rOmhyZWY9ImRhdGE6aW1hZ2Uvc3ZnK3htbDtjaGFyc2V0PVVTLUFTQ0lJLCUzQ3N2ZyUyMHdpZHRoJTNEJTIyMjAlMjIlMjBoZWlnaHQlM0QlMjIyMCUyMiUyMHhtbG5zJTNEJTIyaHR0cCUzQSUyRiUyRnd3dy53My5vcmclMkYyMDAwJTJGc3ZnJTIyJTNFJTNDcGF0aCUyMGQlM0QlMjJNNSUyMDZsNSUyMDUlMjA1LTUlMjAyJTIwMS03JTIwNy03LTclMjAyLTF6JTIyJTIwZmlsbCUzRCUyMiUyMzU1NSUyMiUyRiUzRSUzQyUyRnN2ZyUzRSIgLz48L3N2Zz4=');
         }
@@ -22,7 +22,7 @@
 }
 
 /* Themes Square Light */
-.wplng-switcher.theme-square-light {
+.wplng-switcher.theme-light-double-square {
     .switcher-content {
         background-color: white;
         border: 1px solid rgba(0, 0, 0, .25);
@@ -38,7 +38,7 @@
 }
 
 /* Themes Square Grey */
-.wplng-switcher.theme-square-grey {
+.wplng-switcher.theme-grey-double-square {
     .switcher-content {
         background-color: #f0f0f1;
         border: 1px solid rgba(0, 0, 0, .25);
@@ -53,7 +53,7 @@
 }
 
 /* Themes Square Dark */
-.wplng-switcher.theme-square-dark {
+.wplng-switcher.theme-dark-double-square {
     .switcher-content {
         background-color: #1d2327;
         border: 1px solid rgba(256, 256, 256, .25);
@@ -68,7 +68,7 @@
 }
 
 /* Themes Smooth Light */
-.wplng-switcher.theme-smooth-light {
+.wplng-switcher.theme-light-double-smooth {
     .switcher-content {
         background-color: white;
         border: 1px solid rgba(0, 0, 0, .25);
@@ -83,7 +83,7 @@
 }
 
 /* Themes Smooth Grey */
-.wplng-switcher.theme-smooth-grey {
+.wplng-switcher.theme-grey-double-smooth {
     .switcher-content {
         background-color: #f0f0f1;
         border: 1px solid rgba(0, 0, 0, .25);
@@ -98,7 +98,7 @@
 }
 
 /* Themes Smooth Dark */
-.wplng-switcher.theme-smooth-dark {
+.wplng-switcher.theme-dark-double-smooth {
     .switcher-content {
         background-color: #1d2327;
         border: 1px solid rgba(256, 256, 256, .25);

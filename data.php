@@ -6,6 +6,10 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 
+/**
+ * Data : Parce an translate
+ */
+
 function wplng_data_excluded_json() {
 
 	return apply_filters(
@@ -27,13 +31,13 @@ function wplng_data_excluded_json() {
 function wplng_data_excluded_editor_link() {
 	return apply_filters(
 		'wplng_excluded_editor_link',
-		array( 
-			'style', 
-			'svg', 
-			'script', 
-			'canvas', 
-			'link', 
-			'textarea' 
+		array(
+			'style',
+			'svg',
+			'script',
+			'canvas',
+			'link',
+			'textarea',
 		)
 	);
 }
@@ -42,23 +46,24 @@ function wplng_data_excluded_editor_link() {
 function wplng_data_excluded_node_text() {
 	return apply_filters(
 		'wplng_excluded_node_text',
-		array( 
-			'style', 
-			'svg', 
-			'script', 
-			'canvas', 
+		array(
+			'style',
+			'svg',
+			'script',
+			'canvas',
 			'link',
 		)
 	);
 }
 
+
 function wplng_data_attr_to_translate() {
 	return apply_filters(
 		'wplng_attr_to_translate',
-		array( 
-			'alt', 
-			'title', 
-			'placeholder', 
+		array(
+			'alt',
+			'title',
+			'placeholder',
 			'aria-label',
 		)
 	);
@@ -69,7 +74,7 @@ function wplng_data_attr_to_translate() {
  * Data : Switcher options
  */
 
- function wplng_data_switcher_valid_insert() {
+function wplng_data_switcher_valid_insert() {
 	return array(
 		'bottom-right'  => __( 'Bottom right', 'wplingua' ),
 		'bottom-center' => __( 'Bottom center', 'wplingua' ),
@@ -80,13 +85,22 @@ function wplng_data_attr_to_translate() {
 
 
 function wplng_data_switcher_valid_theme() {
+	// return array(
+	// 	'smooth-light' => __( 'Smooth Light', 'wplingua' ),
+	// 	'smooth-grey'  => __( 'Smooth Grey', 'wplingua' ),
+	// 	'smooth-dark'  => __( 'Smooth Dark', 'wplingua' ),
+	// 	'square-light' => __( 'Square Light', 'wplingua' ),
+	// 	'square-grey'  => __( 'Square Grey', 'wplingua' ),
+	// 	'square-dark'  => __( 'Square Dark', 'wplingua' ),
+	// );
+
 	return array(
-		'smooth-light' => __( 'Smooth Light', 'wplingua' ),
-		'smooth-grey'  => __( 'Smooth Grey', 'wplingua' ),
-		'smooth-dark'  => __( 'Smooth Dark', 'wplingua' ),
-		'square-light' => __( 'Square Light', 'wplingua' ),
-		'square-grey'  => __( 'Square Grey', 'wplingua' ),
-		'square-dark'  => __( 'Square Dark', 'wplingua' ),
+		'light-double-smooth' => __( 'Light - Double - Smooth', 'wplingua' ),
+		'light-double-square' => __( 'Light - Double - Square', 'wplingua' ),
+		'grey-double-smooth'  => __( 'Grey - Double - Smooth', 'wplingua' ),
+		'grey-double-square'  => __( 'Grey - Double - Square', 'wplingua' ),
+		'dark-double-smooth'  => __( 'Dark - Double - Smooth', 'wplingua' ),
+		'dark-double-square'  => __( 'Dark - Double - Square', 'wplingua' ),
 	);
 }
 
@@ -121,7 +135,7 @@ function wplng_data_switcher_valid_flags_style() {
  * Data : Languages
  */
 
- function wplng_data_languages() {
+function wplng_data_languages() {
 	return array(
 		array(
 			'name'             => __( 'English', 'wplingua' ),
