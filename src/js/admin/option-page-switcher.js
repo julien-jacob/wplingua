@@ -16,6 +16,12 @@ jQuery(document).ready(function ($) {
             .removeClass("theme-light-double-square")
             .removeClass("theme-grey-double-square")
             .removeClass("theme-dark-double-square")
+            .removeClass("theme-light-simple-smooth")
+            .removeClass("theme-grey-simple-smooth")
+            .removeClass("theme-dark-simple-smooth")
+            .removeClass("theme-light-simple-square")
+            .removeClass("theme-grey-simple-square")
+            .removeClass("theme-dark-simple-square")
             .addClass("theme-" + val);
     }
 

@@ -85,22 +85,19 @@ function wplng_data_switcher_valid_insert() {
 
 
 function wplng_data_switcher_valid_theme() {
-	// return array(
-	// 	'smooth-light' => __( 'Smooth Light', 'wplingua' ),
-	// 	'smooth-grey'  => __( 'Smooth Grey', 'wplingua' ),
-	// 	'smooth-dark'  => __( 'Smooth Dark', 'wplingua' ),
-	// 	'square-light' => __( 'Square Light', 'wplingua' ),
-	// 	'square-grey'  => __( 'Square Grey', 'wplingua' ),
-	// 	'square-dark'  => __( 'Square Dark', 'wplingua' ),
-	// );
-
 	return array(
 		'light-double-smooth' => __( 'Light - Double - Smooth', 'wplingua' ),
 		'light-double-square' => __( 'Light - Double - Square', 'wplingua' ),
+		'light-simple-smooth' => __( 'Light - Simple - Smooth', 'wplingua' ),
+		'light-simple-square' => __( 'Light - Simple - Square', 'wplingua' ),
 		'grey-double-smooth'  => __( 'Grey - Double - Smooth', 'wplingua' ),
 		'grey-double-square'  => __( 'Grey - Double - Square', 'wplingua' ),
+		'grey-simple-smooth'  => __( 'Grey - Simple - Smooth', 'wplingua' ),
+		'grey-simple-square'  => __( 'Grey - Simple - Square', 'wplingua' ),
 		'dark-double-smooth'  => __( 'Dark - Double - Smooth', 'wplingua' ),
 		'dark-double-square'  => __( 'Dark - Double - Square', 'wplingua' ),
+		'dark-simple-smooth'  => __( 'Dark - Simple - Smooth', 'wplingua' ),
+		'dark-simple-square'  => __( 'Dark - Simple - Square', 'wplingua' ),
 	);
 }
 
