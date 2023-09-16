@@ -271,7 +271,7 @@ function wplng_translate_html(
 
 	if ( ! empty( $language_current['dir'] ) ) {
 		foreach ( $dom->find( 'html' ) as $element ) {
-			$element->attr[' dir'] = esc_attr( $language_current['dir'] );
+			$element->{'dir'} = esc_attr( $language_current['dir'] );
 		}
 	}
 
