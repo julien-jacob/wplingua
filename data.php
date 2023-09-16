@@ -33,6 +33,7 @@ function wplng_data_excluded_editor_link() {
 		'wplng_excluded_editor_link',
 		array(
 			'textarea',
+			'pre',
 		)
 	);
 }

@@ -169,12 +169,23 @@ function wplng_html_replace_exclude_tag( $html, $excluded_elements ) {
 
 
 
-// function wplng_ob_callback_ajax( $output ) {
+function wplng_ob_callback_ajax( $output ) {
 
-// 	error_log( $output );
+	global $wplng_request_uri;
+	// $wplng_request_uri = $_SERVER['HTTP_REFERER'];
 
-// 	return $output;
-// }
+	error_log( $output );
+	
+	$output = wplng_ob_callback_translate($output);
+	error_log($wplng_request_uri);
+	error_log(var_export($_SERVER, true));
+	error_log(wplng_get_language_current_id());
+	error_log( $output );
+
+	// error_log(var_export($_SERVER, true));
+
+	return $output;
+}
 
 
 function wplng_init() {

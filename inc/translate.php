@@ -35,7 +35,9 @@ function wplng_get_translated_text_from_translations( $text, $translations ) {
 	if ( wplng_text_is_translatable( $text ) ) {
 		foreach ( $translations as $key => $translation ) {
 
-			if ( ! isset( $translation['source'] ) || ! isset( $translation['source'] ) ) {
+			if ( ! isset( $translation['source'] )
+				|| ! isset( $translation['source'] )
+			) {
 				continue;
 			}
 
@@ -47,7 +49,7 @@ function wplng_get_translated_text_from_translations( $text, $translations ) {
 		}
 	}
 
-	$translated = esc_attr( esc_html( $translation['translation'] ) );
+	$translated = esc_attr( esc_html( $translated ) );
 
 	return $spaces_before . $translated . $spaces_after;
 }
@@ -85,8 +87,9 @@ function wplng_translate_json_array( $json_decoded, $translations, $parents = ar
 
 				$array_translated[ $key ] = wplng_translate_html(
 					$value,
-					$translations,
-					array_merge( $parents, [ $key ] )
+					'',
+					'',
+					$translations
 				);
 
 			} elseif ( wplng_str_is_json( $value ) ) {

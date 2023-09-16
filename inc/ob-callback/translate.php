@@ -10,6 +10,108 @@ function wplng_ob_callback_translate( $html ) {
 
 	$html = apply_filters( 'wplng_html_intercepted', $html );
 
+	if ( wplng_str_is_json( $html ) ) {
+		$html = wplng_ob_callback_translate_json( $html );
+	} elseif ( wplng_str_is_html( $html ) ) {
+		$html = wplng_ob_callback_translate_html( $html );
+	}
+
+	$html = apply_filters( 'wplng_html_translated', $html );
+
+	return $html;
+}
+
+
+function wplng_ob_callback_translate_json( $json ) {
+
+	if ( empty( $json ) ) {
+		return $json;
+	}
+
+	$texts_unknow = array();
+
+	/**
+	 * Get saved translation
+	 */
+	$language_target_id = wplng_get_language_current_id();
+	$translations       = wplng_get_translations_saved( $language_target_id );
+
+	// TODO : Move plus haut, return $html si pas de textes détectés
+	/**
+	 * Get all texts in JSON
+	 */
+	$texts = wplng_parse_json( $json );
+
+	/**
+	 * Get unknow texts
+	 */
+	foreach ( $texts as $text ) {
+		$is_in = false;
+		foreach ( $translations as $translation ) {
+			if ( $text === $translation['source'] ) {
+				$is_in = true;
+				break;
+			}
+		}
+		if ( ! $is_in ) {
+			$texts_unknow[] = $text;
+		}
+	}
+
+	$texts_unknow = array_splice(
+		$texts_unknow,
+		0,
+		WPLNG_MAX_TRANSLATIONS + 1
+	);
+
+	/**
+	 * Get new translated text
+	 */
+	$texts_unknow_translated = wplng_api_call_translate(
+		$texts_unknow,
+		false,
+		$language_target_id
+	);
+
+	/**
+	 * Save new translation as wplng_translation CPT
+	 */
+	$translations_new = array();
+
+	foreach ( $texts_unknow as $key => $text_source ) {
+		// $texts_unknow_translated
+		if ( isset( $texts_unknow_translated[ $key ] ) ) {
+			$translations_new[] = array(
+				'source'      => $text_source,
+				'translation' => $texts_unknow_translated[ $key ],
+			);
+		}
+	}
+
+	$translations_new = wplng_save_translations(
+		$translations_new,
+		$language_target_id
+	);
+
+	/**
+	 * Merge know and new translations
+	 */
+	$translations = array_merge( $translations_new, $translations );
+
+	/**
+	 * Replace original texts by translations
+	 */
+	$json = wplng_translate_json(
+		$json,
+		$translations
+	);
+
+	return $json;
+}
+
+
+function wplng_ob_callback_translate_html( $html ) {
+
 	if ( empty( $html ) ) {
 		return $html;
 	}
@@ -23,6 +125,7 @@ function wplng_ob_callback_translate( $html ) {
 	$language_target_id = wplng_get_language_current_id();
 	$translations       = wplng_get_translations_saved( $language_target_id );
 
+	// TODO : Move plus haut, return $html si pas de textes détectés
 	/**
 	 * Replace excluded HTML part by tag
 	 */
@@ -66,8 +169,7 @@ function wplng_ob_callback_translate( $html ) {
 	$texts_unknow_translated = wplng_api_call_translate(
 		$texts_unknow,
 		false,
-		$language_target_id,
-		$translations
+		$language_target_id
 	);
 
 	/**
@@ -112,8 +214,6 @@ function wplng_ob_callback_translate( $html ) {
 		$html,
 		$excluded
 	);
-
-	$html = apply_filters( 'wplng_html_translated', $html );
 
 	return $html;
 }

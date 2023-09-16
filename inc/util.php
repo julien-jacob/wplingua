@@ -27,6 +27,8 @@ function wplng_text_is_translatable( $text ) {
 		return false;
 	}
 
+	$text = html_entity_decode( $text );
+
 	return ! empty(
 		preg_replace(
 			'#[^\p{L}]#',

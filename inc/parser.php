@@ -129,7 +129,7 @@ function wplng_parse_html( $html ) {
 	$dom   = str_get_html( $html );
 
 	if ( empty( $dom ) ) {
-		return $html;
+		return array();
 	}
 
 	/**

@@ -66,8 +66,7 @@ function wplng_ob_callback_list( $html ) {
 	$texts_unknow_translated = wplng_api_call_translate(
 		$texts_unknow,
 		false,
-		$language_target_id,
-		$translations
+		$language_target_id
 	);
 
 	/**

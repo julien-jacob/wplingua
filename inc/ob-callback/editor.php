@@ -33,10 +33,10 @@ function wplng_ob_callback_editor( $html ) {
 	 * Get all texts in HTML
 	 */
 	$texts = wplng_parse_html( $html );
-
 	/**
 	 * Get unknow texts
 	 */
+	$texts_unknow = array();
 	foreach ( $texts as $text ) {
 		$is_in = false;
 		foreach ( $translations as $translation ) {
@@ -49,15 +49,14 @@ function wplng_ob_callback_editor( $html ) {
 			$texts_unknow[] = $text;
 		}
 	}
-
+	
 	/**
 	 * Get new translated text from API
 	 */
 	$texts_unknow_translated = wplng_api_call_translate(
 		$texts_unknow,
 		false,
-		$language_target_id,
-		$translations
+		$language_target_id
 	);
 
 	$texts_unknow = array_splice(
@@ -150,18 +149,20 @@ function wplng_ob_callback_editor( $html ) {
 				continue;
 			}
 
-			if ( $text === $translation['translation'] ) {
+			$translated = wplng_text_esc($translation['translation']);
 
-				$edit_link = '';
-				if ( ! empty( $translation['post_id'] ) ) {
-					$edit_link = get_edit_post_link( $translation['post_id'] );
-				} else {
-					continue;
-				}
-
-				$element->innertext = '<a href="' . esc_url( $edit_link ) . '" class="wplng-edit-link" target="_blank">' . esc_html( $text ) . ' </a>';
-
+			if ( $text !== $translated ) {
+				continue;
 			}
+
+			$edit_link = '';
+			if ( ! empty( $translation['post_id'] ) ) {
+				$edit_link = get_edit_post_link( $translation['post_id'] );
+			} else {
+				continue;
+			}
+
+			$element->innertext = '<a href="' . esc_url( $edit_link ) . '" class="wplng-edit-link" target="_blank">' . esc_html( $text ) . ' </a>';
 		}
 	}
 
