@@ -173,7 +173,10 @@ function wplng_ob_callback_ajax( $output ) {
 	global $wplng_request_uri;
 	$wplng_request_uri = wp_make_link_relative( $_SERVER['HTTP_REFERER'] );
 
-	if ( wplng_get_language_website_id() === wplng_get_language_current_id() ) {
+	if ( 
+		! wplng_url_is_translatable($wplng_request_uri)
+		|| wplng_get_language_website_id() === wplng_get_language_current_id() 
+	) {
 		return $output;
 	}
 
@@ -184,7 +187,7 @@ function wplng_ob_callback_ajax( $output ) {
 	// error_log(var_export($_SERVER['HTTP_REFERER'], true));
 	// error_log(wplng_get_language_current_id());
 
-	// error_log( $output );
+	error_log( $output );
 
 	// error_log(var_export($_SERVER, true));
 
