@@ -23,6 +23,7 @@ function wplng_data_excluded_json() {
 			array( '@context', '@graph', 3, '@type', '@id', 'url', 'name', 'description' ),
 			array( '@context', '@graph', 4, '@type', '@id', 'name' ),
 			array( '@context', '@graph', 4, '@type', '@id', 'name', 'url', 'logo', '@type', 'inLanguage', '@id', 'url', 'contentUrl', 'caption' ),
+			array( 'wc_add_to_cart_params', 'ajax_url', 'wc_ajax_url', 'i18n_view_cart' ),
 		)
 	);
 }
@@ -43,7 +44,6 @@ function wplng_data_excluded_selector_default() {
 	return array(
 		'style',
 		'svg',
-		'script',
 		'canvas',
 		'link',
 		'address',
@@ -51,6 +51,17 @@ function wplng_data_excluded_selector_default() {
 		'.no-translate',
 		'.notranslate',
 		'.wplng-switcher',
+	);
+}
+
+
+function wplng_data_excluded_node_text() {
+	return array(
+		'style',
+		'svg',
+		'canvas',
+		'link',
+		'script',
 	);
 }
 

@@ -16,7 +16,7 @@ function wplng_parse_json_array( $json_decoded, $parents = array() ) {
 
 			$texts = array_merge(
 				$texts,
-				wplng_parse_json_array( $value, array_merge( $parents, [ $key ] ) )
+				wplng_parse_json_array( $value, array_merge( $parents, array( $key ) ) )
 			);
 
 		} elseif ( is_string( $value ) ) {
@@ -27,29 +27,29 @@ function wplng_parse_json_array( $json_decoded, $parents = array() ) {
 
 				$texts = array_merge(
 					$texts,
-					wplng_parse_html( $value, array_merge( $parents, [ $key ] ) )
+					wplng_parse_html( $value, array_merge( $parents, array( $key ) ) )
 				);
 
 			} elseif ( wplng_str_is_json( $value ) ) {
 
 				$texts = array_merge(
 					$texts,
-					wplng_parse_json( $value, array_merge( $parents, [ $key ] ) )
+					wplng_parse_json( $value, array_merge( $parents, array( $key ) ) )
 				);
 
 			} else {
 
-				$parents = array_merge( $parents, [ $key ] );
+				$parents = array_merge( $parents, array( $key ) );
 
-				// error_log(
-				// 	var_export(
-				// 		array(
-				// 			'parents' => $parents,
-				// 			'value'   => $value,
-				// 		),
-				// 		true
-				// 	)
-				// );
+				error_log(
+					var_export(
+						array(
+							'parents' => $parents,
+							'value'   => $value,
+						),
+						true
+					)
+				);
 
 				$json_excluded = wplng_data_excluded_json();
 
@@ -111,7 +111,7 @@ function wplng_parse_js( $js ) {
 
 		$texts = wplng_parse_json(
 			$var_json,
-			[ $var_name ]
+			array( $var_name )
 		);
 
 	}
@@ -141,7 +141,7 @@ function wplng_parse_html( $html ) {
 			wplng_parse_json( $element->innertext )
 		);
 	}
-	
+
 	/**
 	 * Find and translate JS
 	 */
@@ -155,11 +155,16 @@ function wplng_parse_html( $html ) {
 	/**
 	 * Parse Node text
 	 */
+
+	$node_text_excluded = wplng_data_excluded_node_text();
+
 	foreach ( $dom->find( 'text' ) as $element ) {
 
 		$text = wplng_text_esc( $element->innertext );
 
-		if ( ! wplng_text_is_translatable( $text ) ) {
+		if ( in_array( $element->parent->tag, $node_text_excluded )
+			|| ! wplng_text_is_translatable( $text )
+		) {
 			continue;
 		}
 

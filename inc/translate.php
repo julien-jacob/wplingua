@@ -107,6 +107,17 @@ function wplng_translate_json_array( $json_decoded, $translations, $parents = ar
 			} else {
 
 				$parents       = array_merge( $parents, array( $key ) );
+
+				// error_log(
+				// 	var_export(
+				// 		array(
+				// 			'parents' => $parents,
+				// 			'value'   => $value,
+				// 		),
+				// 		true
+				// 	)
+				// );
+
 				$json_excluded = wplng_data_excluded_json();
 
 				// Todo : Ajouter filtre bool pour exclure json
@@ -257,7 +268,15 @@ function wplng_translate_html(
 	/**
 	 * Parse Node text
 	 */
+
+	$node_text_excluded = wplng_data_excluded_node_text();
+	
 	foreach ( $dom->find( 'text' ) as $element ) {
+
+		if ( in_array( $element->parent->tag, $node_text_excluded )) {
+			continue;
+		}
+
 		$element->innertext = wplng_get_translated_text_from_translations(
 			$element->innertext,
 			$translations

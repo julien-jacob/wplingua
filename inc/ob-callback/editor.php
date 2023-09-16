@@ -137,10 +137,16 @@ function wplng_ob_callback_editor( $html ) {
 	/**
 	 * Add edit links on text
 	 */
-	$excluded_node_text = wplng_data_excluded_editor_link();
+	
+	$edit_link_excluded = wplng_data_excluded_editor_link();
+	$node_text_excluded = wplng_data_excluded_node_text();
+
 	foreach ( $dom->find( 'body text' ) as $element ) {
 
-		if ( in_array( $element->parent->tag, $excluded_node_text ) ) {
+		if ( 
+			in_array( $element->parent->tag, $edit_link_excluded ) 
+			|| in_array( $element->parent->tag, $node_text_excluded )
+		) {
 			continue;
 		}
 
