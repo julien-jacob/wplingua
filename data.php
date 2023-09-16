@@ -39,12 +39,13 @@ function wplng_data_excluded_selector_default() {
 		'style',
 		'svg',
 		'canvas',
-		'link',
+		// 'link',
 		'address',
 		'#wpadminbar',
 		'.no-translate',
 		'.notranslate',
 		'.wplng-switcher',
+		'link[hreflang]',
 	);
 }
 
@@ -67,10 +68,26 @@ function wplng_data_attr_to_translate() {
 	return apply_filters(
 		'wplng_attr_to_translate',
 		array(
-			'alt',
-			'title',
-			'placeholder',
-			'aria-label',
+			array(
+				'attr'     => 'alt',
+				'selector' => '[alt]',
+			),
+			array(
+				'attr'     => 'title',
+				'selector' => '[title]',
+			),
+			array(
+				'attr'     => 'placeholder',
+				'selector' => '[placeholder]',
+			),
+			array(
+				'attr'     => 'aria-label',
+				'selector' => '[aria-label]',
+			),
+			array(
+				'attr'     => 'value',
+				'selector' => 'input[type="submit"][value]',
+			),
 		)
 	);
 }

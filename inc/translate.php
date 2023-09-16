@@ -320,26 +320,47 @@ function wplng_translate_html(
 	 * Parse attr
 	 */
 	$attr_to_translate = wplng_data_attr_to_translate();
-	foreach ( $dom->find( '*' ) as $element ) {
 
-		if ( empty( $element->attr ) ) {
-			continue;
-		}
+	foreach ( $attr_to_translate as $key => $attr ) {
+		foreach ( $dom->find( $attr['selector'] ) as $element ) {
 
-		foreach ( $element->attr as $attr => $value ) {
-
-			if ( ! in_array( $attr, $attr_to_translate )
-				|| empty( $value )
-			) {
+			if ( empty( $element->attr[ $attr['attr'] ] ) ) {
 				continue;
 			}
 
-			$element->attr[ $attr ] = wplng_get_translated_text_from_translations(
-				$element->innertext,
+			$text = wplng_text_esc( $element->attr[ $attr['attr'] ] );
+
+			if ( ! wplng_text_is_translatable( $text ) ) {
+				continue;
+			}
+
+			$element->attr[ $attr['attr'] ] = wplng_get_translated_text_from_translations(
+				$text,
 				$translations
 			);
 		}
 	}
+
+	// foreach ( $dom->find( '*' ) as $element ) {
+
+	// 	if ( empty( $element->attr ) ) {
+	// 		continue;
+	// 	}
+
+	// 	foreach ( $element->attr as $attr => $value ) {
+
+	// 		if ( ! in_array( $attr, $attr_to_translate )
+	// 			|| empty( $value )
+	// 		) {
+	// 			continue;
+	// 		}
+
+	// 		$element->attr[ $attr ] = wplng_get_translated_text_from_translations(
+	// 			$element->innertext,
+	// 			$translations
+	// 		);
+	// 	}
+	// }
 
 	$dom->save();
 
