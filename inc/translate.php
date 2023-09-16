@@ -66,7 +66,7 @@ function wplng_translate_json_array( $json_decoded, $translations, $parents = ar
 			$array_translated[ $key ] = wplng_translate_json_array(
 				$value,
 				$translations,
-				array_merge( $parents, [ $key ] )
+				array_merge( $parents, array( $key ) )
 			);
 
 		} elseif ( is_string( $value ) ) {
@@ -106,7 +106,7 @@ function wplng_translate_json_array( $json_decoded, $translations, $parents = ar
 
 			} else {
 
-				$parents       = array_merge( $parents, [ $key ] );
+				$parents       = array_merge( $parents, array( $key ) );
 				$json_excluded = wplng_data_excluded_json();
 
 				// Todo : Ajouter filtre bool pour exclure json
@@ -176,7 +176,7 @@ function wplng_translate_js( $js, $translations ) {
 		$json_translated = wplng_translate_json(
 			$var_json,
 			$translations,
-			[ $var_name ]
+			array( $var_name )
 		);
 
 		if ( $var_json != $json_translated ) {
