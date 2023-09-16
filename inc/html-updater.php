@@ -6,61 +6,6 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 
-function wplng_replace_og_local( $html ) {
-
-	if ( ! wplng_url_is_translatable()
-		|| wplng_get_language_website_id() === wplng_get_language_current_id()
-	) {
-		return $html;
-	}
-
-	$html = preg_replace(
-		'#<meta (.*?)?property=(\"|\')og:locale(\"|\') (.*?)?>#',
-		'<meta property=$2og:locale$2 content=$2' . wplng_get_language_current_id() . '$2>',
-		$html
-	);
-
-	return $html;
-}
-
-
-function wplng_language_attributes( $attr ) {
-
-	$language_current_id = wplng_get_language_current_id();
-
-	// TODO : Check if untranslatable page ?
-	if ( is_admin() || empty( $language_current_id ) ) {
-		return $attr;
-	}
-
-	$attr = preg_replace(
-		'#lang=(\"|\')(..)-(..)(\"|\')#i',
-		'lang=$1' . esc_attr( $language_current_id ) . '$4',
-		$attr
-	);
-
-	// Remove dir attr
-	$attr = preg_replace(
-		'#dir=(\"|\')(...)(\"|\')#i',
-		'',
-		$attr
-	);
-
-	$language_current = wplng_get_language_by_id(
-		wplng_get_language_current_id()
-	);
-
-	// Add dir attribute if necessary
-	if ( ! empty( $language_current['dir'] )
-		&& 'rtl' === $language_current['dir']
-	) {
-		$attr .= ' dir="rtl"';
-	}
-
-	return $attr;
-}
-
-
 function wplng_link_alternate_hreflang() {
 
 	$html = '';
@@ -166,38 +111,8 @@ function wplng_html_replace_exclude_tag( $html, $excluded_elements ) {
 }
 
 
-
-
-function wplng_ob_callback_ajax( $output ) {
-
-	global $wplng_request_uri;
-	$wplng_request_uri = wp_make_link_relative( $_SERVER['HTTP_REFERER'] );
-
-	if ( 
-		! wplng_url_is_translatable($wplng_request_uri)
-		|| wplng_get_language_website_id() === wplng_get_language_current_id() 
-	) {
-		return $output;
-	}
-
-	// error_log( $output );
-
-	$output = wplng_ob_callback_translate( $output );
-	// error_log($wplng_request_uri);
-	// error_log(var_export($_SERVER['HTTP_REFERER'], true));
-	// error_log(wplng_get_language_current_id());
-
-	error_log( $output );
-
-	// error_log(var_export($_SERVER, true));
-
-	return $output;
-}
-
-
 function wplng_init() {
 
-	// error_log( var_export( defined( 'DOING_AJAX' ) && DOING_AJAX, true ) );
 	if ( defined( 'DOING_AJAX' ) && DOING_AJAX ) {
 		ob_start( 'wplng_ob_callback_ajax' );
 		return;

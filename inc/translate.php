@@ -264,9 +264,51 @@ function wplng_translate_html(
 	}
 
 	/**
-	 * Translate links in attributes
+	 * Set dir attr on <html> (ltr or rtl)
 	 */
 
+	$language_current = wplng_get_language_by_id( $language_target_id );
+
+	if ( ! empty( $language_current['dir'] ) ) {
+		foreach ( $dom->find( 'html' ) as $element ) {
+			$element->attr[' dir'] = esc_attr( $language_current['dir'] );
+		}
+	}
+
+	/**
+	 * Replace languages IDs in attributes
+	 */
+
+	$attr_lang_id_to_replace = wplng_data_attr_lang_id_to_replace();
+
+	$locale  = get_locale();                    // Ex: fr_FR
+	$locales = array(
+		$locale,                                // Ex: fr_FR
+		str_replace( '_', '-', $locale ),       // Ex: fr-FR
+		substr( $locale, 0, 2 ),                // Ex: FR
+		strtolower( substr( $locale, 0, 2 ) ),  // Ex: fr
+	);
+
+	foreach ( $attr_lang_id_to_replace as $key => $attr ) {
+		foreach ( $dom->find( $attr['selector'] ) as $element ) {
+
+			if ( empty( $element->attr[ $attr['attr'] ] ) ) {
+				continue;
+			}
+
+			$lang_id = $element->attr[ $attr['attr'] ];
+
+			if ( ! in_array( $lang_id, $locales ) ) {
+				continue;
+			}
+
+			$element->attr[ $attr['attr'] ] = esc_attr( $language_target_id );
+		}
+	}
+
+	/**
+	 * Translate links in attributes
+	 */
 
 	$attr_url_to_translate = wplng_data_attr_url_to_translate();
 
@@ -279,9 +321,9 @@ function wplng_translate_html(
 
 			$link = $element->attr[ $attr['attr'] ];
 
-			$element->attr[ $attr['attr'] ] = wplng_url_translate( 
-				$link, 
-				$language_target_id 
+			$element->attr[ $attr['attr'] ] = wplng_url_translate(
+				$link,
+				$language_target_id
 			);
 		}
 	}

@@ -98,14 +98,8 @@ function wplng_start() {
 		// Add languages switcher before </body>
 		add_action( 'wp_footer', 'wplng_switcher_wp_footer' );
 
-		// Change <html lang=""> if translated content
-		add_filter( 'language_attributes', 'wplng_language_attributes' );
-
 		// Set alternate links with hreflang parametters
 		add_action( 'wp_head', 'wplng_link_alternate_hreflang' );
-
-		// Set OG Local
-		add_filter( 'wplng_html_translated', 'wplng_replace_og_local' );
 
 		/**
 		 * OB and REQUEST_URI

@@ -32,6 +32,7 @@ require_once WPLNG_PLUGIN_PATH . '/inc/api-call/translate.php';
 require_once WPLNG_PLUGIN_PATH . '/inc/api-call/validate-api-key.php';
 
 // Require files in /inc/ob-callback/ folder
+require_once WPLNG_PLUGIN_PATH . '/inc/ob-callback/ajax.php';
 require_once WPLNG_PLUGIN_PATH . '/inc/ob-callback/editor.php';
 require_once WPLNG_PLUGIN_PATH . '/inc/ob-callback/list.php';
 require_once WPLNG_PLUGIN_PATH . '/inc/ob-callback/translate.php';

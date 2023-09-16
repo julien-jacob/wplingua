@@ -85,6 +85,34 @@ function wplng_data_attr_text_to_translate() {
 				'attr'     => 'value',
 				'selector' => 'input[type="submit"][value]',
 			),
+			array(
+				'attr'     => 'content',
+				'selector' => 'meta[property="og:title"]',
+			),
+			array(
+				'attr'     => 'content',
+				'selector' => 'meta[property="og:description"]',
+			),
+			array(
+				'attr'     => 'content',
+				'selector' => 'meta[property="og:site_name"]',
+			),
+			array(
+				'attr'     => 'content',
+				'selector' => 'meta[name="twitter:label1"]',
+			),
+			array(
+				'attr'     => 'content',
+				'selector' => 'meta[name="twitter:data1"]',
+			),
+			array(
+				'attr'     => 'content',
+				'selector' => 'meta[name="twitter:label2"]',
+			),
+			array(
+				'attr'     => 'content',
+				'selector' => 'meta[name="twitter:data2"]',
+			),
 		)
 	);
 }
@@ -101,6 +129,27 @@ function wplng_data_attr_url_to_translate() {
 			array(
 				'attr'     => 'action',
 				'selector' => 'form[action]',
+			),
+			array(
+				'attr'     => 'content',
+				'selector' => 'meta[property="og:url"]',
+			),
+		)
+	);
+}
+
+
+function wplng_data_attr_lang_id_to_replace() {
+	return apply_filters(
+		'wplng_attr_lang_id_to_replace',
+		array(
+			array(
+				'attr'     => 'lang',
+				'selector' => 'html',
+			),
+			array(
+				'attr'     => 'content',
+				'selector' => 'meta[property="og:locale"]',
 			),
 		)
 	);
