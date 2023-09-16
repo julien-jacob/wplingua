@@ -4,10 +4,20 @@
  * Style for editor
  */
 
-.wplingua-editor-link .wplng-edit-link {
-    margin: 0 !important;
-    padding: 0 !important;
-    display: inline !important;
+.wplingua-editor-link {
+    
+    color: inherit;
+    
+    .wplng-edit-link,
+    .wplng-edit-link:active,
+    .wplng-edit-link:hover,
+    .wplng-edit-link:link,
+    .wplng-edit-link:visited {
+        margin: 0 !important;
+        padding: 0 !important;
+        display: inline !important;
+        color: inherit;
+    }
 }
 
 .wplng-edit-link,
@@ -15,7 +25,7 @@
 .wplng-edit-link:hover,
 .wplng-edit-link:link,
 .wplng-edit-link:visited {
-    color: inherit !important;
+    color: inherit;
     font-weight: inherit;
     font-size: inherit;
     text-decoration: inherit;
@@ -24,12 +34,7 @@
     padding: 0 4px;
     margin-left: -1px;
     margin-right: -1px;
-    // display: inline-block;
 }
-
-// .entry-content p>.wplng-edit-link {
-//     display: flex;
-// }
 
 .wplng-edit-link::after {
     content: "\f326" !important;
