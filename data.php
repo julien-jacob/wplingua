@@ -7,11 +7,10 @@ if ( ! defined( 'WPINC' ) ) {
 
 
 /**
- * Data : Parce an translate
+ * Data : Parse and translate
  */
 
 function wplng_data_excluded_json() {
-
 	return apply_filters(
 		'wplng_excluded_json',
 		array(

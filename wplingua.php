@@ -1,15 +1,27 @@
 <?php
-/*
-Plugin Name: wpLingua
-description: Make your website multilingual and translated
-Version: 0.0.6
-*/
+/**
+ * Plugin Name:  wpLingua
+ * Plugin URI:   https://wplingua.com/download/
+ * Description:  Make your website multilingual and translated
+ * Author:       wpLingua Team
+ * Author URI:   https://wplingua.com/
+ * Text Domain:  wplingua
+ * Domain Path:  /languages/
+ * Version:      0.1.0
+ * Requires PHP: 7.0
+ * Requires at least: 5.0
+ */
+
 
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
+
+/**
+ * Define wpLingua constants
+ */
 define( 'WPLNG_API_URL', 'http://machiavel-api.local' );
 define( 'WPLNG_API_VERSION', 'last' );
 define( 'WPLNG_PLUGIN_VERSION', '0.0.6' );
@@ -17,9 +29,27 @@ define( 'WPLNG_PLUGIN_PATH', dirname( __FILE__ ) );
 define( 'WPLNG_MAX_TRANSLATIONS', 256 );
 
 
+/**
+ * Load plugin text domain
+ */
+load_plugin_textdomain(
+	'wplingua',
+	false,
+	basename( dirname( __FILE__ ) ) . '/languages'
+);
+
+
+/**
+ * Load all needed PHP files
+ */
 require_once WPLNG_PLUGIN_PATH . '/loader.php';
 
 
+/**
+ * Register all wpLingua Hook
+ *
+ * @return void
+ */
 function wplng_start() {
 
 	global $wplng_request_uri;
