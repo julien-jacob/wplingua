@@ -21,8 +21,6 @@ function wplng_data_excluded_json() {
 }
 
 
-
-
 function wplng_data_excluded_editor_link() {
 	return apply_filters(
 		'wplng_excluded_editor_link',
@@ -39,7 +37,6 @@ function wplng_data_excluded_selector_default() {
 		'style',
 		'svg',
 		'canvas',
-		// 'link',
 		'address',
 		'#wpadminbar',
 		'.no-translate',
@@ -64,9 +61,9 @@ function wplng_data_excluded_node_text() {
 }
 
 
-function wplng_data_attr_to_translate() {
+function wplng_data_attr_text_to_translate() {
 	return apply_filters(
-		'wplng_attr_to_translate',
+		'wplng_attr_text_to_translate',
 		array(
 			array(
 				'attr'     => 'alt',
@@ -87,6 +84,23 @@ function wplng_data_attr_to_translate() {
 			array(
 				'attr'     => 'value',
 				'selector' => 'input[type="submit"][value]',
+			),
+		)
+	);
+}
+
+
+function wplng_data_attr_url_to_translate() {
+	return apply_filters(
+		'wplng_attr_url_to_translate',
+		array(
+			array(
+				'attr'     => 'href',
+				'selector' => 'a[href]',
+			),
+			array(
+				'attr'     => 'action',
+				'selector' => 'form[action]',
 			),
 		)
 	);

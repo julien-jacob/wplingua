@@ -183,7 +183,7 @@ function wplng_parse_html( $html ) {
 	 * Parse attr
 	 */
 
-	$attr_to_translate = wplng_data_attr_to_translate();
+	$attr_to_translate = wplng_data_attr_text_to_translate();
 
 	foreach ( $attr_to_translate as $key => $attr ) {
 		foreach ( $dom->find( $attr['selector'] ) as $element ) {

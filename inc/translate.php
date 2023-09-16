@@ -264,21 +264,32 @@ function wplng_translate_html(
 	}
 
 	/**
-	 * Translate links
+	 * Translate links in attributes
 	 */
-	foreach ( $dom->find( 'a' ) as $element ) {
-		$link          = $element->href;
-		$element->href = wplng_url_translate( $link, $language_target_id );
-	}
 
-	foreach ( $dom->find( 'form' ) as $element ) {
-		$link            = $element->action;
-		$element->action = wplng_url_translate( $link, $language_target_id );
+
+	$attr_url_to_translate = wplng_data_attr_url_to_translate();
+
+	foreach ( $attr_url_to_translate as $key => $attr ) {
+		foreach ( $dom->find( $attr['selector'] ) as $element ) {
+
+			if ( empty( $element->attr[ $attr['attr'] ] ) ) {
+				continue;
+			}
+
+			$link = $element->attr[ $attr['attr'] ];
+
+			$element->attr[ $attr['attr'] ] = wplng_url_translate( 
+				$link, 
+				$language_target_id 
+			);
+		}
 	}
 
 	/**
 	 * If empty translations, return HTML with translated link
 	 */
+
 	if ( empty( $translations ) ) {
 		$dom->save();
 		return (string) str_get_html( $dom );
@@ -287,6 +298,7 @@ function wplng_translate_html(
 	/**
 	 * Find and parse JS
 	 */
+
 	foreach ( $dom->find( 'script[type="application/ld+json"]' ) as $element ) {
 		$element->innertext = wplng_translate_json( $element->innertext, $translations );
 	}
@@ -294,6 +306,7 @@ function wplng_translate_html(
 	/**
 	 * Find and translate JS
 	 */
+
 	foreach ( $dom->find( 'script' ) as $element ) {
 		$element->innertext = wplng_translate_js( $element->innertext, $translations );
 	}
@@ -319,9 +332,10 @@ function wplng_translate_html(
 	/**
 	 * Parse attr
 	 */
-	$attr_to_translate = wplng_data_attr_to_translate();
 
-	foreach ( $attr_to_translate as $key => $attr ) {
+	$attr_text_to_translate = wplng_data_attr_text_to_translate();
+
+	foreach ( $attr_text_to_translate as $key => $attr ) {
 		foreach ( $dom->find( $attr['selector'] ) as $element ) {
 
 			if ( empty( $element->attr[ $attr['attr'] ] ) ) {
@@ -340,27 +354,6 @@ function wplng_translate_html(
 			);
 		}
 	}
-
-	// foreach ( $dom->find( '*' ) as $element ) {
-
-	// 	if ( empty( $element->attr ) ) {
-	// 		continue;
-	// 	}
-
-	// 	foreach ( $element->attr as $attr => $value ) {
-
-	// 		if ( ! in_array( $attr, $attr_to_translate )
-	// 			|| empty( $value )
-	// 		) {
-	// 			continue;
-	// 		}
-
-	// 		$element->attr[ $attr ] = wplng_get_translated_text_from_translations(
-	// 			$element->innertext,
-	// 			$translations
-	// 		);
-	// 	}
-	// }
 
 	$dom->save();
 
