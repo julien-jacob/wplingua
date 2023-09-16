@@ -158,7 +158,6 @@ function wplng_html_replace_exclude_tag( $html, $excluded_elements ) {
 				$element->outertext = $excluded_elements[ $exclude_index ];
 			}
 		}
-
 	}
 
 	$dom->save();
@@ -172,15 +171,20 @@ function wplng_html_replace_exclude_tag( $html, $excluded_elements ) {
 function wplng_ob_callback_ajax( $output ) {
 
 	global $wplng_request_uri;
-	// $wplng_request_uri = $_SERVER['HTTP_REFERER'];
+	$wplng_request_uri = wp_make_link_relative( $_SERVER['HTTP_REFERER'] );
 
-	error_log( $output );
-	
-	$output = wplng_ob_callback_translate($output);
-	error_log($wplng_request_uri);
-	error_log(var_export($_SERVER, true));
-	error_log(wplng_get_language_current_id());
-	error_log( $output );
+	if ( wplng_get_language_website_id() === wplng_get_language_current_id() ) {
+		return $output;
+	}
+
+	// error_log( $output );
+
+	$output = wplng_ob_callback_translate( $output );
+	// error_log($wplng_request_uri);
+	// error_log(var_export($_SERVER['HTTP_REFERER'], true));
+	// error_log(wplng_get_language_current_id());
+
+	// error_log( $output );
 
 	// error_log(var_export($_SERVER, true));
 
@@ -191,21 +195,20 @@ function wplng_ob_callback_ajax( $output ) {
 function wplng_init() {
 
 	// error_log( var_export( defined( 'DOING_AJAX' ) && DOING_AJAX, true ) );
-	// if ( defined( 'DOING_AJAX' ) && DOING_AJAX ) {
-	// 	ob_start( 'wplng_ob_callback_ajax' );
-	// 	return;
-	// }
+	if ( defined( 'DOING_AJAX' ) && DOING_AJAX ) {
+		ob_start( 'wplng_ob_callback_ajax' );
+		return;
+	}
 
 	if ( wplng_get_language_website_id() === wplng_get_language_current_id() ) {
 		return;
 	}
 
 	global $wplng_request_uri;
-
 	$current_path = $wplng_request_uri;
 	$origin_path  = '/' . substr( $current_path, 4, strlen( $current_path ) - 1 );
 
-	if ( ! wplng_url_is_translatable() ) {
+	if ( ! wplng_url_is_translatable( $origin_path ) ) {
 		wp_redirect( $origin_path );
 		exit;
 	}

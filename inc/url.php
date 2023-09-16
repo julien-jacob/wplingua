@@ -117,9 +117,9 @@ function wplng_url_is_translatable( $url = '' ) {
 			}
 		}
 	}
-
+	
 	// Exclude files URL
-	$regex_is_file = '#\.(avi|css|doc|exe|gif|html|jpg|jpeg|mid|midi|mp3|mpg|mpeg|mov|qt|pdf|png|ram|rar|tiff|txt|wav|zip)$#Uis';
+	$regex_is_file = '#\.(avi|css|doc|exe|gif|html|jpg|jpeg|mid|midi|mp3|mpg|mpeg|mov|qt|pdf|png|ram|rar|tiff|txt|wav|zip|ico)$#Uis';
 	if ( $is_translatable && preg_match( $regex_is_file, $url ) ) {
 		$is_translatable = false;
 	}
@@ -157,7 +157,7 @@ function wplng_get_url_exclude() {
 		'wplng_url_exclude',
 		$url_exclude
 	);
-
+	
 	return $url_exclude;
 }
 

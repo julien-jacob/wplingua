@@ -49,6 +49,8 @@ function wplng_ob_callback_translate_json( $json ) {
 	 * Get unknow texts
 	 */
 
+	$texts_unknow = array();
+
 	foreach ( $texts as $text ) {
 		$is_in = false;
 		foreach ( $translations as $translation ) {
