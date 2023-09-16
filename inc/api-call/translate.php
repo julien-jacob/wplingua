@@ -8,6 +8,10 @@ if ( ! defined( 'WPINC' ) ) {
 
 function wplng_api_call_translate( $texts, $language_source_id = '', $language_target_id = '' ) {
 
+	if ( empty( $texts ) ) {
+		return $texts;
+	}
+
 	$api_key = wplng_get_api_key();
 
 	if ( empty( $api_key ) ) {

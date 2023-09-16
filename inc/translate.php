@@ -233,6 +233,14 @@ function wplng_translate_html(
 	}
 
 	/**
+	 * If empty translations, return HTML with translated link
+	 */
+	if ( empty( $translations ) ) {
+		$dom->save();
+		return (string) str_get_html( $dom );
+	}
+
+	/**
 	 * Find and parse JS
 	 */
 	foreach ( $dom->find( 'script[type="application/ld+json"]' ) as $element ) {

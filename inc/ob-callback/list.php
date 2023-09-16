@@ -12,23 +12,16 @@ function wplng_ob_callback_list( $html ) {
 		return $html;
 	}
 
-	$html = apply_filters( 'wplng_html_intercepted', $html );
-
-	$html_saved   = $html;
-	$texts_unknow = array();
-	$excluded     = array();
-
-	/**
-	 * Get saved translation
-	 */
-	$language_target_id = wplng_get_language_current_id();
-	$translations       = wplng_get_translations_saved( $language_target_id );
+	$html       = apply_filters( 'wplng_html_intercepted', $html );
+	$html_saved = $html;
 
 	/**
 	 * Replace excluded HTML part by tag
 	 */
+
 	$excluded = array();
-	$html     = wplng_html_set_exclude_tag(
+
+	$html = wplng_html_set_exclude_tag(
 		$html,
 		$excluded
 	);
@@ -36,11 +29,26 @@ function wplng_ob_callback_list( $html ) {
 	/**
 	 * Get all texts in HTML
 	 */
+
 	$texts = wplng_parse_html( $html );
+
+	/**
+	 * Get saved translation
+	 */
+
+	$language_target_id = wplng_get_language_current_id();
+	$translations       = array();
+
+	if ( ! empty( $texts ) ) {
+		$translations = wplng_get_translations_saved( $language_target_id );
+	}
 
 	/**
 	 * Get unknow texts
 	 */
+
+	$texts_unknow = array();
+
 	foreach ( $texts as $text ) {
 		$is_in = false;
 		foreach ( $translations as $translation ) {
@@ -75,7 +83,6 @@ function wplng_ob_callback_list( $html ) {
 	$translations_new = array();
 
 	foreach ( $texts_unknow as $key => $text_source ) {
-		// $texts_unknow_translated
 		if ( isset( $texts_unknow_translated[ $key ] ) ) {
 			$translations_new[] = array(
 				'source'      => $text_source,
@@ -112,11 +119,18 @@ function wplng_ob_callback_list( $html ) {
 		}
 	}
 
+	/**
+	 * Place the modal HTML before body ending
+	 */
 	$html_saved = str_replace(
 		'</body>',
 		wplng_get_editor_modal_html( $translations_in_page ) . '</body>',
 		$html_saved
 	);
+
+	/**
+	 * Apply a filter before return $html
+	 */
 
 	$html = apply_filters( 'wplng_html_translated', $html );
 

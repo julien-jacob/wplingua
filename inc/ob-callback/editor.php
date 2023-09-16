@@ -15,12 +15,6 @@ function wplng_ob_callback_editor( $html ) {
 	}
 
 	/**
-	 * Get saved translation
-	 */
-	$language_target_id = wplng_get_language_current_id();
-	$translations       = wplng_get_translations_saved( $language_target_id );
-
-	/**
 	 * Replace excluded HTML part by tag
 	 */
 	$excluded_elements = array();
@@ -32,11 +26,26 @@ function wplng_ob_callback_editor( $html ) {
 	/**
 	 * Get all texts in HTML
 	 */
+
 	$texts = wplng_parse_html( $html );
+
+	/**
+	 * Get saved translation
+	 */
+
+	$language_target_id = wplng_get_language_current_id();
+	$translations       = array();
+
+	if ( ! empty( $texts ) ) {
+		$translations = wplng_get_translations_saved( $language_target_id );
+	}
+
 	/**
 	 * Get unknow texts
 	 */
+
 	$texts_unknow = array();
+
 	foreach ( $texts as $text ) {
 		$is_in = false;
 		foreach ( $translations as $translation ) {
@@ -49,10 +58,11 @@ function wplng_ob_callback_editor( $html ) {
 			$texts_unknow[] = $text;
 		}
 	}
-	
+
 	/**
 	 * Get new translated text from API
 	 */
+
 	$texts_unknow_translated = wplng_api_call_translate(
 		$texts_unknow,
 		false,
@@ -68,10 +78,10 @@ function wplng_ob_callback_editor( $html ) {
 	/**
 	 * Save new translation as wplng_translation CPT
 	 */
+
 	$translations_new = array();
 
 	foreach ( $texts_unknow as $key => $text_source ) {
-		// $texts_unknow_translated
 		if ( isset( $texts_unknow_translated[ $key ] ) ) {
 			$translations_new[] = array(
 				'source'      => $text_source,
@@ -142,14 +152,13 @@ function wplng_ob_callback_editor( $html ) {
 
 		foreach ( $translations as $key => $translation ) {
 
-			if ( 
-				! isset( $translation['post_id'] ) 
-				|| ! isset( $translation['translation'] ) 
+			if ( ! isset( $translation['post_id'] )
+				|| ! isset( $translation['translation'] )
 			) {
 				continue;
 			}
 
-			$translated = wplng_text_esc($translation['translation']);
+			$translated = wplng_text_esc( $translation['translation'] );
 
 			if ( $text !== $translated ) {
 				continue;
@@ -167,12 +176,18 @@ function wplng_ob_callback_editor( $html ) {
 	}
 
 	$dom->save();
+
 	$html = (string) str_get_html( $dom );
 
 	/**
 	 * Replace tag by saved excluded HTML part
 	 */
+
 	$html = wplng_html_replace_exclude_tag( $html, $excluded_elements );
+
+	/**
+	 * Apply a filter before return $html
+	 */
 
 	$html = apply_filters( 'wplng_html_editor', $html );
 
