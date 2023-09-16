@@ -46,7 +46,7 @@ function wplng_get_language_website_flag() {
 
 	$website_flag = apply_filters( 'wplng_language_website_flag', $website_flag );
 
-	return esc_url($website_flag);
+	return esc_url( $website_flag );
 }
 
 
@@ -100,8 +100,6 @@ function wplng_get_language_name( $language ) {
 	// If no name returned here, return empty string
 	return '';
 }
-
-
 
 
 function wplng_get_language_id( $language ) {
@@ -219,7 +217,12 @@ function wplng_get_language_current_id() {
 	$current_path     = $wplng_request_uri;
 	$languages_target = wplng_get_languages_target_ids();
 
+	if ( ! wplng_url_is_translatable() ) {
+		return wplng_get_language_website_id();
+	}
+
 	foreach ( $languages_target as $language ) {
+		// TODO : Change str_starts_with() for PHP compat
 		if ( str_starts_with( $current_path, '/' . $language . '/' ) ) {
 			return $language;
 			break;
@@ -228,8 +231,6 @@ function wplng_get_language_current_id() {
 
 	return wplng_get_language_website_id();
 }
-
-
 
 
 function wplng_get_language_by_ids( $language_ids ) {
@@ -272,7 +273,7 @@ function wplng_is_valid_language_id( $language_id ) {
 	}
 
 	// Check if $language_id is in languages data
-	$languages_data = wplng_get_languages_data();
+	$languages_data = wplng_data_languages();
 	foreach ( $languages_data as $language_data ) {
 		if ( $language_data['id'] === $language_id ) {
 			return true;
@@ -285,7 +286,7 @@ function wplng_is_valid_language_id( $language_id ) {
 
 function wplng_get_languages_all() {
 
-	$languages       = wplng_get_languages_data();
+	$languages       = wplng_data_languages();
 	$source_language = get_option( 'wplng_website_language' );
 	$source_flag     = get_option( 'wplng_website_flag' );
 	$target_flags    = get_option( 'wplng_target_languages' );

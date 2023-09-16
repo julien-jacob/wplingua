@@ -61,6 +61,7 @@ function wplng_create_menu() {
  */
 function wplng_register_settings() {
 
+	// Option page : Settings and register
 	register_setting( 'wplng_settings', 'wplng_website_language' );
 	register_setting( 'wplng_settings', 'wplng_website_flag' );
 	register_setting( 'wplng_settings', 'wplng_target_languages' );
@@ -70,9 +71,11 @@ function wplng_register_settings() {
 	register_setting( 'wplng_settings', 'wplng_api_key' );
 	register_setting( 'wplng_settings', 'wplng_request_free_key' );
 
+	// Option page : Exclusions
 	register_setting( 'wplng_exclusions', 'wplng_excluded_selectors' );
 	register_setting( 'wplng_exclusions', 'wplng_excluded_url' );
 
+	// Option page : Switcher
 	register_setting( 'wplng_switcher', 'wplng_insert' );
 	register_setting( 'wplng_switcher', 'wplng_theme' );
 	register_setting( 'wplng_switcher', 'wplng_style' );
@@ -85,7 +88,7 @@ function wplng_register_settings() {
 
 function wplng_show_api_message() {
 
-	$api_info = wplng_api_informations();
+	$api_info = wplng_api_call_api_informations();
 
 	if ( ! empty( $api_info['global_message'] )
 		&& is_string( $api_info['global_message'] )

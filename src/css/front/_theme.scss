@@ -4,25 +4,39 @@
 
 .wplng-switcher.style-dropdown {
 
-    &.theme-square-light,
-    &.theme-square-grey,
-    &.theme-smooth-light,
-    &.theme-smooth-grey {
-        .wplng-language-current {
-            background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20width%3D%2220%22%20height%3D%2220%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M5%206l5%205%205-5%202%201-7%207-7-7%202-1z%22%20fill%3D%22%23555%22%2F%3E%3C%2Fsvg%3E');
-        }
+    .wplng-language-current {
+        background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M5 6l5 5 5-5 2 1-7 7-7-7 2-1z' fill='%231d2327'/%3E%3C/svg%3E");
     }
 
-    &.theme-square-dark,
-    &.theme-smooth-dark {
+    &.theme-dark-double-smooth,
+    &.theme-dark-double-square,
+    &.theme-dark-simple-smooth,
+    &.theme-dark-simple-square {
         .wplng-language-current {
-            background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB3aWR0aD0iMjAiIGhlaWdodD0iMjAiPjxkZWZzPjxmaWx0ZXIgaWQ9ImRhcmtyZWFkZXItaW1hZ2UtZmlsdGVyIj48ZmVDb2xvck1hdHJpeCB0eXBlPSJtYXRyaXgiIHZhbHVlcz0iMC4yNDkgLTAuNjE0IC0wLjY3MiAwLjAwMCAxLjAzNSAtMC42NDYgMC4yODggLTAuNjY0IDAuMDAwIDEuMDIwIC0wLjYzNiAtMC42MDkgMC4yNTAgMC4wMDAgMC45OTQgMC4wMDAgMC4wMDAgMC4wMDAgMS4wMDAgMC4wMDAiIC8+PC9maWx0ZXI+PC9kZWZzPjxpbWFnZSB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIGZpbHRlcj0idXJsKCNkYXJrcmVhZGVyLWltYWdlLWZpbHRlcikiIHhsaW5rOmhyZWY9ImRhdGE6aW1hZ2Uvc3ZnK3htbDtjaGFyc2V0PVVTLUFTQ0lJLCUzQ3N2ZyUyMHdpZHRoJTNEJTIyMjAlMjIlMjBoZWlnaHQlM0QlMjIyMCUyMiUyMHhtbG5zJTNEJTIyaHR0cCUzQSUyRiUyRnd3dy53My5vcmclMkYyMDAwJTJGc3ZnJTIyJTNFJTNDcGF0aCUyMGQlM0QlMjJNNSUyMDZsNSUyMDUlMjA1LTUlMjAyJTIwMS03JTIwNy03LTclMjAyLTF6JTIyJTIwZmlsbCUzRCUyMiUyMzU1NSUyMiUyRiUzRSUzQyUyRnN2ZyUzRSIgLz48L3N2Zz4=');
+            background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M5 6l5 5 5-5 2 1-7 7-7-7 2-1z' fill='%23fff'/%3E%3C/svg%3E");
         }
     }
 }
 
-/* Themes Square Light */
-.wplng-switcher.theme-square-light {
+.wplng-switcher {
+
+    .wplng-languages .wplng-language:hover {
+        background-color: rgba(0, 0, 0, .1);
+    }
+
+    &.theme-dark-double-smooth,
+    &.theme-dark-double-square,
+    &.theme-dark-simple-smooth,
+    &.theme-dark-simple-square {
+        .wplng-languages .wplng-language:hover {
+            background-color: rgba(255, 255, 255, .1);
+        }
+    }
+}
+
+
+/* Themes Light Double Square */
+.wplng-switcher.theme-light-double-square {
     .switcher-content {
         background-color: white;
         border: 1px solid rgba(0, 0, 0, .25);
@@ -34,11 +48,23 @@
             border-radius: 0;
         }
     }
-
 }
 
-/* Themes Square Grey */
-.wplng-switcher.theme-square-grey {
+/* Themes Light Simple Square */
+.wplng-switcher.theme-light-simple-square {
+    .switcher-content {
+        background-color: white;
+        border: 1px solid rgba(0, 0, 0, .25);
+        border-radius: 0;
+
+        .wplng-language {
+            color: #1d2327;
+        }
+    }
+}
+
+/* Themes Grey Double Square */
+.wplng-switcher.theme-grey-double-square {
     .switcher-content {
         background-color: #f0f0f1;
         border: 1px solid rgba(0, 0, 0, .25);
@@ -52,23 +78,49 @@
     }
 }
 
-/* Themes Square Dark */
-.wplng-switcher.theme-square-dark {
+/* Themes Grey Simple Square */
+.wplng-switcher.theme-grey-simple-square {
     .switcher-content {
-        background-color: #1d2327;
-        border: 1px solid rgba(256, 256, 256, .25);
+        background-color: #f0f0f1;
+        border: 1px solid rgba(0, 0, 0, .25);
         border-radius: 0;
 
         .wplng-language {
-            border: 1px solid rgba(256, 256, 256, .24);
+            color: #1d2327;
+        }
+    }
+}
+
+/* Themes Dark Double Square */
+.wplng-switcher.theme-dark-double-square {
+    .switcher-content {
+        background-color: #1d2327;
+        border: 1px solid rgba(255, 255, 255, .25);
+        border-radius: 0;
+
+        .wplng-language {
+            border: 1px solid rgba(255, 255, 255, .24);
             color: white;
             border-radius: 0;
         }
     }
 }
 
-/* Themes Smooth Light */
-.wplng-switcher.theme-smooth-light {
+/* Themes Dark Simple Square */
+.wplng-switcher.theme-dark-double-square {
+    .switcher-content {
+        background-color: #1d2327;
+        border: 1px solid rgba(255, 255, 255, .25);
+        border-radius: 0;
+
+        .wplng-language {
+            color: white;
+        }
+    }
+}
+
+/* Themes Light Double Smooth */
+.wplng-switcher.theme-light-double-smooth {
     .switcher-content {
         background-color: white;
         border: 1px solid rgba(0, 0, 0, .25);
@@ -82,8 +134,22 @@
     }
 }
 
-/* Themes Smooth Grey */
-.wplng-switcher.theme-smooth-grey {
+/* Themes Light Simple Smooth */
+.wplng-switcher.theme-light-simple-smooth {
+    .switcher-content {
+        background-color: white;
+        border: 1px solid rgba(0, 0, 0, .25);
+        border-radius: 9px;
+
+        .wplng-language {
+            color: #1d2327;
+            border-radius: 6px;
+        }
+    }
+}
+
+/* Themes Grey Double Smooth */
+.wplng-switcher.theme-grey-double-smooth {
     .switcher-content {
         background-color: #f0f0f1;
         border: 1px solid rgba(0, 0, 0, .25);
@@ -97,17 +163,58 @@
     }
 }
 
-/* Themes Smooth Dark */
-.wplng-switcher.theme-smooth-dark {
+/* Themes Grey Simple Smooth */
+.wplng-switcher.theme-grey-simple-smooth {
     .switcher-content {
-        background-color: #1d2327;
-        border: 1px solid rgba(256, 256, 256, .25);
+        background-color: #f0f0f1;
+        border: 1px solid rgba(0, 0, 0, .25);
         border-radius: 9px;
 
         .wplng-language {
-            border: 1px solid rgba(256, 256, 256, .24);
+            color: #1d2327;
+            border-radius: 6px;
+        }
+    }
+}
+
+/* Themes Dark Double Smooth */
+.wplng-switcher.theme-dark-double-smooth {
+    .switcher-content {
+        background-color: #1d2327;
+        border: 1px solid rgba(255, 255, 255, .25);
+        border-radius: 9px;
+
+        .wplng-language {
+            border: 1px solid rgba(255, 255, 255, .24);
             color: white;
             border-radius: 6px;
+        }
+    }
+}
+
+/* Themes Dark Simple Smooth */
+.wplng-switcher.theme-dark-simple-smooth {
+    .switcher-content {
+        background-color: #1d2327;
+        border: 1px solid rgba(255, 255, 255, .25);
+        border-radius: 9px;
+
+        .wplng-language {
+            color: white;
+            border-radius: 6px;
+        }
+    }
+}
+
+/* Themes Dark Simple Square */
+.wplng-switcher.theme-dark-simple-square {
+    .switcher-content {
+        background-color: #1d2327;
+        border: 1px solid rgba(255, 255, 255, .25);
+        border-radius: 0;
+
+        .wplng-language {
+            color: white;
         }
     }
 }

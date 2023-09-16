@@ -6,7 +6,7 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 
-function wplng_api_informations() {
+function wplng_api_call_api_informations() {
 
 	$args = array(
 		'method'    => 'POST',

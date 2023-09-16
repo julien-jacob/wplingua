@@ -14,6 +14,7 @@ define( 'WPLNG_API_URL', 'http://machiavel-api.local' );
 define( 'WPLNG_API_VERSION', 'last' );
 define( 'WPLNG_PLUGIN_VERSION', '0.0.6' );
 define( 'WPLNG_PLUGIN_PATH', dirname( __FILE__ ) );
+define( 'WPLNG_MAX_TRANSLATIONS', 256 );
 
 
 require_once WPLNG_PLUGIN_PATH . '/loader.php';
@@ -97,14 +98,8 @@ function wplng_start() {
 		// Add languages switcher before </body>
 		add_action( 'wp_footer', 'wplng_switcher_wp_footer' );
 
-		// Change <html lang=""> if translated content
-		add_filter( 'language_attributes', 'wplng_language_attributes' );
-
 		// Set alternate links with hreflang parametters
 		add_action( 'wp_head', 'wplng_link_alternate_hreflang' );
-
-		// Set OG Local
-		add_filter( 'wplng_html_translated', 'wplng_replace_og_local' );
 
 		/**
 		 * OB and REQUEST_URI

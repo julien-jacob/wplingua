@@ -43,7 +43,7 @@ function wplng_get_api_data() {
 
 	if ( empty( $api_key_data ) ) {
 
-		$api_key_data = wplng_validate_api_key();
+		$api_key_data = wplng_api_call_validate_api_key();
 
 		if ( empty( $api_key_data ) ) {
 			return array();

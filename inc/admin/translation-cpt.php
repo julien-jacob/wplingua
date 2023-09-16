@@ -38,6 +38,7 @@ function wplng_register_post_type_translation() {
 	);
 }
 
+
 function wplng_translation_remove_quick_edit( $actions, $post ) {
 
 	if ( $post->post_type != 'wplng_translation' ) {

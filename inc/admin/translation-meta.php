@@ -225,13 +225,24 @@ function wplng_ajax_generate_translation() {
 		&& ! empty( $_POST['language_target'] )
 		&& ! empty( $_POST['text'] )
 	) {
-		$response = wplng_translate(
-			$_POST['text'],
-			$_POST['language_source'],
-			$_POST['language_target']
-		);
 
-		wp_send_json_success( $response );
+		$translation = $_POST['text'];
+
+		if ( wplng_text_is_translatable( $_POST['text'] ) ) {
+			
+			$response = wplng_api_call_translate(
+				array( $_POST['text'] ),
+				$_POST['language_source'],
+				$_POST['language_target']
+			);
+
+			if ( isset( $response[0] ) ) {
+				$translation = $response[0];
+			}
+
+		}
+
+		wp_send_json_success( $translation );
 
 	} else {
 		wp_send_json_error( __( 'Invalid parameters', 'wplingua' ) );

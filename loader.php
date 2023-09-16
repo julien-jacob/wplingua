@@ -9,6 +9,8 @@ if ( ! defined( 'WPINC' ) ) {
  * Require all wpLingua PHP files
  */
 
+require_once WPLNG_PLUGIN_PATH . '/data.php';
+
 // Require files in /inc/lib/ folder
 require_once WPLNG_PLUGIN_PATH . '/inc/lib/simple_html_dom.php';
 
@@ -25,12 +27,12 @@ require_once WPLNG_PLUGIN_PATH . '/inc/admin/translation-meta.php';
 
 // Require files in /inc/api-call/ folder
 require_once WPLNG_PLUGIN_PATH . '/inc/api-call/api-informations.php';
-require_once WPLNG_PLUGIN_PATH . '/inc/api-call/parser.php';
 require_once WPLNG_PLUGIN_PATH . '/inc/api-call/request-api-key.php';
 require_once WPLNG_PLUGIN_PATH . '/inc/api-call/translate.php';
 require_once WPLNG_PLUGIN_PATH . '/inc/api-call/validate-api-key.php';
 
 // Require files in /inc/ob-callback/ folder
+require_once WPLNG_PLUGIN_PATH . '/inc/ob-callback/ajax.php';
 require_once WPLNG_PLUGIN_PATH . '/inc/ob-callback/editor.php';
 require_once WPLNG_PLUGIN_PATH . '/inc/ob-callback/list.php';
 require_once WPLNG_PLUGIN_PATH . '/inc/ob-callback/translate.php';
@@ -39,12 +41,14 @@ require_once WPLNG_PLUGIN_PATH . '/inc/ob-callback/translate.php';
 require_once WPLNG_PLUGIN_PATH . '/inc/api-key.php';
 require_once WPLNG_PLUGIN_PATH . '/inc/assets.php';
 require_once WPLNG_PLUGIN_PATH . '/inc/html-updater.php';
-require_once WPLNG_PLUGIN_PATH . '/inc/languages-data.php';
 require_once WPLNG_PLUGIN_PATH . '/inc/languages.php';
 require_once WPLNG_PLUGIN_PATH . '/inc/mail.php';
+require_once WPLNG_PLUGIN_PATH . '/inc/parser.php';
 require_once WPLNG_PLUGIN_PATH . '/inc/search.php';
 require_once WPLNG_PLUGIN_PATH . '/inc/shortcode.php';
 require_once WPLNG_PLUGIN_PATH . '/inc/switcher.php';
+require_once WPLNG_PLUGIN_PATH . '/inc/translate.php';
 require_once WPLNG_PLUGIN_PATH . '/inc/translation.php';
 require_once WPLNG_PLUGIN_PATH . '/inc/url.php';
+require_once WPLNG_PLUGIN_PATH . '/inc/util.php';
 require_once WPLNG_PLUGIN_PATH . '/inc/woocommerce.php';

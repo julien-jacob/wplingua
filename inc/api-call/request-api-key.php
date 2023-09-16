@@ -6,7 +6,7 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 
-function wplng_api_request_api_key( $data ) {
+function wplng_api_call_request_api_key( $data ) {
 
 	if ( empty( $data['request'] )
 		|| $data['request'] !== 'register'
