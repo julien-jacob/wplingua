@@ -15,18 +15,12 @@ function wplng_data_excluded_json() {
 	return apply_filters(
 		'wplng_excluded_json',
 		array(
-			array( '@context', '@graph', 0, '@type', '@id', 'url', 'name' ),
-			array( '@context', '@graph', 0, '@type', '@id', 'url', 'name', 'thumbnailUrl', 'datePublished', 'dateModified', 'description' ),
-			array( '@context', '@graph', 2, '@type', '@id', 'itemListElement', 0, '@type', 'name' ),
-			array( '@context', '@graph', 2, '@type', '@id', 'itemListElement', 1, '@type', 'name' ),
-			array( '@context', '@graph', 3, '@type', '@id', 'url', 'name' ),
-			array( '@context', '@graph', 3, '@type', '@id', 'url', 'name', 'description' ),
-			array( '@context', '@graph', 4, '@type', '@id', 'name' ),
-			array( '@context', '@graph', 4, '@type', '@id', 'name', 'url', 'logo', '@type', 'inLanguage', '@id', 'url', 'contentUrl', 'caption' ),
-			array( 'wc_add_to_cart_params', 'ajax_url', 'wc_ajax_url', 'i18n_view_cart' ),
+			array( 'wc_country_select_params', 'countries' ),
 		)
 	);
 }
+
+
 
 
 function wplng_data_excluded_editor_link() {
@@ -56,12 +50,15 @@ function wplng_data_excluded_selector_default() {
 
 
 function wplng_data_excluded_node_text() {
-	return array(
-		'style',
-		'svg',
-		'canvas',
-		'link',
-		'script',
+	return apply_filters(
+		'wplng_excluded_node_text',
+		array(
+			'style',
+			'svg',
+			'canvas',
+			'link',
+			'script',
+		)
 	);
 }
 

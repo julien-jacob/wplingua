@@ -18,6 +18,10 @@ function wplng_url_translate( $url, $language_target_id = '' ) {
 		return $url;
 	}
 
+	if ( str_contains( $url, '?wc-ajax=' ) ) {
+		return $url;
+	}
+
 	// Check if URL is an anchor link for the current page
 	if ( '#' === substr( $url, 0, 1 ) ) {
 		return $url;
@@ -117,7 +121,7 @@ function wplng_url_is_translatable( $url = '' ) {
 			}
 		}
 	}
-	
+
 	// Exclude files URL
 	$regex_is_file = '#\.(avi|css|doc|exe|gif|html|jpg|jpeg|mid|midi|mp3|mpg|mpeg|mov|qt|pdf|png|ram|rar|tiff|txt|wav|zip|ico)$#Uis';
 	if ( $is_translatable && preg_match( $regex_is_file, $url ) ) {
@@ -157,7 +161,7 @@ function wplng_get_url_exclude() {
 		'wplng_url_exclude',
 		$url_exclude
 	);
-	
+
 	return $url_exclude;
 }
 

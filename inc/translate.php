@@ -58,8 +58,17 @@ function wplng_get_translated_text_from_translations( $text, $translations ) {
 function wplng_translate_json_array( $json_decoded, $translations, $parents = array() ) {
 
 	$array_translated = $json_decoded;
+	$json_excluded    = wplng_data_excluded_json();
+
+	if ( in_array( $parents, $json_excluded ) ) {
+		return $json_decoded;
+	}
 
 	foreach ( $json_decoded as $key => $value ) {
+
+		if ( in_array( array_merge( $parents, array( $key ) ), $json_excluded ) ) {
+			continue;
+		}
 
 		if ( is_array( $value ) ) {
 
@@ -106,34 +115,47 @@ function wplng_translate_json_array( $json_decoded, $translations, $parents = ar
 
 			} else {
 
-				$parents       = array_merge( $parents, array( $key ) );
+				if ( wplng_text_is_translatable( $value )
+					|| str_contains( $value, '_' )
+				) {
+					continue;
+				}
+
+				// Todo : Ajouter filtre bool pour exclure json
+
+				$array_translated[ $key ] = wplng_get_translated_text_from_translations(
+					$value,
+					$translations
+				);
 
 				// error_log(
 				// 	var_export(
 				// 		array(
-				// 			'parents' => $parents,
-				// 			'value'   => $value,
+				// 			'parents'   => $parents,
+				// 			'value'     => $value,
+				// 			'translate' => $array_translated[ $key ],
 				// 		),
 				// 		true
 				// 	)
 				// );
-
-				$json_excluded = wplng_data_excluded_json();
-
-				// Todo : Ajouter filtre bool pour exclure json
-
-				if (
-					in_array( $parents, $json_excluded, true )
-					&& wplng_text_is_translatable( $value )
-				) {
-					$texts[]                  = $value;
-					$array_translated[ $key ] = wplng_get_translated_text_from_translations(
-						$value,
-						$translations
-					);
-				}
 			}
 		}
+
+		// if (
+		//  $array_translated[ $key ] != $json_decoded[ $key ]
+		// 	&& !is_array($json_decoded[ $key ])
+		// ) {
+		// 	error_log(
+		// 		var_export(
+		// 			array(
+		// 				'parents'    => $parents,
+		// 				'value'      => $json_decoded[ $key ],
+		// 				'translated' => $array_translated[ $key ],
+		// 			),
+		// 			true
+		// 		)
+		// 	);
+		// }
 	}
 
 	return $array_translated;
@@ -167,11 +189,11 @@ function wplng_translate_json( $json, $translations, $parents = array() ) {
 
 function wplng_translate_js( $js, $translations ) {
 
-	$json = array();
-
 	if ( empty( trim( $js ) ) ) {
 		return $js;
 	}
+
+	$json = array();
 
 	preg_match_all(
 		'#var\s(.*)\s?=\s?(\{.*\});#Ui',
@@ -191,6 +213,17 @@ function wplng_translate_js( $js, $translations ) {
 		);
 
 		if ( $var_json != $json_translated ) {
+
+			// error_log(
+			// 	var_export(
+			// 		array(
+			// 			'var_json'    => $var_json,
+			// 			'json_translated'      => $json_translated,
+			// 		),
+			// 		true
+			// 	)
+			// );
+
 			$js = str_replace(
 				$var_json,
 				$json_translated,
@@ -270,10 +303,10 @@ function wplng_translate_html(
 	 */
 
 	$node_text_excluded = wplng_data_excluded_node_text();
-	
+
 	foreach ( $dom->find( 'text' ) as $element ) {
 
-		if ( in_array( $element->parent->tag, $node_text_excluded )) {
+		if ( in_array( $element->parent->tag, $node_text_excluded ) ) {
 			continue;
 		}
 

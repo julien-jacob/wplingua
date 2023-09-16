@@ -8,9 +8,18 @@ if ( ! defined( 'WPINC' ) ) {
 
 function wplng_parse_json_array( $json_decoded, $parents = array() ) {
 
-	$texts = array();
+	$texts         = array();
+	$json_excluded = wplng_data_excluded_json();
+
+	if ( in_array( $parents, $json_excluded ) ) {
+		return array();
+	}
 
 	foreach ( $json_decoded as $key => $value ) {
+
+		if ( in_array( array_merge( $parents, array( $key ) ), $json_excluded ) ) {
+			continue;
+		}
 
 		if ( is_array( $value ) ) {
 
@@ -21,7 +30,9 @@ function wplng_parse_json_array( $json_decoded, $parents = array() ) {
 
 		} elseif ( is_string( $value ) ) {
 
-			// TODO : Continuer ici !!!
+			if ( wplng_str_is_url( $value ) ) {
+				continue;
+			}
 
 			if ( wplng_str_is_html( $value ) ) {
 
@@ -39,7 +50,13 @@ function wplng_parse_json_array( $json_decoded, $parents = array() ) {
 
 			} else {
 
-				$parents = array_merge( $parents, array( $key ) );
+				if ( wplng_text_is_translatable( $value )
+					|| str_contains( $value, '_' )
+				) {
+					continue;
+				}
+
+				// $parents = array_merge( $parents, array( $key ) );
 
 				error_log(
 					var_export(
@@ -51,16 +68,9 @@ function wplng_parse_json_array( $json_decoded, $parents = array() ) {
 					)
 				);
 
-				$json_excluded = wplng_data_excluded_json();
-
 				// Todo : Ajouter filtre bool pour exclure json
 
-				if (
-					in_array( $parents, $json_excluded, true )
-					&& wplng_text_is_translatable( $value )
-				) {
-					$texts[] = $value;
-				}
+				$texts[] = $value;
 			}
 		}
 	}

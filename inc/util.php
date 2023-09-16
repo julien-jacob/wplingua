@@ -27,16 +27,15 @@ function wplng_text_is_translatable( $text ) {
 		return false;
 	}
 
-	$text = html_entity_decode( $text );
+	/**
+	 * Get letters only
+	 */
+	$letters = $text;
+	$letters = html_entity_decode( $letters );
+	$letters = preg_replace( '#[^\p{L}]#', '', $letters );
+	$letters = str_replace('/', '', $letters);
 
-	return ! empty(
-		preg_replace(
-			'#[^\p{L}]#',
-			'',
-			$text
-		)
-	);
-
+	return ! empty( $letters );
 }
 
 function wplng_text_esc( $text ) {
