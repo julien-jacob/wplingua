@@ -32,8 +32,7 @@ function wplng_text_is_translatable( $text ) {
 	 */
 	$letters = $text;
 	$letters = html_entity_decode( $letters );
-	$letters = preg_replace( '#[^\p{L}]#', '', $letters );
-	$letters = str_replace('/', '', $letters);
+	$letters = preg_replace( '#[^\p{L}\p{N}\s]#u', '', $letters );
 
 	return ! empty( $letters );
 }
