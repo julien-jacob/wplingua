@@ -111,10 +111,6 @@ function wplng_get_translations_saved( $target_language_id ) {
  */
 function wplng_save_translation_new( $language_id, $original, $translation ) {
 
-	if ( false !== wplng_get_translation_saved_from_original( $original ) ) {
-		return false;
-	}
-
 	/**
 	 * Make the title
 	 */
