@@ -24,9 +24,12 @@ function wplng_str_is_url( $str ) {
 		$is_url = ! ( filter_var( 'https://website.com/' . ltrim( $str, '/' ), FILTER_VALIDATE_URL ) === false );
 	}
 
+	if ( ! $is_url ) {
+		$is_url = esc_url( $str ) === $str;
+	}
+
 	return $is_url;
 }
-
 
 /**
  * Return true is $str is a translatable text
@@ -101,7 +104,7 @@ function wplng_str_is_json( $str ) {
  */
 function wplng_str_is_locale_id( $str ) {
 
-	$locale  = get_locale();                            // Ex: fr_FR
+	$locale  = get_locale();
 	$locales = array(
 		$locale,                                        // Ex: fr_FR
 		strtolower( $locale ),                          // Ex: fr_fr
@@ -112,4 +115,47 @@ function wplng_str_is_locale_id( $str ) {
 	);
 
 	return in_array( $str, $locales );
+}
+
+
+/**
+ * Return true if a JSON string element is translatable
+ *
+ * @param string $element
+ * @param array $parents
+ * @return bool
+ */
+function wplng_json_element_is_translatable( $element, $parents ) {
+
+	$is_translatable   = false;
+	$json_excluded     = wplng_data_excluded_json();
+	$json_to_translate = wplng_data_json_to_translate();
+
+	if ( in_array( $parents, $json_excluded ) ) {
+		$is_translatable = false;
+	} elseif ( in_array( $parents, $json_to_translate ) ) {
+		$is_translatable = true;
+	} else {
+
+		// Is schema-graph
+		if (
+			! empty( $parents[0] )
+			&& $parents[0] === '@graph'
+			&& count( $parents ) > 0
+			&& $parents[ count( $parents ) - 1 ] === 'name'
+		) {
+			$is_translatable = true;
+		}
+
+		if ( ! wplng_text_is_translatable( $element ) ) {
+			$is_translatable = false;
+		}
+	}
+
+	return apply_filters(
+		'wplng_json_element_is_translatable',
+		$is_translatable,
+		$element,
+		$parents
+	);
 }

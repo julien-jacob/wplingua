@@ -17,7 +17,7 @@ function wplng_get_translation_saved_from_original( $original ) {
 	$translation = false;
 	$original    = wplng_text_esc( $original );
 
-	$args = array(
+	$args      = array(
 		'post_type'    => 'wplng_translation',
 		'meta_key'     => 'wplng_translation_original',
 		'meta_value'   => $original,

@@ -37,7 +37,9 @@ function wplng_parse_json_array( $json_decoded, $parents = array() ) {
 
 		} elseif ( is_string( $value ) ) {
 
-			if ( wplng_str_is_url( $value ) ) {
+			if ( wplng_str_is_url( $value )
+				|| wplng_str_is_locale_id( $value )
+			) {
 				continue;
 			}
 
@@ -57,23 +59,14 @@ function wplng_parse_json_array( $json_decoded, $parents = array() ) {
 
 			} else {
 
-				if ( str_contains( $value, '_' )
-					|| ! wplng_text_is_translatable( $value )
-				) {
+				$is_translatable = wplng_json_element_is_translatable(
+					$value,
+					array_merge( $parents, array( $key ) )
+				);
+
+				if ( ! $is_translatable ) {
 					continue;
 				}
-
-				// error_log(
-				// 	var_export(
-				// 		array(
-				// 			'parents' => $parents,
-				// 			'value'   => $value,
-				// 		),
-				// 		true
-				// 	)
-				// );
-
-				// Todo : Ajouter filtre bool pour exclure json
 
 				$texts[] = $value;
 			}

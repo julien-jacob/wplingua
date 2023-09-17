@@ -10,6 +10,16 @@ if ( ! defined( 'WPINC' ) ) {
  * Data : Parse and translate
  */
 
+function wplng_data_json_to_translate() {
+	return apply_filters(
+		'wplng_json_to_translate',
+		array(
+			array( 'yith_wcwl_l10n', 'labels', 'cookie_disabled' ),
+			array( 'wc_add_to_cart_params', 'i18n_view_cart' ),
+		)
+	);
+}
+
 function wplng_data_excluded_json() {
 	return apply_filters(
 		'wplng_excluded_json',
