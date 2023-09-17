@@ -133,7 +133,7 @@ function wplng_register_part_api_key( $api_key ) {
 	?>
 	<fieldset>
 		<label for="wplng_api_key"><strong><?php _e( 'Set API key:', 'wplingua' ); ?></strong></label>
-		<p><?php _e( 'If you already have an API key, enter it below. If you\'ve forgotten your site\'s API key, visit ', 'wplingua' ); ?><a href="#"><?php _e( 'the API key retrieval page', 'wplingua' ); ?></a>.</p>
+		<p><?php _e( 'If you already have an API key, enter it below. If you\'ve forgotten your site\'s API key, visit ', 'wplingua' ); ?><a href="https://wplingua.com/recovery/" target="_blank"><?php _e( 'the API key retrieval page', 'wplingua' ); ?></a>.</p>
 		<br>
 		<input type="text" name="wplng_api_key" id="wplng_api_key" value="<?php echo esc_attr( $api_key ); ?>"></input>
 
@@ -195,7 +195,7 @@ function wplng_register_part_free_api_key() {
 	<fieldset>
 		<input type="checkbox" name="wplng-accept-eula" id="wplng-accept-eula">
 		<label for="wplng-accept-eula">
-			<strong><?php _e( 'I have read and accept the', 'wplingua' ); ?> <a href="#"><?php _e( 'general conditions of use', 'wplingua' ); ?></a> </strong>
+			<strong><?php _e( 'I have read and accept the', 'wplingua' ); ?> <a href="https://wplingua.com/terms/" target="_blank"><?php _e( 'general conditions of use', 'wplingua' ); ?></a> </strong>
 		</label>
 	</fieldset>
 	<fieldset style="display: none;">
@@ -224,6 +224,6 @@ function wplng_register_part_premium() {
 		<li><?php _e( 'Get more target languages', 'wplingua' ); ?></li>
 	</ul>
 	<br>
-	<a class="button button-primary" href="#"><?php _e( 'Visit wpLingua plans', 'wplingua' ); ?></a>
+	<a class="button button-primary" href="https://wplingua.com/" target="_blank"><?php _e( 'Visit wpLingua plans', 'wplingua' ); ?></a>
 	<?php
 }
