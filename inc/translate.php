@@ -6,6 +6,13 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 
+/**
+ * Get the translated text from translations array
+ *
+ * @param string $text
+ * @param array $translations
+ * @return string
+ */
 function wplng_get_translated_text_from_translations( $text, $translations ) {
 
 	if ( empty( trim( $text ) ) ) {
@@ -55,6 +62,14 @@ function wplng_get_translated_text_from_translations( $text, $translations ) {
 }
 
 
+/**
+ * wpLingua translate : Get translated array from decoded JSON
+ *
+ * @param array $json_decoded
+ * @param array $translations
+ * @param array $parents
+ * @return array
+ */
 function wplng_translate_json_array( $json_decoded, $translations, $parents = array() ) {
 
 	$array_translated = $json_decoded;
@@ -162,6 +177,14 @@ function wplng_translate_json_array( $json_decoded, $translations, $parents = ar
 }
 
 
+/**
+ * wpLingua translate : Get translated JSON
+ *
+ * @param string $json
+ * @param array $translations
+ * @param array $parents
+ * @return string
+ */
 function wplng_translate_json( $json, $translations, $parents = array() ) {
 
 	$json_translated = '';
@@ -187,6 +210,13 @@ function wplng_translate_json( $json, $translations, $parents = array() ) {
 }
 
 
+/**
+ * wpLingua translate : Get translated JS
+ *
+ * @param string $js
+ * @param array $translations
+ * @return string
+ */
 function wplng_translate_js( $js, $translations ) {
 
 	if ( empty( trim( $js ) ) ) {
@@ -237,7 +267,15 @@ function wplng_translate_js( $js, $translations ) {
 }
 
 
-
+/**
+ * wpLingua translate : Get translated HTML
+ *
+ * @param string $html
+ * @param string $language_source_id
+ * @param string $language_target_id
+ * @param array $translations
+ * @return string
+ */
 function wplng_translate_html(
 	$html,
 	$language_source_id = '',

@@ -6,6 +6,11 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 
+/**
+ * Add wpLingua admin menu when API Key is not registered
+ *
+ * @return void
+ */
 function wplng_create_menu_register() {
 
 	add_menu_page(
@@ -20,6 +25,11 @@ function wplng_create_menu_register() {
 }
 
 
+/**
+ * Add wpLingua admin menu when key is registered
+ *
+ * @return void
+ */
 function wplng_create_menu() {
 
 	add_menu_page(
@@ -55,7 +65,7 @@ function wplng_create_menu() {
 
 
 /**
- * register settings
+ * Register wpLingua settings
  *
  * @return void
  */
@@ -86,6 +96,11 @@ function wplng_register_settings() {
 }
 
 
+/**
+ * Show message from wpLingua API (plugin Update or global message)
+ *
+ * @return void
+ */
 function wplng_show_api_message() {
 
 	$api_info = wplng_api_call_api_informations();
@@ -120,7 +135,7 @@ function wplng_show_api_message() {
 
 
 /**
- * Add 'Settings' link on the plugin list
+ * Add 'Settings' link on wpLingua in the plugin list
  *
  * @param array $settings
  * @return array

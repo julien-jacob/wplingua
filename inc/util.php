@@ -6,6 +6,12 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 
+/**
+ * Return true is $str is an URL
+ *
+ * @param string $str
+ * @return bool
+ */
 function wplng_str_is_url( $str ) {
 
 	$is_url = false;
@@ -22,6 +28,13 @@ function wplng_str_is_url( $str ) {
 }
 
 
+/**
+ * Return true is $str is a translatable text
+ * Return false if $str is a number, mail addredd, symbol, ...
+ *
+ * @param string $text
+ * @return bool
+ */
 function wplng_text_is_translatable( $text ) {
 
 	// Check if it's a mail address
@@ -41,6 +54,12 @@ function wplng_text_is_translatable( $text ) {
 }
 
 
+/**
+ * Escape texte (used for comparison)
+ *
+ * @param string $text
+ * @return string
+ */
 function wplng_text_esc( $text ) {
 
 	$text = trim( $text );
@@ -51,11 +70,23 @@ function wplng_text_esc( $text ) {
 }
 
 
+/**
+ * Return true is $str is HTML
+ *
+ * @param string $str
+ * @return string
+ */
 function wplng_str_is_html( $str ) {
 	return $str !== strip_tags( $str );
 }
 
 
+/**
+ * Return true is $str is a JSON
+ *
+ * @param string $str
+ * @return string
+ */
 function wplng_str_is_json( $str ) {
 	return ( json_decode( $str ) == null ) ? false : true;
 }

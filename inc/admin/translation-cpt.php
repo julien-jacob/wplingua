@@ -5,7 +5,11 @@ if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
-
+/**
+ * Register wpLingua Translation CPT
+ *
+ * @return void
+ */
 function wplng_register_post_type_translation() {
 	register_post_type(
 		'wplng_translation',
@@ -39,6 +43,13 @@ function wplng_register_post_type_translation() {
 }
 
 
+/**
+ * Remove quick edit on wpLingua translations list
+ *
+ * @param array $actions
+ * @param object $post
+ * @return array
+ */
 function wplng_translation_remove_quick_edit( $actions, $post ) {
 
 	if ( $post->post_type != 'wplng_translation' ) {

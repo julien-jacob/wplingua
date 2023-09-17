@@ -6,6 +6,11 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 
+/**
+ * Print HTML of alternate link with hreflang for each available languages
+ *
+ * @return void
+ */
 function wplng_link_alternate_hreflang() {
 
 	$html = '';
@@ -30,6 +35,11 @@ function wplng_link_alternate_hreflang() {
 }
 
 
+/**
+ * Get wpLingua excluded selectors
+ *
+ * @return array
+ */
 function wplng_get_selector_exclude() {
 
 	$selector_exclude = explode(
@@ -63,6 +73,13 @@ function wplng_get_selector_exclude() {
 }
 
 
+/**
+ * Replace all excluded elements by empty tags with wplng-tag-exclude attribute
+ *
+ * @param string $html
+ * @param array $excluded_elements
+ * @return string HTML
+ */
 function wplng_html_set_exclude_tag( $html, &$excluded_elements ) {
 
 	$selector_exclude = wplng_get_selector_exclude();
@@ -86,6 +103,13 @@ function wplng_html_set_exclude_tag( $html, &$excluded_elements ) {
 }
 
 
+/**
+ * Replace all tags with wplng-tag-exclude attribute by value in $excluded_elements
+ *
+ * @param string $html
+ * @param array $excluded_elements
+ * @return string
+ */
 function wplng_html_replace_exclude_tag( $html, $excluded_elements ) {
 
 	$dom = str_get_html( $html );
@@ -112,6 +136,11 @@ function wplng_html_replace_exclude_tag( $html, $excluded_elements ) {
 }
 
 
+/**
+ * wpLingua init function 
+ *
+ * @return void
+ */
 function wplng_init() {
 
 	if ( defined( 'DOING_AJAX' ) && DOING_AJAX ) {

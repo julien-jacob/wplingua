@@ -6,6 +6,11 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 
+/**
+ * Print HTML Option page : wpLingua Exclusions
+ *
+ * @return void
+ */
 function wplng_option_page_exclusions() {
 
 	wplng_show_api_message();

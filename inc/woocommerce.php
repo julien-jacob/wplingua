@@ -6,6 +6,12 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 
+/**
+ * List woowommerce URL for exclusion
+ *
+ * @param array $url_exclude
+ * @return array
+ */
 function wplng_exclude_woocommerce_url( $url_exclude ) {
 
 	if ( ! function_exists( 'is_woocommerce' ) ) {

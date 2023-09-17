@@ -6,6 +6,12 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 
+/**
+ * wpLingua OB Callback function : Translate pages
+ *
+ * @param string $html
+ * @return string
+ */
 function wplng_ob_callback_translate( $html ) {
 
 	$html = apply_filters( 'wplng_html_intercepted', $html );
@@ -22,6 +28,12 @@ function wplng_ob_callback_translate( $html ) {
 }
 
 
+/**
+ * wpLingua OB Callback function : Translate JSON
+ *
+ * @param string $json
+ * @return string
+ */
 function wplng_ob_callback_translate_json( $json ) {
 
 	if ( empty( $json ) ) {
@@ -123,6 +135,12 @@ function wplng_ob_callback_translate_json( $json ) {
 }
 
 
+/**
+ * wpLingua OB Callback function : Translate HTML
+ *
+ * @param [type] $html
+ * @return void
+ */
 function wplng_ob_callback_translate_html( $html ) {
 
 	if ( empty( $html ) ) {
@@ -160,6 +178,7 @@ function wplng_ob_callback_translate_html( $html ) {
 	/**
 	 * Get unknow texts
 	 */
+
 	$texts_unknow = array();
 
 	foreach ( $texts as $text ) {

@@ -6,6 +6,11 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 
+/**
+ * Print HTML Option page : wpLingua Register
+ *
+ * @return void
+ */
 function wplng_option_page_register() {
 
 	$api_key          = wplng_get_api_key();
@@ -118,6 +123,12 @@ function wplng_option_page_register() {
 }
 
 
+/**
+ * Print HTML subsection of Option page : wpLingua Register - API Key
+ *
+ * @param string $api_key
+ * @return void
+ */
 function wplng_register_part_api_key( $api_key ) {
 	?>
 	<fieldset>
@@ -139,6 +150,11 @@ function wplng_register_part_api_key( $api_key ) {
 }
 
 
+/**
+ * Print HTML subsection of Option page : wpLingua Register - Register free API Key
+ *
+ * @return void
+ */
 function wplng_register_part_free_api_key() {
 
 	$website_locale = substr( get_locale(), 0, 2 );
@@ -192,6 +208,12 @@ function wplng_register_part_free_api_key() {
 	<?php
 }
 
+
+/**
+ * Print HTML subsection of Option page : wpLingua Register - Premium informations
+ *
+ * @return void
+ */
 function wplng_register_part_premium() {
 	?>
 	<p><strong><?php _e( 'Get more target languages and premium features:', 'wplingua' ); ?></strong></p>		

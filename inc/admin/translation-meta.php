@@ -6,6 +6,12 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 
+/**
+ * Add meta box on wpLingua translations
+ *
+ * @param object $post
+ * @return void
+ */
 function wplng_translation_add_meta_box( $post ) {
 
 	add_meta_box(
@@ -20,6 +26,12 @@ function wplng_translation_add_meta_box( $post ) {
 }
 
 
+/**
+ * Print HTML of wpLingua translations meta box
+ *
+ * @param object $post
+ * @return string HTML
+ */
 function wplng_translation_meta_box_html_output( $post ) {
 
 	//used later for security
@@ -150,12 +162,16 @@ function wplng_translation_meta_box_html_output( $post ) {
 		}
 	}
 
-	// $html .= '<pre>' . var_export($meta, true) . '</pre>';
-
 	echo $html;
 }
 
 
+/**
+ * Save meta box data of wpLingua translations
+ *
+ * @param int $post_id
+ * @return void
+ */
 function wplng_translation_save_meta_boxes_data( $post_id ) {
 
 	// check for nonce to top xss
@@ -219,6 +235,11 @@ function wplng_translation_save_meta_boxes_data( $post_id ) {
 }
 
 
+/**
+ * wpLingua AJAX function to get translations on CPT edit page
+ *
+ * @return void
+ */
 function wplng_ajax_generate_translation() {
 
 	if ( ! empty( $_POST['language_source'] )

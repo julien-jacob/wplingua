@@ -6,6 +6,11 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 
+/**
+ * Print HTML Option page : wpLingua Switcher
+ *
+ * @return void
+ */
 function wplng_option_page_switcher() {
 
 	$insert      = wplng_get_switcher_insert();
@@ -206,6 +211,14 @@ function wplng_option_page_switcher() {
 	<?php
 }
 
+
+/**
+ * Print HTML subsection of Option page : wpLingua Switcher - Flags style
+ *
+ * @param string $old_flags_style Flag URL
+ * @param string $new_flags_style Flag URL
+ * @return void
+ */
 function wplng_options_switcher_update_flags_style( $old_flags_style, $new_flags_style ) {
 
 	if ( $old_flags_style !== $new_flags_style ) {

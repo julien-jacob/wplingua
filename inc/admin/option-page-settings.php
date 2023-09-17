@@ -7,7 +7,7 @@ if ( ! defined( 'WPINC' ) ) {
 
 
 /**
- * Option page for the plugin
+ * Print HTML Option page : wpLingua Settings
  *
  * @return void
  */
@@ -73,6 +73,11 @@ function wplng_option_page_settings() {
 }
 
 
+/**
+ * Print HTML subsection of Option page : wpLingua Settings - First use
+ *
+ * @return void
+ */
 function wplng_settings_part_first_use() {
 
 	if ( ! empty( get_option( 'wplng_website_language' ) )
@@ -125,6 +130,11 @@ function wplng_settings_part_first_use() {
 }
 
 
+/**
+ * Print HTML subsection of Option page : wpLingua Settings - Website language
+ *
+ * @return void
+ */
 function wplng_settings_part_language_website() {
 
 	$api_language_website   = wplng_get_api_language_website();
@@ -208,6 +218,11 @@ function wplng_settings_part_language_website() {
 }
 
 
+/**
+ * Print HTML subsection of Option page : wpLingua Settings - Languages target
+ *
+ * @return void
+ */
 function wplng_settings_part_languages_target() {
 
 	$languages_target     = wplng_get_languages_target_simplified();
@@ -219,7 +234,7 @@ function wplng_settings_part_languages_target() {
 		}
 	}
 
-	$languages_target = wplng_get_language_by_ids( $languages_target_ids );
+	$languages_target = wplng_get_languages_by_ids( $languages_target_ids );
 
 	?>
 	<fieldset id="fieldset-add-target-language">
@@ -273,6 +288,11 @@ function wplng_settings_part_languages_target() {
 }
 
 
+/**
+ * Print HTML subsection of Option page : wpLingua Settings - Feature
+ *
+ * @return void
+ */
 function wplng_settings_part_features() {
 
 	$api_features = wplng_get_api_feature();
@@ -302,6 +322,11 @@ function wplng_settings_part_features() {
 }
 
 
+/**
+ * Print HTML subsection of Option page : wpLingua Settings - API Key
+ *
+ * @return void
+ */
 function wplng_settings_part_api_key() {
 	?>
 	<fieldset>

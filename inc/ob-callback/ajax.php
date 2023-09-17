@@ -6,6 +6,12 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 
+/**
+ * wpLingua OB Callback function : AJAX
+ *
+ * @param string $output
+ * @return string
+ */
 function wplng_ob_callback_ajax( $output ) {
 
 	global $wplng_request_uri;

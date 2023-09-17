@@ -6,6 +6,12 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 
+/**
+ * Get translation data from original text
+ *
+ * @param string $original
+ * @return array Translation data
+ */
 function wplng_get_saved_translation_from_original( $original ) {
 
 	$translation = false;
@@ -29,6 +35,12 @@ function wplng_get_saved_translation_from_original( $original ) {
 }
 
 
+/**
+ * Get all data of saved translations
+ *
+ * @param string $target_language_id
+ * @return void
+ */
 function wplng_get_translations_saved( $target_language_id ) {
 
 	$translations = array();
@@ -87,6 +99,14 @@ function wplng_get_translations_saved( $target_language_id ) {
 }
 
 
+/**
+ * Save a translation
+ *
+ * @param string $language_id
+ * @param string $original
+ * @param array $translation
+ * @return mixed Post ID or false
+ */
 function wplng_save_translation_new( $language_id, $original, $translation ) {
 
 	if ( false !== wplng_get_saved_translation_from_original( $original ) ) {
@@ -166,6 +186,14 @@ function wplng_save_translation_new( $language_id, $original, $translation ) {
 }
 
 
+/**
+ * Update a translation
+ *
+ * @param object $post 
+ * @param string $language_id
+ * @param array $translation
+ * @return int Post ID
+ */
 function wplng_update_translation( $post, $language_id, $translation ) {
 
 	$meta             = get_post_meta( $post->ID );
@@ -264,6 +292,13 @@ function wplng_update_translation( $post, $language_id, $translation ) {
 }
 
 
+/**
+ * Save a list of translations
+ *
+ * @param array $translations
+ * @param string $language_target_id
+ * @return array $translations with post IDs
+ */
 function wplng_save_translations( $translations, $language_target_id ) {
 
 	if ( empty( $translations ) || ! is_array( $translations ) ) {
@@ -290,6 +325,14 @@ function wplng_save_translations( $translations, $language_target_id ) {
 }
 
 
+/**
+ * Save translation
+ *
+ * @param string $target_language_id
+ * @param string $original
+ * @param array $translation
+ * @return array $translation with post ID
+ */
 function wplng_save_translation( $target_language_id, $original, $translation ) {
 
 	$saved_translation = wplng_get_saved_translation_from_original( $original );

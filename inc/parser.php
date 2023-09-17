@@ -6,6 +6,13 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 
+/**
+ * wpLingua Parser : Get texts in an array decoded from a JSON
+ *
+ * @param array $json_decoded
+ * @param array $parents
+ * @return array Texts
+ */
 function wplng_parse_json_array( $json_decoded, $parents = array() ) {
 
 	$texts         = array();
@@ -73,13 +80,19 @@ function wplng_parse_json_array( $json_decoded, $parents = array() ) {
 		}
 	}
 
-	// Remove duplicate
-	$texts = array_unique( $texts );
+	$texts = array_unique( $texts ); // Remove duplicate
 
 	return $texts;
 }
 
 
+/**
+ * wpLingua Parser : Get texts in an JSON
+ *
+ * @param string $json
+ * @param array $parents
+ * @return array Texts
+ */
 function wplng_parse_json( $json, $parents = array() ) {
 
 	$json_decoded = json_decode( $json, true );
@@ -96,6 +109,12 @@ function wplng_parse_json( $json, $parents = array() ) {
 }
 
 
+/**
+ * wpLingua Parser : Get texts in an JS
+ *
+ * @param string $js
+ * @return array Texts
+ */
 function wplng_parse_js( $js ) {
 
 	$texts = array();
@@ -123,13 +142,18 @@ function wplng_parse_js( $js ) {
 
 	}
 
-	// Remove duplicate
-	$texts = array_unique( $texts );
+	$texts = array_unique( $texts ); // Remove duplicate
 
 	return $texts;
 }
 
 
+/**
+ * wpLingua Parser : Get texts in an HTML
+ *
+ * @param string $html
+ * @return array Texts
+ */
 function wplng_parse_html( $html ) {
 
 	$texts = array();

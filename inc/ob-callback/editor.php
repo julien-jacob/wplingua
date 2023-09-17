@@ -6,6 +6,12 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 
+/**
+ * wpLingua OB Callback function : On page editor
+ *
+ * @param string $html
+ * @return string
+ */
 function wplng_ob_callback_editor( $html ) {
 
 	$html = apply_filters( 'wplng_html_intercepted', $html );

@@ -6,6 +6,13 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 
+/**
+ * wpLingua Shortcode : [notranslate], [wplingua-notranslate]
+ *
+ * @param array $atts
+ * @param string $content
+ * @return string
+ */
 function wplng_shortcode_notranslate( $atts, $content ) {
 
 	$attributes = shortcode_atts(
@@ -22,6 +29,12 @@ function wplng_shortcode_notranslate( $atts, $content ) {
 }
 
 
+/**
+ * wpLingua Shortcode : [wplingua-switcher]
+ *
+ * @param array $atts
+ * @return string
+ */
 function wplng_shortcode_switcher( $atts ) {
 
 	$attributes = shortcode_atts(

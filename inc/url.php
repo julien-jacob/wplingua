@@ -6,6 +6,13 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 
+/**
+ * Get the translated URL
+ *
+ * @param string $url
+ * @param string $language_target_id
+ * @return string
+ */
 function wplng_url_translate( $url, $language_target_id = '' ) {
 
 	// Check if URL is an empty string
@@ -78,6 +85,12 @@ function wplng_url_translate( $url, $language_target_id = '' ) {
 }
 
 
+/**
+ * Return true is $url is translatable
+ *
+ * @param string $url
+ * @return bool
+ */
 function wplng_url_is_translatable( $url = '' ) {
 
 	global $wplng_request_uri;
@@ -138,6 +151,11 @@ function wplng_url_is_translatable( $url = '' ) {
 }
 
 
+/**
+ * Get the REGEX list of excluded URLs
+ *
+ * @return array
+ */
 function wplng_get_url_exclude() {
 
 	// Get user excluded URLs
@@ -166,6 +184,12 @@ function wplng_get_url_exclude() {
 }
 
 
+/**
+ * Get the untranslated / original URL
+ *
+ * @param string $url
+ * @return string
+ */
 function wplng_get_url_original( $url = '' ) {
 
 	if ( empty( $url ) ) {
@@ -190,6 +214,11 @@ function wplng_get_url_original( $url = '' ) {
 }
 
 
+/**
+ * Get current URL
+ *
+ * @return string
+ */
 function wplng_get_url_current() {
 	global $wplng_request_uri;
 	$url = ( empty( $_SERVER['HTTPS'] ) ? 'http' : 'https' ) . "://$_SERVER[HTTP_HOST]$wplng_request_uri";
@@ -197,6 +226,12 @@ function wplng_get_url_current() {
 }
 
 
+/**
+ * Get the URL translated in specified language
+ *
+ * @param string $language_id
+ * @return string
+ */
 function wplng_get_url_current_for_language( $language_id ) {
 
 	global $wplng_request_uri;

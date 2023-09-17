@@ -6,6 +6,14 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 
+/**
+ * Get data from wpLingua API : Translated texts
+ *
+ * @param array $texts
+ * @param string $language_source_id
+ * @param string $language_target_id
+ * @return array
+ */
 function wplng_api_call_translate(
 	$texts,
 	$language_source_id = '',

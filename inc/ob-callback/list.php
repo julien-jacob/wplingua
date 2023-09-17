@@ -6,6 +6,12 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 
+/**
+ * wpLingua OB Callback function : On page translations list
+ *
+ * @param [type] $html
+ * @return void
+ */
 function wplng_ob_callback_list( $html ) {
 
 	if ( empty( $html ) ) {

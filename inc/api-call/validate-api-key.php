@@ -6,6 +6,12 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 
+/**
+ * Get data from wpLingua API : API key validation
+ *
+ * @param string $api_key
+ * @return array
+ */
 function wplng_api_call_validate_api_key( $api_key = '' ) {
 
 	if ( empty( $api_key ) ) {

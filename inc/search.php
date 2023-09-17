@@ -6,11 +6,17 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 
-function wplng_translate_search_query( $query_object ) {
+/**
+ * Translate search query if page is translated
+ *
+ * @param object $query
+ * @return void
+ */
+function wplng_translate_search_query( $query ) {
 
-	if ( $query_object->is_search() ) {
+	if ( $query->is_search() ) {
 
-		if ( ! wplng_text_is_translatable( $query_object->query['s'] ) ) {
+		if ( ! wplng_text_is_translatable( $query->query['s'] ) ) {
 			return;
 		}
 
@@ -22,7 +28,7 @@ function wplng_translate_search_query( $query_object ) {
 		}
 
 		$translated_search = wplng_api_call_translate(
-			array( $query_object->query['s'] ),
+			array( $query->query['s'] ),
 			$language_current,
 			$language_website
 		);
@@ -37,12 +43,18 @@ function wplng_translate_search_query( $query_object ) {
 		$translated_search = preg_replace( '#[^A-Za-z0-9 ]#', '', $translated_search );
 
 		if ( ! empty( $translated_search ) ) {
-			$query_object->set( 's', $translated_search );
+			$query->set( 's', $translated_search );
 		}
 	}
 }
 
 
+/**
+ * Make search untranslated
+ *
+ * @param bool $is_translatable
+ * @return void
+ */
 function wplng_exclude_search( $is_translatable ) {
 	return $is_translatable && ! ( is_search() || isset( $_GET['s'] ) );
 }

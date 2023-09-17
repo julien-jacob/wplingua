@@ -5,7 +5,11 @@ if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
-
+/**
+ * Get wpLingua switcher option : Insert
+ *
+ * @return string
+ */
 function wplng_get_switcher_insert() {
 
 	$insert   = get_option( 'wplng_insert' );
@@ -34,6 +38,11 @@ function wplng_get_switcher_insert() {
 }
 
 
+/**
+ * Get wpLingua switcher option : Theme
+ *
+ * @return string
+ */
 function wplng_get_switcher_theme() {
 
 	$theme    = get_option( 'wplng_theme' );
@@ -64,6 +73,11 @@ function wplng_get_switcher_theme() {
 }
 
 
+/**
+ * Get wpLingua switcher option : Style
+ *
+ * @return string
+ */
 function wplng_get_switcher_style() {
 
 	$style    = get_option( 'wplng_style' );
@@ -94,6 +108,11 @@ function wplng_get_switcher_style() {
 }
 
 
+/**
+ * Get wpLingua switcher option : Name format
+ *
+ * @return void
+ */
 function wplng_get_switcher_name_format() {
 
 	$name_format = get_option( 'wplng_name_format' );
@@ -130,6 +149,11 @@ function wplng_get_switcher_name_format() {
 }
 
 
+/**
+ * Get wpLingua switcher option : Flags style
+ *
+ * @return string
+ */
 function wplng_get_switcher_flags_style() {
 
 	$flags_style = get_option( 'wplng_flags_style' );
@@ -160,22 +184,12 @@ function wplng_get_switcher_flags_style() {
 }
 
 
-function wplng_switcher_wp_footer() {
-
-	if ( ! wplng_url_is_translatable()
-		|| 'none' === wplng_get_switcher_insert()
-	) {
-		return;
-	}
-
-	echo wplng_get_switcher_html(
-		array(
-			'class' => 'insert-auto',
-		)
-	);
-}
-
-
+/**
+ * Get wpLingua switcher option : Class
+ *
+ * @param array $arg
+ * @return string
+ */
 function wplng_get_switcher_class( $arg = array() ) {
 
 	$class = '';
@@ -247,6 +261,33 @@ function wplng_get_switcher_class( $arg = array() ) {
 }
 
 
+/**
+ * Print HTML of wpLingua switcher if it's inserted automaticaly
+ *
+ * @return string
+ */
+function wplng_switcher_wp_footer() {
+
+	if ( ! wplng_url_is_translatable()
+		|| 'none' === wplng_get_switcher_insert()
+	) {
+		return;
+	}
+
+	echo wplng_get_switcher_html(
+		array(
+			'class' => 'insert-auto',
+		)
+	);
+}
+
+
+/**
+ * Print HTML of wpLingua switcher
+ *
+ * @param array $arg
+ * @return void
+ */
 function wplng_get_switcher_html( $arg = array() ) {
 
 	if ( ! wplng_url_is_translatable() && ! is_admin() ) {

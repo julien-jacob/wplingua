@@ -6,11 +6,21 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 
+/**
+ * Get website language data array
+ * 
+ * @return array Language data
+ */
 function wplng_get_language_website() {
 	return wplng_get_language_by_id( wplng_get_language_website_id() );
 }
 
 
+/**
+ * Get the website language ID
+ *
+ * @return string Language ID
+ */
 function wplng_get_language_website_id() {
 
 	$language_api = wplng_get_api_language_website();
@@ -31,6 +41,11 @@ function wplng_get_language_website_id() {
 }
 
 
+/**
+ * Get the URL of website language flag image
+ *
+ * @return sring URL flag image
+ */
 function wplng_get_language_website_flag() {
 
 	$website_flag = get_option( 'wplng_website_flag' );
@@ -50,6 +65,12 @@ function wplng_get_language_website_flag() {
 }
 
 
+/**
+ * Get the emoji of website language flag
+ *
+ * @param mixed $language
+ * @return string
+ */
 function wplng_get_language_emoji( $language ) {
 
 	// if $language is a language array, return emoji
@@ -76,6 +97,12 @@ function wplng_get_language_emoji( $language ) {
 }
 
 
+/**
+ * Get language name from language ID or data
+ *
+ * @param mixed $language
+ * @return string
+ */
 function wplng_get_language_name( $language ) {
 
 	// if $language is a language array, return name
@@ -102,6 +129,12 @@ function wplng_get_language_name( $language ) {
 }
 
 
+/**
+ * Get language ID from language ID or data
+ *
+ * @param mixed $language
+ * @return string Language ID
+ */
 function wplng_get_language_id( $language ) {
 
 	// If $language is a language array
@@ -121,6 +154,13 @@ function wplng_get_language_id( $language ) {
 }
 
 
+/**
+ * Get language name translated from language ID or data
+ *
+ * @param mixed $language Language ID or data
+ * @param string $language_target Language ID
+ * @return string Language name translated
+ */
 function wplng_get_language_name_translated( $language, $language_target = '' ) {
 
 	// Get target language ID
@@ -147,6 +187,11 @@ function wplng_get_language_name_translated( $language, $language_target = '' ) 
 }
 
 
+/**
+ * Return a JSON with languages data simplified
+ *
+ * @return array Languages data simplified
+ */
 function wplng_get_languages_target_simplified() {
 
 	$json = get_option( 'wplng_target_languages' );
@@ -175,6 +220,11 @@ function wplng_get_languages_target_simplified() {
 }
 
 
+/**
+ * Get target languages data 
+ *
+ * @return array
+ */
 function wplng_get_languages_target() {
 
 	$languages_target       = wplng_get_languages_target_simplified();
@@ -198,6 +248,11 @@ function wplng_get_languages_target() {
 }
 
 
+/**
+ * Get target languages IDs
+ *
+ * @return array
+ */
 function wplng_get_languages_target_ids() {
 
 	$languages_target     = wplng_get_languages_target();
@@ -211,6 +266,11 @@ function wplng_get_languages_target_ids() {
 }
 
 
+/**
+ * Get current language ID
+ *
+ * @return string
+ */
 function wplng_get_language_current_id() {
 
 	global $wplng_request_uri;
@@ -232,7 +292,13 @@ function wplng_get_language_current_id() {
 }
 
 
-function wplng_get_language_by_ids( $language_ids ) {
+/**
+ * Get languages data from languages IDs list
+ *
+ * @param array $language_ids
+ * @return array
+ */
+function wplng_get_languages_by_ids( $language_ids ) {
 
 	$all_languages = wplng_get_languages_all();
 	$languages     = array();
@@ -250,6 +316,12 @@ function wplng_get_language_by_ids( $language_ids ) {
 }
 
 
+/**
+ * Get language data from ID
+ *
+ * @param string $language_id
+ * @return array
+ */
 function wplng_get_language_by_id( $language_id ) {
 
 	$all_languages = wplng_get_languages_all();
@@ -260,10 +332,17 @@ function wplng_get_language_by_id( $language_id ) {
 		}
 	}
 
-	return false;
+	// Return a default value if $language_id not exist
+	return wplng_get_language_by_id('en');
 }
 
 
+/**
+ * Check if a language ID is valid
+ *
+ * @param string $language_id
+ * @return bool
+ */
 function wplng_is_valid_language_id( $language_id ) {
 
 	// If $language_id format is not valid, return default data
@@ -283,6 +362,11 @@ function wplng_is_valid_language_id( $language_id ) {
 }
 
 
+/**
+ * Get data of all languages
+ *
+ * @return array
+ */
 function wplng_get_languages_all() {
 
 	$languages       = wplng_data_languages();
@@ -343,11 +427,21 @@ function wplng_get_languages_all() {
 }
 
 
+/**
+ * Get data of all languages in JSON format
+ *
+ * @return string JSON
+ */
 function wplng_get_languages_all_json() {
 	return json_encode( wplng_get_languages_all() );
 }
 
 
+/**
+ * Get data of all languages allowed
+ *
+ * @return array
+ */
 function wplng_get_languages_allow() {
 	$languages_alow = wplng_get_api_languages_target();
 	$languages      = array();

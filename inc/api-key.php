@@ -6,6 +6,12 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 
+/**
+ * Validate a wpLingua API key
+ *
+ * @param string $api_key
+ * @return bool
+ */
 function wplng_is_valid_api_key_format( $api_key ) {
 
 	if (
@@ -20,6 +26,11 @@ function wplng_is_valid_api_key_format( $api_key ) {
 }
 
 
+/**
+ * Get the wpLingua registered API key
+ *
+ * @return string
+ */
 function wplng_get_api_key() {
 
 	$api_key = trim( get_option( 'wplng_api_key' ) );
@@ -32,6 +43,14 @@ function wplng_get_api_key() {
 }
 
 
+/**
+ * Get wpLingua API key data
+ * - Website language (id or 'all')
+ * - Target language(s) (array)
+ * - Enaled features
+ *
+ * @return array
+ */
 function wplng_get_api_data() {
 
 	if ( empty( wplng_get_api_key() ) ) {
@@ -60,6 +79,11 @@ function wplng_get_api_data() {
 }
 
 
+/**
+ * Get website language from wpLingua API data
+ *
+ * @return string Language ID, 'all' or ''
+ */
 function wplng_get_api_language_website() {
 
 	$data = wplng_get_api_data();
@@ -74,10 +98,15 @@ function wplng_get_api_language_website() {
 		return $data['language_original'];
 	}
 
-	return false;
+	return '';
 }
 
 
+/**
+ * Get target languages from wpLingua API data
+ *
+ * @return strinf Language ID, 'all' or ''
+ */
 function wplng_get_api_languages_target() {
 
 	$data = wplng_get_api_data();
@@ -95,10 +124,16 @@ function wplng_get_api_languages_target() {
 		return $data['languages_target'];
 	}
 
-	return false;
+	return '';
 }
 
 
+/**
+ * Get enabled features from wpLingua API data
+ * ('search', 'mail', 'woocommerce')
+ *
+ * @return array
+ */
 function wplng_get_api_feature() {
 
 	$data     = wplng_get_api_data();
@@ -117,10 +152,24 @@ function wplng_get_api_feature() {
 }
 
 
+/**
+ * Return true if the feature is enable in wpLingua API key data
+ *
+ * @param string $feature_name
+ * @return bool
+ */
 function wplng_api_feature_is_allow( $feature_name ) {
 	return in_array( $feature_name, wplng_get_api_feature() );
 }
 
+
+/**
+ * Clear wpLingua API key data if wpLingua key is changed
+ *
+ * @param string $old_value JSON
+ * @param string $new_value JSON
+ * @return void
+ */
 function wplng_on_update_option_wplng_api_key( $old_value, $new_value ) {
 	delete_transient( 'wplng_api_key_data' );
 }

@@ -6,6 +6,13 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 
+/**
+ * Get data from wpLingua API : API informations
+ * - Last plugin version
+ * - Global message
+ *
+ * @return array
+ */
 function wplng_api_call_api_informations() {
 
 	$args = array(
