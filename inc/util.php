@@ -8,15 +8,17 @@ if ( ! defined( 'WPINC' ) ) {
 
 function wplng_str_is_url( $str ) {
 
-	if ( parse_url( $str, PHP_URL_SCHEME ) != '' ) {
+	$is_url = false;
+
+	if ( '' !== parse_url( $str, PHP_URL_SCHEME ) ) {
 		// URL has http/https/...
-		return ! ( filter_var( $str, FILTER_VALIDATE_URL ) === false );
+		$is_url = ! ( filter_var( $str, FILTER_VALIDATE_URL ) === false );
 	} else {
 		// PHP filter_var does not support relative urls, so we simulate a full URL
-		// Feel free to replace wplingua.com with any other URL, it won't matter!
-		return ! ( filter_var( 'https://wplingua.com/' . ltrim( $str, '/' ), FILTER_VALIDATE_URL ) === false );
+		$is_url = ! ( filter_var( 'https://website.com/' . ltrim( $str, '/' ), FILTER_VALIDATE_URL ) === false );
 	}
 
+	return $is_url;
 }
 
 
@@ -38,6 +40,7 @@ function wplng_text_is_translatable( $text ) {
 	return ! empty( $letters );
 }
 
+
 function wplng_text_esc( $text ) {
 
 	$text = trim( $text );
@@ -49,15 +52,8 @@ function wplng_text_esc( $text ) {
 
 
 function wplng_str_is_html( $str ) {
-	if ( $str != strip_tags( $str ) ) {
-		// is HTML
-		return true;
-	}
-
-	// not HTML
-	return false;
+	return $str !== strip_tags( $str );
 }
-
 
 
 function wplng_str_is_json( $str ) {

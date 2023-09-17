@@ -289,7 +289,7 @@ function wplng_translate_html(
 		strtolower( substr( $locale, 0, 2 ) ),  // Ex: fr
 	);
 
-	foreach ( $attr_lang_id_to_replace as $key => $attr ) {
+	foreach ( $attr_lang_id_to_replace as $attr ) {
 		foreach ( $dom->find( $attr['selector'] ) as $element ) {
 
 			if ( empty( $element->attr[ $attr['attr'] ] ) ) {
@@ -312,7 +312,7 @@ function wplng_translate_html(
 
 	$attr_url_to_translate = wplng_data_attr_url_to_translate();
 
-	foreach ( $attr_url_to_translate as $key => $attr ) {
+	foreach ( $attr_url_to_translate as $attr ) {
 		foreach ( $dom->find( $attr['selector'] ) as $element ) {
 
 			if ( empty( $element->attr[ $attr['attr'] ] ) ) {
@@ -342,7 +342,10 @@ function wplng_translate_html(
 	 */
 
 	foreach ( $dom->find( 'script[type="application/ld+json"]' ) as $element ) {
-		$element->innertext = wplng_translate_json( $element->innertext, $translations );
+		$element->innertext = wplng_translate_json(
+			$element->innertext,
+			$translations
+		);
 	}
 
 	/**
@@ -350,7 +353,10 @@ function wplng_translate_html(
 	 */
 
 	foreach ( $dom->find( 'script' ) as $element ) {
-		$element->innertext = wplng_translate_js( $element->innertext, $translations );
+		$element->innertext = wplng_translate_js(
+			$element->innertext,
+			$translations
+		);
 	}
 
 	/**
@@ -377,7 +383,7 @@ function wplng_translate_html(
 
 	$attr_text_to_translate = wplng_data_attr_text_to_translate();
 
-	foreach ( $attr_text_to_translate as $key => $attr ) {
+	foreach ( $attr_text_to_translate as $attr ) {
 		foreach ( $dom->find( $attr['selector'] ) as $element ) {
 
 			if ( empty( $element->attr[ $attr['attr'] ] ) ) {

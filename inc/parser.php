@@ -90,8 +90,7 @@ function wplng_parse_json( $json, $parents = array() ) {
 
 	$texts = wplng_parse_json_array( $json_decoded, $parents );
 
-	// Remove duplicate
-	$texts = array_unique( $texts );
+	$texts = array_unique( $texts ); // Remove duplicate
 
 	return $texts;
 }
@@ -185,7 +184,7 @@ function wplng_parse_html( $html ) {
 
 	$attr_to_translate = wplng_data_attr_text_to_translate();
 
-	foreach ( $attr_to_translate as $key => $attr ) {
+	foreach ( $attr_to_translate as $attr ) {
 		foreach ( $dom->find( $attr['selector'] ) as $element ) {
 
 			if ( empty( $element->attr[ $attr['attr'] ] ) ) {
@@ -202,9 +201,7 @@ function wplng_parse_html( $html ) {
 		}
 	}
 
-	// Remove duplicate
-	$texts = array_unique( $texts );
+	$texts = array_unique( $texts ); // Remove duplicate
 
-	// return var_export( $texts, true );
 	return $texts;
 }

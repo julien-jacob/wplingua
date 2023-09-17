@@ -182,7 +182,6 @@ function wplng_ob_callback_editor( $html ) {
 	}
 
 	$dom->save();
-
 	$html = (string) str_get_html( $dom );
 
 	/**

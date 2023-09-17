@@ -72,7 +72,7 @@ function wplng_html_set_exclude_tag( $html, &$excluded_elements ) {
 		return $html;
 	}
 
-	foreach ( $selector_exclude as $key => $selector ) {
+	foreach ( $selector_exclude as $selector ) {
 		foreach ( $dom->find( $selector ) as $element ) {
 			$excluded_elements[] = $element->outertext;
 			$attr                = count( $excluded_elements ) - 1;
@@ -95,8 +95,9 @@ function wplng_html_replace_exclude_tag( $html, $excluded_elements ) {
 	}
 
 	foreach ( $dom->find( '[wplng-tag-exclude]' ) as $element ) {
-
+		
 		if ( isset( $element->attr['wplng-tag-exclude'] ) ) {
+
 			$exclude_index = (int) $element->attr['wplng-tag-exclude'];
 
 			if ( isset( $excluded_elements[ $exclude_index ] ) ) {

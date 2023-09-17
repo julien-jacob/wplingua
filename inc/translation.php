@@ -8,24 +8,24 @@ if ( ! defined( 'WPINC' ) ) {
 
 function wplng_get_saved_translation_from_original( $original ) {
 
-	$returned  = false;
-	$args      = array(
+	$translation = false;
+	$args        = array(
 		'post_type'    => 'wplng_translation',
 		'meta_key'     => 'wplng_translation_original',
 		'meta_value'   => $original,
 		'meta_compare' => '=',
 	);
-	$the_query = new WP_Query( $args );
+	$the_query   = new WP_Query( $args );
 
 	// The Loop
 	if ( $the_query->have_posts() ) {
 		$the_query->the_post();
-		$returned = get_post();
+		$translation = get_post();
 	}
 
 	wp_reset_postdata();
 
-	return $returned;
+	return $translation;
 }
 
 
@@ -59,25 +59,20 @@ function wplng_get_translations_saved( $target_language_id ) {
 			true
 		);
 
-		foreach ( $translations_meta as $key => $translation_meta ) {
-
+		foreach ( $translations_meta as $translation_meta ) {
 			if ( ! empty( $translation_meta['language_id'] )
 				&& $translation_meta['language_id'] === $target_language_id
 				&& ! empty( $translation_meta['translation'] )
 				&& $translation_meta['translation'] !== '[WPLNG_EMPTY]'
 			) {
-
 				$translation['translation'] = $translation_meta['translation'];
 				break;
-
 			}
 		}
 
-		if ( empty( $translation['translation'] ) ) {
-			continue;
-		}
-
-		if ( empty( $meta['wplng_translation_original'][0] ) ) {
+		if ( empty( $translation['translation'] )
+			|| empty( $meta['wplng_translation_original'][0] )
+		) {
 			continue;
 		}
 

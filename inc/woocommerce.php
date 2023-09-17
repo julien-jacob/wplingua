@@ -31,7 +31,7 @@ function wplng_exclude_woocommerce_url( $url_exclude ) {
 	$url_woocommerce_account = wp_make_link_relative(
 		wc_get_page_permalink( 'myaccount' )
 	);
-	
+
 	$url_woocommerce_account .= '(.*)';
 
 	$url_woocommerce[] = $url_woocommerce_account;
