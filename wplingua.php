@@ -2,7 +2,7 @@
 /**
  * Plugin Name:  wpLingua
  * Plugin URI:   https://wplingua.com/download/
- * Description:  Make your website multilingual and translated
+ * Description:  WordPress plugin to translate and make your websites multilingual
  * Author:       wpLingua Team
  * Author URI:   https://wplingua.com/
  * Text Domain:  wplingua
