@@ -12,16 +12,18 @@ if ( ! defined( 'WPINC' ) ) {
  * @param string $original
  * @return array Translation data
  */
-function wplng_get_saved_translation_from_original( $original ) {
+function wplng_get_translation_saved_from_original( $original ) {
 
 	$translation = false;
-	$args        = array(
+	$original    = wplng_text_esc( $original );
+
+	$args = array(
 		'post_type'    => 'wplng_translation',
 		'meta_key'     => 'wplng_translation_original',
 		'meta_value'   => $original,
 		'meta_compare' => '=',
 	);
-	$the_query   = new WP_Query( $args );
+	$the_query = new WP_Query( $args );
 
 	// The Loop
 	if ( $the_query->have_posts() ) {
@@ -109,7 +111,7 @@ function wplng_get_translations_saved( $target_language_id ) {
  */
 function wplng_save_translation_new( $language_id, $original, $translation ) {
 
-	if ( false !== wplng_get_saved_translation_from_original( $original ) ) {
+	if ( false !== wplng_get_translation_saved_from_original( $original ) ) {
 		return false;
 	}
 
@@ -189,7 +191,7 @@ function wplng_save_translation_new( $language_id, $original, $translation ) {
 /**
  * Update a translation
  *
- * @param object $post 
+ * @param object $post
  * @param string $language_id
  * @param array $translation
  * @return int Post ID
@@ -335,7 +337,7 @@ function wplng_save_translations( $translations, $language_target_id ) {
  */
 function wplng_save_translation( $target_language_id, $original, $translation ) {
 
-	$saved_translation = wplng_get_saved_translation_from_original( $original );
+	$saved_translation = wplng_get_translation_saved_from_original( $original );
 
 	if ( empty( $saved_translation ) ) {
 		// Create new translation post
