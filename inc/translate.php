@@ -95,15 +95,7 @@ function wplng_translate_json_array( $json_decoded, $translations, $parents = ar
 
 		} elseif ( is_string( $value ) ) {
 
-			$locale  = get_locale();                    // Ex: fr_FR
-			$locales = array(
-				$locale,                                // Ex: fr_FR
-				str_replace( '_', '-', $locale ),       // Ex: fr-FR
-				substr( $locale, 0, 2 ),                // Ex: FR
-				strtolower( substr( $locale, 0, 2 ) ),  // Ex: fr
-			);
-
-			if ( in_array( $value, $locales ) ) {
+			if ( wplng_str_is_locale_id( $value ) ) {
 
 				$array_translated[ $key ] = wplng_get_language_current_id();
 
@@ -130,8 +122,8 @@ function wplng_translate_json_array( $json_decoded, $translations, $parents = ar
 
 			} else {
 
-				if ( wplng_text_is_translatable( $value )
-					|| str_contains( $value, '_' )
+				if ( str_contains( $value, '_' )
+					|| ! wplng_text_is_translatable( $value )
 				) {
 					continue;
 				}
@@ -302,13 +294,13 @@ function wplng_translate_html(
 	}
 
 	/**
-	 * Set dir attr on <html> (ltr or rtl)
+	 * Set dir attr on <body> (ltr or rtl)
 	 */
 
 	$language_current = wplng_get_language_by_id( $language_target_id );
 
 	if ( ! empty( $language_current['dir'] ) ) {
-		foreach ( $dom->find( 'html' ) as $element ) {
+		foreach ( $dom->find( 'body' ) as $element ) {
 			$element->{'dir'} = esc_attr( $language_current['dir'] );
 		}
 	}
@@ -317,16 +309,8 @@ function wplng_translate_html(
 	 * Replace languages IDs in attributes
 	 */
 
+	// Replace languages IDs in attributes
 	$attr_lang_id_to_replace = wplng_data_attr_lang_id_to_replace();
-
-	$locale  = get_locale();                    // Ex: fr_FR
-	$locales = array(
-		$locale,                                // Ex: fr_FR
-		str_replace( '_', '-', $locale ),       // Ex: fr-FR
-		substr( $locale, 0, 2 ),                // Ex: FR
-		strtolower( substr( $locale, 0, 2 ) ),  // Ex: fr
-	);
-
 	foreach ( $attr_lang_id_to_replace as $attr ) {
 		foreach ( $dom->find( $attr['selector'] ) as $element ) {
 
@@ -336,12 +320,41 @@ function wplng_translate_html(
 
 			$lang_id = $element->attr[ $attr['attr'] ];
 
-			if ( ! in_array( $lang_id, $locales ) ) {
+			if ( ! wplng_str_is_locale_id( $lang_id ) ) {
 				continue;
 			}
 
 			$element->attr[ $attr['attr'] ] = esc_attr( $language_target_id );
 		}
+	}
+
+	// Replace languages IDs in <body> class
+	foreach ( $dom->find( 'body[class]' ) as $element ) {
+
+		$class_array = explode( ' ', $element->class );
+
+		foreach ( $class_array as $key => $class ) {
+			if ( wplng_str_is_locale_id( $class ) ) {
+				$class_array[ $key ] = esc_attr( $language_target_id );
+			} elseif ( 'ltr' === $class || 'rtl' === $class ) {
+				if ( ! empty( $language_current['dir'] ) ) {
+					$class_array[ $key ] = esc_attr( $language_current['dir'] );
+				} else {
+					$class_array[ $key ] = 'ltr';
+				}
+			}
+		}
+
+		$class_array[] = 'wplingua-translated';
+		$class_array   = array_unique( $class_array ); // Remove duplicate
+		$class_str     = '';
+
+		foreach ( $class_array as $key => $class ) {
+			$class_str .= $class . ' ';
+		}
+
+		$class_str      = trim( $class_str );
+		$element->class = $class_str;
 	}
 
 	/**

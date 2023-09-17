@@ -57,8 +57,8 @@ function wplng_parse_json_array( $json_decoded, $parents = array() ) {
 
 			} else {
 
-				if ( wplng_text_is_translatable( $value )
-					|| str_contains( $value, '_' )
+				if ( str_contains( $value, '_' )
+					|| ! wplng_text_is_translatable( $value )
 				) {
 					continue;
 				}

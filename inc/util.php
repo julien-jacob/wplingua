@@ -90,3 +90,26 @@ function wplng_str_is_html( $str ) {
 function wplng_str_is_json( $str ) {
 	return ( json_decode( $str ) == null ) ? false : true;
 }
+
+
+/**
+ * Return true if $str is a local ID
+ * Ex: fr_FR, fr, FR, ...
+ *
+ * @param string $str
+ * @return bool
+ */
+function wplng_str_is_locale_id( $str ) {
+
+	$locale  = get_locale();                            // Ex: fr_FR
+	$locales = array(
+		$locale,                                        // Ex: fr_FR
+		strtolower( $locale ),                          // Ex: fr_fr
+		str_replace( '_', '-', $locale ),               // Ex: fr-FR
+		strtolower( str_replace( '_', '-', $locale ) ), // Ex: fr-fr
+		substr( $locale, 0, 2 ),                        // Ex: FR
+		strtolower( substr( $locale, 0, 2 ) ),          // Ex: fr
+	);
+
+	return in_array( $str, $locales );
+}
