@@ -206,9 +206,9 @@ function wplng_get_languages_target_ids() {
 	foreach ( $languages_target as $language_target ) {
 		$languages_target_ids[] = $language_target['id'];
 	}
+
 	return $languages_target_ids;
 }
-
 
 
 function wplng_get_language_current_id() {
@@ -222,8 +222,7 @@ function wplng_get_language_current_id() {
 	}
 
 	foreach ( $languages_target as $language ) {
-		// TODO : Change str_starts_with() for PHP compat
-		if ( str_starts_with( $current_path, '/' . $language . '/' ) ) {
+		if ( substr( $current_path, 1, 2 ) === $language ) {
 			return $language;
 			break;
 		}
