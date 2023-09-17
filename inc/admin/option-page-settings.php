@@ -299,12 +299,6 @@ function wplng_settings_part_features() {
 
 	?>
 	<p><strong><?php _e( 'Translation features:', 'wplingua' ); ?></strong></p>
-	
-	<fieldset>
-		<label for="wplng_translate_mail">
-			<input type="checkbox" id="wplng_translate_mail" name="wplng_translate_mail" value="1" <?php checked( 1, get_option( 'wplng_translate_mail' ) && in_array( 'mail', $api_features ), true ); ?> <?php disabled( false, in_array( 'mail', $api_features ), true ); ?>/> <?php _e( 'Premium / Beta : Translate mail sending from translated pages', 'wplingua' ); ?>
-		</label>
-	</fieldset>
 
 	<fieldset>
 		<label for="wplng_translate_search">

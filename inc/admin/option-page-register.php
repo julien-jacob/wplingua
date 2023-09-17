@@ -220,10 +220,10 @@ function wplng_register_part_premium() {
 	<p><?php _e( 'To translate your site into more languages and access premium features, visit wpLingua plans.', 'wplingua' ); ?></p>
 	<ul style="list-style: inside; padding: 0 0 0 15px;">
 		<li><?php _e( 'Multilingual Woocommerce store', 'wplingua' ); ?></li>
-		<li><?php _e( 'Automatic e-mail translation', 'wplingua' ); ?></li>
 		<li><?php _e( 'Allow search from all languages', 'wplingua' ); ?></li>
 		<li><?php _e( 'Get more target languages', 'wplingua' ); ?></li>
 	</ul>
+	<br>
 	<a class="button button-primary" href="#"><?php _e( 'Visit wpLingua plans', 'wplingua' ); ?></a>
 	<?php
 }

@@ -43,7 +43,6 @@ require_once WPLNG_PLUGIN_PATH . '/inc/api-key.php';
 require_once WPLNG_PLUGIN_PATH . '/inc/assets.php';
 require_once WPLNG_PLUGIN_PATH . '/inc/html-updater.php';
 require_once WPLNG_PLUGIN_PATH . '/inc/languages.php';
-require_once WPLNG_PLUGIN_PATH . '/inc/mail.php';
 require_once WPLNG_PLUGIN_PATH . '/inc/parser.php';
 require_once WPLNG_PLUGIN_PATH . '/inc/search.php';
 require_once WPLNG_PLUGIN_PATH . '/inc/shortcode.php';

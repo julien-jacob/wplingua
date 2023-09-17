@@ -145,13 +145,6 @@ function wplng_start() {
 		 * Features
 		 */
 
-		// Translate email
-		if ( ! empty( get_option( 'wplng_translate_mail' ) )
-			&& wplng_api_feature_is_allow( 'mail' )
-		) {
-			add_filter( 'wp_mail', 'wplng_translate_wp_mail' );
-		}
-
 		// Search from translated languages
 		if ( ! empty( get_option( 'wplng_translate_search' ) )
 			&& wplng_api_feature_is_allow( 'search' )
