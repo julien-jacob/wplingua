@@ -13,20 +13,30 @@ if ( ! defined( 'WPINC' ) ) {
  */
 function wplng_link_alternate_hreflang() {
 
-	$html = '';
+	if ( ! wplng_url_is_translatable() ) {
+		return;
+	}
+
+	$html             = PHP_EOL . PHP_EOL;
+	$language_website = wplng_get_language_website();
+	$languages_target = wplng_get_languages_target();
+
+	if ( empty( $language_website ) || empty( $languages_target ) ) {
+		return;
+	}
+
+	$html .= '<!-- This site is make multilingual with the wpLingua plugin -->';
+
+	// Create meta generator
+	$html .= PHP_EOL . '<meta name="generator" content="wpLingua ' . esc_attr( WPLNG_PLUGIN_VERSION ) . '" />';
 
 	// Create alternate link for website language
-	$language_website = wplng_get_language_website();
-
-	$html .= PHP_EOL;
-	$html .= PHP_EOL . '<!-- This site is make multilingual with the wpLingua plugin -->';
-	$html .= PHP_EOL . '<link rel="alternate" hreflang="' . esc_attr( $language_website['id'] ) . '" href="' . esc_url( wplng_get_url_original() ) . '">';
+	$html .= PHP_EOL . '<link rel="alternate" hreflang="' . esc_attr( $language_website['id'] ) . '" href="' . esc_url( wplng_get_url_original() ) . '" />';
 
 	// Create alternate link for each target languages
-	$languages_target = wplng_get_languages_target();
 	foreach ( $languages_target as $language_target ) {
 		$url   = wplng_get_url_current_for_language( $language_target['id'] );
-		$html .= PHP_EOL . '<link rel="alternate" hreflang="' . esc_attr( $language_target['id'] ) . '" href="' . esc_url( $url ) . '">';
+		$html .= PHP_EOL . '<link rel="alternate" hreflang="' . esc_attr( $language_target['id'] ) . '" href="' . esc_url( $url ) . '" />';
 	}
 
 	$html .= PHP_EOL . '<!-- / wpLingua plugin. -->' . PHP_EOL . PHP_EOL;
@@ -119,7 +129,7 @@ function wplng_html_replace_exclude_tag( $html, $excluded_elements ) {
 	}
 
 	foreach ( $dom->find( '[wplng-tag-exclude]' ) as $element ) {
-		
+
 		if ( isset( $element->attr['wplng-tag-exclude'] ) ) {
 
 			$exclude_index = (int) $element->attr['wplng-tag-exclude'];
@@ -137,7 +147,7 @@ function wplng_html_replace_exclude_tag( $html, $excluded_elements ) {
 
 
 /**
- * wpLingua init function 
+ * wpLingua init function
  *
  * @return void
  */
