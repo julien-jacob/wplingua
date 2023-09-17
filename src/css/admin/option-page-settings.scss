@@ -15,7 +15,6 @@
     left: 7px;
 }
 
-
 #wplng-website-language-box {
     border: 1px solid #8c8f94;
     padding: 5px 10px 8px 6px;
@@ -44,21 +43,7 @@
     }
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+#wplng-website-flag-container,
 .wplng-subflag-target-custom {
     margin-top: 15px;
 }
@@ -68,7 +53,6 @@
 }
 
 #wplng-target-languages-list {
-
 
     .wplng-target-language {
         border: 1px solid #8c8f94;
@@ -132,7 +116,6 @@
 #wplng-api-key-fake,
 #wplng_api_key {
     width: calc(100% - 55px);
-    // width: 26em;
 }
 
 @media screen and (max-width: 782px) {
@@ -166,6 +149,5 @@
             }
         }
     }
-
 
 }
