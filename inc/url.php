@@ -37,7 +37,7 @@ function wplng_url_translate( $url, $language_target_id = '' ) {
 	if ( preg_match( '#^(http:\/\/|https:\/\/)?' . $domain . '(.*)$#', $url ) ) {
 
 		// Check if URL is already translated
-		foreach ( $languages_target as $key => $language_target ) {
+		foreach ( $languages_target as $language_target ) {
 			if ( str_contains( $url, '/' . $language_target['id'] . '/' ) ) {
 				return $url;
 			}
@@ -114,7 +114,7 @@ function wplng_url_is_translatable( $url = '' ) {
 	if ( $is_translatable ) {
 		$url_exclude = wplng_get_url_exclude();
 
-		foreach ( $url_exclude as $key => $url_exclude_element ) {
+		foreach ( $url_exclude as $url_exclude_element ) {
 			if ( preg_match( '#' . $url_exclude_element . '#', $url ) ) {
 				$is_translatable = false;
 				break;

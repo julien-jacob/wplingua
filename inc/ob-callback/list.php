@@ -149,7 +149,7 @@ function wplng_get_editor_modal_html( $translations ) {
 	// $html .= '<div id="wplng-modal-header"></div>';
 	$html .= '<div id="wplng-modal-items">';
 
-	foreach ( $translations as $key => $translation ) {
+	foreach ( $translations as $translation ) {
 
 		$edit_link = '';
 		if ( empty( $translation['post_id'] )

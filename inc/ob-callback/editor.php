@@ -156,7 +156,7 @@ function wplng_ob_callback_editor( $html ) {
 			continue;
 		}
 
-		foreach ( $translations as $key => $translation ) {
+		foreach ( $translations as $translation ) {
 
 			if ( ! isset( $translation['post_id'] )
 				|| ! isset( $translation['translation'] )

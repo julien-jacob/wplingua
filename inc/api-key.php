@@ -86,7 +86,7 @@ function wplng_get_api_languages_target() {
 		if ( 'all' === $data['languages_target'] ) {
 			return 'all';
 		} elseif ( is_array( $data['languages_target'] ) ) {
-			foreach ( $data['languages_target'] as $key => $language_id ) {
+			foreach ( $data['languages_target'] as $language_id ) {
 				if ( ! wplng_is_valid_language_id( $language_id ) ) {
 					return false;
 				}

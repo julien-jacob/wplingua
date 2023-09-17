@@ -19,7 +19,7 @@ function wplng_link_alternate_hreflang() {
 
 	// Create alternate link for each target languages
 	$languages_target = wplng_get_languages_target();
-	foreach ( $languages_target as $key => $language_target ) {
+	foreach ( $languages_target as $language_target ) {
 		$url   = wplng_get_url_current_for_language( $language_target['id'] );
 		$html .= PHP_EOL . '<link rel="alternate" hreflang="' . esc_attr( $language_target['id'] ) . '" href="' . esc_url( $url ) . '">';
 	}

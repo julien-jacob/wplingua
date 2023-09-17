@@ -81,7 +81,7 @@ function wplng_admin_bar_menu() {
 	$languages_target = wplng_get_languages_target();
 
 	if ( ! empty( $languages_target ) ) {
-		foreach ( $languages_target as $key => $language ) {
+		foreach ( $languages_target as $language ) {
 			if ( empty( $language['name'] )
 				|| empty( $language['id'] )
 			) {

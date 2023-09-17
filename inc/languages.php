@@ -159,8 +159,8 @@ function wplng_get_languages_target_simplified() {
 	$all_languages    = wplng_get_languages_allow();
 	$ordered          = array();
 
-	foreach ( $all_languages as $key => $language ) {
-		foreach ( $languages_target as $key => $language_target ) {
+	foreach ( $all_languages as $language ) {
+		foreach ( $languages_target as $language_target ) {
 			if (
 				! empty( $language['id'] )
 				&& ! empty( $language_target['id'] )
@@ -238,7 +238,7 @@ function wplng_get_language_by_ids( $language_ids ) {
 	$languages     = array();
 
 	foreach ( $language_ids as $language_id ) {
-		foreach ( $all_languages as $key => $language ) {
+		foreach ( $all_languages as $language ) {
 			if ( ! empty( $language['id'] ) && $language['id'] === $language_id ) {
 				$languages[] = $language;
 				break;
@@ -358,7 +358,7 @@ function wplng_get_languages_allow() {
 		return array();
 	}
 
-	foreach ( $languages_alow as $key => $language_id_alow ) {
+	foreach ( $languages_alow as $language_id_alow ) {
 		$languages[] = wplng_get_language_by_id( $language_id_alow );
 	}
 

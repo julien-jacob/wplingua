@@ -33,7 +33,7 @@ function wplng_get_translated_text_from_translations( $text, $translations ) {
 	$translated = $text;
 
 	if ( wplng_text_is_translatable( $text ) ) {
-		foreach ( $translations as $key => $translation ) {
+		foreach ( $translations as $translation ) {
 
 			if ( ! isset( $translation['source'] )
 				|| ! isset( $translation['source'] )
