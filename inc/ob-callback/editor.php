@@ -143,14 +143,13 @@ function wplng_ob_callback_editor( $html ) {
 	/**
 	 * Add edit links on text
 	 */
-	
+
 	$edit_link_excluded = wplng_data_excluded_editor_link();
 	$node_text_excluded = wplng_data_excluded_node_text();
 
 	foreach ( $dom->find( 'body text' ) as $element ) {
 
-		if ( 
-			in_array( $element->parent->tag, $edit_link_excluded ) 
+		if ( in_array( $element->parent->tag, $edit_link_excluded )
 			|| in_array( $element->parent->tag, $node_text_excluded )
 		) {
 			continue;
@@ -183,7 +182,7 @@ function wplng_ob_callback_editor( $html ) {
 				continue;
 			}
 
-			$element->innertext = '<a href="' . esc_url( $edit_link ) . '" class="wplng-edit-link" target="_blank">' . esc_html( $text ) . ' </a>';
+			$element->innertext = '<a href="' . esc_url( $edit_link ) . '" class="wplng-edit-link" target="_blank" title="' . __( 'Edit this translation', 'wplingua' ) . '">' . esc_html( $text ) . ' </a>';
 		}
 	}
 
