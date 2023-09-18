@@ -108,6 +108,10 @@ function wplng_data_attr_text_to_translate() {
 			),
 			array(
 				'attr'     => 'content',
+				'selector' => 'meta[name="twitter:title"]',
+			),
+			array(
+				'attr'     => 'content',
 				'selector' => 'meta[name="twitter:label1"]',
 			),
 			array(
@@ -121,6 +125,10 @@ function wplng_data_attr_text_to_translate() {
 			array(
 				'attr'     => 'content',
 				'selector' => 'meta[name="twitter:data2"]',
+			),
+			array(
+				'attr'     => 'content',
+				'selector' => 'meta[name="dc.title"]',
 			),
 		)
 	);
@@ -147,6 +155,10 @@ function wplng_data_attr_url_to_translate() {
 				'attr'     => 'href',
 				'selector' => 'link[rel="canonical"]',
 			),
+			array(
+				'attr'     => 'content',
+				'selector' => 'meta[name="dc.relation"]',
+			),
 		)
 	);
 }
@@ -163,6 +175,10 @@ function wplng_data_attr_lang_id_to_replace() {
 			array(
 				'attr'     => 'content',
 				'selector' => 'meta[property="og:locale"]',
+			),
+			array(
+				'attr'     => 'content',
+				'selector' => 'meta[name="dc.language"]',
 			),
 		)
 	);
