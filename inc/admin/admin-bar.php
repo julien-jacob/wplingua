@@ -6,6 +6,11 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 
+/**
+ * Add wpLingua menu in Admin Bar for wpLingua
+ *
+ * @return void
+ */
 function wplng_admin_bar_menu() {
 
 	if ( is_admin() ) {
@@ -31,7 +36,7 @@ function wplng_admin_bar_menu() {
 				'href'   => esc_url(
 					add_query_arg(
 						'page',
-						'wplng-exclusions',
+						'wplingua-exclusions',
 						get_admin_url() . 'admin.php'
 					)
 				),
@@ -40,8 +45,7 @@ function wplng_admin_bar_menu() {
 		return;
 	}
 
-	$url = wplng_get_url_current();
-
+	$url          = wplng_get_url_current();
 	$url_original = $url;
 	$url_original = remove_query_arg( 'wplingua-editor', $url_original );
 	$url_original = remove_query_arg( 'wplingua-list', $url_original );
@@ -81,7 +85,9 @@ function wplng_admin_bar_menu() {
 	$languages_target = wplng_get_languages_target();
 
 	if ( ! empty( $languages_target ) ) {
-		foreach ( $languages_target as $key => $language ) {
+
+		foreach ( $languages_target as $language ) {
+
 			if ( empty( $language['name'] )
 				|| empty( $language['id'] )
 			) {
@@ -120,7 +126,7 @@ function wplng_admin_bar_menu() {
 				)
 			);
 
-		}
-	}
+		} // End foreach ( $languages_target as $language )
+	} // End if ( ! empty( $languages_target ) )
 
 }

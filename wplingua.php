@@ -1,24 +1,55 @@
 <?php
-/*
-Plugin Name: wpLingua
-description: Make your website multilingual and translated
-Version: 0.0.6
-*/
+/**
+ * Plugin Name:  wpLingua
+ * Plugin URI:   https://wplingua.com/
+ * Description:  WordPress plugin to translate and make your websites multilingual
+ * Author:       wpLingua Team
+ * Author URI:   https://wplingua.com/
+ * Text Domain:  wplingua
+ * Domain Path:  /languages/
+ * Version:      0.0.7
+ * Requires PHP: 7.0
+ * Requires at least: 5.0
+ */
+
 
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
+
+/**
+ * Define wpLingua constants
+ */
 define( 'WPLNG_API_URL', 'https://api.wplingua.com' );
-define( 'WPLNG_API_VERSION', '0.1' );
-define( 'WPLNG_PLUGIN_VERSION', '0.0.6' );
+define( 'WPLNG_API_VERSION', '0.2' );
+define( 'WPLNG_PLUGIN_VERSION', '0.0.7' );
 define( 'WPLNG_PLUGIN_PATH', dirname( __FILE__ ) );
+define( 'WPLNG_MAX_TRANSLATIONS', 256 );
 
 
+/**
+ * Load plugin text domain
+ */
+load_plugin_textdomain(
+	'wplingua',
+	false,
+	basename( dirname( __FILE__ ) ) . '/languages'
+);
+
+
+/**
+ * Load all needed PHP files
+ */
 require_once WPLNG_PLUGIN_PATH . '/loader.php';
 
 
+/**
+ * Register all wpLingua Hook
+ *
+ * @return void
+ */
 function wplng_start() {
 
 	global $wplng_request_uri;
@@ -31,7 +62,7 @@ function wplng_start() {
 	add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), 'wplng_settings_link' );
 
 	// Print head script (JSON with all languages informations)
-	add_action( 'toplevel_page_wplng-settings', 'wplng_inline_script_languages' );
+	add_action( 'toplevel_page_wplingua-settings', 'wplng_inline_script_languages' );
 
 	if ( empty( wplng_get_api_data() ) ) {
 
@@ -97,14 +128,8 @@ function wplng_start() {
 		// Add languages switcher before </body>
 		add_action( 'wp_footer', 'wplng_switcher_wp_footer' );
 
-		// Change <html lang=""> if translated content
-		add_filter( 'language_attributes', 'wplng_language_attributes' );
-
 		// Set alternate links with hreflang parametters
 		add_action( 'wp_head', 'wplng_link_alternate_hreflang' );
-
-		// Set OG Local
-		add_filter( 'wplng_html_translated', 'wplng_replace_og_local' );
 
 		/**
 		 * OB and REQUEST_URI
@@ -120,13 +145,6 @@ function wplng_start() {
 		 * Features
 		 */
 
-		// Translate email
-		if ( ! empty( get_option( 'wplng_translate_mail' ) )
-			&& wplng_api_feature_is_allow( 'mail' )
-		) {
-			add_filter( 'wp_mail', 'wplng_translate_wp_mail' );
-		}
-
 		// Search from translated languages
 		if ( ! empty( get_option( 'wplng_translate_search' ) )
 			&& wplng_api_feature_is_allow( 'search' )
@@ -138,7 +156,7 @@ function wplng_start() {
 
 		// Woocommerce
 		if ( empty( get_option( 'wplng_translate_woocommerce' ) ) ) {
-			add_filter( 'wplng_url_is_translatable', 'wplng_exclude_woocommerce', 20 );
+			add_filter( 'wplng_url_exclude', 'wplng_exclude_woocommerce_url', 20 );
 		}
 
 		/**

@@ -1,4 +1,5 @@
 #wp-admin-bar-wplingua-menu {
+
     &>.ab-item::before {
         content: "\f326";
         top: 2px;
@@ -16,4 +17,5 @@
         background-image: none !important;
         margin-right: 6px;
     }
+
 }

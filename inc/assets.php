@@ -6,6 +6,11 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 
+/**
+ * Register asset for wpLingua in front (CSS, JS)
+ *
+ * @return void
+ */
 function wplng_register_assets() {
 
 	if ( is_admin() ) {

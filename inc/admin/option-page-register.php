@@ -6,6 +6,11 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 
+/**
+ * Print HTML Option page : wpLingua Register
+ *
+ * @return void
+ */
 function wplng_option_page_register() {
 
 	$api_key          = wplng_get_api_key();
@@ -46,7 +51,7 @@ function wplng_option_page_register() {
 
 		delete_option( 'wplng_request_free_key' );
 		$data_request_key = json_decode( $json_request_key, true );
-		$response         = wplng_api_request_api_key( $data_request_key );
+		$response         = wplng_api_call_request_api_key( $data_request_key );
 
 		if ( ! empty( $response['error'] ) ) {
 			$message = '';
@@ -118,11 +123,17 @@ function wplng_option_page_register() {
 }
 
 
+/**
+ * Print HTML subsection of Option page : wpLingua Register - API Key
+ *
+ * @param string $api_key
+ * @return void
+ */
 function wplng_register_part_api_key( $api_key ) {
 	?>
 	<fieldset>
 		<label for="wplng_api_key"><strong><?php _e( 'Set API key:', 'wplingua' ); ?></strong></label>
-		<p><?php _e( 'If you already have an API key, enter it below. If you\'ve forgotten your site\'s API key, visit ', 'wplingua' ); ?><a href="#"><?php _e( 'the API key retrieval page', 'wplingua' ); ?></a>.</p>
+		<p><?php _e( 'If you already have an API key, enter it below. If you\'ve forgotten your site\'s API key, visit ', 'wplingua' ); ?><a href="https://wplingua.com/recovery/" target="_blank"><?php _e( 'the API key retrieval page', 'wplingua' ); ?></a>.</p>
 		<br>
 		<input type="text" name="wplng_api_key" id="wplng_api_key" value="<?php echo esc_attr( $api_key ); ?>"></input>
 
@@ -139,6 +150,11 @@ function wplng_register_part_api_key( $api_key ) {
 }
 
 
+/**
+ * Print HTML subsection of Option page : wpLingua Register - Register free API Key
+ *
+ * @return void
+ */
 function wplng_register_part_free_api_key() {
 
 	$website_locale = substr( get_locale(), 0, 2 );
@@ -179,7 +195,7 @@ function wplng_register_part_free_api_key() {
 	<fieldset>
 		<input type="checkbox" name="wplng-accept-eula" id="wplng-accept-eula">
 		<label for="wplng-accept-eula">
-			<strong><?php _e( 'I have read and accept the', 'wplingua' ); ?> <a href="#"><?php _e( 'general conditions of use', 'wplingua' ); ?></a> </strong>
+			<strong><?php _e( 'I have read and accept the', 'wplingua' ); ?> <a href="https://wplingua.com/terms/" target="_blank"><?php _e( 'general conditions of use', 'wplingua' ); ?></a> </strong>
 		</label>
 	</fieldset>
 	<fieldset style="display: none;">
@@ -192,16 +208,22 @@ function wplng_register_part_free_api_key() {
 	<?php
 }
 
+
+/**
+ * Print HTML subsection of Option page : wpLingua Register - Premium informations
+ *
+ * @return void
+ */
 function wplng_register_part_premium() {
 	?>
 	<p><strong><?php _e( 'Get more target languages and premium features:', 'wplingua' ); ?></strong></p>		
 	<p><?php _e( 'To translate your site into more languages and access premium features, visit wpLingua plans.', 'wplingua' ); ?></p>
 	<ul style="list-style: inside; padding: 0 0 0 15px;">
 		<li><?php _e( 'Multilingual Woocommerce store', 'wplingua' ); ?></li>
-		<li><?php _e( 'Automatic e-mail translation', 'wplingua' ); ?></li>
 		<li><?php _e( 'Allow search from all languages', 'wplingua' ); ?></li>
 		<li><?php _e( 'Get more target languages', 'wplingua' ); ?></li>
 	</ul>
-	<a class="button button-primary" href="#"><?php _e( 'Visit wpLingua plans', 'wplingua' ); ?></a>
+	<br>
+	<a class="button button-primary" href="https://wplingua.com/" target="_blank"><?php _e( 'Visit wpLingua plans', 'wplingua' ); ?></a>
 	<?php
 }

@@ -5,24 +5,18 @@ if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
-
-function wplng_get_switcher_valid_insert() {
-	return array(
-		'bottom-right'  => __( 'Bottom right', 'wplingua' ),
-		'bottom-center' => __( 'Bottom center', 'wplingua' ),
-		'bottom-left'   => __( 'Bottom left', 'wplingua' ),
-		'none'          => __( 'None', 'wplingua' ),
-	);
-}
-
-
+/**
+ * Get wpLingua switcher option : Insert
+ *
+ * @return string
+ */
 function wplng_get_switcher_insert() {
 
 	$insert   = get_option( 'wplng_insert' );
 	$is_valid = false;
 
 	if ( ! empty( $insert ) ) {
-		$valid_insert = wplng_get_switcher_valid_insert();
+		$valid_insert = wplng_data_switcher_valid_insert();
 		foreach ( $valid_insert as $id => $name ) {
 			if ( $insert === $id ) {
 				$is_valid = true;
@@ -44,18 +38,11 @@ function wplng_get_switcher_insert() {
 }
 
 
-function wplng_get_switcher_valid_theme() {
-	return array(
-		'smooth-light' => __( 'Smooth Light', 'wplingua' ),
-		'smooth-grey'  => __( 'Smooth Grey', 'wplingua' ),
-		'smooth-dark'  => __( 'Smooth Dark', 'wplingua' ),
-		'square-light' => __( 'Square Light', 'wplingua' ),
-		'square-grey'  => __( 'Square Grey', 'wplingua' ),
-		'square-dark'  => __( 'Square Dark', 'wplingua' ),
-	);
-}
-
-
+/**
+ * Get wpLingua switcher option : Theme
+ *
+ * @return string
+ */
 function wplng_get_switcher_theme() {
 
 	$theme    = get_option( 'wplng_theme' );
@@ -63,7 +50,7 @@ function wplng_get_switcher_theme() {
 
 	if ( ! empty( $theme ) ) {
 
-		$valid_theme = wplng_get_switcher_valid_theme();
+		$valid_theme = wplng_data_switcher_valid_theme();
 
 		foreach ( $valid_theme as $id => $name ) {
 			if ( $theme === $id ) {
@@ -74,7 +61,7 @@ function wplng_get_switcher_theme() {
 	}
 
 	if ( ! $is_valid ) {
-		$theme = 'square-light';
+		$theme = 'light-double-square';
 	}
 
 	$theme = apply_filters(
@@ -86,15 +73,11 @@ function wplng_get_switcher_theme() {
 }
 
 
-function wplng_get_switcher_valid_style() {
-	return array(
-		'list'     => __( 'List', 'wplingua' ),
-		'block'    => __( 'Block', 'wplingua' ),
-		'dropdown' => __( 'Dropdown', 'wplingua' ),
-	);
-}
-
-
+/**
+ * Get wpLingua switcher option : Style
+ *
+ * @return string
+ */
 function wplng_get_switcher_style() {
 
 	$style    = get_option( 'wplng_style' );
@@ -102,7 +85,7 @@ function wplng_get_switcher_style() {
 
 	if ( ! empty( $style ) ) {
 
-		$valid_style = wplng_get_switcher_valid_style();
+		$valid_style = wplng_data_switcher_valid_style();
 
 		foreach ( $valid_style as $id => $name ) {
 			if ( $style === $id ) {
@@ -125,15 +108,11 @@ function wplng_get_switcher_style() {
 }
 
 
-function wplng_get_switcher_valid_name_format() {
-	return array(
-		'name' => __( 'Complete name', 'wplingua' ),
-		'id'   => __( 'Language ID', 'wplingua' ),
-		'none' => __( 'No display', 'wplingua' ),
-	);
-}
-
-
+/**
+ * Get wpLingua switcher option : Name format
+ *
+ * @return void
+ */
 function wplng_get_switcher_name_format() {
 
 	$name_format = get_option( 'wplng_name_format' );
@@ -141,7 +120,7 @@ function wplng_get_switcher_name_format() {
 
 	if ( ! empty( $name_format ) ) {
 
-		$valid_name_format = wplng_get_switcher_valid_name_format();
+		$valid_name_format = wplng_data_switcher_valid_name_format();
 
 		foreach ( $valid_name_format as $id => $name ) {
 			if ( $name_format === $id ) {
@@ -170,15 +149,11 @@ function wplng_get_switcher_name_format() {
 }
 
 
-function wplng_get_switcher_valid_flags_style() {
-	return array(
-		'circle'      => __( 'Circle', 'wplingua' ),
-		'rectangular' => __( 'Rectangular', 'wplingua' ),
-		'none'        => __( 'No display', 'wplingua' ),
-	);
-}
-
-
+/**
+ * Get wpLingua switcher option : Flags style
+ *
+ * @return string
+ */
 function wplng_get_switcher_flags_style() {
 
 	$flags_style = get_option( 'wplng_flags_style' );
@@ -186,7 +161,7 @@ function wplng_get_switcher_flags_style() {
 
 	if ( ! empty( $flags_style ) ) {
 
-		$valid_flags_style = wplng_get_switcher_valid_flags_style();
+		$valid_flags_style = wplng_data_switcher_valid_flags_style();
 
 		foreach ( $valid_flags_style as $id => $name ) {
 			if ( $flags_style === $id ) {
@@ -209,22 +184,12 @@ function wplng_get_switcher_flags_style() {
 }
 
 
-function wplng_switcher_wp_footer() {
-
-	if ( ! wplng_url_is_translatable()
-		|| 'none' === wplng_get_switcher_insert()
-	) {
-		return;
-	}
-
-	echo wplng_get_switcher_html(
-		array(
-			'class' => 'insert-auto',
-		)
-	);
-}
-
-
+/**
+ * Get wpLingua switcher option : Class
+ *
+ * @param array $arg
+ * @return string
+ */
 function wplng_get_switcher_class( $arg = array() ) {
 
 	$class = '';
@@ -233,7 +198,7 @@ function wplng_get_switcher_class( $arg = array() ) {
 	 * Define insert class (list, block)
 	 */
 	if ( ! empty( $arg['insert'] )
-		&& in_array( $arg['insert'], wplng_get_switcher_valid_insert() )
+		&& in_array( $arg['insert'], wplng_data_switcher_valid_insert() )
 	) {
 		$class = 'insert-' . $arg['insert'];
 	} else {
@@ -244,7 +209,7 @@ function wplng_get_switcher_class( $arg = array() ) {
 	 * Define style class (list, block)
 	 */
 	if ( ! empty( $arg['style'] )
-		&& in_array( $arg['style'], wplng_get_switcher_valid_style() )
+		&& in_array( $arg['style'], wplng_data_switcher_valid_style() )
 	) {
 		$class .= ' style-' . $arg['style'];
 	} else {
@@ -256,7 +221,7 @@ function wplng_get_switcher_class( $arg = array() ) {
 	 */
 
 	if ( ! empty( $arg['title'] )
-		&& in_array( $arg['title'], wplng_get_switcher_valid_name_format() )
+		&& in_array( $arg['title'], wplng_data_switcher_valid_name_format() )
 	) {
 		$class .= ' title-' . $arg['title'];
 	} else {
@@ -267,7 +232,7 @@ function wplng_get_switcher_class( $arg = array() ) {
 	 * Define theme class (light, dark)
 	 */
 	if ( ! empty( $arg['theme'] )
-		&& in_array( $arg['theme'], wplng_get_switcher_valid_theme() )
+		&& in_array( $arg['theme'], wplng_data_switcher_valid_theme() )
 	) {
 		$class .= ' theme-' . $arg['theme'];
 	} else {
@@ -278,7 +243,7 @@ function wplng_get_switcher_class( $arg = array() ) {
 	 * Define flags theme class (id, name, none)
 	 */
 	if ( ! empty( $arg['flags'] )
-		&& in_array( $arg['flags'], wplng_get_switcher_valid_flags_style() )
+		&& in_array( $arg['flags'], wplng_data_switcher_valid_flags_style() )
 	) {
 		$class .= ' flags-' . $arg['flags'];
 	} else {
@@ -296,7 +261,38 @@ function wplng_get_switcher_class( $arg = array() ) {
 }
 
 
+/**
+ * Print HTML of wpLingua switcher if it's inserted automaticaly
+ *
+ * @return string
+ */
+function wplng_switcher_wp_footer() {
+
+	if ( ! wplng_url_is_translatable()
+		|| 'none' === wplng_get_switcher_insert()
+	) {
+		return;
+	}
+
+	echo wplng_get_switcher_html(
+		array(
+			'class' => 'insert-auto',
+		)
+	);
+}
+
+
+/**
+ * Print HTML of wpLingua switcher
+ *
+ * @param array $arg
+ * @return void
+ */
 function wplng_get_switcher_html( $arg = array() ) {
+
+	if ( ! wplng_url_is_translatable() && ! is_admin() ) {
+		return '';
+	}
 
 	$language_website    = wplng_get_language_website();
 	$language_current_id = wplng_get_language_current_id();

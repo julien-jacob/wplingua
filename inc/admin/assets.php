@@ -6,10 +6,16 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 
+/**
+ * Register wpLingua assets for option page : Settings
+ *
+ * @param string $hook
+ * @return void
+ */
 function wplng_option_page_settings_assets( $hook ) {
 
 	if ( ! is_admin()
-		|| $hook !== 'toplevel_page_wplng-settings'
+		|| $hook !== 'toplevel_page_wplingua-settings'
 		|| empty( wplng_get_api_key() )
 	) {
 		return;
@@ -40,10 +46,16 @@ function wplng_option_page_settings_assets( $hook ) {
 }
 
 
+/**
+ * Register wpLingua assets for option page : Register
+ *
+ * @param string $hook
+ * @return void
+ */
 function wplng_option_page_register_assets( $hook ) {
 
 	if ( ! is_admin()
-		|| $hook !== 'toplevel_page_wplng-settings'
+		|| $hook !== 'toplevel_page_wplingua-settings'
 	) {
 		return;
 	}
@@ -73,10 +85,16 @@ function wplng_option_page_register_assets( $hook ) {
 }
 
 
+/**
+ * Register wpLingua assets for option page : Switcher
+ *
+ * @param string $hook
+ * @return void
+ */
 function wplng_option_page_switcher_assets( $hook ) {
 
 	if ( ! is_admin()
-		|| $hook !== 'wplingua_page_wplng-switcher'
+		|| $hook !== 'wplingua_page_wplingua-switcher'
 	) {
 		return;
 	}
@@ -131,10 +149,16 @@ function wplng_option_page_switcher_assets( $hook ) {
 }
 
 
+/**
+ * Register wpLingua assets for option page : Exclusions
+ *
+ * @param string $hook
+ * @return void
+ */
 function wplng_option_page_exclusions_assets( $hook ) {
 
 	if ( ! is_admin()
-		|| $hook !== 'wplingua_page_wplng-exclusions'
+		|| $hook !== 'wplingua_page_wplingua-exclusions'
 	) {
 		return;
 	}
@@ -165,6 +189,11 @@ function wplng_option_page_exclusions_assets( $hook ) {
 }
 
 
+/**
+ * Register wpLingua assets on translations edit pages
+ *
+ * @return void
+ */
 function wplng_translation_assets() {
 	global $post_type;
 	if ( 'wplng_translation' === $post_type ) {
@@ -196,6 +225,11 @@ function wplng_translation_assets() {
 }
 
 
+/**
+ * Print wpLingua head script (JSON with all languages informations)
+ *
+ * @return void
+ */
 function wplng_inline_script_languages() {
 
 	$languages_json  = array();
@@ -211,6 +245,6 @@ function wplng_inline_script_languages() {
 		$languages_json = wplng_get_languages_all_json();
 	}
 
-	?><script>var wplngAllLanguages = JSON.parse('<?php echo $languages_json; ?>');</script>
+	?><script>var wplngAllLanguages = <?php echo $languages_json; ?>;</script>
 	<?php
 }

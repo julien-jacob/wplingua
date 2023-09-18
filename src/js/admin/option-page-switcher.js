@@ -10,12 +10,18 @@ jQuery(document).ready(function ($) {
 
     function wplngSwitcherUpdateTheme(val) {
         $(".wplng-switcher")
-            .removeClass("theme-smooth-light")
-            .removeClass("theme-smooth-grey")
-            .removeClass("theme-smooth-dark")
-            .removeClass("theme-square-light")
-            .removeClass("theme-square-grey")
-            .removeClass("theme-square-dark")
+            .removeClass("theme-light-double-smooth")
+            .removeClass("theme-grey-double-smooth")
+            .removeClass("theme-dark-double-smooth")
+            .removeClass("theme-light-double-square")
+            .removeClass("theme-grey-double-square")
+            .removeClass("theme-dark-double-square")
+            .removeClass("theme-light-simple-smooth")
+            .removeClass("theme-grey-simple-smooth")
+            .removeClass("theme-dark-simple-smooth")
+            .removeClass("theme-light-simple-square")
+            .removeClass("theme-grey-simple-square")
+            .removeClass("theme-dark-simple-square")
             .addClass("theme-" + val);
     }
 

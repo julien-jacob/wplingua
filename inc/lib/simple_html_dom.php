@@ -45,6 +45,8 @@ define( 'HDOM_INFO_INNER', 5 );
 define( 'HDOM_INFO_OUTER', 6 );
 define( 'HDOM_INFO_ENDSPACE', 7 );
 
+define( 'MAX_FILE_SIZE', 6000000 );
+
 defined( 'DEFAULT_TARGET_CHARSET' ) || define( 'DEFAULT_TARGET_CHARSET', 'UTF-8' );
 defined( 'DEFAULT_BR_TEXT' ) || define( 'DEFAULT_BR_TEXT', "\r\n" );
 defined( 'DEFAULT_SPAN_TEXT' ) || define( 'DEFAULT_SPAN_TEXT', ' ' );
@@ -60,7 +62,7 @@ function file_get_html(
 	$lowercase = true,
 	$forceTagsClosed = true,
 	$target_charset = DEFAULT_TARGET_CHARSET,
-	$stripRN = true,
+	$stripRN = false,
 	$defaultBRText = DEFAULT_BR_TEXT,
 	$defaultSpanText = DEFAULT_SPAN_TEXT ) {
 	if ( $maxLen <= 0 ) {
@@ -102,7 +104,7 @@ function str_get_html(
 	$lowercase = true,
 	$forceTagsClosed = true,
 	$target_charset = DEFAULT_TARGET_CHARSET,
-	$stripRN = true,
+	$stripRN = false,
 	$defaultBRText = DEFAULT_BR_TEXT,
 	$defaultSpanText = DEFAULT_SPAN_TEXT ) {
 	$dom = new simple_html_dom(
@@ -1496,7 +1498,7 @@ class simple_html_dom {
 		$lowercase = true,
 		$forceTagsClosed = true,
 		$target_charset = DEFAULT_TARGET_CHARSET,
-		$stripRN = true,
+		$stripRN = false,
 		$defaultBRText = DEFAULT_BR_TEXT,
 		$defaultSpanText = DEFAULT_SPAN_TEXT,
 		$options = 0 ) {
@@ -1530,7 +1532,7 @@ class simple_html_dom {
 	function load(
 		$str,
 		$lowercase = true,
-		$stripRN = true,
+		$stripRN = false,
 		$defaultBRText = DEFAULT_BR_TEXT,
 		$defaultSpanText = DEFAULT_SPAN_TEXT,
 		$options = 0 ) {

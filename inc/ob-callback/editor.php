@@ -6,18 +6,19 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 
+/**
+ * wpLingua OB Callback function : On page editor
+ *
+ * @param string $html
+ * @return string
+ */
 function wplng_ob_callback_editor( $html ) {
+
+	$html = apply_filters( 'wplng_html_intercepted', $html );
 
 	if ( empty( $html ) ) {
 		return $html;
 	}
-
-	$html = apply_filters( 'wplng_html_intercepted', $html );
-
-	/**
-	 * Remove tabulation in $html
-	 */
-	$html = preg_replace( '#\t#', '', $html );
 
 	/**
 	 * Replace excluded HTML part by tag
@@ -29,20 +30,76 @@ function wplng_ob_callback_editor( $html ) {
 	);
 
 	/**
-	 * Get saved translation
+	 * Get all texts in HTML
 	 */
-	$language_target_id = wplng_get_language_current_id();
-	$translations       = wplng_get_translations_saved( $language_target_id );
+
+	$texts = wplng_parse_html( $html );
 
 	/**
-	 * Get new translation from API
+	 * Get saved translation
 	 */
-	$translations_new = wplng_parser( $html, false, false, $translations );
+
+	$language_target_id = wplng_get_language_current_id();
+	$translations       = array();
+
+	if ( ! empty( $texts ) ) {
+		$translations = wplng_get_translations_saved( $language_target_id );
+	}
+
+	/**
+	 * Get unknow texts
+	 */
+
+	$texts_unknow = array();
+
+	foreach ( $texts as $text ) {
+		$is_in = false;
+		foreach ( $translations as $translation ) {
+			if ( $text === $translation['source'] ) {
+				$is_in = true;
+				break;
+			}
+		}
+		if ( ! $is_in ) {
+			$texts_unknow[] = $text;
+		}
+	}
+
+	/**
+	 * Get new translated text from API
+	 */
+
+	$texts_unknow_translated = wplng_api_call_translate(
+		$texts_unknow,
+		false,
+		$language_target_id
+	);
+
+	$texts_unknow = array_splice(
+		$texts_unknow,
+		0,
+		WPLNG_MAX_TRANSLATIONS + 1
+	);
 
 	/**
 	 * Save new translation as wplng_translation CPT
 	 */
-	$translations_new = wplng_save_translations( $translations_new, $language_target_id );
+
+	$translations_new = array();
+
+	foreach ( $texts_unknow as $key => $text_source ) {
+		if ( isset( $texts_unknow_translated[ $key ] ) ) {
+			$translations_new[] = array(
+				'source'      => $text_source,
+				'translation' => $translated = esc_attr( esc_html( $texts_unknow_translated[ $key ] ) ),
+			);
+		}
+	}
+
+	$translations_new = wplng_save_translations(
+		$translations_new,
+		$language_target_id
+	);
 
 	/**
 	 * Merge know and new translations
@@ -50,137 +107,98 @@ function wplng_ob_callback_editor( $html ) {
 	$translations = array_merge( $translations_new, $translations );
 
 	/**
-	 * Get <head>
+	 * Replace original texts by translations
 	 */
-	preg_match( '#<head>(.*)</head>#Uis', $html, $html_head );
-	if ( empty( $html_head[0] ) ) {
-		return $html;
-	}
-	$html_head = $html_head[0];
+	$html = wplng_translate_html(
+		$html,
+		false,
+		$language_target_id,
+		$translations
+	);
 
 	/**
-	 * Manage translation for <head>
+	 * Replace text by edit link in body
 	 */
-	foreach ( $translations as $translation ) {
+	$dom = str_get_html( $html );
 
-		// Check if translaton data is valid
-		if (
-			! isset( $translation['source'] ) // Original text
-			|| ! isset( $translation['translation'] ) // Translater text
-			|| ! isset( $translation['sr'] ) // Search Replace
+	if ( empty( $dom ) ) {
+		return $html;
+	}
+
+	/**
+	 * Replace <a> tags by <span>
+	 */
+	foreach ( $dom->find( 'a' ) as $element ) {
+
+		$element->tag = 'span';
+		$class        = 'wplingua-editor-link';
+
+		if ( ! empty( $element->class ) ) {
+			$class .= ' ' . $element->class;
+		}
+
+		$element->class = $class;
+	}
+
+	/**
+	 * Add edit links on text
+	 */
+	
+	$edit_link_excluded = wplng_data_excluded_editor_link();
+	$node_text_excluded = wplng_data_excluded_node_text();
+
+	foreach ( $dom->find( 'body text' ) as $element ) {
+
+		if ( 
+			in_array( $element->parent->tag, $edit_link_excluded ) 
+			|| in_array( $element->parent->tag, $node_text_excluded )
 		) {
 			continue;
 		}
 
-		if ( ! empty( $translation['source'] ) ) {
+		$text = wplng_text_esc( $element->innertext );
 
-			foreach ( $translation['sr'] as $key => $sr ) {
-				$regex = str_replace(
-					'WPLNG',
-					preg_quote( $translation['source'] ),
-					$sr['search']
-				);
-
-				$replace = str_replace(
-					'WPLNG',
-					str_replace( '$', '&#36;', esc_attr( $translation['translation'] ) ),
-					$sr['replace']
-				);
-
-			}
-		}
-	}
-
-	/**
-	 * Get <body>
-	 */
-	preg_match( '#<body .*>(.*)</body>#Uis', $html, $html_body );
-	if ( empty( $html_body[0] ) ) {
-		return $html;
-	}
-	$html_body = $html_body[0];
-
-	/**
-	 * Transform links
-	 */
-	$html_body = preg_replace(
-		'#<a (.*)<\/a>#Uis',
-		'<span wplingua-editor-link $1</span>',
-		$html_body
-	);
-
-	/**
-	 * Manage translation for <body>
-	 */
-	foreach ( $translations as $translation ) {
-
-		// Check if translaton data is valid
-		if (
-			! isset( $translation['source'] ) // Original text
-			|| ! isset( $translation['translation'] ) // Translater text
-			|| ! isset( $translation['sr'] ) // Search Replace
-		) {
+		if ( ! wplng_text_is_translatable( $text ) ) {
 			continue;
 		}
 
-		if ( ! empty( $translation['source'] ) ) {
+		foreach ( $translations as $translation ) {
 
-			foreach ( $translation['sr'] as $key => $sr ) {
-				$regex = str_replace(
-					'WPLNG',
-					preg_quote( $translation['source'] ),
-					$sr['search']
-				);
-
-				$replace_by_link = false;
-				if (
-					str_contains( $sr['replace'], '>' )
-					&& str_contains( $sr['replace'], '<' )
-				) {
-					$replace_by_link = true;
-				}
-
-				if ( $replace_by_link ) {
-					$edit_link = '';
-					if ( ! empty( $translation['post_id'] ) ) {
-						$edit_link = get_edit_post_link( $translation['post_id'] );
-					}
-
-					$replace = str_replace(
-						'WPLNG',
-						'<a href="' . esc_url( $edit_link ) . '" class="wplng-edit-link" target="_blank">' . str_replace( '$', '&#36;', esc_html( $translation['translation'] ) ) . ' </a>',
-						$sr['replace']
-					);
-				} else {
-					$replace = str_replace(
-						'WPLNG',
-						str_replace( '$', '&#36;', esc_html( $translation['translation'] ) ),
-						$sr['replace']
-					);
-				}
-
-				$html_body = preg_replace( $regex, $replace, $html_body );
-
+			if ( ! isset( $translation['post_id'] )
+				|| ! isset( $translation['translation'] )
+			) {
+				continue;
 			}
+
+			$translated = wplng_text_esc( $translation['translation'] );
+
+			if ( $text !== $translated ) {
+				continue;
+			}
+
+			$edit_link = '';
+			if ( ! empty( $translation['post_id'] ) ) {
+				$edit_link = get_edit_post_link( $translation['post_id'] );
+			} else {
+				continue;
+			}
+
+			$element->innertext = '<a href="' . esc_url( $edit_link ) . '" class="wplng-edit-link" target="_blank">' . esc_html( $text ) . ' </a>';
 		}
 	}
 
-	$html = preg_replace(
-		'#<body .*>.*</body>#Uis',
-		$html_body,
-		$html
-	);
-
-	$html = preg_replace(
-		'#<head>.*</head>#Uis',
-		$html_head,
-		$html
-	);
+	$dom->save();
+	$html = (string) str_get_html( $dom );
 
 	/**
 	 * Replace tag by saved excluded HTML part
 	 */
+
 	$html = wplng_html_replace_exclude_tag( $html, $excluded_elements );
+
+	/**
+	 * Apply a filter before return $html
+	 */
 
 	$html = apply_filters( 'wplng_html_editor', $html );
 

@@ -7,7 +7,7 @@ if ( ! defined( 'WPINC' ) ) {
 
 
 /**
- * Option page for the plugin
+ * Print HTML Option page : wpLingua Settings
  *
  * @return void
  */
@@ -35,7 +35,7 @@ function wplng_option_page_settings() {
 			settings_fields( 'wplng_settings' );
 			do_settings_sections( 'wplng_settings' );
 			?>
-			
+
 			<table class="form-table wplng-form-table">
 				<tr>
 					<th scope="row"><?php _e( 'Website language', 'wplingua' ); ?></th>
@@ -73,15 +73,18 @@ function wplng_option_page_settings() {
 }
 
 
+/**
+ * Print HTML subsection of Option page : wpLingua Settings - First use
+ *
+ * @return void
+ */
 function wplng_settings_part_first_use() {
 
-	if ( ! empty( get_option( 'wplng_website_language' ) ) ) {
+	if ( ! empty( get_option( 'wplng_website_language' ) )
+		|| 'all' === wplng_get_api_language_website()
+	) {
 		return;
 	}
-
-	// if ('all' === wplng_get_api_language_website()) {
-	// 	return;
-	// }
 
 	update_option( 'wplng_website_language', wplng_get_api_language_website() );
 
@@ -127,6 +130,11 @@ function wplng_settings_part_first_use() {
 }
 
 
+/**
+ * Print HTML subsection of Option page : wpLingua Settings - Website language
+ *
+ * @return void
+ */
 function wplng_settings_part_language_website() {
 
 	$api_language_website   = wplng_get_api_language_website();
@@ -165,12 +173,12 @@ function wplng_settings_part_language_website() {
 	if ( ! $website_language_saved ) {
 		echo '<option value="">' . __( 'Please choose an option', 'wplingua' ) . '</option>';
 	}
+
 	echo '</select>';
 	echo '<hr>';
 	echo '</fieldset>';
 
 	if ( 'all' !== $api_language_website ) {
-		// $website_language_saved = ' disabled';
 		echo '<p>';
 		echo '<strong>';
 		echo __( 'Original website language, defined by API key:', 'wplingua' );
@@ -184,8 +192,8 @@ function wplng_settings_part_language_website() {
 	<div id="wplng-website-language-box">
 
 		<div class="wplng-website-language-displayed">
-			<div class="wplng-website-language-left">
-				<img src="<?php echo wplng_get_language_website_flag() ?>" id="wplng-website-flag">
+			<div id="wplng-website-language" class="wplng-website-language-left">
+				<img src="<?php echo wplng_get_language_website_flag(); ?>" id="wplng-website-flag">
 				<?php echo esc_html( $website_language['name'] ); ?>
 			</div>
 			<div class="wplng-target-language-right">
@@ -210,6 +218,11 @@ function wplng_settings_part_language_website() {
 }
 
 
+/**
+ * Print HTML subsection of Option page : wpLingua Settings - Languages target
+ *
+ * @return void
+ */
 function wplng_settings_part_languages_target() {
 
 	$languages_target     = wplng_get_languages_target_simplified();
@@ -221,7 +234,7 @@ function wplng_settings_part_languages_target() {
 		}
 	}
 
-	$languages_target = wplng_get_language_by_ids( $languages_target_ids );
+	$languages_target = wplng_get_languages_by_ids( $languages_target_ids );
 
 	?>
 	<fieldset id="fieldset-add-target-language">
@@ -275,18 +288,17 @@ function wplng_settings_part_languages_target() {
 }
 
 
+/**
+ * Print HTML subsection of Option page : wpLingua Settings - Feature
+ *
+ * @return void
+ */
 function wplng_settings_part_features() {
 
 	$api_features = wplng_get_api_feature();
 
 	?>
 	<p><strong><?php _e( 'Translation features:', 'wplingua' ); ?></strong></p>
-	
-	<fieldset>
-		<label for="wplng_translate_mail">
-			<input type="checkbox" id="wplng_translate_mail" name="wplng_translate_mail" value="1" <?php checked( 1, get_option( 'wplng_translate_mail' ) && in_array( 'mail', $api_features ), true ); ?> <?php disabled( false, in_array( 'mail', $api_features ), true ); ?>/> <?php _e( 'Premium / Beta : Translate mail sending from translated pages', 'wplingua' ); ?>
-		</label>
-	</fieldset>
 
 	<fieldset>
 		<label for="wplng_translate_search">
@@ -304,7 +316,11 @@ function wplng_settings_part_features() {
 }
 
 
-
+/**
+ * Print HTML subsection of Option page : wpLingua Settings - API Key
+ *
+ * @return void
+ */
 function wplng_settings_part_api_key() {
 	?>
 	<fieldset>

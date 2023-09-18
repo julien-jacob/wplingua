@@ -15,7 +15,6 @@
     left: 7px;
 }
 
-
 #wplng-website-language-box {
     border: 1px solid #8c8f94;
     padding: 5px 10px 8px 6px;
@@ -42,23 +41,10 @@
         padding: 10px 0 6px;
         margin-top: 8px;
     }
+
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+#wplng-website-flag-container,
 .wplng-subflag-target-custom {
     margin-top: 15px;
 }
@@ -69,8 +55,8 @@
 
 #wplng-target-languages-list {
 
-
     .wplng-target-language {
+
         border: 1px solid #8c8f94;
         padding: 5px 10px 8px 6px;
         margin-top: 10px;
@@ -83,7 +69,6 @@
             justify-content: space-between;
 
             .wplng-target-lang-remove {
-
                 &::before {
                     content: "|";
                     display: inline;
@@ -97,7 +82,6 @@
         }
 
         .wplng-flag-target-container {
-
             text-align: center;
             border-top: 1px solid lightgray;
             padding: 10px 0 6px;
@@ -128,11 +112,9 @@
     width: auto;
 }
 
-
 #wplng-api-key-fake,
 #wplng_api_key {
     width: calc(100% - 55px);
-    // width: 26em;
 }
 
 @media screen and (max-width: 782px) {
@@ -165,7 +147,7 @@
                 padding: 15px 15px 18px 10px;
             }
         }
-    }
 
+    }
 
 }

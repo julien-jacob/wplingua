@@ -6,6 +6,11 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 
+/**
+ * Print HTML Option page : wpLingua Switcher
+ *
+ * @return void
+ */
 function wplng_option_page_switcher() {
 
 	$insert      = wplng_get_switcher_insert();
@@ -35,7 +40,9 @@ function wplng_option_page_switcher() {
 					<td>
 						<div class="wplng-switcher-preview">
 							<?php
-							echo wplng_get_switcher_html( array( 'class' => 'switcher-preview' ) );
+							echo wplng_get_switcher_html(
+								array( 'class' => 'switcher-preview' )
+							);
 							?>
 						</div>
 					</td>
@@ -52,7 +59,7 @@ function wplng_option_page_switcher() {
 							<select id="wplng_theme" name="wplng_theme" class="wplng-fe-50">
 								<?php
 
-								$theme_options = wplng_get_switcher_valid_theme();
+								$theme_options = wplng_data_switcher_valid_theme();
 
 								foreach ( $theme_options as $option_value => $option_name ) {
 									if ( $theme === $option_value ) {
@@ -79,7 +86,7 @@ function wplng_option_page_switcher() {
 							<select id="wplng_style" name="wplng_style" class="wplng-fe-50">
 								<?php
 
-								$style_options = wplng_get_switcher_valid_style();
+								$style_options = wplng_data_switcher_valid_style();
 
 								foreach ( $style_options as $option_value => $option_name ) {
 									if ( $style === $option_value ) {
@@ -105,7 +112,7 @@ function wplng_option_page_switcher() {
 							<select id="wplng_name_format" name="wplng_name_format" class="wplng-fe-50">
 								<?php
 
-								$name_format_options = wplng_get_switcher_valid_name_format();
+								$name_format_options = wplng_data_switcher_valid_name_format();
 
 								foreach ( $name_format_options as $option_value => $option_name ) {
 									if ( $name_format === $option_value ) {
@@ -130,7 +137,7 @@ function wplng_option_page_switcher() {
 							<select id="wplng_flags_style" name="wplng_flags_style" class="wplng-fe-50">
 								<?php
 
-								$flags_style_options = wplng_get_switcher_valid_flags_style();
+								$flags_style_options = wplng_data_switcher_valid_flags_style();
 
 								foreach ( $flags_style_options as $option_value => $option_name ) {
 									if ( $flags_style === $option_value ) {
@@ -172,7 +179,7 @@ function wplng_option_page_switcher() {
 							<select id="wplng_insert" name="wplng_insert" class="wplng-fe-50">
 								<?php
 
-								$insert_options = wplng_get_switcher_valid_insert();
+								$insert_options = wplng_data_switcher_valid_insert();
 
 								foreach ( $insert_options as $option_value => $option_name ) {
 									if ( $insert === $option_value ) {
@@ -204,6 +211,14 @@ function wplng_option_page_switcher() {
 	<?php
 }
 
+
+/**
+ * Print HTML subsection of Option page : wpLingua Switcher - Flags style
+ *
+ * @param string $old_flags_style Flag URL
+ * @param string $new_flags_style Flag URL
+ * @return void
+ */
 function wplng_options_switcher_update_flags_style( $old_flags_style, $new_flags_style ) {
 
 	if ( $old_flags_style !== $new_flags_style ) {

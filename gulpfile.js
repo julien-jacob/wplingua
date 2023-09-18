@@ -83,6 +83,7 @@ gulp.task("zip",() => {
         "!gulpfile.js",
         "!package.json",
         "!package-lock.json",
+        "!wplingua.zip",
         "!*.md"
     ])
         .pipe(zip('wplingua.zip'))

@@ -6,16 +6,14 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 
-function wplng_api_informations() {
-
-	$cached_info = json_decode(
-		get_transient( 'wplng_api_informations' ),
-		true
-	);
-
-	if ( ! empty( $cached_info ) ) {
-		return $cached_info;
-	}
+/**
+ * Get data from wpLingua API : API informations
+ * - Last plugin version
+ * - Global message
+ *
+ * @return array
+ */
+function wplng_api_call_api_informations() {
 
 	$args = array(
 		'method'    => 'POST',
@@ -40,11 +38,10 @@ function wplng_api_informations() {
 
 	$response = json_decode( wp_remote_retrieve_body( $request ), true );
 
-	if ( empty( $response['error'] ) ) {
-		set_transient(
-			'wplng_api_informations',
-			wp_json_encode( $response ),
-			60 * 10
+	if ( empty( $response ) ) {
+		return array(
+			'error'   => true,
+			'message' => __( 'Error - API response format not valid.', 'wplingua' ),
 		);
 	}
 

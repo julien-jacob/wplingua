@@ -6,7 +6,13 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 
-function wplng_api_request_api_key( $data ) {
+/**
+ * Request an API key for wpLingua API
+ *
+ * @param array $data
+ * @return array API validation or error after API key registration
+ */
+function wplng_api_call_request_api_key( $data ) {
 
 	if ( empty( $data['request'] )
 		|| $data['request'] !== 'register'

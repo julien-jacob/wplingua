@@ -1,6 +1,6 @@
 
 jQuery(document).ready(function($){function wplngSwitcherUpdateInsert(val){$(".wplng-switcher").removeClass("insert-bottom-right").removeClass("insert-bottom-center").removeClass("insert-bottom-left").addClass("insert-"+val);}
-function wplngSwitcherUpdateTheme(val){$(".wplng-switcher").removeClass("theme-smooth-light").removeClass("theme-smooth-grey").removeClass("theme-smooth-dark").removeClass("theme-square-light").removeClass("theme-square-grey").removeClass("theme-square-dark").addClass("theme-"+val);}
+function wplngSwitcherUpdateTheme(val){$(".wplng-switcher").removeClass("theme-light-double-smooth").removeClass("theme-grey-double-smooth").removeClass("theme-dark-double-smooth").removeClass("theme-light-double-square").removeClass("theme-grey-double-square").removeClass("theme-dark-double-square").removeClass("theme-light-simple-smooth").removeClass("theme-grey-simple-smooth").removeClass("theme-dark-simple-smooth").removeClass("theme-light-simple-square").removeClass("theme-grey-simple-square").removeClass("theme-dark-simple-square").addClass("theme-"+val);}
 function wplngSwitcherUpdateStyle(val){$(".wplng-switcher").removeClass("style-list").removeClass("style-block").removeClass("style-dropdown").addClass("style-"+val);}
 function wplngSwitcherUpdateTitle(val){if("none"==val&&"none"==$("#wplng_flags_style").val()){$("#wplng_flags_style").val("rectangular");wplngSwitcherUpdateFlagsStyle("rectangular");}
 $(".wplng-switcher").removeClass("title-name").removeClass("title-id").removeClass("title-none").addClass("title-"+val);}

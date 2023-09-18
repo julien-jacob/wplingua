@@ -44,6 +44,7 @@
         }
 
         .wplng-languages {
+
             height: 0;
             overflow: hidden;
 
@@ -53,10 +54,8 @@
 
         }
 
-        .switcher-content:hover {
-            .wplng-languages {
-                height: auto;
-            }
+        .switcher-content:hover .wplng-languages {
+            height: auto;
         }
 
         .wplng-language-current {
@@ -66,4 +65,5 @@
         }
 
     }
+
 }

@@ -6,13 +6,18 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 
+/**
+ * Add wpLingua admin menu when API Key is not registered
+ *
+ * @return void
+ */
 function wplng_create_menu_register() {
 
 	add_menu_page(
 		__( 'wpLingua : Register', 'wplingua' ),
 		__( 'wpLingua', 'wplingua' ),
 		'administrator',
-		'wplng-settings',
+		'wplingua-settings',
 		'wplng_option_page_register',
 		'dashicons-admin-site'
 	);
@@ -20,32 +25,37 @@ function wplng_create_menu_register() {
 }
 
 
+/**
+ * Add wpLingua admin menu when key is registered
+ *
+ * @return void
+ */
 function wplng_create_menu() {
 
 	add_menu_page(
 		__( 'wpLingua : Settings', 'wplingua' ),
 		__( 'wpLingua', 'wplingua' ),
 		'administrator',
-		'wplng-settings',
+		'wplingua-settings',
 		'wplng_option_page_settings',
 		'dashicons-admin-site'
 	);
 
 	add_submenu_page(
-		'wplng-settings',
+		'wplingua-settings',
 		__( 'wplingua : Switcher', 'wplingua' ),
 		__( 'Switcher', 'wplingua' ),
 		'administrator',
-		'wplng-switcher',
+		'wplingua-switcher',
 		'wplng_option_page_switcher'
 	);
 
 	add_submenu_page(
-		'wplng-settings',
+		'wplingua-settings',
 		__( 'wplingua : Exclusion', 'wplingua' ),
 		__( 'Exclusion', 'wplingua' ),
 		'administrator',
-		'wplng-exclusions',
+		'wplingua-exclusions',
 		'wplng_option_page_exclusions'
 	);
 
@@ -55,24 +65,26 @@ function wplng_create_menu() {
 
 
 /**
- * register settings
+ * Register wpLingua settings
  *
  * @return void
  */
 function wplng_register_settings() {
 
+	// Option page : Settings and register
 	register_setting( 'wplng_settings', 'wplng_website_language' );
 	register_setting( 'wplng_settings', 'wplng_website_flag' );
 	register_setting( 'wplng_settings', 'wplng_target_languages' );
-	register_setting( 'wplng_settings', 'wplng_translate_mail' );
 	register_setting( 'wplng_settings', 'wplng_translate_search' );
 	register_setting( 'wplng_settings', 'wplng_translate_woocommerce' );
 	register_setting( 'wplng_settings', 'wplng_api_key' );
 	register_setting( 'wplng_settings', 'wplng_request_free_key' );
 
+	// Option page : Exclusions
 	register_setting( 'wplng_exclusions', 'wplng_excluded_selectors' );
 	register_setting( 'wplng_exclusions', 'wplng_excluded_url' );
 
+	// Option page : Switcher
 	register_setting( 'wplng_switcher', 'wplng_insert' );
 	register_setting( 'wplng_switcher', 'wplng_theme' );
 	register_setting( 'wplng_switcher', 'wplng_style' );
@@ -83,9 +95,14 @@ function wplng_register_settings() {
 }
 
 
+/**
+ * Show message from wpLingua API (plugin Update or global message)
+ *
+ * @return void
+ */
 function wplng_show_api_message() {
 
-	$api_info = wplng_api_informations();
+	$api_info = wplng_api_call_api_informations();
 
 	if ( ! empty( $api_info['global_message'] )
 		&& is_string( $api_info['global_message'] )
@@ -117,7 +134,7 @@ function wplng_show_api_message() {
 
 
 /**
- * Add 'Settings' link on the plugin list
+ * Add 'Settings' link on wpLingua in the plugin list
  *
  * @param array $settings
  * @return array
@@ -127,7 +144,7 @@ function wplng_settings_link( $settings ) {
 	$url = esc_url(
 		add_query_arg(
 			'page',
-			'wplng-settings',
+			'wplingua-settings',
 			get_admin_url() . 'admin.php'
 		)
 	);

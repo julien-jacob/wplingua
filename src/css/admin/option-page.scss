@@ -2,7 +2,6 @@
 
 .wplng-fe-50 {
     min-width: 49%;
-    // max-width: 100%;
     display: inline-block;
 }
 
@@ -14,12 +13,14 @@ h1 .dashicons {
 }
 
 .wplng-icon-button {
+
     width: 45px;
     text-align: center;
 
     .dashicons {
         line-height: 1.4em;
     }
+
 }
 
 #wpbody label {
@@ -33,6 +34,7 @@ h1 .dashicons {
     &.wplng-notice {
         display: block;
     }
+
 }
 
 .wplng-form-table {
@@ -62,18 +64,16 @@ h1 .dashicons {
 
         fieldset {
             display: block;
-            // margin-bottom: 10px;
         }
+
     }
 
 }
 
 @media screen and (max-width: 782px) {
 
-    #wpbody-content {
-        h1 {
-            text-align: center;
-        }
+    #wpbody-content h1 {
+        text-align: center;
     }
 
     .wplng-form-table {
@@ -99,8 +99,11 @@ h1 .dashicons {
                     vertical-align: middle;
                     line-height: .8em;
                 }
+
             }
+
         }
+
     }
 
     #submit {

@@ -1,8 +1,26 @@
+@import "editor-list";
+
+/** 
+ ** Compatibility
+ **/
+
+// Some themes 
+html {
+    overflow: hidden !important;
+}
+
+// Divi
+body.theme-Divi #main-header {
+    z-index: 99997 !important;
+}
+
+
 /** 
  ** modal
  **/
 
 .wplng-button-icon {
+
     display: block;
     font-size: 13px;
     cursor: pointer;
@@ -29,25 +47,25 @@
         border-color: #135e96;
         color: #fff;
     }
+
 }
 
 body {
+
     overflow: hidden;
 
     #wplng-modal-container {
         display: block;
     }
+
 }
 
 #wplng-modal-container {
 
     display: none;
-
     background-color: rgba(255, 255, 255, .8);
     padding: 0 15px;
     margin-top: 30px; // Admin bar
-    // TODO : Revoir pour responsive
-
     position: fixed;
     top: 0;
     left: 0;
@@ -61,6 +79,7 @@ body {
         width: 100%;
         max-width: 720px;
         margin: 60px auto;
+        font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;
 
         #wplng-modal-header {
             border: 1px solid #c3c4c7;
@@ -80,13 +99,13 @@ body {
             box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), 0 0 20px rgba(0, 0, 0, 0.15);
 
             .wplng-modal-item {
+
                 border: 1px solid #c3c4c7;
                 border-radius: 3px;
                 background-color: #f6f7f7;
                 box-shadow: rgba(0, 0, 0, .04) 0 1px 1px 0;
                 margin-bottom: 15px;
                 padding: 8px 0;
-
                 display: flex;
                 align-items: stretch;
 
@@ -94,9 +113,8 @@ body {
 
                     width: calc(100% - 41px);
                     display: flex;
-
                     font-size: 14px;
-                    font-weight: bold;
+                    font-weight: 600;
                     line-height: 1.5em;
 
                     .wplng-item-source,
@@ -108,13 +126,17 @@ body {
                     .wplng-item-translation {
                         border-left: 1px solid #c3c4c7;
                     }
+
                 }
 
                 .wplng-item-edit {
                     padding: 0 10px;
                 }
+
             }
+
         }
 
     }
+
 }
