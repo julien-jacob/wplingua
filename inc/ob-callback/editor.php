@@ -119,7 +119,7 @@ function wplng_ob_callback_editor( $html ) {
 	/**
 	 * Replace text by edit link in body
 	 */
-	$dom = str_get_html( $html );
+	$dom = wplng_sdh_str_get_html( $html );
 
 	if ( empty( $dom ) ) {
 		return $html;
@@ -188,7 +188,7 @@ function wplng_ob_callback_editor( $html ) {
 	}
 
 	$dom->save();
-	$html = (string) str_get_html( $dom );
+	$html = (string) wplng_sdh_str_get_html( $dom );
 
 	/**
 	 * Replace tag by saved excluded HTML part

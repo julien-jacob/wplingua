@@ -279,7 +279,7 @@ function wplng_settings_part_languages_target() {
 	</div>
 
 	<div id="wplng-target-languages-container">
-		<p><strong><?php _e( 'Current target languages: ', 'wplingua' ); ?></strong></p>
+		<p><strong><?php _e( 'Target languages enabled: ', 'wplingua' ); ?></strong></p>
 		<div id="wplng-target-languages-list"></div>
 		<textarea name="wplng_target_languages" id="wplng_target_languages"><?php echo esc_textarea( json_encode( $languages_target, true ) ); ?></textarea>
 

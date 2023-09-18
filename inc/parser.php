@@ -150,7 +150,7 @@ function wplng_parse_js( $js ) {
 function wplng_parse_html( $html ) {
 
 	$texts = array();
-	$dom   = str_get_html( $html );
+	$dom   = wplng_sdh_str_get_html( $html );
 
 	if ( empty( $dom ) ) {
 		return array();

@@ -13,7 +13,7 @@ if ( ! defined( 'WPINC' ) ) {
 require_once WPLNG_PLUGIN_PATH . '/data.php';
 
 // Require files in /inc/lib/ folder
-require_once WPLNG_PLUGIN_PATH . '/inc/lib/simple_html_dom.php';
+require_once WPLNG_PLUGIN_PATH . '/inc/lib/simple-html-dom.php';
 
 // Require files in /inc/admin/ folder
 require_once WPLNG_PLUGIN_PATH . '/inc/admin/admin-bar.php';
