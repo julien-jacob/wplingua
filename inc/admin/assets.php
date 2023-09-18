@@ -15,7 +15,7 @@ if ( ! defined( 'WPINC' ) ) {
 function wplng_option_page_settings_assets( $hook ) {
 
 	if ( ! is_admin()
-		|| $hook !== 'toplevel_page_wplng-settings'
+		|| $hook !== 'toplevel_page_wplingua-settings'
 		|| empty( wplng_get_api_key() )
 	) {
 		return;
@@ -55,7 +55,7 @@ function wplng_option_page_settings_assets( $hook ) {
 function wplng_option_page_register_assets( $hook ) {
 
 	if ( ! is_admin()
-		|| $hook !== 'toplevel_page_wplng-settings'
+		|| $hook !== 'toplevel_page_wplingua-settings'
 	) {
 		return;
 	}
@@ -94,7 +94,7 @@ function wplng_option_page_register_assets( $hook ) {
 function wplng_option_page_switcher_assets( $hook ) {
 
 	if ( ! is_admin()
-		|| $hook !== 'wplingua_page_wplng-switcher'
+		|| $hook !== 'wplingua_page_wplingua-switcher'
 	) {
 		return;
 	}
@@ -158,7 +158,7 @@ function wplng_option_page_switcher_assets( $hook ) {
 function wplng_option_page_exclusions_assets( $hook ) {
 
 	if ( ! is_admin()
-		|| $hook !== 'wplingua_page_wplng-exclusions'
+		|| $hook !== 'wplingua_page_wplingua-exclusions'
 	) {
 		return;
 	}

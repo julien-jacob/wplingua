@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name:  wpLingua
- * Plugin URI:   https://wplingua.com/download/
+ * Plugin URI:   https://wplingua.com/
  * Description:  WordPress plugin to translate and make your websites multilingual
  * Author:       wpLingua Team
  * Author URI:   https://wplingua.com/
@@ -62,7 +62,7 @@ function wplng_start() {
 	add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), 'wplng_settings_link' );
 
 	// Print head script (JSON with all languages informations)
-	add_action( 'toplevel_page_wplng-settings', 'wplng_inline_script_languages' );
+	add_action( 'toplevel_page_wplingua-settings', 'wplng_inline_script_languages' );
 
 	if ( empty( wplng_get_api_data() ) ) {
 

@@ -17,7 +17,7 @@ function wplng_create_menu_register() {
 		__( 'wpLingua : Register', 'wplingua' ),
 		__( 'wpLingua', 'wplingua' ),
 		'administrator',
-		'wplng-settings',
+		'wplingua-settings',
 		'wplng_option_page_register',
 		'dashicons-admin-site'
 	);
@@ -36,26 +36,26 @@ function wplng_create_menu() {
 		__( 'wpLingua : Settings', 'wplingua' ),
 		__( 'wpLingua', 'wplingua' ),
 		'administrator',
-		'wplng-settings',
+		'wplingua-settings',
 		'wplng_option_page_settings',
 		'dashicons-admin-site'
 	);
 
 	add_submenu_page(
-		'wplng-settings',
+		'wplingua-settings',
 		__( 'wplingua : Switcher', 'wplingua' ),
 		__( 'Switcher', 'wplingua' ),
 		'administrator',
-		'wplng-switcher',
+		'wplingua-switcher',
 		'wplng_option_page_switcher'
 	);
 
 	add_submenu_page(
-		'wplng-settings',
+		'wplingua-settings',
 		__( 'wplingua : Exclusion', 'wplingua' ),
 		__( 'Exclusion', 'wplingua' ),
 		'administrator',
-		'wplng-exclusions',
+		'wplingua-exclusions',
 		'wplng_option_page_exclusions'
 	);
 
@@ -144,7 +144,7 @@ function wplng_settings_link( $settings ) {
 	$url = esc_url(
 		add_query_arg(
 			'page',
-			'wplng-settings',
+			'wplingua-settings',
 			get_admin_url() . 'admin.php'
 		)
 	);

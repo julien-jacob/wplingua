@@ -36,7 +36,7 @@ function wplng_admin_bar_menu() {
 				'href'   => esc_url(
 					add_query_arg(
 						'page',
-						'wplng-exclusions',
+						'wplingua-exclusions',
 						get_admin_url() . 'admin.php'
 					)
 				),
