@@ -127,16 +127,16 @@ function wplng_translate_json_array( $json_decoded, $translations, $parents = ar
 					array_merge( $parents, array( $key ) )
 				);
 
-				error_log(
-					var_export(
-						array(
-							'parents'      => array_merge( $parents, array( $key ) ),
-							'value'        => $value,
-							'translatable' => $is_translatable,
-						),
-						true
-					)
-				);
+				// error_log(
+				// 	var_export(
+				// 		array(
+				// 			'parents'      => array_merge( $parents, array( $key ) ),
+				// 			'value'        => $value,
+				// 			'translatable' => $is_translatable,
+				// 		),
+				// 		true
+				// 	)
+				// );
 
 				if ( ! $is_translatable ) {
 					continue;
