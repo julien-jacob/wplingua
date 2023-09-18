@@ -51,7 +51,11 @@ function wplng_get_language_website_flag() {
 	$website_flag = get_option( 'wplng_website_flag' );
 
 	if ( empty( $website_flag ) ) {
-		$website_flag = wplng_get_language_by_id( 'en' );
+
+		$website_flag = wplng_get_language_by_id( 
+			wplng_get_language_website_id()
+		 );
+		 
 		if ( ! empty( $website_flag['flags'][0]['flag'] ) ) {
 			$website_flag = $website_flag['flags'][0]['flag'];
 		} else {
