@@ -123,17 +123,26 @@ function wplng_save_translation_new( $language_id, $original, $translation ) {
 	/**
 	 * Create the post and get this ID
 	 */
-	$post_id = wp_insert_post(
+	$temp_post_name = 'wplingua-temp-' . (string) random_int( 1000, 9999 );
+	$post_id        = wp_insert_post(
 		array(
 			'post_title'  => $title,
 			'post_type'   => 'wplng_translation',
 			'post_status' => 'publish',
+			'post_name'   => $temp_post_name,
 		)
 	);
 
 	if ( is_wp_error( $post_id ) ) {
 		return false;
 	}
+
+	wp_update_post(
+		array(
+			'ID'        => $post_id,
+			'post_name' => 'wplingua-translation-' . (string) $post_id,
+		)
+	);
 
 	/**
 	 * Make $translation_meta
