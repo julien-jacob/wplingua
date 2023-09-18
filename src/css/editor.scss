@@ -6,7 +6,7 @@
 
 .wplingua-editor-link {
 
-    color: inherit;
+    // color: inherit  !important;
 
     .wplng-edit-link,
     .wplng-edit-link:active,
@@ -16,7 +16,7 @@
         margin: 0 !important;
         padding: 0 !important;
         display: inline !important;
-        color: inherit;
+        color: inherit  !important;
     }
 
 }
@@ -26,15 +26,15 @@
 .wplng-edit-link:hover,
 .wplng-edit-link:link,
 .wplng-edit-link:visited {
-    color: inherit;
+    color: inherit !important;
     font-weight: inherit;
     font-size: inherit;
     text-decoration: inherit;
     line-height: inherit;
     // outline: 2px dotted gray !important;
-    outline-style: dotted;
-    outline-width: 2px;
-    outline-color: gray;
+    outline-style: dotted !important;
+    outline-width: 2px !important;
+    outline-color: gray !important;
     outline-offset: 0;
     // padding: 0 4px;
     // margin-left: -1px;
