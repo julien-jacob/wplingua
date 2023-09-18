@@ -7,7 +7,7 @@
  * Author URI:   https://wplingua.com/
  * Text Domain:  wplingua
  * Domain Path:  /languages/
- * Version:      0.1.0
+ * Version:      0.0.7
  * Requires PHP: 7.0
  * Requires at least: 5.0
  */
@@ -22,9 +22,9 @@ if ( ! defined( 'WPINC' ) ) {
 /**
  * Define wpLingua constants
  */
-define( 'WPLNG_API_URL', 'http://machiavel-api.local' );
-define( 'WPLNG_API_VERSION', 'last' );
-define( 'WPLNG_PLUGIN_VERSION', '0.0.6' );
+define( 'WPLNG_API_URL', 'https://api.wplingua.com' );
+define( 'WPLNG_API_VERSION', '0.2' );
+define( 'WPLNG_PLUGIN_VERSION', '0.0.7' );
 define( 'WPLNG_PLUGIN_PATH', dirname( __FILE__ ) );
 define( 'WPLNG_MAX_TRANSLATIONS', 256 );
 
