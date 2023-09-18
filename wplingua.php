@@ -27,7 +27,7 @@ define( 'WPLNG_API_VERSION', '0.2' );
 define( 'WPLNG_PLUGIN_VERSION', '0.0.8' );
 define( 'WPLNG_PLUGIN_PATH', dirname( __FILE__ ) );
 define( 'WPLNG_MAX_TRANSLATIONS', 256 );
-define( 'WPLNG_MAX_FILE_SIZE', 900000 )
+define( 'WPLNG_MAX_FILE_SIZE', 900000 );
 
 
 /**
