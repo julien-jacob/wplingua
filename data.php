@@ -143,6 +143,10 @@ function wplng_data_attr_url_to_translate() {
 				'attr'     => 'content',
 				'selector' => 'meta[property="og:url"]',
 			),
+			array(
+				'attr'     => 'href',
+				'selector' => 'link[rel="canonical"]',
+			),
 		)
 	);
 }
