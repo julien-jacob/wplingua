@@ -125,10 +125,11 @@ function wplng_url_is_translatable( $url = '' ) {
 
 	// Check if URL is excluded in option page
 	if ( $is_translatable ) {
-		$url_exclude = wplng_get_url_exclude();
 
-		foreach ( $url_exclude as $url_exclude_element ) {
-			if ( preg_match( '#' . $url_exclude_element . '#', $url ) ) {
+		$url_exclude_regex = wplng_get_url_exclude_regex();
+
+		foreach ( $url_exclude_regex as $regex ) {
+			if ( preg_match( $regex, $url ) ) {
 				$is_translatable = false;
 				break;
 			}
@@ -156,7 +157,7 @@ function wplng_url_is_translatable( $url = '' ) {
  *
  * @return array
  */
-function wplng_get_url_exclude() {
+function wplng_get_url_exclude_regex() {
 
 	// Get user excluded URLs
 	$url_exclude = explode(
@@ -164,19 +165,23 @@ function wplng_get_url_exclude() {
 		get_option( 'wplng_excluded_url' )
 	);
 
+	// Clear with esc_url
+	// foreach ( $url_exclude as $key => $url ) {
+	// 	$url_exclude[ $key ] = esc_url( $url );
+	// }
+
+	foreach ( $url_exclude as $key => $url ) {
+		$url_exclude[ $key ] = '#' . $url . '#';
+	}
+
 	// Remove empty
 	$url_exclude = array_values( array_filter( $url_exclude ) );
 
 	// Remove duplicate
 	$url_exclude = array_unique( $url_exclude );
 
-	// Clear with esc_url
-	foreach ( $url_exclude as $key => $url ) {
-		$url_exclude[ $key ] = esc_url( $url );
-	}
-
 	$url_exclude = apply_filters(
-		'wplng_url_exclude',
+		'wplng_url_exclude_regex',
 		$url_exclude
 	);
 
