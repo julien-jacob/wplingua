@@ -219,7 +219,7 @@ function wplng_data_switcher_valid_theme() {
 
 function wplng_data_switcher_valid_style() {
 	return array(
-		'list'     => __( 'List', 'wplingua' ),
+		'list'     => __( 'Inline list', 'wplingua' ),
 		'block'    => __( 'Block', 'wplingua' ),
 		'dropdown' => __( 'Dropdown', 'wplingua' ),
 	);
