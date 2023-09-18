@@ -300,7 +300,7 @@ function wplng_translate_html(
 		$language_source_id = wplng_get_language_website_id();
 	}
 
-	$dom = str_get_html( $html );
+	$dom = wplng_sdh_str_get_html( $html );
 
 	if ( empty( $dom ) ) {
 		return $html;
@@ -398,7 +398,7 @@ function wplng_translate_html(
 
 	if ( empty( $translations ) ) {
 		$dom->save();
-		return (string) str_get_html( $dom );
+		return (string) wplng_sdh_str_get_html( $dom );
 	}
 
 	/**
@@ -469,5 +469,5 @@ function wplng_translate_html(
 
 	$dom->save();
 
-	return (string) str_get_html( $dom );
+	return (string) wplng_sdh_str_get_html( $dom );
 }

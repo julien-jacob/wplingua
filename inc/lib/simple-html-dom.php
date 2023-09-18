@@ -6,6 +6,10 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 /**
+ * Lib modified for wpLingua
+ */
+
+/**
  * Website: http://sourceforge.net/projects/simplehtmldom/
  * Additional projects: http://sourceforge.net/projects/debugobject/
  * Acknowledge: Jose Solorzano (https://sourceforge.net/projects/php-html/)
@@ -45,15 +49,13 @@ define( 'HDOM_INFO_INNER', 5 );
 define( 'HDOM_INFO_OUTER', 6 );
 define( 'HDOM_INFO_ENDSPACE', 7 );
 
-define( 'MAX_FILE_SIZE', 6000000 );
-
 defined( 'DEFAULT_TARGET_CHARSET' ) || define( 'DEFAULT_TARGET_CHARSET', 'UTF-8' );
 defined( 'DEFAULT_BR_TEXT' ) || define( 'DEFAULT_BR_TEXT', "\r\n" );
 defined( 'DEFAULT_SPAN_TEXT' ) || define( 'DEFAULT_SPAN_TEXT', ' ' );
 defined( 'MAX_FILE_SIZE' ) || define( 'MAX_FILE_SIZE', 600000 );
 define( 'HDOM_SMARTY_AS_TEXT', 1 );
 
-function file_get_html(
+function wplng_sdh_file_get_html(
 	$url,
 	$use_include_path = false,
 	$context = null,
@@ -68,7 +70,7 @@ function file_get_html(
 	if ( $maxLen <= 0 ) {
 		$maxLen = MAX_FILE_SIZE; }
 
-	$dom = new simple_html_dom(
+	$dom = new wplng_sdh_simple_html_dom(
 		null,
 		$lowercase,
 		$forceTagsClosed,
@@ -99,7 +101,7 @@ function file_get_html(
 	return $dom->load( $contents, $lowercase, $stripRN );
 }
 
-function str_get_html(
+function wplng_sdh_str_get_html(
 	$str,
 	$lowercase = true,
 	$forceTagsClosed = true,
@@ -107,7 +109,7 @@ function str_get_html(
 	$stripRN = false,
 	$defaultBRText = DEFAULT_BR_TEXT,
 	$defaultSpanText = DEFAULT_SPAN_TEXT ) {
-	$dom = new simple_html_dom(
+	$dom = new wplng_sdh_simple_html_dom(
 		null,
 		$lowercase,
 		$forceTagsClosed,
@@ -125,11 +127,11 @@ function str_get_html(
 	return $dom->load( $str, $lowercase, $stripRN );
 }
 
-function dump_html_tree( $node, $show_attr = true, $deep = 0 ) {
+function wplng_sdh_dump_html_tree( $node, $show_attr = true, $deep = 0 ) {
 	$node->dump( $node );
 }
 
-class simple_html_dom_node {
+class wplng_sdh_wplng_sdh_simple_html_dom_node {
 
 	public $nodetype  = HDOM_TYPE_TEXT;
 	public $tag       = 'text';
@@ -1390,7 +1392,7 @@ class simple_html_dom_node {
 
 }
 
-class simple_html_dom {
+class wplng_sdh_simple_html_dom {
 
 	public $root      = null;
 	public $nodes     = array();
@@ -1663,7 +1665,7 @@ class simple_html_dom {
 		$this->lowercase                  = $lowercase;
 		$this->default_br_text            = $defaultBRText;
 		$this->default_span_text          = $defaultSpanText;
-		$this->root                       = new simple_html_dom_node( $this );
+		$this->root                       = new wplng_sdh_wplng_sdh_simple_html_dom_node( $this );
 		$this->root->tag                  = 'root';
 		$this->root->_[ HDOM_INFO_BEGIN ] = -1;
 		$this->root->nodetype             = HDOM_TYPE_ROOT;
@@ -1685,7 +1687,7 @@ class simple_html_dom {
 			}
 
 			// Add a text node for text between tags
-			$node = new simple_html_dom_node( $this );
+			$node = new wplng_sdh_wplng_sdh_simple_html_dom_node( $this );
 			++$this->cursor;
 			$node->_[ HDOM_INFO_TEXT ] = $s;
 			$this->link_nodes( $node, false );
@@ -1933,7 +1935,7 @@ class simple_html_dom {
 		}
 
 		// start tag
-		$node                       = new simple_html_dom_node( $this );
+		$node                       = new wplng_sdh_wplng_sdh_simple_html_dom_node( $this );
 		$node->_[ HDOM_INFO_BEGIN ] = $this->cursor;
 		++$this->cursor;
 		$tag             = $this->copy_until( $this->token_slash ); // Get tag name
@@ -2167,7 +2169,7 @@ class simple_html_dom {
 	}
 
 	protected function as_text_node( $tag ) {
-		$node = new simple_html_dom_node( $this );
+		$node = new wplng_sdh_wplng_sdh_simple_html_dom_node( $this );
 		++$this->cursor;
 		$node->_[ HDOM_INFO_TEXT ] = '</' . $tag . '>';
 		$this->link_nodes( $node, false );
@@ -2340,11 +2342,11 @@ class simple_html_dom {
 	}
 
 	function createElement( $name, $value = null ) {
-		return @str_get_html( "<$name>$value</$name>" )->firstChild();
+		return @wplng_sdh_str_get_html( "<$name>$value</$name>" )->firstChild();
 	}
 
 	function createTextNode( $value ) {
-		return @end( str_get_html( $value )->nodes );
+		return @end( wplng_sdh_str_get_html( $value )->nodes );
 	}
 
 	function getElementById( $id ) {

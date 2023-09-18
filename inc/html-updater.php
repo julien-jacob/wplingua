@@ -93,7 +93,7 @@ function wplng_get_selector_exclude() {
 function wplng_html_set_exclude_tag( $html, &$excluded_elements ) {
 
 	$selector_exclude = wplng_get_selector_exclude();
-	$dom              = str_get_html( $html );
+	$dom              = wplng_sdh_str_get_html( $html );
 
 	if ( false === $dom ) {
 		return $html;
@@ -109,7 +109,7 @@ function wplng_html_set_exclude_tag( $html, &$excluded_elements ) {
 
 	$dom->save();
 
-	return (string) str_get_html( $dom );
+	return (string) wplng_sdh_str_get_html( $dom );
 }
 
 
@@ -122,7 +122,7 @@ function wplng_html_set_exclude_tag( $html, &$excluded_elements ) {
  */
 function wplng_html_replace_exclude_tag( $html, $excluded_elements ) {
 
-	$dom = str_get_html( $html );
+	$dom = wplng_sdh_str_get_html( $html );
 
 	if ( false === $dom ) {
 		return $html;
@@ -142,7 +142,7 @@ function wplng_html_replace_exclude_tag( $html, $excluded_elements ) {
 
 	$dom->save();
 
-	return (string) str_get_html( $dom );
+	return (string) wplng_sdh_str_get_html( $dom );
 }
 
 
