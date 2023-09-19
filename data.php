@@ -252,13 +252,13 @@ function wplng_data_languages() {
 		array(
 			'name'             => __( 'English', 'wplingua' ),
 			'id'               => 'en',
-			'flag'             => 'en',
+			'flag'             => 'gb',
 			'emoji'            => '🇬🇧',
 			'flags'            => array(
 				array(
 					'name'  => __( 'UK', 'wplingua' ),
-					'id'    => 'en',
-					'flag'  => 'en',
+					'id'    => 'gb',
+					'flag'  => 'gb',
 					'emoji' => '🇬🇧',
 				),
 				array(
@@ -426,13 +426,13 @@ function wplng_data_languages() {
 		array(
 			'name'             => __( 'Japanese', 'wplingua' ),
 			'id'               => 'ja',
-			'flag'             => 'ja',
+			'flag'             => 'jp',
 			'emoji'            => '🇯🇵',
 			'flags'            => array(
 				array(
 					'name'  => __( 'Japan', 'wplingua' ),
-					'id'    => 'ja',
-					'flag'  => 'ja',
+					'id'    => 'jp',
+					'flag'  => 'jp',
 					'emoji' => '🇯🇵',
 				),
 			),
@@ -476,13 +476,13 @@ function wplng_data_languages() {
 		array(
 			'name'             => __( 'Chinese', 'wplingua' ),
 			'id'               => 'zh',
-			'flag'             => 'zh',
+			'flag'             => 'cn',
 			'emoji'            => '🇨🇳',
 			'flags'            => array(
 				array(
 					'name'  => __( 'China', 'wplingua' ),
-					'id'    => 'zh',
-					'flag'  => 'zh',
+					'id'    => 'cn',
+					'flag'  => 'cn',
 					'emoji' => '🇨🇳',
 				),
 				array(
