@@ -57,6 +57,7 @@ jQuery(document).ready(function ($) {
         $(".wplng-switcher")
             .removeClass("flags-circle")
             .removeClass("flags-rectangular")
+            .removeClass("flags-wave")
             .removeClass("flags-none")
             .addClass("flags-" + val);
 
@@ -70,6 +71,11 @@ jQuery(document).ready(function ($) {
 
             html = html.replaceAll(
                 "/wplingua/assets/images/rectangular/",
+                "/wplingua/assets/images/" + val + "/",
+            );
+
+            html = html.replaceAll(
+                "/wplingua/assets/images/wave/",
                 "/wplingua/assets/images/" + val + "/",
             );
 

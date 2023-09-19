@@ -238,6 +238,7 @@ function wplng_data_switcher_valid_flags_style() {
 	return array(
 		'circle'      => __( 'Circle', 'wplingua' ),
 		'rectangular' => __( 'Rectangular', 'wplingua' ),
+		'wave'        => __( 'Wave', 'wplingua' ),
 		'none'        => __( 'No display', 'wplingua' ),
 	);
 }
