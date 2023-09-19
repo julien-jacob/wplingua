@@ -27,7 +27,7 @@ define( 'WPLNG_API_VERSION', '0.2' );
 define( 'WPLNG_PLUGIN_VERSION', '0.0.8' );
 define( 'WPLNG_PLUGIN_PATH', dirname( __FILE__ ) );
 define( 'WPLNG_MAX_TRANSLATIONS', 256 );
-define( 'WPLNG_MAX_FILE_SIZE', 900000 );
+define( 'WPLNG_MAX_FILE_SIZE', 1000000 );
 
 
 /**
@@ -137,7 +137,7 @@ function wplng_start() {
 		 */
 
 		 // Manage URL with REQUEST_URI and start OB
-		add_action( 'init', 'wplng_init' );
+		add_action( 'init', 'wplng_ob' );
 
 		// Stop OB at the end of the HTML
 		add_action( 'after_body', 'ob_end_flush' );

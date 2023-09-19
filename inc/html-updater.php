@@ -151,7 +151,7 @@ function wplng_html_replace_exclude_tag( $html, $excluded_elements ) {
  *
  * @return void
  */
-function wplng_init() {
+function wplng_ob() {
 
 	if ( defined( 'DOING_AJAX' ) && DOING_AJAX ) {
 		ob_start( 'wplng_ob_callback_ajax' );

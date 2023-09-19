@@ -180,7 +180,9 @@ function wplng_get_editor_modal_html( $translations ) {
 		$html .= '<a href="' . esc_url( $edit_link ) . '" ';
 		$html .= 'title="' . __( 'Edit', 'wplingua' ) . '" ';
 		$html .= 'class="wplng-button-icon" target="_blank">';
-		$html .= '<span class="dashicons dashicons-edit"></span></a>';
+		$html .= '<span class="dashicons dashicons-edit" title="';
+		$html .= __( 'Edit this translation', 'wplingua' );
+		$html .= '"></span></a>';
 		$html .= '</a>';
 		$html .= '</div>'; // End .wplng-item-edit
 		$html .= '</div>'; // ENd .wplng-modal-item
