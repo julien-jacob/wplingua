@@ -165,13 +165,13 @@ function wplng_get_url_exclude_regex() {
 		get_option( 'wplng_excluded_url' )
 	);
 
-	// Clear with esc_url
-	// foreach ( $url_exclude as $key => $url ) {
-	// 	$url_exclude[ $key ] = esc_url( $url );
-	// }
-
+	// Add delimiter
 	foreach ( $url_exclude as $key => $url ) {
-		$url_exclude[ $key ] = '#' . $url . '#';
+		if ( ! empty( $url ) ) {
+			$url_exclude[ $key ] = '#' . $url . '#';
+		} else {
+			unset( $url_exclude[ $key ] );
+		}
 	}
 
 	// Remove empty
