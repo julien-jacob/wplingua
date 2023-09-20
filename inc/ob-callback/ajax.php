@@ -14,6 +14,10 @@ if ( ! defined( 'WPINC' ) ) {
  */
 function wplng_ob_callback_ajax( $output ) {
 
+	if ( empty( $_SERVER['HTTP_REFERER'] ) ) {
+		return $output;
+	}
+
 	global $wplng_request_uri;
 	$wplng_request_uri = wp_make_link_relative( $_SERVER['HTTP_REFERER'] );
 
