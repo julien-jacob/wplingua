@@ -17,7 +17,7 @@ function wplng_is_valid_api_key_format( $api_key ) {
 	if (
 		empty( $api_key )
 		|| ! is_string( $api_key )
-		|| 32 !== strlen( $api_key )
+		|| 42 !== strlen( $api_key )
 	) {
 		return false;
 	}
