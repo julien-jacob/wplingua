@@ -8,7 +8,7 @@ if ( ! defined( 'WPINC' ) ) {
 
 /**
  * Get website language data array
- * 
+ *
  * @return array Language data
  */
 function wplng_get_language_website() {
@@ -52,10 +52,10 @@ function wplng_get_language_website_flag() {
 
 	if ( empty( $website_flag ) ) {
 
-		$website_flag = wplng_get_language_by_id( 
+		$website_flag = wplng_get_language_by_id(
 			wplng_get_language_website_id()
-		 );
-		 
+		);
+
 		if ( ! empty( $website_flag['flags'][0]['flag'] ) ) {
 			$website_flag = $website_flag['flags'][0]['flag'];
 		} else {
@@ -225,7 +225,7 @@ function wplng_get_languages_target_simplified() {
 
 
 /**
- * Get target languages data 
+ * Get target languages data
  *
  * @return array
  */
@@ -286,7 +286,7 @@ function wplng_get_language_current_id() {
 	}
 
 	foreach ( $languages_target as $language ) {
-		if ( substr( $current_path, 0, 4 ) === '/' . $language . '/' 
+		if ( substr( $current_path, 0, 4 ) === '/' . $language . '/'
 			|| substr( $current_path, 0, 3 ) === $language . '/'
 		) {
 			return $language;
@@ -339,7 +339,7 @@ function wplng_get_language_by_id( $language_id ) {
 	}
 
 	// Return a default value if $language_id not exist
-	return wplng_get_language_by_id('en');
+	return wplng_get_language_by_id( 'en' );
 }
 
 

@@ -17,7 +17,7 @@ function wplng_is_valid_api_key_format( $api_key ) {
 	if (
 		empty( $api_key )
 		|| ! is_string( $api_key )
-		|| 32 !== strlen( $api_key )
+		|| 42 !== strlen( $api_key )
 	) {
 		return false;
 	}
@@ -171,10 +171,10 @@ function wplng_api_feature_is_allow( $feature_name ) {
  * @return void
  */
 function wplng_on_update_option_wplng_api_key( $old_value, $new_value ) {
-	
+
 	delete_transient( 'wplng_api_key_data' );
 
-	delete_option('wplng_website_language');
-	delete_option('wplng_website_flag');
+	delete_option( 'wplng_website_language' );
+	delete_option( 'wplng_website_flag' );
 
 }

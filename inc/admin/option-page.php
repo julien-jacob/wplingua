@@ -114,12 +114,6 @@ function wplng_show_api_message() {
 		<?php
 	}
 
-	if ( empty( $api_info['wp_plugin_version'] )
-		|| $api_info['wp_plugin_version'] === WPLNG_PLUGIN_VERSION
-	) {
-		return;
-	}
-
 	if ( empty( $api_info['wp_plugin_version'] ) ) {
 		?>
 		<div class="wplng-notice notice notice-error is-dismissible">

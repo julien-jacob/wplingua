@@ -17,7 +17,7 @@ function wplng_api_call_validate_api_key( $api_key = '' ) {
 	if ( empty( $api_key ) ) {
 
 		$api_key = wplng_get_api_key();
-		
+
 		if ( empty( $api_key ) ) {
 			return array();
 		}

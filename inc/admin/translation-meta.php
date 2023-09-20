@@ -250,7 +250,7 @@ function wplng_ajax_generate_translation() {
 		$translation = $_POST['text'];
 
 		if ( wplng_text_is_translatable( $_POST['text'] ) ) {
-			
+
 			$response = wplng_api_call_translate(
 				array( $_POST['text'] ),
 				$_POST['language_source'],
@@ -260,7 +260,6 @@ function wplng_ajax_generate_translation() {
 			if ( isset( $response[0] ) ) {
 				$translation = $response[0];
 			}
-
 		}
 
 		wp_send_json_success( $translation );

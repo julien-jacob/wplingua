@@ -52,27 +52,30 @@ function wplng_link_alternate_hreflang() {
  */
 function wplng_get_selector_exclude() {
 
-	$selector_exclude = explode(
+	$selector_exclude = array();
+
+	// Get exclude selector from options
+	$selector_exclude_option = explode(
 		PHP_EOL,
 		get_option( 'wplng_excluded_selectors' )
 	);
 
-	// Remove empty
-	$selector_exclude = array_values( array_filter( $selector_exclude ) );
+	// Sanitize selectors
+	foreach ( $selector_exclude_option as $selector ) {
+		$selector = esc_attr( trim( $selector ) );
+		if ( ! empty( $selector ) ) {
+			$selector_exclude[] = $selector;
+		}
+	}
 
 	// Add default selectors
 	$selector_exclude = array_merge(
-		$selector_exclude,
-		wplng_data_excluded_selector_default() // Make HTML to parse smaller
+		wplng_data_excluded_selector_default(), // Make HTML parsed smaller
+		$selector_exclude
 	);
 
 	// Remove duplicate
 	$selector_exclude = array_unique( $selector_exclude );
-
-	// Sanitize selectors
-	foreach ( $selector_exclude as $key => $selector ) {
-		$selector_exclude[ $key ] = esc_attr( $selector );
-	}
 
 	$selector_exclude = apply_filters(
 		'wplng_selector_exclude',

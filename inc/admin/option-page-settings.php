@@ -326,7 +326,7 @@ function wplng_settings_part_api_key() {
 	<fieldset>
 		<p><label for="wplng_api_key"><strong><?php _e( 'Website API key:', 'wplingua' ); ?></strong></label></p>
 		
-		<input type="text" id="wplng-api-key-fake" value="●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●" disabled></input>
+		<input type="text" id="wplng-api-key-fake" value="●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●" disabled></input>
 
 		<input type="text" name="wplng_api_key" id="wplng_api_key" value="<?php echo esc_attr( wplng_get_api_key() ); ?>" style="display: none;"></input>
 		

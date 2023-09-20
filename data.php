@@ -299,6 +299,12 @@ function wplng_data_languages() {
 					'flag'  => 'be',
 					'emoji' => '🇧🇪',
 				),
+				array(
+					'name'  => __( 'Canada', 'wplingua' ),
+					'id'    => 'ca',
+					'flag'  => 'ca',
+					'emoji' => '🇨🇦',
+				),
 			),
 			'name_translation' => array(
 				'en' => 'French',
