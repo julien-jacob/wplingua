@@ -62,8 +62,8 @@ function wplng_get_selector_exclude() {
 
 	// Sanitize selectors
 	foreach ( $selector_exclude_option as $selector ) {
-		$selector = esc_attr( trim($selector) );
-		if (!empty($selector)) {
+		$selector = esc_attr( trim( $selector ) );
+		if ( ! empty( $selector ) ) {
 			$selector_exclude[] = $selector;
 		}
 	}

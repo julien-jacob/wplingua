@@ -1655,21 +1655,21 @@ class wplng_sdh_simple_html_dom {
 		$defaultSpanText = WPLNG_DEFAULT_SPAN_TEXT ) {
 		$this->clear();
 
-		$this->doc                        = trim( $str );
-		$this->size                       = strlen( $this->doc );
-		$this->original_size              = $this->size; // original size of the html
-		$this->pos                        = 0;
-		$this->cursor                     = 1;
-		$this->noise                      = array();
-		$this->nodes                      = array();
-		$this->lowercase                  = $lowercase;
-		$this->default_br_text            = $defaultBRText;
-		$this->default_span_text          = $defaultSpanText;
-		$this->root                       = new wplng_sdh_wplng_sdh_simple_html_dom_node( $this );
-		$this->root->tag                  = 'root';
+		$this->doc                              = trim( $str );
+		$this->size                             = strlen( $this->doc );
+		$this->original_size                    = $this->size; // original size of the html
+		$this->pos                              = 0;
+		$this->cursor                           = 1;
+		$this->noise                            = array();
+		$this->nodes                            = array();
+		$this->lowercase                        = $lowercase;
+		$this->default_br_text                  = $defaultBRText;
+		$this->default_span_text                = $defaultSpanText;
+		$this->root                             = new wplng_sdh_wplng_sdh_simple_html_dom_node( $this );
+		$this->root->tag                        = 'root';
 		$this->root->_[ WPLNG_HDOM_INFO_BEGIN ] = -1;
-		$this->root->nodetype             = WPLNG_HDOM_TYPE_ROOT;
-		$this->parent                     = $this->root;
+		$this->root->nodetype                   = WPLNG_HDOM_TYPE_ROOT;
+		$this->parent                           = $this->root;
 		if ( $this->size > 0 ) {
 			$this->char = $this->doc[0]; }
 	}
@@ -1870,7 +1870,7 @@ class wplng_sdh_simple_html_dom {
 					&& isset( $this->block_tags[ $tag_lower ] ) ) {
 
 					$this->parent->_[ WPLNG_HDOM_INFO_END ] = 0;
-					$org_parent                       = $this->parent;
+					$org_parent                             = $this->parent;
 
 					// Traverse ancestors to find a matching opening tag
 					// Stop at root node
@@ -1897,7 +1897,7 @@ class wplng_sdh_simple_html_dom {
 					// Grandparent exists and current tag is a block tag, so our
 					// parent doesn't have an end tag
 					$this->parent->_[ WPLNG_HDOM_INFO_END ] = 0; // No end tag
-					$org_parent                       = $this->parent;
+					$org_parent                             = $this->parent;
 
 					// Traverse ancestors to find a matching opening tag
 					// Stop at root node
@@ -1909,7 +1909,7 @@ class wplng_sdh_simple_html_dom {
 
 					// If we don't have a match add current tag as text node
 					if ( strtolower( $this->parent->tag ) !== $tag_lower ) {
-						$this->parent                     = $org_parent; // restore origonal parent
+						$this->parent                           = $org_parent; // restore origonal parent
 						$this->parent->_[ WPLNG_HDOM_INFO_END ] = $this->cursor;
 						return $this->as_text_node( $tag );
 					}
@@ -1917,7 +1917,7 @@ class wplng_sdh_simple_html_dom {
 					&& strtolower( $this->parent->parent->tag ) === $tag_lower
 				) { // Grandparent exists and current tag closes it
 					$this->parent->_[ WPLNG_HDOM_INFO_END ] = 0;
-					$this->parent                     = $this->parent->parent;
+					$this->parent                           = $this->parent->parent;
 				} else { // Random tag, add as text node
 					return $this->as_text_node( $tag );
 				}
@@ -1935,7 +1935,7 @@ class wplng_sdh_simple_html_dom {
 		}
 
 		// start tag
-		$node                       = new wplng_sdh_wplng_sdh_simple_html_dom_node( $this );
+		$node                             = new wplng_sdh_wplng_sdh_simple_html_dom_node( $this );
 		$node->_[ WPLNG_HDOM_INFO_BEGIN ] = $this->cursor;
 		++$this->cursor;
 		$tag             = $this->copy_until( $this->token_slash ); // Get tag name
@@ -1967,7 +1967,7 @@ class wplng_sdh_simple_html_dom {
 		// The start tag cannot contain another start tag, if so add as text
 		// i.e. "<<html>"
 		if ( $pos = strpos( $tag, '<' ) !== false ) {
-			$tag                       = '<' . substr( $tag, 0, -1 );
+			$tag                             = '<' . substr( $tag, 0, -1 );
 			$node->_[ WPLNG_HDOM_INFO_TEXT ] = $tag;
 			$this->link_nodes( $node, false );
 			$this->char = $this->doc[ --$this->pos ]; // prev
@@ -2002,7 +2002,7 @@ class wplng_sdh_simple_html_dom {
 			// Traverse ancestors to close all optional closing tags
 			while ( isset( $this->optional_closing_tags[ $tag_lower ][ strtolower( $this->parent->tag ) ] ) ) {
 				$this->parent->_[ WPLNG_HDOM_INFO_END ] = 0;
-				$this->parent                     = $this->parent->parent;
+				$this->parent                           = $this->parent->parent;
 			}
 			$node->parent = $this->parent;
 		}
@@ -2031,10 +2031,10 @@ class wplng_sdh_simple_html_dom {
 			// handle endless '<'
 			// Out of bounds before the tag ended
 			if ( $this->pos >= $this->size - 1 && $this->char !== '>' ) {
-				$node->nodetype            = WPLNG_HDOM_TYPE_TEXT;
+				$node->nodetype                  = WPLNG_HDOM_TYPE_TEXT;
 				$node->_[ WPLNG_HDOM_INFO_END ]  = 0;
 				$node->_[ WPLNG_HDOM_INFO_TEXT ] = '<' . $tag . $space[0] . $name;
-				$node->tag                 = 'text';
+				$node->tag                       = 'text';
 				$this->link_nodes( $node, false );
 				return true;
 			}
@@ -2042,17 +2042,17 @@ class wplng_sdh_simple_html_dom {
 			// handle mismatch '<'
 			// Attributes cannot start after opening tag
 			if ( $this->doc[ $this->pos - 1 ] == '<' ) {
-				$node->nodetype            = WPLNG_HDOM_TYPE_TEXT;
-				$node->tag                 = 'text';
-				$node->attr                = array();
+				$node->nodetype                  = WPLNG_HDOM_TYPE_TEXT;
+				$node->tag                       = 'text';
+				$node->attr                      = array();
 				$node->_[ WPLNG_HDOM_INFO_END ]  = 0;
 				$node->_[ WPLNG_HDOM_INFO_TEXT ] = substr(
 					$this->doc,
 					$begin_tag_pos,
 					$this->pos - $begin_tag_pos - 1
 				);
-				$this->pos                -= 2;
-				$this->char                = ( ++$this->pos < $this->size ) ? $this->doc[ $this->pos ] : null; // next
+				$this->pos                      -= 2;
+				$this->char                      = ( ++$this->pos < $this->size ) ? $this->doc[ $this->pos ] : null; // next
 				$this->link_nodes( $node, false );
 				return true;
 			}
@@ -2072,7 +2072,7 @@ class wplng_sdh_simple_html_dom {
 				} else {
 					//no value attr: nowrap, checked selected...
 					$node->_[ WPLNG_HDOM_INFO_QUOTE ][] = WPLNG_HDOM_QUOTE_NO;
-					$node->attr[ $name ]          = true;
+					$node->attr[ $name ]                = true;
 					if ( $this->char != '>' ) {
 						$this->char = $this->doc[ --$this->pos ]; } // prev
 				}
@@ -2156,7 +2156,7 @@ class wplng_sdh_simple_html_dom {
 
 		if ( ! $is_duplicate ) {
 			$node->_[ WPLNG_HDOM_INFO_QUOTE ][] = $quote_type;
-			$node->attr[ $name ]          = $value;
+			$node->attr[ $name ]                = $value;
 		}
 	}
 
