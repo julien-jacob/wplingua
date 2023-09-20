@@ -123,23 +123,24 @@ function wplng_url_is_translatable( $url = '' ) {
 		$is_translatable = false;
 	}
 
-	// Check if URL is excluded in option page
-	if ( $is_translatable ) {
-
-		$url_exclude_regex = wplng_get_url_exclude_regex();
-
-		foreach ( $url_exclude_regex as $regex ) {
-			if ( preg_match( $regex, $url ) ) {
-				$is_translatable = false;
-				break;
-			}
-		}
-	}
-
 	// Exclude files URL
 	$regex_is_file = '#\.(avi|css|doc|exe|gif|html|jpg|jpeg|mid|midi|mp3|mpg|mpeg|mov|qt|pdf|png|ram|rar|tiff|txt|wav|zip|ico)$#Uis';
 	if ( $is_translatable && preg_match( $regex_is_file, $url ) ) {
 		$is_translatable = false;
+	}
+
+	// Check if URL is excluded in option page
+	if ( $is_translatable ) {
+
+		$url_original      = wplng_get_url_original( $url );
+		$url_exclude_regex = wplng_get_url_exclude_regex();
+
+		foreach ( $url_exclude_regex as $regex ) {
+			if ( preg_match( $regex, $url_original ) ) {
+				$is_translatable = false;
+				break;
+			}
+		}
 	}
 
 	$is_translatable = apply_filters(
@@ -159,23 +160,21 @@ function wplng_url_is_translatable( $url = '' ) {
  */
 function wplng_get_url_exclude_regex() {
 
+	$url_exclude = array();
+
 	// Get user excluded URLs
-	$url_exclude = explode(
+	$url_exclude_option = explode(
 		PHP_EOL,
 		get_option( 'wplng_excluded_url' )
 	);
 
 	// Add delimiter
-	foreach ( $url_exclude as $key => $url ) {
+	foreach ( $url_exclude_option as $url ) {
+		$url = trim( $url );
 		if ( ! empty( $url ) ) {
-			$url_exclude[ $key ] = '#' . $url . '#';
-		} else {
-			unset( $url_exclude[ $key ] );
+			$url_exclude[] = '#' . $url . '#';
 		}
 	}
-
-	// Remove empty
-	$url_exclude = array_values( array_filter( $url_exclude ) );
 
 	// Remove duplicate
 	$url_exclude = array_unique( $url_exclude );
@@ -201,18 +200,15 @@ function wplng_get_url_original( $url = '' ) {
 		$url = wplng_get_url_current();
 	}
 
-	$language_website_id = wplng_get_language_website_id();
-	$language_current_id = wplng_get_language_current_id();
+	$target = wplng_get_languages_target_ids();
 
-	if ( $language_website_id !== $language_current_id ) {
-		$url = str_replace( '/' . $language_current_id . '/', '/', $url );
+	foreach ( $target as $target_id ) {
+		$url = str_replace( '/' . $target_id . '/', '/', $url );
 	}
 
 	$url = apply_filters(
 		'wplng_url_original',
-		$url,
-		$language_website_id,
-		$language_current_id
+		$url
 	);
 
 	return $url;
