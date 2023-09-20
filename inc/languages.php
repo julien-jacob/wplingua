@@ -286,7 +286,9 @@ function wplng_get_language_current_id() {
 	}
 
 	foreach ( $languages_target as $language ) {
-		if ( substr( $current_path, 1, 2 ) === $language ) {
+		if ( substr( $current_path, 0, 4 ) === '/' . $language . '/' 
+			|| substr( $current_path, 0, 3 ) === $language . '/'
+		) {
 			return $language;
 			break;
 		}

@@ -468,6 +468,11 @@ function wplng_translate_html(
 	}
 
 	$dom->save();
+	$dom = (string) wplng_sdh_str_get_html( $dom );
 
-	return (string) wplng_sdh_str_get_html( $dom );
+	if ( empty( $dom ) ) {
+		return $html;
+	}
+
+	return $dom;
 }

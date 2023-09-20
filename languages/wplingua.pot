@@ -1,0 +1,688 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: wpLingua\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-09-20 00:40+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: wpLingua Team <contact@wplingua.com>\n"
+"Language-Team: \n"
+"Language: \n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Domain: wplingua"
+
+#: inc/translation.php:120
+msgid "..."
+msgstr ""
+
+#: inc/admin/option-page.php:137
+msgid ""
+"A new version of the wpLingua WordPress plugin is now available! You can "
+"download it from"
+msgstr ""
+
+#: inc/admin/option-page.php:126
+msgid "A problem has occurred with the API connection."
+msgstr ""
+
+#: inc/admin/option-page-settings.php:247
+msgid "Add language"
+msgstr ""
+
+#: inc/admin/option-page-settings.php:242
+msgid "Add new target Language: "
+msgstr ""
+
+#: inc/admin/translation-cpt.php:20
+msgid "All translations"
+msgstr ""
+
+#: inc/admin/admin-bar.php:80
+msgid "All translations on page"
+msgstr ""
+
+#: inc/admin/option-page-register.php:223
+msgid "Allow search from all languages"
+msgstr ""
+
+#: inc/admin/option-page-register.php:65
+msgid "An error occurred while creating the API key.."
+msgstr ""
+
+#: inc/admin/option-page-register.php:34
+msgid "An error occurred with API key.."
+msgstr ""
+
+#: inc/admin/option-page-register.php:99 inc/admin/option-page-settings.php:61
+msgid "API Key"
+msgstr ""
+
+#: inc/admin/option-page-switcher.php:176
+msgid "Automatic insert: "
+msgstr ""
+
+#: inc/admin/option-page.php:140
+msgid "Available version:"
+msgstr ""
+
+#: data.php:297
+msgid "Belgium"
+msgstr ""
+
+#: data.php:223
+msgid "Block"
+msgstr ""
+
+#: data.php:195
+msgid "Bottom center"
+msgstr ""
+
+#: data.php:196
+msgid "Bottom left"
+msgstr ""
+
+#: data.php:194
+msgid "Bottom right"
+msgstr ""
+
+#: data.php:378
+msgid "Brazil"
+msgstr ""
+
+#: data.php:484
+msgid "China"
+msgstr ""
+
+#: data.php:478
+msgid "Chinese"
+msgstr ""
+
+#: data.php:239
+msgid "Circle"
+msgstr ""
+
+#: inc/api-call/validate-api-key.php:60
+msgid "Code"
+msgstr ""
+
+#: data.php:230
+msgid "Complete name"
+msgstr ""
+
+#: inc/admin/option-page-settings.php:190
+msgid "Custom"
+msgstr ""
+
+#: inc/admin/option-page-switcher.php:159
+msgid "Custom CSS"
+msgstr ""
+
+#: inc/admin/option-page-settings.php:211
+#: inc/admin/option-page-settings.php:274
+msgid "Custom flag URL : "
+msgstr ""
+
+#: data.php:212
+msgid "Dark - Double - Smooth"
+msgstr ""
+
+#: data.php:213
+msgid "Dark - Double - Square"
+msgstr ""
+
+#: data.php:214
+msgid "Dark - Simple - Smooth"
+msgstr ""
+
+#: data.php:215
+msgid "Dark - Simple - Square"
+msgstr ""
+
+#: inc/admin/option-page-switcher.php:110
+msgid "Displayed name: "
+msgstr ""
+
+#: data.php:224
+msgid "Dropdown"
+msgstr ""
+
+#: inc/ob-callback/list.php:181
+msgid "Edit"
+msgstr ""
+
+#: inc/admin/option-page-settings.php:200
+#: inc/admin/option-page-settings.php:263
+msgid "Edit flag"
+msgstr ""
+
+#: inc/ob-callback/editor.php:185 inc/ob-callback/list.php:184
+msgid "Edit this translation"
+msgstr ""
+
+#: inc/admin/translation-cpt.php:21
+msgid "Edit translation"
+msgstr ""
+
+#: data.php:254
+msgid "English"
+msgstr ""
+
+#: inc/api-call/api-informations.php:44
+msgid "Error - API response format not valid."
+msgstr ""
+
+#: inc/api-call/api-informations.php:35 inc/api-call/request-api-key.php:62
+msgid "Error - API response not valid."
+msgstr ""
+
+#: inc/api-call/request-api-key.php:31
+msgid "Error - Invalid data."
+msgstr ""
+
+#: inc/admin/option-page-exclusions.php:32
+msgid "Exclude elements"
+msgstr ""
+
+#: inc/admin/option-page-exclusions.php:39
+msgid "Exclude elements by class attribute"
+msgstr ""
+
+#: inc/admin/option-page-exclusions.php:38
+msgid "Exclude elements by ID attribute"
+msgstr ""
+
+#: inc/admin/option-page-exclusions.php:35
+msgid "Exclude HTML elements:"
+msgstr ""
+
+#: inc/admin/option-page-exclusions.php:47
+msgid "Exclude URL"
+msgstr ""
+
+#: inc/admin/option-page-exclusions.php:53
+msgid "Exclude URL \"/my-page/\""
+msgstr ""
+
+#: inc/admin/option-page-exclusions.php:56
+msgid "Exclude URL containing \"/my-page/\""
+msgstr ""
+
+#: inc/admin/option-page-exclusions.php:55
+msgid "Exclude URLs ending with \"/my-page/\""
+msgstr ""
+
+#: inc/admin/option-page-exclusions.php:50
+msgid "Exclude URLs from translation:"
+msgstr ""
+
+#: inc/admin/option-page-exclusions.php:54
+msgid "Exclude URLs starting with \"/my-page/\""
+msgstr ""
+
+#: inc/admin/option-page.php:56
+msgid "Exclusion"
+msgstr ""
+
+#: inc/admin/option-page-settings.php:53
+msgid "Features"
+msgstr ""
+
+#: inc/admin/option-page-switcher.php:135
+msgid "Flag style: "
+msgstr ""
+
+#: inc/admin/option-page-settings.php:206
+msgid "Flag:"
+msgstr ""
+
+#: inc/admin/option-page-settings.php:270
+msgid "Flag: "
+msgstr ""
+
+#: data.php:291
+msgid "France"
+msgstr ""
+
+#: data.php:285
+msgid "French"
+msgstr ""
+
+#: inc/admin/option-page-register.php:198
+msgid "general conditions of use"
+msgstr ""
+
+#: inc/admin/translation-meta.php:118
+msgid "Generate translation"
+msgstr ""
+
+#: data.php:316
+msgid "German"
+msgstr ""
+
+#: data.php:322
+msgid "Germany"
+msgstr ""
+
+#: inc/admin/option-page-register.php:206
+msgid "Get a free API key"
+msgstr ""
+
+#: inc/admin/option-page-register.php:164
+msgid ""
+"Get a free wpLingua API key and make your website bilingual in a minute!"
+msgstr ""
+
+#: inc/admin/option-page-register.php:106
+msgid "Get free API key"
+msgstr ""
+
+#: inc/admin/option-page-register.php:224
+msgid "Get more target languages"
+msgstr ""
+
+#: inc/admin/option-page-register.php:219
+msgid "Get more target languages and premium features:"
+msgstr ""
+
+#: inc/admin/option-page-register.php:113
+msgid "Get premium API Key"
+msgstr ""
+
+#: data.php:208
+msgid "Grey - Double - Smooth"
+msgstr ""
+
+#: data.php:209
+msgid "Grey - Double - Square"
+msgstr ""
+
+#: data.php:210
+msgid "Grey - Simple - Smooth"
+msgstr ""
+
+#: data.php:211
+msgid "Grey - Simple - Square"
+msgstr ""
+
+#: inc/admin/option-page-settings.php:335
+msgid "Hide API key"
+msgstr ""
+
+#: data.php:490
+msgid "Hong Kong"
+msgstr ""
+
+#. URI of the plugin
+#. Author URI of the plugin
+msgid "https://wplingua.com/"
+msgstr ""
+
+#: inc/admin/option-page-register.php:198
+msgid "I have read and accept the"
+msgstr ""
+
+#: inc/admin/option-page-register.php:136
+msgid ""
+"If you already have an API key, enter it below. If you've forgotten your "
+"site's API key, visit "
+msgstr ""
+
+#: data.php:222
+msgid "Inline list"
+msgstr ""
+
+#: inc/admin/option-page.php:139
+msgid "Installed version:"
+msgstr ""
+
+#: inc/admin/option-page-register.php:47
+msgid "Invalid API key."
+msgstr ""
+
+#: inc/admin/translation-meta.php:269
+msgid "Invalid parameters"
+msgstr ""
+
+#: data.php:341
+msgid "Italian"
+msgstr ""
+
+#: data.php:347
+msgid "Italy"
+msgstr ""
+
+#: data.php:434
+msgid "Japan"
+msgstr ""
+
+#: data.php:428
+msgid "Japanese"
+msgstr ""
+
+#: data.php:231
+msgid "Language ID"
+msgstr ""
+
+#: data.php:204
+msgid "Light - Double - Smooth"
+msgstr ""
+
+#: data.php:205
+msgid "Light - Double - Square"
+msgstr ""
+
+#: data.php:206
+msgid "Light - Simple - Smooth"
+msgstr ""
+
+#: data.php:207
+msgid "Light - Simple - Square"
+msgstr ""
+
+#: inc/admin/option-page-register.php:176
+msgid "Mail address:"
+msgstr ""
+
+#: inc/admin/option-page-register.php:28 inc/admin/option-page-register.php:59
+msgid "Message :"
+msgstr ""
+
+#: data.php:409
+msgid "Mexico"
+msgstr ""
+
+#: inc/admin/option-page-register.php:222
+msgid "Multilingual Woocommerce store"
+msgstr ""
+
+#: data.php:232 data.php:242
+msgid "No display"
+msgstr ""
+
+#: data.php:197
+msgid "None"
+msgstr ""
+
+#: inc/admin/option-page-settings.php:184
+msgid "Original website language, defined by API key:"
+msgstr ""
+
+#: inc/admin/option-page-settings.php:150
+msgid "Original website language: "
+msgstr ""
+
+#: inc/admin/option-page-settings.php:174
+msgid "Please choose an option"
+msgstr ""
+
+#: data.php:372
+msgid "Portugal"
+msgstr ""
+
+#: data.php:366
+msgid "Portuguese"
+msgstr ""
+
+#: inc/admin/option-page-settings.php:305
+msgid "Premium / Beta : Search from translated languages"
+msgstr ""
+
+#: inc/admin/option-page-settings.php:311
+msgid "Premium / Beta : Translate Woocommerce shop"
+msgstr ""
+
+#: data.php:240
+msgid "Rectangular"
+msgstr ""
+
+#: inc/admin/translation-meta.php:93
+msgid "Regenerate translation"
+msgstr ""
+
+#: inc/admin/option-page-register.php:163
+msgid "Register free wpLingua API key:"
+msgstr ""
+
+#: inc/admin/option-page-settings.php:264
+msgid "Remove"
+msgstr ""
+
+#: inc/admin/admin-bar.php:61
+msgid "Return on page"
+msgstr ""
+
+#: data.php:459
+msgid "Russia"
+msgstr ""
+
+#: data.php:453
+msgid "Russian"
+msgstr ""
+
+#: inc/admin/option-page-register.php:142
+msgid "Set API key"
+msgstr ""
+
+#: inc/admin/option-page-register.php:135
+msgid "Set API key:"
+msgstr ""
+
+#: inc/admin/option-page-switcher.php:163
+msgid "Set custom CSS:"
+msgstr ""
+
+#: inc/admin/option-page.php:163
+msgid "Settings"
+msgstr ""
+
+#: inc/admin/option-page-switcher.php:200
+msgid "Shortcode switcher: "
+msgstr ""
+
+#: inc/admin/option-page-settings.php:333
+msgid "Show API key"
+msgstr ""
+
+#: data.php:403
+msgid "Spain"
+msgstr ""
+
+#: data.php:397
+msgid "Spanish"
+msgstr ""
+
+#: inc/admin/translation-meta.php:134
+msgid "Status: Edited on"
+msgstr ""
+
+#: inc/admin/translation-meta.php:127
+msgid "Status: Generated"
+msgstr ""
+
+#: inc/admin/translation-meta.php:121
+msgid "Status: Ungenerated"
+msgstr ""
+
+#: inc/admin/option-page.php:47
+msgid "Switcher"
+msgstr ""
+
+#: inc/admin/option-page-switcher.php:52
+msgid "Switcher design"
+msgstr ""
+
+#: inc/admin/option-page-switcher.php:171
+msgid "Switcher insertion"
+msgstr ""
+
+#: inc/admin/option-page-switcher.php:39
+msgid "Switcher preview"
+msgstr ""
+
+#: inc/admin/option-page-switcher.php:83
+msgid "Switcher style: "
+msgstr ""
+
+#: inc/admin/option-page-switcher.php:56
+msgid "Switcher theme: "
+msgstr ""
+
+#: inc/admin/option-page-register.php:190
+msgid "Target language:"
+msgstr ""
+
+#: inc/admin/option-page-settings.php:282
+msgid "Target languages enabled: "
+msgstr ""
+
+#: inc/admin/option-page-register.php:80
+msgid ""
+"The API key has been correctly created and sent to the following e-mail "
+"address:"
+msgstr ""
+
+#: inc/admin/option-page-register.php:136
+msgid "the API key retrieval page"
+msgstr ""
+
+#: inc/admin/admin-bar.php:35
+msgid "This URL is excluded from translation"
+msgstr ""
+
+#: inc/admin/option-page-register.php:220
+msgid ""
+"To translate your site into more languages and access premium features, "
+"visit wpLingua plans."
+msgstr ""
+
+#: inc/admin/option-page-settings.php:47
+msgid "Translated languages"
+msgstr ""
+
+#: inc/admin/translation-cpt.php:19 inc/admin/translation-meta.php:19
+msgid "Translation"
+msgstr ""
+
+#: inc/admin/option-page-settings.php:301
+msgid "Translation features:"
+msgstr ""
+
+#: inc/admin/translation-cpt.php:18 inc/admin/translation-cpt.php:22
+msgid "Translations"
+msgstr ""
+
+#: data.php:260
+msgid "UK"
+msgstr ""
+
+#: data.php:266
+msgid "USA"
+msgstr ""
+
+#: inc/admin/option-page-register.php:227
+msgid "Visit wpLingua plans"
+msgstr ""
+
+#: inc/admin/option-page-settings.php:125
+msgid "Visit your multilingual website"
+msgstr ""
+
+#: inc/admin/admin-bar.php:71
+msgid "Visual editor"
+msgstr ""
+
+#: data.php:241
+msgid "Wave"
+msgstr ""
+
+#: inc/admin/option-page-settings.php:327
+msgid "Website API key:"
+msgstr ""
+
+#: inc/admin/option-page-settings.php:41
+msgid "Website language"
+msgstr ""
+
+#: inc/admin/option-page-register.php:183
+msgid "Website language:"
+msgstr ""
+
+#: inc/admin/option-page-register.php:202
+msgid "Website Locale:"
+msgstr ""
+
+#: inc/admin/option-page-register.php:169
+msgid "Website URL:"
+msgstr ""
+
+#. Description of the plugin
+msgid "WordPress plugin to translate and make your websites multilingual"
+msgstr ""
+
+#. Name of the plugin
+#: inc/admin/admin-bar.php:25 inc/admin/option-page.php:18
+#: inc/admin/option-page.php:37
+msgid "wpLingua"
+msgstr ""
+
+#: inc/admin/option-page-exclusions.php:21
+msgid "wpLingua / Beta : Exclusion rules"
+msgstr ""
+
+#: inc/admin/option-page-register.php:90
+msgid "wpLingua / Beta : Register API key"
+msgstr ""
+
+#: inc/admin/option-page-switcher.php:27
+msgid "wpLingua / Beta : Switcher settings"
+msgstr ""
+
+#: inc/admin/option-page-settings.php:29
+msgid "wpLingua / Beta : Translation solution for multilingual website"
+msgstr ""
+
+#: inc/admin/option-page.php:55
+msgid "wplingua : Exclusion"
+msgstr ""
+
+#: inc/admin/option-page.php:17
+msgid "wpLingua : Register"
+msgstr ""
+
+#: inc/admin/option-page.php:36
+msgid "wpLingua : Settings"
+msgstr ""
+
+#: inc/admin/option-page.php:46
+msgid "wplingua : Switcher"
+msgstr ""
+
+#. Author of the plugin
+msgid "wpLingua Team"
+msgstr ""
+
+#: inc/admin/option-page-exclusions.php:51
+msgid ""
+"You can exclude from translations pages you wish to offer only in the site's "
+"original language. To do this, List the REGEXs that match the URLs to be "
+"excluded. Examples:"
+msgstr ""
+
+#: inc/admin/option-page-exclusions.php:36
+msgid ""
+"You can leave some elements of your web pages untranslated. To do this, list "
+"the element selectors to be excluded below, one per line. Examples:"
+msgstr ""
+
+#: inc/admin/option-page-settings.php:118
+msgid "Your site is being translated and will be ready soon."
+msgstr ""
+
+#: inc/admin/option-page-settings.php:122
+msgid ""
+"Your website is now multilingual ! You can start visiting the translated "
+"version."
+msgstr ""

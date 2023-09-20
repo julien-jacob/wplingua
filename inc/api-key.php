@@ -105,7 +105,7 @@ function wplng_get_api_language_website() {
 /**
  * Get target languages from wpLingua API data
  *
- * @return strinf Language ID, 'all' or ''
+ * @return string Language ID, 'all' or ''
  */
 function wplng_get_api_languages_target() {
 
@@ -176,8 +176,5 @@ function wplng_on_update_option_wplng_api_key( $old_value, $new_value ) {
 
 	delete_option('wplng_website_language');
 	delete_option('wplng_website_flag');
-	delete_option('wplng_target_languages');
-	delete_option('wplng_translate_search');
-	delete_option('wplng_translate_woocommerce');
 
 }

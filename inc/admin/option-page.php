@@ -120,6 +120,17 @@ function wplng_show_api_message() {
 		return;
 	}
 
+	if ( empty( $api_info['wp_plugin_version'] ) ) {
+		?>
+		<div class="wplng-notice notice notice-error is-dismissible">
+			<p><?php _e( 'A problem has occurred with the API connection.', 'wplingua' ); ?></p>
+		</div>
+		<?php
+		return;
+	} elseif ( $api_info['wp_plugin_version'] === WPLNG_PLUGIN_VERSION ) {
+		return;
+	}
+
 	?>
 	<div class="wplng-notice notice notice-info is-dismissible">
 		<p>
