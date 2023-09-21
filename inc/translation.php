@@ -135,16 +135,10 @@ function wplng_save_translation_new( $language_id, $original, $translation ) {
 			),
 		)
 	);
+	
 	if ( is_wp_error( $post_id ) ) {
 		return false;
 	}
-
-	wp_update_post(
-		array(
-			'ID'        => $post_id,
-			'post_name' => 'wplingua-translation-' . (string) $post_id,
-		)
-	);
 
 	/**
 	 * Make $translation_meta
