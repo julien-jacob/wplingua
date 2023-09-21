@@ -217,6 +217,8 @@ function wplng_translation_save_meta_boxes_data( $post_id ) {
 		if ( empty( $temp ) ) {
 			$temp = '[WPLNG_EMPTY]';
 		} elseif ( $temp !== $translation['translation'] ) {
+			$temp = str_replace( '\\', '', $temp );
+
 			$translations[ $key ]['status'] = time();
 		}
 
