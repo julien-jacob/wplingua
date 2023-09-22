@@ -7,7 +7,7 @@
  * Author URI:   https://wplingua.com/
  * Text Domain:  wplingua
  * Domain Path:  /languages/
- * Version:      0.0.11
+ * Version:      0.1.0
  * Requires PHP: 7.0
  */
 
@@ -23,7 +23,7 @@ if ( ! defined( 'WPINC' ) ) {
  */
 define( 'WPLNG_API_URL', 'https://api.wplingua.com' );
 define( 'WPLNG_API_VERSION', '1.0' );
-define( 'WPLNG_PLUGIN_VERSION', '0.0.11' );
+define( 'WPLNG_PLUGIN_VERSION', '0.1.0' );
 define( 'WPLNG_PLUGIN_PATH', dirname( __FILE__ ) );
 define( 'WPLNG_MAX_TRANSLATIONS', 256 );
 define( 'WPLNG_MAX_FILE_SIZE', 1000000 );
@@ -153,7 +153,7 @@ function wplng_start() {
 
 		// Woocommerce
 		if ( empty( get_option( 'wplng_translate_woocommerce' ) ) ) {
-			add_filter( 'wplng_url_exclude', 'wplng_exclude_woocommerce_url', 20 );
+			add_filter( 'wplng_url_exclude_regex', 'wplng_exclude_woocommerce_url', 20 );
 		}
 
 		/**

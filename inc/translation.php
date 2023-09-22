@@ -125,7 +125,7 @@ function wplng_save_translation_new( $language_id, $original, $translation ) {
 	/**
 	 * Create the post and get this ID
 	 */
-	$post_id = wp_insert_post(
+	$new_post_id = wp_insert_post(
 		array(
 			'post_title'  => $title,
 			'post_type'   => 'wplng_translation',
@@ -136,7 +136,7 @@ function wplng_save_translation_new( $language_id, $original, $translation ) {
 		)
 	);
 	
-	if ( is_wp_error( $post_id ) ) {
+	if ( is_wp_error( $new_post_id ) ) {
 		return false;
 	}
 
@@ -165,19 +165,19 @@ function wplng_save_translation_new( $language_id, $original, $translation ) {
 	}
 
 	add_post_meta(
-		$post_id,
+		$new_post_id,
 		'wplng_translation_original',
 		$original
 	);
 
 	add_post_meta(
-		$post_id,
+		$new_post_id,
 		'wplng_translation_original_language_id',
 		wplng_get_language_website_id()
 	);
 
 	add_post_meta(
-		$post_id,
+		$new_post_id,
 		'wplng_translation_translations',
 		wp_json_encode(
 			$translation_meta,
@@ -185,7 +185,7 @@ function wplng_save_translation_new( $language_id, $original, $translation ) {
 		)
 	);
 
-	return $post_id;
+	return $new_post_id;
 }
 
 
