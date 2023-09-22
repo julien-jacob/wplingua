@@ -25,7 +25,7 @@ function wplng_link_alternate_hreflang() {
 		return;
 	}
 
-	$html .= '<!-- This site is make multilingual with the wpLingua plugin -->';
+	$html .= '<!-- This site is made multilingual with the wpLingua plugin -->';
 
 	// Create meta generator
 	$html .= PHP_EOL . '<meta name="generator" content="wpLingua ' . esc_attr( WPLNG_PLUGIN_VERSION ) . '" />';
