@@ -130,6 +130,14 @@ function wplng_data_attr_text_to_translate() {
 				'attr'     => 'content',
 				'selector' => 'meta[name="dc.title"]',
 			),
+			array(
+				'attr'     => 'content',
+				'selector' => 'meta[name="description"]',
+			),
+			array(
+				'attr'     => 'content',
+				'selector' => 'meta[name="dc.description"]',
+			),
 		)
 	);
 }
