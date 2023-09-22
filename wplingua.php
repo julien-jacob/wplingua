@@ -153,7 +153,7 @@ function wplng_start() {
 
 		// Woocommerce
 		if ( empty( get_option( 'wplng_translate_woocommerce' ) ) ) {
-			add_filter( 'wplng_url_exclude', 'wplng_exclude_woocommerce_url', 20 );
+			add_filter( 'wplng_url_exclude_regex', 'wplng_exclude_woocommerce_url', 20 );
 		}
 
 		/**
