@@ -186,6 +186,8 @@ function wplng_translation_save_meta_boxes_data( $post_id ) {
 		return;
 	}
 
+	wplng_clear_translations_cache();
+
 	$meta = get_post_meta( $post_id );
 
 	if ( empty( $meta['wplng_translation_translations'][0] ) ) {
