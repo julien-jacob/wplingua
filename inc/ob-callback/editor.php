@@ -43,7 +43,7 @@ function wplng_ob_callback_editor( $html ) {
 	$translations       = array();
 
 	if ( ! empty( $texts ) ) {
-		$translations = wplng_get_translations_saved( $language_target_id );
+		$translations = wplng_get_translations_target( $language_target_id );
 	}
 
 	/**
@@ -101,14 +101,33 @@ function wplng_ob_callback_editor( $html ) {
 		$language_target_id
 	);
 
+
+	/**
+	 * Separate page translations
+	 */
+
+	$translations_in_page = array();
+
+	foreach ( $translations as $key_translation => $translation ) {
+		foreach ( $texts as $key_text => $text ) {
+			if ( ! empty( $translation['source'] ) 
+				&& $translation['source'] === $text
+			) {
+				$translations_in_page[] = $translation;
+			}
+		}
+	}
+
 	/**
 	 * Merge know and new translations
 	 */
-	$translations = array_merge( $translations_new, $translations );
+	
+	$translations = array_merge( $translations_in_page, $translations_new );
 
 	/**
 	 * Replace original texts by translations
 	 */
+	
 	$html = wplng_translate_html(
 		$html,
 		false,
@@ -119,6 +138,7 @@ function wplng_ob_callback_editor( $html ) {
 	/**
 	 * Replace text by edit link in body
 	 */
+	
 	$dom = wplng_sdh_str_get_html( $html );
 
 	if ( empty( $dom ) ) {

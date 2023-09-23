@@ -177,4 +177,6 @@ function wplng_on_update_option_wplng_api_key( $old_value, $new_value ) {
 	delete_option( 'wplng_website_language' );
 	delete_option( 'wplng_website_flag' );
 
+	wplng_clear_translations_cache();
+
 }
