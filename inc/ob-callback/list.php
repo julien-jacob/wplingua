@@ -46,7 +46,7 @@ function wplng_ob_callback_list( $html ) {
 	$translations       = array();
 
 	if ( ! empty( $texts ) ) {
-		$translations = wplng_get_translations_saved( $language_target_id );
+		$translations = wplng_get_translations_target( $language_target_id );
 	}
 
 	/**
