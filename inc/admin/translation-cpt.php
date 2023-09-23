@@ -31,7 +31,6 @@ function wplng_register_post_type_translation() {
 			'menu_icon'           => 'dashicons-translation',
 			'supports'            => array(
 				'title',
-				'revisions',
 			),
 			'capability_type'     => 'post',
 			'capabilities'        => array(
