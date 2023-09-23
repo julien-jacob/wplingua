@@ -231,10 +231,26 @@ function wplng_ob_callback_translate_html( $html ) {
 	);
 
 	/**
+	 * Separate page translations
+	 */
+
+	$translations_in_page = array();
+
+	foreach ( $translations as $translation ) {
+		foreach ( $texts as $text ) {
+			if ( ! empty( $translation['source'] )
+				&& $translation['source'] === $text
+			) {
+				$translations_in_page[] = $translation;
+			}
+		}
+	}
+
+	/**
 	 * Merge know and new translations
 	 */
 
-	$translations = array_merge( $translations_new, $translations );
+	$translations = array_merge( $translations_in_page, $translations_new );
 
 	/**
 	 * Replace original texts by translations
