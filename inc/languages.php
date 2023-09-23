@@ -44,7 +44,7 @@ function wplng_get_language_website_id() {
 /**
  * Get the URL of website language flag image
  *
- * @return sring URL flag image
+ * @return string URL flag image
  */
 function wplng_get_language_website_flag() {
 
