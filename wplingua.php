@@ -108,6 +108,10 @@ function wplng_start() {
 		// Save metabox on posts saving
 		add_action( 'save_post_wplng_translation', 'wplng_translation_save_meta_boxes_data', 10, 2 );
 
+		// Clear translation cache on trash / untrash
+		add_action('trashed_post', 'wplng_clear_translations_cache_trash_untrash'); 
+		add_action('untrash_post', 'wplng_clear_translations_cache_trash_untrash'); 
+
 		// Enqueue Script for wplng_translation admin
 		add_action( 'admin_print_scripts-post-new.php', 'wplng_translation_assets' );
 		add_action( 'admin_print_scripts-post.php', 'wplng_translation_assets' );

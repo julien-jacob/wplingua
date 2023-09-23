@@ -186,8 +186,7 @@ function wplng_translation_save_meta_boxes_data( $post_id ) {
 		return;
 	}
 
-	// Clear cache
-	delete_transient( 'wplingua_cached_translations' );
+	wplng_clear_translations_cache();
 
 	$meta = get_post_meta( $post_id );
 
