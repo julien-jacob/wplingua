@@ -47,6 +47,7 @@ function wplng_data_excluded_selector_default() {
 		'svg',
 		'canvas',
 		'address',
+		'iframe',
 		'#wpadminbar',
 		'.no-translate',
 		'.notranslate',
