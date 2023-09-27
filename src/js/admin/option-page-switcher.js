@@ -42,6 +42,7 @@ jQuery(document).ready(function ($) {
 
         $(".wplng-switcher")
             .removeClass("title-name")
+            .removeClass("title-original")
             .removeClass("title-id")
             .removeClass("title-none")
             .addClass("title-" + val);

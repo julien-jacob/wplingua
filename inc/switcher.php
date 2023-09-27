@@ -298,6 +298,7 @@ function wplng_get_switcher_html( $arg = array() ) {
 	$language_current_id = wplng_get_language_current_id();
 	$languages_target    = wplng_get_languages_target();
 	$class               = wplng_get_switcher_class( $arg );
+	$name_format         = wplng_get_switcher_name_format();
 	$flags_show          = true;
 
 	if ( is_admin() ) {
@@ -316,19 +317,37 @@ function wplng_get_switcher_html( $arg = array() ) {
 	 * Translate language names
 	 */
 
-	// Translate target language names
-	foreach ( $languages_target as $key => $language_target ) {
-		$languages_target[ $key ]['name'] = wplng_get_language_name_translated(
-			$language_target,
+	if ( 'original' === $name_format ) {
+
+		// Translate target language names
+		foreach ( $languages_target as $key => $language_target ) {
+			$languages_target[ $key ]['name'] = wplng_get_language_name_untranslated(
+				$language_target
+			);
+		}
+
+		// Translate website language name
+		$language_website['name'] = wplng_get_language_name_untranslated(
+			$language_website
+		);
+
+	} else {
+
+		// Translate target language names
+		foreach ( $languages_target as $key => $language_target ) {
+			$languages_target[ $key ]['name'] = wplng_get_language_name_translated(
+				$language_target,
+				$language_current_id
+			);
+		}
+
+		// Translate website language name
+		$language_website['name'] = wplng_get_language_name_translated(
+			$language_website,
 			$language_current_id
 		);
-	}
 
-	// Translate website language name
-	$language_website['name'] = wplng_get_language_name_translated(
-		$language_website,
-		$language_current_id
-	);
+	}
 
 	/**
 	 * Create the switcher HTML
