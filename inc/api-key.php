@@ -105,26 +105,41 @@ function wplng_get_api_language_website() {
 /**
  * Get target languages from wpLingua API data
  *
- * @return string Language ID, 'all' or ''
+ * @return mixed Language IDs array, 'all' or false
  */
 function wplng_get_api_languages_target() {
 
 	$data = wplng_get_api_data();
 
-	if ( ! empty( $data['languages_target'] ) ) {
-		if ( 'all' === $data['languages_target'] ) {
-			return 'all';
-		} elseif ( is_array( $data['languages_target'] ) ) {
+	if ( empty( $data['languages_target'] ) ) {
+		return false;
+	} elseif ( 'all' === $data['languages_target'] ) {
+		return 'all';
+	} elseif ( is_array( $data['languages_target'] ) ) {
+
+		$all_languages        = wplng_get_languages_all();
+		$languages_id_ordered = array();
+
+		foreach ( $all_languages as $language ) {
 			foreach ( $data['languages_target'] as $language_id ) {
-				if ( ! wplng_is_valid_language_id( $language_id ) ) {
-					return false;
+
+				if (
+					! wplng_is_valid_language_id( $language_id )
+					|| empty( $language['id'] )
+					|| $language['id'] !== $language_id
+				) {
+					continue;
 				}
+
+				$languages_id_ordered[] = $language_id;
+
 			}
 		}
-		return $data['languages_target'];
+
+		return $languages_id_ordered;
 	}
 
-	return '';
+	return false;
 }
 
 

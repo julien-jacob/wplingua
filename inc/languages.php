@@ -405,7 +405,7 @@ function wplng_get_languages_all() {
 		) {
 			$languages[ $key ]['flag'] = $source_flag;
 		} else {
-			$languages[ $key ]['flag'] = plugins_url() . '/wplingua/assets/images/' . $flags_style . $language['id'] . '.png';
+			$languages[ $key ]['flag'] = plugins_url() . '/wplingua/assets/images/' . $flags_style . $language['flag'] . '.png';
 		}
 
 		// Set custom target flag if defined
@@ -454,7 +454,7 @@ function wplng_get_languages_allow() {
 
 	if ( 'all' === $languages_alow ) {
 		return wplng_get_languages_all();
-	} elseif ( false === $languages_alow || ! is_array( $languages_alow ) ) {
+	} elseif ( empty( $languages_alow ) || ! is_array( $languages_alow ) ) {
 		return array();
 	}
 
