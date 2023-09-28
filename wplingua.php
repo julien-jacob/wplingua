@@ -7,7 +7,7 @@
  * Author URI:   https://wplingua.com/
  * Text Domain:  wplingua
  * Domain Path:  /languages/
- * Version:      0.1.2
+ * Version:      0.1.3
  * Requires PHP: 7.0
  */
 
@@ -23,7 +23,7 @@ if ( ! defined( 'WPINC' ) ) {
  */
 define( 'WPLNG_API_URL', 'https://api.wplingua.com' );
 define( 'WPLNG_API_VERSION', '1.0' );
-define( 'WPLNG_PLUGIN_VERSION', '0.1.2' );
+define( 'WPLNG_PLUGIN_VERSION', '0.1.3' );
 define( 'WPLNG_PLUGIN_PATH', dirname( __FILE__ ) );
 define( 'WPLNG_MAX_TRANSLATIONS', 256 );
 define( 'WPLNG_MAX_FILE_SIZE', 1000000 );
