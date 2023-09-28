@@ -317,37 +317,31 @@ function wplng_get_switcher_html( $arg = array() ) {
 	 * Translate language names
 	 */
 
-	if ( 'original' === $name_format ) {
-
-		// Translate target language names
-		foreach ( $languages_target as $key => $language_target ) {
-			$languages_target[ $key ]['name'] = wplng_get_language_name_untranslated(
-				$language_target
-			);
-		}
-
-		// Translate website language name
-		$language_website['name'] = wplng_get_language_name_untranslated(
-			$language_website
+	// Unranslated target language names
+	foreach ( $languages_target as $key => $language_target ) {
+		$languages_target[ $key ]['original'] = wplng_get_language_name_untranslated(
+			$language_target
 		);
+	}
 
-	} else {
+	// Unranslated website language name
+	$language_website['original'] = wplng_get_language_name_untranslated(
+		$language_website
+	);
 
-		// Translate target language names
-		foreach ( $languages_target as $key => $language_target ) {
-			$languages_target[ $key ]['name'] = wplng_get_language_name_translated(
-				$language_target,
-				$language_current_id
-			);
-		}
-
-		// Translate website language name
-		$language_website['name'] = wplng_get_language_name_translated(
-			$language_website,
+	// Translate target language names
+	foreach ( $languages_target as $key => $language_target ) {
+		$languages_target[ $key ]['name'] = wplng_get_language_name_translated(
+			$language_target,
 			$language_current_id
 		);
-
 	}
+
+	// Translate website language name
+	$language_website['name'] = wplng_get_language_name_translated(
+		$language_website,
+		$language_current_id
+	);
 
 	/**
 	 * Create the switcher HTML
@@ -379,6 +373,7 @@ function wplng_get_switcher_html( $arg = array() ) {
 	}
 	$html .= '<span class="language-id">' . esc_html( $language_website['id'] ) . '</span>';
 	$html .= '<span class="language-name">' . esc_html( $language_website['name'] ) . '</span>';
+	$html .= '<span class="language-original">' . esc_html( $language_website['original'] ) . '</span>';
 	$html .= '</a>';
 
 	// Create link for each target languages
@@ -399,6 +394,7 @@ function wplng_get_switcher_html( $arg = array() ) {
 		}
 		$html .= '<span class="language-id">' . esc_html( $language_target['id'] ) . '</span>';
 		$html .= '<span class="language-name">' . esc_html( $language_target['name'] ) . '</span>';
+		$html .= '<span class="language-original">' . esc_html( $language_target['original'] ) . '</span>';
 		$html .= '</a>';
 	}
 
@@ -414,6 +410,7 @@ function wplng_get_switcher_html( $arg = array() ) {
 		}
 		$html .= '<span class="language-id">' . esc_html( $language_website['id'] ) . '</span>';
 		$html .= '<span class="language-name">' . esc_html( $language_website['name'] ) . '</span>';
+		$html .= '<span class="language-original">' . esc_html( $language_website['original'] ) . '</span>';
 		$html .= '</a>';
 
 	} else {
@@ -431,6 +428,7 @@ function wplng_get_switcher_html( $arg = array() ) {
 			}
 			$html .= '<span class="language-id">' . esc_html( $language_target['id'] ) . '</span>';
 			$html .= '<span class="language-name">' . esc_html( $language_target['name'] ) . '</span>';
+			$html .= '<span class="language-original">' . esc_html( $language_target['original'] ) . '</span>';
 			$html .= '</a>';
 			break;
 		}

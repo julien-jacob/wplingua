@@ -2,11 +2,20 @@
  * Name Format
  */
 
+ 
+
+
 .wplng-switcher {
 
+    .language-id,
     .language-name,
-    .language-original,
-    .language-id {
+    .language-original {
+        display: none;
+    }
+
+    &.title-name .language-name,
+    &.title-original .language-original,
+    &.title-id .language-id {
         display: inline-block;
         line-height: normal;
         vertical-align: super;
@@ -19,10 +28,4 @@
 
 }
 
-.wplng-switcher.title-id .language-name,
-.wplng-switcher.title-name .language-id,
-.wplng-switcher.title-original .language-id,
-.wplng-switcher.title-none .language-id,
-.wplng-switcher.title-none .language-name {
-    display: none;
-}
+
