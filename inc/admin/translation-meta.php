@@ -65,100 +65,120 @@ function wplng_translation_meta_box_html_output( $post ) {
 	// Foreach translation, display form textarea to edit
 	if ( ! empty( $meta['wplng_translation_translations'][0] ) ) {
 
-		$translations     = json_decode( $meta['wplng_translation_translations'][0], true );
-		$languages_target = wplng_get_languages_target_ids();
+		$translations_data = json_decode( $meta['wplng_translation_translations'][0], true );
+		$languages_target  = wplng_get_languages_target_ids();
+		$translations      = array();
 
-		if ( empty( $translations ) ) {
-			$translations = array();
+		if ( empty( $translations_data ) ) {
+			$translations_data = array();
 		}
 
 		foreach ( $languages_target as $language_target ) {
 
-			foreach ( $translations as $translation ) {
+			$is_in = false;
 
-				if ( $translation['language_id'] !== $language_target
-					|| empty( $translation['language_id'] )
-					|| empty( $translation['translation'] )
+			foreach ( $translations_data as $translation_data ) {
+
+				if ( $translation_data['language_id'] !== $language_target
+					|| empty( $translation_data['language_id'] )
+					|| empty( $translation_data['translation'] )
 				) {
 					continue;
 				}
 
-				$language_id        = esc_attr( $translation['language_id'] );
-				$emoji              = wplng_get_language_emoji( $language_id ); // Emoji already esc_html
-				$language_name      = wplng_get_language_name( $language_id ); // Name already esc_html
-				$label              = $emoji . ' ' . $language_name . __( ' - Translation:', 'textdomain' );
-				$textarea           = esc_html( esc_attr( $translation['translation'] ) );
-				$name               = esc_attr( 'wplng_translation_' . $language_id );
-				$container_id       = esc_attr( 'wplng-translation-' . $language_id );
-				$generate_link_text = __( 'Regenerate translation', 'wplingua' );
+				$is_in          = true;
+				$translations[] = $translation_data;
 
-				if ( '[WPLNG_EMPTY]' === $textarea ) {
-					$textarea = '';
-				}
-
-				$html .= '<div id="' . $container_id . '" class="wplng-edit-language">';
-				$html .= '<label for="' . $name . '">' . $label . '</label>';
-
-				$html .= '<textarea name="' . $name . '" ';
-				$html .= 'id="' . $name . '" ';
-				$html .= 'lang="' . $language_id . '" ';
-				$html .= 'spellcheck="false">';
-				$html .= $textarea;
-				$html .= '</textarea>';
-
-				if ( empty( $translation['status'] ) ) {
-					continue;
-				}
-
-				$html .= '<div class="wplng-translation-footer">';
-				$html .= '<div class="wplng-translation-footer-left">';
-
-				switch ( $translation['status'] ) {
-					case 'ungenerated':
-						$generate_link_text = __( 'Generate translation', 'wplingua' );
-
-						$html .= '<span class="wplng-status">';
-						$html .= __( 'Status: Ungenerated', 'wplingua' );
-						$html .= '</span>';
-						break;
-
-					case 'generated':
-						$html .= '<span class="wplng-status">';
-						$html .= __( 'Status: Generated', 'wplingua' );
-						$html .= '</span>';
-						break;
-
-					default:
-						if ( is_int( $translation['status'] ) ) {
-							$html .= '<span class="wplng-status">';
-							$html .= __( 'Status: Edited on', 'wplingua' ) . ' ';
-							$html .= esc_html(
-								date(
-									get_option( 'date_format' ),
-									$translation['status']
-								)
-							);
-							$html .= ', ' . esc_html(
-								date(
-									get_option( 'time_format' ),
-									$translation['status']
-								)
-							);
-							$html .= '</span>';
-						}
-						break;
-				}
-				$html .= '</div>'; // End .wplng-translation-footer-right
-				$html .= '<div class="wplng-translation-footer-right">';
-				$html .= '<span class="dashicons dashicons-update wplng-spin wplng-generate-spin" style="display: none;"></span> ';
-				$html .= '<a href="javascript:void(0);" class="wplng-generate" wplng-lang="' . $language_id . '">';
-				$html .= $generate_link_text;
-				$html .= '</a>';
-
-				$html .= '</div>'; // End .wplng-translation-footer-right
-				$html .= '</div>'; // End .wplng-translation-footer
-				$html .= '</div>'; // End .wplng-edit-language
 			}
+
+			if ( ! $is_in ) {
+				$translations[] = array(
+					'language_id' => $language_target,
+					'translation' => '[WPLNG_EMPTY]',
+					'status'      => 'ungenerated',
+				);
+			}
+		}
+
+		foreach ( $translations as $translation ) {
+
+			$language_id        = esc_attr( $translation['language_id'] );
+			$emoji              = wplng_get_language_emoji( $language_id ); // Emoji already esc_html
+			$language_name      = wplng_get_language_name( $language_id ); // Name already esc_html
+			$label              = $emoji . ' ' . $language_name . __( ' - Translation:', 'textdomain' );
+			$textarea           = esc_html( esc_attr( $translation['translation'] ) );
+			$name               = esc_attr( 'wplng_translation_' . $language_id );
+			$container_id       = esc_attr( 'wplng-translation-' . $language_id );
+			$generate_link_text = __( 'Regenerate translation', 'wplingua' );
+
+			if ( '[WPLNG_EMPTY]' === $textarea ) {
+				$textarea = '';
+			}
+
+			$html .= '<div id="' . $container_id . '" class="wplng-edit-language">';
+			$html .= '<label for="' . $name . '">' . $label . '</label>';
+
+			$html .= '<textarea name="' . $name . '" ';
+			$html .= 'id="' . $name . '" ';
+			$html .= 'lang="' . $language_id . '" ';
+			$html .= 'spellcheck="false">';
+			$html .= $textarea;
+			$html .= '</textarea>';
+
+			if ( empty( $translation['status'] ) ) {
+				$html .= '</div>';
+				continue;
+			}
+
+			$html .= '<div class="wplng-translation-footer">';
+			$html .= '<div class="wplng-translation-footer-left">';
+
+			switch ( $translation['status'] ) {
+				case 'ungenerated':
+					$generate_link_text = __( 'Generate translation', 'wplingua' );
+
+					$html .= '<span class="wplng-status">';
+					$html .= __( 'Status: Ungenerated', 'wplingua' );
+					$html .= '</span>';
+					break;
+
+				case 'generated':
+					$html .= '<span class="wplng-status">';
+					$html .= __( 'Status: Generated', 'wplingua' );
+					$html .= '</span>';
+					break;
+
+				default:
+					if ( is_int( $translation['status'] ) ) {
+						$html .= '<span class="wplng-status">';
+						$html .= __( 'Status: Edited on', 'wplingua' ) . ' ';
+						$html .= esc_html(
+							date(
+								get_option( 'date_format' ),
+								$translation['status']
+							)
+						);
+						$html .= ', ' . esc_html(
+							date(
+								get_option( 'time_format' ),
+								$translation['status']
+							)
+						);
+						$html .= '</span>';
+					}
+					break;
+			}
+			$html .= '</div>'; // End .wplng-translation-footer-right
+			$html .= '<div class="wplng-translation-footer-right">';
+			$html .= '<span class="dashicons dashicons-update wplng-spin wplng-generate-spin" style="display: none;"></span> ';
+			$html .= '<a href="javascript:void(0);" class="wplng-generate" wplng-lang="' . $language_id . '">';
+			$html .= $generate_link_text;
+			$html .= '</a>';
+
+			$html .= '</div>'; // End .wplng-translation-footer-right
+			$html .= '</div>'; // End .wplng-translation-footer
+			$html .= '</div>'; // End .wplng-edit-language
+
 		}
 	}
 
