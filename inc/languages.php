@@ -191,6 +191,11 @@ function wplng_get_language_name_translated( $language, $language_target = '' ) 
 }
 
 
+function wplng_get_language_name_untranslated( $language ) {
+	return wplng_get_language_name_translated( $language, $language );
+}
+
+
 /**
  * Return a JSON with languages data simplified
  *

@@ -37,6 +37,7 @@ function wplng_option_page_exclusions() {
 							<ul>
 								<li><code>#website-main-title</code> - <?php _e( 'Exclude elements by ID attribute', 'wplingua' ); ?></li>
 								<li><code>.author-name</code> - <?php _e( 'Exclude elements by class attribute', 'wplingua' ); ?></li>
+								<li><code>.entry-content pre</code> - <?php _e( 'Exclude elements by CSS selector', 'wplingua' ); ?></li>
 							</ul>
 							<br>
 							<textarea name="wplng_excluded_selectors" id="wplng_excluded_selectors" rows="6"><?php echo esc_textarea( get_option( 'wplng_excluded_selectors' ) ); ?></textarea>

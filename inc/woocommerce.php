@@ -56,8 +56,8 @@ function wplng_exclude_woocommerce_url( $url_exclude ) {
 		$url_woocommerce[] = '/' . $option_links['product-tag'] . '/(.*)';
 	}
 
-	foreach ($url_woocommerce as $key => $value) {
-		$url_woocommerce[$key] = '#' . $value . '#';
+	foreach ( $url_woocommerce as $key => $value ) {
+		$url_woocommerce[ $key ] = '#' . $value . '#';
 	}
 
 	return array_merge( $url_exclude, $url_woocommerce );

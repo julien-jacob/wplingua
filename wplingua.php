@@ -7,7 +7,7 @@
  * Author URI:   https://wplingua.com/
  * Text Domain:  wplingua
  * Domain Path:  /languages/
- * Version:      0.1.3
+ * Version:      0.1.4
  * Requires PHP: 7.0
  */
 
@@ -23,7 +23,7 @@ if ( ! defined( 'WPINC' ) ) {
  */
 define( 'WPLNG_API_URL', 'https://api.wplingua.com' );
 define( 'WPLNG_API_VERSION', '1.0' );
-define( 'WPLNG_PLUGIN_VERSION', '0.1.3' );
+define( 'WPLNG_PLUGIN_VERSION', '0.1.4' );
 define( 'WPLNG_PLUGIN_PATH', dirname( __FILE__ ) );
 define( 'WPLNG_MAX_TRANSLATIONS', 256 );
 define( 'WPLNG_MAX_FILE_SIZE', 1000000 );
@@ -109,9 +109,9 @@ function wplng_start() {
 		add_action( 'save_post_wplng_translation', 'wplng_translation_save_meta_boxes_data', 10, 2 );
 
 		// Clear translation cache on trash / untrash
-		add_action('trashed_post', 'wplng_clear_translations_cache_trash_untrash'); 
-		add_action('untrash_post', 'wplng_clear_translations_cache_trash_untrash'); 
-		add_action('delete_post', 'wplng_clear_translations_cache_trash_untrash'); 
+		add_action( 'trashed_post', 'wplng_clear_translations_cache_trash_untrash' );
+		add_action( 'untrash_post', 'wplng_clear_translations_cache_trash_untrash' );
+		add_action( 'delete_post', 'wplng_clear_translations_cache_trash_untrash' );
 
 		// Enqueue Script for wplng_translation admin
 		add_action( 'admin_print_scripts-post-new.php', 'wplng_translation_assets' );

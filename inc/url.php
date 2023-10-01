@@ -171,8 +171,8 @@ function wplng_get_url_exclude_regex() {
 	// Add delimiter
 	foreach ( $url_exclude_option as $url ) {
 		$url = trim( $url );
-		if ( ! empty( $url ) ) {
-			$url_exclude[] = '#' . $url . '#';
+		if ( $url !== '' ) {
+			$url_exclude[] = '#' . preg_quote( $url ) . '#';
 		}
 	}
 

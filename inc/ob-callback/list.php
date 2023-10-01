@@ -77,7 +77,7 @@ function wplng_ob_callback_list( $html ) {
 	/**
 	 * Get new translated text
 	 */
-	
+
 	$texts_unknow_translated = wplng_api_call_translate(
 		$texts_unknow,
 		false,
@@ -87,7 +87,7 @@ function wplng_ob_callback_list( $html ) {
 	/**
 	 * Save new translation as wplng_translation CPT
 	 */
-	
+
 	$translations_new = array();
 
 	foreach ( $texts_unknow as $key => $text_source ) {
@@ -112,7 +112,7 @@ function wplng_ob_callback_list( $html ) {
 
 	foreach ( $translations as $translation ) {
 		foreach ( $texts as $text ) {
-			if ( ! empty( $translation['source'] ) 
+			if ( ! empty( $translation['source'] )
 				&& $translation['source'] === $text
 			) {
 				$translations_in_page[] = $translation;
@@ -123,13 +123,13 @@ function wplng_ob_callback_list( $html ) {
 	/**
 	 * Merge know and new translations
 	 */
-	
+
 	$translations = array_merge( $translations_in_page, $translations_new );
 
 	/**
 	 * Place the modal HTML before body ending
 	 */
-	
+
 	$html_saved = str_replace(
 		'</body>',
 		wplng_get_editor_modal_html( $translations ) . '</body>',
