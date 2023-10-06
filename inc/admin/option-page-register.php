@@ -133,7 +133,7 @@ function wplng_register_part_api_key( $api_key ) {
 	?>
 	<fieldset>
 		<label for="wplng_api_key"><strong><?php _e( 'Set API key:', 'wplingua' ); ?></strong></label>
-		<p><?php _e( 'If you already have an API key, enter it below. If you\'ve forgotten your site\'s API key, visit ', 'wplingua' ); ?><a href="https://wplingua.com/recovery/" target="_blank"><?php _e( 'the API key retrieval page', 'wplingua' ); ?></a>.</p>
+		<p><?php _e( 'If you already have an API key, enter it below. If you\'ve forgotten your site\'s API key, visit', 'wplingua' ); ?> <a href="https://wplingua.com/recovery/" target="_blank"><?php _e( 'the API key retrieval page', 'wplingua' ); ?></a>.</p>
 		<br>
 		<input type="text" name="wplng_api_key" id="wplng_api_key" value="<?php echo esc_attr( $api_key ); ?>"></input>
 
