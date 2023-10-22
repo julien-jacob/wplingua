@@ -26,6 +26,7 @@ function wplng_register_post_type_translation() {
 			'show_ui'             => true,
 			'exclude_from_search' => true,
 			'show_in_nav_menus'   => false,
+			'show_in_menu'        => false,
 			'has_archive'         => false,
 			'rewrite'             => false,
 			'menu_icon'           => 'dashicons-translation',

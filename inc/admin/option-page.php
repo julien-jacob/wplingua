@@ -19,7 +19,8 @@ function wplng_create_menu_register() {
 		'administrator',
 		'wplingua-settings',
 		'wplng_option_page_register',
-		'dashicons-admin-site'
+		'dashicons-translation',
+		31
 	);
 
 }
@@ -38,7 +39,8 @@ function wplng_create_menu() {
 		'administrator',
 		'wplingua-settings',
 		'wplng_option_page_settings',
-		'dashicons-admin-site'
+		'dashicons-translation',
+		31
 	);
 
 	add_submenu_page(
@@ -57,6 +59,15 @@ function wplng_create_menu() {
 		'administrator',
 		'wplingua-exclusions',
 		'wplng_option_page_exclusions'
+	);
+
+	add_submenu_page(
+		'wplingua-settings',
+		__( 'wplingua : Traductions', 'wplingua' ),
+		__( 'Traductions', 'wplingua' ),
+		'administrator',
+		'edit.php?post_type=wplng_translation',
+		false
 	);
 
 }
