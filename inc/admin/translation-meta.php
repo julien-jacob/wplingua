@@ -153,13 +153,13 @@ function wplng_translation_meta_box_html_output( $post ) {
 						$html .= '<span class="wplng-status">';
 						$html .= __( 'Status: Edited on', 'wplingua' ) . ' ';
 						$html .= esc_html(
-							date(
+							gmdate(
 								get_option( 'date_format' ),
 								$translation['status']
 							)
 						);
 						$html .= ', ' . esc_html(
-							date(
+							gmdate(
 								get_option( 'time_format' ),
 								$translation['status']
 							)

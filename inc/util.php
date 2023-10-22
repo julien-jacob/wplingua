@@ -16,7 +16,7 @@ function wplng_str_is_url( $str ) {
 
 	$is_url = false;
 
-	if ( '' !== parse_url( $str, PHP_URL_SCHEME ) ) {
+	if ( '' !== wp_parse_url( $str, PHP_URL_SCHEME ) ) {
 		// URL has http/https/...
 		$is_url = ! ( filter_var( $str, FILTER_VALIDATE_URL ) === false );
 	} else {
@@ -83,7 +83,7 @@ function wplng_text_esc( $text ) {
  * @return string
  */
 function wplng_str_is_html( $str ) {
-	return $str !== strip_tags( $str );
+	return $str !== wp_strip_all_tags( $str );
 }
 
 

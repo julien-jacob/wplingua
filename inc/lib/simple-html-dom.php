@@ -67,38 +67,9 @@ function wplng_sdh_file_get_html(
 	$stripRN = false,
 	$defaultBRText = WPLNG_DEFAULT_BR_TEXT,
 	$defaultSpanText = WPLNG_DEFAULT_SPAN_TEXT ) {
-	if ( $maxLen <= 0 ) {
-		$maxLen = WPLNG_MAX_FILE_SIZE; }
 
-	$dom = new wplng_sdh_simple_html_dom(
-		null,
-		$lowercase,
-		$forceTagsClosed,
-		$target_charset,
-		$stripRN,
-		$defaultBRText,
-		$defaultSpanText
-	);
-
-	/**
-	 * For sourceforge users: uncomment the next line and comment the
-	 * retrieve_url_contents line 2 lines down if it is not already done.
-	 */
-	$contents = file_get_contents(
-		$url,
-		$use_include_path,
-		$context,
-		$offset,
-		$maxLen
-	);
-	// $contents = retrieve_url_contents($url);
-
-	if ( empty( $contents ) || strlen( $contents ) > $maxLen ) {
-		$dom->clear();
+		// Updated by wpLingua
 		return false;
-	}
-
-	return $dom->load( $contents, $lowercase, $stripRN );
 }
 
 function wplng_sdh_str_get_html(
@@ -1212,9 +1183,10 @@ class wplng_sdh_wplng_sdh_simple_html_dom_node {
 	function save( $filepath = '' ) {
 		$ret = $this->outertext();
 
-		if ( $filepath !== '' ) {
-			file_put_contents( $filepath, $ret, LOCK_EX );
-		}
+		// Commented by wpLingua
+		// if ( $filepath !== '' ) {
+		// 	file_put_contents( $filepath, $ret, LOCK_EX );
+		// }
 
 		return $ret;
 	}
@@ -1604,8 +1576,10 @@ class wplng_sdh_simple_html_dom {
 
 	function save( $filepath = '' ) {
 		$ret = $this->root->innertext();
-		if ( $filepath !== '' ) {
-			file_put_contents( $filepath, $ret, LOCK_EX ); }
+		// Commented by wpLingua
+		// if ( $filepath !== '' ) {
+		// 	file_put_contents( $filepath, $ret, LOCK_EX ); 
+		// }
 		return $ret;
 	}
 

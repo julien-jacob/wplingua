@@ -444,7 +444,7 @@ function wplng_get_languages_all() {
  * @return string JSON
  */
 function wplng_get_languages_all_json() {
-	return json_encode( wplng_get_languages_all() );
+	return wp_json_encode( wplng_get_languages_all() );
 }
 
 
