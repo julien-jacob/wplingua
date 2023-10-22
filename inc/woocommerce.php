@@ -27,7 +27,7 @@ function wplng_exclude_woocommerce_url( $url_exclude ) {
 	$url_woocommerce[] = wc_get_checkout_url();
 
 	// WooCommerce Shop URL
-	$url_woocommerce[] = wc_get_page_permalink( 'shop' );
+	// $url_woocommerce[] = wc_get_page_permalink( 'shop' );
 
 	foreach ( $url_woocommerce as $key => $url ) {
 		$url_woocommerce[ $key ] = wp_make_link_relative( $url );
