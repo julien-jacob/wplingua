@@ -29,15 +29,13 @@
     // font-size: inherit;
     // text-decoration: inherit;
     // line-height: inherit;
-    
-    outline-style: dotted !important;
-    outline-width: 2px !important;
-    outline-color: gray !important;
-    outline-offset: 0;
 
     cursor: pointer !important;
-
     line-height: 2em;
+    
+    outline-offset: 0;
+    outline: 2px dotted #222 !important;
+    border: 2px dotted #eee !important;
 }
 
 // .wplng-edit-link::after {
