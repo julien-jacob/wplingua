@@ -147,16 +147,18 @@ function wplng_ob_callback_editor( $html ) {
 	/**
 	 * Replace <a> tags by <span>
 	 */
+
 	foreach ( $dom->find( 'a' ) as $element ) {
 
-		$element->tag = 'span';
-		$class        = 'wplingua-editor-link';
+		$element->attr['onclick'] = 'event.preventDefault()';
+		$class                    = 'wplingua-editor-link';
 
 		if ( ! empty( $element->class ) ) {
 			$class .= ' ' . $element->class;
 		}
 
 		$element->class = $class;
+
 	}
 
 	/**
@@ -201,7 +203,8 @@ function wplng_ob_callback_editor( $html ) {
 				continue;
 			}
 
-			$element->innertext = '<a href="' . esc_url( $edit_link ) . '" class="wplng-edit-link" target="_blank" title="' . __( 'Edit this translation', 'wplingua' ) . '">' . esc_html( $text ) . ' </a>';
+			$element->innertext = '<span onclick="window.open(\'' . esc_url( $edit_link ) . '\', \'_blank\');" class="wplng-edit-link" title="' . __( 'Edit this translation', 'wplingua' ) . '">' . esc_html( $text ) . ' </span>';
+
 		}
 	}
 
