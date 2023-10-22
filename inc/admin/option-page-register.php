@@ -42,11 +42,14 @@ function wplng_option_page_register() {
 		&& empty( wplng_get_api_data() )
 	) :
 		update_option( 'wplng_api_key', '' );
-		?>
-		<div class="wplng-notice notice notice-error is-dismissible">
-			<p><strong><?php _e( 'Invalid API key.', 'wplingua' ); ?></strong></p>
-		</div>
-		<?php
+
+		if ( ! empty( get_option( 'wplng_api_key' ) ) ) :
+			?>
+			<div class="wplng-notice notice notice-error is-dismissible">
+				<p><strong><?php _e( 'Invalid API key.', 'wplingua' ); ?></strong></p>
+			</div>
+			<?php
+		endif;
 	elseif ( ! empty( $json_request_key ) ) :
 
 		delete_option( 'wplng_request_free_key' );
