@@ -108,6 +108,9 @@ function wplng_start() {
 		// Save metabox on posts saving
 		add_action( 'save_post_wplng_translation', 'wplng_translation_save_meta_boxes_data', 10, 2 );
 
+		// Display 100 translation in admin area by default
+		add_filter( 'get_user_option_edit_wplng_translation_per_page', 'wplng_translation_per_page' );
+
 		// Clear translation cache on trash / untrash
 		add_action( 'trashed_post', 'wplng_clear_translations_cache_trash_untrash' );
 		add_action( 'untrash_post', 'wplng_clear_translations_cache_trash_untrash' );
