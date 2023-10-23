@@ -38,7 +38,7 @@ function wplng_api_call_translate(
 		$language_source_id = wplng_get_language_website_id();
 	}
 
-	$json_texts = json_encode( $texts );
+	$json_texts = wp_json_encode( $texts );
 	if ( empty( $json_texts ) ) {
 		return $texts;
 	}

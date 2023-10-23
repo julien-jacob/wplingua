@@ -22,6 +22,14 @@ jQuery(document).ready(function ($) {
             .removeClass("theme-light-simple-square")
             .removeClass("theme-grey-simple-square")
             .removeClass("theme-dark-simple-square")
+            .removeClass("theme-blurwhite-double-smooth")
+            .removeClass("theme-blurwhite-double-square")
+            .removeClass("theme-blurwhite-simple-smooth")
+            .removeClass("theme-blurwhite-simple-square")
+            .removeClass("theme-blurblack-double-smooth")
+            .removeClass("theme-blurblack-double-square")
+            .removeClass("theme-blurblack-simple-smooth")
+            .removeClass("theme-blurblack-simple-square")
             .addClass("theme-" + val);
     }
 

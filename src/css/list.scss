@@ -19,7 +19,7 @@ body.theme-Divi #main-header {
  ** modal
  **/
 
-.wplng-button-icon {
+#wplng-modal .wplng-modal-item .wplng-item-edit a.wplng-button-icon {
 
     display: block;
     font-size: 13px;
@@ -29,7 +29,6 @@ body.theme-Divi #main-header {
     border-radius: 3px;
     white-space: nowrap;
     box-sizing: border-box;
-
     background: #2271b1;
     border-color: #2271b1;
     color: #fff;

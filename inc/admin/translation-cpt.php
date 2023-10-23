@@ -26,6 +26,7 @@ function wplng_register_post_type_translation() {
 			'show_ui'             => true,
 			'exclude_from_search' => true,
 			'show_in_nav_menus'   => false,
+			'show_in_menu'        => false,
 			'has_archive'         => false,
 			'rewrite'             => false,
 			'menu_icon'           => 'dashicons-translation',
@@ -59,4 +60,17 @@ function wplng_translation_remove_quick_edit( $actions, $post ) {
 	unset( $actions['inline hide-if-no-js'] );
 
 	return $actions;
+}
+
+
+/**
+ * Display 100 translations by default in admin area
+ *
+ * @param int $result
+ * @return int
+ */
+function wplng_translation_per_page( $result ) {
+	if ( (int) $result < 1 ) {
+		return 100;
+	}
 }

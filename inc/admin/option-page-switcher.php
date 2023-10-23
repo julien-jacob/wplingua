@@ -24,7 +24,7 @@ function wplng_option_page_switcher() {
 	?>
 	<div class="wrap">
 		
-		<h1><span class="dashicons dashicons-translation"></span> <?php _e( 'wpLingua / Beta : Switcher settings', 'wplingua' ); ?></h1>
+		<h1><span class="dashicons dashicons-translation"></span> <?php _e( 'wpLingua / Beta: Switcher settings', 'wplingua' ); ?></h1>
 
 		<br>
 
@@ -37,7 +37,7 @@ function wplng_option_page_switcher() {
 			
 				<tr>
 					<th scope="row"><?php _e( 'Switcher preview', 'wplingua' ); ?></th>
-					<td>
+					<td id="wplng-switcher-preview-container">
 						<div class="wplng-switcher-preview">
 							<?php
 							echo wplng_get_switcher_html(

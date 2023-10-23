@@ -359,7 +359,7 @@ function wplng_get_switcher_html( $arg = array() ) {
 		$html .= '<a class="wplng-language website after current" href="javascript:void(0);">';
 	} else {
 		$url = '';
-		if ( is_admin() ) {
+		if ( is_admin() || 0 > strpos( $url, '/?et_fb=1' ) ) {
 			$url = 'javascript:void(0);';
 		} else {
 			$url = esc_url( wplng_get_url_original() );
@@ -383,7 +383,7 @@ function wplng_get_switcher_html( $arg = array() ) {
 		$url   = 'javascript:void(0);';
 		if ( $language_target['id'] === $language_current_id ) {
 			$class = ' current';
-		} elseif ( ! is_admin() ) {
+		} elseif ( ! is_admin() && 0 <= strpos( $url, '/?et_fb=1' ) ) {
 			$url = wplng_get_url_current_for_language( $language_target['id'] );
 		}
 

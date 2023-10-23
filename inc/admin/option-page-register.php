@@ -13,6 +13,15 @@ if ( ! defined( 'WPINC' ) ) {
  */
 function wplng_option_page_register() {
 
+	if ( is_multisite() ) {
+		?>
+		<div class="wplng-notice notice notice-info">
+			<p><?php _e( 'wpLingua is not compatible with Multisite.', 'wplingua' ); ?></p>
+		</div>
+		<?php
+		return;
+	}
+
 	$api_key          = wplng_get_api_key();
 	$json_request_key = get_option( 'wplng_request_free_key' );
 	$error_validation = get_transient( 'wplng_api_key_error' );
@@ -25,13 +34,13 @@ function wplng_option_page_register() {
 		delete_transient( 'wplng_api_key_error' );
 		$message = '';
 		if ( ! empty( $error_validation ) ) {
-			$message .= __( 'Message :', 'wplingua' );
+			$message .= __( 'Message:', 'wplingua' );
 			$message .= ' ' . esc_html( $error_validation );
 		}
 		?>
 		<div class="wplng-notice notice notice-error is-dismissible">
 			<p>
-				<strong><?php _e( 'An error occurred with API key..', 'wplingua' ); ?></strong>
+				<strong><?php _e( 'An error occurred with API key.', 'wplingua' ); ?></strong>
 				<br>
 				<?php echo $message; ?>
 			</p>
@@ -42,11 +51,14 @@ function wplng_option_page_register() {
 		&& empty( wplng_get_api_data() )
 	) :
 		update_option( 'wplng_api_key', '' );
-		?>
-		<div class="wplng-notice notice notice-error is-dismissible">
-			<p><strong><?php _e( 'Invalid API key.', 'wplingua' ); ?></strong></p>
-		</div>
-		<?php
+
+		if ( ! empty( get_option( 'wplng_api_key' ) ) ) :
+			?>
+			<div class="wplng-notice notice notice-error is-dismissible">
+				<p><strong><?php _e( 'Invalid API key.', 'wplingua' ); ?></strong></p>
+			</div>
+			<?php
+		endif;
 	elseif ( ! empty( $json_request_key ) ) :
 
 		delete_option( 'wplng_request_free_key' );
@@ -56,13 +68,13 @@ function wplng_option_page_register() {
 		if ( ! empty( $response['error'] ) ) {
 			$message = '';
 			if ( ! empty( $response['message'] ) ) {
-				$message .= __( 'Message :', 'wplingua' );
+				$message .= __( 'Message:', 'wplingua' );
 				$message .= ' ' . esc_html( $response['message'] );
 			}
 			?>
 			<div class="wplng-notice notice notice-error is-dismissible">
 				<p>
-					<strong><?php _e( 'An error occurred while creating the API key..', 'wplingua' ); ?></strong>
+					<strong><?php _e( 'An error occurred while creating the API key.', 'wplingua' ); ?></strong>
 					<br>
 					<?php echo $message; ?>
 				</p>
@@ -87,7 +99,7 @@ function wplng_option_page_register() {
 	endif;
 	?>
 	<div class="wrap">
-		<h1><span class="dashicons dashicons-translation"></span> <?php _e( 'wpLingua / Beta : Register API key', 'wplingua' ); ?></h1>
+		<h1><span class="dashicons dashicons-translation"></span> <?php _e( 'wpLingua / Beta: Register API key', 'wplingua' ); ?></h1>
 		<br>
 		<form method="post" action="options.php">
 			<?php
@@ -219,7 +231,7 @@ function wplng_register_part_premium() {
 	<p><strong><?php _e( 'Get more target languages and premium features:', 'wplingua' ); ?></strong></p>		
 	<p><?php _e( 'To translate your site into more languages and access premium features, visit wpLingua plans.', 'wplingua' ); ?></p>
 	<ul style="list-style: inside; padding: 0 0 0 15px;">
-		<li><?php _e( 'Multilingual Woocommerce store', 'wplingua' ); ?></li>
+		<li><?php _e( 'Multilingual WooCommerce store', 'wplingua' ); ?></li>
 		<li><?php _e( 'Allow search from all languages', 'wplingua' ); ?></li>
 		<li><?php _e( 'Get more target languages', 'wplingua' ); ?></li>
 	</ul>

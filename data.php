@@ -210,18 +210,26 @@ function wplng_data_switcher_valid_insert() {
 
 function wplng_data_switcher_valid_theme() {
 	return array(
-		'light-double-smooth' => __( 'Light - Double - Smooth', 'wplingua' ),
-		'light-double-square' => __( 'Light - Double - Square', 'wplingua' ),
-		'light-simple-smooth' => __( 'Light - Simple - Smooth', 'wplingua' ),
-		'light-simple-square' => __( 'Light - Simple - Square', 'wplingua' ),
-		'grey-double-smooth'  => __( 'Grey - Double - Smooth', 'wplingua' ),
-		'grey-double-square'  => __( 'Grey - Double - Square', 'wplingua' ),
-		'grey-simple-smooth'  => __( 'Grey - Simple - Smooth', 'wplingua' ),
-		'grey-simple-square'  => __( 'Grey - Simple - Square', 'wplingua' ),
-		'dark-double-smooth'  => __( 'Dark - Double - Smooth', 'wplingua' ),
-		'dark-double-square'  => __( 'Dark - Double - Square', 'wplingua' ),
-		'dark-simple-smooth'  => __( 'Dark - Simple - Smooth', 'wplingua' ),
-		'dark-simple-square'  => __( 'Dark - Simple - Square', 'wplingua' ),
+		'light-double-smooth'     => __( 'Light - Double - Smooth', 'wplingua' ),
+		'light-double-square'     => __( 'Light - Double - Square', 'wplingua' ),
+		'light-simple-smooth'     => __( 'Light - Simple - Smooth', 'wplingua' ),
+		'light-simple-square'     => __( 'Light - Simple - Square', 'wplingua' ),
+		'grey-double-smooth'      => __( 'Grey - Double - Smooth', 'wplingua' ),
+		'grey-double-square'      => __( 'Grey - Double - Square', 'wplingua' ),
+		'grey-simple-smooth'      => __( 'Grey - Simple - Smooth', 'wplingua' ),
+		'grey-simple-square'      => __( 'Grey - Simple - Square', 'wplingua' ),
+		'dark-double-smooth'      => __( 'Dark - Double - Smooth', 'wplingua' ),
+		'dark-double-square'      => __( 'Dark - Double - Square', 'wplingua' ),
+		'dark-simple-smooth'      => __( 'Dark - Simple - Smooth', 'wplingua' ),
+		'dark-simple-square'      => __( 'Dark - Simple - Square', 'wplingua' ),
+		'blurblack-double-smooth' => __( 'Blur Black - Double - Smooth', 'wplingua' ),
+		'blurblack-double-square' => __( 'Blur Black - Double - Square', 'wplingua' ),
+		'blurblack-simple-smooth' => __( 'Blur Black - Simple - Smooth', 'wplingua' ),
+		'blurblack-simple-square' => __( 'Blur Black - Simple - Square', 'wplingua' ),
+		'blurwhite-double-smooth' => __( 'Blur White - Double - Smooth', 'wplingua' ),
+		'blurwhite-double-square' => __( 'Blur White - Double - Square', 'wplingua' ),
+		'blurwhite-simple-smooth' => __( 'Blur White - Simple - Smooth', 'wplingua' ),
+		'blurwhite-simple-square' => __( 'Blur White - Simple - Square', 'wplingua' ),
 	);
 }
 
