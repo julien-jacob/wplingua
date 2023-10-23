@@ -37,7 +37,7 @@ function wplng_option_page_switcher() {
 			
 				<tr>
 					<th scope="row"><?php _e( 'Switcher preview', 'wplingua' ); ?></th>
-					<td>
+					<td id="wplng-switcher-preview-container">
 						<div class="wplng-switcher-preview">
 							<?php
 							echo wplng_get_switcher_html(

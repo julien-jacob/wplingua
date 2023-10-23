@@ -41,6 +41,249 @@
 }
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Themes Blur Light Double Square */
+.wplng-switcher.theme-blurwhite-double-square {
+
+    .switcher-content {
+
+        backdrop-filter: blur(25px) saturate(100%);
+        background: hsla(0, 0%, 100%, 0);
+        border: 1px solid white;
+        border-radius: 0;
+
+        .wplng-language {
+            border: 1px solid white;
+            color: white;
+            border-radius: 0;
+        }
+
+    }
+
+}
+
+/* Themes Blur Light Simple Square */
+.wplng-switcher.theme-blurwhite-simple-square {
+
+    .switcher-content {
+
+        backdrop-filter: blur(25px) saturate(100%);
+        background: hsla(0, 0%, 100%, 0);
+        border: 1px solid white;
+        border-radius: 0;
+
+        .wplng-language {
+            color: white;
+        }
+
+    }
+
+}
+
+
+/* Themes Blur Dark Double Square */
+.wplng-switcher.theme-blurblack-double-square {
+
+    .switcher-content {
+
+        backdrop-filter: blur(25px) saturate(100%);
+        background: hsla(0, 0%, 100%, 0);
+        border: 1px solid #1d2327;
+        border-radius: 0;
+
+        .wplng-language {
+            border: 1px solid #1d2327;
+            color: #1d2327;
+            border-radius: 0;
+        }
+
+    }
+
+}
+
+
+/* Themes Blur Light Double Smooth */
+.wplng-switcher.theme-blurwhite-double-smooth {
+
+    .switcher-content {
+
+        backdrop-filter: blur(25px) saturate(100%);
+        background: hsla(0, 0%, 100%, 0);
+        border: 1px solid white;
+        border-radius: 9px;
+
+        .wplng-language {
+            border: 1px solid white;
+            color: white;
+            border-radius: 6px;
+        }
+
+    }
+
+}
+
+/* Themes Blur Light Simple Smooth */
+.wplng-switcher.theme-blurwhite-simple-smooth {
+
+    .switcher-content {
+
+        backdrop-filter: blur(25px) saturate(100%);
+        background: hsla(0, 0%, 100%, 0);
+        border: 1px solid white;
+        border-radius: 9px;
+
+        .wplng-language {
+            color: white;
+            border-radius: 6px;
+        }
+
+    }
+
+}
+
+
+/* Themes Blur Dark Double Smooth */
+.wplng-switcher.theme-blurblack-double-smooth {
+
+    .switcher-content {
+
+        backdrop-filter: blur(25px) saturate(100%);
+        background: hsla(0, 0%, 100%, 0);
+        border: 1px solid #1d2327;
+        border-radius: 9px;
+
+        .wplng-language {
+            border: 1px solid #1d2327;
+            color: #1d2327;
+            border-radius: 6px;
+        }
+
+    }
+
+}
+
+/* Themes Blur Dark Simple Smooth */
+.wplng-switcher.theme-blurblack-simple-smooth {
+
+    .switcher-content {
+
+        backdrop-filter: blur(25px) saturate(100%);
+        background: hsla(0, 0%, 100%, 0);
+        border: 1px solid #1d2327;
+        border-radius: 9px;
+
+        .wplng-language {
+            color: #1d2327;
+            border-radius: 6px;
+        }
+
+    }
+
+}
+
+/* Themes Blur Dark Simple Square */
+.wplng-switcher.theme-blurblack-simple-square {
+
+    .switcher-content {
+
+        backdrop-filter: blur(25px) saturate(100%);
+        background: hsla(0, 0%, 100%, 0);
+        border: 1px solid #1d2327;
+        border-radius: 0;
+
+        .wplng-language {
+            color: #1d2327;
+        }
+
+    }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* Themes Light Double Square */
 .wplng-switcher.theme-light-double-square {
 
@@ -132,22 +375,6 @@
 
 }
 
-/* Themes Dark Simple Square */
-.wplng-switcher.theme-dark-double-square {
-
-    .switcher-content {
-
-        background-color: #1d2327;
-        border: 1px solid rgba(255, 255, 255, .25);
-        border-radius: 0;
-
-        .wplng-language {
-            color: white;
-        }
-
-    }
-
-}
 
 /* Themes Light Double Smooth */
 .wplng-switcher.theme-light-double-smooth {
