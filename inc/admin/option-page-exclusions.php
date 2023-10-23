@@ -18,7 +18,7 @@ function wplng_option_page_exclusions() {
 	?>
 	<div class="wrap">
 		
-		<h1><span class="dashicons dashicons-translation"></span> <?php _e( 'wpLingua / Beta : Exclusion rules', 'wplingua' ); ?></h1>
+		<h1><span class="dashicons dashicons-translation"></span> <?php _e( 'wpLingua / Beta: Exclusion rules', 'wplingua' ); ?></h1>
 
 		<br>
 
@@ -48,12 +48,12 @@ function wplng_option_page_exclusions() {
 					<th scope="row"><?php _e( 'Exclude URL', 'wplingua' ); ?></th>
 					<td>
 						<fieldset>
-							<label for="wplng_excluded_url"><strong><?php _e( 'Exclude URLs from translation:', 'wplingua' ); ?></strong></label>
-							<p><?php echo __( 'You can exclude from translations pages you wish to offer only in the site\'s original language. To do this, List the REGEXs that match the URLs to be excluded. Examples:', 'wplingua' ); ?></p>
+							<label for="wplng_excluded_url"><strong><?php _e( 'Exclude URL from translation:', 'wplingua' ); ?></strong></label>
+							<p><?php echo __( 'You can exclude from translations pages you wish to offer only in the site\'s original language. To do this, List the REGEXs that match the URL to be excluded. Examples:', 'wplingua' ); ?></p>
 							<ul>
 								<li><code>^/my-page/$</code> - <?php _e( 'Exclude URL "/my-page/"', 'wplingua' ); ?></li>
-								<li><code>^/my-page/</code> - <?php _e( 'Exclude URLs starting with "/my-page/"', 'wplingua' ); ?></li>
-								<li><code>/my-page/$</code> - <?php _e( 'Exclude URLs ending with "/my-page/"', 'wplingua' ); ?></li>
+								<li><code>^/my-page/</code> - <?php _e( 'Exclude URL starting with "/my-page/"', 'wplingua' ); ?></li>
+								<li><code>/my-page/$</code> - <?php _e( 'Exclude URL ending with "/my-page/"', 'wplingua' ); ?></li>
 								<li><code>/my-page/</code> - <?php _e( 'Exclude URL containing "/my-page/"', 'wplingua' ); ?></li>
 							</ul>
 							<br>

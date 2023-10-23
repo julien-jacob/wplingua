@@ -34,13 +34,13 @@ function wplng_option_page_register() {
 		delete_transient( 'wplng_api_key_error' );
 		$message = '';
 		if ( ! empty( $error_validation ) ) {
-			$message .= __( 'Message :', 'wplingua' );
+			$message .= __( 'Message:', 'wplingua' );
 			$message .= ' ' . esc_html( $error_validation );
 		}
 		?>
 		<div class="wplng-notice notice notice-error is-dismissible">
 			<p>
-				<strong><?php _e( 'An error occurred with API key..', 'wplingua' ); ?></strong>
+				<strong><?php _e( 'An error occurred with API key.', 'wplingua' ); ?></strong>
 				<br>
 				<?php echo $message; ?>
 			</p>
@@ -68,13 +68,13 @@ function wplng_option_page_register() {
 		if ( ! empty( $response['error'] ) ) {
 			$message = '';
 			if ( ! empty( $response['message'] ) ) {
-				$message .= __( 'Message :', 'wplingua' );
+				$message .= __( 'Message:', 'wplingua' );
 				$message .= ' ' . esc_html( $response['message'] );
 			}
 			?>
 			<div class="wplng-notice notice notice-error is-dismissible">
 				<p>
-					<strong><?php _e( 'An error occurred while creating the API key..', 'wplingua' ); ?></strong>
+					<strong><?php _e( 'An error occurred while creating the API key.', 'wplingua' ); ?></strong>
 					<br>
 					<?php echo $message; ?>
 				</p>
@@ -99,7 +99,7 @@ function wplng_option_page_register() {
 	endif;
 	?>
 	<div class="wrap">
-		<h1><span class="dashicons dashicons-translation"></span> <?php _e( 'wpLingua / Beta : Register API key', 'wplingua' ); ?></h1>
+		<h1><span class="dashicons dashicons-translation"></span> <?php _e( 'wpLingua / Beta: Register API key', 'wplingua' ); ?></h1>
 		<br>
 		<form method="post" action="options.php">
 			<?php

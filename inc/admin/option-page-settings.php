@@ -26,7 +26,7 @@ function wplng_option_page_settings() {
 	?>
 	<div class="wrap">
 		
-		<h1><span class="dashicons dashicons-translation"></span> <?php _e( 'wpLingua / Beta : Translation solution for multilingual website', 'wplingua' ); ?></h1>
+		<h1><span class="dashicons dashicons-translation"></span> <?php _e( 'wpLingua / Beta: Translation solution for multilingual website', 'wplingua' ); ?></h1>
 
 		<br>
 
@@ -208,7 +208,7 @@ function wplng_settings_part_language_website() {
 			</p>
 
 			<div id="wplng-website-flag-container">
-				<strong><?php _e( 'Custom flag URL : ', 'wplingua' ); ?></strong>
+				<strong><?php _e( 'Custom flag URL: ', 'wplingua' ); ?></strong>
 				<input type="url" name="wplng_website_flag" id="wplng_website_flag" value="<?php echo esc_url( wplng_get_language_website_flag() ); ?>"/>
 			</div>
 		</div>
@@ -271,7 +271,7 @@ function wplng_settings_part_languages_target() {
 					<span class="wplng-subflags-radio-target-website">[FLAGS_OPTIONS]</span>
 				</p>
 				<div class="wplng-subflag-target-custom" wplng-target-lang="[LANG]">
-					<strong><?php _e( 'Custom flag URL : ', 'wplingua' ); ?></strong>
+					<strong><?php _e( 'Custom flag URL: ', 'wplingua' ); ?></strong>
 					[INPUT]
 				</div>
 			</div>
@@ -302,16 +302,16 @@ function wplng_settings_part_features() {
 
 	<fieldset>
 		<label for="wplng_translate_search">
-			<input type="checkbox" id="wplng_translate_search" name="wplng_translate_search" value="1" <?php checked( 1, get_option( 'wplng_translate_search' ) && in_array( 'search', $api_features ), true ); ?>  <?php disabled( false, in_array( 'search', $api_features ), true ); ?>/> <?php _e( 'Premium / Beta : Search from translated languages', 'wplingua' ); ?>
+			<input type="checkbox" id="wplng_translate_search" name="wplng_translate_search" value="1" <?php checked( 1, get_option( 'wplng_translate_search' ) && in_array( 'search', $api_features ), true ); ?>  <?php disabled( false, in_array( 'search', $api_features ), true ); ?>/> <?php _e( 'Premium / Beta: Search from translated languages', 'wplingua' ); ?>
 		</label>
 	</fieldset>
 
 	<fieldset>
 		<label for="wplng_translate_woocommerce">
-			<input type="checkbox" id="wplng_translate_woocommerce" name="wplng_translate_woocommerce" value="1" <?php checked( 1, get_option( 'wplng_translate_woocommerce' ) && in_array( 'woocommerce', $api_features ), true ); ?>  <?php disabled( false, in_array( 'woocommerce', $api_features ), true ); ?>/> <?php _e( 'Premium / Beta : Translate Woocommerce shop', 'wplingua' ); ?>
+			<input type="checkbox" id="wplng_translate_woocommerce" name="wplng_translate_woocommerce" value="1" <?php checked( 1, get_option( 'wplng_translate_woocommerce' ) && in_array( 'woocommerce', $api_features ), true ); ?>  <?php disabled( false, in_array( 'woocommerce', $api_features ), true ); ?>/> <?php _e( 'Premium / Beta: Translate WooCommerce shop', 'wplingua' ); ?>
 		</label>
 	</fieldset>
-	
+
 	<?php
 }
 
