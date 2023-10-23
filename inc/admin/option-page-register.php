@@ -231,7 +231,7 @@ function wplng_register_part_premium() {
 	<p><strong><?php _e( 'Get more target languages and premium features:', 'wplingua' ); ?></strong></p>		
 	<p><?php _e( 'To translate your site into more languages and access premium features, visit wpLingua plans.', 'wplingua' ); ?></p>
 	<ul style="list-style: inside; padding: 0 0 0 15px;">
-		<li><?php _e( 'Multilingual Woocommerce store', 'wplingua' ); ?></li>
+		<li><?php _e( 'Multilingual WooCommerce store', 'wplingua' ); ?></li>
 		<li><?php _e( 'Allow search from all languages', 'wplingua' ); ?></li>
 		<li><?php _e( 'Get more target languages', 'wplingua' ); ?></li>
 	</ul>
