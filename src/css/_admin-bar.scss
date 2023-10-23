@@ -5,7 +5,6 @@
         top: 2px;
         position: relative;
         transition: color .1s ease-in-out;
-        color: #a7aaad;
         color: rgba(240, 246, 252, .6);
         position: relative;
         float: left;
@@ -16,6 +15,40 @@
         -moz-osx-font-smoothing: grayscale;
         background-image: none !important;
         margin-right: 6px;
+    }
+
+}
+
+.wplingua-translated {
+
+    #wpadminbar:not(.mobile) {
+
+
+        .ab-top-menu > li#wp-admin-bar-wplingua-menu {
+
+            & > .ab-item {
+                background: linear-gradient(125deg, rgba(188,250,153,1) 0%, rgba(255,189,150,1) 100%);
+                color: #1d2327;
+                font-weight: 700;
+                border: 2px solid #1d2327;
+                box-sizing: border-box;
+                border-radius: 6px;
+                line-height: 26px;
+                transition: all .3s;
+                opacity: .9;
+    
+                &::before {
+                    color: #1d2327;
+                    top: 0;
+                }
+            }
+
+            &:hover > .ab-item {
+                opacity: 1;
+            }
+
+        }
+
     }
 
 }

@@ -63,8 +63,8 @@ function wplng_create_menu() {
 
 	add_submenu_page(
 		'wplingua-settings',
-		__( 'wplingua : Traductions', 'wplingua' ),
-		__( 'Traductions', 'wplingua' ),
+		__( 'wplingua : Translations', 'wplingua' ),
+		__( 'All translations', 'wplingua' ),
 		'administrator',
 		'edit.php?post_type=wplng_translation',
 		false

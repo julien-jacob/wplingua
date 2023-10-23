@@ -82,7 +82,7 @@ function wplng_start() {
 		add_action( 'admin_menu', 'wplng_create_menu' );
 
 		// Add admin Bar menu
-		add_action( 'admin_bar_menu', 'wplng_admin_bar_menu', 100 );
+		add_action( 'admin_bar_menu', 'wplng_admin_bar_menu', 81 );
 
 		// Enqueue CSS and JS files for option pages
 		add_action( 'admin_enqueue_scripts', 'wplng_option_page_settings_assets' );
