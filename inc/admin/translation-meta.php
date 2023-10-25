@@ -53,7 +53,7 @@ function wplng_translation_meta_box_html_output( $post ) {
 
 		$html  = '<div id="wplng-original-language" wplng-lang="' . $language_id . '">';
 		$html .= '<label for="wplng_translation_source">';
-		$html .= $emoji . ' ' . $language_name . __( ' - Original text:', 'textdomain' );
+		$html .= $emoji . ' ' . $language_name . __( ' - Original text:', 'wplingua' );
 		$html .= '</label>';
 		$html .= '<div class="wplng-source">';
 		$html .= esc_html( $meta['wplng_translation_original'][0] );
@@ -105,7 +105,7 @@ function wplng_translation_meta_box_html_output( $post ) {
 			$language_id        = esc_attr( $translation['language_id'] );
 			$emoji              = wplng_get_language_emoji( $language_id ); // Emoji already esc_html
 			$language_name      = wplng_get_language_name( $language_id ); // Name already esc_html
-			$label              = $emoji . ' ' . $language_name . __( ' - Translation:', 'textdomain' );
+			$label              = $emoji . ' ' . $language_name . __( ' - Translation:', 'wplingua' );
 			$textarea           = esc_html( esc_attr( $translation['translation'] ) );
 			$name               = esc_attr( 'wplng_translation_' . $language_id );
 			$container_id       = esc_attr( 'wplng-translation-' . $language_id );
@@ -214,10 +214,38 @@ function wplng_translation_save_meta_boxes_data( $post_id ) {
 		return;
 	}
 
-	$translations = json_decode( $meta['wplng_translation_translations'][0], true );
+	$translations     = json_decode( $meta['wplng_translation_translations'][0], true );
+	$languages_target = wplng_get_languages_target_ids();
 
 	if ( empty( $translations ) ) {
 		$translations = array();
+	}
+
+	foreach ( $languages_target as $language_target ) {
+
+		$is_in = false;
+
+		foreach ( $translations as $translation ) {
+
+			if ( $translation['language_id'] !== $language_target
+				|| empty( $translation['language_id'] )
+				|| empty( $translation['translation'] )
+			) {
+				continue;
+			}
+
+			$is_in          = true;
+			$translations[] = $translation;
+
+		}
+
+		if ( ! $is_in ) {
+			$translations[] = array(
+				'language_id' => $language_target,
+				'translation' => '[WPLNG_EMPTY]',
+				'status'      => 'ungenerated',
+			);
+		}
 	}
 
 	foreach ( $translations as $key => $translation ) {
