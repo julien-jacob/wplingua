@@ -44,13 +44,6 @@ function wplng_register_assets() {
 	 */
 	if ( isset( $_GET['wplingua-editor'] ) ) {
 
-		wp_enqueue_script(
-			'wplingua-editor',
-			plugins_url() . '/wplingua/assets/js/editor.js',
-			array( 'jquery' ),
-			WPLNG_API_VERSION
-		);
-
 		wp_enqueue_style(
 			'wplingua-editor',
 			plugins_url() . '/wplingua/assets/css/editor.css',
@@ -59,13 +52,6 @@ function wplng_register_assets() {
 		);
 
 	} elseif ( isset( $_GET['wplingua-list'] ) ) {
-
-		wp_enqueue_script(
-			'wplingua-list',
-			plugins_url() . '/wplingua/assets/js/list.js',
-			array( 'jquery' ),
-			WPLNG_API_VERSION
-		);
 
 		wp_enqueue_style(
 			'wplingua-list',
