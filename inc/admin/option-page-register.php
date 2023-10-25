@@ -99,7 +99,7 @@ function wplng_option_page_register() {
 	endif;
 	?>
 	<div class="wrap">
-		<h1><span class="dashicons dashicons-translation"></span> <?php _e( 'wpLingua / Beta: Register API key', 'wplingua' ); ?></h1>
+		<h1><span class="dashicons dashicons-translation"></span> <?php _e( 'wpLingua: Register API key', 'wplingua' ); ?></h1>
 		<br>
 		<form method="post" action="options.php">
 			<?php
