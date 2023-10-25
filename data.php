@@ -7,9 +7,14 @@ if ( ! defined( 'WPINC' ) ) {
 
 
 /**
- * Data : Parse and translate
+ * ------ Data : Parse and translate ------
  */
 
+ /**
+  * Get JSON elements to translate
+  *
+  * @return array
+  */
 function wplng_data_json_to_translate() {
 	return apply_filters(
 		'wplng_json_to_translate',
@@ -20,6 +25,12 @@ function wplng_data_json_to_translate() {
 	);
 }
 
+
+/**
+ * Get JSON to exclude from translation
+ *
+ * @return array
+ */
 function wplng_data_excluded_json() {
 	return apply_filters(
 		'wplng_excluded_json',
@@ -30,6 +41,11 @@ function wplng_data_excluded_json() {
 }
 
 
+/**
+ * Get selectors of excluded elements in visual editor
+ *
+ * @return array
+ */
 function wplng_data_excluded_editor_link() {
 	return apply_filters(
 		'wplng_excluded_editor_link',
@@ -41,6 +57,11 @@ function wplng_data_excluded_editor_link() {
 }
 
 
+/**
+ * Get selectors of excluded elements
+ *
+ * @return array
+ */
 function wplng_data_excluded_selector_default() {
 	return array(
 		'style',
@@ -57,6 +78,11 @@ function wplng_data_excluded_selector_default() {
 }
 
 
+/**
+ * Get selectors of excluded nodes text
+ *
+ * @return array
+ */
 function wplng_data_excluded_node_text() {
 	return apply_filters(
 		'wplng_excluded_node_text',
@@ -71,6 +97,11 @@ function wplng_data_excluded_node_text() {
 }
 
 
+/**
+ * Get attributes and selectors to translate
+ *
+ * @return array
+ */
 function wplng_data_attr_text_to_translate() {
 	return apply_filters(
 		'wplng_attr_text_to_translate',
@@ -144,6 +175,11 @@ function wplng_data_attr_text_to_translate() {
 }
 
 
+/**
+ * Get attributes and selectors of URL to translate
+ *
+ * @return array
+ */
 function wplng_data_attr_url_to_translate() {
 	return apply_filters(
 		'wplng_attr_url_to_translate',
@@ -173,6 +209,11 @@ function wplng_data_attr_url_to_translate() {
 }
 
 
+/**
+ * GEt attributes and selector of elements where translate language ID
+ *
+ * @return array
+ */
 function wplng_data_attr_lang_id_to_replace() {
 	return apply_filters(
 		'wplng_attr_lang_id_to_replace',
@@ -195,9 +236,14 @@ function wplng_data_attr_lang_id_to_replace() {
 
 
 /**
- * Data : Switcher options
+ * ------ Data : Switcher options ------
  */
 
+ /**
+  * Get options for switcher insertion
+  *
+  * @return array
+  */
 function wplng_data_switcher_valid_insert() {
 	return array(
 		'bottom-right'  => __( 'Bottom right', 'wplingua' ),
@@ -208,6 +254,11 @@ function wplng_data_switcher_valid_insert() {
 }
 
 
+/**
+ * Get options for switcher themes
+ *
+ * @return array
+ */
 function wplng_data_switcher_valid_theme() {
 	return array(
 		'light-double-smooth'     => __( 'Light - Double - Smooth', 'wplingua' ),
@@ -234,6 +285,11 @@ function wplng_data_switcher_valid_theme() {
 }
 
 
+/**
+ * Get options for switcher style
+ *
+ * @return array
+ */
 function wplng_data_switcher_valid_style() {
 	return array(
 		'list'     => __( 'Inline list', 'wplingua' ),
@@ -242,6 +298,12 @@ function wplng_data_switcher_valid_style() {
 	);
 }
 
+
+/**
+ * Get options for switcher name format
+ *
+ * @return array
+ */
 function wplng_data_switcher_valid_name_format() {
 	return array(
 		'name'     => __( 'Translated name', 'wplingua' ),
@@ -252,6 +314,11 @@ function wplng_data_switcher_valid_name_format() {
 }
 
 
+/**
+ * Get options for switcher flags style
+ *
+ * @return array
+ */
 function wplng_data_switcher_valid_flags_style() {
 	return array(
 		'circle'      => __( 'Circle', 'wplingua' ),
@@ -263,9 +330,14 @@ function wplng_data_switcher_valid_flags_style() {
 
 
 /**
- * Data : Languages
+ * ------ Data : Languages ------
  */
 
+ /**
+  * Get all languages data
+  *
+  * @return array
+  */
 function wplng_data_languages() {
 	return array(
 		array(
