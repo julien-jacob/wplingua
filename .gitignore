@@ -1,4 +1,5 @@
 /node_modules/
+/wplingua/
 /package-lock.json
 /wplingua.zip
 /notes.md

@@ -72,9 +72,18 @@ gulp.task("default", gulp.series(
 ));
 
 /* Create archive */
-gulp.task("zip",() => {
+gulp.task("folder-zip",() => {
+    return gulp.src([
+        "**/wplingua/**/*"
+    ])
+        .pipe(zip('wplingua.zip'))
+        .pipe(gulp.dest("."));
+});
+
+gulp.task("folder-create", () => {
     return gulp.src([
         "**",
+        "!wplingua/",
         "!src/",
         "!src/**",
         "!node_modules/",
@@ -86,9 +95,15 @@ gulp.task("zip",() => {
         "!wplingua.zip",
         "!*.md"
     ])
-        .pipe(zip('wplingua.zip'))
-        .pipe(gulp.dest("."));
+        .pipe(gulp.dest("wplingua/"));
 });
+
+gulp.task('folder-delete', function () {
+    return del([
+        "wplingua/"
+    ]);
+});
+
 
 /* Process files & Create archive */
 gulp.task("archive", gulp.series(
@@ -96,7 +111,9 @@ gulp.task("archive", gulp.series(
     "js",
     "plugins",
     "images",
-    "zip"
+    "folder-create",
+    "folder-zip",
+    "folder-delete"
 ));
 
 gulp.task('clear', function () {
@@ -105,6 +122,6 @@ gulp.task('clear', function () {
         "assets/js/**/*",
         "assets/plugins/**/*",
         "wplingua.zip",
-        "*.log",
+        "*.log"
     ]);
 });
