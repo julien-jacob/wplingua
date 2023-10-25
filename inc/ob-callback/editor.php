@@ -150,15 +150,14 @@ function wplng_ob_callback_editor( $html ) {
 
 	foreach ( $dom->find( 'a' ) as $element ) {
 
-		$element->attr['onclick'] = 'event.preventDefault()';
-		$class                    = 'wplingua-editor-link';
+		$element->setAttribute( 'onclick', 'event.preventDefault()' );
+		$class = 'wplingua-editor-link';
 
 		if ( ! empty( $element->class ) ) {
-			$class .= ' ' . $element->class;
+			$element->class = $class . ' ' . $element->class;
+		} else {
+			$element->setAttribute( 'class', $class );
 		}
-
-		$element->class = $class;
-
 	}
 
 	/**
