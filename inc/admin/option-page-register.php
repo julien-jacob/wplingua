@@ -207,7 +207,7 @@ function wplng_register_part_free_api_key() {
 	<fieldset>
 		<input type="checkbox" name="wplng-accept-eula" id="wplng-accept-eula">
 		<label for="wplng-accept-eula">
-			<strong><?php _e( 'I have read and accept the', 'wplingua' ); ?> <a href="https://wplingua.com/terms/" target="_blank"><?php _e( 'general conditions of use', 'wplingua' ); ?></a> </strong>
+			<strong><?php _e( 'I have read and accept the', 'wplingua' ); ?> <a href="https://wplingua.com/terms/" target="_blank"><?php _e( 'API terms of use', 'wplingua' ); ?></a> </strong>
 		</label>
 	</fieldset>
 	<fieldset style="display: none;">
@@ -228,14 +228,14 @@ function wplng_register_part_free_api_key() {
  */
 function wplng_register_part_premium() {
 	?>
-	<p><strong><?php _e( 'Get more target languages and premium features:', 'wplingua' ); ?></strong></p>		
-	<p><?php _e( 'To translate your site into more languages and access premium features, visit wpLingua plans.', 'wplingua' ); ?></p>
+	<p><strong><?php _e( 'Get more target languages and advanced features:', 'wplingua' ); ?></strong></p>		
+	<p><?php _e( 'To translate your site into more languages and access advanced features, visit wpLingua website.', 'wplingua' ); ?></p>
 	<ul style="list-style: inside; padding: 0 0 0 15px;">
 		<li><?php _e( 'Multilingual WooCommerce store', 'wplingua' ); ?></li>
 		<li><?php _e( 'Allow search from all languages', 'wplingua' ); ?></li>
 		<li><?php _e( 'Get more target languages', 'wplingua' ); ?></li>
 	</ul>
 	<br>
-	<a class="button button-primary" href="https://wplingua.com/" target="_blank"><?php _e( 'Visit wpLingua plans', 'wplingua' ); ?></a>
+	<a class="button button-primary" href="https://wplingua.com/" target="_blank"><?php _e( 'Visit wpLingua website', 'wplingua' ); ?></a>
 	<?php
 }
