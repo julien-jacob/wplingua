@@ -165,13 +165,6 @@ function wplng_option_page_exclusions_assets( $hook ) {
 
 	wp_enqueue_script( 'jquery' );
 
-	wp_enqueue_script(
-		'wplingua-option-exclusions',
-		plugins_url() . '/wplingua/assets/js/admin/option-page-exclusions.js',
-		array( 'jquery' ),
-		WPLNG_API_VERSION
-	);
-
 	wp_enqueue_style(
 		'wplingua-option-exclusions',
 		plugins_url() . '/wplingua/assets/css/admin/option-page-exclusions.css',

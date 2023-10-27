@@ -2,12 +2,12 @@
 /**
  * Plugin Name:  wpLingua
  * Plugin URI:   https://wplingua.com/
- * Description:  WordPress plugin to translate and make your websites multilingual
+ * Description:  An all-in-one solution that makes your websites multilingual and translates them automatically, without word or page limits. The highlights: a free first language, an on-page visual editor for editing translations, a customizable language switcher, search engine optimization (SEO), self-hosted data and more!
  * Author:       wpLingua Team
  * Author URI:   https://wplingua.com/
  * Text Domain:  wplingua
  * Domain Path:  /languages/
- * Version:      0.2.1
+ * Version:      0.2.2
  * Requires PHP: 7.0
  */
 
@@ -23,7 +23,7 @@ if ( ! defined( 'WPINC' ) ) {
  */
 define( 'WPLNG_API_URL', 'https://api.wplingua.com' );
 define( 'WPLNG_API_VERSION', '1.0' );
-define( 'WPLNG_PLUGIN_VERSION', '0.2.1' );
+define( 'WPLNG_PLUGIN_VERSION', '0.2.2' );
 define( 'WPLNG_PLUGIN_PATH', dirname( __FILE__ ) );
 define( 'WPLNG_MAX_TRANSLATIONS', 256 );
 define( 'WPLNG_MAX_FILE_SIZE', 1000000 );
@@ -107,9 +107,6 @@ function wplng_start() {
 
 		// Save metabox on posts saving
 		add_action( 'save_post_wplng_translation', 'wplng_translation_save_meta_boxes_data', 10, 2 );
-
-		// Display 100 translation in admin area by default
-		add_filter( 'get_user_option_edit_wplng_translation_per_page', 'wplng_translation_per_page' );
 
 		// Clear translation cache on trash / untrash
 		add_action( 'trashed_post', 'wplng_clear_translations_cache_trash_untrash' );

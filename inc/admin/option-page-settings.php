@@ -26,7 +26,7 @@ function wplng_option_page_settings() {
 	?>
 	<div class="wrap">
 		
-		<h1><span class="dashicons dashicons-translation"></span> <?php _e( 'wpLingua / Beta: Translation solution for multilingual website', 'wplingua' ); ?></h1>
+		<h1><span class="dashicons dashicons-translation"></span> <?php _e( 'wpLingua: Translation solution for multilingual website', 'wplingua' ); ?></h1>
 
 		<br>
 
@@ -50,7 +50,7 @@ function wplng_option_page_settings() {
 					</td>
 				</tr>
 				<tr>
-					<th scope="row"><?php _e( 'Features', 'wplingua' ); ?></th>
+					<th scope="row"><?php _e( 'API features', 'wplingua' ); ?></th>
 					<td>
 						<fieldset>
 							<?php wplng_settings_part_features(); ?>
@@ -298,17 +298,22 @@ function wplng_settings_part_features() {
 	$api_features = wplng_get_api_feature();
 
 	?>
-	<p><strong><?php _e( 'Translation features:', 'wplingua' ); ?></strong></p>
+	<p><strong><?php _e( 'API translation features:', 'wplingua' ); ?></strong></p>
+	<hr>
+
+	<p><?php _e( 'The options below require extended access to the wpLingua API to be functional on your website.', 'wplingua' ); ?></p>
+
+	<hr>
 
 	<fieldset>
 		<label for="wplng_translate_search">
-			<input type="checkbox" id="wplng_translate_search" name="wplng_translate_search" value="1" <?php checked( 1, get_option( 'wplng_translate_search' ) && in_array( 'search', $api_features ), true ); ?>  <?php disabled( false, in_array( 'search', $api_features ), true ); ?>/> <?php _e( 'Premium / Beta: Search from translated languages', 'wplingua' ); ?>
+			<input type="checkbox" id="wplng_translate_search" name="wplng_translate_search" value="1" <?php checked( 1, get_option( 'wplng_translate_search' ) && in_array( 'search', $api_features ), true ); ?>  <?php disabled( false, in_array( 'search', $api_features ), true ); ?>/> <?php _e( 'API feature: Search from translated languages', 'wplingua' ); ?>
 		</label>
 	</fieldset>
 
 	<fieldset>
 		<label for="wplng_translate_woocommerce">
-			<input type="checkbox" id="wplng_translate_woocommerce" name="wplng_translate_woocommerce" value="1" <?php checked( 1, get_option( 'wplng_translate_woocommerce' ) && in_array( 'woocommerce', $api_features ), true ); ?>  <?php disabled( false, in_array( 'woocommerce', $api_features ), true ); ?>/> <?php _e( 'Premium / Beta: Translate WooCommerce shop', 'wplingua' ); ?>
+			<input type="checkbox" id="wplng_translate_woocommerce" name="wplng_translate_woocommerce" value="1" <?php checked( 1, get_option( 'wplng_translate_woocommerce' ) && in_array( 'woocommerce', $api_features ), true ); ?>  <?php disabled( false, in_array( 'woocommerce', $api_features ), true ); ?>/> <?php _e( 'API feature: Allow WooCommerce shop translation', 'wplingua' ); ?>
 		</label>
 	</fieldset>
 
