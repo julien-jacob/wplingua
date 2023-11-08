@@ -183,7 +183,7 @@ function wplng_get_editor_modal_html( $translations ) {
 			'theme' => 'grey-simple-smooth',
 			'style' => 'dropdown',
 			'flags' => 'rectangular',
-			'title' => 'name',
+			'title' => 'original',
 		)
 	);
 	$html .= '</div>';
