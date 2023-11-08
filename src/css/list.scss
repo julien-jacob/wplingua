@@ -19,7 +19,7 @@ body.theme-Divi #main-header {
  ** modal
  **/
 
-#wplng-modal .wplng-modal-item .wplng-item-edit a.wplng-button-icon {
+#wplng-modal a.wplng-button-icon {
 
     display: block;
     font-size: 13px;
@@ -38,7 +38,7 @@ body.theme-Divi #main-header {
     width: 30px;
     height: 30px;
     text-align: center;
-    padding: 4px;
+    padding: 2px;
 
     &:focus,
     &:hover {
@@ -47,7 +47,12 @@ body.theme-Divi #main-header {
         color: #fff;
     }
 
+    .dashicons {
+        vertical-align: bottom;
+    }
+
 }
+
 
 body {
 
@@ -80,13 +85,87 @@ body {
         margin: 60px auto;
         font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;
 
+        #wplng-modal-list-switcher {
+            width: 150px;
+            position: absolute;
+            right: 55px;
+            top: 12px;
+
+            .switcher-content {
+                background-color: #f6f7f7;
+                border-radius: 3px;
+                padding: 0;
+                border-color: #c3c4c7;
+                box-shadow: rgba(0,0,0,.04) 0 1px 1px 0;
+
+                .wplng-language {
+                    
+                    margin: 1px 0 -1px 0;
+                    padding: 2px 10px;
+                    height: 30px;
+                    box-sizing: border-box;
+                    color: #6b6b6b;
+                    
+                    &.wplng-language-current {
+                        background-position: calc(100% - 6px) center;
+                        padding: 2px 28px 2px 10px;
+                    }
+
+                    &.website {
+                        display: none;
+                    }
+                    
+                    img {
+                        width: 16px;
+                        height: 16px;
+                        vertical-align: text-top;
+                        margin-top: -2px;
+                        margin-right: 6px;
+                    }
+                }
+
+                .wplng-languages {
+                    .wplng-language {
+                        margin: 4px 0;
+                        border-radius: 0;
+                    }
+                }
+            }
+        }
+
+
         #wplng-modal-header {
             border: 1px solid #c3c4c7;
             background-color: white;
-            padding: 15px;
+            padding: 15px 215px 15px 15px;
             border-radius: 3px;
             box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), 0 0 20px rgba(0, 0, 0, 0.15);
             margin-bottom: 15px;
+            position: relative;
+
+            .wplng-modal-header-icon {
+                vertical-align: text-bottom;
+                margin-right: 2px;
+            }
+
+            #wplng-modal-title {
+                font-size: 16px;
+                font-weight: 600;
+            }
+
+            .wplng-button-return {
+                position: absolute;
+                right: 15px;
+                top: 12px;
+                border-color: #c3c4c7;
+                box-shadow: rgba(0,0,0,.04) 0 1px 1px 0;
+                background-color: #f6f7f7;
+                color: #6b6b6b;
+
+                .dashicons {
+                    vertical-align: text-top;
+                }
+            }
         }
 
         #wplng-modal-items {
@@ -138,4 +217,10 @@ body {
 
     }
 
+}
+
+@media screen and (max-width: 600px) {
+    #wplng-modal-title {
+        display: none;
+    }
 }

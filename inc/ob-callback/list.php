@@ -152,9 +152,46 @@ function wplng_get_editor_modal_html( $translations ) {
 		return '';
 	}
 
-	$html  = '<div id="wplng-modal-container">';
+	/**
+	 * Return button
+	 */
+	$url           = wplng_get_url_current();
+	$url_original  = $url;
+	$url_original  = remove_query_arg( 'wplingua-editor', $url_original );
+	$url_original  = remove_query_arg( 'wplingua-list', $url_original );
+	$return_button = '';
+	if ( ! empty( $url_original ) ) {
+		$return_button .= '<a href="' . esc_url( $url_original ) . '" title="' . __( 'Return on page', 'wplingua' ) . '" class="wplng-button-icon wplng-button-return"><span class="dashicons dashicons-no"></span></a>';
+	}
+
+	/**
+	 * Modal
+	 */
+	$html  = '';
+	$html .= '<div id="wplng-modal-container">';
 	$html .= '<div id="wplng-modal">';
-	// $html .= '<div id="wplng-modal-header"></div>';
+
+	$html .= '<div id="wplng-modal-header">';
+	$html .= '<span class="dashicons dashicons-translation wplng-modal-header-icon"></span> ';
+	$html .= '<span id="wplng-modal-title">';
+	$html .= __( 'All translations on page', 'wplingua' );
+	$html .= '</span>';
+
+	$html .= '<div id="wplng-modal-list-switcher">';
+	$html .= wplng_get_switcher_html(
+		array(
+			'theme' => 'grey-simple-smooth',
+			'style' => 'dropdown',
+			'flags' => 'rectangular',
+			'title' => 'name',
+		)
+	);
+	$html .= '</div>';
+
+	$html .= $return_button;
+
+	$html .= '</div>';
+
 	$html .= '<div id="wplng-modal-items">';
 
 	foreach ( $translations as $translation ) {
@@ -180,11 +217,9 @@ function wplng_get_editor_modal_html( $translations ) {
 		$html .= '</div>'; // End .wplng-item-text
 		$html .= '<div class="wplng-item-edit">';
 		$html .= '<a href="' . esc_url( $edit_link ) . '" ';
-		$html .= 'title="' . __( 'Edit', 'wplingua' ) . '" ';
+		$html .= 'title="' . __( 'Edit this translation', 'wplingua' ) . '" ';
 		$html .= 'class="wplng-button-icon" target="_blank">';
-		$html .= '<span class="dashicons dashicons-edit" title="';
-		$html .= __( 'Edit this translation', 'wplingua' );
-		$html .= '"></span></a>';
+		$html .= '<span class="dashicons dashicons-edit"></span></a>';
 		$html .= '</a>';
 		$html .= '</div>'; // End .wplng-item-edit
 		$html .= '</div>'; // ENd .wplng-modal-item
