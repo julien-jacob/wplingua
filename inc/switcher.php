@@ -286,7 +286,7 @@ function wplng_switcher_wp_footer() {
  * Print HTML of wpLingua switcher
  *
  * @param array $arg
- * @return void
+ * @return string
  */
 function wplng_get_switcher_html( $arg = array() ) {
 
@@ -434,7 +434,6 @@ function wplng_get_switcher_html( $arg = array() ) {
 	}
 
 	$html .= '</div>';
-
 	$html .= '</div>';
 
 	if ( ! empty( $arg['flags'] )

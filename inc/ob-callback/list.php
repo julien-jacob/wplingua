@@ -178,14 +178,17 @@ function wplng_get_editor_modal_html( $translations ) {
 	$html .= '</span>';
 
 	$html .= '<div id="wplng-modal-list-switcher">';
-	$html .= wplng_get_switcher_html(
-		array(
-			'theme' => 'grey-simple-smooth',
-			'style' => 'dropdown',
-			'flags' => 'rectangular',
-			'title' => 'original',
-		)
-	);
+	// $html .= wplng_get_switcher_html(
+	// 	array(
+	// 		'theme' => 'grey-simple-smooth',
+	// 		'style' => 'dropdown',
+	// 		'flags' => 'rectangular',
+	// 		'title' => 'original',
+	// 	)
+	// );
+
+	$html .= wplng_get_modal_switcher_html();
+
 	$html .= '</div>';
 
 	$html .= $return_button;
@@ -228,6 +231,111 @@ function wplng_get_editor_modal_html( $translations ) {
 	$html .= '</div>'; // End #wplng-modal-items
 	$html .= '</div>'; // End #wplng-modal
 	$html .= '</div>'; // End #wplng-modal-container
+
+	return $html;
+}
+
+
+/**
+ * Print HTML of switcher for translations list modal
+ *
+ * @return string
+ */
+function wplng_get_modal_switcher_html() {
+
+	if ( ! wplng_url_is_translatable() && ! is_admin() ) {
+		return '';
+	}
+
+	$language_website    = wplng_get_language_website();
+	$language_current_id = wplng_get_language_current_id();
+	$languages_target    = wplng_get_languages_target();
+
+	if ( empty( $languages_target ) ) {
+		return '';
+	}
+
+	$class = wplng_get_switcher_class(
+		array(
+			'theme' => 'grey-simple-smooth',
+			'style' => 'dropdown',
+			'flags' => 'rectangular',
+			'title' => 'name',
+		)
+	);
+
+	/**
+	 * Create the switcher HTML
+	 */
+
+	$html  = '<div class="' . esc_attr( 'wplng-switcher ' . $class ) . '">';
+	$html .= '<div class="switcher-content">';
+	$html .= '<div class="wplng-languages">';
+
+	// Create link for each target languages
+	foreach ( $languages_target as $language_target ) {
+
+		$class = '';
+		$url   = 'javascript:void(0);';
+		if ( $language_target['id'] === $language_current_id ) {
+			$class = ' current';
+		} elseif ( ! is_admin() && 0 <= strpos( $url, '/?et_fb=1' ) ) {
+			$url = wplng_get_url_current_for_language( $language_target['id'] );
+		}
+
+		$html .= '<a class="wplng-language' . $class . '" href="' . $url . '">';
+		if ( ! empty( $language_website['flags'][0]['flag'] ) ) {
+			$html .= '<img src="' . esc_url( $language_target['flags'][0]['flag'] ) . '" ';
+			$html .= 'alt="' . __( 'Flag for language: ', 'wplingua' ) . esc_attr( $language_target['name'] ) . '">';
+		}
+
+		$html .= '<span class="language-name">' . esc_html( $language_target['name'] ) . '</span>';
+		$html .= '</a>';
+	}
+
+	$html .= '</div>';
+
+	// Create link for current language
+	if ( $language_website['id'] === $language_current_id ) {
+
+		$html .= '<a class="wplng-language wplng-language-current" href="javascript:void(0);">';
+		if ( ! empty( $language_website['flags'][0]['flag'] ) ) {
+			$html .= '<img src="' . esc_url( $language_website['flags'][0]['flag'] ) . '" ';
+			$html .= 'alt="' . __( 'Flag for language: ', 'wplingua' ) . esc_attr( $language_website['name'] ) . '">';
+		}
+		$html .= '<span class="language-name">' . esc_html( $language_website['name'] ) . '</span>';
+		$html .= '</a>';
+
+	} else {
+
+		foreach ( $languages_target as $language_target ) {
+
+			if ( $language_target['id'] !== $language_current_id ) {
+				continue;
+			}
+
+			$html .= '<a class="wplng-language wplng-language-current" href="javascript:void(0);">';
+			if ( ! empty( $language_target['flags'][0]['flag'] ) ) {
+				$html .= '<img src="' . esc_url( $language_target['flags'][0]['flag'] ) . '" ';
+				$html .= 'alt="' . __( 'Flag for language: ', 'wplingua' ) . esc_attr( $language_target['name'] ) . '">';
+			}
+			$html .= '<span class="language-name">' . esc_html( $language_target['name'] ) . '</span>';
+			$html .= '</a>';
+			break;
+		}
+	}
+
+	$html .= '</div>';
+	$html .= '</div>';
+
+	$flags_style = wplng_get_switcher_flags_style();
+	if ( 'none' !== $flags_style && 'rectangular' !== $flags_style ) {
+		$html = str_replace(
+			'/wplingua/assets/images/' . $flags_style . '/',
+			'/wplingua/assets/images/rectangular/',
+			$html
+		);
+	}
 
 	return $html;
 }
