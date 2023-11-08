@@ -270,6 +270,7 @@ function wplng_get_modal_switcher_html() {
 
 	$html  = '<div class="' . esc_attr( 'wplng-switcher ' . $class ) . '">';
 	$html .= '<div class="switcher-content">';
+
 	$html .= '<div class="wplng-languages">';
 
 	// Create link for each target languages
@@ -278,7 +279,7 @@ function wplng_get_modal_switcher_html() {
 		$class = '';
 		$url   = 'javascript:void(0);';
 		if ( $language_target['id'] === $language_current_id ) {
-			$class = ' current';
+			continue;
 		} elseif ( ! is_admin() && 0 <= strpos( $url, '/?et_fb=1' ) ) {
 			$url = wplng_get_url_current_for_language( $language_target['id'] );
 		}
@@ -293,7 +294,7 @@ function wplng_get_modal_switcher_html() {
 		$html .= '</a>';
 	}
 
-	$html .= '</div>';
+	$html .= '</div>'; // End .wplng-languages
 
 	// Create link for current language
 	if ( $language_website['id'] === $language_current_id ) {
@@ -325,8 +326,8 @@ function wplng_get_modal_switcher_html() {
 		}
 	}
 
-	$html .= '</div>';
-	$html .= '</div>';
+	$html .= '</div>'; // End .switcher-content
+	$html .= '</div>'; // End .wplng-switcher
 
 	$flags_style = wplng_get_switcher_flags_style();
 	if ( 'none' !== $flags_style && 'rectangular' !== $flags_style ) {

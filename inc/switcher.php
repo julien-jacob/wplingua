@@ -397,7 +397,7 @@ function wplng_get_switcher_html( $arg = array() ) {
 		$html .= '</a>';
 	}
 
-	$html .= '</div>';
+	$html .= '</div>'; // End .wplng-languages
 
 	// Create link for current language
 	if ( $language_website['id'] === $language_current_id ) {
@@ -433,8 +433,8 @@ function wplng_get_switcher_html( $arg = array() ) {
 		}
 	}
 
-	$html .= '</div>';
-	$html .= '</div>';
+	$html .= '</div>'; // End .switcher-content
+	$html .= '</div>'; // End .wplng-switcher
 
 	if ( ! empty( $arg['flags'] )
 		&& 'none' !== $arg['flags']

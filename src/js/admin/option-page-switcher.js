@@ -137,7 +137,6 @@ jQuery(document).ready(function ($) {
     wplngSwitcherUpdateTitle($("#wplng_name_format").val());
     wplngSwitcherUpdateFlagsStyle($("#wplng_flags_style").val());
 
-
     /**
      * CodeMirror CSS editor
      */

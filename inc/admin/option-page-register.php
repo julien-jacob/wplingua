@@ -100,6 +100,7 @@ function wplng_option_page_register() {
 	?>
 	<div class="wrap">
 		<h1><span class="dashicons dashicons-translation"></span> <?php _e( 'wpLingua: Register API key', 'wplingua' ); ?></h1>
+		<p>Une clé API est nécessaire afin de permetre à votre site d'être traduit.</p>
 		<br>
 		<form method="post" action="options.php">
 			<?php
