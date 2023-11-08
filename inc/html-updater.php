@@ -187,11 +187,29 @@ function wplng_ob_start() {
 
 	if ( current_user_can( 'edit_posts' ) ) {
 		if ( isset( $_GET['wplingua-editor'] ) ) {
+
 			ob_start( 'wplng_ob_callback_editor' );
+
 		} elseif ( isset( $_GET['wplingua-list'] ) ) {
+
+			add_filter(
+				'body_class', function( $classes ) {
+					return array_merge( $classes, array( 'wplingua-list' ) );
+				}
+			);
+
 			ob_start( 'wplng_ob_callback_list' );
+
 		} else {
+
+			add_filter(
+				'body_class', function( $classes ) {
+					return array_merge( $classes, array( 'wplingua-editor' ) );
+				}
+			);
+
 			ob_start( 'wplng_ob_callback_translate' );
+
 		}
 	} else {
 		ob_start( 'wplng_ob_callback_translate' );
