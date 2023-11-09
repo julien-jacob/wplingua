@@ -9,7 +9,7 @@ if ( ! defined( 'WPINC' ) ) {
 /**
  * wpLingua OB Callback function : On page translations list
  *
- * @param [type] $html
+ * @param string $html
  * @return void
  */
 function wplng_ob_callback_list( $html ) {
