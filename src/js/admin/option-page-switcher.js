@@ -31,6 +31,17 @@ jQuery(document).ready(function ($) {
             .removeClass("theme-blurblack-simple-smooth")
             .removeClass("theme-blurblack-simple-square")
             .addClass("theme-" + val);
+
+        if (
+            $(".wplng-switcher").hasClass("theme-blurwhite-double-smooth")
+            || $(".wplng-switcher").hasClass("theme-blurwhite-double-square")
+            || $(".wplng-switcher").hasClass("theme-blurwhite-simple-smooth")
+            || $(".wplng-switcher").hasClass("theme-blurwhite-simple-square")
+        ) {
+            $("#wplng-switcher-preview-container").attr("style", "background-color: #1d2327;")
+        } else {
+            $("#wplng-switcher-preview-container").attr("style", "")
+        }
     }
 
     function wplngSwitcherUpdateStyle(val) {
@@ -125,7 +136,6 @@ jQuery(document).ready(function ($) {
     wplngSwitcherUpdateStyle($("#wplng_style").val());
     wplngSwitcherUpdateTitle($("#wplng_name_format").val());
     wplngSwitcherUpdateFlagsStyle($("#wplng_flags_style").val());
-
 
     /**
      * CodeMirror CSS editor

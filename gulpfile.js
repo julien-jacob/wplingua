@@ -16,7 +16,6 @@ var del          = require('del');
 gulp.task("js", () => {
     return gulp.src("src/js/**/*.js")
         .pipe(jsmin())
-        //.pipe(rename({suffix: ".min"}))
         .pipe(gulp.dest("assets/js/."));
 });
 
@@ -88,6 +87,8 @@ gulp.task("folder-create", () => {
         "!src/**",
         "!node_modules/",
         "!node_modules/**",
+        "!wp-assets/",
+        "!wp-assets/**",
         "!.gitignore",
         "!gulpfile.js",
         "!package.json",

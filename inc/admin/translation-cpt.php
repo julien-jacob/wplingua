@@ -61,3 +61,18 @@ function wplng_translation_remove_quick_edit( $actions, $post ) {
 
 	return $actions;
 }
+
+
+/**
+ * Display 100 translations by default in admin area
+ *
+ * @param mixed $result
+ * @return mixed
+ */
+function wplng_translation_per_page( $result ) {
+	if ( false === $result ) {
+		$result = '100';
+	}
+
+	return $result;
+}

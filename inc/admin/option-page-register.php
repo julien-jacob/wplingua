@@ -107,8 +107,18 @@ function wplng_option_page_register() {
 			do_settings_sections( 'wplng_settings' );
 			?>
 			<table class="form-table wplng-form-table">
+
 				<tr>
-					<th scope="row"><?php _e( 'API Key', 'wplingua' ); ?></th>
+					<th scope="row"><?php _e( 'Start with wpLingua', 'wplingua' ); ?></th>
+					<td>
+						<p><strong><?php _e( 'You are just a few clicks away from making your site multilingual!', 'wplingua' ); ?></strong></p>
+
+						<p><?php _e( 'For wpLingua to work, an API key is required so that your website has access to the automatic translation service. On this page you can enter your API key if you already have one, or create one for free.', 'wplingua' ); ?></p>
+					</td>
+				</tr>
+
+				<tr>
+					<th scope="row"><?php _e( 'Set API Key', 'wplingua' ); ?></th>
 					<td>
 						<?php wplng_register_part_api_key( $api_key ); ?>
 					</td>
@@ -144,7 +154,7 @@ function wplng_option_page_register() {
 function wplng_register_part_api_key( $api_key ) {
 	?>
 	<fieldset>
-		<label for="wplng_api_key"><strong><?php _e( 'Set API key:', 'wplingua' ); ?></strong></label>
+		<label for="wplng_api_key"><strong><?php _e( 'Set the wpLingua API key:', 'wplingua' ); ?></strong></label>
 		<p><?php _e( 'If you already have an API key, enter it below. If you\'ve forgotten your site\'s API key, visit', 'wplingua' ); ?> <a href="https://wplingua.com/recovery/" target="_blank"><?php _e( 'the API key retrieval page', 'wplingua' ); ?></a>.</p>
 		<br>
 		<input type="text" name="wplng_api_key" id="wplng_api_key" value="<?php echo esc_attr( $api_key ); ?>"></input>
@@ -174,7 +184,7 @@ function wplng_register_part_free_api_key() {
 	?>
 	<p for="wplng_api_key"><strong><?php _e( 'Register free wpLingua API key:', 'wplingua' ); ?></strong></p>
 	<p><?php _e( 'Get a free wpLingua API key and make your website bilingual in a minute!', 'wplingua' ); ?></p>
-	<br>
+	<hr>
 	<br>
 	<fieldset>
 		<label for="wplng-website-url" class="wplng-fe-50">

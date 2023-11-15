@@ -1,6 +1,6 @@
 {
   "name": "wprock-gulp-config",
-  "description": "Gulp configuration for wprock.fr WordPress theme",
+  "description": "Gulp configuration for wpLingua WordPress pluggin",
   "main": "gulpfile.js",
   "scripts": {
     "build": "gulp",

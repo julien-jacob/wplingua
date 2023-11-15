@@ -138,7 +138,7 @@ function wplng_ob_callback_translate_json( $json ) {
 /**
  * wpLingua OB Callback function : Translate HTML
  *
- * @param [type] $html
+ * @param string $html
  * @return void
  */
 function wplng_ob_callback_translate_html( $html ) {

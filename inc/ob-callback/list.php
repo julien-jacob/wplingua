@@ -9,7 +9,7 @@ if ( ! defined( 'WPINC' ) ) {
 /**
  * wpLingua OB Callback function : On page translations list
  *
- * @param [type] $html
+ * @param string $html
  * @return void
  */
 function wplng_ob_callback_list( $html ) {
@@ -152,9 +152,49 @@ function wplng_get_editor_modal_html( $translations ) {
 		return '';
 	}
 
-	$html  = '<div id="wplng-modal-container">';
+	/**
+	 * Return button
+	 */
+	$url           = wplng_get_url_current();
+	$url_original  = $url;
+	$url_original  = remove_query_arg( 'wplingua-editor', $url_original );
+	$url_original  = remove_query_arg( 'wplingua-list', $url_original );
+	$return_button = '';
+	if ( ! empty( $url_original ) ) {
+		$return_button .= '<a href="' . esc_url( $url_original ) . '" title="' . __( 'Return on page', 'wplingua' ) . '" class="wplng-button-icon wplng-button-return"><span class="dashicons dashicons-no"></span></a>';
+	}
+
+	/**
+	 * Modal
+	 */
+	$html  = '';
+	$html .= '<div id="wplng-modal-container">';
 	$html .= '<div id="wplng-modal">';
-	// $html .= '<div id="wplng-modal-header"></div>';
+
+	$html .= '<div id="wplng-modal-header">';
+	$html .= '<span class="dashicons dashicons-translation wplng-modal-header-icon"></span> ';
+	$html .= '<span id="wplng-modal-title">';
+	$html .= __( 'All translations on page', 'wplingua' );
+	$html .= '</span>';
+
+	$html .= '<div id="wplng-modal-list-switcher">';
+	// $html .= wplng_get_switcher_html(
+	// 	array(
+	// 		'theme' => 'grey-simple-smooth',
+	// 		'style' => 'dropdown',
+	// 		'flags' => 'rectangular',
+	// 		'title' => 'original',
+	// 	)
+	// );
+
+	$html .= wplng_get_modal_switcher_html();
+
+	$html .= '</div>';
+
+	$html .= $return_button;
+
+	$html .= '</div>';
+
 	$html .= '<div id="wplng-modal-items">';
 
 	foreach ( $translations as $translation ) {
@@ -180,11 +220,9 @@ function wplng_get_editor_modal_html( $translations ) {
 		$html .= '</div>'; // End .wplng-item-text
 		$html .= '<div class="wplng-item-edit">';
 		$html .= '<a href="' . esc_url( $edit_link ) . '" ';
-		$html .= 'title="' . __( 'Edit', 'wplingua' ) . '" ';
+		$html .= 'title="' . __( 'Edit this translation', 'wplingua' ) . '" ';
 		$html .= 'class="wplng-button-icon" target="_blank">';
-		$html .= '<span class="dashicons dashicons-edit" title="';
-		$html .= __( 'Edit this translation', 'wplingua' );
-		$html .= '"></span></a>';
+		$html .= '<span class="dashicons dashicons-edit"></span></a>';
 		$html .= '</a>';
 		$html .= '</div>'; // End .wplng-item-edit
 		$html .= '</div>'; // ENd .wplng-modal-item
@@ -193,6 +231,112 @@ function wplng_get_editor_modal_html( $translations ) {
 	$html .= '</div>'; // End #wplng-modal-items
 	$html .= '</div>'; // End #wplng-modal
 	$html .= '</div>'; // End #wplng-modal-container
+
+	return $html;
+}
+
+
+/**
+ * Print HTML of switcher for translations list modal
+ *
+ * @return string
+ */
+function wplng_get_modal_switcher_html() {
+
+	if ( ! wplng_url_is_translatable() && ! is_admin() ) {
+		return '';
+	}
+
+	$language_website    = wplng_get_language_website();
+	$language_current_id = wplng_get_language_current_id();
+	$languages_target    = wplng_get_languages_target();
+
+	if ( empty( $languages_target ) ) {
+		return '';
+	}
+
+	$class = wplng_get_switcher_class(
+		array(
+			'theme' => 'grey-simple-smooth',
+			'style' => 'dropdown',
+			'flags' => 'rectangular',
+			'title' => 'name',
+		)
+	);
+
+	/**
+	 * Create the switcher HTML
+	 */
+
+	$html  = '<div class="' . esc_attr( 'wplng-switcher ' . $class ) . '">';
+	$html .= '<div class="switcher-content">';
+
+	$html .= '<div class="wplng-languages">';
+
+	// Create link for each target languages
+	foreach ( $languages_target as $language_target ) {
+
+		$class = '';
+		$url   = 'javascript:void(0);';
+		if ( $language_target['id'] === $language_current_id ) {
+			continue;
+		} elseif ( ! is_admin() && 0 <= strpos( $url, '/?et_fb=1' ) ) {
+			$url = wplng_get_url_current_for_language( $language_target['id'] );
+		}
+
+		$html .= '<a class="wplng-language' . $class . '" href="' . $url . '">';
+		if ( ! empty( $language_website['flags'][0]['flag'] ) ) {
+			$html .= '<img src="' . esc_url( $language_target['flags'][0]['flag'] ) . '" ';
+			$html .= 'alt="' . __( 'Flag for language: ', 'wplingua' ) . esc_attr( $language_target['name'] ) . '">';
+		}
+
+		$html .= '<span class="language-name">' . esc_html( $language_target['name'] ) . '</span>';
+		$html .= '</a>';
+	}
+
+	$html .= '</div>'; // End .wplng-languages
+
+	// Create link for current language
+	if ( $language_website['id'] === $language_current_id ) {
+
+		$html .= '<a class="wplng-language wplng-language-current" href="javascript:void(0);">';
+		if ( ! empty( $language_website['flags'][0]['flag'] ) ) {
+			$html .= '<img src="' . esc_url( $language_website['flags'][0]['flag'] ) . '" ';
+			$html .= 'alt="' . __( 'Flag for language: ', 'wplingua' ) . esc_attr( $language_website['name'] ) . '">';
+		}
+		$html .= '<span class="language-name">' . esc_html( $language_website['name'] ) . '</span>';
+		$html .= '</a>';
+
+	} else {
+
+		foreach ( $languages_target as $language_target ) {
+
+			if ( $language_target['id'] !== $language_current_id ) {
+				continue;
+			}
+
+			$html .= '<a class="wplng-language wplng-language-current" href="javascript:void(0);">';
+			if ( ! empty( $language_target['flags'][0]['flag'] ) ) {
+				$html .= '<img src="' . esc_url( $language_target['flags'][0]['flag'] ) . '" ';
+				$html .= 'alt="' . __( 'Flag for language: ', 'wplingua' ) . esc_attr( $language_target['name'] ) . '">';
+			}
+			$html .= '<span class="language-name">' . esc_html( $language_target['name'] ) . '</span>';
+			$html .= '</a>';
+			break;
+		}
+	}
+
+	$html .= '</div>'; // End .switcher-content
+	$html .= '</div>'; // End .wplng-switcher
+
+	$flags_style = wplng_get_switcher_flags_style();
+	if ( 'none' !== $flags_style && 'rectangular' !== $flags_style ) {
+		$html = str_replace(
+			'/wplingua/assets/images/' . $flags_style . '/',
+			'/wplingua/assets/images/rectangular/',
+			$html
+		);
+	}
 
 	return $html;
 }

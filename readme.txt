@@ -4,7 +4,7 @@ Donate link: https://wplingua.com/
 Tags: translation, translate, autotranslate, autotranslation, machine translations, translator, website translation, multilingual, multilingual website, multilingual SEO, SEO-friendly, localization, languages, language switcher, traduction
 Requires at least: 5.0
 Tested up to: 6.4
-Stable tag: 0.2.2
+Stable tag: 0.2.3
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -23,6 +23,7 @@ The highlights:
 * search engine optimization (SEO)
 * no coding knowledge needed
 * self-hosted data
+* Open source, find us on ([Github](https://github.com/julien-jacob/wplingua))
 * and more!
 
 = One free target language =
