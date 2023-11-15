@@ -28,8 +28,6 @@ function wplng_option_page_register() {
 
 	delete_transient( 'wplng_api_key_data' );
 
-	wplng_show_api_message();
-
 	if ( ! empty( $error_validation ) ) :
 		delete_transient( 'wplng_api_key_error' );
 		$message = '';

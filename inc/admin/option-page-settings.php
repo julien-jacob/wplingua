@@ -20,7 +20,6 @@ function wplng_option_page_settings() {
 		return;
 	}
 
-	wplng_show_api_message();
 	wplng_settings_part_first_use();
 
 	?>
