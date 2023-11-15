@@ -107,49 +107,6 @@ function wplng_register_settings() {
 
 
 /**
- * Show message from wpLingua API (plugin Update or global message)
- *
- * @return void
- */
-function wplng_show_api_message() {
-
-	$api_info = wplng_api_call_api_informations();
-
-	if ( ! empty( $api_info['global_message'] )
-		&& is_string( $api_info['global_message'] )
-	) {
-		?>
-		<div class="wplng-notice notice notice-info is-dismissible">
-			<p><?php echo esc_html( $api_info['global_message'] ); ?></p>
-		</div>
-		<?php
-	}
-
-	if ( empty( $api_info['wp_plugin_version'] ) ) {
-		?>
-		<div class="wplng-notice notice notice-error is-dismissible">
-			<p><?php _e( 'A problem has occurred with the API connection.', 'wplingua' ); ?></p>
-		</div>
-		<?php
-		return;
-	} elseif ( $api_info['wp_plugin_version'] === WPLNG_PLUGIN_VERSION ) {
-		return;
-	}
-
-	?>
-	<div class="wplng-notice notice notice-info is-dismissible">
-		<p>
-			<strong><?php _e( 'A new version of the wpLingua WordPress plugin is now available! You can download it from', 'wplingua' ); ?> <a href="https://wplingua.com/download/" target="_blank">https://wplingua.com/download/</a>.</strong>
-			<br>
-			<?php echo __( 'Installed version:', 'wplingua' ) . ' ' . esc_html( WPLNG_PLUGIN_VERSION ) . ' - '; ?> 
-			<?php echo __( 'Available version:', 'wplingua' ) . ' ' . esc_html( $api_info['wp_plugin_version'] ); ?> 
-		</p>
-	</div>
-	<?php
-}
-
-
-/**
  * Add 'Settings' link on wpLingua in the plugin list
  *
  * @param array $settings
