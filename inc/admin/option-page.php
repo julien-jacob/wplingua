@@ -73,8 +73,6 @@ function wplng_create_menu() {
 }
 
 
-
-
 /**
  * Register wpLingua settings
  *
