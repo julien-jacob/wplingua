@@ -23,6 +23,7 @@ The highlights:
 * search engine optimization (SEO)
 * no coding knowledge needed
 * self-hosted data
+* Open source, find us on ([Github](https://github.com/julien-jacob/wplingua))
 * and more!
 
 = One free target language =
