@@ -8,7 +8,7 @@
  * Text Domain:  wplingua
  * Domain Path:  /languages/
  * Version:      0.2.3
- * Requires PHP: 7.0
+ * Requires PHP: 7.4
  */
 
 
