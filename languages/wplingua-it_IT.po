@@ -1,163 +1,168 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: wpLingua\n"
-"Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-11-09 18:30+0100\n"
-"PO-Revision-Date: 2023-11-10 23:03+0100\n"
+"PO-Revision-Date: 2023-11-09 19:09+0100\n"
 "Last-Translator: \n"
-"Language-Team: Français\n"
-"Language: fr_FR\n"
+"Language-Team: \n"
+"Language: it_IT\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n > 1;\n"
 "X-Generator: Poedit 3.4.1\n"
-"X-Loco-Version: 2.6.6; wp-6.3.1\n"
-"X-Domain: wplingua\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-Flags-xgettext: --add-comments=translators:\n"
+"X-Poedit-WPHeader: wplingua.php\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
+"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.min.js\n"
 
 #: data.php:249
 msgid "Bottom right"
-msgstr "En bas à droite"
+msgstr "In basso a destra"
 
 #: data.php:250
 msgid "Bottom center"
-msgstr "Centré en bas"
+msgstr "In basso al centro"
 
 #: data.php:251
 msgid "Bottom left"
-msgstr "En bas à gauche"
+msgstr "Basso a sinistra"
 
 #: data.php:252
 msgid "None"
-msgstr "Aucun"
+msgstr "Nessuna"
 
 #: data.php:264
 msgid "Light - Double - Smooth"
-msgstr "Clair - Double - Doux"
+msgstr "Leggero - Doppio - Liscio"
 
 #: data.php:265
 msgid "Light - Double - Square"
-msgstr "Clair - Double - Carré"
+msgstr "Luce - Doppio - Quadrato"
 
 #: data.php:266
 msgid "Light - Simple - Smooth"
-msgstr "Clair - Simple - Doux"
+msgstr "Leggero - Semplice - Liscio"
 
 #: data.php:267
 msgid "Light - Simple - Square"
-msgstr "Clair - Simple - Carré"
+msgstr "Leggero - Semplice - Quadrato"
 
 #: data.php:268
 msgid "Grey - Double - Smooth"
-msgstr "Gris - Double - Doux"
+msgstr "Grigio - Doppio - Liscio"
 
 #: data.php:269
 msgid "Grey - Double - Square"
-msgstr "Gris - Double - Carré"
+msgstr "Grigio - Doppio - Quadrato"
 
 #: data.php:270
 msgid "Grey - Simple - Smooth"
-msgstr "Gris - Simple - Doux"
+msgstr "Grigio - Semplice - Liscio"
 
 #: data.php:271
 msgid "Grey - Simple - Square"
-msgstr "Gris - Simple - Carré"
+msgstr "Grigio - Semplice - Quadrato"
 
 #: data.php:272
 msgid "Dark - Double - Smooth"
-msgstr "Sombre - Double - Doux"
+msgstr "Scuro - Doppio - Liscio"
 
 #: data.php:273
 msgid "Dark - Double - Square"
-msgstr "Sombre - Double - Carré"
+msgstr "Scuro - Doppio - Quadrato"
 
 #: data.php:274
 msgid "Dark - Simple - Smooth"
-msgstr "Sombre - Simple - Doux"
+msgstr "Scuro - Semplice - Liscio"
 
 #: data.php:275
 msgid "Dark - Simple - Square"
-msgstr "Sombre - Simple - Carré"
+msgstr "Scuro - Semplice - Quadrato"
 
 #: data.php:276
 msgid "Blur Black - Double - Smooth"
-msgstr "Flou (sombre) - Double - Doux"
+msgstr "Sfumatura nera - doppia - liscia"
 
 #: data.php:277
 msgid "Blur Black - Double - Square"
-msgstr "Flou (sombre) - Double - Carré"
+msgstr "Nero sfumato - Doppio - Quadrato"
 
 #: data.php:278
 msgid "Blur Black - Simple - Smooth"
-msgstr "Flou (sombre) - Simple - Doux"
+msgstr "Sfumatura nera - Semplice - Liscia"
 
 #: data.php:279
 msgid "Blur Black - Simple - Square"
-msgstr "Flou (sombre) - Simple - Carré"
+msgstr "Sfumatura nera - Semplice - Quadrato"
 
 #: data.php:280
 msgid "Blur White - Double - Smooth"
-msgstr "Flou (clair) - Double - Doux"
+msgstr "Sfumatura bianca - Doppia - Liscia"
 
 #: data.php:281
 msgid "Blur White - Double - Square"
-msgstr "Flou (clair) - Double - Carré"
+msgstr "Bianco sfumato - Doppio - Quadrato"
 
 #: data.php:282
 msgid "Blur White - Simple - Smooth"
-msgstr "Flou (clair) - Simple - Doux"
+msgstr "Sfumatura bianca - Semplice - Liscia"
 
 #: data.php:283
 msgid "Blur White - Simple - Square"
-msgstr "Flou (clair) - Simple - Carré"
+msgstr "Bianco sfumato - Semplice - Quadrato"
 
 #: data.php:295
 msgid "Inline list"
-msgstr "Liste en ligne"
+msgstr "Elenco in linea"
 
 #: data.php:296
 msgid "Block"
-msgstr "Bloc"
+msgstr "Blocco"
 
 #: data.php:297
 msgid "Dropdown"
-msgstr "Liste déroulante"
+msgstr "Dropdown"
 
 #: data.php:309
 msgid "Translated name"
-msgstr "Nom traduit"
+msgstr "Nome tradotto"
 
 #: data.php:310
 msgid "Original name"
-msgstr "Langue originale"
+msgstr "Nome originale"
 
 #: data.php:311
 msgid "Language ID"
-msgstr "ID de langue"
+msgstr "ID lingua"
 
 #: data.php:312 data.php:327
 msgid "No display"
-msgstr "Non affiché"
+msgstr "Nessun display"
 
 #: data.php:324
 msgid "Circle"
-msgstr "Arrondi"
+msgstr "Cerchio"
 
 #: data.php:325
 msgid "Rectangular"
-msgstr "Rectangulaire"
+msgstr "Rettangolare"
 
 #: data.php:326
 msgid "Wave"
-msgstr "Ondulé"
+msgstr "Onda"
 
 #: data.php:344
 msgid "Chinese"
-msgstr "Chinois"
+msgstr "Cinese"
 
 #: data.php:350
 msgid "China"
-msgstr "Chine"
+msgstr "Cina"
 
 #: data.php:356
 msgid "Hong Kong"
@@ -165,7 +170,7 @@ msgstr "Hong Kong"
 
 #: data.php:375
 msgid "English"
-msgstr "Anglais"
+msgstr "Inglese"
 
 #: data.php:381
 msgid "UK"
@@ -173,19 +178,19 @@ msgstr "UK"
 
 #: data.php:387
 msgid "USA"
-msgstr "USA"
+msgstr "Stati Uniti d'America"
 
 #: data.php:406
 msgid "French"
-msgstr "Français"
+msgstr "Francese"
 
 #: data.php:412
 msgid "France"
-msgstr "France"
+msgstr "Francia"
 
 #: data.php:418
 msgid "Belgium"
-msgstr "Belgique"
+msgstr "Belgio"
 
 #: data.php:424
 msgid "Canada"
@@ -193,59 +198,59 @@ msgstr "Canada"
 
 #: data.php:443
 msgid "German"
-msgstr "Allemand"
+msgstr "Tedesco (Deutsche)"
 
 #: data.php:449
 msgid "Germany"
-msgstr "Allemagne"
+msgstr "Germania"
 
 #: data.php:468
 msgid "Italian"
-msgstr "Italien"
+msgstr "Italiano"
 
 #: data.php:474
 msgid "Italy"
-msgstr "Italie"
+msgstr "Italia"
 
 #: data.php:493
 msgid "Japanese"
-msgstr "Japonais"
+msgstr "Giapponese"
 
 #: data.php:499
 msgid "Japan"
-msgstr "Japon"
+msgstr "Giappone"
 
 #: data.php:518
 msgid "Portuguese"
-msgstr "Portugais"
+msgstr "Portoghese"
 
 #: data.php:524
 msgid "Portugal"
-msgstr "Portugal"
+msgstr "Portogallo"
 
 #: data.php:530
 msgid "Brazil"
-msgstr "Brésil"
+msgstr "Brasile"
 
 #: data.php:549
 msgid "Russian"
-msgstr "Russe"
+msgstr "Russo"
 
 #: data.php:555
 msgid "Russia"
-msgstr "Russie"
+msgstr "Russia"
 
 #: data.php:574
 msgid "Spanish"
-msgstr "Espagnol"
+msgstr "Spagnolo"
 
 #: data.php:580
 msgid "Spain"
-msgstr "Espagne"
+msgstr "Spagna"
 
 #: data.php:586
 msgid "Mexico"
-msgstr "Mexique"
+msgstr "Messico"
 
 #. Plugin Name of the plugin/theme
 #: inc/admin/admin-bar.php:25 inc/admin/option-page.php:18
@@ -255,60 +260,60 @@ msgstr "wpLingua"
 
 #: inc/admin/admin-bar.php:35
 msgid "This URL is excluded from translation"
-msgstr "Cette URL est exclue des traducions"
+msgstr "Questo URL è escluso dalla traduzione"
 
 #: inc/admin/admin-bar.php:61 inc/ob-callback/list.php:164
 msgid "Return on page"
-msgstr "Retourner sur la page"
+msgstr "Ritorno a pagina"
 
 #: inc/admin/admin-bar.php:71
 msgid "Visual editor"
-msgstr "Éditeur visuel"
+msgstr "Editor visivo"
 
 #: inc/admin/admin-bar.php:80 inc/ob-callback/list.php:177
 msgid "All translations on page"
-msgstr "Toutes les traductions de la page"
+msgstr "Tutte le traduzioni a pagina"
 
 #: inc/admin/option-page-exclusions.php:21
 msgid "wpLingua: Exclusion rules"
-msgstr "wpLingua : Règles d'exclusion"
+msgstr "wpLingua: Regole di esclusione"
 
 #: inc/admin/option-page-exclusions.php:32
 msgid "Exclude elements"
-msgstr "Éléments exclus"
+msgstr "Escludere gli elementi"
 
 #: inc/admin/option-page-exclusions.php:35
 msgid "Exclude HTML elements:"
-msgstr "Éléments HTML exclus :"
+msgstr "Escludere gli elementi HTML:"
 
 #: inc/admin/option-page-exclusions.php:36
 msgid ""
 "You can leave some elements of your web pages untranslated. To do this, list "
 "the element selectors to be excluded below, one per line. Examples:"
 msgstr ""
-"Vous pouvez laisser des éléments de vos pages web non traduit. Pour ce "
-"faire, listez les sélecteurs CSS des éléments à exclure ci-dessous, un par "
-"ligne. Exemples :"
+"È possibile lasciare alcuni elementi delle pagine web non tradotti. A tale "
+"scopo, elencare di seguito i selettori degli elementi da escludere, uno per "
+"riga. Esempi:"
 
 #: inc/admin/option-page-exclusions.php:38
 msgid "Exclude elements by ID attribute"
-msgstr "Éléments exclus par attribut ID"
+msgstr "Escludere elementi in base all'attributo ID"
 
 #: inc/admin/option-page-exclusions.php:39
 msgid "Exclude elements by class attribute"
-msgstr "Éléments exclus par attribut class"
+msgstr "Escludere elementi per attributo di classe"
 
 #: inc/admin/option-page-exclusions.php:40
 msgid "Exclude elements by CSS selector"
-msgstr "Éléments exclus par sélecteur CSS"
+msgstr "Escludere elementi tramite selettore CSS"
 
 #: inc/admin/option-page-exclusions.php:48
 msgid "Exclude URL"
-msgstr "URL exclues"
+msgstr "Escludere l'URL"
 
 #: inc/admin/option-page-exclusions.php:51
 msgid "Exclude URL from translation:"
-msgstr "URL exclues des traductions :"
+msgstr "Escludere l'URL dalla traduzione:"
 
 #: inc/admin/option-page-exclusions.php:52
 msgid ""
@@ -316,64 +321,65 @@ msgid ""
 "original language. To do this, List the REGEXs that match the URL to be "
 "excluded. Examples:"
 msgstr ""
-"Vous pouvez exclure des traductions les pages que vous souhaitez proposer "
-"uniquement dans la langue d'origine du site. Pour ce faire, listez les REGEX "
-"qui correspondent aux URL à exclure. Exemples :"
+"È possibile escludere dalle traduzioni le pagine che si desidera offrire "
+"solo nella lingua originale del sito. A tale scopo, elencare i REGEX che "
+"corrispondono all'URL da escludere. Esempi:"
 
 #: inc/admin/option-page-exclusions.php:54
 msgid "Exclude URL \"/my-page/\""
-msgstr "Exclure l'URL \"/my-page/\""
+msgstr "Escludere l'URL \"/my-page/\""
 
 #: inc/admin/option-page-exclusions.php:55
 msgid "Exclude URL starting with \"/my-page/\""
-msgstr "Exclure les URL qui commencent par \"/my-page/\""
+msgstr "Escludere gli URL che iniziano con \"/my-page/\""
 
 #: inc/admin/option-page-exclusions.php:56
 msgid "Exclude URL ending with \"/my-page/\""
-msgstr "Exclure les URL qui finissent par \"/my-page/\""
+msgstr "Escludere gli URL che terminano con \"/my-page/\""
 
 #: inc/admin/option-page-exclusions.php:57
 msgid "Exclude URL containing \"/my-page/\""
-msgstr "Exclure les URL qui contiennent \"/my-page/\""
+msgstr "Escludere gli URL che contengono \"/my-page/\""
 
 #: inc/admin/option-page-register.php:19
 msgid "wpLingua is not compatible with Multisite."
-msgstr "wpLingua n’est pas compatible avec le Multisite."
+msgstr "wpLingua non è compatibile con Multisite."
 
 #: inc/admin/option-page-register.php:37 inc/admin/option-page-register.php:71
 msgid "Message:"
-msgstr "Message :"
+msgstr "Messaggio:"
 
 #: inc/admin/option-page-register.php:43
 msgid "An error occurred with API key."
-msgstr "Une erreur s'est produite avec la clé API."
+msgstr "Si è verificato un errore con la chiave API."
 
 #: inc/admin/option-page-register.php:58
 msgid "Invalid API key."
-msgstr "Clé API invalide."
+msgstr "Chiave API non valida."
 
 #: inc/admin/option-page-register.php:77
 msgid "An error occurred while creating the API key."
-msgstr "Une erreur est survenue durant la création de la clé API."
+msgstr "Si è verificato un errore durante la creazione della chiave API."
 
 #: inc/admin/option-page-register.php:92
 msgid ""
 "The API key has been correctly created and sent to the following e-mail "
 "address:"
 msgstr ""
-"La clé API a été correctement créée et a été envoyée à l'adresse mail :"
+"La chiave API è stata creata correttamente e inviata al seguente indirizzo e-"
+"mail:"
 
 #: inc/admin/option-page-register.php:102
 msgid "wpLingua: Register API key"
-msgstr "wpLingua : Enregistrer la clé API"
+msgstr "wpLingua: registrare la chiave API"
 
 #: inc/admin/option-page-register.php:112
 msgid "Start with wpLingua"
-msgstr "Commencer avec wpLingua"
+msgstr "Iniziare con wpLingua"
 
 #: inc/admin/option-page-register.php:114
 msgid "You are just a few clicks away from making your site multilingual!"
-msgstr "En quelques clics, vous pouvez rendre votre site multilingue !"
+msgstr "Bastano pochi clic per rendere il vostro sito multilingue!"
 
 #: inc/admin/option-page-register.php:116
 msgid ""
@@ -381,405 +387,405 @@ msgid ""
 "to the automatic translation service. On this page you can enter your API "
 "key if you already have one, or create one for free."
 msgstr ""
-"Pour que wpLingua fonctionne, une clé API est nécessaire afin que votre site "
-"web ait accès au service de traduction automatique. Sur cette page, vous "
-"pouvez saisir votre clé API si vous en avez déjà une, ou en créer une "
-"gratuitement."
+"Per far funzionare wpLingua, è necessaria una chiave API, in modo che il "
+"vostro sito web abbia accesso al servizio di traduzione automatica. In "
+"questa pagina potete inserire la vostra chiave API, se ne avete già una, o "
+"crearne una gratuitamente."
 
 #: inc/admin/option-page-register.php:121
 msgid "Set API Key"
-msgstr "Saisir la clé API"
+msgstr "Impostare la chiave API"
 
 #: inc/admin/option-page-register.php:128
 msgid "Get free API key"
-msgstr "Obtenir une clé API gratuite"
+msgstr "Ottenere una chiave API gratuita"
 
 #: inc/admin/option-page-register.php:135
 msgid "Get premium API Key"
-msgstr "Obtenir une clé API premium"
+msgstr "Ottenere la chiave API premium"
 
 #: inc/admin/option-page-register.php:157
 msgid "Set the wpLingua API key:"
-msgstr "Saisir votre clé API wpLingua :"
+msgstr "Impostare la chiave API di wpLingua:"
 
 #: inc/admin/option-page-register.php:158
 msgid ""
 "If you already have an API key, enter it below. If you've forgotten your "
 "site's API key, visit"
 msgstr ""
-"Si vous avez déjà une clé API, entrez-la ci-dessous. Si vous avez oublié "
-"votre clé API pour le site, visitez"
+"Se disponete già di una chiave API, inseritela qui sotto. Se avete "
+"dimenticato la chiave API del vostro sito, visitate il sito"
 
 #: inc/admin/option-page-register.php:158
 msgid "the API key retrieval page"
-msgstr "la page de récupération de clés API"
+msgstr "la pagina di recupero della chiave API"
 
 #: inc/admin/option-page-register.php:164
 msgid "Set API key"
-msgstr "Définir la clé API"
+msgstr "Impostare la chiave API"
 
 #: inc/admin/option-page-register.php:185
 msgid "Register free wpLingua API key:"
-msgstr "Créer une clé API gratuite wpLingua :"
+msgstr "Registrate gratuitamente la chiave API di wpLingua:"
 
 #: inc/admin/option-page-register.php:186
 msgid ""
 "Get a free wpLingua API key and make your website bilingual in a minute!"
 msgstr ""
-"Obtenez gratuitement une clé API et rendez votre site multilingue en 1 "
-"minute !"
+"Ottenete una chiave API wpLingua gratuita e rendete il vostro sito web "
+"bilingue in un minuto!"
 
 #: inc/admin/option-page-register.php:191
 msgid "Website URL:"
-msgstr "URL du site :"
+msgstr "URL del sito:"
 
 #: inc/admin/option-page-register.php:198
 msgid "Mail address:"
-msgstr "Adresse mail :"
+msgstr "Indirizzo postale:"
 
 #: inc/admin/option-page-register.php:205
 msgid "Website language:"
-msgstr "Langue du site :"
+msgstr "Lingua del sito web:"
 
 #: inc/admin/option-page-register.php:212
 msgid "Target language:"
-msgstr "Langues cibles :"
+msgstr "Lingua di destinazione:"
 
 #: inc/admin/option-page-register.php:220
 msgid "I have read and accept the"
-msgstr "J'ai lu et j’accepte les"
+msgstr "Ho letto e accetto i"
 
 #: inc/admin/option-page-register.php:220
 msgid "API terms of use"
-msgstr "Conditions d'utilisation de l'API"
+msgstr "Condizioni di utilizzo dell'API"
 
 #: inc/admin/option-page-register.php:224
 msgid "Website Locale:"
-msgstr "Locale du site :"
+msgstr "Sito web Locale:"
 
 #: inc/admin/option-page-register.php:228
 msgid "Get a free API key"
-msgstr "Obtenir une clé API gratuite"
+msgstr "Ottenere una chiave API gratuita"
 
 #: inc/admin/option-page-register.php:241
 msgid "Get more target languages and advanced features:"
-msgstr "Accédez à plus de langues cibles et des fonctionnalités avancées :"
+msgstr "Ottenete più lingue di destinazione e funzioni avanzate:"
 
 #: inc/admin/option-page-register.php:242
 msgid ""
 "To translate your site into more languages and access advanced features, "
 "visit wpLingua website."
 msgstr ""
-"Pour traduire votre site dans d'autres langues et accéder à des "
-"fonctionnalités avancées, visitez le site de wpLingua."
+"Per tradurre il vostro sito in altre lingue e accedere a funzioni avanzate, "
+"visitate il sito web di wpLingua."
 
 #: inc/admin/option-page-register.php:244
 msgid "Multilingual WooCommerce store"
-msgstr "Boutique WooCommerce multilingue"
+msgstr "Negozio WooCommerce multilingue"
 
 #: inc/admin/option-page-register.php:245
 msgid "Allow search from all languages"
-msgstr "Autoriser la recherche depuis toutes les langues"
+msgstr "Consentire la ricerca in tutte le lingue"
 
 #: inc/admin/option-page-register.php:246
 msgid "Get more target languages"
-msgstr "Accédez à plus de langues"
+msgstr "Ottenere più lingue di destinazione"
 
 #: inc/admin/option-page-register.php:249
 msgid "Visit wpLingua website"
-msgstr "Visiter le site de wpLingua"
+msgstr "Visita il sito web di wpLingua"
 
 #: inc/admin/option-page-settings.php:29
 msgid "wpLingua: Translation solution for multilingual website"
-msgstr "wpLingua : Solution de traduction pour site web multilingue"
+msgstr "wpLingua: soluzione di traduzione per siti web multilingue"
 
 #: inc/admin/option-page-settings.php:41
 msgid "Website language"
-msgstr "Langue du site"
+msgstr "Lingua del sito web"
 
 #: inc/admin/option-page-settings.php:47
 msgid "Translated languages"
-msgstr "Langues traduites"
+msgstr "Lingue tradotte"
 
 #: inc/admin/option-page-settings.php:53
 msgid "API features"
-msgstr "Caractéristiques de l'API"
+msgstr "Caratteristiche dell'API"
 
 #: inc/admin/option-page-settings.php:61
 msgid "API Key"
-msgstr "Clé API"
+msgstr "Chiave API"
 
 #: inc/admin/option-page-settings.php:118
 msgid "Your site is being translated and will be ready soon."
-msgstr "Votre site est en cours de traduction et sera bientôt prêt."
+msgstr "Il vostro sito è in fase di traduzione e sarà pronto a breve."
 
 #: inc/admin/option-page-settings.php:122
 msgid ""
 "Your website is now multilingual ! You can start visiting the translated "
 "version."
 msgstr ""
-"Votre site est maintenant multilingue ! Vous pouvez commencer à visiter la "
-"version traduite."
+"Il vostro sito web è ora multilingue! Potete iniziare a visitare la versione "
+"tradotta."
 
 #: inc/admin/option-page-settings.php:125
 msgid "Visit your multilingual website"
-msgstr "Visiter votre site multilingue"
+msgstr "Visitate il vostro sito web multilingue"
 
 #: inc/admin/option-page-settings.php:150
 msgid "Original website language: "
-msgstr "Langue originale du site : "
+msgstr "Lingua originale del sito web: "
 
 #: inc/admin/option-page-settings.php:174
 msgid "Please choose an option"
-msgstr "Choisissez une option"
+msgstr "Scegliere un'opzione"
 
 #: inc/admin/option-page-settings.php:184
 msgid "Original website language, defined by API key:"
-msgstr "Langue originale du site, définie par la clé API :"
+msgstr "Lingua originale del sito web, definita dalla chiave API:"
 
 #: inc/admin/option-page-settings.php:190
 msgid "Custom"
-msgstr "Personnaliser"
+msgstr "Personalizzato"
 
 #: inc/admin/option-page-settings.php:200
 #: inc/admin/option-page-settings.php:263
 msgid "Edit flag"
-msgstr "Éditer le drapeau"
+msgstr "Modifica bandiera"
 
 #: inc/admin/option-page-settings.php:206
 msgid "Flag:"
-msgstr "Drapeau :"
+msgstr "Bandiera:"
 
 #: inc/admin/option-page-settings.php:211
 #: inc/admin/option-page-settings.php:274
 msgid "Custom flag URL: "
-msgstr "URL du drapeau personnalisé : "
+msgstr "URL della bandiera personalizzata: "
 
 #: inc/admin/option-page-settings.php:242
 msgid "Add new target Language: "
-msgstr "Ajouter une langue cible : "
+msgstr "Aggiungere una nuova lingua di destinazione: "
 
 #: inc/admin/option-page-settings.php:247
 msgid "Add language"
-msgstr "Ajouter une langue"
+msgstr "Aggiungi lingua"
 
 #: inc/admin/option-page-settings.php:264
 msgid "Remove"
-msgstr "Retirer"
+msgstr "Rimuovi"
 
 #: inc/admin/option-page-settings.php:270
 msgid "Flag: "
-msgstr "Drapeau : "
+msgstr "Bandiera: "
 
 #: inc/admin/option-page-settings.php:282
 msgid "Target languages enabled: "
-msgstr "Langues cibles activées : "
+msgstr "Lingue di destinazione abilitate: "
 
 #: inc/admin/option-page-settings.php:301
 msgid "API translation features:"
-msgstr "Fonctionnalités de traduction de l'API :"
+msgstr "Funzionalità di traduzione API:"
 
 #: inc/admin/option-page-settings.php:304
 msgid ""
 "The options below require extended access to the wpLingua API to be "
 "functional on your website."
 msgstr ""
-"Les options ci-dessous nécessitent un accès étendu à l'API de wpLingua pour "
-"être fonctionnelles sur votre site web."
+"Le opzioni seguenti richiedono un accesso esteso all'API di wpLingua per "
+"poter funzionare sul vostro sito web."
 
 #: inc/admin/option-page-settings.php:310
 msgid "API feature: Search from translated languages"
-msgstr "Fonctionnalité API : Recherche à partir de langues traduites"
+msgstr "Funzione API: Ricerca da lingue tradotte"
 
 #: inc/admin/option-page-settings.php:316
 msgid "API feature: Allow WooCommerce shop translation"
-msgstr "Fonctionnalité API : Traduire les boutiques WooCommerce"
+msgstr "Funzione API: Consentire la traduzione del negozio WooCommerce"
 
 #: inc/admin/option-page-settings.php:332
 msgid "Website API key:"
-msgstr "Clé API du site :"
+msgstr "Chiave API del sito web:"
 
 #: inc/admin/option-page-settings.php:338
 msgid "Show API key"
-msgstr "Afficher la clé API"
+msgstr "Mostra la chiave API"
 
 #: inc/admin/option-page-settings.php:340
 msgid "Hide API key"
-msgstr "Cacher la clé API"
+msgstr "Nascondere la chiave API"
 
 #: inc/admin/option-page-switcher.php:27
 msgid "wpLingua: Switcher settings"
-msgstr "wpLingua : Paramètres du sélecteur"
+msgstr "wpLingua: Impostazioni del commutatore"
 
 #: inc/admin/option-page-switcher.php:39
 msgid "Switcher preview"
-msgstr "Prévisualisation du sélecteur"
+msgstr "Anteprima del commutatore"
 
 #: inc/admin/option-page-switcher.php:52
 msgid "Switcher design"
-msgstr "Design du sélecteur"
+msgstr "Progettazione del commutatore"
 
 #: inc/admin/option-page-switcher.php:56
 msgid "Switcher theme: "
-msgstr "Thème du sélecteur : "
+msgstr "Tema del commutatore: "
 
 #: inc/admin/option-page-switcher.php:83
 msgid "Switcher style: "
-msgstr "Style du sélecteur : "
+msgstr "Stile di commutazione: "
 
 #: inc/admin/option-page-switcher.php:110
 msgid "Displayed name: "
-msgstr "Nom affiché : "
+msgstr "Nome visualizzato: "
 
 #: inc/admin/option-page-switcher.php:135
 msgid "Flag style: "
-msgstr "Style des drapeaux : "
+msgstr "Stile della bandiera: "
 
 #: inc/admin/option-page-switcher.php:159
 msgid "Custom CSS"
-msgstr "CSS personalisé"
+msgstr "CSS personalizzato"
 
 #: inc/admin/option-page-switcher.php:163
 msgid "Set custom CSS:"
-msgstr "Définir le CSS personnalisé :"
+msgstr "Impostare i CSS personalizzati:"
 
 #: inc/admin/option-page-switcher.php:171
 msgid "Switcher insertion"
-msgstr "Insertion du sélecteur"
+msgstr "Inserimento del commutatore"
 
 #: inc/admin/option-page-switcher.php:176
 msgid "Automatic insert: "
-msgstr "Insertion automatique : "
+msgstr "Inserto automatico: "
 
 #: inc/admin/option-page-switcher.php:200
 msgid "Shortcode switcher: "
-msgstr "Code court du sélecteur : "
+msgstr "Commutatore di shortcode: "
 
 #: inc/admin/option-page.php:17
 msgid "wplingua: Register"
-msgstr "wpLingua : Inscription"
+msgstr "wplingua: Registro"
 
 #: inc/admin/option-page.php:37
 msgid "wplingua: Settings"
-msgstr "wpLingua : Réglages"
+msgstr "wplingua: Impostazioni"
 
 #: inc/admin/option-page.php:48
 msgid "wplingua: Switcher"
-msgstr "wpLingua : Sélecteur"
+msgstr "wplingua: Commutatore"
 
 #: inc/admin/option-page.php:49
 msgid "Switcher"
-msgstr "Sélecteur"
+msgstr "Commutatore"
 
 #: inc/admin/option-page.php:57
 msgid "wplingua: Exclusion"
-msgstr "wpLingua : Exclusion"
+msgstr "wplingua: Esclusione"
 
 #: inc/admin/option-page.php:58
 msgid "Exclusion"
-msgstr "Exclusion"
+msgstr "Esclusione"
 
 #: inc/admin/option-page.php:66
 msgid "wplingua: Translations"
-msgstr "wplingua: Traductions"
+msgstr "wplingua: Traduzioni"
 
 #: inc/admin/option-page.php:67 inc/admin/translation-cpt.php:20
 msgid "All translations"
-msgstr "Toutes les traductions"
+msgstr "Tutte le traduzioni"
 
 #: inc/admin/option-page.php:131
 msgid "A problem has occurred with the API connection."
-msgstr "Un problème est survenu avec la connexion à l'API."
+msgstr "Si è verificato un problema con la connessione API."
 
 #: inc/admin/option-page.php:142
 msgid ""
 "A new version of the wpLingua WordPress plugin is now available! You can "
 "download it from"
 msgstr ""
-"Une nouvelle version de wpLingua est disponible maintenant ! Vous pouvez la "
-"télécharger depuis"
+"È disponibile una nuova versione del plugin wpLingua per WordPress! È "
+"possibile scaricarlo da"
 
 #: inc/admin/option-page.php:144
 msgid "Installed version:"
-msgstr "Version installée :"
+msgstr "Versione installata:"
 
 #: inc/admin/option-page.php:145
 msgid "Available version:"
-msgstr "Version disponible :"
+msgstr "Versione disponibile:"
 
 #: inc/admin/option-page.php:168
 msgid "Settings"
-msgstr "Réglages"
+msgstr "Impostazioni"
 
 #: inc/admin/translation-cpt.php:18 inc/admin/translation-cpt.php:22
 msgid "Translations"
-msgstr "Traductions"
+msgstr "Traduzioni"
 
 #: inc/admin/translation-cpt.php:19 inc/admin/translation-meta.php:19
 msgid "Translation"
-msgstr "Traduction"
+msgstr "Traduzione"
 
 #: inc/admin/translation-cpt.php:21
 msgid "Edit translation"
-msgstr "Éditer la traduction"
+msgstr "Modifica della traduzione"
 
 #: inc/admin/translation-meta.php:56
 msgid " - Original text:"
-msgstr " - Langue originale :"
+msgstr " - Testo originale:"
 
 #: inc/admin/translation-meta.php:108
 msgid " - Translation:"
-msgstr " - Traduction :"
+msgstr " - Traduzione:"
 
 #: inc/admin/translation-meta.php:112
 msgid "Regenerate translation"
-msgstr "Re-générer la traduction"
+msgstr "Traduzione rigenerata"
 
 #: inc/admin/translation-meta.php:138
 msgid "Generate translation"
-msgstr "Générer la traduction"
+msgstr "Generare la traduzione"
 
 #: inc/admin/translation-meta.php:141
 msgid "Status: Ungenerated"
-msgstr "Statut : Non-généré"
+msgstr "Stato: Non generato"
 
 #: inc/admin/translation-meta.php:147
 msgid "Status: Generated"
-msgstr "Statut : Généré"
+msgstr "Stato: Generato"
 
 #: inc/admin/translation-meta.php:154
 msgid "Status: Edited on"
-msgstr "Statut : Éditer le"
+msgstr "Stato: Modificato il"
 
 #: inc/admin/translation-meta.php:320
 msgid "Invalid parameters"
-msgstr "Paramètres invalides"
+msgstr "Parametri non validi"
 
 #: inc/api-call/api-informations.php:35 inc/api-call/request-api-key.php:62
 msgid "Error - API response not valid."
-msgstr "Erreur - La réponse de l'API n'est pas valide."
+msgstr "Errore - Risposta API non valida."
 
 #: inc/api-call/api-informations.php:44
 msgid "Error - API response format not valid."
-msgstr "Erreur - Le format de la réponse de l'API n'est pas valide."
+msgstr "Errore - Il formato della risposta API non è valido."
 
 #: inc/api-call/request-api-key.php:31
 msgid "Error - Invalid data."
-msgstr "Erreur - Données invalides."
+msgstr "Errore - Dati non validi."
 
 #: inc/api-call/validate-api-key.php:60
 msgid "Code"
-msgstr "Code"
+msgstr "Codice"
 
 #: inc/ob-callback/editor.php:205 inc/ob-callback/list.php:223
 msgid "Edit this translation"
-msgstr "Éditer cette traduction"
+msgstr "Modifica questa traduzione"
 
 #: inc/ob-callback/list.php:290 inc/ob-callback/list.php:305
 #: inc/ob-callback/list.php:321 inc/switcher.php:371 inc/switcher.php:392
 #: inc/switcher.php:408 inc/switcher.php:426
 msgid "Flag for language: "
-msgstr "Langues cibles : "
+msgstr "Bandiera per il linguaggio: "
 
 #: inc/translation.php:178
 msgid "..."
@@ -788,7 +794,7 @@ msgstr "..."
 #. Plugin URI of the plugin/theme
 #. Author URI of the plugin/theme
 msgid "https://wplingua.com/"
-msgstr "https://wplingua.com/fr/"
+msgstr "https://wplingua.com/"
 
 #. Description of the plugin/theme
 msgid ""
@@ -798,22 +804,13 @@ msgid ""
 "customizable language switcher, search engine optimization (SEO), self-"
 "hosted data and more!"
 msgstr ""
+"Una soluzione all-in-one che rende i vostri siti web multilingue e li "
+"traduce automaticamente, senza limiti di parole o di pagine. I punti "
+"salienti: una prima lingua gratuita, un editor visivo sulla pagina per "
+"modificare le traduzioni, un commutatore di lingue personalizzabile, "
+"ottimizzazione per i motori di ricerca (SEO), dati self-hosted e molto altro "
+"ancora!"
 
 #. Author of the plugin/theme
 msgid "wpLingua Team"
-msgstr "L'équipe wpLingua"
-
-#~ msgid "Set API key:"
-#~ msgstr "Définir la clé API :"
-
-#~ msgid "general conditions of use"
-#~ msgstr "conditions générales d'utilisation"
-
-#~ msgid "Premium / Beta: Translate WooCommerce shop"
-#~ msgstr "Premium / Beta : Traduire la boutique WooCommerce"
-
-#~ msgid "Edit"
-#~ msgstr "Éditer"
-
-#~ msgid "WordPress plugin to translate and make your websites multilingual"
-#~ msgstr "Plugin pour traduire et rendre vos sites web multilingues"
+msgstr "team wpLingua"
