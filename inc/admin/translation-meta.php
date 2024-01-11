@@ -194,10 +194,17 @@ function wplng_translation_meta_box_html_output( $post ) {
  */
 function wplng_translation_save_meta_boxes_data( $post_id ) {
 
-	// check for nonce to top xss
-	if ( ! isset( $_POST['wplng_translation_meta_box_nonce'] )
-		|| ! wp_verify_nonce( $_POST['wplng_translation_meta_box_nonce'], basename( __FILE__ ) )
-	) {
+	// Check if nonce is set
+	if ( ! isset( $_POST['wplng_translation_meta_box_nonce'] ) ) {
+		return;
+	}
+
+	// Sanitize the nonce
+	$nonce = $_POST['wplng_translation_meta_box_nonce'];
+	$nonce = sanitize_text_field( wp_unslash( $nonce ) );
+
+	// Check for nonce to top xss
+	if ( ! wp_verify_nonce( $nonce, basename( __FILE__ ) ) ) {
 		return;
 	}
 
