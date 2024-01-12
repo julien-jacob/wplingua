@@ -102,7 +102,7 @@ function wplng_sdh_dump_html_tree( $node, $show_attr = true, $deep = 0 ) {
 	$node->dump( $node );
 }
 
-class wplng_sdh_wplng_sdh_simple_html_dom_node {
+class wplng_sdh_simple_html_dom_node {
 
 	public $nodetype  = WPLNG_HDOM_TYPE_TEXT;
 	public $tag       = 'text';
@@ -1639,7 +1639,7 @@ class wplng_sdh_simple_html_dom {
 		$this->lowercase                        = $lowercase;
 		$this->default_br_text                  = $defaultBRText;
 		$this->default_span_text                = $defaultSpanText;
-		$this->root                             = new wplng_sdh_wplng_sdh_simple_html_dom_node( $this );
+		$this->root                             = new wplng_sdh_simple_html_dom_node( $this );
 		$this->root->tag                        = 'root';
 		$this->root->_[ WPLNG_HDOM_INFO_BEGIN ] = -1;
 		$this->root->nodetype                   = WPLNG_HDOM_TYPE_ROOT;
@@ -1661,7 +1661,7 @@ class wplng_sdh_simple_html_dom {
 			}
 
 			// Add a text node for text between tags
-			$node = new wplng_sdh_wplng_sdh_simple_html_dom_node( $this );
+			$node = new wplng_sdh_simple_html_dom_node( $this );
 			++$this->cursor;
 			$node->_[ WPLNG_HDOM_INFO_TEXT ] = $s;
 			$this->link_nodes( $node, false );
@@ -1909,7 +1909,7 @@ class wplng_sdh_simple_html_dom {
 		}
 
 		// start tag
-		$node                             = new wplng_sdh_wplng_sdh_simple_html_dom_node( $this );
+		$node                             = new wplng_sdh_simple_html_dom_node( $this );
 		$node->_[ WPLNG_HDOM_INFO_BEGIN ] = $this->cursor;
 		++$this->cursor;
 		$tag             = $this->copy_until( $this->token_slash ); // Get tag name
@@ -2143,7 +2143,7 @@ class wplng_sdh_simple_html_dom {
 	}
 
 	protected function as_text_node( $tag ) {
-		$node = new wplng_sdh_wplng_sdh_simple_html_dom_node( $this );
+		$node = new wplng_sdh_simple_html_dom_node( $this );
 		++$this->cursor;
 		$node->_[ WPLNG_HDOM_INFO_TEXT ] = '</' . $tag . '>';
 		$this->link_nodes( $node, false );
