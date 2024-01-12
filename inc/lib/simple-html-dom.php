@@ -99,7 +99,7 @@ function wplng_sdh_str_get_html(
 }
 
 function wplng_sdh_dump_html_tree( $node, $show_attr = true, $deep = 0 ) {
-	$node->dump( $node );
+	return $node->dump( $node );
 }
 
 class wplng_sdh_simple_html_dom_node {
@@ -132,6 +132,29 @@ class wplng_sdh_simple_html_dom_node {
 		$this->nodes    = null;
 		$this->parent   = null;
 		$this->children = null;
+	}
+
+	function dump( $show_attr = true, $depth = 0 ) {
+
+		$string = str_repeat( "\t", $depth ) . $this->tag;
+
+		if ( $show_attr && count( $this->attr ) > 0 ) {
+			$string .= '(';
+			foreach ( $this->attr as $k => $v ) {
+				$string .= "[$k]=>\"$v\", ";
+			}
+			$string .= ')';
+		}
+
+		$string .= "\n";
+
+		if ( $this->nodes ) {
+			foreach ( $this->nodes as $node ) {
+				$string .= $node->dump( $show_attr, $depth + 1 );
+			}
+		}
+
+		return $string;
 	}
 
 	function dump_node() {
@@ -1595,7 +1618,7 @@ class wplng_sdh_simple_html_dom {
 	}
 
 	function dump( $show_attr = true ) {
-		$this->root->dump( $show_attr );
+		return $this->root->dump( $show_attr );
 	}
 
 	protected function prepare(
