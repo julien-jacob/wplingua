@@ -273,7 +273,7 @@ function wplng_get_modal_switcher_html() {
 			$url = wplng_get_url_current_for_language( $language_target['id'] );
 		}
 
-		$html .= '<a class="wplng-language' . $class . '" href="' . $url . '">';
+		$html .= '<a class="wplng-language ' . $class . '" href="' . $url . '">';
 
 		if ( ! empty( $language_website['flags'][0]['flag'] ) ) {
 
