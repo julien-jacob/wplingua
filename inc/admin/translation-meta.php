@@ -53,7 +53,7 @@ function wplng_translation_meta_box_html_output( $post ) {
 
 		$html  = '<div id="wplng-original-language" wplng-lang="' . $language_id . '">';
 		$html .= '<label for="wplng_translation_source">';
-		$html .= $emoji . ' ' . $language_name . __( ' - Original text:', 'wplingua' );
+		$html .= $emoji . ' ' . $language_name . esc_html__( ' - Original text:', 'wplingua' );
 		$html .= '</label>';
 		$html .= '<div class="wplng-source">';
 		$html .= esc_html( $meta['wplng_translation_original'][0] );
@@ -138,20 +138,20 @@ function wplng_translation_meta_box_html_output( $post ) {
 					$generate_link_text = __( 'Generate translation', 'wplingua' );
 
 					$html .= '<span class="wplng-status">';
-					$html .= __( 'Status: Ungenerated', 'wplingua' );
+					$html .= esc_html__( 'Status: Ungenerated', 'wplingua' );
 					$html .= '</span>';
 					break;
 
 				case 'generated':
 					$html .= '<span class="wplng-status">';
-					$html .= __( 'Status: Generated', 'wplingua' );
+					$html .= esc_html__( 'Status: Generated', 'wplingua' );
 					$html .= '</span>';
 					break;
 
 				default:
 					if ( is_int( $translation['status'] ) ) {
 						$html .= '<span class="wplng-status">';
-						$html .= __( 'Status: Edited on', 'wplingua' ) . ' ';
+						$html .= esc_html__( 'Status: Edited on', 'wplingua' ) . ' ';
 						$html .= esc_html(
 							gmdate(
 								get_option( 'date_format' ),
@@ -222,9 +222,9 @@ function wplng_translation_save_meta_boxes_data( $post_id ) {
 	}
 
 	$languages_target = wplng_get_languages_target_ids();
-	$translations     = json_decode( 
-		$meta['wplng_translation_translations'][0], 
-		true 
+	$translations     = json_decode(
+		$meta['wplng_translation_translations'][0],
+		true
 	);
 
 	if ( empty( $translations ) ) {

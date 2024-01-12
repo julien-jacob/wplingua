@@ -112,15 +112,17 @@ function wplng_register_settings() {
  */
 function wplng_settings_link( $settings ) {
 
-	$url = esc_url(
-		add_query_arg(
-			'page',
-			'wplingua-settings',
-			get_admin_url() . 'admin.php'
-		)
+	$url = add_query_arg(
+		'page',
+		'wplingua-settings',
+		get_admin_url() . 'admin.php'
 	);
 
-	$settings[] = '<a href="' . $url . '">' . __( 'Settings', 'wplingua' ) . '</a>';
+	$link  = '<a href="' . esc_url( $url ) . '">';
+	$link .= esc_html__( 'Settings', 'wplingua' );
+	$link .= '</a>';
+
+	$settings[] = $link;
 
 	return $settings;
 }

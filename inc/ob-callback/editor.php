@@ -202,7 +202,7 @@ function wplng_ob_callback_editor( $html ) {
 				continue;
 			}
 
-			$element->innertext = '<span onclick="window.open(\'' . esc_url( $edit_link ) . '\', \'_blank\');" class="wplng-edit-link" title="' . __( 'Edit this translation', 'wplingua' ) . '">' . esc_html( $text ) . ' </span>';
+			$element->innertext = '<span onclick="window.open(\'' . esc_url( $edit_link ) . '\', \'_blank\');" class="wplng-edit-link" title="' . esc_attr__( 'Edit this translation', 'wplingua' ) . '">' . esc_html( $text ) . ' </span>';
 
 		}
 	}

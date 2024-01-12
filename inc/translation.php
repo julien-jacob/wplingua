@@ -177,6 +177,7 @@ function wplng_save_translation_new( $language_id, $original, $translation ) {
 	if ( strlen( $original ) > $tite_max_length ) {
 		$title .= __( '...', 'wplingua' );
 	}
+	$title = esc_html( $title );
 
 	/**
 	 * Create the post and get this ID
