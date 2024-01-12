@@ -88,7 +88,7 @@ function wplng_translation_meta_box_html_output( $post ) {
 
 				$is_in          = true;
 				$translations[] = $translation_data;
-
+				break;
 			}
 
 			if ( ! $is_in ) {
@@ -241,8 +241,8 @@ function wplng_translation_save_meta_boxes_data( $post_id ) {
 				continue;
 			}
 
-			$is_in          = true;
-			$translations[] = $translation;
+			$is_in = true;
+			break;
 
 		}
 
