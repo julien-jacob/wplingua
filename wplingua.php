@@ -54,8 +54,19 @@ require_once WPLNG_PLUGIN_PATH . '/loader.php';
  */
 function wplng_start() {
 
-	global $wplng_request_uri;
-	$wplng_request_uri = $_SERVER['REQUEST_URI'];
+	if ( isset( $_SERVER['REQUEST_URI'] ) ) {
+
+		$request_uri = sanitize_url( $_SERVER['REQUEST_URI'] );
+
+		// Check if the referer is clean
+		if ( strtolower( esc_url_raw( $request_uri ) ) !== strtolower( $request_uri ) ) {
+			return;
+		}
+
+		global $wplng_request_uri;
+		$wplng_request_uri = $request_uri;
+
+	}
 
 	// Register plugin settings
 	add_action( 'admin_init', 'wplng_register_settings' );

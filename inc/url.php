@@ -34,14 +34,22 @@ function wplng_url_translate( $url, $language_target_id = '' ) {
 		return $url;
 	}
 
-	$domain           = preg_quote( $_SERVER['HTTP_HOST'] );
 	$languages_target = wplng_get_languages_target();
 
 	if ( '' === $language_target_id ) {
 		$language_target_id = wplng_get_language_current_id();
 	}
 
-	if ( preg_match( '#^(http:\/\/|https:\/\/)?' . $domain . '(.*)$#', $url ) ) {
+	$preg_domain = '';
+	$parsed_url  = wp_parse_url( home_url() );
+
+	if ( ! empty( $parsed_url['host'] ) ) {
+		$preg_domain = preg_quote( $parsed_url['host'] );
+	}
+
+	if ( ! empty( $preg_domain )
+		&& preg_match( '#^(http:\/\/|https:\/\/)?' . $preg_domain . '(.*)$#', $url )
+	) {
 
 		// Check if URL is already translated
 		foreach ( $languages_target as $language_target ) {
@@ -51,8 +59,8 @@ function wplng_url_translate( $url, $language_target_id = '' ) {
 		}
 
 		$url = preg_replace(
-			'#^(http:\/\/|https:\/\/)?' . $domain . '(.*)$#',
-			'$1' . $domain . '/' . $language_target_id . '$2',
+			'#^(http:\/\/|https:\/\/)?' . $preg_domain . '(.*)$#',
+			'$1' . $preg_domain . '/' . $language_target_id . '$2',
 			$url
 		);
 
@@ -222,8 +230,7 @@ function wplng_get_url_original( $url = '' ) {
  */
 function wplng_get_url_current() {
 	global $wplng_request_uri;
-	$url = ( empty( $_SERVER['HTTPS'] ) ? 'http' : 'https' ) . "://$_SERVER[HTTP_HOST]$wplng_request_uri";
-	return $url;
+	return home_url( $wplng_request_uri );
 }
 
 
@@ -242,7 +249,5 @@ function wplng_get_url_current_for_language( $language_id ) {
 		$path = '/' . $language_id . $path;
 	}
 
-	$url = ( empty( $_SERVER['HTTPS'] ) ? 'http' : 'https' ) . "://$_SERVER[HTTP_HOST]$path";
-
-	return $url;
+	return home_url( $path );
 }

@@ -18,8 +18,15 @@ function wplng_ob_callback_ajax( $output ) {
 		return $output;
 	}
 
+	$referer = sanitize_url( $_SERVER['HTTP_REFERER'] );
+
+	// Check if the referer is clean
+	if ( strtolower( esc_url_raw( $referer ) ) !== strtolower( $referer ) ) {
+		return $output;
+	}
+
 	global $wplng_request_uri;
-	$wplng_request_uri = wp_make_link_relative( $_SERVER['HTTP_REFERER'] );
+	$wplng_request_uri = wp_make_link_relative( $referer );
 
 	if ( ! wplng_url_is_translatable( $wplng_request_uri )
 		|| wplng_get_language_website_id() === wplng_get_language_current_id()

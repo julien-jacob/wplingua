@@ -88,7 +88,7 @@ function wplng_translation_meta_box_html_output( $post ) {
 
 				$is_in          = true;
 				$translations[] = $translation_data;
-				break;
+
 			}
 
 			if ( ! $is_in ) {
@@ -221,8 +221,11 @@ function wplng_translation_save_meta_boxes_data( $post_id ) {
 		return;
 	}
 
-	$translations     = json_decode( $meta['wplng_translation_translations'][0], true );
 	$languages_target = wplng_get_languages_target_ids();
+	$translations     = json_decode( 
+		$meta['wplng_translation_translations'][0], 
+		true 
+	);
 
 	if ( empty( $translations ) ) {
 		$translations = array();
@@ -243,7 +246,6 @@ function wplng_translation_save_meta_boxes_data( $post_id ) {
 
 			$is_in = true;
 			break;
-
 		}
 
 		if ( ! $is_in ) {
@@ -269,7 +271,7 @@ function wplng_translation_save_meta_boxes_data( $post_id ) {
 			continue;
 		}
 
-		$temp = stripslashes( $_REQUEST[ $name ] );
+		$temp = stripslashes( sanitize_textarea_field( $_REQUEST[ $name ] ) );
 
 		if ( empty( $temp ) ) {
 			$temp = '[WPLNG_EMPTY]';
@@ -301,30 +303,36 @@ function wplng_translation_save_meta_boxes_data( $post_id ) {
  */
 function wplng_ajax_generate_translation() {
 
-	if ( ! empty( $_POST['language_source'] )
-		&& ! empty( $_POST['language_target'] )
-		&& ! empty( $_POST['text'] )
+	if ( empty( $_POST['language_source'] )
+		|| empty( $_POST['language_target'] )
+		|| empty( $_POST['text'] )
 	) {
-
-		$translation = $_POST['text'];
-
-		if ( wplng_text_is_translatable( $_POST['text'] ) ) {
-
-			$response = wplng_api_call_translate(
-				array( $_POST['text'] ),
-				$_POST['language_source'],
-				$_POST['language_target']
-			);
-
-			if ( isset( $response[0] ) ) {
-				$translation = $response[0];
-			}
-		}
-
-		wp_send_json_success( $translation );
-
-	} else {
 		wp_send_json_error( __( 'Invalid parameters', 'wplingua' ) );
 	}
 
+	$translation = sanitize_text_field( $_POST['text'] );
+
+	if ( wplng_text_is_translatable( $translation ) ) {
+
+		$language_source = sanitize_key( $_POST['language_source'] );
+		$language_target = sanitize_key( $_POST['language_target'] );
+
+		if ( ! wplng_is_valid_language_id( $language_source )
+			|| ! wplng_is_valid_language_id( $language_target )
+		) {
+			wp_send_json_error( __( 'Invalid parameters', 'wplingua' ) );
+		}
+
+		$response = wplng_api_call_translate(
+			array( $translation ),
+			$language_source,
+			$language_target
+		);
+
+		if ( isset( $response[0] ) ) {
+			$translation = sanitize_text_field( $response[0] );
+		}
+	}
+
+	wp_send_json_success( $translation );
 }
