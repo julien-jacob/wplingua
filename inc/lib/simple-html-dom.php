@@ -134,27 +134,7 @@ class wplng_sdh_simple_html_dom_node {
 		$this->children = null;
 	}
 
-	function dump( $show_attr = true, $depth = 0 ) {
-		echo str_repeat( "\t", $depth ) . $this->tag;
-
-		if ( $show_attr && count( $this->attr ) > 0 ) {
-			echo '(';
-			foreach ( $this->attr as $k => $v ) {
-				echo "[$k]=>\"$v\", ";
-			}
-			echo ')';
-		}
-
-		echo "\n";
-
-		if ( $this->nodes ) {
-			foreach ( $this->nodes as $node ) {
-				$node->dump( $show_attr, $depth + 1 );
-			}
-		}
-	}
-
-	function dump_node( $echo = true ) {
+	function dump_node() {
 		$string = $this->tag;
 
 		if ( count( $this->attr ) > 0 ) {
@@ -198,12 +178,7 @@ class wplng_sdh_simple_html_dom_node {
 		$string .= ' tag_start: ' . $this->tag_start;
 		$string .= "\n";
 
-		if ( $echo ) {
-			echo $string;
-			return;
-		} else {
-			return $string;
-		}
+		return $string;
 	}
 
 	function parent( $parent = null ) {
