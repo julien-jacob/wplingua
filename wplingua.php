@@ -180,9 +180,8 @@ function wplng_start() {
 		/**
 		 * Shortcode
 		 */
-		add_shortcode( 'wplingua-switcher', 'wplng_shortcode_switcher' );
-		add_shortcode( 'wplingua-notranslate', 'wplng_shortcode_notranslate' );
-		add_shortcode( 'notranslate', 'wplng_shortcode_notranslate' );
+		add_shortcode( 'wplng-switcher', 'wplng_shortcode_switcher' );
+		add_shortcode( 'wplng-notranslate', 'wplng_shortcode_notranslate' );
 
 	}
 
