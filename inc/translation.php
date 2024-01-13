@@ -114,7 +114,7 @@ function wplng_get_translations_from_query() {
 	wp_reset_postdata();
 
 	set_transient(
-		'wplingua_cached_translations',
+		'wplng_cached_translations',
 		$translations
 	);
 
@@ -130,7 +130,7 @@ function wplng_get_translations_from_query() {
  */
 function wplng_get_translations_target( $target_language_id ) {
 
-	$translations_all_languages = get_transient( 'wplingua_cached_translations' );
+	$translations_all_languages = get_transient( 'wplng_cached_translations' );
 
 	if ( empty( $translations_all_languages ) ) {
 		$translations_all_languages = wplng_get_translations_from_query();
@@ -436,7 +436,7 @@ function wplng_save_translation( $target_language_id, $original, $translation, $
  * @return void
  */
 function wplng_clear_translations_cache() {
-	delete_transient( 'wplingua_cached_translations' );
+	delete_transient( 'wplng_cached_translations' );
 }
 
 
