@@ -357,7 +357,10 @@ function wplng_get_language_by_id( $language_id ) {
 function wplng_is_valid_language_id( $language_id ) {
 
 	// If $language_id format is not valid, return default data
-	if ( empty( $language_id ) || strlen( $language_id ) !== 2 ) {
+	if ( empty( $language_id )
+		|| ! is_string( $language_id )
+		|| strlen( $language_id ) !== 2
+	) {
 		return false;
 	}
 
@@ -370,6 +373,28 @@ function wplng_is_valid_language_id( $language_id ) {
 	}
 
 	return false;
+}
+
+
+/**
+ * Check if a list of language ID are valid
+ *
+ * @param array $language_id_list
+ * @return bool
+ */
+function wplng_is_valid_language_ids( $language_id_list ) {
+
+	if ( ! is_array( $language_id_list ) ) {
+		return false;
+	}
+
+	foreach ( $language_id_list as $language_id ) {
+		if ( ! wplng_is_valid_language_id( $language_id ) ) {
+			return false;
+		}
+	}
+
+	return true;
 }
 
 
@@ -435,16 +460,6 @@ function wplng_get_languages_all() {
 	}
 
 	return $languages;
-}
-
-
-/**
- * Get data of all languages in JSON format
- *
- * @return string JSON
- */
-function wplng_get_languages_all_json() {
-	return wp_json_encode( wplng_get_languages_all() );
 }
 
 
