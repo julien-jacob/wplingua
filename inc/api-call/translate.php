@@ -55,7 +55,7 @@ function wplng_api_call_translate(
 	$args = array(
 		'method'    => 'POST',
 		'timeout'   => 99, // 1 min 29 s
-		'sslverify' => false,
+		'sslverify' => WPLNG_API_SSLVERIFY,
 		'body'      => $body,
 	);
 

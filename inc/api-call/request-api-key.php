@@ -45,7 +45,7 @@ function wplng_api_call_request_api_key( $data ) {
 	$args = array(
 		'method'    => 'POST',
 		'timeout'   => 5,
-		'sslverify' => false,
+		'sslverify' => WPLNG_API_SSLVERIFY,
 		'body'      => $body,
 	);
 

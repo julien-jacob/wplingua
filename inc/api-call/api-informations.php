@@ -18,7 +18,7 @@ function wplng_api_call_api_informations() {
 	$args = array(
 		'method'    => 'POST',
 		'timeout'   => 5,
-		'sslverify' => false,
+		'sslverify' => WPLNG_API_SSLVERIFY,
 		'body'      => array(),
 	);
 
