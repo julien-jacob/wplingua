@@ -14,10 +14,13 @@ if ( ! defined( 'WPINC' ) ) {
  */
 function wplng_is_valid_api_key_format( $api_key ) {
 
+	$regex = '/^[a-zA-Z1-9]{42}$/s';
+
 	if (
 		empty( $api_key )
 		|| ! is_string( $api_key )
-		|| 42 !== strlen( $api_key )
+		|| $api_key !== preg_quote( $api_key )
+		|| false === preg_match( $regex, $api_key )
 	) {
 		return false;
 	}
