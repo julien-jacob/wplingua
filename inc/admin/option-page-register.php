@@ -38,7 +38,7 @@ function wplng_option_page_register() {
 		?>
 		<div class="wplng-notice notice notice-error is-dismissible">
 			<p>
-				<strong><?php _e( 'An error occurred with API key.', 'wplingua' ); ?></strong>
+				<strong><?php esc_html_e( 'An error occurred with API key.', 'wplingua' ); ?></strong>
 				<br>
 				<?php echo esc_html( $message ); ?>
 			</p>
@@ -220,11 +220,11 @@ function wplng_register_part_free_api_key() {
 		</label>
 	</fieldset>
 	<fieldset style="display: none;">
-		<p><?php _e( 'Website Locale:', 'wplingua' ); ?> <span id="wplng-website-locale"><?php echo esc_html( $website_locale ); ?></span></p>
+		<p><?php esc_html_e( 'Website Locale:', 'wplingua' ); ?> <span id="wplng-website-locale"><?php echo esc_html( $website_locale ); ?></span></p>
 		<textarea name="wplng_request_free_key" id="wplng_request_free_key"></textarea>
 	</fieldset>
 	<button id="wplng-get-free-api-submit" class="button button-primary">
-		<?php _e( 'Get a free API key', 'wplingua' ); ?>
+		<?php esc_html_e( 'Get a free API key', 'wplingua' ); ?>
 	</button>
 	<?php
 }
