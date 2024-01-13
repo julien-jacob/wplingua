@@ -20,9 +20,25 @@ function wplng_api_call_translate(
 	$language_target_id = ''
 ) {
 
-	if ( empty( $texts ) ) {
-		return $texts;
+	/**
+	 * Get and check data
+	 */
+
+	// Ckeck and sanitize texts list
+
+	if ( empty( $texts ) || ! is_array( $texts ) ) {
+		return array();
 	}
+
+	foreach ( $texts as $key => $text ) {
+		if ( ! is_string( $text ) ) {
+			$texts[ $key ] = '';
+		} else {
+			$texts[ $key ] = esc_html( esc_attr( $text ) );
+		}
+	}
+
+	// Get API key
 
 	$api_key = wplng_get_api_key();
 
@@ -30,18 +46,31 @@ function wplng_api_call_translate(
 		return $texts;
 	}
 
+	// Get and sanitize the API key
+
 	if ( empty( $language_target_id ) ) {
 		$language_target_id = wplng_get_language_current_id();
+	} elseif ( ! wplng_is_valid_language_id( $language_target_id ) ) {
+		return $texts;
 	}
 
 	if ( empty( $language_source_id ) ) {
 		$language_source_id = wplng_get_language_website_id();
+	} elseif ( ! wplng_is_valid_language_id( $language_source_id ) ) {
+		return $texts;
 	}
 
+	// Get texts list as JSON
+
 	$json_texts = wp_json_encode( $texts );
+
 	if ( empty( $json_texts ) ) {
 		return $texts;
 	}
+
+	/**
+	 * Get the API call
+	 */
 
 	$body = array(
 		'api_key' => $api_key,
@@ -64,19 +93,42 @@ function wplng_api_call_translate(
 		$args
 	);
 
+	/**
+	 * Check if the API call worked
+	 */
+
 	if ( is_wp_error( $request )
 		|| wp_remote_retrieve_response_code( $request ) != 200
 	) {
 		return $texts;
 	}
 
+	/**
+	 * Check and sanitize the API response
+	 */
+
 	$response = json_decode( wp_remote_retrieve_body( $request ), true );
 
-	if ( empty( $response['translations'] )
-		|| ! empty( $response['error'] )
+	if ( isset( $response['error'] )
+		|| empty( $response['translations'] )
+		|| ! is_array( $response['translations'] )
 	) {
+		// API returned an error or an unexpected response
 		return $texts;
 	}
 
-	return $response['translations'];
+	// API returned the list of translations
+	// Check and sanitize each translation
+
+	$translations = array();
+
+	foreach ( $response['translations'] as $key => $translation ) {
+		if ( is_string( $translation ) ) {
+			$translations[] = wp_kses( $translation, array() );
+		} elseif ( isset( $texts[ $key ] ) ) {
+			$translations = $texts[ $key ];
+		}
+	}
+
+	return $translations;
 }

@@ -303,36 +303,60 @@ function wplng_translation_save_meta_boxes_data( $post_id ) {
  */
 function wplng_ajax_generate_translation() {
 
+	/**
+	 * Check and sanitize data
+	 */
+
+	// Check data
+
 	if ( empty( $_POST['language_source'] )
+		|| ! is_string( $_POST['language_source'] )
 		|| empty( $_POST['language_target'] )
-		|| empty( $_POST['text'] )
+		|| ! is_string( $_POST['language_target'] )
+		|| ! isset( $_POST['text'] )
+		|| ! is_string( $_POST['text'] )
 	) {
 		wp_send_json_error( __( 'Invalid parameters', 'wplingua' ) );
+		return;
 	}
 
-	$translation = sanitize_text_field( $_POST['text'] );
+	// Check and sanitize sources and target languages
 
-	if ( wplng_text_is_translatable( $translation ) ) {
+	$language_source = sanitize_key( $_POST['language_source'] );
+	$language_target = sanitize_key( $_POST['language_target'] );
 
-		$language_source = sanitize_key( $_POST['language_source'] );
-		$language_target = sanitize_key( $_POST['language_target'] );
-
-		if ( ! wplng_is_valid_language_id( $language_source )
-			|| ! wplng_is_valid_language_id( $language_target )
-		) {
-			wp_send_json_error( __( 'Invalid parameters', 'wplingua' ) );
-		}
-
-		$response = wplng_api_call_translate(
-			array( $translation ),
-			$language_source,
-			$language_target
-		);
-
-		if ( isset( $response[0] ) ) {
-			$translation = sanitize_text_field( $response[0] );
-		}
+	if ( ! wplng_is_valid_language_id( $language_source )
+		|| ! wplng_is_valid_language_id( $language_target )
+		|| $language_source === $language_target
+	) {
+		wp_send_json_error( __( 'Invalid languages parameters', 'wplingua' ) );
+		return;
 	}
 
-	wp_send_json_success( $translation );
+	// Check and sanitize text to translate
+
+	$text = sanitize_text_field( $_POST['text'] );
+	$text = esc_attr( $text );
+
+	if ( ! wplng_text_is_translatable( $text ) ) {
+		wp_send_json_success( $text );
+		return;
+	}
+
+	/**
+	 * Call API and get translation
+	 */
+
+	$response = wplng_api_call_translate(
+		array( $text ),
+		$language_source,
+		$language_target
+	);
+
+	if ( ! isset( $response[0] ) ) {
+		wp_send_json_error( __( 'Invalid API response', 'wplingua' ) );
+		return;
+	}
+
+	wp_send_json_success( $response[0] );
 }
