@@ -229,7 +229,7 @@ function wplng_translation_assets() {
  */
 function wplng_inline_script_languages() {
 
-	$languages_json  = array();
+	$languages  = array();
 	$languages_allow = wplng_get_languages_allow();
 
 	if ( ! empty( $languages_allow ) && is_array( $languages_allow ) ) {
@@ -237,11 +237,11 @@ function wplng_inline_script_languages() {
 		if ( ! in_array( $language_website, $languages_allow, true ) ) {
 			$languages_allow[] = $language_website;
 		}
-		$languages_json = wp_json_encode( $languages_allow );
+		$languages = $languages_allow;
 	} else {
-		$languages_json = wplng_get_languages_all_json();
+		$languages = wplng_get_languages_all();
 	}
 
-	?><script>var wplngAllLanguages = <?php echo $languages_json; ?>;</script>
+	?><script>var wplngAllLanguages = <?php echo wp_json_encode( $languages ); ?>;</script>
 	<?php
 }
