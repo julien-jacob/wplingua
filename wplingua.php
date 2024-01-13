@@ -180,8 +180,8 @@ function wplng_start() {
 		/**
 		 * Shortcode
 		 */
-		add_shortcode( 'wplng-switcher', 'wplng_shortcode_switcher' );
-		add_shortcode( 'wplng-notranslate', 'wplng_shortcode_notranslate' );
+		add_shortcode( 'wplng_switcher', 'wplng_shortcode_switcher' );
+		add_shortcode( 'wplng_notranslate', 'wplng_shortcode_notranslate' );
 
 	}
 
