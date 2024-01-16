@@ -92,7 +92,7 @@ function wplng_url_translate( $url, $language_target_id = '' ) {
 		$url
 	);
 
-	return sanitize_url( $url );
+	return $url;
 }
 
 
@@ -109,7 +109,7 @@ function wplng_url_is_translatable( $url = '' ) {
 
 	// Get current URL if $url is empty
 	if ( empty( $url ) ) {
-		$url = $wplng_request_uri;
+		$url = sanitize_url( $wplng_request_uri );
 	}
 
 	$url = wp_make_link_relative( $url );
@@ -213,7 +213,7 @@ function wplng_get_url_exclude_regex() {
  */
 function wplng_get_url_original( $url = '' ) {
 
-	if ( empty( $url ) ) {
+	if ( '' === $url ) {
 		$url = wplng_get_url_current();
 	}
 

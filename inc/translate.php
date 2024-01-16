@@ -327,10 +327,10 @@ function wplng_translate_html(
 
 		foreach ( $class_array as $key => $class ) {
 			if ( wplng_str_is_locale_id( $class ) ) {
-				$class_array[ $key ] = esc_attr( $language_target_id );
+				$class_array[ $key ] = $language_target_id;
 			} elseif ( 'ltr' === $class || 'rtl' === $class ) {
 				if ( ! empty( $language_current['dir'] ) ) {
-					$class_array[ $key ] = esc_attr( $language_current['dir'] );
+					$class_array[ $key ] = $language_current['dir'];
 				} else {
 					$class_array[ $key ] = 'ltr';
 				}
@@ -346,7 +346,7 @@ function wplng_translate_html(
 		}
 
 		$class_str      = trim( $class_str );
-		$element->class = $class_str;
+		$element->class = esc_attr( $class_str );
 	}
 
 	/**
@@ -362,12 +362,14 @@ function wplng_translate_html(
 				continue;
 			}
 
-			$link = $element->attr[ $attr['attr'] ];
+			$link = sanitize_url( $element->attr[ $attr['attr'] ] );
 
-			$element->attr[ $attr['attr'] ] = wplng_url_translate(
+			$translated_url = wplng_url_translate(
 				$link,
 				$language_target_id
 			);
+
+			$element->attr[ $attr['attr'] ] = esc_url( $translated_url );
 		}
 	}
 
@@ -381,14 +383,17 @@ function wplng_translate_html(
 	}
 
 	/**
-	 * Find and parse JS
+	 * Find and parse JSON
 	 */
 
 	foreach ( $dom->find( 'script[type="application/ld+json"]' ) as $element ) {
-		$element->innertext = wplng_translate_json(
+
+		$translated_json = wplng_translate_json(
 			$element->innertext,
 			$translations
 		);
+
+		$element->innertext = esc_js( $translated_json );
 	}
 
 	/**
@@ -396,10 +401,13 @@ function wplng_translate_html(
 	 */
 
 	foreach ( $dom->find( 'script' ) as $element ) {
-		$element->innertext = wplng_translate_js(
+
+		$translated_js = wplng_translate_js(
 			$element->innertext,
 			$translations
 		);
+
+		$element->innertext = esc_js( $translated_js );
 	}
 
 	/**
@@ -414,10 +422,12 @@ function wplng_translate_html(
 			continue;
 		}
 
-		$element->innertext = wplng_get_translated_text_from_translations(
+		$translated_text = wplng_get_translated_text_from_translations(
 			$element->innertext,
 			$translations
 		);
+
+		$element->innertext = esc_html( $translated_text );
 	}
 
 	/**
@@ -439,10 +449,12 @@ function wplng_translate_html(
 				continue;
 			}
 
-			$element->attr[ $attr['attr'] ] = wplng_get_translated_text_from_translations(
+			$translated_attr = wplng_get_translated_text_from_translations(
 				$text,
 				$translations
 			);
+
+			$element->attr[ $attr['attr'] ] = esc_attr( $translated_attr );
 		}
 	}
 
