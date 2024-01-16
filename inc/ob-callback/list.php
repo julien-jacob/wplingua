@@ -288,10 +288,8 @@ function wplng_get_modal_switcher_html() {
 		}
 
 		$html .= '<a ';
-		$html .= 'class="' . esc_attr( 'wplng-language ' . $class ) . '" ';
+		$html .= 'class="wplng-language" ';
 		$html .= 'href="' . $url . '">';
-
-		$html .= '<a class="' . esc_attr( 'wplng-language ' . $class ) . '" href="' . $url . '">';
 
 		if ( ! empty( $language_website['flags'][0]['flag'] ) ) {
 
