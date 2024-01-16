@@ -158,17 +158,31 @@ function wplng_translation_meta_box_html_output( $post ) {
 
 				default:
 					if ( is_int( $translation['status'] ) ) {
+
+						// Get and check date format
+						$date_format = get_option( 'date_format' );
+						if (!is_string($date_format) || empty($date_format)) {
+							$date_format = 'F j, Y';
+						}
+
+						// Get and check time format
+						$time_format = get_option( 'time_format' );
+						if (!is_string($time_format) || empty($time_format)) {
+							$time_format = 'g:i a';
+						}
+
+
 						$html .= '<span class="wplng-status">';
 						$html .= esc_html__( 'Status: Edited on ', 'wplingua' );
 						$html .= esc_html(
 							gmdate(
-								get_option( 'date_format' ),
+								$date_format,
 								$translation['status']
 							)
 						);
 						$html .= ', ' . esc_html(
 							gmdate(
-								get_option( 'time_format' ),
+								$time_format,
 								$translation['status']
 							)
 						);
@@ -253,7 +267,9 @@ function wplng_translation_save_meta_boxes_data( $post_id ) {
 		foreach ( $translations as $translation ) {
 
 			if ( empty( $translation['language_id'] )
-				|| empty( $translation['translation'] )
+				|| ! wplng_is_valid_language_id( $translation['language_id'] )
+				|| ! isset( $translation['translation'] )
+				|| ! is_string( $translation['translation'] )
 				|| ( $translation['language_id'] !== $language_target )
 			) {
 				continue;

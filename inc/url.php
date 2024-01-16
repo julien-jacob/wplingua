@@ -25,6 +25,7 @@ function wplng_url_translate( $url, $language_target_id = '' ) {
 		return $url;
 	}
 
+	// Check if it's an WooCommece AJAX URL
 	if ( str_contains( $url, '?wc-ajax=' ) ) {
 		return $url;
 	}
@@ -43,7 +44,9 @@ function wplng_url_translate( $url, $language_target_id = '' ) {
 	$preg_domain = '';
 	$parsed_url  = wp_parse_url( home_url() );
 
-	if ( ! empty( $parsed_url['host'] ) ) {
+	if ( isset( $parsed_url['host'] )
+		&& is_string( $parsed_url['host'] )
+	) {
 		$preg_domain = preg_quote( $parsed_url['host'] );
 	}
 
@@ -64,7 +67,7 @@ function wplng_url_translate( $url, $language_target_id = '' ) {
 			$url
 		);
 
-		$url = esc_url( trailingslashit( $url ) );
+		$url = trailingslashit( $url );
 
 	} elseif ( preg_match( '#^[^\/]+\/[^\/].*$|^\/[^\/].*$#', $url ) ) {
 
@@ -89,7 +92,7 @@ function wplng_url_translate( $url, $language_target_id = '' ) {
 		$url
 	);
 
-	return $url;
+	return sanitize_url( $url );
 }
 
 
@@ -170,23 +173,29 @@ function wplng_get_url_exclude_regex() {
 
 	$url_exclude = array();
 
-	// Get user excluded URLs
-	$url_exclude_option = explode(
-		PHP_EOL,
-		get_option( 'wplng_excluded_url' )
-	);
+	// Get, check and sanitize excluded URL REGEX as string
+	$option = get_option( 'wplng_excluded_url' );
+	if ( empty( $option ) || ! is_string( $option ) ) {
+		$option = '';
+	} else {
+		$option = sanitize_textarea_field( $option );
+	}
 
-	// Add delimiter
-	foreach ( $url_exclude_option as $url ) {
+	// Get exclude URL REGEX as array
+	$option = explode( PHP_EOL, $option );
+
+	// Check each URL REGEX
+	foreach ( $option as $url ) {
 		$url = trim( $url );
-		if ( $url !== '' ) {
-			$url_exclude[] = '#' . preg_quote( $url ) . '#';
+		if ( '' !== $url ) {
+			$url_exclude[] = '#' . $url . '#';
 		}
 	}
 
 	// Remove duplicate
 	$url_exclude = array_unique( $url_exclude );
 
+	// Apply wplng_url_exclude_regex filter
 	$url_exclude = apply_filters(
 		'wplng_url_exclude_regex',
 		$url_exclude
@@ -219,7 +228,7 @@ function wplng_get_url_original( $url = '' ) {
 		$url
 	);
 
-	return $url;
+	return sanitize_url( $url );
 }
 
 
