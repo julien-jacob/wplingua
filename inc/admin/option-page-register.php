@@ -25,16 +25,20 @@ function wplng_option_page_register() {
 	$api_key          = wplng_get_api_key();
 	$json_request_key = get_option( 'wplng_request_free_key' );
 	$error_validation = get_transient( 'wplng_api_key_error' );
+	$error_validation = sanitize_text_field( $error_validation );
 
 	delete_transient( 'wplng_api_key_data' );
 
-	if ( ! empty( $error_validation ) ) :
+	if ( ! empty( $error_validation )
+		&& is_string( $error_validation )
+	) :
+
 		delete_transient( 'wplng_api_key_error' );
-		$message = '';
-		if ( ! empty( $error_validation ) ) {
-			$message .= __( 'Message:', 'wplingua' );
-			$message .= ' ' . $error_validation;
-		}
+
+		$message  = '';
+		$message .= __( 'Message: ', 'wplingua' );
+		$message .= $error_validation;
+
 		?>
 		<div class="wplng-notice notice notice-error is-dismissible">
 			<p>
@@ -48,6 +52,7 @@ function wplng_option_page_register() {
 	elseif ( get_option( 'wplng_api_key' ) !== $api_key
 		&& empty( wplng_get_api_data() )
 	) :
+
 		update_option( 'wplng_api_key', '' );
 
 		if ( ! empty( get_option( 'wplng_api_key' ) ) ) :
@@ -57,18 +62,23 @@ function wplng_option_page_register() {
 			</div>
 			<?php
 		endif;
+
 	elseif ( ! empty( $json_request_key ) ) :
 
 		delete_option( 'wplng_request_free_key' );
+
 		$data_request_key = json_decode( $json_request_key, true );
 		$response         = wplng_api_call_request_api_key( $data_request_key );
 
 		if ( ! empty( $response['error'] ) ) {
+
 			$message = '';
+
 			if ( ! empty( $response['message'] ) ) {
-				$message .= __( 'Message:', 'wplingua' );
-				$message .= ' ' . $response['message'];
+				$message .= __( 'Message: ', 'wplingua' );
+				$message .= $response['message'];
 			}
+
 			?>
 			<div class="wplng-notice notice notice-error is-dismissible">
 				<p>
@@ -79,16 +89,20 @@ function wplng_option_page_register() {
 			</div>
 			<?php
 		} elseif ( ! empty( $response['register'] ) ) {
+
 			$mail = '';
-			if ( ! empty( $data_request_key['mail_address'] ) ) {
-				$mail = $data_request_key['mail_address'];
+
+			if ( ! empty( $data_request_key['mail_address'] ) 
+				&& is_email( $data_request_key['mail_address'] )
+			) {
+				$mail = sanitize_email( $data_request_key['mail_address'] );
 			}
+
 			?>
 			<div class="wplng-notice notice notice-success is-dismissible">
 				<p><strong>
 				<?php
-				esc_html_e( 'The API key has been correctly created and sent to the following e-mail address:', 'wplingua' );
-				echo ' ';
+				esc_html_e( 'The API key has been correctly created and sent to the following e-mail address: ', 'wplingua' );
 				echo esc_html( $mail );
 				?>
 				</strong></p>
@@ -178,7 +192,12 @@ function wplng_register_part_api_key( $api_key ) {
  */
 function wplng_register_part_free_api_key() {
 
-	$website_locale = substr( get_locale(), 0, 2 );
+	$email  = sanitize_email( get_bloginfo( 'admin_email' ) );
+	$locale = strtolower( substr( get_locale(), 0, 2 ) );
+
+	if ( ! wplng_is_valid_language_id( $locale ) ) {
+		$locale = 'en';
+	}
 
 	?>
 	<p for="wplng_api_key"><strong><?php esc_html_e( 'Register free wpLingua API key:', 'wplingua' ); ?></strong></p>
@@ -194,9 +213,9 @@ function wplng_register_part_free_api_key() {
 	<br>
 	<fieldset>
 		<label for="wplng-email" class="wplng-fe-50">
-			<strong><?php _e( 'Mail address:', 'wplingua' ); ?> </strong>
+			<strong><?php esc_html_e( 'Mail address:', 'wplingua' ); ?> </strong>
 		</label>
-		<input type="email" name="wplng-email" id="wplng-email" class="wplng-fe-50" value="<?php echo esc_attr( get_bloginfo( 'admin_email' ) ); ?>">
+		<input type="email" name="wplng-email" id="wplng-email" class="wplng-fe-50" value="<?php echo esc_attr( $email ); ?>">
 	</fieldset>
 	<br>
 	<fieldset>
@@ -220,7 +239,7 @@ function wplng_register_part_free_api_key() {
 		</label>
 	</fieldset>
 	<fieldset style="display: none;">
-		<p><?php esc_html_e( 'Website Locale:', 'wplingua' ); ?> <span id="wplng-website-locale"><?php echo esc_html( $website_locale ); ?></span></p>
+		<p><?php esc_html_e( 'Website Locale:', 'wplingua' ); ?> <span id="wplng-website-locale"><?php echo esc_html( $locale ); ?></span></p>
 		<textarea name="wplng_request_free_key" id="wplng_request_free_key"></textarea>
 	</fieldset>
 	<button id="wplng-get-free-api-submit" class="button button-primary">

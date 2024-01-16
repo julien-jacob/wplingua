@@ -30,6 +30,7 @@ define( 'WPLNG_PLUGIN_VERSION', '1.0.0' );
 define( 'WPLNG_PLUGIN_PATH', dirname( __FILE__ ) );
 define( 'WPLNG_MAX_TRANSLATIONS', 256 );
 define( 'WPLNG_MAX_FILE_SIZE', 1000000 );
+define( 'WPLNG_LOG_JSON_DEBUG', false );
 
 
 /**

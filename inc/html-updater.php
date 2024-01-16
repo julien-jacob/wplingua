@@ -25,21 +25,37 @@ function wplng_link_alternate_hreflang() {
 		return;
 	}
 
+	// Create the starting comment
 	$html .= '<!-- This site is made multilingual with the wpLingua plugin -->';
+	$html .= PHP_EOL;
 
 	// Create meta generator
-	$html .= PHP_EOL . '<meta name="generator" content="wpLingua ' . esc_attr( WPLNG_PLUGIN_VERSION ) . '" />';
+	$html .= '<meta ';
+	$html .= 'name="generator" ';
+	$html .= 'content="wpLingua ' . esc_attr( WPLNG_PLUGIN_VERSION ) . '" />';
+	$html .= PHP_EOL;
 
 	// Create alternate link for website language
-	$html .= PHP_EOL . '<link rel="alternate" hreflang="' . esc_attr( $language_website['id'] ) . '" href="' . esc_url( wplng_get_url_original() ) . '" />';
+	$html .= '<link ';
+	$html .= 'rel="alternate" ';
+	$html .= 'hreflang="' . esc_attr( $language_website['id'] ) . '" ';
+	$html .= 'href="' . esc_url( wplng_get_url_original() ) . '" />';
+	$html .= PHP_EOL;
 
 	// Create alternate link for each target languages
 	foreach ( $languages_target as $language_target ) {
-		$url   = wplng_get_url_current_for_language( $language_target['id'] );
-		$html .= PHP_EOL . '<link rel="alternate" hreflang="' . esc_attr( $language_target['id'] ) . '" href="' . esc_url( $url ) . '" />';
+
+		$url = wplng_get_url_current_for_language( $language_target['id'] );
+
+		$html .= '<link ';
+		$html .= 'rel="alternate" ';
+		$html .= 'hreflang="' . esc_attr( $language_target['id'] ) . '" ';
+		$html .= 'href="' . esc_url( $url ) . '" />';
+		$html .= PHP_EOL;
 	}
 
-	$html .= PHP_EOL . '<!-- / wpLingua plugin. -->' . PHP_EOL . PHP_EOL;
+	// Create the ending comment
+	$html .= '<!-- / wpLingua plugin. -->' . PHP_EOL . PHP_EOL;
 
 	echo $html;
 }
@@ -54,14 +70,18 @@ function wplng_get_selector_exclude() {
 
 	$selector_exclude = array();
 
-	// Get exclude selector from options
-	$selector_exclude_option = explode(
-		PHP_EOL,
-		get_option( 'wplng_excluded_selectors' )
-	);
+	// Get, check and sanitize excluded selector as string
+	$option = get_option( 'wplng_excluded_selectors' );
+	if ( empty( $option ) || ! is_string( $option ) ) {
+		wplng_data_excluded_selector_default();
+	}
+	$option = sanitize_textarea_field( $option );
 
-	// Sanitize selectors
-	foreach ( $selector_exclude_option as $selector ) {
+	// Get exclude selector as array
+	$option = explode( PHP_EOL, $option );
+
+	// Sanitize each selectors
+	foreach ( $option as $selector ) {
 		$selector = esc_attr( trim( $selector ) );
 		if ( ! empty( $selector ) ) {
 			$selector_exclude[] = $selector;
@@ -77,6 +97,7 @@ function wplng_get_selector_exclude() {
 	// Remove duplicate
 	$selector_exclude = array_unique( $selector_exclude );
 
+	// Apply wplng_selector_exclude filters
 	$selector_exclude = apply_filters(
 		'wplng_selector_exclude',
 		$selector_exclude
@@ -176,7 +197,13 @@ function wplng_ob_start() {
 
 	global $wplng_request_uri;
 	$current_path = $wplng_request_uri;
-	$origin_path  = '/' . substr( $current_path, 4, strlen( $current_path ) - 1 );
+
+	if ( ! is_string( $current_path ) ) {
+		return;
+	}
+
+	$origin_path = '/' . substr( $current_path, 4, strlen( $current_path ) - 1 );
+	$origin_path = sanitize_url( $origin_path );
 
 	if ( ! wplng_url_is_translatable( $origin_path ) ) {
 		wp_redirect( $origin_path );

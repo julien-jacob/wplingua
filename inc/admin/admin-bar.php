@@ -94,11 +94,15 @@ function wplng_admin_bar_menu() {
 				continue;
 			}
 
+			$name      = sanitize_text_field( $language['name'] );
+			$id_editor = sanitize_title( 'wplingua-editor-' . $language['id'] );
+			$id_list   = sanitize_title( 'wplingua-list-' . $language['id'] );
+
 			$wp_admin_bar->add_menu(
 				array(
-					'id'     => 'wplingua-editor-' . $language['id'],
+					'id'     => $id_editor,
 					'parent' => 'wplingua-editor',
-					'title'  => $language['name'],
+					'title'  => $name,
 					'href'   => add_query_arg(
 						'wplingua-editor',
 						'1',
@@ -112,9 +116,9 @@ function wplng_admin_bar_menu() {
 
 			$wp_admin_bar->add_menu(
 				array(
-					'id'     => 'wplingua-list-' . $language['id'],
+					'id'     => $id_list,
 					'parent' => 'wplingua-list',
-					'title'  => $language['name'],
+					'title'  => $name,
 					'href'   => add_query_arg(
 						'wplingua-list',
 						'1',

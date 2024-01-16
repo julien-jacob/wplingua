@@ -286,7 +286,10 @@ function wplng_get_language_current_id() {
 	$current_path     = $wplng_request_uri;
 	$languages_target = wplng_get_languages_target_ids();
 
-	if ( ! wplng_url_is_translatable() ) {
+	if ( ! wplng_url_is_translatable()
+		|| empty( $current_path )
+		|| ! is_string( $current_path )
+	) {
 		return wplng_get_language_website_id();
 	}
 
@@ -469,6 +472,7 @@ function wplng_get_languages_all() {
  * @return array
  */
 function wplng_get_languages_allow() {
+
 	$languages_alow = wplng_get_api_languages_target();
 	$languages      = array();
 

@@ -22,7 +22,7 @@ function wplng_shortcode_notranslate( $atts, $content ) {
 	);
 
 	$html  = '<' . $attributes['tag'] . ' class="notranslate">';
-	$html .= $content;
+	$html .= wp_kses_post( $content );
 	$html .= '</' . $attributes['tag'] . '>';
 
 	return $html;

@@ -42,7 +42,7 @@ function wplng_api_call_request_api_key( $data ) {
 
 	$mail_address = sanitize_email( $data['mail_address'] );
 
-	if ( $mail_address !== $data['mail_address'] ) {
+	if ( ! is_email( $mail_address ) ) {
 		return array(
 			'error'   => true,
 			'message' => __( 'Error - Invalid data (mail address).', 'wplingua' ),

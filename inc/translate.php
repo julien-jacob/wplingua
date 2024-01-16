@@ -125,16 +125,19 @@ function wplng_translate_json_array( $json_decoded, $translations, $parents = ar
 					array_merge( $parents, array( $key ) )
 				);
 
-				// error_log(
-				// 	var_export(
-				// 		array(
-				// 			'parents'      => array_merge( $parents, array( $key ) ),
-				// 			'value'        => $value,
-				// 			'translatable' => $is_translatable,
-				// 		),
-				// 		true
-				// 	)
-				// );
+				if ( WPLNG_LOG_JSON_DEBUG ) {
+					error_log(
+						var_export(
+							array(
+								'title'        => 'wpLingua JSON debug - Parsed value',
+								'parents'      => array_merge( $parents, array( $key ) ),
+								'value'        => $value,
+								'translatable' => $is_translatable,
+							),
+							true
+						)
+					);
+				}
 
 				if ( ! $is_translatable ) {
 					continue;
@@ -145,35 +148,25 @@ function wplng_translate_json_array( $json_decoded, $translations, $parents = ar
 					$translations
 				);
 
-				// error_log(
-				// 	var_export(
-				// 		array(
-				// 			'parents'   => $parents,
-				// 			'value'     => $value,
-				// 			'translate' => $array_translated[ $key ],
-				// 		),
-				// 		true
-				// 	)
-				// );
-
 			}
 		}
 
-		// if ( $array_translated[ $key ] != $json_decoded[ $key ]
-		// 	&& !is_array($json_decoded[ $key ])
-		// ) {
-		// 	error_log(
-		// 		var_export(
-		// 			array(
-		// 				'parents'    => $parents,
-		// 				'value'      => $json_decoded[ $key ],
-		// 				'translated' => $array_translated[ $key ],
-		// 			),
-		// 			true
-		// 		)
-		// 	);
-		// }
-
+		if ( WPLNG_LOG_JSON_DEBUG
+			&& ( $array_translated[ $key ] != $json_decoded[ $key ] )
+			&& ! is_array( $json_decoded[ $key ] )
+		) {
+			error_log(
+				var_export(
+					array(
+						'title'      => 'wpLingua JSON debug - Compare JSON',
+						'parents'    => $parents,
+						'value'      => $json_decoded[ $key ],
+						'translated' => $array_translated[ $key ],
+					),
+					true
+				)
+			);
+		}
 	}
 
 	return $array_translated;
@@ -246,23 +239,11 @@ function wplng_translate_js( $js, $translations ) {
 		);
 
 		if ( $var_json != $json_translated ) {
-
-			// error_log(
-			// 	var_export(
-			// 		array(
-			// 			'var_json'    => $var_json,
-			// 			'json_translated'      => $json_translated,
-			// 		),
-			// 		true
-			// 	)
-			// );
-
 			$js = str_replace(
 				$var_json,
 				$json_translated,
 				$js
 			);
-
 		}
 	}
 

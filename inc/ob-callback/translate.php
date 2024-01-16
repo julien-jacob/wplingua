@@ -64,13 +64,16 @@ function wplng_ob_callback_translate_json( $json ) {
 	$texts_unknow = array();
 
 	foreach ( $texts as $text ) {
+
 		$is_in = false;
+
 		foreach ( $translations as $translation ) {
 			if ( $text === $translation['source'] ) {
 				$is_in = true;
 				break;
 			}
 		}
+
 		if ( ! $is_in ) {
 			$texts_unknow[] = $text;
 		}
@@ -118,7 +121,10 @@ function wplng_ob_callback_translate_json( $json ) {
 	 * Merge know and new translations
 	 */
 
-	$translations = array_merge( $translations_new, $translations );
+	$translations = array_merge(
+		$translations_new,
+		$translations
+	);
 
 	/**
 	 * Replace original texts by translations
@@ -182,13 +188,16 @@ function wplng_ob_callback_translate_html( $html ) {
 	$texts_unknow = array();
 
 	foreach ( $texts as $text ) {
+
 		$is_in = false;
+
 		foreach ( $translations as $translation ) {
 			if ( $text === $translation['source'] ) {
 				$is_in = true;
 				break;
 			}
 		}
+
 		if ( ! $is_in ) {
 			$texts_unknow[] = $text;
 		}
@@ -250,7 +259,10 @@ function wplng_ob_callback_translate_html( $html ) {
 	 * Merge know and new translations
 	 */
 
-	$translations = array_merge( $translations_in_page, $translations_new );
+	$translations = array_merge(
+		$translations_in_page,
+		$translations_new
+	);
 
 	/**
 	 * Replace original texts by translations

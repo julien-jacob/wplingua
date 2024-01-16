@@ -77,7 +77,7 @@ function wplng_text_esc( $text ) {
 
 
 /**
- * Return true is $str is HTML
+ * Return true if $str is HTML
  *
  * @param string $str
  * @return string

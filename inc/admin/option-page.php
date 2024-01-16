@@ -22,7 +22,6 @@ function wplng_create_menu_register() {
 		'dashicons-translation',
 		31
 	);
-
 }
 
 
@@ -69,7 +68,6 @@ function wplng_create_menu() {
 		'edit.php?post_type=wplng_translation',
 		false
 	);
-
 }
 
 
@@ -100,7 +98,6 @@ function wplng_register_settings() {
 	register_setting( 'wplng_switcher', 'wplng_name_format' );
 	register_setting( 'wplng_switcher', 'wplng_flags_style' );
 	register_setting( 'wplng_switcher', 'wplng_custom_css' );
-
 }
 
 

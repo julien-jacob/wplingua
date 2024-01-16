@@ -79,29 +79,50 @@ function wplng_api_call_validate_api_key( $api_key = '' ) {
 			|| 'all' === $response['language_original']
 		)
 		&& ! empty( $response['languages_target'] )
-		&& wplng_is_valid_language_ids( $response['languages_target'] )
-		&& $response['language_original'] !== $response['languages_target']
-		&& isset( $response['features']['search'] )
-		&& is_bool( $response['features']['search'] )
-		&& isset( $response['features']['woocommerce'] )
-		&& is_bool( $response['features']['woocommerce'] )
+		&& is_array( $response['languages_target'] )
+		&& isset( $response['features'] )
+		&& is_array( $response['features'] )
 	) {
 
-		// API returned valid key informations
+		/**
+		 * API returned valid key informations
+		 */
+
+		// Sanitize languages target
 
 		$languages_target = array();
 
 		foreach ( $response['languages_target'] as $id ) {
+
+			if ( ! wplng_is_valid_language_id( $id ) ) {
+				continue;
+			}
+
 			$languages_target[] = sanitize_key( $id );
 		}
+
+		// Sanitize features list
+
+		$features = array();
+
+		foreach ( $response['features'] as $key => $allow ) {
+
+			if ( ! is_string( $key ) || ! is_bool( $allow ) ) {
+				continue;
+			}
+
+			$key   = sanitize_key( $key );
+			$allow = ( true === $allow );
+
+			$features[ $key ] = $allow;
+		}
+
+		// Make the checked response
 
 		$response_checked = array(
 			'language_original' => sanitize_key( $response['language_original'] ),
 			'languages_target'  => $languages_target,
-			'features'          => array(
-				'search'      => ( true === $response['features']['search'] ),
-				'woocommerce' => ( true === $response['features']['woocommerce'] ),
-			),
+			'features'          => $features,
 		);
 
 	} elseif ( isset( $response['error'] )
@@ -112,7 +133,9 @@ function wplng_api_call_validate_api_key( $api_key = '' ) {
 		&& is_string( $response['message'] )
 	) {
 
-		// API returning a valid error
+		/**
+		 * API returning a valid error
+		 */
 
 		$error_message  = __( 'Code', 'wplingua' ) . ' ';
 		$error_message  = $response['code'] . ' - ';
@@ -126,7 +149,9 @@ function wplng_api_call_validate_api_key( $api_key = '' ) {
 
 	} else {
 
-		// API returned an unexpected response
+		/**
+		 * API returned an unexpected response
+		 */
 
 		set_transient(
 			'wplng_api_key_error',

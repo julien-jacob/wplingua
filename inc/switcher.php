@@ -175,11 +175,6 @@ function wplng_get_switcher_flags_style() {
 		$flags_style = 'rectangular';
 	}
 
-	$flags_style = apply_filters(
-		'wplng_switcher_flags_style',
-		$flags_style
-	);
-
 	return $flags_style;
 }
 
@@ -391,7 +386,7 @@ function wplng_get_switcher_html( $arg = array() ) {
 		}
 
 		$html .= '<a class="wplng-language' . $class . '" href="' . $url . '">';
-		if ( ! empty( $language_website['flag'] ) && $flags_show ) {
+		if ( ! empty( $language_target['flag'] ) && $flags_show ) {
 
 			$alt = __( 'Flag for language: ', 'wplingua' ) . $language_target['name'];
 
@@ -436,6 +431,19 @@ function wplng_get_switcher_html( $arg = array() ) {
 			if ( ! empty( $language_target['flag'] ) && $flags_show ) {
 
 				$alt = __( 'Flag for language: ', 'wplingua' ) . $language_target['name'];
+
+				if ( ! empty( $arg['flags'] )
+					&& 'none' !== $arg['flags']
+				) {
+					$flags_style = wplng_get_switcher_flags_style();
+					if ( $flags_style !== $arg['flags'] ) {
+						$html = str_replace(
+							'/wplingua/assets/images/' . $flags_style . '/',
+							'/wplingua/assets/images/' . $arg['flags'] . '/',
+							$html
+						);
+					}
+				}
 
 				$html .= '<img ';
 				$html .= 'src="' . esc_url( $language_target['flag'] ) . '" ';
