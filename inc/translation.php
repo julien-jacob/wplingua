@@ -111,9 +111,7 @@ function wplng_get_translations_from_query() {
 			}
 		}
 
-		if ( ! isset( $translation['translations'] )
-			|| ! is_string( $translation['translations'] )
-		) {
+		if ( empty( $translation['translations'] ) ) {
 			continue;
 		}
 

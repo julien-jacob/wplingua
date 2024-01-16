@@ -130,7 +130,7 @@ function wplng_translation_meta_box_html_output( $post ) {
 			$html .= 'id="' . esc_attr( $name ) . '" ';
 			$html .= 'lang="' . esc_attr( $language_id ) . '" ';
 			$html .= 'spellcheck="false">';
-			$html .= esc_textarea( $textarea );
+			$html .= esc_textarea( html_entity_decode( $textarea ) );
 			$html .= '</textarea>';
 
 			if ( empty( $translation['status'] ) ) {
@@ -161,16 +161,15 @@ function wplng_translation_meta_box_html_output( $post ) {
 
 						// Get and check date format
 						$date_format = get_option( 'date_format' );
-						if (!is_string($date_format) || empty($date_format)) {
+						if ( ! is_string( $date_format ) || empty( $date_format ) ) {
 							$date_format = 'F j, Y';
 						}
 
 						// Get and check time format
 						$time_format = get_option( 'time_format' );
-						if (!is_string($time_format) || empty($time_format)) {
+						if ( ! is_string( $time_format ) || empty( $time_format ) ) {
 							$time_format = 'g:i a';
 						}
-
 
 						$html .= '<span class="wplng-status">';
 						$html .= esc_html__( 'Status: Edited on ', 'wplingua' );
