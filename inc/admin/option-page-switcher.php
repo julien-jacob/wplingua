@@ -57,32 +57,6 @@ function wplng_option_page_switcher() {
 					<th scope="row"><?php esc_html_e( 'Switcher design', 'wplingua' ); ?></th>
 					<td>
 						<fieldset>
-							<label for="wplng_theme" class="wplng-fe-50">
-								<strong><?php esc_html_e( 'Switcher theme: ', 'wplingua' ); ?></strong>
-							</label>
-
-							<select id="wplng_theme" name="wplng_theme" class="wplng-fe-50">
-								<?php
-
-								$theme_options = wplng_data_switcher_valid_theme();
-
-								foreach ( $theme_options as $option_value => $option_name ) {
-									if ( $theme === $option_value ) {
-										echo '<option value="' . esc_attr( $option_value ) . '" selected>';
-									} else {
-										echo '<option value="' . esc_attr( $option_value ) . '">';
-									}
-									echo esc_html( $option_name );
-									echo '</option>';
-								}
-
-								?>
-							</select>
-						</fieldset>
-						
-						<br>
-						
-						<fieldset>
 
 							<label for="wplng_style" class="wplng-fe-50">
 								<strong><?php esc_html_e( 'Switcher style: ', 'wplingua' ); ?></strong>
@@ -146,6 +120,32 @@ function wplng_option_page_switcher() {
 
 								foreach ( $flags_style_options as $option_value => $option_name ) {
 									if ( $flags_style === $option_value ) {
+										echo '<option value="' . esc_attr( $option_value ) . '" selected>';
+									} else {
+										echo '<option value="' . esc_attr( $option_value ) . '">';
+									}
+									echo esc_html( $option_name );
+									echo '</option>';
+								}
+
+								?>
+							</select>
+						</fieldset>
+
+						<br>
+
+						<fieldset>
+							<label for="wplng_theme" class="wplng-fe-50">
+								<strong><?php esc_html_e( 'Switcher theme: ', 'wplingua' ); ?></strong>
+							</label>
+
+							<select id="wplng_theme" name="wplng_theme" class="wplng-fe-50">
+								<?php
+
+								$theme_options = wplng_data_switcher_valid_theme();
+
+								foreach ( $theme_options as $option_value => $option_name ) {
+									if ( $theme === $option_value ) {
 										echo '<option value="' . esc_attr( $option_value ) . '" selected>';
 									} else {
 										echo '<option value="' . esc_attr( $option_value ) . '">';
