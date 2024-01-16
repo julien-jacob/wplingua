@@ -91,7 +91,7 @@ function wplng_ob_callback_editor( $html ) {
 		if ( isset( $texts_unknow_translated[ $key ] ) ) {
 
 			$translated = $texts_unknow_translated[ $key ];
-			$translated = esc_attr( esc_html( $translated ) );
+			$translated = esc_html( $translated );
 
 			$translations_new[] = array(
 				'source'      => $text_source,
