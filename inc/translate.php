@@ -54,7 +54,7 @@ function wplng_get_translated_text_from_translations( $text, $translations ) {
 		}
 	}
 
-	$translated = esc_attr( esc_html( $translated ) );
+	$translated = esc_html( $translated );
 
 	return $spaces_before . $translated . $spaces_after;
 }

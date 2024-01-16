@@ -311,7 +311,7 @@ function wplng_translation_save_meta_boxes_data( $post_id ) {
 			$translations[ $key ]['status'] = time();
 		}
 
-		$translations[ $key ]['translation'] = esc_html( esc_attr( $temp ) );
+		$translations[ $key ]['translation'] = esc_html( $temp );
 	}
 
 	update_post_meta(

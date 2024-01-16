@@ -34,7 +34,7 @@ function wplng_api_call_translate(
 		if ( ! is_string( $text ) ) {
 			$texts[ $key ] = '';
 		} else {
-			$texts[ $key ] = esc_html( esc_attr( $text ) );
+			$texts[ $key ] = esc_html( $text );
 		}
 	}
 
