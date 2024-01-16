@@ -247,6 +247,7 @@ function wplng_ob_callback_translate_html( $html ) {
 
 	foreach ( $translations as $translation ) {
 		foreach ( $texts as $text ) {
+			$text = wplng_text_esc( $text );
 			if ( ! empty( $translation['source'] )
 				&& $translation['source'] === $text
 			) {

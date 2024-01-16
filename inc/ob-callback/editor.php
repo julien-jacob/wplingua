@@ -113,6 +113,7 @@ function wplng_ob_callback_editor( $html ) {
 
 	foreach ( $translations as $translation ) {
 		foreach ( $texts as $text ) {
+			$text = wplng_text_esc( $text );
 			if ( isset( $translation['source'] )
 				&& $translation['source'] === $text
 			) {
@@ -213,7 +214,7 @@ function wplng_ob_callback_editor( $html ) {
 
 			$onclick = 'window.open("' . esc_url( $edit_link ) . '", "_blank");';
 
-			$innertext = '<span ';
+			$innertext  = '<span ';
 			$innertext .= 'class="wplng-edit-link" ';
 			$innertext .= 'onclick="' . esc_js( $onclick ) . '" ';
 			$innertext .= 'title="' . esc_attr__( 'Edit this translation', 'wplingua' ) . '">';
