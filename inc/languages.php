@@ -70,38 +70,6 @@ function wplng_get_language_website_flag() {
 
 
 /**
- * Get the emoji of website language flag
- *
- * @param mixed $language
- * @return string
- */
-function wplng_get_language_emoji( $language ) {
-
-	// if $language is a language array, return emoji
-	if ( ! empty( $language['emoji'] ) ) {
-		return esc_html( $language['emoji'] );
-	}
-
-	// $language is a language ID
-	// convert language ID to language array
-	$language = wplng_get_language_by_id( $language );
-
-	// If $language is not a valid, return empty string
-	if ( false === $language ) {
-		return '';
-	}
-
-	// If emoji is valid, return the emoji
-	if ( ! empty( $language['emoji'] ) ) {
-		return esc_html( $language['emoji'] );
-	}
-
-	// If no emoji returned here, return empty string
-	return '';
-}
-
-
-/**
  * Get language name from language ID or data
  *
  * @param mixed $language
