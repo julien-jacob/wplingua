@@ -70,6 +70,7 @@ function wplng_data_excluded_selector_default() {
 		'canvas',
 		'address',
 		'iframe',
+		'code',
 		'#wpadminbar',
 		'.no-translate',
 		'.notranslate',
@@ -93,6 +94,7 @@ function wplng_data_excluded_node_text() {
 			'canvas',
 			'link',
 			'script',
+			'code',
 		)
 	);
 }
