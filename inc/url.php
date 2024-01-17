@@ -20,7 +20,7 @@ function wplng_url_translate( $url, $language_target_id = '' ) {
 		return '';
 	}
 
-	// Check if URL is translatable (exclude /admin/...)
+	// Check if URL is translatable (exclude /admin/, ...)
 	if ( ! wplng_url_is_translatable( $url ) ) {
 		return $url;
 	}
@@ -185,10 +185,10 @@ function wplng_get_url_exclude_regex() {
 	$option = explode( PHP_EOL, $option );
 
 	// Check each URL REGEX
-	foreach ( $option as $url ) {
-		$url = trim( $url );
-		if ( '' !== $url ) {
-			$url_exclude[] = '#' . $url . '#';
+	foreach ( $option as $regex ) {
+		$regex = trim( $regex );
+		if ( '' !== $regex ) {
+			$url_exclude[] = '#' . $regex . '#';
 		}
 	}
 
@@ -223,12 +223,14 @@ function wplng_get_url_original( $url = '' ) {
 		$url = str_replace( '/' . $target_id . '/', '/', $url );
 	}
 
+	$url = esc_url( $url );
+
 	$url = apply_filters(
 		'wplng_url_original',
 		$url
 	);
 
-	return sanitize_url( $url );
+	return $url;
 }
 
 
