@@ -17,14 +17,26 @@ function wplng_register_assets() {
 		return;
 	}
 
+	/**
+	 * Enqueue jQuery
+	 */
+
 	wp_enqueue_script( 'jquery' );
 
+	/**
+	 * Enqueue wpLingua JS script
+	 */
+
 	wp_enqueue_script(
-		'wplingua',
+		'wplingua-script',
 		plugins_url() . '/wplingua/assets/js/script.js',
 		array( 'jquery' ),
 		WPLNG_API_VERSION
 	);
+
+	/**
+	 * Enqueue wpLingua CSS style
+	 */
 
 	wp_enqueue_style(
 		'wplingua',
@@ -33,15 +45,23 @@ function wplng_register_assets() {
 		WPLNG_API_VERSION
 	);
 
-	$custom_css = get_option( 'wplng_custom_css' );
+	/**
+	 * Add inline style for wpLingua custom CSS
+	 */
 
-	if ( ! empty( $custom_css ) ) {
-		wp_add_inline_style( 'wplingua', $custom_css );
-	}
+	 $custom_css = get_option( 'wplng_custom_css' );
+
+	 if ( ! empty( $custom_css )
+		 && is_string( $custom_css )
+	 ) {
+		 $custom_css = strip_tags( $custom_css );
+		 wp_add_inline_style( 'wplingua', $custom_css );
+	 }
 
 	/**
 	 * Load assets for visual editor
 	 */
+
 	if ( isset( $_GET['wplingua-editor'] ) ) {
 
 		wp_enqueue_style(

@@ -70,38 +70,6 @@ function wplng_get_language_website_flag() {
 
 
 /**
- * Get the emoji of website language flag
- *
- * @param mixed $language
- * @return string
- */
-function wplng_get_language_emoji( $language ) {
-
-	// if $language is a language array, return emoji
-	if ( ! empty( $language['emoji'] ) ) {
-		return esc_html( $language['emoji'] );
-	}
-
-	// $language is a language ID
-	// convert language ID to language array
-	$language = wplng_get_language_by_id( $language );
-
-	// If $language is not a valid, return empty string
-	if ( false === $language ) {
-		return '';
-	}
-
-	// If emoji is valid, return the emoji
-	if ( ! empty( $language['emoji'] ) ) {
-		return esc_html( $language['emoji'] );
-	}
-
-	// If no emoji returned here, return empty string
-	return '';
-}
-
-
-/**
  * Get language name from language ID or data
  *
  * @param mixed $language
@@ -286,7 +254,10 @@ function wplng_get_language_current_id() {
 	$current_path     = $wplng_request_uri;
 	$languages_target = wplng_get_languages_target_ids();
 
-	if ( ! wplng_url_is_translatable() ) {
+	if ( ! wplng_url_is_translatable()
+		|| empty( $current_path )
+		|| ! is_string( $current_path )
+	) {
 		return wplng_get_language_website_id();
 	}
 
@@ -357,7 +328,10 @@ function wplng_get_language_by_id( $language_id ) {
 function wplng_is_valid_language_id( $language_id ) {
 
 	// If $language_id format is not valid, return default data
-	if ( empty( $language_id ) || strlen( $language_id ) !== 2 ) {
+	if ( empty( $language_id )
+		|| ! is_string( $language_id )
+		|| strlen( $language_id ) !== 2
+	) {
 		return false;
 	}
 
@@ -370,6 +344,28 @@ function wplng_is_valid_language_id( $language_id ) {
 	}
 
 	return false;
+}
+
+
+/**
+ * Check if a list of language ID are valid
+ *
+ * @param array $language_id_list
+ * @return bool
+ */
+function wplng_is_valid_language_ids( $language_id_list ) {
+
+	if ( ! is_array( $language_id_list ) ) {
+		return false;
+	}
+
+	foreach ( $language_id_list as $language_id ) {
+		if ( ! wplng_is_valid_language_id( $language_id ) ) {
+			return false;
+		}
+	}
+
+	return true;
 }
 
 
@@ -439,21 +435,12 @@ function wplng_get_languages_all() {
 
 
 /**
- * Get data of all languages in JSON format
- *
- * @return string JSON
- */
-function wplng_get_languages_all_json() {
-	return wp_json_encode( wplng_get_languages_all() );
-}
-
-
-/**
  * Get data of all languages allowed
  *
  * @return array
  */
 function wplng_get_languages_allow() {
+
 	$languages_alow = wplng_get_api_languages_target();
 	$languages      = array();
 

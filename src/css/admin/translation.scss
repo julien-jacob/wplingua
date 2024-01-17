@@ -13,6 +13,18 @@
         display: block;
     }
 
+    .wplng-flag {
+        max-width: 1.5em;
+        max-height: 1.5em;
+        height: auto;
+        margin-right: .4em;
+        vertical-align: text-top;
+    }
+
+    .wplng-source {
+        font-size: 1.1em;
+    }
+
     #wplng-original-language {
         margin: 20px 0 30px;
     }

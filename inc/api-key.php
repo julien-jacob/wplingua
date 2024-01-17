@@ -14,10 +14,13 @@ if ( ! defined( 'WPINC' ) ) {
  */
 function wplng_is_valid_api_key_format( $api_key ) {
 
+	$regex = '/^[a-zA-Z1-9]{42}$/s';
+
 	if (
 		empty( $api_key )
 		|| ! is_string( $api_key )
-		|| 42 !== strlen( $api_key )
+		|| $api_key !== preg_quote( $api_key )
+		|| false === preg_match( $regex, $api_key )
 	) {
 		return false;
 	}
@@ -57,25 +60,77 @@ function wplng_get_api_data() {
 		return array();
 	}
 
-	$api_key_data = get_transient( 'wplng_api_key_data' );
-	$api_key_data = json_decode( $api_key_data, true );
+	$data_checked = array();
+	$data         = get_transient( 'wplng_api_key_data' );
+	$data         = json_decode( $data, true );
 
-	if ( empty( $api_key_data ) ) {
+	// Check and sanitize the API key data
 
-		$api_key_data = wplng_api_call_validate_api_key();
+	if ( ! empty( $data['language_original'] )
+		&& (
+			wplng_is_valid_language_id( $data['language_original'] )
+			|| 'all' === $data['language_original']
+		)
+		&& ! empty( $data['languages_target'] )
+		&& wplng_is_valid_language_ids( $data['languages_target'] )
+		&& isset( $data['features'] )
+		&& is_array( $data['features'] )
+	) {
 
-		if ( empty( $api_key_data ) ) {
+		// Sanitize languages target
+
+		$languages_target = array();
+
+		foreach ( $data['languages_target'] as $id ) {
+
+			if ( ! wplng_is_valid_language_id( $id ) ) {
+				continue;
+			}
+
+			$languages_target[] = sanitize_key( $id );
+		}
+
+		// Sanitize features list
+
+		$features = array();
+
+		foreach ( $data['features'] as $key => $allow ) {
+
+			if ( ! is_string( $key ) || ! is_bool( $allow ) ) {
+				continue;
+			}
+
+			$key   = sanitize_key( $key );
+			$allow = ( true === $allow );
+
+			$features[ $key ] = $allow;
+		}
+
+		// Make the checked response
+
+		$data_checked = array(
+			'language_original' => sanitize_key( $data['language_original'] ),
+			'languages_target'  => $languages_target,
+			'features'          => $features,
+		);
+
+	} else {
+
+		// Get sanitized data from API call
+		$data_checked = wplng_api_call_validate_api_key();
+
+		if ( empty( $data_checked ) ) {
 			return array();
 		}
 
 		set_transient(
 			'wplng_api_key_data',
-			wp_json_encode( $api_key_data ),
+			wp_json_encode( $data_checked ),
 			60 * 60 * 24
 		);
 	}
 
-	return $api_key_data;
+	return $data_checked;
 }
 
 

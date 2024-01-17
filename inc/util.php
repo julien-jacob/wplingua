@@ -68,8 +68,8 @@ function wplng_text_esc( $text ) {
 	$text = html_entity_decode( $text );
 	$text = esc_html( $text );
 	$text = esc_attr( $text );
-	$text = preg_replace( '#\s+#', ' ', $text );
 	$text = str_replace( '\\', '', $text );
+	$text = preg_replace( '#\s+#', ' ', $text );
 	$text = trim( $text );
 
 	return $text;
@@ -77,7 +77,7 @@ function wplng_text_esc( $text ) {
 
 
 /**
- * Return true is $str is HTML
+ * Return true if $str is HTML
  *
  * @param string $str
  * @return string

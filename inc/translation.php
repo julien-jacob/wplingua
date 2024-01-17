@@ -35,12 +35,15 @@ function wplng_get_translation_saved_from_original( $original ) {
 
 		$meta = get_post_meta( get_the_ID() );
 
-		if ( empty( $meta['wplng_translation_original'][0] ) ) {
+		if ( ! isset( $meta['wplng_translation_original'][0] )
+			|| ! is_string( $meta['wplng_translation_original'][0] )
+		) {
 			continue;
 		}
 
 		if ( $meta['wplng_translation_original'][0] === $original ) {
 			$translation = get_post();
+			break;
 		}
 	}
 
@@ -72,7 +75,9 @@ function wplng_get_translations_from_query() {
 
 		$meta = get_post_meta( get_the_ID() );
 
-		if ( empty( $meta['wplng_translation_original'][0] ) ) {
+		if ( ! isset( $meta['wplng_translation_original'][0] )
+			|| ! is_string( $meta['wplng_translation_original'][0] )
+		) {
 			continue;
 		}
 
@@ -94,11 +99,13 @@ function wplng_get_translations_from_query() {
 
 		foreach ( $translations_meta as $translation_meta ) {
 			if ( ! empty( $translation_meta['language_id'] )
-				&& ! empty( $translation_meta['translation'] )
+				&& wplng_is_valid_language_id( $translation_meta['language_id'] )
+				&& isset( $translation_meta['translation'] )
+				&& is_string( $translation_meta['translation'] )
 				&& $translation_meta['translation'] !== '[WPLNG_EMPTY]'
 			) {
-				$language_id     = $translation_meta['language_id'];
-				$translated_text = $translation_meta['translation'];
+				$language_id     = sanitize_key( $translation_meta['language_id'] );
+				$translated_text = sanitize_text_field( $translation_meta['translation'] );
 
 				$translation['translations'][ $language_id ] = $translated_text;
 			}
@@ -114,7 +121,7 @@ function wplng_get_translations_from_query() {
 	wp_reset_postdata();
 
 	set_transient(
-		'wplingua_cached_translations',
+		'wplng_cached_translations',
 		$translations
 	);
 
@@ -130,9 +137,11 @@ function wplng_get_translations_from_query() {
  */
 function wplng_get_translations_target( $target_language_id ) {
 
-	$translations_all_languages = get_transient( 'wplingua_cached_translations' );
+	$translations_all_languages = get_transient( 'wplng_cached_translations' );
 
-	if ( empty( $translations_all_languages ) ) {
+	if ( empty( $translations_all_languages )
+		|| ! is_array( $translations_all_languages )
+	) {
 		$translations_all_languages = wplng_get_translations_from_query();
 	}
 
@@ -140,16 +149,22 @@ function wplng_get_translations_target( $target_language_id ) {
 
 	foreach ( $translations_all_languages as $translation ) {
 		if ( empty( $translation['source'] )
+			|| ! is_string( $translation['source'] )
 			|| empty( $translation['post_id'] )
 			|| empty( $translation['translations'][ $target_language_id ] )
+			|| ! is_string( $translation['translations'][ $target_language_id ] )
 		) {
 			continue;
 		}
 
+		$translation_text = sanitize_text_field(
+			$translation['translations'][ $target_language_id ]
+		);
+
 		$translations_target[] = array(
-			'source'      => $translation['source'],
+			'source'      => sanitize_text_field( $translation['source'] ),
 			'post_id'     => $translation['post_id'],
-			'translation' => $translation['translations'][ $target_language_id ],
+			'translation' => $translation_text,
 		);
 	}
 
@@ -183,7 +198,7 @@ function wplng_save_translation_new( $language_id, $original, $translation ) {
 	 */
 	$new_post_id = wp_insert_post(
 		array(
-			'post_title'  => $title,
+			'post_title'  => esc_html( $title ),
 			'post_type'   => 'wplng_translation',
 			'post_status' => 'publish',
 			'post_name'   => sanitize_title(
@@ -208,7 +223,7 @@ function wplng_save_translation_new( $language_id, $original, $translation ) {
 
 			$translation_meta[] = array(
 				'language_id' => $target_language,
-				'translation' => esc_html( esc_attr( $translation ) ),
+				'translation' => esc_html( $translation ),
 				'status'      => 'generated',
 			);
 		} else {
@@ -303,7 +318,7 @@ function wplng_update_translation( $post, $language_id, $translation ) {
 			} else {
 				$translation_meta[] = array(
 					'language_id' => $target_language,
-					'translation' => esc_html( esc_attr( $translation ) ),
+					'translation' => esc_html( $translation ),
 					'status'      => 'generated',
 				);
 			}
@@ -328,7 +343,7 @@ function wplng_update_translation( $post, $language_id, $translation ) {
 				$translation_already_in   = true;
 				$translation_meta[ $key ] = array(
 					'language_id' => $language_id,
-					'translation' => esc_html( esc_attr( $translation ) ),
+					'translation' => esc_html( $translation ),
 					'status'      => 'generated',
 				);
 				break;
@@ -338,7 +353,7 @@ function wplng_update_translation( $post, $language_id, $translation ) {
 		if ( ! $translation_already_in ) {
 			$translation_meta[] = array(
 				'language_id' => $language_id,
-				'translation' => esc_html( esc_attr( $translation ) ),
+				'translation' => esc_html( $translation ),
 				'status'      => 'generated',
 			);
 		}
@@ -435,7 +450,7 @@ function wplng_save_translation( $target_language_id, $original, $translation, $
  * @return void
  */
 function wplng_clear_translations_cache() {
-	delete_transient( 'wplingua_cached_translations' );
+	delete_transient( 'wplng_cached_translations' );
 }
 
 

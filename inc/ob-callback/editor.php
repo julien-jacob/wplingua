@@ -89,9 +89,13 @@ function wplng_ob_callback_editor( $html ) {
 
 	foreach ( $texts_unknow as $key => $text_source ) {
 		if ( isset( $texts_unknow_translated[ $key ] ) ) {
+
+			$translated = $texts_unknow_translated[ $key ];
+			$translated = esc_html( $translated );
+
 			$translations_new[] = array(
 				'source'      => $text_source,
-				'translation' => $translated = esc_attr( esc_html( $texts_unknow_translated[ $key ] ) ),
+				'translation' => $translated,
 			);
 		}
 	}
@@ -107,9 +111,10 @@ function wplng_ob_callback_editor( $html ) {
 
 	$translations_in_page = array();
 
-	foreach ( $translations as $key_translation => $translation ) {
-		foreach ( $texts as $key_text => $text ) {
-			if ( ! empty( $translation['source'] )
+	foreach ( $translations as $translation ) {
+		foreach ( $texts as $text ) {
+			$text = wplng_text_esc( $text );
+			if ( isset( $translation['source'] )
 				&& $translation['source'] === $text
 			) {
 				$translations_in_page[] = $translation;
@@ -121,7 +126,10 @@ function wplng_ob_callback_editor( $html ) {
 	 * Merge know and new translations
 	 */
 
-	$translations = array_merge( $translations_in_page, $translations_new );
+	$translations = array_merge(
+		$translations_in_page,
+		$translations_new
+	);
 
 	/**
 	 * Replace original texts by translations
@@ -154,7 +162,9 @@ function wplng_ob_callback_editor( $html ) {
 		$class = 'wplingua-editor-link';
 
 		if ( ! empty( $element->class ) ) {
-			$element->class = $class . ' ' . $element->class;
+			$class = sanitize_html_class( $class . ' ' . $element->class );
+
+			$element->class = $class;
 		} else {
 			$element->setAttribute( 'class', $class );
 		}
@@ -202,7 +212,16 @@ function wplng_ob_callback_editor( $html ) {
 				continue;
 			}
 
-			$element->innertext = '<span onclick="window.open(\'' . esc_url( $edit_link ) . '\', \'_blank\');" class="wplng-edit-link" title="' . __( 'Edit this translation', 'wplingua' ) . '">' . esc_html( $text ) . ' </span>';
+			$onclick = 'window.open("' . esc_url( $edit_link ) . '", "_blank");';
+
+			$innertext  = '<span ';
+			$innertext .= 'class="wplng-edit-link" ';
+			$innertext .= 'onclick="' . esc_js( $onclick ) . '" ';
+			$innertext .= 'title="' . esc_attr__( 'Edit this translation', 'wplingua' ) . '">';
+			$innertext .= esc_html( $text );
+			$innertext .= '</span>';
+
+			$element->innertext = $innertext;
 
 		}
 	}
