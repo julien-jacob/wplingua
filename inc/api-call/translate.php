@@ -8,6 +8,33 @@ if ( ! defined( 'WPINC' ) ) {
 
 /**
  * Get data from wpLingua API : Translated texts
+ * 
+ * Return an error message with error code
+ * or an array of translated texts
+ * 
+ * API terms : https://wplingua.com/terms/
+ * 
+ * ---------------------------------------------------
+ * Data sent :
+ * ---------------------------------------------------
+ * - request : 'translate'
+ * - api_key : the API key of website
+ * - version : API compatile version
+ * - source  : A language ID
+ * - target  : A languages ID
+ * - texts   : Array of untranslated texts of website
+ * 
+ * ---------------------------------------------------
+ * Data received if successful :
+ * ---------------------------------------------------
+ * - translations : Array of translated texts
+ * 
+ * ---------------------------------------------------
+ * Data received in case of failure
+ * ---------------------------------------------------
+ * - error   : true
+ * - code    : An integer
+ * - message : Error description
  *
  * @param array $texts
  * @param string $language_source_id
@@ -73,8 +100,8 @@ function wplng_api_call_translate(
 	 */
 
 	$body = array(
-		'api_key' => $api_key,
 		'request' => 'translate',
+		'api_key' => $api_key,
 		'version' => WPLNG_API_VERSION,
 		'source'  => $language_source_id,
 		'target'  => $language_target_id,
