@@ -49,14 +49,17 @@ function wplng_translation_meta_box_html_output( $post ) {
 		&& wplng_is_valid_language_id( $meta['wplng_translation_original_language_id'][0] )
 	) {
 
-		$language_id   = $meta['wplng_translation_original_language_id'][0];
-		$emoji         = wplng_get_language_emoji( $language_id ); // Emoji already esc_html
-		$language_name = wplng_get_language_name( $language_id ); // Name already esc_html
+		$language_id = $meta['wplng_translation_original_language_id'][0];
+		$language    = wplng_get_language_by_id( $language_id );
+		$alt         = __( 'Flag for language: ', 'wplingua' ) . $language['name'];
 
 		$html  = '<div id="wplng-original-language" wplng-lang="' . esc_attr( $language_id ) . '">';
 		$html .= '<label for="wplng_translation_source">';
-		$html .= esc_html( $emoji ) . ' ';
-		$html .= esc_html( $language_name );
+		$html .= '<img ';
+		$html .= 'src="' . esc_url( $language['flag'] ) . '" ';
+		$html .= 'alt="' . esc_attr( $alt ) . '" ';
+		$html .= 'class="wplng-flag">';
+		$html .= esc_html( $language['name'] );
 		$html .= esc_html__( ' - Original text:', 'wplingua' );
 		$html .= '</label>';
 		$html .= '<div class="wplng-source">';
@@ -110,22 +113,27 @@ function wplng_translation_meta_box_html_output( $post ) {
 
 		foreach ( $translations as $translation ) {
 
-			$language_id        = $translation['language_id'];
-			$emoji              = wplng_get_language_emoji( $language_id ); // Emoji already esc_html
-			$language_name      = wplng_get_language_name( $language_id ); // Name already esc_html
-			$label              = $emoji . ' ' . $language_name . __( ' - Translation:', 'wplingua' );
-			$textarea           = $translation['translation'];
-			$name               = 'wplng_translation_' . $language_id;
-			$container_id       = 'wplng-translation-' . $language_id;
-			$generate_link_text = __( 'Regenerate translation', 'wplingua' );
+			$language_id   = $translation['language_id'];
+			$language      = wplng_get_language_by_id( $language_id );
+			$textarea      = $translation['translation'];
+			$name          = 'wplng_translation_' . $language_id;
+			$container_id  = 'wplng-translation-' . $language_id;
+			$generate_link = __( 'Regenerate translation', 'wplingua' );
+			$alt           = __( 'Flag for language: ', 'wplingua' ) . $language['name'];
 
 			if ( '[WPLNG_EMPTY]' === $textarea ) {
 				$textarea = '';
 			}
 
 			$html .= '<div id="' . esc_attr( $container_id ) . '" class="wplng-edit-language">';
-			$html .= '<label for="' . esc_attr( $name ) . '">' . esc_html( $label ) . '</label>';
-
+			$html .= '<label for="' . esc_attr( $name ) . '">';
+			$html .= '<img ';
+			$html .= 'src="' . esc_url( $language['flag'] ) . '" ';
+			$html .= 'alt="' . esc_attr( $alt ) . '" ';
+			$html .= 'class="wplng-flag">';
+			$html .= esc_html( $language['name'] );
+			$html .= esc_html__( ' - Translation:', 'wplingua' );
+			$html .= '</label>';
 			$html .= '<textarea name="' . esc_attr( $name ) . '" ';
 			$html .= 'id="' . esc_attr( $name ) . '" ';
 			$html .= 'lang="' . esc_attr( $language_id ) . '" ';
@@ -143,7 +151,7 @@ function wplng_translation_meta_box_html_output( $post ) {
 
 			switch ( $translation['status'] ) {
 				case 'ungenerated':
-					$generate_link_text = __( 'Generate translation', 'wplingua' );
+					$generate_link = __( 'Generate translation', 'wplingua' );
 
 					$html .= '<span class="wplng-status">';
 					$html .= esc_html__( 'Status: Ungenerated', 'wplingua' );
@@ -200,7 +208,7 @@ function wplng_translation_meta_box_html_output( $post ) {
 			$html .= 'href="javascript:void(0);" ';
 			$html .= 'class="wplng-generate" ';
 			$html .= 'wplng-lang="' . esc_attr( $language_id ) . '">';
-			$html .= esc_html( $generate_link_text );
+			$html .= esc_html( $generate_link );
 			$html .= '</a>';
 
 			$html .= '</div>'; // End .wplng-translation-footer-right
