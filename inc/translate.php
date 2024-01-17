@@ -73,18 +73,30 @@ function wplng_translate_json_array( $json_decoded, $translations, $parents = ar
 	$array_translated = $json_decoded;
 	$json_excluded    = wplng_data_excluded_json();
 
+	/**
+	 * Don't parse JSON if it's exclude
+	 */
 	if ( in_array( $parents, $json_excluded ) ) {
 		return $json_decoded;
 	}
 
+	/**
+	 * Parse each JSON elements
+	 */
 	foreach ( $json_decoded as $key => $value ) {
 
+		/**
+		 * Don't parse element if it's exclude
+		 */
 		if ( in_array( array_merge( $parents, array( $key ) ), $json_excluded ) ) {
 			continue;
 		}
 
 		if ( is_array( $value ) ) {
 
+			/**
+			 * If element is an array, parse it
+			 */
 			$array_translated[ $key ] = wplng_translate_json_array(
 				$value,
 				$translations,
@@ -93,11 +105,23 @@ function wplng_translate_json_array( $json_decoded, $translations, $parents = ar
 
 		} elseif ( is_string( $value ) ) {
 
+			/**
+			 * If element is a string
+			 */
+
 			if ( wplng_str_is_locale_id( $value ) ) {
+
+				/**
+				 * If is a local ID (fr_FR, fr, FR, ...), replace by current 
+				 */
 
 				$array_translated[ $key ] = wplng_get_language_current_id();
 
 			} elseif ( wplng_str_is_html( $value ) ) {
+
+				/**
+				 * If element is a HTML, parse and translate it
+				 */
 
 				$array_translated[ $key ] = wplng_translate_html(
 					$value,
@@ -108,6 +132,10 @@ function wplng_translate_json_array( $json_decoded, $translations, $parents = ar
 
 			} elseif ( wplng_str_is_json( $value ) ) {
 
+				/**
+				 * If element is a JSON, parse and translate it
+				 */
+
 				$array_translated[ $key ] = wplng_translate_json(
 					$value,
 					$translations,
@@ -116,9 +144,20 @@ function wplng_translate_json_array( $json_decoded, $translations, $parents = ar
 
 			} elseif ( wplng_str_is_url( $value ) ) {
 
+				/**
+				 * If element is an URL, replace by translated URL
+				 */
+
 				$array_translated[ $key ] = wplng_url_translate( $value );
 
 			} else {
+
+				/**
+				 * Element is a unknow string, check if it's translatable
+				 * - Check if is an excluded element
+				 * - Check if is an included element
+				 * - Check if is a translatable string 
+				 */
 
 				$is_translatable = wplng_json_element_is_translatable(
 					$value,
