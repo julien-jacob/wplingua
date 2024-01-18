@@ -298,12 +298,9 @@ function wplng_get_modal_switcher_html() {
 		}
 
 		if ( ! empty( $language_website['flag'] ) ) {
-
-			$alt = __( 'Flag for language: ', 'wplingua' ) . $language_target['name'];
-
 			$html .= '<img ';
 			$html .= 'src="' . esc_url( $language_target['flag'] ) . '" ';
-			$html .= 'alt="' . esc_attr( $alt ) . '">';
+			$html .= 'alt="' . esc_attr( $language_target['name'] ) . '">';
 		}
 
 		$html .= '<span class="language-name">';
@@ -325,12 +322,9 @@ function wplng_get_modal_switcher_html() {
 		$html .= 'onclick="event.preventDefault();">';
 
 		if ( ! empty( $language_website['flag'] ) ) {
-
-			$alt = __( 'Flag for language: ', 'wplingua' ) . $language_website['name'];
-
 			$html .= '<img ';
 			$html .= 'src="' . esc_url( $language_website['flag'] ) . '" ';
-			$html .= 'alt="' . esc_attr( $alt ) . '">';
+			$html .= 'alt="' . esc_attr( $language_website['name'] ) . '">';
 		}
 
 		$html .= '<span class="language-name">';
@@ -355,12 +349,9 @@ function wplng_get_modal_switcher_html() {
 			$html .= 'onclick="event.preventDefault();">';
 
 			if ( ! empty( $language_target['flag'] ) ) {
-
-				$alt = __( 'Flag for language: ', 'wplingua' ) . $language_target['name'];
-
 				$html .= '<img ';
 				$html .= 'src="' . esc_url( $language_target['flag'] ) . '" ';
-				$html .= 'alt="' . esc_attr( $alt ) . '">';
+				$html .= 'alt="' . esc_attr( $language_target['name'] ) . '">';
 			}
 
 			$html .= '<span class="language-name">';

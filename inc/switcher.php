@@ -403,13 +403,10 @@ function wplng_get_switcher_html( $arg = array() ) {
 		$html .= 'href="' . esc_url( $url_website ) . '">';
 	}
 
-	if ( ! empty( $language_website['flag'] && $flags_show ) ) {
-
-		$alt = __( 'Flag for language: ', 'wplingua' ) . $language_website['name'];
-
+	if ( $flags_show && ! empty( $language_website['flag'] ) ) {
 		$html .= '<img ';
 		$html .= 'src="' . esc_url( $language_website['flag'] ) . '" ';
-		$html .= 'alt="' . esc_attr( $alt ) . '">';
+		$html .= 'alt="' . esc_attr( $language_website['name'] ) . '">';
 	}
 
 	$html .= '<span class="language-id">' . esc_html( $language_website['id'] ) . '</span>';
@@ -446,13 +443,10 @@ function wplng_get_switcher_html( $arg = array() ) {
 
 		}
 
-		if ( ! empty( $language_target['flag'] ) && $flags_show ) {
-
-			$alt = __( 'Flag for language: ', 'wplingua' ) . $language_target['name'];
-
+		if ( $flags_show && ! empty( $language_target['flag'] ) ) {
 			$html .= '<img ';
 			$html .= 'src="' . esc_url( $language_target['flag'] ) . '" ';
-			$html .= 'alt="' . esc_attr( $alt ) . '">';
+			$html .= 'alt="' . esc_attr( $language_target['name'] ) . '">';
 		}
 
 		$html .= '<span class="language-id">' . esc_html( $language_target['id'] ) . '</span>';
@@ -470,13 +464,10 @@ function wplng_get_switcher_html( $arg = array() ) {
 		$html .= 'href="' . esc_url( $url_website ) . '" ';
 		$html .= 'onclick="event.preventDefault();">';
 
-		if ( ! empty( $language_website['flag'] ) && $flags_show ) {
-
-			$alt = __( 'Flag for language: ', 'wplingua' ) . $language_website['name'];
-
+		if ( $flags_show && ! empty( $language_website['flag'] ) ) {
 			$html .= '<img ';
 			$html .= 'src="' . esc_url( $language_website['flag'] ) . '" ';
-			$html .= 'alt="' . esc_attr( $alt ) . '">';
+			$html .= 'alt="' . esc_attr( $language_website['name'] ) . '">';
 		}
 
 		$html .= '<span class="language-id">' . esc_html( $language_website['id'] ) . '</span>';
@@ -499,13 +490,10 @@ function wplng_get_switcher_html( $arg = array() ) {
 			$html .= 'href="' . esc_url( $url ) . '" ';
 			$html .= 'onclick="event.preventDefault();">';
 
-			if ( ! empty( $language_target['flag'] ) && $flags_show ) {
-
-				$alt = __( 'Flag for language: ', 'wplingua' ) . $language_target['name'];
-
+			if ( $flags_show && ! empty( $language_target['flag'] ) ) {
 				$html .= '<img ';
 				$html .= 'src="' . esc_url( $language_target['flag'] ) . '" ';
-				$html .= 'alt="' . esc_attr( $alt ) . '">';
+				$html .= 'alt="' . esc_attr( $language_target['name'] ) . '">';
 			}
 
 			$html .= '<span class="language-id">' . esc_html( $language_target['id'] ) . '</span>';
