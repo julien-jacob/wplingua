@@ -54,7 +54,7 @@ function wplng_register_assets() {
 	 if ( ! empty( $custom_css )
 		 && is_string( $custom_css )
 	 ) {
-		 $custom_css = strip_tags( $custom_css );
+		 $custom_css = wp_strip_all_tags( $custom_css );
 		 wp_add_inline_style( 'wplingua', $custom_css );
 	 }
 

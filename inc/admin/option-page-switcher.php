@@ -23,7 +23,7 @@ function wplng_option_page_switcher() {
 	if ( empty( $custom_css ) || ! is_string( $custom_css ) ) {
 		$custom_css = '';
 	} else {
-		$custom_css = strip_tags( $custom_css );
+		$custom_css = wp_strip_all_tags( $custom_css );
 	}
 
 	?>
