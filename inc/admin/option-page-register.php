@@ -92,7 +92,7 @@ function wplng_option_page_register() {
 
 			$mail = '';
 
-			if ( ! empty( $data_request_key['mail_address'] ) 
+			if ( ! empty( $data_request_key['mail_address'] )
 				&& is_email( $data_request_key['mail_address'] )
 			) {
 				$mail = sanitize_email( $data_request_key['mail_address'] );
@@ -112,8 +112,11 @@ function wplng_option_page_register() {
 	endif;
 	?>
 	<div class="wrap">
-		<h1><span class="dashicons dashicons-translation"></span> <?php esc_html_e( 'wpLingua: Register API key', 'wplingua' ); ?></h1>
-		<br>
+		
+		<h1 class="wp-heading-inline"><span class="dashicons dashicons-translation"></span> <?php esc_html_e( 'wpLingua - Register API key', 'wplingua' ); ?></h1>
+		
+		<hr class="wp-header-end">
+
 		<form method="post" action="options.php">
 			<?php
 			settings_fields( 'wplng_settings' );
@@ -145,7 +148,7 @@ function wplng_option_page_register() {
 				</tr>
 
 				<tr>
-					<th scope="row"><?php esc_html_e( 'Get premium API Key', 'wplingua' ); ?></th>
+					<th scope="row"><?php esc_html_e( 'Get advanced API features', 'wplingua' ); ?></th>
 					<td>
 						<?php wplng_register_part_premium(); ?>
 					</td>

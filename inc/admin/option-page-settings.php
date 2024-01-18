@@ -25,9 +25,9 @@ function wplng_option_page_settings() {
 	?>
 	<div class="wrap">
 		
-		<h1><span class="dashicons dashicons-translation"></span> <?php esc_html_e( 'wpLingua: Translation solution for multilingual website', 'wplingua' ); ?></h1>
+		<h1 class="wp-heading-inline"><span class="dashicons dashicons-translation"></span> <?php esc_html_e( 'wpLingua - Translation solution for multilingual website', 'wplingua' ); ?></h1>
 
-		<br>
+		<hr class="wp-header-end">
 
 		<form method="post" action="options.php">
 			<?php

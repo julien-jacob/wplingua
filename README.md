@@ -1,6 +1,6 @@
 ![wpLingue header image](https://raw.githubusercontent.com/julien-jacob/wplingua/master/wp-assets/banner-1544x500.png)
 
-# wpLingua: WordPress plugin
+# wpLingua - WordPress plugin
 
 ## Translate and make your website multilingual
 

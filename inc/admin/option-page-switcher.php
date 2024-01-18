@@ -29,9 +29,9 @@ function wplng_option_page_switcher() {
 	?>
 	<div class="wrap">
 		
-		<h1><span class="dashicons dashicons-translation"></span> <?php esc_html_e( 'wpLingua: Switcher settings', 'wplingua' ); ?></h1>
+		<h1 class="wp-heading-inline"><span class="dashicons dashicons-translation"></span> <?php esc_html_e( 'wpLingua - Switcher settings', 'wplingua' ); ?></h1>
 
-		<br>
+		<hr class="wp-header-end">
 
 		<form method="post" action="options.php">
 			<?php
@@ -292,7 +292,7 @@ function wplng_options_switcher_update_flags_style( $old_flags_style, $new_flags
 		}
 	}
 
-	$target_languages_json = wp_json_encode( 
+	$target_languages_json = wp_json_encode(
 		$target_languages,
 		JSON_UNESCAPED_SLASHES
 	);
