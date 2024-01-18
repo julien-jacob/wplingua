@@ -446,7 +446,7 @@ function wplng_translate_html(
 			$translations
 		);
 
-		$element->innertext = esc_js( $translated_js );
+		$element->innertext = strip_tags( $translated_js );
 	}
 
 	/**
