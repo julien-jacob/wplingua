@@ -1,7 +1,7 @@
 === wpLingua ===
 Contributors: wpr0ck, lyly13
 Donate link: https://wplingua.com/
-Tags: translation, translate, autotranslate, autotranslation, machine translations, translator, website translation, multilingual, multilingual website, multilingual SEO, SEO-friendly, localization, languages, language switcher, traduction
+Tags: translation, translate, autotranslate, autotranslation, translator, website translation, multilingual, multilingual website, multilingual SEO, localization, languages
 Requires at least: 5.0
 Tested up to: 6.4
 Stable tag: 1.0.1
