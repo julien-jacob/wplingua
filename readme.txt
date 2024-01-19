@@ -4,7 +4,7 @@ Donate link: https://wplingua.com/
 Tags: translation, translate, autotranslate, autotranslation, machine translations, translator, website translation, multilingual, multilingual website, multilingual SEO, SEO-friendly, localization, languages, language switcher, traduction
 Requires at least: 5.0
 Tested up to: 6.4
-Stable tag: 1.0.0
+Stable tag: 1.0.1
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -123,6 +123,18 @@ You can visit our [official website for assistance](https://wplingua.com/support
 8. All translations are stored on your WordPress site.
 
 == Changelog ==
+
+= 1.0.1 =
+
+* Review code
+* Review shortcode
+* Review some texts and HTML
+* Update plugin translations
+* Add default excluded element for translation : code
+* Add default excluded element for editor links : option
+* CSS: Better switcher margin
+* CSS: Hover effect for link’s editor
+* Better flags in admin
 
 = 1.0.0 =
 * **Options pages** 
