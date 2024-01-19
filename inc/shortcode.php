@@ -30,7 +30,7 @@ function wplng_shortcode_notranslate( $atts, $content ) {
 
 
 /**
- * wpLingua Shortcode : [wplingua-switcher]
+ * wpLingua Shortcode : [wplng-switcher]
  *
  * @param array $atts
  * @return string
