@@ -7,7 +7,7 @@ if ( ! defined( 'WPINC' ) ) {
 
 
 /**
- * wpLingua Shortcode : [notranslate], [wplingua-notranslate]
+ * wpLingua Shortcode : [wplng_notranslate]
  *
  * @param array $atts
  * @param string $content
@@ -15,22 +15,16 @@ if ( ! defined( 'WPINC' ) ) {
  */
 function wplng_shortcode_notranslate( $atts, $content ) {
 
-	$attributes = shortcode_atts(
-		array(
-			'tag' => 'span',
-		), $atts
-	);
-
-	$html  = '<' . $attributes['tag'] . ' class="notranslate">';
+	$html  = '<span class="notranslate">';
 	$html .= wp_kses_post( $content );
-	$html .= '</' . $attributes['tag'] . '>';
+	$html .= '</span>';
 
 	return $html;
 }
 
 
 /**
- * wpLingua Shortcode : [wplng-switcher]
+ * wpLingua Shortcode : [wplng_switcher]
  *
  * @param array $atts
  * @return string
