@@ -112,7 +112,7 @@ function wplng_translate_json_array( $json_decoded, $translations, $parents = ar
 			if ( wplng_str_is_locale_id( $value ) ) {
 
 				/**
-				 * If is a local ID (fr_FR, fr, FR, ...), replace by current 
+				 * If is a local ID (fr_FR, fr, FR, ...), replace by current
 				 */
 
 				$array_translated[ $key ] = wplng_get_language_current_id();
@@ -156,7 +156,7 @@ function wplng_translate_json_array( $json_decoded, $translations, $parents = ar
 				 * Element is a unknow string, check if it's translatable
 				 * - Check if is an excluded element
 				 * - Check if is an included element
-				 * - Check if is a translatable string 
+				 * - Check if is a translatable string
 				 */
 
 				$is_translatable = wplng_json_element_is_translatable(
@@ -164,7 +164,7 @@ function wplng_translate_json_array( $json_decoded, $translations, $parents = ar
 					array_merge( $parents, array( $key ) )
 				);
 
-				if ( WPLNG_LOG_JSON_DEBUG ) {
+				if ( defined( 'WPLNG_LOG_JSON_DEBUG' ) && WPLNG_LOG_JSON_DEBUG ) {
 					error_log(
 						var_export(
 							array(
@@ -190,7 +190,8 @@ function wplng_translate_json_array( $json_decoded, $translations, $parents = ar
 			}
 		}
 
-		if ( WPLNG_LOG_JSON_DEBUG
+		if ( defined( 'WPLNG_LOG_JSON_DEBUG' ) 
+			&& WPLNG_LOG_JSON_DEBUG
 			&& ( $array_translated[ $key ] != $json_decoded[ $key ] )
 			&& ! is_array( $json_decoded[ $key ] )
 		) {
