@@ -37,9 +37,18 @@ function wplng_create_menu() {
 		__( 'wpLingua', 'wplingua' ),
 		'administrator',
 		'wplingua-settings',
-		'wplng_option_page_settings',
+		'',
 		'dashicons-translation',
 		31
+	);
+
+	add_submenu_page(
+		'wplingua-settings',
+		__( 'wplingua: Settings', 'wplingua' ),
+		__( 'General settings', 'wplingua' ),
+		'administrator',
+		'wplingua-settings',
+		'wplng_option_page_settings'
 	);
 
 	add_submenu_page(

@@ -203,7 +203,7 @@ function wplng_option_page_switcher() {
 						<br>
 						<p>
 							<strong class="wplng-fe-50"><?php esc_html_e( 'Shortcode switcher: ', 'wplingua' ); ?></strong>
-							<code class="wplng-fe-50">[wplingua-switcher]</code>
+							<code class="wplng-fe-50">[wplng-switcher]</code>
 						</p>
 						
 					</td>
