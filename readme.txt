@@ -1,7 +1,7 @@
 === wpLingua ===
 Contributors: wpr0ck, lyly13
 Donate link: https://wplingua.com/
-Tags: translation, translate, autotranslate, autotranslation, translator, website translation, multilingual, multilingual website, multilingual SEO, localization, languages
+Tags: translation, translate, autotranslate, autotranslation, multilingual, multilingual website, localization
 Requires at least: 5.0
 Tested up to: 6.4
 Stable tag: 1.0.1
@@ -23,7 +23,7 @@ The highlights:
 * search engine optimization (SEO)
 * no coding knowledge needed
 * self-hosted data
-* Open source, find us on ([Github](https://github.com/julien-jacob/wplingua))
+* open source, find us on ([Github](https://github.com/julien-jacob/wplingua))
 * and more!
 
 = One free target language =
@@ -44,13 +44,9 @@ With dozens of **pre-designed themes** at your fingertips, you have the liberty 
 = Intuitive possibilities to exclude certain translations =
 Navigate the complexities of website translation with wpLingua's intelligent exclusion feature. Want to preserve specific sections of a page in its original language? Our system seamlessly allows you to pinpoint and **exclude translations using CSS selectors**. But it doesn't stop there. If entire pages need to remain untouched, effortlessly exclude them by their URL. All of this can be managed with ease through our user-friendly exclusions manager. With wpLingua, you're always in command of what gets translated and what doesn't, ensuring your site's essence remains intact.
 
-= Discover premium features: =
-* **Seamless integration with WooCommerce:**
-Elevate your online store's potential with wpLingua. By effortlessly **translating your entire product catalog and essential store details**, you can cater to a diverse and global audience. Break language barriers and watch as your store reaches previously untapped markets. _The result?_ A significant boost in your sales and brand recognition. wpLingua ensures your online business truly speaks the language of success!
-* **Enhanced multilingual search capability:**
-Navigating a website and finding the desired content can be a daunting task, especially when language barriers stand in the way. With wpLingua's **WP Search feature**, you can empower your visitors to effortlessly search and discover content on your site in their native language. Elevate their browsing experience and ensure that every query yields accurate, relevant results, tailored to each individual's linguistic preference.
-* **Add more translated languages:**
-In the free version, **one language is offered to you**, so you get a **bilingual website**! If you want a **trilingual website**, a **quadrilingual website** or more, you can [purchase additional languages ​​on the official website](https://wplingua.com/).
+= The wpLingua API =
+The wpLingua plugin relies on our own wpLingua API, an integrated third-party service, to provide its machine translation functionality. The call to this Third Party Service (wpLingua API) is made when creating an API key from the plugin, during API key verification and when your site requests a new automatic translation (new texts discovered on a page web or request automatic translations from the translation edition). We invite you to consult our [Terms & Conditions page](https://wplingua.com/terms-and-conditions/) for more information.
+
 
 == Installation ==
 
@@ -61,8 +57,8 @@ In the free version, **one language is offered to you**, so you get a **bilingua
 
 == Frequently Asked Questions ==
 
-= What languages ​​are available for translation?=
-For the moment the available languages ​​are: 
+= What languages are available for translation?=
+For the moment the available languages are: 
 
 * English
 * French
@@ -73,31 +69,22 @@ For the moment the available languages ​​are:
 * Simplified Chinese
 * Spanish
 
-If you need a language, let us know using the [contact form available on our website](https://wplingua.com/contact/), we add languages ​​as we go.
+If you need a language, let us know using the [contact form available on our website](https://wplingua.com/contact/), we add languages as we go.
 
-= What languages ​​are available in the plugin administration? =
-At the moment, the plugin is available in English, French, Spanish and Portuguese. If you want to help us translate it into more languages, don't hesitate!
+= What languages are available in the plugin administration? =
+At the moment, the plugin is available in English, French, German, Italian, Spanish and Portuguese. If you want to help us translate it into more languages, don't hesitate!
 
 = Is it compatible with page builders? =
 Yes, wpLingua is designed to work seamlessly with most popular page builders.
 
 = How it works? =
-wpLingua discovers all the texts on your website, then **automatically translates** them.
+wpLingua intercepts page content and analyzes HTML and JS code. It discovers all texts, translates them and makes the pages multilingual. This approach ensures compatibility with most themes, plugins and page builders such as Gutenberg, Elementor, Divi…
 
 = Is it possible to edit translations manually? =
 Of course ! Simply activate the **translation editor** on the page to make your changes.
 
-= Should we use a third-party API key for translations? =
-No it's not worth it. **wpLingua has its own automatic translation API**.
-
 = What is the translated word limit? =
 wpLingua does **not limit the translation of the number of words**.
-
-= Is it free? =
-**wpLingua allows you to make your site bilingual for free (1 language translated)**. If you want to use more languages, you can subscribe to the premium plans.
-
-= Is wpLingua compatible with WooCommerce? =
-Yes, the premium version of wpLingua allows you to **translate your entire store**.
 
 = Is wpLingua compatible with WordPress Multisite? =
 No, wpLingua is not compatible with WordPress Multisite
@@ -106,15 +93,12 @@ No, wpLingua is not compatible with WordPress Multisite
 Quite ! And it's even recommended to cache your pages and translations to improve site loading and performance.
 
 = Is there a Gutenberg block or Divi/Elementor widget to easily display the language switcher? =
-No, not at the moment but in the meantime, you can easily display the language switcher wherever you want using our shortcode provided for this purpose. Simply copy and paste this shortcode where you want: **[wplingua-switcher]**
-
-= How can I get help or support? =
-You can visit our [official website for assistance](https://wplingua.com/support/) or reach out to our support team.
+No, not at the moment but in the meantime, you can easily display the language switcher wherever you want using our shortcode provided for this purpose. Simply copy and paste this shortcode where you want: **[wplng_switcher]**
 
 == Screenshots ==
 
 1. Once the plugin is downloaded, installed and activated, register your API key.
-2. As soon as your API key has been registered, your site is multilingual. This option screen allows you to configure your languages ​​and their flags, as well as activate the functionalities.
+2. As soon as your API key has been registered, your site is multilingual. This option screen allows you to configure your languages and their flags, as well as activate the functionalities.
 3. Customizing the language switcher, enable or disable auto-insertion + choose position or use the shortcode.
 4. You have the possibility to exclude pages or parts of pages.
 5. If you need, you can edit a translation directly from your pages using our visual editor.
@@ -192,4 +176,3 @@ You can visit our [official website for assistance](https://wplingua.com/support
 
 = 1.0.0 =
 First release. Be sure to set up your preferences after installation.
-

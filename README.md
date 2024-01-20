@@ -8,6 +8,10 @@ An all-in-one solution that makes your websites multilingual and translates them
 
 Visite the project website: [wpLingua.com](https://wplingua.com)
 
+## The wpLingua API
+
+The wpLingua plugin relies on our own wpLingua API, an integrated third-party service, to provide its machine translation functionality. The call to this Third Party Service (wpLingua API) is made when creating an API key from the plugin, during API key verification and when your site requests a new automatic translation (new texts discovered on a page web or request automatic translations from the translation edition). We invite you to consult our [Terms & Conditions page](https://wplingua.com/terms-and-conditions/) for more information.
+
 ## Screenshot
 
 ![Once the plugin is downloaded, installed and activated, register your API key.](https://raw.githubusercontent.com/julien-jacob/wplingua/master/wp-assets/screenshot-1.jpg)
