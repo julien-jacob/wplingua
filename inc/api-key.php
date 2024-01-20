@@ -64,7 +64,9 @@ function wplng_get_api_data() {
 	$data         = get_transient( 'wplng_api_key_data' );
 	$data         = json_decode( $data, true );
 
-	// Check and sanitize the API key data
+	/**
+	 * Check the API key data
+	 */
 
 	if ( ! empty( $data['language_original'] )
 		&& (
@@ -77,7 +79,9 @@ function wplng_get_api_data() {
 		&& is_array( $data['features'] )
 	) {
 
-		// Sanitize languages target
+		/**
+		 * Sanitize languages target
+		 */
 
 		$languages_target = array();
 
@@ -90,7 +94,9 @@ function wplng_get_api_data() {
 			$languages_target[] = sanitize_key( $id );
 		}
 
-		// Sanitize features list
+		/**
+		 * Sanitize features list
+		 */
 
 		$features = array();
 
@@ -106,7 +112,9 @@ function wplng_get_api_data() {
 			$features[ $key ] = $allow;
 		}
 
-		// Make the checked response
+		/**
+		 * Make the checked response
+		 */
 
 		$data_checked = array(
 			'language_original' => sanitize_key( $data['language_original'] ),
@@ -116,7 +124,10 @@ function wplng_get_api_data() {
 
 	} else {
 
-		// Get sanitized data from API call
+		/**
+		 * Get sanitized data from API call
+		 */
+
 		$data_checked = wplng_api_call_validate_api_key();
 
 		if ( empty( $data_checked ) ) {

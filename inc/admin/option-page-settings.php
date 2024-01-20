@@ -24,7 +24,7 @@ function wplng_option_page_settings() {
 
 	?>
 	<div class="wrap">
-		
+
 		<h1 class="wp-heading-inline"><span class="dashicons dashicons-translation"></span> <?php esc_html_e( 'wpLingua - Translation solution for multilingual website', 'wplingua' ); ?></h1>
 
 		<hr class="wp-header-end">
@@ -63,9 +63,9 @@ function wplng_option_page_settings() {
 					</td>
 				</tr>
 			</table>
-			
+
 			<?php submit_button(); ?>
-		
+
 		</form>
 	</div>
 	<?php
@@ -137,14 +137,13 @@ function wplng_settings_part_first_use() {
  */
 function wplng_settings_part_language_website() {
 
-	$api_language_website   = wplng_get_api_language_website();
-	$website_language_style = '';
+	$api_language_website = wplng_get_api_language_website();
 
 	if ( 'all' !== $api_language_website ) {
-		$website_language_style = ' style="display: none;"';
+		echo '<fieldset style="display: none;">';
+	} else {
+		echo '<fieldset>';
 	}
-
-	echo '<fieldset' . $website_language_style . '>';
 
 	echo '<label for="wplng_website_language" class="wplng-fe-50">';
 	echo '<strong>';
@@ -244,8 +243,8 @@ function wplng_settings_part_languages_target() {
 	<fieldset id="fieldset-add-target-language">
 		<label for="wplng_add_new_target_language" class="wplng-fe-50">
 			<strong><?php esc_html_e( 'Add new target Language: ', 'wplingua' ); ?></strong>
-		</label>							
-		
+		</label>
+
 		<select id="wplng_add_new_target_language" name="wplng_add_new_target_language"></select>
 
 		<a class="button button-primary wplng-icon-button" id="wplng-target-lang-add" title="<?php esc_html_e( 'Add language', 'wplingua' ); ?>" href="javascript:void(0);">
@@ -268,7 +267,7 @@ function wplng_settings_part_languages_target() {
 					<a href="javascript:void(0);" class="wplng-target-lang-remove" wplng-target-lang="[LANG]"><?php esc_html_e( 'Remove', 'wplingua' ); ?></a>
 				</div>
 			</div>
-			
+
 			<div class="wplng-flag-target-container" wplng-target-lang="[LANG]">
 				<p>
 					<strong><?php esc_html_e( 'Flag: ', 'wplingua' ); ?></strong>
@@ -333,11 +332,11 @@ function wplng_settings_part_api_key() {
 	?>
 	<fieldset>
 		<p><label for="wplng_api_key"><strong><?php esc_html_e( 'Website API key:', 'wplingua' ); ?></strong></label></p>
-		
+
 		<input type="text" id="wplng-api-key-fake" value="●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●" disabled></input>
 
 		<input type="text" name="wplng_api_key" id="wplng_api_key" value="<?php echo esc_attr( wplng_get_api_key() ); ?>" style="display: none;"></input>
-		
+
 		<a class="button button-primary wplng-icon-button" id="wplng-api-key-show" href="javascript:void(0);" title="<?php esc_html_e( 'Show API key', 'wplingua' ); ?>"><span class="dashicons dashicons-visibility"></span></a>
 
 		<a class="button button-primary wplng-icon-button" id="wplng-api-key-hide" href="javascript:void(0);" title="<?php esc_html_e( 'Hide API key', 'wplingua' ); ?>" style="display: none;"><span class="dashicons dashicons-hidden"></span></a>

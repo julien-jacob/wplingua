@@ -349,14 +349,14 @@ function wplng_data_languages() {
 			'flag'             => 'cn',
 			'flags'            => array(
 				array(
-					'name'  => __( 'China', 'wplingua' ),
-					'id'    => 'cn',
-					'flag'  => 'cn',
+					'name' => __( 'China', 'wplingua' ),
+					'id'   => 'cn',
+					'flag' => 'cn',
 				),
 				array(
-					'name'  => __( 'Hong Kong', 'wplingua' ),
-					'id'    => 'hk',
-					'flag'  => 'hk',
+					'name' => __( 'Hong Kong', 'wplingua' ),
+					'id'   => 'hk',
+					'flag' => 'hk',
 				),
 			),
 			'name_translation' => array(
@@ -377,14 +377,14 @@ function wplng_data_languages() {
 			'flag'             => 'gb',
 			'flags'            => array(
 				array(
-					'name'  => __( 'UK', 'wplingua' ),
-					'id'    => 'gb',
-					'flag'  => 'gb',
+					'name' => __( 'UK', 'wplingua' ),
+					'id'   => 'gb',
+					'flag' => 'gb',
 				),
 				array(
-					'name'  => __( 'USA', 'wplingua' ),
-					'id'    => 'us',
-					'flag'  => 'us',
+					'name' => __( 'USA', 'wplingua' ),
+					'id'   => 'us',
+					'flag' => 'us',
 				),
 			),
 			'name_translation' => array(
@@ -405,19 +405,19 @@ function wplng_data_languages() {
 			'flag'             => 'fr',
 			'flags'            => array(
 				array(
-					'name'  => __( 'France', 'wplingua' ),
-					'id'    => 'fr',
-					'flag'  => 'fr',
+					'name' => __( 'France', 'wplingua' ),
+					'id'   => 'fr',
+					'flag' => 'fr',
 				),
 				array(
-					'name'  => __( 'Belgium', 'wplingua' ),
-					'id'    => 'be',
-					'flag'  => 'be',
+					'name' => __( 'Belgium', 'wplingua' ),
+					'id'   => 'be',
+					'flag' => 'be',
 				),
 				array(
-					'name'  => __( 'Canada', 'wplingua' ),
-					'id'    => 'ca',
-					'flag'  => 'ca',
+					'name' => __( 'Canada', 'wplingua' ),
+					'id'   => 'ca',
+					'flag' => 'ca',
 				),
 			),
 			'name_translation' => array(
@@ -438,9 +438,9 @@ function wplng_data_languages() {
 			'flag'             => 'de',
 			'flags'            => array(
 				array(
-					'name'  => __( 'Germany', 'wplingua' ),
-					'id'    => 'de',
-					'flag'  => 'de',
+					'name' => __( 'Germany', 'wplingua' ),
+					'id'   => 'de',
+					'flag' => 'de',
 				),
 			),
 			'name_translation' => array(
@@ -461,9 +461,9 @@ function wplng_data_languages() {
 			'flag'             => 'it',
 			'flags'            => array(
 				array(
-					'name'  => __( 'Italy', 'wplingua' ),
-					'id'    => 'it',
-					'flag'  => 'it',
+					'name' => __( 'Italy', 'wplingua' ),
+					'id'   => 'it',
+					'flag' => 'it',
 				),
 			),
 			'name_translation' => array(
@@ -484,9 +484,9 @@ function wplng_data_languages() {
 			'flag'             => 'jp',
 			'flags'            => array(
 				array(
-					'name'  => __( 'Japan', 'wplingua' ),
-					'id'    => 'jp',
-					'flag'  => 'jp',
+					'name' => __( 'Japan', 'wplingua' ),
+					'id'   => 'jp',
+					'flag' => 'jp',
 				),
 			),
 			'name_translation' => array(
@@ -507,14 +507,14 @@ function wplng_data_languages() {
 			'flag'             => 'pt',
 			'flags'            => array(
 				array(
-					'name'  => __( 'Portugal', 'wplingua' ),
-					'id'    => 'pt',
-					'flag'  => 'pt',
+					'name' => __( 'Portugal', 'wplingua' ),
+					'id'   => 'pt',
+					'flag' => 'pt',
 				),
 				array(
-					'name'  => __( 'Brazil', 'wplingua' ),
-					'id'    => 'br',
-					'flag'  => 'br',
+					'name' => __( 'Brazil', 'wplingua' ),
+					'id'   => 'br',
+					'flag' => 'br',
 				),
 			),
 			'name_translation' => array(
@@ -535,9 +535,9 @@ function wplng_data_languages() {
 			'flag'             => 'ru',
 			'flags'            => array(
 				array(
-					'name'  => __( 'Russia', 'wplingua' ),
-					'id'    => 'ru',
-					'flag'  => 'ru',
+					'name' => __( 'Russia', 'wplingua' ),
+					'id'   => 'ru',
+					'flag' => 'ru',
 				),
 			),
 			'name_translation' => array(
@@ -558,14 +558,14 @@ function wplng_data_languages() {
 			'flag'             => 'es',
 			'flags'            => array(
 				array(
-					'name'  => __( 'Spain', 'wplingua' ),
-					'id'    => 'es',
-					'flag'  => 'es',
+					'name' => __( 'Spain', 'wplingua' ),
+					'id'   => 'es',
+					'flag' => 'es',
 				),
 				array(
-					'name'  => __( 'Mexico', 'wplingua' ),
-					'id'    => 'mx',
-					'flag'  => 'mx',
+					'name' => __( 'Mexico', 'wplingua' ),
+					'id'   => 'mx',
+					'flag' => 'mx',
 				),
 			),
 			'name_translation' => array(

@@ -31,6 +31,7 @@ function wplng_str_is_url( $str ) {
 	return $is_url;
 }
 
+
 /**
  * Return true is $str is a translatable text
  * Return false if $str is a number, mail addredd, symbol, ...
@@ -45,9 +46,7 @@ function wplng_text_is_translatable( $text ) {
 		return false;
 	}
 
-	/**
-	 * Get letters only
-	 */
+	// Get letters only
 	$letters = $text;
 	$letters = html_entity_decode( $letters );
 	$letters = preg_replace( '#[^\p{L}\p{N}]#u', '', $letters );

@@ -164,7 +164,7 @@ function wplng_translate_json_array( $json_decoded, $translations, $parents = ar
 					array_merge( $parents, array( $key ) )
 				);
 
-				if ( defined( 'WPLNG_LOG_JSON_DEBUG' ) && WPLNG_LOG_JSON_DEBUG ) {
+				if ( true === WPLNG_LOG_JSON_DEBUG ) {
 					error_log(
 						var_export(
 							array(
@@ -190,8 +190,7 @@ function wplng_translate_json_array( $json_decoded, $translations, $parents = ar
 			}
 		}
 
-		if ( defined( 'WPLNG_LOG_JSON_DEBUG' ) 
-			&& WPLNG_LOG_JSON_DEBUG
+		if ( true === WPLNG_LOG_JSON_DEBUG
 			&& ( $array_translated[ $key ] != $json_decoded[ $key ] )
 			&& ! is_array( $json_decoded[ $key ] )
 		) {

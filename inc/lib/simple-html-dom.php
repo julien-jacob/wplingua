@@ -5,6 +5,7 @@ if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
+
 /**
  * Lib modified for wpLingua
  */
@@ -1576,7 +1577,7 @@ class wplng_sdh_simple_html_dom {
 		$ret = $this->root->innertext();
 		// Commented by wpLingua
 		// if ( $filepath !== '' ) {
-		// 	file_put_contents( $filepath, $ret, LOCK_EX ); 
+		//  file_put_contents( $filepath, $ret, LOCK_EX );
 		// }
 		return $ret;
 	}

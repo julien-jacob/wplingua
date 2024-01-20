@@ -11,9 +11,9 @@ if ( ! defined( 'WPINC' ) ) {
  *
  * Return an error message with error code
  * or a confirmation for the API key creation
- * 
+ *
  * API terms : https://wplingua.com/terms/
- * 
+ *
  * ---------------------------------------------------
  * Data sent :
  * ---------------------------------------------------
@@ -22,12 +22,12 @@ if ( ! defined( 'WPINC' ) ) {
  * - language_original : A language ID
  * - languages_target  : An array of languages ID
  * - accept_eula       : Boolean
- * 
+ *
  * ---------------------------------------------------
  * Data received if successful :
  * ---------------------------------------------------
  * - register : true
- * 
+ *
  * ---------------------------------------------------
  * Data received in case of failure
  * ---------------------------------------------------

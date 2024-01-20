@@ -176,7 +176,7 @@ function wplng_option_page_switcher_assets( $hook ) {
 	 * Enqueue CSS and JS for the code editor
 	 */
 
-	 if ( function_exists( 'wp_enqueue_code_editor' ) ) {
+	if ( function_exists( 'wp_enqueue_code_editor' ) ) {
 		$cm_settings               = array();
 		$cm_settings['codeEditor'] = wp_enqueue_code_editor(
 			array( 'type' => 'text/css' )

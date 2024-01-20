@@ -112,9 +112,9 @@ function wplng_option_page_register() {
 	endif;
 	?>
 	<div class="wrap">
-		
+
 		<h1 class="wp-heading-inline"><span class="dashicons dashicons-translation"></span> <?php esc_html_e( 'wpLingua - Register API key', 'wplingua' ); ?></h1>
-		
+
 		<hr class="wp-header-end">
 
 		<form method="post" action="options.php">
@@ -153,7 +153,7 @@ function wplng_option_page_register() {
 						<?php wplng_register_part_premium(); ?>
 					</td>
 				</tr>
-				
+
 			</table>
 		</form>
 	</div>

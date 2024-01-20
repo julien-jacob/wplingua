@@ -28,7 +28,7 @@ function wplng_option_page_switcher() {
 
 	?>
 	<div class="wrap">
-		
+
 		<h1 class="wp-heading-inline"><span class="dashicons dashicons-translation"></span> <?php esc_html_e( 'wpLingua - Switcher settings', 'wplingua' ); ?></h1>
 
 		<hr class="wp-header-end">
@@ -39,7 +39,7 @@ function wplng_option_page_switcher() {
 			do_settings_sections( 'wplng_switcher' );
 			?>
 			<table class="form-table wplng-form-table">
-			
+
 				<tr>
 					<th scope="row"><?php esc_html_e( 'Switcher preview', 'wplingua' ); ?></th>
 					<td id="wplng-switcher-preview-container">
@@ -180,7 +180,7 @@ function wplng_option_page_switcher() {
 							<label for="wplng_insert" class="wplng-fe-50">
 								<strong><?php _e( 'Automatic insert: ', 'wplingua' ); ?></strong>
 							</label>
-							
+
 							<select id="wplng_insert" name="wplng_insert" class="wplng-fe-50">
 								<?php
 
@@ -203,9 +203,9 @@ function wplng_option_page_switcher() {
 						<br>
 						<p>
 							<strong class="wplng-fe-50"><?php esc_html_e( 'Shortcode switcher: ', 'wplingua' ); ?></strong>
-							<code class="wplng-fe-50">[wplng-switcher]</code>
+							<code class="wplng-fe-50">[wplng_switcher]</code>
 						</p>
-						
+
 					</td>
 				</tr>
 

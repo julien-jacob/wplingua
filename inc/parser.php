@@ -21,6 +21,7 @@ function wplng_parse_json_array( $json_decoded, $parents = array() ) {
 	/**
 	 * Don't parse JSON if it's exclude
 	 */
+
 	if ( in_array( $parents, $json_excluded ) ) {
 		return array();
 	}
@@ -28,11 +29,13 @@ function wplng_parse_json_array( $json_decoded, $parents = array() ) {
 	/**
 	 * Parse each JSON elements
 	 */
+
 	foreach ( $json_decoded as $key => $value ) {
 
 		/**
 		 * Don't parse element if it's exclude
 		 */
+
 		if ( in_array( array_merge( $parents, array( $key ) ), $json_excluded ) ) {
 			continue;
 		}
@@ -42,6 +45,7 @@ function wplng_parse_json_array( $json_decoded, $parents = array() ) {
 			/**
 			 * If element is an array, parse it
 			 */
+
 			$texts = array_merge(
 				$texts,
 				wplng_parse_json_array( $value, array_merge( $parents, array( $key ) ) )
@@ -65,6 +69,7 @@ function wplng_parse_json_array( $json_decoded, $parents = array() ) {
 				/**
 				 * If element is a HTML, parse it
 				 */
+
 				$texts = array_merge(
 					$texts,
 					wplng_parse_html( $value, array_merge( $parents, array( $key ) ) )
@@ -75,6 +80,7 @@ function wplng_parse_json_array( $json_decoded, $parents = array() ) {
 				/**
 				 * If element is a JSON, parse it
 				 */
+
 				$texts = array_merge(
 					$texts,
 					wplng_parse_json( $value, array_merge( $parents, array( $key ) ) )
@@ -186,6 +192,7 @@ function wplng_parse_html( $html ) {
 	/**
 	 * Find and parse JSON
 	 */
+
 	foreach ( $dom->find( 'script[type="application/ld+json"]' ) as $element ) {
 		$texts = array_merge(
 			$texts,
@@ -196,6 +203,7 @@ function wplng_parse_html( $html ) {
 	/**
 	 * Find and translate JS
 	 */
+
 	foreach ( $dom->find( 'script' ) as $element ) {
 		$texts = array_merge(
 			$texts,

@@ -5,6 +5,7 @@ if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
+
 /**
  * Get wpLingua switcher option : Insert
  *

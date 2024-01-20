@@ -8,26 +8,26 @@ if ( ! defined( 'WPINC' ) ) {
 
 /**
  * Get data from wpLingua API : API key validation
- * 
+ *
  * Return an error message with error code
  * or return the basic information of the API key
- * 
+ *
  * API terms : https://wplingua.com/terms/
- * 
+ *
  * ---------------------------------------------------
  * Data sent :
  * ---------------------------------------------------
  * - request : 'api_key'
  * - api_key : the API key of website
  * - version : API compatile version
- * 
+ *
  * ---------------------------------------------------
  * Data received if successful :
  * ---------------------------------------------------
  * - language_original : A language ID
  * - languages_target  : An array of languages ID
  * - features          : Array of allowed API features
- * 
+ *
  * ---------------------------------------------------
  * Data received in case of failure
  * ---------------------------------------------------

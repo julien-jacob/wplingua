@@ -23,6 +23,7 @@ function wplng_ob_callback_editor( $html ) {
 	/**
 	 * Replace excluded HTML part by tag
 	 */
+
 	$excluded_elements = array();
 	$html              = wplng_html_set_exclude_tag(
 		$html,

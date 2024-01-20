@@ -8,12 +8,12 @@ if ( ! defined( 'WPINC' ) ) {
 
 /**
  * Get data from wpLingua API : Translated texts
- * 
+ *
  * Return an error message with error code
  * or an array of translated texts
- * 
+ *
  * API terms : https://wplingua.com/terms/
- * 
+ *
  * ---------------------------------------------------
  * Data sent :
  * ---------------------------------------------------
@@ -23,12 +23,12 @@ if ( ! defined( 'WPINC' ) ) {
  * - source  : A language ID
  * - target  : A languages ID
  * - texts   : Array of untranslated texts of website
- * 
+ *
  * ---------------------------------------------------
  * Data received if successful :
  * ---------------------------------------------------
  * - translations : Array of translated texts
- * 
+ *
  * ---------------------------------------------------
  * Data received in case of failure
  * ---------------------------------------------------
