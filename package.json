@@ -1,5 +1,5 @@
 {
-  "name": "wprock-gulp-config",
+  "name": "wplingua-gulp-config",
   "description": "Gulp configuration for wpLingua WordPress pluggin",
   "main": "gulpfile.js",
   "scripts": {

@@ -31,6 +31,7 @@ function wplng_str_is_url( $str ) {
 	return $is_url;
 }
 
+
 /**
  * Return true is $str is a translatable text
  * Return false if $str is a number, mail addredd, symbol, ...
@@ -45,9 +46,7 @@ function wplng_text_is_translatable( $text ) {
 		return false;
 	}
 
-	/**
-	 * Get letters only
-	 */
+	// Get letters only
 	$letters = $text;
 	$letters = html_entity_decode( $letters );
 	$letters = preg_replace( '#[^\p{L}\p{N}]#u', '', $letters );
@@ -68,8 +67,8 @@ function wplng_text_esc( $text ) {
 	$text = html_entity_decode( $text );
 	$text = esc_html( $text );
 	$text = esc_attr( $text );
-	$text = preg_replace( '#\s+#', ' ', $text );
 	$text = str_replace( '\\', '', $text );
+	$text = preg_replace( '#\s+#', ' ', $text );
 	$text = trim( $text );
 
 	return $text;
@@ -77,7 +76,7 @@ function wplng_text_esc( $text ) {
 
 
 /**
- * Return true is $str is HTML
+ * Return true if $str is HTML
  *
  * @param string $str
  * @return string

@@ -20,11 +20,12 @@ function wplng_url_translate( $url, $language_target_id = '' ) {
 		return '';
 	}
 
-	// Check if URL is translatable (exclude /admin/...)
+	// Check if URL is translatable (exclude /admin/, ...)
 	if ( ! wplng_url_is_translatable( $url ) ) {
 		return $url;
 	}
 
+	// Check if it's an WooCommece AJAX URL
 	if ( str_contains( $url, '?wc-ajax=' ) ) {
 		return $url;
 	}
@@ -34,14 +35,24 @@ function wplng_url_translate( $url, $language_target_id = '' ) {
 		return $url;
 	}
 
-	$domain           = preg_quote( $_SERVER['HTTP_HOST'] );
 	$languages_target = wplng_get_languages_target();
 
 	if ( '' === $language_target_id ) {
 		$language_target_id = wplng_get_language_current_id();
 	}
 
-	if ( preg_match( '#^(http:\/\/|https:\/\/)?' . $domain . '(.*)$#', $url ) ) {
+	$preg_domain = '';
+	$parsed_url  = wp_parse_url( home_url() );
+
+	if ( isset( $parsed_url['host'] )
+		&& is_string( $parsed_url['host'] )
+	) {
+		$preg_domain = preg_quote( $parsed_url['host'] );
+	}
+
+	if ( ! empty( $preg_domain )
+		&& preg_match( '#^(http:\/\/|https:\/\/)?' . $preg_domain . '(.*)$#', $url )
+	) {
 
 		// Check if URL is already translated
 		foreach ( $languages_target as $language_target ) {
@@ -51,12 +62,12 @@ function wplng_url_translate( $url, $language_target_id = '' ) {
 		}
 
 		$url = preg_replace(
-			'#^(http:\/\/|https:\/\/)?' . $domain . '(.*)$#',
-			'$1' . $domain . '/' . $language_target_id . '$2',
+			'#^(http:\/\/|https:\/\/)?' . $preg_domain . '(.*)$#',
+			'$1' . $preg_domain . '/' . $language_target_id . '$2',
 			$url
 		);
 
-		$url = esc_url( trailingslashit( $url ) );
+		$url = trailingslashit( $url );
 
 	} elseif ( preg_match( '#^[^\/]+\/[^\/].*$|^\/[^\/].*$#', $url ) ) {
 
@@ -98,7 +109,7 @@ function wplng_url_is_translatable( $url = '' ) {
 
 	// Get current URL if $url is empty
 	if ( empty( $url ) ) {
-		$url = $wplng_request_uri;
+		$url = sanitize_url( $wplng_request_uri );
 	}
 
 	$url = wp_make_link_relative( $url );
@@ -162,23 +173,29 @@ function wplng_get_url_exclude_regex() {
 
 	$url_exclude = array();
 
-	// Get user excluded URLs
-	$url_exclude_option = explode(
-		PHP_EOL,
-		get_option( 'wplng_excluded_url' )
-	);
+	// Get, check and sanitize excluded URL REGEX as string
+	$option = get_option( 'wplng_excluded_url' );
+	if ( empty( $option ) || ! is_string( $option ) ) {
+		$option = '';
+	} else {
+		$option = sanitize_textarea_field( $option );
+	}
 
-	// Add delimiter
-	foreach ( $url_exclude_option as $url ) {
-		$url = trim( $url );
-		if ( $url !== '' ) {
-			$url_exclude[] = '#' . preg_quote( $url ) . '#';
+	// Get exclude URL REGEX as array
+	$option = explode( PHP_EOL, $option );
+
+	// Check each URL REGEX
+	foreach ( $option as $regex ) {
+		$regex = trim( $regex );
+		if ( '' !== $regex ) {
+			$url_exclude[] = '#' . $regex . '#';
 		}
 	}
 
 	// Remove duplicate
 	$url_exclude = array_unique( $url_exclude );
 
+	// Apply wplng_url_exclude_regex filter
 	$url_exclude = apply_filters(
 		'wplng_url_exclude_regex',
 		$url_exclude
@@ -196,7 +213,7 @@ function wplng_get_url_exclude_regex() {
  */
 function wplng_get_url_original( $url = '' ) {
 
-	if ( empty( $url ) ) {
+	if ( '' === $url ) {
 		$url = wplng_get_url_current();
 	}
 
@@ -205,6 +222,8 @@ function wplng_get_url_original( $url = '' ) {
 	foreach ( $target as $target_id ) {
 		$url = str_replace( '/' . $target_id . '/', '/', $url );
 	}
+
+	$url = esc_url( $url );
 
 	$url = apply_filters(
 		'wplng_url_original',
@@ -222,8 +241,7 @@ function wplng_get_url_original( $url = '' ) {
  */
 function wplng_get_url_current() {
 	global $wplng_request_uri;
-	$url = ( empty( $_SERVER['HTTPS'] ) ? 'http' : 'https' ) . "://$_SERVER[HTTP_HOST]$wplng_request_uri";
-	return $url;
+	return home_url( $wplng_request_uri );
 }
 
 
@@ -238,11 +256,11 @@ function wplng_get_url_current_for_language( $language_id ) {
 	global $wplng_request_uri;
 	$path = wplng_get_url_original( $wplng_request_uri );
 
-	if ( wplng_get_language_website_id() !== $language_id ) {
+	if ( wplng_url_is_translatable( $path )
+		&& ( wplng_get_language_website_id() !== $language_id )
+	) {
 		$path = '/' . $language_id . $path;
 	}
 
-	$url = ( empty( $_SERVER['HTTPS'] ) ? 'http' : 'https' ) . "://$_SERVER[HTTP_HOST]$path";
-
-	return $url;
+	return home_url( $path );
 }

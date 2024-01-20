@@ -1,25 +1,50 @@
 /**
- *
- * GUPL File
+ * --------------------------
+ * --- wpLingua GUPL File --- 
+ * --------------------------
+ * 
+ * # Install npm dependencies
+ * $ npm i
+ * 
+ * # Create or update the /assets/ folder
+ * $ gulp
+ * 
+ * # Start the watcher
+ * $ gulp watch
+ * 
+ * # Create or update the archive
+ * $ gulp archive
  *
  **/
 
-var gulp         = require("gulp");
-var sass         = require('gulp-sass')(require('sass'));
+var gulp = require("gulp");
+var sass = require('gulp-sass')(require('sass'));
 var autoprefixer = require("gulp-autoprefixer");
-var cleanCSS     = require("gulp-clean-css");
-var jsmin        = require("gulp-jsmin");
-var zip          = require('gulp-zip');
-var del          = require('del');
+var cleanCSS = require("gulp-clean-css");
+var jsmin = require("gulp-jsmin");
+var zip = require('gulp-zip');
+var del = require('del');
 
-/* JS script */
+
+/**
+ * Task JS
+ * 
+ * Minify JavaScript in /src/js/
+ * Create or update /assets/js/
+ */
 gulp.task("js", () => {
     return gulp.src("src/js/**/*.js")
         .pipe(jsmin())
         .pipe(gulp.dest("assets/js/."));
 });
 
-/* CSS / SASS */
+
+/**
+ * Task CSS
+ * 
+ * Minify and compil SASS in /src/css/
+ * Create or update /assets/css/
+ */
 gulp.task("css", () => {
     return gulp.src("src/css/**/*.{css,scss}")
         .pipe(sass().on("error", sass.logError))
@@ -41,37 +66,37 @@ gulp.task("css", () => {
 });
 
 
-/* Plugins */
+/**
+ * Task plugins
+ * 
+ * Copy folder /src/plugins/
+ * Create or update /assets/plugins/
+ */
 gulp.task("plugins", () => {
     return gulp.src("src/plugins/**/*")
         .pipe(gulp.dest("assets/plugins/"));
 });
 
-/* Images */
+
+/**
+ * Task images
+ * 
+ * Copy folder /src/images/
+ * Create or update /assets/images/
+ */
 gulp.task("images", () => {
     return gulp.src("src/images/**/*")
         .pipe(gulp.dest("assets/images/"));
 });
 
 
-gulp.task("watch", () => {
-    gulp.watch("src/**/*", gulp.series(
-        "css",
-        "js",
-        "plugins",
-        "images"
-    ));
-});
-
-gulp.task("default", gulp.series(
-    "css",
-    "js",
-    "plugins",
-    "images"
-));
-
-/* Create archive */
-gulp.task("folder-zip",() => {
+/**
+ * Task folder-zip
+ * 
+ * Create or update a zip archive 
+ * with /wplingua/ folder
+ */
+gulp.task("folder-zip", () => {
     return gulp.src([
         "**/wplingua/**/*"
     ])
@@ -79,6 +104,13 @@ gulp.task("folder-zip",() => {
         .pipe(gulp.dest("."));
 });
 
+
+/**
+ * Task folder-create
+ * 
+ * Create or update folder /wplingua/
+ * A copy of the necesary WordPress plugin file
+ */
 gulp.task("folder-create", () => {
     return gulp.src([
         "**",
@@ -99,6 +131,12 @@ gulp.task("folder-create", () => {
         .pipe(gulp.dest("wplingua/"));
 });
 
+
+/**
+ * Task folder-delete
+ * 
+ * Delete folder /wplingua/
+ */
 gulp.task('folder-delete', function () {
     return del([
         "wplingua/"
@@ -106,7 +144,11 @@ gulp.task('folder-delete', function () {
 });
 
 
-/* Process files & Create archive */
+/**
+ * Task folder-delete
+ * 
+ * Process files & Create archive 
+ */
 gulp.task("archive", gulp.series(
     "css",
     "js",
@@ -117,6 +159,13 @@ gulp.task("archive", gulp.series(
     "folder-delete"
 ));
 
+
+/**
+ * Task clear
+ * 
+ * Clear genereted files
+ * Assets files, wplingua.zip and log files
+ */
 gulp.task('clear', function () {
     return del([
         "assets/css/**/*",
@@ -126,3 +175,32 @@ gulp.task('clear', function () {
         "*.log"
     ]);
 });
+
+
+/**
+ * Task watch
+ * 
+ * Start the watcher
+ * Tasks : css, js, plugins, images
+ */
+gulp.task("watch", () => {
+    gulp.watch("src/**/*", gulp.series(
+        "css",
+        "js",
+        "plugins",
+        "images"
+    ));
+});
+
+
+/**
+ * Task default
+ * 
+ * Tasks : css, js, plugins, images
+ */
+gulp.task("default", gulp.series(
+    "css",
+    "js",
+    "plugins",
+    "images"
+));

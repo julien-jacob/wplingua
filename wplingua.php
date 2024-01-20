@@ -7,7 +7,7 @@
  * Author URI: https://wplingua.com/
  * Text Domain: wplingua
  * Domain Path: /languages/
- * Version: 1.0.0
+ * Version: 1.0.1
  * Requires PHP: 7.4
  * License: GPL v2 or later
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -20,20 +20,18 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 
-/**
- * Define wpLingua constants
- */
+// Define wpLingua constants
 define( 'WPLNG_API_URL', 'https://api.wplingua.com' );
 define( 'WPLNG_API_VERSION', '1.0' );
-define( 'WPLNG_PLUGIN_VERSION', '1.0.0' );
+define( 'WPLNG_API_SSLVERIFY', true );
+define( 'WPLNG_PLUGIN_VERSION', '1.0.1' );
 define( 'WPLNG_PLUGIN_PATH', dirname( __FILE__ ) );
 define( 'WPLNG_MAX_TRANSLATIONS', 256 );
 define( 'WPLNG_MAX_FILE_SIZE', 1000000 );
+define( 'WPLNG_LOG_JSON_DEBUG', false );
 
 
-/**
- * Load plugin text domain
- */
+// Load plugin text domain
 load_plugin_textdomain(
 	'wplingua',
 	false,
@@ -41,9 +39,7 @@ load_plugin_textdomain(
 );
 
 
-/**
- * Load all needed PHP files
- */
+// Load all needed PHP files
 require_once WPLNG_PLUGIN_PATH . '/loader.php';
 
 
@@ -54,8 +50,19 @@ require_once WPLNG_PLUGIN_PATH . '/loader.php';
  */
 function wplng_start() {
 
-	global $wplng_request_uri;
-	$wplng_request_uri = $_SERVER['REQUEST_URI'];
+	if ( isset( $_SERVER['REQUEST_URI'] ) ) {
+
+		$request_uri = sanitize_url( $_SERVER['REQUEST_URI'] );
+
+		// Check if the referer is clean
+		if ( strtolower( esc_url_raw( $request_uri ) ) !== strtolower( $request_uri ) ) {
+			return;
+		}
+
+		global $wplng_request_uri;
+		$wplng_request_uri = $request_uri;
+
+	}
 
 	// Register plugin settings
 	add_action( 'admin_init', 'wplng_register_settings' );
@@ -169,9 +176,8 @@ function wplng_start() {
 		/**
 		 * Shortcode
 		 */
-		add_shortcode( 'wplingua-switcher', 'wplng_shortcode_switcher' );
-		add_shortcode( 'wplingua-notranslate', 'wplng_shortcode_notranslate' );
-		add_shortcode( 'notranslate', 'wplng_shortcode_notranslate' );
+		add_shortcode( 'wplng_switcher', 'wplng_shortcode_switcher' );
+		add_shortcode( 'wplng_notranslate', 'wplng_shortcode_notranslate' );
 
 	}
 

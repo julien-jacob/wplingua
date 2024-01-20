@@ -18,17 +18,33 @@ function wplng_parse_json_array( $json_decoded, $parents = array() ) {
 	$texts         = array();
 	$json_excluded = wplng_data_excluded_json();
 
+	/**
+	 * Don't parse JSON if it's exclude
+	 */
+
 	if ( in_array( $parents, $json_excluded ) ) {
 		return array();
 	}
 
+	/**
+	 * Parse each JSON elements
+	 */
+
 	foreach ( $json_decoded as $key => $value ) {
+
+		/**
+		 * Don't parse element if it's exclude
+		 */
 
 		if ( in_array( array_merge( $parents, array( $key ) ), $json_excluded ) ) {
 			continue;
 		}
 
 		if ( is_array( $value ) ) {
+
+			/**
+			 * If element is an array, parse it
+			 */
 
 			$texts = array_merge(
 				$texts,
@@ -37,6 +53,11 @@ function wplng_parse_json_array( $json_decoded, $parents = array() ) {
 
 		} elseif ( is_string( $value ) ) {
 
+			/**
+			 * If element is a string
+			 */
+
+			// Ignore if is an URL or a local ID (fr_FR, fr, FR, ...)
 			if ( wplng_str_is_url( $value )
 				|| wplng_str_is_locale_id( $value )
 			) {
@@ -45,6 +66,10 @@ function wplng_parse_json_array( $json_decoded, $parents = array() ) {
 
 			if ( wplng_str_is_html( $value ) ) {
 
+				/**
+				 * If element is a HTML, parse it
+				 */
+
 				$texts = array_merge(
 					$texts,
 					wplng_parse_html( $value, array_merge( $parents, array( $key ) ) )
@@ -52,12 +77,20 @@ function wplng_parse_json_array( $json_decoded, $parents = array() ) {
 
 			} elseif ( wplng_str_is_json( $value ) ) {
 
+				/**
+				 * If element is a JSON, parse it
+				 */
+
 				$texts = array_merge(
 					$texts,
 					wplng_parse_json( $value, array_merge( $parents, array( $key ) ) )
 				);
 
 			} else {
+
+				/**
+				 * Element is a unknow string, check if it's translatable
+				 */
 
 				$is_translatable = wplng_json_element_is_translatable(
 					$value,
@@ -159,6 +192,7 @@ function wplng_parse_html( $html ) {
 	/**
 	 * Find and parse JSON
 	 */
+
 	foreach ( $dom->find( 'script[type="application/ld+json"]' ) as $element ) {
 		$texts = array_merge(
 			$texts,
@@ -169,6 +203,7 @@ function wplng_parse_html( $html ) {
 	/**
 	 * Find and translate JS
 	 */
+
 	foreach ( $dom->find( 'script' ) as $element ) {
 		$texts = array_merge(
 			$texts,

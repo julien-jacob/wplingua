@@ -1,12 +1,16 @@
 ![wpLingue header image](https://raw.githubusercontent.com/julien-jacob/wplingua/master/wp-assets/banner-1544x500.png)
 
-# wpLingua: WordPress plugin
+# wpLingua - WordPress plugin
 
 ## Translate and make your website multilingual
 
 An all-in-one solution that makes your websites multilingual and translates them automatically, without word or page limits. The highlights: a free first language, an on-page visual editor for editing translations, a customizable language switcher, search engine optimization (SEO), self-hosted data and more!
 
 Visite the project website: [wpLingua.com](https://wplingua.com)
+
+## The wpLingua API
+
+The wpLingua plugin relies on our own wpLingua API, an integrated third-party service, to provide its machine translation functionality. The call to this Third Party Service (wpLingua API) is made when creating an API key from the plugin, during API key verification and when your site requests a new automatic translation (new texts discovered on a page web or request automatic translations from the translation edition). We invite you to consult our [Terms & Conditions page](https://wplingua.com/terms-and-conditions/) for more information.
 
 ## Screenshot
 
