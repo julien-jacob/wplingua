@@ -74,9 +74,9 @@ function wplng_api_call_request_api_key( $data ) {
 
 	// Sanitize and check website URL
 
-	$wesite = sanitize_url( $data['website'] );
+	$website = sanitize_url( $data['website'] );
 
-	if ( $wesite !== $data['wesite'] ) {
+	if ( $website !== $data['website'] ) {
 		return array(
 			'error'   => true,
 			'message' => __( 'Error - Invalid data (website URL).', 'wplingua' ),
@@ -90,7 +90,7 @@ function wplng_api_call_request_api_key( $data ) {
 
 	if ( ! wplng_is_valid_language_id( $language_original )
 		|| ! wplng_is_valid_language_id( $languages_target )
-		|| ( $language_original !== $languages_target )
+		|| ( $language_original === $languages_target )
 	) {
 		return array(
 			'error'   => true,
@@ -105,7 +105,7 @@ function wplng_api_call_request_api_key( $data ) {
 	$body = array(
 		'request'           => 'register',
 		'version'           => WPLNG_API_VERSION,
-		'website'           => $wesite,
+		'website'           => $website,
 		'mail_address'      => $mail_address,
 		'language_original' => $language_original,
 		'languages_target'  => array( $languages_target ),
