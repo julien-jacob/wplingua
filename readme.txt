@@ -4,7 +4,7 @@ Donate link: https://wplingua.com/
 Tags: translation, translate, autotranslate, autotranslation, multilingual, multilingual website, localization
 Requires at least: 5.0
 Tested up to: 6.4
-Stable tag: 1.0.1
+Stable tag: 1.0.3
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -107,6 +107,14 @@ No, not at the moment but in the meantime, you can easily display the language s
 8. All translations are stored on your WordPress site.
 
 == Changelog ==
+
+= 1.0.3 = 
+
+* Prepare SVN folders
+
+= 1.0.2 = 
+
+* Fix error on API key register
 
 = 1.0.1 =
 
