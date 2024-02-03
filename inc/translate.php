@@ -470,7 +470,7 @@ function wplng_translate_html(
 			$translations
 		);
 
-		$element->innertext = esc_js( $translated_json );
+		$element->innertext = $translated_json;
 	}
 
 	/**
