@@ -446,7 +446,7 @@ function wplng_translate_html(
 			$translations
 		);
 
-		$element->innertext = wp_strip_all_tags( $translated_js );
+		$element->innertext = $translated_js;
 	}
 
 	/**
