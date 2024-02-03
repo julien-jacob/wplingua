@@ -163,7 +163,7 @@ function wplng_ob_callback_editor( $html ) {
 		$class = 'wplingua-editor-link';
 
 		if ( ! empty( $element->class ) ) {
-			$class = sanitize_html_class( $class . ' ' . $element->class );
+			$class = esc_attr( $class . ' ' . $element->class );
 
 			$element->class = $class;
 		} else {
