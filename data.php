@@ -21,6 +21,7 @@ function wplng_data_json_to_translate() {
 		array(
 			array( 'yith_wcwl_l10n', 'labels', 'cookie_disabled' ),
 			array( 'wc_add_to_cart_params', 'i18n_view_cart' ),
+			array( '@graph', 0, 'description' ),
 		)
 	);
 }
