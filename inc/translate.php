@@ -77,6 +77,23 @@ function wplng_translate_json_array( $json_decoded, $translations, $parents = ar
 	 * Don't parse JSON if it's exclude
 	 */
 	if ( in_array( $parents, $json_excluded ) ) {
+
+		if ( true === WPLNG_LOG_JSON_DEBUG ) {
+
+			$debug = array(
+				'title'   => 'wpLingua JSON debug - Excluded parent',
+				'parents' => $parents,
+				'value'   => $json_decoded,
+			);
+
+			error_log(
+				var_export(
+					$debug,
+					true
+				)
+			);
+		}
+
 		return $json_decoded;
 	}
 
@@ -89,6 +106,23 @@ function wplng_translate_json_array( $json_decoded, $translations, $parents = ar
 		 * Don't parse element if it's exclude
 		 */
 		if ( in_array( array_merge( $parents, array( $key ) ), $json_excluded ) ) {
+
+			if ( true === WPLNG_LOG_JSON_DEBUG ) {
+
+				$debug = array(
+					'title'   => 'wpLingua JSON debug - Excluded element',
+					'parents' => array_merge( $parents, array( $key ) ),
+					'value'   => $value,
+				);
+
+				error_log(
+					var_export(
+						$debug,
+						true
+					)
+				);
+			}
+
 			continue;
 		}
 
@@ -97,6 +131,7 @@ function wplng_translate_json_array( $json_decoded, $translations, $parents = ar
 			/**
 			 * If element is an array, parse it
 			 */
+
 			$array_translated[ $key ] = wplng_translate_json_array(
 				$value,
 				$translations,
@@ -104,6 +139,8 @@ function wplng_translate_json_array( $json_decoded, $translations, $parents = ar
 			);
 
 		} elseif ( is_string( $value ) ) {
+
+			$debug_type = '';
 
 			/**
 			 * If element is a string
@@ -115,6 +152,7 @@ function wplng_translate_json_array( $json_decoded, $translations, $parents = ar
 				 * If is a local ID (fr_FR, fr, FR, ...), replace by current
 				 */
 
+				$debug_type               = 'String - Local ID';
 				$array_translated[ $key ] = wplng_get_language_current_id();
 
 			} elseif ( wplng_str_is_html( $value ) ) {
@@ -123,6 +161,7 @@ function wplng_translate_json_array( $json_decoded, $translations, $parents = ar
 				 * If element is a HTML, parse and translate it
 				 */
 
+				$debug_type               = 'String - HTML';
 				$array_translated[ $key ] = wplng_translate_html(
 					$value,
 					'',
@@ -136,6 +175,7 @@ function wplng_translate_json_array( $json_decoded, $translations, $parents = ar
 				 * If element is a JSON, parse and translate it
 				 */
 
+				$debug_type               = 'String - JSON';
 				$array_translated[ $key ] = wplng_translate_json(
 					$value,
 					$translations,
@@ -148,6 +188,7 @@ function wplng_translate_json_array( $json_decoded, $translations, $parents = ar
 				 * If element is an URL, replace by translated URL
 				 */
 
+				$debug_type               = 'String - URL';
 				$array_translated[ $key ] = wplng_url_translate( $value );
 
 			} else {
@@ -164,47 +205,44 @@ function wplng_translate_json_array( $json_decoded, $translations, $parents = ar
 					array_merge( $parents, array( $key ) )
 				);
 
-				if ( true === WPLNG_LOG_JSON_DEBUG ) {
-					error_log(
-						var_export(
-							array(
-								'title'        => 'wpLingua JSON debug - Parsed value',
-								'parents'      => array_merge( $parents, array( $key ) ),
-								'value'        => $value,
-								'translatable' => $is_translatable,
-							),
-							true
-						)
+				if ( $is_translatable ) {
+					$debug_type               = 'String - Translatale';
+					$array_translated[ $key ] = wplng_get_translated_text_from_translations(
+						$value,
+						$translations
 					);
+				} else {
+					$debug_type = 'String - Untranslatale';
 				}
+			}
 
-				if ( ! $is_translatable ) {
-					continue;
-				}
+			/**
+			 * Print debug data in debug.log file
+			 */
 
-				$array_translated[ $key ] = wplng_get_translated_text_from_translations(
-					$value,
-					$translations
+			if ( true === WPLNG_LOG_JSON_DEBUG
+				&& isset( $json_decoded[ $key ] )
+				&& isset( $array_translated[ $key ] )
+			) {
+
+				$debug = array(
+					'title'   => 'wpLingua JSON debug',
+					'parents' => array_merge( $parents, array( $key ) ),
+					'type'    => $debug_type,
+					'value'   => $json_decoded[ $key ],
 				);
 
-			}
-		}
+				if ( $json_decoded[ $key ] !== $array_translated[ $key ] ) {
+					$debug['translated'] = $array_translated[ $key ];
+				}
 
-		if ( true === WPLNG_LOG_JSON_DEBUG
-			&& ( $array_translated[ $key ] != $json_decoded[ $key ] )
-			&& ! is_array( $json_decoded[ $key ] )
-		) {
-			error_log(
-				var_export(
-					array(
-						'title'      => 'wpLingua JSON debug - Compare JSON',
-						'parents'    => $parents,
-						'value'      => $json_decoded[ $key ],
-						'translated' => $array_translated[ $key ],
-					),
-					true
-				)
-			);
+				error_log(
+					var_export(
+						$debug,
+						true
+					)
+				);
+			}
 		}
 	}
 
