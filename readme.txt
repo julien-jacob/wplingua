@@ -111,10 +111,10 @@ No, not at the moment but in the meantime, you can easily display the language s
 = 1.0.4 =
 
 * Better JSON translation
-* Better JSON debuging mode
-* New AJAX debuging mode
+* Better JSON debug mode
+* New AJAX debug mode
 * Better register form
-* Better Readme files
+* Better readme.txt and README.md files
 * Fix editor link class attributes
 * Fix error on URL translation (backslash on domain name)
 * Fix bad JS on translated page
