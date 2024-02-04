@@ -7,6 +7,7 @@
 An all-in-one solution that makes your websites multilingual and translates them automatically, without word or page limits. The highlights: a free first language, an on-page visual editor for editing translations, a customizable language switcher, search engine optimization (SEO), self-hosted data and more!
 
 **The plugin on wp.org - [wordpress.org/plugins/wplingua](https://wordpress.org/plugins/wplingua/)**
+
 **The project website - [wpLingua.com](https://wplingua.com)**
 
 ## The wpLingua API
