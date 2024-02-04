@@ -19,8 +19,24 @@ function wplng_data_json_to_translate() {
 	return apply_filters(
 		'wplng_json_to_translate',
 		array(
-			array( 'yith_wcwl_l10n', 'labels', 'cookie_disabled' ),
+			// Plugin : WooCommerce
 			array( 'wc_add_to_cart_params', 'i18n_view_cart' ),
+			array( 'wc_country_select_params', 'i18n_select_state_text' ),
+			array( 'wc_country_select_params', 'i18n_no_matches' ),
+			array( 'wc_country_select_params', 'i18n_ajax_error' ),
+			array( 'wc_country_select_params', 'i18n_input_too_short_1' ),
+			array( 'wc_country_select_params', 'i18n_input_too_short_n' ),
+			array( 'wc_country_select_params', 'i18n_input_too_long_1' ),
+			array( 'wc_country_select_params', 'i18n_input_too_long_n' ),
+			array( 'wc_country_select_params', 'i18n_selection_too_long_1' ),
+			array( 'wc_country_select_params', 'i18n_selection_too_long_n' ),
+			array( 'wc_country_select_params', 'i18n_load_more' ),
+			array( 'wc_country_select_params', 'i18n_searching' ),
+			array( 'wc_address_i18n_params', 'i18n_required_text' ),
+			array( 'wc_address_i18n_params', 'i18n_optional_text' ),
+			// Plugin : YITH
+			array( 'yith_wcwl_l10n', 'labels', 'cookie_disabled' ),
+			// Plugin : Yoast SEO
 			array( '@graph', 0, 'description' ),
 		)
 	);
