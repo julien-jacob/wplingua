@@ -34,7 +34,25 @@ function wplng_ob_callback_ajax( $output ) {
 		return $output;
 	}
 
-	$output = wplng_ob_callback_translate( $output );
+	$output_translated = wplng_ob_callback_translate( $output );
 
-	return $output;
+	// Print debug data in debug.log file
+	if ( true === WPLNG_LOG_AJAX_DEBUG ) {
+
+		$debug = array(
+			'title'       => 'wpLingua AJAX debug',
+			'request_uri' => $wplng_request_uri,
+			'value'       => $output,
+			'translated'  => $output_translated,
+		);
+
+		error_log(
+			var_export(
+				$debug,
+				true
+			)
+		);
+	}
+
+	return $output_translated;
 }
