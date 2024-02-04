@@ -6,11 +6,17 @@
 
 An all-in-one solution that makes your websites multilingual and translates them automatically, without word or page limits. The highlights: a free first language, an on-page visual editor for editing translations, a customizable language switcher, search engine optimization (SEO), self-hosted data and more!
 
-Visite the project website: [wpLingua.com](https://wplingua.com)
+**The plugin on wp.org - [wordpress.org/plugins/wplingua](https://wordpress.org/plugins/wplingua/)**
+
+**The project website - [wpLingua.com](https://wplingua.com)**
+
+---
 
 ## The wpLingua API
 
-The wpLingua plugin relies on our own wpLingua API, an integrated third-party service, to provide its machine translation functionality. The call to this Third Party Service (wpLingua API) is made when creating an API key from the plugin, during API key verification and when your site requests a new automatic translation (new texts discovered on a page web or request automatic translations from the translation edition). We invite you to consult our [Terms & Conditions page](https://wplingua.com/terms-and-conditions/) for more information.
+The wpLingua plugin relies on our own wpLingua API, an integrated third-party service, to provide its machine translation functionality. The call to this Third Party Service (wpLingua API) is made when creating an API key from the plugin, during API key verification and when your site requests a new automatic translation (new texts discovered on a page web or request automatic translations from the translation edition). We invite you to consult our [Terms &amp; Conditions page](https://wplingua.com/terms-and-conditions/) for more information.
+
+---
 
 ## Screenshot
 
@@ -28,6 +34,8 @@ The wpLingua plugin relies on our own wpLingua API, an integrated third-party se
 ![You can edit all translations of your website.](https://raw.githubusercontent.com/julien-jacob/wplingua/master/wp-assets/screenshot-7.jpg)
 
 ![All translations are stored on your WordPress site.](https://raw.githubusercontent.com/julien-jacob/wplingua/master/wp-assets/screenshot-8.jpg)
+
+---
 
 ## Build commands
 

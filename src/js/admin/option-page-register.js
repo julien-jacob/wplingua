@@ -3,7 +3,7 @@ jQuery(document).ready(function ($) {
     /**
      * Set HTML options for languages
      */
-    var wplngHtmlLanguagesOptions = "";
+    var wplngHtmlLanguagesOptions = "<option disabled selected value></option>";
     wplngAllLanguages.forEach((language) => {
         wplngHtmlLanguagesOptions += '<option value="' + language.id + '">' + language.name + "</option>";
     });

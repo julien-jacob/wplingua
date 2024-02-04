@@ -14,18 +14,25 @@ if ( ! defined( 'WPINC' ) ) {
  */
 function wplng_str_is_url( $str ) {
 
+	$parsed = wp_parse_url( $str );
 	$is_url = false;
 
-	if ( '' !== wp_parse_url( $str, PHP_URL_SCHEME ) ) {
-		// URL has http/https/...
-		$is_url = ! ( filter_var( $str, FILTER_VALIDATE_URL ) === false );
-	} else {
-		// PHP filter_var does not support relative urls, so we simulate a full URL
-		$is_url = ! ( filter_var( 'https://website.com/' . ltrim( $str, '/' ), FILTER_VALIDATE_URL ) === false );
-	}
-
-	if ( ! $is_url ) {
-		$is_url = esc_url( $str ) === $str;
+	if ( is_string( $str )
+		&& ( '' !== trim( $str ) )
+		&& ( false !== strpos( $str, '/' ) )
+	) {
+		if ( isset( $parsed['scheme'] )
+			&& (
+				( 'https' === $parsed['scheme'] )
+				|| ( 'http' === $parsed['scheme'] )
+			)
+		) {
+			// URL has http/https/...
+			$is_url = ! ( filter_var( $str, FILTER_VALIDATE_URL ) === false );
+		} else {
+			// PHP filter_var does not support relative urls, so we simulate a full URL
+			$is_url = ( filter_var( 'https://website.com/' . ltrim( $str, '/' ), FILTER_VALIDATE_URL ) !== false );
+		}
 	}
 
 	return $is_url;
@@ -93,7 +100,8 @@ function wplng_str_is_html( $str ) {
  * @return string
  */
 function wplng_str_is_json( $str ) {
-	return ( json_decode( $str ) == null ) ? false : true;
+	$decoded = json_decode( $str, true );
+	return ( json_last_error() === JSON_ERROR_NONE ) && is_array( $decoded );
 }
 
 
@@ -134,18 +142,56 @@ function wplng_json_element_is_translatable( $element, $parents ) {
 	$json_to_translate = wplng_data_json_to_translate();
 
 	if ( in_array( $parents, $json_excluded ) ) {
+
+		/**
+		 * Is an excluded JSON
+		 */
+
 		$is_translatable = false;
+
 	} elseif ( in_array( $parents, $json_to_translate ) ) {
+
+		/**
+		 * Is an included JSON
+		 */
+
 		$is_translatable = true;
+
 	} else {
 
-		// Is schema-graph
 		if (
 			! empty( $parents[0] )
-			&& $parents[0] === '@graph'
-			&& count( $parents ) > 0
-			&& $parents[ count( $parents ) - 1 ] === 'name'
+			&& ( '@graph' === $parents[0] )
+			&& ( count( $parents ) > 2 )
+			&& (
+				(
+					( 'logo' === $parents[ count( $parents ) - 2 ] )
+					&& ( 'caption' === $parents[ count( $parents ) - 1 ] )
+				)
+				|| ( 'name' === $parents[ count( $parents ) - 1 ] )
+			)
 		) {
+
+			/**
+			 * Is schema-graph
+			 */
+
+			$is_translatable = true;
+
+		} elseif (
+			! empty( $parents[0] )
+			&& ( 'wc_address_i18n_params' === $parents[0] )
+			&& ( count( $parents ) > 1 )
+			&& (
+				( 'placeholder' === $parents[ count( $parents ) - 1 ] )
+				|| ( 'label' === $parents[ count( $parents ) - 1 ] )
+			)
+		) {
+
+			/**
+			 * Is WooCommerce address params
+			 */
+			
 			$is_translatable = true;
 		}
 
