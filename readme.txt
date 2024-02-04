@@ -23,29 +23,29 @@ The highlights:
 * search engine optimization (SEO)
 * no coding knowledge needed
 * self-hosted data
-* open source, find us on ([Github](https://github.com/julien-jacob/wplingua))
+* open source, find <a href="https://github.com/julien-jacob/wplingua" target="_blank">wpLingua on GitHub</a>
 * and more!
 
-= One free target language =
+### One free target language ###
 With our complimentary offer, wpLingua empowers you to introduce your website to a broader audience in a new language. **While the free version supports translation into a single target language**, we set no boundaries on the number of words you can translate. Whether your site has a hundred pages or just a few, you can seamlessly make it accessible in the language you desire. Dive into the world of **multilingual web experiences** and delight your global visitors. _Enjoy the journey with wpLingua!_
 
-= Streamlined Setup Process =
+### Streamlined Setup Process ###
 Dive into a hassle-free multilingual experience with wpLingua. Forget about complex configurations and the intimidating world of coding. All you need to get started is to request your complimentary API key. Once you do, we'll promptly send it straight to your inbox. It's as straightforward as that! Our commitment is **to make multilingual capabilities accessible and effortless for every WordPress user**. Let us take care of the technicalities while you focus on creating captivating content for your global audience.
 
-= Optimized for international search engines (SEO) =
+### Optimized for international search engines (SEO) ###
 In the digital age, visibility is everything. When expanding your website's linguistic reach with wpLingua, it's paramount that **each translated page** shines brightly in the vast universe of search results. That's why our plugin goes beyond mere translation. wpLingua ensures that every piece of content you craft in different languages is primed for **search engine discovery**. By **optimizing indexing**, we make sure that your **translated pages** aren't just understood by your audience, but are also easily found by **search engines**. Dive into a multilingual experience that doesn’t compromise on visibility.
 
-= Tailor-made translations at your fingertips with our On-Page Editor =
+### Tailor-made translations at your fingertips with our On-Page Editor ###
 Although wpLingua gives you the convenience of **machine translations**, we understand the nuances of each language. wpLingua offers a canvas in which you can **refine each translation** so that it resonates with your unique voice and your brand message adapted to the cultural and contextual expectations of your audience. Experience the fusion of automation and the personal touch with our **visual on-page editor**.
 
-= Fully customizable language switcher =
+### Fully customizable language switcher ###
 With dozens of **pre-designed themes** at your fingertips, you have the liberty to select an appearance for your language switcher that seamlessly blends with your site's aesthetics. Not content with our array? _No problem_. Elevate the switcher's look by importing your own unique icons. But that's not all — whether you prefer a fixed position for the switcher or want the flexibility to showcase it anywhere using a **shortcode**, wpLingua ensures your language toggle is as distinctive as your brand itself. 
 
-= Intuitive possibilities to exclude certain translations =
+### Intuitive possibilities to exclude certain translations ###
 Navigate the complexities of website translation with wpLingua's intelligent exclusion feature. Want to preserve specific sections of a page in its original language? Our system seamlessly allows you to pinpoint and **exclude translations using CSS selectors**. But it doesn't stop there. If entire pages need to remain untouched, effortlessly exclude them by their URL. All of this can be managed with ease through our user-friendly exclusions manager. With wpLingua, you're always in command of what gets translated and what doesn't, ensuring your site's essence remains intact.
 
-= The wpLingua API =
-The wpLingua plugin relies on our own wpLingua API, an integrated third-party service, to provide its machine translation functionality. The call to this Third Party Service (wpLingua API) is made when creating an API key from the plugin, during API key verification and when your site requests a new automatic translation (new texts discovered on a page web or request automatic translations from the translation edition). We invite you to consult our [Terms & Conditions page](https://wplingua.com/terms-and-conditions/) for more information.
+### The wpLingua API ###
+The wpLingua plugin relies on our own wpLingua API, an integrated third-party service, to provide its machine translation functionality. The call to this Third Party Service (wpLingua API) is made when creating an API key from the plugin, during API key verification and when your site requests a new automatic translation (new texts discovered on a page web or request automatic translations from the translation edition). We invite you to consult our <a href="https://wplingua.com/terms-and-conditions/" target="_blank">Terms & Conditions page</a> for more information.
 
 
 == Installation ==
@@ -69,7 +69,7 @@ For the moment the available languages are:
 * Simplified Chinese
 * Spanish
 
-If you need a language, let us know using the [contact form available on our website](https://wplingua.com/contact/), we add languages as we go.
+If you need a language, let us know using the <a href="https://wplingua.com/contact/" target="_blank">contact form available on our website</a>, we add languages as we go.
 
 = What languages are available in the plugin administration? =
 At the moment, the plugin is available in English, French, German, Italian, Spanish and Portuguese. If you want to help us translate it into more languages, don't hesitate!
