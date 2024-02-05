@@ -82,6 +82,9 @@ function wplng_start() {
 		// Enqueue CSS and JS files for register option pages
 		add_action( 'admin_enqueue_scripts', 'wplng_option_page_register_assets' );
 
+		// Display a notice if the plugin is activate but not configured
+		add_action( 'admin_notices', 'wplng_admin_notice_no_key_set' );
+
 	} else {
 
 		/**
