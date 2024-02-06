@@ -153,7 +153,7 @@ function wplng_admin_notice_no_key_set() {
 	$html .= esc_html__( 'wpLingua - Translation solution for multilingual website', 'wplingua' );
 	$html .= '</p>';
 	$html .= '<p>';
-	$html .= esc_html__( 'wpLingua is installed, but not yet configured. You\'re just a few clicks away from making your site multilingual.', 'wplingua' );
+	$html .= esc_html__( 'wpLingua is installed, but not yet configured. You are just a few clicks away from making your site multilingual!', 'wplingua' );
 	$html .= '<br> ';
 	$html .= '<a href="' . esc_url( $url ) . '">';
 	$html .= esc_html__( 'Go to the configuration page', 'wplingua' );
