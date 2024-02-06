@@ -182,6 +182,7 @@ function wplng_start() {
 		 */
 		add_shortcode( 'wplng_switcher', 'wplng_shortcode_switcher' );
 		add_shortcode( 'wplng_notranslate', 'wplng_shortcode_notranslate' );
+		add_shortcode( 'wplng_only', 'wplng_shortcode_only' );
 
 	}
 

@@ -24,6 +24,63 @@ function wplng_shortcode_notranslate( $atts, $content ) {
 
 
 /**
+ * wpLingua Shortcode : [wplng_only]
+ *
+ * @param array $atts
+ * @param string $content
+ * @return string
+ */
+function wplng_shortcode_only( $atts, $content ) {
+
+	$languages        = array();
+	$language_current = wplng_get_language_current_id();
+
+	$attributes = shortcode_atts(
+		array(
+			'lang' => false,
+		), $atts
+	);
+
+	switch ( $attributes['lang'] ) {
+		case false:
+			return '';
+			break;
+
+		case 'translated':
+			$languages = wplng_get_languages_target_ids();
+			break;
+
+		case 'original':
+			$languages = array( wplng_get_language_website_id() );
+			break;
+
+		default:
+			$languages_attr = explode( ',', $attributes['lang'] );
+
+			foreach ( $languages_attr as $language ) {
+				$language = trim( $language );
+				if ( wplng_is_valid_language_id( $language ) ) {
+					$languages[] = $language;
+				}
+			}
+			break;
+	}
+
+	if ( empty( $languages )
+		|| ! in_array( $language_current, $languages )
+	) {
+		return '';
+	}
+
+	$html  = '<span class="notranslate">';
+	$html .= wp_kses_post( $content );
+	$html .= '</span>';
+
+	return $html;
+}
+
+
+/**
  * wpLingua Shortcode : [wplng_switcher]
  *
  * @param array $atts
