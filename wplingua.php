@@ -7,7 +7,7 @@
  * Author URI: https://wplingua.com/
  * Text Domain: wplingua
  * Domain Path: /languages/
- * Version: 1.0.4
+ * Version: 1.0.5
  * Requires PHP: 7.4
  * License: GPL v2 or later
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -24,7 +24,7 @@ if ( ! defined( 'WPINC' ) ) {
 define( 'WPLNG_API_URL', 'https://api.wplingua.com' );
 define( 'WPLNG_API_VERSION', '1.0' );
 define( 'WPLNG_API_SSLVERIFY', true );
-define( 'WPLNG_PLUGIN_VERSION', '1.0.4' );
+define( 'WPLNG_PLUGIN_VERSION', '1.0.5' );
 define( 'WPLNG_PLUGIN_PATH', dirname( __FILE__ ) );
 define( 'WPLNG_MAX_TRANSLATIONS', 256 );
 define( 'WPLNG_MAX_FILE_SIZE', 1000000 );
@@ -81,6 +81,9 @@ function wplng_start() {
 
 		// Enqueue CSS and JS files for register option pages
 		add_action( 'admin_enqueue_scripts', 'wplng_option_page_register_assets' );
+
+		// Display a notice if the plugin is activate but not configured
+		add_action( 'admin_notices', 'wplng_admin_notice_no_key_set' );
 
 	} else {
 
@@ -179,6 +182,7 @@ function wplng_start() {
 		 */
 		add_shortcode( 'wplng_switcher', 'wplng_shortcode_switcher' );
 		add_shortcode( 'wplng_notranslate', 'wplng_shortcode_notranslate' );
+		add_shortcode( 'wplng_only', 'wplng_shortcode_only' );
 
 	}
 

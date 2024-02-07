@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wpLingua\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-01-19 08:33+0100\n"
-"PO-Revision-Date: 2024-01-19 09:25+0100\n"
+"POT-Creation-Date: 2024-02-06 18:29+0100\n"
+"PO-Revision-Date: 2024-02-06 18:34+0100\n"
 "Last-Translator: \n"
 "Language-Team: Français\n"
 "Language: fr_FR\n"
@@ -15,235 +15,235 @@ msgstr ""
 "X-Loco-Version: 2.6.6; wp-6.3.1\n"
 "X-Domain: wplingua\n"
 
-#: data.php:252
+#: data.php:273
 msgid "Bottom right"
 msgstr "En bas à droite"
 
-#: data.php:253
+#: data.php:274
 msgid "Bottom center"
 msgstr "Centré en bas"
 
-#: data.php:254
+#: data.php:275
 msgid "Bottom left"
 msgstr "En bas à gauche"
 
-#: data.php:255
+#: data.php:276
 msgid "None"
 msgstr "Aucun"
 
-#: data.php:267
+#: data.php:288
 msgid "Light - Double - Smooth"
 msgstr "Clair - Double - Doux"
 
-#: data.php:268
+#: data.php:289
 msgid "Light - Double - Square"
 msgstr "Clair - Double - Carré"
 
-#: data.php:269
+#: data.php:290
 msgid "Light - Simple - Smooth"
 msgstr "Clair - Simple - Doux"
 
-#: data.php:270
+#: data.php:291
 msgid "Light - Simple - Square"
 msgstr "Clair - Simple - Carré"
 
-#: data.php:271
+#: data.php:292
 msgid "Grey - Double - Smooth"
 msgstr "Gris - Double - Doux"
 
-#: data.php:272
+#: data.php:293
 msgid "Grey - Double - Square"
 msgstr "Gris - Double - Carré"
 
-#: data.php:273
+#: data.php:294
 msgid "Grey - Simple - Smooth"
 msgstr "Gris - Simple - Doux"
 
-#: data.php:274
+#: data.php:295
 msgid "Grey - Simple - Square"
 msgstr "Gris - Simple - Carré"
 
-#: data.php:275
+#: data.php:296
 msgid "Dark - Double - Smooth"
 msgstr "Sombre - Double - Doux"
 
-#: data.php:276
+#: data.php:297
 msgid "Dark - Double - Square"
 msgstr "Sombre - Double - Carré"
 
-#: data.php:277
+#: data.php:298
 msgid "Dark - Simple - Smooth"
 msgstr "Sombre - Simple - Doux"
 
-#: data.php:278
+#: data.php:299
 msgid "Dark - Simple - Square"
 msgstr "Sombre - Simple - Carré"
 
-#: data.php:279
+#: data.php:300
 msgid "Blur Black - Double - Smooth"
 msgstr "Flou (sombre) - Double - Doux"
 
-#: data.php:280
+#: data.php:301
 msgid "Blur Black - Double - Square"
 msgstr "Flou (sombre) - Double - Carré"
 
-#: data.php:281
+#: data.php:302
 msgid "Blur Black - Simple - Smooth"
 msgstr "Flou (sombre) - Simple - Doux"
 
-#: data.php:282
+#: data.php:303
 msgid "Blur Black - Simple - Square"
 msgstr "Flou (sombre) - Simple - Carré"
 
-#: data.php:283
+#: data.php:304
 msgid "Blur White - Double - Smooth"
 msgstr "Flou (clair) - Double - Doux"
 
-#: data.php:284
+#: data.php:305
 msgid "Blur White - Double - Square"
 msgstr "Flou (clair) - Double - Carré"
 
-#: data.php:285
+#: data.php:306
 msgid "Blur White - Simple - Smooth"
 msgstr "Flou (clair) - Simple - Doux"
 
-#: data.php:286
+#: data.php:307
 msgid "Blur White - Simple - Square"
 msgstr "Flou (clair) - Simple - Carré"
 
-#: data.php:298
+#: data.php:319
 msgid "Inline list"
 msgstr "Liste en ligne"
 
-#: data.php:299
+#: data.php:320
 msgid "Block"
 msgstr "Bloc"
 
-#: data.php:300
+#: data.php:321
 msgid "Dropdown"
 msgstr "Liste déroulante"
 
-#: data.php:312
+#: data.php:333
 msgid "Translated name"
 msgstr "Nom traduit"
 
-#: data.php:313
+#: data.php:334
 msgid "Original name"
 msgstr "Langue originale"
 
-#: data.php:314
+#: data.php:335
 msgid "Language ID"
 msgstr "ID de langue"
 
-#: data.php:315 data.php:330
+#: data.php:336 data.php:351
 msgid "No display"
 msgstr "Non affiché"
 
-#: data.php:327
+#: data.php:348
 msgid "Circle"
 msgstr "Arrondi"
 
-#: data.php:328
+#: data.php:349
 msgid "Rectangular"
 msgstr "Rectangulaire"
 
-#: data.php:329
+#: data.php:350
 msgid "Wave"
 msgstr "Ondulé"
 
-#: data.php:347
+#: data.php:368
 msgid "Chinese"
 msgstr "Chinois"
 
-#: data.php:352
+#: data.php:373
 msgid "China"
 msgstr "Chine"
 
-#: data.php:357
+#: data.php:378
 msgid "Hong Kong"
 msgstr "Hong Kong"
 
-#: data.php:375
+#: data.php:396
 msgid "English"
 msgstr "Anglais"
 
-#: data.php:380
+#: data.php:401
 msgid "UK"
 msgstr "UK"
 
-#: data.php:385
+#: data.php:406
 msgid "USA"
 msgstr "USA"
 
-#: data.php:403
+#: data.php:424
 msgid "French"
 msgstr "Français"
 
-#: data.php:408
+#: data.php:429
 msgid "France"
 msgstr "France"
 
-#: data.php:413
+#: data.php:434
 msgid "Belgium"
 msgstr "Belgique"
 
-#: data.php:418
+#: data.php:439
 msgid "Canada"
 msgstr "Canada"
 
-#: data.php:436
+#: data.php:457
 msgid "German"
 msgstr "Allemand"
 
-#: data.php:441
+#: data.php:462
 msgid "Germany"
 msgstr "Allemagne"
 
-#: data.php:459
+#: data.php:480
 msgid "Italian"
 msgstr "Italien"
 
-#: data.php:464
+#: data.php:485
 msgid "Italy"
 msgstr "Italie"
 
-#: data.php:482
+#: data.php:503
 msgid "Japanese"
 msgstr "Japonais"
 
-#: data.php:487
+#: data.php:508
 msgid "Japan"
 msgstr "Japon"
 
-#: data.php:505
+#: data.php:526
 msgid "Portuguese"
 msgstr "Portugais"
 
-#: data.php:510
+#: data.php:531
 msgid "Portugal"
 msgstr "Portugal"
 
-#: data.php:515
+#: data.php:536
 msgid "Brazil"
 msgstr "Brésil"
 
-#: data.php:533
+#: data.php:554
 msgid "Russian"
 msgstr "Russe"
 
-#: data.php:538
+#: data.php:559
 msgid "Russia"
 msgstr "Russie"
 
-#: data.php:556
+#: data.php:577
 msgid "Spanish"
 msgstr "Espagnol"
 
-#: data.php:561
+#: data.php:582
 msgid "Spain"
 msgstr "Espagne"
 
-#: data.php:566
+#: data.php:587
 msgid "Mexico"
 msgstr "Mexique"
 
@@ -489,7 +489,7 @@ msgstr "Accédez à plus de langues"
 msgid "Visit wpLingua website"
 msgstr "Visiter le site Web de wpLingua"
 
-#: inc/admin/option-page-settings.php:28
+#: inc/admin/option-page-settings.php:28 inc/admin/option-page.php:153
 msgid "wpLingua - Translation solution for multilingual website"
 msgstr "wpLingua : Solution de traduction pour site Web multilingue"
 
@@ -525,61 +525,61 @@ msgstr ""
 msgid "Visit your multilingual website"
 msgstr "Visitez votre site multilingue"
 
-#: inc/admin/option-page-settings.php:151
+#: inc/admin/option-page-settings.php:150
 msgid "Original website language: "
 msgstr "Langue originale du site : "
 
-#: inc/admin/option-page-settings.php:177
+#: inc/admin/option-page-settings.php:176
 msgid "Please choose an option"
 msgstr "Choisissez une option"
 
-#: inc/admin/option-page-settings.php:188
+#: inc/admin/option-page-settings.php:187
 msgid "Original website language, defined by API key:"
 msgstr "Langue originale du site, définie par la clé API :"
 
-#: inc/admin/option-page-settings.php:194
+#: inc/admin/option-page-settings.php:193
 msgid "Custom"
 msgstr "Personnalisé"
 
-#: inc/admin/option-page-settings.php:204
-#: inc/admin/option-page-settings.php:267
+#: inc/admin/option-page-settings.php:203
+#: inc/admin/option-page-settings.php:266
 msgid "Edit flag"
 msgstr "Éditer le drapeau"
 
-#: inc/admin/option-page-settings.php:210
+#: inc/admin/option-page-settings.php:209
 msgid "Flag:"
 msgstr "Drapeau :"
 
-#: inc/admin/option-page-settings.php:215
-#: inc/admin/option-page-settings.php:278
+#: inc/admin/option-page-settings.php:214
+#: inc/admin/option-page-settings.php:277
 msgid "Custom flag URL: "
 msgstr "URL du drapeau personnalisé : "
 
-#: inc/admin/option-page-settings.php:246
+#: inc/admin/option-page-settings.php:245
 msgid "Add new target Language: "
 msgstr "Ajouter une langue cible : "
 
-#: inc/admin/option-page-settings.php:251
+#: inc/admin/option-page-settings.php:250
 msgid "Add language"
 msgstr "Ajouter une langue"
 
-#: inc/admin/option-page-settings.php:268
+#: inc/admin/option-page-settings.php:267
 msgid "Remove"
 msgstr "Supprimer"
 
-#: inc/admin/option-page-settings.php:274
+#: inc/admin/option-page-settings.php:273
 msgid "Flag: "
 msgstr "Drapeau : "
 
-#: inc/admin/option-page-settings.php:286
+#: inc/admin/option-page-settings.php:285
 msgid "Target languages enabled: "
 msgstr "Langues cibles activées : "
 
-#: inc/admin/option-page-settings.php:304
+#: inc/admin/option-page-settings.php:303
 msgid "API translation features:"
 msgstr "Fonctionnalités de traduction de l'API :"
 
-#: inc/admin/option-page-settings.php:307
+#: inc/admin/option-page-settings.php:306
 msgid ""
 "The options below require extended access to the wpLingua API to be "
 "functional on your website."
@@ -587,23 +587,23 @@ msgstr ""
 "Les options ci-dessous nécessitent un accès étendu à l'API de wpLingua pour "
 "être fonctionnelles sur votre site web."
 
-#: inc/admin/option-page-settings.php:313
+#: inc/admin/option-page-settings.php:312
 msgid "API feature: Search from translated languages"
 msgstr "Fonctionnalité API : Recherche à partir de langues traduites"
 
-#: inc/admin/option-page-settings.php:319
+#: inc/admin/option-page-settings.php:318
 msgid "API feature: Allow WooCommerce shop translation"
 msgstr "Fonctionnalité API : Traduire les boutiques WooCommerce"
 
-#: inc/admin/option-page-settings.php:335
+#: inc/admin/option-page-settings.php:334
 msgid "Website API key:"
 msgstr "Clé API du site Web :"
 
-#: inc/admin/option-page-settings.php:341
+#: inc/admin/option-page-settings.php:340
 msgid "Show API key"
 msgstr "Afficher la clé API"
 
-#: inc/admin/option-page-settings.php:343
+#: inc/admin/option-page-settings.php:342
 msgid "Hide API key"
 msgstr "Masquer la clé API"
 
@@ -695,6 +695,18 @@ msgstr "Toutes les traductions"
 msgid "Settings"
 msgstr "Réglages"
 
+#: inc/admin/option-page.php:156
+msgid ""
+"wpLingua is installed, but not yet configured. You are just a few clicks "
+"away from making your site multilingual!"
+msgstr ""
+"wpLingua est installé, mais pas encore configuré. Vous n’êtes qu’à quelques "
+"clics de rendre votre site multilingue !"
+
+#: inc/admin/option-page.php:159
+msgid "Go to the configuration page"
+msgstr "Accéder à la page de configuration"
+
 #: inc/admin/translation-cpt.php:19 inc/admin/translation-cpt.php:23
 msgid "Translations"
 msgstr "Traductions"
@@ -783,7 +795,7 @@ msgstr "Code"
 msgid "API returned an unexpected response."
 msgstr "L’API a renvoyé une réponse inattendue."
 
-#: inc/ob-callback/editor.php:220 inc/ob-callback/list.php:230
+#: inc/ob-callback/editor.php:221 inc/ob-callback/list.php:230
 msgid "Edit this translation"
 msgstr "Éditer cette traduction"
 

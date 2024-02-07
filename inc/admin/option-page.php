@@ -132,3 +132,34 @@ function wplng_settings_link( $settings ) {
 
 	return $settings;
 }
+
+
+/**
+ * Display a notice if the plugin is activate but not configured
+ *
+ * @return string
+ */
+function wplng_admin_notice_no_key_set() {
+
+	$url = add_query_arg(
+		'page',
+		'wplingua-settings',
+		get_admin_url() . 'admin.php'
+	);
+
+	$html  = '<div class="notice notice-info is-dismissible">';
+	$html .= '<p style="font-weight: 600;">';
+	$html .= '<span class="dashicons dashicons-translation"></span> ';
+	$html .= esc_html__( 'wpLingua - Translation solution for multilingual website', 'wplingua' );
+	$html .= '</p>';
+	$html .= '<p>';
+	$html .= esc_html__( 'wpLingua is installed, but not yet configured. You are just a few clicks away from making your site multilingual!', 'wplingua' );
+	$html .= '<br> ';
+	$html .= '<a href="' . esc_url( $url ) . '">';
+	$html .= esc_html__( 'Go to the configuration page', 'wplingua' );
+	$html .= '</a>';
+	$html .= '</p>';
+	$html .= '</div>';
+
+	echo $html;
+}
