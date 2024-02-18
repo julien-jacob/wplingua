@@ -62,6 +62,15 @@ function wplng_create_menu() {
 
 	add_submenu_page(
 		'wplingua-settings',
+		__( 'wplingua: Dictionary', 'wplingua' ),
+		__( 'Dictionary', 'wplingua' ),
+		'administrator',
+		'wplingua-dictionary',
+		'wplng_option_page_dictionary'
+	);
+
+	add_submenu_page(
+		'wplingua-settings',
 		__( 'wplingua: Exclusion', 'wplingua' ),
 		__( 'Exclusion', 'wplingua' ),
 		'administrator',
@@ -107,6 +116,9 @@ function wplng_register_settings() {
 	register_setting( 'wplng_switcher', 'wplng_name_format' );
 	register_setting( 'wplng_switcher', 'wplng_flags_style' );
 	register_setting( 'wplng_switcher', 'wplng_custom_css' );
+
+	// Option page : Dictionary
+	register_setting( 'wplng_dictionary', 'wplng_dictionary_entries' );
 }
 
 

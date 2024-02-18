@@ -18,6 +18,7 @@ require_once WPLNG_PLUGIN_PATH . '/inc/lib/simple-html-dom.php';
 // Require files in /inc/admin/ folder
 require_once WPLNG_PLUGIN_PATH . '/inc/admin/admin-bar.php';
 require_once WPLNG_PLUGIN_PATH . '/inc/admin/assets.php';
+require_once WPLNG_PLUGIN_PATH . '/inc/admin/option-page-dictionary.php';
 require_once WPLNG_PLUGIN_PATH . '/inc/admin/option-page-exclusions.php';
 require_once WPLNG_PLUGIN_PATH . '/inc/admin/option-page-register.php';
 require_once WPLNG_PLUGIN_PATH . '/inc/admin/option-page-settings.php';
@@ -40,6 +41,7 @@ require_once WPLNG_PLUGIN_PATH . '/inc/ob-callback/translate.php';
 // Require files in /inc/ folder
 require_once WPLNG_PLUGIN_PATH . '/inc/api-key.php';
 require_once WPLNG_PLUGIN_PATH . '/inc/assets.php';
+require_once WPLNG_PLUGIN_PATH . '/inc/dictionary.php';
 require_once WPLNG_PLUGIN_PATH . '/inc/html-updater.php';
 require_once WPLNG_PLUGIN_PATH . '/inc/languages.php';
 require_once WPLNG_PLUGIN_PATH . '/inc/parser.php';

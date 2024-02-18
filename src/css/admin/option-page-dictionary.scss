@@ -1,0 +1,61 @@
+@import "../header";
+@import "../dashicons-spin";
+
+.wplng-flag {
+    max-width: 1.5em;
+    max-height: 1.5em;
+    height: auto;
+    margin-right: .4em;
+    vertical-align: text-top;
+}
+
+textarea.wplng-adaptive-textarea {
+    overflow: hidden;
+    width: 100%;
+    resize: none;
+}
+
+p.submit,
+#submit {
+    display: none;
+}
+
+#wplng-dictionary-entries {
+    
+    .wplng-dictionary-entry {
+
+        border: 1px solid #c3c4c7;
+        padding: 5px 10px 8px 6px;
+        margin-top: 10px;
+        background-color: #fff;
+        border-radius: 3px;
+
+        .wplng-rule-header {
+            display: flex;
+            justify-content: space-between;
+
+            // .wplng-rule-link-remove::before {
+            //     content: "|";
+            //     display: inline;
+            //     color: #8c8f94;
+            //     text-decoration: none;
+            //     margin-right: 5px;
+            //     font-weight: lighter;
+            // }
+        }
+    }   
+}
+
+#wplng-new-rule-button {
+    width: 100%;
+    text-align: center;
+    margin-top: 10px;
+}
+
+#wplng-dictionary-entry-new {
+    #wplng-new-action-section {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 10px;
+    }
+}

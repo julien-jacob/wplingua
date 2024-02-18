@@ -99,8 +99,9 @@ function wplng_start() {
 
 		// Enqueue CSS and JS files for option pages
 		add_action( 'admin_enqueue_scripts', 'wplng_option_page_settings_assets' );
-		add_action( 'admin_enqueue_scripts', 'wplng_option_page_exclusions_assets' );
 		add_action( 'admin_enqueue_scripts', 'wplng_option_page_switcher_assets' );
+		add_action( 'admin_enqueue_scripts', 'wplng_option_page_exclusions_assets' );
+		add_action( 'admin_enqueue_scripts', 'wplng_option_page_dictionary_assets' );
 
 		// Update flags URL
 		add_action( 'update_option_wplng_flags_style', 'wplng_options_switcher_update_flags_style', 10, 2 );
@@ -180,6 +181,7 @@ function wplng_start() {
 		/**
 		 * Shortcode
 		 */
+
 		add_shortcode( 'wplng_switcher', 'wplng_shortcode_switcher' );
 		add_shortcode( 'wplng_notranslate', 'wplng_shortcode_notranslate' );
 		add_shortcode( 'wplng_only', 'wplng_shortcode_only' );
