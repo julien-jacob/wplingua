@@ -34,10 +34,26 @@ function wplng_dictionary_get_entries() {
 		}
 
 		$source_clear = esc_html( $entry['source'] );
-		$source_clear = str_replace('⊕', '', $source_clear);
-		$source_clear = str_replace('⊖', '', $source_clear);
-		$source_clear = preg_replace('#\[wplng_dictionary.*\]#', '', $source_clear);
-		$source_clear = preg_replace('#\[\/wplng_dictionary\]#', '', $source_clear);
+		$source_clear = str_replace( '⊕', '', $source_clear );
+		$source_clear = str_replace( '⊖', '', $source_clear );
+		$source_clear = preg_replace( '#\[wplng_dictionary.*\]#', '', $source_clear );
+		$source_clear = preg_replace( '#\[\/wplng_dictionary\]#', '', $source_clear );
+
+		/**
+		 * Check if rule already exist
+		 */
+
+		$already_in = false;
+		foreach ( $entries_clear as $entry_clear ) {
+			if ( $source_clear === $entry_clear['source'] ) {
+				$already_in = true;
+				break;
+			}
+		}
+
+		if ( $already_in ) {
+			continue;
+		}
 
 		/**
 		 * Get and check the rules
