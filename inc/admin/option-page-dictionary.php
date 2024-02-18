@@ -37,20 +37,12 @@ function wplng_option_page_dictionary() {
 
 						<fieldset>
 
-							<p><strong><?php esc_html_e( 'All dictionary entries: ', 'wplingua' ); ?></strong></p>
+							<p><strong><?php esc_html_e( 'Translation rules by dictionary: ', 'wplingua' ); ?></strong></p>
 
 							<p><?php esc_html_e( 'The dictionary allows you to define translation rules that apply when generating machine translations. You can specify words or sets of words that should never be translated, or define how they should be translated for each language.', 'wplingua' ); ?></p>
 
-							<hr>
+							<?php wplng_option_page_dictionary_entries_html(); ?>
 
-							<label for="wplng_dictionary_entries"><strong><?php esc_html_e( 'All dictionary entries: ', 'wplingua' ); ?></strong></label>
-							<br>
-							<div id="wplng-dictionary-entries">
-								<?php wplng_option_page_dictionary_entries_html(); ?>
-							</div>
-
-							<br>
-							<hr>
 
 							<a href="javascript:void(0);" class="button button-primary" id="wplng-new-rule-button">
 								<?php esc_html_e( 'Add a new rule', 'wplingua' ); ?>
@@ -81,25 +73,38 @@ function wplng_option_page_dictionary() {
 
 function wplng_option_page_dictionary_entries_html() {
 
+	$dictionary_entries = wplng_dictionary_get_entries();
+
+	if ( empty( $dictionary_entries ) ) {
+		return '';
+	}
+
 	$language_website       = wplng_get_language_website();
 	$language_website_html  = '<img ';
 	$language_website_html .= 'src="' . esc_url( $language_website['flag'] ) . '" ';
 	$language_website_html .= 'alt="' . esc_attr( $language_website['name'] ) . '" ';
 	$language_website_html .= 'class="wplng-flag">';
 
-	$dictionary_entries = wplng_dictionary_get_entries();
-	$html               = '';
+	$html  = '';
+	$html .= '<hr>';
+	$html .= '<label><strong>';
+	$html .= esc_html__( 'All dictionary entries: ', 'wplingua' );
+	$html .= '</strong></label>';
+	$html .= '<br>';
+	$html .= '<div id="wplng-dictionary-entries">';
 
 	foreach ( $dictionary_entries as $rule_number => $entry ) {
 
-		$html .= '<div class="wplng-dictionary-entry" wplng-rule="' . esc_attr( $rule_number ) . '">';
+		$html .= '<div ';
+		$html .= 'class="wplng-dictionary-entry" ';
+		$html .= 'wplng-rule="' . esc_attr( $rule_number ) . '">';
 
 		$html .= '<div class="wplng-rule-header">';
 
 		$html .= '<div class="wplng-rule-name">';
 		$html .= esc_html__( 'Rule N°', 'wplingua' );
 		$html .= esc_html( $rule_number + 1 );
-		$html .= '</div>';
+		$html .= '</div>'; // ENd .wplng-rule-name
 
 		$html .= '<div class="wplng-rule-action">';
 		// $html .= '<a ';
@@ -114,7 +119,7 @@ function wplng_option_page_dictionary_entries_html() {
 		$html .= 'wplng-rule="' . esc_attr( $rule_number ) . '">';
 		$html .= esc_html__( 'Remove', 'wplingua' );
 		$html .= '</a>';
-		$html .= '</div>';
+		$html .= '</div>'; // .wplng-rule-action
 
 		$html .= '</div>'; // End .wplng-rule-header
 
@@ -152,6 +157,8 @@ function wplng_option_page_dictionary_entries_html() {
 
 		$html .= '</div>'; // End .wplng-dictionary-entry
 	}
+
+	$html .= '</div>'; // End #wplng-dictionary-entries
 
 	echo $html;
 }
