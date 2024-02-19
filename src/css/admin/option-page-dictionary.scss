@@ -22,13 +22,13 @@ p.submit,
 
 #wplng-dictionary-entries {
 
-    margin-bottom: 10px;
+    margin-top: 5px;
     
     .wplng-dictionary-entry {
 
         border: 1px solid #c3c4c7;
         padding: 5px 10px 8px 6px;
-        margin-top: 10px;
+        margin-bottom: 15px;
         background-color: #fff;
         border-radius: 3px;
 
@@ -36,14 +36,14 @@ p.submit,
             display: flex;
             justify-content: space-between;
 
-            // .wplng-rule-link-remove::before {
-            //     content: "|";
-            //     display: inline;
-            //     color: #8c8f94;
-            //     text-decoration: none;
-            //     margin-right: 5px;
-            //     font-weight: lighter;
-            // }
+            .wplng-rule-link-remove::before {
+                content: "|";
+                display: inline;
+                color: #8c8f94;
+                text-decoration: none;
+                margin-right: 5px;
+                font-weight: lighter;
+            }
         }
     }   
 }
@@ -51,11 +51,18 @@ p.submit,
 #wplng-new-rule-button {
     width: 100%;
     text-align: center;
-    margin-top: 10px;
 }
 
 #wplng-dictionary-entry-new {
     #wplng-new-action-section {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 10px;
+    }
+}
+
+#wplng-dictionary-entry-edit {
+    #wplng-edit-action-section {
         display: flex;
         justify-content: space-between;
         margin-top: 10px;

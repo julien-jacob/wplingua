@@ -40,11 +40,12 @@ function wplng_option_page_dictionary() {
 
 							<p><?php esc_html_e( 'The dictionary allows you to define translation rules that apply when generating machine translations. You can specify words or sets of words that should never be translated, or define how they should be translated for each language.', 'wplingua' ); ?></p>
 
+							<br>
+
 							<?php wplng_option_page_dictionary_entries_html(); ?>
 
-
 							<a href="javascript:void(0);" class="button button-primary" id="wplng-new-rule-button">
-								<?php esc_html_e( 'Add a new rule', 'wplingua' ); ?>
+								<?php esc_html_e( 'Add a dictionary entry', 'wplingua' ); ?>
 							</a>
 
 						</fieldset>
@@ -119,12 +120,12 @@ function wplng_option_page_dictionary_entries_html() {
 		$html .= '</div>'; // ENd .wplng-rule-name
 
 		$html .= '<div class="wplng-rule-action">';
-		// $html .= '<a ';
-		// $html .= 'href="javascript:void(0);" ';
-		// $html .= 'class="wplng-rule-link-edit" ';
-		// $html .= 'wplng-target-lang="fr">';
-		// $html .= esc_html__( 'Edit rule', 'wplingua' );
-		// $html .= '</a> ';
+		$html .= '<a ';
+		$html .= 'href="javascript:void(0);" ';
+		$html .= 'class="wplng-rule-link-edit" ';
+		$html .= 'wplng-rule="' . esc_attr( $rule_number ) . '">';
+		$html .= esc_html__( 'Edit rule', 'wplingua' );
+		$html .= '</a> ';
 		$html .= '<a ';
 		$html .= 'href="javascript:void(0);" ';
 		$html .= 'class="wplng-rule-link-remove" ';
@@ -210,10 +211,10 @@ function wplng_option_page_dictionary_new_entry_html() {
 	$html .= '<fieldset>';
 	$html .= '<input ';
 	$html .= 'type="checkbox" ';
-	$html .= 'id="wplng_new_never_translate" ';
-	$html .= 'name="wplng_new_never_translate" ';
+	$html .= 'id="wplng-new-never-translate" ';
+	$html .= 'name="wplng-new-never-translate" ';
 	$html .= '>';
-	$html .= '<label for="wplng_new_never_translate"> ';
+	$html .= '<label for="wplng-new-never-translate"> ';
 	$html .= esc_html__( 'Never translate', 'wplingua' );
 	$html .= '</label>';
 	$html .= '</fieldset>';
@@ -291,15 +292,15 @@ function wplng_option_page_dictionary_edit_entry_html() {
 	*/
 
 	$html .= '<fieldset>';
-	$html .= '<label for="wplng-new-source">';
+	$html .= '<label for="wplng-edit-source">';
 	$html .= '<strong>';
 	$html .= esc_html__( 'Source text: ', 'wplingua' );
 	$html .= '</strong>';
 	$html .= '</label>';
 	$html .= '<br>';
 	$html .= '<textarea ';
-	$html .= 'name="wplng-new-source" ';
-	$html .= 'id="wplng-new-source" ';
+	$html .= 'name="wplng-edit-source" ';
+	$html .= 'id="wplng-edit-source" ';
 	$html .= 'class="wplng-adaptive-textarea">';
 	$html .= '</textarea>';
 	$html .= '</fieldset>';
@@ -311,22 +312,22 @@ function wplng_option_page_dictionary_edit_entry_html() {
 	$html .= '<fieldset>';
 	$html .= '<input ';
 	$html .= 'type="checkbox" ';
-	$html .= 'id="wplng_new_never_translate" ';
-	$html .= 'name="wplng_new_never_translate" ';
+	$html .= 'id="wplng-edit-never-translate" ';
+	$html .= 'name="wplng-edit-never-translate" ';
 	$html .= '>';
-	$html .= '<label for="wplng_new_never_translate"> ';
+	$html .= '<label for="wplng-edit-never-translate"> ';
 	$html .= esc_html__( 'Never translate', 'wplingua' );
 	$html .= '</label>';
 	$html .= '</fieldset>';
 
 	$language_target = wplng_get_languages_target();
 
-	$html .= '<div id="wplng-new-rules">';
+	$html .= '<div id="wplng-edit-rules">';
 	foreach ( $language_target as $key => $language ) {
 
-		$name = 'wplng-new-always-translate-' . $language['id'];
+		$name = 'wplng-edit-always-translate-' . $language['id'];
 
-		$html .= '<div class="wplng-new-rule" wplng-rule="' . esc_html( $language['id'] ) . '">';
+		$html .= '<div class="wplng-edit-rule" wplng-rule="' . esc_html( $language['id'] ) . '">';
 		$html .= '<hr>';
 		$html .= '<fieldset>';
 		$html .= '<label for="' . esc_attr( $name ) . '">';
@@ -354,11 +355,11 @@ function wplng_option_page_dictionary_edit_entry_html() {
 	}
 	$html .= '</div>';
 
-	$html .= '<div id="wplng-new-action-section">';
+	$html .= '<div id="wplng-edit-action-section">';
 
 	$html .= '<a ';
 	$html .= 'href="javascript:void(0);" ';
-	$html .= 'id="wplng-new-cancel-button" ';
+	$html .= 'id="wplng-edit-cancel-button" ';
 	$html .= 'class="button " ';
 	$html .= '>';
 	$html .= esc_html__( 'Cancel', 'wplingua' );
@@ -366,10 +367,10 @@ function wplng_option_page_dictionary_edit_entry_html() {
 
 	$html .= '<a ';
 	$html .= 'href="javascript:void(0);" ';
-	$html .= 'id="wplng-new-add-button" ';
+	$html .= 'id="wplng-edit-save-button" ';
 	$html .= 'class="button button-primary" ';
 	$html .= '>';
-	$html .= esc_html__( 'Save new entry', 'wplingua' );
+	$html .= esc_html__( 'Save edited entry', 'wplingua' );
 	$html .= '</a>';
 
 	$html .= '</div>';
