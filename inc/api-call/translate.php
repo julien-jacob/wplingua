@@ -87,9 +87,22 @@ function wplng_api_call_translate(
 		return $texts;
 	}
 
-	// Get texts list as JSON
+	/**
+	 * Add dictionary tag
+	 */
 
-	$json_texts = wp_json_encode( $texts );
+	$dictionary_entries = wplng_dictionary_get_entries();
+
+	$texts_tagged = wplng_dictionary_add_tags(
+		$texts,
+		$dictionary_entries
+	);
+
+	/**
+	 * Get texts list as JSON
+	 */
+
+	$json_texts = wp_json_encode( $texts_tagged );
 
 	if ( empty( $json_texts ) ) {
 		return $texts;
@@ -144,12 +157,19 @@ function wplng_api_call_translate(
 		return $texts;
 	}
 
-	// API returned the list of translations
+	/**
+	 * Here, API returned the list of translations
+	 */
+
+	// Replace dictionary tag
+
+	$texts_untagged = wplng_dictionary_replace_tags( $response['translations'], $dictionary_entries );
+
 	// Check and sanitize each translation
 
 	$translations = array();
 
-	foreach ( $response['translations'] as $key => $translation ) {
+	foreach ( $texts_untagged as $key => $translation ) {
 		if ( is_string( $translation ) ) {
 			$translations[] = wp_kses( $translation, array() );
 		} elseif ( isset( $texts[ $key ] ) ) {
