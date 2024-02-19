@@ -1,7 +1,5 @@
 jQuery(document).ready(function ($) {
 
-    // $("#wplng-section-new-entry").hide();
-
     // TODO : Revoir les noms des id / class
     // TODO : Revoir les commentaires
 
@@ -10,8 +8,8 @@ jQuery(document).ready(function ($) {
      */
 
     $("#wplng-new-cancel-button").click(function () {
-        $("#wplng-section-all-entries").show();
-        $("#wplng-section-new-entry").hide();
+        $("#wplng-section-entries-all").show();
+        $("#wplng-section-entry-new").hide();
     });
 
     /**
@@ -19,8 +17,8 @@ jQuery(document).ready(function ($) {
      */
 
     $("#wplng-new-rule-button").click(function () {
-        $("#wplng-section-all-entries").hide();
-        $("#wplng-section-new-entry").show();
+        $("#wplng-section-entries-all").hide();
+        $("#wplng-section-entry-new").show();
         wplngResizeTextArea($("#wplng-dictionary-entry-new .wplng-adaptive-textarea"));
     });
 
