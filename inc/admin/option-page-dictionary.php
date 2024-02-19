@@ -200,7 +200,8 @@ function wplng_option_page_dictionary_new_entry_html() {
 	$html .= '<textarea ';
 	$html .= 'name="wplng-new-source" ';
 	$html .= 'id="wplng-new-source" ';
-	$html .= 'class="wplng-adaptive-textarea">';
+	$html .= 'class="wplng-adaptive-textarea" ';
+	$html .= 'maxlength="256">';
 	$html .= '</textarea>';
 	$html .= '</fieldset>';
 
@@ -245,9 +246,10 @@ function wplng_option_page_dictionary_new_entry_html() {
 		$html .= '<textarea ';
 		$html .= 'name="' . esc_attr( $name ) . '" ';
 		$html .= 'id="' . esc_attr( $name ) . '" ';
-		$html .= 'class="wplng-adaptive-textarea">';
-
+		$html .= 'class="wplng-adaptive-textarea" ';
+		$html .= 'maxlength="256">';
 		$html .= '</textarea>';
+
 		$html .= '</fieldset>';
 		$html .= '</div>';
 
@@ -301,7 +303,8 @@ function wplng_option_page_dictionary_edit_entry_html() {
 	$html .= '<textarea ';
 	$html .= 'name="wplng-edit-source" ';
 	$html .= 'id="wplng-edit-source" ';
-	$html .= 'class="wplng-adaptive-textarea">';
+	$html .= 'class="wplng-adaptive-textarea" ';
+	$html .= 'maxlength="256">';
 	$html .= '</textarea>';
 	$html .= '</fieldset>';
 
@@ -346,9 +349,10 @@ function wplng_option_page_dictionary_edit_entry_html() {
 		$html .= '<textarea ';
 		$html .= 'name="' . esc_attr( $name ) . '" ';
 		$html .= 'id="' . esc_attr( $name ) . '" ';
-		$html .= 'class="wplng-adaptive-textarea">';
-
+		$html .= 'class="wplng-adaptive-textarea" ';
+		$html .= 'maxlength="256">';
 		$html .= '</textarea>';
+
 		$html .= '</fieldset>';
 		$html .= '</div>';
 

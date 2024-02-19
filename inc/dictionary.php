@@ -29,6 +29,7 @@ function wplng_dictionary_get_entries() {
 
 		if ( ! isset( $entry['source'] )
 			|| ! is_string( $entry['source'] )
+			|| strlen( $entry['source'] ) >= 256
 		) {
 			continue;
 		}
@@ -79,6 +80,7 @@ function wplng_dictionary_get_entries() {
 				|| ! is_string( $rule )
 				|| '' === trim( $rule )
 				|| $rule === $source_clear
+				|| strlen( $rule ) >= 256
 			) {
 				continue;
 			}
