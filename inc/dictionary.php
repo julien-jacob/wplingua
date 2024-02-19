@@ -21,7 +21,7 @@ function wplng_dictionary_get_entries() {
 		return array();
 	}
 
-	foreach ( $entries as $key => $entry ) {
+	foreach ( $entries as $entry ) {
 
 		/**
 		 * Get and check the source
@@ -103,6 +103,15 @@ function wplng_dictionary_get_entries() {
 		$entries_clear, function( $a, $b ) {
 			return strlen( $b['source'] ) - strlen( $a['source'] );
 		}
+	);
+
+	/**
+	 * Apply wplng_dictionary_entries filter
+	 */
+
+	$entries_clear = apply_filters(
+		'wplng_dictionary_entries',
+		$entries_clear
 	);
 
 	return $entries_clear;
