@@ -78,6 +78,7 @@ function wplng_dictionary_get_entries() {
 			if ( ! wplng_is_valid_language_id( $language_id )
 				|| ! is_string( $rule )
 				|| '' === trim( $rule )
+				|| $rule === $source_clear
 			) {
 				continue;
 			}
@@ -89,10 +90,16 @@ function wplng_dictionary_get_entries() {
 		 * Create the clear entries
 		 */
 
-		$entries_clear[] = array(
-			'source' => $source_clear,
-			'rules'  => $rules_clear,
-		);
+		if ( empty( $rules_clear ) ) {
+			$entries_clear[] = array(
+				'source' => $source_clear,
+			);
+		} else {
+			$entries_clear[] = array(
+				'source' => $source_clear,
+				'rules'  => $rules_clear,
+			);
+		}
 	}
 
 	/**
