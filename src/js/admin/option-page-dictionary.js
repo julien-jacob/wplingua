@@ -123,6 +123,8 @@ jQuery(document).ready(function ($) {
             $("#wplng-edit-never-translate").prop("checked", true);
             $("#wplng-edit-rules").hide();
         } else {
+            $("#wplng-edit-never-translate").prop("checked", false);
+            $("#wplng-edit-rules").show();
             $("#wplng-edit-rules textarea").val("");
             $.each(editedDictionaryEntry.rules, function (key, value) {
                 let textareaSelector = "#wplng-edit-always-translate-" + key;
