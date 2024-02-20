@@ -14,4 +14,22 @@
         font-family: monospace;
     }
 
+    #wplng-register-success-message {
+        border: 2px solid #00a32a;
+        background-color: rgba(0, 255, 0, .05);
+
+        #wplng-register-success-title {
+            font-weight: 600;
+            color: #00a32a;
+        }
+
+        #wplng-register-success-mail {
+            color: #00a32a;
+        }
+
+        hr {
+            border-bottom-color: #00a32a;
+        }
+    }
+
 }
