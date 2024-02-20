@@ -23,12 +23,11 @@ function wplng_option_page_settings() {
 	wplng_settings_part_first_use();
 
 	?>
+
+	<h1 class="wplin-option-page-title"><span class="dashicons dashicons-translation"></span> <?php esc_html_e( 'wpLingua - Translation solution for multilingual website', 'wplingua' ); ?></h1>
+
 	<div class="wrap">
-
-		<h1 class="wp-heading-inline"><span class="dashicons dashicons-translation"></span> <?php esc_html_e( 'wpLingua - Translation solution for multilingual website', 'wplingua' ); ?></h1>
-
 		<hr class="wp-header-end">
-
 		<form method="post" action="options.php">
 			<?php
 			settings_fields( 'wplng_settings' );

@@ -27,12 +27,11 @@ function wplng_option_page_switcher() {
 	}
 
 	?>
+
+	<h1 class="wplin-option-page-title"><span class="dashicons dashicons-translation"></span> <?php esc_html_e( 'wpLingua - Switcher settings', 'wplingua' ); ?></h1>
+
 	<div class="wrap">
-
-		<h1 class="wp-heading-inline"><span class="dashicons dashicons-translation"></span> <?php esc_html_e( 'wpLingua - Switcher settings', 'wplingua' ); ?></h1>
-
 		<hr class="wp-header-end">
-
 		<form method="post" action="options.php">
 			<?php
 			settings_fields( 'wplng_switcher' );
