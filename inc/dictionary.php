@@ -34,7 +34,7 @@ function wplng_dictionary_get_entries() {
 			continue;
 		}
 
-		$source_clear = esc_html( $entry['source'] );
+		$source_clear = wplng_text_esc( $entry['source'] );
 		$source_clear = str_replace( '⊕', '', $source_clear );
 		$source_clear = str_replace( '⊖', '', $source_clear );
 		$source_clear = preg_replace( '#\[wplng_dictionary.*\]#', '', $source_clear );
@@ -85,7 +85,7 @@ function wplng_dictionary_get_entries() {
 				continue;
 			}
 
-			$rules_clear[ $language_id ] = esc_html( $rule );
+			$rules_clear[ $language_id ] = wplng_text_esc( $rule );
 		}
 
 		/**
