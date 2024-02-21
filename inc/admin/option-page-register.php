@@ -22,6 +22,7 @@ function wplng_option_page_register() {
 		return;
 	}
 
+	$mail             = '';
 	$api_key          = wplng_get_api_key();
 	$json_request_key = get_option( 'wplng_request_free_key' );
 	$error_validation = get_transient( 'wplng_api_key_error' );
@@ -89,34 +90,19 @@ function wplng_option_page_register() {
 			</div>
 			<?php
 		} elseif ( ! empty( $response['register'] ) ) {
-
-			$mail = '';
-
 			if ( ! empty( $data_request_key['mail_address'] )
 				&& is_email( $data_request_key['mail_address'] )
 			) {
 				$mail = sanitize_email( $data_request_key['mail_address'] );
 			}
-
-			?>
-			<div class="wplng-notice notice notice-success is-dismissible">
-				<p><strong>
-				<?php
-				esc_html_e( 'The API key has been correctly created and sent to the following e-mail address: ', 'wplingua' );
-				echo esc_html( $mail );
-				?>
-				</strong></p>
-			</div>
-			<?php
 		}
 	endif;
 	?>
+
+	<h1 class="wplin-option-page-title"><span class="dashicons dashicons-translation"></span> <?php esc_html_e( 'wpLingua - Register API key', 'wplingua' ); ?></h1>
+
 	<div class="wrap">
-
-		<h1 class="wp-heading-inline"><span class="dashicons dashicons-translation"></span> <?php esc_html_e( 'wpLingua - Register API key', 'wplingua' ); ?></h1>
-
 		<hr class="wp-header-end">
-
 		<form method="post" action="options.php">
 			<?php
 			settings_fields( 'wplng_settings' );
@@ -124,8 +110,39 @@ function wplng_option_page_register() {
 			?>
 			<table class="form-table wplng-form-table">
 
+				<?php
+				/**
+				 * After register a new API key without error
+				 */
+
+				if ( ! empty( $mail ) ) :
+					?>
+
 				<tr>
-					<th scope="row"><?php esc_html_e( 'Start with wpLingua', 'wplingua' ); ?></th>
+					<th scope="row"><span class="dashicons dashicons-yes-alt"></span> <?php esc_html_e( 'API key created', 'wplingua' ); ?></th>
+					<td id="wplng-register-success-message">
+						<p id="wplng-register-success-title"><span class="dashicons dashicons-email-alt"></span> <?php esc_html_e( 'API key created and sent by email', 'wplingua' ); ?></p>
+
+						<p><strong><?php esc_html_e( 'The API key has been correctly created and sent to the following e-mail address: ', 'wplingua' ); ?><span id="wplng-register-success-mail"><?php esc_html_e( $mail ); ?><span></strong></p>
+
+						<hr>
+
+						<p><?php esc_html_e( 'Go to your mailbox and copy the API key sent to you (don\'t forget to check the spam section of your mailbox). Then paste it in the section below, and click "Set API key" to make your site multilingual.', 'wplingua' ); ?></p>
+
+					</td>
+				</tr>
+
+				<tr>
+					<th scope="row"><span class="dashicons dashicons-admin-network"></span> <?php esc_html_e( 'Set API Key', 'wplingua' ); ?></th>
+					<td>
+						<?php wplng_register_part_api_key( $api_key ); ?>
+					</td>
+				</tr>
+
+				<?php else : ?>
+
+				<tr>
+					<th scope="row"><span class="dashicons dashicons-info"></span> <?php esc_html_e( 'Start with wpLingua', 'wplingua' ); ?></th>
 					<td>
 						<p><strong><?php esc_html_e( 'You are just a few clicks away from making your site multilingual!', 'wplingua' ); ?></strong></p>
 
@@ -134,25 +151,27 @@ function wplng_option_page_register() {
 				</tr>
 
 				<tr>
-					<th scope="row"><?php esc_html_e( 'Set API Key', 'wplingua' ); ?></th>
+					<th scope="row"><span class="dashicons dashicons-admin-network"></span> <?php esc_html_e( 'Set API Key', 'wplingua' ); ?></th>
 					<td>
 						<?php wplng_register_part_api_key( $api_key ); ?>
 					</td>
 				</tr>
 
 				<tr>
-					<th scope="row"><?php esc_html_e( 'Get free API key', 'wplingua' ); ?></th>
+					<th scope="row"><span class="dashicons dashicons-yes-alt"></span> <?php esc_html_e( 'Get free API key', 'wplingua' ); ?></th>
 					<td>
 						<?php wplng_register_part_free_api_key(); ?>
 					</td>
 				</tr>
 
 				<tr>
-					<th scope="row"><?php esc_html_e( 'Get advanced API features', 'wplingua' ); ?></th>
+					<th scope="row"><span class="dashicons dashicons-admin-settings"></span> <?php esc_html_e( 'Advanced API features', 'wplingua' ); ?></th>
 					<td>
 						<?php wplng_register_part_premium(); ?>
 					</td>
 				</tr>
+
+				<?php endif; ?>
 
 			</table>
 		</form>

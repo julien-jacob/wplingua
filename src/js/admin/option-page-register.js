@@ -1,5 +1,10 @@
 jQuery(document).ready(function ($) {
 
+
+    if (!$("#wplng-language-website").length) {
+        return;
+    }
+
     /**
      * Set HTML options for languages
      */

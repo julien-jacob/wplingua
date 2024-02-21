@@ -108,7 +108,7 @@ function wplng_url_is_translatable( $url = '' ) {
 	$is_translatable = true;
 
 	// Get current URL if $url is empty
-	if ( empty( $url ) ) {
+	if ( '' === $url ) {
 		$url = sanitize_url( $wplng_request_uri );
 	}
 

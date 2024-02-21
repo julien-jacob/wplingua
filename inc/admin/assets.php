@@ -244,6 +244,58 @@ function wplng_option_page_exclusions_assets( $hook ) {
 
 
 /**
+ * Register wpLingua assets for option page : Dictionary
+ *
+ * @param string $hook
+ * @return void
+ */
+function wplng_option_page_dictionary_assets( $hook ) {
+
+	if ( ! is_admin()
+		|| $hook !== 'wplingua_page_wplingua-dictionary'
+	) {
+		return;
+	}
+
+	/**
+	 * Enqueue jQuery
+	 */
+
+	 wp_enqueue_script( 'jquery' );
+
+	 /**
+	  * Enqueue wpLingua JS scripts
+	  */
+ 
+	 wp_enqueue_script(
+		 'wplingua-option-dictionary',
+		 plugins_url() . '/wplingua/assets/js/admin/option-page-dictionary.js',
+		 array( 'jquery' ),
+		 WPLNG_API_VERSION
+	 );
+
+	/**
+	 * Enqueue wpLingua CSS styles
+	 */
+
+	wp_enqueue_style(
+		'wplingua-option-dictionary',
+		plugins_url() . '/wplingua/assets/css/admin/option-page-dictionary.css',
+		array(),
+		WPLNG_API_VERSION
+	);
+
+	wp_enqueue_style(
+		'wplingua-option-pages',
+		plugins_url() . '/wplingua/assets/css/admin/option-page.css',
+		array(),
+		WPLNG_API_VERSION
+	);
+
+}
+
+
+/**
  * Register wpLingua assets on translations edit pages
  *
  * @return void

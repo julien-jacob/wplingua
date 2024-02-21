@@ -28,20 +28,10 @@ function wplng_exclude_woocommerce_url( $url_exclude ) {
 
 	$url_woocommerce = array();
 
-	// Get WooCommerce Cart URL
-	if ( function_exists( 'wc_get_cart_url' ) ) {
-		$url_woocommerce[] = wc_get_cart_url();
-	}
-
-	// Get WooCommerce Checkout URL
-	if ( function_exists( 'wc_get_checkout_url' ) ) {
-		$url_woocommerce[] = wc_get_checkout_url();
-	}
-
-	// Get WooCommerce My Account Page
-	if ( function_exists( 'wc_get_page_permalink' ) ) {
-		$url_woocommerce[] = wc_get_page_permalink( 'myaccount' );
-	}
+	// The following functions not working with the last woocommerce version
+	// Get WooCommerce Cart URL : wc_get_cart_url()
+	// Get WooCommerce Checkout URL : wc_get_checkout_url()
+	// Get WooCommerce My Account Page : wc_get_page_permalink( 'myaccount' )
 
 	// Get Woocommerce permalink option
 	$option_links = get_option( 'woocommerce_permalinks' );
@@ -67,7 +57,7 @@ function wplng_exclude_woocommerce_url( $url_exclude ) {
 
 	$regex_woocommerce = array();
 
-	foreach ( $url_woocommerce as $key => $url ) {
+	foreach ( $url_woocommerce as $url ) {
 
 		// URL : Check, sanitize and make relative
 
