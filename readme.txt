@@ -1,19 +1,19 @@
-=== wpLingua ===
+=== Translate WordPress with wpLingua - Automatic, editable, SEO friendly ===
 Contributors: wpr0ck, lyly13
 Donate link: https://wplingua.com/
-Tags: translation, translate, autotranslate, autotranslation, multilingual, multilingual website, localization
+Tags: translate, translation, multilingual, localization, language
 Requires at least: 5.0
 Tested up to: 6.4
-Stable tag: 1.0.5
+Stable tag: 1.1.0
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Make your websites multilingual and translates them automatically: no word limits, free first language, SEO-friendly, no coding knowledge needed and more!
+Make your websites multilingual and translate them automatically: no word limits, free first language, SEO-friendly, no coding knowledge needed, and more!
 
 == Description ==
 
-**An all-in-one solution that makes your websites multilingual and translates them automatically, without word or page limits.**
+**An all-in-one solution that makes your websites multilingual and translate them automatically, without word or page limits.**
 
 The highlights: 
 
@@ -71,7 +71,7 @@ The wpLingua language selector is fully customizable. You can display the langua
 
 You can also control the appearance of the language switcher using:
 
-✓ Switcher styles (dropdown, online, block...)
+✓ Switcher styles (dropdown, inline, block...)
 ✓ Predefined themes (light, dark, chameleon, etc.)
 ✓ Configurable language names (translated name, original name, language ID, etc.)
 ✓ Flag shapes (round, rectagle, wavy)
@@ -79,6 +79,9 @@ You can also control the appearance of the language switcher using:
 ✓ Adding custom CSS in a dedicated insert
 
 With all these customization options, there's no way your site's language selector will look like any other!
+
+### 📖 Translation rules by dictionary ###
+The dictionary allows you to define translation rules that apply when generating machine translations. You can specify words or sets of words that should never be translated, or define how they should be translated for each language.
 
 ### 🧭 Intuitive possibilities to exclude certain translations ###
 Navigate the complexities of website translation with wpLingua's intelligent exclusion feature. 
@@ -153,12 +156,20 @@ No, not at the moment but in the meantime, you can easily display the language s
 
 == Changelog ==
 
+= 1.1.0 =
+
+* Translation rules by dictionary
+* Better UX: Register API key
+* Better UX: Options pages
+* Better UX: admin bar
+* Fix WooCommerce error on links getting
+
 = 1.0.5 =
 
 * Translate meta twitter:description
 * New shortcode: wplng_only
 * Add message when plugin is activated but not configured
-* Fix arrow on switcher (theme: switcher, style: dropdown)
+* Fix arrow on switcher (theme: blur, style: dropdown)
 
 = 1.0.4 =
 
