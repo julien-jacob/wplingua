@@ -25,7 +25,7 @@ function wplng_option_page_exclusions() {
 			?>
 			<table class="form-table wplng-form-table">
 				<tr>
-					<th scope="row"><?php esc_html_e( 'Exclude elements', 'wplingua' ); ?></th>
+					<th scope="row"><span class="dashicons dashicons-welcome-widgets-menus"></span> <?php esc_html_e( 'Exclude elements', 'wplingua' ); ?></th>
 					<td>
 						<fieldset>
 							<label for="wplng_excluded_selectors"><strong><?php esc_html_e( 'Exclude HTML elements:', 'wplingua' ); ?></strong></label>
@@ -41,7 +41,7 @@ function wplng_option_page_exclusions() {
 					</td>
 				</tr>
 				<tr>
-					<th scope="row"><?php esc_html_e( 'Exclude URL', 'wplingua' ); ?></th>
+					<th scope="row"><span class="dashicons dashicons-admin-links"></span> <?php esc_html_e( 'Exclude URL', 'wplingua' ); ?></th>
 					<td>
 						<fieldset>
 							<label for="wplng_excluded_url"><strong><?php esc_html_e( 'Exclude URL from translation:', 'wplingua' ); ?></strong></label>

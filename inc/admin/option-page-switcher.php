@@ -40,7 +40,7 @@ function wplng_option_page_switcher() {
 			<table class="form-table wplng-form-table">
 
 				<tr>
-					<th scope="row"><?php esc_html_e( 'Switcher preview', 'wplingua' ); ?></th>
+					<th scope="row"><span class="dashicons dashicons-visibility"></span> <?php esc_html_e( 'Switcher preview', 'wplingua' ); ?></th>
 					<td id="wplng-switcher-preview-container">
 						<div class="wplng-switcher-preview">
 							<?php
@@ -53,7 +53,7 @@ function wplng_option_page_switcher() {
 				</tr>
 
 				<tr>
-					<th scope="row"><?php esc_html_e( 'Switcher design', 'wplingua' ); ?></th>
+					<th scope="row"><span class="dashicons dashicons-admin-appearance"></span> <?php esc_html_e( 'Switcher design', 'wplingua' ); ?></th>
 					<td>
 						<fieldset>
 
@@ -160,7 +160,7 @@ function wplng_option_page_switcher() {
 				</tr>
 
 				<tr>
-					<th scope="row"><?php esc_html_e( 'Custom CSS', 'wplingua' ); ?></th>
+					<th scope="row"><span class="dashicons dashicons-editor-code"></span> <?php esc_html_e( 'Custom CSS', 'wplingua' ); ?></th>
 					<td>
 						<fieldset>
 							<label for="wplng_custom_css">
@@ -172,7 +172,7 @@ function wplng_option_page_switcher() {
 				</tr>
 
 				<tr>
-					<th scope="row"><?php esc_html_e( 'Switcher insertion', 'wplingua' ); ?></th>
+					<th scope="row"><span class="dashicons dashicons-admin-post"></span> <?php esc_html_e( 'Switcher insertion', 'wplingua' ); ?></th>
 					<td>
 						<fieldset>
 

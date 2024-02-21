@@ -36,19 +36,19 @@ function wplng_option_page_settings() {
 
 			<table class="form-table wplng-form-table">
 				<tr>
-					<th scope="row"><?php esc_html_e( 'Website language', 'wplingua' ); ?></th>
+					<th scope="row"><span class="dashicons dashicons-location"></span> <?php esc_html_e( 'Website language', 'wplingua' ); ?></th>
 					<td>
 						<?php wplng_settings_part_language_website(); ?>
 					</td>
 				</tr>
 				<tr>
-					<th scope="row"><?php esc_html_e( 'Translated languages', 'wplingua' ); ?></th>
+					<th scope="row"><span class="dashicons dashicons-location-alt"></span> <?php esc_html_e( 'Translated languages', 'wplingua' ); ?></th>
 					<td>
 						<?php wplng_settings_part_languages_target(); ?>
 					</td>
 				</tr>
 				<tr>
-					<th scope="row"><?php esc_html_e( 'API features', 'wplingua' ); ?></th>
+					<th scope="row"><span class="dashicons dashicons-admin-settings"></span> <?php esc_html_e( 'API features', 'wplingua' ); ?></th>
 					<td>
 						<fieldset>
 							<?php wplng_settings_part_features(); ?>
@@ -56,7 +56,7 @@ function wplng_option_page_settings() {
 					</td>
 				</tr>
 				<tr>
-					<th scope="row"><?php _e( 'API Key', 'wplingua' ); ?></th>
+					<th scope="row"><span class="dashicons dashicons-admin-network"></span> <?php _e( 'API Key', 'wplingua' ); ?></th>
 					<td>
 						<?php wplng_settings_part_api_key(); ?>
 					</td>

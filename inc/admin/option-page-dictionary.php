@@ -31,7 +31,7 @@ function wplng_option_page_dictionary() {
 
 			<table class="form-table wplng-form-table">
 				<tr id="wplng-section-entries-all">
-					<th scope="row"><?php esc_html_e( 'Dictionary entries', 'wplingua' ); ?></th>
+					<th scope="row"><span class="dashicons dashicons-book"></span> <?php esc_html_e( 'Dictionary entries', 'wplingua' ); ?></th>
 					<td>
 						<fieldset>
 

@@ -119,7 +119,7 @@ function wplng_option_page_register() {
 					?>
 
 				<tr>
-					<th scope="row"><?php esc_html_e( 'API key created', 'wplingua' ); ?></th>
+					<th scope="row"><span class="dashicons dashicons-yes-alt"></span> <?php esc_html_e( 'API key created', 'wplingua' ); ?></th>
 					<td id="wplng-register-success-message">
 						<p id="wplng-register-success-title"><span class="dashicons dashicons-email-alt"></span> <?php esc_html_e( 'API key created and sent by email', 'wplingua' ); ?></p>
 
@@ -133,7 +133,7 @@ function wplng_option_page_register() {
 				</tr>
 
 				<tr>
-					<th scope="row"><?php esc_html_e( 'Set API Key', 'wplingua' ); ?></th>
+					<th scope="row"><span class="dashicons dashicons-admin-network"></span> <?php esc_html_e( 'Set API Key', 'wplingua' ); ?></th>
 					<td>
 						<?php wplng_register_part_api_key( $api_key ); ?>
 					</td>
@@ -142,7 +142,7 @@ function wplng_option_page_register() {
 				<?php else : ?>
 
 				<tr>
-					<th scope="row"><?php esc_html_e( 'Start with wpLingua', 'wplingua' ); ?></th>
+					<th scope="row"><span class="dashicons dashicons-info"></span> <?php esc_html_e( 'Start with wpLingua', 'wplingua' ); ?></th>
 					<td>
 						<p><strong><?php esc_html_e( 'You are just a few clicks away from making your site multilingual!', 'wplingua' ); ?></strong></p>
 
@@ -151,21 +151,21 @@ function wplng_option_page_register() {
 				</tr>
 
 				<tr>
-					<th scope="row"><?php esc_html_e( 'Set API Key', 'wplingua' ); ?></th>
+					<th scope="row"><span class="dashicons dashicons-admin-network"></span> <?php esc_html_e( 'Set API Key', 'wplingua' ); ?></th>
 					<td>
 						<?php wplng_register_part_api_key( $api_key ); ?>
 					</td>
 				</tr>
 
 				<tr>
-					<th scope="row"><?php esc_html_e( 'Get free API key', 'wplingua' ); ?></th>
+					<th scope="row"><span class="dashicons dashicons-yes-alt"></span> <?php esc_html_e( 'Get free API key', 'wplingua' ); ?></th>
 					<td>
 						<?php wplng_register_part_free_api_key(); ?>
 					</td>
 				</tr>
 
 				<tr>
-					<th scope="row"><?php esc_html_e( 'Advanced API features', 'wplingua' ); ?></th>
+					<th scope="row"><span class="dashicons dashicons-admin-settings"></span> <?php esc_html_e( 'Advanced API features', 'wplingua' ); ?></th>
 					<td>
 						<?php wplng_register_part_premium(); ?>
 					</td>
