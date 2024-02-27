@@ -227,6 +227,10 @@ function wplng_ob_callback_translate_html( $html ) {
 		}
 	}
 
+	/**
+	 * Change $texts_unknow number of elements
+	 */
+
 	$texts_unknow = array_splice(
 		$texts_unknow,
 		0,
@@ -309,6 +313,10 @@ function wplng_ob_callback_translate_html( $html ) {
 		$excluded
 	);
 
+	/**
+	 * Add HTML of progress bar message and hidden preloading iframe
+	 */
+
 	if ( true === $show_progress ) {
 
 		$js_in_progress = wplng_get_html_js_in_progress(
@@ -326,6 +334,14 @@ function wplng_ob_callback_translate_html( $html ) {
 	return $html;
 }
 
+
+/**
+ * Get HTML of progress bar message and hidden preloading iframe
+ *
+ * @param int $number_translated
+ * @param int $number_texts
+ * @return string HTML
+ */
 function wplng_get_html_js_in_progress( $number_translated, $number_texts ) {
 
 	$percentage = (int) ( ( $number_translated / $number_texts ) * 100 );
@@ -342,21 +358,21 @@ function wplng_get_html_js_in_progress( $number_translated, $number_texts ) {
 	$html .= esc_html__( 'Translation in progress', 'wplingua' );
 	$html .= ' - ';
 	$html .= esc_html( $percentage );
-	$html .= ' % - ' . esc_html( $number_translated );
-	$html .= ' / ' . esc_html( $number_texts );
+	$html .= ' %';
 	$html .= '</div>'; // End #wplng-translation-in-progress
 
 	$html .= '<div id="wplng-progress-bar">';
-	$html .= '<div id="wplng-progress-bar-value" style="width: 60%">';
+	$html .= '<div id="wplng-progress-bar-value" ';
+	$html .= 'style="width: ' . esc_attr( $percentage ) . '%">';
 	$html .= '</div>'; // End #wplng-progress-bar-value
 	$html .= '</div>'; // End #wplng-progress-bar
 
 	$html .= '</div>'; // End #wplng-in-progress-container
 
-	// $html .= '<iframe id="wplng-in-progress-iframe" ';
-	// $html .= 'src="' . esc_url( $url ) . '" ';
-	// $html .= 'style="display: none !important;">';
-	// $html .= '</iframe>'; // End #wplng-translation-in-progress
+	$html .= '<iframe id="wplng-in-progress-iframe" ';
+	$html .= 'src="' . esc_url( $url ) . '" ';
+	$html .= 'style="display: none !important;">';
+	$html .= '</iframe>'; // End #wplng-translation-in-progress
 
 	return $html;
 }

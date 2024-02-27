@@ -29,7 +29,7 @@
         #wplng-progress-bar-value {
             height: 5px;
             background: repeating-linear-gradient(to right, #66f4e6 0%, blue 50%, #66f4e6 100%);
-            width: 100%;
+            min-width: 10%;
             background-size: 200% auto;
             background-position: 0 100%;
             animation: gradient 2s infinite;
