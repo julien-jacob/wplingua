@@ -203,10 +203,34 @@ function wplng_ob_callback_translate_html( $html ) {
 		}
 	}
 
+	/**
+	 * Manage "Translation in progress" feature
+	 */
+
+	$number_texts        = count( $texts );
+	$number_untranslated = count( $texts_unknow );
+	$number_translated   = $number_texts - $number_untranslated;
+	$show_progress       = false;
+	$max_translations    = WPLNG_MAX_TRANSLATIONS + 1;
+
+	if ( current_user_can( 'edit_posts' )
+		&& empty( $_GET['wplingua-load-all'] )
+	) {
+
+		if ( $number_untranslated > 10
+			&& empty( $_GET['wplingua-preload'] )
+		) {
+			$max_translations = 0;
+			$show_progress    = true;
+		} elseif ( ! empty( $_GET['wplingua-preload'] ) ) {
+			$max_translations = 20;
+		}
+	}
+
 	$texts_unknow = array_splice(
 		$texts_unknow,
 		0,
-		WPLNG_MAX_TRANSLATIONS + 1
+		$max_translations
 	);
 
 	/**
@@ -284,6 +308,46 @@ function wplng_ob_callback_translate_html( $html ) {
 		$html,
 		$excluded
 	);
+
+	if ( true === $show_progress ) {
+
+		$js_in_progress = wplng_get_html_js_in_progress(
+			$number_translated,
+			$number_texts
+		);
+
+		$html = str_replace(
+			'</body>',
+			$js_in_progress . '</body>',
+			$html
+		);
+	}
+
+	return $html;
+}
+
+function wplng_get_html_js_in_progress( $number_translated, $number_texts ) {
+
+	$percentage = (int) ( ( $number_translated / $number_texts ) * 100 );
+
+	$url = add_query_arg(
+		'wplingua-preload',
+		'1',
+		wplng_get_url_current()
+	);
+
+	$html  = '<div id="wplng-in-progress-message">';
+	$html .= esc_html__( 'Translation in progress', 'wplingua' );
+	$html .= ' - ';
+	$html .= esc_html( $percentage );
+	$html .= ' % - ' . esc_html( $number_translated );
+	$html .= ' / ' . esc_html( $number_texts );
+	$html .= '</div>'; // End #wplng-translation-in-progress
+
+	$html .= '<iframe id="wplng-in-progress-iframe" ';
+	$html .= 'src="' . esc_url( $url ) . '" ';
+	$html .= 'style="display: none !important;">';
+	$html .= '</iframe>'; // End #wplng-translation-in-progress
 
 	return $html;
 }
