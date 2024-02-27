@@ -120,6 +120,7 @@ function wplng_ob_callback_list( $html ) {
 				&& $translation['source'] === $text
 			) {
 				$translations_in_page[] = $translation;
+				break;
 			}
 		}
 	}
@@ -206,15 +207,14 @@ function wplng_get_editor_modal_html( $translations ) {
 
 	foreach ( $translations as $translation ) {
 
-		$edit_link = '';
 		if ( empty( $translation['post_id'] )
 			|| empty( $translation['source'] )
 			|| empty( $translation['translation'] )
 		) {
 			continue;
-		} else {
-			$edit_link = get_edit_post_link( $translation['post_id'] );
 		}
+
+		$edit_link = get_edit_post_link( $translation['post_id'] );
 
 		$html .= '<div class="wplng-modal-item">';
 		$html .= '<div class="wplng-item-text">';
@@ -286,16 +286,12 @@ function wplng_get_modal_switcher_html() {
 		$url = wplng_get_url_current_for_language( $language_target['id'] );
 
 		if ( $language_target['id'] === $language_current_id ) {
-
 			continue;
-
-		} else {
-
-			$html .= '<a ';
-			$html .= 'class="wplng-language" ';
-			$html .= 'href="' . esc_url( $url ) . '">';
-
 		}
+
+		$html .= '<a ';
+		$html .= 'class="wplng-language" ';
+		$html .= 'href="' . esc_url( $url ) . '">';
 
 		if ( ! empty( $language_website['flag'] ) ) {
 			$html .= '<img ';

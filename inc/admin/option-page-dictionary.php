@@ -222,7 +222,7 @@ function wplng_option_page_dictionary_new_entry_html() {
 	$language_target = wplng_get_languages_target();
 
 	$html .= '<div id="wplng-new-rules">';
-	foreach ( $language_target as $key => $language ) {
+	foreach ( $language_target as $language ) {
 
 		$name = 'wplng-new-always-translate-' . $language['id'];
 
@@ -325,7 +325,7 @@ function wplng_option_page_dictionary_edit_entry_html() {
 	$language_target = wplng_get_languages_target();
 
 	$html .= '<div id="wplng-edit-rules">';
-	foreach ( $language_target as $key => $language ) {
+	foreach ( $language_target as $language ) {
 
 		$name = 'wplng-edit-always-translate-' . $language['id'];
 

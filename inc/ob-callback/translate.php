@@ -281,6 +281,7 @@ function wplng_ob_callback_translate_html( $html ) {
 				&& $translation['source'] === $text
 			) {
 				$translations_in_page[] = $translation;
+				break;
 			}
 		}
 	}

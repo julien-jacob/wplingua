@@ -198,6 +198,7 @@ function wplng_get_api_languages_target() {
 				}
 
 				$languages_id_ordered[] = $language_id;
+				break;
 
 			}
 		}
