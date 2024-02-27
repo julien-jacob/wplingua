@@ -336,7 +336,9 @@ function wplng_get_html_js_in_progress( $number_translated, $number_texts ) {
 		wplng_get_url_current()
 	);
 
-	$html  = '<div id="wplng-in-progress-message">';
+	$html = '<div id="wplng-in-progress-container">';
+
+	$html .= '<div id="wplng-in-progress-message">';
 	$html .= esc_html__( 'Translation in progress', 'wplingua' );
 	$html .= ' - ';
 	$html .= esc_html( $percentage );
@@ -344,10 +346,17 @@ function wplng_get_html_js_in_progress( $number_translated, $number_texts ) {
 	$html .= ' / ' . esc_html( $number_texts );
 	$html .= '</div>'; // End #wplng-translation-in-progress
 
-	$html .= '<iframe id="wplng-in-progress-iframe" ';
-	$html .= 'src="' . esc_url( $url ) . '" ';
-	$html .= 'style="display: none !important;">';
-	$html .= '</iframe>'; // End #wplng-translation-in-progress
+	$html .= '<div id="wplng-progress-bar">';
+	$html .= '<div id="wplng-progress-bar-value" style="width: 60%">';
+	$html .= '</div>'; // End #wplng-progress-bar-value
+	$html .= '</div>'; // End #wplng-progress-bar
+
+	$html .= '</div>'; // End #wplng-in-progress-container
+
+	// $html .= '<iframe id="wplng-in-progress-iframe" ';
+	// $html .= 'src="' . esc_url( $url ) . '" ';
+	// $html .= 'style="display: none !important;">';
+	// $html .= '</iframe>'; // End #wplng-translation-in-progress
 
 	return $html;
 }

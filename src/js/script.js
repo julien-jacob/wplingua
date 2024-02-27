@@ -51,7 +51,7 @@ jQuery(document).ready(function ($) {
         location.reload(true);
     });
 
-    if ($("#wpadminbar").length && $("#wplng-in-progress-message").length) {
+    if ($("#wpadminbar").length && $("#wplng-in-progress-container").length) {
         $("#wpadminbar").hide();
     }
 
