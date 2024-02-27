@@ -213,7 +213,8 @@ function wplng_ob_callback_translate_html( $html ) {
 	$show_progress       = false;
 	$max_translations    = WPLNG_MAX_TRANSLATIONS + 1;
 
-	if ( current_user_can( 'edit_posts' )
+	if ( apply_filters( 'wplng_enale_in_progress_feature', false )
+		&& current_user_can( 'edit_posts' )
 		&& empty( $_GET['wplingua-load-all'] )
 	) {
 
