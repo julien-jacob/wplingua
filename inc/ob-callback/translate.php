@@ -91,7 +91,7 @@ function wplng_ob_callback_translate_json( $json ) {
 
 	$texts_unknow = array();
 
-	$texts_unknow_translated = wplng_api_call_translate(
+	$texts_translated = wplng_api_call_translate(
 		$texts_unknow,
 		false,
 		$language_target_id
@@ -104,10 +104,10 @@ function wplng_ob_callback_translate_json( $json ) {
 	$translations_new = array();
 
 	foreach ( $texts_unknow as $key => $text_source ) {
-		if ( isset( $texts_unknow_translated[ $key ] ) ) {
+		if ( isset( $texts_translated[ $key ] ) ) {
 			$translations_new[] = array(
 				'source'      => $text_source,
-				'translation' => $texts_unknow_translated[ $key ],
+				'translation' => $texts_translated[ $key ],
 			);
 		}
 	}
@@ -231,7 +231,7 @@ function wplng_ob_callback_translate_html( $html ) {
 	 * Change $texts_unknow number of elements
 	 */
 
-	$texts_unknow = array_splice(
+	$texts_to_translate = array_splice(
 		$texts_unknow,
 		0,
 		$max_translations
@@ -241,8 +241,8 @@ function wplng_ob_callback_translate_html( $html ) {
 	 * Get new translated text
 	 */
 
-	$texts_unknow_translated = wplng_api_call_translate(
-		$texts_unknow,
+	$texts_translated = wplng_api_call_translate(
+		$texts_to_translate,
 		false,
 		$language_target_id
 	);
@@ -253,11 +253,11 @@ function wplng_ob_callback_translate_html( $html ) {
 
 	$translations_new = array();
 
-	foreach ( $texts_unknow as $key => $text_source ) {
-		if ( isset( $texts_unknow_translated[ $key ] ) ) {
+	foreach ( $texts_to_translate as $key => $text_source ) {
+		if ( isset( $texts_translated[ $key ] ) ) {
 			$translations_new[] = array(
 				'source'      => $text_source,
-				'translation' => $texts_unknow_translated[ $key ],
+				'translation' => $texts_translated[ $key ],
 			);
 		}
 	}
@@ -305,21 +305,66 @@ function wplng_ob_callback_translate_html( $html ) {
 	);
 
 	/**
-	 * Replace tag by saved excluded HTML part
-	 */
-
-	$html = wplng_html_replace_exclude_tag(
-		$html,
-		$excluded
-	);
-
-	/**
-	 * Add HTML of progress bar message and hidden preloading iframe
+	 * If page is show on "translation in progress" mode
 	 */
 
 	if ( true === $show_progress ) {
 
-		$js_in_progress = wplng_get_html_js_in_progress(
+		/**
+		 * Add effect on unknow texts
+		 */
+
+		$dom = wplng_sdh_str_get_html( $html );
+
+		if ( empty( $dom ) ) {
+			return $html;
+		}
+
+		$edit_link_excluded = wplng_data_excluded_editor_link();
+		$node_text_excluded = wplng_data_excluded_node_text();
+
+		foreach ( $dom->find( 'body text' ) as $element ) {
+
+			if ( in_array( $element->parent->tag, $edit_link_excluded )
+				|| in_array( $element->parent->tag, $node_text_excluded )
+			) {
+				continue;
+			}
+
+			$text = wplng_text_esc( $element->innertext );
+
+			if ( ! wplng_text_is_translatable( $text ) ) {
+				continue;
+			}
+
+			foreach ( $texts_unknow as $text_unknow ) {
+
+				$source = wplng_text_esc( $text_unknow );
+
+				if ( $text !== $source ) {
+					continue;
+				}
+
+				$innertext  = '<span ';
+				$innertext .= 'class="wplng-in-progress-text" ';
+				$innertext .= 'title="' . esc_attr__( 'Translation in progress', 'wplingua' ) . '">';
+				$innertext .= esc_html( $text );
+				$innertext .= '</span>';
+
+				$element->innertext = $innertext;
+
+				break;
+			}
+		}
+
+		$dom->save();
+		$html = (string) wplng_sdh_str_get_html( $dom );
+
+		/**
+		 * Add HTML of progress bar message and hidden preloading iframe
+		 */
+
+		$js_in_progress = wplng_get_html_in_progress(
 			$number_translated,
 			$number_texts
 		);
@@ -329,10 +374,21 @@ function wplng_ob_callback_translate_html( $html ) {
 			$js_in_progress . '</body>',
 			$html
 		);
+
 	}
+
+	/**
+	 * Replace tag by saved excluded HTML part
+	 */
+
+	$html = wplng_html_replace_exclude_tag(
+		$html,
+		$excluded
+	);
 
 	return $html;
 }
+
 
 
 /**
@@ -342,7 +398,7 @@ function wplng_ob_callback_translate_html( $html ) {
  * @param int $number_texts
  * @return string HTML
  */
-function wplng_get_html_js_in_progress( $number_translated, $number_texts ) {
+function wplng_get_html_in_progress( $number_translated, $number_texts ) {
 
 	$percentage = (int) ( ( $number_translated / $number_texts ) * 100 );
 
@@ -355,6 +411,7 @@ function wplng_get_html_js_in_progress( $number_translated, $number_texts ) {
 	$html = '<div id="wplng-in-progress-container">';
 
 	$html .= '<div id="wplng-in-progress-message">';
+	$html .= '<span class="dashicons dashicons-update wplng-spin"></span> ';
 	$html .= esc_html__( 'Translation in progress', 'wplingua' );
 	$html .= ' - ';
 	$html .= esc_html( $percentage );

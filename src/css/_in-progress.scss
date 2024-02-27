@@ -1,8 +1,31 @@
 
-  
-@keyframes gradient { 
-    0%   { background-position: 0 0; }
-    100% { background-position: -200% 0; }
+@keyframes text-loading {
+    0% {
+        opacity: .4;
+    }
+
+    50% {
+        opacity: .8;
+    }
+
+    100% {
+        opacity: .4;
+    }
+}
+
+.wplng-in-progress-text {
+    animation: text-loading 2s infinite;
+    animation-timing-function: linear;
+}
+
+@keyframes gradient {
+    0% {
+        background-position: 0 0;
+    }
+
+    100% {
+        background-position: -200% 0;
+    }
 }
 
 #wplng-in-progress-container {
@@ -11,7 +34,7 @@
     top: 0;
     width: 100%;
     height: 32px;
-    // line-height: 28px;
+    line-height: 22px;
     color: #f0f0f1;
     background-color: #1d2327;
     z-index: 1000000;
@@ -43,5 +66,12 @@
     #wplng-in-progress-container {
         height: 46px;
         line-height: 42px;
+
+        #wplng-in-progress-message {
+            .wplng-spin {
+                position: relative;
+                top: 10px;
+            }
+        }
     }
 }
