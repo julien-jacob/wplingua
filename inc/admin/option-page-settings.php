@@ -111,9 +111,15 @@ function wplng_settings_part_first_use() {
 		$language_target['id']
 	);
 
+	$url_front_page_iframe = add_query_arg(
+		'wplingua-load-all',
+		'1',
+		$url_front_page_translated
+	);
+
 	?>
 	<div class="wplng-notice notice notice-info" id="wplng-notice-first-loading-loading">
-		<iframe src="<?php echo esc_url( $url_front_page_translated ); ?>" frameborder="0" id="wplng-first-load-iframe" style="display: none;"></iframe>
+		<iframe src="<?php echo esc_url( $url_front_page_iframe ); ?>" frameborder="0" id="wplng-first-load-iframe" style="display: none;"></iframe>
 		<h2><span class="dashicons dashicons-update wplng-spin"></span> <?php esc_html_e( 'Your site is being translated and will be ready soon.', 'wplingua' ); ?></h2>
 	</div>
 

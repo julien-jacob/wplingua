@@ -43,4 +43,16 @@ jQuery(document).ready(function ($) {
 
     wplngUpdateSwitcherOpening();
 
+    /**
+     * Code for preloading
+     */
+
+    $("#wplng-in-progress-iframe").load(function () {
+        location.reload(true);
+    });
+
+    if ($("#wpadminbar").length && $("#wplng-in-progress-container").length) {
+        $("#wpadminbar").hide();
+    }
+
 }); // End jQuery loaded event
