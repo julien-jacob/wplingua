@@ -24,7 +24,7 @@ function wplng_option_page_settings() {
 
 	?>
 
-	<h1 class="wplin-option-page-title"><span class="dashicons dashicons-translation"></span> <?php esc_html_e( 'wpLingua - Translation solution for multilingual website', 'wplingua' ); ?></h1>
+	<h1 class="wplin-option-page-title"><span class="dashicons dashicons-translation"></span> <?php esc_html_e( 'wpLingua - General settings', 'wplingua' ); ?></h1>
 
 	<div class="wrap">
 		<hr class="wp-header-end">
