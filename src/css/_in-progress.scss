@@ -1,7 +1,7 @@
 
 @keyframes text-loading {
     0% {
-        opacity: .4;
+        opacity: .2;
     }
 
     50% {
@@ -9,7 +9,7 @@
     }
 
     100% {
-        opacity: .4;
+        opacity: .2;
     }
 }
 
@@ -51,7 +51,7 @@
 
         #wplng-progress-bar-value {
             height: 5px;
-            background: repeating-linear-gradient(to right, #66f4e6 0%, blue 50%, #66f4e6 100%);
+            background: repeating-linear-gradient(to right, #66f4e6 0%, #E795ED 50%, #66f4e6 100%);
             min-width: 10%;
             background-size: 200% auto;
             background-position: 0 100%;

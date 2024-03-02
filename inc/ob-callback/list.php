@@ -190,8 +190,8 @@ function wplng_get_editor_modal_html( $translations ) {
 	$html .= '<div id="wplng-modal">';
 
 	$html .= '<div id="wplng-modal-header">';
-	$html .= '<span class="dashicons dashicons-translation wplng-modal-header-icon"></span> ';
 	$html .= '<span id="wplng-modal-title">';
+	$html .= '<span class="dashicons dashicons-translation wplng-modal-header-icon"></span> ';
 	$html .= esc_html__( 'All translations on page', 'wplingua' );
 	$html .= '</span>';
 
