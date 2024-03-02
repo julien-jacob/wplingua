@@ -50,6 +50,7 @@ function wplng_get_translated_text_from_translations( $text, $translations ) {
 
 			if ( $text === $source ) {
 				$translated = $translation['translation'];
+				break;
 			}
 		}
 	}
