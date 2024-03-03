@@ -69,6 +69,10 @@ jQuery(document).ready(function ($) {
 
     function wplngSwitcherUpdateFlagsStyle(val) {
 
+        if (!$(".wplng-switcher").length) {
+            return;
+        }
+
         if ("none" == val && "none" == $("#wplng_name_format").val()) {
             $("#wplng_name_format").val("name");
             wplngSwitcherUpdateTitle("name");
