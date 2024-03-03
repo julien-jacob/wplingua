@@ -12,7 +12,7 @@
     padding: 15px 25px;
     line-height: 22px;
     font-weight: 500;
-    box-shadow: 0 4px 8px rgba(0,0,0,.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, .05);
     border-bottom: 1px solid #c3c4c7;
     text-align: center;
 }
@@ -64,12 +64,12 @@ h1 .dashicons {
         padding: 15px;
         background-color: #f6f7f7;
         display: block;
-        margin-bottom: 25px;
         border: 1px solid #c3c4c7;
+        margin-bottom: 25px;
         max-width: 520px;
         margin-right: auto;
         margin-left: auto;
-        box-shadow: 0 0 8px rgba(0,0,0,.05);
+        box-shadow: 0 0 8px rgba(0, 0, 0, .05);
         border-radius: 3px;
 
         .button {
@@ -84,6 +84,26 @@ h1 .dashicons {
             display: block;
         }
 
+    }
+
+    .wplng-tr-submit {
+        td {
+
+            border: none;
+            box-shadow: none;
+            background-color: unset;
+            padding: 0;
+
+            p.submit {
+                padding: 0 0 42px;
+
+                #submit {
+                    width: 100%;
+                    box-shadow: 0 0 8px rgba(0, 0, 0, .05);
+                    min-height: 42px;
+                }
+            }
+        }
     }
 
 }
@@ -114,6 +134,7 @@ h1 .dashicons {
 
         td {
             .button.wplng-icon-button {
+
                 vertical-align: top;
                 padding: 0;
 
@@ -126,14 +147,27 @@ h1 .dashicons {
 
         }
 
+        .wplng-tr-submit {
+
+            th {
+                display: none;
+            }
+
+            td {
+                p.submit {
+                    padding: 10px 0 42px;
+                }
+            }
+        }
+
     }
 
-    #submit {
-        max-width: 520px;
-        margin-left: auto;
-        margin-right: auto;
-        width: 100%;
-        display: block;
-    }
+    // #submit {
+    //     max-width: 520px;
+    //     margin-left: auto;
+    //     margin-right: auto;
+    //     width: 100%;
+    //     display: block;
+    // }
 
 }

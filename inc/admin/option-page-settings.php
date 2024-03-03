@@ -61,10 +61,13 @@ function wplng_option_page_settings() {
 						<?php wplng_settings_part_api_key(); ?>
 					</td>
 				</tr>
+				<tr class="wplng-tr-submit">
+					<th scope="row"><span class="dashicons dashicons-yes-alt"></span> <?php _e( 'Save', 'wplingua' ); ?></th>
+					<td>
+						<?php submit_button(); ?>
+					</td>
+				</tr>
 			</table>
-
-			<?php submit_button(); ?>
-
 		</form>
 	</div>
 	<?php
