@@ -141,11 +141,17 @@ function wplng_admin_footer_text( $text ) {
 			|| $_GET['page'] === 'wplingua-exclusions'
 		)
 	) {
-		$text = sprintf(
-			esc_html__( '%1$s If you like wpLingua please leave us a %2$s rating. A huge thanks!', 'woocommerce' ),
-			'<span class="dashicons dashicons-heart"></span>',
-			'<a href="https://wordpress.org/support/plugin/wplingua/reviews/?filter=5" target="_blank" class="wc-rating-link" aria-label="' . esc_attr__( 'five star', 'wplingua' ) . '">&#9733;&#9733;&#9733;&#9733;&#9733;</a>'
-		);
+		
+		$text = '<span class="dashicons dashicons-heart"></span> ';
+
+		if ( empty( wplng_get_api_data() ) ) {
+			$text .= esc_html__( 'Thank you for choosing wpLingua!', 'wplingua' );
+		} else {
+			$text .= sprintf(
+				esc_html__( 'If you like wpLingua please leave us a %1$s rating. A huge thanks!', 'wplingua' ),
+				'<a href="https://wordpress.org/support/plugin/wplingua/reviews/?filter=5" target="_blank" class="wc-rating-link" aria-label="' . esc_attr__( 'five star', 'wplingua' ) . '">&#9733;&#9733;&#9733;&#9733;&#9733;</a>'
+			);
+		}
 	}
 
 	return $text;
