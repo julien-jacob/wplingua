@@ -17,7 +17,7 @@ function wplng_option_page_dictionary() {
 
 	?>
 
-	<h1 class="wplin-option-page-title"><span class="dashicons dashicons-translation"></span> <?php esc_html_e( 'wpLingua - Translation rules by dictionary', 'wplingua' ); ?></h1>
+	<h1 class="wplin-option-page-title"><span class="dashicons dashicons-translation"></span> <?php esc_html_e( 'wpLingua - Dictionary rules', 'wplingua' ); ?></h1>
 
 	<div class="wrap">
 		<hr class="wp-header-end">
@@ -52,7 +52,7 @@ function wplng_option_page_dictionary() {
 				</tr>
 
 				<tr id="wplng-section-entry-new" style="display: none;">
-					<th scope="row"><?php esc_html_e( 'Add an entry', 'wplingua' ); ?></th>
+					<th scope="row"><span class="dashicons dashicons-welcome-add-page"></span> <?php esc_html_e( 'Add an entry', 'wplingua' ); ?></th>
 					<td>
 						<div id="wplng-dictionary-entry-new">
 							<?php wplng_option_page_dictionary_new_entry_html(); ?>
@@ -61,7 +61,7 @@ function wplng_option_page_dictionary() {
 				</tr>
 
 				<tr id="wplng-section-entry-edit" style="display: none;">
-					<th scope="row"><?php esc_html_e( 'Edit the entry', 'wplingua' ); ?></th>
+					<th scope="row"><span class="dashicons dashicons-welcome-write-blog"></span> <?php esc_html_e( 'Edit the entry', 'wplingua' ); ?></th>
 					<td>
 						<div id="wplng-dictionary-entry-edit">
 							<?php wplng_option_page_dictionary_edit_entry_html(); ?>

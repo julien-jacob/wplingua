@@ -24,7 +24,7 @@ function wplng_option_page_settings() {
 
 	?>
 
-	<h1 class="wplin-option-page-title"><span class="dashicons dashicons-translation"></span> <?php esc_html_e( 'wpLingua - Translation solution for multilingual website', 'wplingua' ); ?></h1>
+	<h1 class="wplin-option-page-title"><span class="dashicons dashicons-translation"></span> <?php esc_html_e( 'wpLingua - General settings', 'wplingua' ); ?></h1>
 
 	<div class="wrap">
 		<hr class="wp-header-end">
@@ -61,10 +61,13 @@ function wplng_option_page_settings() {
 						<?php wplng_settings_part_api_key(); ?>
 					</td>
 				</tr>
+				<tr class="wplng-tr-submit">
+					<th scope="row"><span class="dashicons dashicons-yes-alt"></span> <?php _e( 'Save', 'wplingua' ); ?></th>
+					<td>
+						<?php submit_button(); ?>
+					</td>
+				</tr>
 			</table>
-
-			<?php submit_button(); ?>
-
 		</form>
 	</div>
 	<?php

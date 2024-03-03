@@ -57,10 +57,13 @@ function wplng_option_page_exclusions() {
 						</fieldset>
 					</td>
 				</tr>
+				<tr class="wplng-tr-submit">
+					<th scope="row"><span class="dashicons dashicons-yes-alt"></span> <?php _e( 'Save', 'wplingua' ); ?></th>
+					<td>
+						<?php submit_button(); ?>
+					</td>
+				</tr>
 			</table>
-
-			<?php submit_button(); ?>
-
 		</form>
 	</div>
 	<?php

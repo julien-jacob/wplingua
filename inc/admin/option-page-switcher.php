@@ -20,6 +20,10 @@ function wplng_option_page_switcher() {
 	$flags_style = wplng_get_switcher_flags_style();
 	$custom_css  = get_option( 'wplng_custom_css' );
 
+	$switcher_html = wplng_get_switcher_html(
+		array( 'class' => 'switcher-preview' )
+	);
+
 	if ( empty( $custom_css ) || ! is_string( $custom_css ) ) {
 		$custom_css = '';
 	} else {
@@ -30,6 +34,8 @@ function wplng_option_page_switcher() {
 
 	<h1 class="wplin-option-page-title"><span class="dashicons dashicons-translation"></span> <?php esc_html_e( 'wpLingua - Switcher settings', 'wplingua' ); ?></h1>
 
+	
+
 	<div class="wrap">
 		<hr class="wp-header-end">
 		<form method="post" action="options.php">
@@ -39,18 +45,22 @@ function wplng_option_page_switcher() {
 			?>
 			<table class="form-table wplng-form-table">
 
-				<tr>
+				<?php if ( empty( $switcher_html ) ) : ?>
+					<div class="wplng-notice notice notice-error">
+						<p>
+							<strong><?php esc_html_e( 'No target language selected.', 'wplingua' ); ?></strong>
+						</p>
+					</div>
+				<?php else: ?>
+					<tr>
 					<th scope="row"><span class="dashicons dashicons-visibility"></span> <?php esc_html_e( 'Switcher preview', 'wplingua' ); ?></th>
 					<td id="wplng-switcher-preview-container">
 						<div class="wplng-switcher-preview">
-							<?php
-							echo wplng_get_switcher_html(
-								array( 'class' => 'switcher-preview' )
-							);
-							?>
+							<?php echo $switcher_html; ?>
 						</div>
 					</td>
 				</tr>
+				<?php endif; ?>
 
 				<tr>
 					<th scope="row"><span class="dashicons dashicons-admin-appearance"></span> <?php esc_html_e( 'Switcher design', 'wplingua' ); ?></th>
@@ -160,7 +170,7 @@ function wplng_option_page_switcher() {
 				</tr>
 
 				<tr>
-					<th scope="row"><span class="dashicons dashicons-editor-code"></span> <?php esc_html_e( 'Custom CSS', 'wplingua' ); ?></th>
+					<th scope="row"><span class="dashicons dashicons-media-code"></span> <?php esc_html_e( 'Custom CSS', 'wplingua' ); ?></th>
 					<td>
 						<fieldset>
 							<label for="wplng_custom_css">
@@ -207,9 +217,13 @@ function wplng_option_page_switcher() {
 
 					</td>
 				</tr>
-
+				<tr class="wplng-tr-submit">
+					<th scope="row"><span class="dashicons dashicons-yes-alt"></span> <?php _e( 'Save', 'wplingua' ); ?></th>
+					<td>
+						<?php submit_button(); ?>
+					</td>
+				</tr>
 			</table>
-			<?php submit_button(); ?>
 		</form>
 	</div>
 	<?php
