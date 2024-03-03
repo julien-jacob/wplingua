@@ -10,6 +10,7 @@ jQuery(document).ready(function ($) {
         $("#wplng-section-entries-all").hide();
         $("#wplng-section-entry-new").show();
         wplngResizeTextArea($("#wplng-dictionary-entry-new .wplng-adaptive-textarea"));
+        window.scrollTo(0, 0);
     });
 
 
