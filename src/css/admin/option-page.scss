@@ -12,7 +12,7 @@
     padding: 15px 25px;
     line-height: 22px;
     font-weight: 500;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, .05);
+    box-shadow: 0 0 8px rgba(0,0,0,.05);
     border-bottom: 1px solid #c3c4c7;
     text-align: center;
 }
@@ -95,7 +95,7 @@ h1 .dashicons {
             padding: 0;
 
             p.submit {
-                padding: 0 0 42px;
+                padding: 0 0 64px;
 
                 #submit {
                     width: 100%;
@@ -107,6 +107,13 @@ h1 .dashicons {
         }
     }
 
+}
+
+#wpfooter {
+    background-color: #f6f7f7;
+    box-shadow: 0 0 8px rgba(0,0,0,.05);
+    border-top: 1px solid #c3c4c7;
+    padding: 15px 25px;
 }
 
 @media screen and (max-width: 1120px) {

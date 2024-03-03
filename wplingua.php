@@ -103,6 +103,11 @@ function wplng_start() {
 		add_action( 'admin_enqueue_scripts', 'wplng_option_page_exclusions_assets' );
 		add_action( 'admin_enqueue_scripts', 'wplng_option_page_dictionary_assets' );
 
+		// Set footer text for options pages
+		
+		add_filter( 'admin_footer_text', 'wplng_admin_footer_text', 11 );
+		add_filter( 'update_footer', 'wplng_update_footer', 11 );
+
 		// Update flags URL
 		add_action( 'update_option_wplng_flags_style', 'wplng_options_switcher_update_flags_style', 10, 2 );
 
