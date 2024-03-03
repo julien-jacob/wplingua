@@ -7,10 +7,9 @@
 
 #wplng_meta_box_translation {
 
-    label {
+    #wplng-source-title {
         font-weight: bold;
         margin-bottom: 10px;
-        display: block;
     }
 
     .wplng-flag {
@@ -21,7 +20,7 @@
         vertical-align: text-top;
     }
 
-    .wplng-source {
+    #wplng-source {
         font-size: 1.1em;
     }
 
