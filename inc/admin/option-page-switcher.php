@@ -170,7 +170,7 @@ function wplng_option_page_switcher() {
 				</tr>
 
 				<tr>
-					<th scope="row"><span class="dashicons dashicons-editor-code"></span> <?php esc_html_e( 'Custom CSS', 'wplingua' ); ?></th>
+					<th scope="row"><span class="dashicons dashicons-media-code"></span> <?php esc_html_e( 'Custom CSS', 'wplingua' ); ?></th>
 					<td>
 						<fieldset>
 							<label for="wplng_custom_css">

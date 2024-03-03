@@ -77,6 +77,7 @@ jQuery(document).ready(function ($) {
     $("#wplng-new-cancel-button").click(function () {
         $("#wplng-section-entries-all").show();
         $("#wplng-section-entry-new").hide();
+        window.scrollTo(0, 0);
     });
 
 
@@ -204,6 +205,7 @@ jQuery(document).ready(function ($) {
     $("#wplng-edit-cancel-button").click(function () {
         $("#wplng-section-entries-all").show();
         $("#wplng-section-entry-edit").hide();
+        window.scrollTo(0, 0);
     });
 
 

@@ -66,7 +66,7 @@ h1 .dashicons {
         display: block;
         border: 1px solid #c3c4c7;
         margin-bottom: 25px;
-        max-width: 520px;
+        max-width: 540px;
         margin-right: auto;
         margin-left: auto;
         box-shadow: 0 0 8px rgba(0, 0, 0, .05);
@@ -101,6 +101,7 @@ h1 .dashicons {
                     width: 100%;
                     box-shadow: 0 0 8px rgba(0, 0, 0, .05);
                     min-height: 42px;
+                    font-size: 14px;
                 }
             }
         }
@@ -120,7 +121,7 @@ h1 .dashicons {
 
         th,
         td {
-            max-width: 520px;
+            max-width: 540px;
             margin-right: auto;
             margin-left: auto;
             display: block;
@@ -156,18 +157,11 @@ h1 .dashicons {
             td {
                 p.submit {
                     padding: 10px 0 42px;
+                    font-size: 14px;
                 }
             }
         }
 
     }
-
-    // #submit {
-    //     max-width: 520px;
-    //     margin-left: auto;
-    //     margin-right: auto;
-    //     width: 100%;
-    //     display: block;
-    // }
 
 }
