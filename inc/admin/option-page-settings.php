@@ -20,14 +20,13 @@ function wplng_option_page_settings() {
 		return;
 	}
 
-	wplng_settings_part_first_use();
-
 	?>
 
 	<h1 class="wplin-option-page-title"><span class="dashicons dashicons-translation"></span> <?php esc_html_e( 'wpLingua - General settings', 'wplingua' ); ?></h1>
 
 	<div class="wrap">
 		<hr class="wp-header-end">
+		<?php wplng_settings_part_first_use(); ?>
 		<form method="post" action="options.php">
 			<?php
 			settings_fields( 'wplng_settings' );
@@ -126,8 +125,8 @@ function wplng_settings_part_first_use() {
 		<h2><span class="dashicons dashicons-update wplng-spin"></span> <?php esc_html_e( 'Your site is being translated and will be ready soon.', 'wplingua' ); ?></h2>
 	</div>
 
-	<div class="wplng-notice notice notice-success" id="wplng-notice-first-loading-loaded" style="display: none;">
-		<h2>🎉 <?php esc_html_e( 'Your website is now multilingual ! You can start visiting the translated version.', 'wplingua' ); ?></h2>
+	<div class="wplng-notice notice notice-success is-dismissible" id="wplng-notice-first-loading-loaded" style="display: none;">
+		<h2>🎉 <?php esc_html_e( 'Your website is now multilingual! You can start visiting the translated version.', 'wplingua' ); ?></h2>
 		<p>
 			<a href="<?php echo esc_url( $url_front_page_translated ); ?>" target="_blank" class="button button-primary">
 				<?php esc_html_e( 'Visit your multilingual website', 'wplingua' ); ?>

@@ -10,6 +10,27 @@
     display: none;
 }
 
+#wplng-notice-first-loading-loading {
+    background-color: rgba(114, 174, 230,.33);
+    text-align: center;
+}
+
+#wplng-notice-first-loading-loaded {
+    background-color: rgba(0, 255, 0, .05);
+    text-align: center;
+
+    .button {
+        font-size: 1.1em;
+        font-weight: 600;
+        padding-bottom: 2px;
+        margin-bottom: 8px;
+    }
+
+    button.notice-dismiss {
+        padding-top: 20px;
+    }
+}
+
 #wplng_website_language {
     position: relative;
     left: 7px;
