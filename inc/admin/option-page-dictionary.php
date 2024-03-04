@@ -39,7 +39,7 @@ function wplng_option_page_dictionary() {
 
 							<p><?php esc_html_e( 'The dictionary allows you to define translation rules that apply when generating machine translations. You can specify words or sets of words that should never be translated, or define how they should be translated for each language.', 'wplingua' ); ?></p>
 
-							<br>
+							<hr>
 
 							<?php wplng_option_page_dictionary_entries_html(); ?>
 
@@ -97,9 +97,7 @@ function wplng_option_page_dictionary_entries_html() {
 	$language_website_html .= 'alt="' . esc_attr( $language_website['name'] ) . '" ';
 	$language_website_html .= 'class="wplng-flag">';
 
-	$html  = '';
-	$html .= '<hr>';
-	$html .= '<label><strong>';
+	$html  = '<label><strong>';
 	$html .= esc_html__( 'All dictionary entries: ', 'wplingua' );
 	$html .= '</strong></label>';
 	$html .= '<br>';
