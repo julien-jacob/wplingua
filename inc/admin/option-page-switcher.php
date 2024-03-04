@@ -145,7 +145,7 @@ function wplng_option_page_switcher() {
 
 						<fieldset>
 							<label for="wplng_theme" class="wplng-fe-50">
-								<strong><?php esc_html_e( 'Switcher theme: ', 'wplingua' ); ?></strong>
+								<strong><?php esc_html_e( 'Color theme: ', 'wplingua' ); ?></strong>
 							</label>
 
 							<select id="wplng_theme" name="wplng_theme" class="wplng-fe-50">

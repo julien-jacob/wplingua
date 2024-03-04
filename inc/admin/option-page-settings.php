@@ -203,8 +203,7 @@ function wplng_settings_part_language_website() {
 
 		<div class="wplng-website-language-displayed">
 			<div id="wplng-website-language" class="wplng-website-language-left">
-				<img src="<?php echo esc_url( wplng_get_language_website_flag() ); ?>" id="wplng-website-flag">
-				<?php echo esc_html( $website_language['name'] ); ?>
+				<img src="<?php echo esc_url( wplng_get_language_website_flag() ); ?>" id="wplng-website-flag"><?php echo esc_html( $website_language['name'] ); ?>
 			</div>
 			<div class="wplng-target-language-right">
 				<a href="javascript:void(0);" id="wplng-website-lang-update-flag"><?php esc_html_e( 'Edit flag', 'wplingua' ); ?></a>
