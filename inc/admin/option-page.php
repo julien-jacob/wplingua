@@ -86,6 +86,15 @@ function wplng_create_menu() {
 		'edit.php?post_type=wplng_translation',
 		false
 	);
+
+	add_submenu_page(
+		'wplingua-settings',
+		__( 'wplingua: Help & Support', 'wplingua' ),
+		__( 'Help & Support', 'wplingua' ),
+		'administrator',
+		'wplingua-help',
+		'wplng_option_page_help'
+	);
 }
 
 
@@ -139,6 +148,7 @@ function wplng_admin_footer_text( $text ) {
 			|| $_GET['page'] === 'wplingua-switcher'
 			|| $_GET['page'] === 'wplingua-dictionary'
 			|| $_GET['page'] === 'wplingua-exclusions'
+			|| $_GET['page'] === 'wplingua-help'
 		)
 	) {
 		
@@ -175,6 +185,7 @@ function wplng_update_footer( $text ) {
 			|| $_GET['page'] === 'wplingua-switcher'
 			|| $_GET['page'] === 'wplingua-dictionary'
 			|| $_GET['page'] === 'wplingua-exclusions'
+			|| $_GET['page'] === 'wplingua-help'
 		)
 	) {
 		$text  = '<a href="https://wplingua.com/" target="_blank">';

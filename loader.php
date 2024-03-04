@@ -20,6 +20,7 @@ require_once WPLNG_PLUGIN_PATH . '/inc/admin/admin-bar.php';
 require_once WPLNG_PLUGIN_PATH . '/inc/admin/assets.php';
 require_once WPLNG_PLUGIN_PATH . '/inc/admin/option-page-dictionary.php';
 require_once WPLNG_PLUGIN_PATH . '/inc/admin/option-page-exclusions.php';
+require_once WPLNG_PLUGIN_PATH . '/inc/admin/option-page-help.php';
 require_once WPLNG_PLUGIN_PATH . '/inc/admin/option-page-register.php';
 require_once WPLNG_PLUGIN_PATH . '/inc/admin/option-page-settings.php';
 require_once WPLNG_PLUGIN_PATH . '/inc/admin/option-page-switcher.php';
