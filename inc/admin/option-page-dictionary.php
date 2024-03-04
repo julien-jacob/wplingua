@@ -187,9 +187,16 @@ function wplng_option_page_dictionary_new_entry_html() {
 	* Input : Source
 	*/
 
+	$language_website       = wplng_get_language_website();
+	$language_website_html  = '<img ';
+	$language_website_html .= 'src="' . esc_url( $language_website['flag'] ) . '" ';
+	$language_website_html .= 'alt="' . esc_attr( $language_website['name'] ) . '" ';
+	$language_website_html .= 'class="wplng-flag">';
+
 	$html .= '<fieldset>';
 	$html .= '<label for="wplng-new-source">';
 	$html .= '<strong>';
+	$html .= $language_website_html;
 	$html .= esc_html__( 'Source text: ', 'wplingua' );
 	$html .= '</strong>';
 	$html .= '</label>';
@@ -290,9 +297,16 @@ function wplng_option_page_dictionary_edit_entry_html() {
 	* Input : Source
 	*/
 
+	$language_website       = wplng_get_language_website();
+	$language_website_html  = '<img ';
+	$language_website_html .= 'src="' . esc_url( $language_website['flag'] ) . '" ';
+	$language_website_html .= 'alt="' . esc_attr( $language_website['name'] ) . '" ';
+	$language_website_html .= 'class="wplng-flag">';
+
 	$html .= '<fieldset>';
 	$html .= '<label for="wplng-edit-source">';
 	$html .= '<strong>';
+	$html .= $language_website_html;
 	$html .= esc_html__( 'Source text: ', 'wplingua' );
 	$html .= '</strong>';
 	$html .= '</label>';
