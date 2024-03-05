@@ -68,7 +68,7 @@ function wplng_option_page_switcher() {
 						<fieldset>
 
 							<label for="wplng_style" class="wplng-fe-50">
-								<strong><?php esc_html_e( 'Switcher style: ', 'wplingua' ); ?></strong>
+								<strong><?php esc_html_e( 'Layout: ', 'wplingua' ); ?></strong>
 							</label>
 
 							<select id="wplng_style" name="wplng_style" class="wplng-fe-50">
