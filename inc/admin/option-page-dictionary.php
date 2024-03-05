@@ -17,7 +17,7 @@ function wplng_option_page_dictionary() {
 
 	?>
 
-	<h1 class="wplin-option-page-title"><span class="dashicons dashicons-translation"></span> <?php esc_html_e( 'wpLingua - Translation rules by dictionary', 'wplingua' ); ?></h1>
+	<h1 class="wplin-option-page-title"><span class="dashicons dashicons-translation"></span> <?php esc_html_e( 'wpLingua - Dictionary rules', 'wplingua' ); ?></h1>
 
 	<div class="wrap">
 		<hr class="wp-header-end">
@@ -39,7 +39,7 @@ function wplng_option_page_dictionary() {
 
 							<p><?php esc_html_e( 'The dictionary allows you to define translation rules that apply when generating machine translations. You can specify words or sets of words that should never be translated, or define how they should be translated for each language.', 'wplingua' ); ?></p>
 
-							<br>
+							<hr>
 
 							<?php wplng_option_page_dictionary_entries_html(); ?>
 
@@ -52,7 +52,7 @@ function wplng_option_page_dictionary() {
 				</tr>
 
 				<tr id="wplng-section-entry-new" style="display: none;">
-					<th scope="row"><?php esc_html_e( 'Add an entry', 'wplingua' ); ?></th>
+					<th scope="row"><span class="dashicons dashicons-welcome-add-page"></span> <?php esc_html_e( 'Add an entry', 'wplingua' ); ?></th>
 					<td>
 						<div id="wplng-dictionary-entry-new">
 							<?php wplng_option_page_dictionary_new_entry_html(); ?>
@@ -61,7 +61,7 @@ function wplng_option_page_dictionary() {
 				</tr>
 
 				<tr id="wplng-section-entry-edit" style="display: none;">
-					<th scope="row"><?php esc_html_e( 'Edit the entry', 'wplingua' ); ?></th>
+					<th scope="row"><span class="dashicons dashicons-welcome-write-blog"></span> <?php esc_html_e( 'Edit the entry', 'wplingua' ); ?></th>
 					<td>
 						<div id="wplng-dictionary-entry-edit">
 							<?php wplng_option_page_dictionary_edit_entry_html(); ?>
@@ -97,9 +97,7 @@ function wplng_option_page_dictionary_entries_html() {
 	$language_website_html .= 'alt="' . esc_attr( $language_website['name'] ) . '" ';
 	$language_website_html .= 'class="wplng-flag">';
 
-	$html  = '';
-	$html .= '<hr>';
-	$html .= '<label><strong>';
+	$html  = '<label><strong>';
 	$html .= esc_html__( 'All dictionary entries: ', 'wplingua' );
 	$html .= '</strong></label>';
 	$html .= '<br>';
@@ -123,7 +121,7 @@ function wplng_option_page_dictionary_entries_html() {
 		$html .= 'href="javascript:void(0);" ';
 		$html .= 'class="wplng-rule-link-edit" ';
 		$html .= 'wplng-rule="' . esc_attr( $rule_number ) . '">';
-		$html .= esc_html__( 'Edit rule', 'wplingua' );
+		$html .= esc_html__( 'Edit entry', 'wplingua' );
 		$html .= '</a> ';
 		$html .= '<a ';
 		$html .= 'href="javascript:void(0);" ';
@@ -189,9 +187,16 @@ function wplng_option_page_dictionary_new_entry_html() {
 	* Input : Source
 	*/
 
+	$language_website       = wplng_get_language_website();
+	$language_website_html  = '<img ';
+	$language_website_html .= 'src="' . esc_url( $language_website['flag'] ) . '" ';
+	$language_website_html .= 'alt="' . esc_attr( $language_website['name'] ) . '" ';
+	$language_website_html .= 'class="wplng-flag">';
+
 	$html .= '<fieldset>';
 	$html .= '<label for="wplng-new-source">';
 	$html .= '<strong>';
+	$html .= $language_website_html;
 	$html .= esc_html__( 'Source text: ', 'wplingua' );
 	$html .= '</strong>';
 	$html .= '</label>';
@@ -222,7 +227,7 @@ function wplng_option_page_dictionary_new_entry_html() {
 	$language_target = wplng_get_languages_target();
 
 	$html .= '<div id="wplng-new-rules">';
-	foreach ( $language_target as $key => $language ) {
+	foreach ( $language_target as $language ) {
 
 		$name = 'wplng-new-always-translate-' . $language['id'];
 
@@ -292,9 +297,16 @@ function wplng_option_page_dictionary_edit_entry_html() {
 	* Input : Source
 	*/
 
+	$language_website       = wplng_get_language_website();
+	$language_website_html  = '<img ';
+	$language_website_html .= 'src="' . esc_url( $language_website['flag'] ) . '" ';
+	$language_website_html .= 'alt="' . esc_attr( $language_website['name'] ) . '" ';
+	$language_website_html .= 'class="wplng-flag">';
+
 	$html .= '<fieldset>';
 	$html .= '<label for="wplng-edit-source">';
 	$html .= '<strong>';
+	$html .= $language_website_html;
 	$html .= esc_html__( 'Source text: ', 'wplingua' );
 	$html .= '</strong>';
 	$html .= '</label>';
@@ -325,7 +337,7 @@ function wplng_option_page_dictionary_edit_entry_html() {
 	$language_target = wplng_get_languages_target();
 
 	$html .= '<div id="wplng-edit-rules">';
-	foreach ( $language_target as $key => $language ) {
+	foreach ( $language_target as $language ) {
 
 		$name = 'wplng-edit-always-translate-' . $language['id'];
 

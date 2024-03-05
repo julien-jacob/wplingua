@@ -4,7 +4,7 @@ Donate link: https://wplingua.com/
 Tags: translate, translation, multilingual, localization, language
 Requires at least: 5.0
 Tested up to: 6.4
-Stable tag: 1.1.0
+Stable tag: 1.1.1
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -74,7 +74,7 @@ You can also control the appearance of the language switcher using:
 ✓ Switcher styles (dropdown, inline, block...)
 ✓ Predefined themes (light, dark, chameleon, etc.)
 ✓ Configurable language names (translated name, original name, language ID, etc.)
-✓ Flag shapes (round, rectagle, wavy)
+✓ Flag shapes (round, rectangle, wavy)
 ✓ Language-based flag choices or import your own flag images
 ✓ Adding custom CSS in a dedicated insert
 
@@ -155,6 +155,12 @@ No, not at the moment but in the meantime, you can easily display the language s
 8. All translations are stored on your WordPress site.
 
 == Changelog ==
+
+= 1.1.1 =
+
+* Better UX: Options pages
+* Optimization: faster translations query and finding
+* Experimental feature: Translation in progress message (disaled by default, enable with wplng_enale_in_progress_feature filter set to true) 
 
 = 1.1.0 =
 

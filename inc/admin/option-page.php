@@ -123,6 +123,75 @@ function wplng_register_settings() {
 
 
 /**
+ * Set custom admin_footer_text on wpLingua options pages
+ *
+ * @param string $text
+ * @return string
+ */
+function wplng_admin_footer_text( $text ) {
+
+	global $pagenow;
+
+	if ( 'admin.php' === $pagenow
+		&& isset( $_GET['page'] )
+		&& (
+			$_GET['page'] === 'wplingua-settings'
+			|| $_GET['page'] === 'wplingua-switcher'
+			|| $_GET['page'] === 'wplingua-dictionary'
+			|| $_GET['page'] === 'wplingua-exclusions'
+		)
+	) {
+		
+		$text = '<span class="dashicons dashicons-heart"></span> ';
+
+		if ( empty( wplng_get_api_data() ) ) {
+			$text .= esc_html__( 'Thank you for choosing wpLingua!', 'wplingua' );
+		} else {
+			$text .= sprintf(
+				esc_html__( 'If you like wpLingua please leave us a %1$s rating. A huge thanks!', 'wplingua' ),
+				'<a href="https://wordpress.org/support/plugin/wplingua/reviews/?filter=5" target="_blank" class="wc-rating-link" aria-label="' . esc_attr__( 'five stars', 'wplingua' ) . '">&#9733;&#9733;&#9733;&#9733;&#9733;</a>'
+			);
+		}
+	}
+
+	return $text;
+}
+
+
+/**
+ * Set custom update_footer text on wpLingua options pages
+ *
+ * @param string $text
+ * @return string
+ */
+function wplng_update_footer( $text ) {
+
+	global $pagenow;
+
+	if ( 'admin.php' === $pagenow
+		&& isset( $_GET['page'] )
+		&& (
+			$_GET['page'] === 'wplingua-settings'
+			|| $_GET['page'] === 'wplingua-switcher'
+			|| $_GET['page'] === 'wplingua-dictionary'
+			|| $_GET['page'] === 'wplingua-exclusions'
+		)
+	) {
+		$text  = '<a href="https://wplingua.com/" target="_blank">';
+		$text .= 'wplingua.com';
+		$text .= '</a> | ';
+		$text .= '<a href="https://github.com/julien-jacob/wplingua" target="_blank">';
+		$text .= 'GitHub';
+		$text .= '</a> | ';
+		$text .= esc_html__( 'Version', 'wplingua' );
+		$text .= ' ' . esc_html( WPLNG_PLUGIN_VERSION );
+	}
+
+	return $text;
+}
+
+
+/**
  * Add 'Settings' link on wpLingua in the plugin list
  *
  * @param array $settings
@@ -174,4 +243,9 @@ function wplng_admin_notice_no_key_set() {
 	$html .= '</div>';
 
 	echo $html;
+}
+
+
+function wplng_notice_another_translation_plugin() {
+
 }

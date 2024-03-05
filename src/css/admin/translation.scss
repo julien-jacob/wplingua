@@ -7,10 +7,9 @@
 
 #wplng_meta_box_translation {
 
-    label {
+    #wplng-source-title {
         font-weight: bold;
-        margin-bottom: 10px;
-        display: block;
+        margin-bottom: 15px;
     }
 
     .wplng-flag {
@@ -21,12 +20,12 @@
         vertical-align: text-top;
     }
 
-    .wplng-source {
+    #wplng-source {
         font-size: 1.1em;
     }
 
     #wplng-original-language {
-        margin: 20px 0 30px;
+        margin: 20px 0 0;
     }
 
     .wplng-edit-language {
@@ -36,6 +35,12 @@
         margin-top: 25px;
         background-color: #f6f7f7;
         box-shadow: rgba(0, 0, 0, 0.04) 0px 1px 1px 0px;
+
+        label {
+            font-weight: 700;
+            margin-bottom: 8px;
+            display: block;
+        }
 
         textarea {
             overflow: hidden;
@@ -48,6 +53,7 @@
             color: #3c434a;
             display: flex;
             justify-content: space-between;
+            margin-top: 4px;
 
             a:focus {
                 box-shadow: none;

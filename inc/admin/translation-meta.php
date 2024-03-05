@@ -54,18 +54,18 @@ function wplng_translation_meta_box_html_output( $post ) {
 		$alt         = __( 'Flag for language: ', 'wplingua' ) . $language['name'];
 
 		$html  = '<div id="wplng-original-language" wplng-lang="' . esc_attr( $language_id ) . '">';
-		$html .= '<label for="wplng_translation_source">';
+		$html .= '<div id="wplng-source-title">';
 		$html .= '<img ';
 		$html .= 'src="' . esc_url( $language['flag'] ) . '" ';
 		$html .= 'alt="' . esc_attr( $alt ) . '" ';
 		$html .= 'class="wplng-flag">';
 		$html .= esc_html( $language['name'] );
 		$html .= esc_html__( ' - Original text:', 'wplingua' );
-		$html .= '</label>';
-		$html .= '<div class="wplng-source">';
+		$html .= '</div>'; // End #wplng-source-title
+		$html .= '<div id="wplng-source">';
 		$html .= esc_html( $meta['wplng_translation_original'][0] );
-		$html .= '</div>';
-		$html .= '</div>';
+		$html .= '</div>'; // End #wplng-source
+		$html .= '</div>'; // End #wplng-original-language
 
 	}
 

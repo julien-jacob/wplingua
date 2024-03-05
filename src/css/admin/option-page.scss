@@ -12,8 +12,9 @@
     padding: 15px 25px;
     line-height: 22px;
     font-weight: 500;
-    box-shadow: 0 4px 8px rgba(0,0,0,.05);
+    box-shadow: 0 0 8px rgba(0,0,0,.05);
     border-bottom: 1px solid #c3c4c7;
+    text-align: center;
 }
 
 h1 .dashicons {
@@ -50,6 +51,7 @@ h1 .dashicons {
 
 .wplng-form-table {
 
+    padding-right: 200px;
     border-collapse: initial;
     margin-top: 30px;
 
@@ -62,10 +64,12 @@ h1 .dashicons {
         padding: 15px;
         background-color: #f6f7f7;
         display: block;
-        margin-bottom: 25px;
         border: 1px solid #c3c4c7;
-        max-width: 520px;
-        box-shadow: 0 0 8px rgba(0,0,0,.05);
+        margin-bottom: 25px;
+        max-width: 540px;
+        margin-right: auto;
+        margin-left: auto;
+        box-shadow: 0 0 8px rgba(0, 0, 0, .05);
         border-radius: 3px;
 
         .button {
@@ -82,9 +86,42 @@ h1 .dashicons {
 
     }
 
+    .wplng-tr-submit {
+        td {
+
+            border: none;
+            box-shadow: none;
+            background-color: unset;
+            padding: 0;
+
+            p.submit {
+                padding: 0 0 64px;
+
+                #submit {
+                    width: 100%;
+                    box-shadow: 0 0 8px rgba(0, 0, 0, .05);
+                    min-height: 42px;
+                    font-size: 14px;
+                }
+            }
+        }
+    }
+
 }
 
-@media screen and (max-width: 782px) {
+#wpfooter {
+
+    background-color: #f6f7f7;
+    box-shadow: 0 0 8px rgba(0,0,0,.05);
+    border-top: 1px solid #c3c4c7;
+    padding: 15px 25px;
+
+    .dashicons {
+        line-height: 1.1em;
+    }
+}
+
+@media screen and (max-width: 1120px) {
 
     #wpbody-content h1 {
         text-align: center;
@@ -92,20 +129,25 @@ h1 .dashicons {
 
     .wplng-form-table {
 
+        padding-right: 0;
+
         th,
         td {
-            max-width: 520px;
+            max-width: 540px;
             margin-right: auto;
             margin-left: auto;
+            display: block;
         }
 
         th {
             padding: 25px 0 20px;
             font-size: 1.2em;
+            width: 100%;
         }
 
         td {
             .button.wplng-icon-button {
+
                 vertical-align: top;
                 padding: 0;
 
@@ -118,14 +160,20 @@ h1 .dashicons {
 
         }
 
-    }
+        .wplng-tr-submit {
 
-    #submit {
-        max-width: 520px;
-        margin-left: auto;
-        margin-right: auto;
-        width: 100%;
-        display: block;
+            th {
+                display: none;
+            }
+
+            td {
+                p.submit {
+                    padding: 10px 0 42px;
+                    font-size: 14px;
+                }
+            }
+        }
+
     }
 
 }

@@ -39,7 +39,7 @@ jQuery(document).ready(function ($) {
 
         var source = $("#wplng-original-language").attr("wplng-lang");
         var target = $(this).attr("wplng-lang");
-        var text = $("#wplng-original-language .wplng-source").html();
+        var text = $("#wplng-source").html();
 
         if (undefined == source || undefined == target || undefined == text) {
             return;

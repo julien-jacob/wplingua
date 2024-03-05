@@ -134,7 +134,7 @@ function wplng_option_page_register() {
 
 				<tr>
 					<th scope="row"><span class="dashicons dashicons-admin-network"></span> <?php esc_html_e( 'Set API Key', 'wplingua' ); ?></th>
-					<td>
+					<td class="wplng-td-last">
 						<?php wplng_register_part_api_key( $api_key ); ?>
 					</td>
 				</tr>
@@ -166,7 +166,7 @@ function wplng_option_page_register() {
 
 				<tr>
 					<th scope="row"><span class="dashicons dashicons-admin-settings"></span> <?php esc_html_e( 'Advanced API features', 'wplingua' ); ?></th>
-					<td>
+					<td class="wplng-td-last">
 						<?php wplng_register_part_premium(); ?>
 					</td>
 				</tr>

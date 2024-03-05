@@ -20,14 +20,13 @@ function wplng_option_page_settings() {
 		return;
 	}
 
-	wplng_settings_part_first_use();
-
 	?>
 
-	<h1 class="wplin-option-page-title"><span class="dashicons dashicons-translation"></span> <?php esc_html_e( 'wpLingua - Translation solution for multilingual website', 'wplingua' ); ?></h1>
+	<h1 class="wplin-option-page-title"><span class="dashicons dashicons-translation"></span> <?php esc_html_e( 'wpLingua - General settings', 'wplingua' ); ?></h1>
 
 	<div class="wrap">
 		<hr class="wp-header-end">
+		<?php wplng_settings_part_first_use(); ?>
 		<form method="post" action="options.php">
 			<?php
 			settings_fields( 'wplng_settings' );
@@ -61,10 +60,13 @@ function wplng_option_page_settings() {
 						<?php wplng_settings_part_api_key(); ?>
 					</td>
 				</tr>
+				<tr class="wplng-tr-submit">
+					<th scope="row"><span class="dashicons dashicons-yes-alt"></span> <?php _e( 'Save', 'wplingua' ); ?></th>
+					<td>
+						<?php submit_button(); ?>
+					</td>
+				</tr>
 			</table>
-
-			<?php submit_button(); ?>
-
 		</form>
 	</div>
 	<?php
@@ -111,14 +113,20 @@ function wplng_settings_part_first_use() {
 		$language_target['id']
 	);
 
+	$url_front_page_iframe = add_query_arg(
+		'wplingua-load-all',
+		'1',
+		$url_front_page_translated
+	);
+
 	?>
 	<div class="wplng-notice notice notice-info" id="wplng-notice-first-loading-loading">
-		<iframe src="<?php echo esc_url( $url_front_page_translated ); ?>" frameborder="0" id="wplng-first-load-iframe" style="display: none;"></iframe>
+		<iframe src="<?php echo esc_url( $url_front_page_iframe ); ?>" frameborder="0" id="wplng-first-load-iframe" style="display: none;"></iframe>
 		<h2><span class="dashicons dashicons-update wplng-spin"></span> <?php esc_html_e( 'Your site is being translated and will be ready soon.', 'wplingua' ); ?></h2>
 	</div>
 
-	<div class="wplng-notice notice notice-success" id="wplng-notice-first-loading-loaded" style="display: none;">
-		<h2>🎉 <?php esc_html_e( 'Your website is now multilingual ! You can start visiting the translated version.', 'wplingua' ); ?></h2>
+	<div class="wplng-notice notice notice-success is-dismissible" id="wplng-notice-first-loading-loaded" style="display: none;">
+		<h2>🎉 <?php esc_html_e( 'Your website is now multilingual! You can start visiting the translated version.', 'wplingua' ); ?></h2>
 		<p>
 			<a href="<?php echo esc_url( $url_front_page_translated ); ?>" target="_blank" class="button button-primary">
 				<?php esc_html_e( 'Visit your multilingual website', 'wplingua' ); ?>
@@ -195,8 +203,7 @@ function wplng_settings_part_language_website() {
 
 		<div class="wplng-website-language-displayed">
 			<div id="wplng-website-language" class="wplng-website-language-left">
-				<img src="<?php echo esc_url( wplng_get_language_website_flag() ); ?>" id="wplng-website-flag">
-				<?php echo esc_html( $website_language['name'] ); ?>
+				<img src="<?php echo esc_url( wplng_get_language_website_flag() ); ?>" id="wplng-website-flag"><?php echo esc_html( $website_language['name'] ); ?>
 			</div>
 			<div class="wplng-target-language-right">
 				<a href="javascript:void(0);" id="wplng-website-lang-update-flag"><?php esc_html_e( 'Edit flag', 'wplingua' ); ?></a>
