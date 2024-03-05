@@ -121,7 +121,7 @@ function wplng_option_page_dictionary_entries_html() {
 		$html .= 'href="javascript:void(0);" ';
 		$html .= 'class="wplng-rule-link-edit" ';
 		$html .= 'wplng-rule="' . esc_attr( $rule_number ) . '">';
-		$html .= esc_html__( 'Edit rule', 'wplingua' );
+		$html .= esc_html__( 'Edit entry', 'wplingua' );
 		$html .= '</a> ';
 		$html .= '<a ';
 		$html .= 'href="javascript:void(0);" ';
