@@ -244,8 +244,3 @@ function wplng_admin_notice_no_key_set() {
 
 	echo $html;
 }
-
-
-function wplng_notice_another_translation_plugin() {
-
-}
