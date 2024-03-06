@@ -214,7 +214,7 @@ function wplng_dictionary_add_tags( $texts, $dictionary_entries = false ) {
 
 		foreach ( $entries_used as $entry_key => $entry_used ) {
 			$text = preg_replace(
-				'#' . $entry_used['source'] . '#',
+				'#\b' . $entry_used['source'] . '\b#',
 				'⊕' . str_repeat( '⊖', $entry_key + 1 ) . '⊕',
 				$text
 			);
