@@ -355,7 +355,7 @@ function wplng_plugin_activation_redirect( $plugin ) {
 
 	if ( ! wp_doing_ajax() && WPLNG_PLUGIN_FILE === $plugin ) {
 		wp_safe_redirect(
-			admin_url( 'options-general.php?page=wplingua-settings' )
+			admin_url( 'admin.php?page=wplingua-settings' )
 		);
 		exit();
 	}
