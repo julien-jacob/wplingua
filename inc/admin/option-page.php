@@ -141,7 +141,7 @@ function wplng_admin_footer_text( $text ) {
 			|| $_GET['page'] === 'wplingua-exclusions'
 		)
 	) {
-		
+
 		$text = '<span class="dashicons dashicons-heart"></span> ';
 
 		if ( empty( wplng_get_api_data() ) ) {
@@ -218,7 +218,7 @@ function wplng_settings_link( $settings ) {
 /**
  * Display a notice if the plugin is activate but not configured
  *
- * @return string
+ * @return void
  */
 function wplng_admin_notice_no_key_set() {
 
@@ -241,6 +241,105 @@ function wplng_admin_notice_no_key_set() {
 	$html .= '</a>';
 	$html .= '</p>';
 	$html .= '</div>';
+
+	echo $html;
+}
+
+
+/**
+ * Display a notice if an incompatible plugin is detected
+ *
+ * @return void
+ */
+function wplng_admin_notice_incompatible_plugin() {
+
+	/**
+	 * Get incompatible plugins
+	 */
+
+	$incompatible_list     = array();
+	$incompatible_detected = array();
+
+	$incompatible_list = array(
+		'Automatic Translator' => 'auto-translate/auto-translate.php',
+		'ConveyThis Translate' => 'conveythis-translate/index.php',
+		'Google Translator'    => 'google-language-translator/google-language-translator.php',
+		'Gtranslate'           => 'gtranslate/gtranslate.php',
+		'Polylang'             => 'polylang/polylang.php',
+		'TranslatePress'       => 'translatepress-multilingual/index.php',
+		'WEGLOT'               => 'weglot/weglot.php',
+		'WPML'                 => 'sitepress-multilingual-cms/sitepress.php',
+	);
+
+	foreach ( $incompatible_list as $name => $file ) {
+		if ( is_plugin_active( $file ) ) {
+			$incompatible_detected[ $name ] = $file;
+		}
+	}
+
+	if ( empty( $incompatible_detected ) ) {
+		return;
+	}
+
+	/**
+	 * Make and echo the admin notice
+	 */
+
+	$html  = '<div ';
+	$html .= 'class="wplng-notice notice notice-error is-dismissible" ';
+	$html .= 'style="background-color: rgba(255, 0, 0, .1);">';
+	$html .= '<p style="font-weight: 600;">';
+	$html .= '<span class="dashicons dashicons-translation"></span> ';
+	$html .= esc_html__( 'wpLingua - Incompatible plugin detected', 'wplingua' );
+	$html .= '</p>';
+	$html .= '<p>';
+	$html .= esc_html__( 'You have several translation plugins. This may result in unpredictable or incorrect behavior. For best results, use only one translation plugin at a time. These plugins can cause problems with wpLingua:', 'wplingua' );
+
+	$html .= '<ul style="list-style: disc; margin-left: 15px;">';
+	foreach ( $incompatible_detected as $name => $file ) {
+
+		$deactivate_url = wp_nonce_url(
+			add_query_arg(
+				array(
+					'action' => 'deactivate',
+					'plugin' => urlencode( $file ),
+				),
+				get_admin_url() . 'plugins.php'
+			),
+			'deactivate-plugin_' . $file
+		);
+
+		$deactivate_title = sprintf(
+			esc_html__( 'Deactivate plugin: %1$s', 'wplingua' ),
+			$name
+		);
+
+		$html .= '<li>';
+		$html .= '<strong>' . esc_html( $name ) . '</strong> | ';
+		$html .= '<a ';
+		$html .= 'href="' . esc_url( $deactivate_url ) . '" ';
+		$html .= 'title="' . esc_attr( $deactivate_title ) . '">';
+		$html .= esc_html__( 'Deactivate', 'wplingua' );
+		$html .= '</a>';
+		$html .= '</li>';
+	}
+	$html .= '</ul>';
+	$html .= '</p>';
+
+	$url_manage_plugins = add_query_arg(
+		'plugin_status',
+		'active',
+		get_admin_url() . 'plugins.php'
+	);
+
+	$html .= '<a ';
+	$html .= 'href="' . esc_url( $url_manage_plugins ) . '" ';
+	$html .= 'class="button button-primary" ';
+	$html .= 'style="margin-bottom: 10px;">';
+	$html .= esc_html__( 'Manage activate plugins', 'wplingua' );
+	$html .= '</a>';
+
+	$html .= '</div>'; // End .notice
 
 	echo $html;
 }

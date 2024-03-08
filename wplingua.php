@@ -66,6 +66,9 @@ function wplng_start() {
 
 	}
 
+	// Display a notice if an incompatible plugin is detected
+	add_action( 'admin_notices', 'wplng_admin_notice_incompatible_plugin', 1 );
+
 	// Register plugin settings
 	add_action( 'admin_init', 'wplng_register_settings' );
 
@@ -88,7 +91,7 @@ function wplng_start() {
 		add_action( 'admin_enqueue_scripts', 'wplng_option_page_register_assets' );
 
 		// Display a notice if the plugin is activate but not configured
-		add_action( 'admin_notices', 'wplng_admin_notice_no_key_set' );
+		add_action( 'admin_notices', 'wplng_admin_notice_no_key_set', 1 );
 
 	} else {
 
