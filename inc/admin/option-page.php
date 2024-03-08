@@ -336,10 +336,28 @@ function wplng_admin_notice_incompatible_plugin() {
 	$html .= 'href="' . esc_url( $url_manage_plugins ) . '" ';
 	$html .= 'class="button button-primary" ';
 	$html .= 'style="margin-bottom: 10px;">';
-	$html .= esc_html__( 'Manage activate plugins', 'wplingua' );
+	$html .= esc_html__( 'Manage active plugins', 'wplingua' );
 	$html .= '</a>';
 
 	$html .= '</div>'; // End .notice
 
 	echo $html;
+}
+
+
+/**
+ * Redirect to the settings page on plugin activation
+ *
+ * @param string $plugin
+ * @return void
+ */
+function wplng_plugin_activation_redirect( $plugin ) {
+
+	if ( ! wp_doing_ajax() && WPLNG_PLUGIN_FILE === $plugin ) {
+		wp_safe_redirect(
+			admin_url( 'options-general.php?page=wplingua-settings' )
+		);
+		exit();
+	}
+
 }
