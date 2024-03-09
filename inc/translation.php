@@ -444,6 +444,61 @@ function wplng_save_translation( $target_language_id, $original, $translation, $
 
 
 /**
+ * Get the translated text from translations array
+ *
+ * @param string $text
+ * @param array $translations
+ * @return string
+ */
+function wplng_get_translated_text_from_translations( $text, $translations ) {
+
+	if ( empty( trim( $text ) ) ) {
+		return $text;
+	}
+
+	/**
+	 * Get spaces before and after text
+	 */
+	$temp          = array();
+	$spaces_before = '';
+	$spaces_after  = '';
+
+	preg_match( '#^(\s*).*#', $text, $temp );
+	if ( ! empty( $temp[1] ) ) {
+		$spaces_before = $temp[1];
+	}
+
+	preg_match( '#.*(\s*)$#U', $text, $temp );
+	if ( ! empty( $temp[1] ) ) {
+		$spaces_after = $temp[1];
+	}
+
+	$text       = wplng_text_esc( $text );
+	$translated = $text;
+
+	if ( wplng_text_is_translatable( $text ) ) {
+		foreach ( $translations as $translation ) {
+
+			if ( ! isset( $translation['source'] ) ) {
+				continue;
+			}
+
+			$source = wplng_text_esc( $translation['source'] );
+
+			if ( $text === $source ) {
+				$translated = $translation['translation'];
+				break;
+			}
+		}
+	}
+
+	$translated = esc_html( $translated );
+
+	return $spaces_before . $translated . $spaces_after;
+}
+
+
+/**
  * Clear cached translations
  *
  * @return void
