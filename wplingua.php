@@ -202,3 +202,23 @@ function wplng_start() {
 
 }
 wplng_start();
+
+
+// $xx = add_query_arg(
+// 	array(
+// 		'hello' => 'world',
+// 		'hey' => 'ok',
+// 	),
+// 	wplng_get_url_original()
+// );
+
+// $xx = remove_query_arg(
+// 	array(
+// 		'hello',
+// 		'hey',
+// 	),
+// 	$xx
+// );
+
+// var_dump($xx);
+// die;

@@ -1,5 +1,9 @@
 jQuery(document).ready(function ($) {
 
+    /**
+     * Code for switcher
+     */
+
     function wplngUpdateSwitcherOpening() {
         var windowMiddle = $(window).height() / 2;
 

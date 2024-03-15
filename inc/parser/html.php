@@ -9,7 +9,7 @@ if ( ! defined( 'WPINC' ) ) {
 /**
  * wpLingua Parser : Get texts in an HTML
  *
- * @param string $html
+ * @param string|object $html string or $dom object
  * @return array Texts
  */
 function wplng_parse_html( $html ) {

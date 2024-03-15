@@ -13,7 +13,7 @@ if ( ! defined( 'WPINC' ) ) {
  * @param array $translations
  * @return string
  */
-function wplng_translate_js( $js, $translations ) {
+function wplng_translate_js( $js, $args = array() ) {
 
 	if ( empty( trim( $js ) ) ) {
 		return $js;
@@ -32,10 +32,11 @@ function wplng_translate_js( $js, $translations ) {
 		$var_name = $json[1][0];
 		$var_json = $json[2][0];
 
+		$args['parrents'] = array( $var_name );
+
 		$json_translated = wplng_translate_json(
 			$var_json,
-			$translations,
-			array( $var_name )
+			$args
 		);
 
 		if ( $var_json != $json_translated ) {

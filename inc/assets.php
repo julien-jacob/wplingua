@@ -49,31 +49,36 @@ function wplng_register_assets() {
 	 * Load assets for visual editor
 	 */
 
-	if ( isset( $_GET['wplingua-editor'] ) ) {
+	if ( ! empty( $_GET['wplng-mode'] ) ) {
+		switch ( $_GET['wplng-mode'] ) {
 
-		wp_enqueue_style(
-			'wplingua-editor',
-			plugins_url() . '/wplingua/assets/css/editor.css',
-			array(),
-			WPLNG_API_VERSION
-		);
+			case 'editor':
+				wp_enqueue_style(
+					'wplingua-editor',
+					plugins_url() . '/wplingua/assets/css/editor.css',
+					array(),
+					WPLNG_API_VERSION
+				);
+				break;
 
-	} elseif ( isset( $_GET['wplingua-list'] ) ) {
-
-		wp_enqueue_style(
-			'wplingua-list',
-			plugins_url() . '/wplingua/assets/css/list.css',
-			array(),
-			WPLNG_API_VERSION
-		);
-
+			case 'list':
+				wp_enqueue_style(
+					'wplingua-list',
+					plugins_url() . '/wplingua/assets/css/list.css',
+					array(),
+					WPLNG_API_VERSION
+				);
+				break;
+		}
 	}
 
 	/**
 	 * Add inline style for wpLingua custom CSS
 	 */
 
-	if ( ! isset( $_GET['wplingua-list'] ) ) {
+	if ( empty( $_GET['wplng-mode'] )
+		|| 'list' !== $_GET['wplng-mode']
+	) {
 
 		$custom_css = get_option( 'wplng_custom_css' );
 

@@ -223,7 +223,7 @@ function wplng_get_url_original( $url = '' ) {
 		$url = str_replace( '/' . $target_id . '/', '/', $url );
 	}
 
-	$url = esc_url( $url );
+	$url = esc_url_raw( $url );
 
 	$url = apply_filters(
 		'wplng_url_original',

@@ -1,0 +1,20 @@
+<?php
+
+// If this file is called directly, abort.
+if ( ! defined( 'WPINC' ) ) {
+	die;
+}
+
+
+function wplng_dom_replace_attr_dir( $dom, $args ) {
+
+	$language_target = wplng_get_language_by_id( $args['language_target'] );
+
+	if ( ! empty( $language_target['dir'] ) ) {
+		foreach ( $dom->find( 'body' ) as $element ) {
+			$element->{'dir'} = esc_attr( $language_target['dir'] );
+		}
+	}
+
+	return $dom;
+}

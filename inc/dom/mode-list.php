@@ -7,157 +7,25 @@ if ( ! defined( 'WPINC' ) ) {
 
 
 /**
- * wpLingua OB Callback function : On page translations list
+ * Get HTML of all translations list modal
  *
- * @param string $html
- * @return void
+ * @param array $translations
+ * @return object $dom
  */
-function wplng_ob_callback_list( $html ) {
+function wplng_dom_mode_list( $dom, $args ) {
 
-	if ( empty( $html ) ) {
-		return $html;
-	}
-
-	$html       = apply_filters( 'wplng_html_intercepted', $html );
-	$html_saved = $html;
-
-	/**
-	 * Replace excluded HTML part by tag
-	 */
-
-	$excluded = array();
-
-	$html = wplng_html_set_exclude_tag(
-		$html,
-		$excluded
-	);
-
-	/**
-	 * Get all texts in HTML
-	 */
-
-	$texts = wplng_parse_html( $html );
-
-	/**
-	 * Get saved translation
-	 */
-
-	$language_target_id = wplng_get_language_current_id();
-	$translations       = array();
-
-	if ( ! empty( $texts ) ) {
-		$translations = wplng_get_translations_target( $language_target_id );
+	if ( 'list' !== $args['mode']
+		|| empty( $args['translations'] )
+	) {
+		return $dom;
 	}
 
 	/**
-	 * Get unknow texts
+	 * Add body class : wplingua-list
 	 */
 
-	$texts_unknow = array();
-
-	foreach ( $texts as $text ) {
-
-		$is_in = false;
-
-		foreach ( $translations as $translation ) {
-			if ( $text === $translation['source'] ) {
-				$is_in = true;
-				break;
-			}
-		}
-
-		if ( ! $is_in ) {
-			$texts_unknow[] = $text;
-		}
-	}
-
-	$texts_unknow = array_splice(
-		$texts_unknow,
-		0,
-		WPLNG_MAX_TRANSLATIONS + 1
-	);
-
-	/**
-	 * Get new translated text
-	 */
-
-	$texts_unknow_translated = wplng_api_call_translate(
-		$texts_unknow,
-		false,
-		$language_target_id
-	);
-
-	/**
-	 * Save new translation as wplng_translation CPT
-	 */
-
-	$translations_new = array();
-
-	foreach ( $texts_unknow as $key => $text_source ) {
-		if ( isset( $texts_unknow_translated[ $key ] ) ) {
-			$translations_new[] = array(
-				'source'      => $text_source,
-				'translation' => $texts_unknow_translated[ $key ],
-			);
-		}
-	}
-
-	$translations_new = wplng_save_translations(
-		$translations_new,
-		$language_target_id
-	);
-
-	/**
-	 * Separate page translations
-	 */
-
-	$translations_in_page = array();
-
-	foreach ( $translations as $translation ) {
-		foreach ( $texts as $text ) {
-			$text = wplng_text_esc( $text );
-			if ( ! empty( $translation['source'] )
-				&& $translation['source'] === $text
-			) {
-				$translations_in_page[] = $translation;
-				break;
-			}
-		}
-	}
-
-	/**
-	 * Merge know and new translations
-	 */
-
-	$translations = array_merge(
-		$translations_in_page,
-		$translations_new
-	);
-
-	/**
-	 * Place the modal HTML before body ending
-	 */
-
-	$html_saved = str_replace(
-		'</body>',
-		wplng_get_editor_modal_html( $translations ) . '</body>',
-		$html_saved
-	);
-
-	/**
-	 * Apply a filter before return $html
-	 */
-
-	$html = apply_filters( 'wplng_html_translated', $html );
-
-	return $html_saved;
-}
-
-
-function wplng_get_editor_modal_html( $translations ) {
-
-	if ( empty( $translations ) ) {
-		return '';
+	foreach ( $dom->find( 'body[class]' ) as $element ) {
+		$element->class = $element->class . ' wplingua-list';
 	}
 
 	/**
@@ -166,8 +34,7 @@ function wplng_get_editor_modal_html( $translations ) {
 
 	$url           = wplng_get_url_current();
 	$url_original  = $url;
-	$url_original  = remove_query_arg( 'wplingua-editor', $url_original );
-	$url_original  = remove_query_arg( 'wplingua-list', $url_original );
+	$url_original  = remove_query_arg( 'wplng-mode', $url_original );
 	$return_button = '';
 
 	if ( ! empty( $url_original ) ) {
@@ -205,7 +72,7 @@ function wplng_get_editor_modal_html( $translations ) {
 
 	$html .= '<div id="wplng-modal-items">';
 
-	foreach ( $translations as $translation ) {
+	foreach ( $args['translations'] as $translation ) {
 
 		if ( empty( $translation['post_id'] )
 			|| empty( $translation['source'] )
@@ -239,7 +106,13 @@ function wplng_get_editor_modal_html( $translations ) {
 	$html .= '</div>'; // End #wplng-modal
 	$html .= '</div>'; // End #wplng-modal-container
 
-	return $html;
+	// return $html;
+
+	foreach ( $dom->find( 'body' ) as $body ) {
+		$body->innertext = $body->innertext . $html;
+	}
+
+	return $dom;
 }
 
 
