@@ -279,8 +279,6 @@ function wplng_get_translations_from_texts( $texts, &$args ) {
 		$args['language_target']
 	);
 
-	error_log(var_export($texts_translated, true));
-
 	/**
 	 * Save new translation as wplng_translation CPT
 	*/
