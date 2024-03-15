@@ -140,7 +140,9 @@ function wplng_args_setup( &$args ) {
 				'wplng-load',
 				'wplng-time',
 			),
-			wplng_get_url_current()
+			wp_make_link_relative(
+				wplng_get_url_current()
+			)
 		);
 	} else {
 		$args_clear['url_current'] = $args['url_current'];
@@ -157,7 +159,9 @@ function wplng_args_setup( &$args ) {
 				'wplng-load',
 				'wplng-time',
 			),
-			wplng_get_url_original()
+			wp_make_link_relative(
+				wplng_get_url_original()
+			)
 		);
 	} else {
 		$args_clear['url_original'] = $args['url_original'];
