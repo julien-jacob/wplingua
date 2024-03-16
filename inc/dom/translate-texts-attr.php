@@ -8,6 +8,10 @@ if ( ! defined( 'WPINC' ) ) {
 
 function wplng_dom_translate_texts_attr( $dom, $args ) {
 
+	if ( 'loading' === $args['load'] ) {
+		return $dom;
+	}
+
 	$attr_text_to_translate = wplng_data_attr_text_to_translate();
 
 	foreach ( $attr_text_to_translate as $attr ) {

@@ -8,6 +8,10 @@ if ( ! defined( 'WPINC' ) ) {
 
 function wplng_dom_translate_js( $dom, $args ) {
 
+	if ( 'loading' === $args['load'] ) {
+		return $dom;
+	}
+
 	foreach ( $dom->find( 'script' ) as $element ) {
 
 		$translated_js = wplng_translate_js(

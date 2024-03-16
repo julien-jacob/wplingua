@@ -8,6 +8,10 @@ if ( ! defined( 'WPINC' ) ) {
 
 function wplng_dom_translate_json( $dom, $args ) {
 
+	if ( 'loading' === $args['load'] ) {
+		return $dom;
+	}
+
 	foreach ( $dom->find( 'script[type="application/ld+json"]' ) as $element ) {
 
 		$translated_json = wplng_translate_json(

@@ -10,9 +10,16 @@ function wplng_dom_translate_texts_nodes( $dom, $args ) {
 
 	if ( 'editor' === $args['mode']
 		|| 'disabled' !== $args['load']
+
 	) {
 		return $dom;
 	}
+
+	// Si mode == editor ou mode = list ou load == progress :
+	// 		Ne traduire que les nodes du head
+
+	// Si load == loading
+	// Retourner dom directement
 
 	$node_text_excluded = wplng_data_excluded_node_text();
 

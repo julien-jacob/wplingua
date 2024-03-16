@@ -8,6 +8,10 @@ if ( ! defined( 'WPINC' ) ) {
 
 function wplng_dom_replace_body_class( $dom, $args ) {
 
+	if ( 'loading' === $args['load'] ) {
+		return $dom;
+	}
+
 	// Replace languages IDs in <body> class
 	foreach ( $dom->find( 'body[class]' ) as $element ) {
 

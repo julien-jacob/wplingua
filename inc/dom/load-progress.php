@@ -8,9 +8,24 @@ if ( ! defined( 'WPINC' ) ) {
 
 function wplng_dom_load_progress( $dom, $args ) {
 
-	if ( 'disabled' === $args['load']
-		|| 'loading' === $args['load']
-	) {
+	if ( 'disabled' === $args['load'] ) {
+
+		return $dom;
+
+	} elseif ( 'loading' === $args['load'] ) {
+
+		$html  = '<!DOCTYPE html>';
+		$html .= '<html lang="en">';
+		$html .= '<head>';
+		$html .= '<meta charset="UTF-8">';
+		$html .= '<title>Translations load</title>';
+		$html .= '</head>';
+		$html .= '<body>';
+		$html .= '<h1>Translations load</h1>';
+		$html .= '</body>';
+		$html .= '</html>';
+
+		$dom = wplng_sdh_str_get_html( $html );
 
 		return $dom;
 

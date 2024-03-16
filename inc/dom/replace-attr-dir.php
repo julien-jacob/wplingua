@@ -8,6 +8,10 @@ if ( ! defined( 'WPINC' ) ) {
 
 function wplng_dom_replace_attr_dir( $dom, $args ) {
 
+	if ( 'loading' === $args['load'] ) {
+		return $dom;
+	}
+
 	$language_target = wplng_get_language_by_id( $args['language_target'] );
 
 	if ( ! empty( $language_target['dir'] ) ) {
