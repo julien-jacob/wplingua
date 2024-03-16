@@ -108,6 +108,10 @@ function wplng_dom_load_progress( $dom, $args ) {
 
 	$percentage = (int) ( ( $numer_of_translated_texts / $number_of_texts ) * 100 );
 
+	if ( $percentage < 1 ) {
+		$percentage = 1;
+	}
+
 	$html = '<div id="wplng-in-progress-container">';
 
 	$html .= '<div id="wplng-in-progress-message">';
