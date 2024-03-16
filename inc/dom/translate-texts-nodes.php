@@ -8,22 +8,21 @@ if ( ! defined( 'WPINC' ) ) {
 
 function wplng_dom_translate_texts_nodes( $dom, $args ) {
 
-	if ( 'editor' === $args['mode']
-		|| 'disabled' !== $args['load']
-
-	) {
+	if ( 'disabled' !== $args['load'] ) {
 		return $dom;
 	}
 
-	// Si mode == editor ou mode = list ou load == progress :
-	// 		Ne traduire que les nodes du head
+	$selector = 'text';
 
-	// Si load == loading
-	// Retourner dom directement
+	if ('editor' === $args['mode']
+		|| 'list' === $args['mode']
+	) {
+		$selector = 'head text';
+	}
 
 	$node_text_excluded = wplng_data_excluded_node_text();
 
-	foreach ( $dom->find( 'text' ) as $element ) {
+	foreach ( $dom->find( $selector ) as $element ) {
 
 		if ( in_array( $element->parent->tag, $node_text_excluded ) ) {
 			continue;
