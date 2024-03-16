@@ -80,7 +80,7 @@ function wplng_ob_callback_page( $content ) {
 				}
 			}
 
-			if ( apply_filters( 'wplng_enable_in_progress_feature', false ) ) {
+			if ( apply_filters( 'wplng_enable_in_progress_feature', true ) ) {
 
 				$args['load'] = 'enabled';
 
