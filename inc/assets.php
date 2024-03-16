@@ -31,7 +31,7 @@ function wplng_register_assets() {
 		'wplingua-script',
 		plugins_url() . '/wplingua/assets/js/script.js',
 		array( 'jquery' ),
-		WPLNG_API_VERSION
+		WPLNG_PLUGIN_VERSION
 	);
 
 	/**
@@ -42,35 +42,8 @@ function wplng_register_assets() {
 		'wplingua',
 		plugins_url() . '/wplingua/assets/css/front.css',
 		array(),
-		WPLNG_API_VERSION
+		WPLNG_PLUGIN_VERSION
 	);
-
-	/**
-	 * Load assets for visual editor
-	 */
-
-	if ( ! empty( $_GET['wplng-mode'] ) ) {
-		switch ( $_GET['wplng-mode'] ) {
-
-			case 'editor':
-				wp_enqueue_style(
-					'wplingua-editor',
-					plugins_url() . '/wplingua/assets/css/editor.css',
-					array(),
-					WPLNG_API_VERSION
-				);
-				break;
-
-			case 'list':
-				wp_enqueue_style(
-					'wplingua-list',
-					plugins_url() . '/wplingua/assets/css/list.css',
-					array(),
-					WPLNG_API_VERSION
-				);
-				break;
-		}
-	}
 
 	/**
 	 * Add inline style for wpLingua custom CSS
