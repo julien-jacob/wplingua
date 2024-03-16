@@ -10,14 +10,15 @@ function wplng_dom_translate_texts_nodes( $dom, $args ) {
 
 	wplng_args_setup( $args );
 
-
-	if ( 'disabled' !== $args['load'] ) {
+	if ( 'disabled' !== $args['load']
+		|| empty( $args['translations'] )
+	) {
 		return $dom;
 	}
 
 	$selector = 'text';
 
-	if ('editor' === $args['mode']
+	if ( 'editor' === $args['mode']
 		|| 'list' === $args['mode']
 	) {
 		$selector = 'head text';
