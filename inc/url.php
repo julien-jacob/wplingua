@@ -41,13 +41,13 @@ function wplng_url_translate( $url, $language_target_id = '' ) {
 		$language_target_id = wplng_get_language_current_id();
 	}
 
-	$preg_domain = '';
-	$parsed_url  = wp_parse_url( home_url() );
+	$preg_domain     = '';
+	$parsed_url_home = wp_parse_url( home_url() );
 
-	if ( isset( $parsed_url['host'] )
-		&& is_string( $parsed_url['host'] )
+	if ( isset( $parsed_url_home['host'] )
+		&& is_string( $parsed_url_home['host'] )
 	) {
-		$preg_domain = preg_quote( $parsed_url['host'] );
+		$preg_domain = preg_quote( $parsed_url_home['host'] );
 	}
 
 	if ( ! empty( $preg_domain )
@@ -63,12 +63,16 @@ function wplng_url_translate( $url, $language_target_id = '' ) {
 
 		$url = preg_replace(
 			'#^(http:\/\/|https:\/\/)?' . $preg_domain . '(.*)$#',
-			'$1' . $parsed_url['host'] . '/' . $language_target_id . '$2',
+			'$1' . $parsed_url_home['host'] . '/' . $language_target_id . '$2',
 			$url
 		);
 
-		$url = trailingslashit( $url );
+		$parsed_url = wp_parse_url( $url );
 
+		if ( empty( $parsed_url['fragment'] ) ) {
+			// Add slash at the end if is not an anchor link
+			$url = trailingslashit( $url );
+		}
 	} elseif ( preg_match( '#^[^\/]+\/[^\/].*$|^\/[^\/].*$#', $url ) ) {
 
 		// Check if URL is already translated
