@@ -160,7 +160,7 @@ No, not at the moment but in the meantime, you can easily display the language s
 
 * Better UX: Options pages
 * Optimization: faster translations query and finding
-* Experimental feature: Translation in progress message (disaled by default, enable with wplng_enale_in_progress_feature filter set to true) 
+* Experimental feature: Translation in progress message (disabled by default, enable with wplng_enale_in_progress_feature filter set to true) 
 
 = 1.1.0 =
 
