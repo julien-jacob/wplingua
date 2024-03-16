@@ -32,6 +32,8 @@ function wplng_translate_js( $js, $args = array() ) {
 		$var_name = $json[1][0];
 		$var_json = $json[2][0];
 
+		wplng_args_setup( $args );
+
 		$args['parents'] = array( $var_name );
 
 		$json_translated = wplng_translate_json(
