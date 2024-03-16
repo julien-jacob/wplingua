@@ -114,8 +114,8 @@ function wplng_settings_part_first_use() {
 	);
 
 	$url_front_page_iframe = add_query_arg(
-		'wplingua-load-all',
-		'1',
+		'wplng-load',
+		'disabled',
 		$url_front_page_translated
 	);
 
