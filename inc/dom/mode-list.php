@@ -15,6 +15,7 @@ if ( ! defined( 'WPINC' ) ) {
 function wplng_dom_mode_list( $dom, $args ) {
 
 	if ( 'list' !== $args['mode']
+		|| 'disabled' !== $args['load']
 		|| empty( $args['translations'] )
 	) {
 		return $dom;

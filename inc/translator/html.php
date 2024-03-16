@@ -41,22 +41,29 @@ function wplng_translate_html( $html, $args = array() ) {
 	 * Update args and get all texts in HTML if needed
 	 */
 
-	wplng_args_setup_with_html( $args, $dom );
-	// return var_export($args, true);
+	wplng_args_setup( $args, $dom );
+
+	if ( empty( $args['translations'] ) ) {
+		$texts = wplng_parse_html( $dom );
+		wplng_args_update_from_texts( $args, $texts );
+	}
 
 	/**
 	 * Update the dom
 	 */
 
+	$dom = wplng_dom_load_progress( $dom, $args );
+
 	$dom = wplng_dom_replace_attr_dir( $dom, $args );
 	$dom = wplng_dom_replace_attr_lang( $dom, $args );
 	$dom = wplng_dom_replace_body_class( $dom, $args );
 	$dom = wplng_dom_replace_links( $dom, $args );
+
 	$dom = wplng_dom_translate_json( $dom, $args );
 	$dom = wplng_dom_translate_js( $dom, $args );
 	$dom = wplng_dom_translate_texts_attr( $dom, $args );
 	$dom = wplng_dom_translate_texts_nodes( $dom, $args );
-	// $dom = wplng_dom_load_progress( $dom, $args );
+
 	$dom = wplng_dom_mode_editor( $dom, $args );
 	$dom = wplng_dom_mode_list( $dom, $args );
 

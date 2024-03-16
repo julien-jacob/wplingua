@@ -39,9 +39,9 @@ function wplng_translate_json( $json, $args = array() ) {
 			$args['parents']
 		);
 
-		$args['translations'] = wplng_get_translations_from_texts(
-			$texts,
-			$args
+		wplng_args_update_from_texts(
+			$args,
+			$texts
 		);
 	}
 
@@ -90,9 +90,9 @@ function wplng_translate_json_array( $json_decoded, $args = array() ) {
 			$args['parents']
 		);
 
-		$args['translations'] = wplng_get_translations_from_texts(
-			$texts,
-			$args
+		wplng_args_update_from_texts(
+			$args,
+			$texts
 		);
 	}
 

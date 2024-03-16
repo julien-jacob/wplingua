@@ -8,7 +8,9 @@ if ( ! defined( 'WPINC' ) ) {
 
 function wplng_dom_translate_texts_nodes( $dom, $args ) {
 
-	if ( 'vanilla' !== $args['mode'] ) {
+	if ( 'editor' === $args['mode']
+		|| 'disabled' !== $args['load']
+	) {
 		return $dom;
 	}
 

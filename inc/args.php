@@ -6,25 +6,6 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 
-function wplng_args_setup_with_html( &$args, $html ) {
-
-	wplng_args_setup( $args );
-
-	if ( empty( $args['translations'] ) ) {
-
-		$texts = wplng_parse_html( $html );
-
-		$args['translations'] = wplng_get_translations_from_texts(
-			$texts,
-			$args
-		);
-
-	}
-
-}
-
-
-
 
 function wplng_args_setup( &$args ) {
 
@@ -60,8 +41,7 @@ function wplng_args_setup( &$args ) {
 
 	if ( isset( $args['mode'] )
 		&& (
-			'vanilla' === $args['mode']
-			|| 'editor' === $args['mode']
+			'editor' === $args['mode']
 			|| 'list' === $args['mode']
 		)
 	) {
@@ -72,62 +52,35 @@ function wplng_args_setup( &$args ) {
 
 		$args_clear['mode'] = 'vanilla';
 
-		if ( current_user_can( 'edit_posts' )
-			&& ! empty( $_GET['wplng-mode'] )
-		) {
-
-			switch ( $_GET['wplng-mode'] ) {
-
-				case 'editor':
-					$args_clear['mode'] = 'editor';
-					break;
-
-				case 'list':
-					$args_clear['mode'] = 'list';
-					break;
-			}
-		}
 	}
 
 	/**
-	 * Get load mode (enabled/start/progress/disabled)
+	 * Get load mode (enabled/progress/disabled)
 	 */
 
-	// if ( isset( $args['load'] )
-	// 	&& (
-	// 		'enabled' === $args['load']
-	// 		|| 'disabled' === $args['load']
-	// 		|| 'start' === $args['load']
-	// 		|| 'progress' === $args['load']
-	// 		|| 'loading' === $args['load']
-	// 	)
-	// ) {
+	if ( isset( $args['load'] )
+		&& (
+			'enabled' === $args['load']
+			|| 'progress' === $args['load']
+			|| 'loading' === $args['load']
+		)
+	) {
+		$args_clear['load'] = $args['load'];
+	} else {
+		$args_clear['load'] = 'disabled';
+	}
 
-	// 	$args_clear['load'] = $args['load'];
+	/**
+	 * Get count_texts
+	 */
 
-	// } else {
-
-	// 	if ( ! empty( $_GET['wplng-load'] )
-	// 		&& apply_filters( 'wplng_enale_in_progress_feature', false )
-	// 		&& current_user_can( 'edit_posts' )
-	// 	) {
-
-	// 		if ( 'enabled' === $_GET['wplng-load']
-	// 			|| 'start' === $_GET['wplng-load']
-	// 			|| 'progress' === $_GET['wplng-load']
-	// 		) {
-	// 			$args_clear['load'] = $_GET['wplng-load'];
-	// 		} else {
-	// 			$args_clear['load'] = 'disabled';
-	// 		}
-	// 	} else {
-
-	// 		$args_clear['load'] = 'disabled';
-
-	// 	}
-	// }
-
-	$args_clear['load'] = 'disabled';
+	if ( ! isset( $args['count_texts'] )
+		|| ! is_int( $args['count_texts'] )
+	) {
+		$args_clear['count_texts'] = 0;
+	} else {
+		$args_clear['count_texts'] = $args['count_texts'];
+	}
 
 	/**
 	 * Check current URL
@@ -138,7 +91,7 @@ function wplng_args_setup( &$args ) {
 			array(
 				'wplng-mode',
 				'wplng-load',
-				'wplng-time',
+				'wplng-nocache',
 			),
 			wp_make_link_relative(
 				wplng_get_url_current()
@@ -157,7 +110,7 @@ function wplng_args_setup( &$args ) {
 			array(
 				'wplng-mode',
 				'wplng-load',
-				'wplng-time',
+				'wplng-nocache',
 			),
 			wp_make_link_relative(
 				wplng_get_url_original()
@@ -203,12 +156,11 @@ function wplng_args_setup( &$args ) {
  * @param array $args
  * @return void
  */
-function wplng_get_translations_from_texts( $texts, &$args ) {
-
-	$translations = array();
+function wplng_args_update_from_texts( &$args, $texts ) {
 
 	if ( empty( $texts ) ) {
-		return $translations;
+		$args['translations'] = array();
+		return;
 	}
 
 	/**
@@ -246,26 +198,29 @@ function wplng_get_translations_from_texts( $texts, &$args ) {
 	}
 
 	/**
+	 * Get count_texts
+	 */
+
+	 $args['count_texts'] = count( $texts );
+
+	/**
 	 * Define $max_translations
 	 */
 
 	$max_translations = WPLNG_MAX_TRANSLATIONS + 1;
 
-	// if ( $args['load'] === 'start'
-	// 	|| $args['load'] === 'progress'
-	// 	|| (
-	//      $args['load'] === 'enable'
-	// 		&& count( $texts_unknow ) > 10
-	// 	)
-	// ) {
-
-	// 	$max_translations = 0;
-
-	// } elseif ( $args['load'] === 'loading' ) {
-
-	// 	$max_translations = 20;
-
-	// }
+	if ( $args['load'] === 'progress'
+		|| (
+			$args['load'] === 'enabled'
+			&& count( $texts_unknow ) > 10
+		)
+	) {
+		$max_translations = 0;
+	} elseif ( $args['load'] === 'loading' ) {
+		$max_translations = 20;
+	} else {
+		$args['load'] = 'disabled';
+	}
 
 	$texts_unknow = array_splice(
 		$texts_unknow,
@@ -330,5 +285,5 @@ function wplng_get_translations_from_texts( $texts, &$args ) {
 		$translations_new
 	);
 
-	return $translations;
+	$args['translations'] = $translations;
 }

@@ -8,20 +8,26 @@ if ( ! defined( 'WPINC' ) ) {
 
 function wplng_dom_load_progress( $dom, $args ) {
 
-	if ( 'disaled' === $args['load']
+	if ( 'disabled' === $args['load']
 		|| 'loading' === $args['load']
 	) {
 
 		return $dom;
 
-	} elseif ( 'start' === $args['load'] ) {
+	} elseif ( 'enabled' === $args['load'] ) {
+
+		$redirect_query_arg = array();
+
+		if ( $args['mode'] !== 'vanilla' ) {
+			$redirect_query_arg['wplng-mode'] = $args['mode'];
+		}
+
+		$redirect_query_arg['wplng-load']    = 'progress';
+		$redirect_query_arg['wplng-nocache'] = (string) time() . (string) rand( 100, 999 );
 
 		wp_safe_redirect(
 			add_query_arg(
-				array(
-					'wplng-mode' => $args['mode'],
-					'wplng-load' => 'start',
-				),
+				$redirect_query_arg,
 				$args['url_current']
 			),
 			302
@@ -37,9 +43,6 @@ function wplng_dom_load_progress( $dom, $args ) {
 	$edit_link_excluded = wplng_data_excluded_editor_link();
 	$node_text_excluded = wplng_data_excluded_node_text();
 
-	$number_of_texts           = 0;
-	$numer_of_translated_texts = 0;
-
 	foreach ( $dom->find( 'body text' ) as $element ) {
 
 		$text = wplng_text_esc( $element->innertext );
@@ -48,7 +51,6 @@ function wplng_dom_load_progress( $dom, $args ) {
 			continue;
 		}
 
-		$number_of_texts++;
 		$text_translated = '';
 
 		foreach ( $args['translations'] as $translation ) {
@@ -57,12 +59,11 @@ function wplng_dom_load_progress( $dom, $args ) {
 
 			if ( $text === $source ) {
 				$text_translated = $translation['translation'];
-				$numer_of_translated_texts++;
 				break;
 			}
 		}
 
-		if ( empty( $text_translated )
+		if ( '' === $text_translated
 			|| in_array( $element->parent->tag, $edit_link_excluded )
 			|| in_array( $element->parent->tag, $node_text_excluded )
 		) {
@@ -83,6 +84,10 @@ function wplng_dom_load_progress( $dom, $args ) {
 	/**
 	 * Create the html of message bar
 	 */
+
+	$number_of_texts           = (int) $args['count_texts'] + 1;
+	$numer_of_translated_texts = count( $args['translations'] );
+	$numer_of_unknow_texts     = (int) $number_of_texts - $numer_of_translated_texts;
 
 	$percentage = (int) ( ( $numer_of_translated_texts / $number_of_texts ) * 100 );
 
@@ -108,16 +113,42 @@ function wplng_dom_load_progress( $dom, $args ) {
 	 * Create the html of iframe
 	 */
 
-	$url = add_query_arg(
-		'wplng-load',
-		'progress',
+	$url_reload = $args['url_current'];
+
+	if ( $args['mode'] !== 'vanilla' ) {
+		$url_reload = add_query_arg(
+			'wplng-mode',
+			$args['mode'],
+			$url_reload
+		);
+	}
+
+	if ( $numer_of_unknow_texts > 20 ) {
+
+		$url_reload = add_query_arg(
+			array(
+				'wplng-load'    => 'progress',
+				'wplng-nocache' => (string) time() . (string) rand( 100, 999 ),
+			),
+			$url_reload
+		);
+
+	}
+
+	$url_iframe = add_query_arg(
+		array(
+			'wplng-load'    => 'loading',
+			'wplng-nocache' => (string) time() . (string) rand( 100, 999 ),
+		),
 		$args['url_current']
 	);
 
-	// $html .= '<iframe id="wplng-in-progress-iframe" ';
-	// $html .= 'src="' . esc_url( $url ) . '" ';
-	// $html .= 'style="display: none !important;">';
-	// $html .= '</iframe>'; // End #wplng-translation-in-progress
+	$html .= '<iframe ';
+	$html .= 'id="wplng-in-progress-iframe" ';
+	$html .= 'src="' . esc_url( $url_iframe ) . '" ';
+	$html .= 'wplng-reload="' . esc_url( $url_reload ) . '" ';
+	$html .= 'style="display: none !important;">';
+	$html .= '</iframe>'; // End #wplng-translation-in-progress
 
 	/**
 	 * Place the HTML in the end of body

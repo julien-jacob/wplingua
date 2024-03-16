@@ -52,7 +52,7 @@ jQuery(document).ready(function ($) {
      */
 
     $("#wplng-in-progress-iframe").load(function () {
-        location.reload(true);
+        window.location.href = $(this).attr("wplng-reload");
     });
 
     if ($("#wpadminbar").length && $("#wplng-in-progress-container").length) {

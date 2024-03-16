@@ -277,7 +277,6 @@ function wplng_save_translation_new( $language_id, $original, $translation ) {
 	foreach ( $languages_target as $target_language ) {
 
 		if ( $target_language === $language_id ) {
-
 			$translation_meta[] = array(
 				'language_id' => $target_language,
 				'translation' => esc_html( $translation ),

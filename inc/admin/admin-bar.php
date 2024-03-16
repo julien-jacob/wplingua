@@ -47,7 +47,7 @@ function wplng_admin_bar_menu() {
 
 	$url          = wplng_get_url_current();
 	$url_original = remove_query_arg(
-		array( 'wplng-mode', 'wplng-load', 'wplng-time' ),
+		array( 'wplng-mode', 'wplng-load', 'wplng-nocache' ),
 		$url
 	);
 

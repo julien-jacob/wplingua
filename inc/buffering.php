@@ -33,7 +33,7 @@ function wplng_ob_start() {
 	$origin_path = sanitize_url( $origin_path );
 
 	if ( ! wplng_url_is_translatable( $origin_path ) ) {
-		wp_redirect( $origin_path );
+		wp_safe_redirect( $origin_path );
 		exit;
 	}
 
@@ -60,8 +60,48 @@ function wplng_ob_callback_page( $content ) {
 
 	} elseif ( wplng_str_is_html( $content ) ) {
 
+		// $args = wplng_args_setup();
+
+		$args = array();
+
+		if ( current_user_can( 'edit_posts' ) ) {
+
+			if ( ! empty( $_GET['wplng-mode'] ) ) {
+
+				switch ( $_GET['wplng-mode'] ) {
+
+					case 'editor':
+						$args['mode'] = 'editor';
+						break;
+
+					case 'list':
+						$args['mode'] = 'list';
+						break;
+				}
+			}
+
+			if ( apply_filters( 'wplng_enale_in_progress_feature', false ) ) {
+
+				$args['load'] = 'enabled';
+
+				if ( ! empty( $_GET['wplng-load'] ) ) {
+
+					switch ( $_GET['wplng-load'] ) {
+
+						case 'loading':
+							$args['load'] = 'loading';
+							break;
+
+						case 'progress':
+							$args['load'] = 'progress';
+							break;
+					}
+				}
+			}
+		}
+
 		$content = apply_filters( 'wplng_intercepted_html', $content );
-		$content = wplng_translate_html( $content );
+		$content = wplng_translate_html( $content, $args );
 		$content = apply_filters( 'wplng_translated_html', $content );
 
 	}
@@ -92,7 +132,19 @@ function wplng_ob_callback_ajax( $output ) {
 		return $output;
 	}
 
-	$output_translated = wplng_ob_callback_page( $output );
+	// $output_translated = wplng_ob_callback_page( $output );
+
+	if ( wplng_str_is_json( $output ) ) {
+
+		$output_translated = wplng_translate_json( $output );
+
+	} elseif ( wplng_str_is_html( $output ) ) {
+
+		$output_translated = wplng_translate_html( $output );
+
+	} else {
+		$output_translated = $output;
+	}
 
 	// Print debug data in debug.log file
 	if ( true === WPLNG_LOG_AJAX_DEBUG ) {

@@ -25,7 +25,7 @@ define( 'WPLNG_API_URL', 'https://api.wplingua.com' );
 define( 'WPLNG_API_VERSION', '1.0' );
 define( 'WPLNG_API_SSLVERIFY', true );
 define( 'WPLNG_PLUGIN_VERSION', '1.1.1' );
-define( 'WPLNG_PLUGIN_FILE', plugin_basename(__FILE__) );
+define( 'WPLNG_PLUGIN_FILE', plugin_basename( __FILE__ ) );
 define( 'WPLNG_PLUGIN_PATH', dirname( __FILE__ ) );
 define( 'WPLNG_MAX_TRANSLATIONS', 256 );
 define( 'WPLNG_MAX_FILE_SIZE', 1000000 );
@@ -202,23 +202,3 @@ function wplng_start() {
 
 }
 wplng_start();
-
-
-// $xx = add_query_arg(
-// 	array(
-// 		'hello' => 'world',
-// 		'hey' => 'ok',
-// 	),
-// 	wplng_get_url_original()
-// );
-
-// $xx = remove_query_arg(
-// 	array(
-// 		'hello',
-// 		'hey',
-// 	),
-// 	$xx
-// );
-
-// var_dump($xx);
-// die;
