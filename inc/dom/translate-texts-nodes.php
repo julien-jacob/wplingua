@@ -8,6 +8,9 @@ if ( ! defined( 'WPINC' ) ) {
 
 function wplng_dom_translate_texts_nodes( $dom, $args ) {
 
+	wplng_args_setup( $args );
+
+
 	if ( 'disabled' !== $args['load'] ) {
 		return $dom;
 	}

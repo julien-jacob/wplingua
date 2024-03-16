@@ -8,6 +8,8 @@ if ( ! defined( 'WPINC' ) ) {
 
 function wplng_dom_replace_attr_dir( $dom, $args ) {
 
+	wplng_args_setup( $args );
+
 	if ( 'loading' === $args['load'] ) {
 		return $dom;
 	}

@@ -8,6 +8,8 @@ if ( ! defined( 'WPINC' ) ) {
 
 function wplng_dom_load_progress( $dom, $args ) {
 
+	wplng_args_setup( $args );
+
 	if ( 'disabled' === $args['load'] ) {
 
 		return $dom;

@@ -7,6 +7,8 @@ if ( ! defined( 'WPINC' ) ) {
 
 function wplng_dom_mode_editor( $dom, $args ) {
 
+	wplng_args_setup( $args );
+
 	if ( 'editor' !== $args['mode']
 		|| 'disabled' !== $args['load']
 	) {

@@ -41,7 +41,7 @@ function wplng_translate_html( $html, $args = array() ) {
 	 * Update args and get all texts in HTML if needed
 	 */
 
-	wplng_args_setup( $args, $dom );
+	wplng_args_setup( $args );
 
 	if ( empty( $args['translations'] ) ) {
 		$texts = wplng_parse_html( $dom );
