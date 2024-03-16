@@ -62,7 +62,27 @@ function wplng_dom_load_progress( $dom, $args ) {
 
 	foreach ( $dom->find( 'body text' ) as $element ) {
 
-		$text = wplng_text_esc( $element->innertext );
+		$text = $element->innertext;
+
+		/**
+		 * Get spaces before and after text
+		 */
+
+		$temp          = array();
+		$spaces_before = '';
+		$spaces_after  = '';
+
+		preg_match( '#^(\s*).*#', $text, $temp );
+		if ( ! empty( $temp[1] ) ) {
+			$spaces_before = $temp[1];
+		}
+
+		preg_match( '#.*(\s*)$#U', $text, $temp );
+		if ( ! empty( $temp[1] ) ) {
+			$spaces_after = $temp[1];
+		}
+
+		$text = wplng_text_esc( $text );
 
 		if ( ! wplng_text_is_translatable( $text ) ) {
 			continue;
@@ -88,13 +108,13 @@ function wplng_dom_load_progress( $dom, $args ) {
 			$innertext  = '<span ';
 			$innertext .= 'class="wplng-in-progress-text" ';
 			$innertext .= 'title="' . esc_attr__( 'Translation in progress', 'wplingua' ) . '">';
-			$innertext .= esc_html( $text );
+			$innertext .= esc_html( $spaces_before . $text . $spaces_after );
 			$innertext .= '</span>';
 
 			$element->innertext = $innertext;
 
 		} else {
-			$element->innertext = esc_html( $text_translated );
+			$element->innertext = esc_html( $spaces_before . $text_translated . $spaces_after );
 		}
 	}
 
