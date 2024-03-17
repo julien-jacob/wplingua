@@ -152,6 +152,10 @@ function wplng_start() {
 		// Display 100 translation in admin area by default
 		add_filter( 'get_user_option_edit_wplng_translation_per_page', 'wplng_translation_per_page' );
 
+		// Filter translations by status 
+		add_action( 'restrict_manage_posts', 'wplng_restrict_manage_posts_translation_status' );
+		add_filter( 'parse_query', 'wplng_posts_filter_translation_status' );
+
 		/**
 		 * Front
 		 */
