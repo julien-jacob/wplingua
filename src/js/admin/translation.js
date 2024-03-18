@@ -26,6 +26,44 @@ jQuery(document).ready(function ($) {
     });
 
     /**
+     * Review
+     */
+
+    $('.wplng-edit-language .wplng-mark-as-reviewed input[type="checkbox"]').change(function() {
+
+        var parentSelector = $("#wplng-translation-" + $(this).attr("wplng-lang"));
+
+        parentSelector.removeClass("wplng-status-generated");
+        parentSelector.removeClass("wplng-status-reviewed");
+        parentSelector.removeClass("wplng-status-ungenerated");
+        
+        if (this.checked) {
+            parentSelector.addClass("wplng-status-reviewed");
+        } else {
+            parentSelector.addClass("wplng-status-generated");
+        }
+    });
+
+    $('.wplng-edit-language textarea').on("keyup paste", function() {
+
+        var parentSelector = $("#wplng-translation-" + $(this).attr("lang"));
+        var reviewSelector = $("#wplng_mark_as_reviewed_" + $(this).attr("lang"));
+
+        parentSelector.removeClass("wplng-status-generated");
+        parentSelector.removeClass("wplng-status-reviewed");
+        parentSelector.removeClass("wplng-status-ungenerated");
+
+        if ($(this).val().trim() == "") {
+            parentSelector.addClass("wplng-status-ungenerated");
+            reviewSelector.prop("checked", false);
+        } else {
+            parentSelector.addClass("wplng-status-reviewed");
+            reviewSelector.prop("checked", true);
+        }
+
+    });
+
+    /**
      * Ajax translation
      */
 
@@ -63,6 +101,18 @@ jQuery(document).ready(function ($) {
                 if (data.success) {
                     var textarea = "#wplng_translation_" + target;
                     $(textarea).val(data.data);
+
+                    if (data.data != "") {
+                        var parentSelector = $("#wplng-translation-" + target);
+                        var reviewSelector = $("#wplng_mark_as_reviewed_" + target);
+
+                        parentSelector.removeClass("wplng-status-generated");
+                        parentSelector.removeClass("wplng-status-reviewed");
+                        parentSelector.removeClass("wplng-status-ungenerated");
+
+                        parentSelector.addClass("wplng-status-generated");
+                        reviewSelector.prop("checked", false);
+                    }
 
                     wplngResizeTextArea($(textarea));
 
