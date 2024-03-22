@@ -117,7 +117,7 @@ jQuery(document).ready(function ($) {
                         parentSelector.removeClass("wplng-status-reviewed");
                         parentSelector.removeClass("wplng-status-ungenerated");
 
-                        parentSelector.addClass("wplng-status-generated");
+                        parentSelector.addClass("wplng-status-reviewed");
                         reviewSelector.prop("checked", true);
                         reviewSelector.prop("disabled", false);
                     }
