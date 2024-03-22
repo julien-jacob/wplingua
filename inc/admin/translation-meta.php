@@ -113,15 +113,16 @@ function wplng_translation_meta_box_html_output( $post ) {
 
 		foreach ( $translations as $translation ) {
 
-			$language_id   = $translation['language_id'];
-			$language      = wplng_get_language_by_id( $language_id );
-			$textarea      = $translation['translation'];
-			$name          = 'wplng_translation_' . $language_id;
-			$container_id  = 'wplng-translation-' . $language_id;
-			$generate_link = __( 'Regenerate translation', 'wplingua' );
-			$alt           = __( 'Flag for language: ', 'wplingua' ) . $language['name'];
-			$class         = 'wplng-edit-language';
-			$is_reviewed   = false;
+			$language_id    = $translation['language_id'];
+			$language       = wplng_get_language_by_id( $language_id );
+			$textarea       = $translation['translation'];
+			$name           = 'wplng_translation_' . $language_id;
+			$container_id   = 'wplng-translation-' . $language_id;
+			$generate_link  = __( 'Regenerate translation', 'wplingua' );
+			$alt            = __( 'Flag for language: ', 'wplingua' ) . $language['name'];
+			$class          = 'wplng-edit-language';
+			$reviewed_title = __( 'Mark translation as review', 'wplingua' );
+			$is_reviewed    = false;
 
 			if ( '[WPLNG_EMPTY]' === $textarea ) {
 				$textarea = '';
@@ -131,16 +132,9 @@ function wplng_translation_meta_box_html_output( $post ) {
 				case 'ungenerated':
 					$generate_link = __( 'Generate translation', 'wplingua' );
 					$class        .= ' wplng-status-ungenerated';
-
-					// $html .= '<span class="wplng-status">';
-					// $html .= esc_html__( 'Ungenerated', 'wplingua' );
-					// $html .= '</span>';
 					break;
 
 				case 'generated':
-					// $html .= '<span class="wplng-status">';
-					// $html .= esc_html__( 'Generated', 'wplingua' );
-					// $html .= '</span>';
 					$class .= ' wplng-status-generated';
 					break;
 
@@ -162,21 +156,19 @@ function wplng_translation_meta_box_html_output( $post ) {
 							$time_format = 'g:i a';
 						}
 
-						// $html .= '<span class="wplng-status">';
-						// $html .= esc_html__( 'Reviewed on ', 'wplingua' );
-						// $html .= esc_html(
-						// 	gmdate(
-						// 		$date_format,
-						// 		$translation['status']
-						// 	)
-						// );
-						// $html .= ', ' . esc_html(
-						// 	gmdate(
-						// 		$time_format,
-						// 		$translation['status']
-						// 	)
-						// );
-						// $html .= '</span>';
+						$reviewed_title  = __( 'Reviewed on ', 'wplingua' );
+						$reviewed_title .= esc_html(
+							gmdate(
+								$date_format,
+								$translation['status']
+							)
+						);
+						$reviewed_title .= ', ' . esc_html(
+							gmdate(
+								$time_format,
+								$translation['status']
+							)
+						);
 					}
 					break;
 			}
@@ -220,7 +212,8 @@ function wplng_translation_meta_box_html_output( $post ) {
 
 			$html .= '<label ';
 			$html .= 'for="wplng_mark_as_reviewed_' . esc_attr( $language_id ) . '" ';
-			$html .= 'wplng-lang="' . esc_attr( $language_id ) . '"';
+			$html .= 'wplng-lang="' . esc_attr( $language_id ) . '" ';
+			$html .= 'title="' . esc_attr( $reviewed_title ) . '" ';
 			$html .= '>';
 			$html .= esc_html__( 'Is reviewed', 'wplingua' );
 			$html .= '</label>';
@@ -343,7 +336,7 @@ function wplng_translation_save_meta_boxes_data( $post_id ) {
 		$temp = stripslashes( sanitize_textarea_field( $_REQUEST[ $name ] ) );
 
 		if ( empty( $temp ) ) {
-			$temp = '[WPLNG_EMPTY]';
+			$temp                           = '[WPLNG_EMPTY]';
 			$translations[ $key ]['status'] = 'ungenerated';
 		} else {
 
