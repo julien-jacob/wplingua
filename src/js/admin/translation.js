@@ -29,14 +29,14 @@ jQuery(document).ready(function ($) {
      * Review
      */
 
-    $('.wplng-edit-language .wplng-mark-as-reviewed input[type="checkbox"]').change(function() {
+    $('.wplng-edit-language .wplng-mark-as-reviewed input[type="checkbox"]').change(function () {
 
         var parentSelector = $("#wplng-translation-" + $(this).attr("wplng-lang"));
 
         parentSelector.removeClass("wplng-status-generated");
         parentSelector.removeClass("wplng-status-reviewed");
         parentSelector.removeClass("wplng-status-ungenerated");
-        
+
         if (this.checked) {
             parentSelector.addClass("wplng-status-reviewed");
         } else {
@@ -44,7 +44,12 @@ jQuery(document).ready(function ($) {
         }
     });
 
-    $('.wplng-edit-language textarea').on("keyup paste", function() {
+    $('.wplng-edit-language textarea').each(function () {
+        var reviewSelector = $("#wplng_mark_as_reviewed_" + $(this).attr("lang"));
+        reviewSelector.prop("disabled", $(this).val().trim() == "");
+    });
+
+    $('.wplng-edit-language textarea').on("keyup paste", function () {
 
         var parentSelector = $("#wplng-translation-" + $(this).attr("lang"));
         var reviewSelector = $("#wplng_mark_as_reviewed_" + $(this).attr("lang"));
@@ -56,9 +61,11 @@ jQuery(document).ready(function ($) {
         if ($(this).val().trim() == "") {
             parentSelector.addClass("wplng-status-ungenerated");
             reviewSelector.prop("checked", false);
+            reviewSelector.prop("disabled", true);
         } else {
             parentSelector.addClass("wplng-status-reviewed");
             reviewSelector.prop("checked", true);
+            reviewSelector.prop("disabled", false);
         }
 
     });
