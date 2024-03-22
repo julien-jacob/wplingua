@@ -6,6 +6,13 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 
+/**
+ * Modify JS script in dom for translated pages
+ *
+ * @param object $dom
+ * @param array $args
+ * @return object
+ */
 function wplng_dom_translate_js( $dom, $args ) {
 
 	wplng_args_setup( $args );

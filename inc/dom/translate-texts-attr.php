@@ -6,11 +6,18 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 
+/**
+ * Translate attributes in dom for translated pages
+ *
+ * @param object $dom
+ * @param array $args
+ * @return object
+ */
 function wplng_dom_translate_texts_attr( $dom, $args ) {
 
 	wplng_args_setup( $args );
 
-	if ( 'loading' === $args['load'] 
+	if ( 'loading' === $args['load']
 		|| empty( $args['translations'] )
 	) {
 		return $dom;

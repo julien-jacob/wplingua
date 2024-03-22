@@ -6,6 +6,13 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 
+/**
+ * Modify JSON in dom for translated pages
+ *
+ * @param object $dom
+ * @param array $args
+ * @return object
+ */
 function wplng_dom_translate_json( $dom, $args ) {
 
 	wplng_args_setup( $args );

@@ -7,7 +7,7 @@ if ( ! defined( 'WPINC' ) ) {
 
 
 /**
- * Get HTML of all translations list modal
+ * Modify dom for the list mode
  *
  * @param array $translations
  * @return object $dom

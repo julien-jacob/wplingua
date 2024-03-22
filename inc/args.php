@@ -6,7 +6,12 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 
-
+/**
+ * Setup the arguments
+ *
+ * @param array $args
+ * @return void
+ */
 function wplng_args_setup( &$args ) {
 
 	$args_clear = array();

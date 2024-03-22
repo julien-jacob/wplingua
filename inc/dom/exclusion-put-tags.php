@@ -6,6 +6,13 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 
+/**
+ * Replace excluded elements in dom by tag
+ *
+ * @param object $dom
+ * @param array $excluded_elements
+ * @return object
+ */
 function wplng_dom_exclusions_put_tags( $dom, &$excluded_elements ) {
 
 	/**

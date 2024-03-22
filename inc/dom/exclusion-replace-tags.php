@@ -6,6 +6,13 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 
+/**
+ * Replace exclution tag by HTML part
+ *
+ * @param object $dom
+ * @param array $excluded_elements
+ * @return object
+ */
 function wplng_dom_exclusions_replace_tags( $dom, $excluded_elements ) {
 
 	$dom = wplng_sdh_str_get_html( $dom );

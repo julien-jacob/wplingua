@@ -6,6 +6,13 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 
+/**
+ * Modify the dir attribute in dom for translated pages
+ *
+ * @param object $dom
+ * @param array $args
+ * @return object
+ */
 function wplng_dom_replace_attr_dir( $dom, $args ) {
 
 	wplng_args_setup( $args );

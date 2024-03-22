@@ -60,8 +60,6 @@ function wplng_ob_callback_page( $content ) {
 
 	} elseif ( wplng_str_is_html( $content ) ) {
 
-		// $args = wplng_args_setup();
-
 		$args = array();
 
 		if ( current_user_can( 'edit_posts' ) ) {
@@ -110,6 +108,12 @@ function wplng_ob_callback_page( $content ) {
 }
 
 
+/**
+ * wpLingua OB Callback function : AJAX call
+ *
+ * @param string $output
+ * @return string
+ */
 function wplng_ob_callback_ajax( $output ) {
 
 	if ( empty( $_SERVER['HTTP_REFERER'] ) ) {
@@ -131,8 +135,6 @@ function wplng_ob_callback_ajax( $output ) {
 	) {
 		return $output;
 	}
-
-	// $output_translated = wplng_ob_callback_page( $output );
 
 	if ( wplng_str_is_json( $output ) ) {
 

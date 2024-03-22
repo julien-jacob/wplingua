@@ -6,6 +6,13 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 
+/**
+ * Modify links in dom for translated pages
+ *
+ * @param [type] $dom
+ * @param [type] $args
+ * @return object
+ */
 function wplng_dom_replace_links( $dom, $args ) {
 
 	wplng_args_setup( $args );

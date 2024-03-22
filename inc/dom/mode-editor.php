@@ -5,6 +5,14 @@ if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
+
+/**
+ * Modify dom for the editor mode
+ *
+ * @param [type] $dom
+ * @param [type] $args
+ * @return object
+ */
 function wplng_dom_mode_editor( $dom, $args ) {
 
 	wplng_args_setup( $args );

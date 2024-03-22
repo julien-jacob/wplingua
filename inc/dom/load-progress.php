@@ -6,6 +6,13 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 
+/**
+ * Modify dom for the "in progress" load mode
+ *
+ * @param object $dom
+ * @param array $args
+ * @return object
+ */
 function wplng_dom_load_progress( $dom, $args ) {
 
 	wplng_args_setup( $args );
