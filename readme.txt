@@ -164,6 +164,8 @@ No, not at the moment but in the meantime, you can easily display the language s
 = 1.2.0 =
 
 * New feature: Translation in progress message for admin and editor
+* New feature: Filter site translations by status (reviewed, unreviewed) 
+* New feature: Edit translation status by language (reviewed, unreviewed) 
 * Better parsing and content updating: Relay method
 * Better string detection for dictionary rules
 * Better file detection: Detect IJFIF files
