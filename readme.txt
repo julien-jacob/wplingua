@@ -4,7 +4,7 @@ Donate link: https://wplingua.com/
 Tags: translate, translation, multilingual, localization, language
 Requires at least: 5.0
 Tested up to: 6.4
-Stable tag: 1.1.1
+Stable tag: 1.2.0
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -114,6 +114,7 @@ For the moment the available languages are:
 * Italian
 * Japanese
 * Portuguese
+* Russian
 * Simplified Chinese
 * Spanish
 
@@ -155,6 +156,15 @@ No, not at the moment but in the meantime, you can easily display the language s
 8. All translations are stored on your WordPress site.
 
 == Changelog ==
+
+= 1.2.0 =
+
+* New feature: Translation in progress message for admin and editor
+* Better parsing and content updating: Relay method
+* Better string detection for dictionary rules
+* Better file detection: Detect IJFIF files
+* Check compatibility with another activated plugins
+* Fix URL with anchor translation
 
 = 1.1.1 =
 
