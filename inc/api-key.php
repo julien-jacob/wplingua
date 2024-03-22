@@ -50,7 +50,7 @@ function wplng_get_api_key() {
  * Get wpLingua API key data
  * - Website language (id or 'all')
  * - Target language(s) (array)
- * - Enaled features
+ * - Enabled features
  *
  * @return array
  */

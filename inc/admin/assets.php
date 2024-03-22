@@ -35,7 +35,7 @@ function wplng_option_page_settings_assets( $hook ) {
 		'wplingua-option-settings',
 		plugins_url() . '/wplingua/assets/js/admin/option-page-settings.js',
 		array( 'jquery' ),
-		WPLNG_API_VERSION
+		WPLNG_PLUGIN_VERSION
 	);
 
 	/**
@@ -46,14 +46,14 @@ function wplng_option_page_settings_assets( $hook ) {
 		'wplingua-option-settings',
 		plugins_url() . '/wplingua/assets/css/admin/option-page-settings.css',
 		array(),
-		WPLNG_API_VERSION
+		WPLNG_PLUGIN_VERSION
 	);
 
 	wp_enqueue_style(
 		'wplingua-option-pages',
 		plugins_url() . '/wplingua/assets/css/admin/option-page.css',
 		array(),
-		WPLNG_API_VERSION
+		WPLNG_PLUGIN_VERSION
 	);
 }
 
@@ -86,7 +86,7 @@ function wplng_option_page_register_assets( $hook ) {
 		'wplingua-option-register',
 		plugins_url() . '/wplingua/assets/js/admin/option-page-register.js',
 		array( 'jquery' ),
-		WPLNG_API_VERSION
+		WPLNG_PLUGIN_VERSION
 	);
 
 	/**
@@ -97,14 +97,14 @@ function wplng_option_page_register_assets( $hook ) {
 		'wplingua-option-register',
 		plugins_url() . '/wplingua/assets/css/admin/option-page-register.css',
 		array(),
-		WPLNG_API_VERSION
+		WPLNG_PLUGIN_VERSION
 	);
 
 	wp_enqueue_style(
 		'wplingua-option-pages',
 		plugins_url() . '/wplingua/assets/css/admin/option-page.css',
 		array(),
-		WPLNG_API_VERSION
+		WPLNG_PLUGIN_VERSION
 	);
 }
 
@@ -137,14 +137,14 @@ function wplng_option_page_switcher_assets( $hook ) {
 		'wplingua-option-switcher',
 		plugins_url() . '/wplingua/assets/js/admin/option-page-switcher.js',
 		array( 'jquery' ),
-		WPLNG_API_VERSION
+		WPLNG_PLUGIN_VERSION
 	);
 
 	wp_enqueue_script(
 		'wplingua-script',
 		plugins_url() . '/wplingua/assets/js/script.js',
 		array( 'jquery' ),
-		WPLNG_API_VERSION
+		WPLNG_PLUGIN_VERSION
 	);
 
 	/**
@@ -155,21 +155,21 @@ function wplng_option_page_switcher_assets( $hook ) {
 		'wplingua-option-switcher',
 		plugins_url() . '/wplingua/assets/css/admin/option-page-switcher.css',
 		array(),
-		WPLNG_API_VERSION
+		WPLNG_PLUGIN_VERSION
 	);
 
 	wp_enqueue_style(
 		'wplingua-option-pages',
 		plugins_url() . '/wplingua/assets/css/admin/option-page.css',
 		array(),
-		WPLNG_API_VERSION
+		WPLNG_PLUGIN_VERSION
 	);
 
 	wp_enqueue_style(
 		'wplingua',
 		plugins_url() . '/wplingua/assets/css/front.css',
 		array(),
-		WPLNG_API_VERSION
+		WPLNG_PLUGIN_VERSION
 	);
 
 	/**
@@ -230,14 +230,14 @@ function wplng_option_page_exclusions_assets( $hook ) {
 		'wplingua-option-exclusions',
 		plugins_url() . '/wplingua/assets/css/admin/option-page-exclusions.css',
 		array(),
-		WPLNG_API_VERSION
+		WPLNG_PLUGIN_VERSION
 	);
 
 	wp_enqueue_style(
 		'wplingua-option-pages',
 		plugins_url() . '/wplingua/assets/css/admin/option-page.css',
 		array(),
-		WPLNG_API_VERSION
+		WPLNG_PLUGIN_VERSION
 	);
 
 }
@@ -266,13 +266,13 @@ function wplng_option_page_dictionary_assets( $hook ) {
 	 /**
 	  * Enqueue wpLingua JS scripts
 	  */
- 
-	 wp_enqueue_script(
-		 'wplingua-option-dictionary',
-		 plugins_url() . '/wplingua/assets/js/admin/option-page-dictionary.js',
-		 array( 'jquery' ),
-		 WPLNG_API_VERSION
-	 );
+
+	wp_enqueue_script(
+		'wplingua-option-dictionary',
+		plugins_url() . '/wplingua/assets/js/admin/option-page-dictionary.js',
+		array( 'jquery' ),
+		WPLNG_PLUGIN_VERSION
+	);
 
 	/**
 	 * Enqueue wpLingua CSS styles
@@ -282,14 +282,14 @@ function wplng_option_page_dictionary_assets( $hook ) {
 		'wplingua-option-dictionary',
 		plugins_url() . '/wplingua/assets/css/admin/option-page-dictionary.css',
 		array(),
-		WPLNG_API_VERSION
+		WPLNG_PLUGIN_VERSION
 	);
 
 	wp_enqueue_style(
 		'wplingua-option-pages',
 		plugins_url() . '/wplingua/assets/css/admin/option-page.css',
 		array(),
-		WPLNG_API_VERSION
+		WPLNG_PLUGIN_VERSION
 	);
 
 }
@@ -320,7 +320,7 @@ function wplng_translation_assets() {
 			'wplingua-translation',
 			plugins_url() . '/wplingua/assets/js/admin/translation.js',
 			array( 'jquery' ),
-			WPLNG_API_VERSION
+			WPLNG_PLUGIN_VERSION
 		);
 
 		/**
@@ -343,7 +343,7 @@ function wplng_translation_assets() {
 			'wplingua-translation',
 			plugins_url() . '/wplingua/assets/css/admin/translation.css',
 			array(),
-			WPLNG_API_VERSION
+			WPLNG_PLUGIN_VERSION
 		);
 
 	}

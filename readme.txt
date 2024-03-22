@@ -4,7 +4,7 @@ Donate link: https://wplingua.com/
 Tags: translate, translation, multilingual, localization, language
 Requires at least: 5.0
 Tested up to: 6.4
-Stable tag: 1.1.1
+Stable tag: 1.2.0
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -114,6 +114,7 @@ For the moment the available languages are:
 * Italian
 * Japanese
 * Portuguese
+* Russian
 * Simplified Chinese
 * Spanish
 
@@ -145,22 +146,37 @@ No, not at the moment but in the meantime, you can easily display the language s
 
 == Screenshots ==
 
-1. Once the plugin is downloaded, installed and activated, register your API key.
-2. As soon as your API key has been registered, your site is multilingual. This option screen allows you to configure your languages and their flags, as well as activate the functionalities.
-3. Customizing the language switcher, enable or disable auto-insertion + choose position or use the shortcode.
-4. You have the possibility to exclude pages or parts of pages.
-5. If you need, you can edit a translation directly from your pages using our visual editor.
-6. You can access the list of translations present on a page, including those which are not directly visible (Meta SEO, texts, alternative images, title attributes, etc.)
-7. You can edit all translations of your website.
-8. All translations are stored on your WordPress site.
+1. You can edit all translations of your website.
+2. Easily configure your language switcher design with predefined options.
+3. You can choose which flag to display by language or import a custom flag.
+4. Once the plugin is downloaded, installed and activated, register your API key.
+5. As soon as your API key has been registered, your site is multilingual. This option screen allows you to configure your languages and their flags, as well as activate the functionalities.
+6. Customizing the language switcher, enable or disable auto-insertion + choose position or use the shortcode.
+7. Define translation rules that apply when generating machine translations.
+8. You have the possibility to exclude pages or parts of pages.
+9. If you need, you can edit a translation directly from your pages using our visual editor.
+10. You can access the list of translations present on a page, including those which are not directly visible (Meta SEO, texts, alternative images, title attributes, etc.)
+11. All translations are stored on your WordPress site.
+12. You can edit all translations for each languages.
 
 == Changelog ==
+
+= 1.2.0 =
+
+* New feature: Translation in progress message for admin and editor
+* New feature: Filter site translations by status (reviewed, unreviewed) 
+* New feature: Edit translation status by language (reviewed, unreviewed) 
+* Better parsing and content updating: Relay method
+* Better string detection for dictionary rules
+* Better file detection: Detect IJFIF files
+* Check compatibility with another activated plugins
+* Fix URL with anchor translation
 
 = 1.1.1 =
 
 * Better UX: Options pages
 * Optimization: faster translations query and finding
-* Experimental feature: Translation in progress message (disaled by default, enable with wplng_enale_in_progress_feature filter set to true) 
+* Experimental feature: Translation in progress message (disabled by default, enable with wplng_enale_in_progress_feature filter set to true) 
 
 = 1.1.0 =
 

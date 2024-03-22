@@ -46,12 +46,16 @@ function wplng_admin_bar_menu() {
 	}
 
 	$url          = wplng_get_url_current();
-	$url_original = $url;
-	$url_original = remove_query_arg( 'wplingua-editor', $url_original );
-	$url_original = remove_query_arg( 'wplingua-list', $url_original );
+	$url_original = remove_query_arg(
+		array( 'wplng-mode', 'wplng-load', 'wplng-nocache' ),
+		$url
+	);
 
-	if ( isset( $_GET['wplingua-editor'] )
-		|| isset( $_GET['wplingua-list'] )
+	if ( ! empty( $_GET['wplng-mode'] )
+		&& (
+			'list' === $_GET['wplng-mode']
+			|| 'editor' === $_GET['wplng-mode']
+		)
 	) {
 
 		$wp_admin_bar->add_menu(
@@ -104,8 +108,8 @@ function wplng_admin_bar_menu() {
 					'parent' => 'wplingua-editor',
 					'title'  => $name,
 					'href'   => add_query_arg(
-						'wplingua-editor',
-						'1',
+						'wplng-mode',
+						'editor',
 						wplng_url_translate(
 							wplng_get_url_original( $url_original ),
 							$language['id']
@@ -120,8 +124,8 @@ function wplng_admin_bar_menu() {
 					'parent' => 'wplingua-list',
 					'title'  => $name,
 					'href'   => add_query_arg(
-						'wplingua-list',
-						'1',
+						'wplng-mode',
+						'list',
 						wplng_url_translate(
 							wplng_get_url_original( $url_original ),
 							$language['id']

@@ -7,7 +7,7 @@
  * Author URI: https://wplingua.com/
  * Text Domain: wplingua
  * Domain Path: /languages/
- * Version: 1.1.1
+ * Version: 1.2.0
  * Requires PHP: 7.4
  * License: GPL v2 or later
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -24,7 +24,8 @@ if ( ! defined( 'WPINC' ) ) {
 define( 'WPLNG_API_URL', 'https://api.wplingua.com' );
 define( 'WPLNG_API_VERSION', '1.0' );
 define( 'WPLNG_API_SSLVERIFY', true );
-define( 'WPLNG_PLUGIN_VERSION', '1.1.1' );
+define( 'WPLNG_PLUGIN_VERSION', '1.2.0' );
+define( 'WPLNG_PLUGIN_FILE', plugin_basename( __FILE__ ) );
 define( 'WPLNG_PLUGIN_PATH', dirname( __FILE__ ) );
 define( 'WPLNG_MAX_TRANSLATIONS', 256 );
 define( 'WPLNG_MAX_FILE_SIZE', 1000000 );
@@ -66,11 +67,17 @@ function wplng_start() {
 
 	}
 
+	// Display a notice if an incompatible plugin is detected
+	add_action( 'admin_notices', 'wplng_admin_notice_incompatible_plugin', 1 );
+
 	// Register plugin settings
 	add_action( 'admin_init', 'wplng_register_settings' );
 
 	// Add settings link in plugin list
 	add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), 'wplng_settings_link' );
+
+	// Redirect to the settings page on plugin activation
+	add_action( 'activated_plugin', 'wplng_plugin_activation_redirect' );
 
 	// Set footer text for options pages
 	add_filter( 'admin_footer_text', 'wplng_admin_footer_text', 11 );
@@ -88,7 +95,7 @@ function wplng_start() {
 		add_action( 'admin_enqueue_scripts', 'wplng_option_page_register_assets' );
 
 		// Display a notice if the plugin is activate but not configured
-		add_action( 'admin_notices', 'wplng_admin_notice_no_key_set' );
+		add_action( 'admin_notices', 'wplng_admin_notice_no_key_set', 1 );
 
 	} else {
 
@@ -144,6 +151,10 @@ function wplng_start() {
 
 		// Display 100 translation in admin area by default
 		add_filter( 'get_user_option_edit_wplng_translation_per_page', 'wplng_translation_per_page' );
+
+		// Filter translations by status 
+		add_action( 'restrict_manage_posts', 'wplng_restrict_manage_posts_translation_status' );
+		add_filter( 'parse_query', 'wplng_posts_filter_translation_status' );
 
 		/**
 		 * Front

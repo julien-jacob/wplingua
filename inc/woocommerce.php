@@ -37,17 +37,17 @@ function wplng_exclude_woocommerce_url( $url_exclude ) {
 	$option_links = get_option( 'woocommerce_permalinks' );
 
 	// Get WooCommerce product base slug
-	if ( isset( $option_links['product_base'] ) ) {
+	if ( ! empty( $option_links['product_base'] ) ) {
 		$url_woocommerce[] = '/' . $option_links['product_base'] . '/';
 	}
 
 	// Get WooCommerce product category slug
-	if ( isset( $option_links['category_base'] ) ) {
+	if ( ! empty( $option_links['category_base'] ) ) {
 		$url_woocommerce[] = '/' . $option_links['category_base'] . '/';
 	}
 
 	// Get WooCommerce product tag slug
-	if ( isset( $option_links['tag_base'] ) ) {
+	if ( ! empty( $option_links['tag_base'] ) ) {
 		$url_woocommerce[] = '/' . $option_links['tag_base'] . '/';
 	}
 

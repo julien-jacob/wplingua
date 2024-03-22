@@ -2,8 +2,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: wpLingua\n"
-"POT-Creation-Date: 2024-03-05 22:43+0100\n"
-"PO-Revision-Date: 2024-03-05 23:54+0100\n"
+"POT-Creation-Date: 2024-03-22 19:14+0100\n"
+"PO-Revision-Date: 2024-03-22 19:54+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fr_BE\n"
@@ -263,15 +263,15 @@ msgstr "wpLingua"
 msgid "This URL is excluded from translation"
 msgstr "Cette URL est exclue de la traduction"
 
-#: inc/admin/admin-bar.php:61 inc/ob-callback/list.php:177
+#: inc/admin/admin-bar.php:65 inc/dom/mode-list.php:151
 msgid "Return on page"
 msgstr "Retourner sur la page"
 
-#: inc/admin/admin-bar.php:71
+#: inc/admin/admin-bar.php:75
 msgid "Visual editor"
 msgstr "Éditeur visuel"
 
-#: inc/admin/admin-bar.php:80 inc/ob-callback/list.php:195
+#: inc/admin/admin-bar.php:84 inc/dom/mode-list.php:167
 msgid "All translations on page"
 msgstr "Toutes les traductions de la page"
 
@@ -865,6 +865,34 @@ msgstr ""
 msgid "Go to the configuration page"
 msgstr "Accéder à la page de configuration"
 
+#: inc/admin/option-page.php:293
+msgid "wpLingua - Incompatible plugin detected"
+msgstr "wpLingua - Extension incompatible détectée"
+
+#: inc/admin/option-page.php:296
+msgid ""
+"You have several translation plugins. This may result in unpredictable or "
+"incorrect behavior. For best results, use only one translation plugin at a "
+"time. These plugins can cause problems with wpLingua:"
+msgstr ""
+"Vous avez plusieurs extensions de traduction. Cela peut entraîner un "
+"comportement imprévisible ou incorrect. Pour de meilleurs résultats, "
+"n'utilisez qu'une seule extension de traduction à la fois. Ces extensions "
+"peuvent causer des problèmes avec wpLingua :"
+
+#: inc/admin/option-page.php:313
+#, php-format
+msgid "Deactivate plugin: %1$s"
+msgstr "Désactiver l’extension : %1$s"
+
+#: inc/admin/option-page.php:322
+msgid "Deactivate"
+msgstr "Désactiver"
+
+#: inc/admin/option-page.php:339
+msgid "Manage active plugins"
+msgstr "Gérer les extensions actives"
+
 #: inc/admin/translation-cpt.php:19 inc/admin/translation-cpt.php:23
 msgid "Translations"
 msgstr "Traductions"
@@ -876,6 +904,30 @@ msgstr "Traduction"
 #: inc/admin/translation-cpt.php:22
 msgid "Edit translation"
 msgstr "Modifier la traduction"
+
+#: inc/admin/translation-cpt.php:105 inc/admin/translation-cpt.php:111
+msgid "All translation status"
+msgstr "Tous les statuts de traduction"
+
+#: inc/admin/translation-cpt.php:106 inc/admin/translation-cpt.php:114
+msgid "Reviewed"
+msgstr "Vérifiées"
+
+#: inc/admin/translation-cpt.php:107
+msgid "Unreviewed"
+msgstr "Non vérifiées"
+
+#: inc/admin/translation-cpt.php:112
+msgid "Full reviewed"
+msgstr "Totalement vérifiées"
+
+#: inc/admin/translation-cpt.php:113
+msgid "Partially reviewed"
+msgstr "Partiellement vérifiées"
+
+#: inc/admin/translation-cpt.php:115
+msgid "Full unreviewed"
+msgstr "Totalement non vérifiées"
 
 #: inc/admin/translation-meta.php:54 inc/admin/translation-meta.php:122
 msgid "Flag for language: "
@@ -889,35 +941,35 @@ msgstr " - Texte original :"
 msgid "Regenerate translation"
 msgstr "Régénérer la traduction"
 
-#: inc/admin/translation-meta.php:135
-msgid " - Translation:"
-msgstr " - Traduction :"
+#: inc/admin/translation-meta.php:124
+msgid "Mark translation as review"
+msgstr "Marquer la traduction comme vérifiée"
 
-#: inc/admin/translation-meta.php:154
+#: inc/admin/translation-meta.php:133
 msgid "Generate translation"
 msgstr "Générer la traduction"
 
-#: inc/admin/translation-meta.php:157
-msgid "Status: Ungenerated"
-msgstr "Statut : Non généré"
+#: inc/admin/translation-meta.php:159
+msgid "Reviewed on "
+msgstr "Vérifiée le "
 
-#: inc/admin/translation-meta.php:163
-msgid "Status: Generated"
-msgstr "Statut : Généré"
+#: inc/admin/translation-meta.php:186
+msgid " - Translation:"
+msgstr " - Traduction :"
 
-#: inc/admin/translation-meta.php:183
-msgid "Status: Edited on "
-msgstr "Statut : Modifié le "
+#: inc/admin/translation-meta.php:218
+msgid "Is reviewed"
+msgstr "A été vérifiée"
 
-#: inc/admin/translation-meta.php:357
+#: inc/admin/translation-meta.php:389
 msgid "Invalid parameters"
 msgstr "Paramètres non valides"
 
-#: inc/admin/translation-meta.php:370
+#: inc/admin/translation-meta.php:402
 msgid "Invalid languages parameters"
 msgstr "Paramètres de langues non valides"
 
-#: inc/admin/translation-meta.php:395
+#: inc/admin/translation-meta.php:427
 msgid "Invalid API response"
 msgstr "Réponse invalide de l’API"
 
@@ -953,15 +1005,15 @@ msgstr "Code"
 msgid "API returned an unexpected response."
 msgstr "L’API a renvoyé une réponse inattendue."
 
-#: inc/ob-callback/editor.php:221 inc/ob-callback/list.php:230
-msgid "Edit this translation"
-msgstr "Modifier cette traduction"
-
-#: inc/ob-callback/translate.php:352 inc/ob-callback/translate.php:417
+#: inc/dom/load-progress.php:117 inc/dom/load-progress.php:146
 msgid "Translation in progress"
 msgstr "Traduction en cours"
 
-#: inc/translation.php:192
+#: inc/dom/mode-editor.php:116 inc/dom/mode-list.php:202
+msgid "Edit this translation"
+msgstr "Modifier cette traduction"
+
+#: inc/translation.php:248
 msgid "..."
 msgstr "…"
 
@@ -990,6 +1042,15 @@ msgstr "L’équipe wpLingua"
 #. Author URI of the plugin/theme
 msgid "https://wplingua.com/"
 msgstr "https://wplingua.com/fr/"
+
+#~ msgid "Status: Ungenerated"
+#~ msgstr "Statut : Non généré"
+
+#~ msgid "Status: Generated"
+#~ msgstr "Statut : Généré"
+
+#~ msgid "Status: Edited on "
+#~ msgstr "Statut : Modifié le "
 
 #~ msgid "wpLingua - Translation rules by dictionary"
 #~ msgstr "wpLingua - Règles de traduction par dictionnaire"

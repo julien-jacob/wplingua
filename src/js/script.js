@@ -1,5 +1,9 @@
 jQuery(document).ready(function ($) {
 
+    /**
+     * Code for switcher
+     */
+
     function wplngUpdateSwitcherOpening() {
         var windowMiddle = $(window).height() / 2;
 
@@ -48,7 +52,7 @@ jQuery(document).ready(function ($) {
      */
 
     $("#wplng-in-progress-iframe").load(function () {
-        location.reload(true);
+        window.location.href = $(this).attr("wplng-reload");
     });
 
     if ($("#wpadminbar").length && $("#wplng-in-progress-container").length) {
