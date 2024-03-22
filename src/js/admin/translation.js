@@ -118,7 +118,8 @@ jQuery(document).ready(function ($) {
                         parentSelector.removeClass("wplng-status-ungenerated");
 
                         parentSelector.addClass("wplng-status-generated");
-                        reviewSelector.prop("checked", false);
+                        reviewSelector.prop("checked", true);
+                        reviewSelector.prop("disabled", false);
                     }
 
                     wplngResizeTextArea($(textarea));
