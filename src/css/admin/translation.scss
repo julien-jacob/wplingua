@@ -36,7 +36,25 @@
         background-color: #f6f7f7;
         box-shadow: rgba(0, 0, 0, 0.04) 0px 1px 1px 0px;
 
-        label {
+        &.wplng-status-reviewed {
+            border-left: 4px #00a32a solid;
+            border-top-left-radius: 0;
+            border-bottom-left-radius: 0;
+        }
+
+        &.wplng-status-generated {
+            border-left: 4px #72aee6 solid;
+            border-top-left-radius: 0;
+            border-bottom-left-radius: 0;
+        }
+
+        &.wplng-status-ungenerated {
+            border-left: 4px #c3c4c7 solid;
+            border-top-left-radius: 0;
+            border-bottom-left-radius: 0;
+        }
+
+        label.wplng-target-title {
             font-weight: 700;
             margin-bottom: 8px;
             display: block;
@@ -59,17 +77,35 @@
                 box-shadow: none;
             }
 
-            .wplng-status,
-            .wplng-generate {
+            // .wplng-status,
+            // .wplng-mark-as-reviewed,
+            // .wplng-generate {
 
-                opacity: .6;
-                transition: all .8s;
+            //     opacity: .6;
+            //     transition: all .8s;
 
-                &:hover {
-                    opacity: 1;
+
+            //     &:hover {
+            //         opacity: 1;
+            //     }
+
+            // }
+
+            .wplng-mark-as-reviewed {
+
+                display: inline-block;
+
+                label {
+                    color: #2271b1;
+                    display: contents;
+                    // border-right: 1px solid #c3c4c7;
+                    // padding-right: 4px;
+                    text-decoration: underline;
+                    display: inline;
+                    vertical-align: baseline;
                 }
-
             }
+
 
         }
 
@@ -81,7 +117,14 @@
     #wplng_meta_box_translation {
         .wplng-edit-language {
             .wplng-translation-footer {
+
                 display: block;
+                margin-top: 0;
+
+                .wplng-translation-footer-left,
+                .wplng-translation-footer-right {
+                    padding-top: 8px;
+                }
             }
         }
     }

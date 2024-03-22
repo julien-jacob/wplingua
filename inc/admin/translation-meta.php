@@ -113,20 +113,71 @@ function wplng_translation_meta_box_html_output( $post ) {
 
 		foreach ( $translations as $translation ) {
 
-			$language_id   = $translation['language_id'];
-			$language      = wplng_get_language_by_id( $language_id );
-			$textarea      = $translation['translation'];
-			$name          = 'wplng_translation_' . $language_id;
-			$container_id  = 'wplng-translation-' . $language_id;
-			$generate_link = __( 'Regenerate translation', 'wplingua' );
-			$alt           = __( 'Flag for language: ', 'wplingua' ) . $language['name'];
+			$language_id    = $translation['language_id'];
+			$language       = wplng_get_language_by_id( $language_id );
+			$textarea       = $translation['translation'];
+			$name           = 'wplng_translation_' . $language_id;
+			$container_id   = 'wplng-translation-' . $language_id;
+			$generate_link  = __( 'Regenerate translation', 'wplingua' );
+			$alt            = __( 'Flag for language: ', 'wplingua' ) . $language['name'];
+			$class          = 'wplng-edit-language';
+			$reviewed_title = __( 'Mark translation as review', 'wplingua' );
+			$is_reviewed    = false;
 
 			if ( '[WPLNG_EMPTY]' === $textarea ) {
 				$textarea = '';
 			}
 
-			$html .= '<div id="' . esc_attr( $container_id ) . '" class="wplng-edit-language">';
-			$html .= '<label for="' . esc_attr( $name ) . '">';
+			switch ( $translation['status'] ) {
+				case 'ungenerated':
+					$generate_link = __( 'Generate translation', 'wplingua' );
+					$class        .= ' wplng-status-ungenerated';
+					break;
+
+				case 'generated':
+					$class .= ' wplng-status-generated';
+					break;
+
+				default:
+					if ( is_int( $translation['status'] ) ) {
+
+						$class      .= ' wplng-status-reviewed';
+						$is_reviewed = true;
+
+						// Get and check date format
+						$date_format = get_option( 'date_format' );
+						if ( ! is_string( $date_format ) || empty( $date_format ) ) {
+							$date_format = 'F j, Y';
+						}
+
+						// Get and check time format
+						$time_format = get_option( 'time_format' );
+						if ( ! is_string( $time_format ) || empty( $time_format ) ) {
+							$time_format = 'g:i a';
+						}
+
+						$reviewed_title  = __( 'Reviewed on ', 'wplingua' );
+						$reviewed_title .= esc_html(
+							gmdate(
+								$date_format,
+								$translation['status']
+							)
+						);
+						$reviewed_title .= ', ' . esc_html(
+							gmdate(
+								$time_format,
+								$translation['status']
+							)
+						);
+					}
+					break;
+			}
+
+			$html .= '<div id="' . esc_attr( $container_id ) . '" ';
+			$html .= 'class="' . esc_attr( $class ) . '" ';
+			$html .= 'wplng-lang="' . esc_attr( $language_id ) . '" ';
+			$html .= '>';
+			$html .= '<label for="' . esc_attr( $name ) . '" class="wplng-target-title">';
 			$html .= '<img ';
 			$html .= 'src="' . esc_url( $language['flag'] ) . '" ';
 			$html .= 'alt="' . esc_attr( $alt ) . '" ';
@@ -149,54 +200,26 @@ function wplng_translation_meta_box_html_output( $post ) {
 			$html .= '<div class="wplng-translation-footer">';
 			$html .= '<div class="wplng-translation-footer-left">';
 
-			switch ( $translation['status'] ) {
-				case 'ungenerated':
-					$generate_link = __( 'Generate translation', 'wplingua' );
+			$html .= '<fieldset class="wplng-mark-as-reviewed">';
 
-					$html .= '<span class="wplng-status">';
-					$html .= esc_html__( 'Status: Ungenerated', 'wplingua' );
-					$html .= '</span>';
-					break;
+			$html .= '<input ';
+			$html .= 'type="checkbox" ';
+			$html .= 'id="wplng_mark_as_reviewed_' . esc_attr( $language_id ) . '" ';
+			$html .= 'name="wplng_mark_as_reviewed_' . esc_attr( $language_id ) . '" ';
+			$html .= 'wplng-lang="' . esc_attr( $language_id ) . '" ';
+			$html .= checked( $is_reviewed, true, false );
+			$html .= '>';
 
-				case 'generated':
-					$html .= '<span class="wplng-status">';
-					$html .= esc_html__( 'Status: Generated', 'wplingua' );
-					$html .= '</span>';
-					break;
+			$html .= '<label ';
+			$html .= 'for="wplng_mark_as_reviewed_' . esc_attr( $language_id ) . '" ';
+			$html .= 'wplng-lang="' . esc_attr( $language_id ) . '" ';
+			$html .= 'title="' . esc_attr( $reviewed_title ) . '" ';
+			$html .= '>';
+			$html .= esc_html__( 'Is reviewed', 'wplingua' );
+			$html .= '</label>';
 
-				default:
-					if ( is_int( $translation['status'] ) ) {
+			$html .= '</fieldset>';
 
-						// Get and check date format
-						$date_format = get_option( 'date_format' );
-						if ( ! is_string( $date_format ) || empty( $date_format ) ) {
-							$date_format = 'F j, Y';
-						}
-
-						// Get and check time format
-						$time_format = get_option( 'time_format' );
-						if ( ! is_string( $time_format ) || empty( $time_format ) ) {
-							$time_format = 'g:i a';
-						}
-
-						$html .= '<span class="wplng-status">';
-						$html .= esc_html__( 'Status: Edited on ', 'wplingua' );
-						$html .= esc_html(
-							gmdate(
-								$date_format,
-								$translation['status']
-							)
-						);
-						$html .= ', ' . esc_html(
-							gmdate(
-								$time_format,
-								$translation['status']
-							)
-						);
-						$html .= '</span>';
-					}
-					break;
-			}
 			$html .= '</div>'; // End .wplng-translation-footer-right
 			$html .= '<div class="wplng-translation-footer-right">';
 
@@ -303,7 +326,8 @@ function wplng_translation_save_meta_boxes_data( $post_id ) {
 			continue;
 		}
 
-		$name = 'wplng_translation_' . $translation['language_id'];
+		$name     = 'wplng_translation_' . $translation['language_id'];
+		$reviewed = 'wplng_mark_as_reviewed_' . $translation['language_id'];
 
 		if ( ! isset( $_REQUEST[ $name ] ) ) {
 			continue;
@@ -312,11 +336,19 @@ function wplng_translation_save_meta_boxes_data( $post_id ) {
 		$temp = stripslashes( sanitize_textarea_field( $_REQUEST[ $name ] ) );
 
 		if ( empty( $temp ) ) {
-			$temp = '[WPLNG_EMPTY]';
-		} elseif ( $temp !== $translation['translation'] ) {
-			$temp = str_replace( '\\', '', $temp );
+			$temp                           = '[WPLNG_EMPTY]';
+			$translations[ $key ]['status'] = 'ungenerated';
+		} else {
 
-			$translations[ $key ]['status'] = time();
+			if ( $temp !== $translation['translation'] ) {
+				$temp = str_replace( '\\', '', $temp );
+			}
+
+			if ( ! empty( $_POST[ $reviewed ] ) ) {
+				$translations[ $key ]['status'] = time();
+			} else {
+				$translations[ $key ]['status'] = 'generated';
+			}
 		}
 
 		$translations[ $key ]['translation'] = esc_html( $temp );
