@@ -146,14 +146,18 @@ No, not at the moment but in the meantime, you can easily display the language s
 
 == Screenshots ==
 
-1. Once the plugin is downloaded, installed and activated, register your API key.
-2. As soon as your API key has been registered, your site is multilingual. This option screen allows you to configure your languages and their flags, as well as activate the functionalities.
-3. Customizing the language switcher, enable or disable auto-insertion + choose position or use the shortcode.
-4. You have the possibility to exclude pages or parts of pages.
-5. If you need, you can edit a translation directly from your pages using our visual editor.
-6. You can access the list of translations present on a page, including those which are not directly visible (Meta SEO, texts, alternative images, title attributes, etc.)
-7. You can edit all translations of your website.
-8. All translations are stored on your WordPress site.
+1. You can edit all translations of your website.
+2. Easily configure your language switcher design with predefined options.
+3. You can choose which flag to display by language or import a custom flag.
+4. Once the plugin is downloaded, installed and activated, register your API key.
+5. As soon as your API key has been registered, your site is multilingual. This option screen allows you to configure your languages and their flags, as well as activate the functionalities.
+6. Customizing the language switcher, enable or disable auto-insertion + choose position or use the shortcode.
+7. Define translation rules that apply when generating machine translations.
+8. You have the possibility to exclude pages or parts of pages.
+9. If you need, you can edit a translation directly from your pages using our visual editor.
+10. You can access the list of translations present on a page, including those which are not directly visible (Meta SEO, texts, alternative images, title attributes, etc.)
+11. All translations are stored on your WordPress site.
+12. You can edit all translations for each languages.
 
 == Changelog ==
 
