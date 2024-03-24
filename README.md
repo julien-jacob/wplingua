@@ -22,10 +22,6 @@ The wpLingua plugin relies on our own wpLingua API, an integrated third-party se
 
 ![You can edit all translations of your website.](https://raw.githubusercontent.com/julien-jacob/wplingua/master/wp-assets/screenshot-1.gif)
 
-![Easily configure your language switcher design with predefined options.](https://raw.githubusercontent.com/julien-jacob/wplingua/master/wp-assets/screenshot-2.gif)
-
-![You can choose which flag to display by language or import a custom flag.](https://raw.githubusercontent.com/julien-jacob/wplingua/master/wp-assets/screenshot-3.gif)
-
 ![Once the plugin is downloaded, installed and activated, register your API key.](https://raw.githubusercontent.com/julien-jacob/wplingua/master/wp-assets/screenshot-4.jpg)
 
 ![As soon as your API key has been registered, your site is multilingual. This option screen allows you to configure your languages and their flags, as well as activate the functionalities.](https://raw.githubusercontent.com/julien-jacob/wplingua/master/wp-assets/screenshot-5.jpg)
