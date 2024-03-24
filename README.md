@@ -20,20 +20,29 @@ The wpLingua plugin relies on our own wpLingua API, an integrated third-party se
 
 ## Screenshot
 
-![Once the plugin is downloaded, installed and activated, register your API key.](https://raw.githubusercontent.com/julien-jacob/wplingua/master/wp-assets/screenshot-1.jpg)
+![You can edit all translations of your website.](https://raw.githubusercontent.com/julien-jacob/wplingua/master/wp-assets/screenshot-1.gif)
 
-![As soon as your API key has been registered, your site is multilingual. This option screen allows you to configure your languages and their flags, as well as activate the functionalities.](https://raw.githubusercontent.com/julien-jacob/wplingua/master/wp-assets/screenshot-2.jpg)
+![Easily configure your language switcher design with predefined options.](https://raw.githubusercontent.com/julien-jacob/wplingua/master/wp-assets/screenshot-2.gif)
 
-![Customizing the language switcher, enable or disable auto-insertion + choose position or use the shortcode.](https://raw.githubusercontent.com/julien-jacob/wplingua/master/wp-assets/screenshot-3.jpg)
-![You have the possibility to exclude pages or parts of pages.](https://raw.githubusercontent.com/julien-jacob/wplingua/master/wp-assets/screenshot-4.jpg)
+![You can choose which flag to display by language or import a custom flag.](https://raw.githubusercontent.com/julien-jacob/wplingua/master/wp-assets/screenshot-3.gif)
 
-![If you need, you can edit a translation directly from your pages using our visual editor.](https://raw.githubusercontent.com/julien-jacob/wplingua/master/wp-assets/screenshot-5.jpg)
+![Once the plugin is downloaded, installed and activated, register your API key.](https://raw.githubusercontent.com/julien-jacob/wplingua/master/wp-assets/screenshot-4.jpg)
 
-![You can access the list of translations present on a page, including those which are not directly visible (Meta SEO, texts, alternative images, title attributes, etc.)](https://raw.githubusercontent.com/julien-jacob/wplingua/master/wp-assets/screenshot-6.jpg)
+![As soon as your API key has been registered, your site is multilingual. This option screen allows you to configure your languages and their flags, as well as activate the functionalities.](https://raw.githubusercontent.com/julien-jacob/wplingua/master/wp-assets/screenshot-5.jpg)
 
-![You can edit all translations of your website.](https://raw.githubusercontent.com/julien-jacob/wplingua/master/wp-assets/screenshot-7.jpg)
+![Customizing the language switcher, enable or disable auto-insertion + choose position or use the shortcode.](https://raw.githubusercontent.com/julien-jacob/wplingua/master/wp-assets/screenshot-6.jpg)
 
-![All translations are stored on your WordPress site.](https://raw.githubusercontent.com/julien-jacob/wplingua/master/wp-assets/screenshot-8.jpg)
+![Define translation rules that apply when generating machine translations.](https://raw.githubusercontent.com/julien-jacob/wplingua/master/wp-assets/screenshot-7.jpg)
+
+![You have the possibility to exclude pages or parts of pages.](https://raw.githubusercontent.com/julien-jacob/wplingua/master/wp-assets/screenshot-8.jpg)
+
+![If you need, you can edit a translation directly from your pages using our visual editor.](https://raw.githubusercontent.com/julien-jacob/wplingua/master/wp-assets/screenshot-9.jpg)
+
+![You can access the list of translations present on a page, including those which are not directly visible (Meta SEO, texts, alternative images, title attributes, etc.)](https://raw.githubusercontent.com/julien-jacob/wplingua/master/wp-assets/screenshot-10.jpg)
+
+![All translations are stored on your WordPress site.](https://raw.githubusercontent.com/julien-jacob/wplingua/master/wp-assets/screenshot-11.jpg)
+
+![You can edit all translations for each languages.](https://raw.githubusercontent.com/julien-jacob/wplingua/master/wp-assets/screenshot-12.jpg)
 
 ---
 
