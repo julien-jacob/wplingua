@@ -489,6 +489,7 @@ function wplng_data_languages() {
 			'name_translation' => array(
 				'ar' => 'العربية',
 				'en' => 'Arabic',
+				'da' => 'Arabisk',
 				'fr' => 'Arabe',
 				'de' => 'Arabisch',
 				'it' => 'Araba',
@@ -518,6 +519,7 @@ function wplng_data_languages() {
 			'name_translation' => array(
 				'ar' => 'الصينية',
 				'en' => 'Chinese',
+				'da' => 'Kinesisk',
 				'fr' => 'Chinois',
 				'de' => 'Chinesisch',
 				'it' => 'Cinese',
@@ -526,6 +528,31 @@ function wplng_data_languages() {
 				'ja' => 'チャイニーズ',
 				'ru' => 'Китайский',
 				'zh' => '中文',
+			),
+		),
+		array(
+			'name'             => __( 'Danish', 'wplingua' ),
+			'id'               => 'da',
+			'flag'             => 'dk',
+			'flags'            => array(
+				array(
+					'name' => __( 'Denmark', 'wplingua' ),
+					'id'   => 'dk',
+					'flag' => 'dk',
+				),
+			),
+			'name_translation' => array(
+				'ar' => 'الدنماركية',
+				'en' => 'Danish',
+				'da' => 'Dansk',
+				'fr' => 'Danois',
+				'de' => 'Dänisch',
+				'it' => 'Danese',
+				'pt' => 'Dinamarquesa',
+				'es' => 'Danés',
+				'ja' => 'デンマーク',
+				'ru' => 'Датский',
+				'zh' => '丹麦语',
 			),
 		),
 		array(
@@ -547,6 +574,7 @@ function wplng_data_languages() {
 			'name_translation' => array(
 				'ar' => 'الإنجليزية',
 				'en' => 'English',
+				'da' => 'Engelsk',
 				'fr' => 'Anglais',
 				'de' => 'Englisch',
 				'it' => 'Inglese',
@@ -581,6 +609,7 @@ function wplng_data_languages() {
 			'name_translation' => array(
 				'ar' => 'الفرنسية',
 				'en' => 'French',
+				'da' => 'Fransk',
 				'fr' => 'Français',
 				'de' => 'Französisch',
 				'it' => 'Francese',
@@ -605,6 +634,7 @@ function wplng_data_languages() {
 			'name_translation' => array(
 				'ar' => 'الألمانية',
 				'en' => 'German',
+				'da' => 'Tysk',
 				'fr' => 'Allemand',
 				'de' => 'Deutsch',
 				'it' => 'Tedesco',
@@ -629,6 +659,7 @@ function wplng_data_languages() {
 			'name_translation' => array(
 				'ar' => 'الإيطالية',
 				'en' => 'Italian',
+				'da' => 'Italiensk',
 				'fr' => 'Italien',
 				'de' => 'Italienisch',
 				'it' => 'Italiano',
@@ -653,6 +684,7 @@ function wplng_data_languages() {
 			'name_translation' => array(
 				'ar' => 'اليابانية',
 				'en' => 'Japanese',
+				'da' => 'Japansk',
 				'fr' => 'Japonais',
 				'de' => 'Japanisch',
 				'it' => 'Giapponese',
@@ -682,6 +714,7 @@ function wplng_data_languages() {
 			'name_translation' => array(
 				'ar' => 'البرتغالية',
 				'en' => 'Portuguese',
+				'da' => 'Portugisisk',
 				'fr' => 'Portugais',
 				'de' => 'Portugiesisch',
 				'it' => 'Portoghese',
@@ -706,6 +739,7 @@ function wplng_data_languages() {
 			'name_translation' => array(
 				'ar' => 'الروسية',
 				'en' => 'Russian',
+				'da' => 'Russisk',
 				'fr' => 'Russe',
 				'de' => 'Russisch',
 				'it' => 'Russo',
@@ -735,6 +769,7 @@ function wplng_data_languages() {
 			'name_translation' => array(
 				'ar' => 'الإسبانية',
 				'en' => 'Spanish',
+				'da' => 'Spansk',
 				'fr' => 'Espagnol',
 				'de' => 'Spanisch',
 				'it' => 'Spagnolo',
