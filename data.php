@@ -783,6 +783,7 @@ function wplng_data_languages() {
 		array(
 			'name'             => __( 'Hebrew', 'wplingua' ),
 			'id'               => 'iw',
+			'dir'              => 'rtl',
 			'flag'             => 'il',
 			'flags'            => array(
 				array(
