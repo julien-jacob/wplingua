@@ -365,6 +365,141 @@ function wplng_data_switcher_valid_flags_style() {
 function wplng_data_languages() {
 	return array(
 		array(
+			'name'             => __( 'Arabic', 'wplingua' ),
+			'id'               => 'ar',
+			'dir'              => 'rtl',
+			'flag'             => 'eg',
+			'flags'            => array(
+				array(
+					'name' => __( 'Egypt', 'wplingua' ),
+					'id'   => 'eg',
+					'flag' => 'eg',
+				),
+				array(
+					'name' => __( 'Saudi Arabia', 'wplingua' ),
+					'id'   => 'sa',
+					'flag' => 'sa',
+				),
+				array(
+					'name' => __( 'Algeria', 'wplingua' ),
+					'id'   => 'dz',
+					'flag' => 'dz',
+				),
+				array(
+					'name' => __( 'Bahrain', 'wplingua' ),
+					'id'   => 'bh',
+					'flag' => 'bh',
+				),
+				array(
+					'name' => __( 'Chad', 'wplingua' ),
+					'id'   => 'td',
+					'flag' => 'td',
+				),
+				array(
+					'name' => __( 'Comoros', 'wplingua' ),
+					'id'   => 'km',
+					'flag' => 'km',
+				),
+				array(
+					'name' => __( 'Djibouti', 'wplingua' ),
+					'id'   => 'dj',
+					'flag' => 'dj',
+				),
+				array(
+					'name' => __( 'Iraq', 'wplingua' ),
+					'id'   => 'iq',
+					'flag' => 'iq',
+				),
+				array(
+					'name' => __( 'Jordan', 'wplingua' ),
+					'id'   => 'jo',
+					'flag' => 'jo',
+				),
+				array(
+					'name' => __( 'Kuwait', 'wplingua' ),
+					'id'   => 'kw',
+					'flag' => 'kw',
+				),
+				array(
+					'name' => __( 'Lebanon', 'wplingua' ),
+					'id'   => 'lb',
+					'flag' => 'lb',
+				),
+				array(
+					'name' => __( 'Libya', 'wplingua' ),
+					'id'   => 'ly',
+					'flag' => 'ly',
+				),
+				array(
+					'name' => __( 'Mauritania', 'wplingua' ),
+					'id'   => 'mr',
+					'flag' => 'mr',
+				),
+				array(
+					'name' => __( 'Morocco', 'wplingua' ),
+					'id'   => 'ma',
+					'flag' => 'ma',
+				),
+				array(
+					'name' => __( 'Oman', 'wplingua' ),
+					'id'   => 'om',
+					'flag' => 'om',
+				),
+				array(
+					'name' => __( 'Palestine', 'wplingua' ),
+					'id'   => 'ps',
+					'flag' => 'ps',
+				),
+				array(
+					'name' => __( 'Qatar', 'wplingua' ),
+					'id'   => 'qa',
+					'flag' => 'qa',
+				),
+				array(
+					'name' => __( 'Somalia', 'wplingua' ),
+					'id'   => 'so',
+					'flag' => 'so',
+				),
+				array(
+					'name' => __( 'Sudan', 'wplingua' ),
+					'id'   => 'sd',
+					'flag' => 'sd',
+				),
+				array(
+					'name' => __( 'Syria', 'wplingua' ),
+					'id'   => 'sy',
+					'flag' => 'sy',
+				),
+				array(
+					'name' => __( 'Tunisia', 'wplingua' ),
+					'id'   => 'tn',
+					'flag' => 'tn',
+				),
+				array(
+					'name' => __( 'United Arab Emirates', 'wplingua' ),
+					'id'   => 'ae',
+					'flag' => 'ae',
+				),
+				array(
+					'name' => __( 'Yemen', 'wplingua' ),
+					'id'   => 'ye',
+					'flag' => 'ye',
+				),
+			),
+			'name_translation' => array(
+				'ar' => 'العربية',
+				'en' => 'Arabic',
+				'fr' => 'Arabe',
+				'de' => 'Arabisch',
+				'it' => 'Araba',
+				'pt' => 'Árabe',
+				'es' => 'Árabe',
+				'ja' => 'アラビア語',
+				'ru' => 'Арабский',
+				'zh' => '阿拉伯',
+			),
+		),
+		array(
 			'name'             => __( 'Chinese', 'wplingua' ),
 			'id'               => 'zh',
 			'flag'             => 'cn',
@@ -381,6 +516,7 @@ function wplng_data_languages() {
 				),
 			),
 			'name_translation' => array(
+				'ar' => 'الصينية',
 				'en' => 'Chinese',
 				'fr' => 'Chinois',
 				'de' => 'Chinesisch',
@@ -409,6 +545,7 @@ function wplng_data_languages() {
 				),
 			),
 			'name_translation' => array(
+				'ar' => 'الإنجليزية',
 				'en' => 'English',
 				'fr' => 'Anglais',
 				'de' => 'Englisch',
@@ -442,6 +579,7 @@ function wplng_data_languages() {
 				),
 			),
 			'name_translation' => array(
+				'ar' => 'الفرنسية',
 				'en' => 'French',
 				'fr' => 'Français',
 				'de' => 'Französisch',
@@ -465,6 +603,7 @@ function wplng_data_languages() {
 				),
 			),
 			'name_translation' => array(
+				'ar' => 'الألمانية',
 				'en' => 'German',
 				'fr' => 'Allemand',
 				'de' => 'Deutsch',
@@ -488,6 +627,7 @@ function wplng_data_languages() {
 				),
 			),
 			'name_translation' => array(
+				'ar' => 'الإيطالية',
 				'en' => 'Italian',
 				'fr' => 'Italien',
 				'de' => 'Italienisch',
@@ -511,6 +651,7 @@ function wplng_data_languages() {
 				),
 			),
 			'name_translation' => array(
+				'ar' => 'اليابانية',
 				'en' => 'Japanese',
 				'fr' => 'Japonais',
 				'de' => 'Japanisch',
@@ -539,6 +680,7 @@ function wplng_data_languages() {
 				),
 			),
 			'name_translation' => array(
+				'ar' => 'البرتغالية',
 				'en' => 'Portuguese',
 				'fr' => 'Portugais',
 				'de' => 'Portugiesisch',
@@ -562,6 +704,7 @@ function wplng_data_languages() {
 				),
 			),
 			'name_translation' => array(
+				'ar' => 'الروسية',
 				'en' => 'Russian',
 				'fr' => 'Russe',
 				'de' => 'Russisch',
@@ -590,6 +733,7 @@ function wplng_data_languages() {
 				),
 			),
 			'name_translation' => array(
+				'ar' => 'الإسبانية',
 				'en' => 'Spanish',
 				'fr' => 'Espagnol',
 				'de' => 'Spanisch',
