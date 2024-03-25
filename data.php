@@ -1146,7 +1146,7 @@ function wplng_data_languages() {
 				'fr' => 'Espagnol',
 				'gr' => 'Ισπανικά',
 				'hi' => 'स्पैनिश',
-				'hu' => 'Spanyol',
+				'hu' => 'Spanisch',
 				'id' => 'Spanyol',
 				'it' => 'Spagnolo',
 				'iw' => 'ספרדית',
