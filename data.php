@@ -1158,5 +1158,38 @@ function wplng_data_languages() {
 				'zh' => '英语',
 			),
 		),
+		array(
+			'name'             => __( 'Ukrainian', 'wplingua' ),
+			'id'               => 'uk',
+			'flag'             => 'ua',
+			'flags'            => array(
+				array(
+					'name' => __( 'Ukraine', 'wplingua' ),
+					'id'   => 'ua',
+					'flag' => 'ua',
+				),
+			),
+			'name_translation' => array(
+				'ar' => 'الأوكرانية',
+				'da' => 'Ukrainsk',
+				'de' => 'Ukrainisch',
+				'en' => 'Ukrainian',
+				'es' => 'Ucraniano',
+				'fi' => 'Ukrainan',
+				'fr' => 'Ukrainien',
+				'gr' => 'Ουκρανικό',
+				'hi' => 'यूक्रेनी',
+				'hu' => 'Ukrán',
+				'id' => 'Ukraina',
+				'it' => 'Ucraino',
+				'iw' => 'אוקראינית',
+				'ja' => 'ウクライナ語',
+				'ko' => '우크라이나어',
+				'nl' => 'Oekraïens',
+				'pt' => 'ucraniano',
+				'ru' => 'Украинский',
+				'zh' => '乌克兰',
+			),
+		),
 	);
 }
