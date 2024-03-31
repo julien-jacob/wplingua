@@ -511,6 +511,7 @@ function wplng_data_languages() {
 				'zh' => '阿拉伯',
 				'tr' => 'Arapça',
 				'uk' => 'Арабський',
+				'vi' => 'Ả Rập',
 			),
 		),
 		array(
@@ -554,6 +555,7 @@ function wplng_data_languages() {
 				'zh' => '中文',
 				'tr' => 'Çince',
 				'uk' => 'Китайський',
+				'vi' => 'Trung',
 			),
 		),
 		array(
@@ -592,6 +594,7 @@ function wplng_data_languages() {
 				'zh' => '丹麦语',
 				'tr' => 'Danca',
 				'uk' => 'Датський',
+				'vi' => 'Đan Mạch',
 			),
 		),
 		array(
@@ -640,6 +643,7 @@ function wplng_data_languages() {
 				'zh' => '荷兰语',
 				'tr' => 'Hollandaca',
 				'uk' => 'Голландський',
+				'vi' => 'Hà Lan',
 			),
 		),
 		array(
@@ -683,6 +687,7 @@ function wplng_data_languages() {
 				'zh' => '斯洛伐克语',
 				'tr' => 'Slovakça',
 				'uk' => 'Словацька',
+				'vi' => 'Slovak',
 			),
 		),
 		array(
@@ -726,6 +731,7 @@ function wplng_data_languages() {
 				'zh' => '英语',
 				'tr' => 'İngilizce',
 				'uk' => 'Англійський',
+				'vi' => 'Anh',
 			),
 		),
 		array(
@@ -764,6 +770,7 @@ function wplng_data_languages() {
 				'zh' => '芬兰语',
 				'tr' => 'Fince',
 				'uk' => 'Фінський',
+				'vi' => 'Phần Lan',
 			),
 		),
 		array(
@@ -812,6 +819,7 @@ function wplng_data_languages() {
 				'zh' => '法语',
 				'tr' => 'Fransızca',
 				'uk' => 'Французький',
+				'vi' => 'Pháp',
 			),
 		),
 		array(
@@ -850,6 +858,7 @@ function wplng_data_languages() {
 				'zh' => '德国',
 				'tr' => 'Almanca',
 				'uk' => 'Німецький',
+				'vi' => 'Đức',
 			),
 		),
 		array(
@@ -893,6 +902,7 @@ function wplng_data_languages() {
 				'zh' => '希腊文',
 				'tr' => 'Yunanca',
 				'uk' => 'Грецький',
+				'vi' => 'Hy Lạp',
 			),
 		),
 		array(
@@ -932,6 +942,7 @@ function wplng_data_languages() {
 				'zh' => '希伯来文',
 				'tr' => 'İbranice',
 				'uk' => 'Єврейський',
+				'vi' => 'Do Thái',
 			),
 		),
 		array(
@@ -975,6 +986,7 @@ function wplng_data_languages() {
 				'zh' => '北印度语',
 				'tr' => 'Hintçe',
 				'uk' => 'Хінді',
+				'vi' => 'Hin-ddi',
 			),
 		),
 		array(
@@ -1013,6 +1025,7 @@ function wplng_data_languages() {
 				'zh' => '匈牙利语',
 				'tr' => 'Macarca',
 				'uk' => 'Угорський',
+				'vi' => 'Hungary',
 			),
 		),
 		array(
@@ -1051,6 +1064,7 @@ function wplng_data_languages() {
 				'zh' => '印尼语',
 				'tr' => 'Endonezce',
 				'uk' => 'Індонезійський',
+				'vi' => 'Indonesia',
 			),
 		),
 		array(
@@ -1089,6 +1103,7 @@ function wplng_data_languages() {
 				'zh' => '意大利',
 				'tr' => 'İtalyanca',
 				'uk' => 'Італійський',
+				'vi' => 'Ý',
 			),
 		),
 		array(
@@ -1127,6 +1142,7 @@ function wplng_data_languages() {
 				'zh' => '日语',
 				'tr' => 'Japonca',
 				'uk' => 'Японський',
+				'vi' => 'Nhật',
 			),
 		),
 		array(
@@ -1170,6 +1186,7 @@ function wplng_data_languages() {
 				'zh' => '韩语',
 				'tr' => 'Korece',
 				'uk' => 'Корейський',
+				'vi' => 'Hàn',
 			),
 		),
 		array(
@@ -1208,6 +1225,7 @@ function wplng_data_languages() {
 				'zh' => '波兰语',
 				'tr' => 'Lehçe',
 				'uk' => 'Польський',
+				'vi' => 'Ba Lan',
 			),
 		),
 		array(
@@ -1251,6 +1269,7 @@ function wplng_data_languages() {
 				'zh' => '葡语',
 				'tr' => 'Portekizce',
 				'uk' => 'Португальський',
+				'vi' => 'Bồ Đào Nha',
 			),
 		),
 		array(
@@ -1289,6 +1308,7 @@ function wplng_data_languages() {
 				'zh' => '俄语',
 				'tr' => 'Rusça',
 				'uk' => 'Російський',
+				'vi' => 'Nga',
 			),
 		),
 		array(
@@ -1332,6 +1352,7 @@ function wplng_data_languages() {
 				'zh' => '西班牙语',
 				'tr' => 'İspanyolca',
 				'uk' => 'Іспанський',
+				'vi' => 'Tây Ban Nha',
 			),
 		),
 		array(
@@ -1375,6 +1396,7 @@ function wplng_data_languages() {
 				'zh' => '瑞典语',
 				'tr' => 'İsveççe',
 				'uk' => 'Шведська',
+				'vi' => 'Thụy Điển',
 			),
 		),
 		array(
@@ -1418,6 +1440,7 @@ function wplng_data_languages() {
 				'zh' => '土耳其语',
 				'tr' => 'Türkçe',
 				'uk' => 'Турецька',
+				'vi' => 'Thổ Nhĩ Kỳ',
 			),
 		),
 		array(
@@ -1456,6 +1479,46 @@ function wplng_data_languages() {
 				'zh' => '乌克兰',
 				'tr' => 'Ukraynaca',
 				'uk' => 'Український',
+				'vi' => 'U-crai-na',
+			),
+		),
+		array(
+			'name'             => __( 'Vietnamese', 'wplingua' ),
+			'id'               => 'vi',
+			'flag'             => 'vn',
+			'flags'            => array(
+				array(
+					'name' => __( 'Vietnam', 'wplingua' ),
+					'id'   => 'vn',
+					'flag' => 'vn',
+				),
+			),
+			'name_translation' => array(
+				'ar' => 'فيتنامية',
+				'da' => 'Vietnamesisk',
+				'de' => 'Vietnamesisch',
+				'en' => 'Vietnamese',
+				'es' => 'Vietnamita',
+				'fi' => 'Vietnamin',
+				'fr' => 'Vietnamien',
+				'gr' => 'Βιετναμέζικα',
+				'hi' => 'वियतनामी',
+				'hu' => 'Vietnámi',
+				'id' => 'Vietnam',
+				'it' => 'Vietnamita',
+				'he' => 'וייטנאמית',
+				'ja' => 'ベトナム語',
+				'ko' => '베트남어',
+				'nl' => 'Vietnamees',
+				'pl' => 'Wietnamski',
+				'pt' => 'Vietnamita',
+				'ru' => 'Вьетнамский',
+				'se' => 'Vietnamesiska',
+				'sk' => 'Vietnamský',
+				'zh' => '越南语',
+				'tr' => 'Vietnamca',
+				'uk' => 'В\'єтнамська',
+				'vi' => 'Việt',
 			),
 		),
 	);
