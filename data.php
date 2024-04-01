@@ -706,14 +706,79 @@ function wplng_data_languages() {
 			'flag'             => 'gb',
 			'flags'            => array(
 				array(
-					'name' => __( 'UK', 'wplingua' ),
+					'name' => __( 'United Kingdom', 'wplingua' ),
 					'id'   => 'gb',
 					'flag' => 'gb',
 				),
 				array(
-					'name' => __( 'USA', 'wplingua' ),
+					'name' => __( 'United States', 'wplingua' ),
 					'id'   => 'us',
 					'flag' => 'us',
+				),
+				array(
+					'name' => __( 'Australia', 'wplingua' ),
+					'id'   => 'au',
+					'flag' => 'au',
+				),
+				array(
+					'name' => __( 'Canada', 'wplingua' ),
+					'id'   => 'ca',
+					'flag' => 'ca',
+				),
+				array(
+					'name' => __( 'Ireland', 'wplingua' ),
+					'id'   => 'ie',
+					'flag' => 'ie',
+				),
+				array(
+					'name' => __( 'New Zealand', 'wplingua' ),
+					'id'   => 'nz',
+					'flag' => 'nz',
+				),
+				array(
+					'name' => __( 'Nigeria', 'wplingua' ),
+					'id'   => 'ng',
+					'flag' => 'ng',
+				),
+				array(
+					'name' => __( 'South Africa', 'wplingua' ),
+					'id'   => 'za',
+					'flag' => 'za',
+				),
+				array(
+					'name' => __( 'Kenya', 'wplingua' ),
+					'id'   => 'ke',
+					'flag' => 'ke',
+				),
+				array(
+					'name' => __( 'Ghana', 'wplingua' ),
+					'id'   => 'gh',
+					'flag' => 'gh',
+				),
+				array(
+					'name' => __( 'South Sudan', 'wplingua' ),
+					'id'   => 'ss',
+					'flag' => 'ss',
+				),
+				array(
+					'name' => __( 'Sierra Leone', 'wplingua' ),
+					'id'   => 'sl',
+					'flag' => 'sl',
+				),
+				array(
+					'name' => __( 'Singapore', 'wplingua' ),
+					'id'   => 'sg',
+					'flag' => 'sg',
+				),
+				array(
+					'name' => __( 'Liberia', 'wplingua' ),
+					'id'   => 'lr',
+					'flag' => 'lr',
+				),
+				array(
+					'name' => __( 'Jamaica', 'wplingua' ),
+					'id'   => 'jm',
+					'flag' => 'jm',
 				),
 			),
 			'name_translation' => array(
