@@ -1471,6 +1471,91 @@ function wplng_data_languages() {
 					'id'   => 'mx',
 					'flag' => 'mx',
 				),
+				array(
+					'name' => __( 'Argentina', 'wplingua' ),
+					'id'   => 'ar',
+					'flag' => 'ar',
+				),
+				array(
+					'name' => __( 'Colombia', 'wplingua' ),
+					'id'   => 'co',
+					'flag' => 'co',
+				),
+				array(
+					'name' => __( 'Peru', 'wplingua' ),
+					'id'   => 'pe',
+					'flag' => 'pe',
+				),
+				array(
+					'name' => __( 'Ecuador', 'wplingua' ),
+					'id'   => 'ec',
+					'flag' => 'ec',
+				),
+				array(
+					'name' => __( 'Bolivia', 'wplingua' ),
+					'id'   => 'bo',
+					'flag' => 'bo',
+				),
+				array(
+					'name' => __( 'Chile', 'wplingua' ),
+					'id'   => 'cl',
+					'flag' => 'cl',
+				),
+				array(
+					'name' => __( 'Equatorial Guinea', 'wplingua' ),
+					'id'   => 'gq',
+					'flag' => 'gq',
+				),
+				array(
+					'name' => __( 'Guatemala', 'wplingua' ),
+					'id'   => 'gt',
+					'flag' => 'gt',
+				),
+				array(
+					'name' => __( 'Cuba', 'wplingua' ),
+					'id'   => 'cu',
+					'flag' => 'cu',
+				),
+				array(
+					'name' => __( 'Dominican Republic', 'wplingua' ),
+					'id'   => 'do',
+					'flag' => 'do',
+				),
+				array(
+					'name' => __( 'Honduras', 'wplingua' ),
+					'id'   => 'hn',
+					'flag' => 'hn',
+				),
+				array(
+					'name' => __( 'Paraguay', 'wplingua' ),
+					'id'   => 'py',
+					'flag' => 'py',
+				),
+				array(
+					'name' => __( 'El Salvador', 'wplingua' ),
+					'id'   => 'sv',
+					'flag' => 'sv',
+				),
+				array(
+					'name' => __( 'Nicaragua', 'wplingua' ),
+					'id'   => 'ni',
+					'flag' => 'ni',
+				),
+				array(
+					'name' => __( 'Costa Rica', 'wplingua' ),
+					'id'   => 'cr',
+					'flag' => 'cr',
+				),
+				array(
+					'name' => __( 'Panama', 'wplingua' ),
+					'id'   => 'pa',
+					'flag' => 'pa',
+				),
+				array(
+					'name' => __( 'Uruguay', 'wplingua' ),
+					'id'   => 'uy',
+					'flag' => 'uy',
+				),
 			),
 			'name_translation' => array(
 				'ar' => 'الإسبانية',
