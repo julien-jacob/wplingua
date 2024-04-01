@@ -868,6 +868,31 @@ function wplng_data_languages() {
 					'id'   => 'ca',
 					'flag' => 'ca',
 				),
+				array(
+					'name' => __( 'Congo - Kinshasa', 'wplingua' ),
+					'id'   => 'cd',
+					'flag' => 'cd',
+				),
+				array(
+					'name' => __( 'Congo - Brazzaville', 'wplingua' ),
+					'id'   => 'cg',
+					'flag' => 'cg',
+				),
+				array(
+					'name' => __( 'Cameroon', 'wplingua' ),
+					'id'   => 'cm',
+					'flag' => 'cm',
+				),
+				array(
+					'name' => __( 'Ivory Coast', 'wplingua' ),
+					'id'   => 'ci',
+					'flag' => 'ci',
+				),
+				array(
+					'name' => __( 'Switzerland', 'wplingua' ),
+					'id'   => 'ch',
+					'flag' => 'ch',
+				),
 			),
 			'name_translation' => array(
 				'ar' => 'الفرنسية',
