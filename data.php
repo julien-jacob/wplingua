@@ -932,6 +932,21 @@ function wplng_data_languages() {
 					'id'   => 'de',
 					'flag' => 'de',
 				),
+				array(
+					'name' => __( 'Austria', 'wplingua' ),
+					'id'   => 'at',
+					'flag' => 'at',
+				),
+				array(
+					'name' => __( 'Switzerland', 'wplingua' ),
+					'id'   => 'ch',
+					'flag' => 'ch',
+				),
+				array(
+					'name' => __( 'Liechtenstein', 'wplingua' ),
+					'id'   => 'li',
+					'flag' => 'li',
+				),
 			),
 			'name_translation' => array(
 				'ar' => 'الألمانية',
