@@ -1358,6 +1358,16 @@ function wplng_data_languages() {
 					'id'   => 'br',
 					'flag' => 'br',
 				),
+				array(
+					'name' => __( 'Mozambique', 'wplingua' ),
+					'id'   => 'mz',
+					'flag' => 'mz',
+				),
+				array(
+					'name' => __( 'Angola', 'wplingua' ),
+					'id'   => 'ao',
+					'flag' => 'ao',
+				),
 			),
 			'name_translation' => array(
 				'ar' => 'البرتغالية',
