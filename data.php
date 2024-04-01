@@ -529,6 +529,16 @@ function wplng_data_languages() {
 					'id'   => 'hk',
 					'flag' => 'hk',
 				),
+				array(
+					'name' => __( 'Malaysia', 'wplingua' ),
+					'id'   => 'my',
+					'flag' => 'my',
+				),
+				array(
+					'name' => __( 'Singapore', 'wplingua' ),
+					'id'   => 'sg',
+					'flag' => 'sg',
+				),
 			),
 			'name_translation' => array(
 				'ar' => 'الصينية',
