@@ -27,7 +27,7 @@ function wplng_get_switcher_insert() {
 	}
 
 	if ( ! $is_valid ) {
-		$insert = 'bottom-left';
+		$insert = 'bottom-center';
 	}
 
 	$insert = apply_filters(
@@ -131,14 +131,13 @@ function wplng_get_switcher_name_format() {
 		}
 	}
 
-	if ( ! $is_valid ) {
-		$name_format = 'name';
-	}
-
-	if ( wplng_get_switcher_flags_style() === 'none'
-		&& 'none' === $name_format
+	if ( ! $is_valid
+		|| (
+			'none' === wplng_get_switcher_flags_style()
+			&& 'none' === $name_format 
+		)
 	) {
-		$name_format = 'name';
+		$name_format = 'original';
 	}
 
 	$name_format = apply_filters(
