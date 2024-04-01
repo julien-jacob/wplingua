@@ -1407,6 +1407,26 @@ function wplng_data_languages() {
 					'id'   => 'ru',
 					'flag' => 'ru',
 				),
+				array(
+					'name' => __( 'Kazakhstan', 'wplingua' ),
+					'id'   => 'kz',
+					'flag' => 'kz',
+				),
+				array(
+					'name' => __( 'Belarus', 'wplingua' ),
+					'id'   => 'by',
+					'flag' => 'by',
+				),
+				array(
+					'name' => __( 'Kyrgyzstan', 'wplingua' ),
+					'id'   => 'kg',
+					'flag' => 'kg',
+				),
+				array(
+					'name' => __( 'Tajikistan', 'wplingua' ),
+					'id'   => 'tj',
+					'flag' => 'tj',
+				),
 			),
 			'name_translation' => array(
 				'ar' => 'الروسية',
