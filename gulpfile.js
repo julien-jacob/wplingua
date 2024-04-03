@@ -12,31 +12,15 @@
  * # Start the watcher
  * $ gulp watch
  * 
- * # Create or update the archive
- * $ gulp archive
  *
  **/
 
-var gulp = require("gulp");
-var sass = require('gulp-sass')(require('sass'));
-var autoprefixer = require("gulp-autoprefixer");
-var cleanCSS = require("gulp-clean-css");
-var jsmin = require("gulp-jsmin");
-var zip = require('gulp-zip');
-var del = require('del');
+'use strict';
 
-
-/**
- * Task JS
- * 
- * Minify JavaScript in /src/js/
- * Create or update /assets/js/
- */
-gulp.task("js", () => {
-    return gulp.src("src/js/**/*.js")
-        .pipe(jsmin())
-        .pipe(gulp.dest("assets/js/."));
-});
+const gulp = require('gulp');
+const sass = require('gulp-sass')(require('sass'));
+const uglify = require('gulp-uglify');
+const clean = require('gulp-clean');
 
 
 /**
@@ -45,38 +29,26 @@ gulp.task("js", () => {
  * Minify and compil SASS in /src/css/
  * Create or update /assets/css/
  */
-gulp.task("css", () => {
-    return gulp.src("src/css/**/*.{css,scss}")
-        .pipe(sass().on("error", sass.logError))
-        .pipe(autoprefixer(
-            "last 2 version",
-            "> 1%",
-            "safari 5",
-            "ie 8",
-            "ie 9",
-            "opera 12.1",
-            "ios 6",
-            "android 4"
-        ))
-        .pipe(cleanCSS({
-            compatibility: "ie9",
-            processImport: false
-        }))
-        .pipe(gulp.dest("assets/css/."));
-});
+
+function css() {
+    return gulp.src('src/css/**/*.{css,scss}')
+        .pipe(sass({ outputStyle: 'compressed' }).on('error', sass.logError))
+        .pipe(gulp.dest('assets/css/'));
+};
 
 
 /**
- * Task plugins
+ * Task JS
  * 
- * Copy folder /src/plugins/
- * Create or update /assets/plugins/
+ * Minify JavaScript in /src/js/
+ * Create or update /assets/js/
  */
-gulp.task("plugins", () => {
-    return gulp.src("src/plugins/**/*")
-        .pipe(gulp.dest("assets/plugins/"));
-});
 
+function js() {
+    return gulp.src('src/js/**/*.js')
+        .pipe(uglify())
+        .pipe(gulp.dest('assets/js/'));
+};
 
 /**
  * Task images
@@ -84,25 +56,11 @@ gulp.task("plugins", () => {
  * Copy folder /src/images/
  * Create or update /assets/images/
  */
-gulp.task("images", () => {
-    return gulp.src("src/images/**/*")
+
+function images() {
+    return gulp.src("src/images/**/*", { removeBOM: false })
         .pipe(gulp.dest("assets/images/"));
-});
-
-
-/**
- * Task folder-zip
- * 
- * Create or update a zip archive 
- * with /wplingua/ folder
- */
-gulp.task("folder-zip", () => {
-    return gulp.src([
-        "**/wplingua/**/*"
-    ])
-        .pipe(zip('wplingua.zip'))
-        .pipe(gulp.dest("."));
-});
+};
 
 
 /**
@@ -111,10 +69,12 @@ gulp.task("folder-zip", () => {
  * Create or update folder /wplingua/
  * A copy of the necesary WordPress plugin file
  */
-gulp.task("folder-create", () => {
+
+function folder_create() {
     return gulp.src([
         "**",
         "!wplingua/",
+        "!wplingua/**",
         "!node_modules/",
         "!node_modules/**",
         "!src/",
@@ -131,7 +91,7 @@ gulp.task("folder-create", () => {
         "!*.md"
     ])
         .pipe(gulp.dest("wplingua/"));
-});
+};
 
 
 /**
@@ -139,70 +99,44 @@ gulp.task("folder-create", () => {
  * 
  * Delete folder /wplingua/
  */
-gulp.task('folder-delete', function () {
-    return del([
-        "wplingua/"
-    ]);
-});
 
-
-/**
- * Task folder-delete
- * 
- * Process files & Create archive 
- */
-gulp.task("archive", gulp.series(
-    "css",
-    "js",
-    "plugins",
-    "images",
-    "folder-create",
-    "folder-zip",
-    "folder-delete"
-));
+function folder_delete() {
+    return gulp.src('wplingua/**/*', { allowEmpty: true, force: true })
+        .pipe(clean({ force: true }));
+};
 
 
 /**
  * Task clear
- * 
- * Clear genereted files
- * Assets files, wplingua.zip and log files
+ *
+ * Delete genereted files
  */
-gulp.task('clear', function () {
-    return del([
-        "assets/css/**/*",
-        "assets/js/**/*",
-        "assets/plugins/**/*",
-        "wplingua.zip",
-        "*.log"
-    ]);
-});
+
+function clear() {
+    return gulp.src([
+        'wplingua.zip',
+        'wplingua/**/*',
+        'assets/**/*'
+    ], { allowEmpty: true, force: true})
+        .pipe(clean({ force: true }));
+};
 
 
 /**
- * Task watch
- * 
- * Start the watcher
- * Tasks : css, js, plugins, images
+ * Watcher
  */
-gulp.task("watch", () => {
-    gulp.watch("src/**/*", gulp.series(
-        "css",
-        "js",
-        "plugins",
-        "images"
-    ));
-});
+
+exports.watch = function () {
+    gulp.watch('src/**/*', gulp.parallel(css, js));
+};
 
 
-/**
- * Task default
- * 
- * Tasks : css, js, plugins, images
- */
-gulp.task("default", gulp.series(
-    "css",
-    "js",
-    "plugins",
-    "images"
-));
+exports.css = css;
+exports.js = js;
+exports.images = images;
+exports.clear = clear;
+
+exports.default = gulp.series(css, js, images);
+
+exports.folder_create = gulp.series(css, js, images, folder_create);
+exports.folder_delete = folder_delete;
