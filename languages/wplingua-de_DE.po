@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: wpLingua\n"
-"POT-Creation-Date: 2024-03-22 19:14+0100\n"
-"PO-Revision-Date: 2024-03-22 20:11+0100\n"
+"POT-Creation-Date: 2024-04-01 22:24+0200\n"
+"PO-Revision-Date: 2024-04-01 22:50+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: de_DE\n"
@@ -157,100 +157,508 @@ msgid "Wave"
 msgstr "Wellen"
 
 #: data.php:368
+msgid "Arabic"
+msgstr "Arabisch"
+
+#: data.php:374
+msgid "Egypt"
+msgstr "Ägypten"
+
+#: data.php:379
+msgid "Saudi Arabia"
+msgstr "Saudi-Arabien"
+
+#: data.php:384
+msgid "Algeria"
+msgstr "Algerien"
+
+#: data.php:389
+msgid "Bahrain"
+msgstr "Bahrain"
+
+#: data.php:394
+msgid "Chad"
+msgstr "Tschad"
+
+#: data.php:399
+msgid "Comoros"
+msgstr "Komoren"
+
+#: data.php:404
+msgid "Djibouti"
+msgstr "Dschibuti"
+
+#: data.php:409
+msgid "Iraq"
+msgstr "Irak"
+
+#: data.php:414
+msgid "Jordan"
+msgstr "Jordanien"
+
+#: data.php:419
+msgid "Kuwait"
+msgstr "Kuwait"
+
+#: data.php:424
+msgid "Lebanon"
+msgstr "Libanon"
+
+#: data.php:429
+msgid "Libya"
+msgstr "Libyen"
+
+#: data.php:434
+msgid "Mauritania"
+msgstr "Mauretanien"
+
+#: data.php:439
+msgid "Morocco"
+msgstr "Marokko"
+
+#: data.php:444
+msgid "Oman"
+msgstr "Oman"
+
+#: data.php:449
+msgid "Palestine"
+msgstr "Palästina"
+
+#: data.php:454
+msgid "Qatar"
+msgstr "Katar"
+
+#: data.php:459
+msgid "Somalia"
+msgstr "Somalia"
+
+#: data.php:464
+msgid "Sudan"
+msgstr "Sudan"
+
+#: data.php:469
+msgid "Syria"
+msgstr "Syrien"
+
+#: data.php:474
+msgid "Tunisia"
+msgstr "Tunesien"
+
+#: data.php:479
+msgid "United Arab Emirates"
+msgstr "Vereinigte Arabische Emirate"
+
+#: data.php:484
+msgid "Yemen"
+msgstr "Jemen"
+
+#: data.php:518
 msgid "Chinese"
 msgstr "Chinesisch"
 
-#: data.php:373
+#: data.php:523
 msgid "China"
 msgstr "China"
 
-#: data.php:378
+#: data.php:528
 msgid "Hong Kong"
 msgstr "Hong Kong"
 
-#: data.php:396
-msgid "English"
-msgstr "Englisch"
+#: data.php:533
+msgid "Malaysia"
+msgstr "Malaysia"
 
-#: data.php:401
-msgid "UK"
-msgstr "UK"
+#: data.php:538 data.php:769
+msgid "Singapore"
+msgstr "Singapur"
 
-#: data.php:406
-msgid "USA"
-msgstr "USA"
+#: data.php:572
+msgid "Danish"
+msgstr "Dänisch"
 
-#: data.php:424
-msgid "French"
-msgstr "Französisch"
+#: data.php:577
+msgid "Denmark"
+msgstr "Dänemark"
 
-#: data.php:429
-msgid "France"
-msgstr "Frankreich"
+#: data.php:611
+msgid "Dutch"
+msgstr "Niederländisch"
 
-#: data.php:434
+#: data.php:616
+msgid "Netherlands"
+msgstr "Niederlande"
+
+#: data.php:621 data.php:862
 msgid "Belgium"
 msgstr "Belgien"
 
-#: data.php:439
+#: data.php:626
+msgid "Suriname"
+msgstr "Suriname"
+
+#: data.php:660
+msgid "Slovak"
+msgstr "Slowakisch"
+
+#: data.php:665
+msgid "Slovakia"
+msgstr "Slowakei"
+
+#: data.php:670
+msgid "Czech Republic"
+msgstr "Tschechien"
+
+#: data.php:704
+msgid "English"
+msgstr "Englisch"
+
+#: data.php:709
+msgid "United Kingdom"
+msgstr "Großbritannien"
+
+#: data.php:714
+msgid "United States"
+msgstr "Vereinigte Staaten"
+
+#: data.php:719
+msgid "Australia"
+msgstr "Australien"
+
+#: data.php:724 data.php:867
 msgid "Canada"
 msgstr "Kanada"
 
-#: data.php:457
+#: data.php:729
+msgid "Ireland"
+msgstr "Irland"
+
+#: data.php:734
+msgid "New Zealand"
+msgstr "Neuseeland"
+
+#: data.php:739
+msgid "Nigeria"
+msgstr "Nigeria"
+
+#: data.php:744
+msgid "South Africa"
+msgstr "Südafrika"
+
+#: data.php:749
+msgid "Kenya"
+msgstr "Kenia"
+
+#: data.php:754
+msgid "Ghana"
+msgstr "Ghana"
+
+#: data.php:759
+msgid "South Sudan"
+msgstr "Südsudan"
+
+#: data.php:764
+msgid "Sierra Leone"
+msgstr "Sierra Leone"
+
+#: data.php:774
+msgid "Liberia"
+msgstr "Liberia"
+
+#: data.php:779
+msgid "Jamaica"
+msgstr "Jamaika"
+
+#: data.php:813
+msgid "Finnish"
+msgstr "Finnisch"
+
+#: data.php:818 data.php:1599
+msgid "Finland"
+msgstr "Finnland"
+
+#: data.php:852
+msgid "French"
+msgstr "Französisch"
+
+#: data.php:857
+msgid "France"
+msgstr "Frankreich"
+
+#: data.php:872
+msgid "Congo - Kinshasa"
+msgstr "Demokratische Repubik Kongo"
+
+#: data.php:877
+msgid "Congo - Brazzaville"
+msgstr "Republik Kongo"
+
+#: data.php:882
+msgid "Cameroon"
+msgstr "Kamerun"
+
+#: data.php:887
+msgid "Ivory Coast"
+msgstr "Elfenbeinküste"
+
+#: data.php:892 data.php:941
+msgid "Switzerland"
+msgstr "Schweiz"
+
+#: data.php:926
 msgid "German"
 msgstr "Deutsch"
 
-#: data.php:462
+#: data.php:931
 msgid "Germany"
 msgstr "Deutschland"
 
-#: data.php:480
+#: data.php:936
+msgid "Austria"
+msgstr "Österreich"
+
+#: data.php:946
+msgid "Liechtenstein"
+msgstr "Liechtenstein"
+
+#: data.php:980
+msgid "Greek"
+msgstr "Griechisch"
+
+#: data.php:985
+msgid "Greece"
+msgstr "Griechenland"
+
+#: data.php:990 data.php:1643
+msgid "Cyprus"
+msgstr "Zypern"
+
+#: data.php:1024
+msgid "Hebrew"
+msgstr "Hebräisch"
+
+#: data.php:1030
+msgid "Israel"
+msgstr "Israel"
+
+#: data.php:1064
+msgid "Hindi"
+msgstr "Hinduistisch"
+
+#: data.php:1069
+msgid "India"
+msgstr "Indien"
+
+#: data.php:1074
+msgid "Pakistan"
+msgstr "Pakistan"
+
+#: data.php:1108
+msgid "Hungarian"
+msgstr "Ungarisch"
+
+#: data.php:1113
+msgid "Hungary"
+msgstr "Ungarn"
+
+#: data.php:1147
+msgid "Indonesian"
+msgstr "Indonesisch"
+
+#: data.php:1152
+msgid "Indonesia"
+msgstr "Indonesien"
+
+#: data.php:1186
 msgid "Italian"
 msgstr "Italienisch"
 
-#: data.php:485
+#: data.php:1191
 msgid "Italy"
 msgstr "Italien"
 
-#: data.php:503
+#: data.php:1225
 msgid "Japanese"
 msgstr "Japanisch"
 
-#: data.php:508
+#: data.php:1230
 msgid "Japan"
 msgstr "Japan"
 
-#: data.php:526
+#: data.php:1264
+msgid "Korean"
+msgstr "Koreanisch"
+
+#: data.php:1269
+msgid "South Korea"
+msgstr "Südkorea"
+
+#: data.php:1274
+msgid "North Korea"
+msgstr "Nordkorea"
+
+#: data.php:1308
+msgid "Polish"
+msgstr "Polnisch"
+
+#: data.php:1313
+msgid "Poland"
+msgstr "Polen"
+
+#: data.php:1347
 msgid "Portuguese"
 msgstr "Portugiesisch"
 
-#: data.php:531
+#: data.php:1352
 msgid "Portugal"
 msgstr "Portugal"
 
-#: data.php:536
+#: data.php:1357
 msgid "Brazil"
 msgstr "Brasilien"
 
-#: data.php:554
+#: data.php:1362
+msgid "Mozambique"
+msgstr "Mosambik"
+
+#: data.php:1367
+msgid "Angola"
+msgstr "Angola"
+
+#: data.php:1401
 msgid "Russian"
 msgstr "Russisch"
 
-#: data.php:559
+#: data.php:1406
 msgid "Russia"
 msgstr "Russland"
 
-#: data.php:577
+#: data.php:1411
+msgid "Kazakhstan"
+msgstr "Kasachstan"
+
+#: data.php:1416
+msgid "Belarus"
+msgstr "Weißrussland"
+
+#: data.php:1421
+msgid "Kyrgyzstan"
+msgstr "Kirgisistan"
+
+#: data.php:1426
+msgid "Tajikistan"
+msgstr "Tadschikistan"
+
+#: data.php:1460
 msgid "Spanish"
 msgstr "Spanisch"
 
-#: data.php:582
+#: data.php:1465
 msgid "Spain"
 msgstr "Spanien"
 
-#: data.php:587
+#: data.php:1470
 msgid "Mexico"
 msgstr "Mexiko"
+
+#: data.php:1475
+msgid "Argentina"
+msgstr "Argentinien"
+
+#: data.php:1480
+msgid "Colombia"
+msgstr "Kolumbien"
+
+#: data.php:1485
+msgid "Peru"
+msgstr "Peru"
+
+#: data.php:1490
+msgid "Ecuador"
+msgstr "Ecuador"
+
+#: data.php:1495
+msgid "Bolivia"
+msgstr "Bolivien"
+
+#: data.php:1500
+msgid "Chile"
+msgstr "Chile"
+
+#: data.php:1505
+msgid "Equatorial Guinea"
+msgstr "Äquatorialguinea"
+
+#: data.php:1510
+msgid "Guatemala"
+msgstr "Guatemala"
+
+#: data.php:1515
+msgid "Cuba"
+msgstr "Cuba"
+
+#: data.php:1520
+msgid "Dominican Republic"
+msgstr "Dominikanische Republik"
+
+#: data.php:1525
+msgid "Honduras"
+msgstr "Honduras"
+
+#: data.php:1530
+msgid "Paraguay"
+msgstr "Paraguay"
+
+#: data.php:1535
+msgid "El Salvador"
+msgstr "El Salvador"
+
+#: data.php:1540
+msgid "Nicaragua"
+msgstr "Nicaragua"
+
+#: data.php:1545
+msgid "Costa Rica"
+msgstr "Costa Rica"
+
+#: data.php:1550
+msgid "Panama"
+msgstr "Panama"
+
+#: data.php:1555
+msgid "Uruguay"
+msgstr "Uruguay"
+
+#: data.php:1589
+msgid "Swedish"
+msgstr "Schwedisch"
+
+#: data.php:1594
+msgid "Sweden"
+msgstr "Schweden"
+
+#: data.php:1633
+msgid "Turkish"
+msgstr "Türkisch"
+
+#: data.php:1638
+msgid "Turkey"
+msgstr "Türkei"
+
+#: data.php:1677
+msgid "Ukrainian"
+msgstr "Ukrainisch"
+
+#: data.php:1682
+msgid "Ukraine"
+msgstr "Ukraine"
+
+#: data.php:1716
+msgid "Vietnamese"
+msgstr "Vietnamesisch"
+
+#: data.php:1721
+msgid "Vietnam"
+msgstr "Vietnam"
 
 #. Plugin Name of the plugin/theme
 #: inc/admin/admin-bar.php:25 inc/admin/option-page.php:18
@@ -1043,6 +1451,12 @@ msgstr "wpLingua-Team"
 #. Author URI of the plugin/theme
 msgid "https://wplingua.com/"
 msgstr "https://wplingua.com/"
+
+#~ msgid "UK"
+#~ msgstr "UK"
+
+#~ msgid "USA"
+#~ msgstr "USA"
 
 #~ msgid "Status: Ungenerated"
 #~ msgstr "Status: Ungeneriert"

@@ -7,7 +7,7 @@
  * Author URI: https://wplingua.com/
  * Text Domain: wplingua
  * Domain Path: /languages/
- * Version: 1.2.0
+ * Version: 1.2.1
  * Requires PHP: 7.4
  * License: GPL v2 or later
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -24,7 +24,7 @@ if ( ! defined( 'WPINC' ) ) {
 define( 'WPLNG_API_URL', 'https://api.wplingua.com' );
 define( 'WPLNG_API_VERSION', '1.0' );
 define( 'WPLNG_API_SSLVERIFY', true );
-define( 'WPLNG_PLUGIN_VERSION', '1.2.0' );
+define( 'WPLNG_PLUGIN_VERSION', '1.2.1' );
 define( 'WPLNG_PLUGIN_FILE', plugin_basename( __FILE__ ) );
 define( 'WPLNG_PLUGIN_PATH', dirname( __FILE__ ) );
 define( 'WPLNG_MAX_TRANSLATIONS', 256 );
@@ -152,7 +152,7 @@ function wplng_start() {
 		// Display 100 translation in admin area by default
 		add_filter( 'get_user_option_edit_wplng_translation_per_page', 'wplng_translation_per_page' );
 
-		// Filter translations by status 
+		// Filter translations by status
 		add_action( 'restrict_manage_posts', 'wplng_restrict_manage_posts_translation_status' );
 		add_filter( 'parse_query', 'wplng_posts_filter_translation_status' );
 
