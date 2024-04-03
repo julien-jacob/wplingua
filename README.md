@@ -54,6 +54,4 @@ $ gulp
 # Start the watcher
 $ gulp watch
 
-# Create or update the archive
-$ gulp archive
 ```
