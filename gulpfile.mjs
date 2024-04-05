@@ -98,7 +98,7 @@ gulp.task(images);
 function folder_zip(cb) {
     gulp.src([
         "**/wplingua/**/*"
-    ])
+    ], { removeBOM: false })
         .pipe(zip('wplingua.zip'))
         .pipe(gulp.dest("."))
         .on('end', function () { cb() });
@@ -131,7 +131,7 @@ function folder_create(cb) {
         "!package-lock.json",
         "!wplingua.zip",
         "!*.md"
-    ])
+    ], { removeBOM: false })
         .pipe(gulp.dest("wplingua/"))
         .on('end', function () { cb() });
 };
