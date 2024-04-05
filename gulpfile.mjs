@@ -126,7 +126,7 @@ function folder_create(cb) {
         "!wp-assets/",
         "!wp-assets/**",
         "!.gitignore",
-        "!gulpfile.js",
+        "!gulpfile.mjs",
         "!package.json",
         "!package-lock.json",
         "!wplingua.zip",
