@@ -1,0 +1,1 @@
+{"version":3,"sources":["admin/option-page-exclusions.scss"],"names":[],"mappings":"AAAA,8CAEI,UAAA,CACA,WAAA","file":"admin/option-page-exclusions.css","sourcesContent":["#wplng_excluded_selectors,\r\n#wplng_excluded_url {\r\n    width: 100%;\r\n    resize: none;\r\n}"]}
