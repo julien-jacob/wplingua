@@ -4,7 +4,7 @@ Donate link: https://wplingua.com/
 Tags: translate, translation, multilingual, localization, language
 Requires at least: 6.0
 Tested up to: 6.5
-Stable tag: 1.2.2
+Stable tag: 1.2.3
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -161,11 +161,15 @@ No, not at the moment but in the meantime, you can easily display the language s
 
 == Changelog ==
 
+= 1.2.3 =
+
+* Fix translation in progress
+
 = 1.2.2 =
 
 * CSS and JS files
  * Better minification and compatility
- * Add Map files for
+ * Add Map files
 * Fix flags files
 
 = 1.2.1 =
