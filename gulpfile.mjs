@@ -200,8 +200,8 @@ gulp.task("archive", gulp.series(
 
 gulp.task("watch", () => {
     gulp.watch("src/**/*", gulp.parallel(
-        "css",
-        "js"
+        css,
+        js
     ));
 });
 
