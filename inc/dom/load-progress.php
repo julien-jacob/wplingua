@@ -69,6 +69,12 @@ function wplng_dom_load_progress( $dom, $args ) {
 
 	foreach ( $dom->find( 'body text' ) as $element ) {
 
+		if ( in_array( $element->parent->tag, $edit_link_excluded )
+			|| in_array( $element->parent->tag, $node_text_excluded )
+		) {
+			continue;
+		}
+
 		$text = $element->innertext;
 
 		/**
@@ -107,10 +113,7 @@ function wplng_dom_load_progress( $dom, $args ) {
 			}
 		}
 
-		if ( '' === $text_translated
-			|| in_array( $element->parent->tag, $edit_link_excluded )
-			|| in_array( $element->parent->tag, $node_text_excluded )
-		) {
+		if ( '' === $text_translated ) {
 
 			$innertext  = '<span ';
 			$innertext .= 'class="wplng-in-progress-text" ';
@@ -133,33 +136,15 @@ function wplng_dom_load_progress( $dom, $args ) {
 	$numer_of_translated_texts = count( $args['translations'] );
 	$numer_of_unknow_texts     = (int) $number_of_texts - $numer_of_translated_texts;
 
+	// Calculate percentage
+
 	$percentage = (int) ( ( $numer_of_translated_texts / $number_of_texts ) * 100 );
 
 	if ( $percentage < 1 ) {
 		$percentage = 1;
 	}
 
-	$html = '<div id="wplng-in-progress-container">';
-
-	$html .= '<div id="wplng-in-progress-message">';
-	$html .= '<span class="dashicons dashicons-update wplng-spin"></span> ';
-	$html .= esc_html__( 'Translation in progress', 'wplingua' );
-	$html .= ' - ';
-	$html .= esc_html( $percentage );
-	$html .= ' %';
-	$html .= '</div>'; // End #wplng-translation-in-progress
-
-	$html .= '<div id="wplng-progress-bar">';
-	$html .= '<div id="wplng-progress-bar-value" ';
-	$html .= 'style="width: ' . esc_attr( $percentage ) . '%">';
-	$html .= '</div>'; // End #wplng-progress-bar-value
-	$html .= '</div>'; // End #wplng-progress-bar
-
-	$html .= '</div>'; // End #wplng-in-progress-container
-
-	/**
-	 * Create the html of iframe
-	 */
+	// Make the reload URL
 
 	$url_reload = $args['url_current'];
 
@@ -183,6 +168,31 @@ function wplng_dom_load_progress( $dom, $args ) {
 
 	}
 
+	$html  = '<div ';
+	$html .= 'id="wplng-in-progress-container" ';
+	$html .= 'wplng-reload="' . esc_url( $url_reload ) . '"';
+	$html .= '>';
+
+	$html .= '<div id="wplng-in-progress-message">';
+	$html .= '<span class="dashicons dashicons-update wplng-spin"></span> ';
+	$html .= esc_html__( 'Translation in progress', 'wplingua' );
+	$html .= ' - ';
+	$html .= esc_html( $percentage );
+	$html .= ' %';
+	$html .= '</div>'; // End #wplng-translation-in-progress
+
+	$html .= '<div id="wplng-progress-bar">';
+	$html .= '<div id="wplng-progress-bar-value" ';
+	$html .= 'style="width: ' . esc_attr( $percentage ) . '%">';
+	$html .= '</div>'; // End #wplng-progress-bar-value
+	$html .= '</div>'; // End #wplng-progress-bar
+
+	$html .= '</div>'; // End #wplng-in-progress-container
+
+	/**
+	 * Create the html of iframe
+	 */
+
 	$url_iframe = add_query_arg(
 		array(
 			'wplng-load'    => 'loading',
@@ -194,7 +204,6 @@ function wplng_dom_load_progress( $dom, $args ) {
 	$html .= '<iframe ';
 	$html .= 'id="wplng-in-progress-iframe" ';
 	$html .= 'src="' . esc_url( $url_iframe ) . '" ';
-	$html .= 'wplng-reload="' . esc_url( $url_reload ) . '" ';
 	$html .= 'style="display: none !important;">';
 	$html .= '</iframe>'; // End #wplng-translation-in-progress
 

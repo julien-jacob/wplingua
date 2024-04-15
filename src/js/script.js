@@ -51,8 +51,9 @@ jQuery(document).ready(function ($) {
      * Code for preloading
      */
 
-    $("#wplng-in-progress-iframe").load(function () {
-        window.location.href = $(this).attr("wplng-reload");
+    $("#wplng-in-progress-iframe").on("load", function () {
+        let urlReload = $("#wplng-in-progress-container").attr("wplng-reload");
+        window.location.href = urlReload;
     });
 
     if ($("#wpadminbar").length && $("#wplng-in-progress-container").length) {
