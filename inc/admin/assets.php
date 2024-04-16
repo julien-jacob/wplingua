@@ -49,12 +49,6 @@ function wplng_option_page_settings_assets( $hook ) {
 		WPLNG_PLUGIN_VERSION
 	);
 
-	wp_enqueue_style(
-		'wplingua-option-pages',
-		plugins_url() . '/wplingua/assets/css/admin/option-page.css',
-		array(),
-		WPLNG_PLUGIN_VERSION
-	);
 }
 
 
@@ -100,12 +94,6 @@ function wplng_option_page_register_assets( $hook ) {
 		WPLNG_PLUGIN_VERSION
 	);
 
-	wp_enqueue_style(
-		'wplingua-option-pages',
-		plugins_url() . '/wplingua/assets/css/admin/option-page.css',
-		array(),
-		WPLNG_PLUGIN_VERSION
-	);
 }
 
 
@@ -154,13 +142,6 @@ function wplng_option_page_switcher_assets( $hook ) {
 	wp_enqueue_style(
 		'wplingua-option-switcher',
 		plugins_url() . '/wplingua/assets/css/admin/option-page-switcher.css',
-		array(),
-		WPLNG_PLUGIN_VERSION
-	);
-
-	wp_enqueue_style(
-		'wplingua-option-pages',
-		plugins_url() . '/wplingua/assets/css/admin/option-page.css',
 		array(),
 		WPLNG_PLUGIN_VERSION
 	);
@@ -233,13 +214,6 @@ function wplng_option_page_exclusions_assets( $hook ) {
 		WPLNG_PLUGIN_VERSION
 	);
 
-	wp_enqueue_style(
-		'wplingua-option-pages',
-		plugins_url() . '/wplingua/assets/css/admin/option-page.css',
-		array(),
-		WPLNG_PLUGIN_VERSION
-	);
-
 }
 
 
@@ -281,13 +255,6 @@ function wplng_option_page_dictionary_assets( $hook ) {
 	wp_enqueue_style(
 		'wplingua-option-dictionary',
 		plugins_url() . '/wplingua/assets/css/admin/option-page-dictionary.css',
-		array(),
-		WPLNG_PLUGIN_VERSION
-	);
-
-	wp_enqueue_style(
-		'wplingua-option-pages',
-		plugins_url() . '/wplingua/assets/css/admin/option-page.css',
 		array(),
 		WPLNG_PLUGIN_VERSION
 	);
