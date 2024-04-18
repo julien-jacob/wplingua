@@ -71,11 +71,15 @@ function wplng_link_alternate_hreflang() {
 		$url_x_default = $url_original;
 	}
 
-	$html .= '<link ';
-	$html .= 'rel="alternate" ';
-	$html .= 'href="' . esc_url( $url_x_default ) . '" ';
-	$html .= 'hreflang="x-default"/>';
-	$html .= PHP_EOL;
+	$url_x_default = apply_filters( 'wplng_hreflang_x_default', $url_x_default );
+
+	if ( ! empty( $url_x_default ) ) {
+		$html .= '<link ';
+		$html .= 'rel="alternate" ';
+		$html .= 'href="' . esc_url( $url_x_default ) . '" ';
+		$html .= 'hreflang="x-default"/>';
+		$html .= PHP_EOL;
+	}
 
 	// Create the ending comment
 	$html .= '<!-- / wpLingua plugin. -->' . PHP_EOL . PHP_EOL;
