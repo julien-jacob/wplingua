@@ -20,6 +20,8 @@ function wplng_link_alternate_hreflang() {
 	$html             = PHP_EOL . PHP_EOL;
 	$language_website = wplng_get_language_website();
 	$languages_target = wplng_get_languages_target();
+	$url_original     = wplng_get_url_original();
+	$url_x_default    = '';
 
 	if ( empty( $language_website ) || empty( $languages_target ) ) {
 		return;
@@ -32,14 +34,19 @@ function wplng_link_alternate_hreflang() {
 	// Create meta generator
 	$html .= '<meta ';
 	$html .= 'name="generator" ';
-	$html .= 'content="wpLingua ' . esc_attr( WPLNG_PLUGIN_VERSION ) . '" />';
+	$html .= 'content="wpLingua ' . esc_attr( WPLNG_PLUGIN_VERSION ) . '"/>';
 	$html .= PHP_EOL;
 
 	// Create alternate link for website language
+
+	if ( 'en' === $language_website['id'] ) {
+		$url_x_default = $url_original;
+	}
+
 	$html .= '<link ';
 	$html .= 'rel="alternate" ';
-	$html .= 'hreflang="' . esc_attr( $language_website['id'] ) . '" ';
-	$html .= 'href="' . esc_url( wplng_get_url_original() ) . '" />';
+	$html .= 'href="' . esc_url( $url_original ) . '" ';
+	$html .= 'hreflang="' . esc_attr( $language_website['id'] ) . '"/>';
 	$html .= PHP_EOL;
 
 	// Create alternate link for each target languages
@@ -47,12 +54,28 @@ function wplng_link_alternate_hreflang() {
 
 		$url = wplng_get_url_current_for_language( $language_target['id'] );
 
+		if ( 'en' === $language_target['id'] ) {
+			$url_x_default = $url;
+		}
+
 		$html .= '<link ';
 		$html .= 'rel="alternate" ';
-		$html .= 'hreflang="' . esc_attr( $language_target['id'] ) . '" ';
-		$html .= 'href="' . esc_url( $url ) . '" />';
+		$html .= 'href="' . esc_url( $url ) . '" ';
+		$html .= 'hreflang="' . esc_attr( $language_target['id'] ) . '"/>';
 		$html .= PHP_EOL;
 	}
+
+	// Create alternate link for x-default
+
+	if ( '' === $url_x_default ) {
+		$url_x_default = $url_original;
+	}
+
+	$html .= '<link ';
+	$html .= 'rel="alternate" ';
+	$html .= 'href="' . esc_url( $url_x_default ) . '" ';
+	$html .= 'hreflang="x-default"/>';
+	$html .= PHP_EOL;
 
 	// Create the ending comment
 	$html .= '<!-- / wpLingua plugin. -->' . PHP_EOL . PHP_EOL;
