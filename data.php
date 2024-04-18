@@ -118,7 +118,25 @@ function wplng_data_excluded_node_text() {
 
 
 /**
- * Get attributes and selectors to translate
+ * Get attributes and selectors of JSON to translate
+ *
+ * @return array
+ */
+function wplng_data_attr_json_to_translate() {
+	return apply_filters(
+		'wplng_attr_json_to_translate',
+		array(
+			array(
+				'attr'     => 'data-et-multi-view',
+				'selector' => '[data-et-multi-view]',
+			),
+		)
+	);
+}
+
+
+/**
+ * Get attributes and selectors of texts to translate
  *
  * @return array
  */
