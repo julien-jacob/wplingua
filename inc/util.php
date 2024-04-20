@@ -168,7 +168,24 @@ function wplng_json_element_is_translatable( $element, $parents ) {
 					( 'logo' === $parents[ count( $parents ) - 2 ] )
 					&& ( 'caption' === $parents[ count( $parents ) - 1 ] )
 				)
+				|| (
+					( 'image' === $parents[ count( $parents ) - 2 ] )
+					&& ( 'caption' === $parents[ count( $parents ) - 1 ] )
+				)
+				|| (
+					( 'logo' === $parents[ count( $parents ) - 2 ] )
+					&& ( 'caption' === $parents[ count( $parents ) - 1 ] )
+				)
+				|| (
+					( 'author' === $parents[ count( $parents ) - 2 ] )
+					&& ( 'headline' === $parents[ count( $parents ) - 1 ] )
+				)
+				|| (
+					( 'articleSection' === $parents[ count( $parents ) - 2 ] )
+					&& ( is_int( $parents[ count( $parents ) - 1 ] ) )
+				)
 				|| ( 'name' === $parents[ count( $parents ) - 1 ] )
+				|| ( 'description' === $parents[ count( $parents ) - 1 ] )
 			)
 		) {
 
@@ -191,7 +208,7 @@ function wplng_json_element_is_translatable( $element, $parents ) {
 			/**
 			 * Is WooCommerce address params
 			 */
-			
+
 			$is_translatable = true;
 		}
 

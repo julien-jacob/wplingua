@@ -36,8 +36,6 @@ function wplng_data_json_to_translate() {
 			array( 'wc_address_i18n_params', 'i18n_optional_text' ),
 			// Plugin : YITH
 			array( 'yith_wcwl_l10n', 'labels', 'cookie_disabled' ),
-			// Plugin : Yoast SEO
-			array( '@graph', 0, 'description' ),
 		)
 	);
 }
