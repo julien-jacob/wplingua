@@ -66,6 +66,8 @@ function wplng_translate_html( $html, $args = array() ) {
 	$dom = wplng_dom_mode_editor( $dom, $args );
 	$dom = wplng_dom_mode_list( $dom, $args );
 
+	// TODO : Traduire les (Récursif, <script type="text/html">)
+
 	/**
 	 * Replace exclude tags by HTML
 	 */
