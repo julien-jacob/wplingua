@@ -71,9 +71,14 @@ function wplng_text_is_translatable( $text ) {
  */
 function wplng_text_esc( $text ) {
 
-	$text = html_entity_decode( $text );
 	$text = esc_html( $text );
 	$text = esc_attr( $text );
+
+	$text = wp_specialchars_decode(
+		$text,
+		ENT_QUOTES | ENT_SUBSTITUTE | ENT_HTML401
+	);
+
 	$text = str_replace( '\\', '', $text );
 	$text = preg_replace( '#\s+#', ' ', $text );
 	$text = trim( $text );
@@ -168,7 +173,24 @@ function wplng_json_element_is_translatable( $element, $parents ) {
 					( 'logo' === $parents[ count( $parents ) - 2 ] )
 					&& ( 'caption' === $parents[ count( $parents ) - 1 ] )
 				)
+				|| (
+					( 'image' === $parents[ count( $parents ) - 2 ] )
+					&& ( 'caption' === $parents[ count( $parents ) - 1 ] )
+				)
+				|| (
+					( 'logo' === $parents[ count( $parents ) - 2 ] )
+					&& ( 'caption' === $parents[ count( $parents ) - 1 ] )
+				)
+				|| (
+					( 'author' === $parents[ count( $parents ) - 2 ] )
+					&& ( 'headline' === $parents[ count( $parents ) - 1 ] )
+				)
+				|| (
+					( 'articleSection' === $parents[ count( $parents ) - 2 ] )
+					&& ( is_int( $parents[ count( $parents ) - 1 ] ) )
+				)
 				|| ( 'name' === $parents[ count( $parents ) - 1 ] )
+				|| ( 'description' === $parents[ count( $parents ) - 1 ] )
 			)
 		) {
 
@@ -191,7 +213,7 @@ function wplng_json_element_is_translatable( $element, $parents ) {
 			/**
 			 * Is WooCommerce address params
 			 */
-			
+
 			$is_translatable = true;
 		}
 

@@ -15,6 +15,10 @@ if ( ! defined( 'WPINC' ) ) {
  */
 function wplng_parse_json( $json, $parents = array() ) {
 
+	if ( empty( $json ) ) {
+		return array();
+	}
+
 	$json_decoded = json_decode( $json, true );
 
 	if ( empty( $json_decoded ) || ! is_array( $json_decoded ) ) {

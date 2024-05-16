@@ -243,7 +243,7 @@ function wplng_save_translation_new( $language_id, $original, $translation ) {
 	 */
 
 	$tite_max_length = 100;
-	$title           = substr( $original, 0, $tite_max_length );
+	$title           = mb_substr( $original, 0, $tite_max_length );
 	if ( strlen( $original ) > $tite_max_length ) {
 		$title .= __( '...', 'wplingua' );
 	}

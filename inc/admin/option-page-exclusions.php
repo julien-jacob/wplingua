@@ -14,7 +14,7 @@ if ( ! defined( 'WPINC' ) ) {
 function wplng_option_page_exclusions() {
 	?>
 
-	<h1 class="wplin-option-page-title"><span class="dashicons dashicons-translation"></span> <?php esc_html_e( 'wpLingua - Exclusion rules', 'wplingua' ); ?></h1>
+	<h1 class="wplng-option-page-title"><span class="dashicons dashicons-translation"></span> <?php esc_html_e( 'wpLingua - Exclusion rules', 'wplingua' ); ?></h1>
 
 	<div class="wrap">
 		<hr class="wp-header-end">

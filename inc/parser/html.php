@@ -22,7 +22,7 @@ function wplng_parse_html( $html ) {
 	}
 
 	/**
-	 * Find and parse JSON
+	 * Find and parse JSON in scripts
 	 */
 
 	foreach ( $dom->find( 'script[type="application/ld+json"]' ) as $element ) {
@@ -30,6 +30,26 @@ function wplng_parse_html( $html ) {
 			$texts,
 			wplng_parse_json( $element->innertext )
 		);
+	}
+
+	/**
+	 * Parse JSON in attriutes
+	 */
+
+	$attr_json_to_translate = wplng_data_attr_json_to_translate();
+
+	foreach ( $attr_json_to_translate as $attr ) {
+		foreach ( $dom->find( $attr['selector'] ) as $element ) {
+
+			if ( empty( $element->attr[ $attr['attr'] ] ) ) {
+				continue;
+			}
+
+			$texts = array_merge(
+				$texts,
+				wplng_parse_json( $element->attr[ $attr['attr'] ] )
+			);
+		}
 	}
 
 	/**
@@ -63,12 +83,12 @@ function wplng_parse_html( $html ) {
 	}
 
 	/**
-	 * Parse attr
+	 * Parse texts in attriutes
 	 */
 
-	$attr_to_translate = wplng_data_attr_text_to_translate();
+	$attr_texts_to_translate = wplng_data_attr_text_to_translate();
 
-	foreach ( $attr_to_translate as $attr ) {
+	foreach ( $attr_texts_to_translate as $attr ) {
 		foreach ( $dom->find( $attr['selector'] ) as $element ) {
 
 			if ( empty( $element->attr[ $attr['attr'] ] ) ) {

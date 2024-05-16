@@ -404,8 +404,24 @@ function wplng_ajax_generate_translation() {
 	}
 
 	// Check and sanitize text to translate
+	// (And convert img emoji to emoji)
 
-	$text = sanitize_text_field( $_POST['text'] );
+	$text = wp_kses(
+		$_POST['text'], 
+		array(
+			'img' => array(
+				'alt' => array()
+			)
+		)
+	);
+
+	$text = preg_replace(
+		'/<img alt=\\"(.*)\\">/U',
+		'$1',
+		$text
+	);
+
+	$text = sanitize_text_field( $text );
 	$text = esc_attr( $text );
 
 	if ( ! wplng_text_is_translatable( $text ) ) {

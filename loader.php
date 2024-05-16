@@ -57,8 +57,7 @@ require_once WPLNG_PLUGIN_PATH . '/inc/dom/replace-body-class.php';
 require_once WPLNG_PLUGIN_PATH . '/inc/dom/replace-links.php';
 require_once WPLNG_PLUGIN_PATH . '/inc/dom/translate-js.php';
 require_once WPLNG_PLUGIN_PATH . '/inc/dom/translate-json.php';
-require_once WPLNG_PLUGIN_PATH . '/inc/dom/translate-texts-attr.php';
-require_once WPLNG_PLUGIN_PATH . '/inc/dom/translate-texts-nodes.php';
+require_once WPLNG_PLUGIN_PATH . '/inc/dom/translate-texts.php';
 
 // Require files in /inc/lib/ folder
 require_once WPLNG_PLUGIN_PATH . '/inc/lib/simple-html-dom.php';

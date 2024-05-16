@@ -63,7 +63,7 @@ function wplng_url_translate( $url, $language_target_id = '' ) {
 
 		$url = preg_replace(
 			'#^(http:\/\/|https:\/\/)?' . $preg_domain . '(.*)$#',
-			'$1' . $parsed_url_home['host'] . '/' . $language_target_id . '$2',
+			'${1}' . $parsed_url_home['host'] . '/' . $language_target_id . '${2}',
 			$url
 		);
 
