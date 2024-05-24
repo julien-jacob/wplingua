@@ -158,7 +158,7 @@ function wplng_option_page_register() {
 				</tr>
 
 				<tr>
-					<th scope="row"><span class="dashicons dashicons-yes-alt"></span> <?php esc_html_e( 'Get free API key', 'wplingua' ); ?></th>
+					<th scope="row"><span class="dashicons dashicons-yes-alt"></span> <?php esc_html_e( 'Get API key', 'wplingua' ); ?></th>
 					<td>
 						<?php wplng_register_part_free_api_key(); ?>
 					</td>
@@ -222,8 +222,8 @@ function wplng_register_part_free_api_key() {
 	}
 
 	?>
-	<p for="wplng_api_key"><strong><?php esc_html_e( 'Register free wpLingua API key:', 'wplingua' ); ?></strong></p>
-	<p><?php esc_html_e( 'Get a free wpLingua API key and make your website bilingual in a minute!', 'wplingua' ); ?></p>
+	<p for="wplng_api_key"><strong><?php esc_html_e( 'Register wpLingua API key:', 'wplingua' ); ?></strong></p>
+	<p><?php esc_html_e( 'Claim a wpLingua API key and make your website multilingual in a minute! For a personal blog or a non-commercial site, get one unlimited free language.', 'wplingua' ); ?></p>
 	<hr>
 	<br>
 	<fieldset>
@@ -265,7 +265,7 @@ function wplng_register_part_free_api_key() {
 		<textarea name="wplng_request_free_key" id="wplng_request_free_key"></textarea>
 	</fieldset>
 	<button id="wplng-get-free-api-submit" class="button button-primary">
-		<?php esc_html_e( 'Get a free API key', 'wplingua' ); ?>
+		<?php esc_html_e( 'Get API key', 'wplingua' ); ?>
 	</button>
 	<?php
 }
