@@ -22,6 +22,7 @@ require_once WPLNG_PLUGIN_PATH . '/inc/hreflang.php';
 require_once WPLNG_PLUGIN_PATH . '/inc/languages.php';
 require_once WPLNG_PLUGIN_PATH . '/inc/search.php';
 require_once WPLNG_PLUGIN_PATH . '/inc/shortcode.php';
+require_once WPLNG_PLUGIN_PATH . '/inc/switcher-nav-menu.php';
 require_once WPLNG_PLUGIN_PATH . '/inc/switcher.php';
 require_once WPLNG_PLUGIN_PATH . '/inc/translation.php';
 require_once WPLNG_PLUGIN_PATH . '/inc/url.php';
@@ -31,6 +32,7 @@ require_once WPLNG_PLUGIN_PATH . '/inc/woocommerce.php';
 // Require files in /inc/admin/ folder
 require_once WPLNG_PLUGIN_PATH . '/inc/admin/admin-bar.php';
 require_once WPLNG_PLUGIN_PATH . '/inc/admin/assets.php';
+require_once WPLNG_PLUGIN_PATH . '/inc/admin/switcher-nav-menu.php';
 require_once WPLNG_PLUGIN_PATH . '/inc/admin/option-page-dictionary.php';
 require_once WPLNG_PLUGIN_PATH . '/inc/admin/option-page-exclusions.php';
 require_once WPLNG_PLUGIN_PATH . '/inc/admin/option-page-register.php';

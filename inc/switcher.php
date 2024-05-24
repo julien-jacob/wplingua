@@ -134,7 +134,7 @@ function wplng_get_switcher_name_format() {
 	if ( ! $is_valid
 		|| (
 			'none' === wplng_get_switcher_flags_style()
-			&& 'none' === $name_format 
+			&& 'none' === $name_format
 		)
 	) {
 		$name_format = 'original';
@@ -278,7 +278,7 @@ function wplng_switcher_wp_footer() {
 
 
 /**
- * Print HTML of wpLingua switcher
+ * Get HTML of wpLingua switcher
  *
  * @param array $arg
  * @return string

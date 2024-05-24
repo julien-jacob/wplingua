@@ -370,6 +370,53 @@ function wplng_data_switcher_valid_flags_style() {
 
 
 /**
+ * ------ Data : Switcher nav menu options ------
+ */
+
+/**
+ * Get options for switcher name format in nav menu
+ *
+ * @return array
+ */
+function wplng_data_switcher_nav_menu_valid_name_format() {
+	return array(
+		't' => __( 'Translated name', 'wplingua' ),
+		'o' => __( 'Original name', 'wplingua' ),
+		'i' => __( 'Language ID', 'wplingua' ),
+		// 'n' => __( 'No display', 'wplingua' ),
+	);
+}
+
+
+/**
+ * Get options for switcher flags style in nav menu
+*
+* @return array
+*/
+function wplng_data_switcher_nav_menu_valid_flags_style() {
+	return array(
+		'n' => __( 'Not display', 'wplingua' ),
+		'y' => __( 'Display', 'wplingua' ),
+	);
+}
+
+
+/**
+ * Get options for switcher layout in nav menu
+ *
+ * @return array
+ */
+function wplng_data_switcher_nav_menu_valid_layout() {
+	return array(
+		'a' => __( 'List with active class', 'wplingua' ),
+		'l' => __( 'List without active class', 'wplingua' ),
+		't' => __( 'List without current language', 'wplingua' ),
+		's' => __( 'Sub-list', 'wplingua' ),
+	);
+}
+
+
+/**
  * ------ Data : Languages ------
  */
 
