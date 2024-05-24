@@ -165,7 +165,7 @@ function wp_nav_menu_switcher_box_add() {
 					<hr>
 				</li>
 
-				<li style="display: none;">
+				<li>
 					<label for="wplng-menu-flag">
 						<?php esc_html_e( 'Displayed flag: ', 'wplingua' ); ?>
 					</label>

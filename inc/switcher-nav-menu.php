@@ -152,6 +152,10 @@ function wplng_switcher_nav_menu_replace_items( $items ) {
 			$new_item->classes[]  = 'wplng-language-parent';
 			$new_item->classes[]  = 'wplng-language-current';
 
+			if ( 'y' === $args['flags_style']['value'] ) {
+				$new_item->wplng_flag = $current_language['flag'];
+			}
+
 			$new_items[] = $new_item;
 		}
 
@@ -191,6 +195,10 @@ function wplng_switcher_nav_menu_replace_items( $items ) {
 					$new_item->current   = true;
 					$new_item->classes[] = 'current-menu-item';
 				}
+			}
+
+			if ( 'y' === $args['flags_style']['value'] ) {
+				$new_item->wplng_flag = $language_website['flag'];
 			}
 
 			$new_items[] = $new_item;
@@ -237,6 +245,10 @@ function wplng_switcher_nav_menu_replace_items( $items ) {
 				}
 			}
 
+			if ( 'y' === $args['flags_style']['value'] ) {
+				$new_item->wplng_flag = $language_target['flag'];
+			}
+
 			$new_items[] = $new_item;
 
 			$offset++;
@@ -244,4 +256,21 @@ function wplng_switcher_nav_menu_replace_items( $items ) {
 	} // End foreach $items
 
 	return $new_items;
+}
+
+
+/**
+ * Add wplng_flag attribute in nav menu switcher
+ *
+ * @param array $atts
+ * @param WP_Post $menu_item
+ * @return array
+ */
+function wplng_add_nav_menu_link_attributes_atts( $atts, $menu_item ) {
+
+	if ( ! empty( $menu_item->wplng_flag ) ) {
+		$atts['wplng_flag'] = $menu_item->wplng_flag;
+	}
+
+	return $atts;
 }

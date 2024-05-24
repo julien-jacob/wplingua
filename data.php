@@ -390,13 +390,13 @@ function wplng_data_switcher_nav_menu_valid_name_format() {
 
 /**
  * Get options for switcher flags style in nav menu
-*
-* @return array
-*/
+ *
+ * @return array
+ */
 function wplng_data_switcher_nav_menu_valid_flags_style() {
 	return array(
-		'n' => __( 'Not display', 'wplingua' ),
 		'y' => __( 'Display', 'wplingua' ),
+		'n' => __( 'Not display', 'wplingua' ),
 	);
 }
 
