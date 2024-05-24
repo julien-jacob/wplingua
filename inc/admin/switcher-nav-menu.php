@@ -61,6 +61,12 @@ function wplng_switcher_nav_menu_inline_scripts( $hook ) {
 			font-size: 12px;
 			line-height: 1.5;
 		}
+
+		.wplng-menu-item-settings-switcher select {
+			width: 100%;
+			max-width: 100%;
+			margin: 10px 0;
+		}
 	</style>
 	<script id="wplng-nav-menu-script">
 		window.onload = function() {
@@ -70,14 +76,15 @@ function wplng_switcher_nav_menu_inline_scripts( $hook ) {
 			 */
 
 			 // Infinite nav menu switcher
+			 // Update the edit fields event listen
 
 			let wplngNewValidate = document.getElementById('submit-posttype-wplingua-endpoints');
 			wplngNewValidate.addEventListener('click', wplngAlwaysValidate);
 
 			function wplngAlwaysValidate() {
+				wplngUpdateEditField();
 				setTimeout(() => { 
 					document.getElementById('wplng-validate-id').checked = true;
-					console.log('ok!')
 				}, 1500)
 			}
 
@@ -93,10 +100,6 @@ function wplng_switcher_nav_menu_inline_scripts( $hook ) {
 
 			function wplngUpdateMenuSwitcherUrl() {
 
-				let nameFormat = document.getElementById('wplng-menu-name-format').value;
-				let flag = document.getElementById('wplng-menu-flag').value;
-				let layout = document.getElementById('wplng-menu-layout').value;
-
 				let url = "#wplng";
 				url += "-n" + wplngNewNameFormat.value;
 				url += "-f" + wplngNewFlag.value;
@@ -107,6 +110,46 @@ function wplng_switcher_nav_menu_inline_scripts( $hook ) {
 
 			wplngUpdateMenuSwitcherUrl();
 
+			/**
+			 * wpLingua: Edit nav menu switcher
+			 */
+
+			function wplngUpdateEditField() {
+
+				let wplngEditNameFormat = document.getElementsByClassName('wplng-menu-name-format-edit')
+				let wplngEditFlag = document.getElementsByClassName('wplng-menu-flag-edit')
+				let wplngEditLayout = document.getElementsByClassName('wplng-menu-layout-edit')
+
+				for (var i = 0; i < wplngEditNameFormat.length; i++) {
+					wplngEditNameFormat[i].addEventListener('change', wplngEditMenuSwitcherUrl);
+				}
+
+				for (var i = 0; i < wplngEditFlag.length; i++) {
+					wplngEditFlag[i].addEventListener('change', wplngEditMenuSwitcherUrl);
+				}
+
+				for (var i = 0; i < wplngEditLayout.length; i++) {
+					wplngEditLayout[i].addEventListener('change', wplngEditMenuSwitcherUrl);
+				}
+			}
+
+			function wplngEditMenuSwitcherUrl() {
+
+				let item = this.getAttribute("item");
+
+				let nameFormat = document.getElementById('wplng-menu-name-format-' + item).value;
+				let flag = document.getElementById('wplng-menu-flag-' + item).value;
+				let layout = document.getElementById('wplng-menu-layout-' + item).value;
+
+				let url = "#wplng";
+				url += "-n" + nameFormat;
+				url += "-f" + flag;
+				url += "-l" + layout;
+
+				document.getElementById('edit-menu-item-url-' + item).value = url;
+			}
+
+			wplngUpdateEditField();
 		}
 	</script>
 	<?php
@@ -245,18 +288,78 @@ function wp_nav_menu_switcher_box_edit( $item_id, $menu_item ) {
 		return;
 	}
 
-	$html  = '<div class="wplng-menu-item-settings-switcher">';
-	$html .= esc_html__( 'Displayed name: ', 'wplingua' );
-	$html .= esc_html( $args['name_format']['label'] );
-	$html .= '<br>';
-	$html .= esc_html__( 'Displayed flag: ', 'wplingua' );
-	$html .= esc_html( $args['flags_style']['label'] );
-	$html .= '<br>';
-	$html .= esc_html__( 'Layout: ', 'wplingua' );
-	$html .= esc_html( $args['layout']['label'] );
-	$html .= '<hr>';
-	$html .= '</div>'; // End .wplng-menu-item-settings-switcher
+	$valid_name_format = wplng_data_switcher_nav_menu_valid_name_format();
+	$valid_flags_style = wplng_data_switcher_nav_menu_valid_flags_style();
+	$valid_layout      = wplng_data_switcher_nav_menu_valid_layout();
 
-	echo $html;
-
+	?>
+	<div class="wplng-menu-item-settings-switcher">
+		<label for="wplng-menu-name-format-<?php esc_attr_e( $item_id ); ?>">
+			<?php esc_html_e( 'Displayed name: ', 'wplingua' ); ?>
+		</label>
+		<select 
+			class="wplng-menu-name-format-edit" 
+			id="wplng-menu-name-format-<?php esc_attr_e( $item_id ); ?>" 
+			name="wplng-menu-name-format-<?php esc_attr_e( $item_id ); ?>"
+			item="<?php esc_attr_e( $item_id ); ?>" 
+		>
+			<?php
+			foreach ( $valid_name_format as $key => $value ) {
+				if ( $key === $args['name_format']['value'] ) {
+					echo '<option value="' . esc_attr( $key ) . '" selected>';
+				} else {
+					echo '<option value="' . esc_attr( $key ) . '">';
+				}
+				echo esc_html( $value );
+				echo '</option>';
+			}
+			?>
+		</select>
+		<hr>
+		<label for="wplng-menu-flag-<?php esc_attr_e( $item_id ); ?>">
+			<?php esc_html_e( 'Displayed flag: ', 'wplingua' ); ?>
+		</label>
+		<select 
+			class="wplng-menu-flag-edit" 
+			id="wplng-menu-flag-<?php esc_attr_e( $item_id ); ?>" 
+			name="wplng-menu-flag-<?php esc_attr_e( $item_id ); ?>"
+			item="<?php esc_attr_e( $item_id ); ?>" 
+		>
+			<?php
+			foreach ( $valid_flags_style as $key => $value ) {
+				if ( $key === $args['flags_style']['value'] ) {
+					echo '<option value="' . esc_attr( $key ) . '" selected>';
+				} else {
+					echo '<option value="' . esc_attr( $key ) . '">';
+				}
+				echo esc_html( $value );
+				echo '</option>';
+			}
+			?>
+		</select>
+		<hr>
+		<label for="wplng-menu-layout-<?php esc_attr_e( $item_id ); ?>">
+			<?php esc_html_e( 'Layout: ', 'wplingua' ); ?>
+		</label>
+		<select 
+			class="wplng-menu-layout-edit" 
+			id="wplng-menu-layout-<?php esc_attr_e( $item_id ); ?>" 
+			name="wplng-menu-layout-<?php esc_attr_e( $item_id ); ?>"
+			item="<?php esc_attr_e( $item_id ); ?>" 
+		>
+			<?php
+			foreach ( $valid_layout as $key => $value ) {
+				if ( $key === $args['layout']['value'] ) {
+					echo '<option value="' . esc_attr( $key ) . '" selected>';
+				} else {
+					echo '<option value="' . esc_attr( $key ) . '">';
+				}
+				echo esc_html( $value );
+				echo '</option>';
+			}
+			?>
+		</select>
+		<hr>
+	</div>
+	<?php
 }

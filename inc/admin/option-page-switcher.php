@@ -209,11 +209,15 @@ function wplng_option_page_switcher() {
 							</select>
 
 						</fieldset>
-						<br>
+						<hr>
 						<p>
 							<strong class="wplng-fe-50"><?php esc_html_e( 'Shortcode switcher: ', 'wplingua' ); ?></strong>
 							<code class="wplng-fe-50">[wplng_switcher]</code>
 						</p>
+						<hr>
+						<p><strong><?php esc_html_e( 'Swicher in menu: ', 'wplingua' ); ?></strong></p>
+						<p><?php esc_html_e('If the active theme manages menus, it\'s possible to add language switcher to them. The design of these language switcher will be defined by the theme.', 'wplingua') ?></p>
+						<p><?php esc_html_e('Add or edit language switcher in menus: ', 'wplingua') ?> <strong><?php esc_html_e('Appearance → Menus', 'wplingua') ?></strong></p>
 
 					</td>
 				</tr>

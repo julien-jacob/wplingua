@@ -172,8 +172,8 @@ function wplng_start() {
 		add_action( 'wp_footer', 'wplng_switcher_wp_footer' );
 
 		// Add languages switcher in nav menu
-		add_filter( 'wp_nav_menu_objects', 'wplng_switcher_nav_menu_replace_items', 10 );
-		add_filter( 'nav_menu_link_attributes', 'wplng_add_nav_menu_link_attributes_atts', 10, 3 );
+		add_filter( 'wp_nav_menu_objects', 'wplng_switcher_nav_menu_replace_items' );
+		add_filter( 'nav_menu_link_attributes', 'wplng_add_nav_menu_link_attributes_atts', 10, 2 );
 
 		// Set alternate links with hreflang parametters
 		add_action( 'wp_head', 'wplng_link_alternate_hreflang' );
