@@ -248,9 +248,9 @@ function wp_nav_menu_switcher_box_edit( $item_id, $menu_item ) {
 	$html  = '<div class="wplng-menu-item-settings-switcher">';
 	$html .= esc_html__( 'Displayed name: ', 'wplingua' );
 	$html .= esc_html( $args['name_format']['label'] );
-	// $html .= '<br>';
-	// $html .= esc_html__( 'Displayed flag: ', 'wplingua' );
-	// $html .= esc_html( $args['flags_style']['label'] );
+	$html .= '<br>';
+	$html .= esc_html__( 'Displayed flag: ', 'wplingua' );
+	$html .= esc_html( $args['flags_style']['label'] );
 	$html .= '<br>';
 	$html .= esc_html__( 'Layout: ', 'wplingua' );
 	$html .= esc_html( $args['layout']['label'] );

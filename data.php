@@ -380,8 +380,8 @@ function wplng_data_switcher_valid_flags_style() {
  */
 function wplng_data_switcher_nav_menu_valid_name_format() {
 	return array(
-		't' => __( 'Translated name', 'wplingua' ),
 		'o' => __( 'Original name', 'wplingua' ),
+		't' => __( 'Translated name', 'wplingua' ),
 		'i' => __( 'Language ID', 'wplingua' ),
 		// 'n' => __( 'No display', 'wplingua' ),
 	);

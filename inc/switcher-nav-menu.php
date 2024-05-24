@@ -145,9 +145,30 @@ function wplng_switcher_nav_menu_replace_items( $items ) {
 
 			$new_item = clone $item_template;
 
+			$title = '';
+
+			switch ( $args['name_format']['value'] ) {
+				case 'o':
+					$title = wplng_get_language_name_untranslated(
+						$current_language['id']
+					);
+					break;
+
+				case 't':
+					$title = wplng_get_language_name_translated(
+						$current_language['id'],
+						$language_current_id
+					);
+					break;
+
+				default: // case 'i'
+					$title = strtoupper( $current_language['id'] );
+					break;
+			}
+
 			$new_item->ID         = 'wplng-language-' . $current_language['id'];
-			$new_item->title      = $current_language['name'];
-			$new_item->attr_title = $current_language['name'];
+			$new_item->title      = $title;
+			$new_item->attr_title = $title;
 			$new_item->url        = wplng_get_url_current();
 			$new_item->classes[]  = 'wplng-language-parent';
 			$new_item->classes[]  = 'wplng-language-current';
@@ -175,10 +196,31 @@ function wplng_switcher_nav_menu_replace_items( $items ) {
 
 			$new_item = clone $item_template;
 
+			$title = '';
+
+			switch ( $args['name_format']['value'] ) {
+				case 'o':
+					$title = wplng_get_language_name_untranslated(
+						$language_website['id']
+					);
+					break;
+
+				case 't':
+					$title = wplng_get_language_name_translated(
+						$language_website['id'],
+						$language_current_id
+					);
+					break;
+
+				default: // case 'i'
+					$title = strtoupper( $language_website['id'] );
+					break;
+			}
+
 			$new_item->ID         = 'wplng-language-' . $language_website['id'];
 			$new_item->menu_order = $item_template->menu_order + $offset;
-			$new_item->title      = $language_website['name'];
-			$new_item->attr_title = $language_website['name'];
+			$new_item->title      = $title;
+			$new_item->attr_title = $title;
 			$new_item->url        = wplng_get_url_original();
 			$new_item->db_id      = 0;
 			$new_item->classes[]  = 'wplng-language-website';
@@ -223,10 +265,31 @@ function wplng_switcher_nav_menu_replace_items( $items ) {
 
 			$new_item = clone $item_template;
 
+			$title = '';
+
+			switch ( $args['name_format']['value'] ) {
+				case 'o':
+					$title = wplng_get_language_name_untranslated(
+						$language_target['id']
+					);
+					break;
+
+				case 't':
+					$title = wplng_get_language_name_translated(
+						$language_target['id'],
+						$language_current_id
+					);
+					break;
+
+				default: // case 'i'
+					$title = strtoupper( $language_target['id'] );
+					break;
+			}
+
 			$new_item->ID         = 'wplng-language-' . $language_target['id'];
 			$new_item->menu_order = $item_template->menu_order + $offset;
-			$new_item->title      = $language_target['name'];
-			$new_item->attr_title = $language_target['name'];
+			$new_item->title      = $title;
+			$new_item->attr_title = $title;
 			$new_item->url        = wplng_get_url_current_for_language( $language_target['id'] );
 			$new_item->db_id      = 0;
 			$new_item->classes[]  = 'wplng-language-target';
