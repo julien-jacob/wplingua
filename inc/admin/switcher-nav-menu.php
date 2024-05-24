@@ -203,7 +203,7 @@ function wp_nav_menu_switcher_box_add() {
 					<input type="hidden" class="menu-item-object-id" name="menu-item[1][menu-item-object-id]" value="wplingua" />
 					<input type="hidden" class="menu-item-object" name="menu-item[1][menu-item-object]" value="wplingua" />
 					<input type="hidden" class="menu-item-type" name="menu-item[1][menu-item-type]" value="custom" />
-					<input type="hidden" class="menu-item-title" name="menu-item[1][menu-item-title]" value="Language switcher" />
+					<input type="hidden" class="menu-item-title" name="menu-item[1][menu-item-title]" value="<?php esc_html_e( 'Language switcher', 'wplingua' ); ?>" />
 					<input type="hidden" class="menu-item-classes" name="menu-item[1][menu-item-classes]" value="wplingua-menu-switcher-untreated"/>
 					<input type="hidden" class="menu-item-url" name="menu-item[1][menu-item-url]" value="" id="wplng-menu-switcher-url"/>
 				</li>
