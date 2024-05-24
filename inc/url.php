@@ -123,6 +123,13 @@ function wplng_url_is_translatable( $url = '' ) {
 		$is_translatable = false;
 	}
 
+	// Check if is Divi editor
+	if ( $is_translatable
+		&& 0 < strpos( $url, '/?et_fb=1' )
+	) {
+		$is_translatable = false;
+	}
+
 	// Check if is wp-comments-post.php
 	if ( $is_translatable
 		&& str_contains( $url, 'wp-comments-post.php' )
@@ -131,8 +138,7 @@ function wplng_url_is_translatable( $url = '' ) {
 	}
 
 	// Check if is in wp-uploads
-	if (
-		$is_translatable
+	if ( $is_translatable
 		&& str_contains( $url, wp_make_link_relative( content_url() ) )
 	) {
 		$is_translatable = false;
@@ -140,7 +146,9 @@ function wplng_url_is_translatable( $url = '' ) {
 
 	// Exclude files URL
 	$regex_is_file = '#\.(avi|css|doc|exe|gif|html|jfif|jpg|jpeg|mid|midi|mp3|mpg|mpeg|mov|qt|pdf|png|ram|rar|tiff|txt|wav|zip|ico)$#Uis';
-	if ( $is_translatable && preg_match( $regex_is_file, $url ) ) {
+	if ( $is_translatable 
+		&& preg_match( $regex_is_file, $url ) 
+	) {
 		$is_translatable = false;
 	}
 
