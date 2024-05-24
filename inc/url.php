@@ -26,7 +26,7 @@ function wplng_url_translate( $url, $language_target_id = '' ) {
 	}
 
 	// Check if it's an WooCommece AJAX URL
-	if ( str_contains( $url, '?wc-ajax=' ) ) {
+	if ( wplng_str_contains( $url, '?wc-ajax=' ) ) {
 		return $url;
 	}
 
@@ -56,7 +56,7 @@ function wplng_url_translate( $url, $language_target_id = '' ) {
 
 		// Check if URL is already translated
 		foreach ( $languages_target as $language_target ) {
-			if ( str_contains( $url, '/' . $language_target['id'] . '/' ) ) {
+			if ( wplng_str_contains( $url, '/' . $language_target['id'] . '/' ) ) {
 				return $url;
 			}
 		}
@@ -119,27 +119,27 @@ function wplng_url_is_translatable( $url = '' ) {
 	$url = wp_make_link_relative( $url );
 
 	// Check if is an admin page
-	if ( str_contains( $url, wp_make_link_relative( get_admin_url() ) ) ) {
+	if ( wplng_str_contains( $url, wp_make_link_relative( get_admin_url() ) ) ) {
 		$is_translatable = false;
 	}
 
 	// Check if is Divi editor
 	if ( $is_translatable
-		&& 0 < strpos( $url, '/?et_fb=1' )
+		&& wplng_str_contains( $url, '/?et_fb=1' )
 	) {
 		$is_translatable = false;
 	}
 
 	// Check if is wp-comments-post.php
 	if ( $is_translatable
-		&& str_contains( $url, 'wp-comments-post.php' )
+		&& wplng_str_contains( $url, 'wp-comments-post.php' )
 	) {
 		$is_translatable = false;
 	}
 
 	// Check if is in wp-uploads
 	if ( $is_translatable
-		&& str_contains( $url, wp_make_link_relative( content_url() ) )
+		&& wplng_str_contains( $url, wp_make_link_relative( content_url() ) )
 	) {
 		$is_translatable = false;
 	}

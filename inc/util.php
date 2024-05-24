@@ -7,6 +7,19 @@ if ( ! defined( 'WPINC' ) ) {
 
 
 /**
+ * Check if substring is contained in string
+ *
+ * @param string $haystack String to check
+ * @param string $needle Sub-string
+ *
+ * @return bool
+ */
+function wplng_str_contains( $haystack, $needle ) {
+	return ( strpos( $haystack, $needle ) !== false );
+}
+
+
+/**
  * Return true is $str is an URL
  *
  * @param string $str
@@ -19,7 +32,7 @@ function wplng_str_is_url( $str ) {
 
 	if ( is_string( $str )
 		&& ( '' !== trim( $str ) )
-		&& ( false !== strpos( $str, '/' ) )
+		&& wplng_str_contains($str, '/')
 	) {
 		if ( isset( $parsed['scheme'] )
 			&& (

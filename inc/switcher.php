@@ -390,7 +390,7 @@ function wplng_get_switcher_html( $arg = array() ) {
 		$html .= 'onclick="event.preventDefault();">';
 
 	} elseif ( is_admin()
-		|| ( 0 < strpos( $url_website, '/?et_fb=1' ) )
+		|| wplng_str_contains( $url_website, '/?et_fb=1' )
 	) {
 
 		$html .= '<a class="wplng-language website after" ';
@@ -427,7 +427,7 @@ function wplng_get_switcher_html( $arg = array() ) {
 			$html .= 'onclick="event.preventDefault();">';
 
 		} elseif ( is_admin()
-			|| ( 0 < strpos( $url, '/?et_fb=1' ) )
+			|| wplng_str_contains( $url, '/?et_fb=1' )
 		) {
 
 			$html .= '<a ';
