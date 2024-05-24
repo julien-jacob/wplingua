@@ -149,6 +149,8 @@ function wplng_switcher_nav_menu_replace_items( $items ) {
 			$new_item->title      = $current_language['name'];
 			$new_item->attr_title = $current_language['name'];
 			$new_item->url        = wplng_get_url_current();
+			$new_item->classes[]  = 'wplng-language-parent';
+			$new_item->classes[]  = 'wplng-language-current';
 
 			$new_items[] = $new_item;
 		}
@@ -175,16 +177,20 @@ function wplng_switcher_nav_menu_replace_items( $items ) {
 			$new_item->attr_title = $language_website['name'];
 			$new_item->url        = wplng_get_url_original();
 			$new_item->db_id      = 0;
+			$new_item->classes[]  = 'wplng-language-website';
 
 			if ( 's' === $args['layout']['value'] ) {
 				$new_item->menu_item_parent = $item_template->ID;
 			}
 
-			if ( $language_current_id === $language_website['id']
-				&& 'a' === $args['layout']['value']
-			) {
-				$new_item->current   = true;
-				$new_item->classes[] = 'current-menu-item';
+			if ( $language_current_id === $language_website['id'] ) {
+
+				$new_item->classes[] = 'wplng-language-current';
+
+				if ( 'a' === $args['layout']['value'] ) {
+					$new_item->current   = true;
+					$new_item->classes[] = 'current-menu-item';
+				}
 			}
 
 			$new_items[] = $new_item;
@@ -215,16 +221,20 @@ function wplng_switcher_nav_menu_replace_items( $items ) {
 			$new_item->attr_title = $language_target['name'];
 			$new_item->url        = wplng_get_url_current_for_language( $language_target['id'] );
 			$new_item->db_id      = 0;
+			$new_item->classes[]  = 'wplng-language-target';
 
 			if ( 's' === $args['layout']['value'] ) {
 				$new_item->menu_item_parent = $item_template->ID;
 			}
 
-			if ( $language_current_id === $language_target['id']
-				&& 'a' === $args['layout']['value']
-			) {
-				$new_item->current   = true;
-				$new_item->classes[] = 'current-menu-item';
+			if ( $language_current_id === $language_target['id'] ) {
+
+				$new_item->classes[] = 'wplng-language-current';
+
+				if ( 'a' === $args['layout']['value'] ) {
+					$new_item->current   = true;
+					$new_item->classes[] = 'current-menu-item';
+				}
 			}
 
 			$new_items[] = $new_item;
