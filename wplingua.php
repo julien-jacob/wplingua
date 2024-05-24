@@ -109,6 +109,11 @@ function wplng_start() {
 		// Add admin Bar menu
 		add_action( 'admin_bar_menu', 'wplng_admin_bar_menu', 81 );
 
+		// Switcher in nav menu options
+		add_action( 'admin_enqueue_scripts', 'wplng_switcher_nav_menu_inline_scripts' );
+		add_action( 'admin_head-nav-menus.php', 'wp_nav_menu_switcher_box_add_register' );
+		add_action( 'wp_nav_menu_item_custom_fields', 'wp_nav_menu_switcher_box_edit', 10, 2 );
+
 		// Enqueue CSS and JS files for option pages
 		add_action( 'admin_enqueue_scripts', 'wplng_option_page_settings_assets' );
 		add_action( 'admin_enqueue_scripts', 'wplng_option_page_switcher_assets' );
@@ -165,6 +170,10 @@ function wplng_start() {
 
 		// Add languages switcher before </body>
 		add_action( 'wp_footer', 'wplng_switcher_wp_footer' );
+
+		// Add languages switcher in nav menu
+		add_filter( 'wp_nav_menu_objects', 'wplng_switcher_nav_menu_replace_items' );
+		add_filter( 'nav_menu_link_attributes', 'wplng_add_nav_menu_link_attributes_atts', 10, 2 );
 
 		// Set alternate links with hreflang parametters
 		add_action( 'wp_head', 'wplng_link_alternate_hreflang' );

@@ -1,6 +1,20 @@
 jQuery(document).ready(function ($) {
 
     /**
+     * Code for flags in nav menu switcher
+     */
+
+    $("[wplng_flag]").each(function() {
+
+        let img = '<img ';
+        img += 'src="' + $(this).attr("wplng_flag") + '" '
+        img += 'style="max-width: 1.2em; max-height: 1.2em;" '
+        img += '> '
+
+        $(this).html(img + $(this).html());
+    })
+
+    /**
      * Code for switcher
      */
 
