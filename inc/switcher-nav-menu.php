@@ -115,7 +115,7 @@ function wplng_switcher_nav_menu_replace_items( $items ) {
 
 		$offset              = $item->menu_order;
 		$language_current_id = wplng_get_language_current_id();
-		$current_language    = wplng_get_language_by_id( $language_current_id );
+		$language_current    = wplng_get_language_by_id( $language_current_id );
 		$language_website    = wplng_get_language_website();
 
 		// Create $item_template and prepare classes
@@ -150,23 +150,23 @@ function wplng_switcher_nav_menu_replace_items( $items ) {
 			switch ( $args['name_format']['value'] ) {
 				case 'o':
 					$title = wplng_get_language_name_untranslated(
-						$current_language['id']
+						$language_current_id
 					);
 					break;
 
 				case 't':
 					$title = wplng_get_language_name_translated(
-						$current_language['id'],
+						$language_current_id,
 						$language_current_id
 					);
 					break;
 
 				default: // case 'i'
-					$title = strtoupper( $current_language['id'] );
+					$title = strtoupper( $language_current_id );
 					break;
 			}
 
-			$new_item->ID         = 'wplng-language-' . $current_language['id'];
+			$new_item->ID         = 'wplng-language-' . $language_current_id;
 			$new_item->title      = $title;
 			$new_item->attr_title = $title;
 			$new_item->url        = wplng_get_url_current();
@@ -174,7 +174,7 @@ function wplng_switcher_nav_menu_replace_items( $items ) {
 			$new_item->classes[]  = 'wplng-language-current';
 
 			if ( 'y' === $args['flags_style']['value'] ) {
-				$new_item->wplng_flag = $current_language['flag'];
+				$new_item->wplng_flag = $language_current['flag'];
 			}
 
 			$new_items[] = $new_item;
@@ -323,7 +323,7 @@ function wplng_switcher_nav_menu_replace_items( $items ) {
 
 
 /**
- * Add wplng_flag attribute in nav menu switcher
+ * Add attribute in nav menu switcher
  *
  * @param array $atts
  * @param WP_Post $menu_item
@@ -333,6 +333,12 @@ function wplng_add_nav_menu_link_attributes_atts( $atts, $menu_item ) {
 
 	if ( ! empty( $menu_item->wplng_flag ) ) {
 		$atts['wplng_flag'] = $menu_item->wplng_flag;
+	}
+
+	if ( ! empty( $menu_item->classes )
+		&& in_array( 'wplng-language-current', $menu_item->classes )
+	) {
+		$atts['onclick'] = 'event.preventDefault();';
 	}
 
 	return $atts;

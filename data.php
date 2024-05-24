@@ -408,9 +408,9 @@ function wplng_data_switcher_nav_menu_valid_flags_style() {
  */
 function wplng_data_switcher_nav_menu_valid_layout() {
 	return array(
-		'a' => __( 'List with active class', 'wplingua' ),
-		'l' => __( 'List without active class', 'wplingua' ),
 		't' => __( 'List without current language', 'wplingua' ),
+		'l' => __( 'List without active class', 'wplingua' ),
+		'a' => __( 'List with active class', 'wplingua' ),
 		's' => __( 'Sub-list', 'wplingua' ),
 	);
 }
