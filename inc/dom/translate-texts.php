@@ -44,10 +44,6 @@ function wplng_dom_translate_texts_attr( $dom, $args ) {
 	foreach ( $attr_text_to_translate as $attr ) {
 		foreach ( $dom->find( $attr['selector'] ) as $element ) {
 
-			if ( empty( $element->attr[ $attr['attr'] ] ) ) {
-				continue;
-			}
-
 			$text = wplng_text_esc( $element->attr[ $attr['attr'] ] );
 
 			if ( ! wplng_text_is_translatable( $text ) ) {
@@ -98,6 +94,12 @@ function wplng_dom_translate_texts_nodes( $dom, $args ) {
 	foreach ( $dom->find( $selector ) as $element ) {
 
 		if ( in_array( $element->parent->tag, $node_text_excluded ) ) {
+			continue;
+		}
+
+		$text = wplng_text_esc( $element->innertext );
+
+		if ( ! wplng_text_is_translatable( $text ) ) {
 			continue;
 		}
 

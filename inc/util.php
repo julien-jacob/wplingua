@@ -48,6 +48,10 @@ function wplng_str_is_url( $str ) {
  */
 function wplng_text_is_translatable( $text ) {
 
+	if ( '' === $text ) {
+		return false;
+	}
+
 	// Check if it's a mail address
 	if ( filter_var( $text, FILTER_VALIDATE_EMAIL ) ) {
 		return false;
@@ -71,6 +75,7 @@ function wplng_text_is_translatable( $text ) {
  */
 function wplng_text_esc( $text ) {
 
+	$text = html_entity_decode( $text );
 	$text = esc_html( $text );
 	$text = esc_attr( $text );
 
@@ -216,6 +221,8 @@ function wplng_json_element_is_translatable( $element, $parents ) {
 
 			$is_translatable = true;
 		}
+
+		$element = wplng_text_esc( $element );
 
 		if ( ! wplng_text_is_translatable( $element ) ) {
 			$is_translatable = false;

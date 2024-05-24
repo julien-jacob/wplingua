@@ -71,11 +71,13 @@ function wplng_parse_html( $html ) {
 
 	foreach ( $dom->find( 'text' ) as $element ) {
 
+		if ( in_array( $element->parent->tag, $node_text_excluded ) ) {
+			continue;
+		}
+
 		$text = wplng_text_esc( $element->innertext );
 
-		if ( in_array( $element->parent->tag, $node_text_excluded )
-			|| ! wplng_text_is_translatable( $text )
-		) {
+		if ( ! wplng_text_is_translatable( $text ) ) {
 			continue;
 		}
 
