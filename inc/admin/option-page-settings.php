@@ -319,8 +319,8 @@ function wplng_settings_part_features() {
 	</fieldset>
 
 	<fieldset>
-		<input type="checkbox" id="wplng_translate_woocommerce" name="wplng_translate_woocommerce" value="1" <?php checked( 1, get_option( 'wplng_translate_woocommerce' ) && in_array( 'woocommerce', $api_features ), true ); ?>  <?php disabled( false, in_array( 'woocommerce', $api_features ), true ); ?>/>
-		<label for="wplng_translate_woocommerce"> <?php esc_html_e( 'API feature: Allow WooCommerce shop translation', 'wplingua' ); ?></label>
+		<input type="checkbox" id="wplng_commercial_use" name="wplng_commercial_use" value="1" <?php checked( 1, in_array( 'commercial', $api_features ), true ); ?> disabled="disabled"/>
+		<label for="wplng_commercial_use"> <?php esc_html_e( 'API feature: Use wpLingua on commercial website', 'wplingua' ); ?></label>
 	</fieldset>
 
 	<?php

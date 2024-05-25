@@ -281,7 +281,7 @@ function wplng_register_part_premium() {
 	<p><strong><?php esc_html_e( 'Get more target languages and advanced features:', 'wplingua' ); ?></strong></p>		
 	<p><?php esc_html_e( 'To translate your site into more languages and access advanced features, visit wpLingua website.', 'wplingua' ); ?></p>
 	<ul style="list-style: inside; padding: 0 0 0 15px;">
-		<li><?php esc_html_e( 'Multilingual WooCommerce store', 'wplingua' ); ?></li>
+		<li><?php esc_html_e( 'Use wpLingua on commercial website', 'wplingua' ); ?></li>
 		<li><?php esc_html_e( 'Allow search from all languages', 'wplingua' ); ?></li>
 		<li><?php esc_html_e( 'Get more target languages', 'wplingua' ); ?></li>
 	</ul>
