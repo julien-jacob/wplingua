@@ -193,7 +193,17 @@ function wplng_settings_part_language_website() {
 		echo '<strong>';
 		esc_html_e( 'Original website language, defined by API key:', 'wplingua' );
 		echo ' </strong>';
+		echo '<span ';
+		echo 'title="' . esc_attr__( 'Click to expand', 'wplingua' ) . '" ';
+		echo 'wplng-help-box="#wplng-language-website" ';
+		echo '></span>';
 		echo ' </p>';
+
+		echo '<div class="wplng-help-box" id="wplng-language-website">';
+		echo '<p>';
+		echo esc_html__('This is the language of your site. The language set here is defined by the associated API key. Make sure your site language is also correctly set in WordPress options (Settings → General → Site Language).', 'wplingua');
+		echo '</p>';
+		echo '</div>';
 	}
 	?>
 
