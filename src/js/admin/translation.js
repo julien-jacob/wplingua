@@ -154,13 +154,38 @@ jQuery(document).ready(function ($) {
      */
 
     let wplngIsUpdatePost = false;
+    let wplngInputSignature = {
+        onload: wplngGetInputSignature(),
+        now: wplngGetInputSignature()
+    };
+
+    $(".wplng-edit-language textarea, .wplng-edit-language input").on("change input propertychange", function() {
+        wplngInputSignature.now = wplngGetInputSignature();
+    });
+
+    function wplngGetInputSignature() {
+
+        let signature = "";
+
+        $(".wplng-edit-language textarea").each(function() {
+            signature += $(this).val();
+        });
+
+        $(".wplng-edit-language input[type=checkbox]").each(function() {
+            signature += $(this).prop("checked");
+        });
+
+        return signature;
+    }
 
     jQuery('[type=submit]').click(function () {
         wplngIsUpdatePost = true;
     });
 
     $(window).on('beforeunload', function () {
-        if (!wplngIsUpdatePost) {
+        if (!wplngIsUpdatePost
+            && wplngInputSignature.onload != wplngInputSignature.now
+        ) {
             return confirm(wplngLocalize.leaveMessage);
         }
     });
