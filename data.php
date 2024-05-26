@@ -91,6 +91,7 @@ function wplng_data_excluded_selector_default() {
 		'.notranslate',
 		'.wplng-switcher',
 		'link[hreflang]',
+		'.wplingua-menu',
 	);
 }
 

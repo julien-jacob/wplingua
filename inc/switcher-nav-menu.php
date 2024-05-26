@@ -133,7 +133,6 @@ function wplng_switcher_nav_menu_replace_items( $items ) {
 			),
 			array(
 				'wplingua-menu',
-				'no-translate',
 			)
 		);
 
