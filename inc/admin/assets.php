@@ -136,6 +136,13 @@ function wplng_option_page_switcher_assets( $hook ) {
 	);
 
 	wp_enqueue_script(
+		'wplingua-help-box',
+		plugins_url() . '/wplingua/assets/js/admin/help-box.js',
+		array( 'jquery' ),
+		WPLNG_PLUGIN_VERSION
+	);
+
+	wp_enqueue_script(
 		'wplingua-script',
 		plugins_url() . '/wplingua/assets/js/script.js',
 		array( 'jquery' ),

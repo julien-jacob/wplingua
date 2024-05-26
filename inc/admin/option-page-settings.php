@@ -330,9 +330,7 @@ function wplng_settings_part_languages_target() {
 		foreach ( $languages_all as $key => $language ) {
 			echo $language['name'];
 			if ( $key !== $last_language_key ) {
-				echo ', ';
-			} else {
-				echo '.';
+				echo ' - ';
 			}
 		}
 		?></p>
@@ -359,6 +357,17 @@ function wplng_settings_part_features() {
 	<hr>
 
 	<fieldset>
+		<input type="checkbox" id="wplng_commercial_use" name="wplng_commercial_use" value="1" <?php checked( 1, in_array( 'commercial', $api_features ), true ); ?> disabled="disabled"/>
+		<label for="wplng_commercial_use"> <?php esc_html_e( 'API feature: Use wpLingua on commercial website', 'wplingua' ); ?> <span title="<?php esc_attr_e( 'Click to expand', 'wplingua' ); ?>" wplng-help-box="#wplng-hb-feature-commercial"></span></label>
+	</fieldset>
+
+	<div class="wplng-help-box" id="wplng-hb-feature-commercial">
+		<p><?php esc_html_e( 'API feature: Use wpLingua on commercial website', 'wplingua' ); ?></p>
+	</div>
+
+	<hr>
+
+	<fieldset>
 		<input type="checkbox" id="wplng_translate_search" name="wplng_translate_search" value="1" <?php checked( 1, get_option( 'wplng_translate_search' ) && in_array( 'search', $api_features ), true ); ?>  <?php disabled( false, in_array( 'search', $api_features ), true ); ?>/>
 		<label for="wplng_translate_search"> <?php esc_html_e( 'API feature: Search from translated languages', 'wplingua' ); ?> <span title="<?php esc_attr_e( 'Click to expand', 'wplingua' ); ?>" wplng-help-box="#wplng-hb-feature-search"></span></label> 
 	</fieldset>
@@ -366,11 +375,6 @@ function wplng_settings_part_features() {
 	<div class="wplng-help-box" id="wplng-hb-feature-search">
 		<p><?php esc_html_e( 'Enable visitors to search on your site in their own language.', 'wplingua' ); ?></p>
 	</div>
-
-	<fieldset>
-		<input type="checkbox" id="wplng_commercial_use" name="wplng_commercial_use" value="1" <?php checked( 1, in_array( 'commercial', $api_features ), true ); ?> disabled="disabled"/>
-		<label for="wplng_commercial_use"> <?php esc_html_e( 'API feature: Use wpLingua on commercial website', 'wplingua' ); ?></label>
-	</fieldset>
 	<?php
 }
 

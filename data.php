@@ -346,8 +346,8 @@ function wplng_data_switcher_valid_style() {
  */
 function wplng_data_switcher_valid_name_format() {
 	return array(
-		'name'     => __( 'Translated name', 'wplingua' ),
 		'original' => __( 'Original name', 'wplingua' ),
+		'name'     => __( 'Translated name', 'wplingua' ),
 		'id'       => __( 'Language ID', 'wplingua' ),
 		'none'     => __( 'No display', 'wplingua' ),
 	);

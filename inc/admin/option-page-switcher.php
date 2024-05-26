@@ -65,118 +65,154 @@ function wplng_option_page_switcher() {
 				<tr>
 					<th scope="row"><span class="dashicons dashicons-admin-appearance"></span> <?php esc_html_e( 'Design', 'wplingua' ); ?></th>
 					<td>
-						<fieldset>
+						<p>
+							<fieldset>
 
-							<label for="wplng_style" class="wplng-fe-50">
-								<strong><?php esc_html_e( 'Layout: ', 'wplingua' ); ?></strong>
-							</label>
+								<label for="wplng_style" class="wplng-fe-50">
+									<strong><?php esc_html_e( 'Layout: ', 'wplingua' ); ?></strong> 
+									<span title="<?php esc_attr_e( 'Click to expand', 'wplingua' ); ?>" wplng-help-box="#wplng-hb-layout"></span>
+								</label>
 
-							<select id="wplng_style" name="wplng_style" class="wplng-fe-50">
-								<?php
+								<select id="wplng_style" name="wplng_style" class="wplng-fe-50">
+									<?php
 
-								$style_options = wplng_data_switcher_valid_style();
+									$style_options = wplng_data_switcher_valid_style();
 
-								foreach ( $style_options as $option_value => $option_name ) {
-									if ( $style === $option_value ) {
-										echo '<option value="' . esc_attr( $option_value ) . '" selected>';
-									} else {
-										echo '<option value="' . esc_attr( $option_value ) . '">';
+									foreach ( $style_options as $option_value => $option_name ) {
+										if ( $style === $option_value ) {
+											echo '<option value="' . esc_attr( $option_value ) . '" selected>';
+										} else {
+											echo '<option value="' . esc_attr( $option_value ) . '">';
+										}
+										echo esc_html( $option_name );
+										echo '</option>';
 									}
-									echo esc_html( $option_name );
-									echo '</option>';
-								}
 
-								?>
-							</select>
+									?>
+								</select>
 
-						</fieldset>
+							</fieldset>
+						</p>
 
-						<br>
+						<div class="wplng-help-box" id="wplng-hb-layout">
+							<p><?php esc_html_e( 'Layout', 'wplingua' ); ?></p>
+						</div>
 
-						<fieldset>
-							<label for="wplng_name_format" class="wplng-fe-50">
-								<strong><?php esc_html_e( 'Displayed name: ', 'wplingua' ); ?></strong>
-							</label>
-							<select id="wplng_name_format" name="wplng_name_format" class="wplng-fe-50">
-								<?php
+						<hr>
 
-								$name_format_options = wplng_data_switcher_valid_name_format();
+						<p>
+							<fieldset>
+								<label for="wplng_name_format" class="wplng-fe-50">
+									<strong><?php esc_html_e( 'Displayed name: ', 'wplingua' ); ?></strong> 
+									<span title="<?php esc_attr_e( 'Click to expand', 'wplingua' ); ?>" wplng-help-box="#wplng-hb-name-format">
+								</label>
+								<select id="wplng_name_format" name="wplng_name_format" class="wplng-fe-50">
+									<?php
 
-								foreach ( $name_format_options as $option_value => $option_name ) {
-									if ( $name_format === $option_value ) {
-										echo '<option value="' . esc_attr( $option_value ) . '" selected>';
-									} else {
-										echo '<option value="' . esc_attr( $option_value ) . '">';
+									$name_format_options = wplng_data_switcher_valid_name_format();
+
+									foreach ( $name_format_options as $option_value => $option_name ) {
+										if ( $name_format === $option_value ) {
+											echo '<option value="' . esc_attr( $option_value ) . '" selected>';
+										} else {
+											echo '<option value="' . esc_attr( $option_value ) . '">';
+										}
+										echo esc_html( $option_name );
+										echo '</option>';
 									}
-									echo esc_html( $option_name );
-									echo '</option>';
-								}
 
-								?>
-							</select>
-						</fieldset>
+									?>
+								</select>
+							</fieldset>
+						</p>
 
-						<br>
+						<div class="wplng-help-box" id="wplng-hb-name-format">
+							<p><?php esc_html_e( 'Name format', 'wplingua' ); ?></p>
+						</div>
 
-						<fieldset>
-							<label for="wplng_flags_style" class="wplng-fe-50">
-								<strong><?php esc_html_e( 'Flag style: ', 'wplingua' ); ?></strong>
-							</label>
-							<select id="wplng_flags_style" name="wplng_flags_style" class="wplng-fe-50">
-								<?php
+						<hr>
 
-								$flags_style_options = wplng_data_switcher_valid_flags_style();
+						<p>
+							<fieldset>
+								<label for="wplng_flags_style" class="wplng-fe-50">
+									<strong><?php esc_html_e( 'Flag style: ', 'wplingua' ); ?></strong> 
+									<span title="<?php esc_attr_e( 'Click to expand', 'wplingua' ); ?>" wplng-help-box="#wplng-hb-flags-style">
+								</label>
+								<select id="wplng_flags_style" name="wplng_flags_style" class="wplng-fe-50">
+									<?php
 
-								foreach ( $flags_style_options as $option_value => $option_name ) {
-									if ( $flags_style === $option_value ) {
-										echo '<option value="' . esc_attr( $option_value ) . '" selected>';
-									} else {
-										echo '<option value="' . esc_attr( $option_value ) . '">';
+									$flags_style_options = wplng_data_switcher_valid_flags_style();
+
+									foreach ( $flags_style_options as $option_value => $option_name ) {
+										if ( $flags_style === $option_value ) {
+											echo '<option value="' . esc_attr( $option_value ) . '" selected>';
+										} else {
+											echo '<option value="' . esc_attr( $option_value ) . '">';
+										}
+										echo esc_html( $option_name );
+										echo '</option>';
 									}
-									echo esc_html( $option_name );
-									echo '</option>';
-								}
 
-								?>
-							</select>
-						</fieldset>
+									?>
+								</select>
+							</fieldset>
+						</p>
 
-						<br>
+						<div class="wplng-help-box" id="wplng-hb-flags-style">
+							<p><?php esc_html_e( 'Flags style', 'wplingua' ); ?></p>
+						</div>
 
-						<fieldset>
-							<label for="wplng_theme" class="wplng-fe-50">
-								<strong><?php esc_html_e( 'Color theme: ', 'wplingua' ); ?></strong>
-							</label>
+						<hr>
 
-							<select id="wplng_theme" name="wplng_theme" class="wplng-fe-50">
-								<?php
+						<p>
+							<fieldset>
+								<label for="wplng_theme" class="wplng-fe-50">
+									<strong><?php esc_html_e( 'Color theme: ', 'wplingua' ); ?></strong> 
+									<span title="<?php esc_attr_e( 'Click to expand', 'wplingua' ); ?>" wplng-help-box="#wplng-hb-theme">
+								</label>
 
-								$theme_options = wplng_data_switcher_valid_theme();
+								<select id="wplng_theme" name="wplng_theme" class="wplng-fe-50">
+									<?php
 
-								foreach ( $theme_options as $option_value => $option_name ) {
-									if ( $theme === $option_value ) {
-										echo '<option value="' . esc_attr( $option_value ) . '" selected>';
-									} else {
-										echo '<option value="' . esc_attr( $option_value ) . '">';
+									$theme_options = wplng_data_switcher_valid_theme();
+
+									foreach ( $theme_options as $option_value => $option_name ) {
+										if ( $theme === $option_value ) {
+											echo '<option value="' . esc_attr( $option_value ) . '" selected>';
+										} else {
+											echo '<option value="' . esc_attr( $option_value ) . '">';
+										}
+										echo esc_html( $option_name );
+										echo '</option>';
 									}
-									echo esc_html( $option_name );
-									echo '</option>';
-								}
 
-								?>
-							</select>
-						</fieldset>
+									?>
+								</select>
+							</fieldset>
+						</p>
+
+						<div class="wplng-help-box" id="wplng-hb-theme">
+							<p><?php esc_html_e( 'Theme', 'wplingua' ); ?></p>
+						</div>
+
 					</td>
 				</tr>
 
 				<tr>
 					<th scope="row"><span class="dashicons dashicons-media-code"></span> <?php esc_html_e( 'Custom CSS', 'wplingua' ); ?></th>
 					<td>
+						<p><strong><?php esc_html_e( 'Set custom CSS: ', 'wplingua' ); ?></strong></p>
+						<hr>
+						<p>
+							<?php esc_html_e( 'The field below allows you to add custom CSS code that will run on all pages.', 'wplingua' ); ?> 
+							<span title="<?php esc_attr_e( 'Click to expand', 'wplingua' ); ?>" wplng-help-box="#wplng-hb-css">
+						</p>
+						<div class="wplng-help-box" id="wplng-hb-css">
+							<p><?php esc_html_e( 'Custom CSS', 'wplingua' ); ?></p>
+						</div>
+						<hr>
 						<fieldset>
-							<label for="wplng_custom_css">
-								<strong><?php esc_html_e( 'Set custom CSS:', 'wplingua' ); ?></strong>
-							</label>
-							<textarea name="wplng_custom_css" id="wplng_custom_css"><?php echo esc_textarea( $custom_css ); ?></textarea>
+							<textarea name="wplng_custom_css" id="wplng_custom_css" spellcheck="false"><?php echo esc_textarea( $custom_css ); ?></textarea>
 						</fieldset>
 					</td>
 				</tr>
@@ -184,40 +220,69 @@ function wplng_option_page_switcher() {
 				<tr>
 					<th scope="row"><span class="dashicons dashicons-admin-post"></span> <?php esc_html_e( 'Insertion', 'wplingua' ); ?></th>
 					<td>
-						<fieldset>
-
-							<label for="wplng_insert" class="wplng-fe-50">
-								<strong><?php _e( 'Automatic insert: ', 'wplingua' ); ?></strong>
-							</label>
-
-							<select id="wplng_insert" name="wplng_insert" class="wplng-fe-50">
-								<?php
-
-								$insert_options = wplng_data_switcher_valid_insert();
-
-								foreach ( $insert_options as $option_value => $option_name ) {
-									if ( $insert === $option_value ) {
-										echo '<option value="' . esc_attr( $option_value ) . '" selected>';
-									} else {
-										echo '<option value="' . esc_attr( $option_value ) . '">';
-									}
-									echo esc_html( $option_name );
-									echo '</option>';
-								}
-
-								?>
-							</select>
-
-						</fieldset>
-						<hr>
+						
 						<p>
-							<strong class="wplng-fe-50"><?php esc_html_e( 'Shortcode switcher: ', 'wplingua' ); ?></strong>
+							<fieldset>
+
+								<label for="wplng_insert" class="wplng-fe-50">
+									<strong><?php _e( 'Automatic insert: ', 'wplingua' ); ?></strong> 
+									<span title="<?php esc_attr_e( 'Click to expand', 'wplingua' ); ?>" wplng-help-box="#wplng-hb-insert-automatic">
+								</label>
+
+								<select id="wplng_insert" name="wplng_insert" class="wplng-fe-50">
+									<?php
+
+									$insert_options = wplng_data_switcher_valid_insert();
+
+									foreach ( $insert_options as $option_value => $option_name ) {
+										if ( $insert === $option_value ) {
+											echo '<option value="' . esc_attr( $option_value ) . '" selected>';
+										} else {
+											echo '<option value="' . esc_attr( $option_value ) . '">';
+										}
+										echo esc_html( $option_name );
+										echo '</option>';
+									}
+
+									?>
+								</select>
+
+							</fieldset>
+						</p>
+
+						<div class="wplng-help-box" id="wplng-hb-insert-automatic">
+							<p><?php esc_html_e( 'Automatic insert', 'wplingua' ); ?></p>
+						</div>
+
+						<hr>
+
+						<p>
+							<strong class="wplng-fe-50">
+								<?php esc_html_e( 'Shortcode switcher: ', 'wplingua' ); ?> 
+								<span title="<?php esc_attr_e( 'Click to expand', 'wplingua' ); ?>" wplng-help-box="#wplng-hb-insert-shortcode">
+							</strong> 
 							<code class="wplng-fe-50">[wplng_switcher]</code>
 						</p>
+						
+						<div class="wplng-help-box" id="wplng-hb-insert-shortcode">
+							<p><?php esc_html_e( 'Automatic insert', 'wplingua' ); ?></p>
+						</div>
+
 						<hr>
-						<p><strong><?php esc_html_e( 'Swicher in menu: ', 'wplingua' ); ?></strong></p>
-						<p><?php esc_html_e('If the active theme manages menus, it\'s possible to add language switcher to them. The design of these language switcher will be defined by the theme.', 'wplingua') ?></p>
-						<p><?php esc_html_e('Add or edit language switcher in menus: ', 'wplingua') ?> <strong><?php esc_html_e('Appearance → Menus', 'wplingua') ?></strong></p>
+
+						<p>
+							<strong class="wplng-fe-50">
+								<?php esc_html_e( 'Swicher in menu: ', 'wplingua' ); ?> 
+								<span title="<?php esc_attr_e( 'Click to expand', 'wplingua' ); ?>" wplng-help-box="#wplng-hb-insert-menu">
+							</strong>
+							<strong class="wplng-fe-50">
+								<?php esc_html_e('Appearance → Menus', 'wplingua') ?>
+							</strong>
+						</p>
+
+						<div class="wplng-help-box" id="wplng-hb-insert-menu">
+							<p><?php esc_html_e( 'If the active theme manages menus, it\'s possible to add language switcher to them. The design of these language switcher will be defined by the theme.', 'wplingua' ); ?></p>
+						</div>
 
 					</td>
 				</tr>
