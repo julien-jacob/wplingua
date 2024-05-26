@@ -153,17 +153,43 @@ function wplng_option_page_register() {
 						<p>
 							<?php esc_html_e( 'For wpLingua to work, an API key is required so that your website has access to the automatic translation service. On this page you can enter your API key if you already have one, or create one for free.', 'wplingua' ); ?>
 						</p>
+
+						<hr>
+
+						<p><span class="dashicons dashicons-star-filled"></span> <?php _e( 'An <strong>instantly multilingual website</strong> thanks to automatic text detection and translation. Easy to use, no knowledge required.', 'wplingua' ); ?></p>
+
+						<hr>
+
+						<p><span class="dashicons dashicons-admin-site"></span> <?php _e( '<strong>SEO friendly</strong> to allow search engines to index translated pages. Open up your website and your business to the whole world.', 'wplingua' ); ?></p>
+
+						<hr>
+
+						<p><span class="dashicons dashicons-edit"></span> <?php _e( 'All <strong>translations are editable</strong>. Discover the visual editor and edit translations simply by clicking on them. With a fully customizable language switcher.', 'wplingua' ); ?></p>
+
+						<hr>
+
+						<p><span class="dashicons dashicons-heart"></span> <?php _e( 'One <strong>free and unlimited</strong> language for personal blogs and non-commercial websites. And many more features!', 'wplingua' ); ?></p>
+
+						<hr>
+
+						<div class="wplng-fe-50">
+							<a href="#wplng-get-api-key" class="button button-primary"><?php esc_html_e('Get API key', 'wplingua'); ?></a>
+						</div>
+
+						<div class="wplng-fe-50">
+							<a href="#wplng-set-api-key" class="button button-primary"><?php esc_html_e('Set API key', 'wplingua'); ?></a>
+						</div>
 					</td>
 				</tr>
 
-				<tr>
+				<tr id="wplng-set-api-key">
 					<th scope="row"><span class="dashicons dashicons-admin-network"></span> <?php esc_html_e( 'Set API Key', 'wplingua' ); ?></th>
 					<td>
 						<?php wplng_register_part_api_key( $api_key ); ?>
 					</td>
 				</tr>
 
-				<tr>
+				<tr id="wplng-get-api-key">
 					<th scope="row"><span class="dashicons dashicons-yes-alt"></span> <?php esc_html_e( 'Get API key', 'wplingua' ); ?></th>
 					<td>
 						<?php wplng_register_part_free_api_key(); ?>
@@ -196,7 +222,7 @@ function wplng_register_part_api_key( $api_key ) {
 	?>
 	<fieldset>
 		<p>
-			<label for="wplng_api_key"><strong><?php esc_html_e( 'Set the wpLingua API key:', 'wplingua' ); ?></strong></label>
+			<label for="wplng_api_key"><strong><?php esc_html_e( 'Set the wpLingua API key: ', 'wplingua' ); ?></strong></label>
 		</p>
 		<hr>
 		<p>
@@ -234,7 +260,7 @@ function wplng_register_part_free_api_key() {
 
 	?>
 	<p for="wplng_api_key">
-		<strong><?php esc_html_e( 'Register wpLingua API key:', 'wplingua' ); ?></strong>
+		<strong><?php esc_html_e( 'Register wpLingua API key: ', 'wplingua' ); ?></strong>
 	</p>
 	<hr>
 	<p>
@@ -245,7 +271,7 @@ function wplng_register_part_free_api_key() {
 	<p>
 		<fieldset>
 			<label for="wplng-website-url" class="wplng-fe-50">
-				<strong><?php esc_html_e( 'Website URL:', 'wplingua' ); ?> </strong>
+				<strong><?php esc_html_e( 'Website URL: ', 'wplingua' ); ?> </strong>
 			</label>
 			<input type="url" name="wplng-website-url" id="wplng-website-url" class="wplng-fe-50" value="<?php echo esc_url( get_site_url() ); ?>">
 		</fieldset>
@@ -254,7 +280,7 @@ function wplng_register_part_free_api_key() {
 	<p>
 		<fieldset>
 			<label for="wplng-email" class="wplng-fe-50">
-				<strong><?php esc_html_e( 'Mail address:', 'wplingua' ); ?> </strong>
+				<strong><?php esc_html_e( 'Mail address: ', 'wplingua' ); ?> </strong>
 			</label>
 			<input type="email" name="wplng-email" id="wplng-email" class="wplng-fe-50" value="<?php echo esc_attr( $email ); ?>">
 		</fieldset>
@@ -263,7 +289,7 @@ function wplng_register_part_free_api_key() {
 	<p>
 		<fieldset>
 			<label for="wplng-language-website" class="wplng-fe-50">
-				<strong><?php esc_html_e( 'Website language:', 'wplingua' ); ?> </strong>
+				<strong><?php esc_html_e( 'Website language: ', 'wplingua' ); ?> </strong>
 			</label>
 			<select name="wplng-language-website" id="wplng-language-website" class="wplng-fe-50"></select>
 		</fieldset>
@@ -272,7 +298,7 @@ function wplng_register_part_free_api_key() {
 	<p>
 		<fieldset>
 			<label for="wplng-language-target" class="wplng-fe-50">
-				<strong><?php esc_html_e( 'Target language:', 'wplingua' ); ?> </strong>
+				<strong><?php esc_html_e( 'Target language: ', 'wplingua' ); ?> </strong>
 			</label>
 			<select name="wplng-language-target" id="wplng-language-target" class="wplng-fe-50"></select>
 		</fieldset>
@@ -288,7 +314,7 @@ function wplng_register_part_free_api_key() {
 	</p>
 	<hr>
 	<fieldset style="display: none;">
-		<p><?php esc_html_e( 'Website Locale:', 'wplingua' ); ?> <span id="wplng-website-locale"><?php echo esc_html( $locale ); ?></span></p>
+		<p><?php esc_html_e( 'Website Locale: ', 'wplingua' ); ?> <span id="wplng-website-locale"><?php echo esc_html( $locale ); ?></span></p>
 		<textarea name="wplng_request_free_key" id="wplng_request_free_key"></textarea>
 	</fieldset>
 	<br>
@@ -307,7 +333,7 @@ function wplng_register_part_free_api_key() {
 function wplng_register_part_premium() {
 	?>
 	<p>
-		<strong><?php esc_html_e( 'Get more target languages and advanced features:', 'wplingua' ); ?></strong>
+		<strong><?php esc_html_e( 'Get more target languages and advanced features: ', 'wplingua' ); ?></strong>
 	</p>
 	<hr>
 	<p>

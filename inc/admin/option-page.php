@@ -292,7 +292,7 @@ function wplng_admin_notice_incompatible_plugin() {
 	$html .= esc_html__( 'wpLingua - Incompatible plugin detected', 'wplingua' );
 	$html .= '</p>';
 	$html .= '<p>';
-	$html .= esc_html__( 'You have several translation plugins. This may result in unpredictable or incorrect behavior. For best results, use only one translation plugin at a time. These plugins can cause problems with wpLingua:', 'wplingua' );
+	$html .= esc_html__( 'You have several translation plugins. This may result in unpredictable or incorrect behavior. For best results, use only one translation plugin at a time. These plugins can cause problems with wpLingua: ', 'wplingua' );
 
 	$html .= '<ul style="list-style: disc; margin-left: 15px;">';
 	foreach ( $incompatible_detected as $name => $file ) {

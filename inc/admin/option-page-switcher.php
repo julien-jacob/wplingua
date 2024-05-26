@@ -275,9 +275,9 @@ function wplng_option_page_switcher() {
 								<?php esc_html_e( 'Swicher in menu: ', 'wplingua' ); ?> 
 								<span title="<?php esc_attr_e( 'Click to expand', 'wplingua' ); ?>" wplng-help-box="#wplng-hb-insert-menu">
 							</strong>
-							<strong class="wplng-fe-50">
-								<?php esc_html_e('Appearance → Menus', 'wplingua') ?>
-							</strong>
+							<span class="wplng-fe-50">
+								<?php esc_html_e('Appearance ➔ Menus', 'wplingua') ?>
+							</span>
 						</p>
 
 						<div class="wplng-help-box" id="wplng-hb-insert-menu">

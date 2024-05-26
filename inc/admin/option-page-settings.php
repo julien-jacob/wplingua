@@ -191,7 +191,7 @@ function wplng_settings_part_language_website() {
 	if ( 'all' !== $api_language_website ) {
 		echo '<p>';
 		echo '<strong>';
-		esc_html_e( 'Original website language, defined by API key:', 'wplingua' );
+		esc_html_e( 'Original website language, defined by API key: ', 'wplingua' );
 		echo ' </strong>';
 		echo '<span ';
 		echo 'title="' . esc_attr__( 'Click to expand', 'wplingua' ) . '" ';
@@ -201,7 +201,7 @@ function wplng_settings_part_language_website() {
 
 		echo '<div class="wplng-help-box" id="wplng-hb-language-website">';
 		echo '<p>';
-		echo esc_html__( 'This is the language of your website. The language set here is defined by the associated API key. Make sure your website language is also correctly set in WordPress options (Settings → General → Site Language).', 'wplingua' );
+		echo esc_html__( 'This is the language of your website. The language set here is defined by the associated API key. Make sure your website language is also correctly set in WordPress options (Settings ➔ General ➔ Site Language).', 'wplingua' );
 		echo '</p>';
 		echo '</div>';
 	}
@@ -222,7 +222,7 @@ function wplng_settings_part_language_website() {
 
 		<div id="wplng-flag-website-container">
 			<p>
-				<strong><?php esc_html_e( 'Flag:', 'wplingua' ); ?></strong>
+				<strong><?php esc_html_e( 'Flag: ', 'wplingua' ); ?></strong>
 				<span id="wplng-flags-radio-original-website"></span>
 			</p>
 
@@ -309,8 +309,6 @@ function wplng_settings_part_languages_target() {
 		<textarea name="wplng_target_languages" id="wplng_target_languages"><?php echo esc_textarea( wp_json_encode( $languages_target, true ) ); ?></textarea>
 	</div>
 
-	<hr>
-
 	<p>
 		<?php esc_html_e( 'Access more target languages by upgrading your API key.', 'wplingua' ); ?></strong>
 		<span title="<?php esc_attr_e( 'Click to expand', 'wplingua' ); ?>" wplng-help-box="#wplng-hb-language-adding"></span>
@@ -349,7 +347,7 @@ function wplng_settings_part_features() {
 	$api_features = wplng_get_api_feature();
 
 	?>
-	<p><strong><?php esc_html_e( 'API translation features:', 'wplingua' ); ?></strong></p>
+	<p><strong><?php esc_html_e( 'API translation features: ', 'wplingua' ); ?></strong></p>
 	<hr>
 
 	<p><?php esc_html_e( 'The options below require extended access to the wpLingua API to be functional on your website.', 'wplingua' ); ?></p>
