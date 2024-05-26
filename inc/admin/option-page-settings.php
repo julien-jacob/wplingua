@@ -201,7 +201,7 @@ function wplng_settings_part_language_website() {
 
 		echo '<div class="wplng-help-box" id="wplng-language-website">';
 		echo '<p>';
-		echo esc_html__('This is the language of your site. The language set here is defined by the associated API key. Make sure your site language is also correctly set in WordPress options (Settings → General → Site Language).', 'wplingua');
+		echo esc_html__( 'This is the language of your website. The language set here is defined by the associated API key. Make sure your website language is also correctly set in WordPress options (Settings → General → Site Language).', 'wplingua' );
 		echo '</p>';
 		echo '</div>';
 	}
@@ -257,18 +257,22 @@ function wplng_settings_part_languages_target() {
 
 	?>
 	<fieldset id="fieldset-add-target-language">
-		<label for="wplng_add_new_target_language" class="wplng-fe-50">
-			<strong><?php esc_html_e( 'Add new target Language: ', 'wplingua' ); ?></strong>
-		</label>
 
-		<select id="wplng_add_new_target_language" name="wplng_add_new_target_language"></select>
+		<p class="wplng-fe-50">
+			<label for="wplng_add_new_target_language">
+				<strong><?php esc_html_e( 'Add new target Language: ', 'wplingua' ); ?></strong>
+			</label>
+		</p>
 
-		<a class="button button-primary wplng-icon-button" id="wplng-target-lang-add" title="<?php esc_html_e( 'Add language', 'wplingua' ); ?>" href="javascript:void(0);">
-			<span class="dashicons dashicons-insert"></span>
-		</a>
-
-		<hr>
+		<p class="wplng-fe-50">
+			<select id="wplng_add_new_target_language" name="wplng_add_new_target_language"></select>
+			<a class="button button-primary wplng-icon-button" id="wplng-target-lang-add" title="<?php esc_html_e( 'Add language', 'wplingua' ); ?>" href="javascript:void(0);">
+				<span class="dashicons dashicons-insert"></span>
+			</a>
+		</p>
 	</fieldset>
+
+	<hr id="wplng-languages-target-separator">
 
 	<div id="wplng-target-language-template">
 		<div class="wplng-target-language">
@@ -298,9 +302,40 @@ function wplng_settings_part_languages_target() {
 	</div>
 
 	<div id="wplng-target-languages-container">
-		<p><strong><?php esc_html_e( 'Target languages enabled: ', 'wplingua' ); ?></strong></p>
+		<p>
+			<strong><?php esc_html_e( 'Target languages enabled: ', 'wplingua' ); ?></strong>
+		</p>
 		<div id="wplng-target-languages-list"></div>
 		<textarea name="wplng_target_languages" id="wplng_target_languages"><?php echo esc_textarea( wp_json_encode( $languages_target, true ) ); ?></textarea>
+	</div>
+
+	<hr>
+
+	<p>
+		<?php esc_html_e( 'Access more target languages by upgrading your API key.', 'wplingua' ); ?></strong>
+		<span title="<?php esc_attr_e( 'Click to expand', 'wplingua' ); ?>" wplng-help-box="#wplng-language-adding"></span>
+	</p>
+
+	<div class="wplng-help-box" id="wplng-language-adding">
+		<p><?php
+
+		echo '<strong>';
+		echo esc_html__( 'Available languages: ', 'wplingua' );
+		echo '</strong>';
+		echo '<br>';
+
+		$languages_all     = wplng_get_languages_all();
+		$last_language_key = count( $languages_all ) - 1;
+
+		foreach ( $languages_all as $key => $language ) {
+			echo $language['name'];
+			if ( $key !== $last_language_key ) {
+				echo ', ';
+			} else {
+				echo '.';
+			}
+		}
+		?></p>
 	</div>
 	<?php
 }
@@ -345,7 +380,13 @@ function wplng_settings_part_features() {
 function wplng_settings_part_api_key() {
 	?>
 	<fieldset>
-		<p><label for="wplng_api_key"><strong><?php esc_html_e( 'Website API key:', 'wplingua' ); ?></strong></label></p>
+		<p><label for="wplng_api_key"><strong><?php esc_html_e( 'Website API key: ', 'wplingua' ); ?></strong></label></p>
+
+		<hr>
+
+		<p><?php esc_html_e( 'The API key connects the website to wpLingua\'s online services and automatic translation generators. ', 'wplingua' ); ?></p>
+
+		<hr>
 
 		<input type="text" id="wplng-api-key-fake" value="●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●" disabled></input>
 
