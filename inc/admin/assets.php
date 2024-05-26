@@ -305,14 +305,18 @@ function wplng_translation_assets() {
 		);
 
 		/**
-		 * Localize script for AJAX
+		 * Localize script
 		 */
 
 		wp_localize_script(
 			'wplingua-translation',
-			'adminAjax',
+			'wplngLocalize',
 			array(
-				'ajaxurl' => admin_url( 'admin-ajax.php' ),
+				'ajaxUrl'      => admin_url( 'admin-ajax.php' ),
+				'leaveMessage' => esc_html__( 
+					'You are about to leave the page without saving your changes. They will be lost if you continue. Would you like to leave the page anyway?', 
+					'wplingua'
+				),
 			)
 		);
 
