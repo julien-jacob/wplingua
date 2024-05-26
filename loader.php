@@ -27,7 +27,6 @@ require_once WPLNG_PLUGIN_PATH . '/inc/switcher.php';
 require_once WPLNG_PLUGIN_PATH . '/inc/translation.php';
 require_once WPLNG_PLUGIN_PATH . '/inc/url.php';
 require_once WPLNG_PLUGIN_PATH . '/inc/util.php';
-require_once WPLNG_PLUGIN_PATH . '/inc/woocommerce.php';
 
 // Require files in /inc/admin/ folder
 require_once WPLNG_PLUGIN_PATH . '/inc/admin/admin-bar.php';
