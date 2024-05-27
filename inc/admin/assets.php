@@ -313,8 +313,8 @@ function wplng_translation_assets() {
 			'wplngLocalize',
 			array(
 				'ajaxUrl'      => admin_url( 'admin-ajax.php' ),
-				'leaveMessage' => esc_html__( 
-					'You are about to leave the page without saving your changes. They will be lost if you continue. Would you like to leave the page anyway?', 
+				'leaveMessage' => esc_html__(
+					'You are about to leave the page without saving your changes. They will be lost if you continue. Would you like to leave the page anyway?',
 					'wplingua'
 				),
 			)

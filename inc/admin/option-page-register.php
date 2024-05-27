@@ -173,11 +173,11 @@ function wplng_option_page_register() {
 						<hr>
 
 						<div class="wplng-fe-50">
-							<a href="#wplng-get-api-key" class="button button-primary"><?php esc_html_e('Get API key', 'wplingua'); ?></a>
+							<a href="#wplng-get-api-key" class="button button-primary"><?php esc_html_e( 'Get API key', 'wplingua' ); ?></a>
 						</div>
 
 						<div class="wplng-fe-50">
-							<a href="#wplng-set-api-key" class="button button-primary"><?php esc_html_e('Set API key', 'wplingua'); ?></a>
+							<a href="#wplng-set-api-key" class="button button-primary"><?php esc_html_e( 'Set API key', 'wplingua' ); ?></a>
 						</div>
 					</td>
 				</tr>

@@ -315,7 +315,8 @@ function wplng_settings_part_languages_target() {
 	</p>
 
 	<div class="wplng-help-box" id="wplng-hb-language-adding">
-		<p><?php
+		<p>
+		<?php
 
 		echo '<strong>';
 		echo esc_html__( 'Available languages: ', 'wplingua' );
@@ -331,7 +332,8 @@ function wplng_settings_part_languages_target() {
 				echo ' - ';
 			}
 		}
-		?></p>
+		?>
+		</p>
 	</div>
 	<?php
 }

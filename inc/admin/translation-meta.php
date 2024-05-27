@@ -407,11 +407,11 @@ function wplng_ajax_generate_translation() {
 	// (And convert img emoji to emoji)
 
 	$text = wp_kses(
-		$_POST['text'], 
+		$_POST['text'],
 		array(
 			'img' => array(
-				'alt' => array()
-			)
+				'alt' => array(),
+			),
 		)
 	);
 
