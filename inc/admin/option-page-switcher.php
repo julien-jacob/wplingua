@@ -51,7 +51,7 @@ function wplng_option_page_switcher() {
 							<strong><?php esc_html_e( 'No target language selected.', 'wplingua' ); ?></strong>
 						</p>
 					</div>
-				<?php else: ?>
+				<?php else : ?>
 					<tr>
 					<th scope="row"><span class="dashicons dashicons-visibility"></span> <?php esc_html_e( 'Preview', 'wplingua' ); ?></th>
 					<td id="wplng-switcher-preview-container">
@@ -276,7 +276,24 @@ function wplng_option_page_switcher() {
 								<span title="<?php esc_attr_e( 'Click to expand', 'wplingua' ); ?>" wplng-help-box="#wplng-hb-insert-menu">
 							</strong>
 							<span class="wplng-fe-50">
-								<?php esc_html_e('Appearance ➔ Menus', 'wplingua') ?>
+								<?php
+
+								$support_menus = ! empty( get_nav_menu_locations() );
+
+								if ( $support_menus ) {
+									echo '<a ';
+									echo 'href="' . esc_url( get_admin_url() . 'nav-menus.php' ) . '" ';
+									echo 'target="_blank"';
+									echo '>';
+								}
+
+								esc_html_e( 'Appearance ➔ Menus', 'wplingua' );
+
+								if ( $support_menus ) {
+									echo '</a>';
+								}
+
+								?>
 							</span>
 						</p>
 
