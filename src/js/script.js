@@ -70,16 +70,18 @@ jQuery(document).ready(function ($) {
         window.location.href = urlReload;
     });
 
-    if ($("#wplng-in-progress-percent").length) {
-        setInterval(function () {
-            let percent = parseInt($("#wplng-in-progress-percent").html());
-            if (percent < 100) {
-                $("#wplng-in-progress-percent").html(percent + 1);
-            }
-        }, 2500);
+    function wplngUpdatePercent() {
+        let percent = parseInt($("#wplng-in-progress-percent").html());
+        if (percent < 100) {
+            $("#wplng-in-progress-percent").html(percent + 1);
+        }
     }
 
+    wplngUpdatePercent();
 
+    if ($("#wplng-in-progress-percent").length) {
+        setInterval(wplngUpdatePercent, 1500);
+    }
 
     if ($("#wpadminbar").length && $("#wplng-in-progress-container").length) {
         $("#wpadminbar").hide();
