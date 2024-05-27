@@ -297,6 +297,11 @@ function wplng_get_switcher_html( $arg = array() ) {
 	$url_website         = wplng_get_url_original();
 	$flags_show          = true;
 
+	$url_website = remove_query_arg(
+		'wplng-mode',
+		$url_website
+	);
+
 	if ( is_admin() ) {
 		$flags_show  = true;
 		$url_website = '#';

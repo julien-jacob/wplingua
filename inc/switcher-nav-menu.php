@@ -117,6 +117,12 @@ function wplng_switcher_nav_menu_replace_items( $items ) {
 		$language_current_id = wplng_get_language_current_id();
 		$language_current    = wplng_get_language_by_id( $language_current_id );
 		$language_website    = wplng_get_language_website();
+		$url_website         = wplng_get_url_original();
+
+		$url_website = remove_query_arg(
+			'wplng-mode',
+			$url_website
+		);
 
 		// Create $item_template and prepare classes
 
@@ -220,7 +226,7 @@ function wplng_switcher_nav_menu_replace_items( $items ) {
 			$new_item->menu_order = $item_template->menu_order + $offset;
 			$new_item->title      = $title;
 			$new_item->attr_title = $title;
-			$new_item->url        = wplng_get_url_original();
+			$new_item->url        = $url_website;
 			$new_item->db_id      = 0;
 			$new_item->classes[]  = 'wplng-language-website';
 
