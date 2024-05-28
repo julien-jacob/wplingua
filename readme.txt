@@ -31,7 +31,7 @@ With our complimentary offer, wpLingua empowers you to introduce your website to
 
 **While the free version supports translation into a single target language**, we set no boundaries on the number of words you can translate. 
 
-Whether your site has a hundred pages or just a few, you can seamlessly make it accessible in the language you desire. 
+Whether your website has a hundred pages or just a few, you can seamlessly make it accessible in the language you desire. 
 
 ###🪄 Streamlined Setup Process ###
 Dive into a hassle-free multilingual experience with wpLingua. Forget about complex configurations and the intimidating world of coding. 
@@ -68,6 +68,7 @@ The wpLingua language selector is fully customizable. You can display the langua
 
 ✓ Automatic insertion via predefined positions
 ✓ Use of a shortcode to display it wherever you want
+✓ Switcher in navigation menu with design defined by the theme
 
 You can also control the appearance of the language switcher using:
 
@@ -78,7 +79,7 @@ You can also control the appearance of the language switcher using:
 ✓ Language-based flag choices or import your own flag images
 ✓ Adding custom CSS in a dedicated insert
 
-With all these customization options, there's no way your site's language selector will look like any other!
+With all these customization options, there's no way your website's language selector will look like any other!
 
 ### 📖 Translation rules by dictionary ###
 The dictionary allows you to define translation rules that apply when generating machine translations. You can specify words or sets of words that should never be translated, or define how they should be translated for each language.
@@ -90,10 +91,10 @@ Want to preserve specific sections of a page in its original language? Our syste
 
 If entire pages need to remain untouched, effortlessly exclude them by their URL. All of this can be managed with ease through our user-friendly exclusions manager. 
 
-With wpLingua, you're always in command of what gets translated and what doesn't, ensuring your site's essence remains intact.
+With wpLingua, you're always in command of what gets translated and what doesn't, ensuring your website's essence remains intact.
 
 ### ⚡️ The wpLingua API ###
-The wpLingua plugin relies on our own wpLingua API, an integrated third-party service, to provide its machine translation functionality. The call to this Third Party Service (wpLingua API) is made when creating an API key from the plugin, during API key verification and when your site requests a new automatic translation (new texts discovered on a page web or request automatic translations from the translation edition). We invite you to consult our [Terms & Conditions page](https://wplingua.com/terms-and-conditions/) for more information.
+The wpLingua plugin relies on our own wpLingua API, an integrated third-party service, to provide its machine translation functionality. The call to this Third Party Service (wpLingua API) is made when creating an API key from the plugin, during API key verification and when your website requests a new automatic translation (new texts discovered on a page web or request automatic translations from the translation edition). We invite you to consult our [Terms & Conditions page](https://wplingua.com/terms-and-conditions/) for more information.
 
 
 == Installation ==
@@ -108,15 +109,7 @@ The wpLingua plugin relies on our own wpLingua API, an integrated third-party se
 = What languages are available for translation?=
 For the moment the available languages are: 
 
-* English
-* French
-* German
-* Italian
-* Japanese
-* Portuguese
-* Russian
-* Simplified Chinese
-* Spanish
+Arabic - Chinese - Danish - Dutch - Slovak - English - Finnish - French - German - Greek - Hebrew - Hindi - Hungarian - Indonesian - Italian - Japanese - Korean - Polish - Portuguese - Russian - Spanish - Swedish - Turkish - Ukrainian - Vietnamese 
 
 If you need a language, let us know using the [contact form available on our website](https://wplingua.com/contact/), we add languages as we go.
 
@@ -139,7 +132,7 @@ wpLingua does **not limit the translation of the number of words**.
 No, wpLingua is not compatible with WordPress Multisite
 
 = Is wpLingua compatible with caching plugins? =
-Quite ! And it's even recommended to cache your pages and translations to improve site loading and performance.
+Quite ! And it's even recommended to cache your pages and translations to improve website loading and performance.
 
 = Is there a Gutenberg block or Divi/Elementor widget to easily display the language switcher? =
 No, not at the moment but in the meantime, you can easily display the language switcher wherever you want using our shortcode provided for this purpose. Simply copy and paste this shortcode where you want: **[wplng_switcher]**
@@ -150,16 +143,29 @@ No, not at the moment but in the meantime, you can easily display the language s
 2. Easily configure your language switcher design with predefined options.
 3. You can choose which flag to display by language or import a custom flag.
 4. Once the plugin is downloaded, installed and activated, register your API key.
-5. As soon as your API key has been registered, your site is multilingual. This option screen allows you to configure your languages and their flags, as well as activate the functionalities.
+5. As soon as your API key has been registered, your website is multilingual. This option screen allows you to configure your languages and their flags, as well as activate the functionalities.
 6. Customizing the language switcher, enable or disable auto-insertion + choose position or use the shortcode.
 7. Define translation rules that apply when generating machine translations.
 8. You have the possibility to exclude pages or parts of pages.
 9. If you need, you can edit a translation directly from your pages using our visual editor.
 10. You can access the list of translations present on a page, including those which are not directly visible (Meta SEO, texts, alternative images, title attributes, etc.)
-11. All translations are stored on your WordPress site.
+11. All translations are stored on your WordPress website.
 12. You can edit all translations for each languages.
 
 == Changelog ==
+
+= 1.3.0 =
+
+* New feature: Switcher in menu
+* Better admin UX
+ * Review texts
+ * Add help box
+ * Message if user leave translation edit page without saving
+* Optimize:
+ * In progress mode
+ * Text escaping and replace
+* Better Divi management
+* Better compatibility with PHP under V8
 
 = 1.2.4 =
 
@@ -215,7 +221,7 @@ No, not at the moment but in the meantime, you can easily display the language s
 = 1.2.0 =
 
 * New feature: Translation in progress message for admin and editor
-* New feature: Filter site translations by status (reviewed, unreviewed) 
+* New feature: Filter website translations by status (reviewed, unreviewed) 
 * New feature: Edit translation status by language (reviewed, unreviewed) 
 * Better parsing and content updating: Relay method
 * Better string detection for dictionary rules
