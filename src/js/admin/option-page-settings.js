@@ -89,6 +89,15 @@ jQuery(document).ready(function ($) {
             $("#fieldset-add-target-language").show();
         }
 
+        if (
+            $("#fieldset-add-target-language").is(":visible") 
+            && $("#wplng-target-languages-container").is(":visible")
+        ) {
+            $("#wplng-languages-target-separator").show();
+        } else {
+            $("#wplng-languages-target-separator").hide();
+        }
+
         return languagesOptionsHTML;
     }
 
@@ -263,6 +272,15 @@ jQuery(document).ready(function ($) {
             $("#wplng-target-languages-container").hide();
         } else {
             $("#wplng-target-languages-container").show();
+        }
+
+        if (
+            $("#fieldset-add-target-language").is(":visible") 
+            && $("#wplng-target-languages-container").is(":visible")
+        ) {
+            $("#wplng-languages-target-separator").show();
+        } else {
+            $("#wplng-languages-target-separator").hide();
         }
 
         return html;

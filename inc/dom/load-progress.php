@@ -177,7 +177,9 @@ function wplng_dom_load_progress( $dom, $args ) {
 	$html .= '<span class="dashicons dashicons-update wplng-spin"></span> ';
 	$html .= esc_html__( 'Translation in progress', 'wplingua' );
 	$html .= ' - ';
+	$html .= '<span id="wplng-in-progress-percent">';
 	$html .= esc_html( $percentage );
+	$html .= '</span>';
 	$html .= ' %';
 	$html .= '</div>'; // End #wplng-translation-in-progress
 

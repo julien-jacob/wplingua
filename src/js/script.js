@@ -4,7 +4,7 @@ jQuery(document).ready(function ($) {
      * Code for flags in nav menu switcher
      */
 
-    $("[wplng_flag]").each(function() {
+    $("[wplng_flag]").each(function () {
 
         let img = '<img ';
         img += 'src="' + $(this).attr("wplng_flag") + '" '
@@ -69,6 +69,19 @@ jQuery(document).ready(function ($) {
         let urlReload = $("#wplng-in-progress-container").attr("wplng-reload");
         window.location.href = urlReload;
     });
+
+    function wplngUpdatePercent() {
+        let percent = parseInt($("#wplng-in-progress-percent").html());
+        if (percent < 100) {
+            $("#wplng-in-progress-percent").html(percent + 1);
+        }
+    }
+
+    wplngUpdatePercent();
+
+    if ($("#wplng-in-progress-percent").length) {
+        setInterval(wplngUpdatePercent, 1500);
+    }
 
     if ($("#wpadminbar").length && $("#wplng-in-progress-container").length) {
         $("#wpadminbar").hide();

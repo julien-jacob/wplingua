@@ -68,4 +68,20 @@ jQuery(document).ready(function ($) {
         $("#wplng_request_free_key").val(JSON.stringify(registerData))
     }
 
+    /**
+    * Smooth scrolling to page anchor on click
+    **/
+    $("a[href*='#wplng-']:not([href='#'])").click(function() {
+        if (
+            location.hostname == this.hostname
+            && this.pathname.replace(/^\//,"") == location.pathname.replace(/^\//,"")
+        ) {
+            var anchor = $(this.hash);
+            anchor = anchor.length ? anchor : $("[name=" + this.hash.slice(1) +"]");
+            if ( anchor.length ) {
+                $("html, body").animate( { scrollTop: anchor.offset().top - 50 }, 1000);
+            }
+        }
+    });
+
 }); // End jQuery loaded event

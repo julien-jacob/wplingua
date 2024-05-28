@@ -212,14 +212,14 @@ function wplng_get_api_languages_target() {
 
 /**
  * Get enabled features from wpLingua API data
- * ('search', 'woocommerce')
+ * ('search', 'commercial')
  *
  * @return array
  */
 function wplng_get_api_feature() {
 
 	$data     = wplng_get_api_data();
-	$all      = array( 'search', 'woocommerce' );
+	$all      = array( 'search', 'commercial' );
 	$features = array();
 
 	if ( ! empty( $data['features'] ) && is_array( $data['features'] ) ) {
