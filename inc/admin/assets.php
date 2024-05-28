@@ -84,6 +84,13 @@ function wplng_option_page_register_assets( $hook ) {
 	 */
 
 	wp_enqueue_script(
+		'wplingua-help-box',
+		plugins_url() . '/wplingua/assets/js/admin/help-box.js',
+		array( 'jquery' ),
+		WPLNG_PLUGIN_VERSION
+	);
+
+	wp_enqueue_script(
 		'wplingua-option-register',
 		plugins_url() . '/wplingua/assets/js/admin/option-page-register.js',
 		array( 'jquery' ),

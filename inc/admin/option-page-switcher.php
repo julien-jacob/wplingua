@@ -95,7 +95,24 @@ function wplng_option_page_switcher() {
 						</p>
 
 						<div class="wplng-help-box" id="wplng-hb-layout">
-							<p><?php esc_html_e( 'Layout', 'wplingua' ); ?></p>
+							<p>
+								<?php esc_html_e( 'This option allow you to define the layout of the languages ​​in the switcher', 'wplingua' ); ?>
+							</p>
+							<hr>
+							<ul>
+								<li>
+									<strong><?php esc_html_e( 'Inline list: ', 'wplingua' ); ?></strong> 
+									<?php esc_html_e( 'the languages ​​are lined up next to each other.', 'wplingua' ); ?> 
+								</li>
+								<li>
+									<strong><?php esc_html_e( 'Block: ', 'wplingua' ); ?></strong> 
+									<?php esc_html_e( 'the languages ​​are placed in columns, one under the other.', 'wplingua' ); ?> 
+								</li>
+								<li>
+									<strong><?php esc_html_e( 'Dropdown: ', 'wplingua' ); ?></strong> 
+									<?php esc_html_e( 'the languages ​​appear in a drop-down menu; this is recommended when your website offers several languages.', 'wplingua' ); ?> 
+								</li>
+							</ul>
 						</div>
 
 						<hr>
@@ -127,7 +144,30 @@ function wplng_option_page_switcher() {
 						</p>
 
 						<div class="wplng-help-box" id="wplng-hb-name-format">
-							<p><?php esc_html_e( 'Name format', 'wplingua' ); ?></p>
+							<p>
+								<?php esc_html_e( 'This option allow you to choose how the language name should be written in the switcher.', 'wplingua' ); ?>
+							</p>
+
+							<hr>
+
+							<ul>
+								<li>
+									<strong><?php esc_html_e( 'Translated name: ', 'wplingua' ); ?></strong>
+									<?php esc_html_e( 'the name of the languages ​​is translated into the original language of the site.', 'wplingua' ); ?>
+								</li>
+								<li>
+									<strong><?php esc_html_e( 'Original name: ', 'wplingua' ); ?></strong>
+									<?php esc_html_e( 'each language retains its name in its own language (English, Français, 日本語, Português, Español, etc.).', 'wplingua' ); ?>
+								</li>
+								<li>
+									<strong><?php esc_html_e( 'Language ID: ', 'wplingua' ); ?></strong>
+									<?php esc_html_e( 'language names use language ID (FR, EN, DE, RU, etc.).', 'wplingua' ); ?>
+								</li>
+								<li>
+									<strong><?php esc_html_e( 'No display: ', 'wplingua' ); ?></strong>
+									<?php esc_html_e( 'no text, only flags are displayed.', 'wplingua' ); ?>
+								</li>
+							</ul>
 						</div>
 
 						<hr>
@@ -159,7 +199,28 @@ function wplng_option_page_switcher() {
 						</p>
 
 						<div class="wplng-help-box" id="wplng-hb-flags-style">
-							<p><?php esc_html_e( 'Flags style', 'wplingua' ); ?></p>
+							<p><?php esc_html_e( 'This option allow you to choose the appearance of the flags in the switcher. ', 'wplingua' ); ?></p>
+
+							<hr>
+
+							<ul>
+								<li>
+									<strong><?php esc_html_e( 'Circle: ', 'wplingua' ); ?></strong> 
+									<?php esc_html_e( 'display round flags.', 'wplingua' ); ?>
+								</li>
+								<li>
+									<strong><?php esc_html_e( 'Rectangular: ', 'wplingua' ); ?></strong> 
+									<?php esc_html_e( 'display rectangular flags.', 'wplingua' ); ?>
+								</li>
+								<li>
+									<strong><?php esc_html_e( 'Wave: ', 'wplingua' ); ?></strong> 
+									<?php esc_html_e( 'display wavy flags.', 'wplingua' ); ?>
+								</li>
+								<li>
+									<strong><?php esc_html_e( 'No display: ', 'wplingua' ); ?></strong>
+									<?php esc_html_e( 'not display any flags, only the language name will be displayed.', 'wplingua' ); ?>
+								</li>
+							</ul>
 						</div>
 
 						<hr>
@@ -192,7 +253,64 @@ function wplng_option_page_switcher() {
 						</p>
 
 						<div class="wplng-help-box" id="wplng-hb-theme">
-							<p><?php esc_html_e( 'Theme', 'wplingua' ); ?></p>
+							<p>
+								<?php esc_html_e( 'This option allows you to choose the color and border styles of the language switcher.', 'wplingua' ); ?>
+							</p>
+
+							<hr>
+
+							<p>
+								<?php esc_html_e( 'The color options offer 5 themes: ', 'wplingua' ); ?>
+							</p>
+
+							<ul>
+								<li>
+									<strong><?php esc_html_e( 'Light: ', 'wplingua' ); ?></strong>
+									<?php esc_html_e( 'white color in the background of the switcher.', 'wplingua' ); ?>
+								</li>
+								<li>
+									<strong><?php esc_html_e( 'Grey: ', 'wplingua' ); ?></strong>
+									<?php esc_html_e( 'grey background color.', 'wplingua' ); ?>
+								</li>
+								<li>
+									<strong><?php esc_html_e( 'Dark: ', 'wplingua' ); ?></strong>
+									<?php esc_html_e( 'black background color.', 'wplingua' ); ?>
+								</li>
+								<li>
+									<strong><?php esc_html_e( 'Blur Black: ', 'wplingua' ); ?></strong>
+									<?php esc_html_e( 'transparent and blurred background color with black text and borders.', 'wplingua' ); ?>
+								</li>
+								<li>
+									<strong><?php esc_html_e( 'Blur White: ', 'wplingua' ); ?></strong>
+									<?php esc_html_e( 'transparent and blurred background color with white text and borders.', 'wplingua' ); ?>
+								</li>
+							</ul>
+
+							<hr>
+
+							<p>
+								<?php esc_html_e( 'Each theme is then broken down by shape and border style :', 'wplingua' ); ?>
+							</p>
+
+							<ul>
+								<li>
+									<strong><?php esc_html_e( 'Double – Smooth: ', 'wplingua' ); ?></strong>
+									<?php esc_html_e( 'the switcher will be framed by a double border with rounded corners.', 'wplingua' ); ?>
+								</li>
+								<li>
+									<strong><?php esc_html_e( 'Double – Square: ', 'wplingua' ); ?></strong>
+									<?php esc_html_e( 'double border with square corners.', 'wplingua' ); ?>
+								</li>
+								<li>
+									<strong><?php esc_html_e( 'Simple – Smooth: ', 'wplingua' ); ?></strong>
+									<?php esc_html_e( 'single border with rounded corners.', 'wplingua' ); ?>
+								</li>
+								<li>
+									<strong><?php esc_html_e( 'Simple – Square: ', 'wplingua' ); ?></strong>
+									<?php esc_html_e( 'single border with square corners.', 'wplingua' ); ?>
+								</li>
+							</ul>
+
 						</div>
 
 					</td>
@@ -208,7 +326,39 @@ function wplng_option_page_switcher() {
 							<span title="<?php esc_attr_e( 'Click to expand', 'wplingua' ); ?>" wplng-help-box="#wplng-hb-css">
 						</p>
 						<div class="wplng-help-box" id="wplng-hb-css">
-							<p><?php esc_html_e( 'Custom CSS', 'wplingua' ); ?></p>
+							<p>
+								<?php _e( 'First of all, note that the CSS class <code>.switcher-content</code> allows you to act on the entire block of the language switcher while the class <code>.wplng-langague</code> allows you to act on the languages ​​themselves.', 'wplingua' ); ?>
+							</p>
+							
+							<?php
+								echo '<pre>';
+								echo '.wplng-switcher.theme-light-double-square .switcher-content {' . PHP_EOL;
+								echo '    background-color: #5e33d9;' . PHP_EOL;
+								echo '    border: 1px solid #5e33d9;' . PHP_EOL;
+								echo '}';
+								echo '</pre>';
+							?>
+
+							<hr>
+
+							<p>
+								<?php _e( 'To change the background and border colors of languages, here is the CSS:' ); ?>
+							</p>
+
+							<?php
+								echo '<pre>';
+								echo '.wplng-switcher.theme-light-double-square .switcher-content .wplng-language {' . PHP_EOL;
+								echo '    border: 1px solid #5e33d9;' . PHP_EOL;
+								echo '    color: #5e33d9;' . PHP_EOL;
+								echo '}';
+								echo '</pre>';
+							?>
+
+							<hr>
+
+							<p>
+								<a href="https://wplingua.com/documentation/user/how-to-customize-the-language-switcher/" target="_blank"><?php _e( 'More example on wplingua.com' ); ?></a>
+							</p>
 						</div>
 						<hr>
 						<fieldset>
@@ -251,7 +401,27 @@ function wplng_option_page_switcher() {
 						</p>
 
 						<div class="wplng-help-box" id="wplng-hb-insert-automatic">
-							<p><?php esc_html_e( 'Automatic insert', 'wplingua' ); ?></p>
+							<p><?php esc_html_e( 'Choose a predefined location: ', 'wplingua' ); ?></p>
+
+							<ul>
+								<li>
+									<strong><?php esc_html_e( 'Bottom right: ', 'wplingua' ); ?></strong>
+									<?php esc_html_e( 'the switcher is placed at the bottom right of the screen.', 'wplingua' ); ?>
+								</li>
+								<li>
+									<strong><?php esc_html_e( 'Bottom Center: ', 'wplingua' ); ?></strong>
+									<?php esc_html_e( 'bottom center of the screen.', 'wplingua' ); ?>
+								</li>
+								<li>
+									<strong><?php esc_html_e( 'Bottom left: ', 'wplingua' ); ?></strong>
+									<?php esc_html_e( 'bottom left of the screen.', 'wplingua' ); ?>
+								</li>
+								<li>
+									<strong><?php esc_html_e( 'None: ', 'wplingua' ); ?></strong>
+									<?php esc_html_e( 'the switcher is not inserted automatically.', 'wplingua' ); ?>
+								</li>
+							</ul>
+
 						</div>
 
 						<hr>
@@ -265,7 +435,7 @@ function wplng_option_page_switcher() {
 						</p>
 						
 						<div class="wplng-help-box" id="wplng-hb-insert-shortcode">
-							<p><?php esc_html_e( 'Automatic insert', 'wplingua' ); ?></p>
+							<p><?php esc_html_e( 'If you want to insert the language switcher only in certain places on your website, you can use the shortcode provided for this purpose. Note that in this case, the previous option should be "None". This method is ideal for placing the switcher where you want it, whether you are using a Gutenberg block-based theme (FSE), a classic theme or even a page or theme builder like Divi, Elementor...', 'wplingua' ); ?></p>
 						</div>
 
 						<hr>
@@ -298,7 +468,7 @@ function wplng_option_page_switcher() {
 						</p>
 
 						<div class="wplng-help-box" id="wplng-hb-insert-menu">
-							<p><?php esc_html_e( 'If the active theme manages menus, it\'s possible to add language switcher to them. The design of these language switcher will be defined by the theme.', 'wplingua' ); ?></p>
+							<p><?php esc_html_e( 'If the active theme manages menus (classic theme), it is possible to add a language switcher. The design of these language switchers will be defined by the theme. Go to the Appearance ➔ Menu tab to add the wpLingua switcher as a menu item. It is also possible to add it as a sub-element.', 'wplingua' ); ?></p>
 						</div>
 
 					</td>

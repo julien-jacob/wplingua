@@ -32,7 +32,7 @@
 
     &::before {
         content: "\f223";
-    }    
+    }
 }
 
 [wplng-help-box-right] {
@@ -51,6 +51,19 @@
         border-top: 1px solid #69a8bb;
         border-bottom: unset;
     }
+
+    code {
+        background-color: rgba(60, 67, 74, .075);
+        border-radius: 3px;
+    }
+
+    pre {
+        white-space: pre-wrap;
+        background-color: rgba(60, 67, 74, .075);
+        border-radius: 3px;
+        padding: 10px;
+        border: 1px solid #69a8bb;
+    }
 }
 
 // End Help Box
@@ -67,7 +80,7 @@
     padding: 15px 25px;
     line-height: 22px;
     font-weight: 500;
-    box-shadow: 0 0 8px rgba(0,0,0,.05);
+    box-shadow: 0 0 8px rgba(0, 0, 0, .05);
     border-bottom: 1px solid #c3c4c7;
     text-align: center;
 
@@ -161,7 +174,7 @@
 #wpfooter {
 
     background-color: #f6f7f7;
-    box-shadow: 0 0 8px rgba(0,0,0,.05);
+    box-shadow: 0 0 8px rgba(0, 0, 0, .05);
     border-top: 1px solid #c3c4c7;
     padding: 15px 25px;
 
