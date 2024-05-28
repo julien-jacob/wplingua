@@ -175,7 +175,15 @@ function wplng_dom_load_progress( $dom, $args ) {
 
 	$html .= '<div id="wplng-in-progress-message">';
 	$html .= '<span class="dashicons dashicons-update wplng-spin"></span> ';
+
+	$html .= '<span id="wplng-in-progress-text-mobile">';
 	$html .= esc_html__( 'Translation in progress', 'wplingua' );
+	$html .= '</span>';
+
+	$html .= '<span id="wplng-in-progress-text-desktop">';
+	$html .= esc_html__( 'In progress: Translation and saving of new texts', 'wplingua' );
+	$html .= '</span>';
+
 	$html .= ' - ';
 	$html .= '<span id="wplng-in-progress-percent">';
 	$html .= esc_html( $percentage );

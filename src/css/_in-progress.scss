@@ -60,7 +60,17 @@
             animation-timing-function: linear;
         }
     }
+
+    #wplng-in-progress-text-mobile {
+        display: none;
+    }
+
+    #wplng-in-progress-text-desktop {
+        display: inline;
+    }
 }
+
+
 
 @media screen and (max-width: 782px) {
     #wplng-in-progress-container {
@@ -72,6 +82,14 @@
                 position: relative;
                 top: 10px;
             }
+        }
+
+        #wplng-in-progress-text-mobile {
+            display: inline;
+        }
+    
+        #wplng-in-progress-text-desktop {
+            display: none;
         }
     }
 }

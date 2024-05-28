@@ -82,7 +82,7 @@ jQuery(document).ready(function ($) {
     wplngUpdatePercent();
 
     if ($("#wplng-in-progress-percent").length) {
-        setInterval(wplngUpdatePercent, 1500);
+        setInterval(wplngUpdatePercent, 2000);
     }
 
     if ($("#wpadminbar").length && $("#wplng-in-progress-container").length) {

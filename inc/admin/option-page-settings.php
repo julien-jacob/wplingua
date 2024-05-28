@@ -435,7 +435,7 @@ function wplng_settings_part_api_key() {
 		</p>
 
 		<div class="wplng-help-box" id="wplng-hb-api-key">
-			<p><?php esc_html_e( 'A wpLingua API key consists of 42 characters (uppercase, lowercase and numbers). It is emailed to you when you request it using the form provided when you install the plugin. You must keep this key secret. You must to keep this key secret and only communicate it to wplingua.com services', 'wplingua' ); ?></p>
+			<p><?php esc_html_e( 'A wpLingua API key consists of 42 characters (uppercase, lowercase and numbers). It is emailed to you when you request it using the form provided when you install the plugin. You must keep this key secret and only communicate it to wplingua.com services', 'wplingua' ); ?></p>
 		</div>
 
 		<hr>
