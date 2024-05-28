@@ -96,7 +96,7 @@ function wplng_option_page_switcher() {
 
 						<div class="wplng-help-box" id="wplng-hb-layout">
 							<p>
-								<?php esc_html_e( 'This option allow you to define the layout of the languages ​​in the switcher', 'wplingua' ); ?>
+								<?php esc_html_e( 'This option allow you to define the layout of the languages ​​in the switcher.', 'wplingua' ); ?>
 							</p>
 							<hr>
 							<ul>
@@ -360,7 +360,7 @@ function wplng_option_page_switcher() {
 								<a href="https://wplingua.com/documentation/user/how-to-customize-the-language-switcher/" target="_blank"><?php _e( 'More example on wplingua.com' ); ?></a>
 							</p>
 						</div>
-						<hr>
+
 						<fieldset>
 							<textarea name="wplng_custom_css" id="wplng_custom_css" spellcheck="false"><?php echo esc_textarea( $custom_css ); ?></textarea>
 						</fieldset>
