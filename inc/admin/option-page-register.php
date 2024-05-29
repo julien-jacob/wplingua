@@ -239,7 +239,7 @@ function wplng_register_part_api_key( $api_key ) {
 		</p>
 
 		<div class="wplng-help-box" id="wplng-hb-api-key">
-			<p><?php esc_html_e( 'A wpLingua API key consists of 42 characters (uppercase, lowercase and numbers). It is emailed to you when you request it using the form provided when you install the plugin. You must keep this key secret. You must to keep this key secret and only communicate it to wplingua.com services', 'wplingua' ); ?></p>
+			<p><?php esc_html_e( 'A wpLingua API key consists of 42 characters (uppercase, lowercase and numbers). It is emailed to you when you request it using the form provided when you install the plugin. You must keep this key secret and only communicate it to wplingua.com services', 'wplingua' ); ?></p>
 		</div>
 
 		<br>
@@ -330,7 +330,7 @@ function wplng_register_part_free_api_key() {
 	</p>
 
 	<div class="wplng-help-box" id="wplng-hb-register-language-website">
-		<p><?php esc_html_e( 'This is the language of your website. The language set here is defined by the associated API key. Make sure your website language is also correctly set in WordPress options (Settings ➔ General ➔ Site Language).', 'wplingua' ); ?></p>
+		<p><?php esc_html_e( 'This is the language of your website, defined by the associated API key. Make sure your website language is also correctly set in WordPress options (Settings ➔ General ➔ Site Language).', 'wplingua' ); ?></p>
 	</div>
 
 	<hr>

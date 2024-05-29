@@ -202,7 +202,7 @@ function wplng_settings_part_language_website() {
 
 		echo '<div class="wplng-help-box" id="wplng-hb-language-website">';
 		echo '<p>';
-		echo esc_html__( 'This is the language of your website. The language set here is defined by the associated API key. Make sure your website language is also correctly set in WordPress options (Settings ➔ General ➔ Site Language).', 'wplingua' );
+		echo esc_html__( 'This is the language of your website, defined by the associated API key. Make sure your website language is also correctly set in WordPress options (Settings ➔ General ➔ Site Language).', 'wplingua' );
 		echo '<hr>';
 		echo esc_html__( 'If you have mistakenly entered the wrong language, contact wpLingua support to request a correction.', 'wplingua' );
 		echo ' ';

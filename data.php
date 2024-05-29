@@ -396,7 +396,7 @@ function wplng_data_switcher_nav_menu_valid_name_format() {
 function wplng_data_switcher_nav_menu_valid_flags_style() {
 	return array(
 		'y' => __( 'Display', 'wplingua' ),
-		'n' => __( 'Not display', 'wplingua' ),
+		'n' => __( 'No display', 'wplingua' ),
 	);
 }
 

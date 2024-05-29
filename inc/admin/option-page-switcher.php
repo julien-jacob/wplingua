@@ -120,7 +120,7 @@ function wplng_option_page_switcher() {
 						<p>
 							<fieldset>
 								<label for="wplng_name_format" class="wplng-fe-50">
-									<strong><?php esc_html_e( 'Displayed name: ', 'wplingua' ); ?></strong> 
+									<strong><?php esc_html_e( 'Displayed names: ', 'wplingua' ); ?></strong> 
 									<span title="<?php esc_attr_e( 'Click to expand', 'wplingua' ); ?>" wplng-help-box="#wplng-hb-name-format">
 								</label>
 								<select id="wplng_name_format" name="wplng_name_format" class="wplng-fe-50">
@@ -145,14 +145,14 @@ function wplng_option_page_switcher() {
 
 						<div class="wplng-help-box" id="wplng-hb-name-format">
 							<p>
-								<?php esc_html_e( 'This option allow you to choose how the language name should be written in the switcher.', 'wplingua' ); ?>
+								<?php esc_html_e( 'This option allow you to choose how the languages names should be written in the switcher.', 'wplingua' ); ?>
 							</p>
 
 							<hr>
 
 							<ul>
 								<li>
-									<strong><?php esc_html_e( 'Translated name: ', 'wplingua' ); ?></strong>
+									<strong><?php esc_html_e( 'Translated names: ', 'wplingua' ); ?></strong>
 									<?php esc_html_e( 'the name of the languages ​​is translated into the original language of the site.', 'wplingua' ); ?>
 								</li>
 								<li>
@@ -175,7 +175,7 @@ function wplng_option_page_switcher() {
 						<p>
 							<fieldset>
 								<label for="wplng_flags_style" class="wplng-fe-50">
-									<strong><?php esc_html_e( 'Flag style: ', 'wplingua' ); ?></strong> 
+									<strong><?php esc_html_e( 'Flags style: ', 'wplingua' ); ?></strong> 
 									<span title="<?php esc_attr_e( 'Click to expand', 'wplingua' ); ?>" wplng-help-box="#wplng-hb-flags-style">
 								</label>
 								<select id="wplng_flags_style" name="wplng_flags_style" class="wplng-fe-50">
@@ -218,9 +218,14 @@ function wplng_option_page_switcher() {
 								</li>
 								<li>
 									<strong><?php esc_html_e( 'No display: ', 'wplingua' ); ?></strong>
-									<?php esc_html_e( 'not display any flags, only the language name will be displayed.', 'wplingua' ); ?>
+									<?php esc_html_e( 'no display any flags, only the language name will be displayed.', 'wplingua' ); ?>
 								</li>
 							</ul>
+
+							<hr>
+
+							<p><?php esc_html_e( 'You can also change the country flag or set a custom flag from wpLingua ➔ General settings. For example, you can set the flag of Mexico for Spanish instead of the flag of Spain.', 'wplingua' ); ?></p>
+
 						</div>
 
 						<hr>
@@ -254,7 +259,7 @@ function wplng_option_page_switcher() {
 
 						<div class="wplng-help-box" id="wplng-hb-theme">
 							<p>
-								<?php esc_html_e( 'This option allows you to choose the color and border styles of the language switcher.', 'wplingua' ); ?>
+								<?php esc_html_e( 'This option allows you to choose the color and border styles of the languages switcher.', 'wplingua' ); ?>
 							</p>
 
 							<hr>
