@@ -101,7 +101,6 @@ function wplng_register_settings() {
 	register_setting( 'wplng_settings', 'wplng_website_flag' );
 	register_setting( 'wplng_settings', 'wplng_target_languages' );
 	register_setting( 'wplng_settings', 'wplng_translate_search' );
-	register_setting( 'wplng_settings', 'wplng_translate_woocommerce' );
 	register_setting( 'wplng_settings', 'wplng_api_key' );
 	register_setting( 'wplng_settings', 'wplng_request_free_key' );
 
@@ -234,7 +233,7 @@ function wplng_admin_notice_no_key_set() {
 	$html .= esc_html__( 'wpLingua - Translation solution for multilingual website', 'wplingua' );
 	$html .= '</p>';
 	$html .= '<p>';
-	$html .= esc_html__( 'wpLingua is installed, but not yet configured. You are just a few clicks away from making your site multilingual!', 'wplingua' );
+	$html .= esc_html__( 'wpLingua is installed, but not yet configured. You are just a few clicks away from making your website multilingual!', 'wplingua' );
 	$html .= '<br> ';
 	$html .= '<a href="' . esc_url( $url ) . '">';
 	$html .= esc_html__( 'Go to the configuration page', 'wplingua' );
@@ -293,7 +292,7 @@ function wplng_admin_notice_incompatible_plugin() {
 	$html .= esc_html__( 'wpLingua - Incompatible plugin detected', 'wplingua' );
 	$html .= '</p>';
 	$html .= '<p>';
-	$html .= esc_html__( 'You have several translation plugins. This may result in unpredictable or incorrect behavior. For best results, use only one translation plugin at a time. These plugins can cause problems with wpLingua:', 'wplingua' );
+	$html .= esc_html__( 'You have several translation plugins. This may result in unpredictable or incorrect behavior. For best results, use only one translation plugin at a time. These plugins can cause problems with wpLingua: ', 'wplingua' );
 
 	$html .= '<ul style="list-style: disc; margin-left: 15px;">';
 	foreach ( $incompatible_detected as $name => $file ) {

@@ -134,7 +134,7 @@ function wplng_get_switcher_name_format() {
 	if ( ! $is_valid
 		|| (
 			'none' === wplng_get_switcher_flags_style()
-			&& 'none' === $name_format 
+			&& 'none' === $name_format
 		)
 	) {
 		$name_format = 'original';
@@ -278,7 +278,7 @@ function wplng_switcher_wp_footer() {
 
 
 /**
- * Print HTML of wpLingua switcher
+ * Get HTML of wpLingua switcher
  *
  * @param array $arg
  * @return string
@@ -296,6 +296,11 @@ function wplng_get_switcher_html( $arg = array() ) {
 	$flags_style         = wplng_get_switcher_flags_style();
 	$url_website         = wplng_get_url_original();
 	$flags_show          = true;
+
+	$url_website = remove_query_arg(
+		'wplng-mode',
+		$url_website
+	);
 
 	if ( is_admin() ) {
 		$flags_show  = true;
@@ -390,7 +395,7 @@ function wplng_get_switcher_html( $arg = array() ) {
 		$html .= 'onclick="event.preventDefault();">';
 
 	} elseif ( is_admin()
-		|| ( 0 < strpos( $url_website, '/?et_fb=1' ) )
+		|| wplng_str_contains( $url_website, '/?et_fb=1' )
 	) {
 
 		$html .= '<a class="wplng-language website after" ';
@@ -427,7 +432,7 @@ function wplng_get_switcher_html( $arg = array() ) {
 			$html .= 'onclick="event.preventDefault();">';
 
 		} elseif ( is_admin()
-			|| ( 0 < strpos( $url, '/?et_fb=1' ) )
+			|| wplng_str_contains( $url, '/?et_fb=1' )
 		) {
 
 			$html .= '<a ';

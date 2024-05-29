@@ -222,7 +222,7 @@ function wplng_args_update_from_texts( &$args, $texts ) {
 	) {
 		$max_translations = 0;
 	} elseif ( $args['load'] === 'loading' ) {
-		$max_translations = 20;
+		$max_translations = 60;
 	} else {
 		$args['load'] = 'disabled';
 	}

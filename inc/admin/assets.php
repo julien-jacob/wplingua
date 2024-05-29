@@ -32,6 +32,13 @@ function wplng_option_page_settings_assets( $hook ) {
 	 */
 
 	wp_enqueue_script(
+		'wplingua-help-box',
+		plugins_url() . '/wplingua/assets/js/admin/help-box.js',
+		array( 'jquery' ),
+		WPLNG_PLUGIN_VERSION
+	);
+
+	wp_enqueue_script(
 		'wplingua-option-settings',
 		plugins_url() . '/wplingua/assets/js/admin/option-page-settings.js',
 		array( 'jquery' ),
@@ -75,6 +82,13 @@ function wplng_option_page_register_assets( $hook ) {
 	/**
 	 * Enqueue wpLingua JS scripts
 	 */
+
+	wp_enqueue_script(
+		'wplingua-help-box',
+		plugins_url() . '/wplingua/assets/js/admin/help-box.js',
+		array( 'jquery' ),
+		WPLNG_PLUGIN_VERSION
+	);
 
 	wp_enqueue_script(
 		'wplingua-option-register',
@@ -124,6 +138,13 @@ function wplng_option_page_switcher_assets( $hook ) {
 	wp_enqueue_script(
 		'wplingua-option-switcher',
 		plugins_url() . '/wplingua/assets/js/admin/option-page-switcher.js',
+		array( 'jquery' ),
+		WPLNG_PLUGIN_VERSION
+	);
+
+	wp_enqueue_script(
+		'wplingua-help-box',
+		plugins_url() . '/wplingua/assets/js/admin/help-box.js',
 		array( 'jquery' ),
 		WPLNG_PLUGIN_VERSION
 	);
@@ -291,14 +312,18 @@ function wplng_translation_assets() {
 		);
 
 		/**
-		 * Localize script for AJAX
+		 * Localize script
 		 */
 
 		wp_localize_script(
 			'wplingua-translation',
-			'adminAjax',
+			'wplngLocalize',
 			array(
-				'ajaxurl' => admin_url( 'admin-ajax.php' ),
+				'ajaxUrl'      => admin_url( 'admin-ajax.php' ),
+				'leaveMessage' => esc_html__(
+					'You are about to leave the page without saving your changes. They will be lost if you continue. Would you like to leave the page anyway?',
+					'wplingua'
+				),
 			)
 		);
 

@@ -24,7 +24,7 @@
         font-size: 1.1em;
         font-weight: 600;
         padding-bottom: 2px;
-        margin-bottom: 8px;
+        margin: 10px 0 8px;
     }
 
     button.notice-dismiss {
@@ -73,7 +73,7 @@
 }
 
 #wplng_add_new_target_language {
-    width: calc(50% - 55px);
+    width: calc(100% - 55px);
 }
 
 #wplng-flags-radio-original-website,
@@ -161,7 +161,6 @@
         #wplng-api-key-fake,
         #wplng_api_key,
         #wplng_add_new_target_language {
-            width: calc(100% - 55px);
             max-width: calc(100% - 55px);
             display: inline-block;
         }

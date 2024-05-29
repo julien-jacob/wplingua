@@ -7,7 +7,7 @@
  * Author URI: https://wplingua.com/
  * Text Domain: wplingua
  * Domain Path: /languages/
- * Version: 1.2.4
+ * Version: 1.3.0
  * Requires PHP: 7.4
  * License: GPL v2 or later
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -24,7 +24,7 @@ if ( ! defined( 'WPINC' ) ) {
 define( 'WPLNG_API_URL', 'https://api.wplingua.com' );
 define( 'WPLNG_API_VERSION', '1.0' );
 define( 'WPLNG_API_SSLVERIFY', true );
-define( 'WPLNG_PLUGIN_VERSION', '1.2.4' );
+define( 'WPLNG_PLUGIN_VERSION', '1.3.0' );
 define( 'WPLNG_PLUGIN_FILE', plugin_basename( __FILE__ ) );
 define( 'WPLNG_PLUGIN_PATH', dirname( __FILE__ ) );
 define( 'WPLNG_MAX_TRANSLATIONS', 256 );
@@ -109,6 +109,11 @@ function wplng_start() {
 		// Add admin Bar menu
 		add_action( 'admin_bar_menu', 'wplng_admin_bar_menu', 81 );
 
+		// Switcher in nav menu options
+		add_action( 'admin_enqueue_scripts', 'wplng_switcher_nav_menu_inline_scripts' );
+		add_action( 'admin_head-nav-menus.php', 'wp_nav_menu_switcher_box_add_register' );
+		add_action( 'wp_nav_menu_item_custom_fields', 'wp_nav_menu_switcher_box_edit', 10, 2 );
+
 		// Enqueue CSS and JS files for option pages
 		add_action( 'admin_enqueue_scripts', 'wplng_option_page_settings_assets' );
 		add_action( 'admin_enqueue_scripts', 'wplng_option_page_switcher_assets' );
@@ -166,6 +171,10 @@ function wplng_start() {
 		// Add languages switcher before </body>
 		add_action( 'wp_footer', 'wplng_switcher_wp_footer' );
 
+		// Add languages switcher in nav menu
+		add_filter( 'wp_nav_menu_objects', 'wplng_switcher_nav_menu_replace_items' );
+		add_filter( 'nav_menu_link_attributes', 'wplng_add_nav_menu_link_attributes_atts', 10, 2 );
+
 		// Set alternate links with hreflang parametters
 		add_action( 'wp_head', 'wplng_link_alternate_hreflang' );
 
@@ -187,11 +196,6 @@ function wplng_start() {
 			add_action( 'parse_query', 'wplng_translate_search_query' );
 		} else {
 			add_filter( 'wplng_url_is_translatable', 'wplng_exclude_search', 20 );
-		}
-
-		// Woocommerce
-		if ( empty( get_option( 'wplng_translate_woocommerce' ) ) ) {
-			add_filter( 'wplng_url_exclude_regex', 'wplng_exclude_woocommerce_url', 20 );
 		}
 
 		/**

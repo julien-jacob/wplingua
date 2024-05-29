@@ -7,6 +7,44 @@ if ( ! defined( 'WPINC' ) ) {
 
 
 /**
+ * Check if substring is contained in string
+ *
+ * @param string $haystack String to check
+ * @param string $needle Sub-string
+ *
+ * @return bool
+ */
+function wplng_str_contains( $haystack, $needle ) {
+	return ( strpos( $haystack, $needle ) !== false );
+}
+
+
+/**
+ * Check if string starts by sub_string
+ *
+ * @param string $haystack String to check
+ * @param string $needle Sub-string
+ *
+ * @return bool
+ */
+function wplng_str_starts_with( $haystack, $needle ) {
+	return substr_compare( $haystack, $needle, 0, strlen( $needle ) ) === 0;
+}
+
+
+/**
+ * Check if string ends by sub_string
+ *
+ * @param string $haystack String to check
+ * @param string $needle Sub-string
+ *
+ * @return bool
+ */
+function wplng_str_ends_with( $haystack, $needle ) {
+	return substr_compare( $haystack, $needle, -strlen( $needle ) ) === 0;
+}
+
+/**
  * Return true is $str is an URL
  *
  * @param string $str
@@ -19,7 +57,7 @@ function wplng_str_is_url( $str ) {
 
 	if ( is_string( $str )
 		&& ( '' !== trim( $str ) )
-		&& ( false !== strpos( $str, '/' ) )
+		&& wplng_str_contains( $str, '/' )
 	) {
 		if ( isset( $parsed['scheme'] )
 			&& (
@@ -48,8 +86,19 @@ function wplng_str_is_url( $str ) {
  */
 function wplng_text_is_translatable( $text ) {
 
+	if ( '' === $text ) {
+		return false;
+	}
+
 	// Check if it's a mail address
 	if ( filter_var( $text, FILTER_VALIDATE_EMAIL ) ) {
+		return false;
+	}
+
+	// Check templating tags
+	if ( wplng_str_starts_with( $text, '<%' )
+		&& wplng_str_ends_with( $text, '%>' )
+	) {
 		return false;
 	}
 
@@ -71,6 +120,7 @@ function wplng_text_is_translatable( $text ) {
  */
 function wplng_text_esc( $text ) {
 
+	$text = html_entity_decode( $text );
 	$text = esc_html( $text );
 	$text = esc_attr( $text );
 
@@ -216,6 +266,8 @@ function wplng_json_element_is_translatable( $element, $parents ) {
 
 			$is_translatable = true;
 		}
+
+		$element = wplng_text_esc( $element );
 
 		if ( ! wplng_text_is_translatable( $element ) ) {
 			$is_translatable = false;

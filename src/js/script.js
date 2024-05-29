@@ -1,6 +1,20 @@
 jQuery(document).ready(function ($) {
 
     /**
+     * Code for flags in nav menu switcher
+     */
+
+    $("[wplng_flag]").each(function () {
+
+        let img = '<img ';
+        img += 'src="' + $(this).attr("wplng_flag") + '" '
+        img += 'style="max-width: 1.2em; max-height: 1.2em;" '
+        img += '> '
+
+        $(this).html(img + $(this).html());
+    })
+
+    /**
      * Code for switcher
      */
 
@@ -55,6 +69,21 @@ jQuery(document).ready(function ($) {
         let urlReload = $("#wplng-in-progress-container").attr("wplng-reload");
         window.location.href = urlReload;
     });
+
+    function wplngUpdatePercent() {
+        let percent = parseInt($("#wplng-in-progress-percent").html());
+        if (percent < 100) {
+            percent++;
+            $("#wplng-in-progress-percent").html(percent);
+            $("#wplng-progress-bar-value").attr("style", "width: " + percent.toString() + "%");
+        }
+    }
+
+    wplngUpdatePercent();
+
+    if ($("#wplng-in-progress-percent").length) {
+        setInterval(wplngUpdatePercent, 2000);
+    }
 
     if ($("#wpadminbar").length && $("#wplng-in-progress-container").length) {
         $("#wpadminbar").hide();

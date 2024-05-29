@@ -60,7 +60,7 @@ function wplng_translation_meta_box_html_output( $post ) {
 		$html .= 'alt="' . esc_attr( $alt ) . '" ';
 		$html .= 'class="wplng-flag">';
 		$html .= esc_html( $language['name'] );
-		$html .= esc_html__( ' - Original text:', 'wplingua' );
+		$html .= esc_html__( ' - Original text: ', 'wplingua' );
 		$html .= '</div>'; // End #wplng-source-title
 		$html .= '<div id="wplng-source">';
 		$html .= esc_html( $meta['wplng_translation_original'][0] );
@@ -183,7 +183,7 @@ function wplng_translation_meta_box_html_output( $post ) {
 			$html .= 'alt="' . esc_attr( $alt ) . '" ';
 			$html .= 'class="wplng-flag">';
 			$html .= esc_html( $language['name'] );
-			$html .= esc_html__( ' - Translation:', 'wplingua' );
+			$html .= esc_html__( ' - Translation: ', 'wplingua' );
 			$html .= '</label>';
 			$html .= '<textarea name="' . esc_attr( $name ) . '" ';
 			$html .= 'id="' . esc_attr( $name ) . '" ';
@@ -407,11 +407,11 @@ function wplng_ajax_generate_translation() {
 	// (And convert img emoji to emoji)
 
 	$text = wp_kses(
-		$_POST['text'], 
+		$_POST['text'],
 		array(
 			'img' => array(
-				'alt' => array()
-			)
+				'alt' => array(),
+			),
 		)
 	);
 
