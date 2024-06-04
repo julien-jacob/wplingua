@@ -12,7 +12,27 @@ if ( ! defined( 'WPINC' ) ) {
  * @return array Language data
  */
 function wplng_get_language_website() {
-	return wplng_get_language_by_id( wplng_get_language_website_id() );
+
+	$language = wp_cache_get(
+		'wplng_get_language_website',
+		'wplingua'
+	);
+
+	if ( ! empty( $language ) ) {
+		return $language;
+	}
+
+	$language = wplng_get_language_by_id(
+		wplng_get_language_website_id()
+	);
+
+	wp_cache_add(
+		'wplng_get_language_website',
+		$language,
+		'wplingua'
+	);
+
+	return $language;
 }
 
 
@@ -110,7 +130,9 @@ function wplng_get_language_name( $language ) {
 function wplng_get_language_id( $language ) {
 
 	// If $language is a language array
-	if ( ! empty( $language['id'] ) && wplng_is_valid_language_id( $language['id'] ) ) {
+	if ( ! empty( $language['id'] )
+		&& wplng_is_valid_language_id( $language['id'] )
+	) {
 		return $language['id'];
 	}
 
@@ -171,6 +193,15 @@ function wplng_get_language_name_untranslated( $language ) {
  */
 function wplng_get_languages_target_simplified() {
 
+	$languages = wp_cache_get(
+		'wplng_get_languages_target_simplified',
+		'wplingua'
+	);
+
+	if ( ! empty( $languages ) ) {
+		return $languages;
+	}
+
 	$json = get_option( 'wplng_target_languages' );
 
 	if ( empty( $json ) || ! is_string( $json ) ) {
@@ -193,6 +224,12 @@ function wplng_get_languages_target_simplified() {
 		}
 	}
 
+	wp_cache_add(
+		'wplng_get_languages_target_simplified',
+		$ordered,
+		'wplingua'
+	);
+
 	return $ordered;
 }
 
@@ -203,6 +240,15 @@ function wplng_get_languages_target_simplified() {
  * @return array
  */
 function wplng_get_languages_target() {
+
+	$languages = wp_cache_get(
+		'wplng_get_languages_target',
+		'wplingua'
+	);
+
+	if ( ! empty( $languages ) ) {
+		return $languages;
+	}
 
 	$languages_target       = wplng_get_languages_target_simplified();
 	$languages_target_clear = array();
@@ -221,6 +267,12 @@ function wplng_get_languages_target() {
 		}
 	}
 
+	wp_cache_add(
+		'wplng_get_languages_target',
+		$languages_target_clear,
+		'wplingua'
+	);
+
 	return $languages_target_clear;
 }
 
@@ -231,6 +283,10 @@ function wplng_get_languages_target() {
  * @return array
  */
 function wplng_get_languages_target_ids() {
+
+	if ( ! empty( $languages ) ) {
+		return $languages;
+	}
 
 	$languages_target     = wplng_get_languages_target();
 	$languages_target_ids = array();
@@ -250,6 +306,15 @@ function wplng_get_languages_target_ids() {
  */
 function wplng_get_language_current_id() {
 
+	$id = wp_cache_get(
+		'wplng_get_language_current_id',
+		'wplingua'
+	);
+
+	if ( ! empty( $id ) ) {
+		return $id;
+	}
+
 	global $wplng_request_uri;
 	$current_path     = $wplng_request_uri;
 	$languages_target = wplng_get_languages_target_ids();
@@ -264,6 +329,13 @@ function wplng_get_language_current_id() {
 		if ( substr( $current_path, 0, 4 ) === '/' . $language . '/'
 			|| substr( $current_path, 0, 3 ) === $language . '/'
 		) {
+
+			wp_cache_add(
+				'wplng_get_language_current_id',
+				$language,
+				'wplingua'
+			);
+
 			return $language;
 			break;
 		}
@@ -375,6 +447,15 @@ function wplng_is_valid_language_ids( $language_id_list ) {
  */
 function wplng_get_languages_all() {
 
+	$languages = wp_cache_get(
+		'wplng_get_languages_all',
+		'wplingua'
+	);
+
+	if ( ! empty( $languages ) ) {
+		return $languages;
+	}
+
 	$languages       = wplng_data_languages();
 	$source_language = get_option( 'wplng_website_language' );
 	$source_flag     = get_option( 'wplng_website_flag' );
@@ -429,6 +510,12 @@ function wplng_get_languages_all() {
 		}
 	}
 
+	wp_cache_add(
+		'wplng_get_languages_all',
+		$languages,
+		'wplingua'
+	);
+
 	return $languages;
 }
 
@@ -439,6 +526,15 @@ function wplng_get_languages_all() {
  * @return array
  */
 function wplng_get_languages_allow() {
+
+	$languages = wp_cache_get(
+		'wplng_get_languages_allow',
+		'wplingua'
+	);
+
+	if ( ! empty( $languages ) ) {
+		return $languages;
+	}
 
 	$languages_alow = wplng_get_api_languages_target();
 	$languages      = array();
@@ -452,6 +548,12 @@ function wplng_get_languages_allow() {
 	foreach ( $languages_alow as $language_id_alow ) {
 		$languages[] = wplng_get_language_by_id( $language_id_alow );
 	}
+
+	wp_cache_add(
+		'wplng_get_languages_allow',
+		$languages,
+		'wplingua'
+	);
 
 	return $languages;
 }
