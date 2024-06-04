@@ -211,6 +211,11 @@ function wplng_data_attr_text_to_translate() {
 				'attr'     => 'content',
 				'selector' => 'meta[name="dc.description"]',
 			),
+			// Fluent Forms tooltips
+			array(
+				'attr'     => 'data-content',
+				'selector' => '.ff-el-tooltip[data-content]',
+			),
 		)
 	);
 }

@@ -260,9 +260,11 @@ function wplng_dictionary_add_tags( $texts, $dictionary_entries = false ) {
  * @param array $dictionary_entries
  * @return array Texts untagged
  */
-function wplng_dictionary_replace_tags( $texts, $dictionary_entries = false ) {
+function wplng_dictionary_replace_tags( $texts, $dictionary_entries = false, $language_id = false ) {
 
-	$current_language_id = wplng_get_language_current_id();
+	if ( false === $language_id ) {
+		$language_id = wplng_get_language_current_id();
+	}
 
 	if ( false === $dictionary_entries ) {
 		$dictionary_entries = wplng_dictionary_get_entries();
@@ -273,27 +275,36 @@ function wplng_dictionary_replace_tags( $texts, $dictionary_entries = false ) {
 
 			$replacement = $entry['source'];
 
-			if ( ! empty( $entry['rules'][ $current_language_id ] ) ) {
-				$replacement = $entry['rules'][ $current_language_id ];
+			if ( ! empty( $entry['rules'][ $language_id ] ) ) {
+
+				$replacement = $entry['rules'][ $language_id ];
+
+				$text = preg_replace(
+					'#\[wplng_dictionary key="' . $key . '" upper="all"\].+\[\/wplng_dictionary\]#U',
+					strtoupper( $replacement ),
+					$text
+				);
+
+				$text = preg_replace(
+					'#\[wplng_dictionary key="' . $key . '" upper="first"\].+\[\/wplng_dictionary\]#U',
+					ucfirst( $replacement ),
+					$text
+				);
+
+				$text = preg_replace(
+					'#\[wplng_dictionary key="' . $key . '" upper="none"\].+\[\/wplng_dictionary\]#U',
+					$replacement,
+					$text
+				);
+
+			} else {
+
+				$text = preg_replace(
+					'#\[wplng_dictionary key="' . $key . '" upper="(all|first|none)"\](.+)\[\/wplng_dictionary\]#U',
+					'${2}',
+					$text
+				);
 			}
-
-			$text = preg_replace(
-				'#\[wplng_dictionary key="' . $key . '" upper="all"\].+\[\/wplng_dictionary\]#U',
-				strtoupper( $replacement ),
-				$text
-			);
-
-			$text = preg_replace(
-				'#\[wplng_dictionary key="' . $key . '" upper="first"\].+\[\/wplng_dictionary\]#U',
-				ucfirst( $replacement ),
-				$text
-			);
-
-			$text = preg_replace(
-				'#\[wplng_dictionary key="' . $key . '" upper="none"\].+\[\/wplng_dictionary\]#U',
-				$replacement,
-				$text
-			);
 
 			$texts[ $text_key ] = $text;
 		}

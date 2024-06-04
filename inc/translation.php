@@ -19,6 +19,9 @@ function wplng_get_translated_text_from_translations( $text, $translations ) {
 		return $text;
 	}
 
+	// Manage non breaking space
+	$text = str_replace( '&nbsp;', ' ', $text );
+
 	/**
 	 * Get spaces before and after text
 	 */
@@ -41,14 +44,7 @@ function wplng_get_translated_text_from_translations( $text, $translations ) {
 
 	if ( wplng_text_is_translatable( $text ) ) {
 		foreach ( $translations as $translation ) {
-
-			if ( ! isset( $translation['source'] ) ) {
-				continue;
-			}
-
-			$source = wplng_text_esc( $translation['source'] );
-
-			if ( $text === $source ) {
+			if ( $text === $translation['source'] ) {
 				$translated = $translation['translation'];
 				break;
 			}
@@ -71,9 +67,10 @@ function wplng_get_translation_saved_from_original( $original ) {
 
 	$translation = false;
 
-	$args      = array(
-		'post_type'  => 'wplng_translation',
-		'meta_query' => array(
+	$args = array(
+		'post_type'      => 'wplng_translation',
+		'posts_per_page' => -1,
+		'meta_query'     => array(
 			array(
 				'key'     => 'wplng_translation_md5',
 				'value'   => md5( $original ),
@@ -81,6 +78,7 @@ function wplng_get_translation_saved_from_original( $original ) {
 			),
 		),
 	);
+
 	$the_query = new WP_Query( $args );
 
 	// The Loop
@@ -117,8 +115,12 @@ function wplng_get_translations_from_query() {
 
 	$translations = array();
 	$args         = array(
-		'post_type'      => 'wplng_translation',
-		'posts_per_page' => -1,
+		'post_type'              => 'wplng_translation',
+		'posts_per_page'         => -1,
+		'no_found_rows'          => true,
+		'update_post_term_cache' => false,
+		'update_post_meta_cache' => false,
+		'cache_results'          => false,
 	);
 
 	$the_query = new WP_Query( $args );
@@ -135,8 +137,10 @@ function wplng_get_translations_from_query() {
 			continue;
 		}
 
+		$source = wplng_text_esc( $meta['wplng_translation_original'][0] );
+
 		$translation = array(
-			'source'       => $meta['wplng_translation_original'][0],
+			'source'       => $source,
 			'post_id'      => get_the_ID(),
 			'translations' => array(),
 		);

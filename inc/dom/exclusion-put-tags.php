@@ -24,7 +24,7 @@ function wplng_dom_exclusions_put_tags( $dom, &$excluded_elements ) {
 	// Get, check and sanitize excluded selector as string
 	$option = get_option( 'wplng_excluded_selectors' );
 	if ( empty( $option ) || ! is_string( $option ) ) {
-		wplng_data_excluded_selector_default();
+		$option = '';
 	}
 	$option = sanitize_textarea_field( $option );
 

@@ -163,7 +163,11 @@ function wplng_api_call_translate(
 
 	// Replace dictionary tag
 
-	$texts_untagged = wplng_dictionary_replace_tags( $response['translations'], $dictionary_entries );
+	$texts_untagged = wplng_dictionary_replace_tags(
+		$response['translations'],
+		$dictionary_entries,
+		$language_target_id
+	);
 
 	// Check and sanitize each translation
 
