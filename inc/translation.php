@@ -71,9 +71,14 @@ function wplng_get_translation_saved_from_original( $original ) {
 
 	$translation = false;
 
-	$args      = array(
-		'post_type'  => 'wplng_translation',
-		'meta_query' => array(
+	$args = array(
+		'post_type'              => 'wplng_translation',
+		'posts_per_page'         => -1,
+		'no_found_rows'          => true,
+		'update_post_term_cache' => false,
+		'update_post_meta_cache' => false,
+		'cache_results'          => false,
+		'meta_query'             => array(
 			array(
 				'key'     => 'wplng_translation_md5',
 				'value'   => md5( $original ),
@@ -81,6 +86,7 @@ function wplng_get_translation_saved_from_original( $original ) {
 			),
 		),
 	);
+
 	$the_query = new WP_Query( $args );
 
 	// The Loop
@@ -117,8 +123,12 @@ function wplng_get_translations_from_query() {
 
 	$translations = array();
 	$args         = array(
-		'post_type'      => 'wplng_translation',
-		'posts_per_page' => -1,
+		'post_type'              => 'wplng_translation',
+		'posts_per_page'         => -1,
+		'no_found_rows'          => true,
+		'update_post_term_cache' => false,
+		'update_post_meta_cache' => false,
+		'cache_results'          => false,
 	);
 
 	$the_query = new WP_Query( $args );
