@@ -19,6 +19,9 @@ function wplng_get_translated_text_from_translations( $text, $translations ) {
 		return $text;
 	}
 
+	// Manage non breaking space
+	$text = str_replace( '&nbsp;', ' ', $text );
+
 	/**
 	 * Get spaces before and after text
 	 */
