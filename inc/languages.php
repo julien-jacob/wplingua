@@ -254,8 +254,7 @@ function wplng_get_language_current_id() {
 	$current_path     = $wplng_request_uri;
 	$languages_target = wplng_get_languages_target_ids();
 
-	if ( ! wplng_url_is_translatable()
-		|| empty( $current_path )
+	if ( empty( $current_path )
 		|| ! is_string( $current_path )
 	) {
 		return wplng_get_language_website_id();
