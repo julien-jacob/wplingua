@@ -183,6 +183,15 @@ function wplng_url_is_translatable( $url = '' ) {
  */
 function wplng_get_url_exclude_regex() {
 
+	$url_exclude = wp_cache_get(
+		'wplng_get_url_exclude_regex',
+		'wplingua'
+	);
+
+	if ( ! empty( $url_exclude ) ) {
+		return $url_exclude;
+	}
+
 	$url_exclude = array();
 
 	// Get, check and sanitize excluded URL REGEX as string
@@ -211,6 +220,12 @@ function wplng_get_url_exclude_regex() {
 	$url_exclude = apply_filters(
 		'wplng_url_exclude_regex',
 		$url_exclude
+	);
+
+	wp_cache_add(
+		'wplng_get_url_exclude_regex',
+		$url_exclude,
+		'wplingua'
 	);
 
 	return $url_exclude;
