@@ -68,13 +68,9 @@ function wplng_get_translation_saved_from_original( $original ) {
 	$translation = false;
 
 	$args = array(
-		'post_type'              => 'wplng_translation',
-		'posts_per_page'         => -1,
-		'no_found_rows'          => true,
-		'update_post_term_cache' => false,
-		'update_post_meta_cache' => false,
-		'cache_results'          => false,
-		'meta_query'             => array(
+		'post_type'      => 'wplng_translation',
+		'posts_per_page' => -1,
+		'meta_query'     => array(
 			array(
 				'key'     => 'wplng_translation_md5',
 				'value'   => md5( $original ),
