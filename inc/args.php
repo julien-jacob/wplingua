@@ -269,9 +269,9 @@ function wplng_args_update_from_texts( &$args, $texts ) {
 
 	$translations_in_page = array();
 
-	foreach ( $translations as $translation ) {
-		foreach ( $texts as $text ) {
-			$text = wplng_text_esc( $text );
+	foreach ( $texts as $text ) {
+		$text = wplng_text_esc( $text );
+		foreach ( $translations as $translation ) {
 			if ( ! empty( $translation['source'] )
 				&& $translation['source'] === $text
 			) {

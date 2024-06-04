@@ -41,14 +41,7 @@ function wplng_get_translated_text_from_translations( $text, $translations ) {
 
 	if ( wplng_text_is_translatable( $text ) ) {
 		foreach ( $translations as $translation ) {
-
-			if ( ! isset( $translation['source'] ) ) {
-				continue;
-			}
-
-			$source = wplng_text_esc( $translation['source'] );
-
-			if ( $text === $source ) {
+			if ( $text === $translation['source'] ) {
 				$translated = $translation['translation'];
 				break;
 			}
@@ -145,8 +138,10 @@ function wplng_get_translations_from_query() {
 			continue;
 		}
 
+		$source = wplng_text_esc( $meta['wplng_translation_original'][0] );
+
 		$translation = array(
-			'source'       => $meta['wplng_translation_original'][0],
+			'source'       => $source,
 			'post_id'      => get_the_ID(),
 			'translations' => array(),
 		);
