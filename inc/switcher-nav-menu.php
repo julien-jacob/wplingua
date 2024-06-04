@@ -75,17 +75,17 @@ function wplng_switcher_nav_menu_args_from_href( $href ) {
  */
 function wplng_switcher_nav_menu_replace_items( $items ) {
 
-	if ( is_admin()
-		|| ! wplng_url_is_translatable()
-		|| empty( $items )
-		|| ! empty( $_GET['et_fb'] )
-	) {
-		return $items;
-	}
-
 	$new_items = array();
 
 	foreach ( $items as $item ) {
+
+		// Check if is on a translatable page
+
+		if ( in_array( 'wplingua-menu-switcher-untreated', $item->classes )
+			&& ! wplng_url_is_translatable()
+		) {
+			continue;
+		}
 
 		// Check if is a wpLingua switcher link
 
