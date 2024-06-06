@@ -163,8 +163,8 @@ No, not at the moment but in the meantime, you can easily display the language s
 * On excluded URLs:
  * Fix redirection
  * Hide Nav Menu language switcher
-* Dictionnary update
-* Manage non breaking space before and after texts
+* Dictionary update
+* Manage non-breaking space before and after texts
 * Better management of the Fluent Forms plugin
 
 
