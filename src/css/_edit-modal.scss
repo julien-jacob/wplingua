@@ -1,0 +1,185 @@
+
+@import "admin/translation";
+
+/** 
+ ** Compatibility
+ **/
+
+// Some themes
+// html {
+//     overflow: hidden !important;
+// }
+
+// Divi
+// body.theme-Divi #main-header {
+//     z-index: 99997 !important;
+// }
+
+
+/** 
+ ** modal
+ **/
+
+ #wplng-modal-edit a.wplng-button-icon {
+
+    display: block;
+    font-size: 13px;
+    cursor: pointer;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 3px;
+    white-space: nowrap;
+    box-sizing: border-box;
+    background: #2271b1;
+    border-color: #2271b1;
+    color: #fff;
+    text-decoration: none;
+    text-shadow: none;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    padding: 2px;
+
+    &:focus,
+    &:hover {
+        background: #135e96;
+        border-color: #135e96;
+        color: #fff;
+    }
+
+    .dashicons.dashicons-edit {
+        margin-top: 2px;
+    }
+
+}
+
+
+// body {
+
+//     overflow: hidden;
+
+//     #wplng-modal-edit-container {
+//         display: block;
+//     }
+
+// }
+
+#wplng-modal-edit-container {
+
+    display: none;
+    background-color: rgba(255, 255, 255, .8);
+    padding: 0 15px;
+    margin-top: 30px; // Admin bar
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 99998; // Admin bar z-index - 1
+    overflow: auto;
+
+    #wplng-modal-edit {
+
+        width: 100%;
+        max-width: 720px;
+        margin: 60px auto;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+
+        // #wplng-modal-list-switcher {
+
+        //     width: 150px;
+        //     position: absolute;
+        //     right: 55px;
+        //     top: 12px;
+
+        // }
+
+        
+
+        #wplng-modal-header {
+
+            
+            border: 1px solid #c3c4c7;
+            background-color: white;
+            padding: 13px 215px 12px 15px;
+            border-radius: 3px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), 0 0 20px rgba(0, 0, 0, 0.15);
+            margin-bottom: 15px;
+            position: relative;
+
+            #wplng-modal-title {
+
+                display: block;
+                height: 30px;
+                font-size: 16px;
+                font-weight: 600;
+
+                .wplng-modal-header-icon {
+                    vertical-align: text-bottom;
+                    margin-right: 2px;
+                }
+            }
+
+            .wplng-button-return {
+
+                position: absolute;
+                right: 15px;
+                top: 12px;
+                border-color: #c3c4c7;
+                background-color: #f6f7f7;
+                color: #6b6b6b;
+
+                .dashicons {
+                    vertical-align: text-top;
+                }
+            }
+        }
+
+        #wplng-modal-edit-main {
+
+            border: 1px solid #c3c4c7;
+            background-color: white;
+            padding: 15px;
+            border-radius: 3px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), 0 0 20px rgba(0, 0, 0, 0.15);
+
+            #wplng-original-language {
+                margin-top: 0;
+            }
+
+            #wplng-modal-edit-save {
+
+                text-transform: none;
+                min-height: 32px;
+                line-height: 2.30769231;
+                padding: 0 12px;
+                vertical-align: top;
+                background: #2271b1;
+                border-color: #2271b1;
+                color: #fff;
+                text-decoration: none;
+                text-shadow: none;
+                width: 100%;
+                margin-top: 25px;
+                font-size: 14px;
+
+                &[disabled] {
+                    border: 1px solid #c3c4c7;
+                    color: #a7aaad !important;
+                    background: #f6f7f7 !important;
+                    box-shadow: none !important;
+                    text-shadow: none !important;
+                    cursor: default;
+                }
+            }
+        }
+
+    }
+
+}
+
+// @media screen and (max-width: 600px) {
+//     #wplng-modal-title {
+//         display: none;
+//     }
+// }

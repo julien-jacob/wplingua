@@ -50,6 +50,9 @@ function wplng_data_excluded_json() {
 	return apply_filters(
 		'wplng_excluded_json',
 		array(
+			// wpLingua : Ajax edit modal
+			array( 'data', 'wplng_edit_html' ),
+			// WooCommerce
 			array( 'wc_country_select_params', 'countries' ),
 		)
 	);
@@ -92,6 +95,7 @@ function wplng_data_excluded_selector_default() {
 		'.wplng-switcher',
 		'link[hreflang]',
 		'.wplingua-menu',
+		'#wplng-modal-edit-container',
 	);
 }
 

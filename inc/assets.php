@@ -63,4 +63,30 @@ function wplng_register_assets() {
 		}
 	}
 
+	if ( ! empty( $_GET['wplng-mode'] )
+		&& 'editor' === $_GET['wplng-mode']
+		&& empty( $_GET['wplng-load'] )
+	) {
+
+		wp_enqueue_script(
+			'wplingua-translation',
+			plugins_url() . '/wplingua/assets/js/admin/translation.js',
+			array( 'jquery' ),
+			WPLNG_PLUGIN_VERSION
+		);
+
+		wp_localize_script(
+			'wplingua-translation',
+			'wplngLocalize',
+			array(
+				'ajaxUrl'      => admin_url( 'admin-ajax.php' ),
+				'leaveMessage' => esc_html__(
+					'You are about to leave the page without saving your changes. They will be lost if you continue. Would you like to leave the page anyway?',
+					'wplingua'
+				),
+			)
+		);
+
+	}
+
 }

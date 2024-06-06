@@ -154,6 +154,12 @@ function wplng_start() {
 		// Ajax function for regenerate translation on edit page
 		add_action( 'wp_ajax_wplng_ajax_translation', 'wplng_ajax_generate_translation' );
 
+		// Ajax function for edit modal: Get HTML modal
+		add_action( 'wp_ajax_wplng_ajax_edit_modal', 'wplng_ajax_edit_modal' );
+
+		// Ajax function for edit modal: Save modal
+		add_action( 'wp_ajax_wplng_ajax_save_modal', 'wplng_ajax_save_modal' );
+
 		// Display 100 translation in admin area by default
 		add_filter( 'get_user_option_edit_wplng_translation_per_page', 'wplng_translation_per_page' );
 
