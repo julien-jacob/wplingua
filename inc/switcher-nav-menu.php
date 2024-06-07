@@ -337,7 +337,7 @@ function wplng_switcher_nav_menu_replace_items( $items ) {
 function wplng_add_nav_menu_link_attributes_atts( $atts, $menu_item ) {
 
 	if ( ! empty( $menu_item->wplng_flag ) ) {
-		$atts['wplng_flag'] = $menu_item->wplng_flag;
+		$atts['data-wplng-flag'] = $menu_item->wplng_flag;
 	}
 
 	if ( ! empty( $menu_item->classes )
