@@ -99,15 +99,14 @@ function wplng_dom_mode_editor( $dom, $args ) {
 				continue;
 			}
 
-			$source     = wplng_text_esc( $translation['source'] );
-			$translated = wplng_text_esc( $translation['translation'] );
+			$source = wplng_text_esc( $translation['source'] );
 
 			if ( $text !== $source ) {
 				continue;
 			}
 
+			$translated = wplng_text_esc( $translation['translation'] );
 			$edit_link = get_edit_post_link( $translation['post_id'] );
-
 			$onclick = 'window.open("' . esc_url( $edit_link ) . '", "_blank");';
 
 			$innertext  = '<span ';
