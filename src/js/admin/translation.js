@@ -143,6 +143,9 @@ jQuery(document).ready(function ($) {
                         wplngResizeTextArea($(textarea));
 
                         $(container + " .wplng-generate-spin").hide();
+
+                        wplngCheckInputSignature();
+
                         setTimeout(function () {
                             wplngEditor.find(container + " .wplng-generate").attr("disabled", false);
                         }, 8000);
@@ -172,16 +175,7 @@ jQuery(document).ready(function ($) {
          * Disable / Enable save button
          */
 
-        wplngEditor.find(".wplng-edit-language textarea, .wplng-edit-language input").on("change input propertychange", function () {
-
-            wplngInputSignature.now = wplngGetInputSignature();
-
-            if (wplngInputSignature.onload == wplngInputSignature.now) {
-                $("#wplng-modal-edit-save").prop("disabled", true);
-            } else {
-                $("#wplng-modal-edit-save").prop("disabled", false);
-            }
-        });
+        wplngEditor.find(".wplng-edit-language textarea, .wplng-edit-language input").on("change input propertychange", wplngCheckInputSignature);
 
         $('#submitpost [type=submit], #wplng-modal-edit-save').click(function () {
             wplngIsUpdatePost = true;
@@ -223,6 +217,17 @@ jQuery(document).ready(function ($) {
         });
 
         return signature;
+    }
+
+    function wplngCheckInputSignature() {
+
+        wplngInputSignature.now = wplngGetInputSignature();
+
+        if (wplngInputSignature.onload == wplngInputSignature.now) {
+            $("#wplng-modal-edit-save").prop("disabled", true);
+        } else {
+            $("#wplng-modal-edit-save").prop("disabled", false);
+        }
     }
 
 
