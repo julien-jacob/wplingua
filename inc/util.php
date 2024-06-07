@@ -130,7 +130,7 @@ function wplng_text_esc( $text ) {
 	);
 
 	$text = str_replace( '\\', '', $text );
-	$text = preg_replace( '#\s+#', ' ', $text );
+	$text = preg_replace( '/\s+/u', ' ', $text );
 	$text = trim( $text );
 
 	return $text;
