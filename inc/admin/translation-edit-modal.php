@@ -6,6 +6,11 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 
+/**
+ * Get HTML of translation edit modal
+ *
+ * @return void
+ */
 function wplng_translation_edit_modal_get_html() {
 
 	$return_button  = '<a ';
@@ -22,8 +27,7 @@ function wplng_translation_edit_modal_get_html() {
 	$all_languages_button .= esc_attr__( 'All languages', 'wplingua' );
 	$all_languages_button .= '</a>';
 
-	$html  = '';
-	$html .= '<div id="wplng-modal-edit-container">';
+	$html = '<div id="wplng-modal-edit-container">';
 
 	$html .= '<div id="wplng-modal-edit">';
 
@@ -34,17 +38,12 @@ function wplng_translation_edit_modal_get_html() {
 	$html .= '</span>';
 	$html .= $all_languages_button;
 	$html .= $return_button;
-	
+
 	$html .= '</div>';
 
 	$html .= '<div id="wplng-modal-edit-main">';
 	$html .= '<div id="wplng-translation-editor">';
-	// $html .= wplng_translation_meta_box_html_output( get_post( 6536 ), array(), true );
 	$html .= '</div>'; // End #wplng-translation-editor
-
-	// $html .= '<button id="wplng-modal-edit-all-target" disabled>';
-	// $html .= esc_html__('Show all languages', 'wplingua');
-	// $html .= '</button>';
 
 	$html .= '<button id="wplng-modal-edit-save" disabled>';
 	$html .= esc_html__( 'Save', 'wplingua' );
@@ -56,9 +55,7 @@ function wplng_translation_edit_modal_get_html() {
 	$html .= '</div>'; // End #wplng-modal-edit-container
 
 	return $html;
-
 }
-
 
 
 /**
@@ -111,7 +108,6 @@ function wplng_ajax_edit_modal() {
 		)
 	);
 }
-
 
 
 /**

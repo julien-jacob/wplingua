@@ -5,10 +5,33 @@ jQuery(document).ready(function ($) {
     /**
      * Resize text area
      */
-
     function wplngResizeTextArea($element) {
         $element.height(0);
         $element.height($element[0].scrollHeight);
+    }
+
+    /**
+     * Decode HTML
+     */
+    function wplngDecodeHtml(string) {
+        let returnText = string;
+        returnText = returnText.replace(/&nbsp;/gi, " ");
+        returnText = returnText.replace(/&amp;/gi, "&");
+        returnText = returnText.replace(/&quot;/gi, `"`);
+        returnText = returnText.replace(/&lt;/gi, "<");
+        returnText = returnText.replace(/&gt;/gi, ">");
+        return returnText;
+    }
+
+    /**
+     * CLose editor modal
+     */
+    function wplngCloseEditorModal() {
+        $("#wplng-modal-edit-container").hide();
+        $("#wplng-modal-edit-save").prop("disabled", false);
+        $("#wplng-modal-container").show();
+        wplngInputSignature.onload = '';
+        wplngInputSignature.now = '';
     }
 
     /**
@@ -141,14 +164,14 @@ jQuery(document).ready(function ($) {
                         }
 
                         wplngResizeTextArea($(textarea));
+                        wplngCheckInputSignature();
 
                         $(container + " .wplng-generate-spin").hide();
-
-                        wplngCheckInputSignature();
 
                         setTimeout(function () {
                             wplngEditor.find(container + " .wplng-generate").attr("disabled", false);
                         }, 8000);
+
                     } else {
                         console.log("wpLingua - Error:");
                         console.log(data);
@@ -175,7 +198,9 @@ jQuery(document).ready(function ($) {
          * Disable / Enable save button
          */
 
-        wplngEditor.find(".wplng-edit-language textarea, .wplng-edit-language input").on("change input propertychange", wplngCheckInputSignature);
+        wplngEditor
+            .find(".wplng-edit-language textarea, .wplng-edit-language input")
+            .on("change input propertychange", wplngCheckInputSignature);
 
         $('#submitpost [type=submit], #wplng-modal-edit-save').click(function () {
             wplngIsUpdatePost = true;
@@ -185,14 +210,17 @@ jQuery(document).ready(function ($) {
             if (!wplngIsUpdatePost
                 && wplngInputSignature.onload != wplngInputSignature.now
             ) {
-                return confirm(wplngLocalize.leaveMessage);
+                return confirm(wplngLocalize.message.exitPage);
             }
         });
 
     }
 
+    /**
+     * Show all languages
+     */
 
-    $("#wplng-modal-edit-show-all").on("click", function() {
+    $("#wplng-modal-edit-show-all").on("click", function () {
         $(this).hide();
         wplngEditor.find(".wplng-edit-language").show();
     });
@@ -243,9 +271,8 @@ jQuery(document).ready(function ($) {
 
     $(".wplng-edit-link[wplng_post]").click(function () {
 
-        $("#wplng-modal-edit-save").text("Save");
+        $("#wplng-modal-edit-save").text(wplngLocalize.message.buttonSave);
         $("#wplng-modal-edit-save").prop("disabled", true);
-        
 
         let post = $(this).attr("wplng_post");
 
@@ -259,21 +286,36 @@ jQuery(document).ready(function ($) {
             success: function (data) {
                 if (data.success) {
 
-                    $("#wplng-modal-edit-container").show();
-
+                    // Put new HTML in modal
                     let html = JSON.parse(data.data);
                     html = wplngDecodeHtml(html.wplng_edit_html);
-
                     wplngEditor.html(html);
 
+                    // Show the editor modal
+                    $("#wplng-modal-edit-container").show();
+
+                    // Hide translation list modal
+                    $("#wplng-modal-container").hide();
+
+                    // Update save button
+                    $("#wplng-modal-edit-save").attr("wplng_post", post);
+
+                    // Hide "All languages" button if only one target language
+                    if (wplngEditor.find(".wplng-edit-language").length == 1) {
+                        $("#wplng-modal-edit-show-all").hide();
+                    } else {
+                        $("#wplng-modal-edit-show-all").show();
+                    }
+
+                    // Reload events
                     wplngUpdateEditorEvents();
 
-                    // TODO : Change currentLanguage method
-                    let currentLanguage = $("html[lang]").attr("lang");
-                    wplngEditor.find(".wplng-edit-language:not([wplng-lang=" + currentLanguage + "])").hide();
-                    $("#wplng-modal-edit-show-all").show();
+                    // Hide not current languages
+                    let languagesToHide = ".wplng-edit-language:not([wplng-lang=";
+                    languagesToHide += wplngLocalize.currentLanguage;
+                    languagesToHide += "])";
 
-                    $("#wplng-modal-edit-save").attr("wplng_post", post);
+                    wplngEditor.find(languagesToHide).hide();
 
                 } else {
                     console.log("wpLingua - Error:");
@@ -287,53 +329,26 @@ jQuery(document).ready(function ($) {
         });
     });
 
-    function wplngDecodeHtml(string) {
-        let returnText = string;
-        returnText = returnText.replace(/&nbsp;/gi, " ");
-        returnText = returnText.replace(/&amp;/gi, "&");
-        returnText = returnText.replace(/&quot;/gi, `"`);
-        returnText = returnText.replace(/&lt;/gi, "<");
-        returnText = returnText.replace(/&gt;/gi, ">");
-        return returnText;
-    }
-
-
     $("#wplng-modal-edit-return").click(function () {
-        if (!wplngIsUpdatePost
-            && wplngInputSignature.onload != wplngInputSignature.now
-        ) {
-            if (confirm(wplngLocalize.leaveMessage)) {
-                $("#wplng-modal-edit-container").hide();
-                $("#wplng-modal-edit-save").prop("disabled", false);
+        if (wplngInputSignature.onload != wplngInputSignature.now) {
+            if (confirm(wplngLocalize.message.exitEditorModal)) {
+                wplngCloseEditorModal();
             }
         } else {
-            $("#wplng-modal-edit-container").hide();
-            $("#wplng-modal-edit-save").prop("disabled", false);
+            wplngCloseEditorModal();
         }
-
     });
-
 
     /**
      * Save edited translation
      */
 
     $("#wplng-modal-edit-save").click(function () {
-        
-        // TODO : Use wp_localize_script ? Move ?
-        let currentLanguage = $("html[lang]").attr("lang");
 
-        $("#wplng-modal-edit-save").text("Save in progress...");
+        $("#wplng-modal-edit-save").text(wplngLocalize.message.buttonSaveInProgress);
 
         let text = $(this).text();
-
-        if (undefined == currentLanguage) {
-            console.log('wpLingua error: No lang attribute on <html>');
-            return;
-        }
-
         let post = $(this).attr("wplng_post");
-
         let data = {
             action: 'wplng_ajax_save_modal',
             post_id: post,
@@ -344,7 +359,7 @@ jQuery(document).ready(function ($) {
             let id = $(this).attr('id');
             data[id] = $(this).val();
 
-            if (('wplng_translation_' + currentLanguage) == id) {
+            if (('wplng_translation_' + wplngLocalize.currentLanguage) == id) {
                 text = $(this).val();
             }
         });
@@ -361,10 +376,11 @@ jQuery(document).ready(function ($) {
                 if (data.success) {
 
                     // replace by new text in page
-                    $(".wplng-edit-link[wplng_post=" + post + "]").text(text);
+                    $("body.wplingua-editor .wplng-edit-link[wplng_post=" + post + "]").text(text);
+                    $("body.wplingua-list .wplng-modal-item[wplng_post=" + post + "] .wplng-item-translation").text(text);
 
                     // Hide the editor modal
-                    $("#wplng-modal-edit-container").hide();
+                    wplngCloseEditorModal();
 
                 } else {
                     console.log("wpLingua - Error:");

@@ -106,14 +106,9 @@ function wplng_dom_mode_editor( $dom, $args ) {
 				continue;
 			}
 
-			// $edit_link = get_edit_post_link( $translation['post_id'] );
-
-			// $onclick = 'window.open("' . esc_url( $edit_link ) . '", "_blank");';
-
 			$innertext  = '<span ';
 			$innertext .= 'class="wplng-edit-link" ';
 			$innertext .= 'wplng_post="' . esc_attr( $translation['post_id'] ) . '" ';
-			// $innertext .= 'onclick="' . esc_js( $onclick ) . '" ';
 			$innertext .= 'title="' . esc_attr__( 'Edit this translation', 'wplingua' ) . '">';
 			$innertext .= esc_html( $translated );
 			$innertext .= '</span>';
@@ -128,22 +123,8 @@ function wplng_dom_mode_editor( $dom, $args ) {
 	 * Place the translation edit modale
 	 */
 
-	 foreach ( $dom->find( 'body' ) as $body ) {
-
-		// $script_url = add_query_arg(
-		// 	'ver',
-		// 	WPLNG_PLUGIN_VERSION,
-		// 	plugins_url() . '/wplingua/assets/js/admin/translation.js'
-		// );
-
-		$html = wplng_translation_edit_modal_get_html();
-
-		// $html .= '<script ';
-		// $html .= 'type="text/javascript" ';
-		// $html .= 'src="' . esc_url($script_url) . '" ';
-		// $html .= 'id="wplingua-script-translation-js">';
-		// $html .= '</script>';
-
+	foreach ( $dom->find( 'body' ) as $body ) {
+		$html             = wplng_translation_edit_modal_get_html();
 		$body->innertext .= $html;
 	}
 
