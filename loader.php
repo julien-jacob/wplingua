@@ -39,6 +39,7 @@ require_once WPLNG_PLUGIN_PATH . '/inc/admin/option-page-settings.php';
 require_once WPLNG_PLUGIN_PATH . '/inc/admin/option-page-switcher.php';
 require_once WPLNG_PLUGIN_PATH . '/inc/admin/option-page.php';
 require_once WPLNG_PLUGIN_PATH . '/inc/admin/translation-cpt.php';
+require_once WPLNG_PLUGIN_PATH . '/inc/admin/translation-edit-modal.php';
 require_once WPLNG_PLUGIN_PATH . '/inc/admin/translation-meta.php';
 
 // Require files in /inc/api-call/ folder

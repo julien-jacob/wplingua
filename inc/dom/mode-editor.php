@@ -111,7 +111,7 @@ function wplng_dom_mode_editor( $dom, $args ) {
 
 			$innertext  = '<span ';
 			$innertext .= 'class="wplng-edit-link" ';
-			$innertext .= 'onclick="' . esc_js( $onclick ) . '" ';
+			$innertext .= 'wplng_post="' . esc_attr( $translation['post_id'] ) . '" ';
 			$innertext .= 'title="' . esc_attr__( 'Edit this translation', 'wplingua' ) . '">';
 			$innertext .= esc_html( $translated );
 			$innertext .= '</span>';
@@ -120,6 +120,15 @@ function wplng_dom_mode_editor( $dom, $args ) {
 
 			break;
 		}
+	}
+
+	/**
+	 * Place the translation edit modale
+	 */
+
+	foreach ( $dom->find( 'body' ) as $body ) {
+		$html             = wplng_translation_edit_modal_get_html();
+		$body->innertext .= $html;
 	}
 
 	return $dom;

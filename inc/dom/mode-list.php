@@ -188,7 +188,9 @@ function wplng_dom_mode_list( $dom, $args ) {
 
 		$edit_link = get_edit_post_link( $translation['post_id'] );
 
-		$html .= '<div class="wplng-modal-item">';
+		$html .= '<div class="wplng-modal-item" ';
+		$html .= 'wplng_post="' . esc_attr( $translation['post_id'] ) . '">';
+
 		$html .= '<div class="wplng-item-text">';
 		$html .= '<div class="wplng-item-source">';
 		$html .= esc_attr( $translation['source'] );
@@ -198,11 +200,14 @@ function wplng_dom_mode_list( $dom, $args ) {
 		$html .= '</div>'; // End .wplng-item-translation
 		$html .= '</div>'; // End .wplng-item-text
 		$html .= '<div class="wplng-item-edit">';
-		$html .= '<a href="' . esc_url( $edit_link ) . '" ';
+
+		$html .= '<a ';
 		$html .= 'title="' . esc_attr__( 'Edit this translation', 'wplingua' ) . '" ';
-		$html .= 'class="wplng-button-icon" target="_blank">';
+		$html .= 'wplng_post="' . esc_attr( $translation['post_id'] ) . '" ';
+		$html .= 'class="wplng-button-icon wplng-edit-link">';
 		$html .= '<span class="dashicons dashicons-edit"></span></a>';
 		$html .= '</a>';
+
 		$html .= '</div>'; // End .wplng-item-edit
 		$html .= '</div>'; // ENd .wplng-modal-item
 	}
@@ -211,7 +216,11 @@ function wplng_dom_mode_list( $dom, $args ) {
 	$html .= '</div>'; // End #wplng-modal
 	$html .= '</div>'; // End #wplng-modal-container
 
-	// return $html;
+	/**
+	 * Place the translation edit modale
+	 */
+
+	$html .= wplng_translation_edit_modal_get_html();
 
 	foreach ( $dom->find( 'body' ) as $body ) {
 		$body->innertext = $body->innertext . $html;
