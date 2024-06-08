@@ -63,6 +63,13 @@
         overflow: hidden;
         width: 100%;
         resize: none;
+        box-shadow: 0 0 0 transparent;
+        border-radius: 4px;
+        border: 1px solid #8c8f94;
+        background-color: #fff;
+        color: #2c3338;
+        padding: 2px 6px;
+        line-height: 1.5em;
     }
 
     .wplng-translation-footer {

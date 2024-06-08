@@ -192,6 +192,10 @@ jQuery(document).ready(function ($) {
     }
 
 
+    $("#wplng-modal-edit-show-all").on("click", function() {
+        $(this).hide();
+        wplngEditor.find(".wplng-edit-language").show();
+    });
 
 
     /**
@@ -241,7 +245,7 @@ jQuery(document).ready(function ($) {
 
         $("#wplng-modal-edit-save").text("Save");
         $("#wplng-modal-edit-save").prop("disabled", true);
-        $("#wplng-modal-edit-container").show();
+        
 
         let post = $(this).attr("wplng_post");
 
@@ -255,12 +259,19 @@ jQuery(document).ready(function ($) {
             success: function (data) {
                 if (data.success) {
 
+                    $("#wplng-modal-edit-container").show();
+
                     let html = JSON.parse(data.data);
                     html = wplngDecodeHtml(html.wplng_edit_html);
 
                     wplngEditor.html(html);
 
                     wplngUpdateEditorEvents();
+
+                    // TODO : Change currentLanguage method
+                    let currentLanguage = $("html[lang]").attr("lang");
+                    wplngEditor.find(".wplng-edit-language:not([wplng-lang=" + currentLanguage + "])").hide();
+                    $("#wplng-modal-edit-show-all").show();
 
                     $("#wplng-modal-edit-save").attr("wplng_post", post);
 
@@ -308,13 +319,13 @@ jQuery(document).ready(function ($) {
      */
 
     $("#wplng-modal-edit-save").click(function () {
+        
+        // TODO : Use wp_localize_script ? Move ?
+        let currentLanguage = $("html[lang]").attr("lang");
 
         $("#wplng-modal-edit-save").text("Save in progress...");
 
         let text = $(this).text();
-
-        // TODO : Use wp_localize_script ?
-        let currentLanguage = $("html[lang]").attr("lang");
 
         if (undefined == currentLanguage) {
             console.log('wpLingua error: No lang attribute on <html>');

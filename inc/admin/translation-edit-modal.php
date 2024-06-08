@@ -16,6 +16,12 @@ function wplng_translation_edit_modal_get_html() {
 	$return_button .= '<span class="dashicons dashicons-no"></span>';
 	$return_button .= '</a>';
 
+	$all_languages_button  = '<a ';
+	$all_languages_button .= 'href="javascript:void(0);" ';
+	$all_languages_button .= 'id="wplng-modal-edit-show-all">';
+	$all_languages_button .= esc_attr__( 'All languages', 'wplingua' );
+	$all_languages_button .= '</a>';
+
 	$html  = '';
 	$html .= '<div id="wplng-modal-edit-container">';
 
@@ -26,7 +32,9 @@ function wplng_translation_edit_modal_get_html() {
 	$html .= '<span class="dashicons dashicons-translation wplng-modal-header-icon"></span> ';
 	$html .= esc_html__( 'Edit translation', 'wplingua' );
 	$html .= '</span>';
+	$html .= $all_languages_button;
 	$html .= $return_button;
+	
 	$html .= '</div>';
 
 	$html .= '<div id="wplng-modal-edit-main">';
