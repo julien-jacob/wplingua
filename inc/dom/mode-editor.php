@@ -105,15 +105,11 @@ function wplng_dom_mode_editor( $dom, $args ) {
 				continue;
 			}
 
-			$translated = wplng_text_esc( $translation['translation'] );
-			$edit_link = get_edit_post_link( $translation['post_id'] );
-			$onclick = 'window.open("' . esc_url( $edit_link ) . '", "_blank");';
-
 			$innertext  = '<span ';
 			$innertext .= 'class="wplng-edit-link" ';
 			$innertext .= 'wplng_post="' . esc_attr( $translation['post_id'] ) . '" ';
 			$innertext .= 'title="' . esc_attr__( 'Edit this translation', 'wplingua' ) . '">';
-			$innertext .= esc_html( $translated );
+			$innertext .= esc_html( wplng_text_esc( $translation['translation'] ) );
 			$innertext .= '</span>';
 
 			$element->innertext = $innertext;

@@ -157,8 +157,7 @@ function wplng_dom_mode_list( $dom, $args ) {
 	 * Modal
 	 */
 
-	$html  = '';
-	$html .= '<div id="wplng-modal-container">';
+	$html  = '<div id="wplng-modal-container">';
 	$html .= '<div id="wplng-modal">';
 
 	$html .= '<div id="wplng-modal-header">';
@@ -186,17 +185,15 @@ function wplng_dom_mode_list( $dom, $args ) {
 			continue;
 		}
 
-		$edit_link = get_edit_post_link( $translation['post_id'] );
-
 		$html .= '<div class="wplng-modal-item" ';
 		$html .= 'wplng_post="' . esc_attr( $translation['post_id'] ) . '">';
 
 		$html .= '<div class="wplng-item-text">';
 		$html .= '<div class="wplng-item-source">';
-		$html .= esc_attr( $translation['source'] );
+		$html .= esc_html( $translation['source'] );
 		$html .= '</div>'; // End .wplng-item-source
 		$html .= '<div class="wplng-item-translation">';
-		$html .= esc_attr( $translation['translation'] );
+		$html .= esc_html( $translation['translation'] );
 		$html .= '</div>'; // End .wplng-item-translation
 		$html .= '</div>'; // End .wplng-item-text
 		$html .= '<div class="wplng-item-edit">';
