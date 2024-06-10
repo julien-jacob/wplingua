@@ -4,15 +4,10 @@
  ** Compatibility
  **/
 
-// Some themes
-// html {
-//     overflow: hidden !important;
-// }
-
 // Divi
-// body.theme-Divi #main-header {
-//     z-index: 99997 !important;
-// }
+body.et_divi_theme #main-header {
+    z-index: 99997 !important;
+}
 
 
 /** 
