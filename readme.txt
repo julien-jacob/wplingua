@@ -4,7 +4,7 @@ Donate link: https://wplingua.com/
 Tags: translate, translation, multilingual, localization, language
 Requires at least: 6.0
 Tested up to: 6.5
-Stable tag: 1.3.1
+Stable tag: 1.4.0
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -154,6 +154,11 @@ No, not at the moment but in the meantime, you can easily display the language s
 
 == Changelog ==
 
+= 1.4.0 =
+
+* New feature: Translation editor modal
+* Better nav menu switcher
+
 = 1.3.1 =
 
 * Speed optimization:
@@ -163,8 +168,8 @@ No, not at the moment but in the meantime, you can easily display the language s
 * On excluded URLs:
  * Fix redirection
  * Hide Nav Menu language switcher
-* Dictionnary update
-* Manage non breaking space before and after texts
+* Dictionary update
+* Manage non-breaking space before and after texts
 * Better management of the Fluent Forms plugin
 
 

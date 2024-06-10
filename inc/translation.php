@@ -29,12 +29,12 @@ function wplng_get_translated_text_from_translations( $text, $translations ) {
 	$spaces_before = '';
 	$spaces_after  = '';
 
-	preg_match( '#^(\s*).*#', $text, $temp );
+	preg_match( '/^(\s*).*/', $text, $temp );
 	if ( ! empty( $temp[1] ) ) {
 		$spaces_before = $temp[1];
 	}
 
-	preg_match( '#.*(\s*)$#U', $text, $temp );
+	preg_match( '/.*(\s*)$/U', $text, $temp );
 	if ( ! empty( $temp[1] ) ) {
 		$spaces_after = $temp[1];
 	}
@@ -50,8 +50,6 @@ function wplng_get_translated_text_from_translations( $text, $translations ) {
 			}
 		}
 	}
-
-	$translated = esc_html( $translated );
 
 	return $spaces_before . $translated . $spaces_after;
 }

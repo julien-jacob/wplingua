@@ -27,17 +27,35 @@ function wplng_translation_add_meta_box( $post ) {
 
 
 /**
- * Print HTML of wpLingua translations meta box
+ * Print HTML of translations editor meta box in back office
  *
  * @param object $post
  * @return string HTML
  */
+
 function wplng_translation_meta_box_html_output( $post ) {
 
+	echo '<div id="wplng-translation-editor">';
+	echo wplng_translation_editor_get_html( $post );
+	echo '</div>';
+
+}
+
+
+/**
+ * Return HTML of translations editor in modal
+ *
+ * @param WP_Post $post
+ * @return void
+ */
+function wplng_translation_editor_get_html( $post ) {
+
 	//used later for security
-	wp_nonce_field(
+	$html = wp_nonce_field(
 		basename( __FILE__ ),
-		'wplng_translation_meta_box_nonce'
+		'wplng_translation_meta_box_nonce',
+		true,
+		false
 	);
 
 	$meta = get_post_meta( $post->ID );
@@ -53,7 +71,7 @@ function wplng_translation_meta_box_html_output( $post ) {
 		$language    = wplng_get_language_by_id( $language_id );
 		$alt         = __( 'Flag for language: ', 'wplingua' ) . $language['name'];
 
-		$html  = '<div id="wplng-original-language" wplng-lang="' . esc_attr( $language_id ) . '">';
+		$html .= '<div id="wplng-original-language" wplng-lang="' . esc_attr( $language_id ) . '">';
 		$html .= '<div id="wplng-source-title">';
 		$html .= '<img ';
 		$html .= 'src="' . esc_url( $language['flag'] ) . '" ';
@@ -185,8 +203,10 @@ function wplng_translation_meta_box_html_output( $post ) {
 			$html .= esc_html( $language['name'] );
 			$html .= esc_html__( ' - Translation: ', 'wplingua' );
 			$html .= '</label>';
-			$html .= '<textarea name="' . esc_attr( $name ) . '" ';
+			$html .= '<textarea ';
+			$html .= 'name="' . esc_attr( $name ) . '" ';
 			$html .= 'id="' . esc_attr( $name ) . '" ';
+			$html .= 'class="wplng-translation-textarea" ';
 			$html .= 'lang="' . esc_attr( $language_id ) . '" ';
 			$html .= 'spellcheck="false">';
 			$html .= esc_textarea( html_entity_decode( $textarea ) );
@@ -241,7 +261,7 @@ function wplng_translation_meta_box_html_output( $post ) {
 		}
 	}
 
-	echo $html;
+	return $html;
 }
 
 
@@ -255,7 +275,7 @@ function wplng_translation_save_meta_boxes_data( $post_id ) {
 
 	// Check if nonce is set
 	if ( ! isset( $_POST['wplng_translation_meta_box_nonce'] ) ) {
-		return;
+		return false;
 	}
 
 	// Sanitize the nonce
@@ -264,12 +284,12 @@ function wplng_translation_save_meta_boxes_data( $post_id ) {
 
 	// Check for nonce to top xss
 	if ( ! wp_verify_nonce( $nonce, basename( __FILE__ ) ) ) {
-		return;
+		return false;
 	}
 
 	// check for correct user capabilities - stop internal xss from customers
 	if ( ! current_user_can( 'edit_post', $post_id ) ) {
-		return;
+		return false;
 	}
 
 	wplng_clear_translations_cache();
@@ -277,7 +297,7 @@ function wplng_translation_save_meta_boxes_data( $post_id ) {
 	$meta = get_post_meta( $post_id );
 
 	if ( empty( $meta['wplng_translation_translations'][0] ) ) {
-		return;
+		return false;
 	}
 
 	$languages_target = wplng_get_languages_target_ids();
@@ -345,7 +365,11 @@ function wplng_translation_save_meta_boxes_data( $post_id ) {
 			}
 
 			if ( ! empty( $_POST[ $reviewed ] ) ) {
-				$translations[ $key ]['status'] = time();
+				if ( $_POST[ $reviewed ] !== 'false' ) {
+					$translations[ $key ]['status'] = time();
+				} else {
+					$translations[ $key ]['status'] = 'generated';
+				}
 			} else {
 				$translations[ $key ]['status'] = 'generated';
 			}
@@ -354,14 +378,14 @@ function wplng_translation_save_meta_boxes_data( $post_id ) {
 		$translations[ $key ]['translation'] = esc_html( $temp );
 	}
 
-	update_post_meta(
+	return update_post_meta(
 		$post_id,
 		'wplng_translation_translations',
 		wp_json_encode(
 			$translations,
 			JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES
 		)
-	);
+	) === true;
 
 }
 

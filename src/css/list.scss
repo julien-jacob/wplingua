@@ -1,4 +1,5 @@
 @import "editor-list";
+@import "edit-modal";
 
 /** 
  ** Compatibility
@@ -9,9 +10,15 @@ html {
     overflow: hidden !important;
 }
 
-// Divi
-body.theme-Divi #main-header {
-    z-index: 99997 !important;
+
+body {
+
+    overflow: hidden;
+
+    #wplng-modal-container {
+        display: block;
+    }
+
 }
 
 
@@ -53,15 +60,6 @@ body.theme-Divi #main-header {
 }
 
 
-body {
-
-    overflow: hidden;
-
-    #wplng-modal-container {
-        display: block;
-    }
-
-}
 
 #wplng-modal-container {
 
