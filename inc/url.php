@@ -116,10 +116,16 @@ function wplng_url_is_translatable( $url = '' ) {
 		$url = sanitize_url( $wplng_request_uri );
 	}
 
+	$url = trailingslashit( $url );
 	$url = wp_make_link_relative( $url );
 
 	// Check if is an admin page
 	if ( wplng_str_contains( $url, wp_make_link_relative( get_admin_url() ) ) ) {
+		$is_translatable = false;
+	}
+
+	// Check if is a /feed/
+	if ( wplng_str_ends_with( $url, '/feed/' ) ) {
 		$is_translatable = false;
 	}
 
