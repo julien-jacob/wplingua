@@ -20,6 +20,7 @@ if ( ! defined( 'WPINC' ) ) {
  * - request : 'translate'
  * - api_key : the API key of website
  * - version : API compatile version
+ * - context : Sends the URL of the page calling
  * - source  : A language ID
  * - target  : A languages ID
  * - texts   : Array of untranslated texts of website
@@ -109,6 +110,29 @@ function wplng_api_call_translate(
 	}
 
 	/**
+	 * Make the context
+	 */
+
+	$context = 'UNKNOW';
+
+	if ( defined( 'DOING_AJAX' )
+		&& DOING_AJAX
+		&& ! empty( $_SERVER['HTTP_REFERER'] )
+	) {
+		$context = $_SERVER['HTTP_REFERER'];
+		$context = sanitize_url( $context );
+	} elseif ( isset( $_SERVER['HTTPS'] )
+		&& isset( $_SERVER['HTTP_HOST'] )
+		&& isset( $_SERVER['REQUEST_URI'] )
+	) {
+		$context  = ( empty( $_SERVER['HTTPS'] ) ? 'http' : 'https' );
+		$context .= '://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+		$context  = sanitize_url( $context );
+	}
+
+	$context = apply_filters( 'wplng_api_call_translate_context', $context );
+
+	/**
 	 * Get the API call
 	 */
 
@@ -116,6 +140,7 @@ function wplng_api_call_translate(
 		'request' => 'translate',
 		'api_key' => $api_key,
 		'version' => WPLNG_API_VERSION,
+		'context' => $context,
 		'source'  => $language_source_id,
 		'target'  => $language_target_id,
 		'texts'   => $json_texts,
