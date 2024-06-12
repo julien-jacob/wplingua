@@ -161,7 +161,7 @@ function wplng_get_translations_from_query() {
 				&& $translation_meta['translation'] !== '[WPLNG_EMPTY]'
 			) {
 				$language_id     = sanitize_key( $translation_meta['language_id'] );
-				$translated_text = sanitize_text_field( $translation_meta['translation'] );
+				$translated_text = wplng_text_esc( $translation_meta['translation'] );
 
 				$translation['translations'][ $language_id ] = $translated_text;
 			}
@@ -249,6 +249,8 @@ function wplng_save_translation_new( $language_id, $original, $translation ) {
 	if ( strlen( $original ) > $tite_max_length ) {
 		$title .= __( '...', 'wplingua' );
 	}
+
+	$title = wplng_text_esc_displayed( $title );
 
 	/**
 	 * Create the post and get this ID
