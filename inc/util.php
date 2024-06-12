@@ -102,6 +102,13 @@ function wplng_text_is_translatable( $text ) {
 		return false;
 	}
 
+	// Check bad HTML tags ending
+	if ( wplng_str_starts_with( $text, '</' )
+		&& wplng_str_ends_with( $text, '>' )
+	) {
+		return false;
+	}
+
 	// Get letters only
 	$letters = $text;
 	$letters = html_entity_decode( $letters );
