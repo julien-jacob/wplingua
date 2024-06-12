@@ -213,12 +213,12 @@ function wplng_get_translations_target( $target_language_id ) {
 			continue;
 		}
 
-		$translation_text = sanitize_text_field(
+		$translation_text = wplng_text_esc(
 			$translation['translations'][ $target_language_id ]
 		);
 
 		$translations_target[] = array(
-			'source'      => sanitize_text_field( $translation['source'] ),
+			'source'      => wplng_text_esc( $translation['source'] ),
 			'post_id'     => $translation['post_id'],
 			'translation' => $translation_text,
 		);

@@ -81,7 +81,7 @@ function wplng_translation_editor_get_html( $post ) {
 		$html .= esc_html__( ' - Original text: ', 'wplingua' );
 		$html .= '</div>'; // End #wplng-source-title
 		$html .= '<div id="wplng-source">';
-		$html .= esc_html( $meta['wplng_translation_original'][0] );
+		$html .= esc_html( wplng_text_esc_displayed($meta['wplng_translation_original'][0]) );
 		$html .= '</div>'; // End #wplng-source
 		$html .= '</div>'; // End #wplng-original-language
 
@@ -209,7 +209,11 @@ function wplng_translation_editor_get_html( $post ) {
 			$html .= 'class="wplng-translation-textarea" ';
 			$html .= 'lang="' . esc_attr( $language_id ) . '" ';
 			$html .= 'spellcheck="false">';
-			$html .= esc_textarea( html_entity_decode( $textarea ) );
+			$html .= esc_textarea( 
+				wplng_text_esc_displayed( 
+					html_entity_decode( $textarea )
+				) 
+			);
 			$html .= '</textarea>';
 
 			if ( empty( $translation['status'] ) ) {

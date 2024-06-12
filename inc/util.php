@@ -136,6 +136,26 @@ function wplng_text_esc( $text ) {
 	return $text;
 }
 
+/**
+ * Escape texte (used for editor)
+ *
+ * @param string $text
+ * @return string
+ */
+function wplng_text_esc_displayed( $text ) {
+
+	$search  = array( '<', '&lt;', '>', '&gt;' );
+	$replace = array( '[', '[', ']', ']' );
+
+	$text = str_replace(
+		$search,
+		$replace,
+		$text
+	);
+
+	return $text;
+}
+
 
 /**
  * Return true if $str is HTML
