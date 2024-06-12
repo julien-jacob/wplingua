@@ -448,9 +448,16 @@ jQuery(document).ready(function ($) {
     /**
      * Code for first loading
      */
+
+    if ($("#wplng-notice-first-loading-loading").length) {
+        $("#wplng-option-settings-form").hide();
+        $("#toplevel_page_wplingua-settings .wp-submenu-wrap").hide();
+    }
+
     $("#wplng-first-load-iframe").load(function () {
         $("#wplng-notice-first-loading-loading").hide();
-        $("#wplng-notice-first-loading-loaded").show();
+        $("#wplng-notice-first-loading-loaded").slideDown();
+        $("#wplng-option-settings-form").slideDown();
     });
 
 }); // End jQuery loaded event

@@ -27,7 +27,7 @@ function wplng_option_page_settings() {
 	<div class="wrap">
 		<hr class="wp-header-end">
 		<?php wplng_settings_part_first_use(); ?>
-		<form method="post" action="options.php">
+		<form method="post" action="options.php" id="wplng-option-settings-form">
 			<?php
 			settings_fields( 'wplng_settings' );
 			do_settings_sections( 'wplng_settings' );
@@ -123,11 +123,13 @@ function wplng_settings_part_first_use() {
 	<div class="wplng-notice notice notice-info" id="wplng-notice-first-loading-loading">
 		<iframe src="<?php echo esc_url( $url_front_page_iframe ); ?>" frameborder="0" id="wplng-first-load-iframe" style="display: none;"></iframe>
 		<h2><span class="dashicons dashicons-update wplng-spin"></span> <?php esc_html_e( 'Your website is being translated and will be ready soon.', 'wplingua' ); ?></h2>
+		<p><?php esc_html_e( 'In just a few seconds, your site will be multilingual, and search engines will be able to index these new pages. wpLingua detects all the texts on your pages and offers you a first automatically generated translation. All translations are editable: activate the visual editor from the administration bar and edit them simply by clicking on the texts on your site.', 'wplingua' ); ?></p>
 	</div>
 
 	<div class="wplng-notice notice notice-success is-dismissible" id="wplng-notice-first-loading-loaded" style="display: none;">
 		<h2>🎉 <?php esc_html_e( 'Your website is now multilingual! You can start visiting the translated version.', 'wplingua' ); ?></h2>
 		<p><?php esc_html_e( 'The first time a translated page is loaded, the translations are automatically generated and saved in the database. This may take some time (on first generation only) depending on the size of your content. This is why we advise you to browse your entire website for the first time in order to generate all the multilingual versions.', 'wplingua' ); ?></p>
+		<p><?php esc_html_e( 'All translations are editable: activate the visual editor from the administration bar and edit them simply by clicking on the texts on your site.', 'wplingua' ); ?></p>
 		<p>
 			<a href="<?php echo esc_url( $url_front_page_translated ); ?>" target="_blank" class="button button-primary">
 				<?php esc_html_e( 'Visit your multilingual website', 'wplingua' ); ?>
