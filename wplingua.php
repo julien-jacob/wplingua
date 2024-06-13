@@ -52,6 +52,15 @@ require_once WPLNG_PLUGIN_PATH . '/loader.php';
  */
 function wplng_start() {
 
+	// Clear cached variales
+	wp_cache_delete( 'wplng_get_language_website', 'wplingua' );
+	wp_cache_delete( 'wplng_get_languages_target_simplified', 'wplingua' );
+	wp_cache_delete( 'wplng_get_languages_target', 'wplingua' );
+	wp_cache_delete( 'wplng_get_language_current_id', 'wplingua' );
+	wp_cache_delete( 'wplng_get_languages_all', 'wplingua' );
+	wp_cache_delete( 'wplng_get_languages_allow', 'wplingua' );
+	wp_cache_delete( 'wplng_get_url_exclude_regex', 'wplingua' );
+
 	// Define $wplng_request_uri
 	if ( isset( $_SERVER['REQUEST_URI'] ) ) {
 
@@ -85,14 +94,6 @@ function wplng_start() {
 
 	// Print head script (JSON with all languages informations)
 	add_action( 'toplevel_page_wplingua-settings', 'wplng_inline_script_languages' );
-
-	// Compatibility with redis cache plugin
-	add_filter(
-		'redis_cache_add_non_persistent_groups', function( $groups ) {
-			$groups[] = 'wplingua';
-			return $groups;
-		}
-	);
 
 	if ( empty( wplng_get_api_data() ) ) {
 
