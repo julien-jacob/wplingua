@@ -64,10 +64,12 @@ jQuery(document).ready(function ($) {
      * Code for preloading
      */
 
-    $("#wplng-in-progress-iframe").on("load", function () {
+    $("#wplng-in-progress-iframe").on("load", wplngReloadInProgress);
+
+    function wplngReloadInProgress() {
         let urlReload = $("#wplng-in-progress-container").attr("wplng-reload");
         window.location.href = urlReload;
-    });
+    }
 
     function wplngUpdatePercent() {
         let percent = parseInt($("#wplng-in-progress-percent").html());
