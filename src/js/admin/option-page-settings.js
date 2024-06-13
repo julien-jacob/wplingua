@@ -1,5 +1,24 @@
 jQuery(document).ready(function ($) {
 
+    /**
+     * Code for first loading
+     */
+
+    if ($("#wplng-notice-first-loading-loading").length) {
+        $("#toplevel_page_wplingua-settings .wp-submenu-wrap").hide();
+    }
+
+    $("#wplng-first-load-iframe").load(function () {
+        $("#wplng-notice-first-loading-loading").hide();
+        $("#wplng-notice-first-loading-loaded").slideDown();
+        $("#wplng-option-settings-form").slideDown();
+        $("#toplevel_page_wplingua-settings .wp-submenu-wrap").slideDown();
+    });
+
+    /**
+     * Code for input
+     */
+
     var wplngWebsiteLanguage = $("#wplng_website_language").val();
     var wplngTargetLanguages = JSON.parse($("#wplng_target_languages").val());
 
@@ -442,22 +461,6 @@ jQuery(document).ready(function ($) {
         $("#wplng-api-key-show").show();
         $("#wplng-api-key-fake").show();
         $("#wplng_api_key").hide();
-    });
-
-
-    /**
-     * Code for first loading
-     */
-
-    if ($("#wplng-notice-first-loading-loading").length) {
-        $("#wplng-option-settings-form").hide();
-        $("#toplevel_page_wplingua-settings .wp-submenu-wrap").hide();
-    }
-
-    $("#wplng-first-load-iframe").load(function () {
-        $("#wplng-notice-first-loading-loading").hide();
-        $("#wplng-notice-first-loading-loaded").slideDown();
-        $("#wplng-option-settings-form").slideDown();
     });
 
 }); // End jQuery loaded event
