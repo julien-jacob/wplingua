@@ -86,6 +86,14 @@ function wplng_start() {
 	// Print head script (JSON with all languages informations)
 	add_action( 'toplevel_page_wplingua-settings', 'wplng_inline_script_languages' );
 
+	// Compatibility with redis cache plugin
+	add_filter(
+		'redis_cache_add_non_persistent_groups', function( $groups ) {
+			$groups[] = 'wplingua';
+			return $groups;
+		}
+	);
+
 	if ( empty( wplng_get_api_data() ) ) {
 
 		// Add Register option page in back office menu
