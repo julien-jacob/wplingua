@@ -7,7 +7,7 @@
  * Author URI: https://wplingua.com/
  * Text Domain: wplingua
  * Domain Path: /languages/
- * Version: 1.4.0
+ * Version: 1.4.1
  * Requires PHP: 7.4
  * License: GPL v2 or later
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -24,7 +24,7 @@ if ( ! defined( 'WPINC' ) ) {
 define( 'WPLNG_API_URL', 'https://api.wplingua.com' );
 define( 'WPLNG_API_VERSION', '1.0' );
 define( 'WPLNG_API_SSLVERIFY', true );
-define( 'WPLNG_PLUGIN_VERSION', '1.4.0' );
+define( 'WPLNG_PLUGIN_VERSION', '1.4.1' );
 define( 'WPLNG_PLUGIN_FILE', plugin_basename( __FILE__ ) );
 define( 'WPLNG_PLUGIN_PATH', dirname( __FILE__ ) );
 define( 'WPLNG_MAX_TRANSLATIONS', 256 );
@@ -51,6 +51,15 @@ require_once WPLNG_PLUGIN_PATH . '/loader.php';
  * @return void
  */
 function wplng_start() {
+
+	// Clear cached variables
+	wp_cache_delete( 'wplng_get_language_website', 'wplingua' );
+	wp_cache_delete( 'wplng_get_languages_target_simplified', 'wplingua' );
+	wp_cache_delete( 'wplng_get_languages_target', 'wplingua' );
+	wp_cache_delete( 'wplng_get_language_current_id', 'wplingua' );
+	wp_cache_delete( 'wplng_get_languages_all', 'wplingua' );
+	wp_cache_delete( 'wplng_get_languages_allow', 'wplingua' );
+	wp_cache_delete( 'wplng_get_url_exclude_regex', 'wplingua' );
 
 	// Define $wplng_request_uri
 	if ( isset( $_SERVER['REQUEST_URI'] ) ) {

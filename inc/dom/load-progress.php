@@ -31,6 +31,11 @@ function wplng_dom_load_progress( $dom, $args ) {
 		$html .= '</head>';
 		$html .= '<body>';
 		$html .= '<h1>Translations load</h1>';
+		$html .= '<script>';
+		$html .= 'window.onload = function() {';
+		$html .= '	parent.wplngReloadInProgress();';
+		$html .= '}';
+		$html .= '</script>';
 		$html .= '</body>';
 		$html .= '</html>';
 

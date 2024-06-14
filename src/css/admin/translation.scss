@@ -6,7 +6,7 @@
 }
 
 #wplng-source-title {
-    font-weight: bold;
+    font-weight: 600;
     margin-bottom: 15px;
 }
 
@@ -27,120 +27,131 @@
     margin: 20px 0 0;
 }
 
-.wplng-edit-language {
+#wplng-translation-editor {
 
-    border: 1px solid #c3c4c7;
-    padding: 10px;
-    margin-top: 25px;
-    background-color: #f6f7f7;
-    box-shadow: rgba(0, 0, 0, 0.04) 0px 1px 1px 0px;
+    color: #3c434a;
 
-    &.wplng-status-reviewed {
-        border-left: 4px #00a32a solid;
-        border-top-left-radius: 0;
-        border-bottom-left-radius: 0;
-    }
+    .wplng-edit-language {
 
-    &.wplng-status-generated {
-        border-left: 4px #72aee6 solid;
-        border-top-left-radius: 0;
-        border-bottom-left-radius: 0;
-    }
-
-    &.wplng-status-ungenerated {
-        border-left: 4px #c3c4c7 solid;
-        border-top-left-radius: 0;
-        border-bottom-left-radius: 0;
-    }
-
-    label.wplng-target-title {
-        font-weight: 700;
-        margin-bottom: 8px;
-        display: block;
-    }
-
-    textarea {
-        overflow: hidden;
-        width: 100%;
-        resize: none;
-        box-shadow: 0 0 0 transparent;
-        border-radius: 4px;
-        border: 1px solid #8c8f94;
-        background-color: #fff;
-        color: #2c3338;
-        padding: 2px 6px;
-        line-height: 1.5em;
-    }
-
-    .wplng-translation-footer {
-
-        color: #3c434a;
-        display: flex;
-        justify-content: space-between;
-        margin-top: 4px;
-
-        a {
-            color: #135e96;
-            text-decoration: underline;
-
-            &:focus {
-                box-shadow: none;
-            }
+        border: 1px solid #c3c4c7;
+        padding: 10px;
+        margin-top: 25px;
+        background-color: #f6f7f7;
+        box-shadow: rgba(0, 0, 0, 0.04) 0px 1px 1px 0px;
+        font-size: 14px;
+    
+        &.wplng-status-reviewed {
+            border-left: 4px #00a32a solid;
+            border-top-left-radius: 0;
+            border-bottom-left-radius: 0;
         }
-
-
-        .wplng-mark-as-reviewed {
-
-            display: inline-block;
-
-            label {
-                color: #2271b1;
-                display: contents;
+    
+        &.wplng-status-generated {
+            border-left: 4px #72aee6 solid;
+            border-top-left-radius: 0;
+            border-bottom-left-radius: 0;
+        }
+    
+        &.wplng-status-ungenerated {
+            border-left: 4px #c3c4c7 solid;
+            border-top-left-radius: 0;
+            border-bottom-left-radius: 0;
+        }
+    
+        label.wplng-target-title {
+            font-weight: 600;
+            margin-bottom: 8px;
+            display: block;
+        }
+    
+        textarea {
+            overflow: hidden;
+            width: 100%;
+            resize: none;
+            box-shadow: 0 0 0 transparent;
+            border-radius: 4px;
+            border: 1px solid #8c8f94;
+            background-color: #fff;
+            padding: 2px 6px;
+            line-height: 1.5em;
+            font-size: inherit;
+            min-height: 30px;
+        }
+    
+        .wplng-translation-footer {
+    
+            color: #3c434a;
+            display: flex;
+            justify-content: space-between;
+            margin-top: 4px;
+    
+            a {
+                color: #135e96;
                 text-decoration: underline;
-                display: inline;
-                vertical-align: baseline;
-                font-weight: normal;
+    
+                &:focus {
+                    box-shadow: none;
+                }
             }
-
-            input[type="checkbox"] {
-                border: 1px solid #8c8f94;
-                border-radius: 4px;
-                background: #fff;
-                color: #50575e;
-                clear: none;
-                cursor: pointer;
+    
+    
+            .wplng-mark-as-reviewed {
+    
                 display: inline-block;
-                line-height: 0;
-                height: 16px;
-                margin: -2px 6px 0 0;
-                margin-bottom: 0px;
-                outline: 0;
-                padding: 0 !important;
-                text-align: center;
-                vertical-align: middle;
-                width: 16px;
-                min-width: 16px;
-                box-shadow: inset 0 1px 2px rgba(0,0,0,.1);
-                transition: .05s border-color ease-in-out;
-                -webkit-appearance: checkbox;
+                border: none;
+                padding: 0;
+    
+                label {
+                    color: #2271b1;
+                    display: contents;
+                    text-decoration: underline;
+                    display: inline;
+                    vertical-align: baseline;
+                    font-weight: normal;
+                }
+    
+                input[type="checkbox"] {
+                    border: 1px solid #8c8f94;
+                    border-radius: 4px;
+                    background: #fff;
+                    color: #50575e;
+                    clear: none;
+                    cursor: pointer;
+                    display: inline-block;
+                    line-height: 0;
+                    height: 16px;
+                    margin: -2px 6px 0 0;
+                    margin-bottom: 0px;
+                    outline: 0;
+                    padding: 0 !important;
+                    text-align: center;
+                    vertical-align: bottom;
+                    width: 16px;
+                    min-width: 16px;
+                    box-shadow: inset 0 1px 2px rgba(0,0,0,.1);
+                    transition: .05s border-color ease-in-out;
+                    -webkit-appearance: checkbox;
+                }
             }
+
         }
-
-
+    
     }
-
 }
 
+
 @media only screen and (max-width: 850px) {
-    .wplng-edit-language {
-        .wplng-translation-footer {
-
-            display: block;
-            margin-top: 0;
-
-            .wplng-translation-footer-left,
-            .wplng-translation-footer-right {
-                padding-top: 8px;
+    #wplng-translation-editor {
+        .wplng-edit-language {
+            .wplng-translation-footer {
+    
+                display: block;
+                margin-top: 0;
+    
+                .wplng-translation-footer-left,
+                .wplng-translation-footer-right {
+                    padding-top: 8px;
+                }
             }
         }
     }
