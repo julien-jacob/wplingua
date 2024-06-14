@@ -52,7 +52,7 @@ require_once WPLNG_PLUGIN_PATH . '/loader.php';
  */
 function wplng_start() {
 
-	// Clear cached variales
+	// Clear cached variables
 	wp_cache_delete( 'wplng_get_language_website', 'wplingua' );
 	wp_cache_delete( 'wplng_get_languages_target_simplified', 'wplingua' );
 	wp_cache_delete( 'wplng_get_languages_target', 'wplingua' );
