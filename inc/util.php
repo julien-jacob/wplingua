@@ -102,6 +102,13 @@ function wplng_text_is_translatable( $text ) {
 		return false;
 	}
 
+	// Check bad HTML tags ending
+	if ( wplng_str_starts_with( $text, '</' )
+		&& wplng_str_ends_with( $text, '>' )
+	) {
+		return false;
+	}
+
 	// Get letters only
 	$letters = $text;
 	$letters = html_entity_decode( $letters );
@@ -132,6 +139,26 @@ function wplng_text_esc( $text ) {
 	$text = str_replace( '\\', '', $text );
 	$text = preg_replace( '/\s+/u', ' ', $text );
 	$text = trim( $text );
+
+	return $text;
+}
+
+/**
+ * Escape texte (used for editor)
+ *
+ * @param string $text
+ * @return string
+ */
+function wplng_text_esc_displayed( $text ) {
+
+	$search  = array( '<', '&lt;', '>', '&gt;' );
+	$replace = array( '[', '[', ']', ']' );
+
+	$text = str_replace(
+		$search,
+		$replace,
+		$text
+	);
 
 	return $text;
 }

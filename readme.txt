@@ -4,7 +4,7 @@ Donate link: https://wplingua.com/
 Tags: translate, translation, multilingual, localization, language
 Requires at least: 6.0
 Tested up to: 6.5
-Stable tag: 1.4.0
+Stable tag: 1.4.1
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -153,6 +153,18 @@ No, not at the moment but in the meantime, you can easily display the language s
 12. You can edit all translations for each languages.
 
 == Changelog ==
+
+= 1.4.1 =
+
+* Exclude /feed/ from translations
+* Better front editor compatibility with themes and plugins
+* Better compatibility with permanent cache (Redis, Memcache)
+* Better first registration pre-translation
+* Better management of bad HTML ending tag 
+* Better management of HTML in text
+* Better help box in API feature options
+* Fix error with Query Monitor plugin
+* Add context on translation API call
 
 = 1.4.0 =
 
