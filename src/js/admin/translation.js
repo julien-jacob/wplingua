@@ -364,6 +364,8 @@ jQuery(document).ready(function ($) {
             }
         });
 
+        let isReview = (true == $("#wplng_mark_as_reviewed_" + wplngLocalize.currentLanguage).prop("checked"));
+
         wplngEditor.find(".wplng-mark-as-reviewed input[type=checkbox]").each(function () {
             data[$(this).attr('id')] = $(this).prop("checked");
         });
@@ -375,9 +377,21 @@ jQuery(document).ready(function ($) {
             success: function (data) {
                 if (data.success) {
 
+                    let editLink = $("body.wplingua-editor .wplng-edit-link[wplng_post=" + post + "]");
+                    let modalItem = $("body.wplingua-list .wplng-modal-item[wplng_post=" + post + "]")
+
                     // replace by new text in page
-                    $("body.wplingua-editor .wplng-edit-link[wplng_post=" + post + "]").text(text);
-                    $("body.wplingua-list .wplng-modal-item[wplng_post=" + post + "] .wplng-item-translation").text(text);
+                    editLink.text(text);
+                    modalItem.find(".wplng-item-translation").text(text);
+
+                    // Add or remove wplng-is-review class
+                    if (isReview) {
+                        editLink.addClass('wplng-is-review');
+                        modalItem.addClass('wplng-is-review');
+                    } else {
+                        editLink.removeClass('wplng-is-review');
+                        modalItem.removeClass('wplng-is-review');
+                    }
 
                     // Hide the editor modal
                     wplngCloseEditorModal();

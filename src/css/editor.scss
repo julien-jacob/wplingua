@@ -18,9 +18,20 @@
         outline: 2px dotted #222 !important;
         border: 2px dotted #eee !important;
     }
+
+    &.wplng-is-review,
+    &.wplng-is-review:active,
+    &.wplng-is-review:hover,
+    &.wplng-is-review:link,
+    &.wplng-is-review:visited {
+        outline: 2px dotted green !important;
+        border: 2px dotted greenyellow !important;
+    }
     
-    &:hover {
+    &:hover,
+    &.wplng-is-review:hover {
         outline: 2px dotted blue !important;
         border: 2px dotted lightblue !important;
     }
+    
 }

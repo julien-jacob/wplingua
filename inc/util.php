@@ -143,6 +143,7 @@ function wplng_text_esc( $text ) {
 	return $text;
 }
 
+
 /**
  * Escape texte (used for editor)
  *

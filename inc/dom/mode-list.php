@@ -185,7 +185,13 @@ function wplng_dom_mode_list( $dom, $args ) {
 			continue;
 		}
 
-		$html .= '<div class="wplng-modal-item" ';
+		$class = 'wplng-modal-item';
+
+		if ( ! empty( $translation['review'] ) ) {
+			$class .= ' wplng-is-review';
+		}
+
+		$html .= '<div class="' . esc_attr( $class ) . '" ';
 		$html .= 'wplng_post="' . esc_attr( $translation['post_id'] ) . '">';
 
 		$html .= '<div class="wplng-item-text">';

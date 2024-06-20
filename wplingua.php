@@ -61,6 +61,12 @@ function wplng_start() {
 	wp_cache_delete( 'wplng_get_languages_allow', 'wplingua' );
 	wp_cache_delete( 'wplng_get_url_exclude_regex', 'wplingua' );
 
+	// The plugin version has changed
+	if ( get_option( 'wplng_version' ) !== WPLNG_PLUGIN_VERSION ) {
+		wplng_clear_translations_cache();
+		update_option( 'wplng_version', WPLNG_PLUGIN_VERSION, true );
+	}
+
 	// Define $wplng_request_uri
 	if ( isset( $_SERVER['REQUEST_URI'] ) ) {
 
