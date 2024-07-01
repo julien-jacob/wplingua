@@ -107,6 +107,22 @@ body.et_divi_theme #main-header {
                 }
             }
 
+            #wplng-modal-edit-post {
+
+                border: 1px solid red;
+
+                position: absolute;
+                right: 55px;
+                top: 12px;
+                border-color: #c3c4c7;
+                background-color: #f6f7f7;
+                color: #6b6b6b;
+
+                .dashicons {
+                    vertical-align: text-top;
+                }
+            }
+
             #wplng-modal-edit-show-all {
 
                 font-size: 13px;
@@ -126,7 +142,7 @@ body.et_divi_theme #main-header {
                 padding: 2px 10px;
                 position: absolute;
                 top: 12px;
-                right: 50px;
+                right: 95px;
 
             }
         }

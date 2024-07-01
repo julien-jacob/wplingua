@@ -27,6 +27,25 @@ function wplng_translation_edit_modal_get_html() {
 	$all_languages_button .= esc_attr__( 'All languages', 'wplingua' );
 	$all_languages_button .= '</a>';
 
+	$edit_link_template = add_query_arg(
+		array(
+			'post'   => 'WPLNG_TRANSLATION_ID',
+			'action' => 'edit',
+		),
+		get_admin_url() . 'post.php'
+	);
+
+	$edit_link_button  = '<a ';
+	$edit_link_button .= 'href="#" ';
+	$edit_link_button .= 'title="' . esc_attr__( 'Open edit page', 'wplingua' ) . '" ';
+	$edit_link_button .= 'class="wplng-button-icon" ';
+	$edit_link_button .= 'id="wplng-modal-edit-post" ';
+	$edit_link_button .= 'target="_blank" ';
+	$edit_link_button .= 'data-wplng-edit-template="' . esc_attr( $edit_link_template ) . '"';
+	$edit_link_button .= '>';
+	$edit_link_button .= '<span class="dashicons dashicons-external"></span>';
+	$edit_link_button .= '</a>';
+
 	$html = '<div id="wplng-modal-edit-container">';
 
 	$html .= '<div id="wplng-modal-edit">';
@@ -37,6 +56,7 @@ function wplng_translation_edit_modal_get_html() {
 	$html .= esc_html__( 'Edit translation', 'wplingua' );
 	$html .= '</span>';
 	$html .= $all_languages_button;
+	$html .= $edit_link_button;
 	$html .= $return_button;
 
 	$html .= '</div>';
@@ -50,7 +70,6 @@ function wplng_translation_edit_modal_get_html() {
 	$html .= '</button>';
 
 	$html .= '</div>'; // End #wplng-modal-edit-main
-
 	$html .= '</div>'; // End #wplng-modal-edit
 	$html .= '</div>'; // End #wplng-modal-edit-container
 

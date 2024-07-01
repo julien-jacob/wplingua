@@ -274,7 +274,12 @@ jQuery(document).ready(function ($) {
         $("#wplng-modal-edit-save").text(wplngLocalize.message.buttonSave);
         $("#wplng-modal-edit-save").prop("disabled", true);
 
+        // Get post ID
         let post = $(this).attr("wplng_post");
+
+        // Get edit link
+        let editURL = $("#wplng-modal-edit-post").attr("data-wplng-edit-template");
+        editURL = editURL.replace('WPLNG_TRANSLATION_ID', post);
 
         $.ajax({
             url: wplngLocalize.ajaxUrl,
@@ -290,6 +295,9 @@ jQuery(document).ready(function ($) {
                     let html = JSON.parse(data.data);
                     html = wplngDecodeHtml(html.wplng_edit_html);
                     wplngEditor.html(html);
+
+                    // Set edit URL
+                    $("#wplng-modal-edit-post").attr("href", editURL);
 
                     // Show the editor modal
                     $("#wplng-modal-edit-container").show();
