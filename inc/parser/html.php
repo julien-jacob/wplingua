@@ -45,9 +45,14 @@ function wplng_parse_html( $html ) {
 				continue;
 			}
 
+			$json = wp_specialchars_decode(
+				$element->attr[ $attr['attr'] ],
+				ENT_QUOTES | ENT_SUBSTITUTE | ENT_HTML401
+			);
+
 			$texts = array_merge(
 				$texts,
-				wplng_parse_json( $element->attr[ $attr['attr'] ] )
+				wplng_parse_json( $json )
 			);
 		}
 	}
