@@ -36,7 +36,7 @@ function wplng_dom_translate_json( $dom, $args ) {
 	}
 
 	/**
-	 * Translate JSON in attriutes
+	 * Translate JSON in attributes
 	 */
 
 	$attr_json_to_translate = wplng_data_attr_json_to_translate();
