@@ -52,6 +52,7 @@ function wplng_data_excluded_json() {
 		array(
 			// wpLingua : Ajax edit modal
 			array( 'data', 'wplng_edit_html' ),
+			array( 'wplngLocalize' ),
 			// WooCommerce
 			array( 'wc_country_select_params', 'countries' ),
 		)
