@@ -4,43 +4,36 @@ Donate link: https://wplingua.com/
 Tags: translate, translation, multilingual, localization, language
 Requires at least: 6.0
 Tested up to: 6.5
-Stable tag: 1.4.1
+Stable tag: 1.4.2
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Make your websites multilingual and translate them automatically: no word limits, free first language, SEO-friendly, no coding knowledge needed, and more!
+Make your websites multilingual and translate them automatically: no word limits, editable translations, SEO-friendly, no coding knowledge needed
 
 == Description ==
 
 **An all-in-one solution that makes your websites multilingual and translate them automatically, without word or page limits.**
 
-The highlights: 
+The highlights:
 
-✓ a free first language
-✓ an on-page visual editor for editing translations
-✓ a customizable language switcher
-✓ search engine optimization (SEO)
-✓ no coding knowledge needed
-✓ self-hosted data
-✓ open source, find [wpLingua on GitHub](https://github.com/julien-jacob/wplingua)
-✓ and more!
+✓ One free first language for non-commercial websites
+✓ Machine translation API
+✓ Unlimited number of translated words
+✓ On-page visual editor for editing translations
+✓ Customizable language switcher
+✓ SEO-friendly: indexing of translated pages in search engines
+✓ No coding knowledge needed
+✓ Self-hosted data
+✓ Open source, find [wpLingua on GitHub](https://github.com/julien-jacob/wplingua)
+✓ And more!
 
 ### 🔥 One free target language ###
-With our complimentary offer, wpLingua empowers you to introduce your website to a broader audience in a new language. 
+The first language translation is completely free for non-commercial websites. If your website is of a commercial nature (e-commerce, advertising, etc.), a commercial licence is available.
 
-**While the free version supports translation into a single target language**, we set no boundaries on the number of words you can translate. 
+### 🧮 No word limits! ###
 
-Whether your website has a hundred pages or just a few, you can seamlessly make it accessible in the language you desire. 
-
-###🪄 Streamlined Setup Process ###
-Dive into a hassle-free multilingual experience with wpLingua. Forget about complex configurations and the intimidating world of coding. 
-
-All you need to get started is to request your complimentary API key. Once you do, we'll promptly send it straight to your inbox. It's as straightforward as that! 
-
-Our commitment is **to make multilingual capabilities accessible and effortless for every WordPress user**. 
-
-Let us take care of the technicalities while you focus on creating captivating content for your global audience.
+Don't count the words on your website to decide which plan to choose, wpLingua doesn't limit them! Simply choose the number of target languages and translate without counting!
 
 ### 🚀 Optimized for international search engines (SEO) ###
 When you use wpLingua on your website, all elements of your content - even those that are invisible - are translated.
@@ -56,19 +49,26 @@ wpLingua is "SEO-Friendly" because it takes care of translating:
 
 By optimizing indexing, we ensure that your translated pages are not only understood by your audience, but are also easily found by search engines.
 
+### 🪄 Streamlined Setup Process ###
+Forget about complex plugins to set up, wpLingua enhances the user experience of the multilingual world. 
+
+All you need to do to get started is request your machine translation API key, then play with the language switcher appearance options!
+
+Let wpLingua take care of the technical aspects while you concentrate on creating compelling content for your international audience. Our commitment is **to make multilingual capabilities accessible and easy to use for all WordPress users**. 
+
 ### ✍️ Tailor-made translations at your fingertips with our On-Page Editor ###
 Although wpLingua gives you the convenience of **machine translations**, we understand the nuances of each language. 
 
-wpLingua offers a canvas in which you can **refine each translation** so that it resonates with your unique voice and your brand message adapted to the cultural and contextual expectations of your audience. 
+wpLingua allows you **to fine-tune each translation manually** if you need to.
 
 Experience the fusion of automation and the personal touch with our **visual on-page editor**.
 
 ### 🎨 Fully customizable language switcher ###
-The wpLingua language selector is fully customizable. You can display the language switcher in two ways:
+The wpLingua language switcher is fully customisable. You can display the language switcher in three ways:
 
 ✓ Automatic insertion via predefined positions
-✓ Use of a shortcode to display it wherever you want
-✓ Switcher in navigation menu with design defined by the theme
+✓ Using a shortcode to display it wherever you like
+✓ Insertion in the navigation menu using the design defined by the theme
 
 You can also control the appearance of the language switcher using:
 
@@ -79,7 +79,7 @@ You can also control the appearance of the language switcher using:
 ✓ Language-based flag choices or import your own flag images
 ✓ Adding custom CSS in a dedicated insert
 
-With all these customization options, there's no way your website's language selector will look like any other!
+With all these customization options, there's no way your website's language switcher will look like any other!
 
 ### 📖 Translation rules by dictionary ###
 The dictionary allows you to define translation rules that apply when generating machine translations. You can specify words or sets of words that should never be translated, or define how they should be translated for each language.
@@ -153,6 +153,15 @@ No, not at the moment but in the meantime, you can easily display the language s
 12. You can edit all translations for each languages.
 
 == Changelog ==
+
+= 1.4.2 =
+
+* Coloring reviewed texts
+* Better translation for JSON in attributes 
+* Edit page button on edition modale
+* Exclude comment content and author names
+* Better Divi Builder exclusion
+* Better notice for for incompatible plugins
 
 = 1.4.1 =
 

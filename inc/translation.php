@@ -140,6 +140,7 @@ function wplng_get_translations_from_query() {
 		$translation = array(
 			'source'       => $source,
 			'post_id'      => get_the_ID(),
+			'review'       => array(),
 			'translations' => array(),
 		);
 
@@ -154,16 +155,26 @@ function wplng_get_translations_from_query() {
 		);
 
 		foreach ( $translations_meta as $translation_meta ) {
-			if ( ! empty( $translation_meta['language_id'] )
-				&& wplng_is_valid_language_id( $translation_meta['language_id'] )
-				&& isset( $translation_meta['translation'] )
-				&& is_string( $translation_meta['translation'] )
-				&& $translation_meta['translation'] !== '[WPLNG_EMPTY]'
+
+			if ( empty( $translation_meta['language_id'] )
+				|| ! wplng_is_valid_language_id( $translation_meta['language_id'] )
+				|| $translation_meta['translation'] === '[WPLNG_EMPTY]'
 			) {
-				$language_id     = sanitize_key( $translation_meta['language_id'] );
+				continue;
+			}
+
+			$language_id = sanitize_key( $translation_meta['language_id'] );
+
+			if ( isset( $translation_meta['translation'] )
+				&& is_string( $translation_meta['translation'] )
+			) {
 				$translated_text = wplng_text_esc( $translation_meta['translation'] );
 
 				$translation['translations'][ $language_id ] = $translated_text;
+			}
+
+			if ( isset( $translation_meta['status'] ) && is_int( $translation_meta['status'] ) ) {
+				$translation['review'][] = $language_id;
 			}
 		}
 
@@ -209,9 +220,17 @@ function wplng_get_translations_target( $target_language_id ) {
 			|| empty( $translation['post_id'] )
 			|| empty( $translation['translations'][ $target_language_id ] )
 			|| ! is_string( $translation['translations'][ $target_language_id ] )
+			|| ! isset( $translation['review'] )
+			|| ! is_array( $translation['review'] )
 		) {
 			continue;
 		}
+
+		$review = in_array(
+			$target_language_id,
+			$translation['review'],
+			true
+		);
 
 		$translation_text = wplng_text_esc(
 			$translation['translations'][ $target_language_id ]
@@ -220,6 +239,7 @@ function wplng_get_translations_target( $target_language_id ) {
 		$translations_target[] = array(
 			'source'      => wplng_text_esc( $translation['source'] ),
 			'post_id'     => $translation['post_id'],
+			'review'      => $review,
 			'translation' => $translation_text,
 		);
 	}

@@ -260,14 +260,22 @@ function wplng_admin_notice_incompatible_plugin() {
 	$incompatible_detected = array();
 
 	$incompatible_list = array(
-		'Automatic Translator' => 'auto-translate/auto-translate.php',
-		'ConveyThis Translate' => 'conveythis-translate/index.php',
-		'Google Translator'    => 'google-language-translator/google-language-translator.php',
-		'Gtranslate'           => 'gtranslate/gtranslate.php',
-		'Polylang'             => 'polylang/polylang.php',
-		'TranslatePress'       => 'translatepress-multilingual/index.php',
-		'WEGLOT'               => 'weglot/weglot.php',
-		'WPML'                 => 'sitepress-multilingual-cms/sitepress.php',
+		'Automatic Translator'      => 'auto-translate/auto-translate.php',
+		'Autoglot'                  => 'autoglot/autoglot.php',
+		'clonable'                  => 'clonable/clonable-wp.php',
+		'ConveyThis Translate'      => 'conveythis-translate/index.php',
+		'Falang'                    => 'falang/falang.php',
+		'Google Website Translator' => 'google-website-translator/google-website-translator.php',
+		'Google Translator'         => 'google-language-translator/google-language-translator.php',
+		'Gtranslate'                => 'gtranslate/gtranslate.php',
+		'linguise'                  => 'linguise/linguise.php',
+		'localizejs'                => 'localizejs/localizejs.php',
+		'Multilanguage'             => 'multilanguage/multilanguage.php',
+		'Polylang'                  => 'polylang/polylang.php',
+		'TranslatePress'            => 'translatepress-multilingual/index.php',
+		'WEGLOT'                    => 'weglot/weglot.php',
+		'WPML'                      => 'sitepress-multilingual-cms/sitepress.php',
+		'WP Multilang'              => 'wp-multilang/wp-multilang.php',
 	);
 
 	foreach ( $incompatible_list as $name => $file ) {

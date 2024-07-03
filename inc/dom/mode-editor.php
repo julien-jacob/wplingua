@@ -105,8 +105,14 @@ function wplng_dom_mode_editor( $dom, $args ) {
 				continue;
 			}
 
+			$class = 'wplng-edit-link';
+
+			if ( ! empty( $translation['review'] ) ) {
+				$class .= ' wplng-is-review';
+			}
+
 			$innertext  = '<span ';
-			$innertext .= 'class="wplng-edit-link" ';
+			$innertext .= 'class="' . esc_attr( $class ) . '" ';
 			$innertext .= 'wplng_post="' . esc_attr( $translation['post_id'] ) . '" ';
 			$innertext .= 'title="' . esc_attr__( 'Edit this translation', 'wplingua' ) . '">';
 			$innertext .= esc_html( wplng_text_esc( $translation['translation'] ) );

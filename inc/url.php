@@ -131,7 +131,11 @@ function wplng_url_is_translatable( $url = '' ) {
 
 	// Check if is Divi editor
 	if ( $is_translatable
-		&& wplng_str_contains( $url, '/?et_fb=1' )
+		&& (
+			wplng_str_contains( $url, '/?et_fb=1' )
+			|| wplng_str_contains( $url, '&et_fb=1' )
+		)
+		&& current_user_can( 'edit_posts' )
 	) {
 		$is_translatable = false;
 	}

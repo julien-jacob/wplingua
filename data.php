@@ -52,6 +52,7 @@ function wplng_data_excluded_json() {
 		array(
 			// wpLingua : Ajax edit modal
 			array( 'data', 'wplng_edit_html' ),
+			array( 'wplngLocalize' ),
 			// WooCommerce
 			array( 'wc_country_select_params', 'countries' ),
 		)
@@ -83,19 +84,35 @@ function wplng_data_excluded_editor_link() {
  */
 function wplng_data_excluded_selector_default() {
 	return array(
+		// Default nodes
 		'style',
 		'svg',
 		'canvas',
 		'address',
 		'iframe',
 		'code',
-		'#wpadminbar',
+
+		// Default class
 		'.no-translate',
 		'.notranslate',
-		'.wplng-switcher',
+
+		// Wordpress
+		'#wpadminbar',
+
+		// wpLingua
 		'link[hreflang]',
+		'.wplng-switcher',
 		'.wplingua-menu',
 		'#wplng-modal-edit-container',
+
+		// Comment
+		'.comment-content',
+		'.comment-author',
+		'.comment_postinfo .fn',
+
+		// Author name
+		'.author.vcard',
+		'.entry-author .fn',
 	);
 }
 
