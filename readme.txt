@@ -4,7 +4,7 @@ Donate link: https://wplingua.com/
 Tags: translate, translation, multilingual, localization, language
 Requires at least: 6.0
 Tested up to: 6.5
-Stable tag: 1.4.1
+Stable tag: 1.4.2
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -153,6 +153,15 @@ No, not at the moment but in the meantime, you can easily display the language s
 12. You can edit all translations for each languages.
 
 == Changelog ==
+
+= 1.4.2 =
+
+* Coloring reviewed texts
+* Better translation for JSON in attributes 
+* Edit page button on edition modale
+* Exclude comment content and author names
+* Better Divi Builder exclusion
+* Better notice for for incompatible plugins
 
 = 1.4.1 =
 
