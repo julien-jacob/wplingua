@@ -132,6 +132,8 @@ function wplng_data_excluded_node_text() {
 			'link',
 			'script',
 			'code',
+			// Plugin: Contact Form 7
+			'.wpcf7-textarea',
 		)
 	);
 }
