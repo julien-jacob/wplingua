@@ -174,6 +174,7 @@ function wplng_data_attr_text_to_translate() {
 	return apply_filters(
 		'wplng_attr_text_to_translate',
 		array(
+			// Default tags
 			array(
 				'attr'     => 'alt',
 				'selector' => '[alt]',
@@ -194,6 +195,16 @@ function wplng_data_attr_text_to_translate() {
 				'attr'     => 'value',
 				'selector' => 'input[type="submit"][value]',
 			),
+			// WordPress
+			array(
+				'attr'     => 'content',
+				'selector' => 'meta[property="article:tag"]',
+			),
+			array(
+				'attr'     => 'content',
+				'selector' => 'meta[property="article:section"]',
+			),
+			// Open Graph
 			array(
 				'attr'     => 'content',
 				'selector' => 'meta[property="og:title"]',
@@ -206,6 +217,20 @@ function wplng_data_attr_text_to_translate() {
 				'attr'     => 'content',
 				'selector' => 'meta[property="og:site_name"]',
 			),
+			array(
+				'attr'     => 'content',
+				'selector' => 'meta[property="og:image:alt"]',
+			),
+			// Dublin Core
+			array(
+				'attr'     => 'content',
+				'selector' => 'meta[name="dc.title"]',
+			),
+			array(
+				'attr'     => 'content',
+				'selector' => 'meta[name="dc.description"]',
+			),
+			// Twitter
 			array(
 				'attr'     => 'content',
 				'selector' => 'meta[name="twitter:title"]',
@@ -232,17 +257,9 @@ function wplng_data_attr_text_to_translate() {
 			),
 			array(
 				'attr'     => 'content',
-				'selector' => 'meta[name="dc.title"]',
+				'selector' => 'meta[name="twitter:image:alt"]',
 			),
-			array(
-				'attr'     => 'content',
-				'selector' => 'meta[name="description"]',
-			),
-			array(
-				'attr'     => 'content',
-				'selector' => 'meta[name="dc.description"]',
-			),
-			// Fluent Forms tooltips
+			// Plugin : Fluent Forms tooltips
 			array(
 				'attr'     => 'data-content',
 				'selector' => '.ff-el-tooltip[data-content]',
