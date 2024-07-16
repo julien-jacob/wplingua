@@ -118,6 +118,9 @@ function wplng_data_excluded_selector_default() {
 		// Plugin : Query Monitor
 		'#query-monitor',
 		'#query-monitor-main',
+		
+		// Plugin : SecuPress
+		'#secupress-donttranslate',
 	);
 }
 
