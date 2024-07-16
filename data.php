@@ -114,6 +114,10 @@ function wplng_data_excluded_selector_default() {
 		// Author name
 		'.author.vcard',
 		'.entry-author .fn',
+
+		// Plugin : Query Monitor
+		'#query-monitor',
+		'#query-monitor-main',
 	);
 }
 
