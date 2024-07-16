@@ -91,6 +91,7 @@ function wplng_data_excluded_selector_default() {
 		'address',
 		'iframe',
 		'code',
+		'address',
 
 		// Default class
 		'.no-translate',
