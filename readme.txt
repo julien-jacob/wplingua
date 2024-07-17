@@ -18,11 +18,11 @@ Make your websites multilingual and translate them automatically: no word limits
 The highlights:
 
 ✓ One free first language for non-commercial websites
-✓ Machine translation API
+✓ Automatic translation API
 ✓ Unlimited number of translated words
+✓ SEO-friendly: indexing of translated pages in search engines
 ✓ On-page visual editor for editing translations
 ✓ Customizable language switcher
-✓ SEO-friendly: indexing of translated pages in search engines
 ✓ No coding knowledge needed
 ✓ Self-hosted data
 ✓ Open source, find [wpLingua on GitHub](https://github.com/julien-jacob/wplingua)
@@ -153,6 +153,20 @@ No, not at the moment but in the meantime, you can easily display the language s
 12. You can edit all translations for each languages.
 
 == Changelog ==
+
+= 1.4.3 =
+
+* Better plugins compatibility:
+ * Contact Form 7
+ * Query Monitor
+ * SecuPress
+* Better meta translation:
+ * Open Graph
+ * Dublin Core
+ * Twitter
+* Exclude address HTML tags from translations
+* Better definition of debugging constants
+* Some GIT reviews
 
 = 1.4.2 =
 
