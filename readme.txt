@@ -3,7 +3,7 @@ Contributors: wpr0ck, lyly13
 Donate link: https://wplingua.com/
 Tags: translate, translation, multilingual, localization, language
 Requires at least: 6.0
-Tested up to: 6.5
+Tested up to: 6.6
 Stable tag: 1.4.2
 Requires PHP: 7.4
 License: GPLv2 or later
