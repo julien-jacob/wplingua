@@ -3,8 +3,8 @@ Contributors: wpr0ck, lyly13
 Donate link: https://wplingua.com/
 Tags: translate, translation, multilingual, localization, language
 Requires at least: 6.0
-Tested up to: 6.5
-Stable tag: 1.4.2
+Tested up to: 6.6
+Stable tag: 1.4.3
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -18,11 +18,11 @@ Make your websites multilingual and translate them automatically: no word limits
 The highlights:
 
 ✓ One free first language for non-commercial websites
-✓ Machine translation API
+✓ Automatic translation API
 ✓ Unlimited number of translated words
+✓ SEO-friendly: indexing of translated pages in search engines
 ✓ On-page visual editor for editing translations
 ✓ Customizable language switcher
-✓ SEO-friendly: indexing of translated pages in search engines
 ✓ No coding knowledge needed
 ✓ Self-hosted data
 ✓ Open source, find [wpLingua on GitHub](https://github.com/julien-jacob/wplingua)
@@ -153,6 +153,33 @@ No, not at the moment but in the meantime, you can easily display the language s
 12. You can edit all translations for each languages.
 
 == Changelog ==
+
+= 1.4.3 =
+
+* Tested up to WordPress 6.6
+* Better plugin's compatibility:
+ * Contact Form 7
+ * Query Monitor
+ * SecuPress
+* Better meta translation:
+ * Open Graph
+ * Dublin Core
+ * Twitter
+* Optimize flag images
+* Manages pages of up to 5 million characters
+* Better definition of debugging constants
+* Better edit modal UX compatibility
+* Some GIT reviews
+* Add default exclusions:
+ * address
+ * link[rel="EditURI"]
+ * link[title="oEmbed (JSON)"]
+ * link[title="oEmbed (XML)"]
+ * link[title="JSON"]
+* Add a method to exclude some texts from translation for developers
+ * Special tag: _wplingua_no_translate_
+ * Function: wplng_text_is_translatable() 
+ * File: /inc/util.php
 
 = 1.4.2 =
 

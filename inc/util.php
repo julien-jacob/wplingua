@@ -86,7 +86,14 @@ function wplng_str_is_url( $str ) {
  */
 function wplng_text_is_translatable( $text ) {
 
+	$text = trim( $text );
+
 	if ( '' === $text ) {
+		return false;
+	}
+
+	// Check special no translate tag
+	if ( wplng_str_contains( $text, '_wplingua_no_translate_' ) ) {
 		return false;
 	}
 
