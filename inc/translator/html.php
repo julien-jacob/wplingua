@@ -78,6 +78,7 @@ function wplng_translate_html( $html, $args = array() ) {
 
 	$dom->save();
 	$dom = (string) wplng_sdh_str_get_html( $dom );
+	$dom = str_replace( '_wplingua_no_translate_', '', $dom );
 
 	if ( empty( $dom ) ) {
 		return $html;
