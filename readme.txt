@@ -4,7 +4,7 @@ Donate link: https://wplingua.com/
 Tags: translate, translation, multilingual, localization, language
 Requires at least: 6.0
 Tested up to: 6.6
-Stable tag: 1.4.2
+Stable tag: 1.4.3
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -156,7 +156,8 @@ No, not at the moment but in the meantime, you can easily display the language s
 
 = 1.4.3 =
 
-* Better plugins compatibility:
+* Tested up to WordPress 6.6
+* Better plugin's compatibility:
  * Contact Form 7
  * Query Monitor
  * SecuPress
@@ -164,9 +165,21 @@ No, not at the moment but in the meantime, you can easily display the language s
  * Open Graph
  * Dublin Core
  * Twitter
-* Exclude address HTML tags from translations
+* Optimize flag images
+* Manages pages of up to 5 million characters
 * Better definition of debugging constants
+* Better edit modal UX compatibility
 * Some GIT reviews
+* Add default exclusions:
+ * address
+ * link[rel="EditURI"]
+ * link[title="oEmbed (JSON)"]
+ * link[title="oEmbed (XML)"]
+ * link[title="JSON"]
+* Add a method to exclude some texts from translation for developers
+ * Special tag: _wplingua_no_translate_
+ * Function: wplng_text_is_translatable() 
+ * File: /inc/util.php
 
 = 1.4.2 =
 
