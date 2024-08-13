@@ -28,7 +28,7 @@ define( 'WPLNG_PLUGIN_VERSION', '1.4.2' );
 define( 'WPLNG_PLUGIN_FILE', plugin_basename( __FILE__ ) );
 define( 'WPLNG_PLUGIN_PATH', dirname( __FILE__ ) );
 define( 'WPLNG_MAX_TRANSLATIONS', 256 );
-define( 'WPLNG_MAX_FILE_SIZE', 1000000 );
+define( 'WPLNG_MAX_FILE_SIZE', 5000000 );
 
 
 // Define debug constants
