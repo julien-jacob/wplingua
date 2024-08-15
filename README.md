@@ -2,6 +2,8 @@
 
 # wpLingua - WordPress plugin
 
+<hr>
+
 ## 🌎 Translate and make your website multilingual
 
 An all-in-one solution that makes your websites multilingual and translates them automatically, without word or page limits.
@@ -22,7 +24,7 @@ An all-in-one solution that makes your websites multilingual and translates them
 
 **The project website - [wpLingua.com](https://wplingua.com)**
 
-<br>
+<hr><br><br>
 
 ## 🚀 Optimized for international search engines (SEO)
 
@@ -37,13 +39,13 @@ When you use wpLingua on your website, all elements of your content - even those
 
 By optimizing indexing, we ensure that your translated pages are not only understood by your audience, but are also easily found by search engines.
 
-<br>
+<br><br>
 
 ## ✨ On-page visual editor for editing translations
 
 All translations are editable. Discover the visual editor and edit translations simply by clicking on them.Although wpLingua gives you the convenience of **machine translations**, we understand the nuances of each language. wpLingua allows you **to fine-tune each translation manually** if you need to.
 
-<br>
+<br><br>
 
 ## 🎨 Fully customizable language switcher
 
@@ -65,13 +67,13 @@ You can also control the appearance of the language switcher using:
 With all these customization options, there's no way your website's language switcher will look like any other!
 
 
-<br>
+<br><br>
 
 ## 📖 Translation rules by dictionary
 
 The dictionary allows you to define translation rules that apply when generating machine translations. You can specify words or sets of words that should never be translated, or define how they should be translated for each language.
 
-<br>
+<br><br>
 
 ## 🧭 Intuitive possibilities to exclude certain translations
 
@@ -79,15 +81,17 @@ Want to preserve specific sections of a page in its original language? Our syste
 
 If entire pages need to remain untouched, effortlessly exclude them by their URL. All of this can be managed with ease through our user-friendly exclusions manager.
 
-<br>
+<br><br>
 
 ## ⚡️ The wpLingua API
 
 The wpLingua plugin relies on our own wpLingua API, an integrated third-party service, to provide its machine translation functionality. The call to this Third Party Service (wpLingua API) is made when creating an API key from the plugin, during API key verification and when your website requests a new automatic translation (new texts discovered on a page web or request automatic translations from the translation edition). We invite you to consult our [Terms &amp; Conditions page](https://wplingua.com/terms-and-conditions/) for more information.
 
-<br>
+<br><br>
 
 ## 📸 Screenshot
+
+<br>
 
 ![You can edit all translations of your website.](https://raw.githubusercontent.com/julien-jacob/wplingua/master/wp-assets/screenshot-1.gif)
 
@@ -109,7 +113,7 @@ The wpLingua plugin relies on our own wpLingua API, an integrated third-party se
 
 ![Once the plugin is downloaded, installed and activated, register your API key.](https://raw.githubusercontent.com/julien-jacob/wplingua/master/wp-assets/screenshot-4.jpg)
 
-<br>
+<br><br>
 
 ## 🤖 Build commands
 
@@ -123,4 +127,6 @@ $ gulp
 # Start the watcher
 $ gulp watch
 
+# Create an archive
+$ gulp archive
 ```
