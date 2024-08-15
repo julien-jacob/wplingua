@@ -10,15 +10,15 @@
 
 An all-in-one solution that makes your websites multilingual and translates them automatically, without word or page limits.
 
-<span style="color: #7ad03a;">✓</span> One free first language for non-commercial websites<br>
-<span style="color: #7ad03a;">✓</span> Automatic translation API<br>
-<span style="color: #7ad03a;">✓</span> Unlimited number of translated words<br>
-<span style="color: #7ad03a;">✓</span> SEO-friendly: indexing of translated pages in search engines<br>
-<span style="color: #7ad03a;">✓</span> On-page visual editor for editing translations<br>
-<span style="color: #7ad03a;">✓</span> Customizable language switcher<br>
-<span style="color: #7ad03a;">✓</span> No coding knowledge needed<br>
-<span style="color: #7ad03a;">✓</span> Self-hosted data<br>
-<span style="color: #7ad03a;">✓</span> And more!<br>
+$${\color{lightgreen}✓}$$ One free first language for non-commercial websites<br>
+$${\color{lightgreen}✓}$$ Automatic translation API<br>
+$${\color{lightgreen}✓}$$ Unlimited number of translated words<br>
+$${\color{lightgreen}✓}$$ SEO-friendly: indexing of translated pages in search engines<br>
+$${\color{lightgreen}✓}$$ On-page visual editor for editing translations<br>
+$${\color{lightgreen}✓}$$ Customizable language switcher<br>
+$${\color{lightgreen}✓}$$ No coding knowledge needed<br>
+$${\color{lightgreen}✓}$$ Self-hosted data<br>
+$${\color{lightgreen}✓}$$ And more!<br>
 
 <hr>
 
@@ -34,12 +34,12 @@ An all-in-one solution that makes your websites multilingual and translates them
 
 When you use wpLingua on your website, all elements of your content - even those that are invisible - are translated. wpLingua is "SEO-Friendly" because it takes care of translating:
 
-<span style="color: #7ad03a;">✓</span> Meta Title tags<br>
-<span style="color: #7ad03a;">✓</span> Meta Description tags<br>
-<span style="color: #7ad03a;">✓</span> Hreflang alternative links<br>
-<span style="color: #7ad03a;">✓</span> Meta tags for social networks (Twitter X, OpenGraph Facebook...)<br>
-<span style="color: #7ad03a;">✓</span> ALT attributes of images<br>
-<span style="color: #7ad03a;">✓</span> And more.<br>
+$${\color{lightgreen}✓}$$ Meta Title tags<br>
+$${\color{lightgreen}✓}$$ Meta Description tags<br>
+$${\color{lightgreen}✓}$$ Hreflang alternative links<br>
+$${\color{lightgreen}✓}$$ Meta tags for social networks (Twitter X, OpenGraph Facebook...)<br>
+$${\color{lightgreen}✓}$$ ALT attributes of images<br>
+$${\color{lightgreen}✓}$$ And more.<br>
 
 By optimizing indexing, we ensure that your translated pages are not only understood by your audience, but are also easily found by search engines.
 
@@ -59,18 +59,18 @@ All translations are editable. Discover the visual editor and edit translations 
 
 The wpLingua language switcher is fully customisable. You can display the language switcher in three ways:
 
-<span style="color: #7ad03a;">✓</span> Automatic insertion via predefined positions<br>
-<span style="color: #7ad03a;">✓</span> Using a shortcode to display it wherever you like<br>
-<span style="color: #7ad03a;">✓</span> Insertion in the navigation menu using the design defined by the theme<br>
+$${\color{lightgreen}✓}$$ Automatic insertion via predefined positions<br>
+$${\color{lightgreen}✓}$$ Using a shortcode to display it wherever you like<br>
+$${\color{lightgreen}✓}$$ Insertion in the navigation menu using the design defined by the theme<br>
 
 You can also control the appearance of the language switcher using:
 
-<span style="color: #7ad03a;">✓</span> Switcher styles (dropdown, inline, block...)<br>
-<span style="color: #7ad03a;">✓</span> Predefined themes (light, dark, chameleon, etc.)<br>
-<span style="color: #7ad03a;">✓</span> Configurable language names (translated name, original name, language ID, etc.)<br>
-<span style="color: #7ad03a;">✓</span> Flag shapes (round, rectangle, wavy)<br>
-<span style="color: #7ad03a;">✓</span> Language-based flag choices or import your own flag images<br>
-<span style="color: #7ad03a;">✓</span> Adding custom CSS in a dedicated insert<br>
+$${\color{lightgreen}✓}$$ Switcher styles (dropdown, inline, block...)<br>
+$${\color{lightgreen}✓}$$ Predefined themes (light, dark, chameleon, etc.)<br>
+$${\color{lightgreen}✓}$$ Configurable language names (translated name, original name, language ID, etc.)<br>
+$${\color{lightgreen}✓}$$ Flag shapes (round, rectangle, wavy)<br>
+$${\color{lightgreen}✓}$$ Language-based flag choices or import your own flag images<br>
+$${\color{lightgreen}✓}$$ Adding custom CSS in a dedicated insert<br>
 
 With all these customization options, there's no way your website's language switcher will look like any other!
 
