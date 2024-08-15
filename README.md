@@ -105,7 +105,7 @@ Arabic $${\color{gray}∘}$$ Chinese $${\color{gray}∘}$$ Danish $${\color{gray
 
 ### The plugin is translated into the following languages
 
-English Arabic $${\color{gray}∘}$$ French Arabic $${\color{gray}∘}$$ German Arabic $${\color{gray}∘}$$ Italian Arabic $${\color{gray}∘}$$ Portuguese Arabic $${\color{gray}∘}$$ Spanish
+English $${\color{gray}∘}$$ French $${\color{gray}∘}$$ German $${\color{gray}∘}$$ Italian $${\color{gray}∘}$$ Portuguese $${\color{gray}∘}$$ Spanish
 
 <br><br>
 
