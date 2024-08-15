@@ -6,7 +6,6 @@
 
 An all-in-one solution that makes your websites multilingual and translates them automatically, without word or page limits.
 
-
 ✓ One free first language for non-commercial websites<br>
 ✓ Automatic translation API<br>
 ✓ Unlimited number of translated words<br>
@@ -21,11 +20,11 @@ An all-in-one solution that makes your websites multilingual and translates them
 
 **The project website - [wpLingua.com](https://wplingua.com)**
 
-### 🚀 Optimized for international search engines (SEO)
+<br>
 
-When you use wpLingua on your website, all elements of your content - even those that are invisible - are translated.
+## 🚀 Optimized for international search engines (SEO)
 
-wpLingua is "SEO-Friendly" because it takes care of translating:
+When you use wpLingua on your website, all elements of your content - even those that are invisible - are translated. wpLingua is "SEO-Friendly" because it takes care of translating:
 
 ✓ Meta Title tags<br>
 ✓ Meta Description tags<br>
@@ -36,6 +35,8 @@ wpLingua is "SEO-Friendly" because it takes care of translating:
 
 By optimizing indexing, we ensure that your translated pages are not only understood by your audience, but are also easily found by search engines.
 
+<br>
+
 ## ✨ On-page visual editor for editing translations
 
 All translations are editable. Discover the visual editor and edit translations simply by clicking on them.
@@ -43,6 +44,8 @@ All translations are editable. Discover the visual editor and edit translations 
 ![You can edit all translations of your website.](https://raw.githubusercontent.com/julien-jacob/wplingua/master/wp-assets/screenshot-1.gif)
 
 ![If you need, you can edit a translation directly from your pages using our visual editor.](https://raw.githubusercontent.com/julien-jacob/wplingua/master/wp-assets/screenshot-9.jpg)
+
+<br>
 
 ## 🎨 Fully customizable language switcher
 
@@ -73,11 +76,15 @@ With all these customization options, there's no way your website's language swi
 
 ![You can edit all translations for each languages.](https://raw.githubusercontent.com/julien-jacob/wplingua/master/wp-assets/screenshot-12.jpg)
 
+<br>
+
 ## 📖 Translation rules by dictionary
 
 The dictionary allows you to define translation rules that apply when generating machine translations. You can specify words or sets of words that should never be translated, or define how they should be translated for each language.
 
 ![Define translation rules that apply when generating machine translations.](https://raw.githubusercontent.com/julien-jacob/wplingua/master/wp-assets/screenshot-7.jpg)
+
+<br>
 
 ## 🧭 Intuitive possibilities to exclude certain translations
 
@@ -87,11 +94,15 @@ If entire pages need to remain untouched, effortlessly exclude them by their URL
 
 ![You have the possibility to exclude pages or parts of pages.](https://raw.githubusercontent.com/julien-jacob/wplingua/master/wp-assets/screenshot-8.jpg)
 
+<br>
+
 ## ⚡️ The wpLingua API
 
 The wpLingua plugin relies on our own wpLingua API, an integrated third-party service, to provide its machine translation functionality. The call to this Third Party Service (wpLingua API) is made when creating an API key from the plugin, during API key verification and when your website requests a new automatic translation (new texts discovered on a page web or request automatic translations from the translation edition). We invite you to consult our [Terms &amp; Conditions page](https://wplingua.com/terms-and-conditions/) for more information.
 
 ![Once the plugin is downloaded, installed and activated, register your API key.](https://raw.githubusercontent.com/julien-jacob/wplingua/master/wp-assets/screenshot-4.jpg)
+
+<br>
 
 ## 🤖 Build commands
 
