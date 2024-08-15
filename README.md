@@ -89,9 +89,7 @@ The dictionary allows you to define translation rules that apply when generating
 
 <br>
 
-Want to preserve specific sections of a page in its original language? Our system seamlessly allows you to pinpoint and **exclude translations using CSS selectors**.
-
-If entire pages need to remain untouched, effortlessly exclude them by their URL. All of this can be managed with ease through our user-friendly exclusions manager.
+Want to preserve specific sections of a page in its original language? Our system seamlessly allows you to pinpoint and **exclude translations using CSS selectors**. If entire pages need to remain untouched, effortlessly exclude them by their URL. All of this can be managed with ease through our user-friendly exclusions manager.
 
 <br><br>
 
@@ -103,7 +101,7 @@ The wpLingua plugin relies on our own wpLingua API, an integrated third-party se
 
 <br><br>
 
-## 📸 Screenshot
+## 📸 Screenshots of the plugin
 
 <br>
 
@@ -144,3 +142,7 @@ $ gulp watch
 # Create an archive
 $ gulp archive
 ```
+
+<br><hr>
+
+**Tags:** wpLingua, WP Lingua, WP-Lingua, Multilingual, Bilingual, Translation, Translate, Translated, Localization, Automatic translation, Machine translation, Languages, WordPress, WP, Plugin
