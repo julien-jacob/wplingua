@@ -99,11 +99,13 @@ Want to preserve specific sections of a page in its original language? Our syste
 
 ### The plugin supports the following languages
 
-Arabic $${\color{gray}⦿}$$ Chinese $${\color{gray}⦿}$$ Danish $${\color{gray}⦿}$$ Dutch $${\color{gray}⦿}$$ Slovak $${\color{gray}⦿}$$ English $${\color{gray}⦿}$$ Finnish $${\color{gray}⦿}$$ French $${\color{gray}⦿}$$ German $${\color{gray}⦿}$$ Greek $${\color{gray}⦿}$$ Hebrew $${\color{gray}⦿}$$ Hindi $${\color{gray}⦿}$$ Hungarian $${\color{gray}⦿}$$ Indonesian $${\color{gray}⦿}$$ Italian $${\color{gray}⦿}$$ Japanese $${\color{gray}⦿}$$ Korean $${\color{gray}⦿}$$ Polish $${\color{gray}⦿}$$ Portuguese $${\color{gray}⦿}$$ Russian $${\color{gray}⦿}$$ Spanish $${\color{gray}⦿}$$ Swedish $${\color{gray}⦿}$$ Turkish $${\color{gray}⦿}$$ Ukrainian $${\color{gray}⦿}$$ Vietnamese 
+Arabic $${\color{gray}∘}$$ Chinese $${\color{gray}∘}$$ Danish $${\color{gray}∘}$$ Dutch $${\color{gray}∘}$$ Slovak $${\color{gray}∘}$$ English $${\color{gray}∘}$$ Finnish $${\color{gray}∘}$$ French $${\color{gray}∘}$$ German $${\color{gray}∘}$$ Greek $${\color{gray}∘}$$ Hebrew $${\color{gray}∘}$$ Hindi $${\color{gray}∘}$$ Hungarian $${\color{gray}∘}$$ Indonesian $${\color{gray}∘}$$ Italian $${\color{gray}∘}$$ Japanese $${\color{gray}∘}$$ Korean $${\color{gray}∘}$$ Polish $${\color{gray}∘}$$ Portuguese $${\color{gray}∘}$$ Russian $${\color{gray}∘}$$ Spanish $${\color{gray}∘}$$ Swedish $${\color{gray}∘}$$ Turkish $${\color{gray}∘}$$ Ukrainian $${\color{gray}∘}$$ Vietnamese 
+
+<br>
 
 ### The plugin is translated into the following languages
 
-English Arabic $${\color{gray}⦿}$$ French Arabic $${\color{gray}⦿}$$ German Arabic $${\color{gray}⦿}$$ Italian Arabic $${\color{gray}⦿}$$ Portuguese Arabic $${\color{gray}⦿}$$ Spanish
+English Arabic $${\color{gray}∘}$$ French Arabic $${\color{gray}∘}$$ German Arabic $${\color{gray}∘}$$ Italian Arabic $${\color{gray}∘}$$ Portuguese Arabic $${\color{gray}∘}$$ Spanish
 
 <br><br>
 
