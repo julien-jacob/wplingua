@@ -2,21 +2,23 @@
 
 # wpLingua - WordPress plugin
 
-<hr>
+<br>
 
 ## 🌎 Translate and make your website multilingual
 
+<br>
+
 An all-in-one solution that makes your websites multilingual and translates them automatically, without word or page limits.
 
-✓ One free first language for non-commercial websites<br>
-✓ Automatic translation API<br>
-✓ Unlimited number of translated words<br>
-✓ SEO-friendly: indexing of translated pages in search engines<br>
-✓ On-page visual editor for editing translations<br>
-✓ Customizable language switcher<br>
-✓ No coding knowledge needed<br>
-✓ Self-hosted data<br>
-✓ And more!<br>
+<span style="color: #7ad03a;">✓</span> One free first language for non-commercial websites<br>
+<span style="color: #7ad03a;">✓</span> Automatic translation API<br>
+<span style="color: #7ad03a;">✓</span> Unlimited number of translated words<br>
+<span style="color: #7ad03a;">✓</span> SEO-friendly: indexing of translated pages in search engines<br>
+<span style="color: #7ad03a;">✓</span> On-page visual editor for editing translations<br>
+<span style="color: #7ad03a;">✓</span> Customizable language switcher<br>
+<span style="color: #7ad03a;">✓</span> No coding knowledge needed<br>
+<span style="color: #7ad03a;">✓</span> Self-hosted data<br>
+<span style="color: #7ad03a;">✓</span> And more!<br>
 
 <hr>
 
@@ -28,14 +30,16 @@ An all-in-one solution that makes your websites multilingual and translates them
 
 ## 🚀 Optimized for international search engines (SEO)
 
+<br>
+
 When you use wpLingua on your website, all elements of your content - even those that are invisible - are translated. wpLingua is "SEO-Friendly" because it takes care of translating:
 
-✓ Meta Title tags<br>
-✓ Meta Description tags<br>
-✓ Hreflang alternative links<br>
-✓ Meta tags for social networks (Twitter X, OpenGraph Facebook...)<br>
-✓ ALT attributes of images<br>
-✓ And more.<br>
+<span style="color: #7ad03a;">✓</span> Meta Title tags<br>
+<span style="color: #7ad03a;">✓</span> Meta Description tags<br>
+<span style="color: #7ad03a;">✓</span> Hreflang alternative links<br>
+<span style="color: #7ad03a;">✓</span> Meta tags for social networks (Twitter X, OpenGraph Facebook...)<br>
+<span style="color: #7ad03a;">✓</span> ALT attributes of images<br>
+<span style="color: #7ad03a;">✓</span> And more.<br>
 
 By optimizing indexing, we ensure that your translated pages are not only understood by your audience, but are also easily found by search engines.
 
@@ -43,26 +47,30 @@ By optimizing indexing, we ensure that your translated pages are not only unders
 
 ## ✨ On-page visual editor for editing translations
 
+<br>
+
 All translations are editable. Discover the visual editor and edit translations simply by clicking on them.Although wpLingua gives you the convenience of **machine translations**, we understand the nuances of each language. wpLingua allows you **to fine-tune each translation manually** if you need to.
 
 <br><br>
 
 ## 🎨 Fully customizable language switcher
 
+<br>
+
 The wpLingua language switcher is fully customisable. You can display the language switcher in three ways:
 
-✓ Automatic insertion via predefined positions<br>
-✓ Using a shortcode to display it wherever you like<br>
-✓ Insertion in the navigation menu using the design defined by the theme<br>
+<span style="color: #7ad03a;">✓</span> Automatic insertion via predefined positions<br>
+<span style="color: #7ad03a;">✓</span> Using a shortcode to display it wherever you like<br>
+<span style="color: #7ad03a;">✓</span> Insertion in the navigation menu using the design defined by the theme<br>
 
 You can also control the appearance of the language switcher using:
 
-✓ Switcher styles (dropdown, inline, block...)<br>
-✓ Predefined themes (light, dark, chameleon, etc.)<br>
-✓ Configurable language names (translated name, original name, language ID, etc.)<br>
-✓ Flag shapes (round, rectangle, wavy)<br>
-✓ Language-based flag choices or import your own flag images<br>
-✓ Adding custom CSS in a dedicated insert<br>
+<span style="color: #7ad03a;">✓</span> Switcher styles (dropdown, inline, block...)<br>
+<span style="color: #7ad03a;">✓</span> Predefined themes (light, dark, chameleon, etc.)<br>
+<span style="color: #7ad03a;">✓</span> Configurable language names (translated name, original name, language ID, etc.)<br>
+<span style="color: #7ad03a;">✓</span> Flag shapes (round, rectangle, wavy)<br>
+<span style="color: #7ad03a;">✓</span> Language-based flag choices or import your own flag images<br>
+<span style="color: #7ad03a;">✓</span> Adding custom CSS in a dedicated insert<br>
 
 With all these customization options, there's no way your website's language switcher will look like any other!
 
@@ -71,11 +79,15 @@ With all these customization options, there's no way your website's language swi
 
 ## 📖 Translation rules by dictionary
 
+<br>
+
 The dictionary allows you to define translation rules that apply when generating machine translations. You can specify words or sets of words that should never be translated, or define how they should be translated for each language.
 
 <br><br>
 
 ## 🧭 Intuitive possibilities to exclude certain translations
+
+<br>
 
 Want to preserve specific sections of a page in its original language? Our system seamlessly allows you to pinpoint and **exclude translations using CSS selectors**.
 
@@ -84,6 +96,8 @@ If entire pages need to remain untouched, effortlessly exclude them by their URL
 <br><br>
 
 ## ⚡️ The wpLingua API
+
+<br>
 
 The wpLingua plugin relies on our own wpLingua API, an integrated third-party service, to provide its machine translation functionality. The call to this Third Party Service (wpLingua API) is made when creating an API key from the plugin, during API key verification and when your website requests a new automatic translation (new texts discovered on a page web or request automatic translations from the translation edition). We invite you to consult our [Terms &amp; Conditions page](https://wplingua.com/terms-and-conditions/) for more information.
 
@@ -111,11 +125,11 @@ The wpLingua plugin relies on our own wpLingua API, an integrated third-party se
 
 ![You have the possibility to exclude pages or parts of pages.](https://raw.githubusercontent.com/julien-jacob/wplingua/master/wp-assets/screenshot-8.jpg)
 
-![Once the plugin is downloaded, installed and activated, register your API key.](https://raw.githubusercontent.com/julien-jacob/wplingua/master/wp-assets/screenshot-4.jpg)
-
 <br><br>
 
 ## 🤖 Build commands
+
+<br>
 
 ```
 # Install npm dependencies
