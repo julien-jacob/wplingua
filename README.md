@@ -7,13 +7,21 @@
 An all-in-one solution that makes your websites multilingual and translates them automatically, without word or page limits.
 
 ✓ One free first language for non-commercial websites
+
 ✓ Automatic translation API
+
 ✓ Unlimited number of translated words
+
 ✓ SEO-friendly: indexing of translated pages in search engines
+
 ✓ On-page visual editor for editing translations
+
 ✓ Customizable language switcher
+
 ✓ No coding knowledge needed
+
 ✓ Self-hosted data
+
 ✓ And more!
 
 **The plugin on wp.org - [wordpress.org/plugins/wplingua](https://wordpress.org/plugins/wplingua/)**
@@ -27,11 +35,17 @@ When you use wpLingua on your website, all elements of your content - even those
 wpLingua is "SEO-Friendly" because it takes care of translating:
 
 ✓ Meta Title tags
+
 ✓ Meta Description tags
+
 ✓ Hreflang alternative links
+
 ✓ Meta tags for social networks (Twitter X, OpenGraph Facebook...)
+
 ✓ ALT attributes of images
+
 ✓ And more.
+
 
 By optimizing indexing, we ensure that your translated pages are not only understood by your audience, but are also easily found by search engines.
 
@@ -48,16 +62,23 @@ All translations are editable. Discover the visual editor and edit translations 
 The wpLingua language switcher is fully customisable. You can display the language switcher in three ways:
 
 ✓ Automatic insertion via predefined positions
+
 ✓ Using a shortcode to display it wherever you like
+
 ✓ Insertion in the navigation menu using the design defined by the theme
 
 You can also control the appearance of the language switcher using:
 
 ✓ Switcher styles (dropdown, inline, block...)
+
 ✓ Predefined themes (light, dark, chameleon, etc.)
+
 ✓ Configurable language names (translated name, original name, language ID, etc.)
+
 ✓ Flag shapes (round, rectangle, wavy)
+
 ✓ Language-based flag choices or import your own flag images
+
 ✓ Adding custom CSS in a dedicated insert
 
 With all these customization options, there's no way your website's language switcher will look like any other!
