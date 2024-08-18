@@ -93,7 +93,7 @@ body {
             #wplng-modal-header-main {
 
                 display: flex;
-                gap: 10px;
+                gap: 15px;
                 margin-bottom: 15px;
 
                 #wplng-modal-header-title {
@@ -118,12 +118,9 @@ body {
 
                 #wplng-modal-header-control {
 
-                    // padding: 15px;
                     flex-grow: 1;
                     width: 33.33333%;
                     position: relative;
-
-
 
                     #wplng-modal-list-switcher {
 
@@ -207,6 +204,7 @@ body {
                 .wplng-filter {
 
                     flex-grow: 1;
+                    width: 100%;
 
                     label {
 
@@ -306,6 +304,25 @@ body {
                     padding: 0 10px;
                 }
             }
+        }
+    }
+
+    #wplng-scroll-to-top {
+
+        position: fixed;
+        right: 32px;
+        bottom: 32px;
+        height: 32px;
+        width: 32px;
+        background-color: #2271b1;
+        color: white;
+        padding: 0;
+        margin: 0;
+        border-radius: 3px;
+        border: none;
+
+        @media screen and (max-width: 900px) {
+            display: none;
         }
     }
 }

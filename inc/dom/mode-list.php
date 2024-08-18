@@ -202,9 +202,9 @@ function wplng_dom_mode_list( $dom, $args ) {
 	$filter_order .= '</label>';
 	$filter_order .= '<div class="wplng-filter-select">';
 	$filter_order .= '<select id="wplng-filter-order">';
-	$filter_order .= '<option value="occurrence">Occurrence</option>';
-	$filter_order .= '<option value="alphabetical-sources">Alphabetical sources</option>';
-	$filter_order .= '<option value="alphabetical-translations">Alphabetical translations</option>';
+	$filter_order .= '<option value="occurrence">Occurrence order</option>';
+	$filter_order .= '<option value="alphabetical-sources">Alphabetical - sources</option>';
+	$filter_order .= '<option value="alphabetical-translations">Alphabetical - translations</option>';
 	$filter_order .= '</select>';
 	$filter_order .= '</div>'; // End .wplng-filter-select
 	$filter_order .= '</div>'; // End .wplng-filter
@@ -296,6 +296,15 @@ function wplng_dom_mode_list( $dom, $args ) {
 
 	$html .= '</div>'; // End #wplng-modal-items
 	$html .= '</div>'; // End #wplng-modal
+
+	$html .= '<button';
+	$html .= ' id="wplng-scroll-to-top"';
+	$html .= ' title="' . esc_attr__( 'Go to top', 'wplingua' ) . '"';
+	$html .= ' style="display: none;"';
+	$html .= '>';
+	$html .= '<span class="dashicons dashicons-arrow-up-alt2"></span>';
+	$html .= '</button>';
+
 	$html .= '</div>'; // End #wplng-modal-container
 
 	/**

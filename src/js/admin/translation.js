@@ -35,6 +35,25 @@ jQuery(document).ready(function ($) {
     }
 
     /**
+     * Go to top button
+     */
+
+    function wplngToggleGoToTopButton() {
+        if ($("#wplng-modal-container").scrollTop() > 0) {
+            $("#wplng-scroll-to-top").fadeIn(400);
+        } else {
+            $("#wplng-scroll-to-top").fadeOut(400);
+        }
+    }
+
+    wplngToggleGoToTopButton();
+    $("#wplng-modal-container").scroll(wplngToggleGoToTopButton);
+
+    $("#wplng-scroll-to-top").click(function () {
+        $("#wplng-modal-container").animate({ scrollTop: 0 }, 800);
+    });
+
+    /**
      * Prepare all events and default value on translation editor
      */
 
