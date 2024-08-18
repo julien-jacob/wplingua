@@ -32,10 +32,10 @@ function wplng_link_alternate_hreflang() {
 	$html .= PHP_EOL;
 
 	// Create meta generator
-	$html .= '<meta ';
-	$html .= 'name="generator" ';
-	$html .= 'content="wpLingua ' . esc_attr( WPLNG_PLUGIN_VERSION ) . '"/>';
-	$html .= PHP_EOL;
+	$html .= '<meta';
+	$html .= ' name="generator"';
+	$html .= ' content="wpLingua ' . esc_attr( WPLNG_PLUGIN_VERSION ) . '"';
+	$html .= '/>' . PHP_EOL;
 
 	// Create alternate link for website language
 
@@ -43,11 +43,11 @@ function wplng_link_alternate_hreflang() {
 		$url_x_default = $url_original;
 	}
 
-	$html .= '<link ';
-	$html .= 'rel="alternate" ';
-	$html .= 'href="' . esc_url( $url_original ) . '" ';
-	$html .= 'hreflang="' . esc_attr( $language_website['id'] ) . '"/>';
-	$html .= PHP_EOL;
+	$html .= '<link';
+	$html .= ' rel="alternate"';
+	$html .= ' href="' . esc_url( $url_original ) . '"';
+	$html .= ' hreflang="' . esc_attr( $language_website['id'] ) . '"';
+	$html .= '/>' . PHP_EOL;
 
 	// Create alternate link for each target languages
 	foreach ( $languages_target as $language_target ) {
@@ -58,11 +58,11 @@ function wplng_link_alternate_hreflang() {
 			$url_x_default = $url;
 		}
 
-		$html .= '<link ';
-		$html .= 'rel="alternate" ';
-		$html .= 'href="' . esc_url( $url ) . '" ';
-		$html .= 'hreflang="' . esc_attr( $language_target['id'] ) . '"/>';
-		$html .= PHP_EOL;
+		$html .= '<link';
+		$html .= ' rel="alternate"';
+		$html .= ' href="' . esc_url( $url ) . '"';
+		$html .= ' hreflang="' . esc_attr( $language_target['id'] ) . '"';
+		$html .= '/>' . PHP_EOL;
 	}
 
 	// Create alternate link for x-default
@@ -74,11 +74,11 @@ function wplng_link_alternate_hreflang() {
 	$url_x_default = apply_filters( 'wplng_hreflang_x_default', $url_x_default );
 
 	if ( ! empty( $url_x_default ) ) {
-		$html .= '<link ';
-		$html .= 'rel="alternate" ';
-		$html .= 'href="' . esc_url( $url_x_default ) . '" ';
-		$html .= 'hreflang="x-default"/>';
-		$html .= PHP_EOL;
+		$html .= '<link';
+		$html .= ' rel="alternate"';
+		$html .= ' href="' . esc_url( $url_x_default ) . '"';
+		$html .= ' hreflang="x-default"';
+		$html .= '/>' . PHP_EOL;
 	}
 
 	// Create the ending comment

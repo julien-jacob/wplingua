@@ -41,11 +41,12 @@ function wplng_dom_mode_editor( $dom, $args ) {
 		plugins_url() . '/wplingua/assets/css/editor.css'
 	);
 
-	$asset  = '<link ';
-	$asset .= 'rel="stylesheet" ';
-	$asset .= 'id="wplingua-editor-css" ';
-	$asset .= 'href="' . esc_url( $asset_url ) . '" ';
-	$asset .= 'type="text/css"/>';
+	$asset  = '<link';
+	$asset .= ' rel="stylesheet"';
+	$asset .= ' id="wplingua-editor-css"';
+	$asset .= ' href="' . esc_url( $asset_url ) . '"';
+	$asset .= ' type="text/css"';
+	$asset .= '/>';
 
 	foreach ( $dom->find( 'head' ) as $element ) {
 		$element->innertext = $element->innertext . $asset;

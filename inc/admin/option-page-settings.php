@@ -212,9 +212,9 @@ function wplng_settings_part_language_website() {
 		echo '<strong>';
 		esc_html_e( 'Original website language, defined by API key: ', 'wplingua' );
 		echo ' </strong>';
-		echo '<span ';
-		echo 'title="' . esc_attr__( 'Click to expand', 'wplingua' ) . '" ';
-		echo 'wplng-help-box="#wplng-hb-language-website" ';
+		echo '<span';
+		echo ' title="' . esc_attr__( 'Click to expand', 'wplingua' ) . '"';
+		echo ' wplng-help-box="#wplng-hb-language-website"';
 		echo '></span>';
 		echo ' </p>';
 

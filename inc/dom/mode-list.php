@@ -41,11 +41,12 @@ function wplng_dom_mode_list( $dom, $args ) {
 		plugins_url() . '/wplingua/assets/css/list.css'
 	);
 
-	$asset  = '<link ';
-	$asset .= 'rel="stylesheet" ';
-	$asset .= 'id="wplingua-list-css" ';
-	$asset .= 'href="' . esc_url( $asset_url ) . '" ';
-	$asset .= 'type="text/css"/>';
+	$asset  = '<link';
+	$asset .= ' rel="stylesheet"';
+	$asset .= ' id="wplingua-list-css"';
+	$asset .= ' href="' . esc_url( $asset_url ) . '"';
+	$asset .= ' type="text/css"';
+	$asset .= '/>';
 
 	foreach ( $dom->find( 'head' ) as $element ) {
 		$element->innertext = $element->innertext . $asset;
@@ -89,14 +90,16 @@ function wplng_dom_mode_list( $dom, $args ) {
 			continue;
 		}
 
-		$html_switcher .= '<a ';
-		$html_switcher .= 'class="wplng-language" ';
-		$html_switcher .= 'href="' . esc_url( $url ) . '">';
+		$html_switcher .= '<a';
+		$html_switcher .= ' class="wplng-language"';
+		$html_switcher .= ' href="' . esc_url( $url ) . '"';
+		$html_switcher .= '>';
 
 		if ( ! empty( $language_target['flag'] ) ) {
-			$html_switcher .= '<img ';
-			$html_switcher .= 'src="' . esc_url( $language_target['flag'] ) . '" ';
-			$html_switcher .= 'alt="' . esc_attr( $language_target['name'] ) . '">';
+			$html_switcher .= '<img';
+			$html_switcher .= ' src="' . esc_url( $language_target['flag'] ) . '"';
+			$html_switcher .= ' alt="' . esc_attr( $language_target['name'] ) . '"';
+			$html_switcher .= '>';
 		}
 
 		$html_switcher .= '<span class="language-name">';
@@ -119,15 +122,17 @@ function wplng_dom_mode_list( $dom, $args ) {
 
 			$url = wplng_get_url_current_for_language( $language_target['id'] );
 
-			$html_switcher .= '<a ';
-			$html_switcher .= 'class="wplng-language wplng-language-current" ';
-			$html_switcher .= 'href="' . esc_url( $url ) . '" ';
-			$html_switcher .= 'onclick="event.preventDefault();">';
+			$html_switcher .= '<a';
+			$html_switcher .= ' class="wplng-language wplng-language-current"';
+			$html_switcher .= ' href="' . esc_url( $url ) . '"';
+			$html_switcher .= ' onclick="event.preventDefault();"';
+			$html_switcher .= '>';
 
 			if ( ! empty( $language_target['flag'] ) ) {
-				$html_switcher .= '<img ';
-				$html_switcher .= 'src="' . esc_url( $language_target['flag'] ) . '" ';
-				$html_switcher .= 'alt="' . esc_attr( $language_target['name'] ) . '">';
+				$html_switcher .= '<img';
+				$html_switcher .= ' src="' . esc_url( $language_target['flag'] ) . '"';
+				$html_switcher .= ' alt="' . esc_attr( $language_target['name'] ) . '"';
+				$html_switcher .= '>';
 			}
 
 			$html_switcher .= '<span class="language-name">';
@@ -148,10 +153,11 @@ function wplng_dom_mode_list( $dom, $args ) {
 	 * Return button
 	 */
 
-	$return_button  = '<a ';
-	$return_button .= 'href="' . esc_url( $args['url_current'] ) . '" ';
-	$return_button .= 'title="' . esc_attr__( 'Return on page', 'wplingua' ) . '" ';
-	$return_button .= 'class="wplng-button-icon wplng-button-return">';
+	$return_button  = '<a';
+	$return_button .= ' href="' . esc_url( $args['url_current'] ) . '"';
+	$return_button .= ' title="' . esc_attr__( 'Return on page', 'wplingua' ) . '"';
+	$return_button .= ' class="wplng-button-icon wplng-button-return"';
+	$return_button .= '>';
 	$return_button .= '<span class="dashicons dashicons-no"></span>';
 	$return_button .= '</a>';
 
