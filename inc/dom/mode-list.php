@@ -74,7 +74,8 @@ function wplng_dom_mode_list( $dom, $args ) {
 
 	// Create the switcher HTML
 
-	$html_switcher  = '<div class="' . esc_attr( 'wplng-switcher ' . $class ) . '">';
+	$html_switcher  = '<div id="wplng-modal-list-switcher">';
+	$html_switcher .= '<div class="' . esc_attr( 'wplng-switcher ' . $class ) . '">';
 	$html_switcher .= '<div class="switcher-content">';
 
 	$html_switcher .= '<div class="wplng-languages">';
@@ -141,6 +142,7 @@ function wplng_dom_mode_list( $dom, $args ) {
 
 	$html_switcher .= '</div>'; // End .switcher-content
 	$html_switcher .= '</div>'; // End .wplng-switcher
+	$html_switcher .= '</div>'; // End #wplng-modal-list-switcher
 
 	/**
 	 * Return button
@@ -154,29 +156,97 @@ function wplng_dom_mode_list( $dom, $args ) {
 	$return_button .= '</a>';
 
 	/**
+	 * Filter : Search
+	 */
+
+	$filter_search  = '<div class="wplng-filter">';
+	$filter_search .= '<label for="wplng-filter-search">';
+	$filter_search .= '<span class="dashicons dashicons-search"></span> ';
+	$filter_search .= esc_html__( 'Search', 'wplingua' );
+	$filter_search .= '</label>';
+	$filter_search .= '<input type="text" id="wplng-filter-search">';
+	$filter_search .= '</div>'; // End .wplng-filter
+
+	/**
+	 * Filter : Status
+	 */
+
+	$filter_status  = '<div class="wplng-filter">';
+	$filter_status .= '<label for="wplng-filter-status">';
+	$filter_status .= '<span class="dashicons dashicons-yes"></span> ';
+	$filter_status .= esc_html__( 'Status', 'wplingua' );
+	$filter_status .= '</label>';
+	$filter_status .= '<div class="wplng-filter-select">';
+	$filter_status .= '<select id="wplng-filter-status">';
+	$filter_status .= '<option value="all">All</option>';
+	$filter_status .= '<option value="reviewed">Reviewed</option>';
+	$filter_status .= '<option value="unreviewed">Unreviewed</option>';
+	$filter_status .= '</select>';
+	$filter_status .= '</div>'; // End .wplng-filter-select
+	$filter_status .= '</div>'; // End .wplng-filter
+
+	/**
+	 * Filter : Order
+	 */
+
+	$filter_order  = '<div class="wplng-filter">';
+	$filter_order .= '<label for="wplng-filter-order">';
+	$filter_order .= '<span class="dashicons dashicons-randomize"></span> ';
+	$filter_order .= esc_html__( 'Order', 'wplingua' );
+	$filter_order .= '</label>';
+	$filter_order .= '<div class="wplng-filter-select">';
+	$filter_order .= '<select id="wplng-filter-order">';
+	$filter_order .= '<option value="occurrence">Occurrence</option>';
+	$filter_order .= '<option value="alphabetical-sources">Alphabetical sources</option>';
+	$filter_order .= '<option value="alphabetical-translations">Alphabetical translations</option>';
+	$filter_order .= '</select>';
+	$filter_order .= '</div>'; // End .wplng-filter-select
+	$filter_order .= '</div>'; // End .wplng-filter
+
+	/**
 	 * Modal
 	 */
 
 	$html  = '<div id="wplng-modal-container">';
 	$html .= '<div id="wplng-modal">';
 
+	/**
+	 * Modal header
+	 */
+
 	$html .= '<div id="wplng-modal-header">';
-	$html .= '<span id="wplng-modal-title">';
+
+	$html .= '<div id="wplng-modal-header-main">';
+
+	$html .= '<div id="wplng-modal-header-title">';
 	$html .= '<span class="dashicons dashicons-translation wplng-modal-header-icon"></span> ';
+	$html .= '<span id="wplng-modal-title-text">';
 	$html .= esc_html__( 'All translations on page', 'wplingua' );
-	$html .= '</span>';
+	$html .= '</span>'; // End #wplng-modal-title-text
+	$html .= '</div>'; // End #wplng-modal-title
 
-	$html .= '<div id="wplng-modal-list-switcher">';
+	$html .= '<div id="wplng-modal-header-control">';
 	$html .= $html_switcher;
-	$html .= '</div>';
-
 	$html .= $return_button;
+	$html .= '</div>'; // End #wplng-modal-header-control
 
-	$html .= '</div>';
+	$html .= '</div>'; // End #wplng-modal-header-main
+
+	$html .= '<div id="wplng-modal-filter">';
+	$html .= $filter_search;
+	$html .= $filter_status;
+	$html .= $filter_order;
+	$html .= '</div>'; // End #wplng-modal-filter
+
+	$html .= '</div>'; // End #wplng-modal-header
+
+	/**
+	 * Modal items
+	 */
 
 	$html .= '<div id="wplng-modal-items">';
 
-	foreach ( $args['translations'] as $translation ) {
+	foreach ( $args['translations'] as $key => $translation ) {
 
 		if ( empty( $translation['post_id'] )
 			|| empty( $translation['source'] )
@@ -191,8 +261,10 @@ function wplng_dom_mode_list( $dom, $args ) {
 			$class .= ' wplng-is-review';
 		}
 
-		$html .= '<div class="' . esc_attr( $class ) . '" ';
-		$html .= 'wplng_post="' . esc_attr( $translation['post_id'] ) . '">';
+		$html .= '<div class="' . esc_attr( $class ) . '"';
+		$html .= ' data-wplng-post="' . esc_attr( $translation['post_id'] ) . '"';
+		$html .= ' data-wplng-order="' . esc_attr( $key ) . '"';
+		$html .= '>';
 
 		$html .= '<div class="wplng-item-text">';
 		$html .= '<div class="wplng-item-source">';
@@ -204,10 +276,11 @@ function wplng_dom_mode_list( $dom, $args ) {
 		$html .= '</div>'; // End .wplng-item-text
 		$html .= '<div class="wplng-item-edit">';
 
-		$html .= '<a ';
-		$html .= 'title="' . esc_attr__( 'Edit this translation', 'wplingua' ) . '" ';
-		$html .= 'wplng_post="' . esc_attr( $translation['post_id'] ) . '" ';
-		$html .= 'class="wplng-button-icon wplng-edit-link">';
+		$html .= '<a';
+		$html .= ' title="' . esc_attr__( 'Edit this translation', 'wplingua' ) . '"';
+		$html .= ' data-wplng-post="' . esc_attr( $translation['post_id'] ) . '"';
+		$html .= ' class="wplng-button-icon wplng-edit-link"';
+		$html .= '>';
 		$html .= '<span class="dashicons dashicons-edit"></span></a>';
 		$html .= '</a>';
 

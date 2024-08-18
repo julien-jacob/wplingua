@@ -111,10 +111,11 @@ function wplng_dom_mode_editor( $dom, $args ) {
 				$class .= ' wplng-is-review';
 			}
 
-			$innertext  = '<span ';
-			$innertext .= 'class="' . esc_attr( $class ) . '" ';
-			$innertext .= 'wplng_post="' . esc_attr( $translation['post_id'] ) . '" ';
-			$innertext .= 'title="' . esc_attr__( 'Edit this translation', 'wplingua' ) . '">';
+			$innertext  = '<span';
+			$innertext .= ' class="' . esc_attr( $class ) . '"';
+			$innertext .= ' data-wplng-post="' . esc_attr( $translation['post_id'] ) . '"';
+			$innertext .= ' title="' . esc_attr__( 'Edit this translation', 'wplingua' ) . '"';
+			$innertext .= '>';
 			$innertext .= esc_html( wplng_text_esc( $translation['translation'] ) );
 			$innertext .= '</span>';
 
