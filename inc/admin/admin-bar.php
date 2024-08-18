@@ -13,7 +13,7 @@ if ( ! defined( 'WPINC' ) ) {
  */
 function wplng_admin_bar_menu() {
 
-	if ( is_admin() ) {
+	if ( is_admin() || ! current_user_can( 'edit_posts' ) ) {
 		return;
 	}
 
