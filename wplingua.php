@@ -185,11 +185,6 @@ function wplng_start() {
 		add_action( 'restrict_manage_posts', 'wplng_restrict_manage_posts_translation_status' );
 		add_filter( 'parse_query', 'wplng_posts_filter_translation_status' );
 
-		// Translation status
-		add_filter( 'manage_wplng_translation_posts_columns', 'wplng_translation_status_columns' );
-		add_action( 'manage_wplng_translation_posts_custom_column', 'wplng_translation_status_item', 10, 2 );
-		add_action( 'admin_head-edit.php', 'wplng_translation_status_style', 10, 2 );
-
 		/**
 		 * Front
 		 */
