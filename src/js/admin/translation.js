@@ -453,7 +453,7 @@ jQuery(document).ready(function ($) {
 
         $(".wplng-modal-item").each(function (key) {
 
-            let text_translation = $(this).find(".wplng-item-source").html();
+            let text_translation = $(this).find(".wplng-item-translation").html();
             let text_source = $(this).find(".wplng-item-source").html();
 
             text_translation = text_translation.toLowerCase();
