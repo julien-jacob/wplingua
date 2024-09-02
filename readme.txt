@@ -162,6 +162,7 @@ No, not at the moment but in the meantime, you can easily display the language s
  * Ordering (Occurrence order, Alphabetical sources or translations)
  * Add go to top button
 * Disable admin bar menu if user can not edit posts
+* Texts review
 * README review for GitHub
 
 = 1.4.3 =
