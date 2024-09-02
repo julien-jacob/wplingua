@@ -227,3 +227,164 @@ function wplng_posts_filter_translation_status( $query ) {
 	}
 
 }
+
+
+/**
+ * Add status custom column on translations
+ *
+ * @param array String array
+ * @return array
+ */
+function wplng_translation_status_columns( $columns ) {
+
+	$cb = array();
+
+	if ( isset( $columns['cb'] ) ) {
+		$cb = array(
+			'cb' => $columns['cb'],
+		);
+		unset( $columns['cb'] );
+	}
+
+	$columns = array_merge(
+		$cb,
+		array(
+			'wplng_status' => __( 'Translation status', 'wplingua' ),
+		),
+		$columns
+	);
+
+	return $columns;
+}
+
+
+/**
+ * Add status items in custom column on translations
+ *
+ * @param array $column
+ * @param int $post_id
+ * @return void
+ */
+function wplng_translation_status_item( $column, $post_id ) {
+
+	if ( 'wplng_status' !== $column ) {
+		return;
+	}
+
+	$translations = get_post_meta(
+		$post_id,
+		'wplng_translation_translations',
+		true
+	);
+
+	$translations = json_decode(
+		$translations,
+		true
+	);
+
+	if ( empty( $translations ) ) {
+		return;
+	}
+
+	$has_a_reviewed       = false;
+	$is_not_full_reviewed = false;
+
+	foreach ( $translations as $key => $translation ) {
+		if ( empty( $translation['status'] ) ) {
+			continue;
+		}
+
+		if ( 'generated' === $translation['status']
+			|| 'ungenerated' === $translation['status']
+		) {
+			$is_not_full_reviewed = true;
+		} elseif ( is_int( $translation['status'] ) ) {
+			$has_a_reviewed = true;
+		}
+	}
+
+	if ( ! $is_not_full_reviewed && $has_a_reviewed ) {
+		echo '<span';
+		echo ' class="dashicons dashicons-yes-alt wplng-status-full-review"';
+		echo ' title="' . __( 'Full reviewed', 'wplingua' ) . '"';
+		echo '></span>';
+	} elseif ( $is_not_full_reviewed && ! $has_a_reviewed ) {
+		echo '<span';
+		echo ' class="dashicons dashicons-yes-alt wplng-status-has-review"';
+		echo ' title="' . __( 'Partially reviewed', 'wplingua' ) . '"';
+		echo '></span>';
+	} else {
+		echo '<span';
+		echo ' class="dashicons dashicons-yes-alt wplng-status-unreview"';
+		echo ' title="' . __( 'Unreviewed', 'wplingua' ) . '"';
+		echo '></span>';
+	}
+
+}
+
+
+/**
+ * Add inline CSS for status on translations
+ *
+ * @return void
+ */
+function wplng_translation_status_style() {
+
+	global $typenow;
+
+	if ( 'wplng_translation' !== $typenow ) {
+		return;
+	}
+
+	?>
+	<style>
+
+		/**
+		* wpLingua: Translation status design
+		*/
+
+		.manage-column.column-wplng_status {
+			width: 20px;
+			padding: 8px 0 0 3px;
+			font-size: 0;
+			vertical-align: middle;			
+		}
+
+		.manage-column.column-wplng_status::before {
+			content: "\f326";
+			font-family: dashicons;
+			font-size: 16px;
+		}
+
+		body.post-type-wplng_translation .column-wplng_status {
+			padding: 8px 0 0 3px;
+		}
+
+		body.post-type-wplng_translation .wplng-status-full-review {
+			color: #00a32a;
+		}
+
+		body.post-type-wplng_translation .wplng-status-has-review {
+			color: #c3c4c7;
+		}
+
+		body.post-type-wplng_translation .wplng-status-unreview {
+			color: #72aee6;
+		}
+	</style>
+	<?php
+}
+
+
+// function custom_post_action_links( $actions, $post ) {
+// 	/* check for post type. Here we can also add for any custom post type. */
+// 	if ( $post->post_type == 'post' ) {
+// 		$url = '/* the link You want to point. */';
+
+// 		/* custom action link will be listed under post listing rows */
+// 		$actions['custom'] = '<a href="' . $url . '">Custom Link</a>';
+// 	}
+
+// 	return $actions;
+// }
+// 	add_filter( 'post_row_actions', 'custom_post_action_links', 10, 2 );
