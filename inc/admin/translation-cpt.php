@@ -259,23 +259,22 @@ function wplng_translation_status_columns( $columns ) {
 
 
 /**
- * Add status items in custom column on translations
+ * Add translation status class on wplng_translation post list in admin area
  *
- * @param array $column
- * @param int $post_id
- * @return void
+ * @param string[] $classes An array of post class names.
+ * @param string[] $css_class An array of additional class names added to the post.
+ * @param int $post_id The post ID.
+ * @return string[]
  */
-function wplng_translation_status_item( $column, $post_id ) {
+function wplng_post_class_translation_status( $classes, $css_class, $post_id ) {
 
-	if ( 'wplng_status' !== $column ) {
+	global $typenow;
+
+	if ( 'wplng_translation' !== $typenow ) {
 		return;
 	}
 
-	$translations = get_post_meta(
-		$post_id,
-		'wplng_translation_translations',
-		true
-	);
+	$translations = get_post_meta( $post_id, 'wplng_translation_translations', true );
 
 	$translations = json_decode(
 		$translations,
@@ -283,7 +282,7 @@ function wplng_translation_status_item( $column, $post_id ) {
 	);
 
 	if ( empty( $translations ) ) {
-		return;
+		return $classes;
 	}
 
 	$has_a_reviewed       = false;
@@ -304,22 +303,87 @@ function wplng_translation_status_item( $column, $post_id ) {
 	}
 
 	if ( ! $is_not_full_reviewed && $has_a_reviewed ) {
-		echo '<span';
-		echo ' class="dashicons dashicons-yes-alt wplng-status-full-review"';
-		echo ' title="' . __( 'Full reviewed', 'wplingua' ) . '"';
-		echo '></span>';
+		$classes[] = 'wplng-status-full-review';
 	} elseif ( $is_not_full_reviewed && ! $has_a_reviewed ) {
-		echo '<span';
-		echo ' class="dashicons dashicons-yes-alt wplng-status-has-review"';
-		echo ' title="' . __( 'Partially reviewed', 'wplingua' ) . '"';
-		echo '></span>';
+		$classes[] = 'wplng-status-has-review';
 	} else {
-		echo '<span';
-		echo ' class="dashicons dashicons-yes-alt wplng-status-unreview"';
-		echo ' title="' . __( 'Unreviewed', 'wplingua' ) . '"';
-		echo '></span>';
+		$classes[] = 'wplng-status-unreview';
 	}
 
+	return $classes;
+}
+
+
+/**
+ * Add status items in custom column on translations
+ *
+ * @param string $column The name of the column to display.
+ * @param int $post_id The current post ID.
+ * @return void
+ */
+function wplng_translation_status_item( $column, $post_id ) {
+
+	if ( 'wplng_status' !== $column ) {
+		return;
+	}
+
+	$html  = '<span';
+	$html .= ' class="dashicons dashicons-yes-alt wplng-status wplng-status-full-review"';
+	$html .= ' title="' . __( 'Full reviewed', 'wplingua' ) . '"';
+	$html .= '></span>';
+
+	$html .= '<span';
+	$html .= ' class="dashicons dashicons-yes-alt wplng-status wplng-status-has-review"';
+	$html .= ' title="' . __( 'Partially reviewed', 'wplingua' ) . '"';
+	$html .= '></span>';
+
+	$html .= '<span';
+	$html .= ' class="dashicons dashicons-yes-alt wplng-status wplng-status-unreview"';
+	$html .= ' title="' . __( 'Unreviewed', 'wplingua' ) . '"';
+	$html .= '></span>';
+
+	echo $html;
+}
+
+
+/**
+ * Add status items text on translations
+ *
+ * Defaults $actions are 'Edit', ‘Quick Edit’, 'Restore', 'Trash', ‘Delete Permanently’, 'Preview', and 'View'.
+ *
+ * @param string[] $actions An array of row action links.
+ * @param WP_Post $post The post object.
+ * @return string[]
+ */
+function wplng_post_row_actions_status( $actions, $post ) {
+
+	if ( 'wplng_translation' !== $post->post_type ) {
+		return $actions;
+	}
+
+	$html = __( 'Translation status: ', 'wplingua' );
+
+	$html .= '<span';
+	$html .= ' class="wplng-status wplng-status-full-review"';
+	$html .= '>';
+	$html .= __( 'Full reviewed', 'wplingua' );
+	$html .= '</span>';
+
+	$html .= '<span';
+	$html .= ' class="wplng-status wplng-status-has-review"';
+	$html .= '>';
+	$html .= __( 'Partially reviewed', 'wplingua' );
+	$html .= '</span>';
+
+	$html .= '<span';
+	$html .= ' class="wplng-status wplng-status-unreview"';
+	$html .= '>';
+	$html .= __( 'Unreviewed', 'wplingua' );
+	$html .= '</span>';
+
+	$actions['custom'] = $html;
+
+	return $actions;
 }
 
 
@@ -345,9 +409,19 @@ function wplng_translation_status_style() {
 
 		.manage-column.column-wplng_status {
 			width: 20px;
-			padding: 8px 0 0 3px;
+			padding: 8px 0 0 8px;
 			font-size: 0;
-			vertical-align: middle;			
+			vertical-align: middle;
+			box-sizing: content-box;
+		}
+
+		.wp-list-table tr td.wplng_status.column-wplng_status::before {
+			content: "" !important;
+			display: none;
+		}
+
+		#the-list .type-wplng_translation .wplng_status.column-wplng_status {
+			padding: 8px 4px;
 		}
 
 		.manage-column.column-wplng_status::before {
@@ -356,35 +430,31 @@ function wplng_translation_status_style() {
 			font-size: 16px;
 		}
 
-		body.post-type-wplng_translation .column-wplng_status {
-			padding: 8px 0 0 3px;
-		}
+		/* ------------------------------- */
 
-		body.post-type-wplng_translation .wplng-status-full-review {
+		#the-list .type-wplng_translation .wplng-status.wplng-status-full-review  {
 			color: #00a32a;
 		}
 
-		body.post-type-wplng_translation .wplng-status-has-review {
+		#the-list .type-wplng_translation .wplng-status.wplng-status-has-review {
+			
 			color: #c3c4c7;
 		}
-
-		body.post-type-wplng_translation .wplng-status-unreview {
+		
+		#the-list .type-wplng_translation .wplng-status.wplng-status-unreview {
 			color: #72aee6;
+		}
+
+		/* ------------------------------- */
+
+		#the-list .type-wplng_translation.wplng-status-full-review .wplng-status.wplng-status-has-review,
+		#the-list .type-wplng_translation.wplng-status-full-review .wplng-status.wplng-status-unreview,
+		#the-list .type-wplng_translation.wplng-status-has-review .wplng-status.wplng-status-full-review,
+		#the-list .type-wplng_translation.wplng-status-has-review .wplng-status.wplng-status-unreview,
+		#the-list .type-wplng_translation.wplng-status-unreview .wplng-status.wplng-status-full-review,
+		#the-list .type-wplng_translation.wplng-status-unreview .wplng-status.wplng-status-has-review {
+			display: none;
 		}
 	</style>
 	<?php
 }
-
-
-// function custom_post_action_links( $actions, $post ) {
-// 	/* check for post type. Here we can also add for any custom post type. */
-// 	if ( $post->post_type == 'post' ) {
-// 		$url = '/* the link You want to point. */';
-
-// 		/* custom action link will be listed under post listing rows */
-// 		$actions['custom'] = '<a href="' . $url . '">Custom Link</a>';
-// 	}
-
-// 	return $actions;
-// }
-// 	add_filter( 'post_row_actions', 'custom_post_action_links', 10, 2 );
