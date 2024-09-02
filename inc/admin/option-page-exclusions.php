@@ -32,7 +32,7 @@ function wplng_option_page_exclusions() {
 
 							<hr>
 
-							<p><?php esc_html_e( 'You can exclude from translations pages you wish to offer only in the website\'s original language. To do this, list the REGEXs that match the URL to be excluded. Examples: ', 'wplingua' ); ?></p>
+							<p><?php esc_html_e( 'You can exclude from translations pages you wish to offer only in the website\'s original language. To do this, list the REGEXs that match the URL to be excluded, one per line. Examples: ', 'wplingua' ); ?></p>
 
 							<ul>
 								<li><code>^/my-page/$</code> - <?php esc_html_e( 'Exclude URL "/my-page/"', 'wplingua' ); ?></li>

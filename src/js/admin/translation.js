@@ -17,7 +17,7 @@ jQuery(document).ready(function ($) {
         let returnText = string;
         returnText = returnText.replace(/&nbsp;/gi, " ");
         returnText = returnText.replace(/&amp;/gi, "&");
-        returnText = returnText.replace(/&quot;/gi, `"`);
+        returnText = returnText.replace(/&quot;/gi, '"');
         returnText = returnText.replace(/&lt;/gi, "<");
         returnText = returnText.replace(/&gt;/gi, ">");
         return returnText;
@@ -33,6 +33,25 @@ jQuery(document).ready(function ($) {
         wplngInputSignature.onload = '';
         wplngInputSignature.now = '';
     }
+
+    /**
+     * Go to top button
+     */
+
+    function wplngToggleGoToTopButton() {
+        if ($("#wplng-modal-container").scrollTop() > 0) {
+            $("#wplng-scroll-to-top").fadeIn(400);
+        } else {
+            $("#wplng-scroll-to-top").fadeOut(400);
+        }
+    }
+
+    wplngToggleGoToTopButton();
+    $("#wplng-modal-container").scroll(wplngToggleGoToTopButton);
+
+    $("#wplng-scroll-to-top").click(function () {
+        $("#wplng-modal-container").animate({ scrollTop: 0 }, 800);
+    });
 
     /**
      * Prepare all events and default value on translation editor
@@ -269,13 +288,15 @@ jQuery(document).ready(function ($) {
      * Ajax edit modal
      */
 
-    $(".wplng-edit-link[wplng_post]").click(function () {
+    $(".wplng-edit-link[data-wplng-post]").click(wplngEdit);
+
+    function wplngEdit() {
 
         $("#wplng-modal-edit-save").text(wplngLocalize.message.buttonSave);
         $("#wplng-modal-edit-save").prop("disabled", true);
 
         // Get post ID
-        let post = $(this).attr("wplng_post");
+        let post = $(this).attr("data-wplng-post");
 
         // Get edit link
         let editURL = $("#wplng-modal-edit-post").attr("data-wplng-edit-template");
@@ -306,7 +327,7 @@ jQuery(document).ready(function ($) {
                     $("#wplng-modal-container").hide();
 
                     // Update save button
-                    $("#wplng-modal-edit-save").attr("wplng_post", post);
+                    $("#wplng-modal-edit-save").attr("data-wplng-post", post);
 
                     // Hide "All languages" button if only one target language
                     if (wplngEditor.find(".wplng-edit-language").length == 1) {
@@ -335,7 +356,7 @@ jQuery(document).ready(function ($) {
                 console.log(data);
             }
         });
-    });
+    }
 
     $("#wplng-modal-edit-return").click(function () {
         if (wplngInputSignature.onload != wplngInputSignature.now) {
@@ -356,7 +377,7 @@ jQuery(document).ready(function ($) {
         $("#wplng-modal-edit-save").text(wplngLocalize.message.buttonSaveInProgress);
 
         let text = $(this).text();
-        let post = $(this).attr("wplng_post");
+        let post = $(this).attr("data-wplng-post");
         let data = {
             action: 'wplng_ajax_save_modal',
             post_id: post,
@@ -385,8 +406,8 @@ jQuery(document).ready(function ($) {
             success: function (data) {
                 if (data.success) {
 
-                    let editLink = $("body.wplingua-editor .wplng-edit-link[wplng_post=" + post + "]");
-                    let modalItem = $("body.wplingua-list .wplng-modal-item[wplng_post=" + post + "]")
+                    let editLink = $("body.wplingua-editor .wplng-edit-link[data-wplng-post=" + post + "]");
+                    let modalItem = $("body.wplingua-list .wplng-modal-item[data-wplng-post=" + post + "]")
 
                     // replace by new text in page
                     editLink.text(text);
@@ -415,5 +436,118 @@ jQuery(document).ready(function ($) {
             }
         });
     });
+
+
+    /**
+     * Search
+     */
+
+    $("#wplng-filter-search, #wplng-filter-status").on('input', wplngFilterSearch);
+
+    function wplngFilterSearch() {
+
+        let status = $("#wplng-filter-status").val();
+
+        let searched = $("#wplng-filter-search").val();
+        searched = searched.trim().toLowerCase();
+
+        $(".wplng-modal-item").each(function (key) {
+
+            let text_translation = $(this).find(".wplng-item-translation").html();
+            let text_source = $(this).find(".wplng-item-source").html();
+
+            text_translation = text_translation.toLowerCase();
+            text_source = text_source.toLowerCase();
+
+            let is_show_search = searched == "";
+            is_show_search = is_show_search || text_translation.indexOf(searched) >= 0;
+            is_show_search = is_show_search || text_source.indexOf(searched) >= 0;
+
+
+            let is_show_status = status == "all";
+            is_show_status = is_show_status || (status == "reviewed" && $(this).hasClass("wplng-is-review"));
+            is_show_status = is_show_status || (status == "unreviewed" && !$(this).hasClass("wplng-is-review"));
+
+            if (is_show_search && is_show_status) {
+                $(this).show();
+            } else {
+                $(this).hide();
+            }
+        });
+
+    }
+
+    /**
+     * Ordering
+     */
+
+    $("#wplng-filter-order").on('input', wplngFilterOrdering);
+
+    function wplngFilterOrdering() {
+
+        let order = $("#wplng-filter-order").val();
+        let items = [];
+        let html = "";
+
+        switch (order) {
+            case "alphabetical-sources":
+                items = wplngSortAlphabetical(
+                    ".wplng-modal-item",
+                    ".wplng-item-source"
+                );
+                break;
+
+            case "alphabetical-translations":
+                items = wplngSortAlphabetical(
+                    ".wplng-modal-item",
+                    ".wplng-item-translation"
+                );
+                break;
+
+            default: // occurrence
+                items = wplngSortNumber(
+                    ".wplng-modal-item",
+                    "data-wplng-order"
+                );
+                break;
+        }
+
+
+
+        items.each(function (key) {
+            html += $(this).prop('outerHTML');
+        });
+
+        $("#wplng-modal-items").html(html);
+
+        $("#wplng-modal-items").find(".wplng-edit-link[data-wplng-post]").click(wplngEdit);
+
+    }
+
+    function wplngSortAlphabetical(selectorParent, selectorText) {
+        return $($(selectorParent).toArray().sort(function (a, b) {
+
+            let aVal = $(a).find(selectorText).text();
+            let bVal = $(b).find(selectorText).text();
+
+            let returned = 0;
+            if (aVal < bVal) {
+                returned = -1;
+            } else if (aVal > bVal) {
+                returned = 1;
+            }
+
+            return returned;
+        }));
+    }
+
+    function wplngSortNumber(selectorParent, attrName) {
+        return $($(selectorParent).toArray().sort(function (a, b) {
+            var aVal = parseInt(a.getAttribute(attrName)),
+                bVal = parseInt(b.getAttribute(attrName));
+            return aVal - bVal;
+        }));
+    }
+
 
 }); // End jQuery loaded event

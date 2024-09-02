@@ -194,7 +194,7 @@ function wp_nav_menu_switcher_box_add() {
 
 				<li>
 					<label for="wplng-menu-name-format">
-						<?php esc_html_e( 'Displayed name: ', 'wplingua' ); ?>
+						<?php esc_html_e( 'Displayed names: ', 'wplingua' ); ?>
 					</label>
 					<select id="wplng-menu-name-format" name="wplng-menu-name-format">
 						<?php
@@ -295,7 +295,7 @@ function wp_nav_menu_switcher_box_edit( $item_id, $menu_item ) {
 	?>
 	<div class="wplng-menu-item-settings-switcher">
 		<label for="wplng-menu-name-format-<?php esc_attr_e( $item_id ); ?>">
-			<?php esc_html_e( 'Displayed name: ', 'wplingua' ); ?>
+			<?php esc_html_e( 'Displayed names: ', 'wplingua' ); ?>
 		</label>
 		<select 
 			class="wplng-menu-name-format-edit" 

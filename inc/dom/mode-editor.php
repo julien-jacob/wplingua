@@ -9,8 +9,8 @@ if ( ! defined( 'WPINC' ) ) {
 /**
  * Modify dom for the editor mode
  *
- * @param [type] $dom
- * @param [type] $args
+ * @param object $dom
+ * @param array $args
  * @return object
  */
 function wplng_dom_mode_editor( $dom, $args ) {
@@ -41,11 +41,12 @@ function wplng_dom_mode_editor( $dom, $args ) {
 		plugins_url() . '/wplingua/assets/css/editor.css'
 	);
 
-	$asset  = '<link ';
-	$asset .= 'rel="stylesheet" ';
-	$asset .= 'id="wplingua-editor-css" ';
-	$asset .= 'href="' . esc_url( $asset_url ) . '" ';
-	$asset .= 'type="text/css"/>';
+	$asset  = '<link';
+	$asset .= ' rel="stylesheet"';
+	$asset .= ' id="wplingua-editor-css"';
+	$asset .= ' href="' . esc_url( $asset_url ) . '"';
+	$asset .= ' type="text/css"';
+	$asset .= '/>';
 
 	foreach ( $dom->find( 'head' ) as $element ) {
 		$element->innertext = $element->innertext . $asset;
@@ -111,10 +112,11 @@ function wplng_dom_mode_editor( $dom, $args ) {
 				$class .= ' wplng-is-review';
 			}
 
-			$innertext  = '<span ';
-			$innertext .= 'class="' . esc_attr( $class ) . '" ';
-			$innertext .= 'wplng_post="' . esc_attr( $translation['post_id'] ) . '" ';
-			$innertext .= 'title="' . esc_attr__( 'Edit this translation', 'wplingua' ) . '">';
+			$innertext  = '<span';
+			$innertext .= ' class="' . esc_attr( $class ) . '"';
+			$innertext .= ' data-wplng-post="' . esc_attr( $translation['post_id'] ) . '"';
+			$innertext .= ' title="' . esc_attr__( 'Edit this translation', 'wplingua' ) . '"';
+			$innertext .= '>';
 			$innertext .= esc_html( wplng_text_esc( $translation['translation'] ) );
 			$innertext .= '</span>';
 

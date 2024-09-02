@@ -73,10 +73,11 @@ function wplng_translation_editor_get_html( $post ) {
 
 		$html .= '<div id="wplng-original-language" wplng-lang="' . esc_attr( $language_id ) . '">';
 		$html .= '<div id="wplng-source-title">';
-		$html .= '<img ';
-		$html .= 'src="' . esc_url( $language['flag'] ) . '" ';
-		$html .= 'alt="' . esc_attr( $alt ) . '" ';
-		$html .= 'class="wplng-flag">';
+		$html .= '<img';
+		$html .= ' src="' . esc_url( $language['flag'] ) . '"';
+		$html .= ' alt="' . esc_attr( $alt ) . '"';
+		$html .= ' class="wplng-flag"';
+		$html .= '>';
 		$html .= esc_html( $language['name'] );
 		$html .= esc_html__( ' - Original text: ', 'wplingua' );
 		$html .= '</div>'; // End #wplng-source-title
@@ -191,27 +192,28 @@ function wplng_translation_editor_get_html( $post ) {
 					break;
 			}
 
-			$html .= '<div id="' . esc_attr( $container_id ) . '" ';
-			$html .= 'class="' . esc_attr( $class ) . '" ';
-			$html .= 'wplng-lang="' . esc_attr( $language_id ) . '" ';
+			$html .= '<div';
+			$html .= ' id="' . esc_attr( $container_id ) . '"';
+			$html .= ' class="' . esc_attr( $class ) . '"';
+			$html .= ' wplng-lang="' . esc_attr( $language_id ) . '"';
 			$html .= '>';
 			$html .= '<label for="' . esc_attr( $name ) . '" class="wplng-target-title">';
-			$html .= '<img ';
-			$html .= 'src="' . esc_url( $language['flag'] ) . '" ';
-			$html .= 'alt="' . esc_attr( $alt ) . '" ';
-			$html .= 'class="wplng-flag">';
+			$html .= '<img';
+			$html .= ' src="' . esc_url( $language['flag'] ) . '"';
+			$html .= ' alt="' . esc_attr( $alt ) . '"';
+			$html .= ' class="wplng-flag"';
+			$html .= '>';
 			$html .= esc_html( $language['name'] );
 			$html .= esc_html__( ' - Translation: ', 'wplingua' );
 			$html .= '</label>';
-			$html .= '<textarea ';
-			$html .= 'name="' . esc_attr( $name ) . '" ';
-			$html .= 'id="' . esc_attr( $name ) . '" ';
-			$html .= 'class="wplng-translation-textarea" ';
-			$html .= 'lang="' . esc_attr( $language_id ) . '" ';
-			$html .= 'spellcheck="false">';
-			$html .= esc_html(
-				html_entity_decode( $textarea )
-			);
+			$html .= '<textarea';
+			$html .= ' name="' . esc_attr( $name ) . '"';
+			$html .= ' id="' . esc_attr( $name ) . '"';
+			$html .= ' class="wplng-translation-textarea"';
+			$html .= ' lang="' . esc_attr( $language_id ) . '"';
+			$html .= ' spellcheck="false"';
+			$html .= '>';
+			$html .= esc_html( html_entity_decode( $textarea ) );
 			$html .= '</textarea>';
 
 			if ( empty( $translation['status'] ) ) {
@@ -224,18 +226,18 @@ function wplng_translation_editor_get_html( $post ) {
 
 			$html .= '<fieldset class="wplng-mark-as-reviewed">';
 
-			$html .= '<input ';
-			$html .= 'type="checkbox" ';
-			$html .= 'id="wplng_mark_as_reviewed_' . esc_attr( $language_id ) . '" ';
-			$html .= 'name="wplng_mark_as_reviewed_' . esc_attr( $language_id ) . '" ';
-			$html .= 'wplng-lang="' . esc_attr( $language_id ) . '" ';
+			$html .= '<input';
+			$html .= ' type="checkbox"';
+			$html .= ' id="wplng_mark_as_reviewed_' . esc_attr( $language_id ) . '"';
+			$html .= ' name="wplng_mark_as_reviewed_' . esc_attr( $language_id ) . '"';
+			$html .= ' wplng-lang="' . esc_attr( $language_id ) . '"';
 			$html .= checked( $is_reviewed, true, false );
 			$html .= '>';
 
-			$html .= '<label ';
-			$html .= 'for="wplng_mark_as_reviewed_' . esc_attr( $language_id ) . '" ';
-			$html .= 'wplng-lang="' . esc_attr( $language_id ) . '" ';
-			$html .= 'title="' . esc_attr( $reviewed_title ) . '" ';
+			$html .= '<label';
+			$html .= ' for="wplng_mark_as_reviewed_' . esc_attr( $language_id ) . '"';
+			$html .= ' wplng-lang="' . esc_attr( $language_id ) . '"';
+			$html .= ' title="' . esc_attr( $reviewed_title ) . '"';
 			$html .= '>';
 			$html .= esc_html__( 'Is reviewed', 'wplingua' );
 			$html .= '</label>';
@@ -245,14 +247,16 @@ function wplng_translation_editor_get_html( $post ) {
 			$html .= '</div>'; // End .wplng-translation-footer-right
 			$html .= '<div class="wplng-translation-footer-right">';
 
-			$html .= '<span ';
-			$html .= 'class="dashicons dashicons-update wplng-spin wplng-generate-spin" ';
-			$html .= 'style="display: none;"></span> ';
+			$html .= '<span';
+			$html .= ' class="dashicons dashicons-update wplng-spin wplng-generate-spin"';
+			$html .= ' style="display: none;"';
+			$html .= '></span> ';
 
-			$html .= '<a ';
-			$html .= 'href="javascript:void(0);" ';
-			$html .= 'class="wplng-generate" ';
-			$html .= 'wplng-lang="' . esc_attr( $language_id ) . '">';
+			$html .= '<a';
+			$html .= ' href="javascript:void(0);"';
+			$html .= ' class="wplng-generate"';
+			$html .= ' wplng-lang="' . esc_attr( $language_id ) . '"';
+			$html .= '>';
 			$html .= esc_html( $generate_link );
 			$html .= '</a>';
 

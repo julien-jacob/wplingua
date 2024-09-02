@@ -59,9 +59,9 @@ function wplng_translate_html( $html, $args = array() ) {
 	$dom = wplng_dom_replace_body_class( $dom, $args );
 	$dom = wplng_dom_replace_links( $dom, $args );
 
+	$dom = wplng_dom_translate_texts( $dom, $args );
 	$dom = wplng_dom_translate_json( $dom, $args );
 	$dom = wplng_dom_translate_js( $dom, $args );
-	$dom = wplng_dom_translate_texts( $dom, $args );
 
 	$dom = wplng_dom_mode_editor( $dom, $args );
 	$dom = wplng_dom_mode_list( $dom, $args );

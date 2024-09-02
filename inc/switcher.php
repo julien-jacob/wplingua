@@ -390,28 +390,35 @@ function wplng_get_switcher_html( $arg = array() ) {
 
 	if ( $language_website['id'] === $language_current_id ) {
 
-		$html .= '<a class="wplng-language website after current" ';
-		$html .= 'href="' . esc_url( $url_website ) . '" ';
-		$html .= 'onclick="event.preventDefault();">';
+		$html .= '<a';
+		$html .= ' class="wplng-language website after current"';
+		$html .= ' href="' . esc_url( $url_website ) . '"';
+		$html .= ' onclick="event.preventDefault();"';
+		$html .= '>';
 
 	} elseif ( is_admin()
 		|| wplng_str_contains( $url_website, '/?et_fb=1' )
 	) {
 
-		$html .= '<a class="wplng-language website after" ';
-		$html .= 'href="' . esc_url( $url_website ) . '" ';
-		$html .= 'onclick="event.preventDefault();">';
+		$html .= '<a';
+		$html .= ' class="wplng-language website after"';
+		$html .= ' href="' . esc_url( $url_website ) . '"';
+		$html .= ' onclick="event.preventDefault();">';
+		$html .= '>';
 
 	} else {
 
-		$html .= '<a class="wplng-language website after" ';
-		$html .= 'href="' . esc_url( $url_website ) . '">';
+		$html .= '<a';
+		$html .= ' class="wplng-language website after" ';
+		$html .= ' href="' . esc_url( $url_website ) . '"';
+		$html .= '>';
 	}
 
 	if ( $flags_show && ! empty( $language_website['flag'] ) ) {
-		$html .= '<img ';
-		$html .= 'src="' . esc_url( $language_website['flag'] ) . '" ';
-		$html .= 'alt="' . esc_attr( $language_website['name'] ) . '">';
+		$html .= '<img';
+		$html .= ' src="' . esc_url( $language_website['flag'] ) . '"';
+		$html .= ' alt="' . esc_attr( $language_website['name'] ) . '"';
+		$html .= '>';
 	}
 
 	$html .= '<span class="language-id">' . esc_html( $language_website['id'] ) . '</span>';
@@ -426,32 +433,36 @@ function wplng_get_switcher_html( $arg = array() ) {
 
 		if ( $language_target['id'] === $language_current_id ) {
 
-			$html .= '<a ';
-			$html .= 'class="wplng-language current" ';
-			$html .= 'href="' . esc_url( $url ) . '" ';
-			$html .= 'onclick="event.preventDefault();">';
+			$html .= '<a';
+			$html .= ' class="wplng-language current"';
+			$html .= ' href="' . esc_url( $url ) . '"';
+			$html .= ' onclick="event.preventDefault();"';
+			$html .= '>';
 
 		} elseif ( is_admin()
 			|| wplng_str_contains( $url, '/?et_fb=1' )
 		) {
 
-			$html .= '<a ';
-			$html .= 'class="wplng-language" ';
-			$html .= 'href="' . esc_url( $url ) . '" ';
-			$html .= 'onclick="event.preventDefault();">';
+			$html .= '<a';
+			$html .= ' class="wplng-language"';
+			$html .= ' href="' . esc_url( $url ) . '"';
+			$html .= ' onclick="event.preventDefault();"';
+			$html .= '>';
 
 		} else {
 
-			$html .= '<a ';
-			$html .= 'class="wplng-language" ';
-			$html .= 'href="' . esc_url( $url ) . '">';
+			$html .= '<a';
+			$html .= ' class="wplng-language"';
+			$html .= ' href="' . esc_url( $url ) . '"';
+			$html .= '>';
 
 		}
 
 		if ( $flags_show && ! empty( $language_target['flag'] ) ) {
-			$html .= '<img ';
-			$html .= 'src="' . esc_url( $language_target['flag'] ) . '" ';
-			$html .= 'alt="' . esc_attr( $language_target['name'] ) . '">';
+			$html .= '<img';
+			$html .= ' src="' . esc_url( $language_target['flag'] ) . '"';
+			$html .= ' alt="' . esc_attr( $language_target['name'] ) . '"';
+			$html .= '>';
 		}
 
 		$html .= '<span class="language-id">' . esc_html( $language_target['id'] ) . '</span>';
@@ -465,14 +476,17 @@ function wplng_get_switcher_html( $arg = array() ) {
 	// Create link for current language
 	if ( $language_website['id'] === $language_current_id ) {
 
-		$html .= '<a class="wplng-language wplng-language-current" ';
-		$html .= 'href="' . esc_url( $url_website ) . '" ';
-		$html .= 'onclick="event.preventDefault();">';
+		$html .= '<a';
+		$html .= ' class="wplng-language wplng-language-current"';
+		$html .= ' href="' . esc_url( $url_website ) . '"';
+		$html .= ' onclick="event.preventDefault();"';
+		$html .= '>';
 
 		if ( $flags_show && ! empty( $language_website['flag'] ) ) {
-			$html .= '<img ';
-			$html .= 'src="' . esc_url( $language_website['flag'] ) . '" ';
-			$html .= 'alt="' . esc_attr( $language_website['name'] ) . '">';
+			$html .= '<img';
+			$html .= ' src="' . esc_url( $language_website['flag'] ) . '"';
+			$html .= ' alt="' . esc_attr( $language_website['name'] ) . '"';
+			$html .= '>';
 		}
 
 		$html .= '<span class="language-id">' . esc_html( $language_website['id'] ) . '</span>';
@@ -490,15 +504,17 @@ function wplng_get_switcher_html( $arg = array() ) {
 
 			$url = wplng_get_url_current_for_language( $language_target['id'] );
 
-			$html .= '<a ';
-			$html .= 'class="wplng-language wplng-language-current" ';
-			$html .= 'href="' . esc_url( $url ) . '" ';
-			$html .= 'onclick="event.preventDefault();">';
+			$html .= '<a';
+			$html .= ' class="wplng-language wplng-language-current"';
+			$html .= ' href="' . esc_url( $url ) . '"';
+			$html .= ' onclick="event.preventDefault();"';
+			$html .= '>';
 
 			if ( $flags_show && ! empty( $language_target['flag'] ) ) {
-				$html .= '<img ';
-				$html .= 'src="' . esc_url( $language_target['flag'] ) . '" ';
-				$html .= 'alt="' . esc_attr( $language_target['name'] ) . '">';
+				$html .= '<img';
+				$html .= ' src="' . esc_url( $language_target['flag'] ) . '"';
+				$html .= ' alt="' . esc_attr( $language_target['name'] ) . '"';
+				$html .= '>';
 			}
 
 			$html .= '<span class="language-id">' . esc_html( $language_target['id'] ) . '</span>';

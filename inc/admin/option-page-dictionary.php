@@ -92,10 +92,11 @@ function wplng_option_page_dictionary_entries_html() {
 	}
 
 	$language_website       = wplng_get_language_website();
-	$language_website_html  = '<img ';
-	$language_website_html .= 'src="' . esc_url( $language_website['flag'] ) . '" ';
-	$language_website_html .= 'alt="' . esc_attr( $language_website['name'] ) . '" ';
-	$language_website_html .= 'class="wplng-flag">';
+	$language_website_html  = '<img';
+	$language_website_html .= ' src="' . esc_url( $language_website['flag'] ) . '"';
+	$language_website_html .= ' alt="' . esc_attr( $language_website['name'] ) . '"';
+	$language_website_html .= ' class="wplng-flag"';
+	$language_website_html .= '>';
 
 	$html  = '<label><strong>';
 	$html .= esc_html__( 'All dictionary entries: ', 'wplingua' );
@@ -105,9 +106,10 @@ function wplng_option_page_dictionary_entries_html() {
 
 	foreach ( $dictionary_entries as $rule_number => $entry ) {
 
-		$html .= '<div ';
-		$html .= 'class="wplng-dictionary-entry" ';
-		$html .= 'wplng-rule="' . esc_attr( $rule_number ) . '">';
+		$html .= '<div';
+		$html .= ' class="wplng-dictionary-entry"';
+		$html .= ' wplng-rule="' . esc_attr( $rule_number ) . '"';
+		$html .= '>';
 
 		$html .= '<div class="wplng-rule-header">';
 
@@ -117,16 +119,18 @@ function wplng_option_page_dictionary_entries_html() {
 		$html .= '</div>'; // ENd .wplng-rule-name
 
 		$html .= '<div class="wplng-rule-action">';
-		$html .= '<a ';
-		$html .= 'href="javascript:void(0);" ';
-		$html .= 'class="wplng-rule-link-edit" ';
-		$html .= 'wplng-rule="' . esc_attr( $rule_number ) . '">';
+		$html .= '<a';
+		$html .= ' href="javascript:void(0);"';
+		$html .= ' class="wplng-rule-link-edit"';
+		$html .= ' wplng-rule="' . esc_attr( $rule_number ) . '"';
+		$html .= '>';
 		$html .= esc_html__( 'Edit entry', 'wplingua' );
 		$html .= '</a> ';
-		$html .= '<a ';
-		$html .= 'href="javascript:void(0);" ';
-		$html .= 'class="wplng-rule-link-remove" ';
-		$html .= 'wplng-rule="' . esc_attr( $rule_number ) . '">';
+		$html .= '<a';
+		$html .= ' href="javascript:void(0);"';
+		$html .= ' class="wplng-rule-link-remove"';
+		$html .= ' wplng-rule="' . esc_attr( $rule_number ) . '"';
+		$html .= '>';
 		$html .= esc_html__( 'Remove', 'wplingua' );
 		$html .= '</a>';
 		$html .= '</div>'; // .wplng-rule-action
@@ -149,10 +153,11 @@ function wplng_option_page_dictionary_entries_html() {
 
 				$html .= '<hr>';
 				$html .= '<strong>';
-				$html .= '<img ';
-				$html .= 'src="' . esc_url( $language['flag'] ) . '" ';
-				$html .= 'alt="' . esc_attr( $language['name'] ) . '" ';
-				$html .= 'class="wplng-flag">';
+				$html .= '<img';
+				$html .= ' src="' . esc_url( $language['flag'] ) . '"';
+				$html .= ' alt="' . esc_attr( $language['name'] ) . '"';
+				$html .= ' class="wplng-flag"';
+				$html .= '>';
 				$html .= esc_html( $language['name'] );
 				$html .= esc_html__( ' - By: ', 'wplingua' );
 				$html .= '</strong>';
@@ -188,10 +193,11 @@ function wplng_option_page_dictionary_new_entry_html() {
 	*/
 
 	$language_website       = wplng_get_language_website();
-	$language_website_html  = '<img ';
-	$language_website_html .= 'src="' . esc_url( $language_website['flag'] ) . '" ';
-	$language_website_html .= 'alt="' . esc_attr( $language_website['name'] ) . '" ';
-	$language_website_html .= 'class="wplng-flag">';
+	$language_website_html  = '<img';
+	$language_website_html .= ' src="' . esc_url( $language_website['flag'] ) . '"';
+	$language_website_html .= ' alt="' . esc_attr( $language_website['name'] ) . '"';
+	$language_website_html .= ' class="wplng-flag"';
+	$language_website_html .= '>';
 
 	$html .= '<fieldset>';
 	$html .= '<label for="wplng-new-source">';
@@ -201,11 +207,12 @@ function wplng_option_page_dictionary_new_entry_html() {
 	$html .= '</strong>';
 	$html .= '</label>';
 	$html .= '<br>';
-	$html .= '<textarea ';
-	$html .= 'name="wplng-new-source" ';
-	$html .= 'id="wplng-new-source" ';
-	$html .= 'class="wplng-adaptive-textarea" ';
-	$html .= 'maxlength="256">';
+	$html .= '<textarea';
+	$html .= ' name="wplng-new-source"';
+	$html .= ' id="wplng-new-source"';
+	$html .= ' class="wplng-adaptive-textarea"';
+	$html .= ' maxlength="256"';
+	$html .= '>';
 	$html .= '</textarea>';
 	$html .= '</fieldset>';
 
@@ -214,10 +221,10 @@ function wplng_option_page_dictionary_new_entry_html() {
 	 */
 
 	$html .= '<fieldset>';
-	$html .= '<input ';
-	$html .= 'type="checkbox" ';
-	$html .= 'id="wplng-new-never-translate" ';
-	$html .= 'name="wplng-new-never-translate" ';
+	$html .= '<input';
+	$html .= ' type="checkbox"';
+	$html .= ' id="wplng-new-never-translate"';
+	$html .= ' name="wplng-new-never-translate"';
 	$html .= '>';
 	$html .= '<label for="wplng-new-never-translate"> ';
 	$html .= esc_html__( 'Never translate', 'wplingua' );
@@ -236,10 +243,11 @@ function wplng_option_page_dictionary_new_entry_html() {
 		$html .= '<fieldset>';
 		$html .= '<label for="' . esc_attr( $name ) . '">';
 		$html .= '<strong>';
-		$html .= '<img ';
-		$html .= 'src="' . esc_url( $language['flag'] ) . '" ';
-		$html .= 'alt="' . esc_attr( $language['name'] ) . '" ';
-		$html .= 'class="wplng-flag">';
+		$html .= '<img';
+		$html .= ' src="' . esc_url( $language['flag'] ) . '"';
+		$html .= ' alt="' . esc_attr( $language['name'] ) . '"';
+		$html .= ' class="wplng-flag"';
+		$html .= '>';
 		$html .= esc_html( $language['name'] );
 		$html .= esc_html__( ' - Always translate by: ', 'wplingua' );
 		$html .= '</strong>';
@@ -247,11 +255,12 @@ function wplng_option_page_dictionary_new_entry_html() {
 
 		$html .= '<br>';
 
-		$html .= '<textarea ';
-		$html .= 'name="' . esc_attr( $name ) . '" ';
-		$html .= 'id="' . esc_attr( $name ) . '" ';
-		$html .= 'class="wplng-adaptive-textarea" ';
-		$html .= 'maxlength="256">';
+		$html .= '<textarea';
+		$html .= ' name="' . esc_attr( $name ) . '"';
+		$html .= ' id="' . esc_attr( $name ) . '"';
+		$html .= ' class="wplng-adaptive-textarea"';
+		$html .= ' maxlength="256"';
+		$html .= '>';
 		$html .= '</textarea>';
 
 		$html .= '</fieldset>';
@@ -262,18 +271,18 @@ function wplng_option_page_dictionary_new_entry_html() {
 
 	$html .= '<div id="wplng-new-action-section">';
 
-	$html .= '<a ';
-	$html .= 'href="javascript:void(0);" ';
-	$html .= 'id="wplng-new-cancel-button" ';
-	$html .= 'class="button " ';
+	$html .= '<a';
+	$html .= ' href="javascript:void(0);"';
+	$html .= ' id="wplng-new-cancel-button"';
+	$html .= ' class="button "';
 	$html .= '>';
 	$html .= esc_html__( 'Cancel', 'wplingua' );
 	$html .= '</a>';
 
-	$html .= '<a ';
-	$html .= 'href="javascript:void(0);" ';
-	$html .= 'id="wplng-new-add-button" ';
-	$html .= 'class="button button-primary" ';
+	$html .= '<a';
+	$html .= ' href="javascript:void(0);"';
+	$html .= ' id="wplng-new-add-button"';
+	$html .= ' class="button button-primary"';
 	$html .= '>';
 	$html .= esc_html__( 'Save new entry', 'wplingua' );
 	$html .= '</a>';
@@ -298,10 +307,11 @@ function wplng_option_page_dictionary_edit_entry_html() {
 	*/
 
 	$language_website       = wplng_get_language_website();
-	$language_website_html  = '<img ';
-	$language_website_html .= 'src="' . esc_url( $language_website['flag'] ) . '" ';
-	$language_website_html .= 'alt="' . esc_attr( $language_website['name'] ) . '" ';
-	$language_website_html .= 'class="wplng-flag">';
+	$language_website_html  = '<img';
+	$language_website_html .= ' src="' . esc_url( $language_website['flag'] ) . '"';
+	$language_website_html .= ' alt="' . esc_attr( $language_website['name'] ) . '"';
+	$language_website_html .= ' class="wplng-flag"';
+	$language_website_html .= '>';
 
 	$html .= '<fieldset>';
 	$html .= '<label for="wplng-edit-source">';
@@ -311,11 +321,12 @@ function wplng_option_page_dictionary_edit_entry_html() {
 	$html .= '</strong>';
 	$html .= '</label>';
 	$html .= '<br>';
-	$html .= '<textarea ';
-	$html .= 'name="wplng-edit-source" ';
-	$html .= 'id="wplng-edit-source" ';
-	$html .= 'class="wplng-adaptive-textarea" ';
-	$html .= 'maxlength="256">';
+	$html .= '<textarea';
+	$html .= ' name="wplng-edit-source"';
+	$html .= ' id="wplng-edit-source"';
+	$html .= ' class="wplng-adaptive-textarea"';
+	$html .= ' maxlength="256"';
+	$html .= '>';
 	$html .= '</textarea>';
 	$html .= '</fieldset>';
 
@@ -324,10 +335,10 @@ function wplng_option_page_dictionary_edit_entry_html() {
 	 */
 
 	$html .= '<fieldset>';
-	$html .= '<input ';
-	$html .= 'type="checkbox" ';
-	$html .= 'id="wplng-edit-never-translate" ';
-	$html .= 'name="wplng-edit-never-translate" ';
+	$html .= '<input';
+	$html .= ' type="checkbox"';
+	$html .= ' id="wplng-edit-never-translate"';
+	$html .= ' name="wplng-edit-never-translate"';
 	$html .= '>';
 	$html .= '<label for="wplng-edit-never-translate"> ';
 	$html .= esc_html__( 'Never translate', 'wplingua' );
@@ -346,10 +357,11 @@ function wplng_option_page_dictionary_edit_entry_html() {
 		$html .= '<fieldset>';
 		$html .= '<label for="' . esc_attr( $name ) . '">';
 		$html .= '<strong>';
-		$html .= '<img ';
-		$html .= 'src="' . esc_url( $language['flag'] ) . '" ';
-		$html .= 'alt="' . esc_attr( $language['name'] ) . '" ';
-		$html .= 'class="wplng-flag">';
+		$html .= '<img';
+		$html .= ' src="' . esc_url( $language['flag'] ) . '"';
+		$html .= ' alt="' . esc_attr( $language['name'] ) . '"';
+		$html .= ' class="wplng-flag"';
+		$html .= '>';
 		$html .= esc_html( $language['name'] );
 		$html .= esc_html__( ' - Always translate by: ', 'wplingua' );
 		$html .= '</strong>';
@@ -357,11 +369,12 @@ function wplng_option_page_dictionary_edit_entry_html() {
 
 		$html .= '<br>';
 
-		$html .= '<textarea ';
-		$html .= 'name="' . esc_attr( $name ) . '" ';
-		$html .= 'id="' . esc_attr( $name ) . '" ';
-		$html .= 'class="wplng-adaptive-textarea" ';
-		$html .= 'maxlength="256">';
+		$html .= '<textarea';
+		$html .= ' name="' . esc_attr( $name ) . '"';
+		$html .= ' id="' . esc_attr( $name ) . '"';
+		$html .= ' class="wplng-adaptive-textarea"';
+		$html .= ' maxlength="256"';
+		$html .= '>';
 		$html .= '</textarea>';
 
 		$html .= '</fieldset>';
@@ -372,18 +385,18 @@ function wplng_option_page_dictionary_edit_entry_html() {
 
 	$html .= '<div id="wplng-edit-action-section">';
 
-	$html .= '<a ';
-	$html .= 'href="javascript:void(0);" ';
-	$html .= 'id="wplng-edit-cancel-button" ';
-	$html .= 'class="button " ';
+	$html .= '<a';
+	$html .= ' href="javascript:void(0);"';
+	$html .= ' id="wplng-edit-cancel-button"';
+	$html .= ' class="button "';
 	$html .= '>';
 	$html .= esc_html__( 'Cancel', 'wplingua' );
 	$html .= '</a>';
 
-	$html .= '<a ';
-	$html .= 'href="javascript:void(0);" ';
-	$html .= 'id="wplng-edit-save-button" ';
-	$html .= 'class="button button-primary" ';
+	$html .= '<a';
+	$html .= ' href="javascript:void(0);"';
+	$html .= ' id="wplng-edit-save-button"';
+	$html .= ' class="button button-primary"';
 	$html .= '>';
 	$html .= esc_html__( 'Save edited entry', 'wplingua' );
 	$html .= '</a>';

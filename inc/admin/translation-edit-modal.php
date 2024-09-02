@@ -13,17 +13,19 @@ if ( ! defined( 'WPINC' ) ) {
  */
 function wplng_translation_edit_modal_get_html() {
 
-	$return_button  = '<a ';
-	$return_button .= 'href="javascript:void(0);" ';
-	$return_button .= 'title="' . esc_attr__( 'Return on page', 'wplingua' ) . '" ';
-	$return_button .= 'class="wplng-button-icon wplng-button-return" ';
-	$return_button .= 'id="wplng-modal-edit-return">';
+	$return_button  = '<a';
+	$return_button .= ' href="javascript:void(0);"';
+	$return_button .= ' title="' . esc_attr__( 'Return on page', 'wplingua' ) . '"';
+	$return_button .= ' class="wplng-button-icon wplng-button-return"';
+	$return_button .= ' id="wplng-modal-edit-return"';
+	$return_button .= '>';
 	$return_button .= '<span class="dashicons dashicons-no"></span>';
 	$return_button .= '</a>';
 
-	$all_languages_button  = '<a ';
-	$all_languages_button .= 'href="javascript:void(0);" ';
-	$all_languages_button .= 'id="wplng-modal-edit-show-all">';
+	$all_languages_button  = '<a';
+	$all_languages_button .= ' href="javascript:void(0);"';
+	$all_languages_button .= ' id="wplng-modal-edit-show-all"';
+	$all_languages_button .= '>';
 	$all_languages_button .= esc_attr__( 'All languages', 'wplingua' );
 	$all_languages_button .= '</a>';
 
@@ -35,13 +37,13 @@ function wplng_translation_edit_modal_get_html() {
 		get_admin_url() . 'post.php'
 	);
 
-	$edit_link_button  = '<a ';
-	$edit_link_button .= 'href="#" ';
-	$edit_link_button .= 'title="' . esc_attr__( 'Open edit page', 'wplingua' ) . '" ';
-	$edit_link_button .= 'class="wplng-button-icon" ';
-	$edit_link_button .= 'id="wplng-modal-edit-post" ';
-	$edit_link_button .= 'target="_blank" ';
-	$edit_link_button .= 'data-wplng-edit-template="' . esc_attr( $edit_link_template ) . '"';
+	$edit_link_button  = '<a';
+	$edit_link_button .= ' href="#"';
+	$edit_link_button .= ' title="' . esc_attr__( 'Open edit page', 'wplingua' ) . '"';
+	$edit_link_button .= ' class="wplng-button-icon"';
+	$edit_link_button .= ' id="wplng-modal-edit-post"';
+	$edit_link_button .= ' target="_blank"';
+	$edit_link_button .= ' data-wplng-edit-template="' . esc_attr( $edit_link_template ) . '"';
 	$edit_link_button .= '>';
 	$edit_link_button .= '<span class="dashicons dashicons-external"></span>';
 	$edit_link_button .= '</a>';

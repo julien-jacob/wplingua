@@ -23,20 +23,20 @@ function wplng_dom_load_progress( $dom, $args ) {
 
 	} elseif ( 'loading' === $args['load'] ) {
 
-		$html  = '<!DOCTYPE html>';
-		$html .= '<html lang="en">';
-		$html .= '<head>';
-		$html .= '<meta charset="UTF-8">';
-		$html .= '<title>Translations load</title>';
-		$html .= '</head>';
-		$html .= '<body>';
-		$html .= '<h1>Translations load</h1>';
-		$html .= '<script>';
-		$html .= 'window.onload = function() {';
-		$html .= '	parent.wplngReloadInProgress();';
-		$html .= '}';
-		$html .= '</script>';
-		$html .= '</body>';
+		$html  = '<!DOCTYPE html>' . PHP_EOL;
+		$html .= '<html lang="en">' . PHP_EOL;
+		$html .= '	<head>' . PHP_EOL;
+		$html .= '		<meta charset="UTF-8">' . PHP_EOL;
+		$html .= '		<title>Translations load</title>' . PHP_EOL;
+		$html .= '	</head>' . PHP_EOL;
+		$html .= '	<body>' . PHP_EOL;
+		$html .= '		<h1>Translations load</h1>' . PHP_EOL;
+		$html .= '		<script>' . PHP_EOL;
+		$html .= '		window.onload = function() {' . PHP_EOL;
+		$html .= '			parent.wplngReloadInProgress();' . PHP_EOL;
+		$html .= '		}' . PHP_EOL;
+		$html .= '		</script>' . PHP_EOL;
+		$html .= '	</body>' . PHP_EOL;
 		$html .= '</html>';
 
 		$dom = wplng_sdh_str_get_html( $html );
@@ -120,9 +120,10 @@ function wplng_dom_load_progress( $dom, $args ) {
 
 		if ( '' === $text_translated ) {
 
-			$innertext  = '<span ';
-			$innertext .= 'class="wplng-in-progress-text" ';
-			$innertext .= 'title="' . esc_attr__( 'Translation in progress', 'wplingua' ) . '">';
+			$innertext  = '<span';
+			$innertext .= ' class="wplng-in-progress-text"';
+			$innertext .= ' title="' . esc_attr__( 'Translation in progress', 'wplingua' ) . '"';
+			$innertext .= '>';
 			$innertext .= esc_html( $spaces_before . $text . $spaces_after );
 			$innertext .= '</span>';
 
@@ -173,9 +174,9 @@ function wplng_dom_load_progress( $dom, $args ) {
 
 	}
 
-	$html  = '<div ';
-	$html .= 'id="wplng-in-progress-container" ';
-	$html .= 'wplng-reload="' . esc_url( $url_reload ) . '"';
+	$html  = '<div';
+	$html .= ' id="wplng-in-progress-container"';
+	$html .= ' wplng-reload="' . esc_url( $url_reload ) . '"';
 	$html .= '>';
 
 	$html .= '<div id="wplng-in-progress-message">';
@@ -197,8 +198,10 @@ function wplng_dom_load_progress( $dom, $args ) {
 	$html .= '</div>'; // End #wplng-translation-in-progress
 
 	$html .= '<div id="wplng-progress-bar">';
-	$html .= '<div id="wplng-progress-bar-value" ';
-	$html .= 'style="width: ' . esc_attr( $percentage ) . '%">';
+	$html .= '<div';
+	$html .= ' id="wplng-progress-bar-value"';
+	$html .= ' style="width: ' . esc_attr( $percentage ) . '%"';
+	$html .= '>';
 	$html .= '</div>'; // End #wplng-progress-bar-value
 	$html .= '</div>'; // End #wplng-progress-bar
 
@@ -216,10 +219,11 @@ function wplng_dom_load_progress( $dom, $args ) {
 		$args['url_current']
 	);
 
-	$html .= '<iframe ';
-	$html .= 'id="wplng-in-progress-iframe" ';
-	$html .= 'src="' . esc_url( $url_iframe ) . '" ';
-	$html .= 'style="display: none !important;">';
+	$html .= '<iframe';
+	$html .= ' id="wplng-in-progress-iframe"';
+	$html .= ' src="' . esc_url( $url_iframe ) . '"';
+	$html .= ' style="display: none !important;"';
+	$html .= '>';
 	$html .= '</iframe>'; // End #wplng-translation-in-progress
 
 	/**
