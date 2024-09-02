@@ -127,11 +127,11 @@ The wpLingua plugin relies on our own wpLingua API, an integrated third-party se
 
 ![Customizing the language switcher, enable or disable auto-insertion + choose position or use the shortcode.](https://raw.githubusercontent.com/julien-jacob/wplingua/master/wp-assets/screenshot-6.jpg)
 
-![As soon as your API key has been registered, your site is multilingual. This option screen allows you to configure your languages and their flags, as well as activate the functionalities.](https://raw.githubusercontent.com/julien-jacob/wplingua/master/wp-assets/screenshot-5.jpg)
+![As soon as your API key has been registered, your website is multilingual. This option screen allows you to configure your languages and their flags, as well as activate the functionalities.](https://raw.githubusercontent.com/julien-jacob/wplingua/master/wp-assets/screenshot-5.jpg)
 
 ![You can access the list of translations present on a page, including those which are not directly visible (Meta SEO, texts, alternative images, title attributes, etc.)](https://raw.githubusercontent.com/julien-jacob/wplingua/master/wp-assets/screenshot-10.jpg)
 
-![All translations are stored on your WordPress site.](https://raw.githubusercontent.com/julien-jacob/wplingua/master/wp-assets/screenshot-11.jpg)
+![All translations are stored on your WordPress website.](https://raw.githubusercontent.com/julien-jacob/wplingua/master/wp-assets/screenshot-11.jpg)
 
 ![You can edit all translations for each languages.](https://raw.githubusercontent.com/julien-jacob/wplingua/master/wp-assets/screenshot-12.jpg)
 

@@ -137,13 +137,13 @@ function wplng_settings_part_first_use() {
 	<div class="wplng-notice notice notice-info" id="wplng-notice-first-loading-loading">
 		<iframe src="<?php echo esc_url( $url_front_page_iframe ); ?>" frameborder="0" id="wplng-first-load-iframe" style="display: none;"></iframe>
 		<h2><span class="dashicons dashicons-update wplng-spin"></span> <?php esc_html_e( 'Your website is being translated and will be ready soon.', 'wplingua' ); ?></h2>
-		<p><?php esc_html_e( 'In just a few seconds, your site will be multilingual, and search engines will be able to index these new pages. wpLingua detects all the texts on your pages and offers you a first automatically generated translation. All translations are editable: open the visual editor from the administration bar and edit them simply by clicking on the texts on your site.', 'wplingua' ); ?></p>
+		<p><?php esc_html_e( 'In just a few seconds, your website will be multilingual, and search engines will be able to index these new pages. wpLingua detects all the texts on your pages and offers you a first automatically generated translation. All translations are editable: open the visual editor from the administration bar and edit them simply by clicking on the texts on your website.', 'wplingua' ); ?></p>
 	</div>
 
 	<div class="wplng-notice notice notice-success is-dismissible" id="wplng-notice-first-loading-loaded" style="display: none;">
 		<h2>🎉 <?php esc_html_e( 'Your website is now multilingual! You can start visiting the translated version.', 'wplingua' ); ?></h2>
 		<p><?php esc_html_e( 'The first time a translated page is loaded, the translations are automatically generated and saved in the database. This may take some time (on first generation only) depending on the size of your content. This is why we advise you to browse your entire website for the first time in order to generate all the multilingual versions.', 'wplingua' ); ?></p>
-		<p><?php esc_html_e( 'All translations are editable: open the visual editor from the administration bar and edit them simply by clicking on the texts on your site.', 'wplingua' ); ?></p>
+		<p><?php esc_html_e( 'All translations are editable: open the visual editor from the administration bar and edit them simply by clicking on the texts on your website.', 'wplingua' ); ?></p>
 		<p>
 			<a href="<?php echo esc_url( $url_front_page_translated ); ?>" target="_blank" class="button button-primary">
 				<?php esc_html_e( 'Visit your multilingual website', 'wplingua' ); ?>
@@ -220,7 +220,7 @@ function wplng_settings_part_language_website() {
 
 		echo '<div class="wplng-help-box" id="wplng-hb-language-website">';
 		echo '<p>';
-		echo esc_html__( 'This is the language of your website, defined by the associated API key. Make sure your website language is also correctly set in WordPress options (Settings ➔ General ➔ Site Language).', 'wplingua' );
+		echo esc_html__( 'This is the language of your website, defined by the associated API key. Make sure your website language is also correctly set in WordPress options (Settings ➔ General ➔ Website Language).', 'wplingua' );
 		echo '<hr>';
 		echo esc_html__( 'If you have mistakenly entered the wrong language, contact wpLingua support to request a correction.', 'wplingua' );
 		echo ' ';
@@ -455,7 +455,7 @@ function wplng_settings_part_api_key() {
 		</p>
 
 		<div class="wplng-help-box" id="wplng-hb-api-key">
-			<p><?php esc_html_e( 'A wpLingua API key consists of 42 characters (uppercase, lowercase and numbers). It is emailed to you when you request it using the form provided when you install the plugin. You must keep this key secret and only communicate it to wplingua.com services', 'wplingua' ); ?></p>
+			<p><?php esc_html_e( 'A wpLingua API key consists of 42 characters (uppercase, lowercase and numbers). It is emailed to you when you request it using the form provided when you install the plugin. You must keep this key secret and only communicate it to wplingua.com services.', 'wplingua' ); ?></p>
 		</div>
 
 		<hr>

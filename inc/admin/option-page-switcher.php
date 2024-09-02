@@ -153,7 +153,7 @@ function wplng_option_page_switcher() {
 							<ul>
 								<li>
 									<strong><?php esc_html_e( 'Translated names: ', 'wplingua' ); ?></strong>
-									<?php esc_html_e( 'the name of the languages ​​is translated into the original language of the site.', 'wplingua' ); ?>
+									<?php esc_html_e( 'the name of the languages ​​is translated into the current language displayed.', 'wplingua' ); ?>
 								</li>
 								<li>
 									<strong><?php esc_html_e( 'Original name: ', 'wplingua' ); ?></strong>
