@@ -4,7 +4,7 @@ Donate link: https://wplingua.com/
 Tags: translate, translation, multilingual, localization, language
 Requires at least: 6.0
 Tested up to: 6.6
-Stable tag: 1.4.3
+Stable tag: 1.4.4
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -153,6 +153,16 @@ No, not at the moment but in the meantime, you can easily display the language s
 12. You can edit all translations for each languages.
 
 == Changelog ==
+
+= 1.4.4 =
+
+* On page translation list:
+ * Filter by search (On source and translated texts)
+ * Filter by translation status (All, Reviewed, Unreviewed)
+ * Ordering (Occurrence order, Alphabetical sources or translations)
+ * Add go to top button
+* Disable admin bar menu if user can not edit posts
+* README review for GitHub
 
 = 1.4.3 =
 
