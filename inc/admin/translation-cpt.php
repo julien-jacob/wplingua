@@ -274,7 +274,11 @@ function wplng_post_class_translation_status( $classes, $css_class, $post_id ) {
 		return;
 	}
 
-	$translations = get_post_meta( $post_id, 'wplng_translation_translations', true );
+	$translations = get_post_meta( 
+		$post_id, 
+		'wplng_translation_translations', 
+		true 
+	);
 
 	$translations = json_decode(
 		$translations,
