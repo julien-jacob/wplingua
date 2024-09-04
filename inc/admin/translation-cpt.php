@@ -322,7 +322,7 @@ function wplng_post_class_translation_status( $classes, $css_class, $post_id ) {
 		} else {
 			$status_class = 'wplng-status-has-review';
 		}
-	} elseif ( $is_not_full_reviewed && ! $has_a_reviewed ) {
+	} elseif ( ! $is_not_full_reviewed || $has_a_reviewed ) {
 		$status_class = 'wplng-status-has-review';
 	}
 
@@ -468,18 +468,18 @@ function wplng_translation_status_style() {
 			color: #00a32a;
 		}
 
-		#the-list .type-wplng_translation .wplng-status.wplng-status-has-review {
-			color: #c3c4c7;
-		}
-
-		#the-list .type-wplng_translation .wplng-status-text .wplng-status.wplng-status-has-review {
-			color: #1d2327;
-		}
-		
-		#the-list .type-wplng_translation .wplng-status.wplng-status-unreview {
+		#the-list .type-wplng_translation .wplng-status.wplng-status-has-review  {
 			color: #72aee6;
 		}
 
+		#the-list .type-wplng_translation .wplng-status.wplng-status-unreview {
+			color: #c3c4c7;
+		}
+
+		#the-list .type-wplng_translation .wplng-status-text .wplng-status.wplng-status-unreview {
+			color: #1d2327;
+		}
+		
 		/* ------------------------------- */
 
 		#the-list .type-wplng_translation.wplng-status-full-review .wplng-status.wplng-status-has-review,
