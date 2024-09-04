@@ -1,5 +1,9 @@
-@import "editor-list";
 @import "edit-modal";
+
+// Hide SEOpress button
+#seopress-beacon-universal-metabox {
+    display: none !important;
+}
 
 /** 
  ** Compatibility
