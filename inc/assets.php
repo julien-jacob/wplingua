@@ -90,7 +90,7 @@ function wplng_register_assets() {
 						'wplingua'
 					),
 					'exitEditorModal'      => esc_html__(
-						'You are about to exit without saving your changes. They will be lost if you continue. When do you want to quit editing the translation?',
+						'You are about to exit without saving your changes. They will be lost if you continue. Would you like to leave anyway?',
 						'wplingua'
 					),
 					'buttonSave'           => esc_html__( 'Save', 'wplingua' ),
