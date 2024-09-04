@@ -184,9 +184,19 @@ function wplng_dom_mode_list( $dom, $args ) {
 	$filter_status .= '</label>';
 	$filter_status .= '<div class="wplng-filter-select">';
 	$filter_status .= '<select id="wplng-filter-status">';
-	$filter_status .= '<option value="all">All</option>';
-	$filter_status .= '<option value="reviewed">Reviewed</option>';
-	$filter_status .= '<option value="unreviewed">Unreviewed</option>';
+
+	$filter_status .= '<option value="all">';
+	$filter_status .= esc_html__( 'All', 'wplingua' );
+	$filter_status .= '</option>';
+
+	$filter_status .= '<option value="reviewed">';
+	$filter_status .= esc_html__( 'Reviewed', 'wplingua' );
+	$filter_status .= '</option>';
+
+	$filter_status .= '<option value="unreviewed">';
+	$filter_status .= esc_html__( 'Unreviewed', 'wplingua' );
+	$filter_status .= '</option>';
+
 	$filter_status .= '</select>';
 	$filter_status .= '</div>'; // End .wplng-filter-select
 	$filter_status .= '</div>'; // End .wplng-filter
@@ -202,9 +212,19 @@ function wplng_dom_mode_list( $dom, $args ) {
 	$filter_order .= '</label>';
 	$filter_order .= '<div class="wplng-filter-select">';
 	$filter_order .= '<select id="wplng-filter-order">';
-	$filter_order .= '<option value="occurrence">Occurrence order</option>';
-	$filter_order .= '<option value="alphabetical-sources">Alphabetical - sources</option>';
-	$filter_order .= '<option value="alphabetical-translations">Alphabetical - translations</option>';
+
+	$filter_order .= '<option value="occurrence">';
+	$filter_order .= esc_html__( 'Occurrence order', 'wplingua' );
+	$filter_order .= '</option>';
+
+	$filter_order .= '<option value="alphabetical-sources">';
+	$filter_order .= esc_html__( 'Alphabetical - sources', 'wplingua' );
+	$filter_order .= '</option>';
+
+	$filter_order .= '<option value="alphabetical-translations">';
+	$filter_order .= esc_html__( 'Alphabetical - translations', 'wplingua' );
+	$filter_order .= '</option>';
+
 	$filter_order .= '</select>';
 	$filter_order .= '</div>'; // End .wplng-filter-select
 	$filter_order .= '</div>'; // End .wplng-filter
