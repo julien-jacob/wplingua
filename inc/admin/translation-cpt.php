@@ -271,13 +271,13 @@ function wplng_post_class_translation_status( $classes, $css_class, $post_id ) {
 	global $typenow;
 
 	if ( 'wplng_translation' !== $typenow ) {
-		return;
+		return $classes;
 	}
 
-	$translations = get_post_meta( 
-		$post_id, 
-		'wplng_translation_translations', 
-		true 
+	$translations = get_post_meta(
+		$post_id,
+		'wplng_translation_translations',
+		true
 	);
 
 	$translations = json_decode(
@@ -289,30 +289,50 @@ function wplng_post_class_translation_status( $classes, $css_class, $post_id ) {
 		return $classes;
 	}
 
+	$languages_target_ids = wplng_get_languages_target_ids();
 	$has_a_reviewed       = false;
 	$is_not_full_reviewed = false;
+	$checked_language     = array();
+	$status_class         = 'wplng-status-unreview';
 
-	foreach ( $translations as $key => $translation ) {
-		if ( empty( $translation['status'] ) ) {
-			continue;
-		}
+	foreach ( $languages_target_ids as $language_target_id ) {
+		foreach ( $translations as $translation ) {
+			if ( $language_target_id !== $translation['language_id']
+				|| empty( $translation['status'] )
+			) {
+				continue;
+			}
 
-		if ( 'generated' === $translation['status']
-			|| 'ungenerated' === $translation['status']
-		) {
-			$is_not_full_reviewed = true;
-		} elseif ( is_int( $translation['status'] ) ) {
-			$has_a_reviewed = true;
+			$checked_language[] = $translation['language_id'];
+
+			if ( 'generated' === $translation['status']
+				|| 'ungenerated' === $translation['status']
+			) {
+				$is_not_full_reviewed = true;
+			} elseif ( is_int( $translation['status'] ) ) {
+				$has_a_reviewed = true;
+			}
 		}
 	}
 
 	if ( ! $is_not_full_reviewed && $has_a_reviewed ) {
-		$classes[] = 'wplng-status-full-review';
+
+		if ( $checked_language === $languages_target_ids ) {
+			$status_class = 'wplng-status-full-review';
+		} else {
+			$status_class = 'wplng-status-has-review';
+		}
 	} elseif ( $is_not_full_reviewed && ! $has_a_reviewed ) {
-		$classes[] = 'wplng-status-has-review';
-	} else {
-		$classes[] = 'wplng-status-unreview';
+		$status_class = 'wplng-status-has-review';
 	}
+
+	if ( 'wplng-status-full-review' === $status_class
+		&& $checked_language !== $languages_target_ids
+	) {
+		$status_class = 'wplng-status-has-review';
+	}
+
+	$classes[] = $status_class;
 
 	return $classes;
 }
@@ -385,7 +405,7 @@ function wplng_post_row_actions_status( $actions, $post ) {
 	$html .= __( 'Unreviewed', 'wplingua' );
 	$html .= '</span>';
 
-	$actions['custom'] = $html;
+	$actions['wplng-status-text'] = $html;
 
 	return $actions;
 }
@@ -434,6 +454,14 @@ function wplng_translation_status_style() {
 			font-size: 16px;
 		}
 
+		#the-list .type-wplng_translation .wplng-status-text {
+			color: #1d2327;
+		}
+
+		#the-list .type-wplng_translation .wplng-status-text .wplng-status {
+			font-weight: 600;
+		}
+
 		/* ------------------------------- */
 
 		#the-list .type-wplng_translation .wplng-status.wplng-status-full-review  {
@@ -441,8 +469,11 @@ function wplng_translation_status_style() {
 		}
 
 		#the-list .type-wplng_translation .wplng-status.wplng-status-has-review {
-			
 			color: #c3c4c7;
+		}
+
+		#the-list .type-wplng_translation .wplng-status-text .wplng-status.wplng-status-has-review {
+			color: #1d2327;
 		}
 		
 		#the-list .type-wplng_translation .wplng-status.wplng-status-unreview {
