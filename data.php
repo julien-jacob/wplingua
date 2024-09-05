@@ -490,8 +490,13 @@ function wplng_data_languages() {
 			'name'             => __( 'Arabic', 'wplingua' ),
 			'id'               => 'ar',
 			'dir'              => 'rtl',
-			'flag'             => 'eg',
+			'flag'             => '_a',
 			'flags'            => array(
+				array(
+					'name' => __( 'Global', 'wplingua' ),
+					'id'   => '_a',
+					'flag' => '_a',
+				),
 				array(
 					'name' => __( 'Egypt', 'wplingua' ),
 					'id'   => 'eg',
@@ -639,8 +644,13 @@ function wplng_data_languages() {
 		array(
 			'name'             => __( 'Chinese', 'wplingua' ),
 			'id'               => 'zh',
-			'flag'             => 'cn',
+			'flag'             => '_c',
 			'flags'            => array(
+				array(
+					'name' => __( 'Global', 'wplingua' ),
+					'id'   => '_c',
+					'flag' => '_c',
+				),
 				array(
 					'name' => __( 'China', 'wplingua' ),
 					'id'   => 'cn',
@@ -825,8 +835,13 @@ function wplng_data_languages() {
 		array(
 			'name'             => __( 'English', 'wplingua' ),
 			'id'               => 'en',
-			'flag'             => 'gb',
+			'flag'             => '_e',
 			'flags'            => array(
+				array(
+					'name' => __( 'US / GB', 'wplingua' ),
+					'id'   => '_e',
+					'flag' => '_e',
+				),
 				array(
 					'name' => __( 'United Kingdom', 'wplingua' ),
 					'id'   => 'gb',
