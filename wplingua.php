@@ -7,7 +7,7 @@
  * Author URI: https://wplingua.com/
  * Text Domain: wplingua
  * Domain Path: /languages/
- * Version: 1.4.4
+ * Version: 1.4.5
  * Requires PHP: 7.4
  * License: GPL v2 or later
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -24,7 +24,7 @@ if ( ! defined( 'WPINC' ) ) {
 define( 'WPLNG_API_URL', 'https://api.wplingua.com' );
 define( 'WPLNG_API_VERSION', '1.0' );
 define( 'WPLNG_API_SSLVERIFY', true );
-define( 'WPLNG_PLUGIN_VERSION', '1.4.4' );
+define( 'WPLNG_PLUGIN_VERSION', '1.4.5' );
 define( 'WPLNG_PLUGIN_FILE', plugin_basename( __FILE__ ) );
 define( 'WPLNG_PLUGIN_PATH', dirname( __FILE__ ) );
 define( 'WPLNG_MAX_TRANSLATIONS', 256 );
@@ -184,6 +184,13 @@ function wplng_start() {
 		// Filter translations by status
 		add_action( 'restrict_manage_posts', 'wplng_restrict_manage_posts_translation_status' );
 		add_filter( 'parse_query', 'wplng_posts_filter_translation_status' );
+
+		// Translation status on website translations list
+		add_filter( 'post_class', 'wplng_post_class_translation_status', 10, 3 );
+		add_filter( 'post_row_actions', 'wplng_post_row_actions_status', 10, 2 );
+		add_filter( 'manage_wplng_translation_posts_columns', 'wplng_translation_status_columns' );
+		add_action( 'manage_wplng_translation_posts_custom_column', 'wplng_translation_status_item', 10, 2 );
+		add_action( 'admin_head-edit.php', 'wplng_translation_status_style', 10, 2 );
 
 		/**
 		 * Front

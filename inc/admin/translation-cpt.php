@@ -227,3 +227,269 @@ function wplng_posts_filter_translation_status( $query ) {
 	}
 
 }
+
+
+/**
+ * Add status custom column on translations
+ *
+ * @param array String array
+ * @return array
+ */
+function wplng_translation_status_columns( $columns ) {
+
+	$cb = array();
+
+	if ( isset( $columns['cb'] ) ) {
+		$cb = array(
+			'cb' => $columns['cb'],
+		);
+		unset( $columns['cb'] );
+	}
+
+	$columns = array_merge(
+		$cb,
+		array(
+			'wplng_status' => __( 'Translation status', 'wplingua' ),
+		),
+		$columns
+	);
+
+	return $columns;
+}
+
+
+/**
+ * Add translation status class on wplng_translation post list in admin area
+ *
+ * @param string[] $classes An array of post class names.
+ * @param string[] $css_class An array of additional class names added to the post.
+ * @param int $post_id The post ID.
+ * @return string[]
+ */
+function wplng_post_class_translation_status( $classes, $css_class, $post_id ) {
+
+	global $typenow;
+
+	if ( 'wplng_translation' !== $typenow ) {
+		return $classes;
+	}
+
+	$translations = get_post_meta(
+		$post_id,
+		'wplng_translation_translations',
+		true
+	);
+
+	$translations = json_decode(
+		$translations,
+		true
+	);
+
+	if ( empty( $translations ) ) {
+		return $classes;
+	}
+
+	$languages_target_ids = wplng_get_languages_target_ids();
+	$has_a_reviewed       = false;
+	$is_not_full_reviewed = false;
+	$checked_language     = array();
+	$status_class         = 'wplng-status-unreview';
+
+	foreach ( $languages_target_ids as $language_target_id ) {
+		foreach ( $translations as $translation ) {
+			if ( $language_target_id !== $translation['language_id']
+				|| empty( $translation['status'] )
+			) {
+				continue;
+			}
+
+			$checked_language[] = $translation['language_id'];
+
+			if ( 'generated' === $translation['status']
+				|| 'ungenerated' === $translation['status']
+			) {
+				$is_not_full_reviewed = true;
+			} elseif ( is_int( $translation['status'] ) ) {
+				$has_a_reviewed = true;
+			}
+		}
+	}
+
+	if ( ! $is_not_full_reviewed && $has_a_reviewed ) {
+
+		if ( $checked_language === $languages_target_ids ) {
+			$status_class = 'wplng-status-full-review';
+		} else {
+			$status_class = 'wplng-status-has-review';
+		}
+	} elseif ( ! $is_not_full_reviewed || $has_a_reviewed ) {
+		$status_class = 'wplng-status-has-review';
+	}
+
+	if ( 'wplng-status-full-review' === $status_class
+		&& $checked_language !== $languages_target_ids
+	) {
+		$status_class = 'wplng-status-has-review';
+	}
+
+	$classes[] = $status_class;
+
+	return $classes;
+}
+
+
+/**
+ * Add status items in custom column on translations
+ *
+ * @param string $column The name of the column to display.
+ * @param int $post_id The current post ID.
+ * @return void
+ */
+function wplng_translation_status_item( $column, $post_id ) {
+
+	if ( 'wplng_status' !== $column ) {
+		return;
+	}
+
+	$html  = '<span';
+	$html .= ' class="dashicons dashicons-yes-alt wplng-status wplng-status-full-review"';
+	$html .= ' title="' . __( 'Full reviewed', 'wplingua' ) . '"';
+	$html .= '></span>';
+
+	$html .= '<span';
+	$html .= ' class="dashicons dashicons-yes-alt wplng-status wplng-status-has-review"';
+	$html .= ' title="' . __( 'Partially reviewed', 'wplingua' ) . '"';
+	$html .= '></span>';
+
+	$html .= '<span';
+	$html .= ' class="dashicons dashicons-yes-alt wplng-status wplng-status-unreview"';
+	$html .= ' title="' . __( 'Unreviewed', 'wplingua' ) . '"';
+	$html .= '></span>';
+
+	echo $html;
+}
+
+
+/**
+ * Add status items text on translations
+ *
+ * Defaults $actions are 'Edit', ‘Quick Edit’, 'Restore', 'Trash', ‘Delete Permanently’, 'Preview', and 'View'.
+ *
+ * @param string[] $actions An array of row action links.
+ * @param WP_Post $post The post object.
+ * @return string[]
+ */
+function wplng_post_row_actions_status( $actions, $post ) {
+
+	if ( 'wplng_translation' !== $post->post_type ) {
+		return $actions;
+	}
+
+	$html = __( 'Translation status: ', 'wplingua' );
+
+	$html .= '<span';
+	$html .= ' class="wplng-status wplng-status-full-review"';
+	$html .= '>';
+	$html .= __( 'Full reviewed', 'wplingua' );
+	$html .= '</span>';
+
+	$html .= '<span';
+	$html .= ' class="wplng-status wplng-status-has-review"';
+	$html .= '>';
+	$html .= __( 'Partially reviewed', 'wplingua' );
+	$html .= '</span>';
+
+	$html .= '<span';
+	$html .= ' class="wplng-status wplng-status-unreview"';
+	$html .= '>';
+	$html .= __( 'Unreviewed', 'wplingua' );
+	$html .= '</span>';
+
+	$actions['wplng-status-text'] = $html;
+
+	return $actions;
+}
+
+
+/**
+ * Add inline CSS for status on translations
+ *
+ * @return void
+ */
+function wplng_translation_status_style() {
+
+	global $typenow;
+
+	if ( 'wplng_translation' !== $typenow ) {
+		return;
+	}
+
+	?>
+	<style>
+
+		/**
+		* wpLingua: Translation status design
+		*/
+
+		.manage-column.column-wplng_status {
+			width: 20px;
+			padding: 8px 0 0 8px;
+			font-size: 0;
+			vertical-align: middle;
+			box-sizing: content-box;
+		}
+
+		.wp-list-table tr td.wplng_status.column-wplng_status::before {
+			content: "" !important;
+			display: none;
+		}
+
+		#the-list .type-wplng_translation .wplng_status.column-wplng_status {
+			padding: 8px 4px;
+		}
+
+		.manage-column.column-wplng_status::before {
+			content: "\f326";
+			font-family: dashicons;
+			font-size: 16px;
+		}
+
+		#the-list .type-wplng_translation .wplng-status-text {
+			color: #1d2327;
+		}
+
+		#the-list .type-wplng_translation .wplng-status-text .wplng-status {
+			font-weight: 600;
+		}
+
+		/* ------------------------------- */
+
+		#the-list .type-wplng_translation .wplng-status.wplng-status-full-review  {
+			color: #00a32a;
+		}
+
+		#the-list .type-wplng_translation .wplng-status.wplng-status-has-review  {
+			color: #72aee6;
+		}
+
+		#the-list .type-wplng_translation .wplng-status.wplng-status-unreview {
+			color: #c3c4c7;
+		}
+
+		#the-list .type-wplng_translation .wplng-status-text .wplng-status.wplng-status-unreview {
+			color: #1d2327;
+		}
+		
+		/* ------------------------------- */
+
+		#the-list .type-wplng_translation.wplng-status-full-review .wplng-status.wplng-status-has-review,
+		#the-list .type-wplng_translation.wplng-status-full-review .wplng-status.wplng-status-unreview,
+		#the-list .type-wplng_translation.wplng-status-has-review .wplng-status.wplng-status-full-review,
+		#the-list .type-wplng_translation.wplng-status-has-review .wplng-status.wplng-status-unreview,
+		#the-list .type-wplng_translation.wplng-status-unreview .wplng-status.wplng-status-full-review,
+		#the-list .type-wplng_translation.wplng-status-unreview .wplng-status.wplng-status-has-review {
+			display: none;
+		}
+	</style>
+	<?php
+}

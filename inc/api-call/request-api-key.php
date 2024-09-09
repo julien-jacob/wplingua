@@ -18,7 +18,7 @@ if ( ! defined( 'WPINC' ) ) {
  * Data sent :
  * ---------------------------------------------------
  * - request           : 'register'
- * - mail_address      : A mail address
+ * - mail_address      : A email address
  * - language_original : A language ID
  * - languages_target  : An array of languages ID
  * - accept_eula       : Boolean
@@ -68,7 +68,7 @@ function wplng_api_call_request_api_key( $data ) {
 	if ( ! is_email( $mail_address ) ) {
 		return array(
 			'error'   => true,
-			'message' => __( 'Error - Invalid data (mail address).', 'wplingua' ),
+			'message' => __( 'Error - Invalid data (email address).', 'wplingua' ),
 		);
 	}
 

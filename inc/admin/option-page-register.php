@@ -306,7 +306,7 @@ function wplng_register_part_free_api_key() {
 	<p>
 		<fieldset>
 			<label for="wplng-email" class="wplng-fe-50">
-				<strong><?php esc_html_e( 'Mail address: ', 'wplingua' ); ?> </strong> 
+				<strong><?php esc_html_e( 'Email address: ', 'wplingua' ); ?> </strong> 
 				<span title="<?php esc_attr_e( 'Click to expand', 'wplingua' ); ?>" wplng-help-box="#wplng-hb-register-email"></span>
 			</label>
 			<input type="email" name="wplng-email" id="wplng-email" class="wplng-fe-50" value="<?php echo esc_attr( $email ); ?>">

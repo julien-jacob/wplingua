@@ -97,7 +97,7 @@ function wplng_text_is_translatable( $text ) {
 		return false;
 	}
 
-	// Check if it's a mail address
+	// Check if it's a email address
 	if ( filter_var( $text, FILTER_VALIDATE_EMAIL ) ) {
 		return false;
 	}

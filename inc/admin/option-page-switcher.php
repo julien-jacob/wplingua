@@ -294,7 +294,7 @@ function wplng_option_page_switcher() {
 							<hr>
 
 							<p>
-								<?php esc_html_e( 'Each theme is then broken down by shape and border style :', 'wplingua' ); ?>
+								<?php esc_html_e( 'Each theme is then broken down by shape and border style:', 'wplingua' ); ?>
 							</p>
 
 							<ul>
@@ -447,7 +447,7 @@ function wplng_option_page_switcher() {
 
 						<p>
 							<strong class="wplng-fe-50">
-								<?php esc_html_e( 'Swicher in menu: ', 'wplingua' ); ?> 
+								<?php esc_html_e( 'Switcher in menu: ', 'wplingua' ); ?> 
 								<span title="<?php esc_attr_e( 'Click to expand', 'wplingua' ); ?>" wplng-help-box="#wplng-hb-insert-menu">
 							</strong>
 							<span class="wplng-fe-50">
