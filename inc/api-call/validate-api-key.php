@@ -27,6 +27,8 @@ if ( ! defined( 'WPINC' ) ) {
  * - language_original : A language ID
  * - languages_target  : An array of languages ID
  * - features          : Array of allowed API features
+ * - status            : FREE | PREMIUM | VIP
+ * - expiration        : A date dd/mm/yyyy
  *
  * ---------------------------------------------------
  * Data received in case of failure
@@ -108,6 +110,7 @@ function wplng_api_call_validate_api_key( $api_key = '' ) {
 		&& is_array( $response['languages_target'] )
 		&& isset( $response['features'] )
 		&& is_array( $response['features'] )
+		&& ! empty( $response['status'] )
 	) {
 
 		/**
@@ -143,14 +146,32 @@ function wplng_api_call_validate_api_key( $api_key = '' ) {
 			$features[ $key ] = $allow;
 		}
 
+		// Sanitize status
+
+		$status = 'FREE';
+
+		if ( 'PREMIUM' === $response['status']
+			|| 'VIP' === $response['status']
+		) {
+			$status = $response['status'];
+		}
+
 		// Make the checked response
 
 		$response_checked = array(
 			'language_original' => sanitize_key( $response['language_original'] ),
 			'languages_target'  => $languages_target,
 			'features'          => $features,
+			'status'            => $status,
 		);
 
+		// Add expiration
+
+		if ( ! empty( $response['expiration'] )
+			&& is_string( $response['expiration'] )
+		) {
+			$response_checked['expiration'] = $response['expiration'];
+		}
 	} elseif ( isset( $response['error'] )
 		&& ( true === $response['error'] )
 		&& isset( $response['code'] )
