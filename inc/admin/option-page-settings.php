@@ -498,10 +498,9 @@ function wplng_settings_part_api_key() {
 	<?php endif; ?>
 
 	<?php if ( ! empty( $data['expiration'] ) ) : ?>
-		
-		<hr>
+
 		<p class="wplng-fe-50"><?php esc_html_e( 'Premium expiration: ', 'wplingua' ); ?></p>
-		<p class="wplng-fe-50"><?php echo esc_html( $data['expiration'] ); ?></p>
+		<p class="wplng-fe-50" style="text-align: right;"><?php echo esc_html( $data['expiration'] ); ?></p>
 		
 	<?php endif; ?>
 

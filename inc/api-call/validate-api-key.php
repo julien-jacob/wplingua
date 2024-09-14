@@ -110,7 +110,6 @@ function wplng_api_call_validate_api_key( $api_key = '' ) {
 		&& is_array( $response['languages_target'] )
 		&& isset( $response['features'] )
 		&& is_array( $response['features'] )
-		&& ! empty( $response['status'] )
 	) {
 
 		/**
@@ -150,8 +149,11 @@ function wplng_api_call_validate_api_key( $api_key = '' ) {
 
 		$status = 'FREE';
 
-		if ( 'PREMIUM' === $response['status']
-			|| 'VIP' === $response['status']
+		if ( ! empty( $response['status'] )
+			&& (
+				'PREMIUM' === $response['status']
+				|| 'VIP' === $response['status']
+			)
 		) {
 			$status = $response['status'];
 		}
