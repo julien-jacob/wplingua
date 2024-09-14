@@ -4,7 +4,7 @@ Donate link: https://wplingua.com/
 Tags: translate, translation, multilingual, localization, language
 Requires at least: 6.0
 Tested up to: 6.6
-Stable tag: 1.4.5
+Stable tag: 2.0.0
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -153,6 +153,25 @@ No, not at the moment but in the meantime, you can easily display the language s
 12. You can edit all translations for each languages.
 
 == Changelog ==
+
+= 2.0.0 = 
+
+* Add new flags:
+ * Arabic
+ * US/GB
+ * Chinese
+* Display an information message when adding target languages
+* API protocol V2.0
+* Display API informations in admin:
+ * Status (FREE, PREMIUM, VIP)
+ * Expiration for PREMIUM
+* Plugin translation update
+ * French
+ * German
+ * Italian
+ * Portuguese
+ * Spanish
+* Removed Herobrine
 
 = 1.4.5 =
 
