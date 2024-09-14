@@ -7,7 +7,7 @@
  * Author URI: https://wplingua.com/
  * Text Domain: wplingua
  * Domain Path: /languages/
- * Version: 1.4.5
+ * Version: 2.0.0
  * Requires PHP: 7.4
  * License: GPL v2 or later
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -22,9 +22,9 @@ if ( ! defined( 'WPINC' ) ) {
 
 // Define wpLingua constants
 define( 'WPLNG_API_URL', 'https://api.wplingua.com' );
-define( 'WPLNG_API_VERSION', '1.0' );
+define( 'WPLNG_API_VERSION', '2.0' );
 define( 'WPLNG_API_SSLVERIFY', true );
-define( 'WPLNG_PLUGIN_VERSION', '1.4.5' );
+define( 'WPLNG_PLUGIN_VERSION', '2.0.0' );
 define( 'WPLNG_PLUGIN_FILE', plugin_basename( __FILE__ ) );
 define( 'WPLNG_PLUGIN_PATH', dirname( __FILE__ ) );
 define( 'WPLNG_MAX_TRANSLATIONS', 256 );

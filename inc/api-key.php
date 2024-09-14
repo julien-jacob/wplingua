@@ -77,6 +77,7 @@ function wplng_get_api_data() {
 		&& wplng_is_valid_language_ids( $data['languages_target'] )
 		&& isset( $data['features'] )
 		&& is_array( $data['features'] )
+		&& ! empty( $data['status'] )
 	) {
 
 		/**
@@ -113,6 +114,18 @@ function wplng_get_api_data() {
 		}
 
 		/**
+		 * Sanitize status
+		 */
+
+		$status = 'FREE';
+
+		if ( 'PREMIUM' === $data['status']
+			|| 'VIP' === $data['status']
+		) {
+			$status = $data['status'];
+		}
+
+		/**
 		 * Make the checked response
 		 */
 
@@ -120,8 +133,18 @@ function wplng_get_api_data() {
 			'language_original' => sanitize_key( $data['language_original'] ),
 			'languages_target'  => $languages_target,
 			'features'          => $features,
+			'status'            => $status,
 		);
 
+		/**
+		 * Add expiration
+		 */
+
+		if ( ! empty( $data['expiration'] )
+			&& is_string( $data['expiration'] )
+		) {
+			$data_checked['expiration'] = $data['expiration'];
+		}
 	} else {
 
 		/**

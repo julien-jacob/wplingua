@@ -308,6 +308,13 @@ jQuery(document).ready(function ($) {
     // Option Page : Click on "Add" button for new language target
     $("#wplng-target-lang-add").on("click", function () {
 
+        if (
+            wplngTargetLanguages.length != 0 
+            && ! confirm( $("#wplng_add_new_target_language_message").text() )
+        ) {
+            return;
+        }
+
         var newTargetId = $("#wplng_add_new_target_language").val();
         var newTargetFlag = "";
 

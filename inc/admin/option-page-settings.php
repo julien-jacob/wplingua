@@ -100,16 +100,25 @@ function wplng_settings_part_first_use() {
 		return false;
 	}
 
-	update_option( 'wplng_website_language', wplng_get_api_language_website() );
+	update_option(
+		'wplng_website_language',
+		wplng_get_api_language_website()
+	);
 
 	$data = wplng_get_api_data();
 
-	if ( empty( $data['languages_target'][0] ) ) {
+	// Set option for target language
+
+	if ( empty( $data['languages_target'][0] )
+		|| count( $data['languages_target'] ) !== 1
+	) {
 		return false;
 	}
 
-	// Set option for target language
-	$language_target = wplng_get_language_by_id( $data['languages_target'][0] );
+	$language_target = wplng_get_language_by_id(
+		$data['languages_target'][0]
+	);
+
 	if ( ! empty( $language_target ) ) {
 		update_option(
 			'wplng_target_languages',
@@ -283,6 +292,8 @@ function wplng_settings_part_languages_target() {
 	?>
 	<fieldset id="fieldset-add-target-language">
 
+		<div id="wplng_add_new_target_language_message" style="display: none !important;"><?php esc_html_e( 'Important: space out the addition of new languages ​​by at least ten days and browse your site for the first time in the added languages. This promotes better indexing by search engines, reduces the load on your server and minimizes the risk of slowdowns on your site.', 'wplingua' ); ?></div>
+
 		<p class="wplng-fe-50">
 			<label for="wplng_add_new_target_language">
 				<strong><?php esc_html_e( 'Add new target Language: ', 'wplingua' ); ?></strong>
@@ -443,6 +454,9 @@ function wplng_settings_part_features() {
  * @return void
  */
 function wplng_settings_part_api_key() {
+
+	$data = wplng_get_api_data();
+
 	?>
 	<fieldset>
 		<p><label for="wplng_api_key"><strong><?php esc_html_e( 'Website API key: ', 'wplingua' ); ?></strong></label></p>
@@ -468,5 +482,29 @@ function wplng_settings_part_api_key() {
 
 		<a class="button button-primary wplng-icon-button" id="wplng-api-key-hide" href="javascript:void(0);" title="<?php esc_html_e( 'Hide API key', 'wplingua' ); ?>" style="display: none;"><span class="dashicons dashicons-hidden"></span></a>
 	</fieldset>
+
+	<?php if ( ! empty( $data['status'] ) ) : ?>
+		
+		<hr>
+		<p class="wplng-fe-50"><?php esc_html_e( 'API key status: ', 'wplingua' ); ?></p>
+
+		<?php if ( 'FREE' === $data['status'] ) : ?>
+			<p class="wplng-fe-50" style="text-align: right;"><span class="dashicons dashicons-saved"></span> FREE</p>
+		<?php elseif ( 'PREMIUM' === $data['status'] ) : ?>
+			<p class="wplng-fe-50" style="text-align: right;"><span class="dashicons dashicons-superhero-alt"></span> PREMIUM</p>
+		<?php elseif ( 'VIP' === $data['status'] ) : ?>
+			<p class="wplng-fe-50" style="text-align: right;"><span class="dashicons dashicons-star-empty"></span> VIP</p>
+		<?php endif; ?>
+
+
+	<?php endif; ?>
+
+	<?php if ( ! empty( $data['expiration'] ) ) : ?>
+
+		<p class="wplng-fe-50"><?php esc_html_e( 'Premium expiration: ', 'wplingua' ); ?></p>
+		<p class="wplng-fe-50" style="text-align: right;"><?php echo esc_html( $data['expiration'] ); ?></p>
+		
+	<?php endif; ?>
+
 	<?php
 }
