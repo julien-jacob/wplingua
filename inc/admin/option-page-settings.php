@@ -292,6 +292,8 @@ function wplng_settings_part_languages_target() {
 	?>
 	<fieldset id="fieldset-add-target-language">
 
+		<div id="wplng_add_new_target_language_message" style="display: none !important;"><?php esc_html_e( 'Important: space out the addition of new languages ​​by at least ten days and browse your site for the first time in the added languages. This promotes better indexing by search engines, reduces the load on your server and minimizes the risk of slowdowns on your site.', 'wplingua' ); ?></div>
+
 		<p class="wplng-fe-50">
 			<label for="wplng_add_new_target_language">
 				<strong><?php esc_html_e( 'Add new target Language: ', 'wplingua' ); ?></strong>
