@@ -210,6 +210,10 @@ function wplng_data_attr_text_to_translate() {
 				'attr'     => 'content',
 				'selector' => 'meta[property="article:section"]',
 			),
+			array(
+				'attr'     => 'content',
+				'selector' => 'meta[name="description"]',
+			),
 			// Open Graph
 			array(
 				'attr'     => 'content',
