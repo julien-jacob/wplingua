@@ -28,6 +28,12 @@ The highlights:
 ✓ Open source, find [wpLingua on GitHub](https://github.com/julien-jacob/wplingua)
 ✓ And more!
 
+### 🎬 6 minutes to translate your website
+
+[youtube https://www.youtube.com/watch?v=T1fTHnZhH-0]
+
+Video tutorial available in [Chinese](https://youtu.be/ET2ijgN3cUw?si=6L2_KlZJ6Dw3kOJq), [Danish](https://youtu.be/cxoMK5UamXA?si=sbaK-Fx8GAfsl8Bu), [English](https://youtu.be/T1fTHnZhH-0?si=rELV5g5I4i9KwVG0), [Finnish](https://youtu.be/niuBK79uK4Y?si=fKs6mvNqLCTliOIV), [French](https://youtu.be/No6PdIJrbrk?si=2w2yJERXIhdSfqFb), [German](https://youtu.be/TvyHn8n9zr4?si=FSWSHd8YkW17V07u), [Greek](https://youtu.be/MMrkmhzVrNM?si=A0BM0Mq-gBgIQ-rT), [Hindi](https://youtu.be/TCoaBMCusbE?si=eXACXPXZtAeC4J2P), [Italian](https://youtu.be/yYNkJqbFGeo?si=VBkJrNck4_kPma-0), [Japanese](https://youtu.be/H9jL6B9ZoRk?si=ZOoNKdxE67LMt4Sv), [Korean](https://youtu.be/FGi68qYvzWg?si=zNZKYPUvf12FNxCz), [Polish](https://youtu.be/QkQ8fn7XZkY?si=Z4aEfcVHs05_AOLS), [Portuguese](https://youtu.be/W8lGMYeE-wQ?si=SorUAE_AVW8-ezKE) and [Spanish](https://youtu.be/ePsri0sP99Y?si=l3JCik3Z-B0hg4CR). 
+
 ### 🔥 One free target language ###
 The first language translation is completely free for non-commercial websites. If your website is of a commercial nature (e-commerce, advertising, etc.), a commercial licence is available.
 
