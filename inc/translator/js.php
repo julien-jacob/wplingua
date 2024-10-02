@@ -22,15 +22,15 @@ function wplng_translate_js( $js, $args = array() ) {
 	$json = array();
 
 	preg_match_all(
-		'#var\s(.*)\s?=\s?(\{.*\});#Ui',
+		'#(var\s|let\s|window\._)(.*)\s?=\s?(\{.*\});?#Ui',
 		$js,
 		$json
 	);
 
-	if ( ! empty( $json[1][0] ) && ! empty( $json[2][0] ) ) {
+	if ( ! empty( $json[2][0] ) && ! empty( $json[3][0] ) ) {
 
-		$var_name = $json[1][0];
-		$var_json = $json[2][0];
+		$var_name = $json[2][0];
+		$var_json = $json[3][0];
 
 		wplng_args_setup( $args );
 
