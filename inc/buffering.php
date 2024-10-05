@@ -18,7 +18,10 @@ function wplng_ob_start() {
 		return;
 	}
 
-	if ( wplng_get_language_website_id() === wplng_get_language_current_id() ) {
+	$language_website_id = wplng_get_language_website_id();
+	$language_current_id = wplng_get_language_current_id();
+
+	if ( $language_website_id === $language_current_id ) {
 		return;
 	}
 
@@ -33,6 +36,16 @@ function wplng_ob_start() {
 
 	if ( ! wplng_url_is_translatable( $origin_path ) ) {
 		wp_safe_redirect( $origin_path );
+		exit;
+	}
+
+	$origin_path_translated = wplng_url_translate(
+		$origin_path,
+		$language_current_id
+	);
+
+	if ( $current_path !== $origin_path_translated ) {
+		wp_safe_redirect( $origin_path_translated );
 		exit;
 	}
 
