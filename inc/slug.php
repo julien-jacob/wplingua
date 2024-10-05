@@ -157,11 +157,10 @@ function wplng_slug_translate_path( $path, $language_id ) {
 	 */
 
 	$path = str_replace(
-		array('#', '?'),
-		array('/#', '/?'),
+		array( '#', '?' ),
+		array( '/#', '/?' ),
 		$path
 	);
-	
 
 	/**
 	 * Return parth if no contains slug
@@ -187,9 +186,9 @@ function wplng_slug_translate_path( $path, $language_id ) {
 	$path_translated = '/';
 
 	foreach ( $slugs as $slug ) {
-		if ( wplng_text_is_translatable( $slug ) 
-			&& ! wplng_str_starts_with($slug, '#')
-			&& ! wplng_str_starts_with($slug, '?')
+		if ( wplng_text_is_translatable( $slug )
+			&& ! wplng_str_starts_with( $slug, '#' )
+			&& ! wplng_str_starts_with( $slug, '?' )
 		) {
 			$path_translated .= wplng_slug_translate(
 				$slug,

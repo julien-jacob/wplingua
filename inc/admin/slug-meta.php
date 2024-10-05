@@ -306,13 +306,13 @@ function wplng_slug_save_meta_boxes_data( $post_id ) {
 
 	$meta = get_post_meta( $post_id );
 
-	if ( empty( $meta['wplng_slug_translations'][0] ) 
-		|| empty( $meta['wplng_slug_original'][0] ) 
+	if ( empty( $meta['wplng_slug_translations'][0] )
+		|| empty( $meta['wplng_slug_original'][0] )
 	) {
 		return false;
 	}
 
-	$slug_original = sanitize_title($meta['wplng_slug_original'][0]);
+	$slug_original    = sanitize_title( $meta['wplng_slug_original'][0] );
 	$languages_target = wplng_get_languages_target_ids();
 	$translations     = json_decode(
 		$meta['wplng_slug_translations'][0],
