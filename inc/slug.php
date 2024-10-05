@@ -153,6 +153,17 @@ function wplng_slug_translate_path( $path, $language_id ) {
 	}
 
 	/**
+	 * Manage anchor ang $_GET parameters
+	 */
+
+	$path = str_replace(
+		array('#', '?'),
+		array('/#', '/?'),
+		$path
+	);
+	
+
+	/**
 	 * Return parth if no contains slug
 	 */
 
@@ -175,8 +186,11 @@ function wplng_slug_translate_path( $path, $language_id ) {
 
 	$path_translated = '/';
 
-	foreach ( $slugs as $key => $slug ) {
-		if ( wplng_text_is_translatable( $slug ) ) {
+	foreach ( $slugs as $slug ) {
+		if ( wplng_text_is_translatable( $slug ) 
+			&& ! wplng_str_starts_with($slug, '#')
+			&& ! wplng_str_starts_with($slug, '?')
+		) {
 			$path_translated .= wplng_slug_translate(
 				$slug,
 				$language_id,
