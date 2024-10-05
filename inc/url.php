@@ -350,15 +350,8 @@ function wplng_get_url_current() {
  * @return string
  */
 function wplng_get_url_current_for_language( $language_id ) {
-
-	global $wplng_request_uri;
-	$path = wplng_get_url_original( $wplng_request_uri );
-
-	if ( wplng_url_is_translatable( $path )
-		&& ( wplng_get_language_website_id() !== $language_id )
-	) {
-		$path = '/' . $language_id . $path;
-	}
-
-	return home_url( $path );
+	return wplng_url_translate(
+		wplng_get_url_original(),
+		$language_id
+	);
 }
