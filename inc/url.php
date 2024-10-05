@@ -54,11 +54,28 @@ function wplng_url_translate( $url, $language_target_id = '' ) {
 		&& preg_match( '#^(http:\/\/|https:\/\/)?' . $preg_domain . '(.*)$#', $url )
 	) {
 
+		/**
+		 * It's an URL starting y a domain name
+		 */
+
 		// Check if URL is already translated
 		foreach ( $languages_target as $language_target ) {
 			if ( wplng_str_contains( $url, '/' . $language_target['id'] . '/' ) ) {
 				return $url;
 			}
+		}
+
+		$parsed_url = wp_parse_url( $url );
+
+		if ( ! empty( $parsed_url['path'] ) ) {
+			$url = str_replace(
+				$parsed_url['path'],
+				wplng_slug_translate_path(
+					$parsed_url['path'],
+					$language_target_id
+				),
+				$url
+			);
 		}
 
 		$url = preg_replace(
@@ -67,13 +84,15 @@ function wplng_url_translate( $url, $language_target_id = '' ) {
 			$url
 		);
 
-		$parsed_url = wp_parse_url( $url );
-
 		if ( empty( $parsed_url['fragment'] ) ) {
 			// Add slash at the end if is not an anchor link
 			$url = trailingslashit( $url );
 		}
 	} elseif ( preg_match( '#^[^\/]+\/[^\/].*$|^\/[^\/].*$#', $url ) ) {
+
+		/**
+		 * It's a path
+		 */
 
 		// Check if URL is already translated
 		foreach ( $languages_target as $language_target ) {
@@ -84,7 +103,12 @@ function wplng_url_translate( $url, $language_target_id = '' ) {
 			}
 		}
 
-		if ( '/' === substr( $url, 0, 1 ) ) {
+		$url = wplng_slug_translate_path(
+			$url,
+			$language_target_id
+		);
+
+		if ( wplng_str_starts_with( $url, '/' ) ) {
 			$url = '/' . $language_target_id . $url;
 		} else {
 			$url = $language_target_id . '/' . $url;
@@ -124,8 +148,17 @@ function wplng_url_is_translatable( $url = '' ) {
 		$is_translatable = false;
 	}
 
+	// Check if is wp-login.php
+	if ( $is_translatable
+		&& wplng_str_contains( $url, 'wp-login.php' )
+	) {
+		$is_translatable = false;
+	}
+
 	// Check if is a /feed/
-	if ( wplng_str_ends_with( $url, '/feed/' ) ) {
+	if ( $is_translatable
+		&& wplng_str_ends_with( $url, '/feed/' )
+	) {
 		$is_translatable = false;
 	}
 
@@ -257,10 +290,38 @@ function wplng_get_url_original( $url = '' ) {
 	$target = wplng_get_languages_target_ids();
 
 	foreach ( $target as $target_id ) {
-		$url = str_replace( '/' . $target_id . '/', '/', $url );
+
+		if ( ! wplng_str_contains( $url, '/' . $target_id . '/' ) ) {
+			continue;
+		}
+
+		$url = str_replace(
+			'/' . $target_id . '/',
+			'/',
+			$url
+		);
+
+		$parsed_url = wp_parse_url( $url );
+
+		if ( isset( $parsed_url['path'] )
+			&& $parsed_url['path'] !== ''
+			&& $parsed_url['path'] !== '/'
+		) {
+			$url = str_replace(
+				$parsed_url['path'],
+				wplng_slug_original_path(
+					$parsed_url['path'],
+					$target_id
+				),
+				$url
+			);
+		}
+
+		break;
 	}
 
-	$url = esc_url_raw( $url );
+	// TODO : Maintain ?
+	// $url = esc_url_raw( $url );
 
 	$url = apply_filters(
 		'wplng_url_original',

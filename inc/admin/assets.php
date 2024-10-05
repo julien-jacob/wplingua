@@ -350,6 +350,39 @@ function wplng_translation_assets() {
 
 
 /**
+ * Register wpLingua assets on slugs edit pages
+ *
+ * @return void
+ */
+function wplng_slug_assets() {
+
+	global $post_type;
+
+	if ( 'wplng_slug' === $post_type ) {
+
+		/**
+		 * Enqueue jQuery
+		 */
+
+		wp_enqueue_script( 'jquery' );
+
+		/**
+		 * Enqueue wpLingua CSS styles
+		 */
+
+		wp_enqueue_style(
+			'wplingua-slug',
+			plugins_url() . '/wplingua/assets/css/admin/slug.css',
+			array(),
+			WPLNG_PLUGIN_VERSION
+		);
+
+	}
+
+}
+
+
+/**
  * Print wpLingua head script (JSON with all languages informations)
  *
  * @return void

@@ -29,8 +29,7 @@ function wplng_ob_start() {
 		return;
 	}
 
-	$origin_path = '/' . substr( $current_path, 4, strlen( $current_path ) - 1 );
-	$origin_path = sanitize_url( $origin_path );
+	$origin_path = wplng_get_url_original($current_path);
 
 	if ( ! wplng_url_is_translatable( $origin_path ) ) {
 		wp_safe_redirect( $origin_path );

@@ -193,6 +193,48 @@ function wplng_start() {
 		add_action( 'admin_head-edit.php', 'wplng_translation_status_style', 10, 2 );
 
 		/**
+		 * wplng_translation : CPT, taxo, meta
+		 */
+
+		// Register wplng_translation CPT
+		add_action( 'init', 'wplng_register_post_type_slug' );
+
+		// Add metabox for wplng_slug
+		add_action( 'add_meta_boxes_wplng_slug', 'wplng_slug_add_meta_box' );
+
+		// Save metabox on posts saving
+		add_action( 'save_post_wplng_slug', 'wplng_slug_save_meta_boxes_data', 10, 2 );
+
+		// Clear slugs cache on trash / untrash
+		add_action( 'trashed_post', 'wplng_clear_slugs_cache_trash_untrash' );
+		add_action( 'untrash_post', 'wplng_clear_slugs_cache_trash_untrash' );
+		add_action( 'delete_post', 'wplng_clear_slugs_cache_trash_untrash' );
+
+		// Enqueue Script for wplng_translation admin
+		add_action( 'admin_print_scripts-post-new.php', 'wplng_slug_assets' );
+		add_action( 'admin_print_scripts-post.php', 'wplng_slug_assets' );
+
+		// Remove Quick edit from slugs list
+		add_filter( 'post_row_actions', 'wplng_slug_remove_quick_edit', 10, 2 );
+
+		// // Ajax function for regenerate translation on edit page
+		// add_action( 'wp_ajax_wplng_ajax_translation', 'wplng_ajax_generate_translation' );
+
+		// Display 100 translation in admin area by default
+		add_filter( 'get_user_option_edit_wplng_slug_per_page', 'wplng_slug_per_page' );
+
+		// // Filter translations by status
+		// add_action( 'restrict_manage_posts', 'wplng_restrict_manage_posts_translation_status' );
+		// add_filter( 'parse_query', 'wplng_posts_filter_translation_status' );
+
+		// // Translation status on website translations list
+		// add_filter( 'post_class', 'wplng_post_class_translation_status', 10, 3 );
+		// add_filter( 'post_row_actions', 'wplng_post_row_actions_status', 10, 2 );
+		// add_filter( 'manage_wplng_translation_posts_columns', 'wplng_translation_status_columns' );
+		// add_action( 'manage_wplng_translation_posts_custom_column', 'wplng_translation_status_item', 10, 2 );
+		// add_action( 'admin_head-edit.php', 'wplng_translation_status_style', 10, 2 );
+
+		/**
 		 * Front
 		 */
 
