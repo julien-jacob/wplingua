@@ -39,14 +39,16 @@ function wplng_ob_start() {
 		exit;
 	}
 
-	$origin_path_translated = wplng_url_translate(
-		$origin_path,
-		$language_current_id
-	);
-
-	if ( $current_path !== $origin_path_translated ) {
-		wp_safe_redirect( $origin_path_translated );
-		exit;
+	if ('/' !== $origin_path && '' !== $origin_path) {
+		$origin_path_translated = wplng_url_translate(
+			$origin_path,
+			$language_current_id
+		);
+	
+		if ( $current_path !== $origin_path_translated ) {
+			wp_safe_redirect( $origin_path_translated );
+			exit;
+		}
 	}
 
 	$_SERVER['REQUEST_URI'] = $origin_path;
