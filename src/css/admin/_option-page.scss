@@ -107,6 +107,9 @@
     vertical-align: baseline;
 }
 
+// Hide other plusgins ads and notices
+
+#nri-slug-wrapper, // Plugin: backup-backup
 .notice:not(.wplng-notice) {
     display: none !important;
 }

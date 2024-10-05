@@ -34,8 +34,14 @@ function wplng_data_json_to_translate() {
 			array( 'wc_country_select_params', 'i18n_searching' ),
 			array( 'wc_address_i18n_params', 'i18n_required_text' ),
 			array( 'wc_address_i18n_params', 'i18n_optional_text' ),
+
 			// Plugin : YITH
 			array( 'yith_wcwl_l10n', 'labels', 'cookie_disabled' ),
+			
+			// Plugin : WF Cookie Consent
+			array( 'wfCookieConsentSettings', 'wf_cookietext' ),
+			array( 'wfCookieConsentSettings', 'wf_dismisstext' ),
+			array( 'wfCookieConsentSettings', 'wf_linktext' ),
 		)
 	);
 }
@@ -209,6 +215,10 @@ function wplng_data_attr_text_to_translate() {
 			array(
 				'attr'     => 'content',
 				'selector' => 'meta[property="article:section"]',
+			),
+			array(
+				'attr'     => 'content',
+				'selector' => 'meta[name="description"]',
 			),
 			// Open Graph
 			array(
