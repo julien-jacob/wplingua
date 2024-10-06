@@ -45,8 +45,8 @@ function wplng_admin_bar_menu() {
 		return;
 	}
 
-	$url          = wplng_get_url_current();
-	$url_original = remove_query_arg(
+	$url       = wplng_get_url_current();
+	$url_clean = remove_query_arg(
 		array( 'wplng-mode', 'wplng-load', 'wplng-nocache' ),
 		$url
 	);
@@ -63,7 +63,7 @@ function wplng_admin_bar_menu() {
 				'id'     => 'wplingua-return',
 				'parent' => 'wplingua-menu',
 				'title'  => __( 'Return on page', 'wplingua' ),
-				'href'   => $url_original,
+				'href'   => $url_clean,
 			)
 		);
 	}
@@ -111,7 +111,7 @@ function wplng_admin_bar_menu() {
 						'wplng-mode',
 						'editor',
 						wplng_url_translate(
-							wplng_get_url_original( $url_original ),
+							wplng_get_url_original( $url_clean ),
 							$language['id']
 						)
 					),
@@ -127,7 +127,7 @@ function wplng_admin_bar_menu() {
 						'wplng-mode',
 						'list',
 						wplng_url_translate(
-							wplng_get_url_original( $url_original ),
+							wplng_get_url_original( $url_clean ),
 							$language['id']
 						)
 					),
@@ -137,4 +137,64 @@ function wplng_admin_bar_menu() {
 		} // End foreach ( $languages_target as $language )
 	} // End if ( ! empty( $languages_target ) )
 
+	/**
+	 * Edit slug translation link
+	 */
+
+	$url_original        = wplng_get_url_original( $url_clean );
+	$url_original_parsed = parse_url( $url_original );
+
+	if ( ! isset( $url_original_parsed['path'] ) ) {
+		return;
+	}
+
+	$path = $url_original_parsed['path'];
+
+	// Return path if no contains slug
+
+	if ( '/' === $path || '' === $path ) {
+		return;
+	}
+
+	// Transform the multi part slug to an slug array
+
+	$slugs = explode( '/', $path );
+	$slugs = array_filter( $slugs );
+
+	$last_slug = '';
+
+	foreach ( $slugs as $slug ) {
+		if ( '/' === $slug || '' === $slug ) {
+			continue;
+		}
+		$last_slug = $slug;
+	}
+
+	if ( '/' === $last_slug || '' === $last_slug ) {
+		return;
+	}
+
+	$slug_id = wplng_get_slug_saved_from_original( $last_slug );
+
+	if ( false === $slug_id ) {
+		$slug_id = wplng_create_slug( $slug );
+	}
+
+	$edit_slug_link = get_edit_post_link( $slug_id );
+
+	if ( ! is_string( $edit_slug_link ) ) {
+		return;
+	}
+
+	$wp_admin_bar->add_menu(
+		array(
+			'id'     => 'wplingua-slug',
+			'parent' => 'wplingua-menu',
+			'title'  => __( 'Edit the page slug', 'wplingua' ),
+			'href'   => $edit_slug_link,
+			'meta'   => array(
+				'target' => '_blank',
+			),
+		)
+	);
 }
