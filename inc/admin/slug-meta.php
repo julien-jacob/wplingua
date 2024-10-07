@@ -413,9 +413,6 @@ function wplng_slug_save_meta_boxes_data( $post_id ) {
  */
 function wplng_ajax_generate_slug() {
 
-	// TODO : Disabled function
-	wp_send_json_error( __( 'Disabled function', 'wplingua' ) );
-
 	/**
 	 * Check and sanitize data
 	 */
@@ -447,7 +444,17 @@ function wplng_ajax_generate_slug() {
 	}
 
 	// Check and sanitize text to translate
-	// (And convert img emoji to emoji)
+
+	$text = $_POST['text'];
+	$text = wplng_text_esc( $text );
+
+	$text = str_replace(
+		array( '/', '-', '_' ),
+		array( '', ' ', ' ' ),
+		$text
+	);
+
+	// Remove img emoji
 
 	$text = wp_kses(
 		$_POST['text'],
@@ -460,14 +467,18 @@ function wplng_ajax_generate_slug() {
 
 	$text = preg_replace(
 		'/<img alt=\\"(.*)\\">/U',
-		'$1',
+		'',
 		$text
 	);
 
-	$text = wplng_text_esc( $text );
+	// Check if slug is stranlatable
 
 	if ( ! wplng_text_is_translatable( $text ) ) {
-		wp_send_json_success( $text );
+		wp_send_json_success(
+			sanitize_title(
+				'/' . $text . '/'
+			)
+		);
 		return;
 	}
 
@@ -486,5 +497,7 @@ function wplng_ajax_generate_slug() {
 		return;
 	}
 
-	wp_send_json_success( $response[0] );
+	$response = '/' . sanitize_title( $response[0] ) . '/';
+
+	wp_send_json_success( $response );
 }
