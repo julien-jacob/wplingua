@@ -217,8 +217,8 @@ function wplng_start() {
 		// Remove Quick edit from slugs list
 		add_filter( 'post_row_actions', 'wplng_slug_remove_quick_edit', 10, 2 );
 
-		// // Ajax function for regenerate translation on edit page
-		// add_action( 'wp_ajax_wplng_ajax_translation', 'wplng_ajax_generate_translation' );
+		// Ajax function for regenerate slug on edit page
+		add_action( 'wp_ajax_wplng_ajax_slug', 'wplng_ajax_generate_slug' );
 
 		// Display 100 translation in admin area by default
 		add_filter( 'get_user_option_edit_wplng_slug_per_page', 'wplng_slug_per_page' );

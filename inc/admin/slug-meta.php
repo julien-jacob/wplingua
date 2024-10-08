@@ -457,7 +457,7 @@ function wplng_ajax_generate_slug() {
 	// Remove img emoji
 
 	$text = wp_kses(
-		$_POST['text'],
+		$text,
 		array(
 			'img' => array(
 				'alt' => array(),
@@ -481,6 +481,9 @@ function wplng_ajax_generate_slug() {
 		);
 		return;
 	}
+
+	// wp_send_json_error( $text );
+	// 	return;
 
 	/**
 	 * Call API and get translation
