@@ -77,3 +77,154 @@ function wplng_slug_per_page( $result ) {
 
 	return $result;
 }
+
+
+
+/**
+ * Filter slugs by status: Display option on CPT list
+ *
+ * @return void
+ */
+function wplng_restrict_manage_posts_slug_status() {
+
+	if ( empty( $_GET['post_type'] )
+		|| 'wplng_slug' !== $_GET['post_type']
+	) {
+		return;
+	}
+
+	$languages_target   = wplng_get_languages_target_ids();
+	$options            = array();
+	$slug_status = '';
+
+	if ( ! empty( $_GET['slug_status'] ) ) {
+		$slug_status = sanitize_title( $_GET['slug_status'] );
+	}
+
+	if ( count( $languages_target ) === 1 ) {
+		$options = array(
+			''           => __( 'All slug status', 'wplingua' ),
+			'reviewed'   => __( 'Reviewed', 'wplingua' ),
+			'unreviewed' => __( 'Unreviewed', 'wplingua' ),
+		);
+	} else {
+		$options = array(
+			''                   => __( 'All slug status', 'wplingua' ),
+			'full-reviewed'      => __( 'Full reviewed', 'wplingua' ),
+			'partially-reviewed' => __( 'Partially reviewed', 'wplingua' ),
+			'reviewed'           => __( 'Reviewed', 'wplingua' ),
+			'unreviewed'         => __( 'Full unreviewed', 'wplingua' ),
+		);
+	}
+
+	$html = '<select name="slug_status">';
+
+	foreach ( $options as $value => $label ) {
+
+		$html .= '<option ';
+		$html .= 'value="' . esc_attr( $value ) . '" ';
+
+		if ( $value === $slug_status ) {
+			$html .= 'selected="selected" ';
+		}
+
+		$html .= '>';
+		$html .= esc_html( $label );
+		$html .= '</option>';
+	}
+
+	$html .= '</select>';
+
+	echo $html;
+}
+
+
+/**
+ * Filter slugs by status: Apply custom query on CPT for slug_status
+ *
+ * @param object $query
+ * @return void
+ */
+function wplng_posts_filter_slug_status( $query ) {
+
+	global $pagenow;
+
+	if ( empty( $_GET['post_type'] )
+		|| 'wplng_slug' !== $_GET['post_type']
+		|| empty( $_GET['slug_status'] )
+		|| ! is_admin()
+		|| $pagenow !== 'edit.php'
+	) {
+		return;
+	}
+
+	switch ( $_GET['slug_status'] ) {
+		case 'full-reviewed':
+			$query->set(
+				'meta_query',
+				array(
+					'relation' => 'AND',
+					array(
+						'key'     => 'wplng_slug_translations',
+						'value'   => '"status":\d',
+						'compare' => 'REGEXP',
+					),
+					array(
+						'key'     => 'wplng_slug_translations',
+						'value'   => '("status":"ungenerated"|"status":"generated")',
+						'compare' => 'NOT REGEXP',
+					),
+				)
+			);
+			break;
+
+		case 'partially-reviewed':
+			$query->set(
+				'meta_query',
+				array(
+					'relation' => 'AND',
+					array(
+						'key'     => 'wplng_slug_translations',
+						'value'   => '"status":\d',
+						'compare' => 'REGEXP',
+					),
+					array(
+						'key'     => 'wplng_slug_translations',
+						'value'   => '("status":"ungenerated"|"status":"generated")',
+						'compare' => 'REGEXP',
+					),
+				)
+			);
+			break;
+
+		case 'reviewed':
+			$query->set(
+				'meta_query',
+				array(
+					'relation' => 'AND',
+					array(
+						'key'     => 'wplng_slug_translations',
+						'value'   => '"status":\d',
+						'compare' => 'REGEXP',
+					),
+				)
+			);
+			break;
+
+		case 'unreviewed':
+			$query->set(
+				'meta_query',
+				array(
+					'relation' => 'AND',
+					array(
+						'key'     => 'wplng_slug_translations',
+						'value'   => '"status":\d',
+						'compare' => 'NOT REGEXP',
+					),
+				)
+			);
+			break;
+
+	}
+
+}

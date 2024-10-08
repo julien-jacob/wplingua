@@ -223,9 +223,9 @@ function wplng_start() {
 		// Display 100 translation in admin area by default
 		add_filter( 'get_user_option_edit_wplng_slug_per_page', 'wplng_slug_per_page' );
 
-		// // Filter translations by status
-		// add_action( 'restrict_manage_posts', 'wplng_restrict_manage_posts_translation_status' );
-		// add_filter( 'parse_query', 'wplng_posts_filter_translation_status' );
+		// Filter slugs by status
+		add_action( 'restrict_manage_posts', 'wplng_restrict_manage_posts_slug_status' );
+		add_filter( 'parse_query', 'wplng_posts_filter_slug_status' );
 
 		// // Translation status on website translations list
 		// add_filter( 'post_class', 'wplng_post_class_translation_status', 10, 3 );
