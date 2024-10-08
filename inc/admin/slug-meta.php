@@ -482,9 +482,6 @@ function wplng_ajax_generate_slug() {
 		return;
 	}
 
-	// wp_send_json_error( $text );
-	// 	return;
-
 	/**
 	 * Call API and get translation
 	 */
