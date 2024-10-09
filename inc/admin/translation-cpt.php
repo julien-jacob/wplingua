@@ -379,7 +379,7 @@ function wplng_translation_status_item( $column, $post_id ) {
  * @param WP_Post $post The post object.
  * @return string[]
  */
-function wplng_post_row_actions_status( $actions, $post ) {
+function wplng_post_row_actions_translation_status( $actions, $post ) {
 
 	if ( 'wplng_translation' !== $post->post_type ) {
 		return $actions;
