@@ -71,6 +71,11 @@ function wplng_slug_editor_get_html( $post ) {
 		$language    = wplng_get_language_by_id( $language_id );
 		$alt         = __( 'Flag for language: ', 'wplingua' ) . $language['name'];
 
+		$slug = $meta['wplng_slug_original'][0];
+		$slug = sanitize_title( $slug );
+		$slug = urldecode( $slug );
+		$slug = '/' . $slug . '/';
+
 		$html .= '<div id="wplng-original-language" wplng-lang="' . esc_attr( $language_id ) . '">';
 		$html .= '<div id="wplng-source-title">';
 		$html .= '<img';
@@ -82,7 +87,7 @@ function wplng_slug_editor_get_html( $post ) {
 		$html .= esc_html__( ' - Original slug: ', 'wplingua' );
 		$html .= '</div>'; // End #wplng-source-title
 		$html .= '<div id="wplng-source">/';
-		$html .= esc_html( sanitize_title( $meta['wplng_slug_original'][0] ) );
+		$html .= esc_html( $slug );
 		$html .= '/</div>'; // End #wplng-source
 		$html .= '</div>'; // End #wplng-original-language
 
@@ -146,10 +151,14 @@ function wplng_slug_editor_get_html( $post ) {
 			$is_reviewed    = false;
 
 			if ( '[WPLNG_EMPTY]' === $slug_input ) {
-				$slug_input = sanitize_title( $meta['wplng_slug_original'][0] );
-			} else {
-				$slug_input = sanitize_title( $slug_input );
+				$slug_input = $meta['wplng_slug_original'][0];
 			}
+
+			$slug_input = urldecode(
+				sanitize_title(
+					$slug_input
+				)
+			);
 
 			switch ( $translation['status'] ) {
 				case 'ungenerated':
@@ -366,7 +375,6 @@ function wplng_slug_save_meta_boxes_data( $post_id ) {
 			continue;
 		}
 
-		// $temp = stripslashes( wplng_text_esc( $_REQUEST[ $name ] ) );
 		$temp = sanitize_title( $_REQUEST[ $name ] );
 
 		if ( empty( $temp ) || $slug_original === $temp ) {
@@ -392,17 +400,14 @@ function wplng_slug_save_meta_boxes_data( $post_id ) {
 		$translations[ $key ]['translation'] = esc_html( $temp );
 	}
 
-	// TODO : Clear cache ?
-
-	return update_post_meta(
+	return true === update_post_meta(
 		$post_id,
 		'wplng_slug_translations',
 		wp_json_encode(
 			$translations,
 			JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES
 		)
-	) === true;
-
+	);
 }
 
 
@@ -497,7 +502,10 @@ function wplng_ajax_generate_slug() {
 		return;
 	}
 
-	$response = '/' . sanitize_title( $response[0] ) . '/';
+	$response = $response[0];
+	$response = sanitize_title( $response );
+	$response = urldecode( $response );
+	$response = '/' . $response . '/';
 
 	wp_send_json_success( $response );
 }
