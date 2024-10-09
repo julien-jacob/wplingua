@@ -13,7 +13,9 @@ if ( ! defined( 'WPINC' ) ) {
  */
 function wplng_link_alternate_hreflang() {
 
-	if ( ! wplng_url_is_translatable() ) {
+	if ( ! wplng_url_is_translatable() 
+		|| is_404()
+	) {
 		return;
 	}
 
