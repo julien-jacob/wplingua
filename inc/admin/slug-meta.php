@@ -74,7 +74,6 @@ function wplng_slug_editor_get_html( $post ) {
 		$slug = $meta['wplng_slug_original'][0];
 		$slug = sanitize_title( $slug );
 		$slug = urldecode( $slug );
-		$slug = '/' . $slug . '/';
 
 		$html .= '<div id="wplng-original-language" wplng-lang="' . esc_attr( $language_id ) . '">';
 		$html .= '<div id="wplng-source-title">';
