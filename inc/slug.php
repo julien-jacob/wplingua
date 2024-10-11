@@ -25,6 +25,7 @@ function wplng_slug_original( $slug, $language_id, $slugs_translations = false )
 		}
 
 		$slug = $slug_translations['source'];
+
 		break;
 	}
 
@@ -122,7 +123,7 @@ function wplng_slug_translate( $slug, $language_id, $slugs_translations = false 
 	/**
 	 * Slug translation is not in slug cache
 	 * Check if exist in DB
-	 * 
+	 *
 	 * If not exist, create it
 	 */
 
@@ -220,6 +221,10 @@ function wplng_slug_translate_path( $path, $language_id ) {
 
 
 function wplng_create_slug( $slug ) {
+
+	if ( is_404() ) {
+		return false;
+	}
 
 	$slug = sanitize_title( $slug );
 

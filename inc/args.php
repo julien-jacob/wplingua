@@ -41,6 +41,18 @@ function wplng_args_setup( &$args ) {
 	}
 
 	/**
+	 * Get count_texts
+	 */
+
+	 if ( ! isset( $args['count_texts'] )
+		|| ! is_int( $args['count_texts'] )
+	) {
+		$args_clear['count_texts'] = 0;
+	} else {
+		$args_clear['count_texts'] = $args['count_texts'];
+	}
+
+	/**
 	 * Get mode (vanilla/editor/list)
 	 */
 
@@ -69,22 +81,11 @@ function wplng_args_setup( &$args ) {
 			|| 'progress' === $args['load']
 			|| 'loading' === $args['load']
 		)
+		&& $args_clear['count_texts'] > 0
 	) {
 		$args_clear['load'] = $args['load'];
 	} else {
 		$args_clear['load'] = 'disabled';
-	}
-
-	/**
-	 * Get count_texts
-	 */
-
-	if ( ! isset( $args['count_texts'] )
-		|| ! is_int( $args['count_texts'] )
-	) {
-		$args_clear['count_texts'] = 0;
-	} else {
-		$args_clear['count_texts'] = $args['count_texts'];
 	}
 
 	/**

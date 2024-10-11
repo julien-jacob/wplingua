@@ -259,6 +259,9 @@ function wplng_start() {
 		 // Manage URL with REQUEST_URI and start OB
 		add_action( 'init', 'wplng_ob_start', 1 );
 
+		// Redirect page if is called wiht an untranslate slug
+		add_action( 'template_redirect', 'wplng_redirect_translated_slug' );
+
 		/**
 		 * Features
 		 */

@@ -307,6 +307,7 @@ function wplng_get_url_original( $url = '' ) {
 			&& $parsed_url['path'] !== ''
 			&& $parsed_url['path'] !== '/'
 		) {
+
 			$url = str_replace(
 				$parsed_url['path'],
 				wplng_slug_original_path(
@@ -320,9 +321,6 @@ function wplng_get_url_original( $url = '' ) {
 		break;
 	}
 
-	// TODO : Maintain ?
-	// $url = esc_url_raw( $url );
-
 	$url = apply_filters(
 		'wplng_url_original',
 		$url
@@ -333,13 +331,23 @@ function wplng_get_url_original( $url = '' ) {
 
 
 /**
+ * Get current path
+ *
+ * @return string
+ */
+function wplng_get_path_current() {
+	global $wplng_request_uri;
+	return $wplng_request_uri;
+}
+
+
+/**
  * Get current URL
  *
  * @return string
  */
 function wplng_get_url_current() {
-	global $wplng_request_uri;
-	return home_url( $wplng_request_uri );
+	return home_url( wplng_get_path_current() );
 }
 
 

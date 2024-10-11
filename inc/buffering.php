@@ -7,6 +7,51 @@ if ( ! defined( 'WPINC' ) ) {
 
 
 /**
+ * Redirect page if is called wiht an untranslate slug to the translated URL
+ *
+ * @return void
+ */
+function wplng_redirect_translated_slug() {
+
+	if ( is_404() ) {
+		return;
+	}
+
+	$language_website_id = wplng_get_language_website_id();
+	$language_current_id = wplng_get_language_current_id();
+
+	if ( $language_website_id === $language_current_id ) {
+		return;
+	}
+
+	$url_current = wplng_get_url_current();
+
+	if ( ! is_string( $url_current )
+		|| '' === $url_current
+		|| '/' === $url_current
+	) {
+		return;
+	}
+
+	$url_translated = wplng_get_url_current_for_language(
+		$language_current_id
+	);
+
+	if ( $url_current === $url_translated ) {
+		return;
+	}
+
+	wp_safe_redirect(
+		wp_make_link_relative(
+			$url_translated
+		)
+	);
+
+	exit;
+}
+
+
+/**
  * wpLingua output buffering starting function
  *
  * @return void
@@ -37,19 +82,6 @@ function wplng_ob_start() {
 	if ( ! wplng_url_is_translatable( $origin_path ) ) {
 		wp_safe_redirect( $origin_path );
 		exit;
-	}
-
-	if ( '/' !== $origin_path && '' !== $origin_path ) {
-
-		$origin_path_translated = wplng_url_translate(
-			$origin_path,
-			$language_current_id
-		);
-
-		if ( $current_path !== $origin_path_translated ) {
-			wp_safe_redirect( $origin_path_translated );
-			exit;
-		}
 	}
 
 	$_SERVER['REQUEST_URI'] = $origin_path;
