@@ -384,15 +384,14 @@ function wplng_translation_save_meta_boxes_data( $post_id ) {
 		$translations[ $key ]['translation'] = esc_html( $temp );
 	}
 
-	return update_post_meta(
+	return true === update_post_meta(
 		$post_id,
 		'wplng_translation_translations',
 		wp_json_encode(
 			$translations,
 			JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES
 		)
-	) === true;
-
+	);
 }
 
 

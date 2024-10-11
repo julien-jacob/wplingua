@@ -119,20 +119,20 @@ function wplng_slug_translate( $slug, $language_id, $slugs_translations = false 
 		break;
 	}
 
-	if ( false === $slug_translation_exist ) {
-		/**
-		 * Slug translation is not in slug cache
-		 * Check if exist in DB
-		 * If not exist, create it
-		 */
+	/**
+	 * Slug translation is not in slug cache
+	 * Check if exist in DB
+	 * 
+	 * If not exist, create it
+	 */
 
-		if ( false === wplng_get_slug_saved_from_original( $slug ) ) {
-			wplng_create_slug( $slug );
-		}
+	if ( false === $slug_translation_exist
+		&& false === wplng_get_slug_saved_from_original( $slug )
+	) {
+		wplng_create_slug( $slug );
 	}
 
 	return $slug;
-
 }
 
 
