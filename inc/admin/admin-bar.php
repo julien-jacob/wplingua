@@ -141,6 +141,10 @@ function wplng_admin_bar_menu() {
 	 * Edit slug translation link
 	 */
 
+	if ( is_404() ) {
+		return;
+	}
+
 	$url_original        = wplng_get_url_original( $url_clean );
 	$url_original_parsed = parse_url( $url_original );
 
@@ -170,7 +174,10 @@ function wplng_admin_bar_menu() {
 		$last_slug = $slug;
 	}
 
-	if ( '/' === $last_slug || '' === $last_slug ) {
+	if ( '/' === $last_slug
+		|| '' === $last_slug
+		|| ! wplng_text_is_translatable( $last_slug )
+	) {
 		return;
 	}
 
