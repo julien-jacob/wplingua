@@ -93,9 +93,9 @@ function wplng_restrict_manage_posts_slug_status() {
 		return;
 	}
 
-	$languages_target   = wplng_get_languages_target_ids();
-	$options            = array();
-	$slug_status = '';
+	$languages_target = wplng_get_languages_target_ids();
+	$options          = array();
+	$slug_status      = '';
 
 	if ( ! empty( $_GET['slug_status'] ) ) {
 		$slug_status = sanitize_title( $_GET['slug_status'] );

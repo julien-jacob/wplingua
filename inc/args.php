@@ -44,7 +44,7 @@ function wplng_args_setup( &$args ) {
 	 * Get count_texts
 	 */
 
-	 if ( ! isset( $args['count_texts'] )
+	if ( ! isset( $args['count_texts'] )
 		|| ! is_int( $args['count_texts'] )
 	) {
 		$args_clear['count_texts'] = 0;
