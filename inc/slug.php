@@ -272,6 +272,7 @@ function wplng_create_slug( $slug ) {
 	$tite_max_length = 100;
 	$title           = mb_substr( $slug, 0, $tite_max_length );
 	$title           = sanitize_title( $slug );
+	$title           = urldecode( $slug );
 
 	if ( strlen( $slug ) > $tite_max_length ) {
 		$title = '/' . $title . __( '...', 'wplingua' );
