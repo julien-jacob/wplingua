@@ -84,7 +84,9 @@ function wplng_url_translate( $url, $language_target_id = '' ) {
 			$url
 		);
 
-		if ( empty( $parsed_url['fragment'] ) ) {
+		if ( empty( $parsed_url['fragment'] ) 
+			&& empty( $parsed_url['query'] )
+		) {
 			// Add slash at the end if is not an anchor link
 			$url = trailingslashit( $url );
 		}
