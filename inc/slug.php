@@ -18,8 +18,8 @@ function wplng_slug_original( $slug, $language_id, $slugs_translations = false )
 
 	foreach ( $slugs_translations as $slug_translations ) {
 
-		if ( ! isset( $slug_translations['translations'][ $language_id ]['translation'] )
-			|| $slug !== $slug_translations['translations'][ $language_id ]['translation']
+		if ( ! isset( $slug_translations['translations'][ $language_id ] )
+			|| $slug !== $slug_translations['translations'][ $language_id ]
 		) {
 			continue;
 		}
@@ -64,7 +64,7 @@ function wplng_slug_original_path( $path, $language_id ) {
 	 * Get the slug translation list and translate $path
 	 */
 
-	$slugs_translations = wplng_get_slugs_from_query();
+	$slugs_translations = wplng_get_slugs();
 
 	$path_original = '/';
 
@@ -114,7 +114,7 @@ function wplng_slug_translate( $slug, $language_id, $slugs_translations = false 
 			continue;
 		}
 
-		$slug = $slug_translations['translations'][ $language_id ]['translation'];
+		$slug = $slug_translations['translations'][ $language_id ];
 
 		$slug_translation_exist = true;
 		break;
@@ -364,7 +364,6 @@ function wplng_get_slugs_from_query() {
 		);
 
 		$translations = array();
-		$review       = array();
 
 		foreach ( $translations_meta as $translation_meta ) {
 
@@ -381,21 +380,6 @@ function wplng_get_slugs_from_query() {
 			$language_id = sanitize_key( $translation_meta['language_id'] );
 
 			/**
-			 * Status and Review
-			 */
-
-			$status = 'ungenerated';
-
-			if ( isset( $translation_meta['status'] ) ) {
-				if ( 'generated' === $translation_meta['status'] ) {
-					$status = 'generated';
-				} elseif ( is_int( $translation_meta['status'] ) ) {
-					$status   = $translation_meta['status'];
-					$review[] = $language_id;
-				}
-			}
-
-			/**
 			 * Slug translation
 			 */
 
@@ -409,21 +393,11 @@ function wplng_get_slugs_from_query() {
 
 			$translation = sanitize_title( $translation_meta['translation'] );
 
-			/**
-			 * Add slug translated to slug translations
-			 */
-
-			$translations[ $language_id ] = array(
-				'language_id' => $language_id,
-				'translation' => $translation,
-				'status'      => $status,
-			);
+			$translations[ $language_id ] = $translation;
 		}
 
 		$slugs[] = array(
 			'source'       => $source,
-			'post_id'      => get_the_ID(),
-			'review'       => $review,
 			'translations' => $translations,
 		);
 
@@ -440,34 +414,43 @@ function wplng_get_slugs_from_query() {
 }
 
 
-// TODO : Retourner les traduction de slug par langue ?
-// TODO : Checker les data
-// TODO : Retourner directement si ça vient de wplng_get_slugs_from_query() ?
+
 function wplng_get_slugs() {
 
-	$slugs_from_data = get_transient( 'wplng_cached_slugs' );
+	$slugs_from_cache = get_transient( 'wplng_cached_slugs' );
 
-	if ( ! is_array( $slugs_from_data ) ) {
-		$slugs_from_data = wplng_get_slugs_from_query();
+	if ( ! is_array( $slugs_from_cache ) ) {
+		return wplng_get_slugs_from_query();
 	}
 
 	$slugs = array();
 
-	foreach ( $slugs_from_data as $slug ) {
+	foreach ( $slugs_from_cache as $slug ) {
 
 		if ( empty( $slug['source'] )
 			|| ! is_string( $slug['source'] )
-			|| empty( $slug['post_id'] )
-			// || ! is_array( $slug['translations'] )
-			// || empty( $slug['translations'] )
-			// || ! is_string( $slug['translations'][ $target_language_id ] )
-			|| ! isset( $slug['review'] )
-			|| ! is_array( $slug['review'] )
+			|| ! is_array( $slug['translations'] )
 		) {
 			continue;
 		}
 
-		$slugs[] = $slug;
+		$translations        = array();
+		$language_target_ids = wplng_get_languages_target_ids();
+
+		foreach ( $slug['translations'] as $language_id => $translation ) {
+			if ( ! in_array( $language_id, $language_target_ids )
+				|| ! is_string( $translation )
+			) {
+				continue;
+			}
+
+			$translations[ $language_id ] = $translation;
+		}
+
+		$slugs[] = array(
+			'source'       => $slug['source'],
+			'translations' => $translations,
+		);
 
 	}
 
