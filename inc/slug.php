@@ -6,6 +6,14 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 
+/**
+ * Get the original slug from a translation (without "/")
+ *
+ * @param string $slug
+ * @param string $language_id
+ * @param array|false $slugs_translations
+ * @return array Original slug
+ */
 function wplng_slug_original( $slug, $language_id, $slugs_translations = false ) {
 
 	if ( ! wplng_text_is_translatable( $slug ) ) {
@@ -33,6 +41,13 @@ function wplng_slug_original( $slug, $language_id, $slugs_translations = false )
 }
 
 
+/**
+ * Get the original path from a translation
+ *
+ * @param string $path
+ * @param string $language_id
+ * @return string Original path
+ */
 function wplng_slug_original_path( $path, $language_id ) {
 
 	/**
@@ -90,10 +105,17 @@ function wplng_slug_original_path( $path, $language_id ) {
 	}
 
 	return $path_original;
-
 }
 
 
+/**
+ * Get a translated slug
+ *
+ * @param string $slug
+ * @param string $language_id
+ * @param array|false $slugs_translations
+ * @return string Translated slug
+ */
 function wplng_slug_translate( $slug, $language_id, $slugs_translations = false ) {
 
 	if ( ! wplng_text_is_translatable( $slug ) ) {
@@ -137,6 +159,13 @@ function wplng_slug_translate( $slug, $language_id, $slugs_translations = false 
 }
 
 
+/**
+ * Get a translated path
+ *
+ * @param string $path
+ * @param string $language_id
+ * @return string Translated path
+ */
 function wplng_slug_translate_path( $path, $language_id ) {
 
 	/**
@@ -218,8 +247,12 @@ function wplng_slug_translate_path( $path, $language_id ) {
 }
 
 
-
-
+/**
+ * Create a wplng_slug
+ *
+ * @param string $slug
+ * @return int|false The post ID or false
+ */
 function wplng_create_slug( $slug ) {
 
 	if ( is_404() ) {
@@ -414,7 +447,11 @@ function wplng_get_slugs_from_query() {
 }
 
 
-
+/**
+ * Get the slug translations
+ *
+ * @return array Slug translations
+ */
 function wplng_get_slugs() {
 
 	$slugs_from_cache = get_transient( 'wplng_cached_slugs' );
@@ -462,7 +499,7 @@ function wplng_get_slugs() {
  * Get slug data from original slug
  *
  * @param string $original
- * @return array Translation data
+ * @return array|false Translation data
  */
 function wplng_get_slug_saved_from_original( $original ) {
 
