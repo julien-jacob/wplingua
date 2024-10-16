@@ -120,12 +120,16 @@ function wplng_slug_editor_get_html( $post ) {
 					continue;
 				}
 
-				$is_in          = true;
-				$translations[] = $translation_data;
+				$is_in = true;
 
+				$translations[ $translation_data['language_id'] ] = array(
+					'language_id' => $translation_data['language_id'],
+					'translation' => $translation_data['translation'],
+					'status'      => $translation_data['status'],
+				);
+
+				break;
 			}
-
-			// TODO : CHeck
 
 			if ( ! $is_in ) {
 				$translations[] = array(
