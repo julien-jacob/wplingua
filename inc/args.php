@@ -81,7 +81,6 @@ function wplng_args_setup( &$args ) {
 			|| 'progress' === $args['load']
 			|| 'loading' === $args['load']
 		)
-		&& $args_clear['count_texts'] > 0
 	) {
 		$args_clear['load'] = $args['load'];
 	} else {
