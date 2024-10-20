@@ -7,20 +7,20 @@ if ( ! defined( 'WPINC' ) ) {
 
 
 /**
- * Register wpLingua Translation CPT
+ * Register wpLingua Slug CPT
  *
  * @return void
  */
-function wplng_register_post_type_translation() {
+function wplng_register_post_type_slug() {
 	register_post_type(
-		'wplng_translation',
+		'wplng_slug',
 		array(
 			'labels'              => array(
-				'name'          => __( 'Translations', 'wplingua' ),
-				'singular_name' => __( 'Translation', 'wplingua' ),
-				'all_items'     => __( 'All translations', 'wplingua' ),
-				'edit_item'     => __( 'Edit translation', 'wplingua' ),
-				'menu_name'     => __( 'Translations', 'wplingua' ),
+				'name'          => __( 'Website slugs', 'wplingua' ),
+				'singular_name' => __( 'Website slug', 'wplingua' ),
+				'all_items'     => __( 'All slugs', 'wplingua' ),
+				'edit_item'     => __( 'Edit slug', 'wplingua' ),
+				'menu_name'     => __( 'Website slugs', 'wplingua' ),
 			),
 			'public'              => false,
 			'publicly_queryable'  => false,
@@ -45,15 +45,15 @@ function wplng_register_post_type_translation() {
 
 
 /**
- * Remove quick edit on wpLingua translations list
+ * Remove quick edit on wpLingua slugs list
  *
  * @param array $actions
  * @param object $post
  * @return array
  */
-function wplng_translation_remove_quick_edit( $actions, $post ) {
+function wplng_slug_remove_quick_edit( $actions, $post ) {
 
-	if ( $post->post_type != 'wplng_translation' ) {
+	if ( $post->post_type != 'wplng_slug' ) {
 		return $actions;
 	}
 
@@ -70,7 +70,7 @@ function wplng_translation_remove_quick_edit( $actions, $post ) {
  * @param mixed $result
  * @return mixed
  */
-function wplng_translation_per_page( $result ) {
+function wplng_slug_per_page( $result ) {
 	if ( false === $result ) {
 		$result = '100';
 	}
@@ -79,36 +79,37 @@ function wplng_translation_per_page( $result ) {
 }
 
 
+
 /**
- * Filter translations by status: Display option on CPT list
+ * Filter slugs by status: Display option on CPT list
  *
  * @return void
  */
-function wplng_restrict_manage_posts_translation_status() {
+function wplng_restrict_manage_posts_slug_status() {
 
 	if ( empty( $_GET['post_type'] )
-		|| 'wplng_translation' !== $_GET['post_type']
+		|| 'wplng_slug' !== $_GET['post_type']
 	) {
 		return;
 	}
 
-	$languages_target   = wplng_get_languages_target_ids();
-	$options            = array();
-	$translation_status = '';
+	$languages_target = wplng_get_languages_target_ids();
+	$options          = array();
+	$slug_status      = '';
 
-	if ( ! empty( $_GET['translation_status'] ) ) {
-		$translation_status = sanitize_title( $_GET['translation_status'] );
+	if ( ! empty( $_GET['slug_status'] ) ) {
+		$slug_status = sanitize_title( $_GET['slug_status'] );
 	}
 
 	if ( count( $languages_target ) === 1 ) {
 		$options = array(
-			''           => __( 'All translation status', 'wplingua' ),
+			''           => __( 'All slug status', 'wplingua' ),
 			'reviewed'   => __( 'Reviewed', 'wplingua' ),
 			'unreviewed' => __( 'Unreviewed', 'wplingua' ),
 		);
 	} else {
 		$options = array(
-			''                   => __( 'All translation status', 'wplingua' ),
+			''                   => __( 'All slug status', 'wplingua' ),
 			'full-reviewed'      => __( 'Full reviewed', 'wplingua' ),
 			'partially-reviewed' => __( 'Partially reviewed', 'wplingua' ),
 			'reviewed'           => __( 'Reviewed', 'wplingua' ),
@@ -116,14 +117,14 @@ function wplng_restrict_manage_posts_translation_status() {
 		);
 	}
 
-	$html = '<select name="translation_status">';
+	$html = '<select name="slug_status">';
 
 	foreach ( $options as $value => $label ) {
 
 		$html .= '<option ';
 		$html .= 'value="' . esc_attr( $value ) . '" ';
 
-		if ( $value === $translation_status ) {
+		if ( $value === $slug_status ) {
 			$html .= 'selected="selected" ';
 		}
 
@@ -139,37 +140,37 @@ function wplng_restrict_manage_posts_translation_status() {
 
 
 /**
- * Filter translations by status: Apply custom query on CPT for translation_status
+ * Filter slugs by status: Apply custom query on CPT for slug_status
  *
  * @param object $query
  * @return void
  */
-function wplng_posts_filter_translation_status( $query ) {
+function wplng_posts_filter_slug_status( $query ) {
 
 	global $pagenow;
 
 	if ( empty( $_GET['post_type'] )
-		|| 'wplng_translation' !== $_GET['post_type']
-		|| empty( $_GET['translation_status'] )
+		|| 'wplng_slug' !== $_GET['post_type']
+		|| empty( $_GET['slug_status'] )
 		|| ! is_admin()
 		|| $pagenow !== 'edit.php'
 	) {
 		return;
 	}
 
-	switch ( $_GET['translation_status'] ) {
+	switch ( $_GET['slug_status'] ) {
 		case 'full-reviewed':
 			$query->set(
 				'meta_query',
 				array(
 					'relation' => 'AND',
 					array(
-						'key'     => 'wplng_translation_translations',
+						'key'     => 'wplng_slug_translations',
 						'value'   => '"status":\d',
 						'compare' => 'REGEXP',
 					),
 					array(
-						'key'     => 'wplng_translation_translations',
+						'key'     => 'wplng_slug_translations',
 						'value'   => '("status":"ungenerated"|"status":"generated")',
 						'compare' => 'NOT REGEXP',
 					),
@@ -183,12 +184,12 @@ function wplng_posts_filter_translation_status( $query ) {
 				array(
 					'relation' => 'AND',
 					array(
-						'key'     => 'wplng_translation_translations',
+						'key'     => 'wplng_slug_translations',
 						'value'   => '"status":\d',
 						'compare' => 'REGEXP',
 					),
 					array(
-						'key'     => 'wplng_translation_translations',
+						'key'     => 'wplng_slug_translations',
 						'value'   => '("status":"ungenerated"|"status":"generated")',
 						'compare' => 'REGEXP',
 					),
@@ -202,7 +203,7 @@ function wplng_posts_filter_translation_status( $query ) {
 				array(
 					'relation' => 'AND',
 					array(
-						'key'     => 'wplng_translation_translations',
+						'key'     => 'wplng_slug_translations',
 						'value'   => '"status":\d',
 						'compare' => 'REGEXP',
 					),
@@ -216,7 +217,7 @@ function wplng_posts_filter_translation_status( $query ) {
 				array(
 					'relation' => 'AND',
 					array(
-						'key'     => 'wplng_translation_translations',
+						'key'     => 'wplng_slug_translations',
 						'value'   => '"status":\d',
 						'compare' => 'NOT REGEXP',
 					),
@@ -229,13 +230,15 @@ function wplng_posts_filter_translation_status( $query ) {
 }
 
 
+
+
 /**
  * Add status custom column on translations
  *
  * @param array String array
  * @return array
  */
-function wplng_translation_status_columns( $columns ) {
+function wplng_slug_status_columns( $columns ) {
 
 	$cb = array();
 
@@ -249,7 +252,7 @@ function wplng_translation_status_columns( $columns ) {
 	$columns = array_merge(
 		$cb,
 		array(
-			'wplng_status' => __( 'Translation status', 'wplingua' ),
+			'wplng_status' => __( 'Slug status', 'wplingua' ),
 		),
 		$columns
 	);
@@ -259,24 +262,24 @@ function wplng_translation_status_columns( $columns ) {
 
 
 /**
- * Add translation status class on wplng_translation post list in admin area
+ * Add slug status class on wplng_slug post list in admin area
  *
  * @param string[] $classes An array of post class names.
  * @param string[] $css_class An array of additional class names added to the post.
  * @param int $post_id The post ID.
  * @return string[]
  */
-function wplng_post_class_translation_status( $classes, $css_class, $post_id ) {
+function wplng_post_class_slug_status( $classes, $css_class, $post_id ) {
 
 	global $typenow;
 
-	if ( 'wplng_translation' !== $typenow ) {
+	if ( 'wplng_slug' !== $typenow ) {
 		return $classes;
 	}
 
 	$translations = get_post_meta(
 		$post_id,
-		'wplng_translation_translations',
+		'wplng_slug_translations',
 		true
 	);
 
@@ -339,13 +342,13 @@ function wplng_post_class_translation_status( $classes, $css_class, $post_id ) {
 
 
 /**
- * Add status items in custom column on translations
+ * Add status items in custom column on slugs
  *
  * @param string $column The name of the column to display.
  * @param int $post_id The current post ID.
  * @return void
  */
-function wplng_translation_status_item( $column, $post_id ) {
+function wplng_slug_status_item( $column, $post_id ) {
 
 	if ( 'wplng_status' !== $column ) {
 		return;
@@ -371,7 +374,7 @@ function wplng_translation_status_item( $column, $post_id ) {
 
 
 /**
- * Add status items text on translations
+ * Add status items text on slugs
  *
  * Defaults $actions are 'Edit', ‘Quick Edit’, 'Restore', 'Trash', ‘Delete Permanently’, 'Preview', and 'View'.
  *
@@ -379,13 +382,13 @@ function wplng_translation_status_item( $column, $post_id ) {
  * @param WP_Post $post The post object.
  * @return string[]
  */
-function wplng_post_row_actions_translation_status( $actions, $post ) {
+function wplng_post_row_actions_slug_status( $actions, $post ) {
 
-	if ( 'wplng_translation' !== $post->post_type ) {
+	if ( 'wplng_slug' !== $post->post_type ) {
 		return $actions;
 	}
 
-	$html = __( 'Translation status: ', 'wplingua' );
+	$html = __( 'Slug status: ', 'wplingua' );
 
 	$html .= '<span';
 	$html .= ' class="wplng-status wplng-status-full-review"';
@@ -412,15 +415,15 @@ function wplng_post_row_actions_translation_status( $actions, $post ) {
 
 
 /**
- * Add inline CSS for status on translations
+ * Add inline CSS for status on slugs
  *
  * @return void
  */
-function wplng_translation_status_style() {
+function wplng_slug_status_style() {
 
 	global $typenow;
 
-	if ( 'wplng_translation' !== $typenow ) {
+	if ( 'wplng_slug' !== $typenow ) {
 		return;
 	}
 
@@ -428,7 +431,7 @@ function wplng_translation_status_style() {
 	<style>
 
 		/**
-		* wpLingua: Translation status design
+		* wpLingua: slug status design
 		*/
 
 		.manage-column.column-wplng_status {
@@ -444,7 +447,7 @@ function wplng_translation_status_style() {
 			display: none;
 		}
 
-		#the-list .type-wplng_translation .wplng_status.column-wplng_status {
+		#the-list .type-wplng_slug .wplng_status.column-wplng_status {
 			padding: 8px 4px;
 		}
 
@@ -454,40 +457,40 @@ function wplng_translation_status_style() {
 			font-size: 16px;
 		}
 
-		#the-list .type-wplng_translation .wplng-status-text {
+		#the-list .type-wplng_slug .wplng-status-text {
 			color: #1d2327;
 		}
 
-		#the-list .type-wplng_translation .wplng-status-text .wplng-status {
+		#the-list .type-wplng_slug .wplng-status-text .wplng-status {
 			font-weight: 600;
 		}
 
 		/* ------------------------------- */
 
-		#the-list .type-wplng_translation .wplng-status.wplng-status-full-review  {
+		#the-list .type-wplng_slug .wplng-status.wplng-status-full-review  {
 			color: #00a32a;
 		}
 
-		#the-list .type-wplng_translation .wplng-status.wplng-status-has-review  {
+		#the-list .type-wplng_slug .wplng-status.wplng-status-has-review  {
 			color: #72aee6;
 		}
 
-		#the-list .type-wplng_translation .wplng-status.wplng-status-unreview {
+		#the-list .type-wplng_slug .wplng-status.wplng-status-unreview {
 			color: #c3c4c7;
 		}
 
-		#the-list .type-wplng_translation .wplng-status-text .wplng-status.wplng-status-unreview {
+		#the-list .type-wplng_slug .wplng-status-text .wplng-status.wplng-status-unreview {
 			color: #1d2327;
 		}
 		
 		/* ------------------------------- */
 
-		#the-list .type-wplng_translation.wplng-status-full-review .wplng-status.wplng-status-has-review,
-		#the-list .type-wplng_translation.wplng-status-full-review .wplng-status.wplng-status-unreview,
-		#the-list .type-wplng_translation.wplng-status-has-review .wplng-status.wplng-status-full-review,
-		#the-list .type-wplng_translation.wplng-status-has-review .wplng-status.wplng-status-unreview,
-		#the-list .type-wplng_translation.wplng-status-unreview .wplng-status.wplng-status-full-review,
-		#the-list .type-wplng_translation.wplng-status-unreview .wplng-status.wplng-status-has-review {
+		#the-list .type-wplng_slug.wplng-status-full-review .wplng-status.wplng-status-has-review,
+		#the-list .type-wplng_slug.wplng-status-full-review .wplng-status.wplng-status-unreview,
+		#the-list .type-wplng_slug.wplng-status-has-review .wplng-status.wplng-status-full-review,
+		#the-list .type-wplng_slug.wplng-status-has-review .wplng-status.wplng-status-unreview,
+		#the-list .type-wplng_slug.wplng-status-unreview .wplng-status.wplng-status-full-review,
+		#the-list .type-wplng_slug.wplng-status-unreview .wplng-status.wplng-status-has-review {
 			display: none;
 		}
 	</style>

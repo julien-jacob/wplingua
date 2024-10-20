@@ -350,6 +350,72 @@ function wplng_translation_assets() {
 
 
 /**
+ * Register wpLingua assets on slugs edit pages
+ *
+ * @return void
+ */
+function wplng_slug_assets() {
+
+	global $post_type;
+
+	if ( 'wplng_slug' === $post_type ) {
+
+		/**
+		 * Enqueue jQuery
+		 */
+
+		wp_enqueue_script( 'jquery' );
+
+		/**
+		 * Enqueue wpLingua JS scripts
+		 */
+
+		wp_enqueue_script(
+			'wplingua-slug',
+			plugins_url() . '/wplingua/assets/js/admin/slug.js',
+			array( 'jquery' ),
+			WPLNG_PLUGIN_VERSION
+		);
+
+		/**
+		 * Localize script
+		 */
+
+		wp_localize_script(
+			'wplingua-slug',
+			'wplngLocalize',
+			array(
+				'ajaxUrl'         => admin_url( 'admin-ajax.php' ),
+				'currentLanguage' => false,
+				'message'         => array(
+					'exitPage'             => esc_html__(
+						'You are about to leave the page without saving your changes. They will be lost if you continue. Would you like to leave the page anyway?',
+						'wplingua'
+					),
+					'exitEditorModal'      => '',
+					'buttonSave'           => '',
+					'buttonSaveInProgress' => '',
+				),
+			)
+		);
+
+		/**
+		 * Enqueue wpLingua CSS styles
+		 */
+
+		wp_enqueue_style(
+			'wplingua-slug',
+			plugins_url() . '/wplingua/assets/css/admin/slug.css',
+			array(),
+			WPLNG_PLUGIN_VERSION
+		);
+
+	}
+
+}
+
+
+/**
  * Print wpLingua head script (JSON with all languages informations)
  *
  * @return void
