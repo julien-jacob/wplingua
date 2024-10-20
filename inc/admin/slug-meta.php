@@ -400,6 +400,44 @@ function wplng_slug_save_meta_boxes_data( $post_id ) {
 			}
 		}
 
+		// Check if another slug is translated with the same string
+
+		if ( '[WPLNG_EMPTY]' !== $temp ) {
+
+			$saved_slugs        = wplng_get_slugs();
+			$has_same_slugs     = true;
+			$same_slugs_counter = 0;
+
+			while ( $has_same_slugs ) {
+
+				$has_same_slugs = false;
+
+				foreach ( $saved_slugs as $saved_slug ) {
+
+					if ( $slug_original === $saved_slug['source']
+						|| ! isset( $saved_slug['translations'][ $translation['language_id'] ] )
+						|| $temp !== $saved_slug['translations'][ $translation['language_id'] ]
+					) {
+						continue;
+					}
+
+					$has_same_slugs = true;
+					$same_slugs_counter++;
+
+					$temp = preg_replace(
+						'#(.*)-(\d*)$#',
+						'$1',
+						$temp
+					);
+
+					$temp = $temp . '-' . $same_slugs_counter;
+
+					break;
+
+				}
+			}
+		}
+
 		$translations[ $key ]['translation'] = esc_html( $temp );
 	}
 
