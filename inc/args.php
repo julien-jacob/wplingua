@@ -178,8 +178,6 @@ function wplng_args_update_from_texts( &$args, $texts ) {
 
 	$texts = array_unique( $texts ); // Remove duplicate
 
-	error_log( var_export( $texts, true ) );
-
 	/**
 	 * Update args
 	 */
