@@ -19,7 +19,7 @@ jQuery(document).ready(function ($) {
      */
     function wplngResizeTextArea($element) {
         $element.height(0);
-        $element.height($element[0].scrollHeight);
+        $element.height($element[0].scrollHeight - 4);
     }
 
     /**
