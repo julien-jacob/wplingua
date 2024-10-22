@@ -3,6 +3,18 @@ jQuery(document).ready(function ($) {
     let wplngEditor = $("#wplng-translation-editor");
 
     /**
+     * Epand wpLingua sub-menu
+     */
+
+    $("#toplevel_page_wplingua-settings")
+        .removeClass("wp-not-current-submenu")
+        .addClass("wp-has-current-submenu");
+
+    $("a.toplevel_page_wplingua-settings")
+        .addClass("wp-menu-open")
+        .addClass("wp-has-current-submenu");
+
+    /**
      * Resize text area
      */
     function wplngResizeTextArea($element) {

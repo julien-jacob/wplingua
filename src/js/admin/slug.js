@@ -3,6 +3,18 @@ jQuery(document).ready(function ($) {
     let wplngEditor = $("#wplng-slug-editor");
 
     /**
+     * Epand wpLingua sub-menu
+     */
+
+    $("#toplevel_page_wplingua-settings")
+        .removeClass("wp-not-current-submenu")
+        .addClass("wp-has-current-submenu");
+
+    $("a.toplevel_page_wplingua-settings")
+        .addClass("wp-menu-open")
+        .addClass("wp-has-current-submenu");
+
+    /**
      * Prepare all events and default value on slug editor
      */
     function wplngUpdateEditorEvents() {
