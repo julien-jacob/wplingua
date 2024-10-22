@@ -41,6 +41,18 @@ function wplng_args_setup( &$args ) {
 	}
 
 	/**
+	 * Get count_texts
+	 */
+
+	if ( ! isset( $args['count_texts'] )
+		|| ! is_int( $args['count_texts'] )
+	) {
+		$args_clear['count_texts'] = 0;
+	} else {
+		$args_clear['count_texts'] = $args['count_texts'];
+	}
+
+	/**
 	 * Get mode (vanilla/editor/list)
 	 */
 
@@ -73,18 +85,6 @@ function wplng_args_setup( &$args ) {
 		$args_clear['load'] = $args['load'];
 	} else {
 		$args_clear['load'] = 'disabled';
-	}
-
-	/**
-	 * Get count_texts
-	 */
-
-	if ( ! isset( $args['count_texts'] )
-		|| ! is_int( $args['count_texts'] )
-	) {
-		$args_clear['count_texts'] = 0;
-	} else {
-		$args_clear['count_texts'] = $args['count_texts'];
 	}
 
 	/**
@@ -169,6 +169,16 @@ function wplng_args_update_from_texts( &$args, $texts ) {
 	}
 
 	/**
+	 * Texts: Sanitize and clear duplicated
+	 */
+
+	foreach ( $texts as $key => $text ) {
+		$texts[ $key ] = wplng_text_esc( $text );
+	}
+
+	$texts = array_unique( $texts ); // Remove duplicate
+
+	/**
 	 * Update args
 	 */
 
@@ -182,7 +192,7 @@ function wplng_args_update_from_texts( &$args, $texts ) {
 
 	/**
 	 * Get unknow texts
-	*/
+	 */
 
 	$texts_unknow = array();
 
@@ -235,7 +245,7 @@ function wplng_args_update_from_texts( &$args, $texts ) {
 
 	/**
 	 * Get new translated text
-	*/
+	 */
 
 	$texts_translated = wplng_api_call_translate(
 		$texts_unknow,
@@ -245,7 +255,7 @@ function wplng_args_update_from_texts( &$args, $texts ) {
 
 	/**
 	 * Save new translation as wplng_translation CPT
-	*/
+	 */
 
 	$translations_new = array();
 

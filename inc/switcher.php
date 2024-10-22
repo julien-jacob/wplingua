@@ -62,7 +62,7 @@ function wplng_get_switcher_theme() {
 	}
 
 	if ( ! $is_valid ) {
-		$theme = 'light-double-square';
+		$theme = 'light-simple-smooth';
 	}
 
 	$theme = apply_filters(

@@ -7,7 +7,7 @@
  * Author URI: https://wplingua.com/
  * Text Domain: wplingua
  * Domain Path: /languages/
- * Version: 2.0.2
+ * Version: 2.1.0
  * Requires PHP: 7.4
  * License: GPL v2 or later
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -24,7 +24,7 @@ if ( ! defined( 'WPINC' ) ) {
 define( 'WPLNG_API_URL', 'https://api.wplingua.com' );
 define( 'WPLNG_API_VERSION', '2.0' );
 define( 'WPLNG_API_SSLVERIFY', true );
-define( 'WPLNG_PLUGIN_VERSION', '2.0.2' );
+define( 'WPLNG_PLUGIN_VERSION', '2.1.0' );
 define( 'WPLNG_PLUGIN_FILE', plugin_basename( __FILE__ ) );
 define( 'WPLNG_PLUGIN_PATH', dirname( __FILE__ ) );
 define( 'WPLNG_MAX_TRANSLATIONS', 256 );
@@ -67,6 +67,7 @@ function wplng_start() {
 	// The plugin version has changed
 	if ( get_option( 'wplng_version' ) !== WPLNG_PLUGIN_VERSION ) {
 		wplng_clear_translations_cache();
+		wplng_clear_slugs_cache();
 		update_option( 'wplng_version', WPLNG_PLUGIN_VERSION, true );
 	}
 
@@ -187,10 +188,52 @@ function wplng_start() {
 
 		// Translation status on website translations list
 		add_filter( 'post_class', 'wplng_post_class_translation_status', 10, 3 );
-		add_filter( 'post_row_actions', 'wplng_post_row_actions_status', 10, 2 );
+		add_filter( 'post_row_actions', 'wplng_post_row_actions_translation_status', 10, 2 );
 		add_filter( 'manage_wplng_translation_posts_columns', 'wplng_translation_status_columns' );
 		add_action( 'manage_wplng_translation_posts_custom_column', 'wplng_translation_status_item', 10, 2 );
 		add_action( 'admin_head-edit.php', 'wplng_translation_status_style', 10, 2 );
+
+		/**
+		 * wplng_translation : CPT, taxo, meta
+		 */
+
+		// Register wplng_translation CPT
+		add_action( 'init', 'wplng_register_post_type_slug' );
+
+		// Add metabox for wplng_slug
+		add_action( 'add_meta_boxes_wplng_slug', 'wplng_slug_add_meta_box' );
+
+		// Save metabox on posts saving
+		add_action( 'save_post_wplng_slug', 'wplng_slug_save_meta_boxes_data', 10, 2 );
+
+		// Clear slugs cache on trash / untrash
+		add_action( 'trashed_post', 'wplng_clear_slugs_cache_trash_untrash' );
+		add_action( 'untrash_post', 'wplng_clear_slugs_cache_trash_untrash' );
+		add_action( 'delete_post', 'wplng_clear_slugs_cache_trash_untrash' );
+
+		// Enqueue Script for wplng_translation admin
+		add_action( 'admin_print_scripts-post-new.php', 'wplng_slug_assets' );
+		add_action( 'admin_print_scripts-post.php', 'wplng_slug_assets' );
+
+		// Remove Quick edit from slugs list
+		add_filter( 'post_row_actions', 'wplng_slug_remove_quick_edit', 10, 2 );
+
+		// Ajax function for regenerate slug on edit page
+		add_action( 'wp_ajax_wplng_ajax_slug', 'wplng_ajax_generate_slug' );
+
+		// Display 100 translation in admin area by default
+		add_filter( 'get_user_option_edit_wplng_slug_per_page', 'wplng_slug_per_page' );
+
+		// Filter slugs by status
+		add_action( 'restrict_manage_posts', 'wplng_restrict_manage_posts_slug_status' );
+		add_filter( 'parse_query', 'wplng_posts_filter_slug_status' );
+
+		// Translation status on website slugs list
+		add_filter( 'post_class', 'wplng_post_class_slug_status', 10, 3 );
+		add_filter( 'post_row_actions', 'wplng_post_row_actions_slug_status', 10, 2 );
+		add_filter( 'manage_wplng_slug_posts_columns', 'wplng_slug_status_columns' );
+		add_action( 'manage_wplng_slug_posts_custom_column', 'wplng_slug_status_item', 10, 2 );
+		add_action( 'admin_head-edit.php', 'wplng_slug_status_style', 10, 2 );
 
 		/**
 		 * Front
@@ -207,7 +250,7 @@ function wplng_start() {
 		add_filter( 'nav_menu_link_attributes', 'wplng_add_nav_menu_link_attributes_atts', 10, 2 );
 
 		// Set alternate links with hreflang parametters
-		add_action( 'wp_head', 'wplng_link_alternate_hreflang' );
+		add_action( 'wp_head', 'wplng_link_alternate_hreflang', 2 );
 
 		/**
 		 * OB and REQUEST_URI
@@ -215,6 +258,9 @@ function wplng_start() {
 
 		 // Manage URL with REQUEST_URI and start OB
 		add_action( 'init', 'wplng_ob_start', 1 );
+
+		// Redirect page if is called wiht an untranslate slug
+		add_action( 'template_redirect', 'wplng_redirect_translated_slug' );
 
 		/**
 		 * Features
