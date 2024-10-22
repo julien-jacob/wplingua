@@ -3,33 +3,8 @@ jQuery(document).ready(function ($) {
     let wplngEditor = $("#wplng-slug-editor");
 
     /**
-     * Decode HTML
-     */
-    function wplngDecodeHtml(string) {
-        let returnText = string;
-        returnText = returnText.replace(/&nbsp;/gi, " ");
-        returnText = returnText.replace(/&amp;/gi, "&");
-        returnText = returnText.replace(/&quot;/gi, '"');
-        returnText = returnText.replace(/&lt;/gi, "<");
-        returnText = returnText.replace(/&gt;/gi, ">");
-        return returnText;
-    }
-
-    /**
-     * CLose editor modal
-     */
-    function wplngCloseEditorModal() {
-        $("#wplng-modal-edit-container").hide();
-        $("#wplng-modal-edit-save").prop("disabled", false);
-        $("#wplng-modal-container").show();
-        wplngInputSignature.onload = '';
-        wplngInputSignature.now = '';
-    }
-
-    /**
      * Prepare all events and default value on slug editor
      */
-
     function wplngUpdateEditorEvents() {
 
         wplngIsUpdatePost = false;
@@ -37,7 +12,6 @@ jQuery(document).ready(function ($) {
             onload: wplngGetInputSignature(),
             now: wplngGetInputSignature()
         };
-
 
         /**
          * Review
@@ -234,9 +208,6 @@ jQuery(document).ready(function ($) {
         }
     }
 
-
     wplngUpdateEditorEvents();
-
-
 
 }); // End jQuery loaded event
