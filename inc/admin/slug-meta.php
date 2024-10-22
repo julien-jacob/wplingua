@@ -314,8 +314,6 @@ function wplng_slug_save_meta_boxes_data( $post_id ) {
 		return false;
 	}
 
-	wplng_clear_slugs_cache();
-
 	$meta = get_post_meta( $post_id );
 
 	if ( empty( $meta['wplng_slug_translations'][0] )
@@ -440,6 +438,8 @@ function wplng_slug_save_meta_boxes_data( $post_id ) {
 
 		$translations[ $key ]['translation'] = esc_html( $temp );
 	}
+
+	wplng_clear_slugs_cache();
 
 	return true === update_post_meta(
 		$post_id,
