@@ -169,6 +169,18 @@ function wplng_args_update_from_texts( &$args, $texts ) {
 	}
 
 	/**
+	 * Texts: Sanitize and clear duplicated
+	 */
+
+	foreach ( $texts as $key => $text ) {
+		$texts[ $key ] = wplng_text_esc( $text );
+	}
+
+	$texts = array_unique( $texts ); // Remove duplicate
+
+	error_log( var_export( $texts, true ) );
+
+	/**
 	 * Update args
 	 */
 
@@ -182,7 +194,7 @@ function wplng_args_update_from_texts( &$args, $texts ) {
 
 	/**
 	 * Get unknow texts
-	*/
+	 */
 
 	$texts_unknow = array();
 
@@ -235,7 +247,7 @@ function wplng_args_update_from_texts( &$args, $texts ) {
 
 	/**
 	 * Get new translated text
-	*/
+	 */
 
 	$texts_translated = wplng_api_call_translate(
 		$texts_unknow,
@@ -245,7 +257,7 @@ function wplng_args_update_from_texts( &$args, $texts ) {
 
 	/**
 	 * Save new translation as wplng_translation CPT
-	*/
+	 */
 
 	$translations_new = array();
 

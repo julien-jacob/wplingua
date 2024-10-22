@@ -112,7 +112,5 @@ function wplng_parse_html( $html ) {
 		}
 	}
 
-	$texts = array_unique( $texts ); // Remove duplicate
-
 	return $texts;
 }

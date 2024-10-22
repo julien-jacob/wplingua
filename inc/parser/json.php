@@ -26,7 +26,6 @@ function wplng_parse_json( $json, $parents = array() ) {
 	}
 
 	$texts = wplng_parse_json_array( $json_decoded, $parents );
-	$texts = array_unique( $texts ); // Remove duplicate
 
 	return $texts;
 }
@@ -131,8 +130,6 @@ function wplng_parse_json_array( $json_decoded, $parents = array() ) {
 			}
 		}
 	}
-
-	$texts = array_unique( $texts ); // Remove duplicate
 
 	return $texts;
 }

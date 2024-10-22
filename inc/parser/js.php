@@ -39,7 +39,5 @@ function wplng_parse_js( $js ) {
 
 	}
 
-	$texts = array_unique( $texts ); // Remove duplicate
-
 	return $texts;
 }
