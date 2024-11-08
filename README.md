@@ -16,6 +16,7 @@ $${\color{lightgreen}✓}$$ Unlimited number of translated words<br>
 $${\color{lightgreen}✓}$$ SEO-friendly: indexing of translated pages in search engines<br>
 $${\color{lightgreen}✓}$$ On-page visual editor for editing translations<br>
 $${\color{lightgreen}✓}$$ Customizable language switcher<br>
+$${\color{lightgreen}✓}$$ Translate website URLs<br>
 $${\color{lightgreen}✓}$$ No coding knowledge needed<br>
 $${\color{lightgreen}✓}$$ Self-hosted data<br>
 $${\color{lightgreen}✓}$$ And more!<br>
@@ -39,6 +40,7 @@ $${\color{lightgreen}✓}$$ Meta Description tags<br>
 $${\color{lightgreen}✓}$$ Hreflang alternative links<br>
 $${\color{lightgreen}✓}$$ Meta tags for social networks (Twitter X, OpenGraph Facebook...)<br>
 $${\color{lightgreen}✓}$$ ALT attributes of images<br>
+$${\color{lightgreen}✓}$$ Translate website URLs<br>
 $${\color{lightgreen}✓}$$ And more.<br>
 
 By optimizing indexing, we ensure that your translated pages are not only understood by your audience, but are also easily found by search engines.
@@ -50,6 +52,14 @@ By optimizing indexing, we ensure that your translated pages are not only unders
 <br>
 
 All translations are editable. Discover the visual editor and edit translations simply by clicking on them.Although wpLingua gives you the convenience of **machine translations**, we understand the nuances of each language. wpLingua allows you **to fine-tune each translation manually** if you need to.
+
+<br><br>
+
+## 🔗 Editable URL translation
+
+<br>
+
+The plugin **automatically discovers URLs on your website and lets you translate them**. URLs are split into slugs (parts of the URL), making them easy to edit. This feature boosts SEO performance!
 
 <br><br>
 
