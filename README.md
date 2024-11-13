@@ -16,6 +16,7 @@ $${\color{lightgreen}✓}$$ Unlimited number of translated words<br>
 $${\color{lightgreen}✓}$$ SEO-friendly: indexing of translated pages in search engines<br>
 $${\color{lightgreen}✓}$$ On-page visual editor for editing translations<br>
 $${\color{lightgreen}✓}$$ Customizable language switcher<br>
+$${\color{lightgreen}✓}$$ Translate website URLs<br>
 $${\color{lightgreen}✓}$$ No coding knowledge needed<br>
 $${\color{lightgreen}✓}$$ Self-hosted data<br>
 $${\color{lightgreen}✓}$$ And more!<br>
@@ -39,6 +40,7 @@ $${\color{lightgreen}✓}$$ Meta Description tags<br>
 $${\color{lightgreen}✓}$$ Hreflang alternative links<br>
 $${\color{lightgreen}✓}$$ Meta tags for social networks (Twitter X, OpenGraph Facebook...)<br>
 $${\color{lightgreen}✓}$$ ALT attributes of images<br>
+$${\color{lightgreen}✓}$$ Translate website URLs<br>
 $${\color{lightgreen}✓}$$ And more.<br>
 
 By optimizing indexing, we ensure that your translated pages are not only understood by your audience, but are also easily found by search engines.
@@ -50,6 +52,14 @@ By optimizing indexing, we ensure that your translated pages are not only unders
 <br>
 
 All translations are editable. Discover the visual editor and edit translations simply by clicking on them.Although wpLingua gives you the convenience of **machine translations**, we understand the nuances of each language. wpLingua allows you **to fine-tune each translation manually** if you need to.
+
+<br><br>
+
+## 🔗 Editable URL translation
+
+<br>
+
+The plugin **automatically discovers URLs on your website and lets you translate them**. URLs are split into slugs (parts of the URL), making them easy to edit. This feature boosts SEO performance!
 
 <br><br>
 
@@ -121,23 +131,29 @@ The wpLingua plugin relies on our own wpLingua API, an integrated third-party se
 
 <br>
 
-![You can edit all translations of your website.](https://raw.githubusercontent.com/julien-jacob/wplingua/master/wp-assets/screenshot-1.gif)
+![When you visit your translated page, you can activate the editor to modify your translations if necessary.](https://raw.githubusercontent.com/julien-jacob/wplingua/master/wp-assets/screenshot-1.gif)
 
-![If you need, you can edit a translation directly from your pages using our visual editor.](https://raw.githubusercontent.com/julien-jacob/wplingua/master/wp-assets/screenshot-9.jpg)
+![Installing wpLingua and creating an API key.](https://raw.githubusercontent.com/julien-jacob/wplingua/master/wp-assets/screenshot-2.gif)
 
-![Customizing the language switcher, enable or disable auto-insertion + choose position or use the shortcode.](https://raw.githubusercontent.com/julien-jacob/wplingua/master/wp-assets/screenshot-6.jpg)
+![You can choose which flag to display by language or import a custom flag.](https://raw.githubusercontent.com/julien-jacob/wplingua/master/wp-assets/screenshot-3.gif)
 
-![As soon as your API key has been registered, your website is multilingual. This option screen allows you to configure your languages and their flags, as well as activate the functionalities.](https://raw.githubusercontent.com/julien-jacob/wplingua/master/wp-assets/screenshot-5.jpg)
+![Customize language selector, activate or deactivate automatic insertion + choose position, use shortcode or add directly to menu.](https://raw.githubusercontent.com/julien-jacob/wplingua/master/wp-assets/screenshot-4.gif)
 
-![You can access the list of translations present on a page, including those which are not directly visible (Meta SEO, texts, alternative images, title attributes, etc.)](https://raw.githubusercontent.com/julien-jacob/wplingua/master/wp-assets/screenshot-10.jpg)
+![Many options available for the language switcher, even adding custom CSS.](https://raw.githubusercontent.com/julien-jacob/wplingua/master/wp-assets/screenshot-5.jpg)
 
-![All translations are stored on your WordPress website.](https://raw.githubusercontent.com/julien-jacob/wplingua/master/wp-assets/screenshot-11.jpg)
+![SEO tags are translated automatically, but you can modify them manually.](https://raw.githubusercontent.com/julien-jacob/wplingua/master/wp-assets/screenshot-6.gif)
 
-![You can edit all translations for each languages.](https://raw.githubusercontent.com/julien-jacob/wplingua/master/wp-assets/screenshot-12.jpg)
+![Dictionary : define translation rules that apply when generating machine translations.](https://raw.githubusercontent.com/julien-jacob/wplingua/master/wp-assets/screenshot-7.gif)
 
-![Define translation rules that apply when generating machine translations.](https://raw.githubusercontent.com/julien-jacob/wplingua/master/wp-assets/screenshot-7.jpg)
+![You have the possibility to exclude pages or parts of pages.](https://raw.githubusercontent.com/julien-jacob/wplingua/master/wp-assets/screenshot-8.gif)
 
-![You have the possibility to exclude pages or parts of pages.](https://raw.githubusercontent.com/julien-jacob/wplingua/master/wp-assets/screenshot-8.jpg)
+![wpLingua adds a list of your website's slugs. You can decide whether or not to translate them.](https://raw.githubusercontent.com/julien-jacob/wplingua/master/wp-assets/screenshot-9.gif)
+
+![All translations are stored on your WordPress website.](https://raw.githubusercontent.com/julien-jacob/wplingua/master/wp-assets/screenshot-10.gif)
+
+![Translations are automatically generated by wpLingua. When you visit the page for the first time (from the admin), you'll see the translation progress.](https://raw.githubusercontent.com/julien-jacob/wplingua/master/wp-assets/screenshot-11.gif)
+
+![SEO-Friendly: wpLingua add the HTML code needed for your translated pages to be indexed by search engines.](https://raw.githubusercontent.com/julien-jacob/wplingua/master/wp-assets/screenshot-12.gif)
 
 <br><br>
 

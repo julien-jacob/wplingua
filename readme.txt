@@ -1,10 +1,10 @@
-=== Translate WordPress with wpLingua - Automatic, editable, SEO friendly ===
+=== wpLingua - Automatic translation - Translate and make website multilingual ===
 Contributors: wpr0ck, lyly13
 Donate link: https://wplingua.com/
 Tags: translate, translation, multilingual, localization, language
 Requires at least: 6.0
-Tested up to: 6.6
-Stable tag: 2.1.0
+Tested up to: 6.7
+Stable tag: 2.1.1
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -23,6 +23,7 @@ The highlights:
 ✓ SEO-friendly: indexing of translated pages in search engines
 ✓ On-page visual editor for editing translations
 ✓ Customizable language switcher
+✓ Translate website URLs
 ✓ No coding knowledge needed
 ✓ Self-hosted data
 ✓ Open source, find [wpLingua on GitHub](https://github.com/julien-jacob/wplingua)
@@ -69,6 +70,9 @@ wpLingua allows you **to fine-tune each translation manually** if you need to.
 
 Experience the fusion of automation and the personal touch with our **visual on-page editor**.
 
+### 🔗 Editable URL translation ###
+The plugin **automatically discovers URLs on your website and lets you translate them**. URLs are split into slugs (parts of the URL), making them easy to edit. This feature boosts SEO performance!
+
 ### 🎨 Fully customizable language switcher ###
 The wpLingua language switcher is fully customisable. You can display the language switcher in three ways:
 
@@ -99,6 +103,23 @@ If entire pages need to remain untouched, effortlessly exclude them by their URL
 
 With wpLingua, you're always in command of what gets translated and what doesn't, ensuring your website's essence remains intact.
 
+### 💫 Supported languages ###
+
+#### The plugin supports the following languages ####
+
+Arabic ∘ Chinese ∘ Danish ∘ Dutch ∘ Slovak ∘ English ∘ Finnish ∘ French ∘ German ∘ Greek ∘ Hebrew ∘ Hindi ∘ Hungarian ∘ Indonesian ∘ Italian ∘ Japanese ∘ Korean ∘ Polish ∘ Portuguese ∘ Russian ∘ Spanish ∘ Swedish ∘ Turkish ∘ Ukrainian ∘ Vietnamese 
+
+#### The plugin is translated into the following languages ####
+
+English ∘ French ∘ German ∘ Italian ∘ Portuguese ∘ Spanish
+
+### 🔌 Theme and plugin compatibility ###
+The method used by wpLingua to translate website texts ensures compatibility with most themes and plugins.
+
+Compatible plugins tested: WooCommerce, Yoast SEO, SEOPress, All in One SEO, SEOKey, Elementor, Gutenberg, Divi Builder, Contact Form 7, Fluent Forms, WP Forms, Gravity Form, MailPoet, WP Rocket, Cache Enabler, All-in-One WP Migration, UpdraftPlus, Redirection, Complianz, WF Cookies, Complianz, LuckyWP Table of content, WP Grid Builder, and more...
+
+Compatible themes tested: Divi, Twenty Twenty One, Astra, OceanWP, Blocksy, Hello, Generate Press, Neve, Envince, Twenty Twenty Four, Twenty Twenty Five, Poe, Neve FSE, Frost, Tove, and more...
+
 ### ⚡️ The wpLingua API ###
 The wpLingua plugin relies on our own wpLingua API, an integrated third-party service, to provide its machine translation functionality. The call to this Third Party Service (wpLingua API) is made when creating an API key from the plugin, during API key verification and when your website requests a new automatic translation (new texts discovered on a page web or request automatic translations from the translation edition). We invite you to consult our [Terms & Conditions page](https://wplingua.com/terms-and-conditions/) for more information.
 
@@ -111,13 +132,6 @@ The wpLingua plugin relies on our own wpLingua API, an integrated third-party se
 4. Start translating your content!
 
 == Frequently Asked Questions ==
-
-= What languages are available for translation?=
-For the moment the available languages are: 
-
-Arabic - Chinese - Danish - Dutch - Slovak - English - Finnish - French - German - Greek - Hebrew - Hindi - Hungarian - Indonesian - Italian - Japanese - Korean - Polish - Portuguese - Russian - Spanish - Swedish - Turkish - Ukrainian - Vietnamese 
-
-If you need a language, let us know using the [contact form available on our website](https://wplingua.com/contact/), we add languages as we go.
 
 = What languages are available in the plugin administration? =
 At the moment, the plugin is available in English, French, German, Italian, Spanish and Portuguese. If you want to help us translate it into more languages, don't hesitate!
@@ -145,20 +159,25 @@ No, not at the moment but in the meantime, you can easily display the language s
 
 == Screenshots ==
 
-1. You can edit all translations of your website.
-2. Easily configure your language switcher design with predefined options.
+1. When you visit your translated page, you can activate the editor to modify your translations if necessary.
+2. Installing wpLingua and creating an API key.
 3. You can choose which flag to display by language or import a custom flag.
-4. Once the plugin is downloaded, installed and activated, register your API key.
-5. As soon as your API key has been registered, your website is multilingual. This option screen allows you to configure your languages and their flags, as well as activate the functionalities.
-6. Customizing the language switcher, enable or disable auto-insertion + choose position or use the shortcode.
-7. Define translation rules that apply when generating machine translations.
+4. Customize language selector, activate or deactivate automatic insertion + choose position, use shortcode or add directly to menu.
+5. Many options available for the language switcher, even adding custom CSS.
+6. SEO tags are translated automatically, but you can modify them manually.
+7. Dictionary : define translation rules that apply when generating machine translations.
 8. You have the possibility to exclude pages or parts of pages.
-9. If you need, you can edit a translation directly from your pages using our visual editor.
-10. You can access the list of translations present on a page, including those which are not directly visible (Meta SEO, texts, alternative images, title attributes, etc.)
-11. All translations are stored on your WordPress website.
-12. You can edit all translations for each languages.
+9. wpLingua adds a list of your website's slugs. You can decide whether or not to translate them.
+10. All translations are stored on your WordPress website.
+11. Translations are automatically generated by wpLingua. When you visit the page for the first time (from the admin), you'll see the translation progress.
+12. SEO-Friendly: wpLingua add the HTML code needed for your translated pages to be indexed by search engines.
 
 == Changelog ==
+
+= 2.1.1 =
+
+* Added compatibility with wordPress 6.7
+* Update README and screenshots
 
 = 2.1.0 =
 
