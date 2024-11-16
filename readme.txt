@@ -176,7 +176,7 @@ No, not at the moment but in the meantime, you can easily display the language s
 
 = 2.1.1 =
 
-* Added compatibility with wordPress 6.7
+* Added compatibility with WordPress 6.7
 * Update README and screenshots
 
 = 2.1.0 =
