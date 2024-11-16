@@ -55,17 +55,22 @@ require_once WPLNG_PLUGIN_PATH . '/loader.php';
  */
 function wplng_start() {
 
-	// Clear cached variables
-	wp_cache_delete( 'wplng_get_language_website', 'wplingua' );
-	wp_cache_delete( 'wplng_get_languages_target_simplified', 'wplingua' );
-	wp_cache_delete( 'wplng_get_languages_target', 'wplingua' );
-	wp_cache_delete( 'wplng_get_language_current_id', 'wplingua' );
-	wp_cache_delete( 'wplng_get_languages_all', 'wplingua' );
-	wp_cache_delete( 'wplng_get_languages_allow', 'wplingua' );
-	wp_cache_delete( 'wplng_get_url_exclude_regex', 'wplingua' );
+	// Prepare non persistent cache for wpLingua functions
+	wp_cache_add_non_persistent_groups( 'wplingua' );
 
 	// The plugin version has changed
 	if ( get_option( 'wplng_version' ) !== WPLNG_PLUGIN_VERSION ) {
+
+		// Compatility for version under 2.1.1 - Clear cached variables
+		wp_cache_delete( 'wplng_get_language_website', 'wplingua' );
+		wp_cache_delete( 'wplng_get_languages_target_simplified', 'wplingua' );
+		wp_cache_delete( 'wplng_get_languages_target', 'wplingua' );
+		wp_cache_delete( 'wplng_get_language_current_id', 'wplingua' );
+		wp_cache_delete( 'wplng_get_languages_all', 'wplingua' );
+		wp_cache_delete( 'wplng_get_languages_allow', 'wplingua' );
+		wp_cache_delete( 'wplng_get_url_exclude_regex', 'wplingua' );
+
+		// For all new versions
 		wplng_clear_translations_cache();
 		wplng_clear_slugs_cache();
 		update_option( 'wplng_version', WPLNG_PLUGIN_VERSION, true );
