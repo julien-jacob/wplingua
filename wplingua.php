@@ -40,7 +40,7 @@ defined( 'WPLNG_LOG_AJAX_DEBUG' ) || define( 'WPLNG_LOG_AJAX_DEBUG', false );
 load_plugin_textdomain(
 	'wplingua',
 	false,
-	basename( dirname( __FILE__ ) ) . '/languages'
+	'wplingua/languages'
 );
 
 
