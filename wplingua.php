@@ -36,14 +36,6 @@ defined( 'WPLNG_LOG_JSON_DEBUG' ) || define( 'WPLNG_LOG_JSON_DEBUG', false );
 defined( 'WPLNG_LOG_AJAX_DEBUG' ) || define( 'WPLNG_LOG_AJAX_DEBUG', false );
 
 
-// Load plugin text domain
-load_plugin_textdomain(
-	'wplingua',
-	false,
-	'wplingua/languages'
-);
-
-
 // Load all needed PHP files
 require_once WPLNG_PLUGIN_PATH . '/loader.php';
 
@@ -54,6 +46,20 @@ require_once WPLNG_PLUGIN_PATH . '/loader.php';
  * @return void
  */
 function wplng_start() {
+
+	/**
+	 * Load plugin text domain
+	 */
+
+	add_action(
+		'init', function() {
+			load_plugin_textdomain(
+				'wplingua',
+				false,
+				'wplingua/languages'
+			);
+		}
+	);
 
 	// Prepare non persistent cache for wpLingua functions
 	wp_cache_add_non_persistent_groups( 'wplingua' );
