@@ -408,10 +408,17 @@ function wplng_slug_save_meta_boxes_data( $post_id ) {
 
 				foreach ( $saved_slugs as $saved_slug ) {
 
-					if ( $slug_original === $saved_slug['source']
-						|| ! isset( $saved_slug['translations'][ $translation['language_id'] ] )
-						|| $temp !== $saved_slug['translations'][ $translation['language_id'] ]
-					) {
+					if ( $slug_original === $saved_slug['source'] ) {
+						continue;
+					}
+
+					$saved_slug_translated = $saved_slug['source'];
+
+					if ( isset( $saved_slug['translations'][ $translation['language_id'] ] ) ) {
+						$saved_slug_translated = $saved_slug['translations'][ $translation['language_id'] ];
+					}
+
+					if ( $temp !== $saved_slug_translated ) {
 						continue;
 					}
 
