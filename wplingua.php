@@ -83,7 +83,7 @@ function wplng_start() {
 		update_option( 'wplng_version', WPLNG_PLUGIN_VERSION, true );
 	}
 
-	// Load plugin text domain
+	// Load plugin text domain /languages/
 	add_action( 'init', 'wplng_load_plugin_textdomain' );
 
 	// Display a notice if an incompatible plugin is detected
@@ -93,7 +93,7 @@ function wplng_start() {
 	add_action( 'admin_init', 'wplng_register_settings' );
 
 	// Add settings link in plugin list
-	add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), 'wplng_settings_link' );
+	add_filter( 'plugin_action_links_' . WPLNG_PLUGIN_FILE, 'wplng_settings_link' );
 
 	// Redirect to the settings page on plugin activation
 	add_action( 'activated_plugin', 'wplng_plugin_activation_redirect' );
