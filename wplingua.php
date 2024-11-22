@@ -41,32 +41,25 @@ require_once WPLNG_PLUGIN_PATH . '/loader.php';
 
 
 /**
+ * Loads wpLingua plugin's translated strings.
+ *
+ * @return void
+ */
+function wplng_load_plugin_textdomain() {
+	load_plugin_textdomain(
+		'wplingua',
+		false,
+		'wplingua/languages'
+	);
+}
+
+
+/**
  * Register all wpLingua Hook
  *
  * @return void
  */
 function wplng_start() {
-
-	/**
-	 * Load plugin text domain
-	 */
-
-	add_action(
-		'init', function() {
-			load_plugin_textdomain(
-				'wplingua',
-				false,
-				'wplingua/languages'
-			);
-		}
-	);
-
-	// The plugin version has changed
-	if ( get_option( 'wplng_version' ) !== WPLNG_PLUGIN_VERSION ) {
-		wplng_clear_translations_cache();
-		wplng_clear_slugs_cache();
-		update_option( 'wplng_version', WPLNG_PLUGIN_VERSION, true );
-	}
 
 	// Define $wplng_request_uri
 	if ( isset( $_SERVER['REQUEST_URI'] ) ) {
@@ -82,6 +75,16 @@ function wplng_start() {
 		$wplng_request_uri = $request_uri;
 
 	}
+
+	// The plugin version has changed
+	if ( get_option( 'wplng_version' ) !== WPLNG_PLUGIN_VERSION ) {
+		wplng_clear_translations_cache();
+		wplng_clear_slugs_cache();
+		update_option( 'wplng_version', WPLNG_PLUGIN_VERSION, true );
+	}
+
+	// Load plugin text domain
+	add_action( 'init', 'wplng_load_plugin_textdomain' );
 
 	// Display a notice if an incompatible plugin is detected
 	add_action( 'admin_notices', 'wplng_admin_notice_incompatible_plugin', 1 );
