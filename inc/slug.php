@@ -310,7 +310,7 @@ function wplng_create_slug( $slug ) {
 		$slug_meta[] = array(
 			'language_id' => $target_language,
 			'translation' => $slug,
-			'status'      => 'generated',
+			'status'      => 'ungenerated',
 		);
 	}
 
