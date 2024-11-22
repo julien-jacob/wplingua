@@ -25,16 +25,6 @@ function wplng_url_translate( $url, $language_target_id = '' ) {
 		return $url;
 	}
 
-	// Check if it's an WooCommece AJAX URL
-	if ( wplng_str_contains( $url, '?wc-ajax=' ) ) {
-		return $url;
-	}
-
-	// Check if URL is an anchor link for the current page
-	if ( '#' === substr( $url, 0, 1 ) ) {
-		return $url;
-	}
-
 	$languages_target = wplng_get_languages_target();
 
 	if ( '' === $language_target_id ) {
@@ -150,19 +140,28 @@ function wplng_url_is_translatable( $url = '' ) {
 		$is_translatable = false;
 	}
 
-	// Check if is wp-login.php
+	// Check if URL is an anchor link for the current page
 	if ( $is_translatable
-		&& wplng_str_contains( $url, 'wp-login.php' )
+		&& '#' === substr( $url, 0, 1 ) 
+	) {
+		return $url;
+	}
+
+	if ( $is_translatable
+		&& (
+			wplng_str_contains( $url, 'wp-login.php' )
+			|| wplng_str_ends_with( $url, '/feed/' )
+			|| wplng_str_contains( $url, 'wp-comments-post.php' )
+			|| wplng_str_contains( $url, 'wp-register.php' )
+			|| wplng_str_contains( $url, '/wp-json/' )
+			|| wplng_str_contains( $url, '/wp-includes/' )
+			|| wplng_str_contains( $url, '?wc-ajax=' ) 
+		)
 	) {
 		$is_translatable = false;
 	}
 
-	// Check if is a /feed/
-	if ( $is_translatable
-		&& wplng_str_ends_with( $url, '/feed/' )
-	) {
-		$is_translatable = false;
-	}
+
 
 	// Check if is Divi editor
 	if ( $is_translatable
@@ -171,13 +170,6 @@ function wplng_url_is_translatable( $url = '' ) {
 			|| wplng_str_contains( $url, '&et_fb=1' )
 		)
 		&& current_user_can( 'edit_posts' )
-	) {
-		$is_translatable = false;
-	}
-
-	// Check if is wp-comments-post.php
-	if ( $is_translatable
-		&& wplng_str_contains( $url, 'wp-comments-post.php' )
 	) {
 		$is_translatable = false;
 	}
