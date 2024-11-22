@@ -20,12 +20,18 @@ function wplng_link_alternate_hreflang() {
 	$html             = PHP_EOL . PHP_EOL;
 	$language_website = wplng_get_language_website();
 	$languages_target = wplng_get_languages_target();
-	$url_original     = wplng_get_url_original();
 	$url_x_default    = '';
 
 	if ( empty( $language_website ) || empty( $languages_target ) ) {
 		return;
 	}
+
+	// Get and clear original URL
+	$url_original = wplng_get_url_original();
+	$url_original = remove_query_arg(
+		array( 'wplng-mode', 'wplng-load', 'wplng-nocache' ),
+		$url_original
+	);
 
 	// Create the starting comment
 	$html .= '<!-- This website is made multilingual with the wpLingua plugin -->';
@@ -52,7 +58,10 @@ function wplng_link_alternate_hreflang() {
 	// Create alternate link for each target languages
 	foreach ( $languages_target as $language_target ) {
 
-		$url = wplng_get_url_current_for_language( $language_target['id'] );
+		$url = wplng_url_translate(
+			$url_original,
+			$language_target['id']
+		);
 
 		if ( 'en' === $language_target['id'] ) {
 			$url_x_default = $url;
