@@ -127,12 +127,15 @@ function wplng_data_excluded_selector_default() {
 		'.author.vcard',
 		'.entry-author .fn',
 
-		// Plugin : Query Monitor
+		// Plugin: Query Monitor
 		'#query-monitor',
 		'#query-monitor-main',
 
-		// Plugin : SecuPress
+		// Plugin: SecuPress
 		'#secupress-donttranslate',
+
+		// Plugin: Debug Bar
+		'#querylist',
 	);
 }
 

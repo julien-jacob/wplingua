@@ -4,7 +4,7 @@ Donate link: https://wplingua.com/
 Tags: translate, translation, multilingual, localization, language
 Requires at least: 6.0
 Tested up to: 6.7
-Stable tag: 2.1.1
+Stable tag: 2.1.2
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -174,9 +174,17 @@ No, not at the moment but in the meantime, you can easily display the language s
 
 == Changelog ==
 
+= 2.1.2 =
+
+* Better plugin translations loading
+* Better slug status management 
+* Optimize cache for wpLingua functions
+* Plugin compatibility: Debug Bar
+* Clear wpLingua query args in hreflang URLs
+
 = 2.1.1 =
 
-* Added compatibility with wordPress 6.7
+* Added compatibility with WordPress 6.7
 * Update README and screenshots
 
 = 2.1.0 =

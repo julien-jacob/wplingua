@@ -379,23 +379,19 @@ function wplng_slug_save_meta_boxes_data( $post_id ) {
 		$temp = sanitize_title( $_REQUEST[ $name ] );
 
 		if ( empty( $temp ) || $slug_original === $temp ) {
-			$temp                           = '[WPLNG_EMPTY]';
-			$translations[ $key ]['status'] = 'ungenerated';
-		} else {
+			$temp = '[WPLNG_EMPTY]';
+		} elseif ( $temp !== $translation['translation'] ) {
+			$temp = str_replace( '\\', '', $temp );
+		}
 
-			if ( $temp !== $translation['translation'] ) {
-				$temp = str_replace( '\\', '', $temp );
-			}
-
-			if ( ! empty( $_POST[ $reviewed ] ) ) {
-				if ( 'false' !== $_POST[ $reviewed ] ) {
-					$translations[ $key ]['status'] = time();
-				} else {
-					$translations[ $key ]['status'] = 'generated';
-				}
+		if ( ! empty( $_POST[ $reviewed ] ) ) {
+			if ( 'false' !== $_POST[ $reviewed ] ) {
+				$translations[ $key ]['status'] = time();
 			} else {
 				$translations[ $key ]['status'] = 'generated';
 			}
+		} else {
+			$translations[ $key ]['status'] = 'generated';
 		}
 
 		// Check if another slug is translated with the same string
@@ -412,10 +408,17 @@ function wplng_slug_save_meta_boxes_data( $post_id ) {
 
 				foreach ( $saved_slugs as $saved_slug ) {
 
-					if ( $slug_original === $saved_slug['source']
-						|| ! isset( $saved_slug['translations'][ $translation['language_id'] ] )
-						|| $temp !== $saved_slug['translations'][ $translation['language_id'] ]
-					) {
+					if ( $slug_original === $saved_slug['source'] ) {
+						continue;
+					}
+
+					$saved_slug_translated = $saved_slug['source'];
+
+					if ( isset( $saved_slug['translations'][ $translation['language_id'] ] ) ) {
+						$saved_slug_translated = $saved_slug['translations'][ $translation['language_id'] ];
+					}
+
+					if ( $temp !== $saved_slug_translated ) {
 						continue;
 					}
 

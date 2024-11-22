@@ -1,13 +1,13 @@
 <?php
 /**
  * Plugin Name: wpLingua
- * Plugin URI: https://github.com/julien-jacob/wplingua
+ * Plugin URI: https://wplingua.com/
  * Description: An all-in-one solution that makes your websites multilingual and translates them automatically, without word or page limits. The highlights: a free first language, an on-page visual editor for editing translations, a customizable language switcher, search engine optimization (SEO), self-hosted data and more!
  * Author: wpLingua Team
- * Author URI: https://wplingua.com/
+ * Author URI: https://github.com/julien-jacob/wplingua
  * Text Domain: wplingua
  * Domain Path: /languages/
- * Version: 2.1.1
+ * Version: 2.1.2
  * Requires PHP: 7.4
  * License: GPL v2 or later
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -24,7 +24,7 @@ if ( ! defined( 'WPINC' ) ) {
 define( 'WPLNG_API_URL', 'https://api.wplingua.com' );
 define( 'WPLNG_API_VERSION', '2.0' );
 define( 'WPLNG_API_SSLVERIFY', true );
-define( 'WPLNG_PLUGIN_VERSION', '2.1.1' );
+define( 'WPLNG_PLUGIN_VERSION', '2.1.2' );
 define( 'WPLNG_PLUGIN_FILE', plugin_basename( __FILE__ ) );
 define( 'WPLNG_PLUGIN_PATH', dirname( __FILE__ ) );
 define( 'WPLNG_MAX_TRANSLATIONS', 256 );
@@ -36,16 +36,22 @@ defined( 'WPLNG_LOG_JSON_DEBUG' ) || define( 'WPLNG_LOG_JSON_DEBUG', false );
 defined( 'WPLNG_LOG_AJAX_DEBUG' ) || define( 'WPLNG_LOG_AJAX_DEBUG', false );
 
 
-// Load plugin text domain
-load_plugin_textdomain(
-	'wplingua',
-	false,
-	basename( dirname( __FILE__ ) ) . '/languages'
-);
-
-
 // Load all needed PHP files
 require_once WPLNG_PLUGIN_PATH . '/loader.php';
+
+
+/**
+ * Loads wpLingua plugin's translated strings.
+ *
+ * @return void
+ */
+function wplng_load_plugin_textdomain() {
+	load_plugin_textdomain(
+		'wplingua',
+		false,
+		'wplingua/languages'
+	);
+}
 
 
 /**
@@ -54,22 +60,6 @@ require_once WPLNG_PLUGIN_PATH . '/loader.php';
  * @return void
  */
 function wplng_start() {
-
-	// Clear cached variables
-	wp_cache_delete( 'wplng_get_language_website', 'wplingua' );
-	wp_cache_delete( 'wplng_get_languages_target_simplified', 'wplingua' );
-	wp_cache_delete( 'wplng_get_languages_target', 'wplingua' );
-	wp_cache_delete( 'wplng_get_language_current_id', 'wplingua' );
-	wp_cache_delete( 'wplng_get_languages_all', 'wplingua' );
-	wp_cache_delete( 'wplng_get_languages_allow', 'wplingua' );
-	wp_cache_delete( 'wplng_get_url_exclude_regex', 'wplingua' );
-
-	// The plugin version has changed
-	if ( get_option( 'wplng_version' ) !== WPLNG_PLUGIN_VERSION ) {
-		wplng_clear_translations_cache();
-		wplng_clear_slugs_cache();
-		update_option( 'wplng_version', WPLNG_PLUGIN_VERSION, true );
-	}
 
 	// Define $wplng_request_uri
 	if ( isset( $_SERVER['REQUEST_URI'] ) ) {
@@ -86,6 +76,16 @@ function wplng_start() {
 
 	}
 
+	// The plugin version has changed
+	if ( get_option( 'wplng_version' ) !== WPLNG_PLUGIN_VERSION ) {
+		wplng_clear_translations_cache();
+		wplng_clear_slugs_cache();
+		update_option( 'wplng_version', WPLNG_PLUGIN_VERSION, true );
+	}
+
+	// Load plugin text domain /languages/
+	add_action( 'init', 'wplng_load_plugin_textdomain' );
+
 	// Display a notice if an incompatible plugin is detected
 	add_action( 'admin_notices', 'wplng_admin_notice_incompatible_plugin', 1 );
 
@@ -93,7 +93,7 @@ function wplng_start() {
 	add_action( 'admin_init', 'wplng_register_settings' );
 
 	// Add settings link in plugin list
-	add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), 'wplng_settings_link' );
+	add_filter( 'plugin_action_links_' . WPLNG_PLUGIN_FILE, 'wplng_settings_link' );
 
 	// Redirect to the settings page on plugin activation
 	add_action( 'activated_plugin', 'wplng_plugin_activation_redirect' );

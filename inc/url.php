@@ -228,13 +228,10 @@ function wplng_url_is_translatable( $url = '' ) {
  */
 function wplng_get_url_exclude_regex() {
 
-	$url_exclude = wp_cache_get(
-		'wplng_get_url_exclude_regex',
-		'wplingua'
-	);
+	global $wplng_url_exclude_regex;
 
-	if ( ! empty( $url_exclude ) ) {
-		return $url_exclude;
+	if ( null !== $wplng_url_exclude_regex ) {
+		return $wplng_url_exclude_regex;
 	}
 
 	$url_exclude = array();
@@ -267,11 +264,7 @@ function wplng_get_url_exclude_regex() {
 		$url_exclude
 	);
 
-	wp_cache_add(
-		'wplng_get_url_exclude_regex',
-		$url_exclude,
-		'wplingua'
-	);
+	$wplng_url_exclude_regex = $url_exclude;
 
 	return $url_exclude;
 }

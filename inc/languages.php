@@ -13,24 +13,17 @@ if ( ! defined( 'WPINC' ) ) {
  */
 function wplng_get_language_website() {
 
-	$language = wp_cache_get(
-		'wplng_get_language_website',
-		'wplingua'
-	);
+	global $wplng_language_website;
 
-	if ( ! empty( $language ) ) {
-		return $language;
+	if ( null != $wplng_language_website ) {
+		return $wplng_language_website;
 	}
 
 	$language = wplng_get_language_by_id(
 		wplng_get_language_website_id()
 	);
 
-	wp_cache_add(
-		'wplng_get_language_website',
-		$language,
-		'wplingua'
-	);
+	$wplng_language_website = $language;
 
 	return $language;
 }
@@ -193,13 +186,10 @@ function wplng_get_language_name_untranslated( $language ) {
  */
 function wplng_get_languages_target_simplified() {
 
-	$languages = wp_cache_get(
-		'wplng_get_languages_target_simplified',
-		'wplingua'
-	);
+	global $wplng_languages_target_simplified;
 
-	if ( ! empty( $languages ) ) {
-		return $languages;
+	if ( null !== $wplng_languages_target_simplified ) {
+		return $wplng_languages_target_simplified;
 	}
 
 	$json = get_option( 'wplng_target_languages' );
@@ -224,11 +214,7 @@ function wplng_get_languages_target_simplified() {
 		}
 	}
 
-	wp_cache_add(
-		'wplng_get_languages_target_simplified',
-		$ordered,
-		'wplingua'
-	);
+	$wplng_languages_target_simplified = $ordered;
 
 	return $ordered;
 }
@@ -241,13 +227,10 @@ function wplng_get_languages_target_simplified() {
  */
 function wplng_get_languages_target() {
 
-	$languages = wp_cache_get(
-		'wplng_get_languages_target',
-		'wplingua'
-	);
+	global $wplng_languages_target;
 
-	if ( ! empty( $languages ) ) {
-		return $languages;
+	if ( null !== $wplng_languages_target ) {
+		return $wplng_languages_target;
 	}
 
 	$languages_target       = wplng_get_languages_target_simplified();
@@ -267,11 +250,7 @@ function wplng_get_languages_target() {
 		}
 	}
 
-	wp_cache_add(
-		'wplng_get_languages_target',
-		$languages_target_clear,
-		'wplingua'
-	);
+	$wplng_languages_target = $languages_target_clear;
 
 	return $languages_target_clear;
 }
@@ -306,13 +285,10 @@ function wplng_get_languages_target_ids() {
  */
 function wplng_get_language_current_id() {
 
-	$id = wp_cache_get(
-		'wplng_get_language_current_id',
-		'wplingua'
-	);
+	global $wplng_language_current_id;
 
-	if ( ! empty( $id ) ) {
-		return $id;
+	if ( null !== $wplng_language_current_id ) {
+		return $wplng_language_current_id;
 	}
 
 	global $wplng_request_uri;
@@ -330,14 +306,9 @@ function wplng_get_language_current_id() {
 			|| substr( $current_path, 0, 3 ) === $language . '/'
 		) {
 
-			wp_cache_add(
-				'wplng_get_language_current_id',
-				$language,
-				'wplingua'
-			);
+			$wplng_language_current_id = $language;
 
 			return $language;
-			break;
 		}
 	}
 
@@ -447,13 +418,10 @@ function wplng_is_valid_language_ids( $language_id_list ) {
  */
 function wplng_get_languages_all() {
 
-	$languages = wp_cache_get(
-		'wplng_get_languages_all',
-		'wplingua'
-	);
+	global $wplng_languages_all;
 
-	if ( ! empty( $languages ) ) {
-		return $languages;
+	if ( null !== $wplng_languages_all ) {
+		return $wplng_languages_all;
 	}
 
 	$languages       = wplng_data_languages();
@@ -510,11 +478,7 @@ function wplng_get_languages_all() {
 		}
 	}
 
-	wp_cache_add(
-		'wplng_get_languages_all',
-		$languages,
-		'wplingua'
-	);
+	$wplng_languages_all = $languages;
 
 	return $languages;
 }
@@ -527,13 +491,10 @@ function wplng_get_languages_all() {
  */
 function wplng_get_languages_allow() {
 
-	$languages = wp_cache_get(
-		'wplng_get_languages_allow',
-		'wplingua'
-	);
+	global $wplng_languages_allow;
 
-	if ( ! empty( $languages ) ) {
-		return $languages;
+	if ( null !== $wplng_languages_allow ) {
+		return $wplng_languages_allow;
 	}
 
 	$languages_alow = wplng_get_api_languages_target();
@@ -549,11 +510,7 @@ function wplng_get_languages_allow() {
 		$languages[] = wplng_get_language_by_id( $language_id_alow );
 	}
 
-	wp_cache_add(
-		'wplng_get_languages_allow',
-		$languages,
-		'wplingua'
-	);
+	$wplng_languages_allow = $languages;
 
 	return $languages;
 }
