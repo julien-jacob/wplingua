@@ -263,7 +263,9 @@ function wplng_create_slug( $slug ) {
 
 	$slug = sanitize_title( $slug );
 
-	if ( '' === $slug ) {
+	if ( '' === $slug
+		|| wplng_is_valid_language_id( $slug )
+	) {
 		return false;
 	}
 
