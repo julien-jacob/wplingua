@@ -161,8 +161,6 @@ function wplng_url_is_translatable( $url = '' ) {
 		$is_translatable = false;
 	}
 
-
-
 	// Check if is Divi editor
 	if ( $is_translatable
 		&& (

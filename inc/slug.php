@@ -118,7 +118,9 @@ function wplng_slug_original_path( $path, $language_id ) {
  */
 function wplng_slug_translate( $slug, $language_id, $slugs_translations = false ) {
 
-	if ( ! wplng_text_is_translatable( $slug ) ) {
+	if ( ! wplng_text_is_translatable( $slug )
+		|| wplng_str_contains( $slug, '.' )
+	) {
 		return $slug;
 	}
 
@@ -128,7 +130,7 @@ function wplng_slug_translate( $slug, $language_id, $slugs_translations = false 
 
 	$slug_translation_exist = false;
 
-	foreach ( $slugs_translations as $key => $slug_translations ) {
+	foreach ( $slugs_translations as $slug_translations ) {
 
 		if ( $slug !== $slug_translations['source']
 			|| ! isset( $slug_translations['translations'][ $language_id ] )
@@ -219,6 +221,7 @@ function wplng_slug_translate_path( $path, $language_id ) {
 		if ( wplng_text_is_translatable( $slug )
 			&& ! wplng_str_starts_with( $slug, '#' )
 			&& ! wplng_str_starts_with( $slug, '?' )
+			&& ! wplng_str_contains( $slug, '.' )
 		) {
 			$path_translated .= wplng_slug_translate(
 				$slug,
@@ -243,7 +246,6 @@ function wplng_slug_translate_path( $path, $language_id ) {
 	}
 
 	return $path_translated;
-
 }
 
 
