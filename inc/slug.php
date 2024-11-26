@@ -391,7 +391,10 @@ function wplng_get_slugs_from_query() {
 
 		$source = sanitize_title( $meta['wplng_slug_original'][0] );
 
-		if ( 'index-php' === $source ) {
+		if ( 'index-php' === $source 
+			|| 'wp-includes' === $source 
+			|| 'wp-json' === $source 
+		) {
 			$slug_to_delete[] = $slug_id;
 			continue;
 		}
