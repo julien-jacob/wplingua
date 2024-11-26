@@ -358,6 +358,8 @@ function wplng_create_slug( $slug ) {
  */
 function wplng_get_slugs_from_query() {
 
+	$slug_to_delete = array();
+
 	$slugs = array();
 	$args  = array(
 		'post_type'              => 'wplng_slug',
@@ -374,7 +376,8 @@ function wplng_get_slugs_from_query() {
 
 		$the_query->the_post();
 
-		$meta = get_post_meta( get_the_ID() );
+		$slug_id = get_the_ID();
+		$meta    = get_post_meta( $slug_id );
 
 		/**
 		 * Check and clear source slug
@@ -386,7 +389,12 @@ function wplng_get_slugs_from_query() {
 			continue;
 		}
 
-		$source = esc_attr( $meta['wplng_slug_original'][0] );
+		$source = sanitize_title( $meta['wplng_slug_original'][0] );
+
+		if ( 'index-php' === $source ) {
+			$slug_to_delete[] = $slug_id;
+			continue;
+		}
 
 		/**
 		 * Check and clear slug translations, setup review array
@@ -443,10 +451,19 @@ function wplng_get_slugs_from_query() {
 
 	wp_reset_postdata();
 
-	set_transient(
-		'wplng_cached_slugs',
-		$slugs
-	);
+	if ( ! empty( $slug_to_delete ) ) {
+		foreach ( $slug_to_delete as $key => $id ) {
+			if ( $key >= 50 ) {
+				break;
+			}
+			wp_delete_post( $id, true );
+		}
+	} else {
+		set_transient(
+			'wplng_cached_slugs',
+			$slugs
+		);
+	}
 
 	return $slugs;
 }
