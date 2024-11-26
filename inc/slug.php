@@ -118,7 +118,9 @@ function wplng_slug_original_path( $path, $language_id ) {
  */
 function wplng_slug_translate( $slug, $language_id, $slugs_translations = false ) {
 
-	if ( ! wplng_text_is_translatable( $slug ) ) {
+	if ( ! wplng_text_is_translatable( $slug )
+		|| wplng_str_contains( $slug, '.' )
+	) {
 		return $slug;
 	}
 
@@ -128,7 +130,7 @@ function wplng_slug_translate( $slug, $language_id, $slugs_translations = false 
 
 	$slug_translation_exist = false;
 
-	foreach ( $slugs_translations as $key => $slug_translations ) {
+	foreach ( $slugs_translations as $slug_translations ) {
 
 		if ( $slug !== $slug_translations['source']
 			|| ! isset( $slug_translations['translations'][ $language_id ] )
@@ -219,6 +221,7 @@ function wplng_slug_translate_path( $path, $language_id ) {
 		if ( wplng_text_is_translatable( $slug )
 			&& ! wplng_str_starts_with( $slug, '#' )
 			&& ! wplng_str_starts_with( $slug, '?' )
+			&& ! wplng_str_contains( $slug, '.' )
 		) {
 			$path_translated .= wplng_slug_translate(
 				$slug,
@@ -243,7 +246,6 @@ function wplng_slug_translate_path( $path, $language_id ) {
 	}
 
 	return $path_translated;
-
 }
 
 
@@ -261,7 +263,9 @@ function wplng_create_slug( $slug ) {
 
 	$slug = sanitize_title( $slug );
 
-	if ( '' === $slug ) {
+	if ( '' === $slug
+		|| wplng_is_valid_language_id( $slug )
+	) {
 		return false;
 	}
 
@@ -354,6 +358,8 @@ function wplng_create_slug( $slug ) {
  */
 function wplng_get_slugs_from_query() {
 
+	$slug_to_delete = array();
+
 	$slugs = array();
 	$args  = array(
 		'post_type'              => 'wplng_slug',
@@ -370,7 +376,8 @@ function wplng_get_slugs_from_query() {
 
 		$the_query->the_post();
 
-		$meta = get_post_meta( get_the_ID() );
+		$slug_id = get_the_ID();
+		$meta    = get_post_meta( $slug_id );
 
 		/**
 		 * Check and clear source slug
@@ -382,7 +389,15 @@ function wplng_get_slugs_from_query() {
 			continue;
 		}
 
-		$source = esc_attr( $meta['wplng_slug_original'][0] );
+		$source = sanitize_title( $meta['wplng_slug_original'][0] );
+
+		if ( 'index-php' === $source 
+			|| 'wp-includes' === $source 
+			|| 'wp-json' === $source 
+		) {
+			$slug_to_delete[] = $slug_id;
+			continue;
+		}
 
 		/**
 		 * Check and clear slug translations, setup review array
@@ -439,10 +454,24 @@ function wplng_get_slugs_from_query() {
 
 	wp_reset_postdata();
 
-	set_transient(
-		'wplng_cached_slugs',
-		$slugs
-	);
+	if ( ! empty( $slug_to_delete ) ) {
+		foreach ( $slug_to_delete as $key => $id ) {
+			if ( $key >= 32 ) {
+				break;
+			}
+			wp_delete_post( $id, true );
+		}
+		set_transient(
+			'wplng_cached_slugs',
+			$slugs,
+			30
+		);
+	} else {
+		set_transient(
+			'wplng_cached_slugs',
+			$slugs
+		);
+	}
 
 	return $slugs;
 }
