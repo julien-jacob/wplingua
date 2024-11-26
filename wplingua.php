@@ -4,7 +4,7 @@
  * Plugin URI: https://wplingua.com/
  * Description: An all-in-one solution that makes your websites multilingual and translates them automatically, without word or page limits. The highlights: a free first language, an on-page visual editor for editing translations, a customizable language switcher, search engine optimization (SEO), self-hosted data and more!
  * Author: wpLingua Team
- * Author URI: https://github.com/julien-jacob/wplingua
+ * Author URI: https://wplingua.com/
  * Text Domain: wplingua
  * Domain Path: /languages/
  * Version: 2.1.3
