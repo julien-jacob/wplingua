@@ -458,6 +458,11 @@ function wplng_get_slugs_from_query() {
 			}
 			wp_delete_post( $id, true );
 		}
+		set_transient(
+			'wplng_cached_slugs',
+			$slugs,
+			30
+		);
 	} else {
 		set_transient(
 			'wplng_cached_slugs',
