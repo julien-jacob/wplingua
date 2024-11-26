@@ -456,7 +456,7 @@ function wplng_get_slugs_from_query() {
 
 	if ( ! empty( $slug_to_delete ) ) {
 		foreach ( $slug_to_delete as $key => $id ) {
-			if ( $key >= 50 ) {
+			if ( $key >= 32 ) {
 				break;
 			}
 			wp_delete_post( $id, true );
