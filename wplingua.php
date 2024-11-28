@@ -194,10 +194,10 @@ function wplng_start() {
 		add_action( 'admin_head-edit.php', 'wplng_translation_status_style', 10, 2 );
 
 		/**
-		 * wplng_slug : CPT, taxo, meta
+		 * wplng_translation : CPT, taxo, meta
 		 */
 
-		// Register wplng_slug CPT
+		// Register wplng_translation CPT
 		add_action( 'init', 'wplng_register_post_type_slug' );
 
 		// Add metabox for wplng_slug
@@ -211,7 +211,7 @@ function wplng_start() {
 		add_action( 'untrash_post', 'wplng_clear_slugs_cache_trash_untrash' );
 		add_action( 'delete_post', 'wplng_clear_slugs_cache_trash_untrash' );
 
-		// Enqueue Script for wplng_slug admin
+		// Enqueue Script for wplng_translation admin
 		add_action( 'admin_print_scripts-post-new.php', 'wplng_slug_assets' );
 		add_action( 'admin_print_scripts-post.php', 'wplng_slug_assets' );
 
@@ -221,7 +221,7 @@ function wplng_start() {
 		// Ajax function for regenerate slug on edit page
 		add_action( 'wp_ajax_wplng_ajax_slug', 'wplng_ajax_generate_slug' );
 
-		// Display 100 slugs in admin area by default
+		// Display 100 translation in admin area by default
 		add_filter( 'get_user_option_edit_wplng_slug_per_page', 'wplng_slug_per_page' );
 
 		// Filter slugs by status
