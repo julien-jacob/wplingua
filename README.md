@@ -177,4 +177,4 @@ $ gulp archive
 
 <br><hr>
 
-**Tags:** wpLingua, WP Lingua, WP-Lingua, Multilingual, Bilingual, Translation, Translate, Translated, Localization, Automatic translation, Machine translation, Languages, WordPress, WP, Plugin
+**Tags:** wpLingua, WP Lingua, WP-Lingua, Multilingual, Bilingual, Translation, Translate, Translated, Localization, Automatic translation, Machine translation, Languages, WordPress, WP, Plugin, Language switcher, Language selector, API, SEO, Custom flags
