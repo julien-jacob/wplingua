@@ -566,10 +566,11 @@ function wplng_options_switcher_update_flags_style( $old_flags_style, $new_flags
 		}
 	}
 
-	$target_languages_json = wp_json_encode(
-		$target_languages,
-		JSON_UNESCAPED_SLASHES
+	update_option(
+		'wplng_target_languages',
+		wp_json_encode(
+			$target_languages,
+			JSON_UNESCAPED_SLASHES
+		)
 	);
-
-	update_option( 'wplng_target_languages', $target_languages_json );
 }
