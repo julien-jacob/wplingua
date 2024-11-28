@@ -7,20 +7,24 @@ if ( ! defined( 'WPINC' ) ) {
 
 
 /**
- * Add meta box on wpLingua Slugs
+ * Add meta box for wpLingua Slugs
  *
- * @param object $post
+ * This function adds a meta box to the wpLingua Slugs post type
+ * in the WordPress admin interface. The meta box is used to
+ * display and edit slug information for translations.
+ *
+ * @param WP_Post $post The post object.
  * @return void
  */
 function wplng_slug_add_meta_box( $post ) {
 
 	add_meta_box(
-		'wplng_meta_box_slug',
-		__( 'Slug', 'wplingua' ),
-		'wplng_slug_meta_box_html_output',
-		'wplng_slug',
-		'normal',
-		'low'
+		'wplng_meta_box_slug',              // Unique ID for the meta box
+		__( 'Slug', 'wplingua' ),           // Title of the meta box
+		'wplng_slug_meta_box_html_output',  // Callback function to render the meta box HTML
+		'wplng_slug',                       // Screen or post type where the meta box appears
+		'normal',                           // Context where the meta box should appear
+		'low'                               // Priority within the context
 	);
 
 }
@@ -29,10 +33,11 @@ function wplng_slug_add_meta_box( $post ) {
 /**
  * Print HTML of slugs editor meta box in back office
  *
- * @param object $post
- * @return string HTML
+ * This function prints the HTML of the slugs editor meta box in the WordPress admin interface.
+ *
+ * @param object $post The post object.
+ * @return string HTML The HTML of the meta box.
  */
-
 function wplng_slug_meta_box_html_output( $post ) {
 
 	echo '<div id="wplng-slug-editor">';
@@ -43,14 +48,14 @@ function wplng_slug_meta_box_html_output( $post ) {
 
 
 /**
- * Return HTML of slugs editor in modal
+ * This function prints the HTML of the slugs editor meta box in the WordPress admin interface.
  *
- * @param WP_Post $post
- * @return void
+ * @param WP_Post $post The post object.
+ * @return string HTML The HTML of the meta box.
  */
 function wplng_slug_editor_get_html( $post ) {
 
-	//used later for security
+	// Used later for security
 	$html = wp_nonce_field(
 		basename( __FILE__ ),
 		'wplng_slug_meta_box_nonce',
@@ -290,8 +295,11 @@ function wplng_slug_editor_get_html( $post ) {
 /**
  * Save meta box data of wpLingua translations
  *
- * @param int $post_id
- * @return void
+ * This function is responsible for saving the slug translations
+ * from the meta box in the WordPress admin interface.
+ *
+ * @param int $post_id The ID of the post being saved.
+ * @return bool Returns true if meta data is successfully updated, false otherwise.
  */
 function wplng_slug_save_meta_boxes_data( $post_id ) {
 
@@ -304,12 +312,12 @@ function wplng_slug_save_meta_boxes_data( $post_id ) {
 	$nonce = $_POST['wplng_slug_meta_box_nonce'];
 	$nonce = sanitize_text_field( wp_unslash( $nonce ) );
 
-	// Check for nonce to top xss
+	// Check for nonce to prevent XSS
 	if ( ! wp_verify_nonce( $nonce, basename( __FILE__ ) ) ) {
 		return false;
 	}
 
-	// check for correct user capabilities - stop internal xss from customers
+	// Check for correct user capabilities - stop internal XSS from customers
 	if ( ! current_user_can( 'edit_post', $post_id ) ) {
 		return false;
 	}
@@ -333,6 +341,7 @@ function wplng_slug_save_meta_boxes_data( $post_id ) {
 		$translations = array();
 	}
 
+	// Loop through all target languages and save the slug translations
 	foreach ( $languages_target as $language_target ) {
 
 		$is_in = false;
@@ -361,6 +370,7 @@ function wplng_slug_save_meta_boxes_data( $post_id ) {
 		}
 	}
 
+	// Save the slug translations - this part is run after the translations have been validated
 	foreach ( $translations as $key => $translation ) {
 
 		if ( empty( $translation['language_id'] )
@@ -444,6 +454,7 @@ function wplng_slug_save_meta_boxes_data( $post_id ) {
 
 	wplng_clear_slugs_cache();
 
+	// Save the translations in the post meta in JSON.
 	return true === update_post_meta(
 		$post_id,
 		'wplng_slug_translations',
@@ -455,8 +466,15 @@ function wplng_slug_save_meta_boxes_data( $post_id ) {
 }
 
 
+
+
+
 /**
  * wpLingua AJAX function to get slugs on CPT edit page
+ *
+ * This function processes an AJAX request to generate a slug for a custom post type (CPT) edit page.
+ * It validates and sanitizes input data, checks language parameters, and calls an external API
+ * to translate the given text into a slug format.
  *
  * @return void
  */
@@ -465,8 +483,6 @@ function wplng_ajax_generate_slug() {
 	/**
 	 * Check and sanitize data
 	 */
-
-	// Check data
 
 	if ( empty( $_POST['language_source'] )
 		|| ! is_string( $_POST['language_source'] )
@@ -479,8 +495,7 @@ function wplng_ajax_generate_slug() {
 		return;
 	}
 
-	// Check and sanitize sources and target languages
-
+	// Check and sanitize source and target languages
 	$language_source = sanitize_key( $_POST['language_source'] );
 	$language_target = sanitize_key( $_POST['language_target'] );
 
@@ -492,19 +507,21 @@ function wplng_ajax_generate_slug() {
 		return;
 	}
 
-	// Check and sanitize text to translate
+	/**
+	 * Check and sanitize text to translate
+	 */
 
 	$text = $_POST['text'];
 	$text = wplng_text_esc( $text );
 
+	// Replace certain characters for slug compatibility
 	$text = str_replace(
 		array( '/', '-', '_' ),
 		array( '', ' ', ' ' ),
 		$text
 	);
 
-	// Remove img emoji
-
+	// Remove img emoji added by WordPress
 	$text = wp_kses(
 		$text,
 		array(
@@ -514,14 +531,14 @@ function wplng_ajax_generate_slug() {
 		)
 	);
 
+	// Remove image alt attributes from text
 	$text = preg_replace(
 		'/<img alt=\\"(.*)\\">/U',
 		'',
 		$text
 	);
 
-	// Check if slug is stranlatable
-
+	// Check if text is translatable
 	if ( ! wplng_text_is_translatable( $text ) ) {
 		wp_send_json_success(
 			sanitize_title(
@@ -541,11 +558,13 @@ function wplng_ajax_generate_slug() {
 		$language_target
 	);
 
+	// Validate API response
 	if ( ! isset( $response[0] ) ) {
 		wp_send_json_error( __( 'Invalid API response', 'wplingua' ) );
 		return;
 	}
 
+	// Process and return translated slug
 	$response = $response[0];
 	$response = sanitize_title( $response );
 	$response = urldecode( $response );

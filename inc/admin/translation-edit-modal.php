@@ -134,12 +134,19 @@ function wplng_ajax_edit_modal() {
 /**
  * Save translation on AJAX call of modal edit
  *
+ * Process the AJAX request to save a translation from modal edit,
+ * validate and sanitize the input data, and call the function to
+ * save the translation.
+ *
  * @return void
  */
 function wplng_ajax_save_modal() {
 
 	/**
 	 * Check and sanitize data
+	 *
+	 * Check that the post ID and current user can edit the post
+	 * before attempting to save the translation.
 	 */
 
 	if ( empty( $_POST['post_id'] )
@@ -151,12 +158,18 @@ function wplng_ajax_save_modal() {
 
 	/**
 	 * Try to save the post
+	 *
+	 * Call the function to save the translation and store the result
+	 * in variable $saved.
 	 */
 
 	$saved = wplng_translation_save_meta_boxes_data( $_POST['post_id'] );
 
 	/**
 	 * Send AJAX success or error
+	 *
+	 * If the saving was successful, send a JSON success response.
+	 * Otherwise, send a JSON error response with a message.
 	 */
 
 	if ( $saved ) {

@@ -114,7 +114,7 @@ function wplng_option_page_register_assets( $hook ) {
 /**
  * Register wpLingua assets for option page : Switcher
  *
- * @param string $hook
+ * @param string $hook The current admin page hook.
  * @return void
  */
 function wplng_option_page_switcher_assets( $hook ) {
