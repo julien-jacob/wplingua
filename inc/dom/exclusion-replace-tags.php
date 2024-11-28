@@ -19,9 +19,10 @@ if ( ! defined( 'WPINC' ) ) {
 function wplng_dom_exclusions_replace_tags( $dom, $excluded_elements ) {
 
 	$contain_excluded = true;
+	$counter          = 0;
 
 	// Continue processing the DOM until no excluded elements are found
-	while ( $contain_excluded ) {
+	while ( $contain_excluded && $counter <= 6 ) {
 
 		$contain_excluded = false;
 		$dom              = wplng_sdh_str_get_html( $dom );
@@ -45,6 +46,8 @@ function wplng_dom_exclusions_replace_tags( $dom, $excluded_elements ) {
 			// Indicate that further processing may be needed
 			$contain_excluded = true;
 		}
+
+		$counter++;
 	}
 
 	// Return the processed DOM
