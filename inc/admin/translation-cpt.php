@@ -47,12 +47,16 @@ function wplng_register_post_type_translation() {
 /**
  * Remove quick edit on wpLingua translations list
  *
- * @param array $actions
- * @param object $post
- * @return array
+ * This function is a filter that removes the Quick Edit link on the wpLingua
+ * translations list in the WordPress admin area.
+ *
+ * @param array $actions An array of row action links.
+ * @param object $post The post object.
+ * @return array The modified array of row action links.
  */
 function wplng_translation_remove_quick_edit( $actions, $post ) {
 
+	// Check that the post type is a wpLingua translation
 	if ( $post->post_type != 'wplng_translation' ) {
 		return $actions;
 	}
@@ -139,15 +143,18 @@ function wplng_restrict_manage_posts_translation_status() {
 
 
 /**
- * Filter translations by status: Apply custom query on CPT for translation_status
+ * Filter translations by status: Apply custom query on CPT for translation_status.
  *
- * @param object $query
+ * This function modifies the query for the 'wplng_translation' post type in the admin edit screen. 
+ * It applies a meta query based on the specified translation status.
+ *
+ * @param WP_Query $query The current WP_Query instance.
  * @return void
  */
 function wplng_posts_filter_translation_status( $query ) {
-
 	global $pagenow;
 
+	// Check if we are in the admin edit screen for 'wplng_translation' post type
 	if ( empty( $_GET['post_type'] )
 		|| 'wplng_translation' !== $_GET['post_type']
 		|| empty( $_GET['translation_status'] )
@@ -157,6 +164,7 @@ function wplng_posts_filter_translation_status( $query ) {
 		return;
 	}
 
+	// Determine the translation status and set the corresponding meta query
 	switch ( $_GET['translation_status'] ) {
 		case 'full-reviewed':
 			$query->set(
@@ -223,20 +231,23 @@ function wplng_posts_filter_translation_status( $query ) {
 				)
 			);
 			break;
-
 	}
-
 }
 
 
 /**
  * Add status custom column on translations
  *
- * @param array String array
+ * Adds a custom column in the admin edit screen for the 'wplng_translation' post type.
+ * The column is called 'Translation status' and is used to show the status of the
+ * translation for each post.
+ *
+ * @param array $columns String array
  * @return array
  */
 function wplng_translation_status_columns( $columns ) {
 
+	// Save the 'cb' column value if it exists
 	$cb = array();
 
 	if ( isset( $columns['cb'] ) ) {
@@ -246,6 +257,7 @@ function wplng_translation_status_columns( $columns ) {
 		unset( $columns['cb'] );
 	}
 
+	// Add the 'wplng_status' column
 	$columns = array_merge(
 		$cb,
 		array(

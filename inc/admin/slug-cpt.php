@@ -45,14 +45,19 @@ function wplng_register_post_type_slug() {
 
 
 /**
- * Remove quick edit on wpLingua slugs list
+ * Remove quick edit on wpLingua slugs list.
  *
- * @param array $actions
- * @param object $post
+ * This function is a filter on post_row_actions and is used to remove the
+ * quick edit action from the list of actions on the slugs list page.
+ *
+ * @param array     $actions An array of row action links.
+ * @param WP_Post   $post    The post object.
+ *
  * @return array
  */
 function wplng_slug_remove_quick_edit( $actions, $post ) {
 
+	// Check if the post type is 'wplng_slug'.
 	if ( $post->post_type != 'wplng_slug' ) {
 		return $actions;
 	}
@@ -67,10 +72,14 @@ function wplng_slug_remove_quick_edit( $actions, $post ) {
 /**
  * Display 100 translations by default in admin area
  *
+ * This function is a filter on the posts_per_page option and is used to
+ * display 100 translations by default in the admin area.
+ *
  * @param mixed $result
  * @return mixed
  */
 function wplng_slug_per_page( $result ) {
+
 	if ( false === $result ) {
 		$result = '100';
 	}
@@ -87,36 +96,52 @@ function wplng_slug_per_page( $result ) {
  */
 function wplng_restrict_manage_posts_slug_status() {
 
+	// Check if we are on the right post type.
 	if ( empty( $_GET['post_type'] )
 		|| 'wplng_slug' !== $_GET['post_type']
 	) {
 		return;
 	}
 
+	// Get languages target IDs.
 	$languages_target = wplng_get_languages_target_ids();
-	$options          = array();
-	$slug_status      = '';
+
+	// Set default options for the select.
+	$options = array(
+		'' => __( 'All slug status', 'wplingua' ),
+	);
+
+	// Set slug status value from URL parameter if set.
+	$slug_status = '';
 
 	if ( ! empty( $_GET['slug_status'] ) ) {
 		$slug_status = sanitize_title( $_GET['slug_status'] );
 	}
 
+	// If only one language target id, then use simple status options.
 	if ( count( $languages_target ) === 1 ) {
-		$options = array(
-			''           => __( 'All slug status', 'wplingua' ),
-			'reviewed'   => __( 'Reviewed', 'wplingua' ),
-			'unreviewed' => __( 'Unreviewed', 'wplingua' ),
+		$options = array_merge(
+			$options,
+			array(
+				'reviewed'   => __( 'Reviewed', 'wplingua' ),
+				'unreviewed' => __( 'Unreviewed', 'wplingua' ),
+			)
 		);
 	} else {
-		$options = array(
-			''                   => __( 'All slug status', 'wplingua' ),
-			'full-reviewed'      => __( 'Full reviewed', 'wplingua' ),
-			'partially-reviewed' => __( 'Partially reviewed', 'wplingua' ),
-			'reviewed'           => __( 'Reviewed', 'wplingua' ),
-			'unreviewed'         => __( 'Full unreviewed', 'wplingua' ),
+		// If more than one language target id, 
+		// then use full, partially and reviewed status options.
+		$options = array_merge(
+			$options,
+			array(
+				'full-reviewed'      => __( 'Full reviewed', 'wplingua' ),
+				'partially-reviewed' => __( 'Partially reviewed', 'wplingua' ),
+				'reviewed'           => __( 'Reviewed', 'wplingua' ),
+				'unreviewed'         => __( 'Full unreviewed', 'wplingua' ),
+			)
 		);
 	}
 
+	// Display the select with options.
 	$html = '<select name="slug_status">';
 
 	foreach ( $options as $value => $label ) {
@@ -140,9 +165,13 @@ function wplng_restrict_manage_posts_slug_status() {
 
 
 /**
- * Filter slugs by status: Apply custom query on CPT for slug_status
+ * Filter slugs by status: Apply custom query on CPT for slug_status.
  *
- * @param object $query
+ * This function modifies the query to filter slugs based on their review status.
+ * It is hooked into the WordPress query system for 'wplng_slug' post type
+ * on the admin edit screen.
+ *
+ * @param object $query The current WP_Query instance.
  * @return void
  */
 function wplng_posts_filter_slug_status( $query ) {
@@ -158,6 +187,7 @@ function wplng_posts_filter_slug_status( $query ) {
 		return;
 	}
 
+	// Determine the slug status and set the corresponding meta query.
 	switch ( $_GET['slug_status'] ) {
 		case 'full-reviewed':
 			$query->set(
@@ -224,9 +254,7 @@ function wplng_posts_filter_slug_status( $query ) {
 				)
 			);
 			break;
-
 	}
-
 }
 
 
@@ -235,13 +263,13 @@ function wplng_posts_filter_slug_status( $query ) {
 /**
  * Add status custom column on translations
  *
- * @param array String array
+ * @param array $columns String array
  * @return array
  */
 function wplng_slug_status_columns( $columns ) {
 
+	// Save the 'cb' column value if it exists
 	$cb = array();
-
 	if ( isset( $columns['cb'] ) ) {
 		$cb = array(
 			'cb' => $columns['cb'],
@@ -249,6 +277,7 @@ function wplng_slug_status_columns( $columns ) {
 		unset( $columns['cb'] );
 	}
 
+	// Add the 'wplng_status' column
 	$columns = array_merge(
 		$cb,
 		array(

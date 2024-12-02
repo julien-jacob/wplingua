@@ -9,18 +9,22 @@ if ( ! defined( 'WPINC' ) ) {
 /**
  * Add meta box on wpLingua translations
  *
- * @param object $post
+ * This function adds a meta box to the wpLingua Translations post type in the
+ * WordPress admin interface. The meta box is used to display and edit the
+ * translation of a post.
+ *
+ * @param object $post The post object.
  * @return void
  */
 function wplng_translation_add_meta_box( $post ) {
 
 	add_meta_box(
-		'wplng_meta_box_translation',
-		__( 'Translation', 'wplingua' ),
-		'wplng_translation_meta_box_html_output',
-		'wplng_translation',
-		'normal',
-		'low'
+		'wplng_meta_box_translation',				// Unique ID for the meta box
+		__( 'Translation', 'wplingua' ),			// Title of the meta box
+		'wplng_translation_meta_box_html_output',	// Callback function to render the meta box HTML
+		'wplng_translation',						// Screen or post type where the meta box appears
+		'normal',									// Context where the meta box should appear
+		'low'										// Priority within the context
 	);
 
 }
@@ -29,10 +33,13 @@ function wplng_translation_add_meta_box( $post ) {
 /**
  * Print HTML of translations editor meta box in back office
  *
- * @param object $post
- * @return string HTML
+ * This function prints the HTML of the translations editor meta box in the
+ * WordPress admin interface. The meta box is used to display and edit the
+ * translation of a post.
+ *
+ * @param object $post The post object.
+ * @return string HTML The HTML of the meta box.
  */
-
 function wplng_translation_meta_box_html_output( $post ) {
 
 	echo '<div id="wplng-translation-editor">';
@@ -45,8 +52,8 @@ function wplng_translation_meta_box_html_output( $post ) {
 /**
  * Return HTML of translations editor in modal
  *
- * @param WP_Post $post
- * @return void
+ * @param WP_Post $post The post object.
+ * @return string The HTML of the translations editor in the modal.
  */
 function wplng_translation_editor_get_html( $post ) {
 

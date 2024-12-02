@@ -134,6 +134,7 @@ function wplng_url_is_translatable( $url = '' ) {
 
 	$url = trailingslashit( $url );
 	$url = wp_make_link_relative( $url );
+	$url = strtolower( $url );
 
 	// Check if is an admin page
 	if ( wplng_str_contains( $url, wp_make_link_relative( get_admin_url() ) ) ) {
@@ -142,20 +143,28 @@ function wplng_url_is_translatable( $url = '' ) {
 
 	// Check if URL is an anchor link for the current page
 	if ( $is_translatable
-		&& '#' === substr( $url, 0, 1 ) 
+		&& wplng_str_starts_with( $url, '#' )
 	) {
-		return $url;
+		return false;
 	}
 
+	// Don't translate some WordPress and WooCommerce URLs
+	// admin, REST API, rss and other special URLs
 	if ( $is_translatable
 		&& (
 			wplng_str_contains( $url, 'wp-login.php' )
-			|| wplng_str_ends_with( $url, '/feed/' )
-			|| wplng_str_contains( $url, 'wp-comments-post.php' )
 			|| wplng_str_contains( $url, 'wp-register.php' )
+			|| wplng_str_contains( $url, 'wp-comments-post.php' )
+			|| wplng_str_ends_with( $url, '/feed/' )
 			|| wplng_str_contains( $url, '/wp-json/' )
 			|| wplng_str_contains( $url, '/wp-includes/' )
-			|| wplng_str_contains( $url, '?wc-ajax=' ) 
+			|| wplng_str_contains( $url, '/oembed/' )
+			|| wplng_str_contains( $url, '?wc-ajax=' )
+			|| wplng_str_contains( $url, '?feed=' )
+			|| wplng_str_contains( $url, '?embed=' )
+			|| wplng_str_contains( $url, '&wc-ajax=' )
+			|| wplng_str_contains( $url, '&feed=' )
+			|| wplng_str_contains( $url, '&embed=' )
 		)
 	) {
 		$is_translatable = false;
@@ -180,7 +189,7 @@ function wplng_url_is_translatable( $url = '' ) {
 	}
 
 	// Exclude files URL
-	$regex_is_file = '#\.(avi|css|doc|exe|gif|html|jfif|jpg|jpeg|mid|midi|mp3|mpg|mpeg|mov|qt|pdf|png|ram|rar|tiff|txt|wav|zip|ico)$#Uis';
+	$regex_is_file = '#\.(avi|css|doc|exe|gif|html|jfif|jpg|jpeg|webp|bmp|mid|midi|mp3|mpg|mpeg|avif|mov|qt|pdf|png|ram|rar|tiff|txt|wav|zip|ico|xml|doc|docx|xls|xlsx)$#Uis';
 	if ( $is_translatable
 		&& preg_match( $regex_is_file, $url )
 	) {
