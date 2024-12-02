@@ -37,7 +37,7 @@ function wplng_data_json_to_translate() {
 
 			// Plugin : YITH
 			array( 'yith_wcwl_l10n', 'labels', 'cookie_disabled' ),
-			
+
 			// Plugin : WF Cookie Consent
 			array( 'wfCookieConsentSettings', 'wf_cookietext' ),
 			array( 'wfCookieConsentSettings', 'wf_dismisstext' ),
@@ -98,6 +98,7 @@ function wplng_data_excluded_selector_default() {
 		'iframe',
 		'code',
 		'address',
+		'xml',
 
 		// Link tag
 		'link[rel="EditURI"]',
@@ -111,6 +112,8 @@ function wplng_data_excluded_selector_default() {
 
 		// Wordpress
 		'#wpadminbar',
+		'.wp-embed-share-input',
+		'[aria-label="HTML"]',
 
 		// wpLingua
 		'link[hreflang]',
@@ -155,6 +158,7 @@ function wplng_data_excluded_node_text() {
 			'link',
 			'script',
 			'code',
+
 			// Plugin: Contact Form 7
 			'.wpcf7-textarea',
 		)
