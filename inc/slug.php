@@ -16,7 +16,9 @@ if ( ! defined( 'WPINC' ) ) {
  */
 function wplng_slug_original( $slug, $language_id, $slugs_translations = false ) {
 
-	if ( ! wplng_text_is_translatable( $slug ) ) {
+	if ( ! wplng_text_is_translatable( $slug )
+		|| wplng_str_contains( $slug, '.' )
+	) {
 		return $slug;
 	}
 
@@ -259,6 +261,7 @@ function wplng_create_slug( $slug ) {
 
 	if ( is_404()
 		|| ! current_user_can( 'edit_posts' )
+		|| wplng_str_contains( $slug, '.' )
 	) {
 		return false;
 	}
@@ -266,7 +269,14 @@ function wplng_create_slug( $slug ) {
 	$slug = sanitize_title( $slug );
 
 	if ( '' === $slug
+		|| ! wplng_text_is_translatable( $slug )
 		|| wplng_is_valid_language_id( $slug )
+		|| 'go' === $slug
+		|| 'refer' === $slug
+		|| 'recommend' === $slug
+		|| 'recommends' === $slug
+		|| 'wp-includes' === $slug
+		|| 'wp-json' === $slug
 	) {
 		return false;
 	}
@@ -396,6 +406,10 @@ function wplng_get_slugs_from_query() {
 		if ( 'index-php' === $source
 			|| 'wp-includes' === $source
 			|| 'wp-json' === $source
+			|| 'go' === $source
+			|| 'refer' === $source
+			|| 'recommend' === $source
+			|| 'recommends' === $source
 		) {
 			$slug_to_delete[] = $slug_id;
 			continue;
