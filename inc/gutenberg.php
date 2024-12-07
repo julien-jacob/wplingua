@@ -49,6 +49,17 @@ function wplng_register_block() {
 			'icon'            => 'translation',
 			'category'        => 'wplingua',
 			'render_callback' => 'wplng_render_switcher_block',
+			'keywords'        => array(
+				__( 'language', 'wplingua' ),
+				__( 'switcher', 'wplingua' ),
+				__( 'multilanguage', 'wplingua' ),
+				__( 'multilingual', 'wplingua' ),
+				__( 'translate', 'wplingua' ),
+				__( 'translation', 'wplingua' ),
+				__( 'flag', 'wplingua' ),
+				__( 'flags', 'wplingua' ),
+				'wpLingua',
+			),
 			'attributes'      => array(
 				'style' => array(
 					'type'    => 'string',
