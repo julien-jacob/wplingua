@@ -5,7 +5,6 @@ if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
-
 function wplng_register_block() {
 	register_block_type(
 		'wplingua/languages-switcher',
@@ -14,28 +13,69 @@ function wplng_register_block() {
 			'description'     => __( 'Add a language switcher to your page.', 'wplingua' ),
 			'icon'            => 'translation',
 			'render_callback' => 'wplng_render_switcher_block',
+			'attributes'      => array(
+				'style' => array(
+					'type'    => 'string',
+					'default' => '',
+					'enum'    => array_merge(
+						array( '' ),
+						array_keys( wplng_data_switcher_valid_style() )
+					),
+				),
+				'title' => array(
+					'type'    => 'string',
+					'default' => '',
+					'enum'    => array_merge(
+						array( '' ),
+						array_keys( wplng_data_switcher_valid_name_format() )
+					),
+				),
+				'flags' => array(
+					'type'    => 'string',
+					'default' => '',
+					'enum'    => array_merge(
+						array( '' ),
+						array_keys( wplng_data_switcher_valid_flags_style() )
+					),
+				),
+				'theme' => array(
+					'type'    => 'string',
+					'default' => '',
+					'enum'    => array_merge(
+						array( '' ),
+						array_keys( wplng_data_switcher_valid_theme() )
+					),
+				),
+			),
+			'editor_script'   => 'wplingua-render-block',
 		)
 	);
 }
 
 
-function wplng_render_switcher_block( $atts ) {
 
-	$output = wplng_get_switcher_html(
-		array( 'class' => 'switcher-preview' )
-	);
+function wplng_render_switcher_block( $attributes ) {
 
-	return $output;
+	if ( is_admin() || ( defined( 'REST_REQUEST' ) && REST_REQUEST ) ) {
+		return wplng_get_switcher_html(
+			array_merge(
+				$attributes,
+				array( 'class' => 'switcher-preview' )
+			)
+		);
+	}
+
+	return wplng_get_switcher_html( $attributes );
 }
-
 
 function wplng_register_block_scripts() {
 
 	wp_enqueue_script(
 		'wplingua-render-block',
-		plugins_url() . '/wplingua/assets/js/block.js',
+		plugins_url() . '/wplingua/assets/js/block-switcher.js',
 		array(
 			'wp-blocks',
+			'wp-editor',
 			'wp-server-side-render',
 		),
 		WPLNG_PLUGIN_VERSION
@@ -45,9 +85,21 @@ function wplng_register_block_scripts() {
 		'wplingua-render-block',
 		'wplngLocalize',
 		array(
-			'message' => array(
-				'title' => esc_html__( 'Languages switcher', 'wplingua' ),
+			'label' => array(
+				'title'       => esc_html__( 'Languages switcher', 'wplingua' ),
+				'description' => esc_html__( 'Display the wpLingua languages switcher.', 'wplingua' ),
+				'default'     => esc_html__( 'Default', 'wplingua' ),
 			),
+			'input' => array(
+				'style' => esc_html__( 'Layout: ', 'wplingua' ),
+				'title' => esc_html__( 'Displayed names: ', 'wplingua' ),
+				'flags' => esc_html__( 'Flags style:', 'wplingua' ),
+				'theme' => esc_html__( 'Color theme: ', 'wplingua' ),
+			),
+			'style' => wplng_data_switcher_valid_style(),
+			'title' => wplng_data_switcher_valid_name_format(),
+			'flags' => wplng_data_switcher_valid_flags_style(),
+			'theme' => wplng_data_switcher_valid_theme(),
 		)
 	);
 
@@ -55,11 +107,11 @@ function wplng_register_block_scripts() {
 	 * Enqueue jQuery
 	 */
 
-	 wp_enqueue_script( 'jquery' );
+	wp_enqueue_script( 'jquery' );
 
-	 /**
-	  * Enqueue wpLingua JS script
-	  */
+	/**
+	 * Enqueue wpLingua JS script
+	 */
 
 	wp_enqueue_script(
 		'wplingua-script',
@@ -68,9 +120,9 @@ function wplng_register_block_scripts() {
 		WPLNG_PLUGIN_VERSION
 	);
 
-	 /**
-	  * Enqueue wpLingua CSS style
-	  */
+	/**
+	 * Enqueue wpLingua CSS style
+	 */
 
 	wp_enqueue_style(
 		'wplingua',
@@ -78,5 +130,4 @@ function wplng_register_block_scripts() {
 		array(),
 		WPLNG_PLUGIN_VERSION
 	);
-
 }

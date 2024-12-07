@@ -287,8 +287,6 @@ function wplng_get_switcher_html( $arg = array() ) {
 
 	$is_admin = is_admin() || ( defined( 'REST_REQUEST' ) && REST_REQUEST );
 
-	// return var_export($is_admin, true);
-
 	if ( ! $is_admin && ! wplng_url_is_translatable() ) {
 		return '';
 	}
@@ -441,11 +439,9 @@ function wplng_get_switcher_html( $arg = array() ) {
 		}
 	}
 
-
-
-
-
-
+	/**
+	 * Languages
+	 */
 
 	$html .= '<div class="wplng-languages">';
 
@@ -535,19 +531,6 @@ function wplng_get_switcher_html( $arg = array() ) {
 	}
 
 	$html .= '</div>'; // End .wplng-languages
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 	$html .= '</div>'; // End .switcher-content
 	$html .= '</div>'; // End .wplng-switcher
