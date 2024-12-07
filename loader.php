@@ -18,6 +18,7 @@ require_once WPLNG_PLUGIN_PATH . '/inc/args.php';
 require_once WPLNG_PLUGIN_PATH . '/inc/assets.php';
 require_once WPLNG_PLUGIN_PATH . '/inc/buffering.php';
 require_once WPLNG_PLUGIN_PATH . '/inc/dictionary.php';
+require_once WPLNG_PLUGIN_PATH . '/inc/gutenberg.php';
 require_once WPLNG_PLUGIN_PATH . '/inc/hreflang.php';
 require_once WPLNG_PLUGIN_PATH . '/inc/languages.php';
 require_once WPLNG_PLUGIN_PATH . '/inc/search.php';
