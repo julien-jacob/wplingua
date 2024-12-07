@@ -1,17 +1,20 @@
+// Registering a new block type for the WP block editor
 wp.blocks.registerBlockType(
-    "wplingua/languages-switcher",
+    "wplingua/languages-switcher", // Block name
     {
-        title: wplngLocalize.label.title,
-        description: wplngLocalize.label.description,
-        icon: "translation",
+        title: wplngLocalize.label.title, // Block title
+        description: wplngLocalize.label.description, // Block description
+        icon: "translation", // Block icon
         attributes: {
-            style: { type: "string", default: "" },
-            title: { type: "string", default: "" },
-            flags: { type: "string", default: "" },
-            theme: { type: "string", default: "" },
+            style: { type: "string", default: "" }, // Style attribute
+            title: { type: "string", default: "" }, // Title attribute
+            flags: { type: "string", default: "" }, // Flags attribute
+            theme: { type: "string", default: "" }, // Theme attribute
         },
+        // Edit function to define the block's editor interface
         edit: function (props) {
             return [
+                // Render block content on the server side
                 wp.element.createElement(
                     wp.serverSideRender,
                     {
@@ -19,6 +22,7 @@ wp.blocks.registerBlockType(
                         attributes: props.attributes
                     }
                 ),
+                // Inspector controls for block attributes
                 wp.element.createElement(
                     wp.editor.InspectorControls,
                     {
@@ -27,6 +31,7 @@ wp.blocks.registerBlockType(
                     wp.element.createElement(
                         "div",
                         { className: "wplng-block-attributes" },
+                        // Style selection control
                         wp.element.createElement(
                             wp.components.SelectControl,
                             {
@@ -43,6 +48,7 @@ wp.blocks.registerBlockType(
                                 ]
                             }
                         ),
+                        // Title selection control
                         wp.element.createElement(
                             wp.components.SelectControl,
                             {
@@ -60,6 +66,7 @@ wp.blocks.registerBlockType(
                                 ]
                             }
                         ),
+                        // Flags selection control
                         wp.element.createElement(
                             wp.components.SelectControl,
                             {
@@ -77,6 +84,7 @@ wp.blocks.registerBlockType(
                                 ]
                             }
                         ),
+                        // Theme selection control
                         wp.element.createElement(
                             wp.components.SelectControl,
                             {
@@ -114,8 +122,10 @@ wp.blocks.registerBlockType(
                 )
             ];
         },
+        // Save function for the block
         save: function () {
-            return null;
+            return null; // Dynamic block, content saved on server
         }
     }
 );
+

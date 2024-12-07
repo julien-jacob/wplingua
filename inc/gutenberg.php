@@ -6,17 +6,40 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 
+/**
+ * Adds the 'wpLingua' category to the Gutenberg block categories
+ *
+ * @param array $block_categories The block categories.
+ * @return array The updated block categories.
+ */
 function wplng_block_category( $block_categories ) {
 
-	$block_categories[] = array(
+	// Create a new category for the wpLingua language switcher block
+	$new_category = array(
 		'slug'  => 'wplingua',
 		'title' => 'wpLingua',
 	);
+
+	// Find the index of the 'design' category in the block categories array
+	$design_index = array_search( 'design', array_column( $block_categories, 'slug' ) );
+
+	if ( $design_index !== false ) {
+		// If the 'design' category is found, insert the new category after it
+		array_splice( $block_categories, $design_index + 1, 0, array( $new_category ) );
+	} else {
+		// If the 'design' category is not found, append the new category to the end of the array
+		$block_categories[] = $new_category;
+	}
 
 	return $block_categories;
 }
 
 
+/**
+ * Registers the block with the name 'wplingua/languages-switcher'
+ *
+ * @see https://developer.wordpress.org/block-editor/developers/block-api/block-registration/
+ */
 function wplng_register_block() {
 	register_block_type(
 		'wplingua/languages-switcher',
@@ -66,7 +89,12 @@ function wplng_register_block() {
 }
 
 
-
+/**
+ * Renders the block content.
+ *
+ * @param array $attributes The block attributes.
+ * @return string The block content.
+ */
 function wplng_render_switcher_block( $attributes ) {
 
 	if ( is_admin() || ( defined( 'REST_REQUEST' ) && REST_REQUEST ) ) {
@@ -81,8 +109,17 @@ function wplng_render_switcher_block( $attributes ) {
 	return wplng_get_switcher_html( $attributes );
 }
 
+
+/**
+ * Registers the JavaScript and CSS files for the block editor.
+ *
+ * This function enqueues the necessary scripts and styles for the wpLingua
+ * language switcher block in the Gutenberg editor. It also localizes script
+ * data for use in JavaScript and includes necessary dependencies like jQuery.
+ */
 function wplng_register_block_scripts() {
 
+	// Enqueue the script for rendering the language switcher block in the editor
 	wp_enqueue_script(
 		'wplingua-render-block',
 		plugins_url() . '/wplingua/assets/js/block-switcher.js',
@@ -94,6 +131,7 @@ function wplng_register_block_scripts() {
 		WPLNG_PLUGIN_VERSION
 	);
 
+	// Localize script data for use in JavaScript
 	wp_localize_script(
 		'wplingua-render-block',
 		'wplngLocalize',
@@ -116,16 +154,10 @@ function wplng_register_block_scripts() {
 		)
 	);
 
-	/**
-	 * Enqueue jQuery
-	 */
-
+	// Enqueue jQuery
 	wp_enqueue_script( 'jquery' );
 
-	/**
-	 * Enqueue wpLingua JS script
-	 */
-
+	// Enqueue wpLingua main JavaScript file
 	wp_enqueue_script(
 		'wplingua-script',
 		plugins_url() . '/wplingua/assets/js/script.js',
@@ -133,10 +165,7 @@ function wplng_register_block_scripts() {
 		WPLNG_PLUGIN_VERSION
 	);
 
-	/**
-	 * Enqueue wpLingua CSS style
-	 */
-
+	// Enqueue wpLingua frontend CSS style
 	wp_enqueue_style(
 		'wplingua',
 		plugins_url() . '/wplingua/assets/css/front.css',
