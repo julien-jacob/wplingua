@@ -18,13 +18,10 @@ jQuery(document).ready(function ($) {
      */
 
     function wplngUpdateSwitcherOpening() {
+
         var windowMiddle = $(window).height() / 2;
 
-        $(".wplng-switcher").each(function (e) {
-
-            if (!$(this).hasClass("style-dropdown")) {
-                return;
-            }
+        $(".wplng-switcher.style-dropdown").each(function (e) {
 
             var offsetFromWindow = $(this).offset().top - $(window).scrollTop();
 
