@@ -5,6 +5,18 @@ if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
+
+function wplng_block_category( $block_categories ) {
+
+	$block_categories[] = array(
+		'slug'  => 'wplingua',
+		'title' => 'wpLingua',
+	);
+
+	return $block_categories;
+}
+
+
 function wplng_register_block() {
 	register_block_type(
 		'wplingua/languages-switcher',
@@ -12,6 +24,7 @@ function wplng_register_block() {
 			'title'           => __( 'wpLingua: languages switcher', 'wplingua' ),
 			'description'     => __( 'Add a language switcher to your page.', 'wplingua' ),
 			'icon'            => 'translation',
+			'category'        => 'wplingua',
 			'render_callback' => 'wplng_render_switcher_block',
 			'attributes'      => array(
 				'style' => array(
