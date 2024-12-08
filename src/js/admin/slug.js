@@ -96,7 +96,7 @@ jQuery(document).ready(function ($) {
             wplngEditor.find(container + " .wplng-generate-spin").show();
 
             $.ajax({
-                url: wplngLocalize.ajaxUrl,
+                url: wplngI18nSlug.ajaxUrl,
                 method: 'POST',
                 data: {
                     action: 'wplng_ajax_slug',
@@ -168,7 +168,7 @@ jQuery(document).ready(function ($) {
             if (!wplngIsUpdatePost
                 && wplngInputSignature.onload != wplngInputSignature.now
             ) {
-                return confirm(wplngLocalize.message.exitPage);
+                return confirm(wplngI18nSlug.message.exitPage);
             }
         });
 

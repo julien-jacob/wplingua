@@ -145,7 +145,7 @@ function wplng_register_block_scripts() {
 	// Localize script data for use in JavaScript
 	wp_localize_script(
 		'wplingua-block-switcher',
-		'wplngLocalize',
+		'wplngI18nGutenberg',
 		array(
 			'label' => array(
 				'title'       => esc_html__( 'Languages switcher', 'wplingua' ),

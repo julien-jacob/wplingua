@@ -168,7 +168,7 @@ jQuery(document).ready(function ($) {
             wplngEditor.find(container + " .wplng-generate-spin").show();
 
             $.ajax({
-                url: wplngLocalize.ajaxUrl,
+                url: wplngI18nTranslation.ajaxUrl,
                 method: 'POST',
                 data: {
                     action: 'wplng_ajax_translation',
@@ -241,7 +241,7 @@ jQuery(document).ready(function ($) {
             if (!wplngIsUpdatePost
                 && wplngInputSignature.onload != wplngInputSignature.now
             ) {
-                return confirm(wplngLocalize.message.exitPage);
+                return confirm(wplngI18nTranslation.message.exitPage);
             }
         });
 
@@ -304,7 +304,7 @@ jQuery(document).ready(function ($) {
 
     function wplngEdit() {
 
-        $("#wplng-modal-edit-save").text(wplngLocalize.message.buttonSave);
+        $("#wplng-modal-edit-save").text(wplngI18nTranslation.message.buttonSave);
         $("#wplng-modal-edit-save").prop("disabled", true);
 
         // Get post ID
@@ -315,7 +315,7 @@ jQuery(document).ready(function ($) {
         editURL = editURL.replace('WPLNG_TRANSLATION_ID', post);
 
         $.ajax({
-            url: wplngLocalize.ajaxUrl,
+            url: wplngI18nTranslation.ajaxUrl,
             method: 'POST',
             data: {
                 action: 'wplng_ajax_edit_modal',
@@ -353,7 +353,7 @@ jQuery(document).ready(function ($) {
 
                     // Hide not current languages
                     let languagesToHide = ".wplng-edit-language:not([wplng-lang=";
-                    languagesToHide += wplngLocalize.currentLanguage;
+                    languagesToHide += wplngI18nTranslation.currentLanguage;
                     languagesToHide += "])";
 
                     wplngEditor.find(languagesToHide).hide();
@@ -372,7 +372,7 @@ jQuery(document).ready(function ($) {
 
     $("#wplng-modal-edit-return").click(function () {
         if (wplngInputSignature.onload != wplngInputSignature.now) {
-            if (confirm(wplngLocalize.message.exitEditorModal)) {
+            if (confirm(wplngI18nTranslation.message.exitEditorModal)) {
                 wplngCloseEditorModal();
             }
         } else {
@@ -386,7 +386,7 @@ jQuery(document).ready(function ($) {
 
     $("#wplng-modal-edit-save").click(function () {
 
-        $("#wplng-modal-edit-save").text(wplngLocalize.message.buttonSaveInProgress);
+        $("#wplng-modal-edit-save").text(wplngI18nTranslation.message.buttonSaveInProgress);
 
         let text = $(this).text();
         let post = $(this).attr("data-wplng-post");
@@ -400,19 +400,19 @@ jQuery(document).ready(function ($) {
             let id = $(this).attr('id');
             data[id] = $(this).val();
 
-            if (('wplng_translation_' + wplngLocalize.currentLanguage) == id) {
+            if (('wplng_translation_' + wplngI18nTranslation.currentLanguage) == id) {
                 text = $(this).val();
             }
         });
 
-        let isReview = (true == $("#wplng_mark_as_reviewed_" + wplngLocalize.currentLanguage).prop("checked"));
+        let isReview = (true == $("#wplng_mark_as_reviewed_" + wplngI18nTranslation.currentLanguage).prop("checked"));
 
         wplngEditor.find(".wplng-mark-as-reviewed input[type=checkbox]").each(function () {
             data[$(this).attr('id')] = $(this).prop("checked");
         });
 
         $.ajax({
-            url: wplngLocalize.ajaxUrl,
+            url: wplngI18nTranslation.ajaxUrl,
             method: 'POST',
             data: data,
             success: function (data) {
