@@ -24,7 +24,7 @@ wp.blocks.registerBlockType(
                 ),
                 // Inspector controls for block attributes
                 wp.element.createElement(
-                    wp.editor.InspectorControls,
+                    wp.blockEditor.InspectorControls,
                     {
                         key: "inspector"
                     },
