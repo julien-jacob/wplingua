@@ -94,7 +94,7 @@ function wplng_register_block() {
 					),
 				),
 			),
-			'editor_script'   => 'wplingua-render-block',
+			'editor_script'   => 'wplingua-block-switcher',
 		)
 	);
 }
@@ -132,7 +132,7 @@ function wplng_register_block_scripts() {
 
 	// Enqueue the script for rendering the language switcher block in the editor
 	wp_enqueue_script(
-		'wplingua-render-block',
+		'wplingua-block-switcher',
 		plugins_url() . '/wplingua/assets/js/block-switcher.js',
 		array(
 			'wp-blocks',
@@ -144,7 +144,7 @@ function wplng_register_block_scripts() {
 
 	// Localize script data for use in JavaScript
 	wp_localize_script(
-		'wplingua-render-block',
+		'wplingua-block-switcher',
 		'wplngLocalize',
 		array(
 			'label' => array(
