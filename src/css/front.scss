@@ -8,6 +8,7 @@
 .wplng-switcher {
 
     pointer-events: none;
+    position: relative;
 
     .switcher-content {
 
@@ -50,6 +51,15 @@
     vertical-align: sub;
 }
 
+.wplng-block-attributes {
+    border-top: 1px solid rgb(221, 221, 221);
+    margin-top: -1px;
+    padding: 16px;
+
+    label.components-text.components-input-control__label {
+        text-transform: none;
+    }
+}
 
 @import "front/flags-style";
 @import "front/insert";
