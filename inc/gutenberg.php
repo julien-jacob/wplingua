@@ -155,7 +155,7 @@ function wplng_register_block_scripts() {
 			'input' => array(
 				'style' => esc_html__( 'Layout: ', 'wplingua' ),
 				'title' => esc_html__( 'Displayed names: ', 'wplingua' ),
-				'flags' => esc_html__( 'Flags style:', 'wplingua' ),
+				'flags' => esc_html__( 'Flags style: ', 'wplingua' ),
 				'theme' => esc_html__( 'Color theme: ', 'wplingua' ),
 			),
 			'style' => wplng_data_switcher_valid_style(),
