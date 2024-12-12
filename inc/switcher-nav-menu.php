@@ -47,6 +47,11 @@ function wplng_switcher_nav_menu_args_from_href( $href ) {
 		return false;
 	}
 
+	// Check if names or fags are displayed
+	if ( 'n' === $match[1] && 'n' === $match[2] ) {
+		$match[1] = 'o';
+	}
+
 	// Return the $args array checked
 
 	return array(
@@ -166,8 +171,12 @@ function wplng_switcher_nav_menu_replace_items( $items ) {
 					);
 					break;
 
-				default: // case 'i'
+				case 'i':
 					$title = strtoupper( $language_current_id );
+					break;
+
+				default: // case 'n'
+					$title = '';
 					break;
 			}
 
@@ -217,8 +226,12 @@ function wplng_switcher_nav_menu_replace_items( $items ) {
 					);
 					break;
 
-				default: // case 'i'
+				case 'i':
 					$title = strtoupper( $language_website['id'] );
+					break;
+
+				default: // case 'n'
+					$title = '';
 					break;
 			}
 
@@ -286,8 +299,12 @@ function wplng_switcher_nav_menu_replace_items( $items ) {
 					);
 					break;
 
-				default: // case 'i'
+				case 'i': // case 'i'
 					$title = strtoupper( $language_target['id'] );
+					break;
+
+				default: // case 'n'
+					$title = '';
 					break;
 			}
 
