@@ -193,7 +193,7 @@ function wplng_api_call_validate_api_key( $api_key = '' ) {
 		set_transient(
 			'wplng_api_key_error',
 			$error_message,
-			60 * 5
+			MINUTE_IN_SECONDS * 5
 		);
 
 	} else {
@@ -205,7 +205,7 @@ function wplng_api_call_validate_api_key( $api_key = '' ) {
 		set_transient(
 			'wplng_api_key_error',
 			__( 'API returned an unexpected response.', 'wplingua' ),
-			60 * 5
+			MINUTE_IN_SECONDS * 5
 		);
 
 	}
