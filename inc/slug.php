@@ -485,7 +485,8 @@ function wplng_get_slugs_from_query() {
 	} else {
 		set_transient(
 			'wplng_cached_slugs',
-			$slugs
+			$slugs,
+			MONTH_IN_SECONDS
 		);
 	}
 

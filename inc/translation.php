@@ -189,7 +189,8 @@ function wplng_get_translations_from_query() {
 
 	set_transient(
 		'wplng_cached_translations',
-		$translations
+		$translations,
+		MONTH_IN_SECONDS
 	);
 
 	return $translations;
