@@ -1,5 +1,5 @@
 === wpLingua - Automatic translation - Translate and make website multilingual ===
-Contributors: wpr0ck, lyly13
+Contributors: wpr0ck, lyly13, wplingua
 Donate link: https://wplingua.com/
 Tags: translate, translation, multilingual, localization, language
 Requires at least: 6.0
