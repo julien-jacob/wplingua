@@ -80,7 +80,7 @@ function wplng_register_assets() {
 
 		wp_localize_script(
 			'wplingua-translation',
-			'wplngLocalize',
+			'wplngI18nTranslation',
 			array(
 				'ajaxUrl'         => admin_url( 'admin-ajax.php' ),
 				'currentLanguage' => wplng_get_language_current_id(),

@@ -283,6 +283,14 @@ function wplng_start() {
 		add_shortcode( 'wplng_notranslate', 'wplng_shortcode_notranslate' );
 		add_shortcode( 'wplng_only', 'wplng_shortcode_only' );
 
+		/**
+		 * Gutenberg
+		 */
+
+		add_filter( 'block_categories_all', 'wplng_block_category' );
+		add_action( 'init', 'wplng_register_block' );
+		add_action( 'enqueue_block_editor_assets', 'wplng_register_block_scripts' );
+
 	}
 
 }
