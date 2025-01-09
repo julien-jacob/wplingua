@@ -5,6 +5,7 @@
 @import "header";
 @import "dashicons-spin";
 
+.wp-block .wplng-switcher,
 .wplng-switcher {
 
     pointer-events: none;
@@ -36,6 +37,15 @@
                 vertical-align: unset;
             }
 
+        }
+
+        // Fix Gutenberg aberation on shortcode
+        p {
+            display: none;
+            margin: 0;
+            padding: 0;
+            height: 0;
+            width: 0;
         }
 
     }
