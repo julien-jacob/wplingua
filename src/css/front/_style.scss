@@ -68,4 +68,26 @@
 
     }
 
+    /**
+     * Set min height if container witdh not set
+     **/
+
+    // &.dropdown-min-width {
+
+        &.title-name,
+        &.title-original {
+            min-width: 180px;
+        }
+
+        &.title-id {
+            min-width: 100px;
+        }
+    
+        &.title-id.flags-none,
+        &.title-none {
+            min-width: 80px;
+        }
+
+    // }
+
 }

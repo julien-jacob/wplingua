@@ -87,4 +87,15 @@ jQuery(document).ready(function ($) {
         $("#wpadminbar").hide();
     }
 
+
+    /**
+     * Manage dropdown width
+     */
+    
+    // $(".wplng-switcher.style-dropdown").each( function() {
+    //     if ($(this).width() <= 40) {
+    //         $(this).addClass("dropdown-min-width");
+    //     }
+    // });
+
 }); // End jQuery loaded event
