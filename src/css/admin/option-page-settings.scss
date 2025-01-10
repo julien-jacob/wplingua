@@ -115,6 +115,17 @@
             padding: 10px 0 6px;
             margin-top: 8px;
         }
+
+        .wplng-private-label {
+            display: none;
+        }
+
+        &.wplng-is-private {
+            .wplng-private-label {
+                display: inline;
+                opacity: .65;
+            }
+        }
     }
 }
 

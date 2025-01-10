@@ -273,6 +273,7 @@ jQuery(document).ready(function ($) {
                     language.id + '">' + textCustomRadio + '</label>' +
                     '</span>';
 
+                let isPrivate = wplngLanguagesIsPrivate(language.id);
                 let inputPrivate = '';
 
                 inputPrivate += '<input ';
@@ -282,20 +283,27 @@ jQuery(document).ready(function ($) {
                 inputPrivate += ' value="private"';
                 inputPrivate += ' wplng-target-lang="' + language.id + '"';
 
-                if (wplngLanguagesIsPrivate(language.id)) {
+                if (isPrivate) {
                     inputPrivate += ' checked';
                 }
 
                 inputPrivate += '/>';
 
                 htmlElement = htmlTemplate;
-                htmlElement = htmlElement.replaceAll("[INPUT_PRIVATE]", inputPrivate);
+                htmlElement = htmlElement.replaceAll("[PRIVATE_INPUT]", inputPrivate);
                 htmlElement = htmlElement.replaceAll("[NAME]", language.name);
                 htmlElement = htmlElement.replaceAll("[LANG]", language.id);
                 var htmlFlag =
                     '<img src="' + targetFlagUrl + '" class="wplng-target-flag">';
                 htmlElement = htmlElement.replaceAll("[FLAG]", htmlFlag);
                 htmlElement = htmlElement.replaceAll("[FLAGS_OPTIONS]", flagsRadiosHTML);
+
+                if (isPrivate) {
+                    htmlElement = htmlElement.replaceAll(
+                        'class="wplng-target-language"', 
+                        'class="wplng-target-language wplng-is-private"'
+                    );
+                }
 
                 var htmlInput = '<input type="url" class="wplng-target-subflag" wplng-target-lang="' + language.id + '" value="' + language.flag + '" />';
                 htmlElement = htmlElement.replaceAll("[INPUT]", htmlInput);
@@ -455,6 +463,14 @@ jQuery(document).ready(function ($) {
 
         var languageId = $(this).attr("wplng-target-lang");
         var isPrivate = $(this).is(":checked");
+
+        if (isPrivate) {
+            $(this).parents(".wplng-target-language").addClass("wplng-is-private");
+        } else {
+            $(this).parents(".wplng-target-language").removeClass("wplng-is-private");
+        }
+
+        console.log($(this).parents(".wplng-target-language"));
 
         var newTargetLanguages = [];
         wplngTargetLanguages.forEach(language => {

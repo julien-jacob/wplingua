@@ -316,7 +316,7 @@ function wplng_settings_part_languages_target() {
 
 			<div class="wplng-target-language-displayed">
 				<div class="wplng-target-language-left">
-					[FLAG][NAME]
+					[FLAG][NAME]<span class="wplng-private-label"> <?php esc_html_e( '(Private)', 'wplingua' ); ?></span>
 				</div>
 
 				<div class="wplng-target-language-right">
@@ -336,7 +336,7 @@ function wplng_settings_part_languages_target() {
 				</div>
 				<hr>
 				<fieldset>
-					[INPUT_PRIVATE]<label for="wplng-language-private-[LANG]"><strong><?php _e('Private language', 'wplingua'); ?></strong></label>
+					[PRIVATE_INPUT]<label for="wplng-language-private-[LANG]"><strong><?php _e('Private language', 'wplingua'); ?></strong></label>
 					<p><?php _e('Private languages will only be visible to logged-in users with editing rights. This option allows administrators to pre-generate and correct translations before they are accessible to the public.', 'wplingua'); ?></p>
 					
 				</fieldset>
