@@ -260,7 +260,7 @@ function wplng_settings_part_language_website() {
 				<img src="<?php echo esc_url( wplng_get_language_website_flag() ); ?>" id="wplng-website-flag"><?php echo esc_html( $website_language['name'] ); ?>
 			</div>
 			<div class="wplng-target-language-right">
-				<a href="javascript:void(0);" id="wplng-website-lang-update-flag"><?php esc_html_e( 'Edit flag', 'wplingua' ); ?></a>
+				<a href="javascript:void(0);" id="wplng-website-lang-update-flag"><?php esc_html_e( 'Edit', 'wplingua' ); ?></a>
 			</div>
 		</div>
 
@@ -320,7 +320,7 @@ function wplng_settings_part_languages_target() {
 				</div>
 
 				<div class="wplng-target-language-right">
-					<a href="javascript:void(0);" class="wplng-target-lang-update-flag" wplng-target-lang="[LANG]"><?php esc_html_e( 'Edit flag', 'wplingua' ); ?></a>
+					<a href="javascript:void(0);" class="wplng-target-lang-update-flag" wplng-target-lang="[LANG]"><?php esc_html_e( 'Edit', 'wplingua' ); ?></a>
 					<a href="javascript:void(0);" class="wplng-target-lang-remove" wplng-target-lang="[LANG]"><?php esc_html_e( 'Remove', 'wplingua' ); ?></a>
 				</div>
 			</div>
@@ -334,6 +334,12 @@ function wplng_settings_part_languages_target() {
 					<strong><?php esc_html_e( 'Custom flag URL: ', 'wplingua' ); ?></strong>
 					[INPUT]
 				</div>
+				<hr>
+				<fieldset>
+					[INPUT_PRIVATE]<label for="wplng-language-private-[LANG]"><strong><?php _e('Private language', 'wplingua'); ?></strong></label>
+					<p><?php _e('Private languages will only be visible to logged-in users with editing rights. This option allows administrators to pre-generate and correct translations before they are accessible to the public.', 'wplingua'); ?></p>
+					
+				</fieldset>
 			</div>
 		</div>
 	</div>
