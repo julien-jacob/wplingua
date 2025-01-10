@@ -289,7 +289,7 @@ function wplng_start() {
 
 		add_filter( 'block_categories_all', 'wplng_block_category' );
 		add_action( 'init', 'wplng_register_block' );
-		add_action( 'enqueue_block_editor_assets', 'wplng_register_block_scripts' );
+		add_action( 'enqueue_block_editor_assets', 'wplng_register_block_assets' );
 
 	}
 

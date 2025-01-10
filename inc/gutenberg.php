@@ -128,7 +128,7 @@ function wplng_render_switcher_block( $attributes ) {
  * language switcher block in the Gutenberg editor. It also localizes script
  * data for use in JavaScript and includes necessary dependencies like jQuery.
  */
-function wplng_register_block_scripts() {
+function wplng_register_block_assets() {
 
 	// Enqueue the script for rendering the language switcher block in the editor
 	wp_enqueue_script(
