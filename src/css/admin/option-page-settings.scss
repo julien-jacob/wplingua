@@ -12,7 +12,7 @@
 }
 
 #wplng-notice-first-loading-loading {
-    background-color: rgba(114, 174, 230,.33);
+    background-color: rgba(114, 174, 230, .33);
     text-align: center;
 }
 
@@ -63,6 +63,10 @@
         border-top: 1px solid lightgray;
         padding: 10px 0 6px;
         margin-top: 8px;
+
+        #wplng_website_flag {
+            width: 100%;
+        }
     }
 
 }
@@ -114,6 +118,11 @@
             border-top: 1px solid lightgray;
             padding: 10px 0 6px;
             margin-top: 8px;
+
+            .wplng-target-subflag {
+                width: 100%;
+                margin-bottom: 6px;
+            }
         }
 
         .wplng-private-label {

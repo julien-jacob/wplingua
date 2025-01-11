@@ -266,12 +266,17 @@ function wplng_settings_part_language_website() {
 
 		<div id="wplng-flag-website-container">
 			<p>
-				<strong><?php esc_html_e( 'Flag: ', 'wplingua' ); ?></strong>
+				<strong><?php esc_html_e( 'Flag to use for this language: ', 'wplingua' ); ?></strong>
+			</p>
+			<p>
 				<span id="wplng-flags-radio-original-website"></span>
 			</p>
 
 			<div id="wplng-website-flag-container">
-				<strong><?php esc_html_e( 'Custom flag URL: ', 'wplingua' ); ?></strong>
+				<hr>
+				<p>
+					<strong><?php esc_html_e( 'Custom flag URL for this language: ', 'wplingua' ); ?></strong>
+				</p>
 				<input type="url" name="wplng_website_flag" id="wplng_website_flag" value="<?php echo esc_url( wplng_get_language_website_flag() ); ?>"/>
 			</div>
 		</div>
@@ -327,17 +332,22 @@ function wplng_settings_part_languages_target() {
 
 			<div class="wplng-flag-target-container" wplng-target-lang="[LANG]">
 				<p>
-					<strong><?php esc_html_e( 'Flag: ', 'wplingua' ); ?></strong>
+					<strong><?php esc_html_e( 'Flag to use for this language: ', 'wplingua' ); ?></strong>
+				</p>
+				<p>
 					<span class="wplng-subflags-radio-target-website">[FLAGS_OPTIONS]</span>
 				</p>
 				<div class="wplng-subflag-target-custom" wplng-target-lang="[LANG]">
-					<strong><?php esc_html_e( 'Custom flag URL: ', 'wplingua' ); ?></strong>
+					<hr>
+					<p>
+						<strong><?php esc_html_e( 'Custom flag URL for this language: ', 'wplingua' ); ?></strong>
+					</p>
 					[INPUT]
 				</div>
 				<hr>
 				<fieldset>
-					[PRIVATE_INPUT]<label for="wplng-language-private-[LANG]"><strong><?php _e('Private language', 'wplingua'); ?></strong></label>
-					<p><?php _e('Private languages will only be visible to logged-in users with editing rights. This option allows administrators to pre-generate and correct translations before they are accessible to the public.', 'wplingua'); ?></p>
+					[PRIVATE_INPUT]<label for="wplng-language-private-[LANG]"><strong><?php _e( 'Make this language private', 'wplingua' ); ?></strong></label>
+					<p><?php _e( 'Private languages will only be visible to logged-in users with editing rights. This option allows administrators to pre-generate and correct translations before they are accessible to the public.', 'wplingua' ); ?></p>
 					
 				</fieldset>
 			</div>
