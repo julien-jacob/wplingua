@@ -22,13 +22,14 @@
      **/
     &.style-dropdown {
 
-        min-height: 42px;
+        min-height: 40px;
 
         .switcher-content {
             position: absolute;
             right: 0;
             left: 0;
             z-index: 9999;
+            min-height: 40px;
         }
 
         &.open-top .switcher-content {
