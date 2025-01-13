@@ -2,7 +2,7 @@
  * Switcher style
  */
 
-.wplng-switcher {
+ .wplng-switcher {
 
     &.style-list .wplng-language-current,
     &.style-block .wplng-language-current {
@@ -22,14 +22,14 @@
      **/
     &.style-dropdown {
 
-        min-height: 40px;
+        min-height: 38px;
 
         .switcher-content {
             position: absolute;
             right: 0;
             left: 0;
             z-index: 9999;
-            min-height: 40px;
+            // min-height: 40px;
         }
 
         &.open-top .switcher-content {
