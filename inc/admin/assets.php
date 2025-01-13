@@ -317,7 +317,7 @@ function wplng_translation_assets() {
 
 		wp_localize_script(
 			'wplingua-translation',
-			'wplngLocalize',
+			'wplngI18nTranslation',
 			array(
 				'ajaxUrl'         => admin_url( 'admin-ajax.php' ),
 				'currentLanguage' => false,
@@ -383,7 +383,7 @@ function wplng_slug_assets() {
 
 		wp_localize_script(
 			'wplingua-slug',
-			'wplngLocalize',
+			'wplngI18nSlug',
 			array(
 				'ajaxUrl'         => admin_url( 'admin-ajax.php' ),
 				'currentLanguage' => false,

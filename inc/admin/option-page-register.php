@@ -147,6 +147,20 @@ function wplng_option_page_register() {
 
 				<?php else : ?>
 
+				<tr id="wplng-get-api-key">
+					<th scope="row"><span class="dashicons dashicons-yes-alt"></span> <?php esc_html_e( 'Get API key', 'wplingua' ); ?></th>
+					<td>
+						<?php wplng_register_part_free_api_key(); ?>
+					</td>
+				</tr>
+
+				<tr id="wplng-set-api-key">
+					<th scope="row"><span class="dashicons dashicons-admin-network"></span> <?php esc_html_e( 'Set API Key', 'wplingua' ); ?></th>
+					<td>
+						<?php wplng_register_part_api_key( $api_key ); ?>
+					</td>
+				</tr>
+
 				<tr>
 					<th scope="row"><span class="dashicons dashicons-info"></span> <?php esc_html_e( 'Start with wpLingua', 'wplingua' ); ?></th>
 					<td>
@@ -185,20 +199,6 @@ function wplng_option_page_register() {
 						<div class="wplng-fe-50">
 							<a href="#wplng-set-api-key" class="button button-primary"><?php esc_html_e( 'Set API key', 'wplingua' ); ?></a>
 						</div>
-					</td>
-				</tr>
-
-				<tr id="wplng-set-api-key">
-					<th scope="row"><span class="dashicons dashicons-admin-network"></span> <?php esc_html_e( 'Set API Key', 'wplingua' ); ?></th>
-					<td>
-						<?php wplng_register_part_api_key( $api_key ); ?>
-					</td>
-				</tr>
-
-				<tr id="wplng-get-api-key">
-					<th scope="row"><span class="dashicons dashicons-yes-alt"></span> <?php esc_html_e( 'Get API key', 'wplingua' ); ?></th>
-					<td>
-						<?php wplng_register_part_free_api_key(); ?>
 					</td>
 				</tr>
 

@@ -5,9 +5,11 @@
 @import "header";
 @import "dashicons-spin";
 
+.wp-block .wplng-switcher,
 .wplng-switcher {
 
     pointer-events: none;
+    position: relative;
 
     .switcher-content {
 
@@ -37,6 +39,15 @@
 
         }
 
+        // Fix Gutenberg aberation on shortcode
+        p {
+            display: none;
+            margin: 0;
+            padding: 0;
+            height: 0;
+            width: 0;
+        }
+
     }
 
 }
@@ -50,6 +61,15 @@
     vertical-align: sub;
 }
 
+.wplng-block-attributes {
+    border-top: 1px solid rgb(221, 221, 221);
+    margin-top: -1px;
+    padding: 16px;
+
+    label.components-text.components-input-control__label {
+        text-transform: none;
+    }
+}
 
 @import "front/flags-style";
 @import "front/insert";

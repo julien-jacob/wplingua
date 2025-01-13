@@ -7,7 +7,7 @@
  * Author URI: https://wplingua.com/
  * Text Domain: wplingua
  * Domain Path: /languages/
- * Version: 2.1.5
+ * Version: 2.2.0
  * Requires PHP: 7.4
  * License: GPL v2 or later
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -24,7 +24,7 @@ if ( ! defined( 'WPINC' ) ) {
 define( 'WPLNG_API_URL', 'https://api.wplingua.com' );
 define( 'WPLNG_API_VERSION', '2.0' );
 define( 'WPLNG_API_SSLVERIFY', true );
-define( 'WPLNG_PLUGIN_VERSION', '2.1.5' );
+define( 'WPLNG_PLUGIN_VERSION', '2.2.0' );
 define( 'WPLNG_PLUGIN_FILE', plugin_basename( __FILE__ ) );
 define( 'WPLNG_PLUGIN_PATH', dirname( __FILE__ ) );
 define( 'WPLNG_MAX_TRANSLATIONS', 256 );
@@ -282,6 +282,14 @@ function wplng_start() {
 		add_shortcode( 'wplng_switcher', 'wplng_shortcode_switcher' );
 		add_shortcode( 'wplng_notranslate', 'wplng_shortcode_notranslate' );
 		add_shortcode( 'wplng_only', 'wplng_shortcode_only' );
+
+		/**
+		 * Gutenberg
+		 */
+
+		add_filter( 'block_categories_all', 'wplng_block_category' );
+		add_action( 'init', 'wplng_register_block' );
+		add_action( 'enqueue_block_editor_assets', 'wplng_register_block_assets' );
 
 	}
 

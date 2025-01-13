@@ -151,6 +151,20 @@
 
     }
 
+    a {
+
+        text-decoration: none;
+
+        &:focus {
+            box-shadow: none;
+            outline: none;
+        }
+    
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+
     .wplng-tr-submit {
         td {
 
