@@ -37,6 +37,18 @@ jQuery(document).ready(function ($) {
     }
 
 
+    function wplngLanguagesIsPrivate(languageId) {
+        let returned = false;
+        wplngTargetLanguages.forEach(targetLanguage => {
+            if (targetLanguage.id == languageId && targetLanguage.private == true) {
+                returned = true;
+                return;
+            }
+        });
+        return returned;
+    }
+
+
     function wplngGetOptionsWebsiteLanguageHTML() {
 
         var languagesOptionsHTML = "";
@@ -109,7 +121,7 @@ jQuery(document).ready(function ($) {
         }
 
         if (
-            $("#fieldset-add-target-language").is(":visible") 
+            $("#fieldset-add-target-language").is(":visible")
             && $("#wplng-target-languages-container").is(":visible")
         ) {
             $("#wplng-languages-target-separator").show();
@@ -119,6 +131,7 @@ jQuery(document).ready(function ($) {
 
         return languagesOptionsHTML;
     }
+
 
     function wplngGetWebsiteLanguageNameHTML() {
 
@@ -260,13 +273,37 @@ jQuery(document).ready(function ($) {
                     language.id + '">' + textCustomRadio + '</label>' +
                     '</span>';
 
+                let isPrivate = wplngLanguagesIsPrivate(language.id);
+                let inputPrivate = '';
+
+                inputPrivate += '<input ';
+                inputPrivate += ' type="checkbox"';
+                inputPrivate += ' id="wplng-language-private-' + language.id + '"';
+                inputPrivate += ' name="wplng-language-private"';
+                inputPrivate += ' value="private"';
+                inputPrivate += ' wplng-target-lang="' + language.id + '"';
+
+                if (isPrivate) {
+                    inputPrivate += ' checked';
+                }
+
+                inputPrivate += '/>';
+
                 htmlElement = htmlTemplate;
+                htmlElement = htmlElement.replaceAll("[PRIVATE_INPUT]", inputPrivate);
                 htmlElement = htmlElement.replaceAll("[NAME]", language.name);
                 htmlElement = htmlElement.replaceAll("[LANG]", language.id);
                 var htmlFlag =
                     '<img src="' + targetFlagUrl + '" class="wplng-target-flag">';
                 htmlElement = htmlElement.replaceAll("[FLAG]", htmlFlag);
                 htmlElement = htmlElement.replaceAll("[FLAGS_OPTIONS]", flagsRadiosHTML);
+
+                if (isPrivate) {
+                    htmlElement = htmlElement.replaceAll(
+                        'class="wplng-target-language"', 
+                        'class="wplng-target-language wplng-is-private"'
+                    );
+                }
 
                 var htmlInput = '<input type="url" class="wplng-target-subflag" wplng-target-lang="' + language.id + '" value="' + language.flag + '" />';
                 htmlElement = htmlElement.replaceAll("[INPUT]", htmlInput);
@@ -294,7 +331,7 @@ jQuery(document).ready(function ($) {
         }
 
         if (
-            $("#fieldset-add-target-language").is(":visible") 
+            $("#fieldset-add-target-language").is(":visible")
             && $("#wplng-target-languages-container").is(":visible")
         ) {
             $("#wplng-languages-target-separator").show();
@@ -305,12 +342,13 @@ jQuery(document).ready(function ($) {
         return html;
     }
 
+
     // Option Page : Click on "Add" button for new language target
     $("#wplng-target-lang-add").on("click", function () {
 
         if (
-            wplngTargetLanguages.length != 0 
-            && ! confirm( $("#wplng_add_new_target_language_message").text() )
+            wplngTargetLanguages.length != 0
+            && !confirm($("#wplng_add_new_target_language_message").text())
         ) {
             return;
         }
@@ -335,6 +373,7 @@ jQuery(document).ready(function ($) {
 
         wplngUpdateOptionPage();
     });
+
 
     $("#wplng-target-languages-list").on(
         "click",
@@ -420,6 +459,37 @@ jQuery(document).ready(function ($) {
     });
 
 
+    $('#wplng-target-languages-list').on("click", "input[type=checkbox]", function () {
+
+        var languageId = $(this).attr("wplng-target-lang");
+        var isPrivate = $(this).is(":checked");
+
+        if (isPrivate) {
+            $(this).parents(".wplng-target-language").addClass("wplng-is-private");
+        } else {
+            $(this).parents(".wplng-target-language").removeClass("wplng-is-private");
+        }
+
+        console.log($(this).parents(".wplng-target-language"));
+
+        var newTargetLanguages = [];
+        wplngTargetLanguages.forEach(language => {
+            if (language.id == languageId) {
+                newTargetLanguages.push({
+                    "id": language.id,
+                    "flag": language.flag,
+                    "private": isPrivate
+                });
+            } else {
+                newTargetLanguages.push(language);
+            }
+        });
+
+        wplngTargetLanguages = newTargetLanguages;
+        $("#wplng_target_languages").val(JSON.stringify(newTargetLanguages));
+    });
+
+
     $("#wplng-target-languages-list").on("input", ".wplng-target-subflag", function () {
 
         var selectedFlagId = $(this).attr("wplng-target-lang");
@@ -462,6 +532,7 @@ jQuery(document).ready(function ($) {
         $("#wplng-api-key-fake").hide();
         $("#wplng_api_key").show();
     });
+
 
     $("#wplng-api-key-hide").click(function () {
         $("#wplng-api-key-hide").hide();
