@@ -10,16 +10,16 @@
 
 An all-in-one solution that makes your websites multilingual and translates them automatically, without word or page limits.
 
-$${\color{lightgreen}✓}$$ One free first language for non-commercial websites<br>
-$${\color{lightgreen}✓}$$ Automatic translation API<br>
-$${\color{lightgreen}✓}$$ Unlimited number of translated words<br>
-$${\color{lightgreen}✓}$$ SEO-friendly: indexing of translated pages in search engines<br>
-$${\color{lightgreen}✓}$$ On-page visual editor for editing translations<br>
-$${\color{lightgreen}✓}$$ Customizable language switcher<br>
-$${\color{lightgreen}✓}$$ Translate website URLs<br>
-$${\color{lightgreen}✓}$$ No coding knowledge needed<br>
-$${\color{lightgreen}✓}$$ Self-hosted data<br>
-$${\color{lightgreen}✓}$$ And more!<br>
+✅ One free first language for non-commercial websites<br>
+✅ Automatic translation API<br>
+✅ Unlimited number of translated words<br>
+✅ SEO-friendly: indexing of translated pages in search engines<br>
+✅ On-page visual editor for editing translations<br>
+✅ Customizable language switcher<br>
+✅ Translate website URLs<br>
+✅ No coding knowledge needed<br>
+✅ Self-hosted data<br>
+✅ And more!<br>
 
 <hr>
 
@@ -35,13 +35,13 @@ $${\color{lightgreen}✓}$$ And more!<br>
 
 When you use wpLingua on your website, all elements of your content - even those that are invisible - are translated. wpLingua is "SEO-Friendly" because it takes care of translating:
 
-$${\color{lightgreen}✓}$$ Meta Title tags<br>
-$${\color{lightgreen}✓}$$ Meta Description tags<br>
-$${\color{lightgreen}✓}$$ Hreflang alternative links<br>
-$${\color{lightgreen}✓}$$ Meta tags for social networks (Twitter X, OpenGraph Facebook...)<br>
-$${\color{lightgreen}✓}$$ ALT attributes of images<br>
-$${\color{lightgreen}✓}$$ Translate website URLs<br>
-$${\color{lightgreen}✓}$$ And more.<br>
+✅ Meta Title tags<br>
+✅ Meta Description tags<br>
+✅ Hreflang alternative links<br>
+✅ Meta tags for social networks (Twitter X, OpenGraph Facebook...)<br>
+✅ ALT attributes of images<br>
+✅ Translate website URLs<br>
+✅ And more.<br>
 
 By optimizing indexing, we ensure that your translated pages are not only understood by your audience, but are also easily found by search engines.
 
@@ -69,18 +69,18 @@ The plugin **automatically discovers URLs on your website and lets you translate
 
 The wpLingua language switcher is fully customisable. You can display the language switcher in three ways:
 
-$${\color{lightgreen}✓}$$ Automatic insertion via predefined positions<br>
-$${\color{lightgreen}✓}$$ Using a shortcode to display it wherever you like<br>
-$${\color{lightgreen}✓}$$ Insertion in the navigation menu using the design defined by the theme<br>
+✅ Automatic insertion via predefined positions<br>
+✅ Using a shortcode to display it wherever you like<br>
+✅ Insertion in the navigation menu using the design defined by the theme<br>
 
 You can also control the appearance of the language switcher using:
 
-$${\color{lightgreen}✓}$$ Switcher styles (dropdown, inline, block...)<br>
-$${\color{lightgreen}✓}$$ Predefined themes (light, dark, chameleon, etc.)<br>
-$${\color{lightgreen}✓}$$ Configurable language names (translated name, original name, language ID, etc.)<br>
-$${\color{lightgreen}✓}$$ Flag shapes (round, rectangle, wavy)<br>
-$${\color{lightgreen}✓}$$ Language-based flag choices or import your own flag images<br>
-$${\color{lightgreen}✓}$$ Adding custom CSS in a dedicated insert<br>
+✅ Switcher styles (dropdown, inline, block...)<br>
+✅ Predefined themes (light, dark, chameleon, etc.)<br>
+✅ Configurable language names (translated name, original name, language ID, etc.)<br>
+✅ Flag shapes (round, rectangle, wavy)<br>
+✅ Language-based flag choices or import your own flag images<br>
+✅ Adding custom CSS in a dedicated insert<br>
 
 With all these customization options, there's no way your website's language switcher will look like any other!
 
@@ -109,13 +109,13 @@ Want to preserve specific sections of a page in its original language? Our syste
 
 ### The plugin supports the following languages
 
-Arabic $${\color{gray}∘}$$ Chinese $${\color{gray}∘}$$ Danish $${\color{gray}∘}$$ Dutch $${\color{gray}∘}$$ Slovak $${\color{gray}∘}$$ English $${\color{gray}∘}$$ Finnish $${\color{gray}∘}$$ French $${\color{gray}∘}$$ German $${\color{gray}∘}$$ Greek $${\color{gray}∘}$$ Hebrew $${\color{gray}∘}$$ Hindi $${\color{gray}∘}$$ Hungarian $${\color{gray}∘}$$ Indonesian $${\color{gray}∘}$$ Italian $${\color{gray}∘}$$ Japanese $${\color{gray}∘}$$ Korean $${\color{gray}∘}$$ Polish $${\color{gray}∘}$$ Portuguese $${\color{gray}∘}$$ Russian $${\color{gray}∘}$$ Spanish $${\color{gray}∘}$$ Swedish $${\color{gray}∘}$$ Turkish $${\color{gray}∘}$$ Ukrainian $${\color{gray}∘}$$ Vietnamese 
+Arabic ∘ Chinese ∘ Danish ∘ Dutch ∘ Slovak ∘ English ∘ Finnish ∘ French ∘ German ∘ Greek ∘ Hebrew ∘ Hindi ∘ Hungarian ∘ Indonesian ∘ Italian ∘ Japanese ∘ Korean ∘ Polish ∘ Portuguese ∘ Russian ∘ Spanish ∘ Swedish ∘ Turkish ∘ Ukrainian ∘ Vietnamese 
 
 <br>
 
 ### The plugin is translated into the following languages
 
-English $${\color{gray}∘}$$ French $${\color{gray}∘}$$ German $${\color{gray}∘}$$ Italian $${\color{gray}∘}$$ Portuguese $${\color{gray}∘}$$ Spanish
+English ∘ French ∘ German ∘ Italian ∘ Portuguese ∘ Spanish
 
 <br><br>
 
