@@ -1,0 +1,8 @@
+{
+    "name": "huttopia/wplingua",
+    "version": "1.0",
+    "type": "wordpress-plugin",
+    "require": {
+        "composer/installers": "^2.1"
+    }
+}

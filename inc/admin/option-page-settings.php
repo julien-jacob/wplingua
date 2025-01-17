@@ -15,7 +15,7 @@ function wplng_option_page_settings() {
 
 	delete_transient( 'wplng_api_key_data' );
 
-	if ( empty( wplng_get_api_data() ) || is_multisite() ) {
+	if ( empty( wplng_get_api_data() ) ) {
 		wplng_option_page_register();
 		return;
 	}
