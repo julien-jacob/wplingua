@@ -164,6 +164,8 @@ function wplng_translate_json_array( $json_decoded, $args = array() ) {
 				$args
 			);
 
+			$args['parents'] = array_splice($args['parents'], 0, -1);
+
 		} elseif ( is_string( $value ) ) {
 
 			$debug_type = '';
