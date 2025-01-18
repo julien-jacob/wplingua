@@ -43,12 +43,14 @@ function wplng_translate_js( $js, $args = array() ) {
 
 	foreach ( $json[2] as $key => $var_name ) {
 
+		$var_name = trim( $var_name );
+
 		if ( empty( $var_name ) || empty( $json[3][ $key ] ) ) {
 			continue;
 		}
 
 		// Get the JSON string
-		$var_json = $json[3][ $key ];
+		$var_json = trim( $json[3][ $key ] );
 
 		// Prepare arguments for translation
 		wplng_args_setup( $args );
