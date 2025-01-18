@@ -19,7 +19,7 @@ function wplng_data_json_to_translate() {
 	return apply_filters(
 		'wplng_json_to_translate',
 		array(
-			// Plugin : WooCommerce
+			// Plugin: WooCommerce
 			array( 'wc_add_to_cart_params', 'i18n_view_cart' ),
 			array( 'wc_country_select_params', 'i18n_select_state_text' ),
 			array( 'wc_country_select_params', 'i18n_no_matches' ),
@@ -35,13 +35,23 @@ function wplng_data_json_to_translate() {
 			array( 'wc_address_i18n_params', 'i18n_required_text' ),
 			array( 'wc_address_i18n_params', 'i18n_optional_text' ),
 
-			// Plugin : YITH
+			// Plugin: YITH
 			array( 'yith_wcwl_l10n', 'labels', 'cookie_disabled' ),
 
-			// Plugin : WF Cookie Consent
+			// Plugin: WF Cookie Consent
 			array( 'wfCookieConsentSettings', 'wf_cookietext' ),
 			array( 'wfCookieConsentSettings', 'wf_dismisstext' ),
 			array( 'wfCookieConsentSettings', 'wf_linktext' ),
+
+			// Plugin: complianz
+			array( 'complianz', 'categories', 'statistics' ),
+			array( 'complianz', 'categories', 'marketing' ),
+			array( 'complianz', 'placeholdertext' ),
+			array( 'complianz', 'page_links', 'eu', 'privacy-statement', 'title' ),
+			array( 'complianz', 'aria_label' ),
+
+			// Plugin: ultimate-post-kit
+			array( 'UltimatePostKitConfig', 'mailchimp', 'subscribing' ),
 		)
 	);
 }
@@ -303,7 +313,7 @@ function wplng_data_attr_text_to_translate() {
 				'attr'     => 'content',
 				'selector' => 'meta[name="twitter:image:alt"]',
 			),
-			
+
 			// Plugin : Fluent Forms tooltips
 			array(
 				'attr'     => 'data-content',
