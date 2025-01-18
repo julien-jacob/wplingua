@@ -283,6 +283,18 @@ function wplng_json_element_is_translatable( $element, $parents ) {
 			$is_translatable = true;
 
 		} elseif (
+			count( $parents ) == 3
+			&& ( 'elementorFrontendConfig' === $parents[0] )
+			&& ( 'i18n' === $parents[1] )
+		) {
+
+			/**
+			 * Plugin: Elementor - elementorFrontendConfig
+			 */
+
+			 $is_translatable = true;
+
+		} elseif (
 			! empty( $parents[0] )
 			&& ( 'wc_address_i18n_params' === $parents[0] )
 			&& ( count( $parents ) > 1 )
