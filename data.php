@@ -52,6 +52,16 @@ function wplng_data_json_to_translate() {
 
 			// Plugin: ultimate-post-kit
 			array( 'UltimatePostKitConfig', 'mailchimp', 'subscribing' ),
+
+			// Plugin: royal-elementor-addons
+			array( 'WprConfig', 'addedToCartText' ),
+			array( 'WprConfig', 'viewCart' ),
+			array( 'WprConfig', 'chooseQuantityText' ),
+			array( 'WprConfig', 'input_empty' ),
+			array( 'WprConfig', 'select_empty' ),
+			array( 'WprConfig', 'file_empty' ),
+			array( 'WprConfig', 'recaptcha_error' ),
+			array( 'WprConfig', 'recaptcha_error' ),
 		)
 	);
 }
