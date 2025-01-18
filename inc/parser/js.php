@@ -27,12 +27,10 @@ function wplng_parse_js( $js ) {
 
 	// Get the first 'var', 'let' or 'window._' declaration
 	preg_match_all(
-		'#(var\s|let\s|window\._)(.*)\s?=\s?(\[.*\]|\{.*\});?#Ui',
+		'#(var\s|let\s|window\._)(.*)\s?=\s?(\[.*\]|\{.*\});#Ui',
 		$js,
 		$json
 	);
-
-	// error_log(var_export($json, true));
 
 	if ( empty( $json[2] ) || ! is_array( $json[2] ) ) {
 		return $texts;
