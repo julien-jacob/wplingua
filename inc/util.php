@@ -116,6 +116,13 @@ function wplng_text_is_translatable( $text ) {
 		return false;
 	}
 
+	// Check JS tags
+	if ( wplng_str_starts_with( $text, '{{' )
+		&& wplng_str_ends_with( $text, '}}' )
+	) {
+		return false;
+	}
+
 	// Get letters only
 	$letters = $text;
 	$letters = html_entity_decode( $letters );
@@ -300,7 +307,57 @@ function wplng_json_element_is_translatable( $element, $parents ) {
 			 */
 
 			$is_translatable = true;
+
+		} elseif (
+			! empty( $parents[0] )
+			&& wplng_str_starts_with( $parents[0], 'CASE')
+			&& ! empty( $parents[1] )
+			&& 'l10n' === $parents[1]
+			&& ! empty( $parents[2] )
+			&& (
+				$parents[2] ==='selectOption'
+				|| $parents[2] === 'errorLoading'
+				|| $parents[2] === 'removeAllItems'
+				|| $parents[2] === 'loadingMore'
+				|| $parents[2] === 'noResults'
+				|| $parents[2] === 'searching'
+				|| $parents[2] === 'irreversible_action'
+				|| $parents[2] === 'delete_listing_confirm'
+				|| $parents[2] === 'copied_to_clipboard'
+				|| $parents[2] === 'nearby_listings_location_required'
+				|| $parents[2] === 'nearby_listings_retrieving_location'
+				|| $parents[2] === 'nearby_listings_searching'
+				|| $parents[2] === 'geolocation_failed'
+				|| $parents[2] === 'something_went_wrong'
+				|| $parents[2] === 'all_in_category'
+				|| $parents[2] === 'invalid_file_type'
+				|| $parents[2] === 'file_limit_exceeded'
+				|| $parents[2] === 'file_size_limit'
+				|| (
+					$parents[2] === 'datepicker'
+					&& ! empty($parents[3])
+					&& (
+						$parents[3] === 'applyLabel'
+						|| $parents[3] === 'cancelLabel'
+						|| $parents[3] === 'customRangeLabel'
+						|| $parents[3] === 'daysOfWeek'
+						|| $parents[3] === 'monthNames'
+					)
+				)
+			)
+		) {
+
+			/**
+			 * Is 'My listing' theme
+			 */
+
+			$is_translatable = true;
+
+		} elseif ('label' === $parents[count($parents) - 1]) {
+			$is_translatable = true;
 		}
+
+
 
 		$element = wplng_text_esc( $element );
 
