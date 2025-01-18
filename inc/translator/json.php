@@ -250,7 +250,6 @@ function wplng_translate_json_array( $json_decoded, $args = array() ) {
 			if ( true === WPLNG_LOG_JSON_DEBUG
 				&& isset( $json_decoded[ $key ] )
 				&& isset( $array_translated[ $key ] )
-				&& $debug_type == 'String - Untranslatale'
 			) {
 
 				$debug = array(
