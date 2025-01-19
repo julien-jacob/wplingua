@@ -19,7 +19,7 @@ function wplng_data_json_to_translate() {
 	return apply_filters(
 		'wplng_json_to_translate',
 		array(
-			// Plugin : WooCommerce
+			// Plugin: WooCommerce
 			array( 'wc_add_to_cart_params', 'i18n_view_cart' ),
 			array( 'wc_country_select_params', 'i18n_select_state_text' ),
 			array( 'wc_country_select_params', 'i18n_no_matches' ),
@@ -35,13 +35,33 @@ function wplng_data_json_to_translate() {
 			array( 'wc_address_i18n_params', 'i18n_required_text' ),
 			array( 'wc_address_i18n_params', 'i18n_optional_text' ),
 
-			// Plugin : YITH
+			// Plugin: YITH
 			array( 'yith_wcwl_l10n', 'labels', 'cookie_disabled' ),
 
-			// Plugin : WF Cookie Consent
+			// Plugin: WF Cookie Consent
 			array( 'wfCookieConsentSettings', 'wf_cookietext' ),
 			array( 'wfCookieConsentSettings', 'wf_dismisstext' ),
 			array( 'wfCookieConsentSettings', 'wf_linktext' ),
+
+			// Plugin: complianz
+			array( 'complianz', 'categories', 'statistics' ),
+			array( 'complianz', 'categories', 'marketing' ),
+			array( 'complianz', 'placeholdertext' ),
+			array( 'complianz', 'page_links', 'eu', 'privacy-statement', 'title' ),
+			array( 'complianz', 'aria_label' ),
+
+			// Plugin: ultimate-post-kit
+			array( 'UltimatePostKitConfig', 'mailchimp', 'subscribing' ),
+
+			// Plugin: royal-elementor-addons
+			array( 'WprConfig', 'addedToCartText' ),
+			array( 'WprConfig', 'viewCart' ),
+			array( 'WprConfig', 'chooseQuantityText' ),
+			array( 'WprConfig', 'input_empty' ),
+			array( 'WprConfig', 'select_empty' ),
+			array( 'WprConfig', 'file_empty' ),
+			array( 'WprConfig', 'recaptcha_error' ),
+			array( 'WprConfig', 'recaptcha_error' ),
 		)
 	);
 }
@@ -56,13 +76,13 @@ function wplng_data_excluded_json() {
 	return apply_filters(
 		'wplng_excluded_json',
 		array(
-			// wpLingua : Ajax edit modal
+			// wpLingua: Ajax edit modal
 			array( 'data', 'wplng_edit_html' ),
 			array( 'wplngI18nTranslation' ),
 			array( 'wplngI18nSlug' ),
 			array( 'wplngI18nGutenberg' ),
-			
-			// WooCommerce
+
+			// Plugin: WooCommerce
 			array( 'wc_country_select_params', 'countries' ),
 		)
 	);
@@ -182,6 +202,16 @@ function wplng_data_attr_json_to_translate() {
 				'attr'     => 'data-et-multi-view',
 				'selector' => '[data-et-multi-view]',
 			),
+
+			// Theme: my-listing
+			array(
+				'attr'     => ':choices',
+				'selector' => 'order-filter[:choices]',
+			),
+			array(
+				'attr'     => ':choices',
+				'selector' => 'checkboxes-filter[:choices]',
+			),
 		)
 	);
 }
@@ -210,6 +240,10 @@ function wplng_data_attr_text_to_translate() {
 				'selector' => '[placeholder]',
 			),
 			array(
+				'attr'     => 'label',
+				'selector' => '[label]',
+			),
+			array(
 				'attr'     => 'aria-label',
 				'selector' => '[aria-label]',
 			),
@@ -217,6 +251,7 @@ function wplng_data_attr_text_to_translate() {
 				'attr'     => 'value',
 				'selector' => 'input[type="submit"][value]',
 			),
+
 			// WordPress
 			array(
 				'attr'     => 'content',
@@ -230,6 +265,7 @@ function wplng_data_attr_text_to_translate() {
 				'attr'     => 'content',
 				'selector' => 'meta[name="description"]',
 			),
+
 			// Open Graph
 			array(
 				'attr'     => 'content',
@@ -247,6 +283,7 @@ function wplng_data_attr_text_to_translate() {
 				'attr'     => 'content',
 				'selector' => 'meta[property="og:image:alt"]',
 			),
+
 			// Dublin Core
 			array(
 				'attr'     => 'content',
@@ -256,6 +293,7 @@ function wplng_data_attr_text_to_translate() {
 				'attr'     => 'content',
 				'selector' => 'meta[name="dc.description"]',
 			),
+
 			// Twitter
 			array(
 				'attr'     => 'content',
@@ -285,6 +323,7 @@ function wplng_data_attr_text_to_translate() {
 				'attr'     => 'content',
 				'selector' => 'meta[name="twitter:image:alt"]',
 			),
+
 			// Plugin : Fluent Forms tooltips
 			array(
 				'attr'     => 'data-content',

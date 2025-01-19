@@ -4,7 +4,7 @@ Donate link: https://wplingua.com/
 Tags: translate, translation, multilingual, localization, language
 Requires at least: 6.0
 Tested up to: 6.7
-Stable tag: 2.2.0
+Stable tag: 2.3.0
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -173,6 +173,22 @@ No, not at the moment but in the meantime, you can easily display the language s
 12. SEO-Friendly: wpLingua add the HTML code needed for your translated pages to be indexed by search engines.
 
 == Changelog ==
+
+= 2.3.0 =
+
+* New feature: Private languages
+* Better compatibility:
+ * Plugin: royal-elementor-addons
+ * Plugin: elementor
+ * Plugin: complianz
+ * Plugin: ultimate-post-kit
+ * Theme: my-listing
+* Better JSON management:
+ * Manage multiple JSONs in a script tag
+ * Acurate JSON detection
+ * Fix error on parents detection for sub array
+ * Better @grapg translation
+* Fix flags position in switcher menu in some cases 
 
 = 2.2.0 =
 
