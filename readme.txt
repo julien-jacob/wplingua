@@ -187,7 +187,7 @@ No, not at the moment but in the meantime, you can easily display the language s
  * Manage multiple JSONs in a script tag
  * Acurate JSON detection
  * Fix error on parents detection for sub array
- * Better @grapg translation
+ * Better @ graph translation
 * Fix flags position in switcher menu in some cases 
 
 = 2.2.0 =
