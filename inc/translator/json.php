@@ -164,7 +164,7 @@ function wplng_translate_json_array( $json_decoded, $args = array() ) {
 				$args
 			);
 
-			$args['parents'] = array_splice($args['parents'], 0, -1);
+			$args['parents'] = array_splice( $args['parents'], 0, -1 );
 
 		} elseif ( is_string( $value ) ) {
 
@@ -183,18 +183,6 @@ function wplng_translate_json_array( $json_decoded, $args = array() ) {
 				$debug_type               = 'String - Local ID';
 				$array_translated[ $key ] = $args['language_target'];
 
-			} elseif ( wplng_str_is_html( $value ) ) {
-
-				/**
-				 * If element is a HTML, parse and translate it
-				 */
-
-				$debug_type               = 'String - HTML';
-				$array_translated[ $key ] = wplng_translate_html(
-					$value,
-					$args
-				);
-
 			} elseif ( wplng_str_is_json( $value ) ) {
 
 				/**
@@ -205,6 +193,18 @@ function wplng_translate_json_array( $json_decoded, $args = array() ) {
 				$args['parents'] = array_merge( $args['parents'], [ $key ] );
 
 				$array_translated[ $key ] = wplng_translate_json(
+					$value,
+					$args
+				);
+
+			} elseif ( wplng_str_is_html( $value ) ) {
+
+				/**
+				 * If element is a HTML, parse and translate it
+				 */
+
+				$debug_type               = 'String - HTML';
+				$array_translated[ $key ] = wplng_translate_html(
 					$value,
 					$args
 				);
