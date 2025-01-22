@@ -102,15 +102,8 @@ function wplng_text_is_translatable( $text ) {
 		return false;
 	}
 
-	// Check templating tags
-	if ( wplng_str_starts_with( $text, '<%' )
-		&& wplng_str_ends_with( $text, '%>' )
-	) {
-		return false;
-	}
-
-	// Check bad HTML tags ending
-	if ( wplng_str_starts_with( $text, '</' )
+	// Check bad HTML tags and templating tags
+	if ( wplng_str_starts_with( $text, '<' )
 		&& wplng_str_ends_with( $text, '>' )
 	) {
 		return false;
