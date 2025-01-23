@@ -4,7 +4,7 @@ Donate link: https://wplingua.com/
 Tags: translate, translation, multilingual, localization, language
 Requires at least: 6.0
 Tested up to: 6.7
-Stable tag: 2.3.0
+Stable tag: 2.3.1
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -173,6 +173,12 @@ No, not at the moment but in the meantime, you can easily display the language s
 12. SEO-Friendly: wpLingua add the HTML code needed for your translated pages to be indexed by search engines.
 
 == Changelog ==
+
+= 2.3.1 =
+
+* Updated plugin translation files
+* Stricter detection of bad HTML tags
+* Fix when JSON contains a JSON string with HTML
 
 = 2.3.0 =
 
