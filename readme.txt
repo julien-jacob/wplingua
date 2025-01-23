@@ -4,7 +4,7 @@ Donate link: https://wplingua.com/
 Tags: translate, translation, multilingual, localization, language
 Requires at least: 6.0
 Tested up to: 6.7
-Stable tag: 2.3.0
+Stable tag: 2.3.1
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -174,6 +174,12 @@ No, not at the moment but in the meantime, you can easily display the language s
 
 == Changelog ==
 
+= 2.3.1 =
+
+* Updated plugin translation files
+* Stricter detection of bad HTML tags
+* Fix when JSON contains a JSON string with HTML
+
 = 2.3.0 =
 
 * New feature: Private languages
@@ -187,7 +193,7 @@ No, not at the moment but in the meantime, you can easily display the language s
  * Manage multiple JSONs in a script tag
  * Acurate JSON detection
  * Fix error on parents detection for sub array
- * Better @grapg translation
+ * Better @ graph translation
 * Fix flags position in switcher menu in some cases 
 
 = 2.2.0 =
