@@ -28,6 +28,11 @@ function wplng_str_contains( $haystack, $needle ) {
  * @return bool
  */
 function wplng_str_starts_with( $haystack, $needle ) {
+
+	if ( ! is_string( $haystack ) || ! is_string( $needle ) ) {
+		return false;
+	}
+
 	return substr_compare( $haystack, $needle, 0, strlen( $needle ) ) === 0;
 }
 
@@ -41,6 +46,11 @@ function wplng_str_starts_with( $haystack, $needle ) {
  * @return bool
  */
 function wplng_str_ends_with( $haystack, $needle ) {
+
+	if ( ! is_string( $haystack ) || ! is_string( $needle ) ) {
+		return false;
+	}
+
 	return substr_compare( $haystack, $needle, -strlen( $needle ) ) === 0;
 }
 
@@ -305,12 +315,12 @@ function wplng_json_element_is_translatable( $element, $parents ) {
 
 		} elseif (
 			! empty( $parents[0] )
-			&& wplng_str_starts_with( $parents[0], 'CASE')
+			&& wplng_str_starts_with( $parents[0], 'CASE' )
 			&& ! empty( $parents[1] )
 			&& 'l10n' === $parents[1]
 			&& ! empty( $parents[2] )
 			&& (
-				$parents[2] ==='selectOption'
+				$parents[2] === 'selectOption'
 				|| $parents[2] === 'errorLoading'
 				|| $parents[2] === 'removeAllItems'
 				|| $parents[2] === 'loadingMore'
@@ -330,7 +340,7 @@ function wplng_json_element_is_translatable( $element, $parents ) {
 				|| $parents[2] === 'file_size_limit'
 				|| (
 					$parents[2] === 'datepicker'
-					&& ! empty($parents[3])
+					&& ! empty( $parents[3] )
 					&& (
 						$parents[3] === 'applyLabel'
 						|| $parents[3] === 'cancelLabel'
@@ -343,16 +353,32 @@ function wplng_json_element_is_translatable( $element, $parents ) {
 		) {
 
 			/**
-			 * Is 'My listing' theme
+			 * Is 'My listing' theme - JSON in HTML
 			 */
 
 			$is_translatable = true;
 
-		} elseif ('label' === $parents[count($parents) - 1]) {
+		} elseif (
+			! empty( $parents[0] )
+			&& ( 'children' === $parents[0] )
+			&& ! empty( $parents[1] )
+			&& ( wplng_str_starts_with( $parents[1], 'term_' ) )
+			&& ! empty( $parents[2] )
+			&& (
+				( 'name' === $parents[2] )
+				|| ( 'description' === $parents[2] )
+			)
+		) {
+
+			/**
+			 * Is 'My listing' theme - JSON in AJAX
+			 */
+
+			$is_translatable = true;
+
+		} elseif ( 'label' === $parents[ count( $parents ) - 1 ] ) {
 			$is_translatable = true;
 		}
-
-
 
 		$element = wplng_text_esc( $element );
 
