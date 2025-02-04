@@ -4,7 +4,7 @@ Donate link: https://wplingua.com/
 Tags: translate, translation, multilingual, localization, language
 Requires at least: 6.0
 Tested up to: 6.7
-Stable tag: 2.3.2
+Stable tag: 2.3.3
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -14,8 +14,6 @@ Make your websites multilingual and translate them automatically: no word limits
 == Description ==
 
 **An all-in-one solution that makes your websites multilingual and translate them automatically, without word or page limits.**
-
-The highlights:
 
 ✓ One free first language for non-commercial websites
 ✓ Automatic translation API
@@ -74,11 +72,12 @@ Experience the fusion of automation and the personal touch with our **visual on-
 The plugin **automatically discovers URLs on your website and lets you translate them**. URLs are split into slugs (parts of the URL), making them easy to edit. This feature boosts SEO performance!
 
 ### 🎨 Fully customizable language switcher ###
-The wpLingua language switcher is fully customisable. You can display the language switcher in three ways:
+wpLingua's language switcher is fully customizable. You can display the language selector in four ways:
 
-✓ Automatic insertion via predefined positions
-✓ Using a shortcode to display it wherever you like
-✓ Insertion in the navigation menu using the design defined by the theme
+✓ Automatic insertion via predefined positions.
+✓ Use a shortcode to display it wherever you like.
+✓ Insertion in the navigation menu using the design defined by the theme.
+✓ Insertion in the navigation menu from the site editor using the Gutenberg block named Language Switcher
 
 You can also control the appearance of the language switcher using:
 
@@ -111,14 +110,14 @@ Arabic ∘ Chinese ∘ Danish ∘ Dutch ∘ Slovak ∘ English ∘ Finnish ∘ F
 
 #### The plugin is translated into the following languages ####
 
-English ∘ French ∘ German ∘ Italian ∘ Portuguese ∘ Spanish
+Danish ∘ Dutch ∘ English ∘ Finnish ∘ French ∘ German ∘ Hindi ∘ Hungarian ∘ Indonesian ∘ Italian ∘ Japanese ∘ Korean ∘ Portuguese ∘ Spanish ∘ Swedish
 
 ### 🔌 Theme and plugin compatibility ###
 The method used by wpLingua to translate website texts ensures compatibility with most themes and plugins.
 
-Compatible plugins tested: WooCommerce, Yoast SEO, SEOPress, All in One SEO, SEOKey, Elementor, Gutenberg, Divi Builder, Contact Form 7, Fluent Forms, WP Forms, Gravity Form, MailPoet, WP Rocket, Cache Enabler, All-in-One WP Migration, UpdraftPlus, Redirection, Complianz, WF Cookies, Complianz, LuckyWP Table of content, WP Grid Builder, and more...
+**Compatible plugins tested:** WooCommerce, Yoast SEO, SEOPress, All in One SEO, SEOKey, Elementor, Gutenberg, Divi Builder, Advanced Custom Fields (ACF), Contact Form 7, Fluent Forms, WP Forms, Gravity Form, MailPoet, WP Rocket, Cache Enabler, All-in-One WP Migration, UpdraftPlus, Redirection, Complianz, WF Cookies, Complianz, LuckyWP Table of content, WP Grid Builder, and more...
 
-Compatible themes tested: Divi, Twenty Twenty One, Astra, OceanWP, Blocksy, Hello, Generate Press, Neve, Envince, Twenty Twenty Four, Twenty Twenty Five, Poe, Neve FSE, Frost, Tove, and more...
+**Compatible themes tested:** Divi, Twenty Twenty One, Astra, OceanWP, Blocksy, Hello, Generate Press, Neve, Envince, Twenty Twenty Four, Twenty Twenty Five, Poe, Neve FSE, Frost, Tove, and more...
 
 ### ⚡️ The wpLingua API ###
 The wpLingua plugin relies on our own wpLingua API, an integrated third-party service, to provide its machine translation functionality. The call to this Third Party Service (wpLingua API) is made when creating an API key from the plugin, during API key verification and when your website requests a new automatic translation (new texts discovered on a page web or request automatic translations from the translation edition). We invite you to consult our [Terms & Conditions page](https://wplingua.com/terms-and-conditions/) for more information.
@@ -133,20 +132,23 @@ The wpLingua plugin relies on our own wpLingua API, an integrated third-party se
 
 == Frequently Asked Questions ==
 
-= What languages are available in the plugin administration? =
-At the moment, the plugin is available in English, French, German, Italian, Spanish and Portuguese. If you want to help us translate it into more languages, don't hesitate!
+= What languages are available for plugin administration? =
+For the time being, the plugin administration is available in Danish, Dutch, English, Finnish, French, German, Hindi, Hungarian, Indonesian, Italian, Japanese, Korean, Portuguese, Spanish, and Swedish. If you want to help us translate it into more languages, don't hesitate!
 
-= Is it compatible with page builders? =
-Yes, wpLingua is designed to work seamlessly with most popular page builders.
+= What languages are available for translation? =
+The plugin supports the following languages: Arabic ∘ Chinese ∘ Danish ∘ Dutch ∘ Slovak ∘ English ∘ Finnish ∘ French ∘ German ∘ Greek ∘ Hebrew ∘ Hindi ∘ Hungarian ∘ Indonesian ∘ Italian ∘ Japanese ∘ Korean ∘ Polish ∘ Portuguese ∘ Russian ∘ Spanish ∘ Swedish ∘ Turkish ∘ Ukrainian ∘ Vietnamese
 
 = How it works? =
 wpLingua intercepts page content and analyzes HTML and JS code. It discovers all texts, translates them and makes the pages multilingual. This approach ensures compatibility with most themes, plugins and page builders such as Gutenberg, Elementor, Divi…
 
-= Is it possible to edit translations manually? =
-Of course ! Simply activate the **translation editor** on the page to make your changes.
+= Is wpLingua compatible with WooCommerce or other plugins? =
+Absolutely! wpLingua intercepts page content and analyzes HTML and JS code. It discovers all texts, translates them and renders the pages multilingual. This approach guarantees compatibility with the translation of your WooCommerce online store, as well as with all other WordPress plugins.
 
-= What is the translated word limit? =
-wpLingua does **not limit the translation of the number of words**.
+= Is wpLingua compatible with Divi or other Theme? =
+The method used by wpLingua to translate website texts guarantees compatibility with most themes. Themes tested with guaranteed compatibility: Divi, Twenty Twenty One, Astra, OceanWP, Blocksy, Hello, Generate Press, Neve, Envince, Twenty Twenty Four, Twenty Twenty Five, Poe, Neve FSE, Frost, Tove, and more…
+
+= Is wpLingua compatible with Gutenberg or other page builders? =
+The method used by wpLingua to translate website texts guarantees compatibility with most page builders. Page builders tested with guaranteed compatibility: Elementor, Divi Builder, Gutenberg.
 
 = Is wpLingua compatible with WordPress Multisite? =
 No, wpLingua is not compatible with WordPress Multisite
@@ -154,8 +156,20 @@ No, wpLingua is not compatible with WordPress Multisite
 = Is wpLingua compatible with caching plugins? =
 Quite ! And it's even recommended to cache your pages and translations to improve website loading and performance.
 
-= Is there a Gutenberg block or Divi/Elementor widget to easily display the language switcher? =
-No, not at the moment but in the meantime, you can easily display the language switcher wherever you want using our shortcode provided for this purpose. Simply copy and paste this shortcode where you want: **[wplng_switcher]**
+= Is there a Gutenberg block to easily insert the language selector from the site editor? =
+Yes! If your website uses a block-based theme (like Twenty Twenty Five, Neve FSE, etc.), you can easily edit the website header via the Site Editor to add the Language switcher block in the location of your choice. You can also easily display the language switcher wherever you want using our shortcode provided for this purpose. Simply copy and paste this shortcode where you want: **[wplng_switcher]**
+
+= How can I get more languages? =
+To get more than one language, you need to opt for the Premium package, which gives you access to up to 24 translated languages.
+
+= Do I need a DeepL or Google Translate plan in addition to wpLingua? =
+No. Translations are managed by our API integrated in wpLingua. You do not need to purchase an additional plan.
+
+= Is wpLingua entirely free? =
+You can use wpLingua free of charge to translate your website into the language of your choice, provided your website is not intended for commercial use. If your website is for commercial use, or if you would like more languages translated, we invite you to choose a premium package.
+
+= Where are my translations stored? =
+Your server’s database holds all the translations locally.
 
 == Screenshots ==
 
@@ -173,6 +187,21 @@ No, not at the moment but in the meantime, you can easily display the language s
 12. SEO-Friendly: wpLingua add the HTML code needed for your translated pages to be indexed by search engines.
 
 == Changelog ==
+
+= 2.3.3 =
+
+* Better option page - Switcher
+* Plugin translation - New languages:
+ * Danish
+ * Dutch
+ * Finnish
+ * Hindi
+ * Hungarian
+ * Indonesian
+ * Japanese
+ * Korean
+ * Swedish
+* Fix capital letters on some translated language names
 
 = 2.3.2 =
 

@@ -121,7 +121,7 @@ function wplng_option_page_switcher() {
 							<fieldset>
 								<label for="wplng_name_format" class="wplng-fe-50">
 									<strong><?php esc_html_e( 'Displayed names: ', 'wplingua' ); ?></strong> 
-									<span title="<?php esc_attr_e( 'Click to expand', 'wplingua' ); ?>" wplng-help-box="#wplng-hb-name-format">
+									<span title="<?php esc_attr_e( 'Click to expand', 'wplingua' ); ?>" wplng-help-box="#wplng-hb-name-format"></span>
 								</label>
 								<select id="wplng_name_format" name="wplng_name_format" class="wplng-fe-50">
 									<?php
@@ -176,7 +176,7 @@ function wplng_option_page_switcher() {
 							<fieldset>
 								<label for="wplng_flags_style" class="wplng-fe-50">
 									<strong><?php esc_html_e( 'Flags style: ', 'wplingua' ); ?></strong> 
-									<span title="<?php esc_attr_e( 'Click to expand', 'wplingua' ); ?>" wplng-help-box="#wplng-hb-flags-style">
+									<span title="<?php esc_attr_e( 'Click to expand', 'wplingua' ); ?>" wplng-help-box="#wplng-hb-flags-style"></span>
 								</label>
 								<select id="wplng_flags_style" name="wplng_flags_style" class="wplng-fe-50">
 									<?php
@@ -234,7 +234,7 @@ function wplng_option_page_switcher() {
 							<fieldset>
 								<label for="wplng_theme" class="wplng-fe-50">
 									<strong><?php esc_html_e( 'Color theme: ', 'wplingua' ); ?></strong> 
-									<span title="<?php esc_attr_e( 'Click to expand', 'wplingua' ); ?>" wplng-help-box="#wplng-hb-theme">
+									<span title="<?php esc_attr_e( 'Click to expand', 'wplingua' ); ?>" wplng-help-box="#wplng-hb-theme"></span>
 								</label>
 
 								<select id="wplng_theme" name="wplng_theme" class="wplng-fe-50">
@@ -328,7 +328,7 @@ function wplng_option_page_switcher() {
 						<hr>
 						<p>
 							<?php esc_html_e( 'The field below allows you to add custom CSS code that will run on all pages.', 'wplingua' ); ?> 
-							<span title="<?php esc_attr_e( 'Click to expand', 'wplingua' ); ?>" wplng-help-box="#wplng-hb-css">
+							<span title="<?php esc_attr_e( 'Click to expand', 'wplingua' ); ?>" wplng-help-box="#wplng-hb-css"></span>
 						</p>
 						<div class="wplng-help-box" id="wplng-hb-css">
 							<p>
@@ -381,7 +381,7 @@ function wplng_option_page_switcher() {
 
 								<label for="wplng_insert" class="wplng-fe-50">
 									<strong><?php _e( 'Automatic insert: ', 'wplingua' ); ?></strong> 
-									<span title="<?php esc_attr_e( 'Click to expand', 'wplingua' ); ?>" wplng-help-box="#wplng-hb-insert-automatic">
+									<span title="<?php esc_attr_e( 'Click to expand', 'wplingua' ); ?>" wplng-help-box="#wplng-hb-insert-automatic"></span>
 								</label>
 
 								<select id="wplng_insert" name="wplng_insert" class="wplng-fe-50">
@@ -434,7 +434,7 @@ function wplng_option_page_switcher() {
 						<p>
 							<strong class="wplng-fe-50">
 								<?php esc_html_e( 'Shortcode switcher: ', 'wplingua' ); ?> 
-								<span title="<?php esc_attr_e( 'Click to expand', 'wplingua' ); ?>" wplng-help-box="#wplng-hb-insert-shortcode">
+								<span title="<?php esc_attr_e( 'Click to expand', 'wplingua' ); ?>" wplng-help-box="#wplng-hb-insert-shortcode"></span>
 							</strong> 
 							<code class="wplng-fe-50">[wplng_switcher]</code>
 						</p>
@@ -447,8 +447,22 @@ function wplng_option_page_switcher() {
 
 						<p>
 							<strong class="wplng-fe-50">
+								<?php esc_html_e( 'Gutenberg & FSE: ', 'wplingua' ); ?> 
+								<span title="<?php esc_attr_e( 'Click to expand', 'wplingua' ); ?>" wplng-help-box="#wplng-hb-insert-block"></span>
+							</strong>
+							<span class="wplng-fe-50"><?php esc_html_e( 'Block wpLingua Switcher', 'wplingua' ); ?> </span>
+						</p>
+
+						<div class="wplng-help-box" id="wplng-hb-insert-block">
+							<p><?php esc_html_e( 'Block based themes, wpLingua offers a dedicated Gutenberg block. You can insert the switcher wherever you want, whether in the content or via the overall site editor.', 'wplingua' ); ?></p>
+						</div>
+
+						<hr>
+
+						<p>
+							<strong class="wplng-fe-50">
 								<?php esc_html_e( 'Switcher in menu: ', 'wplingua' ); ?> 
-								<span title="<?php esc_attr_e( 'Click to expand', 'wplingua' ); ?>" wplng-help-box="#wplng-hb-insert-menu">
+								<span title="<?php esc_attr_e( 'Click to expand', 'wplingua' ); ?>" wplng-help-box="#wplng-hb-insert-menu"></span>
 							</strong>
 							<span class="wplng-fe-50">
 								<?php
