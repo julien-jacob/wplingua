@@ -90,11 +90,13 @@ function wplng_start() {
 	add_action( 'admin_notices', 'wplng_admin_notice_incompatible_plugin', 1 );
 	add_action( 'admin_notices', 'wplng_admin_notice_incompatible_multisite', 1 );
 	add_action( 'admin_notices', 'wplng_admin_notice_incompatible_sub_folder', 1 );
+	add_action( 'admin_notices', 'wplng_admin_notice_incompatible_php_version', 1 );
 
 	// Return if incompatibility is detected
 	if ( ! empty( wplng_get_incompatible_plugins() )
 		|| is_multisite()
 		|| get_option( 'siteurl' ) !== get_option( 'home' )
+		|| (version_compare( PHP_VERSION, '7.4' ) < 0)
 	) {
 		return;
 	}

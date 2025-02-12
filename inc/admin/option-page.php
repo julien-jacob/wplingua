@@ -322,7 +322,7 @@ function wplng_get_incompatible_plugins() {
 /**
  * Display a notice if an incompatible plugin is detected
  *
- * @return void
+ * @return void|string
  */
 function wplng_admin_notice_incompatible_plugin() {
 
@@ -399,7 +399,7 @@ function wplng_admin_notice_incompatible_plugin() {
 /**
  * Display a notice if is a multisite
  *
- * @return void
+ * @return void|string
  */
 function wplng_admin_notice_incompatible_multisite() {
 
@@ -430,7 +430,7 @@ function wplng_admin_notice_incompatible_multisite() {
 /**
  * Display a notice if the WordPress installed in a subfolder
  *
- * @return void
+ * @return void|string
  */
 function wplng_admin_notice_incompatible_sub_folder() {
 
@@ -451,6 +451,37 @@ function wplng_admin_notice_incompatible_sub_folder() {
 	$html .= '</p>';
 	$html .= '<p>';
 	$html .= esc_html__( 'wpLingua is not compatible with WordPress installed in a subfolder.', 'wplingua' );
+	$html .= '</p>';
+	$html .= '</div>'; // End .notice
+
+	echo $html;
+}
+
+
+/**
+ * Display a notice if the PHP version is incompatible
+ *
+ * @return void|string
+ */
+function wplng_admin_notice_incompatible_php_version() {
+
+	if ( version_compare( PHP_VERSION, '7.4' ) >= 0 ) {
+		return;
+	}
+
+	/**
+	 * Make and echo the admin notice
+	 */
+
+	$html  = '<div ';
+	$html .= 'class="wplng-notice notice notice-error is-dismissible" ';
+	$html .= 'style="background-color: rgba(255, 0, 0, .1);">';
+	$html .= '<p style="font-weight: 600;">';
+	$html .= '<span class="dashicons dashicons-translation"></span> ';
+	$html .= esc_html__( 'wpLingua - Incompatible PHP version', 'wplingua' );
+	$html .= '</p>';
+	$html .= '<p>';
+	$html .= esc_html__( 'wpLingua is not compatible with your PHP version. wpLingua requires PHP 7.4 or higher.', 'wplingua' );
 	$html .= '</p>';
 	$html .= '</div>'; // End .notice
 
