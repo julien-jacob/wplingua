@@ -224,6 +224,24 @@ function wplng_settings_link( $settings ) {
 
 
 /**
+ * Redirect to the settings page on plugin activation
+ *
+ * @param string $plugin
+ * @return void
+ */
+function wplng_plugin_activation_redirect( $plugin ) {
+
+	if ( ! wp_doing_ajax() && WPLNG_PLUGIN_FILE === $plugin ) {
+		wp_safe_redirect(
+			admin_url( 'admin.php?page=wplingua-settings' )
+		);
+		exit();
+	}
+
+}
+
+
+/**
  * Display a notice if the plugin is activate but not configured
  *
  * @return void
@@ -255,11 +273,15 @@ function wplng_admin_notice_no_key_set() {
 
 
 /**
- * Display a notice if an incompatible plugin is detected
+ * Get the list of activated incompatible plugins
  *
- * @return void
+ * @return array [Plugin name => Plugin file]
  */
-function wplng_admin_notice_incompatible_plugin() {
+function wplng_get_incompatible_plugins() {
+
+	if ( ! function_exists( 'is_plugin_active' ) ) {
+		require_once ABSPATH . '/wp-admin/includes/plugin.php';
+	}
 
 	/**
 	 * Get incompatible plugins
@@ -293,7 +315,20 @@ function wplng_admin_notice_incompatible_plugin() {
 		}
 	}
 
-	if ( empty( $incompatible_detected ) ) {
+	return $incompatible_detected;
+}
+
+
+/**
+ * Display a notice if an incompatible plugin is detected
+ *
+ * @return void
+ */
+function wplng_admin_notice_incompatible_plugin() {
+
+	$incompatible_plugins = wplng_get_incompatible_plugins();
+
+	if ( empty( $incompatible_plugins ) ) {
 		return;
 	}
 
@@ -312,7 +347,7 @@ function wplng_admin_notice_incompatible_plugin() {
 	$html .= esc_html__( 'You have several translation plugins. This may result in unpredictable or incorrect behavior. For best results, use only one translation plugin at a time. These plugins can cause problems with wpLingua: ', 'wplingua' );
 
 	$html .= '<ul style="list-style: disc; margin-left: 15px;">';
-	foreach ( $incompatible_detected as $name => $file ) {
+	foreach ( $incompatible_plugins as $name => $file ) {
 
 		$deactivate_url = wp_nonce_url(
 			add_query_arg(
@@ -362,18 +397,62 @@ function wplng_admin_notice_incompatible_plugin() {
 
 
 /**
- * Redirect to the settings page on plugin activation
+ * Display a notice if is a multisite
  *
- * @param string $plugin
  * @return void
  */
-function wplng_plugin_activation_redirect( $plugin ) {
+function wplng_admin_notice_incompatible_multisite() {
 
-	if ( ! wp_doing_ajax() && WPLNG_PLUGIN_FILE === $plugin ) {
-		wp_safe_redirect(
-			admin_url( 'admin.php?page=wplingua-settings' )
-		);
-		exit();
+	if ( ! is_multisite() ) {
+		return;
 	}
 
+	/**
+	 * Make and echo the admin notice
+	 */
+
+	$html  = '<div ';
+	$html .= 'class="wplng-notice notice notice-error is-dismissible" ';
+	$html .= 'style="background-color: rgba(255, 0, 0, .1);">';
+	$html .= '<p style="font-weight: 600;">';
+	$html .= '<span class="dashicons dashicons-translation"></span> ';
+	$html .= esc_html__( 'wpLingua - Incompatible with multisite', 'wplingua' );
+	$html .= '</p>';
+	$html .= '<p>';
+	$html .= esc_html__( 'wpLingua is not compatible with multisite.', 'wplingua' );
+	$html .= '</p>';
+	$html .= '</div>'; // End .notice
+
+	echo $html;
+}
+
+
+/**
+ * Display a notice if the WordPress installed in a subfolder
+ *
+ * @return void
+ */
+function wplng_admin_notice_incompatible_sub_folder() {
+
+	if ( ! is_multisite() ) {
+		return;
+	}
+
+	/**
+	 * Make and echo the admin notice
+	 */
+
+	$html  = '<div ';
+	$html .= 'class="wplng-notice notice notice-error is-dismissible" ';
+	$html .= 'style="background-color: rgba(255, 0, 0, .1);">';
+	$html .= '<p style="font-weight: 600;">';
+	$html .= '<span class="dashicons dashicons-translation"></span> ';
+	$html .= esc_html__( 'wpLingua - Incompatible with WordPress installed in a subfolder', 'wplingua' );
+	$html .= '</p>';
+	$html .= '<p>';
+	$html .= esc_html__( 'wpLingua is not compatible with WordPress installed in a subfolder.', 'wplingua' );
+	$html .= '</p>';
+	$html .= '</div>'; // End .notice
+
+	echo $html;
 }

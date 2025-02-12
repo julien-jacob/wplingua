@@ -86,8 +86,18 @@ function wplng_start() {
 	// Load plugin text domain /languages/
 	add_action( 'init', 'wplng_load_plugin_textdomain' );
 
-	// Display a notice if an incompatible plugin is detected
+	// Display a notice if incompatibility is detected
 	add_action( 'admin_notices', 'wplng_admin_notice_incompatible_plugin', 1 );
+	add_action( 'admin_notices', 'wplng_admin_notice_incompatible_multisite', 1 );
+	add_action( 'admin_notices', 'wplng_admin_notice_incompatible_sub_folder', 1 );
+
+	// Return if incompatibility is detected
+	if ( ! empty( wplng_get_incompatible_plugins() )
+		|| is_multisite()
+		|| get_option( 'siteurl' ) !== get_option( 'home' )
+	) {
+		return;
+	}
 
 	// Register plugin settings
 	add_action( 'admin_init', 'wplng_register_settings' );
