@@ -19,19 +19,19 @@ jQuery(document).ready(function ($) {
 
     function wplngUpdateSwitcherOpening() {
 
-        var windowMiddle = $(window).height() / 2;
+        let windowMiddle = $(window).height() / 2;
 
         $(".wplng-switcher.style-dropdown").each(function (e) {
 
-            var offsetFromWindow = $(this).offset().top - $(window).scrollTop();
+            let offsetFromWindow = $(this).offset().top - $(window).scrollTop();
 
             if (offsetFromWindow < windowMiddle) {
                 if (!$(this).hasClass("open-bottom")) {
                     $(this).addClass("open-bottom");
                     $(this).removeClass("open-top");
 
-                    var htmlLanguages = $(".wplng-languages", this).prop('outerHTML');
-                    var htmlLanguagecurrent = $(".wplng-language-current", this).prop('outerHTML');
+                    let htmlLanguages = $(".wplng-languages", this).prop('outerHTML');
+                    let htmlLanguagecurrent = $(".wplng-language-current", this).prop('outerHTML');
                     $(".switcher-content", this).html(htmlLanguagecurrent + htmlLanguages);
                 }
             } else {
@@ -39,8 +39,8 @@ jQuery(document).ready(function ($) {
                     $(this).addClass("open-top");
                     $(this).removeClass("open-bottom");
 
-                    var htmlLanguages = $(".wplng-languages", this).prop('outerHTML');
-                    var htmlLanguagecurrent = $(".wplng-language-current", this).prop('outerHTML');
+                    let htmlLanguages = $(".wplng-languages", this).prop('outerHTML');
+                    let htmlLanguagecurrent = $(".wplng-language-current", this).prop('outerHTML');
                     $(".switcher-content", this).html(htmlLanguages + htmlLanguagecurrent);
                 }
             }

@@ -103,7 +103,7 @@ jQuery(document).ready(function ($) {
 
         wplngEditor.find('.wplng-mark-as-reviewed input[type="checkbox"]').change(function () {
 
-            var parentSelector = wplngEditor.find("#wplng-translation-" + $(this).attr("wplng-lang"));
+            let parentSelector = wplngEditor.find("#wplng-translation-" + $(this).attr("wplng-lang"));
 
             parentSelector.removeClass("wplng-status-generated");
             parentSelector.removeClass("wplng-status-reviewed");
@@ -117,14 +117,14 @@ jQuery(document).ready(function ($) {
         });
 
         wplngEditor.find('.wplng-edit-language textarea').each(function () {
-            var reviewSelector = wplngEditor.find("#wplng_mark_as_reviewed_" + $(this).attr("lang"));
+            let reviewSelector = wplngEditor.find("#wplng_mark_as_reviewed_" + $(this).attr("lang"));
             reviewSelector.prop("disabled", $(this).val().trim() == "");
         });
 
         wplngEditor.find('.wplng-edit-language textarea').on("keyup paste", function () {
 
-            var parentSelector = wplngEditor.find("#wplng-translation-" + $(this).attr("lang"));
-            var reviewSelector = wplngEditor.find("#wplng_mark_as_reviewed_" + $(this).attr("lang"));
+            let parentSelector = wplngEditor.find("#wplng-translation-" + $(this).attr("lang"));
+            let reviewSelector = wplngEditor.find("#wplng_mark_as_reviewed_" + $(this).attr("lang"));
 
             parentSelector.removeClass("wplng-status-generated");
             parentSelector.removeClass("wplng-status-reviewed");
@@ -154,15 +154,15 @@ jQuery(document).ready(function ($) {
                 return;
             }
 
-            var source = wplngEditor.find("#wplng-original-language").attr("wplng-lang");
-            var target = wplngEditor.find(this).attr("wplng-lang");
-            var text = wplngEditor.find("#wplng-source").html();
+            let source = wplngEditor.find("#wplng-original-language").attr("wplng-lang");
+            let target = wplngEditor.find(this).attr("wplng-lang");
+            let text = wplngEditor.find("#wplng-source").html();
 
             if (undefined == source || undefined == target || undefined == text) {
                 return;
             }
 
-            var container = "#wplng-translation-" + target;
+            let container = "#wplng-translation-" + target;
 
             wplngEditor.find(container + " .wplng-generate").attr("disabled", true);
             wplngEditor.find(container + " .wplng-generate-spin").show();
@@ -178,12 +178,12 @@ jQuery(document).ready(function ($) {
                 },
                 success: function (data) {
                     if (data.success) {
-                        var textarea = "#wplng_translation_" + target;
+                        let textarea = "#wplng_translation_" + target;
                         $(textarea).val(data.data);
 
                         if (data.data != "") {
-                            var parentSelector = wplngEditor.find("#wplng-translation-" + target);
-                            var reviewSelector = wplngEditor.find("#wplng_mark_as_reviewed_" + target);
+                            let parentSelector = wplngEditor.find("#wplng-translation-" + target);
+                            let reviewSelector = wplngEditor.find("#wplng_mark_as_reviewed_" + target);
 
                             parentSelector.removeClass("wplng-status-generated");
                             parentSelector.removeClass("wplng-status-reviewed");
@@ -555,7 +555,7 @@ jQuery(document).ready(function ($) {
 
     function wplngSortNumber(selectorParent, attrName) {
         return $($(selectorParent).toArray().sort(function (a, b) {
-            var aVal = parseInt(a.getAttribute(attrName)),
+            let aVal = parseInt(a.getAttribute(attrName)),
                 bVal = parseInt(b.getAttribute(attrName));
             return aVal - bVal;
         }));

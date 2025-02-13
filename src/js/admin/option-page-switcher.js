@@ -86,7 +86,7 @@ jQuery(document).ready(function ($) {
             .addClass("flags-" + val);
 
         if ("none" != val) {
-            var html = $(".wplng-switcher").html();
+            let html = $(".wplng-switcher").html();
 
             html = html.replaceAll(
                 "/wplingua/assets/images/circle/",
@@ -145,7 +145,7 @@ jQuery(document).ready(function ($) {
      * CodeMirror CSS editor
      */
 
-    var editor = wp.codeEditor.initialize($("#wplng_custom_css"), cm_settings);
+    let editor = wp.codeEditor.initialize($("#wplng_custom_css"), cm_settings);
 
     $(document).on("keypress", ".CodeMirror", function () {
         $("#wplingua-inline-css").html(editor.codemirror.doc.getValue());
