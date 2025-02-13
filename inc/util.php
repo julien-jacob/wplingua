@@ -68,6 +68,7 @@ function wplng_str_is_url( $str ) {
 	if ( is_string( $str )
 		&& ( '' !== trim( $str ) )
 		&& wplng_str_contains( $str, '/' )
+		&& ! wplng_str_starts_with( $str, 'wpgb-content-block/' ) // Plugin: WP Grid Builder
 	) {
 		if ( isset( $parsed['scheme'] )
 			&& (

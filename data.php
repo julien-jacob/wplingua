@@ -62,6 +62,38 @@ function wplng_data_json_to_translate() {
 			array( 'WprConfig', 'file_empty' ),
 			array( 'WprConfig', 'recaptcha_error' ),
 			array( 'WprConfig', 'recaptcha_error' ),
+
+			// Plugin: WP Grid Builder
+			array( 'wpgb_settings', 'resultMsg', 'plural' ),
+			array( 'wpgb_settings', 'resultMsg', 'singular' ),
+			array( 'wpgb_settings', 'resultMsg', 'none' ),
+
+			array( 'wpgb_settings', 'lightbox', 'errorMsg' ),
+			array( 'wpgb_settings', 'lightbox', 'prevLabel' ),
+			array( 'wpgb_settings', 'lightbox', 'nextLabel' ),
+			array( 'wpgb_settings', 'lightbox', 'closeLabel' ),
+
+			array( 'wpgb_settings', 'combobox', 'search' ),
+			array( 'wpgb_settings', 'combobox', 'loading' ),
+			array( 'wpgb_settings', 'combobox', 'cleared' ),
+			array( 'wpgb_settings', 'combobox', 'expanded' ),
+			array( 'wpgb_settings', 'combobox', 'noResults' ),
+			array( 'wpgb_settings', 'combobox', 'collapsed' ),
+			array( 'wpgb_settings', 'combobox', 'toggleLabel' ),
+			array( 'wpgb_settings', 'combobox', 'clearLabel' ),
+			array( 'wpgb_settings', 'combobox', 'selected' ),
+			array( 'wpgb_settings', 'combobox', 'deselected' ),
+
+			array( 'wpgb_settings', 'autocomplete', 'open' ),
+			array( 'wpgb_settings', 'autocomplete', 'input' ),
+			array( 'wpgb_settings', 'autocomplete', 'clear' ),
+			array( 'wpgb_settings', 'autocomplete', 'noResults' ),
+			array( 'wpgb_settings', 'autocomplete', 'loading' ),
+			array( 'wpgb_settings', 'autocomplete', 'clearLabel' ),
+			array( 'wpgb_settings', 'autocomplete', 'select' ),
+
+			array( 'wpgb_settings', 'range', 'minLabel' ),
+			array( 'wpgb_settings', 'range', 'maxLabel' ),
 		)
 	);
 }
