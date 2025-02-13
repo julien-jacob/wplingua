@@ -274,6 +274,9 @@ function wplng_start() {
 		// Redirect page if is called wiht an untranslate slug
 		add_action( 'template_redirect', 'wplng_redirect_translated_slug' );
 
+		// Translate URL for wp_redirect
+		add_filter( 'wp_redirect', 'wplng_wp_redirect', 99, 2 );
+
 		/**
 		 * Features
 		 */

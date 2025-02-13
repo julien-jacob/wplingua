@@ -7,6 +7,31 @@ if ( ! defined( 'WPINC' ) ) {
 
 
 /**
+ * intercept wp_redirect and translate URL if is a translated page
+ *
+ * @param string $location
+ * @param int $status
+ * @return string $location
+ */
+function wplng_wp_redirect( $location, $status ) {
+
+	$language_website_id = wplng_get_language_website_id();
+	$language_current_id = wplng_get_language_current_id();
+
+	if ( $language_website_id === $language_current_id ) {
+		return $location;
+	}
+
+	$location = wplng_url_translate(
+		$location,
+		$language_current_id
+	);
+
+	return $location;
+}
+
+
+/**
  * Redirect page if is called wiht an untranslate slug to the translated URL
  *
  * @return void
