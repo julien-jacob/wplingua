@@ -323,10 +323,20 @@ function wplng_data_attr_text_to_translate() {
 				'selector' => 'meta[name="twitter:image:alt"]',
 			),
 
-			// Plugin : Fluent Forms tooltips
+			// Plugin: Fluent Forms tooltips
 			array(
 				'attr'     => 'data-content',
 				'selector' => '.ff-el-tooltip[data-content]',
+			),
+
+			// Plugin: Forminator
+			array(
+				'attr'     => 'data-placeholder',
+				'selector' => '[data-placeholder]',
+			),
+			array(
+				'attr'     => 'data-search-placeholde',
+				'selector' => '[data-search-placeholde]',
 			),
 		)
 	);
