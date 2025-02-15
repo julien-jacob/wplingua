@@ -196,8 +196,6 @@ function wplng_url_is_translatable( $url = '' ) {
 		$is_translatable = false;
 	}
 
-	error_log( $url );
-
 	// Check if URL is excluded in option page
 	if ( $is_translatable ) {
 
