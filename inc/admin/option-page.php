@@ -14,7 +14,7 @@ if ( ! defined( 'WPINC' ) ) {
 function wplng_create_menu_register() {
 
 	add_menu_page(
-		__( 'wplingua: Register', 'wplingua' ),
+		__( 'wpLingua: Register', 'wplingua' ),
 		__( 'wpLingua', 'wplingua' ),
 		'administrator',
 		'wplingua-settings',
@@ -33,7 +33,7 @@ function wplng_create_menu_register() {
 function wplng_create_menu() {
 
 	add_menu_page(
-		__( 'wplingua: Settings', 'wplingua' ),
+		__( 'wpLingua: Settings', 'wplingua' ),
 		__( 'wpLingua', 'wplingua' ),
 		'administrator',
 		'wplingua-settings',
@@ -44,7 +44,7 @@ function wplng_create_menu() {
 
 	add_submenu_page(
 		'wplingua-settings',
-		__( 'wplingua: Settings', 'wplingua' ),
+		__( 'wpLingua: Settings', 'wplingua' ),
 		__( 'General settings', 'wplingua' ),
 		'administrator',
 		'wplingua-settings',
@@ -53,7 +53,7 @@ function wplng_create_menu() {
 
 	add_submenu_page(
 		'wplingua-settings',
-		__( 'wplingua: Switcher', 'wplingua' ),
+		__( 'wpLingua: Switcher', 'wplingua' ),
 		__( 'Switcher', 'wplingua' ),
 		'administrator',
 		'wplingua-switcher',
@@ -62,7 +62,7 @@ function wplng_create_menu() {
 
 	add_submenu_page(
 		'wplingua-settings',
-		__( 'wplingua: Dictionary', 'wplingua' ),
+		__( 'wpLingua: Dictionary', 'wplingua' ),
 		__( 'Dictionary', 'wplingua' ),
 		'administrator',
 		'wplingua-dictionary',
@@ -71,7 +71,7 @@ function wplng_create_menu() {
 
 	add_submenu_page(
 		'wplingua-settings',
-		__( 'wplingua: Exclusion', 'wplingua' ),
+		__( 'wpLingua: Exclusion', 'wplingua' ),
 		__( 'Exclusion', 'wplingua' ),
 		'administrator',
 		'wplingua-exclusions',
@@ -80,7 +80,7 @@ function wplng_create_menu() {
 
 	add_submenu_page(
 		'wplingua-settings',
-		__( 'wplingua: Website slugs', 'wplingua' ),
+		__( 'wpLingua: Website slugs', 'wplingua' ),
 		__( 'Website slugs', 'wplingua' ),
 		'administrator',
 		'edit.php?post_type=wplng_slug',
@@ -89,7 +89,7 @@ function wplng_create_menu() {
 
 	add_submenu_page(
 		'wplingua-settings',
-		__( 'wplingua: Translations', 'wplingua' ),
+		__( 'wpLingua: Translations', 'wplingua' ),
 		__( 'All translations', 'wplingua' ),
 		'administrator',
 		'edit.php?post_type=wplng_translation',

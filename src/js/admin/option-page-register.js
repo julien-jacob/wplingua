@@ -8,7 +8,7 @@ jQuery(document).ready(function ($) {
     /**
      * Set HTML options for languages
      */
-    var wplngHtmlLanguagesOptions = "<option disabled selected value></option>";
+    let wplngHtmlLanguagesOptions = "<option disabled selected value></option>";
     wplngAllLanguages.forEach((language) => {
         wplngHtmlLanguagesOptions += '<option value="' + language.id + '">' + language.name + "</option>";
     });
@@ -32,7 +32,7 @@ jQuery(document).ready(function ($) {
     });
 
     function wplngDisableLanguagesOptions() {
-        var selectedLanguage = $("#wplng-language-website").val();
+        let selectedLanguage = $("#wplng-language-website").val();
         $("#wplng-language-target option").attr("disabled", false);
         $("#wplng-language-target option[value=" + selectedLanguage + "]").attr("disabled", true);
 
@@ -52,11 +52,11 @@ jQuery(document).ready(function ($) {
 
     function wplngUpdateRegisterInput() {
 
-        var wplngRegisterInputSelector = "#wplng-website-url, #wplng-email, #wplng-language-website, #wplng-language-target, #wplng-accept-eula";
+        let wplngRegisterInputSelector = "#wplng-website-url, #wplng-email, #wplng-language-website, #wplng-language-target, #wplng-accept-eula";
 
         $(wplngRegisterInputSelector).attr('required', true);
 
-        var registerData = {
+        let registerData = {
             request: 'register',
             mail_address: $("#wplng-email").val(),
             website: $("#wplng-website-url").val(),
@@ -76,7 +76,7 @@ jQuery(document).ready(function ($) {
             location.hostname == this.hostname
             && this.pathname.replace(/^\//,"") == location.pathname.replace(/^\//,"")
         ) {
-            var anchor = $(this.hash);
+            let anchor = $(this.hash);
             anchor = anchor.length ? anchor : $("[name=" + this.hash.slice(1) +"]");
             if ( anchor.length ) {
                 $("html, body").animate( { scrollTop: anchor.offset().top - 50 }, 1000);
