@@ -1,3 +1,20 @@
+/*!*
+ **                 _     _                         
+ ** __      ___ __ | |   (_)_ __   __ _ _   _  __ _ 
+ ** \ \ /\ / / '_ \| |   | | '_ \ / _` | | | |/ _` |
+ **  \ V  V /| |_) | |___| | | | | (_| | |_| | (_| |
+ **   \_/\_/ | .__/|_____|_|_| |_|\__, |\__,_|\__,_|
+ **          |_|                  |___/             
+ **
+ **        -- wpLingua | WordPress plugin --
+ **   Translate and make your website multilingual
+ **
+ **     https://github.com/julien-jacob/wplingua
+ **      https://wordpress.org/plugins/wplingua/
+ **              https://wplingua.com/
+ **
+ **/
+
 jQuery(document).ready(function ($) {
 
     let wplngEditor = $("#wplng-slug-editor");
@@ -31,7 +48,7 @@ jQuery(document).ready(function ($) {
 
         wplngEditor.find('.wplng-mark-as-reviewed input[type="checkbox"]').change(function () {
 
-            var parentSelector = wplngEditor.find("#wplng-slug-" + $(this).attr("wplng-lang"));
+            let parentSelector = wplngEditor.find("#wplng-slug-" + $(this).attr("wplng-lang"));
 
             parentSelector.removeClass("wplng-status-generated");
             parentSelector.removeClass("wplng-status-reviewed");
@@ -45,14 +62,14 @@ jQuery(document).ready(function ($) {
         });
 
         wplngEditor.find('.wplng-edit-language .wplng-slug-input').each(function () {
-            var reviewSelector = wplngEditor.find("#wplng_mark_as_reviewed_" + $(this).attr("lang"));
+            let reviewSelector = wplngEditor.find("#wplng_mark_as_reviewed_" + $(this).attr("lang"));
             reviewSelector.prop("disabled", $(this).val().trim() == "");
         });
 
         wplngEditor.find('.wplng-edit-language .wplng-slug-input').on("keyup paste", function () {
 
-            var parentSelector = wplngEditor.find("#wplng-slug-" + $(this).attr("lang"));
-            var reviewSelector = wplngEditor.find("#wplng_mark_as_reviewed_" + $(this).attr("lang"));
+            let parentSelector = wplngEditor.find("#wplng-slug-" + $(this).attr("lang"));
+            let reviewSelector = wplngEditor.find("#wplng_mark_as_reviewed_" + $(this).attr("lang"));
 
             parentSelector.removeClass("wplng-status-generated");
             parentSelector.removeClass("wplng-status-reviewed");
@@ -82,15 +99,15 @@ jQuery(document).ready(function ($) {
                 return;
             }
 
-            var source = wplngEditor.find("#wplng-original-language").attr("wplng-lang");
-            var target = wplngEditor.find(this).attr("wplng-lang");
-            var text = wplngEditor.find("#wplng-source").html();
+            let source = wplngEditor.find("#wplng-original-language").attr("wplng-lang");
+            let target = wplngEditor.find(this).attr("wplng-lang");
+            let text = wplngEditor.find("#wplng-source").html();
 
             if (undefined == source || undefined == target || undefined == text) {
                 return;
             }
 
-            var container = "#wplng-slug-" + target;
+            let container = "#wplng-slug-" + target;
 
             wplngEditor.find(container + " .wplng-generate").attr("disabled", true);
             wplngEditor.find(container + " .wplng-generate-spin").show();
@@ -106,12 +123,12 @@ jQuery(document).ready(function ($) {
                 },
                 success: function (data) {
                     if (data.success) {
-                        var textarea = "#wplng_slug_" + target;
+                        let textarea = "#wplng_slug_" + target;
                         $(textarea).val(data.data);
 
                         if (data.data != "") {
-                            var parentSelector = wplngEditor.find("#wplng-slug-" + target);
-                            var reviewSelector = wplngEditor.find("#wplng_mark_as_reviewed_" + target);
+                            let parentSelector = wplngEditor.find("#wplng-slug-" + target);
+                            let reviewSelector = wplngEditor.find("#wplng_mark_as_reviewed_" + target);
 
                             parentSelector.removeClass("wplng-status-generated");
                             parentSelector.removeClass("wplng-status-reviewed");

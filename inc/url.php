@@ -189,7 +189,7 @@ function wplng_url_is_translatable( $url = '' ) {
 	}
 
 	// Exclude files URL
-	$regex_is_file = '#\.(avi|css|doc|exe|gif|html|jfif|jpg|jpeg|webp|bmp|mid|midi|mp3|mpg|mpeg|avif|mov|qt|pdf|png|ram|rar|tiff|txt|wav|zip|ico|xml|doc|docx|xls|xlsx)$#Uis';
+	$regex_is_file = '#\.(avi|css|doc|exe|gif|html|jfif|jpg|jpeg|webp|bmp|mid|midi|mp3|mpg|mpeg|avif|mov|qt|pdf|png|ram|rar|tiff|txt|wav|zip|ico|xml|doc|docx|xls|xlsx)?\/$#Uis';
 	if ( $is_translatable
 		&& preg_match( $regex_is_file, $url )
 	) {

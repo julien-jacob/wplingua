@@ -7,7 +7,7 @@
  * Author URI: https://wplingua.com/
  * Text Domain: wplingua
  * Domain Path: /languages/
- * Version: 2.1.5
+ * Version: 2.3.6
  * Requires PHP: 7.4
  * License: GPL v2 or later
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -24,7 +24,7 @@ if ( ! defined( 'WPINC' ) ) {
 define( 'WPLNG_API_URL', 'https://api.wplingua.com' );
 define( 'WPLNG_API_VERSION', '2.0' );
 define( 'WPLNG_API_SSLVERIFY', true );
-define( 'WPLNG_PLUGIN_VERSION', '2.1.5' );
+define( 'WPLNG_PLUGIN_VERSION', '2.3.6' );
 define( 'WPLNG_PLUGIN_FILE', plugin_basename( __FILE__ ) );
 define( 'WPLNG_PLUGIN_PATH', dirname( __FILE__ ) );
 define( 'WPLNG_MAX_TRANSLATIONS', 256 );
@@ -86,8 +86,20 @@ function wplng_start() {
 	// Load plugin text domain /languages/
 	add_action( 'init', 'wplng_load_plugin_textdomain' );
 
-	// Display a notice if an incompatible plugin is detected
+	// Display a notice if incompatibility is detected
 	add_action( 'admin_notices', 'wplng_admin_notice_incompatible_plugin', 1 );
+	add_action( 'admin_notices', 'wplng_admin_notice_incompatible_multisite', 1 );
+	add_action( 'admin_notices', 'wplng_admin_notice_incompatible_sub_folder', 1 );
+	add_action( 'admin_notices', 'wplng_admin_notice_incompatible_php_version', 1 );
+
+	// Return if incompatibility is detected
+	if ( ! empty( wplng_get_incompatible_plugins() )
+		|| is_multisite()
+		|| get_option( 'siteurl' ) !== get_option( 'home' )
+		|| ( version_compare( PHP_VERSION, '7.4' ) < 0 )
+	) {
+		return;
+	}
 
 	// Register plugin settings
 	add_action( 'admin_init', 'wplng_register_settings' );
@@ -290,7 +302,7 @@ function wplng_start() {
 
 		add_filter( 'block_categories_all', 'wplng_block_category' );
 		add_action( 'init', 'wplng_register_block' );
-		add_action( 'enqueue_block_editor_assets', 'wplng_register_block_scripts' );
+		add_action( 'enqueue_block_editor_assets', 'wplng_register_block_assets' );
 
 	}
 

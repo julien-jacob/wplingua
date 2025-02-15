@@ -551,6 +551,7 @@ function wplng_get_slugs() {
 function wplng_get_slug_saved_from_original( $original ) {
 
 	$translation = false;
+	$original    = trim( strtolower( $original ) );
 
 	$args = array(
 		'post_type'      => 'wplng_slug',

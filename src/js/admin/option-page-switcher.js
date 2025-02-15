@@ -1,3 +1,20 @@
+/*!*
+ **                 _     _                         
+ ** __      ___ __ | |   (_)_ __   __ _ _   _  __ _ 
+ ** \ \ /\ / / '_ \| |   | | '_ \ / _` | | | |/ _` |
+ **  \ V  V /| |_) | |___| | | | | (_| | |_| | (_| |
+ **   \_/\_/ | .__/|_____|_|_| |_|\__, |\__,_|\__,_|
+ **          |_|                  |___/             
+ **
+ **        -- wpLingua | WordPress plugin --
+ **   Translate and make your website multilingual
+ **
+ **     https://github.com/julien-jacob/wplingua
+ **      https://wordpress.org/plugins/wplingua/
+ **              https://wplingua.com/
+ **
+ **/
+
 jQuery(document).ready(function ($) {
 
     function wplngSwitcherUpdateInsert(val) {
@@ -86,7 +103,7 @@ jQuery(document).ready(function ($) {
             .addClass("flags-" + val);
 
         if ("none" != val) {
-            var html = $(".wplng-switcher").html();
+            let html = $(".wplng-switcher").html();
 
             html = html.replaceAll(
                 "/wplingua/assets/images/circle/",
@@ -145,7 +162,7 @@ jQuery(document).ready(function ($) {
      * CodeMirror CSS editor
      */
 
-    var editor = wp.codeEditor.initialize($("#wplng_custom_css"), cm_settings);
+    let editor = wp.codeEditor.initialize($("#wplng_custom_css"), cm_settings);
 
     $(document).on("keypress", ".CodeMirror", function () {
         $("#wplingua-inline-css").html(editor.codemirror.doc.getValue());

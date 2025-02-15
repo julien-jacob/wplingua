@@ -28,6 +28,11 @@ function wplng_str_contains( $haystack, $needle ) {
  * @return bool
  */
 function wplng_str_starts_with( $haystack, $needle ) {
+
+	if ( ! is_string( $haystack ) || ! is_string( $needle ) ) {
+		return false;
+	}
+
 	return substr_compare( $haystack, $needle, 0, strlen( $needle ) ) === 0;
 }
 
@@ -41,6 +46,11 @@ function wplng_str_starts_with( $haystack, $needle ) {
  * @return bool
  */
 function wplng_str_ends_with( $haystack, $needle ) {
+
+	if ( ! is_string( $haystack ) || ! is_string( $needle ) ) {
+		return false;
+	}
+
 	return substr_compare( $haystack, $needle, -strlen( $needle ) ) === 0;
 }
 
@@ -58,6 +68,7 @@ function wplng_str_is_url( $str ) {
 	if ( is_string( $str )
 		&& ( '' !== trim( $str ) )
 		&& wplng_str_contains( $str, '/' )
+		&& ! wplng_str_starts_with( $str, 'wpgb-content-block/' ) // Plugin: WP Grid Builder
 	) {
 		if ( isset( $parsed['scheme'] )
 			&& (
@@ -102,16 +113,16 @@ function wplng_text_is_translatable( $text ) {
 		return false;
 	}
 
-	// Check templating tags
-	if ( wplng_str_starts_with( $text, '<%' )
-		&& wplng_str_ends_with( $text, '%>' )
+	// Check bad HTML tags and templating tags
+	if ( wplng_str_starts_with( $text, '<' )
+		&& wplng_str_ends_with( $text, '>' )
 	) {
 		return false;
 	}
 
-	// Check bad HTML tags ending
-	if ( wplng_str_starts_with( $text, '</' )
-		&& wplng_str_ends_with( $text, '>' )
+	// Check JS tags
+	if ( wplng_str_starts_with( $text, '{{' )
+		&& wplng_str_ends_with( $text, '}}' )
 	) {
 		return false;
 	}
@@ -255,18 +266,6 @@ function wplng_json_element_is_translatable( $element, $parents ) {
 			&& ( count( $parents ) > 2 )
 			&& (
 				(
-					( 'logo' === $parents[ count( $parents ) - 2 ] )
-					&& ( 'caption' === $parents[ count( $parents ) - 1 ] )
-				)
-				|| (
-					( 'image' === $parents[ count( $parents ) - 2 ] )
-					&& ( 'caption' === $parents[ count( $parents ) - 1 ] )
-				)
-				|| (
-					( 'logo' === $parents[ count( $parents ) - 2 ] )
-					&& ( 'caption' === $parents[ count( $parents ) - 1 ] )
-				)
-				|| (
 					( 'author' === $parents[ count( $parents ) - 2 ] )
 					&& ( 'headline' === $parents[ count( $parents ) - 1 ] )
 				)
@@ -274,7 +273,9 @@ function wplng_json_element_is_translatable( $element, $parents ) {
 					( 'articleSection' === $parents[ count( $parents ) - 2 ] )
 					&& ( is_int( $parents[ count( $parents ) - 1 ] ) )
 				)
+				|| ( 'caption' === $parents[ count( $parents ) - 1 ] )
 				|| ( 'name' === $parents[ count( $parents ) - 1 ] )
+				|| ( 'alternateName' === $parents[ count( $parents ) - 1 ] )
 				|| ( 'description' === $parents[ count( $parents ) - 1 ] )
 			)
 		) {
@@ -284,6 +285,18 @@ function wplng_json_element_is_translatable( $element, $parents ) {
 			 */
 
 			$is_translatable = true;
+
+		} elseif (
+			count( $parents ) == 3
+			&& ( 'elementorFrontendConfig' === $parents[0] )
+			&& ( 'i18n' === $parents[1] )
+		) {
+
+			/**
+			 * Plugin: Elementor - elementorFrontendConfig
+			 */
+
+			 $is_translatable = true;
 
 		} elseif (
 			! empty( $parents[0] )
@@ -299,6 +312,72 @@ function wplng_json_element_is_translatable( $element, $parents ) {
 			 * Is WooCommerce address params
 			 */
 
+			$is_translatable = true;
+
+		} elseif (
+			! empty( $parents[0] )
+			&& wplng_str_starts_with( $parents[0], 'CASE' )
+			&& ! empty( $parents[1] )
+			&& 'l10n' === $parents[1]
+			&& ! empty( $parents[2] )
+			&& (
+				$parents[2] === 'selectOption'
+				|| $parents[2] === 'errorLoading'
+				|| $parents[2] === 'removeAllItems'
+				|| $parents[2] === 'loadingMore'
+				|| $parents[2] === 'noResults'
+				|| $parents[2] === 'searching'
+				|| $parents[2] === 'irreversible_action'
+				|| $parents[2] === 'delete_listing_confirm'
+				|| $parents[2] === 'copied_to_clipboard'
+				|| $parents[2] === 'nearby_listings_location_required'
+				|| $parents[2] === 'nearby_listings_retrieving_location'
+				|| $parents[2] === 'nearby_listings_searching'
+				|| $parents[2] === 'geolocation_failed'
+				|| $parents[2] === 'something_went_wrong'
+				|| $parents[2] === 'all_in_category'
+				|| $parents[2] === 'invalid_file_type'
+				|| $parents[2] === 'file_limit_exceeded'
+				|| $parents[2] === 'file_size_limit'
+				|| (
+					$parents[2] === 'datepicker'
+					&& ! empty( $parents[3] )
+					&& (
+						$parents[3] === 'applyLabel'
+						|| $parents[3] === 'cancelLabel'
+						|| $parents[3] === 'customRangeLabel'
+						|| $parents[3] === 'daysOfWeek'
+						|| $parents[3] === 'monthNames'
+					)
+				)
+			)
+		) {
+
+			/**
+			 * Is 'My listing' theme - JSON in HTML
+			 */
+
+			$is_translatable = true;
+
+		} elseif (
+			! empty( $parents[0] )
+			&& ( 'children' === $parents[0] )
+			&& ! empty( $parents[1] )
+			&& ( wplng_str_starts_with( $parents[1], 'term_' ) )
+			&& ! empty( $parents[2] )
+			&& (
+				( 'name' === $parents[2] )
+				|| ( 'description' === $parents[2] )
+			)
+		) {
+
+			/**
+			 * Is 'My listing' theme - JSON in AJAX
+			 */
+
+			$is_translatable = true;
+
+		} elseif ( 'label' === $parents[ count( $parents ) - 1 ] ) {
 			$is_translatable = true;
 		}
 

@@ -19,7 +19,7 @@ function wplng_data_json_to_translate() {
 	return apply_filters(
 		'wplng_json_to_translate',
 		array(
-			// Plugin : WooCommerce
+			// Plugin: WooCommerce
 			array( 'wc_add_to_cart_params', 'i18n_view_cart' ),
 			array( 'wc_country_select_params', 'i18n_select_state_text' ),
 			array( 'wc_country_select_params', 'i18n_no_matches' ),
@@ -35,13 +35,65 @@ function wplng_data_json_to_translate() {
 			array( 'wc_address_i18n_params', 'i18n_required_text' ),
 			array( 'wc_address_i18n_params', 'i18n_optional_text' ),
 
-			// Plugin : YITH
+			// Plugin: YITH
 			array( 'yith_wcwl_l10n', 'labels', 'cookie_disabled' ),
 
-			// Plugin : WF Cookie Consent
+			// Plugin: WF Cookie Consent
 			array( 'wfCookieConsentSettings', 'wf_cookietext' ),
 			array( 'wfCookieConsentSettings', 'wf_dismisstext' ),
 			array( 'wfCookieConsentSettings', 'wf_linktext' ),
+
+			// Plugin: complianz
+			array( 'complianz', 'categories', 'statistics' ),
+			array( 'complianz', 'categories', 'marketing' ),
+			array( 'complianz', 'placeholdertext' ),
+			array( 'complianz', 'page_links', 'eu', 'privacy-statement', 'title' ),
+			array( 'complianz', 'aria_label' ),
+
+			// Plugin: ultimate-post-kit
+			array( 'UltimatePostKitConfig', 'mailchimp', 'subscribing' ),
+
+			// Plugin: royal-elementor-addons
+			array( 'WprConfig', 'addedToCartText' ),
+			array( 'WprConfig', 'viewCart' ),
+			array( 'WprConfig', 'chooseQuantityText' ),
+			array( 'WprConfig', 'input_empty' ),
+			array( 'WprConfig', 'select_empty' ),
+			array( 'WprConfig', 'file_empty' ),
+			array( 'WprConfig', 'recaptcha_error' ),
+			array( 'WprConfig', 'recaptcha_error' ),
+
+			// Plugin: WP Grid Builder
+			array( 'wpgb_settings', 'resultMsg', 'plural' ),
+			array( 'wpgb_settings', 'resultMsg', 'singular' ),
+			array( 'wpgb_settings', 'resultMsg', 'none' ),
+
+			array( 'wpgb_settings', 'lightbox', 'errorMsg' ),
+			array( 'wpgb_settings', 'lightbox', 'prevLabel' ),
+			array( 'wpgb_settings', 'lightbox', 'nextLabel' ),
+			array( 'wpgb_settings', 'lightbox', 'closeLabel' ),
+
+			array( 'wpgb_settings', 'combobox', 'search' ),
+			array( 'wpgb_settings', 'combobox', 'loading' ),
+			array( 'wpgb_settings', 'combobox', 'cleared' ),
+			array( 'wpgb_settings', 'combobox', 'expanded' ),
+			array( 'wpgb_settings', 'combobox', 'noResults' ),
+			array( 'wpgb_settings', 'combobox', 'collapsed' ),
+			array( 'wpgb_settings', 'combobox', 'toggleLabel' ),
+			array( 'wpgb_settings', 'combobox', 'clearLabel' ),
+			array( 'wpgb_settings', 'combobox', 'selected' ),
+			array( 'wpgb_settings', 'combobox', 'deselected' ),
+
+			array( 'wpgb_settings', 'autocomplete', 'open' ),
+			array( 'wpgb_settings', 'autocomplete', 'input' ),
+			array( 'wpgb_settings', 'autocomplete', 'clear' ),
+			array( 'wpgb_settings', 'autocomplete', 'noResults' ),
+			array( 'wpgb_settings', 'autocomplete', 'loading' ),
+			array( 'wpgb_settings', 'autocomplete', 'clearLabel' ),
+			array( 'wpgb_settings', 'autocomplete', 'select' ),
+
+			array( 'wpgb_settings', 'range', 'minLabel' ),
+			array( 'wpgb_settings', 'range', 'maxLabel' ),
 		)
 	);
 }
@@ -56,14 +108,17 @@ function wplng_data_excluded_json() {
 	return apply_filters(
 		'wplng_excluded_json',
 		array(
-			// wpLingua : Ajax edit modal
+			// wpLingua: Ajax edit modal
 			array( 'data', 'wplng_edit_html' ),
 			array( 'wplngI18nTranslation' ),
 			array( 'wplngI18nSlug' ),
 			array( 'wplngI18nGutenberg' ),
-			
-			// WooCommerce
+
+			// Plugin: WooCommerce
 			array( 'wc_country_select_params', 'countries' ),
+
+			// Plugin: Google Site Kit
+			array( '_googlesitekitBaseData' ),
 		)
 	);
 }
@@ -100,7 +155,6 @@ function wplng_data_excluded_selector_default() {
 		'address',
 		'iframe',
 		'code',
-		'address',
 		'xml',
 
 		// Link tag
@@ -142,6 +196,9 @@ function wplng_data_excluded_selector_default() {
 
 		// Plugin: Debug Bar
 		'#querylist',
+
+		// Plugin: Google Site Kit
+		'#googlesitekit-base-data-js-extra',
 	);
 }
 
@@ -182,6 +239,16 @@ function wplng_data_attr_json_to_translate() {
 				'attr'     => 'data-et-multi-view',
 				'selector' => '[data-et-multi-view]',
 			),
+
+			// Theme: my-listing
+			array(
+				'attr'     => ':choices',
+				'selector' => 'order-filter[:choices]',
+			),
+			array(
+				'attr'     => ':choices',
+				'selector' => 'checkboxes-filter[:choices]',
+			),
 		)
 	);
 }
@@ -210,6 +277,10 @@ function wplng_data_attr_text_to_translate() {
 				'selector' => '[placeholder]',
 			),
 			array(
+				'attr'     => 'label',
+				'selector' => '[label]',
+			),
+			array(
 				'attr'     => 'aria-label',
 				'selector' => '[aria-label]',
 			),
@@ -217,6 +288,7 @@ function wplng_data_attr_text_to_translate() {
 				'attr'     => 'value',
 				'selector' => 'input[type="submit"][value]',
 			),
+
 			// WordPress
 			array(
 				'attr'     => 'content',
@@ -230,6 +302,7 @@ function wplng_data_attr_text_to_translate() {
 				'attr'     => 'content',
 				'selector' => 'meta[name="description"]',
 			),
+
 			// Open Graph
 			array(
 				'attr'     => 'content',
@@ -247,6 +320,7 @@ function wplng_data_attr_text_to_translate() {
 				'attr'     => 'content',
 				'selector' => 'meta[property="og:image:alt"]',
 			),
+
 			// Dublin Core
 			array(
 				'attr'     => 'content',
@@ -256,6 +330,7 @@ function wplng_data_attr_text_to_translate() {
 				'attr'     => 'content',
 				'selector' => 'meta[name="dc.description"]',
 			),
+
 			// Twitter
 			array(
 				'attr'     => 'content',
@@ -285,10 +360,21 @@ function wplng_data_attr_text_to_translate() {
 				'attr'     => 'content',
 				'selector' => 'meta[name="twitter:image:alt"]',
 			),
-			// Plugin : Fluent Forms tooltips
+
+			// Plugin: Fluent Forms tooltips
 			array(
 				'attr'     => 'data-content',
 				'selector' => '.ff-el-tooltip[data-content]',
+			),
+
+			// Plugin: Forminator
+			array(
+				'attr'     => 'data-placeholder',
+				'selector' => '[data-placeholder]',
+			),
+			array(
+				'attr'     => 'data-search-placeholde',
+				'selector' => '[data-search-placeholde]',
 			),
 		)
 	);
@@ -799,7 +885,7 @@ function wplng_data_languages() {
 				'ko' => '네덜란드어',
 				'nl' => 'Nederlands',
 				'pl' => 'Holenderski',
-				'pt' => 'holandês',
+				'pt' => 'Holandês',
 				'ru' => 'Голландий',
 				'se' => 'Nederländska',
 				'sk' => 'Holandčina',
@@ -996,7 +1082,7 @@ function wplng_data_languages() {
 				'ko' => '핀란드어',
 				'nl' => 'Fins',
 				'pl' => 'Fiński',
-				'pt' => 'finlandês',
+				'pt' => 'Finlandês',
 				'ru' => 'Финский',
 				'se' => 'Finska',
 				'sk' => 'Fínska',
@@ -1208,7 +1294,7 @@ function wplng_data_languages() {
 				'ko' => '히브리어',
 				'nl' => 'Hebreeuws',
 				'pl' => 'Hebrajski',
-				'pt' => 'hebraico',
+				'pt' => 'Hebraico',
 				'ru' => 'Еврейский',
 				'se' => 'Hebreiska',
 				'sk' => 'Hebrejčina',
@@ -1411,7 +1497,7 @@ function wplng_data_languages() {
 				'pt' => 'Japonês',
 				'ru' => 'Японский',
 				'se' => 'Japanska',
-				'sk' => 'japončina',
+				'sk' => 'Japončina',
 				'zh' => '日语',
 				'tr' => 'Japonca',
 				'uk' => 'Японський',

@@ -18,8 +18,12 @@ if ( ! defined( 'WPINC' ) ) {
  */
 function wplng_translate_js( $js, $args = array() ) {
 
-	// Return early if the provided JavaScript is empty or consists only of whitespace
-	if ( empty( trim( $js ) ) ) {
+	// Return early if the provided JavaScript is empty
+	// or consists only of whitespace
+	// Or is the wp emoji script
+	if ( empty( trim( $js ) )
+		|| wplng_str_contains( $js, '_wpemojiSettings' )
+	) {
 		return $js;
 	}
 
@@ -28,16 +32,25 @@ function wplng_translate_js( $js, $args = array() ) {
 
 	// Regex to match JavaScript variable or window object assignment containing JSON
 	preg_match_all(
-		'#(var\s|let\s|window\._)(.*)\s?=\s?(\{.*\});?#Ui',
+		'#(var\s|let\s|window\._)(.*)\s?=\s?(\[.*\]|\{.*\});#Ui',
 		$js,
 		$json
 	);
 
-	// Check if regex found a valid match
-	if ( ! empty( $json[2][0] ) && ! empty( $json[3][0] ) ) {
+	if ( empty( $json[2] ) || ! is_array( $json[2] ) ) {
+		return $js;
+	}
 
-		$var_name = $json[2][0];  // Variable name
-		$var_json = $json[3][0];  // JSON string
+	foreach ( $json[2] as $key => $var_name ) {
+
+		$var_name = trim( $var_name );
+
+		if ( empty( $var_name ) || empty( $json[3][ $key ] ) ) {
+			continue;
+		}
+
+		// Get the JSON string
+		$var_json = trim( $json[3][ $key ] );
 
 		// Prepare arguments for translation
 		wplng_args_setup( $args );

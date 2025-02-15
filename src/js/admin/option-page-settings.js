@@ -1,3 +1,20 @@
+/*!*
+ **                 _     _                         
+ ** __      ___ __ | |   (_)_ __   __ _ _   _  __ _ 
+ ** \ \ /\ / / '_ \| |   | | '_ \ / _` | | | |/ _` |
+ **  \ V  V /| |_) | |___| | | | | (_| | |_| | (_| |
+ **   \_/\_/ | .__/|_____|_|_| |_|\__, |\__,_|\__,_|
+ **          |_|                  |___/             
+ **
+ **        -- wpLingua | WordPress plugin --
+ **   Translate and make your website multilingual
+ **
+ **     https://github.com/julien-jacob/wplingua
+ **      https://wordpress.org/plugins/wplingua/
+ **              https://wplingua.com/
+ **
+ **/
+
 jQuery(document).ready(function ($) {
 
     /**
@@ -19,13 +36,13 @@ jQuery(document).ready(function ($) {
      * Code for input
      */
 
-    var wplngWebsiteLanguage = $("#wplng_website_language").val();
-    var wplngTargetLanguages = JSON.parse($("#wplng_target_languages").val());
+    let wplngWebsiteLanguage = $("#wplng_website_language").val();
+    let wplngTargetLanguages = JSON.parse($("#wplng_target_languages").val());
 
 
     function wplngTargetLanguagesIncludes(languageId) {
 
-        var returned = false;
+        let returned = false;
 
         wplngTargetLanguages.forEach(targetLanguage => {
             if (targetLanguage.id == languageId) {
@@ -37,14 +54,26 @@ jQuery(document).ready(function ($) {
     }
 
 
+    function wplngLanguagesIsPrivate(languageId) {
+        let returned = false;
+        wplngTargetLanguages.forEach(targetLanguage => {
+            if (targetLanguage.id == languageId && targetLanguage.private == true) {
+                returned = true;
+                return;
+            }
+        });
+        return returned;
+    }
+
+
     function wplngGetOptionsWebsiteLanguageHTML() {
 
-        var languagesOptionsHTML = "";
+        let languagesOptionsHTML = "";
 
         wplngAllLanguages.forEach((language) => {
 
-            var selected = "";
-            var disabled = "";
+            let selected = "";
+            let disabled = "";
 
             if (
                 wplngWebsiteLanguage !== undefined &&
@@ -74,11 +103,11 @@ jQuery(document).ready(function ($) {
 
     function wplngGetOptionsTargetLanguagesHTML() {
 
-        var languagesOptionsHTML = "";
-        var hideFieldset = true;
+        let languagesOptionsHTML = "";
+        let hideFieldset = true;
 
         wplngAllLanguages.forEach((language) => {
-            var disabled = "";
+            let disabled = "";
             if (
                 (
                     wplngWebsiteLanguage !== undefined
@@ -109,7 +138,7 @@ jQuery(document).ready(function ($) {
         }
 
         if (
-            $("#fieldset-add-target-language").is(":visible") 
+            $("#fieldset-add-target-language").is(":visible")
             && $("#wplng-target-languages-container").is(":visible")
         ) {
             $("#wplng-languages-target-separator").show();
@@ -120,9 +149,10 @@ jQuery(document).ready(function ($) {
         return languagesOptionsHTML;
     }
 
+
     function wplngGetWebsiteLanguageNameHTML() {
 
-        var html = "";
+        let html = "";
 
         wplngAllLanguages.forEach((language) => {
 
@@ -141,16 +171,16 @@ jQuery(document).ready(function ($) {
 
     function wplngGetWebsiteLanguageFlagsHTML() {
 
-        var flagsRadiosHTML = "";
+        let flagsRadiosHTML = "";
 
         wplngAllLanguages.forEach((language) => {
 
             if (language.id == wplngWebsiteLanguage) {
 
-                var textCustomRadio = $("#wplng-flags-radio-original-website-custom").text();
-                var websiteFlagUrl = $("#wplng_website_flag").val();
-                var flagFirstChecked = false;
-                var flagCustomChecked = " checked";
+                let textCustomRadio = $("#wplng-flags-radio-original-website-custom").text();
+                let websiteFlagUrl = $("#wplng_website_flag").val();
+                let flagFirstChecked = false;
+                let flagCustomChecked = " checked";
 
                 if (websiteFlagUrl == "") {
                     flagFirstChecked = true;
@@ -158,7 +188,7 @@ jQuery(document).ready(function ($) {
 
                 language.flags.forEach(flag => {
 
-                    var checked = "";
+                    let checked = "";
 
                     if (websiteFlagUrl == flag.flag) {
                         checked = " checked";
@@ -203,20 +233,20 @@ jQuery(document).ready(function ($) {
 
     function wplngGetTargetLanguagesListHTML() {
 
-        var html = "";
-        var htmlTemplate = $("#wplng-target-language-template").html();
+        let html = "";
+        let htmlTemplate = $("#wplng-target-language-template").html();
 
         wplngAllLanguages.forEach((language) => {
 
-            var htmlElement = "";
+            let htmlElement = "";
 
             if (wplngTargetLanguagesIncludes(language.id)) {
 
-                var textCustomRadio = $("#wplng-flags-radio-original-website-custom").text();
-                var flagsRadiosHTML = "";
-                var flagFirstChecked = false;
-                var flagCustomChecked = " checked";
-                var targetFlagUrl = language.flag;
+                let textCustomRadio = $("#wplng-flags-radio-original-website-custom").text();
+                let flagsRadiosHTML = "";
+                let flagFirstChecked = false;
+                let flagCustomChecked = " checked";
+                let targetFlagUrl = language.flag;
 
                 if (targetFlagUrl == "") {
                     flagFirstChecked = true;
@@ -224,7 +254,7 @@ jQuery(document).ready(function ($) {
 
                 language.flags.forEach(flag => {
 
-                    var checked = "";
+                    let checked = "";
 
                     if (targetFlagUrl == flag.flag) {
                         checked = " checked";
@@ -260,15 +290,39 @@ jQuery(document).ready(function ($) {
                     language.id + '">' + textCustomRadio + '</label>' +
                     '</span>';
 
+                let isPrivate = wplngLanguagesIsPrivate(language.id);
+                let inputPrivate = '';
+
+                inputPrivate += '<input ';
+                inputPrivate += ' type="checkbox"';
+                inputPrivate += ' id="wplng-language-private-' + language.id + '"';
+                inputPrivate += ' name="wplng-language-private"';
+                inputPrivate += ' value="private"';
+                inputPrivate += ' wplng-target-lang="' + language.id + '"';
+
+                if (isPrivate) {
+                    inputPrivate += ' checked';
+                }
+
+                inputPrivate += '/>';
+
                 htmlElement = htmlTemplate;
+                htmlElement = htmlElement.replaceAll("[PRIVATE_INPUT]", inputPrivate);
                 htmlElement = htmlElement.replaceAll("[NAME]", language.name);
                 htmlElement = htmlElement.replaceAll("[LANG]", language.id);
-                var htmlFlag =
+                let htmlFlag =
                     '<img src="' + targetFlagUrl + '" class="wplng-target-flag">';
                 htmlElement = htmlElement.replaceAll("[FLAG]", htmlFlag);
                 htmlElement = htmlElement.replaceAll("[FLAGS_OPTIONS]", flagsRadiosHTML);
 
-                var htmlInput = '<input type="url" class="wplng-target-subflag" wplng-target-lang="' + language.id + '" value="' + language.flag + '" />';
+                if (isPrivate) {
+                    htmlElement = htmlElement.replaceAll(
+                        'class="wplng-target-language"',
+                        'class="wplng-target-language wplng-is-private"'
+                    );
+                }
+
+                let htmlInput = '<input type="url" class="wplng-target-subflag" wplng-target-lang="' + language.id + '" value="' + language.flag + '" />';
                 htmlElement = htmlElement.replaceAll("[INPUT]", htmlInput);
 
                 if (flagCustomChecked == "") {
@@ -294,7 +348,7 @@ jQuery(document).ready(function ($) {
         }
 
         if (
-            $("#fieldset-add-target-language").is(":visible") 
+            $("#fieldset-add-target-language").is(":visible")
             && $("#wplng-target-languages-container").is(":visible")
         ) {
             $("#wplng-languages-target-separator").show();
@@ -305,18 +359,19 @@ jQuery(document).ready(function ($) {
         return html;
     }
 
+
     // Option Page : Click on "Add" button for new language target
     $("#wplng-target-lang-add").on("click", function () {
 
         if (
-            wplngTargetLanguages.length != 0 
-            && ! confirm( $("#wplng_add_new_target_language_message").text() )
+            wplngTargetLanguages.length != 0
+            && !confirm($("#wplng_add_new_target_language_message").text())
         ) {
             return;
         }
 
-        var newTargetId = $("#wplng_add_new_target_language").val();
-        var newTargetFlag = "";
+        let newTargetId = $("#wplng_add_new_target_language").val();
+        let newTargetFlag = "";
 
         wplngAllLanguages.forEach((language) => {
             if (language.id == newTargetId) {
@@ -324,7 +379,7 @@ jQuery(document).ready(function ($) {
             }
         });
 
-        var newTarget = {
+        let newTarget = {
             "id": newTargetId,
             "flag": newTargetFlag
         };
@@ -336,13 +391,14 @@ jQuery(document).ready(function ($) {
         wplngUpdateOptionPage();
     });
 
+
     $("#wplng-target-languages-list").on(
         "click",
         ".wplng-target-lang-remove",
         (event) => {
 
-            var newTargetLanguages = [];
-            var removed = $(event.target).attr("wplng-target-lang");
+            let newTargetLanguages = [];
+            let removed = $(event.target).attr("wplng-target-lang");
 
             wplngTargetLanguages.forEach((language) => {
                 if (language.id != removed) {
@@ -383,8 +439,8 @@ jQuery(document).ready(function ($) {
 
 
     $("#wplng-target-languages-list").on("click", ".wplng-target-lang-update-flag", function () {
-        var languageId = $(this).attr("wplng-target-lang");
-        var selector = "#wplng-target-languages-list .wplng-flag-target-container[wplng-target-lang=" + languageId + "]";
+        let languageId = $(this).attr("wplng-target-lang");
+        let selector = "#wplng-target-languages-list .wplng-flag-target-container[wplng-target-lang=" + languageId + "]";
 
         $(selector).slideToggle();
     });
@@ -392,9 +448,9 @@ jQuery(document).ready(function ($) {
 
     $('#wplng-target-languages-list').on("click", "input[type=radio]", function () {
 
-        var selectedFlagId = $(this).attr("wplng-target-lang");
-        var selectedFlagVal = $(this).val();
-        var selectorSubflagContainer = ".wplng-subflag-target-custom[wplng-target-lang=" + selectedFlagId + "]";
+        let selectedFlagId = $(this).attr("wplng-target-lang");
+        let selectedFlagVal = $(this).val();
+        let selectorSubflagContainer = ".wplng-subflag-target-custom[wplng-target-lang=" + selectedFlagId + "]";
 
         if (selectedFlagVal == "custom") {
             $(selectorSubflagContainer).slideDown("fast");
@@ -402,7 +458,7 @@ jQuery(document).ready(function ($) {
             $(selectorSubflagContainer).slideUp("fast");
             $(".wplng-target-subflag[wplng-target-lang=" + selectedFlagId + "]").val(selectedFlagVal);
 
-            var newTargetLanguages = [];
+            let newTargetLanguages = [];
             wplngTargetLanguages.forEach(language => {
                 if (language.id == selectedFlagId) {
                     newTargetLanguages.push({
@@ -420,11 +476,42 @@ jQuery(document).ready(function ($) {
     });
 
 
+    $('#wplng-target-languages-list').on("click", "input[type=checkbox]", function () {
+
+        let languageId = $(this).attr("wplng-target-lang");
+        let isPrivate = $(this).is(":checked");
+
+        if (isPrivate) {
+            $(this).parents(".wplng-target-language").addClass("wplng-is-private");
+        } else {
+            $(this).parents(".wplng-target-language").removeClass("wplng-is-private");
+        }
+
+        console.log($(this).parents(".wplng-target-language"));
+
+        let newTargetLanguages = [];
+        wplngTargetLanguages.forEach(language => {
+            if (language.id == languageId) {
+                newTargetLanguages.push({
+                    "id": language.id,
+                    "flag": language.flag,
+                    "private": isPrivate
+                });
+            } else {
+                newTargetLanguages.push(language);
+            }
+        });
+
+        wplngTargetLanguages = newTargetLanguages;
+        $("#wplng_target_languages").val(JSON.stringify(newTargetLanguages));
+    });
+
+
     $("#wplng-target-languages-list").on("input", ".wplng-target-subflag", function () {
 
-        var selectedFlagId = $(this).attr("wplng-target-lang");
-        var selectedFlagVal = $(this).val();
-        var newTargetLanguages = [];
+        let selectedFlagId = $(this).attr("wplng-target-lang");
+        let selectedFlagVal = $(this).val();
+        let newTargetLanguages = [];
 
         wplngTargetLanguages.forEach(language => {
             if (language.id == selectedFlagId) {
@@ -462,6 +549,7 @@ jQuery(document).ready(function ($) {
         $("#wplng-api-key-fake").hide();
         $("#wplng_api_key").show();
     });
+
 
     $("#wplng-api-key-hide").click(function () {
         $("#wplng-api-key-hide").hide();

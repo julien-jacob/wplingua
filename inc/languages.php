@@ -204,13 +204,17 @@ function wplng_get_languages_target_simplified() {
 
 	foreach ( $all_languages as $language ) {
 		foreach ( $languages_target as $language_target ) {
-			if (
-				! empty( $language['id'] )
-				&& ! empty( $language_target['id'] )
-				&& $language['id'] === $language_target['id']
+			if ( empty( $language['id'] )
+				|| empty( $language_target['id'] )
+				|| $language['id'] !== $language_target['id']
+				|| ( ! empty( $language_target['private'] )
+					&& ! current_user_can( 'edit_posts' )
+				)
 			) {
-				$ordered[] = $language_target;
+				continue;
 			}
+
+			$ordered[] = $language_target;
 		}
 	}
 
