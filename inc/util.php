@@ -145,6 +145,24 @@ function wplng_text_is_translatable( $text ) {
  */
 function wplng_text_esc( $text ) {
 
+	$search = array(
+		'\\',
+		'–',
+		'’',
+		'‘',
+		'…',
+		'œ',
+	);
+
+	$replace = array(
+		'',
+		'-',
+		'\'',
+		'\'',
+		'...',
+		'oe',
+	);
+
 	$text = html_entity_decode( $text );
 	$text = esc_html( $text );
 	$text = esc_attr( $text );
@@ -154,7 +172,7 @@ function wplng_text_esc( $text ) {
 		ENT_QUOTES | ENT_SUBSTITUTE | ENT_HTML401
 	);
 
-	$text = str_replace( '\\', '', $text );
+	$text = str_replace( $search, $replace, $text );
 	$text = preg_replace( '/\s+/u', ' ', $text );
 	$text = trim( $text );
 
