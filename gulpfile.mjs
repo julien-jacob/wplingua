@@ -65,11 +65,7 @@ function css(cb) {
 
 function js(cb) {
     gulp.src('src/js/**/*.js', { sourcemaps: true })
-        .pipe(uglify({
-            output: {
-                comments: /^!/
-            }
-        }))
+        .pipe(uglify({ output: { comments: /^!/ } }))
         .pipe(gulp.dest('assets/js/', { sourcemaps: '.' }))
         .on('end', function () { cb() });
 };
