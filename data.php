@@ -116,6 +116,9 @@ function wplng_data_excluded_json() {
 
 			// Plugin: WooCommerce
 			array( 'wc_country_select_params', 'countries' ),
+
+			// Plugin: Google Site Kit
+			array( '_googlesitekitBaseData' ),
 		)
 	);
 }
@@ -193,6 +196,9 @@ function wplng_data_excluded_selector_default() {
 
 		// Plugin: Debug Bar
 		'#querylist',
+
+		// Plugin: Google Site Kit
+		'#googlesitekit-base-data-js-extra',
 	);
 }
 
