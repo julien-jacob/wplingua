@@ -144,3 +144,49 @@ function wplng_link_media_get_entries_json() {
 	);
 }
 
+
+/**
+ * Apply media rules to a given URL for a specific language.
+ *
+ * @param string $url The URL to which the rules will be applied.
+ * @param string $language_id The target language ID for which rules should be applied.
+ * @return string The URL after applying applicable media rules.
+ */
+
+function wplng_link_media_apply_rules( $url, $language_id ) {
+
+	$entries       = wplng_link_media_get_entries();
+	$url_processed = $url;
+
+	foreach ( $entries as $key => $entry ) {
+
+		if ( ! isset( $entry['rules'][ $language_id ] ) ) {
+			continue;
+		}
+
+		switch ( $entry['mode'] ) {
+			case 'exactly':
+				if ( $url === $entry['source'] ) {
+					$url_processed = $entry['rules'][ $language_id ];
+				}
+				break;
+
+			case 'partialy':
+				$url_processed = str_replace(
+					$entry['source'],
+					$entry['rules'][ $language_id ],
+					$url
+				);
+				break;
+
+		}
+
+		// Apply only one entry rule
+		if ( $url_processed !== $url ) {
+			continue;
+		}
+		
+	}
+
+	return $url_processed;
+}
