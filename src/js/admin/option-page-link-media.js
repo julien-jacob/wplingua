@@ -128,6 +128,27 @@ jQuery(document).ready(function ($) {
         $("#wplng-section-entry-edit").show();
 
         $("#wplng-edit-source").val(editedDictionaryEntry.source);
+
+        switch (editedDictionaryEntry.mode) {
+            case "exactly":
+                $("#wplng_edit_mode_exactly").prop("checked", true);
+                $("#wplng_edit_mode_partially").prop("checked", false);
+                $("#wplng_edit_mode_regex").prop("checked", false);
+                break;
+
+            case "partially":
+                $("#wplng_edit_mode_exactly").prop("checked", false);
+                $("#wplng_edit_mode_partially").prop("checked", true);
+                $("#wplng_edit_mode_regex").prop("checked", false);
+                break;
+
+            case "regex":
+                $("#wplng_edit_mode_exactly").prop("checked", false);
+                $("#wplng_edit_mode_partially").prop("checked", false);
+                $("#wplng_edit_mode_regex").prop("checked", true);
+                break;
+        }
+
         $("#wplng-edit-save-button").prop("wplng-rule", ruleNumber);
 
         $('#wplng-edit-rules input[type="text"]').val("");
