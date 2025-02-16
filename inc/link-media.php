@@ -152,13 +152,12 @@ function wplng_link_media_get_entries_json() {
  * @param string $language_id The target language ID for which rules should be applied.
  * @return string The URL after applying applicable media rules.
  */
-
 function wplng_link_media_apply_rules( $url, $language_id ) {
 
 	$entries       = wplng_link_media_get_entries();
 	$url_processed = $url;
 
-	foreach ( $entries as $key => $entry ) {
+	foreach ( $entries as $entry ) {
 
 		if ( ! isset( $entry['rules'][ $language_id ] ) ) {
 			continue;
@@ -171,7 +170,7 @@ function wplng_link_media_apply_rules( $url, $language_id ) {
 				}
 				break;
 
-			case 'partialy':
+			case 'partially':
 				$url_processed = str_replace(
 					$entry['source'],
 					$entry['rules'][ $language_id ],
@@ -179,13 +178,19 @@ function wplng_link_media_apply_rules( $url, $language_id ) {
 				);
 				break;
 
+			case 'regex':
+				$url_processed = preg_replace(
+					'#' . $entry['source'] . '#',
+					$entry['rules'][ $language_id ],
+					$url
+				);
+				break;
 		}
 
 		// Apply only one entry rule
 		if ( $url_processed !== $url ) {
-			continue;
+			break;
 		}
-		
 	}
 
 	return $url_processed;
