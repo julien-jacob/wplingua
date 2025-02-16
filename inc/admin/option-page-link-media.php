@@ -37,7 +37,7 @@ function wplng_option_page_link_media() {
 
 							<p><strong><?php esc_html_e( 'Links and medias translations rules: ', 'wplingua' ); ?></strong></p>
 
-							<p><?php esc_html_e( 'Links and media rules make it possible to translate the URLs of images, external links and embedded pages (iframe).', 'wplingua' ); ?></p>
+							<p><?php esc_html_e( 'Translation rules on links and media allow different images to be displayed or link URLs to be changed according to the current language. These rules apply to elements such as: link target URLs, image source URLs, iframe source URLs, URLs in intercepted JSONs...', 'wplingua' ); ?></p>
 
 							<hr>
 
@@ -124,7 +124,7 @@ function wplng_option_page_link_media_entries_html() {
 		$html .= ' class="wplng-rule-link-edit"';
 		$html .= ' wplng-rule="' . esc_attr( $rule_number ) . '"';
 		$html .= '>';
-		$html .= esc_html__( 'Edit rule', 'wplingua' );
+		$html .= esc_html__( 'Edit', 'wplingua' );
 		$html .= '</a> ';
 		$html .= '<a';
 		$html .= ' href="javascript:void(0);"';
