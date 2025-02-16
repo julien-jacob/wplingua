@@ -62,11 +62,11 @@ function wplng_create_menu() {
 
 	add_submenu_page(
 		'wplingua-settings',
-		__( 'wplingua: Links & Medias', 'wplingua' ),
-		__( 'Links & Medias', 'wplingua' ),
+		__( 'wpLingua: Exclusion', 'wplingua' ),
+		__( 'Exclusion', 'wplingua' ),
 		'administrator',
-		'wplingua-link-media',
-		'wplng_option_page_link_media'
+		'wplingua-exclusions',
+		'wplng_option_page_exclusions'
 	);
 
 	add_submenu_page(
@@ -80,11 +80,11 @@ function wplng_create_menu() {
 
 	add_submenu_page(
 		'wplingua-settings',
-		__( 'wpLingua: Exclusion', 'wplingua' ),
-		__( 'Exclusion', 'wplingua' ),
+		__( 'wplingua: Links & Medias', 'wplingua' ),
+		__( 'Links & Medias', 'wplingua' ),
 		'administrator',
-		'wplingua-exclusions',
-		'wplng_option_page_exclusions'
+		'wplingua-link-media',
+		'wplng_option_page_link_media'
 	);
 
 	add_submenu_page(
