@@ -116,20 +116,20 @@ jQuery(document).ready(function ($) {
 
 
     /**
-     * Edit link on dictionary entry
+     * Edit link on entry
      */
 
     $(".wplng-rule-link-edit").click(function () {
 
         let ruleNumber = $(this).attr("wplng-rule");
-        let editedDictionaryEntry = wplngLinkMediaEntries[ruleNumber];
+        let editedLinkMediaEntry = wplngLinkMediaEntries[ruleNumber];
 
         $("#wplng-section-entries-all").hide();
         $("#wplng-section-entry-edit").show();
 
-        $("#wplng-edit-source").val(editedDictionaryEntry.source);
+        $("#wplng-edit-source").val(editedLinkMediaEntry.source);
 
-        switch (editedDictionaryEntry.mode) {
+        switch (editedLinkMediaEntry.mode) {
             case "exactly":
                 $("#wplng_edit_mode_exactly").prop("checked", true);
                 $("#wplng_edit_mode_partially").prop("checked", false);
@@ -152,7 +152,7 @@ jQuery(document).ready(function ($) {
         $("#wplng-edit-save-button").prop("wplng-rule", ruleNumber);
 
         $('#wplng-edit-rules input[type="text"]').val("");
-        $.each(editedDictionaryEntry.rules, function (key, value) {
+        $.each(editedLinkMediaEntry.rules, function (key, value) {
             let textareaSelector = "#wplng-edit-always-translate-" + key;
             $(textareaSelector).val(value);
         });
@@ -162,7 +162,7 @@ jQuery(document).ready(function ($) {
     });
 
     /**
-     * Save edited dictionary entry
+     * Save edited entry
      */
 
     $("#wplng-edit-save-button").click(function () {
@@ -181,11 +181,11 @@ jQuery(document).ready(function ($) {
             mode = modeRadio.val();
         }
 
-        
+
         if (mode !== 'partially' && mode !== 'regex') {
             mode = "exactly";
         }
-        
+
 
         $(".wplng-edit-rule").each(function () {
 
