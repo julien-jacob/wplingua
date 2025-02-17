@@ -124,6 +124,20 @@
         box-sizing: border-box;
     }
 
+    a {
+
+        text-decoration: none;
+
+        &:focus {
+            box-shadow: none;
+            outline: none;
+        }
+    
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+
     td {
 
         padding: 15px;
@@ -139,6 +153,11 @@
 
         .button {
             vertical-align: bottom;
+
+            &:focus,
+            &:hover {
+                text-decoration: none;
+            }
         }
 
         p {
@@ -149,20 +168,6 @@
             display: block;
         }
 
-    }
-
-    a {
-
-        text-decoration: none;
-
-        &:focus {
-            box-shadow: none;
-            outline: none;
-        }
-    
-        &:hover {
-            text-decoration: underline;
-        }
     }
 
     .wplng-tr-submit {
