@@ -124,7 +124,7 @@ function wplng_option_page_dictionary_entries_html() {
 		$html .= ' class="wplng-rule-link-edit"';
 		$html .= ' wplng-rule="' . esc_attr( $rule_number ) . '"';
 		$html .= '>';
-		$html .= esc_html__( 'Edit entry', 'wplingua' );
+		$html .= esc_html__( 'Edit', 'wplingua' );
 		$html .= '</a> ';
 		$html .= '<a';
 		$html .= ' href="javascript:void(0);"';

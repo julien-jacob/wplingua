@@ -155,7 +155,7 @@ function wplng_slug_editor_get_html( $post ) {
 			$generate_link  = __( 'Regenerate translation', 'wplingua' );
 			$alt            = __( 'Flag for language: ', 'wplingua' ) . $language['name'];
 			$class          = 'wplng-edit-language';
-			$reviewed_title = __( 'Mark slug translation as review', 'wplingua' );
+			$reviewed_title = __( 'Mark as review', 'wplingua' );
 			$is_reviewed    = false;
 
 			if ( '[WPLNG_EMPTY]' === $slug_input ) {
