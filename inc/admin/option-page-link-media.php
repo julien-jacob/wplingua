@@ -254,7 +254,7 @@ function wplng_option_page_link_media_new_entry_html() {
 	 * Input: Mode
 	 */
 
-	$html .= '<fieldset>';
+	$html .= '<fieldset class="wplng-link-media-mode">';
 	$html .= '<input';
 	$html .= ' type="radio"';
 	$html .= ' name="wplng_new_mode"';
@@ -281,7 +281,7 @@ function wplng_option_page_link_media_new_entry_html() {
 	$html .= ' id="wplng_new_mode_regex"';
 	$html .= '>';
 	$html .= '<label for="wplng_new_mode_regex"> ';
-	$html .= esc_html__( 'Use a REGEX', 'wplingua' );
+	$html .= esc_html__( 'REGEX', 'wplingua' );
 	$html .= '</label>';
 	$html .= '</fieldset>';
 
@@ -390,7 +390,7 @@ function wplng_option_page_link_media_edit_entry_html() {
 	 * Input: Mode
 	 */
 
-	$html .= '<fieldset>';
+	$html .= '<fieldset class="wplng-link-media-mode">';
 	$html .= '<input';
 	$html .= ' type="radio"';
 	$html .= ' name="wplng_edit_mode"';
@@ -417,7 +417,7 @@ function wplng_option_page_link_media_edit_entry_html() {
 	$html .= ' id="wplng_edit_mode_regex"';
 	$html .= '>';
 	$html .= '<label for="wplng_edit_mode_regex"> ';
-	$html .= esc_html__( 'Use a REGEX', 'wplingua' );
+	$html .= esc_html__( 'REGEX', 'wplingua' );
 	$html .= '</label>';
 	$html .= '</fieldset>';
 
