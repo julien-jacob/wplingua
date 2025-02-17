@@ -265,6 +265,9 @@ function wplng_start() {
 		// Set alternate links with hreflang parametters
 		add_action( 'wp_head', 'wplng_link_alternate_hreflang', 2 );
 
+		// Disable web browser automatic translation
+		add_action( 'language_attributes', 'wplng_disable_web_browser_auto_translate' );
+
 		/**
 		 * OB and REQUEST_URI
 		 */
