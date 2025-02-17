@@ -376,6 +376,12 @@ function wplng_data_attr_text_to_translate() {
 				'attr'     => 'data-search-placeholde',
 				'selector' => '[data-search-placeholde]',
 			),
+
+			// Plugin: Smart Slider 3
+			array(
+				'attr'     => 'data-title',
+				'selector' => '[data-title]',
+			),
 		)
 	);
 }
