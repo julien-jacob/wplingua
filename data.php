@@ -162,6 +162,7 @@ function wplng_data_excluded_selector_default() {
 		'link[title="oEmbed (JSON)"]',
 		'link[title="oEmbed (XML)"]',
 		'link[title="JSON"]',
+		'link[type="application/rss+xml"]'
 
 		// Default class
 		'.no-translate',
