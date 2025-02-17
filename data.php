@@ -410,6 +410,18 @@ function wplng_data_attr_url_to_translate() {
 				'attr'     => 'content',
 				'selector' => 'meta[name="dc.relation"]',
 			),
+			array(
+				'attr'     => 'src',
+				'selector' => 'img[src]',
+			),
+			array(
+				'attr'     => 'src',
+				'selector' => 'img[srcset]',
+			),
+			array(
+				'attr'     => 'src',
+				'selector' => 'iframe[src]',
+			),
 		)
 	);
 }
