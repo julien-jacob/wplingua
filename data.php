@@ -200,6 +200,9 @@ function wplng_data_excluded_selector_default() {
 
 		// Plugin: Google Site Kit
 		'#googlesitekit-base-data-js-extra',
+
+		// Plugin: Smash Balloon - Social photo feed
+		'#sb_instagram',
 	);
 }
 
