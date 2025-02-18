@@ -18,8 +18,9 @@ if ( ! defined( 'WPINC' ) ) {
  * Data sent :
  * ---------------------------------------------------
  * - request : 'api_key'
- * - api_key : the API key of website
  * - version : API compatile version
+ * - context : Sends page calling URL
+ * - api_key : the API key of website
  *
  * ---------------------------------------------------
  * Data received if successful :
@@ -66,6 +67,7 @@ function wplng_api_call_validate_api_key( $api_key = '' ) {
 	$body = array(
 		'request' => 'api_key',
 		'version' => WPLNG_API_VERSION,
+		'context' => wplng_get_context(),
 		'api_key' => $api_key,
 	);
 
