@@ -93,6 +93,9 @@ With all these customization options, there's no way your website's language swi
 ### 📖 Translation rules by dictionary ###
 The dictionary allows you to define translation rules that apply when generating machine translations. You can specify words or sets of words that should never be translated, or define how they should be translated for each language.
 
+### 🖼️ Translation of links and media ###
+This feature lets you apply translation rules to links and media, offering even greater customization. You can display different images or modify link URLs according to the current language. These rules apply to the following elements: Link URLs, image URLs, iframe URLs and URLs in intercepted JSONs.
+
 ### 🧭 Intuitive possibilities to exclude certain translations ###
 Navigate the complexities of website translation with wpLingua's intelligent exclusion feature. 
 

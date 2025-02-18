@@ -103,6 +103,14 @@ Want to preserve specific sections of a page in its original language? Our syste
 
 <br><br>
 
+## 🖼️ Translation of links and media
+
+<br>
+
+This feature lets you apply translation rules to links and media, offering even greater customization. You can display different images or modify link URLs according to the current language. These rules apply to the following elements: Link URLs, image URLs, iframe URLs and URLs in intercepted JSONs.
+
+<br><br>
+
 ## 💫 Supported languages
 
 <br>
