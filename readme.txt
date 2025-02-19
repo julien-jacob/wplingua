@@ -202,6 +202,7 @@ Your server’s database holds all the translations locally.
 * Better admin UX
 * Exclude link tag application/rss+xml
 * Better wpLingua JavaScript
+* Update plugin translations
 * Fix: WordPress installed in sub folder
 * Fix: Non beraking space not included in translated pages
 
