@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: wpLingua\n"
-"POT-Creation-Date: 2025-02-02 12:20+0100\n"
-"PO-Revision-Date: 2025-02-02 12:25+0100\n"
+"POT-Creation-Date: 2025-02-18 09:17+0100\n"
+"PO-Revision-Date: 2025-02-18 13:04+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: hu_HU\n"
@@ -20,672 +20,671 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: *.min.js\n"
 
-#: data.php:407
+#: data.php:474
 msgid "Bottom right"
 msgstr "Jobbra lent"
 
-#: data.php:408
+#: data.php:475
 msgid "Bottom center"
 msgstr "Középen alul"
 
-#: data.php:409
+#: data.php:476
 msgid "Bottom left"
 msgstr "Balra alul"
 
-#: data.php:410
+#: data.php:477
 msgid "None"
 msgstr "Nincs"
 
-#: data.php:422
+#: data.php:489
 msgid "Light - Double - Smooth"
 msgstr "Könnyű - Dupla - Sima"
 
-#: data.php:423
+#: data.php:490
 msgid "Light - Double - Square"
 msgstr "Fény - Dupla - Négyzet alakú"
 
-#: data.php:424
+#: data.php:491
 msgid "Light - Simple - Smooth"
 msgstr "Könnyű - Egyszerű - Sima"
 
-#: data.php:425
+#: data.php:492
 msgid "Light - Simple - Square"
 msgstr "Könnyű - Egyszerű - Négyzet alakú"
 
-#: data.php:426
+#: data.php:493
 msgid "Grey - Double - Smooth"
 msgstr "Szürke - Dupla - Sima"
 
-#: data.php:427
+#: data.php:494
 msgid "Grey - Double - Square"
 msgstr "Szürke - Dupla - Négyzet alakú"
 
-#: data.php:428
+#: data.php:495
 msgid "Grey - Simple - Smooth"
 msgstr "Szürke - Egyszerű - Sima"
 
-#: data.php:429
+#: data.php:496
 msgid "Grey - Simple - Square"
 msgstr "Szürke - Egyszerű - Négyzet alakú"
 
-#: data.php:430
+#: data.php:497
 msgid "Dark - Double - Smooth"
 msgstr "Sötét - Dupla - Sima"
 
-#: data.php:431
+#: data.php:498
 msgid "Dark - Double - Square"
 msgstr "Sötét - Dupla - Négyzet"
 
-#: data.php:432
+#: data.php:499
 msgid "Dark - Simple - Smooth"
 msgstr "Sötét - Egyszerű - Sima"
 
-#: data.php:433
+#: data.php:500
 msgid "Dark - Simple - Square"
 msgstr "Sötét - Egyszerű - Négyzet"
 
-#: data.php:434
+#: data.php:501
 msgid "Blur Black - Double - Smooth"
 msgstr "Maszat Fekete - Dupla - Sima"
 
-#: data.php:435
+#: data.php:502
 msgid "Blur Black - Double - Square"
 msgstr "Blur Fekete - Dupla - Négyzet alakú"
 
-#: data.php:436
+#: data.php:503
 msgid "Blur Black - Simple - Smooth"
 msgstr "Blur Fekete - Egyszerű - Sima"
 
-#: data.php:437
+#: data.php:504
 msgid "Blur Black - Simple - Square"
 msgstr "Blur Fekete - Egyszerű - Négyzet alakú"
 
-#: data.php:438
+#: data.php:505
 msgid "Blur White - Double - Smooth"
 msgstr "Blur Fehér - Dupla - Sima"
 
-#: data.php:439
+#: data.php:506
 msgid "Blur White - Double - Square"
 msgstr "Blur White - Dupla - négyzet alakú"
 
-#: data.php:440
+#: data.php:507
 msgid "Blur White - Simple - Smooth"
 msgstr "Blur White - Egyszerű - Sima"
 
-#: data.php:441
+#: data.php:508
 msgid "Blur White - Simple - Square"
 msgstr "Blur White - Egyszerű - négyzet alakú"
 
-#: data.php:453
+#: data.php:520
 msgid "Inline list"
 msgstr "Inline lista"
 
-#: data.php:454
+#: data.php:521
 msgid "Block"
 msgstr "Blokk"
 
-#: data.php:455
+#: data.php:522
 msgid "Dropdown"
 msgstr "Legördülő"
 
-#: data.php:467 data.php:501
+#: data.php:534 data.php:568
 msgid "Original name"
 msgstr "Eredeti név"
 
-#: data.php:468 data.php:502
+#: data.php:535 data.php:569
 msgid "Translated name"
 msgstr "Lefordított név"
 
-#: data.php:469 data.php:503
+#: data.php:536 data.php:570
 msgid "Language ID"
 msgstr "Nyelvi azonosító"
 
-#: data.php:470 data.php:485 data.php:504 data.php:517
+#: data.php:537 data.php:552 data.php:571 data.php:584
 msgid "No display"
 msgstr "Nincs kijelző"
 
-#: data.php:482
+#: data.php:549
 msgid "Circle"
 msgstr "Kör"
 
-#: data.php:483
+#: data.php:550
 msgid "Rectangular"
 msgstr "Téglalap alakú"
 
-#: data.php:484
+#: data.php:551
 msgid "Wave"
 msgstr "Hullámzás"
 
-#: data.php:516
+#: data.php:583
 msgid "Display"
 msgstr "Megjelenítés"
 
-#: data.php:529
+#: data.php:596
 msgid "List without current language"
 msgstr "Jelenlegi nyelv nélküli lista"
 
-#: data.php:530
+#: data.php:597
 msgid "List without active class"
 msgstr "Lista aktív osztály nélkül"
 
-#: data.php:531
+#: data.php:598
 msgid "List with active class"
 msgstr "Lista aktív osztállyal"
 
-#: data.php:532
+#: data.php:599
 msgid "Sub-list"
 msgstr "Allista"
 
-#: data.php:549
+#: data.php:616
 msgid "Arabic"
 msgstr "Arab"
 
-#: data.php:555 data.php:709
+#: data.php:622 data.php:776
 msgid "Global"
 msgstr "Globális"
 
-#: data.php:560
+#: data.php:627
 msgid "Egypt"
 msgstr "Egyiptom"
 
-#: data.php:565
+#: data.php:632
 msgid "Saudi Arabia"
 msgstr "Szaud-Arábia"
 
-#: data.php:570
+#: data.php:637
 msgid "Algeria"
 msgstr "Algéria"
 
-#: data.php:575
+#: data.php:642
 msgid "Bahrain"
 msgstr "Bahrein"
 
-#: data.php:580
+#: data.php:647
 msgid "Chad"
 msgstr "Csád"
 
-#: data.php:585
+#: data.php:652
 msgid "Comoros"
 msgstr "Comore-szigetek"
 
-#: data.php:590
+#: data.php:657
 msgid "Djibouti"
 msgstr "Dzsibuti"
 
-#: data.php:595
+#: data.php:662
 msgid "Iraq"
 msgstr "Irak"
 
-#: data.php:600
+#: data.php:667
 msgid "Jordan"
 msgstr "Jordánia"
 
-#: data.php:605
+#: data.php:672
 msgid "Kuwait"
 msgstr "Kuvait"
 
-#: data.php:610
+#: data.php:677
 msgid "Lebanon"
 msgstr "Libanon"
 
-#: data.php:615
+#: data.php:682
 msgid "Libya"
 msgstr "Líbia"
 
-#: data.php:620
+#: data.php:687
 msgid "Mauritania"
 msgstr "Mauritánia"
 
-#: data.php:625
+#: data.php:692
 msgid "Morocco"
 msgstr "Marokkó"
 
-#: data.php:630
+#: data.php:697
 msgid "Oman"
 msgstr "Omán"
 
-#: data.php:635
+#: data.php:702
 msgid "Palestine"
 msgstr "Palesztina"
 
-#: data.php:640
+#: data.php:707
 msgid "Qatar"
 msgstr "Katar"
 
-#: data.php:645
+#: data.php:712
 msgid "Somalia"
 msgstr "Szomália"
 
-#: data.php:650
+#: data.php:717
 msgid "Sudan"
 msgstr "Szudán"
 
-#: data.php:655
+#: data.php:722
 msgid "Syria"
 msgstr "Szíria"
 
-#: data.php:660
+#: data.php:727
 msgid "Tunisia"
 msgstr "Tunézia"
 
-#: data.php:665
+#: data.php:732
 msgid "United Arab Emirates"
 msgstr "Egyesült Arab Emírségek"
 
-#: data.php:670
+#: data.php:737
 msgid "Yemen"
 msgstr "Jemen"
 
-#: data.php:704
+#: data.php:771
 msgid "Chinese"
 msgstr "Kínai"
 
-#: data.php:714
+#: data.php:781
 msgid "China"
 msgstr "Kína"
 
-#: data.php:719
+#: data.php:786
 msgid "Hong Kong"
 msgstr "Hongkong"
 
-#: data.php:724
+#: data.php:791
 msgid "Malaysia"
 msgstr "Malajzia"
 
-#: data.php:729 data.php:965
+#: data.php:796 data.php:1032
 msgid "Singapore"
 msgstr "Szingapúr"
 
-#: data.php:763
+#: data.php:830
 msgid "Danish"
 msgstr "Dánia"
 
-#: data.php:768
+#: data.php:835
 msgid "Denmark"
 msgstr "Dánia"
 
-#: data.php:802
+#: data.php:869
 msgid "Dutch"
 msgstr "Holland"
 
-#: data.php:807
+#: data.php:874
 msgid "Netherlands"
 msgstr "Hollandia"
 
-#: data.php:812 data.php:1058
+#: data.php:879 data.php:1125
 msgid "Belgium"
 msgstr "Belgium"
 
-#: data.php:817
+#: data.php:884
 msgid "Suriname"
 msgstr "Surinam"
 
-#: data.php:851
+#: data.php:918
 msgid "Slovak"
 msgstr "Szlovák"
 
-#: data.php:856
+#: data.php:923
 msgid "Slovakia"
 msgstr "Szlovákia"
 
-#: data.php:861
+#: data.php:928
 msgid "Czech Republic"
 msgstr "Cseh Köztársaság"
 
-#: data.php:895
+#: data.php:962
 msgid "English"
 msgstr "Angol"
 
-#: data.php:900
+#: data.php:967
 msgid "US / GB"
 msgstr "US / GB"
 
-#: data.php:905
+#: data.php:972
 msgid "United Kingdom"
 msgstr "Egyesült Királyság"
 
-#: data.php:910
+#: data.php:977
 msgid "United States"
 msgstr "Egyesült Államok"
 
-#: data.php:915
+#: data.php:982
 msgid "Australia"
 msgstr "Ausztrália"
 
-#: data.php:920 data.php:1063
+#: data.php:987 data.php:1130
 msgid "Canada"
 msgstr "Kanada"
 
-#: data.php:925
+#: data.php:992
 msgid "Ireland"
 msgstr "Írország"
 
-#: data.php:930
+#: data.php:997
 msgid "New Zealand"
 msgstr "Új-Zéland"
 
-#: data.php:935
+#: data.php:1002
 msgid "Nigeria"
 msgstr "Nigéria"
 
-#: data.php:940
+#: data.php:1007
 msgid "South Africa"
 msgstr "Dél-Afrikai Köztársaság"
 
-#: data.php:945
+#: data.php:1012
 msgid "Kenya"
 msgstr "Kenya"
 
-#: data.php:950
+#: data.php:1017
 msgid "Ghana"
 msgstr "Gana"
 
-#: data.php:955
+#: data.php:1022
 msgid "South Sudan"
 msgstr "Dél-Szudán"
 
-#: data.php:960
+#: data.php:1027
 msgid "Sierra Leone"
 msgstr "Sierra Leone"
 
-#: data.php:970
+#: data.php:1037
 msgid "Liberia"
 msgstr "Libéria"
 
-#: data.php:975
+#: data.php:1042
 msgid "Jamaica"
 msgstr "Jamaika"
 
-#: data.php:1009
+#: data.php:1076
 msgid "Finnish"
 msgstr "Finn"
 
-#: data.php:1014 data.php:1795
+#: data.php:1081 data.php:1862
 msgid "Finland"
 msgstr "Finnország"
 
-#: data.php:1048
+#: data.php:1115
 msgid "French"
 msgstr "Francia"
 
-#: data.php:1053
+#: data.php:1120
 msgid "France"
 msgstr "Franciaország"
 
-#: data.php:1068
+#: data.php:1135
 msgid "Congo - Kinshasa"
 msgstr "Kongó - Kinshasa"
 
-#: data.php:1073
+#: data.php:1140
 msgid "Congo - Brazzaville"
 msgstr "Kongó - Brazzaville"
 
-#: data.php:1078
+#: data.php:1145
 msgid "Cameroon"
 msgstr "Kamerun"
 
-#: data.php:1083
+#: data.php:1150
 msgid "Ivory Coast"
 msgstr "Elefántcsontpart"
 
-#: data.php:1088 data.php:1137
+#: data.php:1155 data.php:1204
 msgid "Switzerland"
 msgstr "Svájc"
 
-#: data.php:1122
+#: data.php:1189
 msgid "German"
 msgstr "Német"
 
-#: data.php:1127
+#: data.php:1194
 msgid "Germany"
 msgstr "Németország"
 
-#: data.php:1132
+#: data.php:1199
 msgid "Austria"
 msgstr "Ausztria"
 
-#: data.php:1142
+#: data.php:1209
 msgid "Liechtenstein"
 msgstr "Liechtenstein"
 
-#: data.php:1176
+#: data.php:1243
 msgid "Greek"
 msgstr "Görög"
 
-#: data.php:1181
+#: data.php:1248
 msgid "Greece"
 msgstr "Görögország"
 
-#: data.php:1186 data.php:1839
+#: data.php:1253 data.php:1906
 msgid "Cyprus"
 msgstr "Ciprus"
 
-#: data.php:1220
+#: data.php:1287
 msgid "Hebrew"
 msgstr "Héber"
 
-#: data.php:1226
+#: data.php:1293
 msgid "Israel"
 msgstr "Izrael"
 
-#: data.php:1260
+#: data.php:1327
 msgid "Hindi"
 msgstr "Hindi"
 
-#: data.php:1265
+#: data.php:1332
 msgid "India"
 msgstr "India"
 
-#: data.php:1270
+#: data.php:1337
 msgid "Pakistan"
 msgstr "Pakisztán"
 
-#: data.php:1304
+#: data.php:1371
 msgid "Hungarian"
 msgstr "Magyar"
 
-#: data.php:1309
-#, fuzzy
+#: data.php:1376
 msgid "Hungary"
 msgstr "Magyarország"
 
-#: data.php:1343
+#: data.php:1410
 msgid "Indonesian"
 msgstr "Indonézia"
 
-#: data.php:1348
+#: data.php:1415
 msgid "Indonesia"
 msgstr "Indonézia"
 
-#: data.php:1382
+#: data.php:1449
 msgid "Italian"
 msgstr "Olasz"
 
-#: data.php:1387
+#: data.php:1454
 msgid "Italy"
 msgstr "Olaszország"
 
-#: data.php:1421
+#: data.php:1488
 msgid "Japanese"
 msgstr "Japán"
 
-#: data.php:1426
+#: data.php:1493
 msgid "Japan"
 msgstr "Japán"
 
-#: data.php:1460
+#: data.php:1527
 msgid "Korean"
 msgstr "Korea"
 
-#: data.php:1465
+#: data.php:1532
 msgid "South Korea"
 msgstr "Dél-Korea"
 
-#: data.php:1470
+#: data.php:1537
 msgid "North Korea"
 msgstr "Észak-Korea"
 
-#: data.php:1504
+#: data.php:1571
 msgid "Polish"
 msgstr "Lengyelország"
 
-#: data.php:1509
+#: data.php:1576
 msgid "Poland"
 msgstr "Lengyelország"
 
-#: data.php:1543
+#: data.php:1610
 msgid "Portuguese"
 msgstr "Portugál"
 
-#: data.php:1548
+#: data.php:1615
 msgid "Portugal"
 msgstr "Portugália"
 
-#: data.php:1553
+#: data.php:1620
 msgid "Brazil"
 msgstr "Brazília"
 
-#: data.php:1558
+#: data.php:1625
 msgid "Mozambique"
 msgstr "Mozambik"
 
-#: data.php:1563
+#: data.php:1630
 msgid "Angola"
 msgstr "Angola"
 
-#: data.php:1597
+#: data.php:1664
 msgid "Russian"
 msgstr "Orosz"
 
-#: data.php:1602
+#: data.php:1669
 msgid "Russia"
 msgstr "Oroszország"
 
-#: data.php:1607
+#: data.php:1674
 msgid "Kazakhstan"
 msgstr "Kazahsztán"
 
-#: data.php:1612
+#: data.php:1679
 msgid "Belarus"
 msgstr "Belarusz"
 
-#: data.php:1617
+#: data.php:1684
 msgid "Kyrgyzstan"
 msgstr "Kirgizisztán"
 
-#: data.php:1622
+#: data.php:1689
 msgid "Tajikistan"
 msgstr "Tádzsikisztán"
 
-#: data.php:1656
+#: data.php:1723
 msgid "Spanish"
 msgstr "Spanyol"
 
-#: data.php:1661
+#: data.php:1728
 msgid "Spain"
 msgstr "Spanyolország"
 
-#: data.php:1666
+#: data.php:1733
 msgid "Mexico"
 msgstr "Mexikó"
 
-#: data.php:1671
+#: data.php:1738
 msgid "Argentina"
 msgstr "Argentína"
 
-#: data.php:1676
+#: data.php:1743
 msgid "Colombia"
 msgstr "Kolumbia"
 
-#: data.php:1681
+#: data.php:1748
 msgid "Peru"
 msgstr "Peru"
 
-#: data.php:1686
+#: data.php:1753
 msgid "Ecuador"
 msgstr "Equador"
 
-#: data.php:1691
+#: data.php:1758
 msgid "Bolivia"
 msgstr "Bolívia"
 
-#: data.php:1696
+#: data.php:1763
 msgid "Chile"
 msgstr "Chile"
 
-#: data.php:1701
+#: data.php:1768
 msgid "Equatorial Guinea"
 msgstr "Egyenlítői-Guinea"
 
-#: data.php:1706
+#: data.php:1773
 msgid "Guatemala"
 msgstr "Guatemala"
 
-#: data.php:1711
+#: data.php:1778
 msgid "Cuba"
 msgstr "Kuba"
 
-#: data.php:1716
+#: data.php:1783
 msgid "Dominican Republic"
 msgstr "Dominikai Köztársaság"
 
-#: data.php:1721
+#: data.php:1788
 msgid "Honduras"
 msgstr "Honduras"
 
-#: data.php:1726
+#: data.php:1793
 msgid "Paraguay"
 msgstr "Paraguay"
 
-#: data.php:1731
+#: data.php:1798
 msgid "El Salvador"
 msgstr "Salvador"
 
-#: data.php:1736
+#: data.php:1803
 msgid "Nicaragua"
 msgstr "Nikaragua"
 
-#: data.php:1741
+#: data.php:1808
 msgid "Costa Rica"
 msgstr "Costa Rica"
 
-#: data.php:1746
+#: data.php:1813
 msgid "Panama"
 msgstr "Panama"
 
-#: data.php:1751
+#: data.php:1818
 msgid "Uruguay"
 msgstr "Uruguay"
 
-#: data.php:1785
+#: data.php:1852
 msgid "Swedish"
 msgstr "Svéd"
 
-#: data.php:1790
+#: data.php:1857
 msgid "Sweden"
 msgstr "Svédország"
 
-#: data.php:1829
+#: data.php:1896
 msgid "Turkish"
 msgstr "Török"
 
-#: data.php:1834
+#: data.php:1901
 msgid "Turkey"
 msgstr "Törökország"
 
-#: data.php:1873
+#: data.php:1940
 msgid "Ukrainian"
 msgstr "Ukrajna"
 
-#: data.php:1878
+#: data.php:1945
 msgid "Ukraine"
 msgstr "Ukrajna"
 
-#: data.php:1912
+#: data.php:1979
 msgid "Vietnamese"
 msgstr "Vietnám"
 
-#: data.php:1917
+#: data.php:1984
 msgid "Vietnam"
 msgstr "Vietnám"
 
@@ -716,7 +715,7 @@ msgstr "Minden fordítás az oldalon"
 msgid "Edit the page slug"
 msgstr "Az oldal slug szerkesztése"
 
-#: inc/admin/assets.php:326 inc/admin/assets.php:392 inc/assets.php:89
+#: inc/admin/assets.php:371 inc/admin/assets.php:437 inc/assets.php:89
 msgid ""
 "You are about to leave the page without saving your changes. They will be "
 "lost if you continue. Would you like to leave the page anyway?"
@@ -753,10 +752,12 @@ msgid "Add a dictionary entry"
 msgstr "Szótári bejegyzés hozzáadása"
 
 #: inc/admin/option-page-dictionary.php:55
+#: inc/admin/option-page-link-media.php:55
 msgid "Add an entry"
 msgstr "Bejegzés hozzáadása"
 
 #: inc/admin/option-page-dictionary.php:64
+#: inc/admin/option-page-link-media.php:64
 msgid "Edit the entry"
 msgstr "A bejegyzés szerkesztése"
 
@@ -765,14 +766,18 @@ msgid "All dictionary entries: "
 msgstr "Minden szótári bejegyzés: "
 
 #: inc/admin/option-page-dictionary.php:117
+#: inc/admin/option-page-link-media.php:117
 msgid "Rule N°"
 msgstr "Szabályszám"
 
 #: inc/admin/option-page-dictionary.php:127
-msgid "Edit entry"
-msgstr "Bejegyzés szerkesztése"
+#: inc/admin/option-page-link-media.php:127
+#: inc/admin/option-page-settings.php:263 inc/admin/option-page-settings.php:328
+msgid "Edit"
+msgstr "Szerkesztés"
 
 #: inc/admin/option-page-dictionary.php:134
+#: inc/admin/option-page-link-media.php:134
 #: inc/admin/option-page-settings.php:329
 msgid "Remove"
 msgstr "Eltávolítás"
@@ -801,19 +806,24 @@ msgstr "Soha ne fordítson"
 
 #: inc/admin/option-page-dictionary.php:252
 #: inc/admin/option-page-dictionary.php:366
+#: inc/admin/option-page-link-media.php:446
 msgid " - Always translate by: "
 msgstr " - Mindig lefordítja: "
 
 #: inc/admin/option-page-dictionary.php:279
 #: inc/admin/option-page-dictionary.php:393
+#: inc/admin/option-page-link-media.php:336
+#: inc/admin/option-page-link-media.php:472
 msgid "Cancel"
 msgstr "Mégsem"
 
 #: inc/admin/option-page-dictionary.php:287
+#: inc/admin/option-page-link-media.php:344
 msgid "Save new entry"
 msgstr "Új bejegyzés mentése"
 
 #: inc/admin/option-page-dictionary.php:401
+#: inc/admin/option-page-link-media.php:480
 msgid "Save edited entry"
 msgstr "Szerkesztett bejegyzés mentése"
 
@@ -885,10 +895,85 @@ msgid "Exclude elements by CSS selector"
 msgstr "Elemek kizárása CSS szelektorral"
 
 #: inc/admin/option-page-exclusions.php:69 inc/admin/option-page-settings.php:78
-#: inc/admin/option-page-switcher.php:482
+#: inc/admin/option-page-switcher.php:496
 #: inc/admin/translation-edit-modal.php:71 inc/assets.php:96
 msgid "Save"
 msgstr "Mentés"
+
+#: inc/admin/option-page-link-media.php:20
+msgid "wpLingua - Links & Medias"
+msgstr "wpLingua - Linkek és médiumok"
+
+#: inc/admin/option-page-link-media.php:34
+msgid "Links & medias"
+msgstr "Linkek és médiumok"
+
+#: inc/admin/option-page-link-media.php:38
+msgid "Links and medias translations rules: "
+msgstr "Linkek és médiumok fordítási szabályok: "
+
+#: inc/admin/option-page-link-media.php:40
+msgid ""
+"Translation rules on links and media allow different images to be displayed "
+"or link URLs to be changed according to the current language. These rules "
+"apply to elements such as: link target URLs, image source URLs, iframe source "
+"URLs, URLs in intercepted JSONs..."
+msgstr ""
+"A linkekre és médiára vonatkozó fordítási szabályok lehetővé teszik, hogy az "
+"aktuális nyelvnek megfelelően más képek jelenjenek meg, vagy a linkek URL-jei "
+"megváltozzanak. Ezek a szabályok olyan elemekre vonatkoznak, mint például: a "
+"linkek cél-URL-jei, a képek forrás-URL-jei, az iframe forrás-URL-jei, az "
+"elkapott JSON-okban lévő URL-ek..."
+
+#: inc/admin/option-page-link-media.php:47
+msgid "Add a rule"
+msgstr "Szabály hozzáadása"
+
+#: inc/admin/option-page-link-media.php:102
+msgid "All links and medias rules: "
+msgstr "Minden link és médiaszabály: "
+
+#: inc/admin/option-page-link-media.php:149
+msgid "Mode: "
+msgstr "Mód: "
+
+#: inc/admin/option-page-link-media.php:158
+#: inc/admin/option-page-link-media.php:266
+#: inc/admin/option-page-link-media.php:402
+msgid "Exactly equal"
+msgstr "Pontosan egyenlő"
+
+#: inc/admin/option-page-link-media.php:162
+#: inc/admin/option-page-link-media.php:275
+#: inc/admin/option-page-link-media.php:411
+msgid "Partially equal"
+msgstr "Részben egyenlő"
+
+#: inc/admin/option-page-link-media.php:166
+msgid "Regex"
+msgstr "Regex"
+
+#: inc/admin/option-page-link-media.php:170
+msgid "Error"
+msgstr "Hiba"
+
+#: inc/admin/option-page-link-media.php:182
+msgid "Original: "
+msgstr "Eredeti: "
+
+#: inc/admin/option-page-link-media.php:241
+#: inc/admin/option-page-link-media.php:377
+msgid "Original URL: "
+msgstr "Eredeti URL: "
+
+#: inc/admin/option-page-link-media.php:284
+#: inc/admin/option-page-link-media.php:420
+msgid "REGEX"
+msgstr "REGEX"
+
+#: inc/admin/option-page-link-media.php:310
+msgid " - URL: "
+msgstr " - URL: "
 
 #: inc/admin/option-page-register.php:19
 msgid "wpLingua is not compatible with Multisite."
@@ -1036,6 +1121,7 @@ msgstr "az API kulcs lekérdezési oldal"
 #: inc/admin/option-page-switcher.php:179 inc/admin/option-page-switcher.php:237
 #: inc/admin/option-page-switcher.php:331 inc/admin/option-page-switcher.php:384
 #: inc/admin/option-page-switcher.php:437 inc/admin/option-page-switcher.php:451
+#: inc/admin/option-page-switcher.php:465
 msgid "Click to expand"
 msgstr "Kattintson a kibontáshoz"
 
@@ -1260,10 +1346,6 @@ msgstr "Kapcsolatfelvétel a wplingua.com ügyfélszolgálattal"
 #: inc/admin/option-page-settings.php:254
 msgid "Custom"
 msgstr "Egyedi"
-
-#: inc/admin/option-page-settings.php:263 inc/admin/option-page-settings.php:328
-msgid "Edit"
-msgstr "Szerkesztés"
 
 #: inc/admin/option-page-settings.php:269 inc/admin/option-page-settings.php:335
 msgid "Flag to use for this language: "
@@ -1754,14 +1836,32 @@ msgstr ""
 "témaépítőt használ, mint a Divi, Elementor..."
 
 #: inc/admin/option-page-switcher.php:450
+msgid "Gutenberg & FSE: "
+msgstr "Gutenberg és FSE: "
+
+#: inc/admin/option-page-switcher.php:453
+msgid "Block wpLingua Switcher"
+msgstr "Blokk wpLingua váltó"
+
+#: inc/admin/option-page-switcher.php:457
+msgid ""
+"Block based themes, wpLingua offers a dedicated Gutenberg block. You can "
+"insert the switcher wherever you want, whether in the content or via the "
+"overall site editor."
+msgstr ""
+"Blokk alapú témák, a wpLingua egy dedikált Gutenberg blokkot kínál. A váltót "
+"bárhová beillesztheti, akár a tartalomba, akár a teljes webhelyszerkesztőn "
+"keresztül."
+
+#: inc/admin/option-page-switcher.php:464
 msgid "Switcher in menu: "
 msgstr "Váltó a menüben: "
 
-#: inc/admin/option-page-switcher.php:465
+#: inc/admin/option-page-switcher.php:479
 msgid "Appearance ➔ Menus"
 msgstr "Megjelenés ➔ Menük"
 
-#: inc/admin/option-page-switcher.php:476
+#: inc/admin/option-page-switcher.php:490
 msgid ""
 "If the active theme manages menus (classic theme), it is possible to add a "
 "language switcher. The design of these language switchers will be defined by "
@@ -1774,86 +1874,94 @@ msgstr ""
 "hozzáadhasd. Lehetőség van arra is, hogy alelemként adjuk hozzá."
 
 #: inc/admin/option-page.php:17
-msgid "wplingua: Register"
-msgstr "wplingua: Regisztráció"
+msgid "wpLingua: Register"
+msgstr "wpLingua: Regisztráció"
 
 #: inc/admin/option-page.php:36 inc/admin/option-page.php:47
-msgid "wplingua: Settings"
-msgstr "wplingua: Beállítások"
+msgid "wpLingua: Settings"
+msgstr "wpLingua: Beállítások"
 
 #: inc/admin/option-page.php:48
 msgid "General settings"
 msgstr "Általános beállítások"
 
 #: inc/admin/option-page.php:56
-msgid "wplingua: Switcher"
-msgstr "wplingua: Váltó"
+msgid "wpLingua: Switcher"
+msgstr "wpLingua: Váltó"
 
 #: inc/admin/option-page.php:57
 msgid "Switcher"
 msgstr "Kapcsoló"
 
 #: inc/admin/option-page.php:65
-msgid "wplingua: Dictionary"
-msgstr "wplingua: Szótár"
+msgid "wpLingua: Exclusion"
+msgstr "wpLingua: Kizárás"
 
 #: inc/admin/option-page.php:66
-msgid "Dictionary"
-msgstr "Szótár"
-
-#: inc/admin/option-page.php:74
-msgid "wplingua: Exclusion"
-msgstr "wplingua: Kizárás"
-
-#: inc/admin/option-page.php:75
 msgid "Exclusion"
 msgstr "Kizárás"
 
-#: inc/admin/option-page.php:83
-msgid "wplingua: Website slugs"
-msgstr "wplingua: Weboldal csigák"
+#: inc/admin/option-page.php:74
+msgid "wpLingua: Dictionary"
+msgstr "wpLingua: Szótár"
 
-#: inc/admin/option-page.php:84 inc/admin/slug-cpt.php:19
+#: inc/admin/option-page.php:75
+msgid "Dictionary"
+msgstr "Szótár"
+
+#: inc/admin/option-page.php:83
+msgid "wplingua: Links & Medias"
+msgstr "wplingua: Linkek és médiumok"
+
+#: inc/admin/option-page.php:84
+msgid "Links & Medias"
+msgstr "Linkek és médiumok"
+
+#: inc/admin/option-page.php:92
+msgid "wpLingua: Website slugs"
+msgstr "wpLingua: Weboldal csigák"
+
+#: inc/admin/option-page.php:93 inc/admin/slug-cpt.php:19
 #: inc/admin/slug-cpt.php:23
 msgid "Website slugs"
 msgstr "Weboldal csigák"
 
-#: inc/admin/option-page.php:92
-msgid "wplingua: Translations"
-msgstr "wplingua: Fordítások"
+#: inc/admin/option-page.php:101
+msgid "wpLingua: Translations"
+msgstr "wpLingua: Fordítások"
 
-#: inc/admin/option-page.php:93 inc/admin/translation-cpt.php:21
+#: inc/admin/option-page.php:102 inc/admin/translation-cpt.php:21
 msgid "All translations"
 msgstr "Minden fordítás"
 
-#: inc/admin/option-page.php:156
+#: inc/admin/option-page.php:169
 msgid "Thank you for choosing wpLingua!"
 msgstr "Köszönjük, hogy a wpLingua-t választotta!"
 
-#: inc/admin/option-page.php:159
+#: inc/admin/option-page.php:172
 #, php-format
 msgid "If you like wpLingua please leave us a %1$s rating. A huge thanks!"
 msgstr ""
 "Ha tetszik a wpLingua, kérjük, hagyjon nekünk egy %1$s értékelést. Hatalmas "
 "köszönet!"
 
-#: inc/admin/option-page.php:160
+#: inc/admin/option-page.php:173
 msgid "five stars"
 msgstr "öt csillag"
 
-#: inc/admin/option-page.php:194
+#: inc/admin/option-page.php:208
 msgid "Version"
 msgstr "Verzió"
 
-#: inc/admin/option-page.php:217
+#: inc/admin/option-page.php:231
 msgid "Settings"
 msgstr "Beállítások"
 
-#: inc/admin/option-page.php:242
+#: inc/admin/option-page.php:274
 msgid "wpLingua - Translation solution for multilingual website"
 msgstr "wpLingua - Fordítási megoldás többnyelvű honlapokhoz"
 
-#: inc/admin/option-page.php:245
+#: inc/admin/option-page.php:277
 msgid ""
 "wpLingua is installed, but not yet configured. You are just a few clicks away "
 "from making your website multilingual!"
@@ -1861,15 +1969,15 @@ msgstr ""
 "a wpLingua telepítve van, de még nincs konfigurálva. Már csak néhány "
 "kattintás választja el attól, hogy többnyelvűvé tegye weboldalát!"
 
-#: inc/admin/option-page.php:248
+#: inc/admin/option-page.php:280
 msgid "Go to the configuration page"
 msgstr "Menjen a konfigurációs oldalra"
 
-#: inc/admin/option-page.php:309
+#: inc/admin/option-page.php:358
 msgid "wpLingua - Incompatible plugin detected"
 msgstr "wpLingua - Kompatibilis plugin észlelve"
 
-#: inc/admin/option-page.php:312
+#: inc/admin/option-page.php:361
 msgid ""
 "You have several translation plugins. This may result in unpredictable or "
 "incorrect behavior. For best results, use only one translation plugin at a "
@@ -1880,18 +1988,46 @@ msgstr ""
 "csak egy fordítási plugint használjon. Ezek a bővítmények problémákat "
 "okozhatnak a wpLingua használatával: "
 
-#: inc/admin/option-page.php:329
+#: inc/admin/option-page.php:378
 #, php-format
 msgid "Deactivate plugin: %1$s"
 msgstr "Plugin kikapcsolása: %1$s"
 
-#: inc/admin/option-page.php:338
+#: inc/admin/option-page.php:387
 msgid "Deactivate"
 msgstr "Kikapcsolás"
 
-#: inc/admin/option-page.php:355
+#: inc/admin/option-page.php:404
 msgid "Manage active plugins"
 msgstr "Aktív bővítmények kezelése"
+
+#: inc/admin/option-page.php:433
+msgid "wpLingua - Incompatible with multisite"
+msgstr "wpLingua - Nem kompatibilis a multisite-tal"
+
+#: inc/admin/option-page.php:436
+msgid "wpLingua is not compatible with multisite."
+msgstr "a wpLingua nem kompatibilis a multisite-tal."
+
+#: inc/admin/option-page.php:464
+msgid "wpLingua - Incompatible with WordPress installed in a subfolder"
+msgstr "wpLingua - Nem kompatibilis az almappába telepített WordPress-szel"
+
+#: inc/admin/option-page.php:467
+msgid "wpLingua is not compatible with WordPress installed in a subfolder."
+msgstr "a wpLingua nem kompatibilis az almappába telepített WordPress-szel."
+
+#: inc/admin/option-page.php:495
+msgid "wpLingua - Incompatible PHP version"
+msgstr "wpLingua - Nem kompatibilis PHP verzió"
+
+#: inc/admin/option-page.php:498
+msgid ""
+"wpLingua is not compatible with your PHP version. wpLingua requires PHP 7.4 "
+"or higher."
+msgstr ""
+"a wpLingua nem kompatibilis az Ön PHP verziójával. wpLingua 7.4 vagy magasabb "
+"PHP verziót igényel."
 
 #: inc/admin/slug-cpt.php:20
 msgid "Website slug"
@@ -1963,9 +2099,9 @@ msgstr " - Eredeti csiga: "
 msgid "Regenerate translation"
 msgstr "Regenerálja a fordítást"
 
-#: inc/admin/slug-meta.php:158
-msgid "Mark slug translation as review"
-msgstr "Jelölje meg a csiga fordítását felülvizsgálatként"
+#: inc/admin/slug-meta.php:158 inc/admin/translation-meta.php:150
+msgid "Mark as review"
+msgstr "Jelölje meg felülvizsgálatként"
 
 #: inc/admin/slug-meta.php:173 inc/admin/translation-meta.php:159
 msgid "Generate translation"
@@ -2064,10 +2200,6 @@ msgstr "A fordítás mentése sikertelen"
 msgid " - Original text: "
 msgstr " - Eredeti szöveg: "
 
-#: inc/admin/translation-meta.php:150
-msgid "Mark translation as review"
-msgstr "A fordítást felülvizsgálatként jelölje meg"
-
 #: inc/admin/translation-meta.php:214
 msgid " - Translation: "
 msgstr " - Fordítás: "
@@ -2096,11 +2228,11 @@ msgstr "Hiba - Az API-t nem lehetett meghívni."
 msgid "Error - API response not valid."
 msgstr "Hiba - az API válasza nem érvényes."
 
-#: inc/api-call/validate-api-key.php:189
+#: inc/api-call/validate-api-key.php:191
 msgid "Code"
 msgstr "Kód"
 
-#: inc/api-call/validate-api-key.php:207
+#: inc/api-call/validate-api-key.php:209
 msgid "API returned an unexpected response."
 msgstr "Az API váratlan választ adott vissza."
 
@@ -2238,3 +2370,9 @@ msgstr ""
 #. Author of the plugin/theme
 msgid "wpLingua Translation Service"
 msgstr "wpLingua Fordítószolgálat"
+
+#~ msgid "Edit entry"
+#~ msgstr "Bejegyzés szerkesztése"
+
+#~ msgid "Mark slug translation as review"
+#~ msgstr "Jelölje meg a csiga fordítását felülvizsgálatként"

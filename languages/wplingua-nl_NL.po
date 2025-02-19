@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: wpLingua\n"
-"POT-Creation-Date: 2025-02-02 11:24+0100\n"
-"PO-Revision-Date: 2025-02-02 11:31+0100\n"
+"POT-Creation-Date: 2025-02-18 09:17+0100\n"
+"PO-Revision-Date: 2025-02-18 15:01+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: nl_NL\n"
@@ -20,671 +20,671 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: *.min.js\n"
 
-#: data.php:407
+#: data.php:474
 msgid "Bottom right"
 msgstr "Rechtsonder"
 
-#: data.php:408
+#: data.php:475
 msgid "Bottom center"
 msgstr "Onder Midden"
 
-#: data.php:409
+#: data.php:476
 msgid "Bottom left"
 msgstr "Linksonder"
 
-#: data.php:410
+#: data.php:477
 msgid "None"
 msgstr "Geen"
 
-#: data.php:422
+#: data.php:489
 msgid "Light - Double - Smooth"
 msgstr "Licht - Dubbel - Glad"
 
-#: data.php:423
+#: data.php:490
 msgid "Light - Double - Square"
 msgstr "Licht - Dubbel - Vierkant"
 
-#: data.php:424
+#: data.php:491
 msgid "Light - Simple - Smooth"
 msgstr "Licht - Eenvoudig - Soepel"
 
-#: data.php:425
+#: data.php:492
 msgid "Light - Simple - Square"
 msgstr "Licht - Eenvoudig - Vierkant"
 
-#: data.php:426
+#: data.php:493
 msgid "Grey - Double - Smooth"
 msgstr "Grijs - Dubbel - Glad"
 
-#: data.php:427
+#: data.php:494
 msgid "Grey - Double - Square"
 msgstr "Grijs - Dubbel - Vierkant"
 
-#: data.php:428
+#: data.php:495
 msgid "Grey - Simple - Smooth"
 msgstr "Grijs - Eenvoudig - Glad"
 
-#: data.php:429
+#: data.php:496
 msgid "Grey - Simple - Square"
 msgstr "Grijs - Eenvoudig - Vierkant"
 
-#: data.php:430
+#: data.php:497
 msgid "Dark - Double - Smooth"
 msgstr "Donker - Dubbel - Glad"
 
-#: data.php:431
+#: data.php:498
 msgid "Dark - Double - Square"
 msgstr "Donker - Dubbel - Vierkant"
 
-#: data.php:432
+#: data.php:499
 msgid "Dark - Simple - Smooth"
 msgstr "Donker - Eenvoudig - Zacht"
 
-#: data.php:433
+#: data.php:500
 msgid "Dark - Simple - Square"
 msgstr "Donker - Eenvoudig - Vierkant"
 
-#: data.php:434
+#: data.php:501
 msgid "Blur Black - Double - Smooth"
 msgstr "Waas Zwart - Dubbel - Glad"
 
-#: data.php:435
+#: data.php:502
 msgid "Blur Black - Double - Square"
 msgstr "Waas Zwart - Dubbel - Vierkant"
 
-#: data.php:436
+#: data.php:503
 msgid "Blur Black - Simple - Smooth"
 msgstr "Zwart vervagen - Eenvoudig - Zacht"
 
-#: data.php:437
+#: data.php:504
 msgid "Blur Black - Simple - Square"
 msgstr "Waas Zwart - Eenvoudig - Vierkant"
 
-#: data.php:438
+#: data.php:505
 msgid "Blur White - Double - Smooth"
 msgstr "Waas Wit - Dubbel - Glad"
 
-#: data.php:439
+#: data.php:506
 msgid "Blur White - Double - Square"
 msgstr "Waas Wit - Dubbel - Vierkant"
 
-#: data.php:440
+#: data.php:507
 msgid "Blur White - Simple - Smooth"
 msgstr "Wit vervagen - Eenvoudig - Zacht"
 
-#: data.php:441
+#: data.php:508
 msgid "Blur White - Simple - Square"
 msgstr "Waas Wit - Eenvoudig - Vierkant"
 
-#: data.php:453
+#: data.php:520
 msgid "Inline list"
 msgstr "Inline list"
 
-#: data.php:454
+#: data.php:521
 msgid "Block"
 msgstr "Blok"
 
-#: data.php:455
+#: data.php:522
 msgid "Dropdown"
 msgstr "Dropdown"
 
-#: data.php:467 data.php:501
+#: data.php:534 data.php:568
 msgid "Original name"
 msgstr "Oorspronkelijke naam"
 
-#: data.php:468 data.php:502
+#: data.php:535 data.php:569
 msgid "Translated name"
 msgstr "Vertaalde naam"
 
-#: data.php:469 data.php:503
+#: data.php:536 data.php:570
 msgid "Language ID"
 msgstr "Taal ID"
 
-#: data.php:470 data.php:485 data.php:504 data.php:517
+#: data.php:537 data.php:552 data.php:571 data.php:584
 msgid "No display"
 msgstr "Geen weergave"
 
-#: data.php:482
+#: data.php:549
 msgid "Circle"
 msgstr "Cirkel"
 
-#: data.php:483
+#: data.php:550
 msgid "Rectangular"
 msgstr "Rechthoekig"
 
-#: data.php:484
+#: data.php:551
 msgid "Wave"
 msgstr "Golf"
 
-#: data.php:516
+#: data.php:583
 msgid "Display"
 msgstr "Weergave"
 
-#: data.php:529
+#: data.php:596
 msgid "List without current language"
 msgstr "Lijst zonder huidige taal"
 
-#: data.php:530
+#: data.php:597
 msgid "List without active class"
 msgstr "Lijst zonder actieve klasse"
 
-#: data.php:531
+#: data.php:598
 msgid "List with active class"
 msgstr "Lijst met actieve klasse"
 
-#: data.php:532
+#: data.php:599
 msgid "Sub-list"
 msgstr "Sublijst"
 
-#: data.php:549
+#: data.php:616
 msgid "Arabic"
 msgstr "Arabisch"
 
-#: data.php:555 data.php:709
+#: data.php:622 data.php:776
 msgid "Global"
 msgstr "Algemeen"
 
-#: data.php:560
+#: data.php:627
 msgid "Egypt"
 msgstr "Egypte"
 
-#: data.php:565
+#: data.php:632
 msgid "Saudi Arabia"
 msgstr "Saudi Arabië"
 
-#: data.php:570
+#: data.php:637
 msgid "Algeria"
 msgstr "Algerije"
 
-#: data.php:575
+#: data.php:642
 msgid "Bahrain"
 msgstr "Bahrein"
 
-#: data.php:580
+#: data.php:647
 msgid "Chad"
 msgstr "Tsjaad"
 
-#: data.php:585
+#: data.php:652
 msgid "Comoros"
 msgstr "Comoren"
 
-#: data.php:590
+#: data.php:657
 msgid "Djibouti"
 msgstr "Djibouti"
 
-#: data.php:595
+#: data.php:662
 msgid "Iraq"
 msgstr "Irak"
 
-#: data.php:600
+#: data.php:667
 msgid "Jordan"
 msgstr "Jordanië"
 
-#: data.php:605
+#: data.php:672
 msgid "Kuwait"
 msgstr "Koeweit"
 
-#: data.php:610
+#: data.php:677
 msgid "Lebanon"
 msgstr "Libanon"
 
-#: data.php:615
+#: data.php:682
 msgid "Libya"
 msgstr "Libië"
 
-#: data.php:620
+#: data.php:687
 msgid "Mauritania"
 msgstr "Mauritanië"
 
-#: data.php:625
+#: data.php:692
 msgid "Morocco"
 msgstr "Marokko"
 
-#: data.php:630
+#: data.php:697
 msgid "Oman"
 msgstr "Oman"
 
-#: data.php:635
+#: data.php:702
 msgid "Palestine"
 msgstr "Palestina"
 
-#: data.php:640
+#: data.php:707
 msgid "Qatar"
 msgstr "Qatar"
 
-#: data.php:645
+#: data.php:712
 msgid "Somalia"
 msgstr "Somalië"
 
-#: data.php:650
+#: data.php:717
 msgid "Sudan"
 msgstr "Soedan"
 
-#: data.php:655
+#: data.php:722
 msgid "Syria"
 msgstr "Syrië"
 
-#: data.php:660
+#: data.php:727
 msgid "Tunisia"
 msgstr "Tunesië"
 
-#: data.php:665
+#: data.php:732
 msgid "United Arab Emirates"
 msgstr "Verenigde Arabische Emiraten"
 
-#: data.php:670
+#: data.php:737
 msgid "Yemen"
 msgstr "Jemen"
 
-#: data.php:704
+#: data.php:771
 msgid "Chinese"
 msgstr "Chinees"
 
-#: data.php:714
+#: data.php:781
 msgid "China"
 msgstr "China"
 
-#: data.php:719
+#: data.php:786
 msgid "Hong Kong"
 msgstr "Hong Kong"
 
-#: data.php:724
+#: data.php:791
 msgid "Malaysia"
 msgstr "Maleisië"
 
-#: data.php:729 data.php:965
+#: data.php:796 data.php:1032
 msgid "Singapore"
 msgstr "Singapore"
 
-#: data.php:763
+#: data.php:830
 msgid "Danish"
 msgstr "Deens"
 
-#: data.php:768
+#: data.php:835
 msgid "Denmark"
 msgstr "Denemarken"
 
-#: data.php:802
+#: data.php:869
 msgid "Dutch"
 msgstr "Nederlands"
 
-#: data.php:807
+#: data.php:874
 msgid "Netherlands"
 msgstr "Nederland"
 
-#: data.php:812 data.php:1058
+#: data.php:879 data.php:1125
 msgid "Belgium"
 msgstr "België"
 
-#: data.php:817
+#: data.php:884
 msgid "Suriname"
 msgstr "Suriname"
 
-#: data.php:851
+#: data.php:918
 msgid "Slovak"
 msgstr "Slowaaks"
 
-#: data.php:856
+#: data.php:923
 msgid "Slovakia"
 msgstr "Slowakije"
 
-#: data.php:861
+#: data.php:928
 msgid "Czech Republic"
 msgstr "Tsjechië"
 
-#: data.php:895
+#: data.php:962
 msgid "English"
 msgstr "Engels"
 
-#: data.php:900
+#: data.php:967
 msgid "US / GB"
 msgstr "VS / GB"
 
-#: data.php:905
+#: data.php:972
 msgid "United Kingdom"
 msgstr "Verenigd Koninkrijk"
 
-#: data.php:910
+#: data.php:977
 msgid "United States"
 msgstr "Verenigde Staten"
 
-#: data.php:915
+#: data.php:982
 msgid "Australia"
 msgstr "Australië"
 
-#: data.php:920 data.php:1063
+#: data.php:987 data.php:1130
 msgid "Canada"
 msgstr "Canada"
 
-#: data.php:925
+#: data.php:992
 msgid "Ireland"
 msgstr "Ierland"
 
-#: data.php:930
+#: data.php:997
 msgid "New Zealand"
 msgstr "Nieuw-Zeeland"
 
-#: data.php:935
+#: data.php:1002
 msgid "Nigeria"
 msgstr "Nigeria"
 
-#: data.php:940
+#: data.php:1007
 msgid "South Africa"
 msgstr "Zuid-Afrika"
 
-#: data.php:945
+#: data.php:1012
 msgid "Kenya"
 msgstr "Kenia"
 
-#: data.php:950
+#: data.php:1017
 msgid "Ghana"
 msgstr "Ghana"
 
-#: data.php:955
+#: data.php:1022
 msgid "South Sudan"
 msgstr "Zuid-Soedan"
 
-#: data.php:960
+#: data.php:1027
 msgid "Sierra Leone"
 msgstr "Sierra Leone"
 
-#: data.php:970
+#: data.php:1037
 msgid "Liberia"
 msgstr "Liberia"
 
-#: data.php:975
+#: data.php:1042
 msgid "Jamaica"
 msgstr "Jamaica"
 
-#: data.php:1009
+#: data.php:1076
 msgid "Finnish"
 msgstr "Fins"
 
-#: data.php:1014 data.php:1795
+#: data.php:1081 data.php:1862
 msgid "Finland"
 msgstr "Finland"
 
-#: data.php:1048
+#: data.php:1115
 msgid "French"
 msgstr "Frans"
 
-#: data.php:1053
+#: data.php:1120
 msgid "France"
 msgstr "Frankrijk"
 
-#: data.php:1068
+#: data.php:1135
 msgid "Congo - Kinshasa"
 msgstr "Congo - Kinshasa"
 
-#: data.php:1073
+#: data.php:1140
 msgid "Congo - Brazzaville"
 msgstr "Congo - Brazzaville"
 
-#: data.php:1078
+#: data.php:1145
 msgid "Cameroon"
 msgstr "Kameroen"
 
-#: data.php:1083
+#: data.php:1150
 msgid "Ivory Coast"
 msgstr "Ivoorkust"
 
-#: data.php:1088 data.php:1137
+#: data.php:1155 data.php:1204
 msgid "Switzerland"
 msgstr "Zwitserland"
 
-#: data.php:1122
+#: data.php:1189
 msgid "German"
 msgstr "Duits"
 
-#: data.php:1127
+#: data.php:1194
 msgid "Germany"
 msgstr "Duitsland"
 
-#: data.php:1132
+#: data.php:1199
 msgid "Austria"
 msgstr "Oostenrijk"
 
-#: data.php:1142
+#: data.php:1209
 msgid "Liechtenstein"
 msgstr "Liechtenstein"
 
-#: data.php:1176
+#: data.php:1243
 msgid "Greek"
 msgstr "Grieks"
 
-#: data.php:1181
+#: data.php:1248
 msgid "Greece"
 msgstr "Griekenland"
 
-#: data.php:1186 data.php:1839
+#: data.php:1253 data.php:1906
 msgid "Cyprus"
 msgstr "Cyprus"
 
-#: data.php:1220
+#: data.php:1287
 msgid "Hebrew"
 msgstr "Hebreeuws"
 
-#: data.php:1226
+#: data.php:1293
 msgid "Israel"
 msgstr "Israël"
 
-#: data.php:1260
+#: data.php:1327
 msgid "Hindi"
 msgstr "Hindi"
 
-#: data.php:1265
+#: data.php:1332
 msgid "India"
 msgstr "India"
 
-#: data.php:1270
+#: data.php:1337
 msgid "Pakistan"
 msgstr "Pakistan"
 
-#: data.php:1304
+#: data.php:1371
 msgid "Hungarian"
 msgstr "Hongaars"
 
-#: data.php:1309
+#: data.php:1376
 msgid "Hungary"
 msgstr "Hongarije"
 
-#: data.php:1343
+#: data.php:1410
 msgid "Indonesian"
 msgstr "Indonesisch"
 
-#: data.php:1348
+#: data.php:1415
 msgid "Indonesia"
 msgstr "Indonesië"
 
-#: data.php:1382
+#: data.php:1449
 msgid "Italian"
 msgstr "Italiaans"
 
-#: data.php:1387
+#: data.php:1454
 msgid "Italy"
 msgstr "Italië"
 
-#: data.php:1421
+#: data.php:1488
 msgid "Japanese"
 msgstr "Japans"
 
-#: data.php:1426
+#: data.php:1493
 msgid "Japan"
 msgstr "Japan"
 
-#: data.php:1460
+#: data.php:1527
 msgid "Korean"
 msgstr "Koreaans"
 
-#: data.php:1465
+#: data.php:1532
 msgid "South Korea"
 msgstr "Zuid-Korea"
 
-#: data.php:1470
+#: data.php:1537
 msgid "North Korea"
 msgstr "Noord-Korea"
 
-#: data.php:1504
+#: data.php:1571
 msgid "Polish"
 msgstr "Pools"
 
-#: data.php:1509
+#: data.php:1576
 msgid "Poland"
 msgstr "Polen"
 
-#: data.php:1543
+#: data.php:1610
 msgid "Portuguese"
 msgstr "Portugees"
 
-#: data.php:1548
+#: data.php:1615
 msgid "Portugal"
 msgstr "Portugal"
 
-#: data.php:1553
+#: data.php:1620
 msgid "Brazil"
 msgstr "Brazilië"
 
-#: data.php:1558
+#: data.php:1625
 msgid "Mozambique"
 msgstr "Mozambique"
 
-#: data.php:1563
+#: data.php:1630
 msgid "Angola"
 msgstr "Angola"
 
-#: data.php:1597
+#: data.php:1664
 msgid "Russian"
 msgstr "Russisch"
 
-#: data.php:1602
+#: data.php:1669
 msgid "Russia"
 msgstr "Rusland"
 
-#: data.php:1607
+#: data.php:1674
 msgid "Kazakhstan"
 msgstr "Kazachstan"
 
-#: data.php:1612
+#: data.php:1679
 msgid "Belarus"
 msgstr "Wit-Rusland"
 
-#: data.php:1617
+#: data.php:1684
 msgid "Kyrgyzstan"
 msgstr "Kirgizië"
 
-#: data.php:1622
+#: data.php:1689
 msgid "Tajikistan"
 msgstr "Tadzjikistan"
 
-#: data.php:1656
+#: data.php:1723
 msgid "Spanish"
 msgstr "Spaans"
 
-#: data.php:1661
+#: data.php:1728
 msgid "Spain"
 msgstr "Spanje"
 
-#: data.php:1666
+#: data.php:1733
 msgid "Mexico"
 msgstr "Mexico"
 
-#: data.php:1671
+#: data.php:1738
 msgid "Argentina"
 msgstr "Argentinië"
 
-#: data.php:1676
+#: data.php:1743
 msgid "Colombia"
 msgstr "Colombia"
 
-#: data.php:1681
+#: data.php:1748
 msgid "Peru"
 msgstr "Peru"
 
-#: data.php:1686
+#: data.php:1753
 msgid "Ecuador"
 msgstr "Ecuador"
 
-#: data.php:1691
+#: data.php:1758
 msgid "Bolivia"
 msgstr "Bolivia"
 
-#: data.php:1696
+#: data.php:1763
 msgid "Chile"
 msgstr "Chili"
 
-#: data.php:1701
+#: data.php:1768
 msgid "Equatorial Guinea"
 msgstr "Equatoriaal-Guinea"
 
-#: data.php:1706
+#: data.php:1773
 msgid "Guatemala"
 msgstr "Guatemala"
 
-#: data.php:1711
+#: data.php:1778
 msgid "Cuba"
 msgstr "Cuba"
 
-#: data.php:1716
+#: data.php:1783
 msgid "Dominican Republic"
 msgstr "Dominicaanse Republiek"
 
-#: data.php:1721
+#: data.php:1788
 msgid "Honduras"
 msgstr "Honduras"
 
-#: data.php:1726
+#: data.php:1793
 msgid "Paraguay"
 msgstr "Paraguay"
 
-#: data.php:1731
+#: data.php:1798
 msgid "El Salvador"
 msgstr "El Salvador"
 
-#: data.php:1736
+#: data.php:1803
 msgid "Nicaragua"
 msgstr "Nicaragua"
 
-#: data.php:1741
+#: data.php:1808
 msgid "Costa Rica"
 msgstr "Costa Rica"
 
-#: data.php:1746
+#: data.php:1813
 msgid "Panama"
 msgstr "Panama"
 
-#: data.php:1751
+#: data.php:1818
 msgid "Uruguay"
 msgstr "Uruguay"
 
-#: data.php:1785
+#: data.php:1852
 msgid "Swedish"
 msgstr "Zweeds"
 
-#: data.php:1790
+#: data.php:1857
 msgid "Sweden"
 msgstr "Zweden"
 
-#: data.php:1829
+#: data.php:1896
 msgid "Turkish"
 msgstr "Turks"
 
-#: data.php:1834
+#: data.php:1901
 msgid "Turkey"
 msgstr "Turkije"
 
-#: data.php:1873
+#: data.php:1940
 msgid "Ukrainian"
 msgstr "Oekraïens"
 
-#: data.php:1878
+#: data.php:1945
 msgid "Ukraine"
 msgstr "Oekraïne"
 
-#: data.php:1912
+#: data.php:1979
 msgid "Vietnamese"
 msgstr "Vietnamees"
 
-#: data.php:1917
+#: data.php:1984
 msgid "Vietnam"
 msgstr "Viëtnam"
 
@@ -715,7 +715,7 @@ msgstr "Alle vertalingen op pagina"
 msgid "Edit the page slug"
 msgstr "Bewerk de paginaslug"
 
-#: inc/admin/assets.php:326 inc/admin/assets.php:392 inc/assets.php:89
+#: inc/admin/assets.php:371 inc/admin/assets.php:437 inc/assets.php:89
 msgid ""
 "You are about to leave the page without saving your changes. They will be "
 "lost if you continue. Would you like to leave the page anyway?"
@@ -752,10 +752,12 @@ msgid "Add a dictionary entry"
 msgstr "Een woordenboekitem toevoegen"
 
 #: inc/admin/option-page-dictionary.php:55
+#: inc/admin/option-page-link-media.php:55
 msgid "Add an entry"
 msgstr "Een item toevoegen"
 
 #: inc/admin/option-page-dictionary.php:64
+#: inc/admin/option-page-link-media.php:64
 msgid "Edit the entry"
 msgstr "De invoer bewerken"
 
@@ -764,14 +766,18 @@ msgid "All dictionary entries: "
 msgstr "Alle woordenboekvermeldingen: "
 
 #: inc/admin/option-page-dictionary.php:117
+#: inc/admin/option-page-link-media.php:117
 msgid "Rule N°"
 msgstr "Regel nr"
 
 #: inc/admin/option-page-dictionary.php:127
-msgid "Edit entry"
-msgstr "Inbreng bewerken"
+#: inc/admin/option-page-link-media.php:127
+#: inc/admin/option-page-settings.php:263 inc/admin/option-page-settings.php:328
+msgid "Edit"
+msgstr "Bewerken"
 
 #: inc/admin/option-page-dictionary.php:134
+#: inc/admin/option-page-link-media.php:134
 #: inc/admin/option-page-settings.php:329
 msgid "Remove"
 msgstr "Verwijderen"
@@ -800,19 +806,24 @@ msgstr "Nooit vertalen"
 
 #: inc/admin/option-page-dictionary.php:252
 #: inc/admin/option-page-dictionary.php:366
+#: inc/admin/option-page-link-media.php:446
 msgid " - Always translate by: "
 msgstr " - Altijd vertalen door: "
 
 #: inc/admin/option-page-dictionary.php:279
 #: inc/admin/option-page-dictionary.php:393
+#: inc/admin/option-page-link-media.php:336
+#: inc/admin/option-page-link-media.php:472
 msgid "Cancel"
 msgstr "Annuleren"
 
 #: inc/admin/option-page-dictionary.php:287
+#: inc/admin/option-page-link-media.php:344
 msgid "Save new entry"
 msgstr "Nieuw item opslaan"
 
 #: inc/admin/option-page-dictionary.php:401
+#: inc/admin/option-page-link-media.php:480
 msgid "Save edited entry"
 msgstr "Bewerkte invoer opslaan"
 
@@ -886,10 +897,85 @@ msgid "Exclude elements by CSS selector"
 msgstr "Elementen uitsluiten met CSS-selector"
 
 #: inc/admin/option-page-exclusions.php:69 inc/admin/option-page-settings.php:78
-#: inc/admin/option-page-switcher.php:482
+#: inc/admin/option-page-switcher.php:496
 #: inc/admin/translation-edit-modal.php:71 inc/assets.php:96
 msgid "Save"
 msgstr "Opslaan"
+
+#: inc/admin/option-page-link-media.php:20
+msgid "wpLingua - Links & Medias"
+msgstr "wpLingua - Links & Media"
+
+#: inc/admin/option-page-link-media.php:34
+msgid "Links & medias"
+msgstr "Links & media"
+
+#: inc/admin/option-page-link-media.php:38
+msgid "Links and medias translations rules: "
+msgstr "Regels voor links en mediavertalingen: "
+
+#: inc/admin/option-page-link-media.php:40
+msgid ""
+"Translation rules on links and media allow different images to be displayed "
+"or link URLs to be changed according to the current language. These rules "
+"apply to elements such as: link target URLs, image source URLs, iframe source "
+"URLs, URLs in intercepted JSONs..."
+msgstr ""
+"Vertaalregels voor links en media maken het mogelijk om verschillende "
+"afbeeldingen weer te geven of link-URL's te wijzigen afhankelijk van de "
+"huidige taal. Deze regels zijn van toepassing op elementen zoals: doel-URL's "
+"van koppelingen, bron-URL's van afbeeldingen, iframe bron-URL's, URL's in "
+"onderschepte JSON's..."
+
+#: inc/admin/option-page-link-media.php:47
+msgid "Add a rule"
+msgstr "Een regel toevoegen"
+
+#: inc/admin/option-page-link-media.php:102
+msgid "All links and medias rules: "
+msgstr "Alle links en media regels: "
+
+#: inc/admin/option-page-link-media.php:149
+msgid "Mode: "
+msgstr "Modus: "
+
+#: inc/admin/option-page-link-media.php:158
+#: inc/admin/option-page-link-media.php:266
+#: inc/admin/option-page-link-media.php:402
+msgid "Exactly equal"
+msgstr "Precies gelijk"
+
+#: inc/admin/option-page-link-media.php:162
+#: inc/admin/option-page-link-media.php:275
+#: inc/admin/option-page-link-media.php:411
+msgid "Partially equal"
+msgstr "Gedeeltelijk gelijk"
+
+#: inc/admin/option-page-link-media.php:166
+msgid "Regex"
+msgstr "Regex"
+
+#: inc/admin/option-page-link-media.php:170
+msgid "Error"
+msgstr "Error"
+
+#: inc/admin/option-page-link-media.php:182
+msgid "Original: "
+msgstr "Origineel: "
+
+#: inc/admin/option-page-link-media.php:241
+#: inc/admin/option-page-link-media.php:377
+msgid "Original URL: "
+msgstr "Oorspronkelijke URL: "
+
+#: inc/admin/option-page-link-media.php:284
+#: inc/admin/option-page-link-media.php:420
+msgid "REGEX"
+msgstr "REGEX"
+
+#: inc/admin/option-page-link-media.php:310
+msgid " - URL: "
+msgstr " - URL: "
 
 #: inc/admin/option-page-register.php:19
 msgid "wpLingua is not compatible with Multisite."
@@ -1038,6 +1124,7 @@ msgstr "de API-sleutel opvraagpagina"
 #: inc/admin/option-page-switcher.php:179 inc/admin/option-page-switcher.php:237
 #: inc/admin/option-page-switcher.php:331 inc/admin/option-page-switcher.php:384
 #: inc/admin/option-page-switcher.php:437 inc/admin/option-page-switcher.php:451
+#: inc/admin/option-page-switcher.php:465
 msgid "Click to expand"
 msgstr "Klik om uit te vouwen"
 
@@ -1259,10 +1346,6 @@ msgstr "Neem contact op met ondersteuning op wplingua.com"
 #: inc/admin/option-page-settings.php:254
 msgid "Custom"
 msgstr "Aangepast"
-
-#: inc/admin/option-page-settings.php:263 inc/admin/option-page-settings.php:328
-msgid "Edit"
-msgstr "Bewerken"
 
 #: inc/admin/option-page-settings.php:269 inc/admin/option-page-settings.php:335
 msgid "Flag to use for this language: "
@@ -1746,14 +1829,32 @@ msgstr ""
 "pagina- of themabouwer zoals Divi, Elementor..."
 
 #: inc/admin/option-page-switcher.php:450
+msgid "Gutenberg & FSE: "
+msgstr "Gutenberg & FSE: "
+
+#: inc/admin/option-page-switcher.php:453
+msgid "Block wpLingua Switcher"
+msgstr "Blok wpLingua Switcher"
+
+#: inc/admin/option-page-switcher.php:457
+msgid ""
+"Block based themes, wpLingua offers a dedicated Gutenberg block. You can "
+"insert the switcher wherever you want, whether in the content or via the "
+"overall site editor."
+msgstr ""
+"Thema's op basis van blokken, wpLingua biedt een speciaal Gutenberg-blok. Je "
+"kunt de switcher invoegen waar je maar wilt, in de inhoud of via de algemene "
+"site-editor."
+
+#: inc/admin/option-page-switcher.php:464
 msgid "Switcher in menu: "
 msgstr "Switcher in menu: "
 
-#: inc/admin/option-page-switcher.php:465
+#: inc/admin/option-page-switcher.php:479
 msgid "Appearance ➔ Menus"
 msgstr "Uiterlijk ➔ Menu's"
 
-#: inc/admin/option-page-switcher.php:476
+#: inc/admin/option-page-switcher.php:490
 msgid ""
 "If the active theme manages menus (classic theme), it is possible to add a "
 "language switcher. The design of these language switchers will be defined by "
@@ -1767,85 +1868,93 @@ msgstr ""
 "te voegen."
 
 #: inc/admin/option-page.php:17
-msgid "wplingua: Register"
-msgstr "wplingua: Registreren"
+msgid "wpLingua: Register"
+msgstr "wpLingua: Registreren"
 
 #: inc/admin/option-page.php:36 inc/admin/option-page.php:47
-msgid "wplingua: Settings"
-msgstr "wplingua: Instellingen"
+msgid "wpLingua: Settings"
+msgstr "wpLingua: Instellingen"
 
 #: inc/admin/option-page.php:48
 msgid "General settings"
 msgstr "Algemene instellingen"
 
 #: inc/admin/option-page.php:56
-msgid "wplingua: Switcher"
-msgstr "wplingua: Switcher"
+msgid "wpLingua: Switcher"
+msgstr "wpLingua: Schakelprogramma"
 
 #: inc/admin/option-page.php:57
 msgid "Switcher"
 msgstr "Switcher"
 
 #: inc/admin/option-page.php:65
-msgid "wplingua: Dictionary"
-msgstr "wplingua: Woordenboek"
+msgid "wpLingua: Exclusion"
+msgstr "wpLingua: Uitsluiting"
 
 #: inc/admin/option-page.php:66
-msgid "Dictionary"
-msgstr "Woordenboek"
-
-#: inc/admin/option-page.php:74
-msgid "wplingua: Exclusion"
-msgstr "wplingua: Uitsluiting"
-
-#: inc/admin/option-page.php:75
 msgid "Exclusion"
 msgstr "Uitsluiting"
 
-#: inc/admin/option-page.php:83
-msgid "wplingua: Website slugs"
-msgstr "wplingua: Website slakken"
+#: inc/admin/option-page.php:74
+msgid "wpLingua: Dictionary"
+msgstr "wpLingua: Woordenboek"
 
-#: inc/admin/option-page.php:84 inc/admin/slug-cpt.php:19
+#: inc/admin/option-page.php:75
+msgid "Dictionary"
+msgstr "Woordenboek"
+
+#: inc/admin/option-page.php:83
+msgid "wplingua: Links & Medias"
+msgstr "wpLingua: Links & Media"
+
+#: inc/admin/option-page.php:84
+msgid "Links & Medias"
+msgstr "Links en media"
+
+#: inc/admin/option-page.php:92
+msgid "wpLingua: Website slugs"
+msgstr "wpLingua: Website slugs"
+
+#: inc/admin/option-page.php:93 inc/admin/slug-cpt.php:19
 #: inc/admin/slug-cpt.php:23
 msgid "Website slugs"
 msgstr "Website naaktslakken"
 
-#: inc/admin/option-page.php:92
-msgid "wplingua: Translations"
-msgstr "wplingua: Vertalingen"
+#: inc/admin/option-page.php:101
+msgid "wpLingua: Translations"
+msgstr "wpLingua: Vertalingen"
 
-#: inc/admin/option-page.php:93 inc/admin/translation-cpt.php:21
+#: inc/admin/option-page.php:102 inc/admin/translation-cpt.php:21
 msgid "All translations"
 msgstr "Alle vertalingen"
 
-#: inc/admin/option-page.php:156
+#: inc/admin/option-page.php:169
 msgid "Thank you for choosing wpLingua!"
 msgstr "Bedankt voor het kiezen van wpLingua!"
 
-#: inc/admin/option-page.php:159
+#: inc/admin/option-page.php:172
 #, php-format
 msgid "If you like wpLingua please leave us a %1$s rating. A huge thanks!"
 msgstr ""
 "Als je wpLingua leuk vindt, geef ons dan een %1$s beoordeling. Hartelijk dank!"
 
-#: inc/admin/option-page.php:160
+#: inc/admin/option-page.php:173
 msgid "five stars"
 msgstr "vijf sterren"
 
-#: inc/admin/option-page.php:194
+#: inc/admin/option-page.php:208
 msgid "Version"
 msgstr "Versie"
 
-#: inc/admin/option-page.php:217
+#: inc/admin/option-page.php:231
 msgid "Settings"
 msgstr "Instellingen"
 
-#: inc/admin/option-page.php:242
+#: inc/admin/option-page.php:274
 msgid "wpLingua - Translation solution for multilingual website"
 msgstr "wpLingua - Vertaaloplossing voor meertalige website"
 
-#: inc/admin/option-page.php:245
+#: inc/admin/option-page.php:277
 msgid ""
 "wpLingua is installed, but not yet configured. You are just a few clicks away "
 "from making your website multilingual!"
@@ -1853,15 +1962,15 @@ msgstr ""
 "wpLingua is geïnstalleerd, maar nog niet geconfigureerd. Je bent slechts een "
 "paar klikken verwijderd van het meertalig maken van je website!"
 
-#: inc/admin/option-page.php:248
+#: inc/admin/option-page.php:280
 msgid "Go to the configuration page"
 msgstr "Ga naar de configuratiepagina"
 
-#: inc/admin/option-page.php:309
+#: inc/admin/option-page.php:358
 msgid "wpLingua - Incompatible plugin detected"
 msgstr "wpLingua - Incompatibele plugin gedetecteerd"
 
-#: inc/admin/option-page.php:312
+#: inc/admin/option-page.php:361
 msgid ""
 "You have several translation plugins. This may result in unpredictable or "
 "incorrect behavior. For best results, use only one translation plugin at a "
@@ -1871,18 +1980,47 @@ msgstr ""
 "onjuist gedrag. Voor de beste resultaten gebruik je slechts één vertaalplugin "
 "per keer. Deze plugins kunnen problemen veroorzaken met wpLingua: "
 
-#: inc/admin/option-page.php:329
+#: inc/admin/option-page.php:378
 #, php-format
 msgid "Deactivate plugin: %1$s"
 msgstr "Plugin deactiveren: %1$s"
 
-#: inc/admin/option-page.php:338
+#: inc/admin/option-page.php:387
 msgid "Deactivate"
 msgstr "Deactiveren"
 
-#: inc/admin/option-page.php:355
+#: inc/admin/option-page.php:404
 msgid "Manage active plugins"
 msgstr "Actieve plugins beheren"
+
+#: inc/admin/option-page.php:433
+msgid "wpLingua - Incompatible with multisite"
+msgstr "wpLingua - Onverenigbaar met multisite"
+
+#: inc/admin/option-page.php:436
+msgid "wpLingua is not compatible with multisite."
+msgstr "wpLingua is niet compatibel met multisite."
+
+#: inc/admin/option-page.php:464
+msgid "wpLingua - Incompatible with WordPress installed in a subfolder"
+msgstr "wpLingua - Onverenigbaar met WordPress geïnstalleerd in een submap"
+
+#: inc/admin/option-page.php:467
+msgid "wpLingua is not compatible with WordPress installed in a subfolder."
+msgstr ""
+"wpLingua is niet compatibel met WordPress dat in een submap is geïnstalleerd."
+
+#: inc/admin/option-page.php:495
+msgid "wpLingua - Incompatible PHP version"
+msgstr "wpLingua - Onverenigbare PHP-versie"
+
+#: inc/admin/option-page.php:498
+msgid ""
+"wpLingua is not compatible with your PHP version. wpLingua requires PHP 7.4 "
+"or higher."
+msgstr ""
+"wpLingua is niet compatibel met uw PHP-versie. wpLingua vereist PHP 7.4 of "
+"hoger."
 
 #: inc/admin/slug-cpt.php:20
 msgid "Website slug"
@@ -1954,9 +2092,9 @@ msgstr " - Originele slak: "
 msgid "Regenerate translation"
 msgstr "Herstel vertaling"
 
-#: inc/admin/slug-meta.php:158
-msgid "Mark slug translation as review"
-msgstr "Markeer slug vertaling als recensie"
+#: inc/admin/slug-meta.php:158 inc/admin/translation-meta.php:150
+msgid "Mark as review"
+msgstr "Markeren als recensie"
 
 #: inc/admin/slug-meta.php:173 inc/admin/translation-meta.php:159
 msgid "Generate translation"
@@ -2055,10 +2193,6 @@ msgstr "Opslaan van vertaling mislukt"
 msgid " - Original text: "
 msgstr " - Oorspronkelijke tekst: "
 
-#: inc/admin/translation-meta.php:150
-msgid "Mark translation as review"
-msgstr "Vertaling markeren als recensie"
-
 #: inc/admin/translation-meta.php:214
 msgid " - Translation: "
 msgstr " - Vertaling: "
@@ -2087,11 +2221,11 @@ msgstr "Fout - De API kon niet worden aangeroepen."
 msgid "Error - API response not valid."
 msgstr "Fout - API-antwoord niet geldig."
 
-#: inc/api-call/validate-api-key.php:189
+#: inc/api-call/validate-api-key.php:191
 msgid "Code"
 msgstr "Code"
 
-#: inc/api-call/validate-api-key.php:207
+#: inc/api-call/validate-api-key.php:209
 msgid "API returned an unexpected response."
 msgstr "API heeft een onverwacht antwoord teruggestuurd."
 
@@ -2229,3 +2363,9 @@ msgstr ""
 #. Author of the plugin/theme
 msgid "wpLingua Translation Service"
 msgstr "wpLingua Vertaaldienst"
+
+#~ msgid "Edit entry"
+#~ msgstr "Inbreng bewerken"
+
+#~ msgid "Mark slug translation as review"
+#~ msgstr "Markeer slug vertaling als recensie"

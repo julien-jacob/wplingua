@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: wpLingua\n"
-"POT-Creation-Date: 2025-02-02 11:51+0100\n"
-"PO-Revision-Date: 2025-02-02 11:56+0100\n"
+"POT-Creation-Date: 2025-02-18 09:17+0100\n"
+"PO-Revision-Date: 2025-02-18 15:11+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: sv_SE\n"
@@ -20,671 +20,671 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: *.min.js\n"
 
-#: data.php:407
+#: data.php:474
 msgid "Bottom right"
 msgstr "Nedre höger"
 
-#: data.php:408
+#: data.php:475
 msgid "Bottom center"
 msgstr "Nedtill, centrerat"
 
-#: data.php:409
+#: data.php:476
 msgid "Bottom left"
 msgstr "Nedre vänster"
 
-#: data.php:410
+#: data.php:477
 msgid "None"
 msgstr "Ingen"
 
-#: data.php:422
+#: data.php:489
 msgid "Light - Double - Smooth"
 msgstr "Lätt - Dubbel - Smidig"
 
-#: data.php:423
+#: data.php:490
 msgid "Light - Double - Square"
 msgstr "Ljus - Dubbel - Kvadratisk"
 
-#: data.php:424
+#: data.php:491
 msgid "Light - Simple - Smooth"
 msgstr "Lätt - enkel - smidig"
 
-#: data.php:425
+#: data.php:492
 msgid "Light - Simple - Square"
 msgstr "Ljus - Enkel - Kvadratisk"
 
-#: data.php:426
+#: data.php:493
 msgid "Grey - Double - Smooth"
 msgstr "Grå - Dubbel - Slät"
 
-#: data.php:427
+#: data.php:494
 msgid "Grey - Double - Square"
 msgstr "Grå - Dubbel - Kvadratisk"
 
-#: data.php:428
+#: data.php:495
 msgid "Grey - Simple - Smooth"
 msgstr "Grå - Enkel - Smidig"
 
-#: data.php:429
+#: data.php:496
 msgid "Grey - Simple - Square"
 msgstr "Grå - Enkel - Fyrkantig"
 
-#: data.php:430
+#: data.php:497
 msgid "Dark - Double - Smooth"
 msgstr "Mörk - Dubbel - Slät"
 
-#: data.php:431
+#: data.php:498
 msgid "Dark - Double - Square"
 msgstr "Mörk - Dubbel - Fyrkantig"
 
-#: data.php:432
+#: data.php:499
 msgid "Dark - Simple - Smooth"
 msgstr "Mörk - Enkel - Smidig"
 
-#: data.php:433
+#: data.php:500
 msgid "Dark - Simple - Square"
 msgstr "Mörk - Enkel - Fyrkantig"
 
-#: data.php:434
+#: data.php:501
 msgid "Blur Black - Double - Smooth"
 msgstr "Blur Black - Double - Smooth"
 
-#: data.php:435
+#: data.php:502
 msgid "Blur Black - Double - Square"
 msgstr "Blur Svart - Dubbel - Kvadratisk"
 
-#: data.php:436
+#: data.php:503
 msgid "Blur Black - Simple - Smooth"
 msgstr "Blur Black - Simple - Smooth"
 
-#: data.php:437
+#: data.php:504
 msgid "Blur Black - Simple - Square"
 msgstr "Blur Svart - Enkel - Kvadratisk"
 
-#: data.php:438
+#: data.php:505
 msgid "Blur White - Double - Smooth"
 msgstr "Blur White - Double - Smooth"
 
-#: data.php:439
+#: data.php:506
 msgid "Blur White - Double - Square"
 msgstr "Blur White - Dubbel - Kvadratisk"
 
-#: data.php:440
+#: data.php:507
 msgid "Blur White - Simple - Smooth"
 msgstr "Blur White - Simple - Smooth"
 
-#: data.php:441
+#: data.php:508
 msgid "Blur White - Simple - Square"
 msgstr "Blur White - Enkel - Kvadratisk"
 
-#: data.php:453
+#: data.php:520
 msgid "Inline list"
 msgstr "Inline-lista"
 
-#: data.php:454
+#: data.php:521
 msgid "Block"
 msgstr "Blockera"
 
-#: data.php:455
+#: data.php:522
 msgid "Dropdown"
 msgstr "Rullgardin"
 
-#: data.php:467 data.php:501
+#: data.php:534 data.php:568
 msgid "Original name"
 msgstr "Ursprungligt namn"
 
-#: data.php:468 data.php:502
+#: data.php:535 data.php:569
 msgid "Translated name"
 msgstr "Översatt namn"
 
-#: data.php:469 data.php:503
+#: data.php:536 data.php:570
 msgid "Language ID"
 msgstr "Språk-ID"
 
-#: data.php:470 data.php:485 data.php:504 data.php:517
+#: data.php:537 data.php:552 data.php:571 data.php:584
 msgid "No display"
 msgstr "Ingen display"
 
-#: data.php:482
+#: data.php:549
 msgid "Circle"
 msgstr "Cirkel"
 
-#: data.php:483
+#: data.php:550
 msgid "Rectangular"
 msgstr "Rektangulär"
 
-#: data.php:484
+#: data.php:551
 msgid "Wave"
 msgstr "Våg"
 
-#: data.php:516
+#: data.php:583
 msgid "Display"
 msgstr "Visa"
 
-#: data.php:529
+#: data.php:596
 msgid "List without current language"
 msgstr "Lista utan aktuellt språk"
 
-#: data.php:530
+#: data.php:597
 msgid "List without active class"
 msgstr "Lista utan aktiv klass"
 
-#: data.php:531
+#: data.php:598
 msgid "List with active class"
 msgstr "Lista med aktiv klass"
 
-#: data.php:532
+#: data.php:599
 msgid "Sub-list"
 msgstr "Underlista"
 
-#: data.php:549
+#: data.php:616
 msgid "Arabic"
 msgstr "Arabiska"
 
-#: data.php:555 data.php:709
+#: data.php:622 data.php:776
 msgid "Global"
 msgstr "Global"
 
-#: data.php:560
+#: data.php:627
 msgid "Egypt"
 msgstr "Egypten"
 
-#: data.php:565
+#: data.php:632
 msgid "Saudi Arabia"
 msgstr "Saudiarabien"
 
-#: data.php:570
+#: data.php:637
 msgid "Algeria"
 msgstr "Algeriet"
 
-#: data.php:575
+#: data.php:642
 msgid "Bahrain"
 msgstr "Bahrain"
 
-#: data.php:580
+#: data.php:647
 msgid "Chad"
 msgstr "Tchad"
 
-#: data.php:585
+#: data.php:652
 msgid "Comoros"
 msgstr "Komorerna"
 
-#: data.php:590
+#: data.php:657
 msgid "Djibouti"
 msgstr "Djibouti"
 
-#: data.php:595
+#: data.php:662
 msgid "Iraq"
 msgstr "Irak"
 
-#: data.php:600
+#: data.php:667
 msgid "Jordan"
 msgstr "Jordanien"
 
-#: data.php:605
+#: data.php:672
 msgid "Kuwait"
 msgstr "Kuwait"
 
-#: data.php:610
+#: data.php:677
 msgid "Lebanon"
 msgstr "Libanon"
 
-#: data.php:615
+#: data.php:682
 msgid "Libya"
 msgstr "Libyen"
 
-#: data.php:620
+#: data.php:687
 msgid "Mauritania"
 msgstr "Mauritanien"
 
-#: data.php:625
+#: data.php:692
 msgid "Morocco"
 msgstr "Marocko"
 
-#: data.php:630
+#: data.php:697
 msgid "Oman"
 msgstr "Oman"
 
-#: data.php:635
+#: data.php:702
 msgid "Palestine"
 msgstr "Palestina"
 
-#: data.php:640
+#: data.php:707
 msgid "Qatar"
 msgstr "Qatar"
 
-#: data.php:645
+#: data.php:712
 msgid "Somalia"
 msgstr "Somalia"
 
-#: data.php:650
+#: data.php:717
 msgid "Sudan"
 msgstr "Sudan"
 
-#: data.php:655
+#: data.php:722
 msgid "Syria"
 msgstr "Syrien"
 
-#: data.php:660
+#: data.php:727
 msgid "Tunisia"
 msgstr "Tunisien"
 
-#: data.php:665
+#: data.php:732
 msgid "United Arab Emirates"
 msgstr "Förenade Arabemiraten"
 
-#: data.php:670
+#: data.php:737
 msgid "Yemen"
 msgstr "Jemen"
 
-#: data.php:704
+#: data.php:771
 msgid "Chinese"
 msgstr "Kinesiska"
 
-#: data.php:714
+#: data.php:781
 msgid "China"
 msgstr "Kina"
 
-#: data.php:719
+#: data.php:786
 msgid "Hong Kong"
 msgstr "Hongkong"
 
-#: data.php:724
+#: data.php:791
 msgid "Malaysia"
 msgstr "Malaysia"
 
-#: data.php:729 data.php:965
+#: data.php:796 data.php:1032
 msgid "Singapore"
 msgstr "Singapore"
 
-#: data.php:763
+#: data.php:830
 msgid "Danish"
 msgstr "Danska"
 
-#: data.php:768
+#: data.php:835
 msgid "Denmark"
 msgstr "Danmark"
 
-#: data.php:802
+#: data.php:869
 msgid "Dutch"
 msgstr "Nederländska"
 
-#: data.php:807
+#: data.php:874
 msgid "Netherlands"
 msgstr "Nederländerna"
 
-#: data.php:812 data.php:1058
+#: data.php:879 data.php:1125
 msgid "Belgium"
 msgstr "Belgien"
 
-#: data.php:817
+#: data.php:884
 msgid "Suriname"
 msgstr "Surinam"
 
-#: data.php:851
+#: data.php:918
 msgid "Slovak"
 msgstr "Slovakiska"
 
-#: data.php:856
+#: data.php:923
 msgid "Slovakia"
 msgstr "Slovakien"
 
-#: data.php:861
+#: data.php:928
 msgid "Czech Republic"
 msgstr "Tjeckien"
 
-#: data.php:895
+#: data.php:962
 msgid "English"
 msgstr "Engelska"
 
-#: data.php:900
+#: data.php:967
 msgid "US / GB"
 msgstr "USA / GB"
 
-#: data.php:905
+#: data.php:972
 msgid "United Kingdom"
 msgstr "Storbritannien"
 
-#: data.php:910
+#: data.php:977
 msgid "United States"
 msgstr "USA"
 
-#: data.php:915
+#: data.php:982
 msgid "Australia"
 msgstr "Australien"
 
-#: data.php:920 data.php:1063
+#: data.php:987 data.php:1130
 msgid "Canada"
 msgstr "Kanada"
 
-#: data.php:925
+#: data.php:992
 msgid "Ireland"
 msgstr "Irland"
 
-#: data.php:930
+#: data.php:997
 msgid "New Zealand"
 msgstr "Nya Zeeland"
 
-#: data.php:935
+#: data.php:1002
 msgid "Nigeria"
 msgstr "Nigeria"
 
-#: data.php:940
+#: data.php:1007
 msgid "South Africa"
 msgstr "Sydafrika"
 
-#: data.php:945
+#: data.php:1012
 msgid "Kenya"
 msgstr "Kenya"
 
-#: data.php:950
+#: data.php:1017
 msgid "Ghana"
 msgstr "Ghana"
 
-#: data.php:955
+#: data.php:1022
 msgid "South Sudan"
 msgstr "Sydsudan"
 
-#: data.php:960
+#: data.php:1027
 msgid "Sierra Leone"
 msgstr "Sierra Leone"
 
-#: data.php:970
+#: data.php:1037
 msgid "Liberia"
 msgstr "Liberia"
 
-#: data.php:975
+#: data.php:1042
 msgid "Jamaica"
 msgstr "Jamaica"
 
-#: data.php:1009
+#: data.php:1076
 msgid "Finnish"
 msgstr "Finska"
 
-#: data.php:1014 data.php:1795
+#: data.php:1081 data.php:1862
 msgid "Finland"
 msgstr "Finland"
 
-#: data.php:1048
+#: data.php:1115
 msgid "French"
 msgstr "Franska"
 
-#: data.php:1053
+#: data.php:1120
 msgid "France"
 msgstr "Frankrike"
 
-#: data.php:1068
+#: data.php:1135
 msgid "Congo - Kinshasa"
 msgstr "Kongo - Kinshasa"
 
-#: data.php:1073
+#: data.php:1140
 msgid "Congo - Brazzaville"
 msgstr "Kongo - Brazzaville"
 
-#: data.php:1078
+#: data.php:1145
 msgid "Cameroon"
 msgstr "Kamerun"
 
-#: data.php:1083
+#: data.php:1150
 msgid "Ivory Coast"
 msgstr "Elfenbenskusten"
 
-#: data.php:1088 data.php:1137
+#: data.php:1155 data.php:1204
 msgid "Switzerland"
 msgstr "Schweiz"
 
-#: data.php:1122
+#: data.php:1189
 msgid "German"
 msgstr "Tyska"
 
-#: data.php:1127
+#: data.php:1194
 msgid "Germany"
 msgstr "Tyskland"
 
-#: data.php:1132
+#: data.php:1199
 msgid "Austria"
 msgstr "Österrike"
 
-#: data.php:1142
+#: data.php:1209
 msgid "Liechtenstein"
 msgstr "Liechtenstein"
 
-#: data.php:1176
+#: data.php:1243
 msgid "Greek"
 msgstr "Grekiska"
 
-#: data.php:1181
+#: data.php:1248
 msgid "Greece"
 msgstr "Grekland"
 
-#: data.php:1186 data.php:1839
+#: data.php:1253 data.php:1906
 msgid "Cyprus"
 msgstr "Cypern"
 
-#: data.php:1220
+#: data.php:1287
 msgid "Hebrew"
 msgstr "Hebreiska"
 
-#: data.php:1226
+#: data.php:1293
 msgid "Israel"
 msgstr "Israel"
 
-#: data.php:1260
+#: data.php:1327
 msgid "Hindi"
 msgstr "Hindi"
 
-#: data.php:1265
+#: data.php:1332
 msgid "India"
 msgstr "Indien"
 
-#: data.php:1270
+#: data.php:1337
 msgid "Pakistan"
 msgstr "Pakistan"
 
-#: data.php:1304
+#: data.php:1371
 msgid "Hungarian"
 msgstr "Ungerska"
 
-#: data.php:1309
+#: data.php:1376
 msgid "Hungary"
 msgstr "Ungern"
 
-#: data.php:1343
+#: data.php:1410
 msgid "Indonesian"
 msgstr "Indonesiska"
 
-#: data.php:1348
+#: data.php:1415
 msgid "Indonesia"
 msgstr "Indonesien"
 
-#: data.php:1382
+#: data.php:1449
 msgid "Italian"
 msgstr "Italienska"
 
-#: data.php:1387
+#: data.php:1454
 msgid "Italy"
 msgstr "Italien"
 
-#: data.php:1421
+#: data.php:1488
 msgid "Japanese"
 msgstr "Japanska"
 
-#: data.php:1426
+#: data.php:1493
 msgid "Japan"
 msgstr "Japan"
 
-#: data.php:1460
+#: data.php:1527
 msgid "Korean"
 msgstr "Koreanska"
 
-#: data.php:1465
+#: data.php:1532
 msgid "South Korea"
 msgstr "Sydkorea"
 
-#: data.php:1470
+#: data.php:1537
 msgid "North Korea"
 msgstr "Nord Korea"
 
-#: data.php:1504
+#: data.php:1571
 msgid "Polish"
 msgstr "Polska"
 
-#: data.php:1509
+#: data.php:1576
 msgid "Poland"
 msgstr "Polen"
 
-#: data.php:1543
+#: data.php:1610
 msgid "Portuguese"
 msgstr "Portugisiska"
 
-#: data.php:1548
+#: data.php:1615
 msgid "Portugal"
 msgstr "Portugal"
 
-#: data.php:1553
+#: data.php:1620
 msgid "Brazil"
 msgstr "Brasilien"
 
-#: data.php:1558
+#: data.php:1625
 msgid "Mozambique"
 msgstr "Mozambique"
 
-#: data.php:1563
+#: data.php:1630
 msgid "Angola"
 msgstr "Angola"
 
-#: data.php:1597
+#: data.php:1664
 msgid "Russian"
 msgstr "Ryska"
 
-#: data.php:1602
+#: data.php:1669
 msgid "Russia"
 msgstr "Ryssland"
 
-#: data.php:1607
+#: data.php:1674
 msgid "Kazakhstan"
 msgstr "Kazakstan"
 
-#: data.php:1612
+#: data.php:1679
 msgid "Belarus"
 msgstr "Vitryssland"
 
-#: data.php:1617
+#: data.php:1684
 msgid "Kyrgyzstan"
 msgstr "Kirgizistan"
 
-#: data.php:1622
+#: data.php:1689
 msgid "Tajikistan"
 msgstr "Tadzjikistan"
 
-#: data.php:1656
+#: data.php:1723
 msgid "Spanish"
 msgstr "Spanska"
 
-#: data.php:1661
+#: data.php:1728
 msgid "Spain"
 msgstr "Spanien"
 
-#: data.php:1666
+#: data.php:1733
 msgid "Mexico"
 msgstr "Mexiko"
 
-#: data.php:1671
+#: data.php:1738
 msgid "Argentina"
 msgstr "Argentina"
 
-#: data.php:1676
+#: data.php:1743
 msgid "Colombia"
 msgstr "Colombia"
 
-#: data.php:1681
+#: data.php:1748
 msgid "Peru"
 msgstr "Peru"
 
-#: data.php:1686
+#: data.php:1753
 msgid "Ecuador"
 msgstr "Ecuador"
 
-#: data.php:1691
+#: data.php:1758
 msgid "Bolivia"
 msgstr "Bolivia"
 
-#: data.php:1696
+#: data.php:1763
 msgid "Chile"
 msgstr "Chile"
 
-#: data.php:1701
+#: data.php:1768
 msgid "Equatorial Guinea"
 msgstr "Equatorial Guinea"
 
-#: data.php:1706
+#: data.php:1773
 msgid "Guatemala"
 msgstr "Guatemala"
 
-#: data.php:1711
+#: data.php:1778
 msgid "Cuba"
 msgstr "Kuba"
 
-#: data.php:1716
+#: data.php:1783
 msgid "Dominican Republic"
 msgstr "Dominikanska republiken"
 
-#: data.php:1721
+#: data.php:1788
 msgid "Honduras"
 msgstr "Honduras"
 
-#: data.php:1726
+#: data.php:1793
 msgid "Paraguay"
 msgstr "Paraguay"
 
-#: data.php:1731
+#: data.php:1798
 msgid "El Salvador"
 msgstr "El Salvador"
 
-#: data.php:1736
+#: data.php:1803
 msgid "Nicaragua"
 msgstr "Nicaragua"
 
-#: data.php:1741
+#: data.php:1808
 msgid "Costa Rica"
 msgstr "Costa Rica"
 
-#: data.php:1746
+#: data.php:1813
 msgid "Panama"
 msgstr "Panama"
 
-#: data.php:1751
+#: data.php:1818
 msgid "Uruguay"
 msgstr "Uruguay"
 
-#: data.php:1785
+#: data.php:1852
 msgid "Swedish"
 msgstr "Svenska"
 
-#: data.php:1790
+#: data.php:1857
 msgid "Sweden"
 msgstr "Sverige"
 
-#: data.php:1829
+#: data.php:1896
 msgid "Turkish"
 msgstr "Turkiska"
 
-#: data.php:1834
+#: data.php:1901
 msgid "Turkey"
 msgstr "Turkiet"
 
-#: data.php:1873
+#: data.php:1940
 msgid "Ukrainian"
 msgstr "Ukrainska"
 
-#: data.php:1878
+#: data.php:1945
 msgid "Ukraine"
 msgstr "Ukraina"
 
-#: data.php:1912
+#: data.php:1979
 msgid "Vietnamese"
 msgstr "Vietnamesisk"
 
-#: data.php:1917
+#: data.php:1984
 msgid "Vietnam"
 msgstr "Vietnam"
 
@@ -715,7 +715,7 @@ msgstr "Alla översättningar på sidan"
 msgid "Edit the page slug"
 msgstr "Redigera sidans slug"
 
-#: inc/admin/assets.php:326 inc/admin/assets.php:392 inc/assets.php:89
+#: inc/admin/assets.php:371 inc/admin/assets.php:437 inc/assets.php:89
 msgid ""
 "You are about to leave the page without saving your changes. They will be "
 "lost if you continue. Would you like to leave the page anyway?"
@@ -751,10 +751,12 @@ msgid "Add a dictionary entry"
 msgstr "Lägga till en ordbokspost"
 
 #: inc/admin/option-page-dictionary.php:55
+#: inc/admin/option-page-link-media.php:55
 msgid "Add an entry"
 msgstr "Lägg till en post"
 
 #: inc/admin/option-page-dictionary.php:64
+#: inc/admin/option-page-link-media.php:64
 msgid "Edit the entry"
 msgstr "Redigera posten"
 
@@ -763,14 +765,18 @@ msgid "All dictionary entries: "
 msgstr "Alla ordboksinlägg: "
 
 #: inc/admin/option-page-dictionary.php:117
+#: inc/admin/option-page-link-media.php:117
 msgid "Rule N°"
 msgstr "Regel nr"
 
 #: inc/admin/option-page-dictionary.php:127
-msgid "Edit entry"
-msgstr "Redigera inlägg"
+#: inc/admin/option-page-link-media.php:127
+#: inc/admin/option-page-settings.php:263 inc/admin/option-page-settings.php:328
+msgid "Edit"
+msgstr "Redigera"
 
 #: inc/admin/option-page-dictionary.php:134
+#: inc/admin/option-page-link-media.php:134
 #: inc/admin/option-page-settings.php:329
 msgid "Remove"
 msgstr "Ta bort"
@@ -799,19 +805,24 @@ msgstr "Översätt aldrig"
 
 #: inc/admin/option-page-dictionary.php:252
 #: inc/admin/option-page-dictionary.php:366
+#: inc/admin/option-page-link-media.php:446
 msgid " - Always translate by: "
 msgstr " - Översätt alltid av: "
 
 #: inc/admin/option-page-dictionary.php:279
 #: inc/admin/option-page-dictionary.php:393
+#: inc/admin/option-page-link-media.php:336
+#: inc/admin/option-page-link-media.php:472
 msgid "Cancel"
 msgstr "Avbryt"
 
 #: inc/admin/option-page-dictionary.php:287
+#: inc/admin/option-page-link-media.php:344
 msgid "Save new entry"
 msgstr "Spara ny post"
 
 #: inc/admin/option-page-dictionary.php:401
+#: inc/admin/option-page-link-media.php:480
 msgid "Save edited entry"
 msgstr "Spara redigerad post"
 
@@ -884,10 +895,84 @@ msgid "Exclude elements by CSS selector"
 msgstr "Uteslut element med CSS-väljare"
 
 #: inc/admin/option-page-exclusions.php:69 inc/admin/option-page-settings.php:78
-#: inc/admin/option-page-switcher.php:482
+#: inc/admin/option-page-switcher.php:496
 #: inc/admin/translation-edit-modal.php:71 inc/assets.php:96
 msgid "Save"
 msgstr "Spara"
+
+#: inc/admin/option-page-link-media.php:20
+msgid "wpLingua - Links & Medias"
+msgstr "wpLingua - Länkar & medier"
+
+#: inc/admin/option-page-link-media.php:34
+msgid "Links & medias"
+msgstr "Länkar & medier"
+
+#: inc/admin/option-page-link-media.php:38
+msgid "Links and medias translations rules: "
+msgstr "Regler för länkar och medieöversättningar: "
+
+#: inc/admin/option-page-link-media.php:40
+msgid ""
+"Translation rules on links and media allow different images to be displayed "
+"or link URLs to be changed according to the current language. These rules "
+"apply to elements such as: link target URLs, image source URLs, iframe source "
+"URLs, URLs in intercepted JSONs..."
+msgstr ""
+"Översättningsregler för länkar och media gör att olika bilder kan visas eller "
+"länkadresser ändras beroende på aktuellt språk. Dessa regler gäller för "
+"element som: länkmål-URL:er, bildkäll-URL:er, iframe-käll-URL:er, URL:er i "
+"avlyssnade JSON:er..."
+
+#: inc/admin/option-page-link-media.php:47
+msgid "Add a rule"
+msgstr "Lägg till en regel"
+
+#: inc/admin/option-page-link-media.php:102
+msgid "All links and medias rules: "
+msgstr "Alla länkar och medias regler: "
+
+#: inc/admin/option-page-link-media.php:149
+msgid "Mode: "
+msgstr "Läge: "
+
+#: inc/admin/option-page-link-media.php:158
+#: inc/admin/option-page-link-media.php:266
+#: inc/admin/option-page-link-media.php:402
+msgid "Exactly equal"
+msgstr "Exakt lika"
+
+#: inc/admin/option-page-link-media.php:162
+#: inc/admin/option-page-link-media.php:275
+#: inc/admin/option-page-link-media.php:411
+msgid "Partially equal"
+msgstr "Delvis lika"
+
+#: inc/admin/option-page-link-media.php:166
+msgid "Regex"
+msgstr "Regex"
+
+#: inc/admin/option-page-link-media.php:170
+msgid "Error"
+msgstr "Fel"
+
+#: inc/admin/option-page-link-media.php:182
+msgid "Original: "
+msgstr "Webbplatsens originalspråk: "
+
+#: inc/admin/option-page-link-media.php:241
+#: inc/admin/option-page-link-media.php:377
+msgid "Original URL: "
+msgstr "Original URL: "
+
+#: inc/admin/option-page-link-media.php:284
+#: inc/admin/option-page-link-media.php:420
+msgid "REGEX"
+msgstr "REGEX"
+
+#: inc/admin/option-page-link-media.php:310
+msgid " - URL: "
+msgstr " - URL: "
 
 #: inc/admin/option-page-register.php:19
 msgid "wpLingua is not compatible with Multisite."
@@ -1034,6 +1119,7 @@ msgstr "sidan för hämtning av API-nyckel"
 #: inc/admin/option-page-switcher.php:179 inc/admin/option-page-switcher.php:237
 #: inc/admin/option-page-switcher.php:331 inc/admin/option-page-switcher.php:384
 #: inc/admin/option-page-switcher.php:437 inc/admin/option-page-switcher.php:451
+#: inc/admin/option-page-switcher.php:465
 msgid "Click to expand"
 msgstr "Visa större"
 
@@ -1261,10 +1347,6 @@ msgstr "Kontakta support på wplingua.com"
 msgid "Custom"
 msgstr "Anpassad"
 
-#: inc/admin/option-page-settings.php:263 inc/admin/option-page-settings.php:328
-msgid "Edit"
-msgstr "Redigera"
-
 #: inc/admin/option-page-settings.php:269 inc/admin/option-page-settings.php:335
 msgid "Flag to use for this language: "
 msgstr "Flagga att använda för detta språk: "
@@ -1415,7 +1497,6 @@ msgid "No target language selected."
 msgstr "Inget målspråk valt."
 
 #: inc/admin/option-page-switcher.php:56
-#, fuzzy
 msgid "Preview"
 msgstr "Förhandsvisa"
 
@@ -1749,14 +1830,32 @@ msgstr ""
 "till och med en sid- eller temabyggare som Divi, Elementor..."
 
 #: inc/admin/option-page-switcher.php:450
+msgid "Gutenberg & FSE: "
+msgstr "Gutenberg & FSE: "
+
+#: inc/admin/option-page-switcher.php:453
+msgid "Block wpLingua Switcher"
+msgstr "Blockera wpLingua Switcher"
+
+#: inc/admin/option-page-switcher.php:457
+msgid ""
+"Block based themes, wpLingua offers a dedicated Gutenberg block. You can "
+"insert the switcher wherever you want, whether in the content or via the "
+"overall site editor."
+msgstr ""
+"Blockbaserade teman, wpLingua erbjuder ett dedikerat Gutenberg-block. Du kan "
+"infoga switchen var du vill, oavsett om det är i innehållet eller via den "
+"övergripande webbplatsredigeraren."
+
+#: inc/admin/option-page-switcher.php:464
 msgid "Switcher in menu: "
 msgstr "Omkopplare i menyn: "
 
-#: inc/admin/option-page-switcher.php:465
+#: inc/admin/option-page-switcher.php:479
 msgid "Appearance ➔ Menus"
 msgstr "Utseende ➔ Menyer"
 
-#: inc/admin/option-page-switcher.php:476
+#: inc/admin/option-page-switcher.php:490
 msgid ""
 "If the active theme manages menus (classic theme), it is possible to add a "
 "language switcher. The design of these language switchers will be defined by "
@@ -1770,85 +1869,93 @@ msgstr ""
 "underelement."
 
 #: inc/admin/option-page.php:17
-msgid "wplingua: Register"
-msgstr "wplingua: Registrera"
+msgid "wpLingua: Register"
+msgstr "wpLingua: Registrera dig"
 
 #: inc/admin/option-page.php:36 inc/admin/option-page.php:47
-msgid "wplingua: Settings"
-msgstr "wplingua: Inställningar"
+msgid "wpLingua: Settings"
+msgstr "wpLingua: Inställningar"
 
 #: inc/admin/option-page.php:48
 msgid "General settings"
-msgstr "Allmänna inställningar"
+msgstr "Generella inställningar"
 
 #: inc/admin/option-page.php:56
-msgid "wplingua: Switcher"
-msgstr "wplingua: Omkopplare"
+msgid "wpLingua: Switcher"
+msgstr "wpLingua: Omkopplare"
 
 #: inc/admin/option-page.php:57
 msgid "Switcher"
 msgstr "Knapp för att byta innehåll"
 
 #: inc/admin/option-page.php:65
-msgid "wplingua: Dictionary"
-msgstr "wplingua: Ordbok"
+msgid "wpLingua: Exclusion"
+msgstr "wpLingua: Uteslutning"
 
 #: inc/admin/option-page.php:66
-msgid "Dictionary"
-msgstr "Ordbok"
-
-#: inc/admin/option-page.php:74
-msgid "wplingua: Exclusion"
-msgstr "wplingua: Uteslutning"
-
-#: inc/admin/option-page.php:75
 msgid "Exclusion"
 msgstr "Exkludering"
 
-#: inc/admin/option-page.php:83
-msgid "wplingua: Website slugs"
-msgstr "wplingua: Webbplatssniglar"
+#: inc/admin/option-page.php:74
+msgid "wpLingua: Dictionary"
+msgstr "wpLingua: Ordbok"
 
-#: inc/admin/option-page.php:84 inc/admin/slug-cpt.php:19
+#: inc/admin/option-page.php:75
+msgid "Dictionary"
+msgstr "Ordbok"
+
+#: inc/admin/option-page.php:83
+msgid "wplingua: Links & Medias"
+msgstr "wplingua: Länkar & Medier"
+
+#: inc/admin/option-page.php:84
+msgid "Links & Medias"
+msgstr "Länkar & Medier"
+
+#: inc/admin/option-page.php:92
+msgid "wpLingua: Website slugs"
+msgstr "wpLingua: Sniglar för webbplatser"
+
+#: inc/admin/option-page.php:93 inc/admin/slug-cpt.php:19
 #: inc/admin/slug-cpt.php:23
 msgid "Website slugs"
 msgstr "Webbplatsens sniglar"
 
-#: inc/admin/option-page.php:92
-msgid "wplingua: Translations"
-msgstr "wplingua: Översättningar"
+#: inc/admin/option-page.php:101
+msgid "wpLingua: Translations"
+msgstr "wpLingua: Översättningar"
 
-#: inc/admin/option-page.php:93 inc/admin/translation-cpt.php:21
+#: inc/admin/option-page.php:102 inc/admin/translation-cpt.php:21
 msgid "All translations"
 msgstr "Alla översättningar"
 
-#: inc/admin/option-page.php:156
+#: inc/admin/option-page.php:169
 msgid "Thank you for choosing wpLingua!"
 msgstr "Tack för att du valde wpLingua!"
 
-#: inc/admin/option-page.php:159
+#: inc/admin/option-page.php:172
 #, php-format
 msgid "If you like wpLingua please leave us a %1$s rating. A huge thanks!"
 msgstr ""
 "Om du gillar wpLingua vänligen lämna oss ett %1$s betyg. Ett stort tack!"
 
-#: inc/admin/option-page.php:160
+#: inc/admin/option-page.php:173
 msgid "five stars"
 msgstr "fem stjärnor"
 
-#: inc/admin/option-page.php:194
+#: inc/admin/option-page.php:208
 msgid "Version"
 msgstr "Version"
 
-#: inc/admin/option-page.php:217
+#: inc/admin/option-page.php:231
 msgid "Settings"
 msgstr "Inställningar"
 
-#: inc/admin/option-page.php:242
+#: inc/admin/option-page.php:274
 msgid "wpLingua - Translation solution for multilingual website"
 msgstr "wpLingua - Översättningslösning för flerspråkiga webbplatser"
 
-#: inc/admin/option-page.php:245
+#: inc/admin/option-page.php:277
 msgid ""
 "wpLingua is installed, but not yet configured. You are just a few clicks away "
 "from making your website multilingual!"
@@ -1856,15 +1963,15 @@ msgstr ""
 "wpLingua är installerat, men ännu inte konfigurerat. Nu är du bara några "
 "klick från att göra din webbplats flerspråkig!"
 
-#: inc/admin/option-page.php:248
+#: inc/admin/option-page.php:280
 msgid "Go to the configuration page"
 msgstr "Gå till konfigurationssidan"
 
-#: inc/admin/option-page.php:309
+#: inc/admin/option-page.php:358
 msgid "wpLingua - Incompatible plugin detected"
 msgstr "wpLingua - Inkompatibelt insticksprogram upptäckt"
 
-#: inc/admin/option-page.php:312
+#: inc/admin/option-page.php:361
 msgid ""
 "You have several translation plugins. This may result in unpredictable or "
 "incorrect behavior. For best results, use only one translation plugin at a "
@@ -1874,19 +1981,47 @@ msgstr ""
 "felaktigt beteende. För bästa resultat, använd endast ett översättningsplugin "
 "åt gången. Dessa insticksprogram kan orsaka problem med wpLingua: "
 
-#: inc/admin/option-page.php:329
+#: inc/admin/option-page.php:378
 #, php-format
 msgid "Deactivate plugin: %1$s"
 msgstr "Avaktivera plugin: %1$s"
 
-#: inc/admin/option-page.php:338
-#, fuzzy
+#: inc/admin/option-page.php:387
 msgid "Deactivate"
-msgstr "Avaktivera"
+msgstr "Inaktivera"
 
-#: inc/admin/option-page.php:355
+#: inc/admin/option-page.php:404
 msgid "Manage active plugins"
 msgstr "Hantera aktiva plugins"
+
+#: inc/admin/option-page.php:433
+msgid "wpLingua - Incompatible with multisite"
+msgstr "wpLingua - Inkompatibel med multisite"
+
+#: inc/admin/option-page.php:436
+msgid "wpLingua is not compatible with multisite."
+msgstr "wpLingua är inte kompatibel med multisite."
+
+#: inc/admin/option-page.php:464
+msgid "wpLingua - Incompatible with WordPress installed in a subfolder"
+msgstr "wpLingua - Inkompatibel med WordPress installerad i en undermapp"
+
+#: inc/admin/option-page.php:467
+msgid "wpLingua is not compatible with WordPress installed in a subfolder."
+msgstr ""
+"wpLingua är inte kompatibel med WordPress som är installerat i en undermapp."
+
+#: inc/admin/option-page.php:495
+msgid "wpLingua - Incompatible PHP version"
+msgstr "wpLingua - Inkompatibel PHP-version"
+
+#: inc/admin/option-page.php:498
+msgid ""
+"wpLingua is not compatible with your PHP version. wpLingua requires PHP 7.4 "
+"or higher."
+msgstr ""
+"wpLingua är inte kompatibel med din PHP-version. wpLingua kräver PHP 7.4 "
+"eller högre."
 
 #: inc/admin/slug-cpt.php:20
 msgid "Website slug"
@@ -1958,9 +2093,9 @@ msgstr " - Ursprunglig slug: "
 msgid "Regenerate translation"
 msgstr "Förnya översättning"
 
-#: inc/admin/slug-meta.php:158
-msgid "Mark slug translation as review"
-msgstr "Markera slug-översättning som granskning"
+#: inc/admin/slug-meta.php:158 inc/admin/translation-meta.php:150
+msgid "Mark as review"
+msgstr "Markera som recension"
 
 #: inc/admin/slug-meta.php:173 inc/admin/translation-meta.php:159
 msgid "Generate translation"
@@ -2059,10 +2194,6 @@ msgstr "Spara översättning misslyckades"
 msgid " - Original text: "
 msgstr " - Originaltext: "
 
-#: inc/admin/translation-meta.php:150
-msgid "Mark translation as review"
-msgstr "Markera översättning som granskning"
-
 #: inc/admin/translation-meta.php:214
 msgid " - Translation: "
 msgstr " - Översättning: "
@@ -2091,11 +2222,11 @@ msgstr "Fel - API:et kunde inte anropas."
 msgid "Error - API response not valid."
 msgstr "Fel - API-svaret är inte giltigt."
 
-#: inc/api-call/validate-api-key.php:189
+#: inc/api-call/validate-api-key.php:191
 msgid "Code"
 msgstr "Kod"
 
-#: inc/api-call/validate-api-key.php:207
+#: inc/api-call/validate-api-key.php:209
 msgid "API returned an unexpected response."
 msgstr "API gav ett oväntat svar."
 
@@ -2136,7 +2267,6 @@ msgid "All"
 msgstr "Alla"
 
 #: inc/dom/mode-list.php:211
-#, fuzzy
 msgid "Order"
 msgstr "Order"
 
@@ -2234,3 +2364,9 @@ msgstr ""
 #. Author of the plugin/theme
 msgid "wpLingua Translation Service"
 msgstr "wpLingua Översättningstjänst"
+
+#~ msgid "Edit entry"
+#~ msgstr "Redigera inlägg"
+
+#~ msgid "Mark slug translation as review"
+#~ msgstr "Markera slug-översättning som granskning"
