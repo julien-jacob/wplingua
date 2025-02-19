@@ -20,7 +20,11 @@ function wplng_get_translated_text_from_translations( $text, $translations ) {
 	}
 
 	// Manage non breaking space
-	$text = str_replace( '&nbsp;', ' ', $text );
+	$text = str_replace(
+		array( '&nbsp;', ' ' ),
+		array( ' ', ' ' ),
+		$text
+	);
 
 	/**
 	 * Get spaces before and after text

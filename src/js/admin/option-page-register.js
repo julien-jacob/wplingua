@@ -1,5 +1,21 @@
-jQuery(document).ready(function ($) {
+/*!*
+ **                 _     _                         
+ ** __      ___ __ | |   (_)_ __   __ _ _   _  __ _ 
+ ** \ \ /\ / / '_ \| |   | | '_ \ / _` | | | |/ _` |
+ **  \ V  V /| |_) | |___| | | | | (_| | |_| | (_| |
+ **   \_/\_/ | .__/|_____|_|_| |_|\__, |\__,_|\__,_|
+ **          |_|                  |___/             
+ **
+ **        -- wpLingua | WordPress plugin --
+ **   Translate and make your website multilingual
+ **
+ **     https://github.com/julien-jacob/wplingua
+ **      https://wordpress.org/plugins/wplingua/
+ **              https://wplingua.com/
+ **
+ **/
 
+jQuery(document).ready(function ($) {
 
     if (!$("#wplng-language-website").length) {
         return;
@@ -71,15 +87,15 @@ jQuery(document).ready(function ($) {
     /**
     * Smooth scrolling to page anchor on click
     **/
-    $("a[href*='#wplng-']:not([href='#'])").click(function() {
+    $("a[href*='#wplng-']:not([href='#'])").click(function () {
         if (
             location.hostname == this.hostname
-            && this.pathname.replace(/^\//,"") == location.pathname.replace(/^\//,"")
+            && this.pathname.replace(/^\//, "") == location.pathname.replace(/^\//, "")
         ) {
             let anchor = $(this.hash);
-            anchor = anchor.length ? anchor : $("[name=" + this.hash.slice(1) +"]");
-            if ( anchor.length ) {
-                $("html, body").animate( { scrollTop: anchor.offset().top - 50 }, 1000);
+            anchor = anchor.length ? anchor : $("[name=" + this.hash.slice(1) + "]");
+            if (anchor.length) {
+                $("html, body").animate({ scrollTop: anchor.offset().top - 50 }, 1000);
             }
         }
     });

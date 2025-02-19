@@ -239,6 +239,51 @@ function wplng_option_page_exclusions_assets( $hook ) {
 
 
 /**
+ * Register wpLingua assets for option page : Links & Medias
+ *
+ * @param string $hook
+ * @return void
+ */
+function wplng_option_page_link_media_assets( $hook ) {
+
+	if ( ! is_admin()
+		|| $hook !== 'wplingua_page_wplingua-link-media'
+	) {
+		return;
+	}
+
+	/**
+	 * Enqueue jQuery
+	 */
+
+	 wp_enqueue_script( 'jquery' );
+
+	 /**
+	  * Enqueue wpLingua JS scripts
+	  */
+
+	wp_enqueue_script(
+		'wplingua-option-link-media',
+		plugins_url() . '/wplingua/assets/js/admin/option-page-link-media.js',
+		array( 'jquery' ),
+		WPLNG_PLUGIN_VERSION
+	);
+
+	/**
+	 * Enqueue wpLingua CSS styles
+	 */
+
+	wp_enqueue_style(
+		'wplingua-option-link-media',
+		plugins_url() . '/wplingua/assets/css/admin/option-page-link-media.css',
+		array(),
+		WPLNG_PLUGIN_VERSION
+	);
+
+}
+
+
+/**
  * Register wpLingua assets for option page : Dictionary
  *
  * @param string $hook

@@ -162,6 +162,7 @@ function wplng_data_excluded_selector_default() {
 		'link[title="oEmbed (JSON)"]',
 		'link[title="oEmbed (XML)"]',
 		'link[title="JSON"]',
+		'link[type="application/rss+xml"]',
 
 		// Default class
 		'.no-translate',
@@ -199,6 +200,9 @@ function wplng_data_excluded_selector_default() {
 
 		// Plugin: Google Site Kit
 		'#googlesitekit-base-data-js-extra',
+
+		// Plugin: Smash Balloon - Social photo feed
+		'#sb_instagram',
 	);
 }
 
@@ -376,6 +380,12 @@ function wplng_data_attr_text_to_translate() {
 				'attr'     => 'data-search-placeholde',
 				'selector' => '[data-search-placeholde]',
 			),
+
+			// Plugin: Smart Slider 3
+			array(
+				'attr'     => 'data-title',
+				'selector' => '[data-title]',
+			),
 		)
 	);
 }
@@ -409,6 +419,18 @@ function wplng_data_attr_url_to_translate() {
 			array(
 				'attr'     => 'content',
 				'selector' => 'meta[name="dc.relation"]',
+			),
+			array(
+				'attr'     => 'src',
+				'selector' => 'img[src]',
+			),
+			array(
+				'attr'     => 'src',
+				'selector' => 'img[srcset]',
+			),
+			array(
+				'attr'     => 'src',
+				'selector' => 'iframe[src]',
 			),
 		)
 	);

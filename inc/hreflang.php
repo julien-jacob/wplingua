@@ -95,3 +95,15 @@ function wplng_link_alternate_hreflang() {
 
 	echo $html;
 }
+
+
+/**
+ * Disable web browser automatic translation by adding attribute to HTML tag
+ * <html lang="??_??" translate="no">
+ *
+ * @param string $attr
+ * @return string $attr
+ */
+function wplng_disable_web_browser_auto_translate( $attr ) {
+	return $attr . ' translate="no"';
+}

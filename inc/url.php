@@ -11,28 +11,57 @@ if ( ! defined( 'WPINC' ) ) {
  *
  * @param string $url
  * @param string $language_target_id
- * @return string
+ * @return string Translated URL
  */
 function wplng_url_translate( $url, $language_target_id = '' ) {
+	return apply_filters(
+		'wplng_url_translate',
+		wplng_url_translate_no_filter(
+			$url,
+			$language_target_id
+		)
+	);
+}
+
+
+/**
+ * Get the translated URL - No apply 'wplng_url_translate' filter
+ *
+ * @param string $url
+ * @param string $language_target_id
+ * @return string Translated URL
+ */
+function wplng_url_translate_no_filter( $url, $language_target_id = '' ) {
 
 	// Check if URL is an empty string
 	if ( '' === $url ) {
 		return '';
 	}
 
-	// Check if URL is translatable (exclude /admin/, ...)
+	// Get current target ID if not set
+	if ( '' === $language_target_id ) {
+		$language_target_id = wplng_get_language_current_id();
+	}
+
+	// Apply links / Medias rules
+	$url_link_media_applied = wplng_link_media_apply_rules(
+		$url,
+		$language_target_id
+	);
+
+	// Check if a links / Medias rules was applied
+	if ( $url_link_media_applied !== $url ) {
+		return $url_link_media_applied;
+	}
+
+	// Check if URL is not translatable (exclude /admin/, ...)
 	if ( ! wplng_url_is_translatable( $url ) ) {
 		return $url;
 	}
 
 	$languages_target = wplng_get_languages_target();
-
-	if ( '' === $language_target_id ) {
-		$language_target_id = wplng_get_language_current_id();
-	}
-
-	$preg_domain     = '';
-	$parsed_url_home = wp_parse_url( home_url() );
+	$preg_domain      = '';
+	$parsed_url_home  = wp_parse_url( home_url() );
 
 	if ( isset( $parsed_url_home['host'] )
 		&& is_string( $parsed_url_home['host'] )
@@ -106,11 +135,6 @@ function wplng_url_translate( $url, $language_target_id = '' ) {
 			$url = $language_target_id . '/' . $url;
 		}
 	}
-
-	$url = apply_filters(
-		'wplng_url_translate',
-		$url
-	);
 
 	return $url;
 }

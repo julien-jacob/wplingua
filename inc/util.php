@@ -395,3 +395,34 @@ function wplng_json_element_is_translatable( $element, $parents ) {
 		$parents
 	);
 }
+
+
+/**
+ * Get the context
+ *
+ * @return string Context
+ */
+function wplng_get_context() {
+
+	$context = 'UNKNOW';
+
+	if ( defined( 'DOING_AJAX' )
+		&& DOING_AJAX
+		&& ! empty( $_SERVER['HTTP_REFERER'] )
+	) {
+		$context = $_SERVER['HTTP_REFERER'];
+		$context = sanitize_url( $context );
+	} elseif ( isset( $_SERVER['HTTPS'] )
+		&& isset( $_SERVER['HTTP_HOST'] )
+		&& isset( $_SERVER['REQUEST_URI'] )
+	) {
+		$context  = ( empty( $_SERVER['HTTPS'] ) ? 'http' : 'https' );
+		$context .= '://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+		$context  = sanitize_url( $context );
+	}
+
+	return apply_filters( 
+		'wplng_api_call_translate_context', 
+		$context 
+	);
+}

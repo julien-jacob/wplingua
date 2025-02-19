@@ -7,44 +7,44 @@ if ( ! defined( 'WPINC' ) ) {
 
 
 /**
- * Print HTML Option page : wpLingua Dictionary
+ * Print HTML Option page - wpLingua : Links & Medias
  *
  * @return void
  */
-function wplng_option_page_dictionary() {
+function wplng_option_page_link_media() {
 
-	$entries_json = wplng_dictionary_get_entries_json();
+	$entries_json = wplng_link_media_get_entries_json();
 
 	?>
 
-	<h1 class="wplng-option-page-title"><span class="dashicons dashicons-translation"></span> <?php esc_html_e( 'wpLingua - Dictionary rules', 'wplingua' ); ?></h1>
+	<h1 class="wplng-option-page-title"><span class="dashicons dashicons-translation"></span> <?php esc_html_e( 'wpLingua - Links & Medias', 'wplingua' ); ?></h1>
 
 	<div class="wrap">
 		<hr class="wp-header-end">
 		<form method="post" action="options.php">
 			<?php
-			settings_fields( 'wplng_dictionary' );
-			do_settings_sections( 'wplng_dictionary' );
+			settings_fields( 'wplng_link_media' );
+			do_settings_sections( 'wplng_link_media' );
 			?>
 
-			<textarea name="wplng_dictionary_entries" id="wplng_dictionary_entries" style="display: none;" type="hidden"><?php echo esc_textarea( $entries_json ); ?></textarea>
+			<textarea name="wplng_link_media_entries" id="wplng_link_media_entries" style="display: none;" type="hidden"><?php echo esc_textarea( $entries_json ); ?></textarea>
 
 			<table class="form-table wplng-form-table">
 				<tr id="wplng-section-entries-all">
-					<th scope="row"><span class="dashicons dashicons-book"></span> <?php esc_html_e( 'Dictionary entries', 'wplingua' ); ?></th>
+					<th scope="row"><span class="dashicons dashicons-format-gallery"></span> <?php esc_html_e( 'Links & medias', 'wplingua' ); ?></th>
 					<td>
 						<fieldset>
 
-							<p><strong><?php esc_html_e( 'Translation rules by dictionary: ', 'wplingua' ); ?></strong></p>
+							<p><strong><?php esc_html_e( 'Links and medias translations rules: ', 'wplingua' ); ?></strong></p>
 
-							<p><?php esc_html_e( 'The dictionary allows you to define translation rules that apply when generating machine translations. You can specify words or sets of words that should never be translated, or define how they should be translated for each language.', 'wplingua' ); ?></p>
+							<p><?php esc_html_e( 'Translation rules on links and media allow different images to be displayed or link URLs to be changed according to the current language. These rules apply to elements such as: link target URLs, image source URLs, iframe source URLs, URLs in intercepted JSONs...', 'wplingua' ); ?></p>
 
 							<hr>
 
-							<?php wplng_option_page_dictionary_entries_html(); ?>
+							<?php wplng_option_page_link_media_entries_html(); ?>
 
 							<a href="javascript:void(0);" class="button button-primary" id="wplng-new-rule-button">
-								<?php esc_html_e( 'Add a dictionary entry', 'wplingua' ); ?>
+								<?php esc_html_e( 'Add a rule', 'wplingua' ); ?>
 							</a>
 
 						</fieldset>
@@ -54,8 +54,8 @@ function wplng_option_page_dictionary() {
 				<tr id="wplng-section-entry-new" style="display: none;">
 					<th scope="row"><span class="dashicons dashicons-welcome-add-page"></span> <?php esc_html_e( 'Add an entry', 'wplingua' ); ?></th>
 					<td>
-						<div id="wplng-dictionary-entry-new">
-							<?php wplng_option_page_dictionary_new_entry_html(); ?>
+						<div id="wplng-link-media-entry-new">
+							<?php wplng_option_page_link_media_new_entry_html(); ?>
 						</div>
 					</td>
 				</tr>
@@ -63,8 +63,8 @@ function wplng_option_page_dictionary() {
 				<tr id="wplng-section-entry-edit" style="display: none;">
 					<th scope="row"><span class="dashicons dashicons-welcome-write-blog"></span> <?php esc_html_e( 'Edit the entry', 'wplingua' ); ?></th>
 					<td>
-						<div id="wplng-dictionary-entry-edit">
-							<?php wplng_option_page_dictionary_edit_entry_html(); ?>
+						<div id="wplng-link-media-entry-edit">
+							<?php wplng_option_page_link_media_edit_entry_html(); ?>
 						</div>
 					</td>
 				</tr>
@@ -83,11 +83,11 @@ function wplng_option_page_dictionary() {
  *
  * @return void
  */
-function wplng_option_page_dictionary_entries_html() {
+function wplng_option_page_link_media_entries_html() {
 
-	$dictionary_entries = wplng_dictionary_get_entries();
+	$link_media_entries = wplng_link_media_get_entries();
 
-	if ( empty( $dictionary_entries ) ) {
+	if ( empty( $link_media_entries ) ) {
 		return '';
 	}
 
@@ -99,15 +99,15 @@ function wplng_option_page_dictionary_entries_html() {
 	$language_website_html .= '>';
 
 	$html  = '<label><strong>';
-	$html .= esc_html__( 'All dictionary entries: ', 'wplingua' );
+	$html .= esc_html__( 'All links and medias rules: ', 'wplingua' );
 	$html .= '</strong></label>';
 	$html .= '<br>';
-	$html .= '<div id="wplng-dictionary-entries">';
+	$html .= '<div id="wplng-link-media-entries">';
 
-	foreach ( $dictionary_entries as $rule_number => $entry ) {
+	foreach ( $link_media_entries as $rule_number => $entry ) {
 
 		$html .= '<div';
-		$html .= ' class="wplng-dictionary-entry"';
+		$html .= ' class="wplng-link-media-entry"';
 		$html .= ' wplng-rule="' . esc_attr( $rule_number ) . '"';
 		$html .= '>';
 
@@ -141,11 +141,51 @@ function wplng_option_page_dictionary_entries_html() {
 
 		if ( isset( $entry['rules'] ) ) {
 
+			/**
+			 * Mode
+			 */
+
+			$html .= '<strong>';
+			$html .= esc_html__( 'Mode: ', 'wplingua' );
+			$html .= '</strong>';
+
+			if ( empty( $entry['rules'] ) ) {
+				$entry['rules'] = 'exactly';
+			}
+
+			switch ( $entry['mode'] ) {
+				case 'exactly':
+					$html .= esc_html__( 'Exactly equal', 'wplingua' );
+					break;
+
+				case 'partially':
+					$html .= esc_html__( 'Partially equal', 'wplingua' );
+					break;
+
+				case 'regex':
+					$html .= esc_html__( 'Regex', 'wplingua' );
+					break;
+
+				default:
+					$html .= esc_html__( 'Error', 'wplingua' );
+					break;
+			}
+
+			$html .= '<hr>';
+
+			/**
+			 * Source
+			 */
+
 			$html .= '<strong>';
 			$html .= $language_website_html;
-			$html .= esc_html__( 'Always translate: ', 'wplingua' );
+			$html .= esc_html__( 'Original: ', 'wplingua' );
 			$html .= '</strong>';
 			$html .= esc_html( $entry['source'] );
+
+			/**
+			 * Rules
+			 */
 
 			foreach ( $entry['rules'] as $language_id => $rule ) {
 
@@ -159,15 +199,10 @@ function wplng_option_page_dictionary_entries_html() {
 				$html .= ' class="wplng-flag"';
 				$html .= '>';
 				$html .= esc_html( $language['name'] );
-				$html .= esc_html__( ' - By: ', 'wplingua' );
+				$html .= ' : ';
 				$html .= '</strong>';
 				$html .= esc_html( $rule );
 			}
-		} else {
-			$html .= '<strong>';
-			$html .= esc_html__( 'Never translate: ', 'wplingua' );
-			$html .= '</strong>';
-			$html .= esc_html( $entry['source'] );
 		}
 
 		$html .= '</div>'; // End .wplng-dictionary-entry
@@ -180,16 +215,16 @@ function wplng_option_page_dictionary_entries_html() {
 
 
 /**
- * Print HTML subsection of Option page : wpLingua Dictionary - New entry
+ * Print HTML subsection of Option page : wpLingua Links & Medias - New entry
  *
  * @return void
  */
-function wplng_option_page_dictionary_new_entry_html() {
+function wplng_option_page_link_media_new_entry_html() {
 
 	$html = '';
 
 	/**
-	* Input : Source
+	* Input: Source
 	*/
 
 	$language_website       = wplng_get_language_website();
@@ -203,33 +238,56 @@ function wplng_option_page_dictionary_new_entry_html() {
 	$html .= '<label for="wplng-new-source">';
 	$html .= '<strong>';
 	$html .= $language_website_html;
-	$html .= esc_html__( 'Source text: ', 'wplingua' );
+	$html .= esc_html__( 'Original URL: ', 'wplingua' );
 	$html .= '</strong>';
 	$html .= '</label>';
 	$html .= '<br>';
-	$html .= '<textarea';
+	$html .= '<input';
+	$html .= ' type="text"';
 	$html .= ' name="wplng-new-source"';
 	$html .= ' id="wplng-new-source"';
-	$html .= ' class="wplng-adaptive-textarea"';
 	$html .= ' maxlength="256"';
-	$html .= '>';
-	$html .= '</textarea>';
+	$html .= '/>';
 	$html .= '</fieldset>';
 
 	/**
-	 * Input : Never translate
+	 * Input: Mode
 	 */
 
-	$html .= '<fieldset>';
+	$html .= '<fieldset class="wplng-link-media-mode">';
 	$html .= '<input';
-	$html .= ' type="checkbox"';
-	$html .= ' id="wplng-new-never-translate"';
-	$html .= ' name="wplng-new-never-translate"';
+	$html .= ' type="radio"';
+	$html .= ' name="wplng_new_mode"';
+	$html .= ' value="exactly"';
+	$html .= ' id="wplng_new_mode_exactly"';
+	$html .= ' checked';
 	$html .= '>';
-	$html .= '<label for="wplng-new-never-translate"> ';
-	$html .= esc_html__( 'Never translate', 'wplingua' );
+	$html .= '<label for="wplng_new_mode_exactly"> ';
+	$html .= esc_html__( 'Exactly equal', 'wplingua' );
+	$html .= '</label> ';
+	$html .= '<input';
+	$html .= ' type="radio"';
+	$html .= ' name="wplng_new_mode"';
+	$html .= ' value="partially"';
+	$html .= ' id="wplng_new_mode_partially"';
+	$html .= '>';
+	$html .= '<label for="wplng_new_mode_partially"> ';
+	$html .= esc_html__( 'Partially equal', 'wplingua' );
+	$html .= '</label> ';
+	$html .= '<input';
+	$html .= ' type="radio"';
+	$html .= ' name="wplng_new_mode"';
+	$html .= ' value="wplng_new_mode_regex"';
+	$html .= ' id="wplng_new_mode_regex"';
+	$html .= '>';
+	$html .= '<label for="wplng_new_mode_regex"> ';
+	$html .= esc_html__( 'REGEX', 'wplingua' );
 	$html .= '</label>';
 	$html .= '</fieldset>';
+
+	/**
+	 * Input: Rules
+	 */
 
 	$language_target = wplng_get_languages_target();
 
@@ -249,19 +307,18 @@ function wplng_option_page_dictionary_new_entry_html() {
 		$html .= ' class="wplng-flag"';
 		$html .= '>';
 		$html .= esc_html( $language['name'] );
-		$html .= esc_html__( ' - Always translate by: ', 'wplingua' );
+		$html .= esc_html__( ' - URL: ', 'wplingua' );
 		$html .= '</strong>';
 		$html .= '</label>';
 
 		$html .= '<br>';
 
-		$html .= '<textarea';
+		$html .= '<input';
+		$html .= ' type="text"';
 		$html .= ' name="' . esc_attr( $name ) . '"';
 		$html .= ' id="' . esc_attr( $name ) . '"';
-		$html .= ' class="wplng-adaptive-textarea"';
 		$html .= ' maxlength="256"';
-		$html .= '>';
-		$html .= '</textarea>';
+		$html .= '/>';
 
 		$html .= '</fieldset>';
 		$html .= '</div>';
@@ -294,11 +351,11 @@ function wplng_option_page_dictionary_new_entry_html() {
 
 
 /**
- * Print HTML subsection of Option page : wpLingua Dictionary - Edit entry
+ * Print HTML subsection of Option page : wpLingua Links & Medias - Edit entry
  *
  * @return void
  */
-function wplng_option_page_dictionary_edit_entry_html() {
+function wplng_option_page_link_media_edit_entry_html() {
 
 	$html = '';
 
@@ -317,33 +374,56 @@ function wplng_option_page_dictionary_edit_entry_html() {
 	$html .= '<label for="wplng-edit-source">';
 	$html .= '<strong>';
 	$html .= $language_website_html;
-	$html .= esc_html__( 'Source text: ', 'wplingua' );
+	$html .= esc_html__( 'Original URL: ', 'wplingua' );
 	$html .= '</strong>';
 	$html .= '</label>';
 	$html .= '<br>';
-	$html .= '<textarea';
+	$html .= '<input';
+	$html .= ' type="text"';
 	$html .= ' name="wplng-edit-source"';
 	$html .= ' id="wplng-edit-source"';
-	$html .= ' class="wplng-adaptive-textarea"';
 	$html .= ' maxlength="256"';
-	$html .= '>';
-	$html .= '</textarea>';
+	$html .= '/>';
 	$html .= '</fieldset>';
 
 	/**
-	 * Input : Never translate
+	 * Input: Mode
 	 */
 
-	$html .= '<fieldset>';
+	$html .= '<fieldset class="wplng-link-media-mode">';
 	$html .= '<input';
-	$html .= ' type="checkbox"';
-	$html .= ' id="wplng-edit-never-translate"';
-	$html .= ' name="wplng-edit-never-translate"';
+	$html .= ' type="radio"';
+	$html .= ' name="wplng_edit_mode"';
+	$html .= ' value="exactly"';
+	$html .= ' id="wplng_edit_mode_exactly"';
+	$html .= ' checked';
 	$html .= '>';
-	$html .= '<label for="wplng-edit-never-translate"> ';
-	$html .= esc_html__( 'Never translate', 'wplingua' );
+	$html .= '<label for="wplng_edit_mode_exactly"> ';
+	$html .= esc_html__( 'Exactly equal', 'wplingua' );
+	$html .= '</label> ';
+	$html .= '<input';
+	$html .= ' type="radio"';
+	$html .= ' name="wplng_edit_mode"';
+	$html .= ' value="partially"';
+	$html .= ' id="wplng_edit_mode_partially"';
+	$html .= '>';
+	$html .= '<label for="wplng_edit_mode_partially"> ';
+	$html .= esc_html__( 'Partially equal', 'wplingua' );
+	$html .= '</label> ';
+	$html .= '<input';
+	$html .= ' type="radio"';
+	$html .= ' name="wplng_edit_mode"';
+	$html .= ' value="regex"';
+	$html .= ' id="wplng_edit_mode_regex"';
+	$html .= '>';
+	$html .= '<label for="wplng_edit_mode_regex"> ';
+	$html .= esc_html__( 'REGEX', 'wplingua' );
 	$html .= '</label>';
 	$html .= '</fieldset>';
+
+	/**
+	 * Input: Rules
+	 */
 
 	$language_target = wplng_get_languages_target();
 
@@ -369,13 +449,12 @@ function wplng_option_page_dictionary_edit_entry_html() {
 
 		$html .= '<br>';
 
-		$html .= '<textarea';
+		$html .= '<input';
+		$html .= ' type="text"';
 		$html .= ' name="' . esc_attr( $name ) . '"';
 		$html .= ' id="' . esc_attr( $name ) . '"';
-		$html .= ' class="wplng-adaptive-textarea"';
 		$html .= ' maxlength="256"';
-		$html .= '>';
-		$html .= '</textarea>';
+		$html .= '/>';
 
 		$html .= '</fieldset>';
 		$html .= '</div>';

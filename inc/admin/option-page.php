@@ -62,6 +62,15 @@ function wplng_create_menu() {
 
 	add_submenu_page(
 		'wplingua-settings',
+		__( 'wpLingua: Exclusion', 'wplingua' ),
+		__( 'Exclusion', 'wplingua' ),
+		'administrator',
+		'wplingua-exclusions',
+		'wplng_option_page_exclusions'
+	);
+
+	add_submenu_page(
+		'wplingua-settings',
 		__( 'wpLingua: Dictionary', 'wplingua' ),
 		__( 'Dictionary', 'wplingua' ),
 		'administrator',
@@ -71,11 +80,11 @@ function wplng_create_menu() {
 
 	add_submenu_page(
 		'wplingua-settings',
-		__( 'wpLingua: Exclusion', 'wplingua' ),
-		__( 'Exclusion', 'wplingua' ),
+		__( 'wplingua: Links & Medias', 'wplingua' ),
+		__( 'Links & Medias', 'wplingua' ),
 		'administrator',
-		'wplingua-exclusions',
-		'wplng_option_page_exclusions'
+		'wplingua-link-media',
+		'wplng_option_page_link_media'
 	);
 
 	add_submenu_page(
@@ -127,6 +136,9 @@ function wplng_register_settings() {
 
 	// Option page : Dictionary
 	register_setting( 'wplng_dictionary', 'wplng_dictionary_entries' );
+
+	// Option page : Links & Medias
+	register_setting( 'wplng_link_media', 'wplng_link_media_entries' );
 }
 
 
@@ -147,6 +159,7 @@ function wplng_admin_footer_text( $text ) {
 			|| $_GET['page'] === 'wplingua-switcher'
 			|| $_GET['page'] === 'wplingua-dictionary'
 			|| $_GET['page'] === 'wplingua-exclusions'
+			|| $_GET['page'] === 'wplingua-link-media'
 		)
 	) {
 
@@ -183,6 +196,7 @@ function wplng_update_footer( $text ) {
 			|| $_GET['page'] === 'wplingua-switcher'
 			|| $_GET['page'] === 'wplingua-dictionary'
 			|| $_GET['page'] === 'wplingua-exclusions'
+			|| $_GET['page'] === 'wplingua-link-media'
 		)
 	) {
 		$text  = '<a href="https://wplingua.com/" target="_blank">';

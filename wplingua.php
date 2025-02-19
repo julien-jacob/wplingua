@@ -7,7 +7,7 @@
  * Author URI: https://wplingua.com/
  * Text Domain: wplingua
  * Domain Path: /languages/
- * Version: 2.3.6
+ * Version: 2.4.0
  * Requires PHP: 7.4
  * License: GPL v2 or later
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -24,7 +24,7 @@ if ( ! defined( 'WPINC' ) ) {
 define( 'WPLNG_API_URL', 'https://api.wplingua.com' );
 define( 'WPLNG_API_VERSION', '2.0' );
 define( 'WPLNG_API_SSLVERIFY', true );
-define( 'WPLNG_PLUGIN_VERSION', '2.3.6' );
+define( 'WPLNG_PLUGIN_VERSION', '2.4.0' );
 define( 'WPLNG_PLUGIN_FILE', plugin_basename( __FILE__ ) );
 define( 'WPLNG_PLUGIN_PATH', dirname( __FILE__ ) );
 define( 'WPLNG_MAX_TRANSLATIONS', 256 );
@@ -89,13 +89,13 @@ function wplng_start() {
 	// Display a notice if incompatibility is detected
 	add_action( 'admin_notices', 'wplng_admin_notice_incompatible_plugin', 1 );
 	add_action( 'admin_notices', 'wplng_admin_notice_incompatible_multisite', 1 );
-	add_action( 'admin_notices', 'wplng_admin_notice_incompatible_sub_folder', 1 );
+	// add_action( 'admin_notices', 'wplng_admin_notice_incompatible_sub_folder', 1 );
 	add_action( 'admin_notices', 'wplng_admin_notice_incompatible_php_version', 1 );
 
 	// Return if incompatibility is detected
 	if ( ! empty( wplng_get_incompatible_plugins() )
 		|| is_multisite()
-		|| get_option( 'siteurl' ) !== get_option( 'home' )
+		// || get_option( 'siteurl' ) !== get_option( 'home' )
 		|| ( version_compare( PHP_VERSION, '7.4' ) < 0 )
 	) {
 		return;
@@ -150,6 +150,7 @@ function wplng_start() {
 		add_action( 'admin_enqueue_scripts', 'wplng_option_page_switcher_assets' );
 		add_action( 'admin_enqueue_scripts', 'wplng_option_page_exclusions_assets' );
 		add_action( 'admin_enqueue_scripts', 'wplng_option_page_dictionary_assets' );
+		add_action( 'admin_enqueue_scripts', 'wplng_option_page_link_media_assets' );
 
 		// Update flags URL
 		add_action( 'update_option_wplng_flags_style', 'wplng_options_switcher_update_flags_style', 10, 2 );
@@ -263,6 +264,9 @@ function wplng_start() {
 
 		// Set alternate links with hreflang parametters
 		add_action( 'wp_head', 'wplng_link_alternate_hreflang', 2 );
+
+		// Disable web browser automatic translation
+		add_action( 'language_attributes', 'wplng_disable_web_browser_auto_translate' );
 
 		/**
 		 * OB and REQUEST_URI
