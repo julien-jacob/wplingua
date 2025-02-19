@@ -4,7 +4,7 @@ Donate link: https://wplingua.com/
 Tags: translate, translation, multilingual, localization, language
 Requires at least: 6.0
 Tested up to: 6.7
-Stable tag: 2.3.6
+Stable tag: 2.4.0
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -191,75 +191,21 @@ Your server’s database holds all the translations locally.
 
 == Changelog ==
 
-= 2.3.6 =
+= 2.4.0 =
 
-* Better plugin compatibility: Google Site Kit
-* Fix slug duplication
-* Fix intercepted documents URL
-* JS: Change VAR to LET
-* Review texts
-
-= 2.3.5 =
-
-* Better plugin compatibility:
- * WP Grid Builder
- * Forminator
-
-= 2.3.4 =
-
-* Admin notice - Update incompatibility check method:
- * For multisite
- * For plugins
-* Admin notice - New incompatibility check:
- * WordPress installed in sub folder
- * PHP Version under 7.4
-* readme.txt: Put only the latest changelogs and add a link to the GitHub releases page for older changelogs. 
-
-= 2.3.3 =
-
-* Better option page - Switcher
-* Plugin translation - New languages:
- * Danish
- * Dutch
- * Finnish
- * Hindi
- * Hungarian
- * Indonesian
- * Japanese
- * Korean
- * Swedish
-* Fix capital letters on some translated language names
-
-= 2.3.2 =
-
-* Better theme compatibility:
- * My listing - Translate JSON in AJAX
-
-= 2.3.1 =
-
-* Updated plugin translation files
-* Stricter detection of bad HTML tags
-* Fix when JSON contains a JSON string with HTML
-
-= 2.3.0 =
-
-* New feature: Private languages
-* Better compatibility:
- * Plugin: royal-elementor-addons
- * Plugin: elementor
- * Plugin: complianz
- * Plugin: ultimate-post-kit
- * Theme: my-listing
-* Better JSON management:
- * Manage multiple JSONs in a script tag
- * Acurate JSON detection
- * Fix error on parents detection for sub array
- * Better @ graph translation
-* Fix flags position in switcher menu in some cases 
-
+* New feature: Translate Links & Madias
+* Better plugins compatibility:
+ * Google Site Kit
+ * Smash Balloon - Social photo feed
+ * Smart Slider 3
+* Disable automatic web browser translation
+* Better admin UX
+* Exclude link tag application/rss+xml
+* Better wpLingua JavaScript
+* Fix: WordPress installed in sub folder
+* Fix: Non beraking space not included in translated pages
 
 All changelogs and previous versions of the wpLingua plugin are available on the releases page of the project's GitHub repo: [https://github.com/julien-jacob/wplingua/releases](https://github.com/julien-jacob/wplingua/releases).
-
 
 == Upgrade Notice ==
 
