@@ -193,7 +193,7 @@ Your server’s database holds all the translations locally.
 
 = 2.4.0 =
 
-* New feature: Translate Links & Madias
+* New feature: Translate Links & Medias
 * Better plugins compatibility:
  * Google Site Kit
  * Smash Balloon - Social photo feed
@@ -204,7 +204,7 @@ Your server’s database holds all the translations locally.
 * Better wpLingua JavaScript
 * Update plugin translations
 * Fix: WordPress installed in sub folder
-* Fix: Non beraking space not included in translated pages
+* Fix: Non breaking space not included in translated pages
 
 All changelogs and previous versions of the wpLingua plugin are available on the releases page of the project's GitHub repo: [https://github.com/julien-jacob/wplingua/releases](https://github.com/julien-jacob/wplingua/releases).
 
