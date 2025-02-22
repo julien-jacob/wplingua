@@ -448,7 +448,7 @@ function wplng_admin_notice_incompatible_multisite() {
  */
 function wplng_admin_notice_incompatible_sub_folder() {
 
-	if ( ! is_multisite() ) {
+	if ( ! wplng_website_in_sub_folder() ) {
 		return;
 	}
 
