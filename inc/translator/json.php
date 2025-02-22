@@ -233,13 +233,13 @@ function wplng_translate_json_array( $json_decoded, $args = array() ) {
 				);
 
 				if ( $is_translatable ) {
-					$debug_type               = 'String - Translatale';
+					$debug_type               = 'String - Translatable';
 					$array_translated[ $key ] = wplng_get_translated_text_from_translations(
 						$value,
 						$args['translations']
 					);
 				} else {
-					$debug_type = 'String - Untranslatale';
+					$debug_type = 'String - Untranslatable';
 				}
 			}
 

@@ -38,7 +38,7 @@ function wplng_translate_search_query( $query ) {
 	}
 
 	/**
-	 * Sanitize search query and check if is translatale
+	 * Sanitize search query and check if is translatable
 	 */
 
 	$search_string = sanitize_text_field( $query->query['s'] );
