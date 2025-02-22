@@ -479,7 +479,7 @@ function wplng_admin_notice_incompatible_sub_folder() {
  */
 function wplng_admin_notice_incompatible_php_version() {
 
-	if ( version_compare( PHP_VERSION, '7.4' ) >= 0 ) {
+	if ( version_compare( PHP_VERSION, WPLNG_PHP_MIN_VERSION ) >= 0 ) {
 		return;
 	}
 

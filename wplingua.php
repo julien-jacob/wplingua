@@ -27,6 +27,7 @@ define( 'WPLNG_API_SSLVERIFY', true );
 define( 'WPLNG_PLUGIN_VERSION', '2.4.0' );
 define( 'WPLNG_PLUGIN_FILE', plugin_basename( __FILE__ ) );
 define( 'WPLNG_PLUGIN_PATH', dirname( __FILE__ ) );
+define( 'WPLNG_PHP_MIN_VERSION', '7.4' );
 define( 'WPLNG_MAX_TRANSLATIONS', 256 );
 define( 'WPLNG_MAX_FILE_SIZE', 5000000 );
 
@@ -96,7 +97,7 @@ function wplng_start() {
 	if ( ! empty( wplng_get_incompatible_plugins() )
 		|| is_multisite()
 		|| wplng_website_in_sub_folder()
-		|| ( version_compare( PHP_VERSION, '7.4' ) < 0 )
+		|| ( version_compare( PHP_VERSION, WPLNG_PHP_MIN_VERSION ) < 0 )
 	) {
 		return;
 	}
