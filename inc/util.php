@@ -316,6 +316,25 @@ function wplng_json_element_is_translatable( $element, $parents ) {
 
 		} elseif (
 			! empty( $parents[0] )
+			&& ( 'woocommerce' === $parents[0] )
+			&& ! empty( $parents[1] )
+			&& ( 'locale_data' === $parents[1] )
+			&& ! empty( $parents[2] )
+			&& ( 'messages' === $parents[2] )
+			&& ! empty( $parents[3] )
+			&& is_string( $parents[3] )
+			&& isset( $parents[4] )
+			&& is_int( $parents[4] )
+		) {
+
+			/**
+			 * Is WooCommerce i18n scripts
+			 */
+
+			$is_translatable = true;
+
+		} elseif (
+			! empty( $parents[0] )
 			&& wplng_str_starts_with( $parents[0], 'CASE' )
 			&& ! empty( $parents[1] )
 			&& 'l10n' === $parents[1]
@@ -425,15 +444,4 @@ function wplng_get_context() {
 		'wplng_api_call_translate_context',
 		$context
 	);
-}
-
-
-/**
- * Return true is website is in sub folder
- *
- * @return bool
- */
-function wplng_website_in_sub_folder() {
-	$parsed = wp_parse_url( get_home_url() );
-	return ! empty( $parsed['path'] );
 }
