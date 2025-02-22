@@ -293,7 +293,7 @@ function wplng_register_part_free_api_key() {
 				<strong><?php esc_html_e( 'Website URL: ', 'wplingua' ); ?> </strong> 
 				<span title="<?php esc_attr_e( 'Click to expand', 'wplingua' ); ?>" wplng-help-box="#wplng-hb-register-url"></span>
 			</label>
-			<input type="url" name="wplng-website-url" id="wplng-website-url" class="wplng-fe-50" value="<?php echo esc_url( get_site_url() ); ?>">
+			<input type="url" name="wplng-website-url" id="wplng-website-url" class="wplng-fe-50" value="<?php echo esc_url( get_home_url() ); ?>">
 		</fieldset>
 	</p>
 

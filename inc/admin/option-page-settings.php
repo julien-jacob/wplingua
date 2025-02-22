@@ -142,7 +142,7 @@ function wplng_settings_part_first_use() {
 
 	// Get URL for first registered language of front page
 	$url_front_page_translated = wplng_url_translate(
-		get_site_url(),
+		get_home_url(),
 		$language_target['id']
 	);
 
