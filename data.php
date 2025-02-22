@@ -258,6 +258,12 @@ function wplng_data_attr_json_to_translate() {
 				'attr'     => ':choices',
 				'selector' => 'checkboxes-filter[:choices]',
 			),
+
+			// Plugin: WooCommerce
+			array(
+				'attr'     => 'data-wc-context',
+				'selector' => '[data-wc-context]',
+			),
 		)
 	);
 }
