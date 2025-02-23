@@ -66,7 +66,6 @@ function wplng_data_json_to_translate() {
 			array( 'WprConfig', 'select_empty' ),
 			array( 'WprConfig', 'file_empty' ),
 			array( 'WprConfig', 'recaptcha_error' ),
-			array( 'WprConfig', 'recaptcha_error' ),
 
 			// Plugin: WP Grid Builder
 			array( 'wpgb_settings', 'resultMsg', 'plural' ),
