@@ -576,3 +576,14 @@ function wplng_get_context() {
 		$context
 	);
 }
+
+
+/**
+ * Return true is website is in sub folder
+ *
+ * @return bool
+ */
+function wplng_website_in_sub_folder() {
+	$parsed = wp_parse_url( get_home_url() );
+	return ! empty( $parsed['path'] );
+}
