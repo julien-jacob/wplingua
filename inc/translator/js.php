@@ -144,12 +144,12 @@ function wplng_translate_js( $js, $args = array() ) {
 				$args
 			);
 
-			$json_translated = urlencode($json_translated);
+			$json_translated = rawurlencode( $json_translated );
 
 			// Replace the original JSON with the translated version if different
 			if ( $encoded_json != $json_translated ) {
 				$js = str_replace(
-					$var_json,
+					$encoded_json,
 					$json_translated,
 					$js
 				);
