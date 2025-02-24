@@ -91,5 +91,33 @@ function wplng_parse_js( $js ) {
 		}
 	}
 
+	/**
+	 * URL encoded JSON
+	 */
+
+	$json = array();
+
+	preg_match_all(
+		'#JSON\.parse\(\sdecodeURIComponent\(\s\'(.*)\'\s\)\s\)#Ui',
+		$js,
+		$json
+	);
+
+	if ( ! empty( $json[1] ) && is_array( $json[1] ) ) {
+		foreach ( $json[1] as $key => $encoded_json ) {
+
+			$var_json = urldecode( $encoded_json );
+
+			$texts = array_merge(
+				$texts,
+				wplng_parse_json(
+					$var_json,
+					array( 'EncodedAsURL' )
+				)
+			);
+
+		}
+	}
+
 	return $texts;
 }

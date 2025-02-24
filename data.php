@@ -34,11 +34,12 @@ function wplng_data_json_to_translate() {
 			array( 'wc_country_select_params', 'i18n_searching' ),
 			array( 'wc_address_i18n_params', 'i18n_required_text' ),
 			array( 'wc_address_i18n_params', 'i18n_optional_text' ),
-
 			array( 'accessibilityLoadingMessage' ),
 			array( 'accessibilityLoadedMessage' ),
 			array( 'addToCartText' ),
 			array( 'woocommerce/product-button', 'inTheCartText' ),
+			array( 'EncodedAsURL', 'wcBlocksConfig', 'wordCountType' ),
+			array( 'EncodedAsURL', 'siteTitle' ),
 
 			// Plugin: YITH
 			array( 'yith_wcwl_l10n', 'labels', 'cookie_disabled' ),

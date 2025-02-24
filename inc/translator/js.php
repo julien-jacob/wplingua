@@ -117,5 +117,46 @@ function wplng_translate_js( $js, $args = array() ) {
 		}
 	}
 
+	/**
+	 * URL encoded JSON
+	 */
+
+	$json = array();
+
+	preg_match_all(
+		'#JSON\.parse\(\sdecodeURIComponent\(\s\'(.*)\'\s\)\s\)#Ui',
+		$js,
+		$json
+	);
+
+	if ( ! empty( $json[1] ) && is_array( $json[1] ) ) {
+		foreach ( $json[1] as $key => $encoded_json ) {
+
+			$var_json = urldecode( $encoded_json );
+
+			// Prepare arguments for translation
+			wplng_args_setup( $args );
+			$args['parents'] = array( 'EncodedAsURL' );
+
+			// Translate the JSON string
+			$json_translated = wplng_translate_json(
+				$var_json,
+				$args
+			);
+
+			$json_translated = urlencode($json_translated);
+
+			// Replace the original JSON with the translated version if different
+			if ( $encoded_json != $json_translated ) {
+				$js = str_replace(
+					$var_json,
+					$json_translated,
+					$js
+				);
+			}
+
+		}
+	}
+
 	return $js;  // Return the translated JavaScript
 }

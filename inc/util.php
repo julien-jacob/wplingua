@@ -69,6 +69,8 @@ function wplng_str_is_url( $str ) {
 		&& ( '' !== trim( $str ) )
 		&& wplng_str_contains( $str, '/' )
 		&& ! wplng_str_starts_with( $str, 'wpgb-content-block/' ) // Plugin: WP Grid Builder
+		&& ! wplng_str_starts_with( $str, '/wc/store/v1' ) // Plugin: WooCommerce
+		&& ! wplng_str_starts_with( $str, 'GlotPress/' ) // Plugin: WooCommerce
 	) {
 		if ( isset( $parsed['scheme'] )
 			&& (
@@ -316,7 +318,136 @@ function wplng_json_element_is_translatable( $element, $parents ) {
 
 		} elseif (
 			! empty( $parents[0] )
-			&& ( 'woocommerce' === $parents[0] )
+			&& ( 'EncodedAsURL' === $parents[0] )
+			&& ! empty( $parents[1] )
+			&& ( 'orderStatuses' === $parents[1] )
+			&& ! empty( $parents[2] )
+			&& is_string( $parents[2] )
+		) {
+
+			/**
+			 * Is WooCommerce order Statuses
+			 */
+
+			$is_translatable = true;
+
+		} elseif (
+			! empty( $parents[0] )
+			&& ( 'EncodedAsURL' === $parents[0] )
+			&& ! empty( $parents[1] )
+			&& ( 'countryData' === $parents[1] )
+			&& ! empty( $parents[2] )
+			&& is_string( $parents[2] )
+			&& ! empty( $parents[3] )
+			&& ( 'locale' === $parents[3] )
+			&& ! empty( $parents[4] )
+			&& (
+				( 'state' === $parents[4] )
+				|| ( 'postcode' === $parents[4] )
+			)
+			&& ! empty( $parents[5] )
+			&& ( 'label' === $parents[5] )
+		) {
+
+			/**
+			 * Is WooCommerce countries label
+			 */
+
+			$is_translatable = true;
+
+		} elseif (
+			! empty( $parents[0] )
+			&& ( 'EncodedAsURL' === $parents[0] )
+			&& ! empty( $parents[1] )
+			&& ( 'locale' === $parents[1] )
+			&& ! empty( $parents[2] )
+			&& ( 'weekdaysShort' === $parents[2] )
+			&& ! empty( $parents[3] )
+			&& is_int( $parents[3] )
+		) {
+
+			/**
+			 * Is WooCommerce weekdaysShort
+			 */
+
+			$is_translatable = true;
+
+		} elseif (
+			! empty( $parents[0] )
+			&& ( 'EncodedAsURL' === $parents[0] )
+			&& ! empty( $parents[1] )
+			&& is_string( $parents[1] )
+			&& ! empty( $parents[2] )
+			&& ( 'body' === $parents[2] )
+			&& ! empty( $parents[3] )
+			&& ( 'items' === $parents[3] )
+			&& ! empty( $parents[4] )
+			&& is_int( $parents[4] )
+			&& ! empty( $parents[5] )
+			&& (
+				( 'name' === $parents[5] )
+				|| ( 'short_description' === $parents[5] )
+				|| ( 'description' === $parents[5] )
+				|| (
+					( 'images' === $parents[5] )
+					&& ! empty( $parents[6] )
+					&& is_int( $parents[6] )
+					&& ! empty( $parents[7] )
+					&& (
+						'alt' === $parents[7]
+						|| 'name' === $parents[7]
+					)
+				)
+			)
+		) {
+
+			/**
+			 * Is WooCommerce product data
+			 * Name, description, image alt, image name, etc
+			 */
+
+			$is_translatable = true;
+
+		} elseif (
+			! empty( $parents[0] )
+			&& ( 'EncodedAsURL' === $parents[0] )
+			&& ! empty( $parents[1] )
+			&& ( 'defaultFields' === $parents[1] )
+			&& ! empty( $parents[2] )
+			&& is_string( $parents[2] )
+			&& ! empty( $parents[3] )
+			&& (
+				( 'label' === $parents[3] )
+				|| ( 'optionalLabel' === $parents[3] )
+			)
+		) {
+
+			/**
+			 * Is WooCommerce form fields
+			 */
+
+			$is_translatable = true;
+
+		} elseif (
+			! empty( $parents[0] )
+			&& ( 'EncodedAsURL' === $parents[0] )
+			&& ! empty( $parents[1] )
+			&& ( 'storePages' === $parents[1] )
+			&& ! empty( $parents[2] )
+			&& is_string( $parents[2] )
+			&& ! empty( $parents[3] )
+			&& ( 'title' === $parents[3] )
+		) {
+
+			/**
+			 * Is WooCommerce Store pages title
+			 */
+
+			$is_translatable = true;
+
+		} elseif (
+			! empty( $parents[0] )
+			&& is_string( $parents[0] )
 			&& ! empty( $parents[1] )
 			&& ( 'locale_data' === $parents[1] )
 			&& ! empty( $parents[2] )
@@ -328,7 +459,7 @@ function wplng_json_element_is_translatable( $element, $parents ) {
 		) {
 
 			/**
-			 * Is WooCommerce i18n scripts
+			 * Is i18n scripts
 			 */
 
 			$is_translatable = true;
