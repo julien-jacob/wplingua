@@ -61,6 +61,9 @@ function wplng_ob_start() {
 	if ( defined( 'DOING_AJAX' ) && DOING_AJAX ) {
 		ob_start( 'wplng_ob_callback_ajax' );
 		return;
+	} elseif ( wp_is_json_request() ) {
+		ob_start( 'wplng_ob_callback_wp_json' );
+		return;
 	}
 
 	$language_website_id = wplng_get_language_website_id();
@@ -200,6 +203,62 @@ function wplng_ob_callback_ajax( $output ) {
 
 		$debug = array(
 			'title'       => 'wpLingua AJAX debug',
+			'request_uri' => $wplng_request_uri,
+			'value'       => $output,
+			'translated'  => $output_translated,
+		);
+
+		error_log(
+			var_export(
+				$debug,
+				true
+			)
+		);
+	}
+
+	return $output_translated;
+}
+
+
+/**
+ * wpLingua OB Callback function : /wp-json/
+ *
+ * @param string $output
+ * @return string
+ */
+function wplng_ob_callback_wp_json( $output ) {
+
+	if ( empty( $_SERVER['HTTP_REFERER'] ) ) {
+		return $output;
+	}
+
+	$referer = sanitize_url( $_SERVER['HTTP_REFERER'] );
+
+	// Check if the referer is clean
+	if ( strtolower( esc_url_raw( $referer ) ) !== strtolower( $referer ) ) {
+		return $output;
+	}
+
+	global $wplng_request_uri;
+	$wplng_request_uri = wp_make_link_relative( $referer );
+
+	if ( ! wplng_url_is_translatable( $wplng_request_uri )
+		|| wplng_get_language_website_id() === wplng_get_language_current_id()
+	) {
+		return $output;
+	}
+
+	if ( wplng_str_is_json( $output ) ) {
+		$output_translated = wplng_translate_json( $output );
+	} else {
+		$output_translated = $output;
+	}
+
+	// Print debug data in debug.log file
+	if ( true === WPLNG_LOG_REST_DEBUG ) {
+
+		$debug = array(
+			'title'       => 'wpLingua /wp-json/ debug',
 			'request_uri' => $wplng_request_uri,
 			'value'       => $output,
 			'translated'  => $output_translated,

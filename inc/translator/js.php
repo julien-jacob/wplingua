@@ -154,7 +154,6 @@ function wplng_translate_js( $js, $args = array() ) {
 					$js
 				);
 			}
-
 		}
 	}
 
