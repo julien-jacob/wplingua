@@ -28,7 +28,7 @@ function wplng_option_page_register() {
 	$error_validation = get_transient( 'wplng_api_key_error' );
 	$error_validation = sanitize_text_field( $error_validation );
 
-	delete_transient( 'wplng_api_key_data' );
+	delete_option( 'wplng_api_key_data' );
 
 	if ( ! empty( $error_validation )
 		&& is_string( $error_validation )

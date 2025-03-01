@@ -13,7 +13,7 @@ if ( ! defined( 'WPINC' ) ) {
  */
 function wplng_option_page_settings() {
 
-	delete_transient( 'wplng_api_key_data' );
+	delete_option( 'wplng_api_key_data' );
 
 	if ( empty( wplng_get_api_data() ) ) {
 		wplng_option_page_register();
