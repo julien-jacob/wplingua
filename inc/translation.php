@@ -22,7 +22,7 @@ function wplng_get_translated_text_from_translations( $text, $translations ) {
 	// Manage non breaking space
 	$text = str_replace(
 		array( '&nbsp;', ' ' ),
-		array( ' ', ' ' ),
+		array( html_entity_decode( '&nbsp;' ), ' ' ),
 		$text
 	);
 
