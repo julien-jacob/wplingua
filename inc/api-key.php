@@ -61,8 +61,11 @@ function wplng_get_api_data() {
 	}
 
 	$data_checked = array();
-	$data         = get_transient( 'wplng_api_key_data' );
-	$data         = json_decode( $data, true );
+	$data         = get_option( 'wplng_api_key_data' );
+
+	if ( ! empty( $data ) ) {
+		$data = json_decode( $data, true );
+	}
 
 	/**
 	 * Check the API key data
@@ -78,6 +81,9 @@ function wplng_get_api_data() {
 		&& isset( $data['features'] )
 		&& is_array( $data['features'] )
 		&& ! empty( $data['status'] )
+		&& ! empty( $data['time'] )
+		&& is_int( $data['time'] )
+		&& ( $data['time'] + ( 8 * HOUR_IN_SECONDS ) ) > time()
 	) {
 
 		/**
@@ -145,6 +151,13 @@ function wplng_get_api_data() {
 		) {
 			$data_checked['expiration'] = $data['expiration'];
 		}
+
+		/**
+		 * Add time
+		 */
+
+		$data_checked['time'] = $data['time'];
+
 	} else {
 
 		/**
@@ -157,11 +170,18 @@ function wplng_get_api_data() {
 			return array();
 		}
 
-		set_transient(
+		/**
+		 * Add time
+		 */
+
+		$data_checked['time'] = time();
+
+		update_option(
 			'wplng_api_key_data',
 			wp_json_encode( $data_checked ),
-			HOUR_IN_SECONDS * 12
+			true
 		);
+
 	}
 
 	return $data_checked;
@@ -277,8 +297,7 @@ function wplng_api_feature_is_allow( $feature_name ) {
  */
 function wplng_on_update_option_wplng_api_key( $old_value, $new_value ) {
 
-	delete_transient( 'wplng_api_key_data' );
-
+	delete_option( 'wplng_api_key_data' );
 	delete_option( 'wplng_website_language' );
 	delete_option( 'wplng_website_flag' );
 

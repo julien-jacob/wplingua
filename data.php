@@ -425,7 +425,7 @@ function wplng_data_attr_url_to_translate() {
 				'selector' => 'img[src]',
 			),
 			array(
-				'attr'     => 'src',
+				'attr'     => 'srcset',
 				'selector' => 'img[srcset]',
 			),
 			array(

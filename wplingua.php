@@ -7,7 +7,7 @@
  * Author URI: https://wplingua.com/
  * Text Domain: wplingua
  * Domain Path: /languages/
- * Version: 2.4.0
+ * Version: 2.4.1
  * Requires PHP: 7.4
  * License: GPL v2 or later
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -24,9 +24,10 @@ if ( ! defined( 'WPINC' ) ) {
 define( 'WPLNG_API_URL', 'https://api.wplingua.com' );
 define( 'WPLNG_API_VERSION', '2.0' );
 define( 'WPLNG_API_SSLVERIFY', true );
-define( 'WPLNG_PLUGIN_VERSION', '2.4.0' );
+define( 'WPLNG_PLUGIN_VERSION', '2.4.1' );
 define( 'WPLNG_PLUGIN_FILE', plugin_basename( __FILE__ ) );
 define( 'WPLNG_PLUGIN_PATH', dirname( __FILE__ ) );
+define( 'WPLNG_PHP_MIN_VERSION', '7.4' );
 define( 'WPLNG_MAX_TRANSLATIONS', 256 );
 define( 'WPLNG_MAX_FILE_SIZE', 5000000 );
 
@@ -89,14 +90,14 @@ function wplng_start() {
 	// Display a notice if incompatibility is detected
 	add_action( 'admin_notices', 'wplng_admin_notice_incompatible_plugin', 1 );
 	add_action( 'admin_notices', 'wplng_admin_notice_incompatible_multisite', 1 );
-	// add_action( 'admin_notices', 'wplng_admin_notice_incompatible_sub_folder', 1 );
+	add_action( 'admin_notices', 'wplng_admin_notice_incompatible_sub_folder', 1 );
 	add_action( 'admin_notices', 'wplng_admin_notice_incompatible_php_version', 1 );
 
 	// Return if incompatibility is detected
 	if ( ! empty( wplng_get_incompatible_plugins() )
 		|| is_multisite()
-		// || get_option( 'siteurl' ) !== get_option( 'home' )
-		|| ( version_compare( PHP_VERSION, '7.4' ) < 0 )
+		|| wplng_website_in_sub_folder()
+		|| ( version_compare( PHP_VERSION, WPLNG_PHP_MIN_VERSION ) < 0 )
 	) {
 		return;
 	}

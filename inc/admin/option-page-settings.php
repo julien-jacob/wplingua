@@ -13,7 +13,7 @@ if ( ! defined( 'WPINC' ) ) {
  */
 function wplng_option_page_settings() {
 
-	delete_transient( 'wplng_api_key_data' );
+	delete_option( 'wplng_api_key_data' );
 
 	if ( empty( wplng_get_api_data() ) ) {
 		wplng_option_page_register();
@@ -142,7 +142,7 @@ function wplng_settings_part_first_use() {
 
 	// Get URL for first registered language of front page
 	$url_front_page_translated = wplng_url_translate(
-		get_site_url(),
+		get_home_url(),
 		$language_target['id']
 	);
 
