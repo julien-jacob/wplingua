@@ -112,5 +112,31 @@ function wplng_parse_html( $html ) {
 		}
 	}
 
+	/**
+	 * Parse HTML in attriutes
+	 */
+
+	$attr_html_to_translate = wplng_data_attr_html_to_translate();
+
+	foreach ( $attr_html_to_translate as $attr ) {
+		foreach ( $dom->find( $attr['selector'] ) as $element ) {
+
+			if ( empty( $element->attr[ $attr['attr'] ] ) ) {
+				continue;
+			}
+
+			$html = wp_specialchars_decode(
+				$element->attr[ $attr['attr'] ],
+				ENT_QUOTES | ENT_SUBSTITUTE | ENT_HTML401
+			);
+
+			$texts = array_merge(
+				$texts,
+				wplng_parse_html( $html )
+			);
+
+		}
+	}
+
 	return $texts;
 }
