@@ -63,7 +63,7 @@ function wplng_dom_replace_links( $dom, $args ) {
 		);
 
 		if ( $url_link_media_applied !== $link ) {
-			$element->attr['srcset'] = esc_attr( $translated_url );
+			$element->attr['srcset'] = esc_attr( $url_link_media_applied );
 		}
 
 	}
