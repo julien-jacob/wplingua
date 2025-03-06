@@ -13,7 +13,7 @@ if ( ! defined( 'WPINC' ) ) {
  * @param array $args
  * @return object
  */
-function wplng_dom_translate_texts_attr( $dom, $args ) {
+function wplng_dom_translate_attr_texts( $dom, $args ) {
 
 	wplng_args_setup( $args );
 
