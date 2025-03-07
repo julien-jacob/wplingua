@@ -97,7 +97,7 @@ function wplng_parse_json_array( $json_decoded, $parents = array() ) {
 
 				$texts = array_merge(
 					$texts,
-					wplng_parse_html( $value, array_merge( $parents, array( $key ) ) )
+					wplng_parse_html( $value )
 				);
 
 			} elseif ( wplng_str_is_json( $value ) ) {

@@ -239,6 +239,7 @@ function wplng_data_attr_json_to_translate() {
 	return apply_filters(
 		'wplng_attr_json_to_translate',
 		array(
+			// Theme: Divi
 			array(
 				'attr'     => 'data-et-multi-view',
 				'selector' => '[data-et-multi-view]',
@@ -259,7 +260,7 @@ function wplng_data_attr_json_to_translate() {
 
 
 /**
- * Get attributes and selectors of texts to translate
+ * Get attributes and selectors of texts in attribute to translate
  *
  * @return array
  */
@@ -392,6 +393,24 @@ function wplng_data_attr_text_to_translate() {
 
 
 /**
+ * Get attributes and selectors of HTML in attribute to translate
+ *
+ * @return array
+ */
+function wplng_data_attr_html_to_translate() {
+	return apply_filters(
+		'wplng_attr_html_to_translate',
+		array(
+			array(
+				'attr'     => 'data-sub-html',
+				'selector' => '[data-sub-html]',
+			),
+		)
+	);
+}
+
+
+/**
  * Get attributes and selectors of URL to translate
  *
  * @return array
@@ -424,10 +443,6 @@ function wplng_data_attr_url_to_translate() {
 				'attr'     => 'src',
 				'selector' => 'img[src]',
 			),
-			// array(
-			// 	'attr'     => 'srcset',
-			// 	'selector' => 'img[srcset]',
-			// ),
 			array(
 				'attr'     => 'src',
 				'selector' => 'iframe[src]',
