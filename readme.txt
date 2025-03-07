@@ -194,8 +194,9 @@ Your server’s database holds all the translations locally.
 = 2.4.3 =
 
 * New: Translate HTML in attribute
-* Do shortcode in [wplng_only] shortcode
 * Link & Media: Translate URL in image srcset attribute
+* Better UX for translation in progress
+* Do shortcode in [wplng_only] shortcode
 
 = 2.4.2 =
 
