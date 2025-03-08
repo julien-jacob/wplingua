@@ -173,7 +173,12 @@ function wplng_args_update_from_texts( &$args, $texts ) {
 	 */
 
 	foreach ( $texts as $key => $text ) {
-		$texts[ $key ] = wplng_text_esc( $text );
+
+		$text = wplng_text_esc( $text );
+
+		if ( '' !== $text ) {
+			$texts[ $key ] = $text;
+		}
 	}
 
 	$texts = array_unique( $texts ); // Remove duplicate
