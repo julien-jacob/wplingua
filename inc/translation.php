@@ -131,7 +131,8 @@ function wplng_get_translations_from_query() {
 
 		$the_query->the_post();
 
-		$meta = get_post_meta( get_the_ID() );
+		$id   = get_the_ID();
+		$meta = get_post_meta( $id );
 
 		if ( ! isset( $meta['wplng_translation_original'][0] )
 			|| ! is_string( $meta['wplng_translation_original'][0] )
@@ -143,7 +144,7 @@ function wplng_get_translations_from_query() {
 
 		$translation = array(
 			'source'       => $source,
-			'post_id'      => get_the_ID(),
+			'post_id'      => $id,
 			'review'       => array(),
 			'translations' => array(),
 		);
