@@ -140,6 +140,18 @@ function wplng_url_translate_no_filter( $url, $language_target_id = '' ) {
 }
 
 
+
+
+
+
+
+
+
+
+
+
+
+
 /**
  * Return true is $url is translatable
  *
@@ -147,9 +159,22 @@ function wplng_url_translate_no_filter( $url, $language_target_id = '' ) {
  * @return bool
  */
 function wplng_url_is_translatable( $url = '' ) {
+	return apply_filters(
+		'wplng_url_is_translatable',
+		wplng_url_is_translatable_no_filter( $url )
+	);
+}
+
+
+/**
+ * Return true is $url is translatable - No apply 'wplng_url_translate' filter
+ *
+ * @param string $url
+ * @return bool
+ */
+function wplng_url_is_translatable_no_filter( $url = '' ) {
 
 	global $wplng_request_uri;
-	$is_translatable = true;
 
 	// Get current URL if $url is empty
 	if ( '' === $url ) {
@@ -162,85 +187,65 @@ function wplng_url_is_translatable( $url = '' ) {
 
 	// Check if is an admin page
 	if ( wplng_str_contains( $url, wp_make_link_relative( get_admin_url() ) ) ) {
-		$is_translatable = false;
+		return false;
 	}
 
 	// Check if URL is an anchor link for the current page
-	if ( $is_translatable
-		&& wplng_str_starts_with( $url, '#' )
-	) {
+	if ( wplng_str_starts_with( $url, '#' ) ) {
 		return false;
 	}
 
 	// Don't translate some WordPress and WooCommerce URLs
 	// admin, REST API, rss and other special URLs
-	if ( $is_translatable
-		&& (
-			wplng_str_contains( $url, 'wp-login.php' )
-			|| wplng_str_contains( $url, 'wp-register.php' )
-			|| wplng_str_contains( $url, 'wp-comments-post.php' )
-			|| wplng_str_ends_with( $url, '/feed/' )
-			|| wplng_str_contains( $url, '/wp-json/' )
-			|| wplng_str_contains( $url, '/wp-includes/' )
-			|| wplng_str_contains( $url, '/oembed/' )
-			|| wplng_str_contains( $url, '?wc-ajax=' )
-			|| wplng_str_contains( $url, '?feed=' )
-			|| wplng_str_contains( $url, '?embed=' )
-			|| wplng_str_contains( $url, '&wc-ajax=' )
-			|| wplng_str_contains( $url, '&feed=' )
-			|| wplng_str_contains( $url, '&embed=' )
-		)
+	if ( wplng_str_contains( $url, 'wp-login.php' )
+		|| wplng_str_contains( $url, 'wp-register.php' )
+		|| wplng_str_contains( $url, 'wp-comments-post.php' )
+		|| wplng_str_ends_with( $url, '/feed/' )
+		|| wplng_str_contains( $url, '/wp-json/' )
+		|| wplng_str_contains( $url, '/wp-includes/' )
+		|| wplng_str_contains( $url, '/oembed/' )
+		|| wplng_str_contains( $url, '?wc-ajax=' )
+		|| wplng_str_contains( $url, '?feed=' )
+		|| wplng_str_contains( $url, '?embed=' )
+		|| wplng_str_contains( $url, '&wc-ajax=' )
+		|| wplng_str_contains( $url, '&feed=' )
+		|| wplng_str_contains( $url, '&embed=' )
 	) {
-		$is_translatable = false;
+		return false;
 	}
 
 	// Check if is Divi editor
-	if ( $is_translatable
+	if ( current_user_can( 'edit_posts' )
 		&& (
 			wplng_str_contains( $url, '/?et_fb=1' )
 			|| wplng_str_contains( $url, '&et_fb=1' )
 		)
-		&& current_user_can( 'edit_posts' )
 	) {
-		$is_translatable = false;
+		return false;
 	}
 
 	// Check if is in wp-uploads
-	if ( $is_translatable
-		&& wplng_str_contains( $url, wp_make_link_relative( content_url() ) )
-	) {
-		$is_translatable = false;
+	if ( wplng_str_contains( $url, wp_make_link_relative( content_url() ) ) ) {
+		return false;
 	}
 
 	// Exclude files URL
 	$regex_is_file = '#\.(avi|css|doc|exe|gif|html|jfif|jpg|jpeg|webp|bmp|mid|midi|mp3|mpg|mpeg|avif|mov|qt|pdf|png|ram|rar|tiff|txt|wav|zip|ico|xml|doc|docx|xls|xlsx)?\/$#Uis';
-	if ( $is_translatable
-		&& preg_match( $regex_is_file, $url )
-	) {
-		$is_translatable = false;
+	if ( preg_match( $regex_is_file, $url ) ) {
+		return false;
 	}
 
 	// Check if URL is excluded in option page
-	if ( $is_translatable ) {
+	$url_original      = wplng_get_url_original( $url );
+	$url_exclude_regex = wplng_get_url_exclude_regex();
 
-		$url_original      = wplng_get_url_original( $url );
-		$url_exclude_regex = wplng_get_url_exclude_regex();
-
-		foreach ( $url_exclude_regex as $regex ) {
-			if ( preg_match( $regex, $url_original ) ) {
-				$is_translatable = false;
-				break;
-			}
+	foreach ( $url_exclude_regex as $regex ) {
+		if ( preg_match( $regex, $url_original ) ) {
+			return false;
 		}
 	}
 
-	$is_translatable = apply_filters(
-		'wplng_url_is_translatable',
-		$is_translatable,
-		$url
-	);
-
-	return $is_translatable;
+	return true;
 }
 
 
