@@ -140,18 +140,6 @@ function wplng_url_translate_no_filter( $url, $language_target_id = '' ) {
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
 /**
  * Return true is $url is translatable
  *
