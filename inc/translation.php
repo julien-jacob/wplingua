@@ -131,7 +131,8 @@ function wplng_get_translations_from_query() {
 
 		$the_query->the_post();
 
-		$meta = get_post_meta( get_the_ID() );
+		$id   = get_the_ID();
+		$meta = get_post_meta( $id );
 
 		if ( ! isset( $meta['wplng_translation_original'][0] )
 			|| ! is_string( $meta['wplng_translation_original'][0] )
@@ -143,7 +144,7 @@ function wplng_get_translations_from_query() {
 
 		$translation = array(
 			'source'       => $source,
-			'post_id'      => get_the_ID(),
+			'post_id'      => $id,
 			'review'       => array(),
 			'translations' => array(),
 		);
@@ -259,7 +260,7 @@ function wplng_get_translations_target( $target_language_id ) {
  * @param string $language_id
  * @param string $original
  * @param array $translation
- * @return mixed Post ID or false
+ * @return int|false Post ID or false on failure
  */
 function wplng_save_translation_new( $language_id, $original, $translation ) {
 
@@ -320,25 +321,68 @@ function wplng_save_translation_new( $language_id, $original, $translation ) {
 		}
 	}
 
-	add_post_meta(
-		$new_post_id,
-		'wplng_translation_original',
-		$original
-	);
+	/**
+	 * Save meta: original language ID
+	 */
 
-	add_post_meta(
-		$new_post_id,
-		'wplng_translation_md5',
-		md5( $original )
-	);
-
-	add_post_meta(
+	$meta_return = add_post_meta(
 		$new_post_id,
 		'wplng_translation_original_language_id',
 		wplng_get_language_website_id()
 	);
 
-	add_post_meta(
+	if ( false === $meta_return ) {
+		wp_delete_post( $new_post_id, true );
+		return false;
+	}
+
+	/**
+	 * Save meta: original text MD5
+	 */
+
+	$meta_return = add_post_meta(
+		$new_post_id,
+		'wplng_translation_md5',
+		md5( $original )
+	);
+
+	if ( false === $meta_return ) {
+		wp_delete_post( $new_post_id, true );
+		return false;
+	}
+
+	/**
+	 * Save meta: original text
+	 */
+
+	$meta_return = add_post_meta(
+		$new_post_id,
+		'wplng_translation_original',
+		$original
+	);
+
+	if ( false === $meta_return ) {
+
+		// Try to save it with encoded emoji
+		$original = wp_encode_emoji( $original );
+
+		$meta_return = add_post_meta(
+			$new_post_id,
+			'wplng_translation_original',
+			$original
+		);
+
+		if ( false === $meta_return ) {
+			wp_delete_post( $new_post_id, true );
+			return false;
+		}
+	}
+
+	/**
+	 * Save meta: Translation array as JSON
+	 */
+
+	$meta_return = add_post_meta(
 		$new_post_id,
 		'wplng_translation_translations',
 		wp_json_encode(
@@ -346,6 +390,35 @@ function wplng_save_translation_new( $language_id, $original, $translation ) {
 			JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES
 		)
 	);
+
+	if ( false === $meta_return ) {
+
+		// Try to save it with encoded emoji
+		foreach ( $translation_meta as $key => $translation ) {
+
+			if ( empty( $translation['translation'] )
+				|| '[WPLNG_EMPTY]' === $translation['translation']
+			) {
+				continue;
+			}
+
+			$translation_meta[ $key ]['translation'] = wp_encode_emoji( $translation['translation'] );
+		}
+
+		$meta_return = add_post_meta(
+			$new_post_id,
+			'wplng_translation_translations',
+			wp_json_encode(
+				$translation_meta,
+				JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES
+			)
+		);
+
+		if ( false === $meta_return ) {
+			wp_delete_post( $new_post_id, true );
+			return false;
+		}
+	}
 
 	return $new_post_id;
 }
@@ -357,7 +430,7 @@ function wplng_save_translation_new( $language_id, $original, $translation ) {
  * @param object $post
  * @param string $language_id
  * @param array $translation
- * @return int Post ID
+ * @return int|false Post ID, false on failure
  */
 function wplng_update_translation( $post, $language_id, $translation ) {
 
@@ -383,11 +456,16 @@ function wplng_update_translation( $post, $language_id, $translation ) {
 		 * $original_language_id_meta must be the same as in option page
 		 */
 
-		update_post_meta(
+		$meta_return = update_post_meta(
 			$post->ID,
 			'wplng_translation_original_language_id',
 			$website_language
 		);
+
+		if ( false === $meta_return ) {
+			wp_delete_post( $post->ID, true );
+			return false;
+		}
 
 		/**
 		 * Make $translation_meta
@@ -410,16 +488,6 @@ function wplng_update_translation( $post, $language_id, $translation ) {
 				);
 			}
 		}
-
-		update_post_meta(
-			$post->ID,
-			'wplng_translation_translations',
-			wp_json_encode(
-				$translation_meta,
-				JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES
-			)
-		);
-
 	} else { // Translation is valid
 
 		// Set or update new translation
@@ -444,8 +512,36 @@ function wplng_update_translation( $post, $language_id, $translation ) {
 				'status'      => 'generated',
 			);
 		}
+	}
 
-		update_post_meta(
+	/**
+	 * Update the translations post meta
+	 */
+
+	$meta_return = update_post_meta(
+		$post->ID,
+		'wplng_translation_translations',
+		wp_json_encode(
+			$translation_meta,
+			JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES
+		)
+	);
+
+	if ( false === $meta_return ) {
+
+		// Try to save it with encoded emoji
+		foreach ( $translation_meta as $key => $translation ) {
+
+			if ( empty( $translation['translation'] )
+				|| '[WPLNG_EMPTY]' === $translation['translation']
+			) {
+				continue;
+			}
+
+			$translation_meta[ $key ]['translation'] = wp_encode_emoji( $translation['translation'] );
+		}
+
+		$meta_return = update_post_meta(
 			$post->ID,
 			'wplng_translation_translations',
 			wp_json_encode(
@@ -454,6 +550,10 @@ function wplng_update_translation( $post, $language_id, $translation ) {
 			)
 		);
 
+		if ( false === $meta_return ) {
+			wp_delete_post( $post->ID, true );
+			return false;
+		}
 	}
 
 	return $post->ID;
