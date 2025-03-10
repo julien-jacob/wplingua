@@ -35,6 +35,11 @@ function wplng_link_media_get_entries() {
 		}
 
 		$source_clear = esc_attr( $entry['source'] );
+		$source_clear = str_replace( 
+			'[WPLNG_BACKSLASH]', 
+			'\\', 
+			$source_clear 
+		);
 
 		/**
 		 * Check if rule already exist
@@ -67,7 +72,6 @@ function wplng_link_media_get_entries() {
 		) {
 			$mode_clear = $entry['mode'];
 		}
-		// $mode_clear = $entry['mode'];
 
 		/**
 		 * Get and check the rules

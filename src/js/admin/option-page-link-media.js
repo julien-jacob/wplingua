@@ -45,6 +45,8 @@ jQuery(document).ready(function ($) {
             return;
         }
 
+        source = source.replaceAll("\\", "[WPLNG_BACKSLASH]");
+
         if (modeRadio.length > 0) {
             mode = modeRadio.val();
         }
@@ -127,6 +129,8 @@ jQuery(document).ready(function ($) {
         $("#wplng-section-entries-all").hide();
         $("#wplng-section-entry-edit").show();
 
+        let source = editedLinkMediaEntry.source;
+        source = source.replaceAll("[WPLNG_BACKSLASH]", "\\");
         $("#wplng-edit-source").val(editedLinkMediaEntry.source);
 
         switch (editedLinkMediaEntry.mode) {
@@ -177,6 +181,8 @@ jQuery(document).ready(function ($) {
             return;
         }
 
+        source = source.replaceAll("\\", "[WPLNG_BACKSLASH]");
+
         if (modeRadio.length > 0) {
             mode = modeRadio.val();
         }
@@ -193,7 +199,7 @@ jQuery(document).ready(function ($) {
             let translate = $('input[type="text"]', this).val();
 
             if (undefined != translate && '' != translate.trim()) {
-                rules[languageId] = translate.trim();
+                rules[languageId] = translate;
             }
 
         });
@@ -212,8 +218,6 @@ jQuery(document).ready(function ($) {
 
         $("#wplng_link_media_entries").val(JSON.stringify(wplngLinkMediaEntries));
 
-        // console.log(mode);
-        // return;
         $("#submit").click();
     });
 
