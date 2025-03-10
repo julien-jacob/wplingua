@@ -72,7 +72,6 @@ function wplng_link_media_get_entries() {
 		) {
 			$mode_clear = $entry['mode'];
 		}
-		// $mode_clear = $entry['mode'];
 
 		/**
 		 * Get and check the rules
