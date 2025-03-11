@@ -120,7 +120,7 @@ The method used by wpLingua to translate website texts ensures compatibility wit
 
 **Compatible plugins tested:** WooCommerce, Yoast SEO, SEOPress, All in One SEO, SEOKey, Elementor, Gutenberg, Divi Builder, Advanced Custom Fields (ACF), Contact Form 7, Fluent Forms, WP Forms, Gravity Form, MailPoet, WP Rocket, Cache Enabler, All-in-One WP Migration, UpdraftPlus, Redirection, Complianz, WF Cookies, Complianz, LuckyWP Table of content, WP Grid Builder, and more...
 
-**Compatible themes tested:** Divi, Twenty Twenty One, Astra, OceanWP, Blocksy, Hello, Generate Press, Neve, Envince, Twenty Twenty Four, Twenty Twenty Five, Poe, Neve FSE, Frost, Tove, and more...
+**Compatible themes tested:** Divi, Twenty Twenty-One, Astra, OceanWP, Blocksy, Hello, GeneratePress, Neve, Envince, Twenty Twenty-Four, Twenty Twenty-Five, Poe, Neve FSE, Frost, Tove, and more...
 
 ### ⚡️ The wpLingua API ###
 The wpLingua plugin relies on our own wpLingua API, an integrated third-party service, to provide its machine translation functionality. The call to this Third Party Service (wpLingua API) is made when creating an API key from the plugin, during API key verification and when your website requests a new automatic translation (new texts discovered on a page web or request automatic translations from the translation edition). We invite you to consult our [Terms & Conditions page](https://wplingua.com/terms-and-conditions/) for more information.
@@ -148,7 +148,7 @@ wpLingua intercepts page content and analyzes HTML and JS code. It discovers all
 Absolutely! wpLingua intercepts page content and analyzes HTML and JS code. It discovers all texts, translates them and renders the pages multilingual. This approach guarantees compatibility with the translation of your WooCommerce online store, as well as with all other WordPress plugins.
 
 = Is wpLingua compatible with Divi or other Theme? =
-The method used by wpLingua to translate website texts guarantees compatibility with most themes. Themes tested with guaranteed compatibility: Divi, Twenty Twenty One, Astra, OceanWP, Blocksy, Hello, Generate Press, Neve, Envince, Twenty Twenty Four, Twenty Twenty Five, Poe, Neve FSE, Frost, Tove, and more…
+The method used by wpLingua to translate website texts guarantees compatibility with most themes. Themes tested with guaranteed compatibility: Divi, Twenty Twenty-One, Astra, OceanWP, Blocksy, Hello, GeneratePress, Neve, Envince, Twenty Twenty-Four, Twenty Twenty-Five, Poe, Neve FSE, Frost, Tove, and more…
 
 = Is wpLingua compatible with Gutenberg or other page builders? =
 The method used by wpLingua to translate website texts guarantees compatibility with most page builders. Page builders tested with guaranteed compatibility: Elementor, Divi Builder, Gutenberg.
