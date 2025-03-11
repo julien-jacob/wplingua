@@ -272,11 +272,11 @@ function wplng_save_translation_new( $language_id, $original, $translation ) {
 
 	$tite_max_length = 100;
 	$title           = mb_substr( $original, 0, $tite_max_length );
+	$title           = wplng_text_esc_displayed( $title );
+	$title           = wp_encode_emoji( $title );
 	if ( strlen( $original ) > $tite_max_length ) {
 		$title .= __( '...', 'wplingua' );
 	}
-
-	$title = wplng_text_esc_displayed( $title );
 
 	/**
 	 * Create the post and get this ID
@@ -293,7 +293,7 @@ function wplng_save_translation_new( $language_id, $original, $translation ) {
 		)
 	);
 
-	if ( is_wp_error( $new_post_id ) ) {
+	if ( is_wp_error( $new_post_id ) || empty( $new_post_id ) ) {
 		return false;
 	}
 
