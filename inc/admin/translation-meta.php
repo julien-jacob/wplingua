@@ -19,12 +19,12 @@ if ( ! defined( 'WPINC' ) ) {
 function wplng_translation_add_meta_box( $post ) {
 
 	add_meta_box(
-		'wplng_meta_box_translation',				// Unique ID for the meta box
-		__( 'Translation', 'wplingua' ),			// Title of the meta box
-		'wplng_translation_meta_box_html_output',	// Callback function to render the meta box HTML
-		'wplng_translation',						// Screen or post type where the meta box appears
-		'normal',									// Context where the meta box should appear
-		'low'										// Priority within the context
+		'wplng_meta_box_translation',               // Unique ID for the meta box
+		__( 'Translation', 'wplingua' ),            // Title of the meta box
+		'wplng_translation_meta_box_html_output',   // Callback function to render the meta box HTML
+		'wplng_translation',                        // Screen or post type where the meta box appears
+		'normal',                                   // Context where the meta box should appear
+		'low'                                       // Priority within the context
 	);
 
 }
@@ -272,6 +272,24 @@ function wplng_translation_editor_get_html( $post ) {
 			$html .= '</div>'; // End .wplng-edit-language
 
 		}
+	}
+
+	if ( ! empty( $meta['wplng_translation_discovery_url'][0] )
+		&& is_string( $meta['wplng_translation_discovery_url'][0] )
+	) {
+		$url = home_url( $meta['wplng_translation_discovery_url'][0] );
+
+		$html .= '<div id="wplng-discovery-url">';
+		$html .= '<span class="dashicons dashicons-admin-links"></span> ';
+		$html .= '<strong>';
+		$html .= esc_html__( 'Discovery URL: ' ) . ' ';
+		$html .= '</strong>';
+		$html .= '<a';
+		$html .= ' href="' . esc_url( $url ) . '"';
+		$html .= '>';
+		$html .= esc_html( $url );
+		$html .= '</a>';
+		$html .= '</div>'; // End #wplng-discovery-url
 	}
 
 	return $html;
