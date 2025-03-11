@@ -311,7 +311,7 @@ function wplng_create_slug( $slug ) {
 		)
 	);
 
-	if ( is_wp_error( $new_post_id ) ) {
+	if ( is_wp_error( $new_post_id ) || empty( $new_post_id ) ) {
 		return false;
 	}
 
