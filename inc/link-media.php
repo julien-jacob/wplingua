@@ -13,6 +13,12 @@ if ( ! defined( 'WPINC' ) ) {
  */
 function wplng_link_media_get_entries() {
 
+	global $wplng_link_media_entries;
+
+	if ( null != $wplng_link_media_entries ) {
+		return $wplng_link_media_entries;
+	}
+
 	$entries_clear = array();
 	$entries_json  = get_option( 'wplng_link_media_entries' );
 	$entries       = json_decode( $entries_json, true );
@@ -35,6 +41,11 @@ function wplng_link_media_get_entries() {
 		}
 
 		$source_clear = esc_attr( $entry['source'] );
+		$source_clear = str_replace( 
+			'[WPLNG_BACKSLASH]', 
+			'\\', 
+			$source_clear 
+		);
 
 		/**
 		 * Check if rule already exist
@@ -67,7 +78,6 @@ function wplng_link_media_get_entries() {
 		) {
 			$mode_clear = $entry['mode'];
 		}
-		// $mode_clear = $entry['mode'];
 
 		/**
 		 * Get and check the rules
@@ -127,6 +137,8 @@ function wplng_link_media_get_entries() {
 		'wplng_link_media_entries',
 		$entries_clear
 	);
+
+	$wplng_link_media_entries = $entries_clear;
 
 	return $entries_clear;
 }

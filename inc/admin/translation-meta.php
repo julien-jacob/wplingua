@@ -391,7 +391,11 @@ function wplng_translation_save_meta_boxes_data( $post_id ) {
 		$translations[ $key ]['translation'] = esc_html( $temp );
 	}
 
-	return true === update_post_meta(
+	/**
+	 * Save meta: Translation array as JSON
+	 */
+
+	 $meta_return = update_post_meta(
 		$post_id,
 		'wplng_translation_translations',
 		wp_json_encode(
@@ -399,6 +403,33 @@ function wplng_translation_save_meta_boxes_data( $post_id ) {
 			JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES
 		)
 	);
+
+	if ( false === $meta_return ) {
+
+		// Try to save it with encoded emoji
+		foreach ( $translations as $key => $translation ) {
+
+			if ( empty( $translation['translation'] )
+				|| '[WPLNG_EMPTY]' === $translation['translation']
+			) {
+				continue;
+			}
+
+			$translations[ $key ]['translation'] = wp_encode_emoji( $translation['translation'] );
+		}
+
+		$meta_return = update_post_meta(
+			$post_id,
+			'wplng_translation_translations',
+			wp_json_encode(
+				$translations,
+				JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES
+			)
+		);
+
+	}
+
+	return $meta_return;
 }
 
 

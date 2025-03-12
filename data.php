@@ -447,6 +447,16 @@ function wplng_data_attr_url_to_translate() {
 				'attr'     => 'src',
 				'selector' => 'iframe[src]',
 			),
+			array(
+				'attr'     => 'src',
+				'selector' => 'video source[src]',
+			),
+
+			// Plugin: Divi Supreme
+			array(
+				'attr'     => 'data-mfp-src',
+				'selector' => '[data-mfp-src]',
+			),
 		)
 	);
 }
