@@ -463,7 +463,6 @@ function wplng_update_translation( $post, $language_id, $translation ) {
 		);
 
 		if ( false === $meta_return ) {
-			wp_delete_post( $post->ID, true );
 			return false;
 		}
 
@@ -551,7 +550,6 @@ function wplng_update_translation( $post, $language_id, $translation ) {
 		);
 
 		if ( false === $meta_return ) {
-			wp_delete_post( $post->ID, true );
 			return false;
 		}
 	}
