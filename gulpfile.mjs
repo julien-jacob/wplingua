@@ -1,20 +1,31 @@
 /**
- * --------------------------
- * --- wpLingua GUPL File --- 
- * --------------------------
- * 
- * # Install npm dependencies
- * $ npm i
- * 
- * # Create or update the /assets/ folder
- * $ gulp
- * 
- * # Start the watcher
- * $ gulp watch
- * 
- * # Create or update the archive
- * $ gulp archive
- * 
+ **                 _     _                         
+ ** __      ___ __ | |   (_)_ __   __ _ _   _  __ _ 
+ ** \ \ /\ / / '_ \| |   | | '_ \ / _` | | | |/ _` |
+ **  \ V  V /| |_) | |___| | | | | (_| | |_| | (_| |
+ **   \_/\_/ | .__/|_____|_|_| |_|\__, |\__,_|\__,_|
+ **          |_|                  |___/             
+ **
+ **        -- wpLingua | WordPress plugin --
+ **   Translate and make your website multilingual
+ **
+ **     https://github.com/julien-jacob/wplingua
+ **      https://wordpress.org/plugins/wplingua/
+ **              https://wplingua.com/
+ **
+ ** 
+ ** # Install npm dependencies
+ ** $ npm i
+ ** 
+ ** # Create or update the /assets/ folder
+ ** $ gulp
+ ** 
+ ** # Start the watcher
+ ** $ gulp watch
+ ** 
+ ** # Create or update the archive
+ ** $ gulp archive
+ ** 
  **/
 
 'use strict';
