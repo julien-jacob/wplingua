@@ -322,6 +322,32 @@ function wplng_save_translation_new( $language_id, $original, $translation ) {
 	}
 
 	/**
+	 * Get the URL where the translation was discovered
+	 */
+
+	$discovery_url = wplng_get_url_original();
+	$discovery_url = wp_make_link_relative( $discovery_url );
+	$discovery_url = remove_query_arg(
+		array( 'wplng-mode', 'wplng-load', 'wplng-nocache' ),
+		$discovery_url
+	);
+
+	/**
+	 * Save meta: Discovered URL
+	 */
+
+	$meta_return = add_post_meta(
+		$new_post_id,
+		'wplng_translation_discovery_url',
+		$discovery_url
+	);
+
+	if ( false === $meta_return ) {
+		wp_delete_post( $new_post_id, true );
+		return false;
+	}
+
+	/**
 	 * Save meta: original language ID
 	 */
 
