@@ -13,19 +13,19 @@
  **      https://wordpress.org/plugins/wplingua/
  **              https://wplingua.com/
  **
- ** 
- ** # Install npm dependencies
- ** $ npm i
- ** 
- ** # Create or update the /assets/ folder
- ** $ gulp
- ** 
- ** # Start the watcher
- ** $ gulp watch
- ** 
- ** # Create or update the archive
- ** $ gulp archive
- ** 
+ ** -------------------------------------------------
+ * # Install npm dependencies
+ * $ npm i
+ * 
+ * # Create or update the /assets/ folder
+ * $ gulp
+ * 
+ * # Start the watcher
+ * $ gulp watch
+ * 
+ * # Create or update the archive
+ * $ gulp archive
+ ** -------------------------------------------------
  **/
 
 'use strict';
