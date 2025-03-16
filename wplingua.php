@@ -35,6 +35,7 @@ define( 'WPLNG_MAX_FILE_SIZE', 5000000 );
 // Define debug constants
 defined( 'WPLNG_DEBUG_JSON' ) || define( 'WPLNG_DEBUG_JSON', false );
 defined( 'WPLNG_DEBUG_AJAX' ) || define( 'WPLNG_DEBUG_AJAX', false );
+defined( 'WPLNG_DEBUG_BEAT' ) || define( 'WPLNG_DEBUG_BEAT', false );
 
 
 // Load all needed PHP files
@@ -195,6 +196,7 @@ function wplng_start() {
 
 		// Ajax function for edit modal: HeartBeat
 		add_action( 'wp_ajax_wplng_ajax_heartbeat', 'wplng_ajax_heartbeat' );
+		add_action( 'wp_ajax_nopriv_wplng_ajax_heartbeat', 'wplng_ajax_heartbeat' );
 
 		// Display 100 translation in admin area by default
 		add_filter( 'get_user_option_edit_wplng_translation_per_page', 'wplng_translation_per_page' );
