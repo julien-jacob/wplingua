@@ -111,6 +111,10 @@ function wplng_register_assets() {
  */
 function wplng_on_page_script() {
 
+	if ( ! empty( $_GET['wplng-load'] ) ) {
+		return;
+	}
+
 	$script = file_get_contents( WPLNG_PLUGIN_PATH . '/assets/js/on-page.js' );
 
 	if ( empty( $script ) ) {
@@ -119,9 +123,9 @@ function wplng_on_page_script() {
 
 	$script = str_replace(
 		array( '[admin-ajax-php]', '//# sourceMappingURL=on-page.js.map' ),
-		array(admin_url( 'admin-ajax.php' ), ''),
+		array( admin_url( 'admin-ajax.php' ), '' ),
 		$script
 	);
 
-	echo '<script id="wplingua-js-on-page">' . rtrim($script) . '</script>';
+	echo '<script id="wplingua-js-on-page">' . rtrim( $script ) . '</script>';
 }
