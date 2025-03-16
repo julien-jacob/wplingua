@@ -1,9 +1,6 @@
 <?php
 
 // If this file is called directly, abort.
-
-use PHP_CodeSniffer\Standards\MySource\Sniffs\Debug\FirebugConsoleSniff;
-
 if ( ! defined( 'WPINC' ) ) {
 	die;
 }
