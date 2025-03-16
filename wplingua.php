@@ -193,6 +193,9 @@ function wplng_start() {
 		// Ajax function for edit modal: Save modal
 		add_action( 'wp_ajax_wplng_ajax_save_modal', 'wplng_ajax_save_modal' );
 
+		// Ajax function for edit modal: HeartBeat
+		add_action( 'wp_ajax_wplng_ajax_heartbeat', 'wplng_ajax_heartbeat' );
+
 		// Display 100 translation in admin area by default
 		add_filter( 'get_user_option_edit_wplng_translation_per_page', 'wplng_translation_per_page' );
 
@@ -255,6 +258,9 @@ function wplng_start() {
 
 		// Enqueue CSS and JS files
 		add_action( 'wp_enqueue_scripts', 'wplng_register_assets' );
+
+		// Script JS in page
+		add_action( 'wp_footer', 'wplng_on_page_script' );
 
 		// Add languages switcher before </body>
 		add_action( 'wp_footer', 'wplng_switcher_wp_footer' );
