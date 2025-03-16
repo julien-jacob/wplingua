@@ -33,8 +33,8 @@ define( 'WPLNG_MAX_FILE_SIZE', 5000000 );
 
 
 // Define debug constants
-defined( 'WPLNG_LOG_JSON_DEBUG' ) || define( 'WPLNG_LOG_JSON_DEBUG', false );
-defined( 'WPLNG_LOG_AJAX_DEBUG' ) || define( 'WPLNG_LOG_AJAX_DEBUG', false );
+defined( 'WPLNG_DEBUG_JSON' ) || define( 'WPLNG_DEBUG_JSON', false );
+defined( 'WPLNG_DEBUG_AJAX' ) || define( 'WPLNG_DEBUG_AJAX', false );
 
 
 // Load all needed PHP files
