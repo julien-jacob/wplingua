@@ -25,7 +25,7 @@ jQuery(document).ready(function ($) {
                     method: "POST",
                     data: { action: "wplng_ajax_heartbeat" }
                 });
-            }, i * 60000 * 11 );
+            }, i * 1000 * 60 * 11);
         }
     }
 
