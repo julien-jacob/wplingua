@@ -101,7 +101,7 @@ function wplng_translate_json_array( $json_decoded, $args = array() ) {
 	 */
 	if ( in_array( $args['parents'], $json_excluded ) ) {
 
-		if ( true === WPLNG_LOG_JSON_DEBUG ) {
+		if ( true === WPLNG_DEBUG_JSON ) {
 
 			$debug = array(
 				'title'   => 'wpLingua JSON debug - Excluded parent',
@@ -132,7 +132,7 @@ function wplng_translate_json_array( $json_decoded, $args = array() ) {
 
 		if ( in_array( array_merge( $args['parents'], array( $key ) ), $json_excluded ) ) {
 
-			if ( true === WPLNG_LOG_JSON_DEBUG ) {
+			if ( true === WPLNG_DEBUG_JSON ) {
 
 				$debug = array(
 					'title'   => 'wpLingua JSON debug - Excluded element',
@@ -247,7 +247,7 @@ function wplng_translate_json_array( $json_decoded, $args = array() ) {
 			 * Print debug data in debug.log file
 			 */
 
-			if ( true === WPLNG_LOG_JSON_DEBUG
+			if ( true === WPLNG_DEBUG_JSON
 				&& isset( $json_decoded[ $key ] )
 				&& isset( $array_translated[ $key ] )
 			) {
