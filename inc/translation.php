@@ -15,7 +15,7 @@ if ( ! defined( 'WPINC' ) ) {
  */
 function wplng_get_translated_text_from_translations( $text, $translations ) {
 
-	if ( empty( trim( $text ) ) ) {
+	if ( empty( rtrim( $text ) ) ) {
 		return $text;
 	}
 
