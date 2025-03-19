@@ -18,7 +18,7 @@
 jQuery(document).ready(function ($) {
 
     function wplngHeartBeat() {
-        for (let i = 0; i < 3; i++) {
+        for (let i = 0; i < 5; i++) {
             setTimeout(() => {
                 $.ajax({
                     url: "[admin-ajax-php]",

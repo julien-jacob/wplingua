@@ -15,7 +15,7 @@ function wplng_ajax_heartbeat() {
 
 	$last_beat = get_option( 'wplng_hb_last_update' );
 	$now       = time();
-	$counter   = 10;
+	$counter   = 15;
 	$deleted   = array();
 
 	if ( ! empty( $last_beat )
