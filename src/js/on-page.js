@@ -31,5 +31,5 @@ jQuery(document).ready(function ($) {
 
     setTimeout(function () {
         wplngHeartBeat();
-    }, 5000);
+    }, 6000);
 });

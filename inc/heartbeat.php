@@ -15,11 +15,11 @@ function wplng_ajax_heartbeat() {
 
 	$last_beat = get_option( 'wplng_hb_last_update' );
 	$now       = time();
-	$counter   = 15;
+	$counter   = 25;
 	$deleted   = array();
 
 	if ( ! empty( $last_beat )
-		&& ( $last_beat + ( MINUTE_IN_SECONDS * 1 ) ) > $now
+		&& ( $last_beat + ( MINUTE_IN_SECONDS * 10 ) ) > $now
 	) {
 		wp_send_json_success();
 		return;
