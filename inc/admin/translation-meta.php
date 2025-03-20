@@ -280,7 +280,6 @@ function wplng_translation_editor_get_html( $post ) {
 		$url = home_url( $meta['wplng_translation_discovery_url'][0] );
 
 		$html .= '<div id="wplng-discovery-url">';
-		$html .= '<span class="dashicons dashicons-admin-links"></span> ';
 		$html .= '<strong>';
 		$html .= esc_html__( 'Discovery URL: ' ) . ' ';
 		$html .= '</strong>';
