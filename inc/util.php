@@ -156,7 +156,7 @@ function wplng_text_esc( $text ) {
 
 	$text = str_replace( '\\', '', $text );
 	$text = preg_replace( '/\s+/u', ' ', $text );
-	$text = rtrim( $text );
+	$text = trim( $text );
 
 	return $text;
 }
