@@ -508,13 +508,13 @@ function wplng_get_languages_allow() {
 		return wplng_get_languages_all();
 	} elseif ( empty( $languages_alow ) || ! is_array( $languages_alow ) ) {
 		return array();
+	} else {
+		foreach ( $languages_alow as $language_id_alow ) {
+			$languages[] = wplng_get_language_by_id( $language_id_alow );
+		}
+	
+		$wplng_languages_allow = $languages;
 	}
-
-	foreach ( $languages_alow as $language_id_alow ) {
-		$languages[] = wplng_get_language_by_id( $language_id_alow );
-	}
-
-	$wplng_languages_allow = $languages;
 
 	return $languages;
 }

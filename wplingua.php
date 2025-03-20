@@ -7,7 +7,7 @@
  * Author URI: https://wplingua.com/
  * Text Domain: wplingua
  * Domain Path: /languages/
- * Version: 2.4.4
+ * Version: 2.5.0
  * Requires PHP: 7.4
  * License: GPL v2 or later
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -24,7 +24,7 @@ if ( ! defined( 'WPINC' ) ) {
 define( 'WPLNG_API_URL', 'https://api.wplingua.com' );
 define( 'WPLNG_API_VERSION', '2.0' );
 define( 'WPLNG_API_SSLVERIFY', true );
-define( 'WPLNG_PLUGIN_VERSION', '2.4.4' );
+define( 'WPLNG_PLUGIN_VERSION', '2.5.0' );
 define( 'WPLNG_PLUGIN_FILE', plugin_basename( __FILE__ ) );
 define( 'WPLNG_PLUGIN_PATH', dirname( __FILE__ ) );
 define( 'WPLNG_PHP_MIN_VERSION', '7.4' );
@@ -33,8 +33,9 @@ define( 'WPLNG_MAX_FILE_SIZE', 5000000 );
 
 
 // Define debug constants
-defined( 'WPLNG_LOG_JSON_DEBUG' ) || define( 'WPLNG_LOG_JSON_DEBUG', false );
-defined( 'WPLNG_LOG_AJAX_DEBUG' ) || define( 'WPLNG_LOG_AJAX_DEBUG', false );
+defined( 'WPLNG_DEBUG_JSON' ) || define( 'WPLNG_DEBUG_JSON', false );
+defined( 'WPLNG_DEBUG_AJAX' ) || define( 'WPLNG_DEBUG_AJAX', false );
+defined( 'WPLNG_DEBUG_BEAT' ) || define( 'WPLNG_DEBUG_BEAT', false );
 
 
 // Load all needed PHP files
@@ -193,6 +194,10 @@ function wplng_start() {
 		// Ajax function for edit modal: Save modal
 		add_action( 'wp_ajax_wplng_ajax_save_modal', 'wplng_ajax_save_modal' );
 
+		// Ajax function for edit modal: HeartBeat
+		add_action( 'wp_ajax_wplng_ajax_heartbeat', 'wplng_ajax_heartbeat' );
+		add_action( 'wp_ajax_nopriv_wplng_ajax_heartbeat', 'wplng_ajax_heartbeat' );
+
 		// Display 100 translation in admin area by default
 		add_filter( 'get_user_option_edit_wplng_translation_per_page', 'wplng_translation_per_page' );
 
@@ -255,6 +260,9 @@ function wplng_start() {
 
 		// Enqueue CSS and JS files
 		add_action( 'wp_enqueue_scripts', 'wplng_register_assets' );
+
+		// Script JS in page
+		add_action( 'wp_footer', 'wplng_on_page_script' );
 
 		// Add languages switcher before </body>
 		add_action( 'wp_footer', 'wplng_switcher_wp_footer' );

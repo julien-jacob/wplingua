@@ -196,7 +196,7 @@ function wplng_ob_callback_ajax( $output ) {
 	}
 
 	// Print debug data in debug.log file
-	if ( true === WPLNG_LOG_AJAX_DEBUG ) {
+	if ( true === WPLNG_DEBUG_AJAX ) {
 
 		$debug = array(
 			'title'       => 'wpLingua AJAX debug',
