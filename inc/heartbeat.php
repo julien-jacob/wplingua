@@ -51,6 +51,7 @@ function wplng_ajax_heartbeat() {
 
 		if ( ! isset( $meta['wplng_translation_original'][0] )
 			|| ! is_string( $meta['wplng_translation_original'][0] )
+			|| $meta['wplng_translation_original'][0] !== trim( $meta['wplng_translation_original'][0] )
 			|| empty( $meta['wplng_translation_translations'][0] )
 			|| ! isset( $meta['wplng_translation_md5'][0] )
 		) {

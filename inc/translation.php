@@ -136,6 +136,7 @@ function wplng_get_translations_from_query() {
 
 		if ( ! isset( $meta['wplng_translation_original'][0] )
 			|| ! is_string( $meta['wplng_translation_original'][0] )
+			|| $meta['wplng_translation_original'][0] !== trim( $meta['wplng_translation_original'][0] )
 		) {
 			continue;
 		}
