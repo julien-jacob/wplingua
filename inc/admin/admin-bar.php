@@ -205,3 +205,67 @@ function wplng_admin_bar_menu() {
 		)
 	);
 }
+
+
+/**
+ * Add an edit translation link in admin bar for post and page edit
+ *
+ * @return void
+ */
+function wplng_admin_bar_edit() {
+
+	/**
+	 * Check the current page
+	 */
+
+	if ( ! function_exists( 'get_current_screen' )
+		|| ! is_admin()
+		|| ! current_user_can( 'edit_posts' )
+	) {
+		return;
+	}
+
+	$current_screen = get_current_screen();
+
+	if ( empty( $current_screen->base )
+		|| empty( $current_screen->id )
+		|| 'post' !== $current_screen->base
+		|| (
+			'page' !== $current_screen->id
+			&& 'post' !== $current_screen->id
+		)
+	) {
+		return;
+	}
+
+	/**
+	 * Check if a target language is defined
+	 */
+
+	$languages_target_ids = wplng_get_languages_target_ids();
+
+	if ( empty( $languages_target_ids[0] ) ) {
+		return;
+	}
+
+	/**
+	 * Add the admin bar link
+	 */
+
+	global $wp_admin_bar;
+
+	$wp_admin_bar->add_menu(
+		array(
+			'id'    => 'wplingua-edit-translations',
+			'title' => __( 'Edit translations', 'wplingua' ),
+			'href'  => add_query_arg(
+				'wplng-mode',
+				'list',
+				wplng_url_translate(
+					get_permalink(),
+					$languages_target_ids[0]
+				)
+			),
+		)
+	);
+}

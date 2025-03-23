@@ -141,6 +141,7 @@ function wplng_start() {
 
 		// Add admin Bar menu
 		add_action( 'admin_bar_menu', 'wplng_admin_bar_menu', 81 );
+		add_action( 'admin_bar_menu', 'wplng_admin_bar_edit', 81 );
 
 		// Switcher in nav menu options
 		add_action( 'admin_enqueue_scripts', 'wplng_switcher_nav_menu_inline_scripts' );
