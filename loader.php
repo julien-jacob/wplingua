@@ -34,6 +34,7 @@ require_once WPLNG_PLUGIN_PATH . '/inc/util.php';
 
 // Require files in /inc/admin/ folder
 require_once WPLNG_PLUGIN_PATH . '/inc/admin/admin-bar.php';
+require_once WPLNG_PLUGIN_PATH . '/inc/admin/admin.php';
 require_once WPLNG_PLUGIN_PATH . '/inc/admin/assets.php';
 require_once WPLNG_PLUGIN_PATH . '/inc/admin/switcher-nav-menu.php';
 require_once WPLNG_PLUGIN_PATH . '/inc/admin/option-page-link-media.php';
