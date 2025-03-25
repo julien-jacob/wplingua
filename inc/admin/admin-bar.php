@@ -249,6 +249,25 @@ function wplng_admin_bar_edit() {
 	}
 
 	/**
+	 * Get the link
+	 */
+
+	$url = get_permalink();
+
+	if ( empty( $url ) || ! wplng_url_is_translatable( $url ) ) {
+		return;
+	}
+
+	$url = add_query_arg(
+		'wplng-mode',
+		'list',
+		wplng_url_translate(
+			$url,
+			$languages_target_ids[0]
+		)
+	);
+
+	/**
 	 * Add the admin bar link
 	 */
 
@@ -258,14 +277,7 @@ function wplng_admin_bar_edit() {
 		array(
 			'id'    => 'wplingua-edit-translations',
 			'title' => __( 'Edit translations', 'wplingua' ),
-			'href'  => add_query_arg(
-				'wplng-mode',
-				'list',
-				wplng_url_translate(
-					get_permalink(),
-					$languages_target_ids[0]
-				)
-			),
+			'href'  => $url,
 		)
 	);
 }
