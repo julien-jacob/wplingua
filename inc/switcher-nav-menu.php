@@ -188,7 +188,13 @@ function wplng_switcher_nav_menu_replace_items( $items ) {
 			$new_item->classes[]  = 'wplng-language-current';
 
 			if ( 'y' === $args['flags_style']['value'] ) {
+
 				$new_item->wplng_flag = $language_current['flag'];
+
+				$new_item->wplng_alt = wplng_get_language_name_translated(
+					$language_current_id,
+					$language_current_id
+				);
 			}
 
 			$new_items[] = $new_item;
@@ -258,7 +264,14 @@ function wplng_switcher_nav_menu_replace_items( $items ) {
 			}
 
 			if ( 'y' === $args['flags_style']['value'] ) {
+
 				$new_item->wplng_flag = $language_website['flag'];
+
+				$new_item->wplng_alt = wplng_get_language_name_translated(
+					$language_website['id'],
+					$language_current_id
+				);
+
 			}
 
 			$new_items[] = $new_item;
@@ -332,6 +345,11 @@ function wplng_switcher_nav_menu_replace_items( $items ) {
 
 			if ( 'y' === $args['flags_style']['value'] ) {
 				$new_item->wplng_flag = $language_target['flag'];
+
+				$new_item->wplng_alt = wplng_get_language_name_translated(
+					$language_target['id'],
+					$language_current_id
+				);
 			}
 
 			$new_items[] = $new_item;
@@ -355,6 +373,10 @@ function wplng_add_nav_menu_link_attributes_atts( $atts, $menu_item ) {
 
 	if ( ! empty( $menu_item->wplng_flag ) ) {
 		$atts['data-wplng-flag'] = $menu_item->wplng_flag;
+	}
+
+	if ( ! empty( $menu_item->wplng_alt ) ) {
+		$atts['data-wplng-alt'] = $menu_item->wplng_alt;
 	}
 
 	if ( ! empty( $menu_item->classes )

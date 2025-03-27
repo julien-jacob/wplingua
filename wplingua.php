@@ -7,7 +7,7 @@
  * Author URI: https://wplingua.com/
  * Text Domain: wplingua
  * Domain Path: /languages/
- * Version: 2.5.2
+ * Version: 2.5.3
  * Requires PHP: 7.4
  * License: GPL v2 or later
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -24,7 +24,7 @@ if ( ! defined( 'WPINC' ) ) {
 define( 'WPLNG_API_URL', 'https://api.wplingua.com' );
 define( 'WPLNG_API_VERSION', '2.0' );
 define( 'WPLNG_API_SSLVERIFY', true );
-define( 'WPLNG_PLUGIN_VERSION', '2.5.2' );
+define( 'WPLNG_PLUGIN_VERSION', '2.5.3' );
 define( 'WPLNG_PLUGIN_FILE', plugin_basename( __FILE__ ) );
 define( 'WPLNG_PLUGIN_PATH', dirname( __FILE__ ) );
 define( 'WPLNG_PHP_MIN_VERSION', '7.4' );
@@ -141,6 +141,7 @@ function wplng_start() {
 
 		// Add admin Bar menu
 		add_action( 'admin_bar_menu', 'wplng_admin_bar_menu', 81 );
+		add_action( 'admin_bar_menu', 'wplng_admin_bar_edit', 81 );
 
 		// Switcher in nav menu options
 		add_action( 'admin_enqueue_scripts', 'wplng_switcher_nav_menu_inline_scripts' );
@@ -159,6 +160,10 @@ function wplng_start() {
 
 		// Reset API data on API key changing
 		add_action( 'update_option_wplng_api_key', 'wplng_on_update_option_wplng_api_key', 10, 2 );
+
+		// Add edit link on page and post list
+		add_filter( 'page_row_actions', 'wplng_row_edit_translation_link', 10, 2 );
+		add_filter( 'post_row_actions', 'wplng_row_edit_translation_link', 10, 2 );
 
 		/**
 		 * wplng_translation : CPT, taxo, meta

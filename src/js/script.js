@@ -18,17 +18,23 @@
 jQuery(document).ready(function ($) {
 
     /**
-     * Code for flags in nav menu switcher
+     * Code for flags images in nav menu switcher
      */
 
-    $("a[data-wplng-flag]").each(function () {
+    $("a[data-wplng-flag][data-wplng-alt]").each(function () {
 
-        let img = '<img ';
-        img += 'src="' + $(this).attr("data-wplng-flag") + '" '
-        img += 'class="wplng-menu-flag"> '
+        let img = '';
+
+        img += '<img';
+        img += ' src="' + $(this).attr("data-wplng-flag") + '" ';
+        img += ' alt="' + $(this).attr("data-wplng-alt") + '" ';
+        img += ' class="wplng-menu-flag"';
+        img += '> ';
 
         $(this).html(img + $(this).html());
-    })
+        $(this).removeAttr("data-wplng-flag");
+        $(this).removeAttr("data-wplng-alt");
+    });
 
     /**
      * Code for switcher
