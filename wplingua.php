@@ -141,6 +141,7 @@ function wplng_start() {
 
 		// Add admin Bar menu
 		add_action( 'admin_bar_menu', 'wplng_admin_bar_menu', 81 );
+		add_action( 'admin_bar_menu', 'wplng_admin_bar_edit', 81 );
 
 		// Switcher in nav menu options
 		add_action( 'admin_enqueue_scripts', 'wplng_switcher_nav_menu_inline_scripts' );
@@ -159,6 +160,10 @@ function wplng_start() {
 
 		// Reset API data on API key changing
 		add_action( 'update_option_wplng_api_key', 'wplng_on_update_option_wplng_api_key', 10, 2 );
+
+		// Add edit link on page and post list
+		add_filter( 'page_row_actions', 'wplng_row_edit_translation_link', 10, 2 );
+		add_filter( 'post_row_actions', 'wplng_row_edit_translation_link', 10, 2 );
 
 		/**
 		 * wplng_translation : CPT, taxo, meta
