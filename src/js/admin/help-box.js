@@ -17,6 +17,10 @@
 
 jQuery(document).ready(function ($) {
 
+    /**
+     * Help Box
+     */
+
     $("[wplng-help-box], [wplng-help-box-right]").click(function () {
 
         let selector = $(this).attr("wplng-help-box");
@@ -36,6 +40,24 @@ jQuery(document).ready(function ($) {
             $(this).css('opacity', '1');
         }
 
-    })
+    });
+
+    /**
+     * Easter Egg
+     */
+
+    let wplngEasterEggKey = [38, 38, 40, 40, 37, 39, 37, 39, 66, 65];
+    let wplngEasterEggCounter = 0;
+
+    $(document).keydown(function (e) {
+        if (e.keyCode === wplngEasterEggKey[wplngEasterEggCounter++]) {
+            if (wplngEasterEggCounter === wplngEasterEggKey.length) {
+                wplngEasterEggCounter = 0;
+                $("#wpbody-content .wrap .dashicons").attr("class", "dashicons dashicons-carrot");
+            }
+        } else {
+            wplngEasterEggCounter = 0;
+        }
+    });
 
 }); // End jQuery loaded event
