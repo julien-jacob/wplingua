@@ -9,8 +9,8 @@ if ( ! defined( 'WPINC' ) ) {
 /**
  * Get the original slug from a translation (without "/")
  *
- * @param string $slug
- * @param string $language_id
+ * @param string      $slug
+ * @param string      $language_id
  * @param array|false $slugs_translations
  * @return array Original slug
  */
@@ -113,8 +113,8 @@ function wplng_slug_original_path( $path, $language_id ) {
 /**
  * Get a translated slug
  *
- * @param string $slug
- * @param string $language_id
+ * @param string      $slug
+ * @param string      $language_id
  * @param array|false $slugs_translations
  * @return string Translated slug
  */
@@ -371,30 +371,28 @@ function wplng_create_slug( $slug ) {
 function wplng_get_slugs_from_query() {
 
 	$slug_to_delete = array();
-
-	$slugs = array();
-	$args  = array(
+	$slugs          = array();
+	$args           = array(
 		'post_type'              => 'wplng_slug',
 		'posts_per_page'         => -1,
 		'no_found_rows'          => true,
 		'update_post_term_cache' => false,
 		'update_post_meta_cache' => false,
 		'cache_results'          => false,
+		'fields'                 => 'ids', // Only retrieve post IDs
 	);
 
-	$the_query = new WP_Query( $args );
+	// Get all slug IDs
+	$post_ids = get_posts( $args );
 
-	while ( $the_query->have_posts() ) {
+	if ( empty( $post_ids ) ) {
+		return $slugs;
+	}
 
-		$the_query->the_post();
+	foreach ( $post_ids as $slug_id ) {
+		$meta = get_post_meta( $slug_id );
 
-		$slug_id = get_the_ID();
-		$meta    = get_post_meta( $slug_id );
-
-		/**
-		 * Check and clear source slug
-		 */
-
+		// Check for valid source slug
 		if ( ! isset( $meta['wplng_slug_original'][0] )
 			|| ! is_string( $meta['wplng_slug_original'][0] )
 		) {
@@ -403,39 +401,40 @@ function wplng_get_slugs_from_query() {
 
 		$source = sanitize_title( $meta['wplng_slug_original'][0] );
 
-		if ( 'index-php' === $source
-			|| 'wp-includes' === $source
-			|| 'wp-json' === $source
-			|| 'go' === $source
-			|| 'refer' === $source
-			|| 'recommend' === $source
-			|| 'recommends' === $source
+		// Skip unwanted slugs and mark them for deletion
+		if ( in_array(
+			$source,
+			array(
+				'index-php',
+				'wp-includes',
+				'wp-json',
+				'go',
+				'refer',
+				'recommend',
+				'recommends',
+			),
+			true
+		)
 		) {
 			$slug_to_delete[] = $slug_id;
 			continue;
 		}
 
-		/**
-		 * Check and clear slug translations, setup review array
-		 */
-
+		// Check for translations and build translation array
 		if ( empty( $meta['wplng_slug_translations'][0] ) ) {
 			continue;
 		}
 
-		$translations_meta = json_decode(
-			$meta['wplng_slug_translations'][0],
-			true
-		);
+		$translations      = array();
+		$translations_meta = json_decode( $meta['wplng_slug_translations'][0], true );
 
-		$translations = array();
+		if ( ! is_array( $translations_meta ) ) {
+			continue;
+		}
 
 		foreach ( $translations_meta as $translation_meta ) {
 
-			/**
-			 * Language ID
-			 */
-
+			// Validate language ID
 			if ( empty( $translation_meta['language_id'] )
 				|| ! wplng_is_valid_language_id( $translation_meta['language_id'] )
 			) {
@@ -444,10 +443,7 @@ function wplng_get_slugs_from_query() {
 
 			$language_id = sanitize_key( $translation_meta['language_id'] );
 
-			/**
-			 * Slug translation
-			 */
-
+			// Check and validate slug translation
 			if ( empty( $translation_meta['translation'] )
 				|| ! is_string( $translation_meta['translation'] )
 				|| $translation_meta['translation'] === '[WPLNG_EMPTY]'
@@ -456,38 +452,30 @@ function wplng_get_slugs_from_query() {
 				continue;
 			}
 
-			$translation = sanitize_title( $translation_meta['translation'] );
-
-			$translations[ $language_id ] = $translation;
+			// Sanitize and add valid translation
+			$translations[ $language_id ] = sanitize_title( $translation_meta['translation'] );
 		}
 
+		// Add source and translations to slugs array
 		$slugs[] = array(
 			'source'       => $source,
 			'translations' => $translations,
 		);
-
 	}
 
-	wp_reset_postdata();
-
+	// Delete invalid slugs, limit to 32 deletions
 	if ( ! empty( $slug_to_delete ) ) {
-		foreach ( $slug_to_delete as $key => $id ) {
-			if ( $key >= 32 ) {
-				break;
-			}
+
+		foreach ( array_slice( $slug_to_delete, 0, 32 ) as $id ) {
 			wp_delete_post( $id, true );
 		}
-		set_transient(
-			'wplng_cached_slugs',
-			$slugs,
-			30
-		);
+
+		// Cache slugs for 30 seconds after deletion
+		set_transient( 'wplng_cached_slugs', $slugs, 30 );
+
 	} else {
-		set_transient(
-			'wplng_cached_slugs',
-			$slugs,
-			MONTH_IN_SECONDS
-		);
+		// Cache slugs for a month if no deletions occurred
+		set_transient( 'wplng_cached_slugs', $slugs, MONTH_IN_SECONDS );
 	}
 
 	return $slugs;
@@ -550,8 +538,11 @@ function wplng_get_slugs() {
  */
 function wplng_get_slug_saved_from_original( $original ) {
 
-	$translation = false;
-	$original    = trim( strtolower( $original ) );
+	$original = trim( strtolower( $original ) );
+
+	if ( empty( $original ) ) {
+		return false;
+	}
 
 	$args = array(
 		'post_type'      => 'wplng_slug',
@@ -563,32 +554,28 @@ function wplng_get_slug_saved_from_original( $original ) {
 				'compare' => '=',
 			),
 		),
+		'fields'         => 'ids',
 	);
 
-	$the_query = new WP_Query( $args );
+	$posts = get_posts( $args );
 
-	// The Loop
-	while ( $the_query->have_posts() ) {
+	if ( empty( $posts ) ) {
+		return false;
+	}
 
-		$the_query->the_post();
+	foreach ( $posts as $post_id ) {
 
-		$meta = get_post_meta( get_the_ID() );
+		$meta = get_post_meta( $post_id );
 
-		if ( ! isset( $meta['wplng_slug_original'][0] )
-			|| ! is_string( $meta['wplng_slug_original'][0] )
+		if ( isset( $meta['wplng_slug_original'][0] )
+			&& is_string( $meta['wplng_slug_original'][0] )
+			&& $meta['wplng_slug_original'][0] === $original
 		) {
-			continue;
-		}
-
-		if ( $meta['wplng_slug_original'][0] === $original ) {
-			$translation = get_post();
-			break;
+			return get_post( $post_id );
 		}
 	}
 
-	wp_reset_postdata();
-
-	return $translation;
+	return false;
 }
 
 
