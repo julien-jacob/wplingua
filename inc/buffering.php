@@ -87,7 +87,6 @@ function wplng_ob_start() {
 	$_SERVER['REQUEST_URI'] = $origin_path;
 
 	ob_start( 'wplng_ob_callback_page' );
-
 }
 
 

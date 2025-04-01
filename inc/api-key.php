@@ -303,5 +303,4 @@ function wplng_on_update_option_wplng_api_key( $old_value, $new_value ) {
 
 	wplng_clear_translations_cache();
 	wplng_clear_slugs_cache();
-
 }

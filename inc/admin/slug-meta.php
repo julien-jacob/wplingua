@@ -26,7 +26,6 @@ function wplng_slug_add_meta_box( $post ) {
 		'normal',                           // Context where the meta box should appear
 		'low'                               // Priority within the context
 	);
-
 }
 
 
@@ -43,7 +42,6 @@ function wplng_slug_meta_box_html_output( $post ) {
 	echo '<div id="wplng-slug-editor">';
 	echo wplng_slug_editor_get_html( $post );
 	echo '</div>';
-
 }
 
 
@@ -433,7 +431,7 @@ function wplng_slug_save_meta_boxes_data( $post_id ) {
 					}
 
 					$has_same_slugs = true;
-					$same_slugs_counter++;
+					++$same_slugs_counter;
 
 					$temp = preg_replace(
 						'#(.*)-(\d*)$#',

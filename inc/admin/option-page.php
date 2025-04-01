@@ -251,7 +251,6 @@ function wplng_plugin_activation_redirect( $plugin ) {
 		);
 		exit();
 	}
-
 }
 
 

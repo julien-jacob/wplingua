@@ -10,7 +10,7 @@ if ( ! defined( 'WPINC' ) ) {
  * wpLingua translate : Get translated HTML
  *
  * @param string $html
- * @param array $args
+ * @param array  $args
  * @return string
  */
 function wplng_translate_html( $html, $args = array() ) {

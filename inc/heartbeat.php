@@ -62,7 +62,7 @@ function wplng_ajax_heartbeat() {
 			|| empty( $meta['wplng_translation_translations'][0] )
 			|| empty( $meta['wplng_translation_md5'][0] )
 		) {
-			$counter--;
+			--$counter;
 
 			$deleted[] = array(
 				'reason' => 'Invalid translation',

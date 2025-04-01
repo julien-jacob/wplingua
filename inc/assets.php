@@ -100,7 +100,6 @@ function wplng_register_assets() {
 		);
 
 	}
-
 }
 
 

@@ -10,7 +10,7 @@ if ( ! defined( 'WPINC' ) ) {
  * Get the translated text from translations array
  *
  * @param string $text
- * @param array $translations
+ * @param array  $translations
  * @return string
  */
 function wplng_get_translated_text_from_translations( $text, $translations ) {
@@ -90,9 +90,9 @@ function wplng_get_translation_saved_from_original( $original ) {
 		return false;
 	}
 
-	foreach ($posts as $post_id) {
+	foreach ( $posts as $post_id ) {
 
-		$meta    = get_post_meta( $post_id );
+		$meta = get_post_meta( $post_id );
 
 		if ( isset( $meta['wplng_translation_original'][0] )
 			&& is_string( $meta['wplng_translation_original'][0] )
@@ -168,9 +168,9 @@ function wplng_get_translations_from_query() {
 			// Validate each translation entry
 			if ( empty( $translation_meta['language_id'] )
 				|| ! wplng_is_valid_language_id( $translation_meta['language_id'] )
-				|| ( 
-					isset( $translation_meta['translation'] ) 
-					&& $translation_meta['translation'] === '[WPLNG_EMPTY]' 
+				|| (
+					isset( $translation_meta['translation'] )
+					&& $translation_meta['translation'] === '[WPLNG_EMPTY]'
 				)
 			) {
 				continue;
@@ -270,7 +270,7 @@ function wplng_get_translations_target( $target_language_id ) {
  *
  * @param string $language_id
  * @param string $original
- * @param array $translation
+ * @param array  $translation
  * @return int|false Post ID or false on failure
  */
 function wplng_save_translation_new( $language_id, $original, $translation ) {
@@ -466,7 +466,7 @@ function wplng_save_translation_new( $language_id, $original, $translation ) {
  *
  * @param object $post
  * @param string $language_id
- * @param array $translation
+ * @param array  $translation
  * @return int|false Post ID, false on failure
  */
 function wplng_update_translation( $post, $language_id, $translation ) {
@@ -598,7 +598,7 @@ function wplng_update_translation( $post, $language_id, $translation ) {
 /**
  * Save a list of translations
  *
- * @param array $translations
+ * @param array  $translations
  * @param string $language_target_id
  * @return array $translations with post IDs
  */
@@ -636,7 +636,7 @@ function wplng_save_translations( $translations, $language_target_id ) {
  *
  * @param string $target_language_id
  * @param string $original
- * @param array $translation
+ * @param array  $translation
  * @return array $translation with post ID
  */
 function wplng_save_translation( $target_language_id, $original, $translation, $clear_cache = true ) {
@@ -662,7 +662,6 @@ function wplng_save_translation( $target_language_id, $original, $translation, $
 	if ( $clear_cache ) {
 		wplng_clear_translations_cache();
 	}
-
 }
 
 

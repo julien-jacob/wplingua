@@ -68,7 +68,6 @@ function wplng_switcher_nav_menu_args_from_href( $href ) {
 			'label' => $valid_layout[ $match[3] ],
 		),
 	);
-
 }
 
 
@@ -276,7 +275,7 @@ function wplng_switcher_nav_menu_replace_items( $items ) {
 
 			$new_items[] = $new_item;
 
-			$offset++;
+			++$offset;
 		}
 
 		/**
@@ -354,7 +353,7 @@ function wplng_switcher_nav_menu_replace_items( $items ) {
 
 			$new_items[] = $new_item;
 
-			$offset++;
+			++$offset;
 		}
 	} // End foreach $items
 
@@ -365,7 +364,7 @@ function wplng_switcher_nav_menu_replace_items( $items ) {
 /**
  * Add attribute in nav menu switcher
  *
- * @param array $atts
+ * @param array   $atts
  * @param WP_Post $menu_item
  * @return array
  */

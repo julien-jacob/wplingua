@@ -26,7 +26,7 @@ define( 'WPLNG_API_VERSION', '2.0' );
 define( 'WPLNG_API_SSLVERIFY', true );
 define( 'WPLNG_PLUGIN_VERSION', '2.5.3' );
 define( 'WPLNG_PLUGIN_FILE', plugin_basename( __FILE__ ) );
-define( 'WPLNG_PLUGIN_PATH', dirname( __FILE__ ) );
+define( 'WPLNG_PLUGIN_PATH', __DIR__ );
 define( 'WPLNG_PHP_MIN_VERSION', '7.4' );
 define( 'WPLNG_MAX_TRANSLATIONS', 256 );
 define( 'WPLNG_MAX_FILE_SIZE', 5000000 );
@@ -286,7 +286,7 @@ function wplng_start() {
 		 * OB and REQUEST_URI
 		 */
 
-		 // Manage URL with REQUEST_URI and start OB
+		// Manage URL with REQUEST_URI and start OB
 		add_action( 'init', 'wplng_ob_start', 1 );
 
 		// Redirect page if is called wiht an untranslate slug
@@ -322,6 +322,5 @@ function wplng_start() {
 		add_action( 'enqueue_block_editor_assets', 'wplng_register_block_assets' );
 
 	}
-
 }
 wplng_start();

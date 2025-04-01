@@ -37,7 +37,7 @@ if ( ! defined( 'WPINC' ) ) {
  * - code    : An integer
  * - message : Error description
  *
- * @param array $texts
+ * @param array  $texts
  * @param string $language_source_id
  * @param string $language_target_id
  * @return array

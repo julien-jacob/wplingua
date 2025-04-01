@@ -9,7 +9,7 @@ if ( ! defined( 'WPINC' ) ) {
 /**
  * Add a link for edit translations on page and post list
  *
- * @param array $actions An array of row action links (string)
+ * @param array   $actions An array of row action links (string)
  * @param WP_Post $post The post object
  * @return array
  */

@@ -10,7 +10,7 @@ if ( ! defined( 'WPINC' ) ) {
  * wpLingua translate : Get translated JSON
  *
  * @param string $json
- * @param array $args
+ * @param array  $args
  * @return string
  */
 function wplng_translate_json( $json, $args = array() ) {
@@ -190,7 +190,7 @@ function wplng_translate_json_array( $json_decoded, $args = array() ) {
 				 */
 
 				$debug_type      = 'String - JSON';
-				$args['parents'] = array_merge( $args['parents'], [ $key ] );
+				$args['parents'] = array_merge( $args['parents'], array( $key ) );
 
 				$array_translated[ $key ] = wplng_translate_json(
 					$value,

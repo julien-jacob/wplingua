@@ -10,7 +10,7 @@ if ( ! defined( 'WPINC' ) ) {
  * wpLingua Parser : Get texts in an JSON
  *
  * @param string $json
- * @param array $parents
+ * @param array  $parents
  * @return array Texts
  */
 function wplng_parse_json( $json, $parents = array() ) {

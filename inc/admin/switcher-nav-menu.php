@@ -75,8 +75,8 @@ function wplng_switcher_nav_menu_inline_scripts( $hook ) {
 			 * wpLingua: Add new nav menu switcher
 			 */
 
-			 // Infinite nav menu switcher
-			 // Update the edit fields event listen
+			// Infinite nav menu switcher
+			// Update the edit fields event listen
 
 			let wplngNewValidate = document.getElementById('submit-posttype-wplingua-endpoints');
 			wplngNewValidate.addEventListener('click', wplngAlwaysValidate);
@@ -269,7 +269,7 @@ function wp_nav_menu_switcher_box_add() {
 /**
  * Print option in wpLingua nav menu
  *
- * @param string $item_id
+ * @param string  $item_id
  * @param WP_Post $menu_item
  * @return void
  */

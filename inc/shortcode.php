@@ -9,7 +9,7 @@ if ( ! defined( 'WPINC' ) ) {
 /**
  * wpLingua Shortcode : [wplng_notranslate]
  *
- * @param array $atts
+ * @param array  $atts
  * @param string $content
  * @return string
  */
@@ -26,7 +26,7 @@ function wplng_shortcode_notranslate( $atts, $content ) {
 /**
  * wpLingua Shortcode : [wplng_only]
  *
- * @param array $atts
+ * @param array  $atts
  * @param string $content
  * @return string
  */
@@ -38,7 +38,8 @@ function wplng_shortcode_only( $atts, $content ) {
 	$attributes = shortcode_atts(
 		array(
 			'lang' => false,
-		), $atts
+		),
+		$atts
 	);
 
 	switch ( $attributes['lang'] ) {
@@ -96,7 +97,8 @@ function wplng_shortcode_switcher( $atts ) {
 			'theme'  => false,
 			'flags'  => false,
 			'class'  => false,
-		), $atts
+		),
+		$atts
 	);
 
 	if ( ! empty( $attributes['class'] ) ) {

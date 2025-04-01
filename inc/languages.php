@@ -144,7 +144,7 @@ function wplng_get_language_id( $language ) {
 /**
  * Get language name translated from language ID or data
  *
- * @param mixed $language Language ID or data
+ * @param mixed  $language Language ID or data
  * @param string $language_target Language ID
  * @return string Language name translated
  */
@@ -512,7 +512,7 @@ function wplng_get_languages_allow() {
 		foreach ( $languages_alow as $language_id_alow ) {
 			$languages[] = wplng_get_language_by_id( $language_id_alow );
 		}
-	
+
 		$wplng_languages_allow = $languages;
 	}
 

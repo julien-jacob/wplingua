@@ -10,11 +10,11 @@ if ( ! defined( 'WPINC' ) ) {
  * ------ Data : Parse and translate ------
  */
 
- /**
-  * Get JSON elements to translate
-  *
-  * @return array
-  */
+/**
+ * Get JSON elements to translate
+ *
+ * @return array
+ */
 function wplng_data_json_to_translate() {
 	return apply_filters(
 		'wplng_json_to_translate',
@@ -492,11 +492,11 @@ function wplng_data_attr_lang_id_to_replace() {
  * ------ Data : Switcher options ------
  */
 
- /**
-  * Get options for switcher insertion
-  *
-  * @return array
-  */
+/**
+ * Get options for switcher insertion
+ *
+ * @return array
+ */
 function wplng_data_switcher_valid_insert() {
 	return array(
 		'bottom-right'  => __( 'Bottom right', 'wplingua' ),
@@ -633,11 +633,11 @@ function wplng_data_switcher_nav_menu_valid_layout() {
  * ------ Data : Languages ------
  */
 
- /**
-  * Get all languages data
-  *
-  * @return array
-  */
+/**
+ * Get all languages data
+ *
+ * @return array
+ */
 function wplng_data_languages() {
 	return array(
 		array(

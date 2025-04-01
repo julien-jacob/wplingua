@@ -26,7 +26,6 @@ function wplng_translation_add_meta_box( $post ) {
 		'normal',                                   // Context where the meta box should appear
 		'low'                                       // Priority within the context
 	);
-
 }
 
 
@@ -45,7 +44,6 @@ function wplng_translation_meta_box_html_output( $post ) {
 	echo '<div id="wplng-translation-editor">';
 	echo wplng_translation_editor_get_html( $post );
 	echo '</div>';
-
 }
 
 
@@ -57,7 +55,7 @@ function wplng_translation_meta_box_html_output( $post ) {
  */
 function wplng_translation_editor_get_html( $post ) {
 
-	//used later for security
+	// used later for security
 	$html = wp_nonce_field(
 		basename( __FILE__ ),
 		'wplng_translation_meta_box_nonce',
@@ -412,7 +410,7 @@ function wplng_translation_save_meta_boxes_data( $post_id ) {
 	 * Save meta: Translation array as JSON
 	 */
 
-	 $meta_return = update_post_meta(
+	$meta_return = update_post_meta(
 		$post_id,
 		'wplng_translation_translations',
 		wp_json_encode(

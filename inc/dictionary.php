@@ -109,7 +109,8 @@ function wplng_dictionary_get_entries() {
 	 */
 
 	usort(
-		$entries_clear, function( $a, $b ) {
+		$entries_clear,
+		function ( $a, $b ) {
 			return strlen( $b['source'] ) - strlen( $a['source'] );
 		}
 	);

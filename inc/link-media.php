@@ -41,10 +41,10 @@ function wplng_link_media_get_entries() {
 		}
 
 		$source_clear = esc_attr( $entry['source'] );
-		$source_clear = str_replace( 
-			'[WPLNG_BACKSLASH]', 
-			'\\', 
-			$source_clear 
+		$source_clear = str_replace(
+			'[WPLNG_BACKSLASH]',
+			'\\',
+			$source_clear
 		);
 
 		/**
@@ -124,7 +124,8 @@ function wplng_link_media_get_entries() {
 	 */
 
 	usort(
-		$entries_clear, function( $a, $b ) {
+		$entries_clear,
+		function ( $a, $b ) {
 			return strlen( $b['source'] ) - strlen( $a['source'] );
 		}
 	);

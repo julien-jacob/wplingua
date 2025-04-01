@@ -87,7 +87,7 @@ function wplng_translate_search_query( $query ) {
 	 * Replace the search text by the translation
 	 */
 
-	 $query->set( 's', $translated_search );
+	$query->set( 's', $translated_search );
 }
 
 

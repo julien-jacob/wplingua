@@ -55,7 +55,6 @@ function wplng_option_page_settings_assets( $hook ) {
 		array(),
 		WPLNG_PLUGIN_VERSION
 	);
-
 }
 
 
@@ -107,7 +106,6 @@ function wplng_option_page_register_assets( $hook ) {
 		array(),
 		WPLNG_PLUGIN_VERSION
 	);
-
 }
 
 
@@ -234,7 +232,6 @@ function wplng_option_page_exclusions_assets( $hook ) {
 		array(),
 		WPLNG_PLUGIN_VERSION
 	);
-
 }
 
 
@@ -256,11 +253,11 @@ function wplng_option_page_link_media_assets( $hook ) {
 	 * Enqueue jQuery
 	 */
 
-	 wp_enqueue_script( 'jquery' );
+	wp_enqueue_script( 'jquery' );
 
-	 /**
-	  * Enqueue wpLingua JS scripts
-	  */
+	/**
+	 * Enqueue wpLingua JS scripts
+	 */
 
 	wp_enqueue_script(
 		'wplingua-option-link-media',
@@ -279,7 +276,6 @@ function wplng_option_page_link_media_assets( $hook ) {
 		array(),
 		WPLNG_PLUGIN_VERSION
 	);
-
 }
 
 
@@ -301,11 +297,11 @@ function wplng_option_page_dictionary_assets( $hook ) {
 	 * Enqueue jQuery
 	 */
 
-	 wp_enqueue_script( 'jquery' );
+	wp_enqueue_script( 'jquery' );
 
-	 /**
-	  * Enqueue wpLingua JS scripts
-	  */
+	/**
+	 * Enqueue wpLingua JS scripts
+	 */
 
 	wp_enqueue_script(
 		'wplingua-option-dictionary',
@@ -324,7 +320,6 @@ function wplng_option_page_dictionary_assets( $hook ) {
 		array(),
 		WPLNG_PLUGIN_VERSION
 	);
-
 }
 
 
@@ -390,7 +385,6 @@ function wplng_translation_assets() {
 		);
 
 	}
-
 }
 
 
@@ -456,7 +450,6 @@ function wplng_slug_assets() {
 		);
 
 	}
-
 }
 
 

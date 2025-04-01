@@ -178,5 +178,4 @@ function wplng_ajax_save_modal() {
 		wp_send_json_error( __( 'Translation saving failed', 'wplingua' ) );
 		return;
 	}
-
 }
