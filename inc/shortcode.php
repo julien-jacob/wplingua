@@ -73,8 +73,11 @@ function wplng_shortcode_only( $atts, $content ) {
 		return '';
 	}
 
+	$content = wp_kses_post( $content );
+	$content = do_shortcode( $content );
+
 	$html  = '<span class="notranslate">';
-	$html .= wp_kses_post( do_shortcode( $content ) );
+	$html .= $content;
 	$html .= '</span>';
 
 	return $html;
