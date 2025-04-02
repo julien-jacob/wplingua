@@ -233,7 +233,7 @@ function wplng_str_is_locale_id( $str ) {
  * Return true if a JSON string element is translatable
  *
  * @param string $element
- * @param array $parents
+ * @param array  $parents
  * @return bool
  */
 function wplng_json_element_is_translatable( $element, $parents ) {
@@ -296,7 +296,7 @@ function wplng_json_element_is_translatable( $element, $parents ) {
 			 * Plugin: Elementor - elementorFrontendConfig
 			 */
 
-			 $is_translatable = true;
+			$is_translatable = true;
 
 		} elseif (
 			! empty( $parents[0] )

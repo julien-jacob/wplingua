@@ -10,7 +10,7 @@ if ( ! defined( 'WPINC' ) ) {
  * Modify dom for the editor mode
  *
  * @param object $dom
- * @param array $args
+ * @param array  $args
  * @return object
  */
 function wplng_dom_mode_editor( $dom, $args ) {

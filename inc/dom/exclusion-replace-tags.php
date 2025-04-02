@@ -13,7 +13,7 @@ if ( ! defined( 'WPINC' ) ) {
  * and replaces them with HTML parts provided in the '$excluded_elements' array.
  *
  * @param object $dom The DOM object to process.
- * @param array $excluded_elements An array of HTML parts to replace the exclusion tags.
+ * @param array  $excluded_elements An array of HTML parts to replace the exclusion tags.
  * @return object The modified DOM object.
  */
 function wplng_dom_exclusions_replace_tags( $dom, $excluded_elements ) {
@@ -47,7 +47,7 @@ function wplng_dom_exclusions_replace_tags( $dom, $excluded_elements ) {
 			$contain_excluded = true;
 		}
 
-		$counter++;
+		++$counter;
 	}
 
 	// Return the processed DOM

@@ -276,7 +276,7 @@ function wplng_admin_bar_edit() {
 	$wp_admin_bar->add_menu(
 		array(
 			'id'    => 'wplingua-edit-translations',
-			'title' => __( 'Edit translations', 'wplingua' ),
+			'title' => __( 'Translations', 'wplingua' ),
 			'href'  => $url,
 		)
 	);

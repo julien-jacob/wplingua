@@ -50,8 +50,8 @@ function wplng_register_post_type_slug() {
  * This function is a filter on post_row_actions and is used to remove the
  * quick edit action from the list of actions on the slugs list page.
  *
- * @param array     $actions An array of row action links.
- * @param WP_Post   $post    The post object.
+ * @param array   $actions An array of row action links.
+ * @param WP_Post $post    The post object.
  *
  * @return array
  */
@@ -128,7 +128,7 @@ function wplng_restrict_manage_posts_slug_status() {
 			)
 		);
 	} else {
-		// If more than one language target id, 
+		// If more than one language target id,
 		// then use full, partially and reviewed status options.
 		$options = array_merge(
 			$options,
@@ -295,7 +295,7 @@ function wplng_slug_status_columns( $columns ) {
  *
  * @param string[] $classes An array of post class names.
  * @param string[] $css_class An array of additional class names added to the post.
- * @param int $post_id The post ID.
+ * @param int      $post_id The post ID.
  * @return string[]
  */
 function wplng_post_class_slug_status( $classes, $css_class, $post_id ) {
@@ -374,7 +374,7 @@ function wplng_post_class_slug_status( $classes, $css_class, $post_id ) {
  * Add status items in custom column on slugs
  *
  * @param string $column The name of the column to display.
- * @param int $post_id The current post ID.
+ * @param int    $post_id The current post ID.
  * @return void
  */
 function wplng_slug_status_item( $column, $post_id ) {
@@ -408,7 +408,7 @@ function wplng_slug_status_item( $column, $post_id ) {
  * Defaults $actions are 'Edit', ‘Quick Edit’, 'Restore', 'Trash', ‘Delete Permanently’, 'Preview', and 'View'.
  *
  * @param string[] $actions An array of row action links.
- * @param WP_Post $post The post object.
+ * @param WP_Post  $post The post object.
  * @return string[]
  */
 function wplng_post_row_actions_slug_status( $actions, $post ) {

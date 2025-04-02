@@ -149,7 +149,8 @@ function wplng_url_translate_no_filter( $url, $language_target_id = '' ) {
 function wplng_url_is_translatable( $url = '' ) {
 	return apply_filters(
 		'wplng_url_is_translatable',
-		wplng_url_is_translatable_no_filter( $url )
+		wplng_url_is_translatable_no_filter( $url ),
+		$url
 	);
 }
 

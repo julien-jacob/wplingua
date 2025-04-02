@@ -13,7 +13,7 @@ if ( ! defined( 'WPINC' ) ) {
  * It uses regex to find JavaScript variables and translates the JSON part.
  *
  * @param string $js The JavaScript code to translate.
- * @param array $args Additional arguments for translation processing.
+ * @param array  $args Additional arguments for translation processing.
  * @return string The translated JavaScript code.
  */
 function wplng_translate_js( $js, $args = array() ) {

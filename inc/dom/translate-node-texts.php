@@ -10,7 +10,7 @@ if ( ! defined( 'WPINC' ) ) {
  * Translate nodes text in dom for translated pages
  *
  * @param object $dom
- * @param array $args
+ * @param array  $args
  * @return object
  */
 function wplng_dom_translate_nodes_texts( $dom, $args ) {

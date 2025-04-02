@@ -50,7 +50,7 @@ function wplng_register_post_type_translation() {
  * This function is a filter that removes the Quick Edit link on the wpLingua
  * translations list in the WordPress admin area.
  *
- * @param array $actions An array of row action links.
+ * @param array  $actions An array of row action links.
  * @param object $post The post object.
  * @return array The modified array of row action links.
  */
@@ -145,7 +145,7 @@ function wplng_restrict_manage_posts_translation_status() {
 /**
  * Filter translations by status: Apply custom query on CPT for translation_status.
  *
- * This function modifies the query for the 'wplng_translation' post type in the admin edit screen. 
+ * This function modifies the query for the 'wplng_translation' post type in the admin edit screen.
  * It applies a meta query based on the specified translation status.
  *
  * @param WP_Query $query The current WP_Query instance.
@@ -275,7 +275,7 @@ function wplng_translation_status_columns( $columns ) {
  *
  * @param string[] $classes An array of post class names.
  * @param string[] $css_class An array of additional class names added to the post.
- * @param int $post_id The post ID.
+ * @param int      $post_id The post ID.
  * @return string[]
  */
 function wplng_post_class_translation_status( $classes, $css_class, $post_id ) {
@@ -354,7 +354,7 @@ function wplng_post_class_translation_status( $classes, $css_class, $post_id ) {
  * Add status items in custom column on translations
  *
  * @param string $column The name of the column to display.
- * @param int $post_id The current post ID.
+ * @param int    $post_id The current post ID.
  * @return void
  */
 function wplng_translation_status_item( $column, $post_id ) {
@@ -388,7 +388,7 @@ function wplng_translation_status_item( $column, $post_id ) {
  * Defaults $actions are 'Edit', ‘Quick Edit’, 'Restore', 'Trash', ‘Delete Permanently’, 'Preview', and 'View'.
  *
  * @param string[] $actions An array of row action links.
- * @param WP_Post $post The post object.
+ * @param WP_Post  $post The post object.
  * @return string[]
  */
 function wplng_post_row_actions_translation_status( $actions, $post ) {

@@ -10,7 +10,7 @@ if ( ! defined( 'WPINC' ) ) {
  * Modify the lang attribute in dom for translated pages
  *
  * @param object $dom
- * @param array $args
+ * @param array  $args
  * @return object
  */
 function wplng_dom_replace_attr_lang( $dom, $args ) {

@@ -10,7 +10,7 @@ if ( ! defined( 'WPINC' ) ) {
  * Translate attributes in dom for translated pages
  *
  * @param object $dom
- * @param array $args
+ * @param array  $args
  * @return object
  */
 function wplng_dom_translate_attr_texts( $dom, $args ) {

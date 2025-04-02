@@ -9,7 +9,7 @@ if ( ! defined( 'WPINC' ) ) {
  * Require all wpLingua PHP files
  */
 
- // Require data functions
+// Require data functions
 require_once WPLNG_PLUGIN_PATH . '/data.php';
 
 // Require files in /inc/ folder

@@ -221,7 +221,7 @@ function wplng_args_update_from_texts( &$args, $texts ) {
 	 * Get count_texts
 	 */
 
-	 $args['count_texts'] = count( $texts );
+	$args['count_texts'] = count( $texts );
 
 	/**
 	 * Define $max_translations
