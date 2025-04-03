@@ -291,7 +291,11 @@ function wplng_data_attr_text_to_translate() {
 			),
 			array(
 				'attr'     => 'value',
-				'selector' => 'input[type="submit"][value]',
+				'selector' => '[type="submit"]',
+			),
+			array(
+				'attr'     => 'value',
+				'selector' => 'input[type="button"]',
 			),
 
 			// WordPress
@@ -386,6 +390,12 @@ function wplng_data_attr_text_to_translate() {
 			array(
 				'attr'     => 'data-title',
 				'selector' => '[data-title]',
+			),
+
+			// Plugin: WooCommerce
+			array(
+				'attr'     => 'data-order_button_text',
+				'selector' => '[data-order_button_text]',
 			),
 		)
 	);
