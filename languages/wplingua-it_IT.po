@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: wpLingua\n"
-"POT-Creation-Date: 2025-02-18 09:17+0100\n"
-"PO-Revision-Date: 2025-02-18 14:51+0100\n"
+"POT-Creation-Date: 2025-04-03 22:40+0200\n"
+"PO-Revision-Date: 2025-04-03 22:52+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: it_IT\n"
@@ -20,671 +20,671 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: *.min.js\n"
 
-#: data.php:474
+#: data.php:512
 msgid "Bottom right"
 msgstr "In basso a destra"
 
-#: data.php:475
+#: data.php:513
 msgid "Bottom center"
 msgstr "In basso al centro"
 
-#: data.php:476
+#: data.php:514
 msgid "Bottom left"
 msgstr "Basso a sinistra"
 
-#: data.php:477
+#: data.php:515
 msgid "None"
 msgstr "Nessuna"
 
-#: data.php:489
+#: data.php:527
 msgid "Light - Double - Smooth"
 msgstr "Leggero - Doppio - Liscio"
 
-#: data.php:490
+#: data.php:528
 msgid "Light - Double - Square"
 msgstr "Luce - Doppio - Quadrato"
 
-#: data.php:491
+#: data.php:529
 msgid "Light - Simple - Smooth"
 msgstr "Leggero - Semplice - Liscio"
 
-#: data.php:492
+#: data.php:530
 msgid "Light - Simple - Square"
 msgstr "Leggero - Semplice - Quadrato"
 
-#: data.php:493
+#: data.php:531
 msgid "Grey - Double - Smooth"
 msgstr "Grigio - Doppio - Liscio"
 
-#: data.php:494
+#: data.php:532
 msgid "Grey - Double - Square"
 msgstr "Grigio - Doppio - Quadrato"
 
-#: data.php:495
+#: data.php:533
 msgid "Grey - Simple - Smooth"
 msgstr "Grigio - Semplice - Liscio"
 
-#: data.php:496
+#: data.php:534
 msgid "Grey - Simple - Square"
 msgstr "Grigio - Semplice - Quadrato"
 
-#: data.php:497
+#: data.php:535
 msgid "Dark - Double - Smooth"
 msgstr "Scuro - Doppio - Liscio"
 
-#: data.php:498
+#: data.php:536
 msgid "Dark - Double - Square"
 msgstr "Scuro - Doppio - Quadrato"
 
-#: data.php:499
+#: data.php:537
 msgid "Dark - Simple - Smooth"
 msgstr "Scuro - Semplice - Liscio"
 
-#: data.php:500
+#: data.php:538
 msgid "Dark - Simple - Square"
 msgstr "Scuro - Semplice - Quadrato"
 
-#: data.php:501
+#: data.php:539
 msgid "Blur Black - Double - Smooth"
 msgstr "Sfumatura nera - doppia - liscia"
 
-#: data.php:502
+#: data.php:540
 msgid "Blur Black - Double - Square"
 msgstr "Nero sfumato - Doppio - Quadrato"
 
-#: data.php:503
+#: data.php:541
 msgid "Blur Black - Simple - Smooth"
 msgstr "Sfumatura nera - Semplice - Liscia"
 
-#: data.php:504
+#: data.php:542
 msgid "Blur Black - Simple - Square"
 msgstr "Sfumatura nera - Semplice - Quadrato"
 
-#: data.php:505
+#: data.php:543
 msgid "Blur White - Double - Smooth"
 msgstr "Sfumatura bianca - Doppia - Liscia"
 
-#: data.php:506
+#: data.php:544
 msgid "Blur White - Double - Square"
 msgstr "Bianco sfumato - Doppio - Quadrato"
 
-#: data.php:507
+#: data.php:545
 msgid "Blur White - Simple - Smooth"
 msgstr "Sfumatura bianca - Semplice - Liscia"
 
-#: data.php:508
+#: data.php:546
 msgid "Blur White - Simple - Square"
 msgstr "Bianco sfumato - Semplice - Quadrato"
 
-#: data.php:520
+#: data.php:558
 msgid "Inline list"
 msgstr "Elenco in linea"
 
-#: data.php:521
+#: data.php:559
 msgid "Block"
 msgstr "Blocco"
 
-#: data.php:522
+#: data.php:560
 msgid "Dropdown"
 msgstr "Dropdown"
 
-#: data.php:534 data.php:568
+#: data.php:572 data.php:606
 msgid "Original name"
 msgstr "Nome originale"
 
-#: data.php:535 data.php:569
+#: data.php:573 data.php:607
 msgid "Translated name"
 msgstr "Nome tradotto"
 
-#: data.php:536 data.php:570
+#: data.php:574 data.php:608
 msgid "Language ID"
 msgstr "ID lingua"
 
-#: data.php:537 data.php:552 data.php:571 data.php:584
+#: data.php:575 data.php:590 data.php:609 data.php:622
 msgid "No display"
 msgstr "Nessun display"
 
-#: data.php:549
+#: data.php:587
 msgid "Circle"
 msgstr "Cerchio"
 
-#: data.php:550
+#: data.php:588
 msgid "Rectangular"
 msgstr "Rettangolare"
 
-#: data.php:551
+#: data.php:589
 msgid "Wave"
 msgstr "Onda"
 
-#: data.php:583
+#: data.php:621
 msgid "Display"
 msgstr "Visualizza"
 
-#: data.php:596
+#: data.php:634
 msgid "List without current language"
 msgstr "Elenco senza lingua corrente"
 
-#: data.php:597
+#: data.php:635
 msgid "List without active class"
 msgstr "Elenco senza classe attiva"
 
-#: data.php:598
+#: data.php:636
 msgid "List with active class"
 msgstr "Elenco con classe attiva"
 
-#: data.php:599
+#: data.php:637
 msgid "Sub-list"
 msgstr "Sottoelenco"
 
-#: data.php:616
+#: data.php:654
 msgid "Arabic"
 msgstr "Arabo"
 
-#: data.php:622 data.php:776
+#: data.php:660 data.php:814
 msgid "Global"
 msgstr "Globale"
 
-#: data.php:627
+#: data.php:665
 msgid "Egypt"
 msgstr "Egitto"
 
-#: data.php:632
+#: data.php:670
 msgid "Saudi Arabia"
 msgstr "Arabia Saudita"
 
-#: data.php:637
+#: data.php:675
 msgid "Algeria"
 msgstr "Algeria"
 
-#: data.php:642
+#: data.php:680
 msgid "Bahrain"
 msgstr "Bahrein"
 
-#: data.php:647
+#: data.php:685
 msgid "Chad"
 msgstr "Ciad"
 
-#: data.php:652
+#: data.php:690
 msgid "Comoros"
 msgstr "Comore"
 
-#: data.php:657
+#: data.php:695
 msgid "Djibouti"
 msgstr "Gibuti"
 
-#: data.php:662
+#: data.php:700
 msgid "Iraq"
 msgstr "Iraq"
 
-#: data.php:667
+#: data.php:705
 msgid "Jordan"
 msgstr "Giordania"
 
-#: data.php:672
+#: data.php:710
 msgid "Kuwait"
 msgstr "Kuwait"
 
-#: data.php:677
+#: data.php:715
 msgid "Lebanon"
 msgstr "Libano"
 
-#: data.php:682
+#: data.php:720
 msgid "Libya"
 msgstr "Libia"
 
-#: data.php:687
+#: data.php:725
 msgid "Mauritania"
 msgstr "Mauritania"
 
-#: data.php:692
+#: data.php:730
 msgid "Morocco"
 msgstr "Marocco"
 
-#: data.php:697
+#: data.php:735
 msgid "Oman"
 msgstr "Oman"
 
-#: data.php:702
+#: data.php:740
 msgid "Palestine"
 msgstr "Palestina"
 
-#: data.php:707
+#: data.php:745
 msgid "Qatar"
 msgstr "Qatar"
 
-#: data.php:712
+#: data.php:750
 msgid "Somalia"
 msgstr "Somalia"
 
-#: data.php:717
+#: data.php:755
 msgid "Sudan"
 msgstr "Sudan"
 
-#: data.php:722
+#: data.php:760
 msgid "Syria"
 msgstr "Siria"
 
-#: data.php:727
+#: data.php:765
 msgid "Tunisia"
 msgstr "Tunisia"
 
-#: data.php:732
+#: data.php:770
 msgid "United Arab Emirates"
 msgstr "Emirati Arabi Uniti"
 
-#: data.php:737
+#: data.php:775
 msgid "Yemen"
 msgstr "Yemen"
 
-#: data.php:771
+#: data.php:809
 msgid "Chinese"
 msgstr "Cinese"
 
-#: data.php:781
+#: data.php:819
 msgid "China"
 msgstr "Cina"
 
-#: data.php:786
+#: data.php:824
 msgid "Hong Kong"
 msgstr "Hong Kong"
 
-#: data.php:791
+#: data.php:829
 msgid "Malaysia"
 msgstr "Malesia"
 
-#: data.php:796 data.php:1032
+#: data.php:834 data.php:1070
 msgid "Singapore"
 msgstr "Singapore"
 
-#: data.php:830
+#: data.php:868
 msgid "Danish"
 msgstr "Danese"
 
-#: data.php:835
+#: data.php:873
 msgid "Denmark"
 msgstr "Danimarca"
 
-#: data.php:869
+#: data.php:907
 msgid "Dutch"
 msgstr "Olandese"
 
-#: data.php:874
+#: data.php:912
 msgid "Netherlands"
 msgstr "Paesi Bassi"
 
-#: data.php:879 data.php:1125
+#: data.php:917 data.php:1163
 msgid "Belgium"
 msgstr "Belgio"
 
-#: data.php:884
+#: data.php:922
 msgid "Suriname"
 msgstr "Suriname"
 
-#: data.php:918
+#: data.php:956
 msgid "Slovak"
 msgstr "Slovacco"
 
-#: data.php:923
+#: data.php:961
 msgid "Slovakia"
 msgstr "Slovacchia"
 
-#: data.php:928
+#: data.php:966
 msgid "Czech Republic"
 msgstr "Repubblica Ceca"
 
-#: data.php:962
+#: data.php:1000
 msgid "English"
 msgstr "Inglese"
 
-#: data.php:967
+#: data.php:1005
 msgid "US / GB"
 msgstr "US / GB"
 
-#: data.php:972
+#: data.php:1010
 msgid "United Kingdom"
 msgstr "Regno Unito"
 
-#: data.php:977
+#: data.php:1015
 msgid "United States"
 msgstr "Stati Uniti"
 
-#: data.php:982
+#: data.php:1020
 msgid "Australia"
 msgstr "Australia"
 
-#: data.php:987 data.php:1130
+#: data.php:1025 data.php:1168
 msgid "Canada"
 msgstr "Canada"
 
-#: data.php:992
+#: data.php:1030
 msgid "Ireland"
 msgstr "Irlanda"
 
-#: data.php:997
+#: data.php:1035
 msgid "New Zealand"
 msgstr "Nuova Zelanda"
 
-#: data.php:1002
+#: data.php:1040
 msgid "Nigeria"
 msgstr "Nigeria"
 
-#: data.php:1007
+#: data.php:1045
 msgid "South Africa"
 msgstr "Sudafrica"
 
-#: data.php:1012
+#: data.php:1050
 msgid "Kenya"
 msgstr "Kenia"
 
-#: data.php:1017
+#: data.php:1055
 msgid "Ghana"
 msgstr "Ghana"
 
-#: data.php:1022
+#: data.php:1060
 msgid "South Sudan"
 msgstr "Sudan del Sud"
 
-#: data.php:1027
+#: data.php:1065
 msgid "Sierra Leone"
 msgstr "Sierra Leone"
 
-#: data.php:1037
+#: data.php:1075
 msgid "Liberia"
 msgstr "Liberia"
 
-#: data.php:1042
+#: data.php:1080
 msgid "Jamaica"
 msgstr "Giamaica"
 
-#: data.php:1076
+#: data.php:1114
 msgid "Finnish"
 msgstr "Finlandese"
 
-#: data.php:1081 data.php:1862
+#: data.php:1119 data.php:1900
 msgid "Finland"
 msgstr "Finlandia"
 
-#: data.php:1115
+#: data.php:1153
 msgid "French"
 msgstr "Francese"
 
-#: data.php:1120
+#: data.php:1158
 msgid "France"
 msgstr "Francia"
 
-#: data.php:1135
+#: data.php:1173
 msgid "Congo - Kinshasa"
 msgstr "Repubblica Democratica del Congo - Kinshasa"
 
-#: data.php:1140
+#: data.php:1178
 msgid "Congo - Brazzaville"
 msgstr "Repubblica del Congo - Brazzaville"
 
-#: data.php:1145
+#: data.php:1183
 msgid "Cameroon"
 msgstr "Camerun"
 
-#: data.php:1150
+#: data.php:1188
 msgid "Ivory Coast"
 msgstr "Costa d’Avorio"
 
-#: data.php:1155 data.php:1204
+#: data.php:1193 data.php:1242
 msgid "Switzerland"
 msgstr "Svizzera"
 
-#: data.php:1189
+#: data.php:1227
 msgid "German"
 msgstr "Tedesco (Deutsche)"
 
-#: data.php:1194
+#: data.php:1232
 msgid "Germany"
 msgstr "Germania"
 
-#: data.php:1199
+#: data.php:1237
 msgid "Austria"
 msgstr "Austria"
 
-#: data.php:1209
+#: data.php:1247
 msgid "Liechtenstein"
 msgstr "Liechtenstein"
 
-#: data.php:1243
+#: data.php:1281
 msgid "Greek"
 msgstr "Greca"
 
-#: data.php:1248
+#: data.php:1286
 msgid "Greece"
 msgstr "Grecia"
 
-#: data.php:1253 data.php:1906
+#: data.php:1291 data.php:1944
 msgid "Cyprus"
 msgstr "Cipro"
 
-#: data.php:1287
+#: data.php:1325
 msgid "Hebrew"
 msgstr "Ebraico"
 
-#: data.php:1293
+#: data.php:1331
 msgid "Israel"
 msgstr "Israele"
 
-#: data.php:1327
+#: data.php:1365
 msgid "Hindi"
 msgstr "Hindi"
 
-#: data.php:1332
+#: data.php:1370
 msgid "India"
 msgstr "India"
 
-#: data.php:1337
+#: data.php:1375
 msgid "Pakistan"
 msgstr "Pakistan"
 
-#: data.php:1371
+#: data.php:1409
 msgid "Hungarian"
 msgstr "Ungherese"
 
-#: data.php:1376
+#: data.php:1414
 msgid "Hungary"
 msgstr "Ungheria"
 
-#: data.php:1410
+#: data.php:1448
 msgid "Indonesian"
 msgstr "Indonesiano"
 
-#: data.php:1415
+#: data.php:1453
 msgid "Indonesia"
 msgstr "Indonesia"
 
-#: data.php:1449
+#: data.php:1487
 msgid "Italian"
 msgstr "Italiano"
 
-#: data.php:1454
+#: data.php:1492
 msgid "Italy"
 msgstr "Italia"
 
-#: data.php:1488
+#: data.php:1526
 msgid "Japanese"
 msgstr "Giapponese"
 
-#: data.php:1493
+#: data.php:1531
 msgid "Japan"
 msgstr "Giappone"
 
-#: data.php:1527
+#: data.php:1565
 msgid "Korean"
 msgstr "Coreano"
 
-#: data.php:1532
+#: data.php:1570
 msgid "South Korea"
 msgstr "Corea del Sud"
 
-#: data.php:1537
+#: data.php:1575
 msgid "North Korea"
 msgstr "Corea del Nord"
 
-#: data.php:1571
+#: data.php:1609
 msgid "Polish"
 msgstr "Polacco"
 
-#: data.php:1576
+#: data.php:1614
 msgid "Poland"
 msgstr "Polonia"
 
-#: data.php:1610
+#: data.php:1648
 msgid "Portuguese"
 msgstr "Portoghese"
 
-#: data.php:1615
+#: data.php:1653
 msgid "Portugal"
 msgstr "Portogallo"
 
-#: data.php:1620
+#: data.php:1658
 msgid "Brazil"
 msgstr "Brasile"
 
-#: data.php:1625
+#: data.php:1663
 msgid "Mozambique"
 msgstr "Mozambico"
 
-#: data.php:1630
+#: data.php:1668
 msgid "Angola"
 msgstr "Angola"
 
-#: data.php:1664
+#: data.php:1702
 msgid "Russian"
 msgstr "Russo"
 
-#: data.php:1669
+#: data.php:1707
 msgid "Russia"
 msgstr "Russia"
 
-#: data.php:1674
+#: data.php:1712
 msgid "Kazakhstan"
 msgstr "Kazakistan"
 
-#: data.php:1679
+#: data.php:1717
 msgid "Belarus"
 msgstr "Bielorussia"
 
-#: data.php:1684
+#: data.php:1722
 msgid "Kyrgyzstan"
 msgstr "Kirghizistan"
 
-#: data.php:1689
+#: data.php:1727
 msgid "Tajikistan"
 msgstr "Tagikistan"
 
-#: data.php:1723
+#: data.php:1761
 msgid "Spanish"
 msgstr "Spagnolo"
 
-#: data.php:1728
+#: data.php:1766
 msgid "Spain"
 msgstr "Spagna"
 
-#: data.php:1733
+#: data.php:1771
 msgid "Mexico"
 msgstr "Messico"
 
-#: data.php:1738
+#: data.php:1776
 msgid "Argentina"
 msgstr "Argentina"
 
-#: data.php:1743
+#: data.php:1781
 msgid "Colombia"
 msgstr "Colombia"
 
-#: data.php:1748
+#: data.php:1786
 msgid "Peru"
 msgstr "Perù"
 
-#: data.php:1753
+#: data.php:1791
 msgid "Ecuador"
 msgstr "Ecuador"
 
-#: data.php:1758
+#: data.php:1796
 msgid "Bolivia"
 msgstr "Bolivia"
 
-#: data.php:1763
+#: data.php:1801
 msgid "Chile"
 msgstr "Cile"
 
-#: data.php:1768
+#: data.php:1806
 msgid "Equatorial Guinea"
 msgstr "Guinea Equatoriale"
 
-#: data.php:1773
+#: data.php:1811
 msgid "Guatemala"
 msgstr "Guatemala"
 
-#: data.php:1778
+#: data.php:1816
 msgid "Cuba"
 msgstr "Cuba"
 
-#: data.php:1783
+#: data.php:1821
 msgid "Dominican Republic"
 msgstr "Repubblica Dominicana"
 
-#: data.php:1788
+#: data.php:1826
 msgid "Honduras"
 msgstr "Honduras"
 
-#: data.php:1793
+#: data.php:1831
 msgid "Paraguay"
 msgstr "Paraguay"
 
-#: data.php:1798
+#: data.php:1836
 msgid "El Salvador"
 msgstr "El Salvador"
 
-#: data.php:1803
+#: data.php:1841
 msgid "Nicaragua"
 msgstr "Nicaragua"
 
-#: data.php:1808
+#: data.php:1846
 msgid "Costa Rica"
 msgstr "Costa Rica"
 
-#: data.php:1813
+#: data.php:1851
 msgid "Panama"
 msgstr "Panama"
 
-#: data.php:1818
+#: data.php:1856
 msgid "Uruguay"
 msgstr "Uruguay"
 
-#: data.php:1852
+#: data.php:1890
 msgid "Swedish"
 msgstr "Svedese"
 
-#: data.php:1857
+#: data.php:1895
 msgid "Sweden"
 msgstr "Svezia"
 
-#: data.php:1896
+#: data.php:1934
 msgid "Turkish"
 msgstr "Turco"
 
-#: data.php:1901
+#: data.php:1939
 msgid "Turkey"
 msgstr "Turchia"
 
-#: data.php:1940
+#: data.php:1978
 msgid "Ukrainian"
 msgstr "Ucraino"
 
-#: data.php:1945
+#: data.php:1983
 msgid "Ukraine"
 msgstr "Ucraina"
 
-#: data.php:1979
+#: data.php:2017
 msgid "Vietnamese"
 msgstr "Vietnamita"
 
-#: data.php:1984
+#: data.php:2022
 msgid "Vietnam"
 msgstr "Vietnam"
 
@@ -715,7 +715,16 @@ msgstr "Tutte le traduzioni a pagina"
 msgid "Edit the page slug"
 msgstr "Modificare lo slug della pagina"
 
-#: inc/admin/assets.php:371 inc/admin/assets.php:437 inc/assets.php:89
+#: inc/admin/admin-bar.php:279 inc/admin/admin.php:59
+#: inc/admin/translation-cpt.php:19 inc/admin/translation-cpt.php:23
+msgid "Translations"
+msgstr "Traduzioni"
+
+#: inc/admin/admin.php:57
+msgid "Edit translations"
+msgstr "Modifica delle traduzioni"
+
+#: inc/admin/assets.php:366 inc/admin/assets.php:431 inc/assets.php:89
 msgid ""
 "You are about to leave the page without saving your changes. They will be "
 "lost if you continue. Would you like to leave the page anyway?"
@@ -1966,11 +1975,11 @@ msgstr "Versione"
 msgid "Settings"
 msgstr "Impostazioni"
 
-#: inc/admin/option-page.php:274
+#: inc/admin/option-page.php:273
 msgid "wpLingua - Translation solution for multilingual website"
 msgstr "wpLingua - Soluzione di traduzione per siti web multilingue"
 
-#: inc/admin/option-page.php:277
+#: inc/admin/option-page.php:276
 msgid ""
 "wpLingua is installed, but not yet configured. You are just a few clicks away "
 "from making your website multilingual!"
@@ -1978,15 +1987,15 @@ msgstr ""
 "wpLingua è installato, ma non ancora configurato. Bastano pochi clic per "
 "rendere il vostro sito web multilingue!"
 
-#: inc/admin/option-page.php:280
+#: inc/admin/option-page.php:279
 msgid "Go to the configuration page"
 msgstr "Andare alla pagina di configurazione"
 
-#: inc/admin/option-page.php:358
+#: inc/admin/option-page.php:357
 msgid "wpLingua - Incompatible plugin detected"
 msgstr "wpLingua - Rilevato un plugin incompatibile"
 
-#: inc/admin/option-page.php:361
+#: inc/admin/option-page.php:360
 msgid ""
 "You have several translation plugins. This may result in unpredictable or "
 "incorrect behavior. For best results, use only one translation plugin at a "
@@ -1997,41 +2006,41 @@ msgstr ""
 "plugin di traduzione alla volta. Questi plugin possono causare problemi con "
 "wpLingua: "
 
-#: inc/admin/option-page.php:378
+#: inc/admin/option-page.php:377
 #, php-format
 msgid "Deactivate plugin: %1$s"
 msgstr "Disattivare il plugin: %1$s"
 
-#: inc/admin/option-page.php:387
+#: inc/admin/option-page.php:386
 msgid "Deactivate"
 msgstr "Disattivare"
 
-#: inc/admin/option-page.php:404
+#: inc/admin/option-page.php:403
 msgid "Manage active plugins"
 msgstr "Gestione dei plugin attivi"
 
-#: inc/admin/option-page.php:433
+#: inc/admin/option-page.php:432
 msgid "wpLingua - Incompatible with multisite"
 msgstr "wpLingua - Incompatibile con il multisito"
 
-#: inc/admin/option-page.php:436
+#: inc/admin/option-page.php:435
 msgid "wpLingua is not compatible with multisite."
 msgstr "wpLingua non è compatibile con i siti multipli."
 
-#: inc/admin/option-page.php:464
+#: inc/admin/option-page.php:463
 msgid "wpLingua - Incompatible with WordPress installed in a subfolder"
 msgstr "wpLingua - Incompatibile con WordPress installato in una sottocartella"
 
-#: inc/admin/option-page.php:467
+#: inc/admin/option-page.php:466
 msgid "wpLingua is not compatible with WordPress installed in a subfolder."
 msgstr ""
 "wpLingua non è compatibile con WordPress installato in una sottocartella."
 
-#: inc/admin/option-page.php:495
+#: inc/admin/option-page.php:494
 msgid "wpLingua - Incompatible PHP version"
 msgstr "wpLingua - Versione PHP incompatibile"
 
-#: inc/admin/option-page.php:498
+#: inc/admin/option-page.php:497
 msgid ""
 "wpLingua is not compatible with your PHP version. wpLingua requires PHP 7.4 "
 "or higher."
@@ -2096,48 +2105,48 @@ msgstr "Stato del slug: "
 msgid "Slug"
 msgstr "Slug"
 
-#: inc/admin/slug-meta.php:77 inc/admin/slug-meta.php:156
-#: inc/admin/translation-meta.php:79 inc/admin/translation-meta.php:148
+#: inc/admin/slug-meta.php:75 inc/admin/slug-meta.php:154
+#: inc/admin/translation-meta.php:77 inc/admin/translation-meta.php:146
 msgid "Flag for language: "
 msgstr "Bandiera per il linguaggio: "
 
-#: inc/admin/slug-meta.php:91
+#: inc/admin/slug-meta.php:89
 msgid " - Original slug: "
 msgstr " - Slug originale: "
 
-#: inc/admin/slug-meta.php:155 inc/admin/translation-meta.php:147
+#: inc/admin/slug-meta.php:153 inc/admin/translation-meta.php:145
 msgid "Regenerate translation"
 msgstr "Traduzione rigenerata"
 
-#: inc/admin/slug-meta.php:158 inc/admin/translation-meta.php:150
+#: inc/admin/slug-meta.php:156 inc/admin/translation-meta.php:148
 msgid "Mark as review"
 msgstr "Contrassegnare come recensione"
 
-#: inc/admin/slug-meta.php:173 inc/admin/translation-meta.php:159
+#: inc/admin/slug-meta.php:171 inc/admin/translation-meta.php:157
 msgid "Generate translation"
 msgstr "Generare la traduzione"
 
-#: inc/admin/slug-meta.php:199 inc/admin/translation-meta.php:185
+#: inc/admin/slug-meta.php:197 inc/admin/translation-meta.php:183
 msgid "Reviewed on "
 msgstr "È stato rivisto il "
 
-#: inc/admin/slug-meta.php:228
+#: inc/admin/slug-meta.php:226
 msgid " - Slug translation: "
 msgstr " - Traduzione di Slug: "
 
-#: inc/admin/slug-meta.php:263 inc/admin/translation-meta.php:249
+#: inc/admin/slug-meta.php:261 inc/admin/translation-meta.php:247
 msgid "Is reviewed"
 msgstr "È stato rivisto"
 
-#: inc/admin/slug-meta.php:494 inc/admin/translation-meta.php:425
+#: inc/admin/slug-meta.php:492 inc/admin/translation-meta.php:471
 msgid "Invalid parameters"
 msgstr "Parametri non validi"
 
-#: inc/admin/slug-meta.php:506 inc/admin/translation-meta.php:438
+#: inc/admin/slug-meta.php:504 inc/admin/translation-meta.php:484
 msgid "Invalid languages parameters"
 msgstr "Parametri linguistici non validi"
 
-#: inc/admin/slug-meta.php:563 inc/admin/translation-meta.php:478
+#: inc/admin/slug-meta.php:561 inc/admin/translation-meta.php:524
 msgid "Invalid API response"
 msgstr "Risposta API non valida"
 
@@ -2160,10 +2169,6 @@ msgstr "Selettore lingue"
 #: inc/admin/switcher-nav-menu.php:259
 msgid "Add to menu"
 msgstr "Aggiungi al Menù"
-
-#: inc/admin/translation-cpt.php:19 inc/admin/translation-cpt.php:23
-msgid "Translations"
-msgstr "Traduzioni"
 
 #: inc/admin/translation-cpt.php:20 inc/admin/translation-meta.php:23
 msgid "Translation"
@@ -2206,13 +2211,17 @@ msgstr "Post di traduzione non valido"
 msgid "Translation saving failed"
 msgstr "Salvataggio della traduzione non riuscito"
 
-#: inc/admin/translation-meta.php:89
+#: inc/admin/translation-meta.php:87
 msgid " - Original text: "
 msgstr " - Testo originale: "
 
-#: inc/admin/translation-meta.php:214
+#: inc/admin/translation-meta.php:212
 msgid " - Translation: "
 msgstr " - Traduzione: "
+
+#: inc/admin/translation-meta.php:282
+msgid "Discovery URL: "
+msgstr "URL di scoperta: "
 
 #: inc/api-call/request-api-key.php:60
 msgid "Error - Invalid data."
@@ -2302,7 +2311,7 @@ msgstr "Alfabetico - traduzioni"
 msgid "Go to top"
 msgstr "Vai all'inizio"
 
-#: inc/slug.php:294 inc/translation.php:271
+#: inc/slug.php:294 inc/translation.php:289
 msgid "..."
 msgstr "..."
 

@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: wpLingua\n"
-"POT-Creation-Date: 2025-02-18 09:17+0100\n"
-"PO-Revision-Date: 2025-02-18 13:04+0100\n"
+"POT-Creation-Date: 2025-04-03 22:40+0200\n"
+"PO-Revision-Date: 2025-04-03 22:50+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: hu_HU\n"
@@ -20,671 +20,671 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: *.min.js\n"
 
-#: data.php:474
+#: data.php:512
 msgid "Bottom right"
 msgstr "Jobbra lent"
 
-#: data.php:475
+#: data.php:513
 msgid "Bottom center"
 msgstr "Középen alul"
 
-#: data.php:476
+#: data.php:514
 msgid "Bottom left"
 msgstr "Balra alul"
 
-#: data.php:477
+#: data.php:515
 msgid "None"
 msgstr "Nincs"
 
-#: data.php:489
+#: data.php:527
 msgid "Light - Double - Smooth"
 msgstr "Könnyű - Dupla - Sima"
 
-#: data.php:490
+#: data.php:528
 msgid "Light - Double - Square"
 msgstr "Fény - Dupla - Négyzet alakú"
 
-#: data.php:491
+#: data.php:529
 msgid "Light - Simple - Smooth"
 msgstr "Könnyű - Egyszerű - Sima"
 
-#: data.php:492
+#: data.php:530
 msgid "Light - Simple - Square"
 msgstr "Könnyű - Egyszerű - Négyzet alakú"
 
-#: data.php:493
+#: data.php:531
 msgid "Grey - Double - Smooth"
 msgstr "Szürke - Dupla - Sima"
 
-#: data.php:494
+#: data.php:532
 msgid "Grey - Double - Square"
 msgstr "Szürke - Dupla - Négyzet alakú"
 
-#: data.php:495
+#: data.php:533
 msgid "Grey - Simple - Smooth"
 msgstr "Szürke - Egyszerű - Sima"
 
-#: data.php:496
+#: data.php:534
 msgid "Grey - Simple - Square"
 msgstr "Szürke - Egyszerű - Négyzet alakú"
 
-#: data.php:497
+#: data.php:535
 msgid "Dark - Double - Smooth"
 msgstr "Sötét - Dupla - Sima"
 
-#: data.php:498
+#: data.php:536
 msgid "Dark - Double - Square"
 msgstr "Sötét - Dupla - Négyzet"
 
-#: data.php:499
+#: data.php:537
 msgid "Dark - Simple - Smooth"
 msgstr "Sötét - Egyszerű - Sima"
 
-#: data.php:500
+#: data.php:538
 msgid "Dark - Simple - Square"
 msgstr "Sötét - Egyszerű - Négyzet"
 
-#: data.php:501
+#: data.php:539
 msgid "Blur Black - Double - Smooth"
 msgstr "Maszat Fekete - Dupla - Sima"
 
-#: data.php:502
+#: data.php:540
 msgid "Blur Black - Double - Square"
 msgstr "Blur Fekete - Dupla - Négyzet alakú"
 
-#: data.php:503
+#: data.php:541
 msgid "Blur Black - Simple - Smooth"
 msgstr "Blur Fekete - Egyszerű - Sima"
 
-#: data.php:504
+#: data.php:542
 msgid "Blur Black - Simple - Square"
 msgstr "Blur Fekete - Egyszerű - Négyzet alakú"
 
-#: data.php:505
+#: data.php:543
 msgid "Blur White - Double - Smooth"
 msgstr "Blur Fehér - Dupla - Sima"
 
-#: data.php:506
+#: data.php:544
 msgid "Blur White - Double - Square"
 msgstr "Blur White - Dupla - négyzet alakú"
 
-#: data.php:507
+#: data.php:545
 msgid "Blur White - Simple - Smooth"
 msgstr "Blur White - Egyszerű - Sima"
 
-#: data.php:508
+#: data.php:546
 msgid "Blur White - Simple - Square"
 msgstr "Blur White - Egyszerű - négyzet alakú"
 
-#: data.php:520
+#: data.php:558
 msgid "Inline list"
 msgstr "Inline lista"
 
-#: data.php:521
+#: data.php:559
 msgid "Block"
 msgstr "Blokk"
 
-#: data.php:522
+#: data.php:560
 msgid "Dropdown"
 msgstr "Legördülő"
 
-#: data.php:534 data.php:568
+#: data.php:572 data.php:606
 msgid "Original name"
 msgstr "Eredeti név"
 
-#: data.php:535 data.php:569
+#: data.php:573 data.php:607
 msgid "Translated name"
 msgstr "Lefordított név"
 
-#: data.php:536 data.php:570
+#: data.php:574 data.php:608
 msgid "Language ID"
 msgstr "Nyelvi azonosító"
 
-#: data.php:537 data.php:552 data.php:571 data.php:584
+#: data.php:575 data.php:590 data.php:609 data.php:622
 msgid "No display"
 msgstr "Nincs kijelző"
 
-#: data.php:549
+#: data.php:587
 msgid "Circle"
 msgstr "Kör"
 
-#: data.php:550
+#: data.php:588
 msgid "Rectangular"
 msgstr "Téglalap alakú"
 
-#: data.php:551
+#: data.php:589
 msgid "Wave"
 msgstr "Hullámzás"
 
-#: data.php:583
+#: data.php:621
 msgid "Display"
 msgstr "Megjelenítés"
 
-#: data.php:596
+#: data.php:634
 msgid "List without current language"
 msgstr "Jelenlegi nyelv nélküli lista"
 
-#: data.php:597
+#: data.php:635
 msgid "List without active class"
 msgstr "Lista aktív osztály nélkül"
 
-#: data.php:598
+#: data.php:636
 msgid "List with active class"
 msgstr "Lista aktív osztállyal"
 
-#: data.php:599
+#: data.php:637
 msgid "Sub-list"
 msgstr "Allista"
 
-#: data.php:616
+#: data.php:654
 msgid "Arabic"
 msgstr "Arab"
 
-#: data.php:622 data.php:776
+#: data.php:660 data.php:814
 msgid "Global"
 msgstr "Globális"
 
-#: data.php:627
+#: data.php:665
 msgid "Egypt"
 msgstr "Egyiptom"
 
-#: data.php:632
+#: data.php:670
 msgid "Saudi Arabia"
 msgstr "Szaud-Arábia"
 
-#: data.php:637
+#: data.php:675
 msgid "Algeria"
 msgstr "Algéria"
 
-#: data.php:642
+#: data.php:680
 msgid "Bahrain"
 msgstr "Bahrein"
 
-#: data.php:647
+#: data.php:685
 msgid "Chad"
 msgstr "Csád"
 
-#: data.php:652
+#: data.php:690
 msgid "Comoros"
 msgstr "Comore-szigetek"
 
-#: data.php:657
+#: data.php:695
 msgid "Djibouti"
 msgstr "Dzsibuti"
 
-#: data.php:662
+#: data.php:700
 msgid "Iraq"
 msgstr "Irak"
 
-#: data.php:667
+#: data.php:705
 msgid "Jordan"
 msgstr "Jordánia"
 
-#: data.php:672
+#: data.php:710
 msgid "Kuwait"
 msgstr "Kuvait"
 
-#: data.php:677
+#: data.php:715
 msgid "Lebanon"
 msgstr "Libanon"
 
-#: data.php:682
+#: data.php:720
 msgid "Libya"
 msgstr "Líbia"
 
-#: data.php:687
+#: data.php:725
 msgid "Mauritania"
 msgstr "Mauritánia"
 
-#: data.php:692
+#: data.php:730
 msgid "Morocco"
 msgstr "Marokkó"
 
-#: data.php:697
+#: data.php:735
 msgid "Oman"
 msgstr "Omán"
 
-#: data.php:702
+#: data.php:740
 msgid "Palestine"
 msgstr "Palesztina"
 
-#: data.php:707
+#: data.php:745
 msgid "Qatar"
 msgstr "Katar"
 
-#: data.php:712
+#: data.php:750
 msgid "Somalia"
 msgstr "Szomália"
 
-#: data.php:717
+#: data.php:755
 msgid "Sudan"
 msgstr "Szudán"
 
-#: data.php:722
+#: data.php:760
 msgid "Syria"
 msgstr "Szíria"
 
-#: data.php:727
+#: data.php:765
 msgid "Tunisia"
 msgstr "Tunézia"
 
-#: data.php:732
+#: data.php:770
 msgid "United Arab Emirates"
 msgstr "Egyesült Arab Emírségek"
 
-#: data.php:737
+#: data.php:775
 msgid "Yemen"
 msgstr "Jemen"
 
-#: data.php:771
+#: data.php:809
 msgid "Chinese"
 msgstr "Kínai"
 
-#: data.php:781
+#: data.php:819
 msgid "China"
 msgstr "Kína"
 
-#: data.php:786
+#: data.php:824
 msgid "Hong Kong"
 msgstr "Hongkong"
 
-#: data.php:791
+#: data.php:829
 msgid "Malaysia"
 msgstr "Malajzia"
 
-#: data.php:796 data.php:1032
+#: data.php:834 data.php:1070
 msgid "Singapore"
 msgstr "Szingapúr"
 
-#: data.php:830
+#: data.php:868
 msgid "Danish"
 msgstr "Dánia"
 
-#: data.php:835
+#: data.php:873
 msgid "Denmark"
 msgstr "Dánia"
 
-#: data.php:869
+#: data.php:907
 msgid "Dutch"
 msgstr "Holland"
 
-#: data.php:874
+#: data.php:912
 msgid "Netherlands"
 msgstr "Hollandia"
 
-#: data.php:879 data.php:1125
+#: data.php:917 data.php:1163
 msgid "Belgium"
 msgstr "Belgium"
 
-#: data.php:884
+#: data.php:922
 msgid "Suriname"
 msgstr "Surinam"
 
-#: data.php:918
+#: data.php:956
 msgid "Slovak"
 msgstr "Szlovák"
 
-#: data.php:923
+#: data.php:961
 msgid "Slovakia"
 msgstr "Szlovákia"
 
-#: data.php:928
+#: data.php:966
 msgid "Czech Republic"
 msgstr "Cseh Köztársaság"
 
-#: data.php:962
+#: data.php:1000
 msgid "English"
 msgstr "Angol"
 
-#: data.php:967
+#: data.php:1005
 msgid "US / GB"
 msgstr "US / GB"
 
-#: data.php:972
+#: data.php:1010
 msgid "United Kingdom"
 msgstr "Egyesült Királyság"
 
-#: data.php:977
+#: data.php:1015
 msgid "United States"
 msgstr "Egyesült Államok"
 
-#: data.php:982
+#: data.php:1020
 msgid "Australia"
 msgstr "Ausztrália"
 
-#: data.php:987 data.php:1130
+#: data.php:1025 data.php:1168
 msgid "Canada"
 msgstr "Kanada"
 
-#: data.php:992
+#: data.php:1030
 msgid "Ireland"
 msgstr "Írország"
 
-#: data.php:997
+#: data.php:1035
 msgid "New Zealand"
 msgstr "Új-Zéland"
 
-#: data.php:1002
+#: data.php:1040
 msgid "Nigeria"
 msgstr "Nigéria"
 
-#: data.php:1007
+#: data.php:1045
 msgid "South Africa"
 msgstr "Dél-Afrikai Köztársaság"
 
-#: data.php:1012
+#: data.php:1050
 msgid "Kenya"
 msgstr "Kenya"
 
-#: data.php:1017
+#: data.php:1055
 msgid "Ghana"
 msgstr "Gana"
 
-#: data.php:1022
+#: data.php:1060
 msgid "South Sudan"
 msgstr "Dél-Szudán"
 
-#: data.php:1027
+#: data.php:1065
 msgid "Sierra Leone"
 msgstr "Sierra Leone"
 
-#: data.php:1037
+#: data.php:1075
 msgid "Liberia"
 msgstr "Libéria"
 
-#: data.php:1042
+#: data.php:1080
 msgid "Jamaica"
 msgstr "Jamaika"
 
-#: data.php:1076
+#: data.php:1114
 msgid "Finnish"
 msgstr "Finn"
 
-#: data.php:1081 data.php:1862
+#: data.php:1119 data.php:1900
 msgid "Finland"
 msgstr "Finnország"
 
-#: data.php:1115
+#: data.php:1153
 msgid "French"
 msgstr "Francia"
 
-#: data.php:1120
+#: data.php:1158
 msgid "France"
 msgstr "Franciaország"
 
-#: data.php:1135
+#: data.php:1173
 msgid "Congo - Kinshasa"
 msgstr "Kongó - Kinshasa"
 
-#: data.php:1140
+#: data.php:1178
 msgid "Congo - Brazzaville"
 msgstr "Kongó - Brazzaville"
 
-#: data.php:1145
+#: data.php:1183
 msgid "Cameroon"
 msgstr "Kamerun"
 
-#: data.php:1150
+#: data.php:1188
 msgid "Ivory Coast"
 msgstr "Elefántcsontpart"
 
-#: data.php:1155 data.php:1204
+#: data.php:1193 data.php:1242
 msgid "Switzerland"
 msgstr "Svájc"
 
-#: data.php:1189
+#: data.php:1227
 msgid "German"
 msgstr "Német"
 
-#: data.php:1194
+#: data.php:1232
 msgid "Germany"
 msgstr "Németország"
 
-#: data.php:1199
+#: data.php:1237
 msgid "Austria"
 msgstr "Ausztria"
 
-#: data.php:1209
+#: data.php:1247
 msgid "Liechtenstein"
 msgstr "Liechtenstein"
 
-#: data.php:1243
+#: data.php:1281
 msgid "Greek"
 msgstr "Görög"
 
-#: data.php:1248
+#: data.php:1286
 msgid "Greece"
 msgstr "Görögország"
 
-#: data.php:1253 data.php:1906
+#: data.php:1291 data.php:1944
 msgid "Cyprus"
 msgstr "Ciprus"
 
-#: data.php:1287
+#: data.php:1325
 msgid "Hebrew"
 msgstr "Héber"
 
-#: data.php:1293
+#: data.php:1331
 msgid "Israel"
 msgstr "Izrael"
 
-#: data.php:1327
+#: data.php:1365
 msgid "Hindi"
 msgstr "Hindi"
 
-#: data.php:1332
+#: data.php:1370
 msgid "India"
 msgstr "India"
 
-#: data.php:1337
+#: data.php:1375
 msgid "Pakistan"
 msgstr "Pakisztán"
 
-#: data.php:1371
+#: data.php:1409
 msgid "Hungarian"
 msgstr "Magyar"
 
-#: data.php:1376
+#: data.php:1414
 msgid "Hungary"
 msgstr "Magyarország"
 
-#: data.php:1410
+#: data.php:1448
 msgid "Indonesian"
 msgstr "Indonézia"
 
-#: data.php:1415
+#: data.php:1453
 msgid "Indonesia"
 msgstr "Indonézia"
 
-#: data.php:1449
+#: data.php:1487
 msgid "Italian"
 msgstr "Olasz"
 
-#: data.php:1454
+#: data.php:1492
 msgid "Italy"
 msgstr "Olaszország"
 
-#: data.php:1488
+#: data.php:1526
 msgid "Japanese"
 msgstr "Japán"
 
-#: data.php:1493
+#: data.php:1531
 msgid "Japan"
 msgstr "Japán"
 
-#: data.php:1527
+#: data.php:1565
 msgid "Korean"
 msgstr "Korea"
 
-#: data.php:1532
+#: data.php:1570
 msgid "South Korea"
 msgstr "Dél-Korea"
 
-#: data.php:1537
+#: data.php:1575
 msgid "North Korea"
 msgstr "Észak-Korea"
 
-#: data.php:1571
+#: data.php:1609
 msgid "Polish"
 msgstr "Lengyelország"
 
-#: data.php:1576
+#: data.php:1614
 msgid "Poland"
 msgstr "Lengyelország"
 
-#: data.php:1610
+#: data.php:1648
 msgid "Portuguese"
 msgstr "Portugál"
 
-#: data.php:1615
+#: data.php:1653
 msgid "Portugal"
 msgstr "Portugália"
 
-#: data.php:1620
+#: data.php:1658
 msgid "Brazil"
 msgstr "Brazília"
 
-#: data.php:1625
+#: data.php:1663
 msgid "Mozambique"
 msgstr "Mozambik"
 
-#: data.php:1630
+#: data.php:1668
 msgid "Angola"
 msgstr "Angola"
 
-#: data.php:1664
+#: data.php:1702
 msgid "Russian"
 msgstr "Orosz"
 
-#: data.php:1669
+#: data.php:1707
 msgid "Russia"
 msgstr "Oroszország"
 
-#: data.php:1674
+#: data.php:1712
 msgid "Kazakhstan"
 msgstr "Kazahsztán"
 
-#: data.php:1679
+#: data.php:1717
 msgid "Belarus"
 msgstr "Belarusz"
 
-#: data.php:1684
+#: data.php:1722
 msgid "Kyrgyzstan"
 msgstr "Kirgizisztán"
 
-#: data.php:1689
+#: data.php:1727
 msgid "Tajikistan"
 msgstr "Tádzsikisztán"
 
-#: data.php:1723
+#: data.php:1761
 msgid "Spanish"
 msgstr "Spanyol"
 
-#: data.php:1728
+#: data.php:1766
 msgid "Spain"
 msgstr "Spanyolország"
 
-#: data.php:1733
+#: data.php:1771
 msgid "Mexico"
 msgstr "Mexikó"
 
-#: data.php:1738
+#: data.php:1776
 msgid "Argentina"
 msgstr "Argentína"
 
-#: data.php:1743
+#: data.php:1781
 msgid "Colombia"
 msgstr "Kolumbia"
 
-#: data.php:1748
+#: data.php:1786
 msgid "Peru"
 msgstr "Peru"
 
-#: data.php:1753
+#: data.php:1791
 msgid "Ecuador"
 msgstr "Equador"
 
-#: data.php:1758
+#: data.php:1796
 msgid "Bolivia"
 msgstr "Bolívia"
 
-#: data.php:1763
+#: data.php:1801
 msgid "Chile"
 msgstr "Chile"
 
-#: data.php:1768
+#: data.php:1806
 msgid "Equatorial Guinea"
 msgstr "Egyenlítői-Guinea"
 
-#: data.php:1773
+#: data.php:1811
 msgid "Guatemala"
 msgstr "Guatemala"
 
-#: data.php:1778
+#: data.php:1816
 msgid "Cuba"
 msgstr "Kuba"
 
-#: data.php:1783
+#: data.php:1821
 msgid "Dominican Republic"
 msgstr "Dominikai Köztársaság"
 
-#: data.php:1788
+#: data.php:1826
 msgid "Honduras"
 msgstr "Honduras"
 
-#: data.php:1793
+#: data.php:1831
 msgid "Paraguay"
 msgstr "Paraguay"
 
-#: data.php:1798
+#: data.php:1836
 msgid "El Salvador"
 msgstr "Salvador"
 
-#: data.php:1803
+#: data.php:1841
 msgid "Nicaragua"
 msgstr "Nikaragua"
 
-#: data.php:1808
+#: data.php:1846
 msgid "Costa Rica"
 msgstr "Costa Rica"
 
-#: data.php:1813
+#: data.php:1851
 msgid "Panama"
 msgstr "Panama"
 
-#: data.php:1818
+#: data.php:1856
 msgid "Uruguay"
 msgstr "Uruguay"
 
-#: data.php:1852
+#: data.php:1890
 msgid "Swedish"
 msgstr "Svéd"
 
-#: data.php:1857
+#: data.php:1895
 msgid "Sweden"
 msgstr "Svédország"
 
-#: data.php:1896
+#: data.php:1934
 msgid "Turkish"
 msgstr "Török"
 
-#: data.php:1901
+#: data.php:1939
 msgid "Turkey"
 msgstr "Törökország"
 
-#: data.php:1940
+#: data.php:1978
 msgid "Ukrainian"
 msgstr "Ukrajna"
 
-#: data.php:1945
+#: data.php:1983
 msgid "Ukraine"
 msgstr "Ukrajna"
 
-#: data.php:1979
+#: data.php:2017
 msgid "Vietnamese"
 msgstr "Vietnám"
 
-#: data.php:1984
+#: data.php:2022
 msgid "Vietnam"
 msgstr "Vietnám"
 
@@ -715,7 +715,16 @@ msgstr "Minden fordítás az oldalon"
 msgid "Edit the page slug"
 msgstr "Az oldal slug szerkesztése"
 
-#: inc/admin/assets.php:371 inc/admin/assets.php:437 inc/assets.php:89
+#: inc/admin/admin-bar.php:279 inc/admin/admin.php:59
+#: inc/admin/translation-cpt.php:19 inc/admin/translation-cpt.php:23
+msgid "Translations"
+msgstr "Fordítások"
+
+#: inc/admin/admin.php:57
+msgid "Edit translations"
+msgstr "Fordítások szerkesztése"
+
+#: inc/admin/assets.php:366 inc/admin/assets.php:431 inc/assets.php:89
 msgid ""
 "You are about to leave the page without saving your changes. They will be "
 "lost if you continue. Would you like to leave the page anyway?"
@@ -1957,11 +1966,11 @@ msgstr "Verzió"
 msgid "Settings"
 msgstr "Beállítások"
 
-#: inc/admin/option-page.php:274
+#: inc/admin/option-page.php:273
 msgid "wpLingua - Translation solution for multilingual website"
 msgstr "wpLingua - Fordítási megoldás többnyelvű honlapokhoz"
 
-#: inc/admin/option-page.php:277
+#: inc/admin/option-page.php:276
 msgid ""
 "wpLingua is installed, but not yet configured. You are just a few clicks away "
 "from making your website multilingual!"
@@ -1969,15 +1978,15 @@ msgstr ""
 "a wpLingua telepítve van, de még nincs konfigurálva. Már csak néhány "
 "kattintás választja el attól, hogy többnyelvűvé tegye weboldalát!"
 
-#: inc/admin/option-page.php:280
+#: inc/admin/option-page.php:279
 msgid "Go to the configuration page"
 msgstr "Menjen a konfigurációs oldalra"
 
-#: inc/admin/option-page.php:358
+#: inc/admin/option-page.php:357
 msgid "wpLingua - Incompatible plugin detected"
 msgstr "wpLingua - Kompatibilis plugin észlelve"
 
-#: inc/admin/option-page.php:361
+#: inc/admin/option-page.php:360
 msgid ""
 "You have several translation plugins. This may result in unpredictable or "
 "incorrect behavior. For best results, use only one translation plugin at a "
@@ -1988,40 +1997,40 @@ msgstr ""
 "csak egy fordítási plugint használjon. Ezek a bővítmények problémákat "
 "okozhatnak a wpLingua használatával: "
 
-#: inc/admin/option-page.php:378
+#: inc/admin/option-page.php:377
 #, php-format
 msgid "Deactivate plugin: %1$s"
 msgstr "Plugin kikapcsolása: %1$s"
 
-#: inc/admin/option-page.php:387
+#: inc/admin/option-page.php:386
 msgid "Deactivate"
 msgstr "Kikapcsolás"
 
-#: inc/admin/option-page.php:404
+#: inc/admin/option-page.php:403
 msgid "Manage active plugins"
 msgstr "Aktív bővítmények kezelése"
 
-#: inc/admin/option-page.php:433
+#: inc/admin/option-page.php:432
 msgid "wpLingua - Incompatible with multisite"
 msgstr "wpLingua - Nem kompatibilis a multisite-tal"
 
-#: inc/admin/option-page.php:436
+#: inc/admin/option-page.php:435
 msgid "wpLingua is not compatible with multisite."
 msgstr "a wpLingua nem kompatibilis a multisite-tal."
 
-#: inc/admin/option-page.php:464
+#: inc/admin/option-page.php:463
 msgid "wpLingua - Incompatible with WordPress installed in a subfolder"
 msgstr "wpLingua - Nem kompatibilis az almappába telepített WordPress-szel"
 
-#: inc/admin/option-page.php:467
+#: inc/admin/option-page.php:466
 msgid "wpLingua is not compatible with WordPress installed in a subfolder."
 msgstr "a wpLingua nem kompatibilis az almappába telepített WordPress-szel."
 
-#: inc/admin/option-page.php:495
+#: inc/admin/option-page.php:494
 msgid "wpLingua - Incompatible PHP version"
 msgstr "wpLingua - Nem kompatibilis PHP verzió"
 
-#: inc/admin/option-page.php:498
+#: inc/admin/option-page.php:497
 msgid ""
 "wpLingua is not compatible with your PHP version. wpLingua requires PHP 7.4 "
 "or higher."
@@ -2086,48 +2095,48 @@ msgstr "Csiga státusz: "
 msgid "Slug"
 msgstr "Keresőbarát név"
 
-#: inc/admin/slug-meta.php:77 inc/admin/slug-meta.php:156
-#: inc/admin/translation-meta.php:79 inc/admin/translation-meta.php:148
+#: inc/admin/slug-meta.php:75 inc/admin/slug-meta.php:154
+#: inc/admin/translation-meta.php:77 inc/admin/translation-meta.php:146
 msgid "Flag for language: "
 msgstr "Nyelvi zászló: "
 
-#: inc/admin/slug-meta.php:91
+#: inc/admin/slug-meta.php:89
 msgid " - Original slug: "
 msgstr " - Eredeti csiga: "
 
-#: inc/admin/slug-meta.php:155 inc/admin/translation-meta.php:147
+#: inc/admin/slug-meta.php:153 inc/admin/translation-meta.php:145
 msgid "Regenerate translation"
 msgstr "Regenerálja a fordítást"
 
-#: inc/admin/slug-meta.php:158 inc/admin/translation-meta.php:150
+#: inc/admin/slug-meta.php:156 inc/admin/translation-meta.php:148
 msgid "Mark as review"
 msgstr "Jelölje meg felülvizsgálatként"
 
-#: inc/admin/slug-meta.php:173 inc/admin/translation-meta.php:159
+#: inc/admin/slug-meta.php:171 inc/admin/translation-meta.php:157
 msgid "Generate translation"
 msgstr "Fordítás generálása"
 
-#: inc/admin/slug-meta.php:199 inc/admin/translation-meta.php:185
+#: inc/admin/slug-meta.php:197 inc/admin/translation-meta.php:183
 msgid "Reviewed on "
 msgstr "Áttekintve a "
 
-#: inc/admin/slug-meta.php:228
+#: inc/admin/slug-meta.php:226
 msgid " - Slug translation: "
 msgstr " - Csiga fordítás: "
 
-#: inc/admin/slug-meta.php:263 inc/admin/translation-meta.php:249
+#: inc/admin/slug-meta.php:261 inc/admin/translation-meta.php:247
 msgid "Is reviewed"
 msgstr "Felülvizsgálják"
 
-#: inc/admin/slug-meta.php:494 inc/admin/translation-meta.php:425
+#: inc/admin/slug-meta.php:492 inc/admin/translation-meta.php:471
 msgid "Invalid parameters"
 msgstr "Érvénytelen paraméterek"
 
-#: inc/admin/slug-meta.php:506 inc/admin/translation-meta.php:438
+#: inc/admin/slug-meta.php:504 inc/admin/translation-meta.php:484
 msgid "Invalid languages parameters"
 msgstr "Érvénytelen nyelvi paraméterek"
 
-#: inc/admin/slug-meta.php:563 inc/admin/translation-meta.php:478
+#: inc/admin/slug-meta.php:561 inc/admin/translation-meta.php:524
 msgid "Invalid API response"
 msgstr "Érvénytelen API-válasz"
 
@@ -2150,10 +2159,6 @@ msgstr "Nyelvválasztó"
 #: inc/admin/switcher-nav-menu.php:259
 msgid "Add to menu"
 msgstr "Hozzáadás a menühöz"
-
-#: inc/admin/translation-cpt.php:19 inc/admin/translation-cpt.php:23
-msgid "Translations"
-msgstr "Fordítások"
 
 #: inc/admin/translation-cpt.php:20 inc/admin/translation-meta.php:23
 msgid "Translation"
@@ -2196,13 +2201,17 @@ msgstr "Érvénytelen fordítás post"
 msgid "Translation saving failed"
 msgstr "A fordítás mentése sikertelen"
 
-#: inc/admin/translation-meta.php:89
+#: inc/admin/translation-meta.php:87
 msgid " - Original text: "
 msgstr " - Eredeti szöveg: "
 
-#: inc/admin/translation-meta.php:214
+#: inc/admin/translation-meta.php:212
 msgid " - Translation: "
 msgstr " - Fordítás: "
+
+#: inc/admin/translation-meta.php:282
+msgid "Discovery URL: "
+msgstr "Felfedezés URL: "
 
 #: inc/api-call/request-api-key.php:60
 msgid "Error - Invalid data."
@@ -2292,7 +2301,7 @@ msgstr "Ábécé - fordítások"
 msgid "Go to top"
 msgstr "Ugrás felülre"
 
-#: inc/slug.php:294 inc/translation.php:271
+#: inc/slug.php:294 inc/translation.php:289
 msgid "..."
 msgstr "…"
 
