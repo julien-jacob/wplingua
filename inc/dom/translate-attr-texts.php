@@ -28,6 +28,10 @@ function wplng_dom_translate_attr_texts( $dom, $args ) {
 	foreach ( $attr_text_to_translate as $attr ) {
 		foreach ( $dom->find( $attr['selector'] ) as $element ) {
 
+			if ( empty( $element->attr[ $attr['attr'] ] ) ) {
+				continue;
+			}
+
 			$text = wplng_text_esc( $element->attr[ $attr['attr'] ] );
 
 			if ( ! wplng_text_is_translatable( $text ) ) {
