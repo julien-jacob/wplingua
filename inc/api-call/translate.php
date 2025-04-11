@@ -54,7 +54,10 @@ function wplng_api_call_translate(
 
 	// Ckeck and sanitize texts list
 
-	if ( empty( $texts ) || ! is_array( $texts ) ) {
+	if ( empty( $texts )
+		|| ! is_array( $texts )
+		|| empty( $_COOKIE['wplingua'] )
+	) {
 		return array();
 	}
 
