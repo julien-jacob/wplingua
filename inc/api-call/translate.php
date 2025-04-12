@@ -48,18 +48,26 @@ function wplng_api_call_translate(
 	$language_target_id = ''
 ) {
 
-	/**
-	 * Get and check data
-	 */
-
-	// Ckeck and sanitize texts list
-
-	if ( empty( $texts )
-		|| ! is_array( $texts )
-		|| empty( $_COOKIE['wplingua'] )
-	) {
+	// Check texts array
+	if ( empty( $texts ) || ! is_array( $texts ) ) {
 		return array();
 	}
+
+	// Check if is human by cookie
+	if ( empty( $_COOKIE['wplingua'] ) ) {
+
+		// Set HTTP no-cache header
+		nocache_headers();
+
+		// Disable cache for plugins
+		if ( ! defined( 'DONOTCACHEPAGE' ) ) {
+			define( 'DONOTCACHEPAGE', true );
+		}
+
+		return array();
+	}
+
+	// Ckeck and sanitize texts list
 
 	foreach ( $texts as $key => $text ) {
 		if ( ! is_string( $text ) ) {
