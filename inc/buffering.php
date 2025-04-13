@@ -24,6 +24,18 @@ function wplng_redirect_translated_slug() {
 		return;
 	}
 
+	if ( empty( $_COOKIE['wplingua'] )
+		&& apply_filters( 'wplng_cookie_check', false )
+	) {
+		// Set HTTP no-cache header
+		nocache_headers();
+
+		// Disable cache for plugins
+		if ( ! defined( 'DONOTCACHEPAGE' ) ) {
+			define( 'DONOTCACHEPAGE', true );
+		}
+	}
+
 	$url_current = wplng_get_url_current();
 
 	if ( ! is_string( $url_current )

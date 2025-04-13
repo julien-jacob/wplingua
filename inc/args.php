@@ -29,6 +29,20 @@ function wplng_args_setup( &$args ) {
 	}
 
 	/**
+	 * Check language website DIR
+	 */
+
+	if ( empty( $args['language_source_dir'] ) ) {
+
+		$language = wplng_get_language_by_id( $args_clear['language_source'] );
+
+		$args_clear['language_source_dir'] = $language['dir'];
+
+	} else {
+		$args_clear['language_source_dir'] = $args['language_source_dir'];
+	}
+
+	/**
 	 * Check language target ID
 	 */
 
@@ -38,6 +52,20 @@ function wplng_args_setup( &$args ) {
 		$args_clear['language_target'] = wplng_get_language_current_id();
 	} else {
 		$args_clear['language_target'] = $args['language_target'];
+	}
+
+	/**
+	 * Check language target DIR
+	 */
+
+	if ( empty( $args['language_target_dir'] ) ) {
+
+		$language = wplng_get_language_by_id( $args_clear['language_target'] );
+
+		$args_clear['language_target_dir'] = $language['dir'];
+
+	} else {
+		$args_clear['language_target_dir'] = $args['language_target_dir'];
 	}
 
 	/**

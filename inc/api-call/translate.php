@@ -48,15 +48,23 @@ function wplng_api_call_translate(
 	$language_target_id = ''
 ) {
 
-	/**
-	 * Get and check data
-	 */
-
-	// Ckeck and sanitize texts list
-
+	// Check texts array
 	if ( empty( $texts ) || ! is_array( $texts ) ) {
 		return array();
 	}
+
+	// Check cookie
+	if ( empty( $_COOKIE['wplingua'] )
+		&& apply_filters( 'wplng_cookie_check', false )
+	) {
+
+		global $wplng_class_reload;
+		$wplng_class_reload = true;
+
+		return array();
+	}
+
+	// Ckeck and sanitize texts list
 
 	foreach ( $texts as $key => $text ) {
 		if ( ! is_string( $text ) ) {
