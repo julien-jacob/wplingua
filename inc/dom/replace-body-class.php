@@ -30,11 +30,7 @@ function wplng_dom_replace_body_class( $dom, $args ) {
 			if ( wplng_str_is_locale_id( $class ) ) {
 				$class_array[ $key ] = $args['language_target'];
 			} elseif ( 'ltr' === $class || 'rtl' === $class ) {
-				if ( ! empty( $language_target['dir'] ) ) {
-					$class_array[ $key ] = $language_target['dir'];
-				} else {
-					$class_array[ $key ] = 'ltr';
-				}
+				$class_array[ $key ] = $args['language_target_dir'];
 			}
 		}
 
@@ -43,7 +39,7 @@ function wplng_dom_replace_body_class( $dom, $args ) {
 		$class_array = array_unique( $class_array ); // Remove duplicate
 		$class_str   = '';
 
-		foreach ( $class_array as $key => $class ) {
+		foreach ( $class_array as $class ) {
 			$class_str .= $class . ' ';
 		}
 
