@@ -159,8 +159,25 @@ function wplng_api_call_translate(
 
 	$response = json_decode( wp_remote_retrieve_body( $request ), true );
 
+	// Check error
 	if ( isset( $response['error'] )
-		|| empty( $response['translations'] )
+		&& ( true === $response['error'] )
+	) {
+		if ( isset( $response['disconnect'] )
+			&& true === $response['disconnect']
+		) {
+			
+			delete_option( 'wplng_api_key_data' );
+			delete_option( 'wplng_api_key' );
+			wplng_clear_translations_cache();
+			wplng_clear_slugs_cache();
+		}
+
+		return $texts;
+	}
+
+	// Check translations
+	if ( empty( $response['translations'] )
 		|| ! is_array( $response['translations'] )
 	) {
 		// API returned an error or an unexpected response
