@@ -143,10 +143,10 @@ function wplng_register_settings() {
 
 
 /**
- * Set custom admin_footer_text on wpLingua options pages
+ * Customize the admin footer text displayed on wpLingua option pages.
  *
- * @param string $text
- * @return string
+ * @param string $text The default footer text.
+ * @return string The customized footer text for wpLingua pages.
  */
 function wplng_admin_footer_text( $text ) {
 
@@ -182,8 +182,8 @@ function wplng_admin_footer_text( $text ) {
 /**
  * Set custom update_footer text on wpLingua options pages
  *
- * @param string $text
- * @return string
+ * @param string $text The default footer text to be modified.
+ * @return string The customized footer text for wpLingua pages.
  */
 function wplng_update_footer( $text ) {
 
@@ -238,9 +238,9 @@ function wplng_settings_link( $settings ) {
 
 
 /**
- * Redirect to the settings page on plugin activation
+ * Redirect to the wpLingua settings page upon plugin activation.
  *
- * @param string $plugin
+ * @param string $plugin The plugin file path that was activated.
  * @return void
  */
 function wplng_plugin_activation_redirect( $plugin ) {
@@ -333,9 +333,9 @@ function wplng_get_incompatible_plugins() {
 
 
 /**
- * Display a notice if an incompatible plugin is detected
+ * Display a notice if an incompatible plugin is detected.
  *
- * @return void|string
+ * @return void|string Outputs the admin notice or returns nothing if no conflicts are found.
  */
 function wplng_admin_notice_incompatible_plugin() {
 
@@ -344,10 +344,6 @@ function wplng_admin_notice_incompatible_plugin() {
 	if ( empty( $incompatible_plugins ) ) {
 		return;
 	}
-
-	/**
-	 * Make and echo the admin notice
-	 */
 
 	$html  = '<div ';
 	$html .= 'class="wplng-notice notice notice-error is-dismissible" ';
@@ -412,17 +408,13 @@ function wplng_admin_notice_incompatible_plugin() {
 /**
  * Display a notice if is a multisite
  *
- * @return void|string
+ * @return void|string Outputs the admin notice if applicable, or returns void if no action is needed.
  */
 function wplng_admin_notice_incompatible_multisite() {
 
 	if ( ! is_multisite() ) {
 		return;
 	}
-
-	/**
-	 * Make and echo the admin notice
-	 */
 
 	$html  = '<div ';
 	$html .= 'class="wplng-notice notice notice-error is-dismissible" ';
@@ -443,17 +435,13 @@ function wplng_admin_notice_incompatible_multisite() {
 /**
  * Display a notice if the WordPress installed in a subfolder
  *
- * @return void|string
+ * @return void|string Outputs the admin notice if applicable, or returns void if no notice is needed.
  */
 function wplng_admin_notice_incompatible_sub_folder() {
 
 	if ( ! wplng_website_in_sub_folder() ) {
 		return;
 	}
-
-	/**
-	 * Make and echo the admin notice
-	 */
 
 	$html  = '<div ';
 	$html .= 'class="wplng-notice notice notice-error is-dismissible" ';
@@ -474,17 +462,13 @@ function wplng_admin_notice_incompatible_sub_folder() {
 /**
  * Display a notice if the PHP version is incompatible
  *
- * @return void|string
+ * @return void|string Outputs the admin notice if applicable, or returns void if no notice is required.
  */
 function wplng_admin_notice_incompatible_php_version() {
 
 	if ( version_compare( PHP_VERSION, WPLNG_PHP_MIN_VERSION ) >= 0 ) {
 		return;
 	}
-
-	/**
-	 * Make and echo the admin notice
-	 */
 
 	$html  = '<div ';
 	$html .= 'class="wplng-notice notice notice-error is-dismissible" ';

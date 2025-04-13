@@ -15,7 +15,9 @@
  *
  **/
 
-jQuery(document).ready(function ($) {
+(function () {
+
+    "use strict";
 
     // ------------------------------------------------------------------------
     // Manage the wpLingua Cookie
@@ -24,12 +26,11 @@ jQuery(document).ready(function ($) {
     /**
      * Sets a cookie named "wplingua" with a value of 1.
      */
-
     document.cookie = "wplingua=1;path=/";
 
-    /**
-     * Reload the page if BODY contains the class "wplingua-reload"
-     */
+    // ------------------------------------------------------------------------
+    // Reload the page if BODY contains the class "wplingua-reload"
+    // ------------------------------------------------------------------------
 
     if (document.body.classList.contains('wplingua-reload')) {
         location.reload();
@@ -46,10 +47,12 @@ jQuery(document).ready(function ($) {
     function wplngHeartBeat() {
         for (let i = 0; i < 5; i++) {
             setTimeout(() => {
-                $.ajax({
-                    url: "[admin-ajax-php]",
+                fetch("[admin-ajax-php]", {
                     method: "POST",
-                    data: { action: "wplng_ajax_heartbeat" }
+                    headers: {
+                        "Content-Type": "application/x-www-form-urlencoded"
+                    },
+                    body: new URLSearchParams({ action: "wplng_ajax_heartbeat" })
                 });
             }, i * 1000 * 60 * 11);
         }
@@ -58,9 +61,7 @@ jQuery(document).ready(function ($) {
     /**
      * Initializes the heartbeat functionality after a 6-second delay.
      */
+    setTimeout(wplngHeartBeat, 6000);
 
-    setTimeout(function () {
-        wplngHeartBeat();
-    }, 6000);
+})();
 
-});
