@@ -24,8 +24,16 @@ jQuery(document).ready(function ($) {
     /**
      * Sets a cookie named "wplingua" with a value of 1.
      */
-    
+
     document.cookie = "wplingua=1;path=/";
+
+    /**
+     * Reload the page if BODY contains the class "wplingua-reload"
+     */
+
+    if (document.body.classList.contains('wplingua-reload')) {
+        location.reload();
+    }
 
     // ------------------------------------------------------------------------
     // Manage the wpLingua HeartBeat

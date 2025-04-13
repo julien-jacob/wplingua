@@ -36,6 +36,12 @@ function wplng_dom_replace_body_class( $dom, $args ) {
 
 		$class_array[] = 'wplingua-translated';
 
+		global $wplng_class_reload;
+
+		if ( true === $wplng_class_reload ) {
+			$class_array[] = 'wplingua-reload';
+		}
+
 		$class_array = array_unique( $class_array ); // Remove duplicate
 		$class_str   = '';
 

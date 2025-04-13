@@ -53,16 +53,13 @@ function wplng_api_call_translate(
 		return array();
 	}
 
-	// Check if is human by cookie
-	if ( empty( $_COOKIE['wplingua'] ) ) {
+	// Check cookie
+	if ( empty( $_COOKIE['wplingua'] )
+		&& apply_filters( 'wplng_cookie_check', false )
+	) {
 
-		// Set HTTP no-cache header
-		nocache_headers();
-
-		// Disable cache for plugins
-		if ( ! defined( 'DONOTCACHEPAGE' ) ) {
-			define( 'DONOTCACHEPAGE', true );
-		}
+		global $wplng_class_reload;
+		$wplng_class_reload = true;
 
 		return array();
 	}
