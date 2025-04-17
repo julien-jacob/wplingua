@@ -644,9 +644,45 @@ function wplng_data_switcher_nav_menu_valid_layout() {
  */
 
 /**
+ * Get all languages ID
+ *
+ * @return array Languages ID
+ */
+function wplng_data_languages_id() {
+	return array(
+		'ar', // Arabic
+		'da', // Danish
+		'de', // German
+		'en', // English
+		'el', // Greek
+		'es', // Spanish
+		'fi', // Finnish
+		'fr', // French
+		'hi', // Hindi
+		'hu', // Hungarian
+		'id', // Indonesian
+		'it', // Italian
+		'he', // Hebrew
+		'ja', // Japanese
+		'ko', // Korean
+		'nl', // Dutch
+		'pl', // Polish
+		'pt', // Portuguese
+		'ru', // Russian
+		'sk', // Slovak
+		'sv', // Swedish
+		'zh', // Chinese
+		'tr', // Turkish
+		'uk', // Ukrainian
+		'vi', // Vietnamese
+	);
+}
+
+
+/**
  * Get all languages data
  *
- * @return array
+ * @return array Languages data
  */
 function wplng_data_languages() {
 	return array(
