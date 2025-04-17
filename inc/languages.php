@@ -381,10 +381,10 @@ function wplng_is_valid_language_id( $language_id ) {
 		return false;
 	}
 
-	// Check if $language_id is in languages data
-	$languages_data = wplng_data_languages();
-	foreach ( $languages_data as $language_data ) {
-		if ( $language_data['id'] === $language_id ) {
+	// wplng_data_languages_ids
+	$languages_data_id = wplng_data_languages_id();
+	foreach ( $languages_data_id as $language_data_id ) {
+		if ( $language_data_id === $language_id ) {
 			return true;
 		}
 	}
@@ -394,10 +394,10 @@ function wplng_is_valid_language_id( $language_id ) {
 
 
 /**
- * Check if a list of language ID are valid
+ * Check if a list of languages ID are valid
  *
  * @param array $language_id_list
- * @return bool
+ * @return bool Languages ID are valid
  */
 function wplng_is_valid_language_ids( $language_id_list ) {
 
@@ -405,8 +405,28 @@ function wplng_is_valid_language_ids( $language_id_list ) {
 		return false;
 	}
 
+	$languages_data_id = wplng_data_languages_id();
+
 	foreach ( $language_id_list as $language_id ) {
-		if ( ! wplng_is_valid_language_id( $language_id ) ) {
+
+		// If $language_id format is not valid, return default data
+		if ( empty( $language_id )
+			|| ! is_string( $language_id )
+			|| strlen( $language_id ) !== 2
+		) {
+			return false;
+		}
+
+		// If language ID not exist
+		$is_valid_language = false;
+		foreach ( $languages_data_id as $language_data_id ) {
+			if ( $language_data_id === $language_id ) {
+				$is_valid_language = true;
+				break;
+			}
+		}
+
+		if ( false === $is_valid_language ) {
 			return false;
 		}
 	}
