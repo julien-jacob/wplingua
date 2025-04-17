@@ -246,6 +246,24 @@ function wplng_args_update_from_texts( &$args, $texts ) {
 	}
 
 	/**
+	 * Limit $texts_unknow for a total of 1000 char
+	 */
+
+	$current_length = 0;
+	$limited_texts_unknow = array();
+
+	foreach ( $texts_unknow as $text ) {
+		$text_length = strlen( $text );
+		if ( $current_length + $text_length > WPLNG_MAX_TRANSLATIONS_CHAR ) {
+			break;
+		}
+		$limited_texts_unknow[] = $text;
+		$current_length += $text_length + 8;
+	}
+
+	$texts_unknow = $limited_texts_unknow;
+
+	/**
 	 * Get count_texts
 	 */
 

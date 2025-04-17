@@ -29,6 +29,7 @@ define( 'WPLNG_PLUGIN_FILE', plugin_basename( __FILE__ ) );
 define( 'WPLNG_PLUGIN_PATH', __DIR__ );
 define( 'WPLNG_PHP_MIN_VERSION', '7.4' );
 define( 'WPLNG_MAX_TRANSLATIONS', 256 );
+define( 'WPLNG_MAX_TRANSLATIONS_CHAR', 1800 );
 define( 'WPLNG_MAX_FILE_SIZE', 5000000 );
 
 
