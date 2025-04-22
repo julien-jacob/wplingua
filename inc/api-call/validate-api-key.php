@@ -189,7 +189,7 @@ function wplng_api_call_validate_api_key( $api_key = '' ) {
 		 */
 
 		$error_message  = __( 'Code', 'wplingua' ) . ' ';
-		$error_message  = $response['code'] . ' - ';
+		$error_message .= $response['code'] . ' - ';
 		$error_message .= $response['message'];
 
 		set_transient(
@@ -198,6 +198,14 @@ function wplng_api_call_validate_api_key( $api_key = '' ) {
 			MINUTE_IN_SECONDS * 5
 		);
 
+		if ( isset( $response['disconnect'] )
+			&& true === $response['disconnect']
+		) {
+			delete_option( 'wplng_api_key_data' );
+			delete_option( 'wplng_api_key' );
+			wplng_clear_translations_cache();
+			wplng_clear_slugs_cache();
+		}
 	} else {
 
 		/**

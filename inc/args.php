@@ -29,6 +29,20 @@ function wplng_args_setup( &$args ) {
 	}
 
 	/**
+	 * Check language website DIR
+	 */
+
+	if ( empty( $args['language_source_dir'] ) ) {
+
+		$language = wplng_get_language_by_id( $args_clear['language_source'] );
+
+		$args_clear['language_source_dir'] = $language['dir'];
+
+	} else {
+		$args_clear['language_source_dir'] = $args['language_source_dir'];
+	}
+
+	/**
 	 * Check language target ID
 	 */
 
@@ -38,6 +52,20 @@ function wplng_args_setup( &$args ) {
 		$args_clear['language_target'] = wplng_get_language_current_id();
 	} else {
 		$args_clear['language_target'] = $args['language_target'];
+	}
+
+	/**
+	 * Check language target DIR
+	 */
+
+	if ( empty( $args['language_target_dir'] ) ) {
+
+		$language = wplng_get_language_by_id( $args_clear['language_target'] );
+
+		$args_clear['language_target_dir'] = $language['dir'];
+
+	} else {
+		$args_clear['language_target_dir'] = $args['language_target_dir'];
 	}
 
 	/**
@@ -216,6 +244,24 @@ function wplng_args_update_from_texts( &$args, $texts ) {
 			$texts_unknow[] = $text;
 		}
 	}
+
+	/**
+	 * Limit $texts_unknow for a total of 1000 char
+	 */
+
+	$current_length = 0;
+	$limited_texts_unknow = array();
+
+	foreach ( $texts_unknow as $text ) {
+		$text_length = strlen( $text );
+		if ( $current_length + $text_length > WPLNG_MAX_TRANSLATIONS_CHAR ) {
+			break;
+		}
+		$limited_texts_unknow[] = $text;
+		$current_length += $text_length + 8;
+	}
+
+	$texts_unknow = $limited_texts_unknow;
 
 	/**
 	 * Get count_texts

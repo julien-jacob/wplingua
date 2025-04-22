@@ -147,6 +147,18 @@ function wplng_url_translate_no_filter( $url, $language_target_id = '' ) {
  * @return bool
  */
 function wplng_url_is_translatable( $url = '' ) {
+
+	global $wplng_request_uri;
+
+	// Get current URL if $url is empty
+	if ( '' === $url ) {
+		$url = sanitize_url( $wplng_request_uri );
+	}
+
+	$url = trailingslashit( $url );
+	$url = wp_make_link_relative( $url );
+	$url = strtolower( $url );
+
 	return apply_filters(
 		'wplng_url_is_translatable',
 		wplng_url_is_translatable_no_filter( $url ),
@@ -161,18 +173,7 @@ function wplng_url_is_translatable( $url = '' ) {
  * @param string $url
  * @return bool
  */
-function wplng_url_is_translatable_no_filter( $url = '' ) {
-
-	global $wplng_request_uri;
-
-	// Get current URL if $url is empty
-	if ( '' === $url ) {
-		$url = sanitize_url( $wplng_request_uri );
-	}
-
-	$url = trailingslashit( $url );
-	$url = wp_make_link_relative( $url );
-	$url = strtolower( $url );
+function wplng_url_is_translatable_no_filter( $url ) {
 
 	// Check if is an admin page
 	if ( wplng_str_contains( $url, wp_make_link_relative( get_admin_url() ) ) ) {

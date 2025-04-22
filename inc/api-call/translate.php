@@ -48,15 +48,23 @@ function wplng_api_call_translate(
 	$language_target_id = ''
 ) {
 
-	/**
-	 * Get and check data
-	 */
-
-	// Ckeck and sanitize texts list
-
+	// Check texts array
 	if ( empty( $texts ) || ! is_array( $texts ) ) {
 		return array();
 	}
+
+	// Check cookie
+	if ( empty( $_COOKIE['wplingua'] )
+		&& apply_filters( 'wplng_cookie_check', false )
+	) {
+
+		global $wplng_class_reload;
+		$wplng_class_reload = true;
+
+		return array();
+	}
+
+	// Ckeck and sanitize texts list
 
 	foreach ( $texts as $key => $text ) {
 		if ( ! is_string( $text ) ) {
@@ -151,8 +159,25 @@ function wplng_api_call_translate(
 
 	$response = json_decode( wp_remote_retrieve_body( $request ), true );
 
+	// Check error
 	if ( isset( $response['error'] )
-		|| empty( $response['translations'] )
+		&& ( true === $response['error'] )
+	) {
+		if ( isset( $response['disconnect'] )
+			&& true === $response['disconnect']
+		) {
+			
+			delete_option( 'wplng_api_key_data' );
+			delete_option( 'wplng_api_key' );
+			wplng_clear_translations_cache();
+			wplng_clear_slugs_cache();
+		}
+
+		return $texts;
+	}
+
+	// Check translations
+	if ( empty( $response['translations'] )
 		|| ! is_array( $response['translations'] )
 	) {
 		// API returned an error or an unexpected response
