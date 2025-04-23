@@ -1201,6 +1201,11 @@ function wplng_data_languages() {
 					'flag' => 'be',
 				),
 				array(
+					'name' => __( 'Quebec', 'wplingua' ),
+					'id'   => '_q',
+					'flag' => '_q',
+				),
+				array(
 					'name' => __( 'Canada', 'wplingua' ),
 					'id'   => 'ca',
 					'flag' => 'ca',
