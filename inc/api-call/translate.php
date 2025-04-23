@@ -55,7 +55,7 @@ function wplng_api_call_translate(
 
 	// Check cookie
 	if ( empty( $_COOKIE['wplingua'] )
-		&& apply_filters( 'wplng_cookie_check', false )
+		&& apply_filters( 'wplng_cookie_check', true )
 	) {
 
 		global $wplng_class_reload;

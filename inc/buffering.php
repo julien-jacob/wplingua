@@ -25,7 +25,7 @@ function wplng_redirect_translated_slug() {
 	}
 
 	if ( empty( $_COOKIE['wplingua'] )
-		&& apply_filters( 'wplng_cookie_check', false )
+		&& apply_filters( 'wplng_cookie_check', true )
 	) {
 		// Set HTTP no-cache header
 		nocache_headers();
