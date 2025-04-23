@@ -17,6 +17,22 @@
 
 jQuery(document).ready(function ($) {
 
+    /**
+     * Sets a cookie named "wplingua" with a value of 1.
+     * The cookie expires in 30 days and is available site-wide.
+     */
+    function wplngRegisterCookieSet() {
+        const date = new Date();
+        date.setTime(date.getTime() + (30 * 24 * 60 * 60 * 1000));
+        document.cookie = "wplingua=1;expires=" + date.toUTCString() + ";path=/";
+    }
+
+    wplngRegisterCookieSet();
+
+
+    /**
+     * Check the language select input
+     */
     if (!$("#wplng-language-website").length) {
         return;
     }
