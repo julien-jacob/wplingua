@@ -89,6 +89,13 @@ function wplng_ob_start() {
 			return;
 		}
 
+		// Check AJAX action
+		if ( empty( $_POST['action'] )
+			|| in_array( $_POST['action'], wplng_data_excluded_ajax_action() )
+		) {
+			return;
+		}
+
 		global $wplng_request_uri;
 		$wplng_request_uri = wp_make_link_relative( $referer );
 
