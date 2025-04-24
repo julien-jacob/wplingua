@@ -227,8 +227,14 @@ function wplng_ob_callback_ajax( $output ) {
 	// Print debug data in debug.log file
 	if ( true === WPLNG_DEBUG_AJAX ) {
 
+		$action = 'UNKNOW';
+		if ( ! empty( $_POST['action'] ) && is_string( $_POST['action'] ) ) {
+			$action = $_POST['action'];
+		}
+
 		$debug = array(
 			'title'       => 'wpLingua AJAX debug',
+			'action'      => $action,
 			'request_uri' => $wplng_request_uri,
 			'value'       => $output,
 			'translated'  => $output_translated,
