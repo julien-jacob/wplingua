@@ -41,6 +41,8 @@ function wplng_data_excluded_selector_default() {
 		'#wpadminbar',
 		'.wp-embed-share-input',
 		'[aria-label="HTML"]',
+		'#media-views-js-extra',
+		'#wp-api-request-js-extra',
 
 		// wpLingua
 		'link[hreflang]',
