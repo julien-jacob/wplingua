@@ -198,7 +198,9 @@ function wplng_get_translations_from_query() {
 			continue;
 		}
 
-		$translations[] = $translation;
+		$array_index = (string) mb_substr($source, 0, 1) . (string) strlen($source);
+
+		$translations[$array_index][] = $translation;
 	}
 
 	// Cache translations for better performance
@@ -209,59 +211,6 @@ function wplng_get_translations_from_query() {
 	);
 
 	return $translations;
-}
-
-
-
-/**
- * Get all saved translations for a target language
- *
- * @param string $target_language_id
- * @return array
- */
-function wplng_get_translations_target( $target_language_id ) {
-
-	$translations_all_languages = get_transient( 'wplng_cached_translations' );
-
-	if ( empty( $translations_all_languages )
-		|| ! is_array( $translations_all_languages )
-	) {
-		$translations_all_languages = wplng_get_translations_from_query();
-	}
-
-	$translations_target = array();
-
-	foreach ( $translations_all_languages as $translation ) {
-		if ( empty( $translation['source'] )
-			|| ! is_string( $translation['source'] )
-			|| empty( $translation['post_id'] )
-			|| empty( $translation['translations'][ $target_language_id ] )
-			|| ! is_string( $translation['translations'][ $target_language_id ] )
-			|| ! isset( $translation['review'] )
-			|| ! is_array( $translation['review'] )
-		) {
-			continue;
-		}
-
-		$review = in_array(
-			$target_language_id,
-			$translation['review'],
-			true
-		);
-
-		$translation_text = wplng_text_esc(
-			$translation['translations'][ $target_language_id ]
-		);
-
-		$translations_target[] = array(
-			'source'      => wplng_text_esc( $translation['source'] ),
-			'post_id'     => $translation['post_id'],
-			'review'      => $review,
-			'translation' => $translation_text,
-		);
-	}
-
-	return $translations_target;
 }
 
 
