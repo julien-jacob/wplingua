@@ -82,55 +82,60 @@ function wplng_dom_load_progress( $dom, $args ) {
 
 		$text = $element->innertext;
 
+		if ( empty( trim( $text ) ) ) {
+			continue;
+		}
+
+		// Manage non breaking space
+		$text = str_replace(
+			array( '&nbsp;', html_entity_decode( '&nbsp;' ) ),
+			array( ' ', ' ' ),
+			$text
+		);
+
 		/**
 		 * Get spaces before and after text
 		 */
-
 		$temp          = array();
 		$spaces_before = '';
 		$spaces_after  = '';
 
-		preg_match( '#^(\s*).*#', $text, $temp );
+		preg_match( '/^(\s*).*/', $text, $temp );
 		if ( ! empty( $temp[1] ) ) {
 			$spaces_before = $temp[1];
 		}
 
-		preg_match( '#.*(\s*)$#U', $text, $temp );
+		preg_match( '/.*(\s*)$/U', $text, $temp );
 		if ( ! empty( $temp[1] ) ) {
 			$spaces_after = $temp[1];
 		}
 
-		$text = wplng_text_esc( $text );
+		$text       = wplng_text_esc( $text );
+		$translated = '';
 
-		if ( ! wplng_text_is_translatable( $text ) ) {
-			continue;
-		}
+		if ( wplng_text_is_translatable( $text ) ) {
 
-		$text_translated = '';
-
-		foreach ( $args['translations'] as $translation ) {
-
-			$source = wplng_text_esc( $translation['source'] );
-
-			if ( $text === $source ) {
-				$text_translated = $translation['translation'];
-				break;
+			foreach ( $args['translations'] as $translation ) {
+				if ( $text === $translation['source'] ) {
+					$translated = $translation['translation'];
+					break;
+				}
 			}
-		}
 
-		if ( '' === $text_translated ) {
+			if ( '' === $translated ) {
 
-			$innertext  = '<span';
-			$innertext .= ' class="wplng-in-progress-text"';
-			$innertext .= ' title="' . esc_attr__( 'Translation in progress', 'wplingua' ) . '"';
-			$innertext .= '>';
-			$innertext .= esc_html( $spaces_before . $text . $spaces_after );
-			$innertext .= '</span>';
+				$innertext  = '<span';
+				$innertext .= ' class="wplng-in-progress-text"';
+				$innertext .= ' title="' . esc_attr__( 'Translation in progress', 'wplingua' ) . '"';
+				$innertext .= '>';
+				$innertext .= esc_html( $spaces_before . $text . $spaces_after );
+				$innertext .= '</span>';
 
-			$element->innertext = $innertext;
+				$element->innertext = $innertext;
 
-		} else {
-			$element->innertext = esc_html( $spaces_before . $text_translated . $spaces_after );
+			} else {
+				$element->innertext = esc_html( $spaces_before . $translated . $spaces_after );
+			}
 		}
 	}
 
