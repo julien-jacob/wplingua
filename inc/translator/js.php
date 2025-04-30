@@ -32,7 +32,7 @@ function wplng_translate_js( $js, $args = array() ) {
 
 	// Regex to match JavaScript variable or window object assignment containing JSON
 	preg_match_all(
-		'#(var\s|let\s|window\._)(.*)\s?=\s?(\[.*\]|\{.*\});#Ui',
+		'#(var\s|let\s|window\._)([a-zA-Z0-9_]+)\s?=\s?(\{(?:[^{}]*|(?R))*\}|\[.*?\]);#Us',
 		$js,
 		$json
 	);
