@@ -27,7 +27,7 @@ function wplng_parse_js( $js ) {
 
 	// Get the first 'var', 'let' or 'window._' declaration
 	preg_match_all(
-		'#(var\s|let\s|window\._)(.*)\s?=\s?(\[.*\]|\{.*\});#Ui',
+		'#(var\s|let\s|window\._)([a-zA-Z0-9_]+)\s?=\s?(\{(?:[^{}]*|(?R))*\}|\[.*?\]);#Us',
 		$js,
 		$json
 	);
