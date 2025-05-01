@@ -130,6 +130,16 @@ function wplng_data_json_to_translate() {
 			// Theme: Divi
 			array( 'DIVI', 'item_count' ),
 			array( 'DIVI', 'items_count' ),
+			array( 'et_pb_custom', 'subscription_failed' ),
+			array( 'et_pb_custom', 'fill_message' ),
+			array( 'et_pb_custom', 'contact_error_message' ),
+			array( 'et_pb_custom', 'invalid' ),
+			array( 'et_pb_custom', 'captcha' ),
+			array( 'et_pb_custom', 'prev' ),
+			array( 'et_pb_custom', 'previous' ),
+			array( 'et_pb_custom', 'next' ),
+			array( 'et_pb_custom', 'wrong_captcha' ),
+			array( 'et_pb_custom', 'wrong_checkbox' ),
 
 			// Plugin: WooCommerce
 			array( 'wc_add_to_cart_params', 'i18n_view_cart' ),
