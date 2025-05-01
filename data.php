@@ -127,6 +127,10 @@ function wplng_data_json_to_translate() {
 	return apply_filters(
 		'wplng_json_to_translate',
 		array(
+			// Theme: Divi
+			array( 'DIVI', 'item_count' ),
+			array( 'DIVI', 'items_count' ),
+
 			// Plugin: WooCommerce
 			array( 'wc_add_to_cart_params', 'i18n_view_cart' ),
 			array( 'wc_country_select_params', 'i18n_select_state_text' ),
