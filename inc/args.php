@@ -396,5 +396,4 @@ function wplng_args_update_from_texts( &$args, $texts ) {
 		$translations_new
 	);
 
-	error_log( var_export( $args, true ) );
 }
