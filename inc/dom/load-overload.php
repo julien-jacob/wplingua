@@ -37,7 +37,7 @@ function wplng_dom_load_overload( $dom, $args ) {
 	$html .= '</span>';
 
 	$html .= '<span id="wplng-overloaded-text-desktop">';
-	$html .= esc_html__( 'Translation API overloaded', 'wplingua' );
+	$html .= esc_html__( 'Translation API overloaded. Retry in a few minutes.', 'wplingua' );
 	$html .= '</span>';
 
 	$html .= '<span';
