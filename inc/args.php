@@ -252,7 +252,8 @@ function wplng_args_update_from_texts( &$args, $texts ) {
 
 	foreach ( $texts as $text ) {
 
-		$is_in = false;
+		$is_in     = false;
+		$detection = wplng_api_feature_is_allow( 'detection' );
 
 		$array_index  = (string) mb_substr( $text, 0, 1 );
 		$array_index .= (string) strlen( $text );
@@ -295,7 +296,7 @@ function wplng_args_update_from_texts( &$args, $texts ) {
 			}
 		}
 
-		if ( ! $is_in ) {
+		if ( ! $is_in && $detection ) {
 			$texts_unknow[] = $text;
 		}
 	}
@@ -395,5 +396,4 @@ function wplng_args_update_from_texts( &$args, $texts ) {
 		$translations_in_page,
 		$translations_new
 	);
-
 }

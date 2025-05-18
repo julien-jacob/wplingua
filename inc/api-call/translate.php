@@ -53,6 +53,7 @@ function wplng_api_call_translate(
 	if ( empty( $texts )
 		|| ! is_array( $texts )
 		|| wplng_get_api_overloaded()
+		|| ! wplng_api_feature_is_allow( 'detection' )
 	) {
 		return array();
 	}
@@ -177,6 +178,14 @@ function wplng_api_call_translate(
 			delete_option( 'wplng_api_key' );
 			wplng_clear_translations_cache();
 			wplng_clear_slugs_cache();
+		}
+
+		if ( isset( $response['reload'] )
+			&& true === $response['reload']
+		) {
+
+			delete_option( 'wplng_api_key_data' );
+			wplng_get_api_data();
 		}
 
 		return array();
