@@ -23,6 +23,10 @@ function wplng_dom_load_progress( $dom, $args ) {
 
 	} elseif ( 'loading' === $args['load'] ) {
 
+		/**
+		 * Current page identified as launching in hidden iframe in "in progress" mode
+		 */
+
 		$html  = '<!DOCTYPE html>' . PHP_EOL;
 		$html .= '<html lang="en">' . PHP_EOL;
 		$html .= '	<head>' . PHP_EOL;
@@ -43,25 +47,41 @@ function wplng_dom_load_progress( $dom, $args ) {
 
 		return $dom;
 
+		// } elseif ( 'disabled' === $args['load'] ) {
+
 	} elseif ( 'enabled' === $args['load'] ) {
 
+		/**
+		 * Current page identified as requiring “in progress” mode
+		 */
+
 		$redirect_query_arg = array();
+		$redirect_needed    = false;
 
 		if ( $args['mode'] !== 'vanilla' ) {
 			$redirect_query_arg['wplng-mode'] = $args['mode'];
+			$redirect_needed                  = true;
 		}
 
-		$redirect_query_arg['wplng-load']    = 'progress';
-		$redirect_query_arg['wplng-nocache'] = (string) time() . (string) rand( 100, 999 );
+		if ( ! wplng_get_api_overloaded() ) {
 
-		wp_safe_redirect(
-			add_query_arg(
-				$redirect_query_arg,
-				$args['url_current']
-			),
-			302
-		);
-		exit;
+			$redirect_query_arg['wplng-load']    = 'progress';
+			$redirect_query_arg['wplng-nocache'] = (string) time() . (string) rand( 100, 999 );
+			$redirect_needed                     = true;
+		}
+
+		if ( $redirect_needed ) {
+			wp_safe_redirect(
+				add_query_arg(
+					$redirect_query_arg,
+					$args['url_current']
+				),
+				302
+			);
+			exit;
+		}
+
+		return $dom;
 
 	}
 
@@ -96,6 +116,7 @@ function wplng_dom_load_progress( $dom, $args ) {
 		/**
 		 * Get spaces before and after text
 		 */
+
 		$temp          = array();
 		$spaces_before = '';
 		$spaces_after  = '';
@@ -167,7 +188,10 @@ function wplng_dom_load_progress( $dom, $args ) {
 		);
 	}
 
-	if ( $numer_of_unknow_texts > 20 ) {
+	if ( $numer_of_unknow_texts > 20
+		&& ! wplng_get_api_overloaded()
+		&& ! wplng_api_feature_is_allow( 'detection' )
+	) {
 
 		$url_reload = add_query_arg(
 			array(

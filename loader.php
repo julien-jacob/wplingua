@@ -58,6 +58,7 @@ require_once WPLNG_PLUGIN_PATH . '/inc/api-call/validate-api-key.php';
 // Require files in /inc/dom/ folder
 require_once WPLNG_PLUGIN_PATH . '/inc/dom/exclusion-put-tags.php';
 require_once WPLNG_PLUGIN_PATH . '/inc/dom/exclusion-replace-tags.php';
+require_once WPLNG_PLUGIN_PATH . '/inc/dom/load-overload.php';
 require_once WPLNG_PLUGIN_PATH . '/inc/dom/load-progress.php';
 require_once WPLNG_PLUGIN_PATH . '/inc/dom/mode-editor.php';
 require_once WPLNG_PLUGIN_PATH . '/inc/dom/mode-list.php';

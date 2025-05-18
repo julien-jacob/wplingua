@@ -80,6 +80,20 @@ function wplng_args_setup( &$args ) {
 		$args_clear['count_texts'] = $args['count_texts'];
 	}
 
+	if ( ! isset( $args['count_texts_unknow'] )
+		|| ! is_int( $args['count_texts_unknow'] )
+	) {
+		$args_clear['count_texts_unknow'] = 0;
+	} else {
+		$args_clear['count_texts_unknow'] = $args['count_texts_unknow'];
+	}
+
+	/**
+	 * Get overloaded
+	 */
+
+	$args_clear['overloaded'] = isset( $args['overloaded'] ) && ! empty( $args['overloaded'] );
+
 	/**
 	 * Get mode (vanilla/editor/list)
 	 */
@@ -238,7 +252,8 @@ function wplng_args_update_from_texts( &$args, $texts ) {
 
 	foreach ( $texts as $text ) {
 
-		$is_in = false;
+		$is_in     = false;
+		$detection = wplng_api_feature_is_allow( 'detection' );
 
 		$array_index  = (string) mb_substr( $text, 0, 1 );
 		$array_index .= (string) strlen( $text );
@@ -281,7 +296,7 @@ function wplng_args_update_from_texts( &$args, $texts ) {
 			}
 		}
 
-		if ( ! $is_in ) {
+		if ( ! $is_in && $detection ) {
 			$texts_unknow[] = $text;
 		}
 	}
@@ -308,7 +323,14 @@ function wplng_args_update_from_texts( &$args, $texts ) {
 	 * Get count_texts
 	 */
 
-	$args['count_texts'] = count( $texts );
+	$args['count_texts']        = count( $texts );
+	$args['count_texts_unknow'] = count( $texts_unknow );
+
+	/**
+	 * Check if the current page is overloaded
+	 */
+
+	$args['overloaded'] = wplng_get_api_overloaded() && ! empty( $args['count_texts_unknow'] );
 
 	/**
 	 * Define $max_translations
@@ -319,7 +341,8 @@ function wplng_args_update_from_texts( &$args, $texts ) {
 	if ( $args['load'] === 'progress'
 		|| (
 			$args['load'] === 'enabled'
-			&& count( $texts_unknow ) > 10
+			&& $args['count_texts_unknow'] > 10
+			&& ! $args['overloaded']
 		)
 	) {
 		$max_translations = 0;

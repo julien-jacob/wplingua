@@ -1,0 +1,58 @@
+
+#wplng-overloaded-container {
+
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 32px;
+    line-height: 26px;
+    color: #f0f0f1;
+    background-color: #1d2327;
+    z-index: 1000000;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+    font-size: 14px;
+    text-align: center;
+    font-weight: 600;
+
+    .dashicons.dashicons-info-outline {
+        margin: 5px 2px;
+        font-size: 18px;
+    }
+
+    #wplng-overloaded-text-mobile {
+        display: none;
+    }
+
+    #wplng-overloaded-text-desktop {
+        display: inline;
+    }
+
+    #wplng-overloaded-close {
+        float: right;
+        margin: 6px;
+        cursor: pointer;
+    }
+}
+
+@media screen and (max-width: 782px) {
+    #wplng-overloaded-container {
+        height: 46px;
+        line-height: 42px;
+
+        .dashicons.dashicons-info-outline {
+            margin: 12px 2px;
+        }
+
+        #wplng-overloaded-text-mobile {
+            display: inline;
+        }
+
+        #wplng-overloaded-text-desktop {
+            display: none;
+        }
+
+        #wplng-overloaded-close {
+            margin: 12px;
+        }
+    }
+}
