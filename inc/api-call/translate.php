@@ -40,7 +40,7 @@ if ( ! defined( 'WPINC' ) ) {
  * @param array  $texts
  * @param string $language_source_id
  * @param string $language_target_id
- * @return array
+ * @return array Translated texts or empty array
  */
 function wplng_api_call_translate(
 	$texts,
@@ -49,11 +49,16 @@ function wplng_api_call_translate(
 ) {
 
 	// Check texts array
-	if ( empty( $texts ) || ! is_array( $texts ) ) {
+
+	if ( empty( $texts )
+		|| ! is_array( $texts )
+		|| wplng_get_api_overloaded()
+	) {
 		return array();
 	}
 
 	// Check cookie
+
 	if ( empty( $_COOKIE['wplingua'] )
 		&& apply_filters( 'wplng_cookie_check', true )
 	) {
@@ -79,7 +84,7 @@ function wplng_api_call_translate(
 	$api_key = wplng_get_api_key();
 
 	if ( empty( $api_key ) ) {
-		return $texts;
+		return array();
 	}
 
 	// Get and sanitize the API key
@@ -87,13 +92,13 @@ function wplng_api_call_translate(
 	if ( empty( $language_target_id ) ) {
 		$language_target_id = wplng_get_language_current_id();
 	} elseif ( ! wplng_is_valid_language_id( $language_target_id ) ) {
-		return $texts;
+		return array();
 	}
 
 	if ( empty( $language_source_id ) ) {
 		$language_source_id = wplng_get_language_website_id();
 	} elseif ( ! wplng_is_valid_language_id( $language_source_id ) ) {
-		return $texts;
+		return array();
 	}
 
 	/**
@@ -114,7 +119,7 @@ function wplng_api_call_translate(
 	$json_texts = wp_json_encode( $texts_tagged );
 
 	if ( empty( $json_texts ) ) {
-		return $texts;
+		return array();
 	}
 
 	/**
@@ -150,7 +155,8 @@ function wplng_api_call_translate(
 	if ( is_wp_error( $request )
 		|| wp_remote_retrieve_response_code( $request ) != 200
 	) {
-		return $texts;
+		wplng_set_api_overloaded();
+		return array();
 	}
 
 	/**
@@ -166,14 +172,14 @@ function wplng_api_call_translate(
 		if ( isset( $response['disconnect'] )
 			&& true === $response['disconnect']
 		) {
-			
+
 			delete_option( 'wplng_api_key_data' );
 			delete_option( 'wplng_api_key' );
 			wplng_clear_translations_cache();
 			wplng_clear_slugs_cache();
 		}
 
-		return $texts;
+		return array();
 	}
 
 	// Check translations
@@ -181,7 +187,8 @@ function wplng_api_call_translate(
 		|| ! is_array( $response['translations'] )
 	) {
 		// API returned an error or an unexpected response
-		return $texts;
+		wplng_set_api_overloaded();
+		return array();
 	}
 
 	/**

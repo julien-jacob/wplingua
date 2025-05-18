@@ -84,12 +84,20 @@ jQuery(document).ready(function ($) {
      * Code for preloading
      */
 
-    $("#wplng-in-progress-iframe").on("load", wplngReloadInProgress);
-
     function wplngReloadInProgress() {
         let urlReload = $("#wplng-in-progress-container").attr("wplng-reload");
         window.location.href = urlReload;
     }
+
+    // Check if the iframe is already loaded
+    if ($("#wplng-in-progress-iframe")[0] && $("#wplng-in-progress-iframe")[0].contentDocument.readyState === "complete") {
+        wplngReloadInProgress();
+    }
+
+    // Add an event for iframe loading
+    $("#wplng-in-progress-iframe").on("load", function () {
+        wplngReloadInProgress();
+    });
 
     function wplngUpdatePercent() {
         let percent = parseInt($("#wplng-in-progress-percent").html());
@@ -110,6 +118,13 @@ jQuery(document).ready(function ($) {
         $("#wpadminbar").hide();
     }
 
+    /**
+     * Code for overload bar
+     */
+
+    $("#wplng-overloaded-close").on("click", function () {
+        $("#wplng-overloaded-container").hide();
+    });
 
     /**
      * Manage dropdown width

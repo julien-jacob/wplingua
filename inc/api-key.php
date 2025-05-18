@@ -289,6 +289,66 @@ function wplng_api_feature_is_allow( $feature_name ) {
 
 
 /**
+ * Check if the wpLingua API is overloaded
+ *
+ * This function determines whether the wpLingua API is currently overloaded
+ * based on a stored timestamp. If the API is overloaded, it returns true.
+ * Otherwise, it clears the overloaded status and returns false.
+ *
+ * @global bool|null $wplng_api_is_overloaded Cached overloaded status
+ * @return bool True if the API is overloaded, false otherwise
+ */
+function wplng_get_api_overloaded() {
+
+	global $wplng_api_is_overloaded;
+
+	if ( null !== $wplng_api_is_overloaded ) {
+		return $wplng_api_is_overloaded;
+	}
+
+	$overloaded = get_option( 'wplng_api_overloaded' );
+
+	if ( ! empty( $overloaded )
+		&& ( $overloaded + ( 2 * MINUTE_IN_SECONDS ) ) > time()
+	) {
+		$wplng_api_is_overloaded = true;
+	} else {
+		$wplng_api_is_overloaded = false;
+		delete_option( 'wplng_api_overloaded' );
+	}
+
+	return $wplng_api_is_overloaded;
+}
+
+
+/**
+ * Mark the wpLingua API as overloaded
+ *
+ * This function sets the overloaded status for the wpLingua API by updating
+ * a timestamp in the database. If the API is already marked as overloaded,
+ * the function does nothing.
+ *
+ * @global bool|null $wplng_api_is_overloaded Cached overloaded status
+ * @return void
+ */
+function wplng_set_api_overloaded() {
+
+	if ( wplng_get_api_overloaded() ) {
+		return;
+	}
+
+	global $wplng_api_is_overloaded;
+	$wplng_api_is_overloaded = true;
+
+	update_option(
+		'wplng_api_overloaded',
+		time(),
+		true
+	);
+}
+
+
+/**
  * Clear wpLingua API key data if wpLingua key is changed
  *
  * @param string $old_value JSON
