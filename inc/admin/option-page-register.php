@@ -289,22 +289,6 @@ function wplng_register_part_free_api_key() {
 
 	<p>
 		<fieldset>
-			<label for="wplng-website-url" class="wplng-fe-50">
-				<strong><?php esc_html_e( 'Website URL: ', 'wplingua' ); ?> </strong> 
-				<span title="<?php esc_attr_e( 'Click to expand', 'wplingua' ); ?>" wplng-help-box="#wplng-hb-register-url"></span>
-			</label>
-			<input type="url" name="wplng-website-url" id="wplng-website-url" class="wplng-fe-50" value="<?php echo esc_url( get_home_url() ); ?>">
-		</fieldset>
-	</p>
-
-	<div class="wplng-help-box" id="wplng-hb-register-url">
-		<p><?php esc_html_e( 'This is the URL of your website, it is detected and pre-filled automatically. Please check it and only enter the address of your production website (no test website or development environment).', 'wplingua' ); ?></p>
-	</div>
-
-	<hr>
-
-	<p>
-		<fieldset>
 			<label for="wplng-email" class="wplng-fe-50">
 				<strong><?php esc_html_e( 'Email address: ', 'wplingua' ); ?> </strong> 
 				<span title="<?php esc_attr_e( 'Click to expand', 'wplingua' ); ?>" wplng-help-box="#wplng-hb-register-email"></span>
@@ -315,6 +299,22 @@ function wplng_register_part_free_api_key() {
 
 	<div class="wplng-help-box" id="wplng-hb-register-email">
 		<p><?php esc_html_e( 'The email address is detected and pre-filled. This is the administrative email address entered in the Settings ➔ General tab. You can use another email address used to receive your API key.', 'wplingua' ); ?></p>
+	</div>
+
+	<hr>
+
+	<p>
+		<fieldset>
+			<label for="wplng-website-url" class="wplng-fe-50">
+				<strong><?php esc_html_e( 'Website URL: ', 'wplingua' ); ?> </strong> 
+				<span title="<?php esc_attr_e( 'Click to expand', 'wplingua' ); ?>" wplng-help-box="#wplng-hb-register-url"></span>
+			</label>
+			<input type="url" name="wplng-website-url" id="wplng-website-url" class="wplng-fe-50" value="<?php echo esc_url( get_home_url() ); ?>">
+		</fieldset>
+	</p>
+
+	<div class="wplng-help-box" id="wplng-hb-register-url">
+		<p><?php esc_html_e( 'This is the URL of your website, it is detected and pre-filled automatically. Please check it and only enter the address of your production website (no test website or development environment).', 'wplingua' ); ?></p>
 	</div>
 
 	<hr>
