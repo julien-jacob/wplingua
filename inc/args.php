@@ -80,6 +80,20 @@ function wplng_args_setup( &$args ) {
 		$args_clear['count_texts'] = $args['count_texts'];
 	}
 
+	if ( ! isset( $args['count_texts_unknow'] )
+		|| ! is_int( $args['count_texts_unknow'] )
+	) {
+		$args_clear['count_texts_unknow'] = 0;
+	} else {
+		$args_clear['count_texts_unknow'] = $args['count_texts_unknow'];
+	}
+
+	/**
+	 * Get overloaded
+	 */
+
+	$args_clear['overloaded'] = isset( $args['overloaded'] ) && ! empty( $args['overloaded'] );
+
 	/**
 	 * Get mode (vanilla/editor/list)
 	 */
@@ -218,29 +232,71 @@ function wplng_args_update_from_texts( &$args, $texts ) {
 	wplng_args_setup( $args );
 
 	/**
-	 * Get saved translation
+	 * Get all translations for all languages
 	 */
 
-	$translations = wplng_get_translations_target( $args['language_target'] );
+	$translations_all_languages = get_transient( 'wplng_cached_translations' );
+
+	if ( empty( $translations_all_languages )
+		|| ! is_array( $translations_all_languages )
+	) {
+		$translations_all_languages = wplng_get_translations_from_query();
+	}
 
 	/**
-	 * Get unknow texts
+	 * Get unknow texts & Separate page translations
 	 */
 
-	$texts_unknow = array();
+	$texts_unknow         = array();
+	$translations_in_page = array();
 
 	foreach ( $texts as $text ) {
 
-		$is_in = false;
+		$is_in     = false;
+		$detection = wplng_api_feature_is_allow( 'detection' );
 
-		foreach ( $translations as $translation ) {
-			if ( $text === $translation['source'] ) {
-				$is_in = true;
-				break;
+		$array_index  = (string) mb_substr( $text, 0, 1 );
+		$array_index .= (string) strlen( $text );
+
+		if ( ! empty( $translations_all_languages[ $array_index ] ) ) {
+			foreach ( $translations_all_languages[ $array_index ] as $translation ) {
+
+				// $source = $translation['source'];
+
+				if ( $text === $translation['source']
+					&& isset( $translation['translations'][ $args['language_target'] ] )
+					&& is_string( $translation['translations'][ $args['language_target'] ] )
+					&& isset( $translation['review'] )
+					&& is_array( $translation['review'] )
+					&& isset( $translation['post_id'] )
+					&& is_int( $translation['post_id'] )
+				) {
+
+					$is_in = true;
+
+					$review = in_array(
+						$args['language_target'],
+						$translation['review'],
+						true
+					);
+
+					$translated_text = wplng_text_esc(
+						$translation['translations'][ $args['language_target'] ]
+					);
+
+					$translations_in_page[] = array(
+						'source'      => $text,
+						'post_id'     => $translation['post_id'],
+						'review'      => $review,
+						'translation' => $translated_text,
+					);
+
+					break;
+				}
 			}
 		}
 
-		if ( ! $is_in ) {
+		if ( ! $is_in && $detection ) {
 			$texts_unknow[] = $text;
 		}
 	}
@@ -249,7 +305,7 @@ function wplng_args_update_from_texts( &$args, $texts ) {
 	 * Limit $texts_unknow for a total of 1000 char
 	 */
 
-	$current_length = 0;
+	$current_length       = 0;
 	$limited_texts_unknow = array();
 
 	foreach ( $texts_unknow as $text ) {
@@ -258,7 +314,7 @@ function wplng_args_update_from_texts( &$args, $texts ) {
 			break;
 		}
 		$limited_texts_unknow[] = $text;
-		$current_length += $text_length + 8;
+		$current_length        += $text_length + 8;
 	}
 
 	$texts_unknow = $limited_texts_unknow;
@@ -267,7 +323,14 @@ function wplng_args_update_from_texts( &$args, $texts ) {
 	 * Get count_texts
 	 */
 
-	$args['count_texts'] = count( $texts );
+	$args['count_texts']        = count( $texts );
+	$args['count_texts_unknow'] = count( $texts_unknow );
+
+	/**
+	 * Check if the current page is overloaded
+	 */
+
+	$args['overloaded'] = wplng_get_api_overloaded() && ! empty( $args['count_texts_unknow'] );
 
 	/**
 	 * Define $max_translations
@@ -278,7 +341,8 @@ function wplng_args_update_from_texts( &$args, $texts ) {
 	if ( $args['load'] === 'progress'
 		|| (
 			$args['load'] === 'enabled'
-			&& count( $texts_unknow ) > 10
+			&& $args['count_texts_unknow'] > 10
+			&& ! $args['overloaded']
 		)
 	) {
 		$max_translations = 0;
@@ -325,31 +389,11 @@ function wplng_args_update_from_texts( &$args, $texts ) {
 	);
 
 	/**
-	 * Separate page translations
-	 */
-
-	$translations_in_page = array();
-
-	foreach ( $texts as $text ) {
-		$text = wplng_text_esc( $text );
-		foreach ( $translations as $translation ) {
-			if ( ! empty( $translation['source'] )
-				&& $translation['source'] === $text
-			) {
-				$translations_in_page[] = $translation;
-				break;
-			}
-		}
-	}
-
-	/**
 	 * Merge know and new translations
 	 */
 
-	$translations = array_merge(
+	$args['translations'] = array_merge(
 		$translations_in_page,
 		$translations_new
 	);
-
-	$args['translations'] = $translations;
 }

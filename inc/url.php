@@ -190,6 +190,7 @@ function wplng_url_is_translatable_no_filter( $url ) {
 	if ( wplng_str_contains( $url, 'wp-login.php' )
 		|| wplng_str_contains( $url, 'wp-register.php' )
 		|| wplng_str_contains( $url, 'wp-comments-post.php' )
+		|| wplng_str_contains( $url, 'wp-cron.php' )
 		|| wplng_str_ends_with( $url, '/feed/' )
 		|| wplng_str_contains( $url, '/wp-json/' )
 		|| wplng_str_contains( $url, '/wp-includes/' )

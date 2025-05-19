@@ -11,6 +11,114 @@ if ( ! defined( 'WPINC' ) ) {
  */
 
 /**
+ * Get selectors of excluded elements
+ *
+ * @return array
+ */
+function wplng_data_excluded_selector_default() {
+	return array(
+		// Default nodes
+		'style',
+		'svg',
+		'canvas',
+		'address',
+		'iframe',
+		'code',
+		'xml',
+
+		// Link tag
+		'link[rel="EditURI"]',
+		'link[title="oEmbed (JSON)"]',
+		'link[title="oEmbed (XML)"]',
+		'link[title="JSON"]',
+		'link[type="application/rss+xml"]',
+
+		// Default class
+		'.no-translate',
+		'.notranslate',
+
+		// Wordpress
+		'#wpadminbar',
+		'.wp-embed-share-input',
+		'[aria-label="HTML"]',
+		'#media-views-js-extra',
+		'#wp-api-request-js-extra',
+
+		// wpLingua
+		'link[hreflang]',
+		'.wplng-switcher',
+		'.wplingua-menu',
+		'#wplng-modal-edit-container',
+
+		// Comment
+		'.comment-content',
+		'.comment-author',
+		'.comment_postinfo .fn',
+
+		// Author name
+		'.author.vcard',
+		'.entry-author .fn',
+
+		// Plugin: Query Monitor
+		'#query-monitor',
+		'#query-monitor-main',
+
+		// Plugin: SecuPress
+		'#secupress-donttranslate',
+
+		// Plugin: Debug Bar
+		'#querylist',
+
+		// Plugin: Google Site Kit
+		'#googlesitekit-base-data-js-extra',
+
+		// Plugin: Smash Balloon - Social photo feed
+		'#sb_instagram',
+	);
+}
+
+
+/**
+ * Get selectors of excluded elements in visual editor
+ *
+ * @return array
+ */
+function wplng_data_excluded_editor_link() {
+	return apply_filters(
+		'wplng_excluded_editor_link',
+		array(
+			'textarea',
+			'pre',
+			'option',
+		)
+	);
+}
+
+
+/**
+ * Get selectors of excluded nodes text
+ *
+ * @return array
+ */
+function wplng_data_excluded_node_text() {
+	return apply_filters(
+		'wplng_excluded_node_text',
+		array(
+			'style',
+			'svg',
+			'canvas',
+			'link',
+			'script',
+			'code',
+
+			// Plugin: Contact Form 7
+			'.wpcf7-textarea',
+		)
+	);
+}
+
+
+/**
  * Get JSON elements to translate
  *
  * @return array
@@ -19,6 +127,20 @@ function wplng_data_json_to_translate() {
 	return apply_filters(
 		'wplng_json_to_translate',
 		array(
+			// Theme: Divi
+			array( 'DIVI', 'item_count' ),
+			array( 'DIVI', 'items_count' ),
+			array( 'et_pb_custom', 'subscription_failed' ),
+			array( 'et_pb_custom', 'fill_message' ),
+			array( 'et_pb_custom', 'contact_error_message' ),
+			array( 'et_pb_custom', 'invalid' ),
+			array( 'et_pb_custom', 'captcha' ),
+			array( 'et_pb_custom', 'prev' ),
+			array( 'et_pb_custom', 'previous' ),
+			array( 'et_pb_custom', 'next' ),
+			array( 'et_pb_custom', 'wrong_captcha' ),
+			array( 'et_pb_custom', 'wrong_checkbox' ),
+
 			// Plugin: WooCommerce
 			array( 'wc_add_to_cart_params', 'i18n_view_cart' ),
 			array( 'wc_country_select_params', 'i18n_select_state_text' ),
@@ -125,106 +247,22 @@ function wplng_data_excluded_json() {
 
 
 /**
- * Get selectors of excluded elements in visual editor
+ * Get AJAX action to exclude from translation
  *
  * @return array
  */
-function wplng_data_excluded_editor_link() {
+function wplng_data_excluded_ajax_action() {
 	return apply_filters(
-		'wplng_excluded_editor_link',
+		'wplng_excluded_ajax_action',
 		array(
-			'textarea',
-			'pre',
-			'option',
-		)
-	);
-}
+			// WordPress
+			'heartbeat',
 
-
-/**
- * Get selectors of excluded elements
- *
- * @return array
- */
-function wplng_data_excluded_selector_default() {
-	return array(
-		// Default nodes
-		'style',
-		'svg',
-		'canvas',
-		'address',
-		'iframe',
-		'code',
-		'xml',
-
-		// Link tag
-		'link[rel="EditURI"]',
-		'link[title="oEmbed (JSON)"]',
-		'link[title="oEmbed (XML)"]',
-		'link[title="JSON"]',
-		'link[type="application/rss+xml"]',
-
-		// Default class
-		'.no-translate',
-		'.notranslate',
-
-		// Wordpress
-		'#wpadminbar',
-		'.wp-embed-share-input',
-		'[aria-label="HTML"]',
-
-		// wpLingua
-		'link[hreflang]',
-		'.wplng-switcher',
-		'.wplingua-menu',
-		'#wplng-modal-edit-container',
-
-		// Comment
-		'.comment-content',
-		'.comment-author',
-		'.comment_postinfo .fn',
-
-		// Author name
-		'.author.vcard',
-		'.entry-author .fn',
-
-		// Plugin: Query Monitor
-		'#query-monitor',
-		'#query-monitor-main',
-
-		// Plugin: SecuPress
-		'#secupress-donttranslate',
-
-		// Plugin: Debug Bar
-		'#querylist',
-
-		// Plugin: Google Site Kit
-		'#googlesitekit-base-data-js-extra',
-
-		// Plugin: Smash Balloon - Social photo feed
-		'#sb_instagram',
-	);
-}
-
-
-/**
- * Get selectors of excluded nodes text
- *
- * @return array
- */
-function wplng_data_excluded_node_text() {
-	return apply_filters(
-		'wplng_excluded_node_text',
-		array(
-			'style',
-			'svg',
-			'canvas',
-			'link',
-			'script',
-			'code',
-
-			// Plugin: Contact Form 7
-			'.wpcf7-textarea',
+			// Plugin: wpLingua
+			'wplng_ajax_translation',
+			'wplng_ajax_edit_modal',
+			'wplng_ajax_save_modal',
+			'wplng_ajax_slug',
 		)
 	);
 }

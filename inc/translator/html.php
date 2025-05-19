@@ -53,6 +53,7 @@ function wplng_translate_html( $html, $args = array() ) {
 	 */
 
 	$dom = wplng_dom_load_progress( $dom, $args );
+	$dom = wplng_dom_load_overload( $dom, $args );
 
 	$dom = wplng_dom_replace_attr_dir( $dom, $args );
 	$dom = wplng_dom_replace_attr_lang( $dom, $args );

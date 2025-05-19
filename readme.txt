@@ -4,7 +4,7 @@ Donate link: https://wplingua.com/
 Tags: translate, translation, multilingual, localization, language
 Requires at least: 6.0
 Tested up to: 6.8
-Stable tag: 2.5.9
+Stable tag: 2.6.0
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -182,7 +182,7 @@ Your server’s database holds all the translations locally.
 4. Customize language selector, activate or deactivate automatic insertion + choose position, use shortcode or add directly to menu.
 5. Many options available for the language switcher, even adding custom CSS.
 6. SEO tags are translated automatically, but you can modify them manually.
-7. Dictionary : define translation rules that apply when generating machine translations.
+7. Dictionary: define translation rules that apply when generating machine translations.
 8. You have the possibility to exclude pages or parts of pages.
 9. wpLingua adds a list of your website's slugs. You can decide whether or not to translate them.
 10. All translations are stored on your WordPress website.
@@ -191,73 +191,23 @@ Your server’s database holds all the translations locally.
 
 == Changelog ==
 
-= 2.5.9 =
+= 2.6.0 =
 
-* Add the Quebec flag for the French language
-
-= 2.5.8 =
-
-* Fix wplng_url_is_translatable filter
-* Better management:
- * API translation calls
- * DIR (LTR and RTL)
- * Error reception
-
-= 2.5.7 =
-
-* Compatibility with WordPress 6.8
-* Optimize language ID validation
-* Fix i18n called to early
-
-= 2.5.6 =
-
-* Better HTML attribute translation
-* Update plugin translations (i18n)
-
-= 2.5.5 =
-
-* Better compatibility:
- * Plugin: WooCommerce
- * Theme: OceanWP
-
-= 2.5.4 =
-
-* Better admin UX
-* Better shortcode: wplng_only
-* Better hook: wplng_url_is_translatable filter
-* Review and optimize the queries (slug and translation)
-* Re-format all code with better formater
-
-= 2.5.3 =
-
-* Add alternative attribute on flags for language switcher in menu
-* Add edit translations link:
- * Page and post list
- * Page and post editor (admin bar)
-
-= 2.5.2 =
-
-* Better translation clearing by HeartBeat
-
-= 2.5.1 =
-
-* Fix bad trimming
-
-= 2.5.0 =
-
-* New feature: 
- * wpLingua HeartBeat: Clear invalide translation in background
- * Discovery URL: Save the discovery URL on translations
-* Rename debug constants
- * WPLNG_DEBUG_JSON
- * WPLNG_DEBUG_AJAX
-* New debug constant:
- * WPLNG_DEBUG_BEAT
-* Fix some languages:
- * Greek
- * Swedish (API)
- * Slovak (API)
-* Better text trimming
+* New API protocol (V3.0)
+* Manage API overloads to avoid registering untranslated texts
+* Optimize translation cache system and translation finding
+* Better JSON in JavaScript detection
+* Better Divi theme compatibility:
+ * Translate custom form strings
+ * Translate WooCommerce item counter strings
+* Better compatibility with plugins that integrate the front-end media manager
+* Better translation in progress mode
+ * Better space management
+ * Better untranslatable text management
+* Better AJAX management
+ * Check context before starting output buffering
+ * Add possibility to exclude call by action parameter
+ * Better debug log
 
 All changelogs and previous versions of the wpLingua plugin are available on the releases page of the project's GitHub repo: [https://github.com/julien-jacob/wplingua/releases](https://github.com/julien-jacob/wplingua/releases).
 
