@@ -1,690 +1,693 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: wpLingua\n"
-"POT-Creation-Date: 2025-04-03 22:40+0200\n"
-"PO-Revision-Date: 2025-04-03 22:49+0200\n"
+"POT-Creation-Date: 2025-05-19 15:08+0200\n"
+"PO-Revision-Date: 2025-05-19 15:21+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: hi_IN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 3.5\n"
+"X-Generator: Poedit 3.6\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-Flags-xgettext: --add-comments=translators:\n"
 "X-Poedit-WPHeader: wplingua.php\n"
 "X-Poedit-SourceCharset: UTF-8\n"
-"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;esc_attr_e;"
-"esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;_nx_noop:3c,1,2;"
-"__ngettext_noop:1,2\n"
+"X-Poedit-KeywordsList: "
+"__;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: *.min.js\n"
 
-#: data.php:512
+#: data.php:550
 msgid "Bottom right"
 msgstr "नीचे दाएं"
 
-#: data.php:513
+#: data.php:551
 msgid "Bottom center"
 msgstr "निचला बीच का"
 
-#: data.php:514
+#: data.php:552
 msgid "Bottom left"
 msgstr "तली छोड़ें"
 
-#: data.php:515
+#: data.php:553
 msgid "None"
 msgstr "कोई नहीं"
 
-#: data.php:527
+#: data.php:565
 msgid "Light - Double - Smooth"
 msgstr "हल्का - दोहरा - चिकना"
 
-#: data.php:528
+#: data.php:566
 msgid "Light - Double - Square"
 msgstr "हल्का - दोहरा - वर्ग"
 
-#: data.php:529
+#: data.php:567
 msgid "Light - Simple - Smooth"
 msgstr "हल्का - सरल - चिकना"
 
-#: data.php:530
+#: data.php:568
 msgid "Light - Simple - Square"
 msgstr "हल्का - सरल - वर्गाकार"
 
-#: data.php:531
+#: data.php:569
 msgid "Grey - Double - Smooth"
 msgstr "ग्रे - डबल - चिकना"
 
-#: data.php:532
+#: data.php:570
 msgid "Grey - Double - Square"
 msgstr "ग्रे - डबल - स्क्वायर"
 
-#: data.php:533
+#: data.php:571
 msgid "Grey - Simple - Smooth"
 msgstr "ग्रे - सरल - चिकना"
 
-#: data.php:534
+#: data.php:572
 msgid "Grey - Simple - Square"
 msgstr "ग्रे - सरल - वर्ग"
 
-#: data.php:535
+#: data.php:573
 msgid "Dark - Double - Smooth"
 msgstr "गहरा - दोहरा - चिकना"
 
-#: data.php:536
+#: data.php:574
 msgid "Dark - Double - Square"
 msgstr "गहरा - दोहरा - वर्ग"
 
-#: data.php:537
+#: data.php:575
 msgid "Dark - Simple - Smooth"
 msgstr "गहरा - सरल - चिकना"
 
-#: data.php:538
+#: data.php:576
 msgid "Dark - Simple - Square"
 msgstr "गहरा - सरल - वर्गाकार"
 
-#: data.php:539
+#: data.php:577
 msgid "Blur Black - Double - Smooth"
 msgstr "धुंधला काला - डबल - चिकना"
 
-#: data.php:540
+#: data.php:578
 msgid "Blur Black - Double - Square"
 msgstr "धुंधला काला - डबल - वर्ग"
 
-#: data.php:541
+#: data.php:579
 msgid "Blur Black - Simple - Smooth"
 msgstr "धुंधला काला - सरल - चिकना"
 
-#: data.php:542
+#: data.php:580
 msgid "Blur Black - Simple - Square"
 msgstr "धुंधला काला - सरल - वर्ग"
 
-#: data.php:543
+#: data.php:581
 msgid "Blur White - Double - Smooth"
 msgstr "धुंधला सफ़ेद - डबल - चिकना"
 
-#: data.php:544
+#: data.php:582
 msgid "Blur White - Double - Square"
 msgstr "धुंधला सफ़ेद - डबल - स्क्वायर"
 
-#: data.php:545
+#: data.php:583
 msgid "Blur White - Simple - Smooth"
 msgstr "धुंधला सफ़ेद - सरल - चिकना"
 
-#: data.php:546
+#: data.php:584
 msgid "Blur White - Simple - Square"
 msgstr "धुंधला सफ़ेद - सरल - वर्ग"
 
-#: data.php:558
+#: data.php:596
 msgid "Inline list"
 msgstr "इनलाइन सूची"
 
-#: data.php:559
+#: data.php:597
 msgid "Block"
 msgstr "खंड"
 
-#: data.php:560
+#: data.php:598
 msgid "Dropdown"
 msgstr "ड्रॉप डाउन"
 
-#: data.php:572 data.php:606
+#: data.php:610 data.php:644
 msgid "Original name"
 msgstr "मूल नाम"
 
-#: data.php:573 data.php:607
+#: data.php:611 data.php:645
 msgid "Translated name"
 msgstr "अनूदित नाम"
 
-#: data.php:574 data.php:608
+#: data.php:612 data.php:646
 msgid "Language ID"
 msgstr "भाषा आईडी"
 
-#: data.php:575 data.php:590 data.php:609 data.php:622
+#: data.php:613 data.php:628 data.php:647 data.php:660
 msgid "No display"
 msgstr "कोई प्रदर्शन नहीं"
 
-#: data.php:587
+#: data.php:625
 msgid "Circle"
 msgstr "वृत्त"
 
-#: data.php:588
+#: data.php:626
 msgid "Rectangular"
 msgstr "आयताकार"
 
-#: data.php:589
+#: data.php:627
 msgid "Wave"
 msgstr "लहर"
 
-#: data.php:621
+#: data.php:659
 msgid "Display"
 msgstr "डिस्प्ले"
 
-#: data.php:634
+#: data.php:672
 msgid "List without current language"
 msgstr "वर्तमान भाषा के बिना सूची"
 
-#: data.php:635
+#: data.php:673
 msgid "List without active class"
 msgstr "सक्रिय वर्ग के बिना सूची"
 
-#: data.php:636
+#: data.php:674
 msgid "List with active class"
 msgstr "सक्रिय वर्ग के साथ सूची बनाएं"
 
-#: data.php:637
+#: data.php:675
 msgid "Sub-list"
 msgstr "उप-सूची"
 
-#: data.php:654
+#: data.php:728
 msgid "Arabic"
 msgstr "अरबी"
 
-#: data.php:660 data.php:814
+#: data.php:734 data.php:888
 msgid "Global"
 msgstr "वैश्विक"
 
-#: data.php:665
+#: data.php:739
 msgid "Egypt"
 msgstr "मिस्र"
 
-#: data.php:670
+#: data.php:744
 msgid "Saudi Arabia"
 msgstr "सऊदी अरब"
 
-#: data.php:675
+#: data.php:749
 msgid "Algeria"
 msgstr "एलजीरिया"
 
-#: data.php:680
+#: data.php:754
 msgid "Bahrain"
 msgstr "बहरीन"
 
-#: data.php:685
+#: data.php:759
 msgid "Chad"
 msgstr "काग़ज़ का टुकड़ा"
 
-#: data.php:690
+#: data.php:764
 msgid "Comoros"
 msgstr "कोमोरोस"
 
-#: data.php:695
+#: data.php:769
 msgid "Djibouti"
 msgstr "ज़िबूटी"
 
-#: data.php:700
+#: data.php:774
 msgid "Iraq"
 msgstr "इराक"
 
-#: data.php:705
+#: data.php:779
 msgid "Jordan"
 msgstr "जॉर्डन"
 
-#: data.php:710
+#: data.php:784
 msgid "Kuwait"
 msgstr "कुवैट"
 
-#: data.php:715
+#: data.php:789
 msgid "Lebanon"
 msgstr "लेबनान"
 
-#: data.php:720
+#: data.php:794
 msgid "Libya"
 msgstr "लीबिया"
 
-#: data.php:725
+#: data.php:799
 msgid "Mauritania"
 msgstr "मॉरिटानिया"
 
-#: data.php:730
+#: data.php:804
 msgid "Morocco"
 msgstr "मोरक्को"
 
-#: data.php:735
+#: data.php:809
 msgid "Oman"
 msgstr "ओमान"
 
-#: data.php:740
+#: data.php:814
 msgid "Palestine"
 msgstr "फिलिस्तीन"
 
-#: data.php:745
+#: data.php:819
 msgid "Qatar"
 msgstr "कतर"
 
-#: data.php:750
+#: data.php:824
 msgid "Somalia"
 msgstr "सोमालिया"
 
-#: data.php:755
+#: data.php:829
 msgid "Sudan"
 msgstr "सूडान"
 
-#: data.php:760
+#: data.php:834
 msgid "Syria"
 msgstr "सीरिया"
 
-#: data.php:765
+#: data.php:839
 msgid "Tunisia"
 msgstr "ट्यूनीशिया"
 
-#: data.php:770
+#: data.php:844
 msgid "United Arab Emirates"
 msgstr "संयुक्त अरब अमीरात"
 
-#: data.php:775
+#: data.php:849
 msgid "Yemen"
 msgstr "यमन"
 
-#: data.php:809
+#: data.php:883
 msgid "Chinese"
 msgstr "चीनी"
 
-#: data.php:819
+#: data.php:893
 msgid "China"
 msgstr "चीन"
 
-#: data.php:824
+#: data.php:898
 msgid "Hong Kong"
 msgstr "हांगकांग"
 
-#: data.php:829
+#: data.php:903
 msgid "Malaysia"
 msgstr "मलेशिया"
 
-#: data.php:834 data.php:1070
+#: data.php:908 data.php:1144
 msgid "Singapore"
 msgstr "सिंगापुर"
 
-#: data.php:868
+#: data.php:942
 msgid "Danish"
 msgstr "डेनिश"
 
-#: data.php:873
+#: data.php:947
 msgid "Denmark"
 msgstr "डेनमार्क"
 
-#: data.php:907
+#: data.php:981
 msgid "Dutch"
 msgstr "डच"
 
-#: data.php:912
+#: data.php:986
 msgid "Netherlands"
 msgstr "नीदरलैंड"
 
-#: data.php:917 data.php:1163
+#: data.php:991 data.php:1237
 msgid "Belgium"
 msgstr "बेल्जियम"
 
-#: data.php:922
+#: data.php:996
 msgid "Suriname"
 msgstr "सूरीनाम"
 
-#: data.php:956
+#: data.php:1030
 msgid "Slovak"
 msgstr "स्लोवाक"
 
-#: data.php:961
+#: data.php:1035
 msgid "Slovakia"
 msgstr "स्लोवाकिया"
 
-#: data.php:966
+#: data.php:1040
 msgid "Czech Republic"
 msgstr "चेक रिपब्लिक"
 
-#: data.php:1000
+#: data.php:1074
 msgid "English"
 msgstr "English"
 
-#: data.php:1005
+#: data.php:1079
 msgid "US / GB"
 msgstr "यूएस / जीबी"
 
-#: data.php:1010
+#: data.php:1084
 msgid "United Kingdom"
 msgstr "यूनाइटेड किंगडम"
 
-#: data.php:1015
+#: data.php:1089
 msgid "United States"
 msgstr "संयुक्त राज्य अमेरिका"
 
-#: data.php:1020
+#: data.php:1094
 msgid "Australia"
 msgstr "ऑस्ट्रेलिया"
 
-#: data.php:1025 data.php:1168
+#: data.php:1099 data.php:1247
 msgid "Canada"
 msgstr "कनाडा"
 
-#: data.php:1030
+#: data.php:1104
 msgid "Ireland"
 msgstr "आयरलैंड"
 
-#: data.php:1035
+#: data.php:1109
 msgid "New Zealand"
 msgstr "न्यूज़ीलैंड"
 
-#: data.php:1040
+#: data.php:1114
 msgid "Nigeria"
 msgstr "नाइजीरिया"
 
-#: data.php:1045
+#: data.php:1119
 msgid "South Africa"
 msgstr "दक्षिण अफ़्रीका"
 
-#: data.php:1050
+#: data.php:1124
 msgid "Kenya"
 msgstr "केन्या"
 
-#: data.php:1055
+#: data.php:1129
 msgid "Ghana"
 msgstr "घाना"
 
-#: data.php:1060
+#: data.php:1134
 msgid "South Sudan"
 msgstr "दक्षिण सूडान"
 
-#: data.php:1065
+#: data.php:1139
 msgid "Sierra Leone"
 msgstr "सेरा लिओन"
 
-#: data.php:1075
+#: data.php:1149
 msgid "Liberia"
 msgstr "लाइबेरिया"
 
-#: data.php:1080
+#: data.php:1154
 msgid "Jamaica"
 msgstr "जमैका"
 
-#: data.php:1114
+#: data.php:1188
 msgid "Finnish"
 msgstr "फिनिश"
 
-#: data.php:1119 data.php:1900
+#: data.php:1193 data.php:1979
 msgid "Finland"
 msgstr "फिनलैंड"
 
-#: data.php:1153
+#: data.php:1227
 msgid "French"
 msgstr "फ्रेंच"
 
-#: data.php:1158
+#: data.php:1232
 msgid "France"
 msgstr "फ्रांस"
 
-#: data.php:1173
+#: data.php:1242
+msgid "Quebec"
+msgstr "क्यूबेक"
+
+#: data.php:1252
 msgid "Congo - Kinshasa"
 msgstr "कांगो - किंशासा"
 
-#: data.php:1178
+#: data.php:1257
 msgid "Congo - Brazzaville"
 msgstr "कांगो - ब्राज़ाविल"
 
-#: data.php:1183
+#: data.php:1262
 msgid "Cameroon"
 msgstr "कैमरून"
 
-#: data.php:1188
+#: data.php:1267
 msgid "Ivory Coast"
 msgstr "हाथीदांत का किनारा"
 
-#: data.php:1193 data.php:1242
+#: data.php:1272 data.php:1321
 msgid "Switzerland"
 msgstr "स्विट्ज़रलैंड"
 
-#: data.php:1227
+#: data.php:1306
 msgid "German"
 msgstr "जर्मन"
 
-#: data.php:1232
+#: data.php:1311
 msgid "Germany"
 msgstr "जर्मनी"
 
-#: data.php:1237
+#: data.php:1316
 msgid "Austria"
 msgstr "ऑस्ट्रिया"
 
-#: data.php:1247
+#: data.php:1326
 msgid "Liechtenstein"
 msgstr "लिकटेंस्टाइन"
 
-#: data.php:1281
+#: data.php:1360
 msgid "Greek"
 msgstr "यूनानी"
 
-#: data.php:1286
+#: data.php:1365
 msgid "Greece"
 msgstr "ग्रीस"
 
-#: data.php:1291 data.php:1944
+#: data.php:1370 data.php:2023
 msgid "Cyprus"
 msgstr "साइप्रस"
 
-#: data.php:1325
+#: data.php:1404
 msgid "Hebrew"
 msgstr "यहूदी"
 
-#: data.php:1331
+#: data.php:1410
 msgid "Israel"
 msgstr "इजराइल"
 
-#: data.php:1365
+#: data.php:1444
 msgid "Hindi"
 msgstr "हिंदी"
 
-#: data.php:1370
+#: data.php:1449
 msgid "India"
 msgstr "भारत"
 
-#: data.php:1375
+#: data.php:1454
 msgid "Pakistan"
 msgstr "पाकिस्तान"
 
-#: data.php:1409
+#: data.php:1488
 msgid "Hungarian"
 msgstr "हंगेरी"
 
-#: data.php:1414
+#: data.php:1493
 msgid "Hungary"
 msgstr "हंगरी"
 
-#: data.php:1448
+#: data.php:1527
 msgid "Indonesian"
 msgstr "इन्डोनेशियाई"
 
-#: data.php:1453
+#: data.php:1532
 msgid "Indonesia"
 msgstr "इंडोनेशिया"
 
-#: data.php:1487
+#: data.php:1566
 msgid "Italian"
 msgstr "इतालवी"
 
-#: data.php:1492
+#: data.php:1571
 msgid "Italy"
 msgstr "इटली"
 
-#: data.php:1526
+#: data.php:1605
 msgid "Japanese"
 msgstr "जापानी"
 
-#: data.php:1531
+#: data.php:1610
 msgid "Japan"
 msgstr "जापान"
 
-#: data.php:1565
+#: data.php:1644
 msgid "Korean"
 msgstr "कोरियाई"
 
-#: data.php:1570
+#: data.php:1649
 msgid "South Korea"
 msgstr "दक्षिणी कोरिया"
 
-#: data.php:1575
+#: data.php:1654
 msgid "North Korea"
 msgstr "उत्तर कोरिया"
 
-#: data.php:1609
+#: data.php:1688
 msgid "Polish"
 msgstr "पोलिश"
 
-#: data.php:1614
+#: data.php:1693
 msgid "Poland"
 msgstr "पोलैंड"
 
-#: data.php:1648
+#: data.php:1727
 msgid "Portuguese"
 msgstr "पुर्तगाली"
 
-#: data.php:1653
+#: data.php:1732
 msgid "Portugal"
 msgstr "पुर्तगाल"
 
-#: data.php:1658
+#: data.php:1737
 msgid "Brazil"
 msgstr "ब्राज़िल"
 
-#: data.php:1663
+#: data.php:1742
 msgid "Mozambique"
 msgstr "मोज़ाम्बिक"
 
-#: data.php:1668
+#: data.php:1747
 msgid "Angola"
 msgstr "अंगोला"
 
-#: data.php:1702
+#: data.php:1781
 msgid "Russian"
 msgstr "रूसी"
 
-#: data.php:1707
+#: data.php:1786
 msgid "Russia"
 msgstr "रूस"
 
-#: data.php:1712
+#: data.php:1791
 msgid "Kazakhstan"
 msgstr "कजाखस्तान"
 
-#: data.php:1717
+#: data.php:1796
 msgid "Belarus"
 msgstr "बेलोरूस"
 
-#: data.php:1722
+#: data.php:1801
 msgid "Kyrgyzstan"
 msgstr "किर्गिज़स्तान"
 
-#: data.php:1727
+#: data.php:1806
 msgid "Tajikistan"
 msgstr "तजाकिस्तान"
 
-#: data.php:1761
+#: data.php:1840
 msgid "Spanish"
 msgstr "स्पेनिश"
 
-#: data.php:1766
+#: data.php:1845
 msgid "Spain"
 msgstr "स्पेन"
 
-#: data.php:1771
+#: data.php:1850
 msgid "Mexico"
 msgstr "मेक्सिको"
 
-#: data.php:1776
+#: data.php:1855
 msgid "Argentina"
 msgstr "अर्जेंटीना"
 
-#: data.php:1781
+#: data.php:1860
 msgid "Colombia"
 msgstr "कोलंबिया"
 
-#: data.php:1786
+#: data.php:1865
 msgid "Peru"
 msgstr "पेरू"
 
-#: data.php:1791
+#: data.php:1870
 msgid "Ecuador"
 msgstr "इक्वेडोर"
 
-#: data.php:1796
+#: data.php:1875
 msgid "Bolivia"
 msgstr "बोलीविया"
 
-#: data.php:1801
+#: data.php:1880
 msgid "Chile"
 msgstr "चिली"
 
-#: data.php:1806
+#: data.php:1885
 msgid "Equatorial Guinea"
 msgstr "इक्वेटोरियल गिनी"
 
-#: data.php:1811
+#: data.php:1890
 msgid "Guatemala"
 msgstr "ग्वाटेमाला"
 
-#: data.php:1816
+#: data.php:1895
 msgid "Cuba"
 msgstr "क्यूबा"
 
-#: data.php:1821
+#: data.php:1900
 msgid "Dominican Republic"
 msgstr "डोमिनिकन गणराज्य"
 
-#: data.php:1826
+#: data.php:1905
 msgid "Honduras"
 msgstr "होंडुरस"
 
-#: data.php:1831
+#: data.php:1910
 msgid "Paraguay"
 msgstr "परागुआ"
 
-#: data.php:1836
+#: data.php:1915
 msgid "El Salvador"
 msgstr "अल साल्वाडोर"
 
-#: data.php:1841
+#: data.php:1920
 msgid "Nicaragua"
 msgstr "निकारागुआ"
 
-#: data.php:1846
+#: data.php:1925
 msgid "Costa Rica"
 msgstr "कोस्टा रिका"
 
-#: data.php:1851
+#: data.php:1930
 msgid "Panama"
 msgstr "पनामा"
 
-#: data.php:1856
+#: data.php:1935
 msgid "Uruguay"
 msgstr "उरुग्वे"
 
-#: data.php:1890
+#: data.php:1969
 msgid "Swedish"
 msgstr "स्वीडिश"
 
-#: data.php:1895
+#: data.php:1974
 msgid "Sweden"
 msgstr "स्वीडन"
 
-#: data.php:1934
+#: data.php:2013
 msgid "Turkish"
 msgstr "तुर्की"
 
-#: data.php:1939
+#: data.php:2018
 msgid "Turkey"
 msgstr "टर्की"
 
-#: data.php:1978
+#: data.php:2057
 msgid "Ukrainian"
 msgstr "यूक्रेनी"
 
-#: data.php:1983
+#: data.php:2062
 msgid "Ukraine"
 msgstr "यूक्रेन"
 
-#: data.php:2017
+#: data.php:2096
 msgid "Vietnamese"
 msgstr "विएतनामी"
 
-#: data.php:2022
+#: data.php:2101
 msgid "Vietnam"
 msgstr "वियतनाम"
 
@@ -1877,11 +1880,11 @@ msgstr ""
 msgid "Go to the configuration page"
 msgstr "कॉन्फ़िगरेशन पृष्ठ पर जाएँ"
 
-#: inc/admin/option-page.php:357
+#: inc/admin/option-page.php:353
 msgid "wpLingua - Incompatible plugin detected"
 msgstr "wpLingua - असंगत प्लगइन का पता चला"
 
-#: inc/admin/option-page.php:360
+#: inc/admin/option-page.php:356
 msgid ""
 "You have several translation plugins. This may result in unpredictable or incorrect behavior. "
 "For best results, use only one translation plugin at a time. These plugins can cause problems "
@@ -1890,40 +1893,40 @@ msgstr ""
 "आपके पास कई अनुवाद प्लगइन हैं। इससे अप्रत्याशित या गलत व्यवहार हो सकता है। सर्वोत्तम परिणामों के लिए, एक समय "
 "में केवल एक अनुवाद प्लगइन का उपयोग करें। ये प्लगइन wpLingua के साथ समस्याएँ पैदा कर सकते हैं: "
 
-#: inc/admin/option-page.php:377
+#: inc/admin/option-page.php:373
 #, php-format
 msgid "Deactivate plugin: %1$s"
 msgstr "प्लगइन निष्क्रिय करें: %1$s"
 
-#: inc/admin/option-page.php:386
+#: inc/admin/option-page.php:382
 msgid "Deactivate"
 msgstr "अक्रिय"
 
-#: inc/admin/option-page.php:403
+#: inc/admin/option-page.php:399
 msgid "Manage active plugins"
 msgstr "सक्रिय प्लगइन प्रबंधित करें"
 
-#: inc/admin/option-page.php:432
+#: inc/admin/option-page.php:424
 msgid "wpLingua - Incompatible with multisite"
 msgstr "wpLingua - मल्टीसाइट के साथ असंगत"
 
-#: inc/admin/option-page.php:435
+#: inc/admin/option-page.php:427
 msgid "wpLingua is not compatible with multisite."
 msgstr "wpLingua मल्टीसाइट के साथ संगत नहीं है।"
 
-#: inc/admin/option-page.php:463
+#: inc/admin/option-page.php:451
 msgid "wpLingua - Incompatible with WordPress installed in a subfolder"
 msgstr "wpLingua - सबफ़ोल्डर में स्थापित वर्डप्रेस के साथ असंगत"
 
-#: inc/admin/option-page.php:466
+#: inc/admin/option-page.php:454
 msgid "wpLingua is not compatible with WordPress installed in a subfolder."
 msgstr "wpLingua किसी सबफ़ोल्डर में स्थापित वर्डप्रेस के साथ संगत नहीं है।"
 
-#: inc/admin/option-page.php:494
+#: inc/admin/option-page.php:478
 msgid "wpLingua - Incompatible PHP version"
 msgstr "wpLingua - असंगत PHP संस्करण"
 
-#: inc/admin/option-page.php:497
+#: inc/admin/option-page.php:481
 msgid "wpLingua is not compatible with your PHP version. wpLingua requires PHP 7.4 or higher."
 msgstr ""
 "wpLingua आपके PHP संस्करण के साथ संगत नहीं है। wpLingua के लिए PHP 7.4 या उच्चतर संस्करण की आवश्यकता है।"
@@ -2128,7 +2131,7 @@ msgstr "त्रुटि - API प्रतिक्रिया मान्�
 msgid "Code"
 msgstr "कोड"
 
-#: inc/api-call/validate-api-key.php:209
+#: inc/api-call/validate-api-key.php:217
 msgid "API returned an unexpected response."
 msgstr "API ने अप्रत्याशित प्रतिक्रिया लौटाई."
 
@@ -2144,11 +2147,23 @@ msgstr ""
 msgid "Save in progress..."
 msgstr "सहेजना प्रगति पर है..."
 
-#: inc/dom/load-progress.php:125 inc/dom/load-progress.php:186
+#: inc/dom/load-overload.php:36
+msgid "Translation API overloaded"
+msgstr "अनुवाद API अतिभारित"
+
+#: inc/dom/load-overload.php:40
+msgid "Translation API overloaded. Retry in a few minutes."
+msgstr "अनुवाद API ओवरलोड हो गया है। कुछ मिनट बाद पुनः प्रयास करें।"
+
+#: inc/dom/load-overload.php:46
+msgid "Close"
+msgstr "बंद"
+
+#: inc/dom/load-progress.php:150 inc/dom/load-progress.php:215
 msgid "Translation in progress"
 msgstr "अनुवाद प्रगति पर है"
 
-#: inc/dom/load-progress.php:190
+#: inc/dom/load-progress.php:219
 msgid "In progress: Translation and saving of new texts"
 msgstr "प्रगति पर: नए पाठों का अनुवाद और संरक्षण"
 
@@ -2188,7 +2203,7 @@ msgstr "वर्णानुक्रम - अनुवाद"
 msgid "Go to top"
 msgstr "शीर्ष पर जाएँ"
 
-#: inc/slug.php:294 inc/translation.php:289
+#: inc/slug.php:294 inc/translation.php:238
 msgid "..."
 msgstr "..."
 
