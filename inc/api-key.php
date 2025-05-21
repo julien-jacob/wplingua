@@ -302,7 +302,9 @@ function wplng_get_api_overloaded() {
 
 	global $wplng_api_is_overloaded;
 
-	if ( null !== $wplng_api_is_overloaded ) {
+	// If overload is true, return directly
+	// Else, recheck the value
+	if ( ! empty( $wplng_api_is_overloaded ) ) {
 		return $wplng_api_is_overloaded;
 	}
 
