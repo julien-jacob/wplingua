@@ -66,7 +66,7 @@ function wplng_dom_load_progress( $dom, $args ) {
 		if ( ! wplng_get_api_overloaded() ) {
 
 			$redirect_query_arg['wplng-load']    = 'progress';
-			$redirect_query_arg['wplng-nocache'] = (string) time() . (string) rand( 100, 999 );
+			$redirect_query_arg['nocache'] = (string) time() . (string) rand( 100, 999 );
 			$redirect_needed                     = true;
 		}
 
@@ -196,7 +196,7 @@ function wplng_dom_load_progress( $dom, $args ) {
 		$url_reload = add_query_arg(
 			array(
 				'wplng-load'    => 'progress',
-				'wplng-nocache' => (string) time() . (string) rand( 100, 999 ),
+				'nocache' => (string) time() . (string) rand( 100, 999 ),
 			),
 			$url_reload
 		);
@@ -243,7 +243,7 @@ function wplng_dom_load_progress( $dom, $args ) {
 	$url_iframe = add_query_arg(
 		array(
 			'wplng-load'    => 'loading',
-			'wplng-nocache' => (string) time() . (string) rand( 100, 999 ),
+			'nocache' => (string) time() . (string) rand( 100, 999 ),
 		),
 		$args['url_current']
 	);
@@ -254,7 +254,7 @@ function wplng_dom_load_progress( $dom, $args ) {
 	$html .= ' style="display: none !important;"';
 	$html .= '>';
 	$html .= '</iframe>'; // End #wplng-translation-in-progress
-
+	
 	/**
 	 * Place the HTML in the end of body
 	 */

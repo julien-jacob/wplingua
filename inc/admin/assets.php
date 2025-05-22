@@ -149,7 +149,7 @@ function wplng_option_page_switcher_assets( $hook ) {
 
 	wp_enqueue_script(
 		'wplingua-script',
-		plugins_url() . '/wplingua/assets/js/script.js',
+		plugins_url() . '/wplingua/assets/js/front.js',
 		array( 'jquery' ),
 		WPLNG_PLUGIN_VERSION
 	);

@@ -138,7 +138,7 @@ function wplng_args_setup( &$args ) {
 			array(
 				'wplng-mode',
 				'wplng-load',
-				'wplng-nocache',
+				'nocache',
 			),
 			wp_make_link_relative(
 				wplng_get_url_current()
@@ -157,7 +157,7 @@ function wplng_args_setup( &$args ) {
 			array(
 				'wplng-mode',
 				'wplng-load',
-				'wplng-nocache',
+				'nocache',
 			),
 			wp_make_link_relative(
 				wplng_get_url_original()
@@ -351,6 +351,21 @@ function wplng_args_update_from_texts( &$args, $texts ) {
 	} else {
 		$args['load'] = 'disabled';
 	}
+
+	if ( $args['load'] !== 'disabled' ) {
+
+		// Set HTTP no-cache header
+		nocache_headers();
+
+		// Disable cache for plugins
+		if ( ! defined( 'DONOTCACHEPAGE' ) ) {
+			define( 'DONOTCACHEPAGE', true );
+		}
+
+		if (function_exists( 'do_action' )) {
+			do_action( 'litespeed_purge_all' );
+		}
+    }
 
 	$texts_unknow = array_splice(
 		$texts_unknow,
