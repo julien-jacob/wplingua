@@ -85,8 +85,16 @@ jQuery(document).ready(function ($) {
      */
 
     function wplngReloadInProgress() {
-        let urlReload = $("#wplng-in-progress-container").attr("wplng-reload");
-        window.location.href = urlReload;
+
+        let iframeSrc = $("#wplng-in-progress-iframe").attr("src");
+
+        if (iframeSrc) {
+            if (iframeSrc.includes("wplng-load=loading")) {
+                let urlReload = $("#wplng-in-progress-container").attr("wplng-reload");
+                window.location.href = urlReload;
+            }
+        }
+
     }
 
     // Check if the iframe is already loaded
