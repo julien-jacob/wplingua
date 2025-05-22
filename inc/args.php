@@ -138,7 +138,7 @@ function wplng_args_setup( &$args ) {
 			array(
 				'wplng-mode',
 				'wplng-load',
-				'wplng-nocache',
+				'nocache',
 			),
 			wp_make_link_relative(
 				wplng_get_url_current()
@@ -157,7 +157,7 @@ function wplng_args_setup( &$args ) {
 			array(
 				'wplng-mode',
 				'wplng-load',
-				'wplng-nocache',
+				'nocache',
 			),
 			wp_make_link_relative(
 				wplng_get_url_original()

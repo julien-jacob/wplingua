@@ -29,7 +29,7 @@ function wplng_link_alternate_hreflang() {
 	// Get and clear original URL
 	$url_original = wplng_get_url_original();
 	$url_original = remove_query_arg(
-		array( 'wplng-mode', 'wplng-load', 'wplng-nocache' ),
+		array( 'wplng-mode', 'wplng-load', 'nocache' ),
 		$url_original
 	);
 
