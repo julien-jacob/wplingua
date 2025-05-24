@@ -1,5 +1,26 @@
+# -------------------------------------------------
+#                 _     _                         
+# __      ___ __ | |   (_)_ __   __ _ _   _  __ _ 
+# \ \ /\ / / '_ \| |   | | '_ \ / _` | | | |/ _` |
+#  \ V  V /| |_) | |___| | | | | (_| | |_| | (_| |
+#   \_/\_/ | .__/|_____|_|_| |_|\__, |\__,_|\__,_|
+#          |_|                  |___/             
+#
+#        -- wpLingua | WordPress plugin --
+#   Translate and make your website multilingual
+#
+#     https://github.com/julien-jacob/wplingua
+#      https://wordpress.org/plugins/wplingua/
+#              https://wplingua.com/
+# -------------------------------------------------
+
+# Assets: Images, CSS and JS
 /assets/
+
+# Node and Gulp
 /node_modules/
-/wplingua/
 /package-lock.json
+
+# Use to make plugin archive
+/wplingua/
 /wplingua.zip
