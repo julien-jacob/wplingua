@@ -74,6 +74,9 @@ function wplng_data_excluded_selector_default() {
 
 		// Plugin: Smash Balloon - Social photo feed
 		'#sb_instagram',
+
+		// Plugin: Complianz GDPR
+		'.cookies-per-purpose .name',
 	);
 }
 
