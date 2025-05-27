@@ -190,7 +190,7 @@ function wplng_dom_load_progress( $dom, $args ) {
 
 	if ( $numer_of_unknow_texts > 20
 		&& ! wplng_get_api_overloaded()
-		&& ! wplng_api_feature_is_allow( 'detection' )
+		&& wplng_api_feature_is_allow( 'detection' )
 	) {
 
 		$url_reload = add_query_arg(
