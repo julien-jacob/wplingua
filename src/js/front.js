@@ -109,7 +109,7 @@ jQuery(document).ready(function ($) {
 
     function wplngUpdatePercent() {
         let percent = parseInt($("#wplng-in-progress-percent").html());
-        if (percent < 100) {
+        if (percent < 99) {
             percent++;
             $("#wplng-in-progress-percent").html(percent);
             $("#wplng-progress-bar-value").attr("style", "width: " + percent.toString() + "%");
