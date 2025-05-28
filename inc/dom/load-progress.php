@@ -35,19 +35,12 @@ function wplng_dom_load_progress( $dom, $args ) {
 		$html .= '	</head>' . PHP_EOL;
 		$html .= '	<body>' . PHP_EOL;
 		$html .= '		<h1>Translations load</h1>' . PHP_EOL;
-		$html .= '		<script>' . PHP_EOL;
-		$html .= '		window.onload = function() {' . PHP_EOL;
-		$html .= '			parent.wplngReloadInProgress();' . PHP_EOL;
-		$html .= '		}' . PHP_EOL;
-		$html .= '		</script>' . PHP_EOL;
 		$html .= '	</body>' . PHP_EOL;
 		$html .= '</html>';
 
 		$dom = wplng_sdh_str_get_html( $html );
 
 		return $dom;
-
-		// } elseif ( 'disabled' === $args['load'] ) {
 
 	} elseif ( 'enabled' === $args['load'] ) {
 
