@@ -25,12 +25,25 @@ jQuery(document).ready(function ($) {
         $("#toplevel_page_wplingua-settings .wp-submenu-wrap").hide();
     }
 
-    $("#wplng-first-load-iframe").load(function () {
-        $("#wplng-notice-first-loading-loading").hide();
-        $("#wplng-notice-first-loading-loaded").slideDown();
-        $("#wplng-option-settings-form").slideDown();
-        $("#toplevel_page_wplingua-settings .wp-submenu-wrap").slideDown();
-    });
+    if ($("#wplng-notice-first-loading-loading").length) {
+
+        let loadUrl = $("#wplng-notice-first-loading-loading").attr("wplng-load");
+
+        if (loadUrl) {
+            $.ajax({
+                url: loadUrl,
+                method: "GET",
+                success: function (response) {
+                    $("#wplng-notice-first-loading-loading").hide();
+                    $("#wplng-notice-first-loading-loaded").slideDown();
+                    $("#wplng-option-settings-form").slideDown();
+                    $("#toplevel_page_wplingua-settings .wp-submenu-wrap").slideDown();
+                }
+            });
+        }
+
+    }
+
 
     /**
      * Code for input
