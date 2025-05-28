@@ -90,15 +90,13 @@ jQuery(document).ready(function ($) {
 
     // Load the translation and reload the page
 
-    let wplngLoadUrl = null;
-
     if ($("#wplng-in-progress-container").length) {
 
-        wplngLoadUrl = $("#wplng-in-progress-container").attr("wplng-load");
+        let loadUrl = $("#wplng-in-progress-container").attr("wplng-load");
 
-        if (wplngLoadUrl) {
+        if (loadUrl) {
             $.ajax({
-                url: wplngLoadUrl,
+                url: loadUrl,
                 method: "GET",
                 success: function (response) {
 
