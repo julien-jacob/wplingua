@@ -17,11 +17,13 @@
 
 jQuery(document).ready(function ($) {
 
-    /**
-     * ------ Code for nav menu switcher ------
-     */
+    // ------------------------------------------------------------------------
+    // Code for nav menu switcher
+    // ------------------------------------------------------------------------
 
-    // Set flags images in nav menu switcher
+    /**
+     * Set flags images in nav menu switcher
+     */
 
     $("a[data-wplng-flag][data-wplng-alt]").each(function () {
 
@@ -39,9 +41,9 @@ jQuery(document).ready(function ($) {
     });
 
 
-    /**
-     * ------ Code for switcher ------
-     */
+    // ------------------------------------------------------------------------
+    // Code for switcher
+    // ------------------------------------------------------------------------
 
     function wplngUpdateSwitcherOpening() {
 
@@ -84,11 +86,13 @@ jQuery(document).ready(function ($) {
     wplngUpdateSwitcherOpening();
 
 
-    /**
-     * ------ Code for preloading ------
-     */
+    // ------------------------------------------------------------------------
+    // Code for preloading
+    // ------------------------------------------------------------------------
 
-    // Load the translation and reload the page
+    /**
+     * Load the translation and reload the page
+     */
 
     if ($("#wplng-in-progress-container").length) {
 
@@ -111,7 +115,9 @@ jQuery(document).ready(function ($) {
 
     }
 
-    // Update percentage for the load in progress bar
+    /**
+     * Update percentage for the load in progress bar
+     */
 
     function wplngUpdatePercent() {
         let percent = parseInt($("#wplng-in-progress-percent").html());
@@ -133,9 +139,9 @@ jQuery(document).ready(function ($) {
     }
 
 
-    /**
-     * ------ Code for overload bar ------
-     */
+    // ------------------------------------------------------------------------
+    // Code for overload bar
+    // ------------------------------------------------------------------------
 
     $("#wplng-overloaded-close").on("click", function () {
         $("#wplng-overloaded-container").hide();

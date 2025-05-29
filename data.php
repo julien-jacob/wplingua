@@ -6,9 +6,9 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 
-/**
- * ------ Data : Parse and translate ------
- */
+// ------------------------------------------------------------------------
+// Data : Parse and translate
+// ------------------------------------------------------------------------
 
 /**
  * Get selectors of excluded elements
@@ -539,9 +539,9 @@ function wplng_data_attr_lang_id_to_replace() {
 }
 
 
-/**
- * ------ Data : Switcher options ------
- */
+// ------------------------------------------------------------------------
+// Data : Switcher options
+// ------------------------------------------------------------------------
 
 /**
  * Get options for switcher insertion
@@ -633,9 +633,9 @@ function wplng_data_switcher_valid_flags_style() {
 }
 
 
-/**
- * ------ Data : Switcher nav menu options ------
- */
+// ------------------------------------------------------------------------
+// Data : Switcher nav menu options
+// ------------------------------------------------------------------------
 
 /**
  * Get options for switcher name format in nav menu
@@ -680,9 +680,9 @@ function wplng_data_switcher_nav_menu_valid_layout() {
 }
 
 
-/**
- * ------ Data : Languages ------
- */
+// ------------------------------------------------------------------------
+// Data : Languages
+// ------------------------------------------------------------------------
 
 /**
  * Get all languages ID
