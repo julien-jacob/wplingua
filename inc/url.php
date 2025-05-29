@@ -191,6 +191,7 @@ function wplng_url_is_translatable_no_filter( $url ) {
 		|| wplng_str_contains( $url, 'wp-register.php' )
 		|| wplng_str_contains( $url, 'wp-comments-post.php' )
 		|| wplng_str_contains( $url, 'wp-cron.php' )
+		|| wplng_str_contains( $url, 'xmlrpc.php' )
 		|| wplng_str_ends_with( $url, '/feed/' )
 		|| wplng_str_contains( $url, '/wp-json/' )
 		|| wplng_str_contains( $url, '/wp-includes/' )
@@ -201,6 +202,7 @@ function wplng_url_is_translatable_no_filter( $url ) {
 		|| wplng_str_contains( $url, '&wc-ajax=' )
 		|| wplng_str_contains( $url, '&feed=' )
 		|| wplng_str_contains( $url, '&embed=' )
+		|| wplng_str_contains( $url, 'builder=true&builder_id=' ) // Fusion builder
 	) {
 		return false;
 	}
@@ -221,7 +223,7 @@ function wplng_url_is_translatable_no_filter( $url ) {
 	}
 
 	// Exclude files URL
-	$regex_is_file = '#\.(avi|css|doc|exe|gif|html|jfif|jpg|jpeg|webp|bmp|mid|midi|mp3|mpg|mpeg|avif|mov|qt|pdf|png|ram|rar|tiff|txt|wav|zip|ico|xml|doc|docx|xls|xlsx)?\/$#Uis';
+	$regex_is_file = '#\.(avi|css|doc|exe|gif|html|jfif|jpg|jpeg|webp|bmp|mid|midi|mp3|mpg|mpeg|avif|mov|qt|pdf|png|ram|rar|tiff|txt|wav|zip|ico|xml|doc|docx|xls|xlsx|rss)?\/$#Uis';
 	if ( preg_match( $regex_is_file, $url ) ) {
 		return false;
 	}
