@@ -192,6 +192,8 @@ function wplng_ob_callback_page( $content ) {
 							$args['load'] = 'disabled';
 							break;
 					}
+
+					wp_cache_flush();
 				}
 			}
 		}
