@@ -621,6 +621,7 @@ function wplng_save_translation( $target_language_id, $original, $translation, $
  */
 function wplng_clear_translations_cache() {
 	delete_transient( 'wplng_cached_translations' );
+	wp_cache_flush();
 }
 
 
