@@ -198,9 +198,9 @@ function wplng_get_translations_from_query() {
 			continue;
 		}
 
-		$array_index = (string) mb_substr($source, 0, 1) . (string) strlen($source);
+		$array_index = (string) mb_substr( $source, 0, 1 ) . (string) strlen( $source );
 
-		$translations[$array_index][] = $translation;
+		$translations[ $array_index ][] = $translation;
 	}
 
 	// Cache translations for better performance
