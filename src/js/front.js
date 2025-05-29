@@ -18,8 +18,10 @@
 jQuery(document).ready(function ($) {
 
     /**
-     * Code for flags images in nav menu switcher
+     * ------ Code for nav menu switcher ------
      */
+
+    // Set flags images in nav menu switcher
 
     $("a[data-wplng-flag][data-wplng-alt]").each(function () {
 
@@ -36,8 +38,9 @@ jQuery(document).ready(function ($) {
         $(this).removeAttr("data-wplng-alt");
     });
 
+
     /**
-     * Code for switcher
+     * ------ Code for switcher ------
      */
 
     function wplngUpdateSwitcherOpening() {
@@ -80,36 +83,39 @@ jQuery(document).ready(function ($) {
 
     wplngUpdateSwitcherOpening();
 
+
     /**
-     * Code for preloading
+     * ------ Code for preloading ------
      */
 
-    function wplngReloadInProgress() {
+    // Load the translation and reload the page
 
-        let iframeSrc = $("#wplng-in-progress-iframe").attr("src");
+    if ($("#wplng-in-progress-container").length) {
 
-        if (iframeSrc) {
-            if (iframeSrc.includes("wplng-load=loading")) {
-                let urlReload = $("#wplng-in-progress-container").attr("wplng-reload");
-                window.location.href = urlReload;
-            }
+        let loadUrl = $("#wplng-in-progress-container").attr("wplng-load");
+
+        if (loadUrl) {
+            $.ajax({
+                url: loadUrl,
+                method: "GET",
+                success: function (response) {
+
+                    let urlReload = $("#wplng-in-progress-container").attr("wplng-reload");
+
+                    if (urlReload && urlReload.trim() !== "") {
+                        window.location.href = urlReload;
+                    }
+                }
+            });
         }
 
     }
 
-    // Check if the iframe is already loaded
-    if ($("#wplng-in-progress-iframe")[0] && $("#wplng-in-progress-iframe")[0].contentDocument.readyState === "complete") {
-        wplngReloadInProgress();
-    }
-
-    // Add an event for iframe loading
-    $("#wplng-in-progress-iframe").on("load", function () {
-        wplngReloadInProgress();
-    });
+    // Update percentage for the load in progress bar
 
     function wplngUpdatePercent() {
         let percent = parseInt($("#wplng-in-progress-percent").html());
-        if (percent < 100) {
+        if (percent < 99) {
             percent++;
             $("#wplng-in-progress-percent").html(percent);
             $("#wplng-progress-bar-value").attr("style", "width: " + percent.toString() + "%");
@@ -126,22 +132,13 @@ jQuery(document).ready(function ($) {
         $("#wpadminbar").hide();
     }
 
+
     /**
-     * Code for overload bar
+     * ------ Code for overload bar ------
      */
 
     $("#wplng-overloaded-close").on("click", function () {
         $("#wplng-overloaded-container").hide();
     });
-
-    /**
-     * Manage dropdown width
-     */
-
-    // $(".wplng-switcher.style-dropdown").each( function() {
-    //     if ($(this).width() <= 40) {
-    //         $(this).addClass("dropdown-min-width");
-    //     }
-    // });
 
 }); // End jQuery loaded event

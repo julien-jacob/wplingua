@@ -187,7 +187,13 @@ function wplng_ob_callback_page( $content ) {
 						case 'progress':
 							$args['load'] = 'progress';
 							break;
+
+						case 'disabled':
+							$args['load'] = 'disabled';
+							break;
 					}
+
+					wp_cache_flush();
 				}
 			}
 		}

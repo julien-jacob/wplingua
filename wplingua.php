@@ -84,9 +84,9 @@ function wplng_start() {
 
 	// The plugin version has changed
 	if ( get_option( 'wplng_version' ) !== WPLNG_PLUGIN_VERSION ) {
+		update_option( 'wplng_version', WPLNG_PLUGIN_VERSION, true );
 		wplng_clear_translations_cache();
 		wplng_clear_slugs_cache();
-		update_option( 'wplng_version', WPLNG_PLUGIN_VERSION, true );
 	}
 
 	// Load plugin text domain /languages/

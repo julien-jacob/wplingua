@@ -586,6 +586,7 @@ function wplng_get_slug_saved_from_original( $original ) {
  */
 function wplng_clear_slugs_cache() {
 	delete_transient( 'wplng_cached_slugs' );
+	wp_cache_flush();
 }
 
 
