@@ -123,7 +123,7 @@ Arabic ∘ Chinese ∘ Danish ∘ Dutch ∘ Slovak ∘ English ∘ Finnish ∘ F
 
 ### The plugin is translated into the following languages
 
-English ∘ French ∘ German ∘ Italian ∘ Portuguese ∘ Spanish
+Danish ∘ Dutch ∘ English ∘ Finnish ∘ French ∘ German ∘ Hindi ∘ Hungarian ∘ Indonesian ∘ Italian ∘ Japanese ∘ Korean ∘ Portuguese ∘ Spanish ∘ Swedish
 
 <br><br>
 
