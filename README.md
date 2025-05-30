@@ -51,7 +51,7 @@ By optimizing indexing, we ensure that your translated pages are not only unders
 
 <br>
 
-All translations are editable. Discover the visual editor and edit translations simply by clicking on them.Although wpLingua gives you the convenience of **machine translations**, we understand the nuances of each language. wpLingua allows you **to fine-tune each translation manually** if you need to.
+All translations are editable. Discover the visual editor and edit translations simply by clicking on them. Although wpLingua gives you the convenience of **machine translations**, we understand the nuances of each language. wpLingua allows you **to fine-tune each translation manually** if you need to.
 
 <br><br>
 
