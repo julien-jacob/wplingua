@@ -262,6 +262,7 @@ function wplng_data_excluded_ajax_action() {
 			'heartbeat',
 
 			// Plugin: wpLingua
+			'wplng_ajax_heartbeat',
 			'wplng_ajax_translation',
 			'wplng_ajax_edit_modal',
 			'wplng_ajax_save_modal',
