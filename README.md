@@ -117,7 +117,7 @@ This feature lets you apply translation rules to links and media, offering even 
 
 ### The plugin supports the following languages
 
-Arabic ∘ Chinese ∘ Danish ∘ Dutch ∘ Slovak ∘ English ∘ Finnish ∘ French ∘ German ∘ Greek ∘ Hebrew ∘ Hindi ∘ Hungarian ∘ Indonesian ∘ Italian ∘ Japanese ∘ Korean ∘ Polish ∘ Portuguese ∘ Russian ∘ Spanish ∘ Swedish ∘ Turkish ∘ Ukrainian ∘ Vietnamese 
+Arabic ∘ Chinese ∘ Danish ∘ Dutch ∘ English ∘ Finnish ∘ French ∘ German ∘ Greek ∘ Hebrew ∘ Hindi ∘ Hungarian ∘ Indonesian ∘ Italian ∘ Japanese ∘ Korean ∘ Polish ∘ Portuguese ∘ Russian ∘ Slovak ∘ Spanish ∘ Swedish ∘ Turkish ∘ Ukrainian ∘ Vietnamese
 
 <br>
 
