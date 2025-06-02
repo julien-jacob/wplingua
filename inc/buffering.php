@@ -90,8 +90,8 @@ function wplng_ob_start() {
 		}
 
 		// Check AJAX action
-		if ( empty( $_POST['action'] )
-			|| in_array( $_POST['action'], wplng_data_excluded_ajax_action() )
+		if ( ! empty( $_POST['action'] )
+			&& in_array( $_POST['action'], wplng_data_excluded_ajax_action() )
 		) {
 			return;
 		}
