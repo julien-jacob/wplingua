@@ -146,15 +146,16 @@ function wplng_settings_part_first_use() {
 		$language_target['id']
 	);
 
-	$url_front_page_iframe = add_query_arg(
-		'wplng-load',
-		'disabled',
+	$url_front_page_load = add_query_arg(
+		array(
+			'wplng-load' => 'disabled',
+			'nocache'    => (string) time() . (string) rand( 100, 999 ),
+		),
 		$url_front_page_translated
 	);
 
 	?>
-	<div class="wplng-notice notice notice-info" id="wplng-notice-first-loading-loading">
-		<iframe src="<?php echo esc_url( $url_front_page_iframe ); ?>" frameborder="0" id="wplng-first-load-iframe" style="display: none;"></iframe>
+	<div class="wplng-notice notice notice-info" id="wplng-notice-first-loading-loading" wplng-load="<?php echo esc_url( $url_front_page_load ); ?>">		
 		<h2><span class="dashicons dashicons-update wplng-spin"></span> <?php esc_html_e( 'Your website is being translated and will be ready soon.', 'wplingua' ); ?></h2>
 		<p><?php esc_html_e( 'In just a few seconds, your website will be multilingual, and search engines will be able to index these new pages. wpLingua detects all the texts on your pages and offers you a first automatically generated translation. All translations are editable: open the visual editor from the administration bar and edit them simply by clicking on the texts on your website.', 'wplingua' ); ?></p>
 	</div>

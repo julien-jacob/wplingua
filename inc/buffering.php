@@ -90,8 +90,8 @@ function wplng_ob_start() {
 		}
 
 		// Check AJAX action
-		if ( empty( $_POST['action'] )
-			|| in_array( $_POST['action'], wplng_data_excluded_ajax_action() )
+		if ( ! empty( $_POST['action'] )
+			&& in_array( $_POST['action'], wplng_data_excluded_ajax_action() )
 		) {
 			return;
 		}
@@ -187,7 +187,13 @@ function wplng_ob_callback_page( $content ) {
 						case 'progress':
 							$args['load'] = 'progress';
 							break;
+
+						case 'disabled':
+							$args['load'] = 'disabled';
+							break;
 					}
+
+					wp_cache_flush();
 				}
 			}
 		}

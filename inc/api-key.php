@@ -182,6 +182,8 @@ function wplng_get_api_data() {
 			true
 		);
 
+		wp_cache_flush();
+
 	}
 
 	return $data_checked;
@@ -347,6 +349,8 @@ function wplng_set_api_overloaded() {
 		time(),
 		true
 	);
+
+	wp_cache_flush();
 }
 
 

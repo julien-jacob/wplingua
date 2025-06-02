@@ -35,19 +35,12 @@ function wplng_dom_load_progress( $dom, $args ) {
 		$html .= '	</head>' . PHP_EOL;
 		$html .= '	<body>' . PHP_EOL;
 		$html .= '		<h1>Translations load</h1>' . PHP_EOL;
-		$html .= '		<script>' . PHP_EOL;
-		$html .= '		window.onload = function() {' . PHP_EOL;
-		$html .= '			parent.wplngReloadInProgress();' . PHP_EOL;
-		$html .= '		}' . PHP_EOL;
-		$html .= '		</script>' . PHP_EOL;
 		$html .= '	</body>' . PHP_EOL;
 		$html .= '</html>';
 
 		$dom = wplng_sdh_str_get_html( $html );
 
 		return $dom;
-
-		// } elseif ( 'disabled' === $args['load'] ) {
 
 	} elseif ( 'enabled' === $args['load'] ) {
 
@@ -65,9 +58,9 @@ function wplng_dom_load_progress( $dom, $args ) {
 
 		if ( ! wplng_get_api_overloaded() ) {
 
-			$redirect_query_arg['wplng-load']    = 'progress';
-			$redirect_query_arg['nocache'] = (string) time() . (string) rand( 100, 999 );
-			$redirect_needed                     = true;
+			$redirect_query_arg['wplng-load'] = 'progress';
+			$redirect_query_arg['nocache']    = (string) time() . (string) rand( 100, 999 );
+			$redirect_needed                  = true;
 		}
 
 		if ( $redirect_needed ) {
@@ -190,22 +183,35 @@ function wplng_dom_load_progress( $dom, $args ) {
 
 	if ( $numer_of_unknow_texts > 20
 		&& ! wplng_get_api_overloaded()
-		&& ! wplng_api_feature_is_allow( 'detection' )
+		&& wplng_api_feature_is_allow( 'detection' )
 	) {
 
 		$url_reload = add_query_arg(
 			array(
-				'wplng-load'    => 'progress',
-				'nocache' => (string) time() . (string) rand( 100, 999 ),
+				'wplng-load' => 'progress',
+				'nocache'    => (string) time() . (string) rand( 100, 999 ),
 			),
 			$url_reload
 		);
 
 	}
 
+	// Make the URL to load
+
+	$url_load = add_query_arg(
+		array(
+			'wplng-load' => 'loading',
+			'nocache'    => (string) time() . (string) rand( 100, 999 ),
+		),
+		$args['url_current']
+	);
+
+	// Make the HTML
+
 	$html  = '<div';
 	$html .= ' id="wplng-in-progress-container"';
 	$html .= ' wplng-reload="' . esc_url( $url_reload ) . '"';
+	$html .= ' wplng-load="' . esc_url( $url_load ) . '"';
 	$html .= '>';
 
 	$html .= '<div id="wplng-in-progress-message">';
@@ -234,27 +240,8 @@ function wplng_dom_load_progress( $dom, $args ) {
 	$html .= '</div>'; // End #wplng-progress-bar-value
 	$html .= '</div>'; // End #wplng-progress-bar
 
-	$html .= '</div>'; // End #wplng-in-progress-container
+	$html .= '</div>'; // End #wplng-in-progress-containe
 
-	/**
-	 * Create the html of iframe
-	 */
-
-	$url_iframe = add_query_arg(
-		array(
-			'wplng-load'    => 'loading',
-			'nocache' => (string) time() . (string) rand( 100, 999 ),
-		),
-		$args['url_current']
-	);
-
-	$html .= '<iframe';
-	$html .= ' id="wplng-in-progress-iframe"';
-	$html .= ' src="' . esc_url( $url_iframe ) . '"';
-	$html .= ' style="display: none !important;"';
-	$html .= '>';
-	$html .= '</iframe>'; // End #wplng-translation-in-progress
-	
 	/**
 	 * Place the HTML in the end of body
 	 */

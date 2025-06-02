@@ -51,7 +51,7 @@ By optimizing indexing, we ensure that your translated pages are not only unders
 
 <br>
 
-All translations are editable. Discover the visual editor and edit translations simply by clicking on them.Although wpLingua gives you the convenience of **machine translations**, we understand the nuances of each language. wpLingua allows you **to fine-tune each translation manually** if you need to.
+All translations are editable. Discover the visual editor and edit translations simply by clicking on them. Although wpLingua gives you the convenience of **machine translations**, we understand the nuances of each language. wpLingua allows you **to fine-tune each translation manually** if you need to.
 
 <br><br>
 
@@ -117,13 +117,13 @@ This feature lets you apply translation rules to links and media, offering even 
 
 ### The plugin supports the following languages
 
-Arabic ∘ Chinese ∘ Danish ∘ Dutch ∘ Slovak ∘ English ∘ Finnish ∘ French ∘ German ∘ Greek ∘ Hebrew ∘ Hindi ∘ Hungarian ∘ Indonesian ∘ Italian ∘ Japanese ∘ Korean ∘ Polish ∘ Portuguese ∘ Russian ∘ Spanish ∘ Swedish ∘ Turkish ∘ Ukrainian ∘ Vietnamese 
+Arabic ∘ Chinese ∘ Danish ∘ Dutch ∘ English ∘ Finnish ∘ French ∘ German ∘ Greek ∘ Hebrew ∘ Hindi ∘ Hungarian ∘ Indonesian ∘ Italian ∘ Japanese ∘ Korean ∘ Polish ∘ Portuguese ∘ Russian ∘ Slovak ∘ Spanish ∘ Swedish ∘ Turkish ∘ Ukrainian ∘ Vietnamese
 
 <br>
 
 ### The plugin is translated into the following languages
 
-English ∘ French ∘ German ∘ Italian ∘ Portuguese ∘ Spanish
+Danish ∘ Dutch ∘ English ∘ Finnish ∘ French ∘ German ∘ Hindi ∘ Hungarian ∘ Indonesian ∘ Italian ∘ Japanese ∘ Korean ∘ Portuguese ∘ Spanish ∘ Swedish
 
 <br><br>
 

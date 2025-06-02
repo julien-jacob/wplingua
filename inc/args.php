@@ -362,10 +362,10 @@ function wplng_args_update_from_texts( &$args, $texts ) {
 			define( 'DONOTCACHEPAGE', true );
 		}
 
-		if (function_exists( 'do_action' )) {
+		if ( function_exists( 'do_action' ) ) {
 			do_action( 'litespeed_purge_all' );
 		}
-    }
+	}
 
 	$texts_unknow = array_splice(
 		$texts_unknow,
