@@ -122,8 +122,6 @@ function wplng_dom_load_progress( $dom, $args ) {
 		&& wplng_api_feature_is_allow( 'detection' )
 	) {
 
-		error_log('True - ' . $args['load']);
-
 		$url_load = add_query_arg(
 			array(
 				'wplng-load' => 'loading',
@@ -134,8 +132,6 @@ function wplng_dom_load_progress( $dom, $args ) {
 		);
 
 	} else {
-
-		error_log('False - ' . $args['load']);
 
 		$url_reload = $args['url_current'];
 
