@@ -21,8 +21,7 @@ function wplng_dom_load_overload( $dom, $args ) {
 
 	wplng_args_setup( $args );
 
-	if ( 'loading' === $args['load']
-		|| empty( $args['overloaded'] )
+	if ( empty( $args['overloaded'] )
 		|| ! current_user_can( 'edit_posts' )
 	) {
 		return $dom;
