@@ -172,26 +172,24 @@ function wplng_ob_callback_page( $content ) {
 				}
 			}
 
-			if ( apply_filters( 'wplng_enable_in_progress_feature', false ) ) {
+			$load_in_progress_enabled = apply_filters(
+				'wplng_enable_in_progress_feature',
+				get_option( 'wplng_load_in_progress', false )
+			);
+
+			if ( $load_in_progress_enabled ) {
 
 				$args['load'] = 'enabled';
 
-				if ( ! empty( $_GET['wplng-load'] ) ) {
+				if ( ! empty( $_GET['wplng-load'] )
+					&& (
+						$_GET['wplng-load'] === 'loading'
+						|| $_GET['wplng-load'] === 'progress'
+						|| $_GET['wplng-load'] === 'disabled'
+					)
+				) {
 
-					switch ( $_GET['wplng-load'] ) {
-
-						case 'loading':
-							$args['load'] = 'loading';
-							break;
-
-						case 'progress':
-							$args['load'] = 'progress';
-							break;
-
-						case 'disabled':
-							$args['load'] = 'disabled';
-							break;
-					}
+					$args['load'] = $_GET['wplng-load'];
 
 					wp_cache_flush();
 				}
