@@ -110,11 +110,8 @@ jQuery(document).ready(function ($) {
                     url: loadUrl,
                     method: "GET",
                     success: function (response) {
-
                         document.body.innerHTML = response;
-
                         wplngLoadNewTranslations();
-
                     }
                 });
 
