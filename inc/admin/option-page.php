@@ -300,19 +300,17 @@ function wplng_get_incompatible_plugins() {
 	 * Get incompatible plugins
 	 */
 
-	$incompatible_list     = array();
-	$incompatible_detected = array();
-
 	$incompatible_list = array(
 		'Automatic Translator'      => 'auto-translate/auto-translate.php',
 		'Autoglot'                  => 'autoglot/autoglot.php',
 		'clonable'                  => 'clonable/clonable-wp.php',
 		'ConveyThis Translate'      => 'conveythis-translate/index.php',
 		'Falang'                    => 'falang/falang.php',
-		'Google Website Translator' => 'google-website-translator/google-website-translator.php',
 		'Google Translator'         => 'google-language-translator/google-language-translator.php',
+		'Google Website Translator' => 'google-website-translator/google-website-translator.php',
 		'Gtranslate'                => 'gtranslate/gtranslate.php',
 		'linguise'                  => 'linguise/linguise.php',
+		'Lokalise'                  => 'lokalise/lokalise.php',
 		'localizejs'                => 'localizejs/localizejs.php',
 		'Multilanguage'             => 'multilanguage/multilanguage.php',
 		'Polylang'                  => 'polylang/polylang.php',
@@ -321,6 +319,8 @@ function wplng_get_incompatible_plugins() {
 		'WPML'                      => 'sitepress-multilingual-cms/sitepress.php',
 		'WP Multilang'              => 'wp-multilang/wp-multilang.php',
 	);
+
+	$incompatible_detected = array();
 
 	foreach ( $incompatible_list as $name => $file ) {
 		if ( is_plugin_active( $file ) ) {
