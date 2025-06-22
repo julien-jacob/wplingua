@@ -266,8 +266,16 @@ function wplng_register_part_api_key( $api_key ) {
  */
 function wplng_register_part_free_api_key() {
 
-	$email  = sanitize_email( get_bloginfo( 'admin_email' ) );
 	$locale = strtolower( substr( get_locale(), 0, 2 ) );
+	$url    = get_home_url();
+	$email  = sanitize_email( get_bloginfo( 'admin_email' ) );
+
+	if ( wplng_str_contains( $email, '.local' )
+		|| wplng_str_contains( $email, 'admin' )
+		|| wplng_str_contains( $email, parse_url( $url, PHP_URL_HOST ) )
+	) {
+		$email = '';
+	}
 
 	if ( ! wplng_is_valid_language_id( $locale ) ) {
 		$locale = 'en';
@@ -309,7 +317,7 @@ function wplng_register_part_free_api_key() {
 				<strong><?php esc_html_e( 'Website URL: ', 'wplingua' ); ?> </strong> 
 				<span title="<?php esc_attr_e( 'Click to expand', 'wplingua' ); ?>" wplng-help-box="#wplng-hb-register-url"></span>
 			</label>
-			<input type="url" name="wplng-website-url" id="wplng-website-url" class="wplng-fe-50" value="<?php echo esc_url( get_home_url() ); ?>">
+			<input type="url" name="wplng-website-url" id="wplng-website-url" class="wplng-fe-50" value="<?php echo esc_url( $url ); ?>">
 		</fieldset>
 	</p>
 

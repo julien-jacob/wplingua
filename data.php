@@ -77,6 +77,9 @@ function wplng_data_excluded_selector_default() {
 
 		// Plugin: Complianz GDPR
 		'.cookies-per-purpose .name',
+
+		// Plugin: SEOPress
+		'#seopress-metabox-js-extra',
 	);
 }
 
