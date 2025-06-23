@@ -13,15 +13,6 @@ if ( ! defined( 'WPINC' ) ) {
  */
 function wplng_option_page_register() {
 
-	if ( is_multisite() ) {
-		?>
-		<div class="wplng-notice notice notice-info">
-			<p><?php esc_html_e( 'wpLingua is not compatible with Multisite.', 'wplingua' ); ?></p>
-		</div>
-		<?php
-		return;
-	}
-
 	$mail             = '';
 	$api_key          = wplng_get_api_key();
 	$json_request_key = get_option( 'wplng_request_free_key' );
