@@ -484,3 +484,73 @@ function wplng_admin_notice_incompatible_php_version() {
 
 	echo $html;
 }
+
+
+/**
+ * Check if the HTACCESS file contain code of another plugin who break translated pages
+ *
+ * @return bool HTACCESS file is valid for wpLingua
+ */
+function wplng_htaccess_is_valid() {
+
+	$htaccess_path = ABSPATH . '.htaccess';
+
+	if ( ! file_exists( $htaccess_path ) ) {
+		return true;
+	}
+
+	$htaccess_content = file_get_contents( $htaccess_path );
+
+	return ! (
+		strpos( $htaccess_content, 'GTranslate' ) !== false
+		|| strpos( $htaccess_content, 'LINGUISE' ) !== false
+	);
+}
+
+
+/**
+ * Display a notice if the HTACCESS file is incompatible
+ *
+ * @return void|string Outputs the admin notice if applicable, or returns void if no notice is required.
+ */
+function wplng_admin_notice_incompatible_htaccess() {
+
+	$htaccess_path = ABSPATH . '.htaccess';
+
+	if ( ! file_exists( $htaccess_path ) ) {
+		return;
+	}
+
+	$htaccess_content = file_get_contents( $htaccess_path );
+	$message          = '';
+
+	if ( strpos( $htaccess_content, 'GTranslate' ) !== false ) {
+		$message .= '### BEGIN GTranslate config ###' . PHP_EOL;
+		$message .= '...' . PHP_EOL;
+		$message .= '### END GTranslate config ###';
+	} elseif ( strpos( $htaccess_content, 'LINGUISE' ) !== false ) {
+		$message .= '#### LINGUISE DO NOT EDIT ####' . PHP_EOL;
+		$message .= '...' . PHP_EOL;
+		$message .= '#### LINGUISE DO NOT EDIT END ####';
+	}
+
+	if ( ! empty( $message ) ) {
+
+		$html  = '<div ';
+		$html .= 'class="wplng-notice notice notice-error is-dismissible" ';
+		$html .= 'style="background-color: rgba(255, 0, 0, .1);">';
+		$html .= '<p style="font-weight: 600;">';
+		$html .= '<span class="dashicons dashicons-translation"></span> ';
+		$html .= esc_html__( 'wpLingua - Incompatible HTACCESS file', 'wplingua' );
+		$html .= '</p>';
+		$html .= '<p>';
+		$html .= esc_html__( 'It seems that a plugin was incorrectly deactivated and corrupted the site\'s HTACCESS file, preventing the correct redirection of translated pages. Please edit the ".htaccess" file located at the root of the site and delete the lines between :', 'wplingua' );
+		$html .= '<pre style="border: 1px solid #c3c4c7; padding: 8px; background-color: rgba(0,0,0,.05);">';
+		$html .= $message;
+		$html .= '</pre>';
+		$html .= '</p>';
+		$html .= '</div>'; // End .notice
+
+		echo $html;
+	}
+}
