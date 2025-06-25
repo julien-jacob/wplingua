@@ -300,7 +300,11 @@ function wplng_get_switcher_html( $arg = array() ) {
 	$flags_show          = true;
 
 	$url_website = remove_query_arg(
-		'wplng-mode',
+		array(
+			'wplng-mode', 
+			'wplng-load', 
+			'nocache'
+		),
 		$url_website
 	);
 
@@ -490,6 +494,7 @@ function wplng_get_switcher_html( $arg = array() ) {
 
 		if ( ! $is_admin ) {
 			$url = wplng_get_url_current_for_language( $language_target['id'] );
+			$url = remove_query_arg( array('wplng-load', 'nocache'), $url );
 		}
 
 		if ( $language_target['id'] === $language_current_id ) {

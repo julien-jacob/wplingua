@@ -18,64 +18,7 @@ function wplng_dom_load_progress( $dom, $args ) {
 	wplng_args_setup( $args );
 
 	if ( 'disabled' === $args['load'] ) {
-
 		return $dom;
-
-	} elseif ( 'loading' === $args['load'] ) {
-
-		/**
-		 * Current page identified as launching in hidden iframe in "in progress" mode
-		 */
-
-		$html  = '<!DOCTYPE html>' . PHP_EOL;
-		$html .= '<html lang="en">' . PHP_EOL;
-		$html .= '	<head>' . PHP_EOL;
-		$html .= '		<meta charset="UTF-8">' . PHP_EOL;
-		$html .= '		<title>Translations load</title>' . PHP_EOL;
-		$html .= '	</head>' . PHP_EOL;
-		$html .= '	<body>' . PHP_EOL;
-		$html .= '		<h1>Translations load</h1>' . PHP_EOL;
-		$html .= '	</body>' . PHP_EOL;
-		$html .= '</html>';
-
-		$dom = wplng_sdh_str_get_html( $html );
-
-		return $dom;
-
-	} elseif ( 'enabled' === $args['load'] ) {
-
-		/**
-		 * Current page identified as requiring “in progress” mode
-		 */
-
-		$redirect_query_arg = array();
-		$redirect_needed    = false;
-
-		if ( $args['mode'] !== 'vanilla' ) {
-			$redirect_query_arg['wplng-mode'] = $args['mode'];
-			$redirect_needed                  = true;
-		}
-
-		if ( ! wplng_get_api_overloaded() ) {
-
-			$redirect_query_arg['wplng-load'] = 'progress';
-			$redirect_query_arg['nocache']    = (string) time() . (string) rand( 100, 999 );
-			$redirect_needed                  = true;
-		}
-
-		if ( $redirect_needed ) {
-			wp_safe_redirect(
-				add_query_arg(
-					$redirect_query_arg,
-					$args['url_current']
-				),
-				302
-			);
-			exit;
-		}
-
-		return $dom;
-
 	}
 
 	/**
@@ -157,10 +100,10 @@ function wplng_dom_load_progress( $dom, $args ) {
 	 * Create the html of message bar
 	 */
 
-	$number_of_texts           = (int) $args['count_texts'] + 1;
+	$number_of_texts           = $args['count_texts'] + 1;
 	$numer_of_translated_texts = count( $args['translations'] );
-	$numer_of_unknow_texts     = (int) $number_of_texts - $numer_of_translated_texts;
-
+	$numer_of_unknow_texts     = $number_of_texts - $numer_of_translated_texts;
+	
 	// Calculate percentage
 
 	$percentage = (int) ( ( $numer_of_translated_texts / $number_of_texts ) * 100 );
@@ -169,42 +112,37 @@ function wplng_dom_load_progress( $dom, $args ) {
 		$percentage = 1;
 	}
 
-	// Make the reload URL
+	// Make the load and reload URL
 
-	$url_reload = $args['url_current'];
-
-	if ( $args['mode'] !== 'vanilla' ) {
-		$url_reload = add_query_arg(
-			'wplng-mode',
-			$args['mode'],
-			$url_reload
-		);
-	}
+	$url_load   = '';
+	$url_reload = '';
 
 	if ( $numer_of_unknow_texts > 20
 		&& ! wplng_get_api_overloaded()
 		&& wplng_api_feature_is_allow( 'detection' )
 	) {
 
-		$url_reload = add_query_arg(
+		$url_load = add_query_arg(
 			array(
-				'wplng-load' => 'progress',
+				'wplng-load' => 'loading',
+				'wplng-mode' => $args['mode'],
 				'nocache'    => (string) time() . (string) rand( 100, 999 ),
 			),
-			$url_reload
+			$args['url_current']
 		);
 
+	} else {
+
+		$url_reload = $args['url_current'];
+
+		if ( $args['mode'] !== 'vanilla' ) {
+			$url_reload = add_query_arg(
+				'wplng-mode',
+				$args['mode'],
+				$url_reload
+			);
+		}
 	}
-
-	// Make the URL to load
-
-	$url_load = add_query_arg(
-		array(
-			'wplng-load' => 'loading',
-			'nocache'    => (string) time() . (string) rand( 100, 999 ),
-		),
-		$args['url_current']
-	);
 
 	// Make the HTML
 

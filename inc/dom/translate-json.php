@@ -17,10 +17,6 @@ function wplng_dom_translate_json( $dom, $args ) {
 
 	wplng_args_setup( $args );
 
-	if ( 'loading' === $args['load'] ) {
-		return $dom;
-	}
-
 	/**
 	 * Translate JSON in JSON script tag (not in JS)
 	 */

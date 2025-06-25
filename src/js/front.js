@@ -94,26 +94,43 @@ jQuery(document).ready(function ($) {
      * Load the translation and reload the page
      */
 
-    if ($("#wplng-in-progress-container").length) {
+    let wplngMaxCount = 0;
 
-        let loadUrl = $("#wplng-in-progress-container").attr("wplng-load");
+    function wplngLoadNewTranslations() {
 
-        if (loadUrl) {
-            $.ajax({
-                url: loadUrl,
-                method: "GET",
-                success: function (response) {
+        wplngMaxCount++;
 
-                    let urlReload = $("#wplng-in-progress-container").attr("wplng-reload");
+        if ($("#wplng-in-progress-container").length && wplngMaxCount <= 8) {
 
-                    if (urlReload && urlReload.trim() !== "") {
-                        window.location.href = urlReload;
+            let loadUrl = $("#wplng-in-progress-container").attr("wplng-load");
+
+            if (loadUrl && loadUrl.trim() !== "") {
+
+                $.ajax({
+                    url: loadUrl,
+                    method: "GET",
+                    success: function (response) {
+                        document.body.innerHTML = response;
+                        wplngLoadNewTranslations();
                     }
+                });
+
+            } else {
+
+                let reloadUrl = $("#wplng-in-progress-container").attr("wplng-reload");
+
+                if (reloadUrl && reloadUrl.trim() !== "") {
+                    window.location.href = reloadUrl;
                 }
-            });
+
+            }
+
         }
 
     }
+
+    wplngLoadNewTranslations();
+
 
     /**
      * Update percentage for the load in progress bar
