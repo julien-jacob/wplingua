@@ -110,8 +110,83 @@ jQuery(document).ready(function ($) {
                     url: loadUrl,
                     method: "GET",
                     success: function (response) {
-                        document.body.innerHTML = response;
-                        wplngLoadNewTranslations();
+
+                        /**
+                         * Basic response check
+                         */
+
+                        // Check ie error is return
+                        if (response.wplingua_error != undefined) {
+                            console.log("wpLingua error: " + response.wplingua_error);
+                            return;
+                        }
+
+                        // Check if response is valid
+                        if (response.wplingua_load == undefined
+                            || response.wplingua_load != "loading"
+                        ) {
+                            console.log("wpLingua error: Invalid call response");
+                            return;
+                        }
+
+                        /**
+                         * Update the percentage
+                         */
+
+                        if (response.percentage != undefined) {
+                            $("#wplng-in-progress-percent").html(response.percentage);
+                            $("#wplng-progress-bar-value").attr("style", "width: " + response.percentage.toString() + "%");
+                        }
+
+                        /**
+                         * Set new translations on page
+                         */
+
+                        if (response.translations != undefined
+                            && Array.isArray(response.translations)
+                        ) {
+
+                            response.translations.forEach(function (translation) {
+
+                                let source = translation.source;
+                                let translated = translation.translation;
+
+                                $(".wplng-in-progress-text").each(function () {
+                                    let progressText = $(this).text();
+
+                                    if (source == progressText) {
+                                        $(this).replaceWith(translated);
+                                    }
+                                });
+                            });
+                        }
+
+                        /**
+                         * Check if reloading is needed or make a new call
+                         */
+
+                        if (response.url_reload != undefined
+                            && response.url_reload.trim() != ""
+                        ) {
+
+                            /**
+                             * Reloading is needed
+                             */
+
+                            window.location.href = response.url_reload.trim();
+
+                        } else if (response.url_load != undefined
+                            && response.url_load.trim() != ""
+                        ) {
+
+                            /**
+                             * Make a new call
+                             */
+
+                            $("#wplng-in-progress-container").attr("wplng-load", response.url_load.trim());
+                            wplngLoadNewTranslations();
+
+                        }
                     }
                 });
 
@@ -120,7 +195,7 @@ jQuery(document).ready(function ($) {
                 let reloadUrl = $("#wplng-in-progress-container").attr("wplng-reload");
 
                 if (reloadUrl && reloadUrl.trim() !== "") {
-                    window.location.href = reloadUrl;
+                    window.location.href = reloadUrl.trim();
                 }
 
             }

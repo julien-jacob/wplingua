@@ -84,3 +84,4 @@ require_once WPLNG_PLUGIN_PATH . '/inc/parser/json.php';
 require_once WPLNG_PLUGIN_PATH . '/inc/translator/html.php';
 require_once WPLNG_PLUGIN_PATH . '/inc/translator/js.php';
 require_once WPLNG_PLUGIN_PATH . '/inc/translator/json.php';
+require_once WPLNG_PLUGIN_PATH . '/inc/translator/loading.php';

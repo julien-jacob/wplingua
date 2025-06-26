@@ -192,6 +192,10 @@ function wplng_ob_callback_page( $content ) {
 					$args['load'] = $_GET['wplng-load'];
 
 					wp_cache_flush();
+
+					if ( $args['load'] === 'loading' ) {
+						return wplng_translate_html_loading( $content, $args );
+					}
 				}
 			}
 		}

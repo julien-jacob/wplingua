@@ -100,13 +100,11 @@ function wplng_dom_load_progress( $dom, $args ) {
 	 * Create the html of message bar
 	 */
 
-	$number_of_texts           = $args['count_texts'] + 1;
-	$numer_of_translated_texts = count( $args['translations'] );
-	$numer_of_unknow_texts     = $number_of_texts - $numer_of_translated_texts;
-	
-	// Calculate percentage
+	$number_of_texts       = $args['count_texts'] + 1;
+	$numer_of_unknow_texts = $args['count_texts_unknow'] + 1;
 
-	$percentage = (int) ( ( $numer_of_translated_texts / $number_of_texts ) * 100 );
+	// Calculate percentage
+	$percentage = (int) ( 100 - ( ( $numer_of_unknow_texts / $number_of_texts ) * 100 ) );
 
 	if ( $percentage < 1 ) {
 		$percentage = 1;

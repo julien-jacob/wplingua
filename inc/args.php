@@ -430,8 +430,13 @@ function wplng_args_update_from_texts( &$args, $texts ) {
 	 * Merge know and new translations
 	 */
 
-	$args['translations'] = array_merge(
-		$translations_in_page,
-		$translations_new
-	);
+	if ($args['load'] === 'loading') {
+		$args['translations'] = $translations_new;
+	} else {
+		$args['translations'] = array_merge(
+			$translations_in_page,
+			$translations_new
+		);
+	}
+	
 }
