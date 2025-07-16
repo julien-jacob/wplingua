@@ -302,6 +302,13 @@ function wplng_args_update_from_texts( &$args, $texts ) {
 	}
 
 	/**
+	 * Get count_texts
+	 */
+
+	$args['count_texts']        = count( $texts );
+	$args['count_texts_unknow'] = count( $texts_unknow );
+
+	/**
 	 * Limit $texts_unknow for a total of 1000 char
 	 */
 
@@ -319,12 +326,6 @@ function wplng_args_update_from_texts( &$args, $texts ) {
 
 	$texts_unknow = $limited_texts_unknow;
 
-	/**
-	 * Get count_texts
-	 */
-
-	$args['count_texts']        = count( $texts );
-	$args['count_texts_unknow'] = count( $texts_unknow );
 
 	/**
 	 * Check if the current page is overloaded
