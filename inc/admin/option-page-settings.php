@@ -68,7 +68,7 @@ function wplng_option_page_settings() {
 						</fieldset>
 					</td>
 				</tr>
-				<tr>
+				<tr style="display: none;">
 					<th scope="row"><span class="dashicons dashicons-admin-settings"></span> <?php esc_html_e( 'Features', 'wplingua' ); ?></th>
 					<td>
 						<fieldset>
@@ -485,7 +485,7 @@ function wplng_settings_part_features_plugin() {
 
 	<fieldset>
 		<input type="checkbox" id="wplng_load_in_progress" name="wplng_load_in_progress" value="1" <?php checked( 1, get_option( 'wplng_load_in_progress' ), true ); ?>/>
-		<label for="wplng_load_in_progress"> <?php esc_html_e( 'Progress bar for editors', 'wplingua' ); ?></label> 
+		<label for="wplng_load_in_progress">[BETA] <?php esc_html_e( 'Progress bar for editors', 'wplingua' ); ?></label> 
 		<span title="<?php esc_attr_e( 'Click to expand', 'wplingua' ); ?>" wplng-help-box="#wplng-hb-feature-load-in-progress"></span>
 	</fieldset>
 
