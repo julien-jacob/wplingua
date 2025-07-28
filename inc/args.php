@@ -340,10 +340,10 @@ function wplng_args_update_from_texts( &$args, $texts ) {
 
 	if ( $args['load'] === 'enabled'
 		&& $args['count_texts_unknow'] > 20
-		&& ! $args['overloaded'] 
+		&& ! $args['overloaded']
 		&& wplng_api_feature_is_allow( 'detection' )
 	) {
-		
+
 		/**
 		 * Current page identified as requiring "in progress" mode
 		 */
@@ -356,6 +356,7 @@ function wplng_args_update_from_texts( &$args, $texts ) {
 		}
 
 		$redirect_query_arg['wplng-load'] = 'progress';
+		$redirect_query_arg['nocache']    = (string) time() . (string) rand( 100, 999 );
 
 		wp_safe_redirect(
 			add_query_arg(
@@ -367,7 +368,7 @@ function wplng_args_update_from_texts( &$args, $texts ) {
 		exit;
 		return;
 
-	} elseif ($args['load'] === 'progress') {
+	} elseif ( $args['load'] === 'progress' ) {
 		$max_translations = 0;
 	} elseif ( $args['load'] === 'loading' ) {
 		$max_translations = 60;

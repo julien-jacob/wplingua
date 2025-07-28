@@ -94,42 +94,43 @@ jQuery(document).ready(function ($) {
      * Load the translation and reload the page
      */
 
-    let wplngMaxCount = 0;
+    if ($("#wplng-in-progress-container").length) {
 
-    function wplngLoadNewTranslations() {
+        let loadUrl = $("#wplng-in-progress-container").attr("data-wplng-url-load");
+        let reloadUrl = $("#wplng-in-progress-container").attr("data-wplng-url-reload");
 
-        wplngMaxCount++;
+        if (loadUrl && loadUrl.trim() !== "") {
 
-        if ($("#wplng-in-progress-container").length && wplngMaxCount <= 8) {
+            $.ajax({
+                url: loadUrl,
+                method: "GET",
+                success: function (response) {
+                    if (reloadUrl && reloadUrl.trim() !== "") {
 
-            let loadUrl = $("#wplng-in-progress-container").attr("wplng-load");
+                        // Set 100% if is the last load in progress reload
+                        if ((reloadUrl.indexOf("?wplng-load=") === -1)
+                            && (reloadUrl.indexOf("&wplng-load=") === -1)
+                        ) {
+                            $("#wplng-in-progress-percent").html("100");
+                            $("#wplng-progress-bar-value").animate(
+                                { width: "100%" }, 
+                                500
+                            );
+                        }
 
-            if (loadUrl && loadUrl.trim() !== "") {
+                        window.location.href = reloadUrl;
 
-                $.ajax({
-                    url: loadUrl,
-                    method: "GET",
-                    success: function (response) {
-                        document.body.innerHTML = response;
-                        wplngLoadNewTranslations();
+                    } else {
+                        console.log("wpLingua ERROR: Load in progress - Invalid reload URL");
                     }
-                });
-
-            } else {
-
-                let reloadUrl = $("#wplng-in-progress-container").attr("wplng-reload");
-
-                if (reloadUrl && reloadUrl.trim() !== "") {
-                    window.location.href = reloadUrl;
                 }
+            });
 
-            }
-
+        } else {
+            console.log("wpLingua ERROR: Load in progress - Invalid load URL");
         }
 
     }
-
-    wplngLoadNewTranslations();
 
 
     /**
@@ -141,7 +142,10 @@ jQuery(document).ready(function ($) {
         if (percent < 99) {
             percent++;
             $("#wplng-in-progress-percent").html(percent);
-            $("#wplng-progress-bar-value").attr("style", "width: " + percent.toString() + "%");
+            $("#wplng-progress-bar-value").animate(
+                { width: percent.toString() + "%" }, 
+                500
+            );
         }
     }
 

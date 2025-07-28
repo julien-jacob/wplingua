@@ -17,9 +17,9 @@ function wplng_dom_load_progress( $dom, $args ) {
 
 	wplng_args_setup( $args );
 
-	if ( 'disabled' === $args['load'] ) {
+	if ( 'progress' !== $args['load'] ) {
 		return $dom;
-	}
+	} 
 
 	/**
 	 * Add effect on unknow texts and translate know texts
@@ -100,56 +100,64 @@ function wplng_dom_load_progress( $dom, $args ) {
 	 * Create the html of message bar
 	 */
 
-	$number_of_texts           = $args['count_texts'] + 1;
+	$number_of_texts           = (int) $args['count_texts'];
 	$numer_of_translated_texts = count( $args['translations'] );
-	$numer_of_unknow_texts     = $number_of_texts - $numer_of_translated_texts;
-	
+	$numer_of_unknow_texts     = $args['count_texts_unknow'];
+
 	// Calculate percentage
 
-	$percentage = (int) ( ( $numer_of_translated_texts / $number_of_texts ) * 100 );
+	$percentage = 0;
+	if ($number_of_texts > 0) {
+		$percentage = (int) ( ( $numer_of_translated_texts / $number_of_texts ) * 100 );
+	}
 
 	if ( $percentage < 1 ) {
 		$percentage = 1;
 	}
 
-	// Make the load and reload URL
+	// Make the reload URL
 
-	$url_load   = '';
-	$url_reload = '';
+	$url_reload = $args['url_current'];
 
-	if ( $numer_of_unknow_texts > 20
+	if ( $args['mode'] !== 'vanilla' ) {
+		$url_reload = add_query_arg(
+			'wplng-mode',
+			$args['mode'],
+			$url_reload
+		);
+	}
+
+	if ( $numer_of_unknow_texts > 60
 		&& ! wplng_get_api_overloaded()
 		&& wplng_api_feature_is_allow( 'detection' )
 	) {
 
-		$url_load = add_query_arg(
+		$url_reload = add_query_arg(
 			array(
-				'wplng-load' => 'loading',
-				'wplng-mode' => $args['mode'],
+				'wplng-load' => 'progress',
 				'nocache'    => (string) time() . (string) rand( 100, 999 ),
 			),
-			$args['url_current']
+			$url_reload
 		);
 
-	} else {
-
-		$url_reload = $args['url_current'];
-
-		if ( $args['mode'] !== 'vanilla' ) {
-			$url_reload = add_query_arg(
-				'wplng-mode',
-				$args['mode'],
-				$url_reload
-			);
-		}
 	}
+
+	// Make the URL to load
+
+	$url_load = add_query_arg(
+		array(
+			'wplng-load' => 'loading',
+			'nocache'    => (string) time() . (string) rand( 100, 999 ),
+		),
+		$args['url_current']
+	);
 
 	// Make the HTML
 
 	$html  = '<div';
 	$html .= ' id="wplng-in-progress-container"';
-	$html .= ' wplng-reload="' . esc_url( $url_reload ) . '"';
-	$html .= ' wplng-load="' . esc_url( $url_load ) . '"';
+	$html .= ' data-wplng-url-reload="' . esc_url( $url_reload ) . '"';
+	$html .= ' data-wplng-url-load="' . esc_url( $url_load ) . '"';
 	$html .= '>';
 
 	$html .= '<div id="wplng-in-progress-message">';

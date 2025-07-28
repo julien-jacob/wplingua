@@ -68,7 +68,7 @@ function wplng_option_page_settings() {
 						</fieldset>
 					</td>
 				</tr>
-				<tr>
+				<tr style="display: none;">
 					<th scope="row"><span class="dashicons dashicons-admin-settings"></span> <?php esc_html_e( 'Features', 'wplingua' ); ?></th>
 					<td>
 						<fieldset>
@@ -163,7 +163,7 @@ function wplng_settings_part_first_use() {
 	);
 
 	?>
-	<div class="wplng-notice notice notice-info" id="wplng-notice-first-loading-loading" wplng-load="<?php echo esc_url( $url_front_page_load ); ?>">		
+	<div class="wplng-notice notice notice-info" id="wplng-notice-first-loading-loading" data-wplng-url-first-load="<?php echo esc_url( $url_front_page_load ); ?>">
 		<h2><span class="dashicons dashicons-update wplng-spin"></span> <?php esc_html_e( 'Your website is being translated and will be ready soon.', 'wplingua' ); ?></h2>
 		<p><?php esc_html_e( 'In just a few seconds, your website will be multilingual, and search engines will be able to index these new pages. wpLingua detects all the texts on your pages and offers you a first automatically generated translation. All translations are editable: open the visual editor from the administration bar and edit them simply by clicking on the texts on your website.', 'wplingua' ); ?></p>
 	</div>
@@ -485,7 +485,7 @@ function wplng_settings_part_features_plugin() {
 
 	<fieldset>
 		<input type="checkbox" id="wplng_load_in_progress" name="wplng_load_in_progress" value="1" <?php checked( 1, get_option( 'wplng_load_in_progress' ), true ); ?>/>
-		<label for="wplng_load_in_progress"> <?php esc_html_e( 'Progress bar for editors', 'wplingua' ); ?></label> 
+		<label for="wplng_load_in_progress">[BETA] <?php esc_html_e( 'Progress bar for editors', 'wplingua' ); ?></label> 
 		<span title="<?php esc_attr_e( 'Click to expand', 'wplingua' ); ?>" wplng-help-box="#wplng-hb-feature-load-in-progress"></span>
 	</fieldset>
 
