@@ -156,8 +156,8 @@ function wplng_dom_load_progress( $dom, $args ) {
 
 	$html  = '<div';
 	$html .= ' id="wplng-in-progress-container"';
-	$html .= ' wplng-reload="' . esc_url( $url_reload ) . '"';
-	$html .= ' wplng-load="' . esc_url( $url_load ) . '"';
+	$html .= ' data-wplng-url-reload="' . esc_url( $url_reload ) . '"';
+	$html .= ' data-wplng-url-load="' . esc_url( $url_load ) . '"';
 	$html .= '>';
 
 	$html .= '<div id="wplng-in-progress-message">';

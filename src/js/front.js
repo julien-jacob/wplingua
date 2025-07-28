@@ -96,8 +96,8 @@ jQuery(document).ready(function ($) {
 
     if ($("#wplng-in-progress-container").length) {
 
-        let loadUrl = $("#wplng-in-progress-container").attr("wplng-load");
-        let reloadUrl = $("#wplng-in-progress-container").attr("wplng-reload");
+        let loadUrl = $("#wplng-in-progress-container").attr("data-wplng-url-load");
+        let reloadUrl = $("#wplng-in-progress-container").attr("data-wplng-url-reload");
 
         if (loadUrl && loadUrl.trim() !== "") {
 

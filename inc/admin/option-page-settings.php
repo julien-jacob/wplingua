@@ -163,7 +163,7 @@ function wplng_settings_part_first_use() {
 	);
 
 	?>
-	<div class="wplng-notice notice notice-info" id="wplng-notice-first-loading-loading" wplng-load="<?php echo esc_url( $url_front_page_load ); ?>">		
+	<div class="wplng-notice notice notice-info" id="wplng-notice-first-loading-loading" data-wplng-url-first-load="<?php echo esc_url( $url_front_page_load ); ?>">
 		<h2><span class="dashicons dashicons-update wplng-spin"></span> <?php esc_html_e( 'Your website is being translated and will be ready soon.', 'wplingua' ); ?></h2>
 		<p><?php esc_html_e( 'In just a few seconds, your website will be multilingual, and search engines will be able to index these new pages. wpLingua detects all the texts on your pages and offers you a first automatically generated translation. All translations are editable: open the visual editor from the administration bar and edit them simply by clicking on the texts on your website.', 'wplingua' ); ?></p>
 	</div>
