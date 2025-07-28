@@ -17,11 +17,9 @@ function wplng_dom_replace_attr_lang( $dom, $args ) {
 
 	wplng_args_setup( $args );
 
-	if ( 'loading' === $args['load'] ) {
-		return $dom;
-	}
-
-	// Replace languages IDs in attributes
+	/**
+	 * Replace languages IDs in attributes
+	 */
 
 	$attr_lang_id_to_replace = wplng_data_attr_lang_id_to_replace();
 

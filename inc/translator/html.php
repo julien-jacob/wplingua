@@ -49,6 +49,26 @@ function wplng_translate_html( $html, $args = array() ) {
 	}
 
 	/**
+	 * Current page identified as launching in hidden call in "in progress" mode
+	 */
+
+	if ( 'loading' === $args['load'] ) {
+
+		$html  = '<!DOCTYPE html>' . PHP_EOL;
+		$html .= '<html lang="en">' . PHP_EOL;
+		$html .= '	<head>' . PHP_EOL;
+		$html .= '		<meta charset="UTF-8">' . PHP_EOL;
+		$html .= '		<title>wpLingua - Translations load</title>' . PHP_EOL;
+		$html .= '	</head>' . PHP_EOL;
+		$html .= '	<body>' . PHP_EOL;
+		$html .= '		<h1>wpLingua - Translations load</h1>' . PHP_EOL;
+		$html .= '	</body>' . PHP_EOL;
+		$html .= '</html>';
+
+		return $dom;
+	}
+
+	/**
 	 * Update the dom
 	 */
 

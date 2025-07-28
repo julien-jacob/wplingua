@@ -96,24 +96,42 @@ jQuery(document).ready(function ($) {
 
     if ($("#wplng-in-progress-container").length) {
 
-        let loadUrl = $("#wplng-in-progress-container").attr("wplng-load");
+        let loadUrl = $("#wplng-in-progress-container").attr("data-wplng-url-load");
+        let reloadUrl = $("#wplng-in-progress-container").attr("data-wplng-url-reload");
 
-        if (loadUrl) {
+        if (loadUrl && loadUrl.trim() !== "") {
+
             $.ajax({
                 url: loadUrl,
                 method: "GET",
                 success: function (response) {
+                    if (reloadUrl && reloadUrl.trim() !== "") {
 
-                    let urlReload = $("#wplng-in-progress-container").attr("wplng-reload");
+                        // Set 100% if is the last load in progress reload
+                        if ((reloadUrl.indexOf("?wplng-load=") === -1)
+                            && (reloadUrl.indexOf("&wplng-load=") === -1)
+                        ) {
+                            $("#wplng-in-progress-percent").html("100");
+                            $("#wplng-progress-bar-value").animate(
+                                { width: "100%" }, 
+                                500
+                            );
+                        }
 
-                    if (urlReload && urlReload.trim() !== "") {
-                        window.location.href = urlReload;
+                        window.location.href = reloadUrl;
+
+                    } else {
+                        console.log("wpLingua ERROR: Load in progress - Invalid reload URL");
                     }
                 }
             });
+
+        } else {
+            console.log("wpLingua ERROR: Load in progress - Invalid load URL");
         }
 
     }
+
 
     /**
      * Update percentage for the load in progress bar
@@ -124,7 +142,10 @@ jQuery(document).ready(function ($) {
         if (percent < 99) {
             percent++;
             $("#wplng-in-progress-percent").html(percent);
-            $("#wplng-progress-bar-value").attr("style", "width: " + percent.toString() + "%");
+            $("#wplng-progress-bar-value").animate(
+                { width: percent.toString() + "%" }, 
+                500
+            );
         }
     }
 

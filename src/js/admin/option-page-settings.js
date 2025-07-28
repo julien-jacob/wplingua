@@ -27,7 +27,7 @@ jQuery(document).ready(function ($) {
 
     if ($("#wplng-notice-first-loading-loading").length) {
 
-        let loadUrl = $("#wplng-notice-first-loading-loading").attr("wplng-load");
+        let loadUrl = $("#wplng-notice-first-loading-loading").attr("data-wplng-url-first-load");
 
         if (loadUrl) {
             $.ajax({

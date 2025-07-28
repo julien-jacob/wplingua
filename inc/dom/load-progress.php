@@ -17,66 +17,9 @@ function wplng_dom_load_progress( $dom, $args ) {
 
 	wplng_args_setup( $args );
 
-	if ( 'disabled' === $args['load'] ) {
-
+	if ( 'progress' !== $args['load'] ) {
 		return $dom;
-
-	} elseif ( 'loading' === $args['load'] ) {
-
-		/**
-		 * Current page identified as launching in hidden iframe in "in progress" mode
-		 */
-
-		$html  = '<!DOCTYPE html>' . PHP_EOL;
-		$html .= '<html lang="en">' . PHP_EOL;
-		$html .= '	<head>' . PHP_EOL;
-		$html .= '		<meta charset="UTF-8">' . PHP_EOL;
-		$html .= '		<title>Translations load</title>' . PHP_EOL;
-		$html .= '	</head>' . PHP_EOL;
-		$html .= '	<body>' . PHP_EOL;
-		$html .= '		<h1>Translations load</h1>' . PHP_EOL;
-		$html .= '	</body>' . PHP_EOL;
-		$html .= '</html>';
-
-		$dom = wplng_sdh_str_get_html( $html );
-
-		return $dom;
-
-	} elseif ( 'enabled' === $args['load'] ) {
-
-		/**
-		 * Current page identified as requiring “in progress” mode
-		 */
-
-		$redirect_query_arg = array();
-		$redirect_needed    = false;
-
-		if ( $args['mode'] !== 'vanilla' ) {
-			$redirect_query_arg['wplng-mode'] = $args['mode'];
-			$redirect_needed                  = true;
-		}
-
-		if ( ! wplng_get_api_overloaded() ) {
-
-			$redirect_query_arg['wplng-load'] = 'progress';
-			$redirect_query_arg['nocache']    = (string) time() . (string) rand( 100, 999 );
-			$redirect_needed                  = true;
-		}
-
-		if ( $redirect_needed ) {
-			wp_safe_redirect(
-				add_query_arg(
-					$redirect_query_arg,
-					$args['url_current']
-				),
-				302
-			);
-			exit;
-		}
-
-		return $dom;
-
-	}
+	} 
 
 	/**
 	 * Add effect on unknow texts and translate know texts
@@ -157,13 +100,16 @@ function wplng_dom_load_progress( $dom, $args ) {
 	 * Create the html of message bar
 	 */
 
-	$number_of_texts           = (int) $args['count_texts'] + 1;
+	$number_of_texts           = (int) $args['count_texts'];
 	$numer_of_translated_texts = count( $args['translations'] );
-	$numer_of_unknow_texts     = (int) $number_of_texts - $numer_of_translated_texts;
+	$numer_of_unknow_texts     = $args['count_texts_unknow'];
 
 	// Calculate percentage
 
-	$percentage = (int) ( ( $numer_of_translated_texts / $number_of_texts ) * 100 );
+	$percentage = 0;
+	if ($number_of_texts > 0) {
+		$percentage = (int) ( ( $numer_of_translated_texts / $number_of_texts ) * 100 );
+	}
 
 	if ( $percentage < 1 ) {
 		$percentage = 1;
@@ -181,7 +127,7 @@ function wplng_dom_load_progress( $dom, $args ) {
 		);
 	}
 
-	if ( $numer_of_unknow_texts > 20
+	if ( $numer_of_unknow_texts > 60
 		&& ! wplng_get_api_overloaded()
 		&& wplng_api_feature_is_allow( 'detection' )
 	) {
@@ -210,8 +156,8 @@ function wplng_dom_load_progress( $dom, $args ) {
 
 	$html  = '<div';
 	$html .= ' id="wplng-in-progress-container"';
-	$html .= ' wplng-reload="' . esc_url( $url_reload ) . '"';
-	$html .= ' wplng-load="' . esc_url( $url_load ) . '"';
+	$html .= ' data-wplng-url-reload="' . esc_url( $url_reload ) . '"';
+	$html .= ' data-wplng-url-load="' . esc_url( $url_load ) . '"';
 	$html .= '>';
 
 	$html .= '<div id="wplng-in-progress-message">';

@@ -17,10 +17,6 @@ function wplng_dom_replace_links( $dom, $args ) {
 
 	wplng_args_setup( $args );
 
-	if ( 'loading' === $args['load'] ) {
-		return $dom;
-	}
-
 	/**
 	 * Translate and replace links
 	 */

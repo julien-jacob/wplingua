@@ -64,7 +64,15 @@ function wplng_option_page_settings() {
 					<th scope="row"><span class="dashicons dashicons-admin-settings"></span> <?php esc_html_e( 'API features', 'wplingua' ); ?></th>
 					<td>
 						<fieldset>
-							<?php wplng_settings_part_features(); ?>
+							<?php wplng_settings_part_features_api(); ?>
+						</fieldset>
+					</td>
+				</tr>
+				<tr style="display: none;">
+					<th scope="row"><span class="dashicons dashicons-admin-settings"></span> <?php esc_html_e( 'Features', 'wplingua' ); ?></th>
+					<td>
+						<fieldset>
+							<?php wplng_settings_part_features_plugin(); ?>
 						</fieldset>
 					</td>
 				</tr>
@@ -155,7 +163,7 @@ function wplng_settings_part_first_use() {
 	);
 
 	?>
-	<div class="wplng-notice notice notice-info" id="wplng-notice-first-loading-loading" wplng-load="<?php echo esc_url( $url_front_page_load ); ?>">		
+	<div class="wplng-notice notice notice-info" id="wplng-notice-first-loading-loading" data-wplng-url-first-load="<?php echo esc_url( $url_front_page_load ); ?>">
 		<h2><span class="dashicons dashicons-update wplng-spin"></span> <?php esc_html_e( 'Your website is being translated and will be ready soon.', 'wplingua' ); ?></h2>
 		<p><?php esc_html_e( 'In just a few seconds, your website will be multilingual, and search engines will be able to index these new pages. wpLingua detects all the texts on your pages and offers you a first automatically generated translation. All translations are editable: open the visual editor from the administration bar and edit them simply by clicking on the texts on your website.', 'wplingua' ); ?></p>
 	</div>
@@ -402,11 +410,11 @@ function wplng_settings_part_languages_target() {
 
 
 /**
- * Print HTML subsection of Option page : wpLingua Settings - Feature
+ * Print HTML subsection of Option page : wpLingua Settings - API feature
  *
  * @return void
  */
-function wplng_settings_part_features() {
+function wplng_settings_part_features_api() {
 
 	$api_features = wplng_get_api_feature();
 
@@ -420,7 +428,7 @@ function wplng_settings_part_features() {
 
 	<fieldset>
 		<input type="checkbox" id="wplng_commercial_use" name="wplng_commercial_use" value="1" <?php checked( 1, in_array( 'commercial', $api_features ), true ); ?> disabled="disabled"/>
-		<label for="wplng_commercial_use"> <?php esc_html_e( 'API feature: Use wpLingua on commercial website', 'wplingua' ); ?></label> 
+		<label for="wplng_commercial_use">PREMIUM - <?php esc_html_e( 'Use wpLingua on commercial website', 'wplingua' ); ?></label> 
 		<span title="<?php esc_attr_e( 'Click to expand', 'wplingua' ); ?>" wplng-help-box="#wplng-hb-feature-commercial"></span>
 	</fieldset>
 
@@ -428,9 +436,7 @@ function wplng_settings_part_features() {
 		<p>
 			<?php esc_html_e( 'Use of the free wpLingua API keys is reserved for personal blogs and non-profit websites; paid subscriptions are available for companies and commercial websites.', 'wplingua' ); ?>
 		</p>
-
 		<hr>
-
 		<p>
 			<a href="https://wplingua.com/pricing/" target="_blank">
 				<?php esc_attr_e( 'Upgrade your API key on wplingua.com', 'wplingua' ); ?>
@@ -442,7 +448,7 @@ function wplng_settings_part_features() {
 
 	<fieldset>
 		<input type="checkbox" id="wplng_translate_search" name="wplng_translate_search" value="1" <?php checked( 1, get_option( 'wplng_translate_search' ) && in_array( 'search', $api_features ), true ); ?>  <?php disabled( false, in_array( 'search', $api_features ), true ); ?>/>
-		<label for="wplng_translate_search"> <?php esc_html_e( 'API feature: Search from translated languages', 'wplingua' ); ?></label> 
+		<label for="wplng_translate_search">PREMIUM - <?php esc_html_e( 'Search from translated languages', 'wplingua' ); ?></label> 
 		<span title="<?php esc_attr_e( 'Click to expand', 'wplingua' ); ?>" wplng-help-box="#wplng-hb-feature-search"></span>
 	</fieldset>
 
@@ -462,6 +468,38 @@ function wplng_settings_part_features() {
 		</p>
 		
 	</div>
+	<?php
+}
+
+
+/**
+ * Print HTML subsection of Option page : wpLingua Settings - Plugin feature
+ *
+ * @return void
+ */
+function wplng_settings_part_features_plugin() {
+
+	?>
+	<p><strong><?php esc_html_e( 'Plugin translation features: ', 'wplingua' ); ?></strong></p>
+	<hr>
+
+	<fieldset>
+		<input type="checkbox" id="wplng_load_in_progress" name="wplng_load_in_progress" value="1" <?php checked( 1, get_option( 'wplng_load_in_progress' ), true ); ?>/>
+		<label for="wplng_load_in_progress">BETA - <?php esc_html_e( 'Progress bar for editors', 'wplingua' ); ?></label> 
+		<span title="<?php esc_attr_e( 'Click to expand', 'wplingua' ); ?>" wplng-help-box="#wplng-hb-feature-load-in-progress"></span>
+	</fieldset>
+
+	<div class="wplng-help-box" id="wplng-hb-feature-load-in-progress">
+		<p>
+			<?php esc_html_e( 'Enable progress bar: Smooth translations loading for editors', 'wplingua' ); ?>
+		</p>
+		<hr>
+		<p>
+			<?php esc_html_e( 'Activate a progress bar when a page requires the generation of more than 20 new string translations. This feature only applies to connected editors.', 'wplingua' ); ?>
+		</p>
+		
+	</div>
+	
 	<?php
 }
 

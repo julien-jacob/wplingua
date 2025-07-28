@@ -17,10 +17,6 @@ function wplng_dom_translate_js( $dom, $args ) {
 
 	wplng_args_setup( $args );
 
-	if ( 'loading' === $args['load'] ) {
-		return $dom;
-	}
-
 	foreach ( $dom->find( 'script' ) as $element ) {
 		$element->innertext = wplng_translate_js(
 			$element->innertext,
