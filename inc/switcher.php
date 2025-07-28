@@ -464,7 +464,7 @@ function wplng_get_switcher_html( $arg = array() ) {
 		$html .= '<a';
 		$html .= ' class="wplng-language website after"';
 		$html .= ' href="' . esc_url( $url_website ) . '"';
-		$html .= ' onclick="event.preventDefault();">';
+		$html .= ' onclick="event.preventDefault();"';
 		$html .= '>';
 
 	} else {
