@@ -61,7 +61,7 @@ function wplng_translate_html( $html, $args = array() ) {
 		$html .= '		<title>wpLingua - Translations load</title>' . PHP_EOL;
 		$html .= '	</head>' . PHP_EOL;
 		$html .= '	<body>' . PHP_EOL;
-		$html .= '		<h1>Translations load</h1>' . PHP_EOL;
+		$html .= '		<h1>wpLingua - Translations load</h1>' . PHP_EOL;
 		$html .= '	</body>' . PHP_EOL;
 		$html .= '</html>';
 
