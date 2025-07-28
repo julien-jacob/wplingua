@@ -112,7 +112,10 @@ jQuery(document).ready(function ($) {
                             && (reloadUrl.indexOf("&wplng-load=") === -1)
                         ) {
                             $("#wplng-in-progress-percent").html("100");
-                            $("#wplng-progress-bar-value").attr("style", "width: 100%");
+                            $("#wplng-progress-bar-value").animate(
+                                { width: "100%" }, 
+                                500
+                            );
                         }
 
                         window.location.href = reloadUrl;
@@ -139,7 +142,10 @@ jQuery(document).ready(function ($) {
         if (percent < 99) {
             percent++;
             $("#wplng-in-progress-percent").html(percent);
-            $("#wplng-progress-bar-value").attr("style", "width: " + percent.toString() + "%");
+            $("#wplng-progress-bar-value").animate(
+                { width: percent.toString() + "%" }, 
+                500
+            );
         }
     }
 
