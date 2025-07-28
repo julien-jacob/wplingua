@@ -336,7 +336,7 @@ function wplng_args_update_from_texts( &$args, $texts ) {
 	 * Define $max_translations
 	 */
 
-	$max_translations = WPLNG_MAX_TRANSLATIONS + 1;
+	$max_translations = WPLNG_MAX_TRANSLATIONS_STR + 1;
 
 	if ( $args['load'] === 'enabled'
 		&& $args['count_texts_unknow'] > 20
