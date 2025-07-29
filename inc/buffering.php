@@ -237,7 +237,6 @@ function wplng_ob_callback_sitemap_xml( $content ) {
 	foreach ( $url_nodes as $url_node ) {
 
 		// Get original URL
-
 		$loc_node = $xpath->query( 'sm:loc', $url_node )->item( 0 );
 
 		if ( empty( $loc_node ) ) {
@@ -251,7 +250,6 @@ function wplng_ob_callback_sitemap_xml( $content ) {
 		}
 
 		// Add link for original language
-
 		$link_node = $dom->createElement( 'xhtml:link' );
 		$link_node->setAttribute( 'rel', 'alternate' );
 		$link_node->setAttribute( 'hreflang', esc_attr( $language_website_id ) );
@@ -259,7 +257,6 @@ function wplng_ob_callback_sitemap_xml( $content ) {
 		$url_node->appendChild( $link_node );
 
 		// Add link for target languages
-
 		foreach ( $languages_target_ids as $language_id ) {
 
 			$translated_url = wplng_url_translate( $url_original, $language_id );
