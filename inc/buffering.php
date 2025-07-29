@@ -107,6 +107,10 @@ function wplng_ob_start() {
 
 		ob_start( 'wplng_ob_callback_ajax' );
 
+	} elseif ( wplng_url_is_sitemap_xml() ) {
+
+		ob_start( 'wplng_ob_callback_sitemap_xml' );
+
 	} else {
 
 		/**
@@ -135,6 +139,89 @@ function wplng_ob_start() {
 
 		ob_start( 'wplng_ob_callback_page' );
 	}
+}
+
+
+/**
+ * Callback function for output buffering to process and modify sitemap XML content.
+ *
+ * @param string $content The original XML content.
+ * @return string The modified XML content with added <xhtml:link> tags or the original content if no changes are made.
+ */
+function wplng_ob_callback_sitemap_xml( $content ) {
+
+	// Return the content as is if it's empty or not valid XML.
+	if ( empty( $content ) || ! wplng_str_is_xml( $content ) ) {
+		return $content;
+	}
+
+	// Load the XML content into a DOMDocument.
+	$dom                     = new DOMDocument( '1.0', 'UTF-8' );
+	$dom->preserveWhiteSpace = false;
+	$dom->formatOutput       = true;
+
+	if ( ! @$dom->loadXML( $content ) ) {
+		return $content;
+	}
+
+	// Get language data.
+	$language_website_id  = wplng_get_language_website_id();
+	$languages_target_ids = wplng_get_languages_target_ids();
+
+	if ( empty( $language_website_id )
+		|| empty( $languages_target_ids )
+	) {
+		return $content;
+	}
+
+	// Register namespaces and prepare XPath.
+	$xpath = new DOMXPath( $dom );
+	$xpath->registerNamespace( 'sm', 'http://www.sitemaps.org/schemas/sitemap/0.9' );
+	$xpath->registerNamespace( 'xhtml', 'http://www.w3.org/1999/xhtml' );
+
+	// Get all <url> nodes.
+	$url_nodes = $xpath->query( '//sm:url' );
+
+	if ( empty( $url_nodes ) ) {
+		return $content;
+	}
+
+	foreach ( $url_nodes as $url_node ) {
+
+		$loc_node = $xpath->query( 'sm:loc', $url_node )->item( 0 );
+
+		if ( ! $loc_node ) {
+			continue;
+		}
+
+		$url_original = trim( $loc_node->nodeValue );
+
+		if ( ! wplng_url_is_translatable( $url_original ) ) {
+			continue;
+		}
+
+		// Array of all languages: original + targets.
+		$all_languages = array_merge(
+			array( $language_website_id ),
+			$languages_target_ids
+		);
+
+		foreach ( $all_languages as $language_id ) {
+
+			$translated_url = ( $language_id === $language_website_id )
+				? $url_original
+				: wplng_url_translate( $url_original, $language_id );
+
+			$link_node = $dom->createElement( 'xhtml:link' );
+			$link_node->setAttribute( 'rel', 'alternate' );
+			$link_node->setAttribute( 'hreflang', esc_attr( $language_id ) );
+			$link_node->setAttribute( 'href', esc_url( $translated_url ) );
+
+			$url_node->appendChild( $link_node );
+		}
+	}
+
+	return $dom->saveXML();
 }
 
 
