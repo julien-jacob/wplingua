@@ -155,22 +155,20 @@ function wplng_ob_callback_sitemap_xml( $content ) {
 		return $content;
 	}
 
+	// Get language data.
+	$language_website_id  = wplng_get_language_website_id();
+	$languages_target_ids = wplng_get_languages_target_ids();
+
+	if ( empty( $language_website_id ) || empty( $languages_target_ids ) ) {
+		return $content;
+	}
+
 	// Load the XML content into a DOMDocument.
 	$dom                     = new DOMDocument( '1.0', 'UTF-8' );
 	$dom->preserveWhiteSpace = false;
 	$dom->formatOutput       = true;
 
 	if ( ! @$dom->loadXML( $content ) ) {
-		return $content;
-	}
-
-	// Get language data.
-	$language_website_id  = wplng_get_language_website_id();
-	$languages_target_ids = wplng_get_languages_target_ids();
-
-	if ( empty( $language_website_id )
-		|| empty( $languages_target_ids )
-	) {
 		return $content;
 	}
 
@@ -188,35 +186,38 @@ function wplng_ob_callback_sitemap_xml( $content ) {
 
 	foreach ( $url_nodes as $url_node ) {
 
+		// Get original URL
+
 		$loc_node = $xpath->query( 'sm:loc', $url_node )->item( 0 );
 
-		if ( ! $loc_node ) {
+		if ( empty( $loc_node ) ) {
 			continue;
 		}
 
 		$url_original = trim( $loc_node->nodeValue );
 
-		if ( ! wplng_url_is_translatable( $url_original ) ) {
+		if ( '' === $url_original || ! wplng_url_is_translatable( $url_original ) ) {
 			continue;
 		}
 
-		// Array of all languages: original + targets.
-		$all_languages = array_merge(
-			array( $language_website_id ),
-			$languages_target_ids
-		);
+		// Add link for original language
 
-		foreach ( $all_languages as $language_id ) {
+		$link_node = $dom->createElement( 'xhtml:link' );
+		$link_node->setAttribute( 'rel', 'alternate' );
+		$link_node->setAttribute( 'hreflang', esc_attr( $language_website_id ) );
+		$link_node->setAttribute( 'href', esc_url( $url_original ) );
+		$url_node->appendChild( $link_node );
 
-			$translated_url = ( $language_id === $language_website_id )
-				? $url_original
-				: wplng_url_translate( $url_original, $language_id );
+		// Add link for target languages
+		
+		foreach ( $languages_target_ids as $language_id ) {
+
+			$translated_url = wplng_url_translate( $url_original, $language_id );
 
 			$link_node = $dom->createElement( 'xhtml:link' );
 			$link_node->setAttribute( 'rel', 'alternate' );
 			$link_node->setAttribute( 'hreflang', esc_attr( $language_id ) );
 			$link_node->setAttribute( 'href', esc_url( $translated_url ) );
-
 			$url_node->appendChild( $link_node );
 		}
 	}
