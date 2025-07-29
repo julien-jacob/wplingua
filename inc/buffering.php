@@ -143,6 +143,56 @@ function wplng_ob_start() {
 
 
 /**
+ * wpLingua OB Callback function : AJAX call
+ *
+ * @param string $output
+ * @return string
+ */
+function wplng_ob_callback_ajax( $output ) {
+
+	global $wplng_request_uri;
+
+	if ( wplng_str_is_json( $output ) ) {
+
+		$output_translated = wplng_translate_json( $output );
+
+	} elseif ( wplng_str_is_html( $output ) ) {
+
+		$output_translated = wplng_translate_html( $output );
+
+	} else {
+		$output_translated = $output;
+	}
+
+	// Print debug data in debug.log file
+	if ( true === WPLNG_DEBUG_AJAX ) {
+
+		$action = 'UNKNOW';
+		if ( ! empty( $_POST['action'] ) && is_string( $_POST['action'] ) ) {
+			$action = $_POST['action'];
+		}
+
+		$debug = array(
+			'title'       => 'wpLingua AJAX debug',
+			'action'      => $action,
+			'request_uri' => $wplng_request_uri,
+			'value'       => $output,
+			'translated'  => $output_translated,
+		);
+
+		error_log(
+			var_export(
+				$debug,
+				true
+			)
+		);
+	}
+
+	return $output_translated;
+}
+
+
+/**
  * Callback function for output buffering to process and modify sitemap XML content.
  *
  * @param string $content The original XML content.
@@ -209,7 +259,7 @@ function wplng_ob_callback_sitemap_xml( $content ) {
 		$url_node->appendChild( $link_node );
 
 		// Add link for target languages
-		
+
 		foreach ( $languages_target_ids as $language_id ) {
 
 			$translated_url = wplng_url_translate( $url_original, $language_id );
@@ -291,54 +341,4 @@ function wplng_ob_callback_page( $content ) {
 	}
 
 	return $content;
-}
-
-
-/**
- * wpLingua OB Callback function : AJAX call
- *
- * @param string $output
- * @return string
- */
-function wplng_ob_callback_ajax( $output ) {
-
-	global $wplng_request_uri;
-
-	if ( wplng_str_is_json( $output ) ) {
-
-		$output_translated = wplng_translate_json( $output );
-
-	} elseif ( wplng_str_is_html( $output ) ) {
-
-		$output_translated = wplng_translate_html( $output );
-
-	} else {
-		$output_translated = $output;
-	}
-
-	// Print debug data in debug.log file
-	if ( true === WPLNG_DEBUG_AJAX ) {
-
-		$action = 'UNKNOW';
-		if ( ! empty( $_POST['action'] ) && is_string( $_POST['action'] ) ) {
-			$action = $_POST['action'];
-		}
-
-		$debug = array(
-			'title'       => 'wpLingua AJAX debug',
-			'action'      => $action,
-			'request_uri' => $wplng_request_uri,
-			'value'       => $output,
-			'translated'  => $output_translated,
-		);
-
-		error_log(
-			var_export(
-				$debug,
-				true
-			)
-		);
-	}
-
-	return $output_translated;
 }
