@@ -410,10 +410,7 @@ function wplng_url_is_sitemap_xml( $url = '' ) {
 	$parsed_url = wp_parse_url( $url );
 	$url_path   = isset( $parsed_url['path'] ) ? $parsed_url['path'] : '';
 
-	// Check if the URL matches common sitemap patterns
-	$is_sitemap = preg_match( '#sitemap(_index)?\.xml$#', $url_path )
-		|| preg_match( '#sitemap-[a-z0-9_-]+\.xml$#i', $url_path )
-		|| preg_match( '#[a-z0-9_-]+-sitemap\.xml$#i', $url_path );
+	$is_sitemap = str_contains( $url_path, 'sitemap' ) && str_contains( $url_path, '.xml' );
 
 	/**
 	 * Filter to allow customization of the sitemap detection logic
