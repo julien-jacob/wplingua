@@ -222,6 +222,8 @@ function wplng_ob_callback_sitemap_xml( $content ) {
 		return $content;
 	}
 
+	$signature = '<!-- XML Sitemap is made multilingual by wpLingua -->' . PHP_EOL;
+
 	// Register namespaces and prepare XPath.
 	$xpath = new DOMXPath( $dom );
 	$xpath->registerNamespace( 'sm', 'http://www.sitemaps.org/schemas/sitemap/0.9' );
@@ -231,7 +233,7 @@ function wplng_ob_callback_sitemap_xml( $content ) {
 	$url_nodes = $xpath->query( '//sm:url' );
 
 	if ( empty( $url_nodes ) ) {
-		return $content;
+		return $content . $signature;
 	}
 
 	foreach ( $url_nodes as $url_node ) {
@@ -269,7 +271,13 @@ function wplng_ob_callback_sitemap_xml( $content ) {
 		}
 	}
 
-	return $dom->saveXML();
+	$sitemap = $dom->saveXML();
+
+	if ( empty( $sitemap ) ) {
+		return $content;
+	}
+
+	return $sitemap . $signature;
 }
 
 
