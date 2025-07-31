@@ -201,7 +201,10 @@ function wplng_ob_callback_ajax( $output ) {
 function wplng_ob_callback_sitemap_xml( $content ) {
 
 	// Return the content as is if it's empty or not valid XML.
-	if ( empty( $content ) || ! wplng_str_is_xml( $content ) ) {
+	if ( ! get_option( 'wplng_sitemap_xml', false )
+		|| empty( $content )
+		|| ! wplng_str_is_xml( $content )
+	) {
 		return $content;
 	}
 
