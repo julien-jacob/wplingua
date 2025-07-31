@@ -32,8 +32,8 @@ function wplng_option_page_settings_assets( $hook ) {
 	 */
 
 	wp_enqueue_script(
-		'wplingua-help-box',
-		plugins_url() . '/wplingua/assets/js/admin/help-box.js',
+		'wplingua-option',
+		plugins_url() . '/wplingua/assets/js/admin/option-page.js',
 		array( 'jquery' ),
 		WPLNG_PLUGIN_VERSION
 	);
@@ -83,8 +83,8 @@ function wplng_option_page_register_assets( $hook ) {
 	 */
 
 	wp_enqueue_script(
-		'wplingua-help-box',
-		plugins_url() . '/wplingua/assets/js/admin/help-box.js',
+		'wplingua-option',
+		plugins_url() . '/wplingua/assets/js/admin/option-page.js',
 		array( 'jquery' ),
 		WPLNG_PLUGIN_VERSION
 	);
@@ -141,8 +141,8 @@ function wplng_option_page_switcher_assets( $hook ) {
 	);
 
 	wp_enqueue_script(
-		'wplingua-help-box',
-		plugins_url() . '/wplingua/assets/js/admin/help-box.js',
+		'wplingua-option',
+		plugins_url() . '/wplingua/assets/js/admin/option-page.js',
 		array( 'jquery' ),
 		WPLNG_PLUGIN_VERSION
 	);
