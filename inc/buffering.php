@@ -208,6 +208,16 @@ function wplng_ob_callback_sitemap_xml( $content ) {
 		return $content;
 	}
 
+	// Check if multilingua XML sitemap is enabled
+	$sitemap_xml_enabled = apply_filters(
+		'wplng_enable_sitemap_xml_feature',
+		get_option( 'wplng_sitemap_xml', false )
+	);
+
+	if ( empty( $sitemap_xml_enabled ) ) {
+		return $content;
+	}
+
 	// Get language data.
 	$language_website_id  = wplng_get_language_website_id();
 	$languages_target_ids = wplng_get_languages_target_ids();
