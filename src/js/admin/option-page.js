@@ -17,6 +17,10 @@
 
 jQuery(document).ready(function ($) {
 
+    /**
+     * Help Box
+     */
+
     $("[wplng-help-box], [wplng-help-box-right]").click(function () {
 
         let selector = $(this).attr("wplng-help-box");
@@ -37,5 +41,24 @@ jQuery(document).ready(function ($) {
         }
 
     })
+
+    /**
+     * Show / hide BETA features
+     * Use konami code : ↑ ↑ ↓ ↓ ← → ← → B A
+     */
+
+    let wplngBetaToggleKey = [38, 38, 40, 40, 37, 39, 37, 39, 66, 65];
+    let wplngBetaToggleCounter = 0;
+
+    $(document).keydown(function (e) {
+        if (e.keyCode === wplngBetaToggleKey[wplngBetaToggleCounter++]) {
+            if (wplngBetaToggleCounter === wplngBetaToggleKey.length) {
+                wplngBetaToggleCounter = 0;
+                $(".wplng-beta-hidden").toggle();
+            }
+        } else {
+            wplngBetaToggleCounter = 0;
+        }
+    });
 
 }); // End jQuery loaded event

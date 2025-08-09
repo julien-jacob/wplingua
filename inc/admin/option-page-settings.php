@@ -68,7 +68,7 @@ function wplng_option_page_settings() {
 						</fieldset>
 					</td>
 				</tr>
-				<tr>
+				<tr class="wplng-beta-hidden" style="display: none;">
 					<th scope="row"></th>
 					<td>
 						<fieldset>
