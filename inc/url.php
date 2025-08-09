@@ -379,3 +379,45 @@ function wplng_get_url_current_for_language( $language_id ) {
 		$language_id
 	);
 }
+
+
+/**
+ * Determines whether a given URL points to a sitemap XML file.
+ *
+ * This function checks if the URL matches common sitemap naming patterns such as:
+ * - sitemap.xml
+ * - sitemap_index.xml
+ * - sitemap-posts.xml
+ * - posts-sitemap.xml
+ * and similar variations.
+ *
+ * If no URL is provided, the current URL will be used.
+ * The check ignores query parameters and anchors.
+ *
+ * @param string $url The URL to check. Defaults to the current URL if empty.
+ * @return bool True if the URL is identified as a sitemap, false otherwise.
+ */
+function wplng_url_is_sitemap_xml( $url = '' ) {
+
+	if ( '' === $url ) {
+		$url = wplng_get_url_current();
+	}
+
+	// Normalize the URL: convert to lowercase
+	$url = strtolower( $url );
+
+	// Remove GET parameters and anchors
+	$parsed_url = wp_parse_url( $url );
+	$url_path   = isset( $parsed_url['path'] ) ? $parsed_url['path'] : '';
+
+	// Check if the URL matches common sitemap patterns
+	$is_sitemap = str_contains( $url_path, 'sitemap' ) && str_contains( $url_path, '.xml' );
+
+	/**
+	 * Filter to allow customization of the sitemap detection logic
+	 *
+	 * @param bool   $is_sitemap Whether the URL is a sitemap.
+	 * @param string $url        The URL being checked.
+	 */
+	return apply_filters( 'wplng_url_is_sitemap_xml', $is_sitemap, $url );
+}

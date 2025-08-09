@@ -195,6 +195,35 @@ function wplng_str_is_html( $str ) {
 
 
 /**
+ * Checks whether a string is a valid XML.
+ *
+ * @param string $string The string to validate.
+ * @return bool Returns true if the string is valid XML, false otherwise.
+ */
+function wplng_str_is_xml( $string ) {
+    // Return false if the input is empty or not a string.
+    if ( empty( $string ) || ! is_string( $string ) ) {
+        return false;
+    }
+
+    // Suppress XML parsing errors to avoid warnings/notices.
+    libxml_use_internal_errors( true );
+
+    // Try to load the string as XML.
+    $xml = simplexml_load_string( $string );
+
+    // Determine if parsing was successful.
+    $is_valid_xml = ( $xml !== false );
+
+    // Clear any accumulated libxml errors.
+    libxml_clear_errors();
+    libxml_use_internal_errors( false );
+
+    return $is_valid_xml;
+}
+
+
+/**
  * Return true is $str is a JSON
  *
  * @param string $str
