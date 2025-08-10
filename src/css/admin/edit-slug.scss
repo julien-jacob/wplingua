@@ -2,6 +2,24 @@
 @import "../dashicons-spin";
 @import "admin-footer";
 
+#wpbody #wpbody-content {
+    h1.wp-heading-inline {
+        &::before {
+            content: "\f326";
+            font: normal 20px/1 dashicons;
+            speak: never;
+            display: inline-block;
+            padding-right: 3px;
+            font-size: 1.1em;
+            vertical-align: bottom;
+        }
+    }
+
+    #poststuff {
+        padding-top: 20px;
+    }
+}
+
 #post-body-content {
     display: none;
 }
