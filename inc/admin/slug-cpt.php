@@ -16,10 +16,10 @@ function wplng_register_post_type_slug() {
 		'wplng_slug',
 		array(
 			'labels'              => array(
-				'name'          => __( 'Website slugs', 'wplingua' ),
-				'singular_name' => __( 'Website slug', 'wplingua' ),
-				'all_items'     => __( 'All slugs', 'wplingua' ),
-				'edit_item'     => __( 'Edit slug', 'wplingua' ),
+				'name'          => __( 'wpLingua - Website slugs', 'wplingua' ),
+				'singular_name' => __( 'wpLingua - Website slug', 'wplingua' ),
+				'all_items'     => __( 'wpLingua - All slugs', 'wplingua' ),
+				'edit_item'     => __( 'wpLingua - Edit slug', 'wplingua' ),
 				'menu_name'     => __( 'Website slugs', 'wplingua' ),
 			),
 			'public'              => false,
