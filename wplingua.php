@@ -224,7 +224,7 @@ function wplng_start() {
 		add_action( 'admin_head-edit.php', 'wplng_translation_status_style', 10, 2 );
 
 		/**
-		 * wplng_translation : CPT, taxo, meta
+		 * wplng_slug : CPT, taxo, meta
 		 */
 
 		// Register wplng_translation CPT
