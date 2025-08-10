@@ -1,0 +1,66 @@
+@import "../header";
+@import "admin-footer";
+
+/**
+* wpLingua: Translation status design
+*/
+
+.manage-column.column-wplng_status {
+    width: 20px;
+    padding: 8px 0 0 8px;
+    font-size: 0;
+    vertical-align: middle;
+    box-sizing: content-box;
+}
+
+.wp-list-table tr td.wplng_status.column-wplng_status::before {
+    content: "" !important;
+    display: none;
+}
+
+#the-list .type-wplng_translation .wplng_status.column-wplng_status {
+    padding: 8px 4px;
+}
+
+.manage-column.column-wplng_status::before {
+    content: "\f326";
+    font-family: dashicons;
+    font-size: 16px;
+}
+
+#the-list .type-wplng_translation .wplng-status-text {
+    color: #1d2327;
+}
+
+#the-list .type-wplng_translation .wplng-status-text .wplng-status {
+    font-weight: 600;
+}
+
+/* ------------------------------- */
+
+#the-list .type-wplng_translation .wplng-status.wplng-status-full-review  {
+    color: #00a32a;
+}
+
+#the-list .type-wplng_translation .wplng-status.wplng-status-has-review  {
+    color: #72aee6;
+}
+
+#the-list .type-wplng_translation .wplng-status.wplng-status-unreview {
+    color: #c3c4c7;
+}
+
+#the-list .type-wplng_translation .wplng-status-text .wplng-status.wplng-status-unreview {
+    color: #1d2327;
+}
+
+/* ------------------------------- */
+
+#the-list .type-wplng_translation.wplng-status-full-review .wplng-status.wplng-status-has-review,
+#the-list .type-wplng_translation.wplng-status-full-review .wplng-status.wplng-status-unreview,
+#the-list .type-wplng_translation.wplng-status-has-review .wplng-status.wplng-status-full-review,
+#the-list .type-wplng_translation.wplng-status-has-review .wplng-status.wplng-status-unreview,
+#the-list .type-wplng_translation.wplng-status-unreview .wplng-status.wplng-status-full-review,
+#the-list .type-wplng_translation.wplng-status-unreview .wplng-status.wplng-status-has-review {
+    display: none;
+}

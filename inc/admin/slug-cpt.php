@@ -21,6 +21,7 @@ function wplng_register_post_type_slug() {
 				'all_items'     => __( 'wpLingua - All slugs', 'wplingua' ),
 				'edit_item'     => __( 'wpLingua - Edit slug', 'wplingua' ),
 				'menu_name'     => __( 'Website slugs', 'wplingua' ),
+				'search_items'  => __( 'Search slugs', 'wplingua' ),
 			),
 			'public'              => false,
 			'publicly_queryable'  => false,
@@ -440,88 +441,4 @@ function wplng_post_row_actions_slug_status( $actions, $post ) {
 	$actions['wplng-status-text'] = $html;
 
 	return $actions;
-}
-
-
-/**
- * Add inline CSS for status on slugs
- *
- * @return void
- */
-function wplng_slug_status_style() {
-
-	global $typenow;
-
-	if ( 'wplng_slug' !== $typenow ) {
-		return;
-	}
-
-	?>
-	<style>
-
-		/**
-		* wpLingua: slug status design
-		*/
-
-		.manage-column.column-wplng_status {
-			width: 20px;
-			padding: 8px 0 0 8px;
-			font-size: 0;
-			vertical-align: middle;
-			box-sizing: content-box;
-		}
-
-		.wp-list-table tr td.wplng_status.column-wplng_status::before {
-			content: "" !important;
-			display: none;
-		}
-
-		#the-list .type-wplng_slug .wplng_status.column-wplng_status {
-			padding: 8px 4px;
-		}
-
-		.manage-column.column-wplng_status::before {
-			content: "\f326";
-			font-family: dashicons;
-			font-size: 16px;
-		}
-
-		#the-list .type-wplng_slug .wplng-status-text {
-			color: #1d2327;
-		}
-
-		#the-list .type-wplng_slug .wplng-status-text .wplng-status {
-			font-weight: 600;
-		}
-
-		/* ------------------------------- */
-
-		#the-list .type-wplng_slug .wplng-status.wplng-status-full-review  {
-			color: #00a32a;
-		}
-
-		#the-list .type-wplng_slug .wplng-status.wplng-status-has-review  {
-			color: #72aee6;
-		}
-
-		#the-list .type-wplng_slug .wplng-status.wplng-status-unreview {
-			color: #c3c4c7;
-		}
-
-		#the-list .type-wplng_slug .wplng-status-text .wplng-status.wplng-status-unreview {
-			color: #1d2327;
-		}
-		
-		/* ------------------------------- */
-
-		#the-list .type-wplng_slug.wplng-status-full-review .wplng-status.wplng-status-has-review,
-		#the-list .type-wplng_slug.wplng-status-full-review .wplng-status.wplng-status-unreview,
-		#the-list .type-wplng_slug.wplng-status-has-review .wplng-status.wplng-status-full-review,
-		#the-list .type-wplng_slug.wplng-status-has-review .wplng-status.wplng-status-unreview,
-		#the-list .type-wplng_slug.wplng-status-unreview .wplng-status.wplng-status-full-review,
-		#the-list .type-wplng_slug.wplng-status-unreview .wplng-status.wplng-status-has-review {
-			display: none;
-		}
-	</style>
-	<?php
 }
