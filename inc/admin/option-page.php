@@ -145,14 +145,18 @@ function wplng_register_settings() {
 
 
 /**
- * Customize the admin footer text displayed on wpLingua option pages.
+ * Return true if is a wpLingua Admin page
  *
- * @param string $text The default footer text.
- * @return string The customized footer text for wpLingua pages.
+ * @return bool Is a wpLingua Admin page
  */
-function wplng_admin_footer_text( $text ) {
+function wplng_is_wplingua_admin_page() {
 
 	global $pagenow;
+	global $post;
+
+	/**
+	 * Check if is a wpLingua option page
+	 */
 
 	if ( 'admin.php' === $pagenow
 		&& isset( $_GET['page'] )
@@ -164,6 +168,52 @@ function wplng_admin_footer_text( $text ) {
 			|| $_GET['page'] === 'wplingua-link-media'
 		)
 	) {
+		return true;
+	}
+
+	/**
+	 * Check if is a translations or slugs admin list
+	 */
+
+	if (
+		'edit.php' === $pagenow
+		&& isset( $_GET['post_type'] )
+		&& (
+			$_GET['post_type'] === 'wplng_translation'
+			|| $_GET['post_type'] === 'wplng_slug'
+		)
+	) {
+		return true;
+	}
+
+	/**
+	 * Check if is translations or slugs edition
+	 */
+
+	if (
+		'post.php' === $pagenow
+		&& isset( $post->post_type )
+		&& (
+			$post->post_type === 'wplng_translation'
+			|| $post->post_type === 'wplng_slug'
+		)
+	) {
+		return true;
+	}
+
+	return false;
+}
+
+
+/**
+ * Customize the admin footer text displayed on wpLingua option pages.
+ *
+ * @param string $text The default footer text.
+ * @return string The customized footer text for wpLingua pages.
+ */
+function wplng_admin_footer_text( $text ) {
+
+	if ( wplng_is_wplingua_admin_page() ) {
 
 		$text = '<span class="dashicons dashicons-heart"></span> ';
 
@@ -189,18 +239,7 @@ function wplng_admin_footer_text( $text ) {
  */
 function wplng_update_footer( $text ) {
 
-	global $pagenow;
-
-	if ( 'admin.php' === $pagenow
-		&& isset( $_GET['page'] )
-		&& (
-			$_GET['page'] === 'wplingua-settings'
-			|| $_GET['page'] === 'wplingua-switcher'
-			|| $_GET['page'] === 'wplingua-dictionary'
-			|| $_GET['page'] === 'wplingua-exclusions'
-			|| $_GET['page'] === 'wplingua-link-media'
-		)
-	) {
+	if ( wplng_is_wplingua_admin_page() ) {
 		$text  = '<a href="https://wplingua.com/" target="_blank">';
 		$text .= 'wplingua.com';
 		$text .= '</a> | ';
