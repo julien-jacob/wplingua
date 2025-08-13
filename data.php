@@ -43,7 +43,7 @@ function wplng_data_excluded_selector_default() {
 		'[aria-label="HTML"]',
 		'#media-views-js-extra',
 		'#wp-api-request-js-extra',
-		'#error-page',
+		'body#error-page',
 		'.wp-die-message',
 
 		// wpLingua
