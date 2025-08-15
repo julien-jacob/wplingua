@@ -189,9 +189,11 @@ function wplng_start() {
 		add_action( 'untrash_post', 'wplng_clear_translations_cache_trash_untrash' );
 		add_action( 'delete_post', 'wplng_clear_translations_cache_trash_untrash' );
 
-		// Enqueue Script for wplng_translation admin
-		add_action( 'admin_print_scripts-post-new.php', 'wplng_translation_assets' );
-		add_action( 'admin_print_scripts-post.php', 'wplng_translation_assets' );
+		// Enqueue Script for wplng_translation admin: Edit
+		add_action( 'admin_print_scripts-post.php', 'wplng_translation_edit_assets' );
+		
+		// Enqueue Script for wplng_translation admin: List
+		add_action( 'admin_print_scripts-edit.php', 'wplng_translation_list_assets' );
 
 		// Remove Quick edit from translations list
 		add_filter( 'post_row_actions', 'wplng_translation_remove_quick_edit', 10, 2 );
@@ -221,10 +223,9 @@ function wplng_start() {
 		add_filter( 'post_row_actions', 'wplng_post_row_actions_translation_status', 10, 2 );
 		add_filter( 'manage_wplng_translation_posts_columns', 'wplng_translation_status_columns' );
 		add_action( 'manage_wplng_translation_posts_custom_column', 'wplng_translation_status_item', 10, 2 );
-		add_action( 'admin_head-edit.php', 'wplng_translation_status_style', 10, 2 );
 
 		/**
-		 * wplng_translation : CPT, taxo, meta
+		 * wplng_slug : CPT, taxo, meta
 		 */
 
 		// Register wplng_translation CPT
@@ -241,9 +242,11 @@ function wplng_start() {
 		add_action( 'untrash_post', 'wplng_clear_slugs_cache_trash_untrash' );
 		add_action( 'delete_post', 'wplng_clear_slugs_cache_trash_untrash' );
 
-		// Enqueue Script for wplng_translation admin
-		add_action( 'admin_print_scripts-post-new.php', 'wplng_slug_assets' );
-		add_action( 'admin_print_scripts-post.php', 'wplng_slug_assets' );
+		// Enqueue Script for wplng_slug admin: Edit
+		add_action( 'admin_print_scripts-post.php', 'wplng_slug_edit_assets' );
+		
+		// Enqueue Script for wplng_slug admin: List
+		add_action( 'admin_print_scripts-edit.php', 'wplng_slug_list_assets' );
 
 		// Remove Quick edit from slugs list
 		add_filter( 'post_row_actions', 'wplng_slug_remove_quick_edit', 10, 2 );
@@ -263,7 +266,6 @@ function wplng_start() {
 		add_filter( 'post_row_actions', 'wplng_post_row_actions_slug_status', 10, 2 );
 		add_filter( 'manage_wplng_slug_posts_columns', 'wplng_slug_status_columns' );
 		add_action( 'manage_wplng_slug_posts_custom_column', 'wplng_slug_status_item', 10, 2 );
-		add_action( 'admin_head-edit.php', 'wplng_slug_status_style', 10, 2 );
 
 		/**
 		 * Front

@@ -61,15 +61,15 @@ function wplng_option_page_settings() {
 					</td>
 				</tr>
 				<tr>
-					<th scope="row"><span class="dashicons dashicons-admin-settings"></span> <?php esc_html_e( 'API features', 'wplingua' ); ?></th>
+					<th scope="row"><span class="dashicons dashicons-admin-settings"></span> <?php esc_html_e( 'Features', 'wplingua' ); ?></th>
 					<td>
 						<fieldset>
 							<?php wplng_settings_part_features_api(); ?>
 						</fieldset>
 					</td>
 				</tr>
-				<tr style="display: none;">
-					<th scope="row"><span class="dashicons dashicons-admin-settings"></span> <?php esc_html_e( 'Features', 'wplingua' ); ?></th>
+				<tr class="wplng-beta-hidden" style="display: none;">
+					<th scope="row"></th>
 					<td>
 						<fieldset>
 							<?php wplng_settings_part_features_plugin(); ?>
@@ -253,7 +253,7 @@ function wplng_settings_part_language_website() {
 		echo esc_html__( 'If you have mistakenly entered the wrong language, contact wpLingua support to request a correction.', 'wplingua' );
 		echo ' ';
 		echo '<a href="https://wplingua.com/support/" target="_blank">';
-		echo esc_html__( 'Contact support on wplingua.com', 'wplingua' );
+		echo esc_html__( 'wplingua.com : Contact support', 'wplingua' );
 		echo '</a>';
 		echo '</p>';
 		echo '</div>';
@@ -401,7 +401,7 @@ function wplng_settings_part_languages_target() {
 
 		<p>
 			<a href="https://wplingua.com/pricing/" target="_blank">
-				<?php esc_attr_e( 'Upgrade your API key on wplingua.com', 'wplingua' ); ?>
+				<?php esc_attr_e( 'wplingua.com : Upgrade your API key', 'wplingua' ); ?>
 			</a>
 		</p>
 	</div>
@@ -439,7 +439,7 @@ function wplng_settings_part_features_api() {
 		<hr>
 		<p>
 			<a href="https://wplingua.com/pricing/" target="_blank">
-				<?php esc_attr_e( 'Upgrade your API key on wplingua.com', 'wplingua' ); ?>
+				<?php esc_attr_e( 'wplingua.com : Upgrade your API key', 'wplingua' ); ?>
 			</a>
 		</p>
 	</div>
@@ -463,7 +463,7 @@ function wplng_settings_part_features_api() {
 		<hr>
 		<p>
 			<a href="https://wplingua.com/pricing/" target="_blank">
-				<?php esc_attr_e( 'Upgrade your API key on wplingua.com', 'wplingua' ); ?>
+				<?php esc_attr_e( 'wplingua.com : Upgrade your API key', 'wplingua' ); ?>
 			</a>
 		</p>
 		
@@ -499,6 +499,18 @@ function wplng_settings_part_features_plugin() {
 		</p>
 		
 	</div>
+
+	<fieldset>
+		<input type="checkbox" id="wplng_sitemap_xml" name="wplng_sitemap_xml" value="1" <?php checked( 1, get_option( 'wplng_sitemap_xml' ), true ); ?>/>
+		<label for="wplng_sitemap_xml">BETA - <?php esc_html_e( 'Enable multilingual XML Sitemap', 'wplingua' ); ?></label> 
+		<span title="<?php esc_attr_e( 'Click to expand', 'wplingua' ); ?>" wplng-help-box="#wplng-hb-feature-sitemap-xml"></span>
+	</fieldset>
+
+	<div class="wplng-help-box" id="wplng-hb-feature-sitemap-xml">
+		<p>
+			<?php esc_html_e( 'Enable multilingual Sitemap XML : Automatically add links to your wpLingua translated pages in your XML Sitemap files.', 'wplingua' ); ?>
+		</p>		
+	</div>
 	
 	<?php
 }
@@ -525,7 +537,15 @@ function wplng_settings_part_api_key() {
 		</p>
 
 		<div class="wplng-help-box" id="wplng-hb-api-key">
-			<p><?php esc_html_e( 'A wpLingua API key consists of 42 characters (uppercase, lowercase and numbers). It is emailed to you when you request it using the form provided when you install the plugin. You must keep this key secret and only communicate it to wplingua.com services.', 'wplingua' ); ?></p>
+			<p>
+				<?php esc_html_e( 'A wpLingua API key consists of 42 characters (uppercase, lowercase and numbers). It is emailed to you when you request it using the form provided when you install the plugin. You must keep this key secret and only communicate it to wplingua.com services.', 'wplingua' ); ?>
+			</p>
+			<hr>
+			<p>
+				<a href="https://wplingua.com/pricing/" target="_blank">
+					<?php esc_attr_e( 'wplingua.com : Upgrade your API key', 'wplingua' ); ?>
+				</a>
+			</p>
 		</div>
 
 		<hr>

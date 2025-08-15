@@ -107,6 +107,10 @@ function wplng_ob_start() {
 
 		ob_start( 'wplng_ob_callback_ajax' );
 
+	} elseif ( wplng_url_is_sitemap_xml() ) {
+
+		ob_start( 'wplng_ob_callback_sitemap_xml' );
+
 	} else {
 
 		/**
@@ -135,6 +139,158 @@ function wplng_ob_start() {
 
 		ob_start( 'wplng_ob_callback_page' );
 	}
+}
+
+
+/**
+ * wpLingua OB Callback function : AJAX call
+ *
+ * @param string $output
+ * @return string
+ */
+function wplng_ob_callback_ajax( $output ) {
+
+	global $wplng_request_uri;
+
+	if ( wplng_str_is_json( $output ) ) {
+
+		$output_translated = wplng_translate_json( $output );
+
+	} elseif ( wplng_str_is_html( $output ) ) {
+
+		$output_translated = wplng_translate_html( $output );
+
+	} else {
+		$output_translated = $output;
+	}
+
+	// Print debug data in debug.log file
+	if ( true === WPLNG_DEBUG_AJAX ) {
+
+		$action = 'UNKNOW';
+		if ( ! empty( $_POST['action'] ) && is_string( $_POST['action'] ) ) {
+			$action = $_POST['action'];
+		}
+
+		$debug = array(
+			'title'       => 'wpLingua AJAX debug',
+			'action'      => $action,
+			'request_uri' => $wplng_request_uri,
+			'value'       => $output,
+			'translated'  => $output_translated,
+		);
+
+		error_log(
+			var_export(
+				$debug,
+				true
+			)
+		);
+	}
+
+	return $output_translated;
+}
+
+
+/**
+ * Callback function for output buffering to process and modify sitemap XML content.
+ *
+ * @param string $content The original XML content.
+ * @return string The modified XML content with added <xhtml:link> tags or the original content if no changes are made.
+ */
+function wplng_ob_callback_sitemap_xml( $content ) {
+
+	// Return the content as is if it's empty or not valid XML.
+	if ( ! get_option( 'wplng_sitemap_xml', false )
+		|| empty( $content )
+		|| ! wplng_str_is_xml( $content )
+	) {
+		return $content;
+	}
+
+	// Check if multilingua XML sitemap is enabled
+	$sitemap_xml_enabled = apply_filters(
+		'wplng_enable_sitemap_xml_feature',
+		get_option( 'wplng_sitemap_xml', false )
+	);
+
+	if ( empty( $sitemap_xml_enabled ) ) {
+		return $content;
+	}
+
+	// Get language data.
+	$language_website_id  = wplng_get_language_website_id();
+	$languages_target_ids = wplng_get_languages_target_ids();
+
+	if ( empty( $language_website_id ) || empty( $languages_target_ids ) ) {
+		return $content;
+	}
+
+	// Load the XML content into a DOMDocument.
+	$dom                     = new DOMDocument( '1.0', 'UTF-8' );
+	$dom->preserveWhiteSpace = false;
+	$dom->formatOutput       = true;
+
+	if ( ! @$dom->loadXML( $content ) ) {
+		return $content;
+	}
+
+	$signature = '<!-- XML Sitemap is made multilingual by wpLingua -->' . PHP_EOL;
+
+	// Register namespaces and prepare XPath.
+	$xpath = new DOMXPath( $dom );
+	$xpath->registerNamespace( 'sm', 'http://www.sitemaps.org/schemas/sitemap/0.9' );
+	$xpath->registerNamespace( 'xhtml', 'http://www.w3.org/1999/xhtml' );
+
+	// Get all <url> nodes.
+	$url_nodes = $xpath->query( '//sm:url' );
+
+	if ( empty( $url_nodes ) ) {
+		return $content . $signature;
+	}
+
+	foreach ( $url_nodes as $url_node ) {
+
+		// Get original URL
+		$loc_node = $xpath->query( 'sm:loc', $url_node )->item( 0 );
+
+		if ( empty( $loc_node ) ) {
+			continue;
+		}
+
+		$url_original = trim( $loc_node->nodeValue );
+
+		if ( '' === $url_original || ! wplng_url_is_translatable( $url_original ) ) {
+			continue;
+		}
+
+		// Add link for original language
+		$link_node = $dom->createElement( 'xhtml:link' );
+		$link_node->setAttribute( 'rel', 'alternate' );
+		$link_node->setAttribute( 'hreflang', esc_attr( $language_website_id ) );
+		$link_node->setAttribute( 'href', esc_url( $url_original ) );
+		$url_node->appendChild( $link_node );
+
+		// Add link for target languages
+		foreach ( $languages_target_ids as $language_id ) {
+
+			$translated_url = wplng_url_translate( $url_original, $language_id );
+
+			$link_node = $dom->createElement( 'xhtml:link' );
+			$link_node->setAttribute( 'rel', 'alternate' );
+			$link_node->setAttribute( 'hreflang', esc_attr( $language_id ) );
+			$link_node->setAttribute( 'href', esc_url( $translated_url ) );
+			$url_node->appendChild( $link_node );
+		}
+	}
+
+	$sitemap = $dom->saveXML();
+
+	if ( empty( $sitemap ) ) {
+		return $content;
+	}
+
+	return $sitemap . $signature;
 }
 
 
@@ -203,54 +359,4 @@ function wplng_ob_callback_page( $content ) {
 	}
 
 	return $content;
-}
-
-
-/**
- * wpLingua OB Callback function : AJAX call
- *
- * @param string $output
- * @return string
- */
-function wplng_ob_callback_ajax( $output ) {
-
-	global $wplng_request_uri;
-
-	if ( wplng_str_is_json( $output ) ) {
-
-		$output_translated = wplng_translate_json( $output );
-
-	} elseif ( wplng_str_is_html( $output ) ) {
-
-		$output_translated = wplng_translate_html( $output );
-
-	} else {
-		$output_translated = $output;
-	}
-
-	// Print debug data in debug.log file
-	if ( true === WPLNG_DEBUG_AJAX ) {
-
-		$action = 'UNKNOW';
-		if ( ! empty( $_POST['action'] ) && is_string( $_POST['action'] ) ) {
-			$action = $_POST['action'];
-		}
-
-		$debug = array(
-			'title'       => 'wpLingua AJAX debug',
-			'action'      => $action,
-			'request_uri' => $wplng_request_uri,
-			'value'       => $output,
-			'translated'  => $output_translated,
-		);
-
-		error_log(
-			var_export(
-				$debug,
-				true
-			)
-		);
-	}
-
-	return $output_translated;
 }

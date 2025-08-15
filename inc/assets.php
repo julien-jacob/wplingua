@@ -73,7 +73,7 @@ function wplng_register_assets() {
 
 		wp_enqueue_script(
 			'wplingua-translation',
-			plugins_url() . '/wplingua/assets/js/admin/translation.js',
+			plugins_url() . '/wplingua/assets/js/admin/edit-translation.js',
 			array( 'jquery' ),
 			WPLNG_PLUGIN_VERSION
 		);
