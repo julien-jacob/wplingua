@@ -285,7 +285,7 @@ function wplng_start() {
 		add_filter( 'nav_menu_link_attributes', 'wplng_add_nav_menu_link_attributes_atts', 10, 2 );
 
 		// Set alternate links with hreflang parametters
-		add_action( 'wp_head', 'wplng_link_alternate_hreflang', 2 );
+		add_action( 'wp_head', 'wplng_link_alternate_hreflang', 1 );
 
 		// Disable web browser automatic translation
 		add_action( 'language_attributes', 'wplng_disable_web_browser_auto_translate' );
