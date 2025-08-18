@@ -193,17 +193,21 @@ Your server’s database holds all the translations locally.
 
 = 2.7.0 =
 
+* New hidden BETA feature:
+ * SEO: Make multilingual XML sitemap
+ * Mode "Translation in progress"
+ * To display hidden BETA features, use the Konami code on the wpLingua general settings page.
 * Better admin UX
  * Header and footer on admin CPT translation (edit and list)
  * Header and footer on admin CPT slug (edit and list)
 * Translation editor
  * Better font family compatibility
  * Better flags displaying
+* Mode "Translations in progress":
+ * Better UX
+ * Add smooth animation
+ * Clear one useless cycle
 * Review admin assets loading
-* New hidden BETA feature:
- * SEO: Make multilingual XML sitemap
- * Mode "Translation in progress"
- * To display hidden BETA features, use the Konami code on the wpLingua general settings page.
 * Enforce browser translation disabling
 * Set hrefland head section priority to 1
 * Better plugin compatibility: Presto Player
