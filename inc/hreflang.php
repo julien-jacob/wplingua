@@ -13,11 +13,13 @@ if ( ! defined( 'WPINC' ) ) {
  */
 function wplng_link_alternate_hreflang() {
 
+	echo '<meta name="google" content="notranslate">' . PHP_EOL;
+
 	if ( ! wplng_url_is_translatable() ) {
 		return;
 	}
 
-	$html             = PHP_EOL . PHP_EOL;
+	$html             = PHP_EOL;
 	$language_website = wplng_get_language_website();
 	$languages_target = wplng_get_languages_target();
 	$url_x_default    = '';
