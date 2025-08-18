@@ -481,6 +481,7 @@ function wplng_settings_part_features_plugin() {
 
 	?>
 	<p><strong><?php esc_html_e( 'Plugin translation features: ', 'wplingua' ); ?></strong></p>
+
 	<hr>
 
 	<fieldset>
@@ -500,6 +501,8 @@ function wplng_settings_part_features_plugin() {
 		
 	</div>
 
+	<hr>
+
 	<fieldset>
 		<input type="checkbox" id="wplng_sitemap_xml" name="wplng_sitemap_xml" value="1" <?php checked( 1, get_option( 'wplng_sitemap_xml' ), true ); ?>/>
 		<label for="wplng_sitemap_xml">BETA - <?php esc_html_e( 'Enable multilingual XML Sitemap', 'wplingua' ); ?></label> 
@@ -508,7 +511,7 @@ function wplng_settings_part_features_plugin() {
 
 	<div class="wplng-help-box" id="wplng-hb-feature-sitemap-xml">
 		<p>
-			<?php esc_html_e( 'Enable multilingual Sitemap XML : Automatically add links to your wpLingua translated pages in your XML Sitemap files.', 'wplingua' ); ?>
+			<?php esc_html_e( 'Enable multilingual Sitemap XML: Automatically add links to your wpLingua translated pages in your XML Sitemap files.', 'wplingua' ); ?>
 		</p>		
 	</div>
 	
