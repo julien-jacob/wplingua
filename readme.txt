@@ -4,7 +4,7 @@ Donate link: https://wplingua.com/
 Tags: translate, translation, multilingual, localization, language
 Requires at least: 6.0
 Tested up to: 6.8
-Stable tag: 2.6.10
+Stable tag: 2.7.0
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -191,79 +191,27 @@ Your server’s database holds all the translations locally.
 
 == Changelog ==
 
-= 2.6.10 =
+= 2.7.0 =
 
-* Exclude content of WP error page generated with wp_die()
-
-= 2.6.9 =
-
-* Fix HTML format on switcher in Divi editor
-* Review some texts
-* Review constant WPLNG_MAX_TRANSLATIONS
-* Rename some HTML attributes
-* Add "Load in progress" as hidden BETA feature
-
-= 2.6.8 =
-
-* Check if HTACCESS file is compatible
-
-= 2.6.7 =
-
-* Better plugin compatibility: SEOPress
-* Better incompatible plugin check
-* Check email before fill registration field
-
-= 2.6.6 =
-
-* Fix AJAX translations
-* Better compatibility with object cache
-* Better first page automatic translation
-* Better mode: Load in progress (Not enabled by default)
-
-= 2.6.5 =
-
-* Better plugin compatibility:
- * GDPR Cookie Compliance
- * Fusion Page Builder
-* Exclude from URL:
- * /xmlrpc.PHP
- * RSS files
-
-= 2.6.4 =
-
-* Tempory disable Load in progress mode to fix cache error
-
-= 2.6.3 =
-
-* Better compatibility with LiteSpeed
-* Better overload management
-
-= 2.6.2 =
-
-* Repackage for WP dot org
-
-= 2.6.1 =
-
+* New hidden BETA feature:
+ * SEO: Make multilingual XML sitemap
+ * Mode "Translation in progress"
+ * To display hidden BETA features, use the Konami code on the wpLingua general settings page.
 * Better admin UX
-* Update plugin translation (i18n)
-
-= 2.6.0 =
-
-* New API protocol (V3.0)
-* Manage API overloads to avoid registering untranslated texts
-* Optimize translation cache system and translation finding
-* Better JSON in JavaScript detection
-* Better Divi theme compatibility:
- * Translate custom form strings
- * Translate WooCommerce item counter strings
-* Better compatibility with plugins that integrate the front-end media manager
-* Better translation in progress mode
- * Better space management
- * Better untranslatable text management
-* Better AJAX management
- * Check context before starting output buffering
- * Add possibility to exclude call by action parameter
- * Better debug log
+ * Header and footer on admin CPT translation (edit and list)
+ * Header and footer on admin CPT slug (edit and list)
+* Translation editor
+ * Better font family compatibility
+ * Better flags displaying
+* Mode "Translations in progress":
+ * Better UX
+ * Add smooth animation
+ * Clear one useless cycle
+* Review admin assets loading
+* Enforce browser translation disabling
+* Set hrefland head section priority to 1
+* Better plugin compatibility: Presto Player
+* Some code review
 
 All changelogs and previous versions of the wpLingua plugin are available on the releases page of the project's GitHub repo: [https://github.com/julien-jacob/wplingua/releases](https://github.com/julien-jacob/wplingua/releases).
 
