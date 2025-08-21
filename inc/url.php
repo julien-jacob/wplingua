@@ -223,7 +223,8 @@ function wplng_url_is_translatable_no_filter( $url ) {
 	}
 
 	// Exclude files URL
-	$regex_is_file = '#\.(avi|css|doc|exe|gif|html|jfif|jpg|jpeg|webp|bmp|mid|midi|mp3|mpg|mpeg|avif|mov|qt|pdf|png|ram|rar|tiff|txt|wav|zip|ico|xml|doc|docx|xls|xlsx|rss)?\/$#Uis';
+	$regex_is_file = '#\.(avi|css|docx?|exe|gif|html?|jfif|jpe?g|webp|bmp|midi?|mp3|mpe?g|avif|mov|qt|pdf|png|ra?m|rar|tiff?|txt|wav|zip|ico|xml|rss|xls[x]?|ttf|otf|woff2?|eot|svg)?\/$#i';
+
 	if ( preg_match( $regex_is_file, $url ) ) {
 		return false;
 	}
