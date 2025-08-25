@@ -1,15 +1,15 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: wpLingua\n"
-"POT-Creation-Date: 2025-05-19 15:08+0200\n"
-"PO-Revision-Date: 2025-05-19 15:27+0200\n"
+"POT-Creation-Date: 2025-08-25 11:57+0200\n"
+"PO-Revision-Date: 2025-08-25 16:31+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: ko_KR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 3.6\n"
+"X-Generator: Poedit 3.7\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-Flags-xgettext: --add-comments=translators:\n"
 "X-Poedit-WPHeader: wplingua.php\n"
@@ -19,675 +19,675 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: *.min.js\n"
 
-#: data.php:550
+#: data.php:559
 msgid "Bottom right"
 msgstr "하단 우측"
 
-#: data.php:551
+#: data.php:560
 msgid "Bottom center"
 msgstr "하단 중앙"
 
-#: data.php:552
+#: data.php:561
 msgid "Bottom left"
 msgstr "왼쪽 하단"
 
-#: data.php:553
+#: data.php:562
 msgid "None"
 msgstr "없음"
 
-#: data.php:565
+#: data.php:574
 msgid "Light - Double - Smooth"
 msgstr "라이트 - 더블 - 스무스"
 
-#: data.php:566
+#: data.php:575
 msgid "Light - Double - Square"
 msgstr "라이트 - 더블 - 스퀘어"
 
-#: data.php:567
+#: data.php:576
 msgid "Light - Simple - Smooth"
 msgstr "가벼움 - 심플함 - 부드러움"
 
-#: data.php:568
+#: data.php:577
 msgid "Light - Simple - Square"
 msgstr "라이트 - 심플 - 정사각형"
 
-#: data.php:569
+#: data.php:578
 msgid "Grey - Double - Smooth"
 msgstr "회색 - 더블 - 부드러운"
 
-#: data.php:570
+#: data.php:579
 msgid "Grey - Double - Square"
 msgstr "회색 - 더블 - 정사각형"
 
-#: data.php:571
+#: data.php:580
 msgid "Grey - Simple - Smooth"
 msgstr "회색 - 심플 - 부드러운"
 
-#: data.php:572
+#: data.php:581
 msgid "Grey - Simple - Square"
 msgstr "회색 - 단순 - 정사각형"
 
-#: data.php:573
+#: data.php:582
 msgid "Dark - Double - Smooth"
 msgstr "다크 - 더블 - 스무스"
 
-#: data.php:574
+#: data.php:583
 msgid "Dark - Double - Square"
 msgstr "다크 - 더블 - 정사각형"
 
-#: data.php:575
+#: data.php:584
 msgid "Dark - Simple - Smooth"
 msgstr "어둡게 - 단순하게 - 부드럽게"
 
-#: data.php:576
+#: data.php:585
 msgid "Dark - Simple - Square"
 msgstr "어둡게 - 단순 - 정사각형"
 
-#: data.php:577
+#: data.php:586
 msgid "Blur Black - Double - Smooth"
 msgstr "블러 블랙 - 더블 - 스무스"
 
-#: data.php:578
+#: data.php:587
 msgid "Blur Black - Double - Square"
 msgstr "검은색 흐림 - 더블 - 정사각형"
 
-#: data.php:579
+#: data.php:588
 msgid "Blur Black - Simple - Smooth"
 msgstr "블러 블랙 - 단순 - 부드러운"
 
-#: data.php:580
+#: data.php:589
 msgid "Blur Black - Simple - Square"
 msgstr "검은색 흐림 - 단순 - 정사각형"
 
-#: data.php:581
+#: data.php:590
 msgid "Blur White - Double - Smooth"
 msgstr "흰색 흐림 - 더블 - 부드러운"
 
-#: data.php:582
+#: data.php:591
 msgid "Blur White - Double - Square"
 msgstr "흰색 흐림 - 더블 - 정사각형"
 
-#: data.php:583
+#: data.php:592
 msgid "Blur White - Simple - Smooth"
 msgstr "흰색 흐림 - 단순 - 부드러운"
 
-#: data.php:584
+#: data.php:593
 msgid "Blur White - Simple - Square"
 msgstr "흰색 흐림 - 단순 - 정사각형"
 
-#: data.php:596
+#: data.php:605
 msgid "Inline list"
 msgstr "인라인 목록"
 
-#: data.php:597
+#: data.php:606
 msgid "Block"
 msgstr "블록"
 
-#: data.php:598
+#: data.php:607
 msgid "Dropdown"
 msgstr "드롭다운"
 
-#: data.php:610 data.php:644
+#: data.php:619 data.php:653
 msgid "Original name"
 msgstr "원래 이름"
 
-#: data.php:611 data.php:645
+#: data.php:620 data.php:654
 msgid "Translated name"
 msgstr "번역된 이름"
 
-#: data.php:612 data.php:646
+#: data.php:621 data.php:655
 msgid "Language ID"
 msgstr "언어 ID"
 
-#: data.php:613 data.php:628 data.php:647 data.php:660
+#: data.php:622 data.php:637 data.php:656 data.php:669
 msgid "No display"
 msgstr "디스플레이 없음"
 
-#: data.php:625
+#: data.php:634
 msgid "Circle"
 msgstr "원형"
 
-#: data.php:626
+#: data.php:635
 msgid "Rectangular"
 msgstr "직사각형"
 
-#: data.php:627
+#: data.php:636
 msgid "Wave"
 msgstr "파동"
 
-#: data.php:659
+#: data.php:668
 msgid "Display"
 msgstr "표시"
 
-#: data.php:672
+#: data.php:681
 msgid "List without current language"
 msgstr "현재 언어가 없는 목록"
 
-#: data.php:673
+#: data.php:682
 msgid "List without active class"
 msgstr "활성 클래스가 없는 목록"
 
-#: data.php:674
+#: data.php:683
 msgid "List with active class"
 msgstr "활성 클래스가 있는 목록"
 
-#: data.php:675
+#: data.php:684
 msgid "Sub-list"
 msgstr "하위 목록"
 
-#: data.php:728
+#: data.php:737
 msgid "Arabic"
 msgstr "아랍어"
 
-#: data.php:734 data.php:888
+#: data.php:743 data.php:897
 msgid "Global"
 msgstr "글로벌"
 
-#: data.php:739
+#: data.php:748
 msgid "Egypt"
 msgstr "이집트"
 
-#: data.php:744
+#: data.php:753
 msgid "Saudi Arabia"
 msgstr "사우디아라비아"
 
-#: data.php:749
+#: data.php:758
 msgid "Algeria"
 msgstr "알제리"
 
-#: data.php:754
+#: data.php:763
 msgid "Bahrain"
 msgstr "바레인"
 
-#: data.php:759
+#: data.php:768
 msgid "Chad"
 msgstr "차드"
 
-#: data.php:764
+#: data.php:773
 msgid "Comoros"
 msgstr "코모로"
 
-#: data.php:769
+#: data.php:778
 msgid "Djibouti"
 msgstr "지부티"
 
-#: data.php:774
+#: data.php:783
 msgid "Iraq"
 msgstr "이라크"
 
-#: data.php:779
+#: data.php:788
 msgid "Jordan"
 msgstr "요르단"
 
-#: data.php:784
+#: data.php:793
 msgid "Kuwait"
 msgstr "쿠웨이트"
 
-#: data.php:789
+#: data.php:798
 msgid "Lebanon"
 msgstr "레바논"
 
-#: data.php:794
+#: data.php:803
 msgid "Libya"
 msgstr "리비아"
 
-#: data.php:799
+#: data.php:808
 msgid "Mauritania"
 msgstr "모리타니아"
 
-#: data.php:804
+#: data.php:813
 msgid "Morocco"
 msgstr "모로코"
 
-#: data.php:809
+#: data.php:818
 msgid "Oman"
 msgstr "오만"
 
-#: data.php:814
+#: data.php:823
 msgid "Palestine"
 msgstr "팔레스타인"
 
-#: data.php:819
+#: data.php:828
 msgid "Qatar"
 msgstr "카타르"
 
-#: data.php:824
+#: data.php:833
 msgid "Somalia"
 msgstr "소말리아"
 
-#: data.php:829
+#: data.php:838
 msgid "Sudan"
 msgstr "수단"
 
-#: data.php:834
+#: data.php:843
 msgid "Syria"
 msgstr "시리아"
 
-#: data.php:839
+#: data.php:848
 msgid "Tunisia"
 msgstr "튀니지"
 
-#: data.php:844
+#: data.php:853
 msgid "United Arab Emirates"
 msgstr "아랍에미리트 연합"
 
-#: data.php:849
+#: data.php:858
 msgid "Yemen"
 msgstr "예멘"
 
-#: data.php:883
+#: data.php:892
 msgid "Chinese"
 msgstr "중국어"
 
-#: data.php:893
+#: data.php:902
 msgid "China"
 msgstr "중국"
 
-#: data.php:898
+#: data.php:907
 msgid "Hong Kong"
 msgstr "홍콩"
 
-#: data.php:903
+#: data.php:912
 msgid "Malaysia"
 msgstr "말레이시아"
 
-#: data.php:908 data.php:1144
+#: data.php:917 data.php:1153
 msgid "Singapore"
 msgstr "싱가포르"
 
-#: data.php:942
+#: data.php:951
 msgid "Danish"
 msgstr "덴마크어"
 
-#: data.php:947
+#: data.php:956
 msgid "Denmark"
 msgstr "덴마크"
 
-#: data.php:981
+#: data.php:990
 msgid "Dutch"
 msgstr "네덜란드어"
 
-#: data.php:986
+#: data.php:995
 msgid "Netherlands"
 msgstr "네덜란드"
 
-#: data.php:991 data.php:1237
+#: data.php:1000 data.php:1246
 msgid "Belgium"
 msgstr "벨기에"
 
-#: data.php:996
+#: data.php:1005
 msgid "Suriname"
 msgstr "수리남"
 
-#: data.php:1030
+#: data.php:1039
 msgid "Slovak"
 msgstr "슬로바키아어"
 
-#: data.php:1035
+#: data.php:1044
 msgid "Slovakia"
 msgstr "슬로바키아"
 
-#: data.php:1040
+#: data.php:1049
 msgid "Czech Republic"
 msgstr "체코 공화국"
 
-#: data.php:1074
+#: data.php:1083
 msgid "English"
 msgstr "영어"
 
-#: data.php:1079
+#: data.php:1088
 msgid "US / GB"
 msgstr "US / GB"
 
-#: data.php:1084
+#: data.php:1093
 msgid "United Kingdom"
 msgstr "영국"
 
-#: data.php:1089
+#: data.php:1098
 msgid "United States"
 msgstr "미국"
 
-#: data.php:1094
+#: data.php:1103
 msgid "Australia"
 msgstr "호주"
 
-#: data.php:1099 data.php:1247
+#: data.php:1108 data.php:1256
 msgid "Canada"
 msgstr "캐나다"
 
-#: data.php:1104
+#: data.php:1113
 msgid "Ireland"
 msgstr "아일랜드"
 
-#: data.php:1109
+#: data.php:1118
 msgid "New Zealand"
 msgstr "뉴질랜드"
 
-#: data.php:1114
+#: data.php:1123
 msgid "Nigeria"
 msgstr "나이지리아"
 
-#: data.php:1119
+#: data.php:1128
 msgid "South Africa"
 msgstr "남아프리카공화국"
 
-#: data.php:1124
+#: data.php:1133
 msgid "Kenya"
 msgstr "케냐"
 
-#: data.php:1129
+#: data.php:1138
 msgid "Ghana"
 msgstr "가나"
 
-#: data.php:1134
+#: data.php:1143
 msgid "South Sudan"
 msgstr "남수단"
 
-#: data.php:1139
+#: data.php:1148
 msgid "Sierra Leone"
 msgstr "시에라리온"
 
-#: data.php:1149
+#: data.php:1158
 msgid "Liberia"
 msgstr "라이베리아"
 
-#: data.php:1154
+#: data.php:1163
 msgid "Jamaica"
 msgstr "자메이카"
 
-#: data.php:1188
+#: data.php:1197
 msgid "Finnish"
 msgstr "핀란드어"
 
-#: data.php:1193 data.php:1979
+#: data.php:1202 data.php:1988
 msgid "Finland"
 msgstr "핀란드"
 
-#: data.php:1227
+#: data.php:1236
 msgid "French"
 msgstr "프랑스어"
 
-#: data.php:1232
+#: data.php:1241
 msgid "France"
 msgstr "프랑스"
 
-#: data.php:1242
+#: data.php:1251
 msgid "Quebec"
 msgstr "퀘벡"
 
-#: data.php:1252
+#: data.php:1261
 msgid "Congo - Kinshasa"
 msgstr "콩고 - 킨샤사"
 
-#: data.php:1257
+#: data.php:1266
 msgid "Congo - Brazzaville"
 msgstr "콩고 - 브라자빌"
 
-#: data.php:1262
+#: data.php:1271
 msgid "Cameroon"
 msgstr "카메룬"
 
-#: data.php:1267
+#: data.php:1276
 msgid "Ivory Coast"
 msgstr "아이보리 코스트"
 
-#: data.php:1272 data.php:1321
+#: data.php:1281 data.php:1330
 msgid "Switzerland"
 msgstr "스위스"
 
-#: data.php:1306
+#: data.php:1315
 msgid "German"
 msgstr "독일어"
 
-#: data.php:1311
+#: data.php:1320
 msgid "Germany"
 msgstr "독일"
 
-#: data.php:1316
+#: data.php:1325
 msgid "Austria"
 msgstr "오스트리아"
 
-#: data.php:1326
+#: data.php:1335
 msgid "Liechtenstein"
 msgstr "리히텐슈타인"
 
-#: data.php:1360
+#: data.php:1369
 msgid "Greek"
 msgstr "그리스어"
 
-#: data.php:1365
+#: data.php:1374
 msgid "Greece"
 msgstr "그리스"
 
-#: data.php:1370 data.php:2023
+#: data.php:1379 data.php:2032
 msgid "Cyprus"
 msgstr "키프로스"
 
-#: data.php:1404
+#: data.php:1413
 msgid "Hebrew"
 msgstr "히브리어"
 
-#: data.php:1410
+#: data.php:1419
 msgid "Israel"
 msgstr "이스라엘"
 
-#: data.php:1444
+#: data.php:1453
 msgid "Hindi"
 msgstr "힌디 어 (हिंदी)"
 
-#: data.php:1449
+#: data.php:1458
 msgid "India"
 msgstr "인도"
 
-#: data.php:1454
+#: data.php:1463
 msgid "Pakistan"
 msgstr "파키스탄"
 
-#: data.php:1488
+#: data.php:1497
 msgid "Hungarian"
 msgstr "헝가리어"
 
-#: data.php:1493
+#: data.php:1502
 msgid "Hungary"
 msgstr "헝가리"
 
-#: data.php:1527
+#: data.php:1536
 msgid "Indonesian"
 msgstr "인도네시아어"
 
-#: data.php:1532
+#: data.php:1541
 msgid "Indonesia"
 msgstr "인도네시아"
 
-#: data.php:1566
+#: data.php:1575
 msgid "Italian"
 msgstr "이탈리아어"
 
-#: data.php:1571
+#: data.php:1580
 msgid "Italy"
 msgstr "이탈리아"
 
-#: data.php:1605
+#: data.php:1614
 msgid "Japanese"
 msgstr "일본어"
 
-#: data.php:1610
+#: data.php:1619
 msgid "Japan"
 msgstr "일본"
 
-#: data.php:1644
+#: data.php:1653
 msgid "Korean"
 msgstr "한국어"
 
-#: data.php:1649
+#: data.php:1658
 msgid "South Korea"
 msgstr "대한민국"
 
-#: data.php:1654
+#: data.php:1663
 msgid "North Korea"
 msgstr "북한"
 
-#: data.php:1688
+#: data.php:1697
 msgid "Polish"
 msgstr "폴란드어"
 
-#: data.php:1693
+#: data.php:1702
 msgid "Poland"
 msgstr "폴란드"
 
-#: data.php:1727
+#: data.php:1736
 msgid "Portuguese"
 msgstr "포르투갈어"
 
-#: data.php:1732
+#: data.php:1741
 msgid "Portugal"
 msgstr "포르투갈"
 
-#: data.php:1737
+#: data.php:1746
 msgid "Brazil"
 msgstr "브라질"
 
-#: data.php:1742
+#: data.php:1751
 msgid "Mozambique"
 msgstr "모잠비크"
 
-#: data.php:1747
+#: data.php:1756
 msgid "Angola"
 msgstr "앙골라"
 
-#: data.php:1781
+#: data.php:1790
 msgid "Russian"
 msgstr "러시아어"
 
-#: data.php:1786
+#: data.php:1795
 msgid "Russia"
 msgstr "러시아"
 
-#: data.php:1791
+#: data.php:1800
 msgid "Kazakhstan"
 msgstr "카자흐스탄"
 
-#: data.php:1796
+#: data.php:1805
 msgid "Belarus"
 msgstr "벨라루스"
 
-#: data.php:1801
+#: data.php:1810
 msgid "Kyrgyzstan"
 msgstr "키르기스스탄"
 
-#: data.php:1806
+#: data.php:1815
 msgid "Tajikistan"
 msgstr "타지키스탄"
 
-#: data.php:1840
+#: data.php:1849
 msgid "Spanish"
 msgstr "스페인어"
 
-#: data.php:1845
+#: data.php:1854
 msgid "Spain"
 msgstr "스페인"
 
-#: data.php:1850
+#: data.php:1859
 msgid "Mexico"
 msgstr "멕시코"
 
-#: data.php:1855
+#: data.php:1864
 msgid "Argentina"
 msgstr "아르헨티나"
 
-#: data.php:1860
+#: data.php:1869
 msgid "Colombia"
 msgstr "콜롬비아"
 
-#: data.php:1865
+#: data.php:1874
 msgid "Peru"
 msgstr "페루"
 
-#: data.php:1870
+#: data.php:1879
 msgid "Ecuador"
 msgstr "에콰도르"
 
-#: data.php:1875
+#: data.php:1884
 msgid "Bolivia"
 msgstr "볼리비아"
 
-#: data.php:1880
+#: data.php:1889
 msgid "Chile"
 msgstr "칠레"
 
-#: data.php:1885
+#: data.php:1894
 msgid "Equatorial Guinea"
 msgstr "적도 기니"
 
-#: data.php:1890
+#: data.php:1899
 msgid "Guatemala"
 msgstr "과테말라"
 
-#: data.php:1895
+#: data.php:1904
 msgid "Cuba"
 msgstr "쿠바"
 
-#: data.php:1900
+#: data.php:1909
 msgid "Dominican Republic"
 msgstr "도미니카 공화국"
 
-#: data.php:1905
+#: data.php:1914
 msgid "Honduras"
 msgstr "온두라스"
 
-#: data.php:1910
+#: data.php:1919
 msgid "Paraguay"
 msgstr "파라과이"
 
-#: data.php:1915
+#: data.php:1924
 msgid "El Salvador"
 msgstr "엘살바도르"
 
-#: data.php:1920
+#: data.php:1929
 msgid "Nicaragua"
 msgstr "니카라과"
 
-#: data.php:1925
+#: data.php:1934
 msgid "Costa Rica"
 msgstr "코스타리카"
 
-#: data.php:1930
+#: data.php:1939
 msgid "Panama"
 msgstr "파나마"
 
-#: data.php:1935
+#: data.php:1944
 msgid "Uruguay"
 msgstr "우루과이"
 
-#: data.php:1969
+#: data.php:1978
 msgid "Swedish"
 msgstr "스웨덴어"
 
-#: data.php:1974
+#: data.php:1983
 msgid "Sweden"
 msgstr "스웨덴"
 
-#: data.php:2013
+#: data.php:2022
 msgid "Turkish"
 msgstr "터키어"
 
-#: data.php:2018
+#: data.php:2027
 msgid "Turkey"
 msgstr "터키"
 
-#: data.php:2057
+#: data.php:2066
 msgid "Ukrainian"
 msgstr "우크라이나어"
 
-#: data.php:2062
+#: data.php:2071
 msgid "Ukraine"
 msgstr "우크라이나"
 
-#: data.php:2096
+#: data.php:2105
 msgid "Vietnamese"
 msgstr "베트남어"
 
-#: data.php:2101
+#: data.php:2110
 msgid "Vietnam"
 msgstr "베트남"
 
@@ -719,7 +719,7 @@ msgid "Edit the page slug"
 msgstr "페이지 슬러그 편집"
 
 #: inc/admin/admin-bar.php:279 inc/admin/admin.php:59
-#: inc/admin/translation-cpt.php:19 inc/admin/translation-cpt.php:23
+#: inc/admin/translation-cpt.php:23
 msgid "Translations"
 msgstr "번역"
 
@@ -727,7 +727,7 @@ msgstr "번역"
 msgid "Edit translations"
 msgstr "번역 편집"
 
-#: inc/admin/assets.php:366 inc/admin/assets.php:431 inc/assets.php:89
+#: inc/admin/assets.php:366 inc/admin/assets.php:458 inc/assets.php:89
 msgid ""
 "You are about to leave the page without saving your changes. They will be "
 "lost if you continue. Would you like to leave the page anyway?"
@@ -783,13 +783,13 @@ msgstr "규칙 N°"
 
 #: inc/admin/option-page-dictionary.php:127
 #: inc/admin/option-page-link-media.php:127
-#: inc/admin/option-page-settings.php:263 inc/admin/option-page-settings.php:328
+#: inc/admin/option-page-settings.php:272 inc/admin/option-page-settings.php:337
 msgid "Edit"
 msgstr "편집"
 
 #: inc/admin/option-page-dictionary.php:134
 #: inc/admin/option-page-link-media.php:134
-#: inc/admin/option-page-settings.php:329
+#: inc/admin/option-page-settings.php:338
 msgid "Remove"
 msgstr "강퇴"
 
@@ -904,7 +904,7 @@ msgstr "클래스 속성별로 요소 제외"
 msgid "Exclude elements by CSS selector"
 msgstr "CSS 선택기로 요소 제외"
 
-#: inc/admin/option-page-exclusions.php:69 inc/admin/option-page-settings.php:78
+#: inc/admin/option-page-exclusions.php:69 inc/admin/option-page-settings.php:86
 #: inc/admin/option-page-switcher.php:496
 #: inc/admin/translation-edit-modal.php:71 inc/assets.php:96
 msgid "Save"
@@ -983,45 +983,41 @@ msgstr "REGEX"
 msgid " - URL: "
 msgstr " - URL: "
 
-#: inc/admin/option-page-register.php:19
-msgid "wpLingua is not compatible with Multisite."
-msgstr "wpLingua는 멀티사이트와 호환되지 않습니다."
-
-#: inc/admin/option-page-register.php:40 inc/admin/option-page-register.php:79
+#: inc/admin/option-page-register.php:31 inc/admin/option-page-register.php:70
 msgid "Message: "
 msgstr "메세지: "
 
-#: inc/admin/option-page-register.php:46
+#: inc/admin/option-page-register.php:37
 msgid "An error occurred with API key."
 msgstr "API 키에 오류가 발생했습니다."
 
-#: inc/admin/option-page-register.php:62
+#: inc/admin/option-page-register.php:53
 msgid "Invalid API key."
 msgstr "유효하지 않은 API 키값."
 
-#: inc/admin/option-page-register.php:86
+#: inc/admin/option-page-register.php:77
 msgid "An error occurred while creating the API key."
 msgstr "API 키를 만드는 동안 오류가 발생했습니다."
 
-#: inc/admin/option-page-register.php:102
+#: inc/admin/option-page-register.php:93
 msgid "wpLingua - Register API key"
 msgstr "wpLingua - API 키 등록"
 
-#: inc/admin/option-page-register.php:122
+#: inc/admin/option-page-register.php:113
 msgid "API key created"
 msgstr "API 키 생성"
 
-#: inc/admin/option-page-register.php:126
+#: inc/admin/option-page-register.php:117
 msgid "API key created and sent by email"
 msgstr "API 키 생성 및 이메일로 전송"
 
-#: inc/admin/option-page-register.php:130
+#: inc/admin/option-page-register.php:121
 msgid ""
 "The API key has been correctly created and sent to the following e-mail "
 "address: "
 msgstr "API 키가 올바르게 생성되어 다음 이메일 주소로 전송되었습니다: "
 
-#: inc/admin/option-page-register.php:136
+#: inc/admin/option-page-register.php:127
 msgid ""
 "Go to your mailbox and copy the API key sent to you (don't forget to check "
 "the spam section of your mailbox). Then paste it in the section below, and "
@@ -1031,24 +1027,24 @@ msgstr ""
 "것을 잊지 마세요). 그런 다음 아래 섹션에 붙여넣고 'API 키 설정'을 클릭하여 웹"
 "사이트를 다국어로 만들 수 있습니다."
 
-#: inc/admin/option-page-register.php:142 inc/admin/option-page-register.php:158
+#: inc/admin/option-page-register.php:133 inc/admin/option-page-register.php:149
 msgid "Set API Key"
 msgstr "API 키 설정"
 
-#: inc/admin/option-page-register.php:151 inc/admin/option-page-register.php:196
-#: inc/admin/option-page-register.php:373
+#: inc/admin/option-page-register.php:142 inc/admin/option-page-register.php:187
+#: inc/admin/option-page-register.php:372
 msgid "Get API key"
 msgstr "API키 가져오기"
 
-#: inc/admin/option-page-register.php:165
+#: inc/admin/option-page-register.php:156
 msgid "Start with wpLingua"
 msgstr "WpLingua로 시작하기"
 
-#: inc/admin/option-page-register.php:168
+#: inc/admin/option-page-register.php:159
 msgid "You are just a few clicks away from making your website multilingual!"
 msgstr "클릭 몇 번으로 웹사이트를 다국어로 만들 수 있습니다!"
 
-#: inc/admin/option-page-register.php:174
+#: inc/admin/option-page-register.php:165
 msgid ""
 "For wpLingua to work, an API key is required so that your website has access "
 "to the automatic translation service. On this page you can enter your API key "
@@ -1058,7 +1054,7 @@ msgstr ""
 "가 필요합니다. 이 페이지에서 API 키가 이미 있는 경우 입력하거나 무료로 생성할 "
 "수 있습니다."
 
-#: inc/admin/option-page-register.php:179
+#: inc/admin/option-page-register.php:170
 msgid ""
 "An <strong>instantly multilingual website</strong> thanks to automatic text "
 "detection and translation. Easy to use, no knowledge required."
@@ -1066,7 +1062,7 @@ msgstr ""
 "자동 텍스트 감지 및 번역 기능으로 <strong>즉시 다국어 웹사이트를</strong> 만"
 "들 수 있습니다. 지식이 없어도 쉽게 사용할 수 있습니다."
 
-#: inc/admin/option-page-register.php:183
+#: inc/admin/option-page-register.php:174
 msgid ""
 "<strong>SEO friendly</strong> to allow search engines to index translated "
 "pages. Open up your website and your business to the whole world."
@@ -1074,7 +1070,7 @@ msgstr ""
 "검색 엔진이 번역된 페이지를 색인화할 수 있도록 <strong>SEO 친화적입니다</"
 "strong>. 웹사이트와 비즈니스를 전 세계에 공개하세요."
 
-#: inc/admin/option-page-register.php:187
+#: inc/admin/option-page-register.php:178
 msgid ""
 "All <strong>translations are editable</strong>. Discover the visual editor "
 "and edit translations simply by clicking on them. With a fully customizable "
@@ -1084,7 +1080,7 @@ msgstr ""
 "을 클릭하기만 하면 번역을 편집할 수 있습니다. 완전히 사용자 지정 가능한 언어 "
 "전환기가 있습니다."
 
-#: inc/admin/option-page-register.php:191
+#: inc/admin/option-page-register.php:182
 msgid ""
 "One <strong>free and unlimited</strong> language for personal blogs and non-"
 "commercial websites. And many more features!"
@@ -1092,19 +1088,19 @@ msgstr ""
 "개인 블로그와 비상업용 웹사이트를 위한 하나의 <strong>무료 무제한</strong> 언"
 "어. 그리고 더 많은 기능!"
 
-#: inc/admin/option-page-register.php:200 inc/admin/option-page-register.php:251
+#: inc/admin/option-page-register.php:191 inc/admin/option-page-register.php:242
 msgid "Set API key"
 msgstr "API 키 설정"
 
-#: inc/admin/option-page-register.php:206
+#: inc/admin/option-page-register.php:197
 msgid "Advanced API features"
 msgstr "고급 API 기능"
 
-#: inc/admin/option-page-register.php:231
+#: inc/admin/option-page-register.php:222
 msgid "Set the wpLingua API key: "
 msgstr "WpLingua API 키를 설정합니다: "
 
-#: inc/admin/option-page-register.php:237
+#: inc/admin/option-page-register.php:228
 msgid ""
 "If you already have an API key, enter it below. If you've forgotten your "
 "website's API key, visit"
@@ -1112,15 +1108,16 @@ msgstr ""
 "API 키가 이미 있는 경우 아래에 입력하세요. 웹사이트의 API 키를 잊어버린 경우 "
 "다음을 방문하세요"
 
-#: inc/admin/option-page-register.php:237
+#: inc/admin/option-page-register.php:228
 msgid "the API key retrieval page"
 msgstr "aPI 키 검색 페이지"
 
-#: inc/admin/option-page-register.php:238 inc/admin/option-page-register.php:294
-#: inc/admin/option-page-register.php:310 inc/admin/option-page-register.php:326
-#: inc/admin/option-page-register.php:342 inc/admin/option-page-settings.php:235
-#: inc/admin/option-page-settings.php:367 inc/admin/option-page-settings.php:423
-#: inc/admin/option-page-settings.php:445 inc/admin/option-page-settings.php:485
+#: inc/admin/option-page-register.php:229 inc/admin/option-page-register.php:293
+#: inc/admin/option-page-register.php:309 inc/admin/option-page-register.php:325
+#: inc/admin/option-page-register.php:341 inc/admin/option-page-settings.php:244
+#: inc/admin/option-page-settings.php:376 inc/admin/option-page-settings.php:432
+#: inc/admin/option-page-settings.php:452 inc/admin/option-page-settings.php:490
+#: inc/admin/option-page-settings.php:509 inc/admin/option-page-settings.php:539
 #: inc/admin/option-page-switcher.php:73 inc/admin/option-page-switcher.php:124
 #: inc/admin/option-page-switcher.php:179 inc/admin/option-page-switcher.php:237
 #: inc/admin/option-page-switcher.php:331 inc/admin/option-page-switcher.php:384
@@ -1129,7 +1126,7 @@ msgstr "aPI 키 검색 페이지"
 msgid "Click to expand"
 msgstr "클릭하여 확장"
 
-#: inc/admin/option-page-register.php:242 inc/admin/option-page-settings.php:489
+#: inc/admin/option-page-register.php:233 inc/admin/option-page-settings.php:544
 msgid ""
 "A wpLingua API key consists of 42 characters (uppercase, lowercase and "
 "numbers). It is emailed to you when you request it using the form provided "
@@ -1140,11 +1137,11 @@ msgstr ""
 "제공된 양식을 사용하여 요청하면 이메일로 전송됩니다. 이 키는 비밀로 유지해야 "
 "하며 wplingua.com 서비스에만 전달해야 합니다."
 
-#: inc/admin/option-page-register.php:278
+#: inc/admin/option-page-register.php:277
 msgid "Register wpLingua API key: "
 msgstr "WpLingua API 키를 등록합니다: "
 
-#: inc/admin/option-page-register.php:284
+#: inc/admin/option-page-register.php:283
 msgid ""
 "Claim a wpLingua API key and make your website multilingual in a minute! For "
 "a personal blog or a non-commercial website, get one unlimited free language."
@@ -1152,11 +1149,24 @@ msgstr ""
 "WpLingua API 키를 신청하고 1분 안에 웹사이트를 다국어로 만들어 보세요! 개인 블"
 "로그나 비상업용 웹사이트의 경우 무제한 무료 언어를 하나씩 받으세요."
 
-#: inc/admin/option-page-register.php:293
+#: inc/admin/option-page-register.php:292
+msgid "Email address: "
+msgstr "이메일 주소: "
+
+#: inc/admin/option-page-register.php:300
+msgid ""
+"The email address is detected and pre-filled. This is the administrative "
+"email address entered in the Settings ➔ General tab. You can use another "
+"email address used to receive your API key."
+msgstr ""
+"이메일 주소가 감지되어 미리 채워집니다. 설정 ➔ 일반 탭에 입력한 관리 이메일 주"
+"소입니다. API 키를 받는 데 사용되는 다른 이메일 주소를 사용할 수 있습니다."
+
+#: inc/admin/option-page-register.php:308
 msgid "Website URL: "
 msgstr "웹사이트 URL: "
 
-#: inc/admin/option-page-register.php:301
+#: inc/admin/option-page-register.php:316
 msgid ""
 "This is the URL of your website, it is detected and pre-filled automatically. "
 "Please check it and only enter the address of your production website (no "
@@ -1166,24 +1176,11 @@ msgstr ""
 "덕션 웹사이트의 주소만 입력하세요(테스트 웹사이트나 개발 환경은 입력하지 마세"
 "요)."
 
-#: inc/admin/option-page-register.php:309
-msgid "Email address: "
-msgstr "이메일 주소: "
-
-#: inc/admin/option-page-register.php:317
-msgid ""
-"The email address is detected and pre-filled. This is the administrative "
-"email address entered in the Settings ➔ General tab. You can use another "
-"email address used to receive your API key."
-msgstr ""
-"이메일 주소가 감지되어 미리 채워집니다. 설정 ➔ 일반 탭에 입력한 관리 이메일 주"
-"소입니다. API 키를 받는 데 사용되는 다른 이메일 주소를 사용할 수 있습니다."
-
-#: inc/admin/option-page-register.php:325
+#: inc/admin/option-page-register.php:324
 msgid "Website language: "
 msgstr "웹사이트 언어: "
 
-#: inc/admin/option-page-register.php:333 inc/admin/option-page-settings.php:242
+#: inc/admin/option-page-register.php:332 inc/admin/option-page-settings.php:251
 msgid ""
 "This is the language of your website, defined by the associated API key. Make "
 "sure your website language is also correctly set in WordPress options "
@@ -1192,11 +1189,11 @@ msgstr ""
 "웹사이트의 언어는 연결된 API 키에 의해 정의됩니다. 워드프레스 옵션(설정 ➔ 일"
 "반 ➔ 웹사이트 언어)에서도 웹사이트 언어가 올바르게 설정되어 있는지 확인하세요."
 
-#: inc/admin/option-page-register.php:341
+#: inc/admin/option-page-register.php:340
 msgid "Target language: "
 msgstr "대상 언어: "
 
-#: inc/admin/option-page-register.php:349
+#: inc/admin/option-page-register.php:348
 msgid ""
 "This is the language you want to translate your website into. Be careful not "
 "to make a mistake because you will not be able to change the language "
@@ -1205,23 +1202,23 @@ msgstr ""
 "웹사이트를 번역할 언어를 입력합니다. 이후에는 언어를 변경할 수 없으므로 실수하"
 "지 않도록 주의하세요."
 
-#: inc/admin/option-page-register.php:358
+#: inc/admin/option-page-register.php:357
 msgid "I have read and accept the"
 msgstr "다음 사항을 읽었으며, 수락합니다"
 
-#: inc/admin/option-page-register.php:358
+#: inc/admin/option-page-register.php:357
 msgid "API terms of use"
 msgstr "API 사용 약관"
 
-#: inc/admin/option-page-register.php:366
+#: inc/admin/option-page-register.php:365
 msgid "Website Locale: "
 msgstr "웹사이트 로캘: "
 
-#: inc/admin/option-page-register.php:387
+#: inc/admin/option-page-register.php:386
 msgid "Get more target languages and advanced features: "
 msgstr "더 많은 대상 언어와 고급 기능을 사용하세요: "
 
-#: inc/admin/option-page-register.php:393
+#: inc/admin/option-page-register.php:392
 msgid ""
 "To translate your website into more languages and access advanced features, "
 "visit wpLingua website."
@@ -1229,19 +1226,19 @@ msgstr ""
 "웹사이트를 더 많은 언어로 번역하고 고급 기능에 액세스하려면 wpLingua 웹사이트"
 "를 방문하세요."
 
-#: inc/admin/option-page-register.php:397
+#: inc/admin/option-page-register.php:396 inc/admin/option-page-settings.php:431
 msgid "Use wpLingua on commercial website"
 msgstr "상업용 웹사이트에 wpLingua 사용"
 
-#: inc/admin/option-page-register.php:398
+#: inc/admin/option-page-register.php:397
 msgid "Allow search from all languages"
 msgstr "모든 언어에서 검색 허용"
 
-#: inc/admin/option-page-register.php:399
+#: inc/admin/option-page-register.php:398
 msgid "Get more target languages"
 msgstr "더 많은 대상 언어 가져오기"
 
-#: inc/admin/option-page-register.php:404
+#: inc/admin/option-page-register.php:403
 msgid "Visit wpLingua website"
 msgstr "WpLingua 웹사이트 방문"
 
@@ -1258,18 +1255,18 @@ msgid "Translated languages"
 msgstr "번역된 언어"
 
 #: inc/admin/option-page-settings.php:64
-msgid "API features"
-msgstr "API 기능"
+msgid "Features"
+msgstr "특징"
 
-#: inc/admin/option-page-settings.php:72
+#: inc/admin/option-page-settings.php:80
 msgid "API Key"
 msgstr "API 키"
 
-#: inc/admin/option-page-settings.php:158
+#: inc/admin/option-page-settings.php:167
 msgid "Your website is being translated and will be ready soon."
 msgstr "웹사이트가 번역 중이며 곧 준비될 예정입니다."
 
-#: inc/admin/option-page-settings.php:159
+#: inc/admin/option-page-settings.php:168
 msgid ""
 "In just a few seconds, your website will be multilingual, and search engines "
 "will be able to index these new pages. wpLingua detects all the texts on your "
@@ -1282,7 +1279,7 @@ msgstr ""
 "첫 번째 번역을 제공합니다. 모든 번역은 편집할 수 있습니다. 관리 표시줄에서 시"
 "각적 편집기를 열고 웹사이트의 텍스트를 클릭하여 간단히 편집할 수 있습니다."
 
-#: inc/admin/option-page-settings.php:163
+#: inc/admin/option-page-settings.php:172
 msgid ""
 "Your website is now multilingual! You can start visiting the translated "
 "version."
@@ -1290,7 +1287,7 @@ msgstr ""
 "이제 웹사이트가 다국어로 제공됩니다! 번역된 버전에서 방문을 시작할 수 있습니"
 "다."
 
-#: inc/admin/option-page-settings.php:164
+#: inc/admin/option-page-settings.php:173
 msgid ""
 "The first time a translated page is loaded, the translations are "
 "automatically generated and saved in the database. This may take some time "
@@ -1302,7 +1299,7 @@ msgstr ""
 "니다. 콘텐츠의 크기에 따라 시간이 다소 걸릴 수 있습니다(1세대에 한함). 따라서 "
 "모든 다국어 버전을 생성하려면 처음에 웹사이트 전체를 탐색하는 것이 좋습니다."
 
-#: inc/admin/option-page-settings.php:165
+#: inc/admin/option-page-settings.php:174
 msgid ""
 "All translations are editable: open the visual editor from the administration "
 "bar and edit them simply by clicking on the texts on your website."
@@ -1310,46 +1307,46 @@ msgstr ""
 "모든 번역은 편집할 수 있습니다. 관리 표시줄에서 시각적 편집기를 열고 웹사이트"
 "의 텍스트를 클릭하여 간단히 편집할 수 있습니다."
 
-#: inc/admin/option-page-settings.php:168
+#: inc/admin/option-page-settings.php:177
 msgid "Visit your multilingual website"
 msgstr "다국어 웹사이트 방문하기"
 
-#: inc/admin/option-page-settings.php:195
+#: inc/admin/option-page-settings.php:204
 msgid "Original website language: "
 msgstr "원래 웹사이트 언어: "
 
-#: inc/admin/option-page-settings.php:221
+#: inc/admin/option-page-settings.php:230
 msgid "Please choose an option"
 msgstr "옵션을 선택하세요"
 
-#: inc/admin/option-page-settings.php:232
+#: inc/admin/option-page-settings.php:241
 msgid "Original website language, defined by API key: "
 msgstr "API 키로 정의된 원래 웹사이트 언어입니다: "
 
-#: inc/admin/option-page-settings.php:244
+#: inc/admin/option-page-settings.php:253
 msgid ""
 "If you have mistakenly entered the wrong language, contact wpLingua support "
 "to request a correction."
 msgstr ""
 "실수로 잘못된 언어를 입력한 경우 wpLingua 지원팀에 문의하여 수정을 요청하세요."
 
-#: inc/admin/option-page-settings.php:247
-msgid "Contact support on wplingua.com"
-msgstr "Wplingua.com에서 지원팀에 문의"
+#: inc/admin/option-page-settings.php:256
+msgid "wplingua.com : Contact support"
+msgstr "wplingua.com : 지원팀에 문의"
 
-#: inc/admin/option-page-settings.php:254
+#: inc/admin/option-page-settings.php:263
 msgid "Custom"
 msgstr "사용자 정의"
 
-#: inc/admin/option-page-settings.php:269 inc/admin/option-page-settings.php:335
+#: inc/admin/option-page-settings.php:278 inc/admin/option-page-settings.php:344
 msgid "Flag to use for this language: "
 msgstr "이 언어에 사용할 플래그입니다: "
 
-#: inc/admin/option-page-settings.php:278 inc/admin/option-page-settings.php:343
+#: inc/admin/option-page-settings.php:287 inc/admin/option-page-settings.php:352
 msgid "Custom flag URL for this language: "
 msgstr "이 언어에 대한 사용자 지정 플래그 URL입니다: "
 
-#: inc/admin/option-page-settings.php:301
+#: inc/admin/option-page-settings.php:310
 msgid ""
 "Important: space out the addition of new languages ​​by at least ten days and "
 "browse your site for the first time in the added languages. This promotes "
@@ -1360,23 +1357,23 @@ msgstr ""
 "음 탐색하세요. 이렇게 하면 검색 엔진의 색인 생성이 개선되고 서버의 부하가 줄어"
 "들며 사이트 속도 저하 위험이 최소화됩니다."
 
-#: inc/admin/option-page-settings.php:305
+#: inc/admin/option-page-settings.php:314
 msgid "Add new target Language: "
 msgstr "새 대상 언어를 추가합니다: "
 
-#: inc/admin/option-page-settings.php:311
+#: inc/admin/option-page-settings.php:320
 msgid "Add language"
 msgstr "언어 추가"
 
-#: inc/admin/option-page-settings.php:324
+#: inc/admin/option-page-settings.php:333
 msgid "(Private)"
 msgstr "(비공개)"
 
-#: inc/admin/option-page-settings.php:349
+#: inc/admin/option-page-settings.php:358
 msgid "Make this language private"
 msgstr "이 언어를 비공개로 설정"
 
-#: inc/admin/option-page-settings.php:350
+#: inc/admin/option-page-settings.php:359
 msgid ""
 "Private languages will only be visible to logged-in users with editing "
 "rights. This option allows administrators to pre-generate and correct "
@@ -1385,28 +1382,28 @@ msgstr ""
 "비공개 언어는 편집 권한이 있는 로그인한 사용자만 볼 수 있습니다. 이 옵션을 사"
 "용하면 관리자가 번역을 미리 생성하고 수정한 후 대중에게 공개할 수 있습니다."
 
-#: inc/admin/option-page-settings.php:359
+#: inc/admin/option-page-settings.php:368
 msgid "Target languages enabled: "
 msgstr "대상 언어 활성화: "
 
-#: inc/admin/option-page-settings.php:366
+#: inc/admin/option-page-settings.php:375
 msgid "Access more target languages by upgrading your API key."
 msgstr "API 키를 업그레이드하여 더 많은 대상 언어에 액세스하세요."
 
-#: inc/admin/option-page-settings.php:375
+#: inc/admin/option-page-settings.php:384
 msgid "Available languages: "
 msgstr "사용 가능한 언어: "
 
-#: inc/admin/option-page-settings.php:395 inc/admin/option-page-settings.php:435
-#: inc/admin/option-page-settings.php:459
-msgid "Upgrade your API key on wplingua.com"
-msgstr "Wplingua.com에서 API 키 업그레이드하기"
+#: inc/admin/option-page-settings.php:404 inc/admin/option-page-settings.php:442
+#: inc/admin/option-page-settings.php:466 inc/admin/option-page-settings.php:549
+msgid "wplingua.com : Upgrade your API key"
+msgstr "wplingua.com : API 키 업그레이드"
 
-#: inc/admin/option-page-settings.php:413
+#: inc/admin/option-page-settings.php:422
 msgid "API translation features: "
 msgstr "API 번역 기능: "
 
-#: inc/admin/option-page-settings.php:416
+#: inc/admin/option-page-settings.php:425
 msgid ""
 "The options below require extended access to the wpLingua API to be "
 "functional on your website."
@@ -1414,11 +1411,7 @@ msgstr ""
 "아래 옵션을 웹사이트에 사용하려면 wpLingua API에 대한 확장 액세스 권한이 필요"
 "합니다."
 
-#: inc/admin/option-page-settings.php:422
-msgid "API feature: Use wpLingua on commercial website"
-msgstr "API 기능: 상업용 웹사이트에서 wpLingua 사용"
-
-#: inc/admin/option-page-settings.php:428
+#: inc/admin/option-page-settings.php:437
 msgid ""
 "Use of the free wpLingua API keys is reserved for personal blogs and non-"
 "profit websites; paid subscriptions are available for companies and "
@@ -1427,15 +1420,15 @@ msgstr ""
 "개인 블로그 및 비영리 웹사이트는 무료 wpLingua API 키를 사용할 수 있으며, 기"
 "업 및 상업용 웹사이트는 유료 구독을 이용할 수 있습니다."
 
-#: inc/admin/option-page-settings.php:444
-msgid "API feature: Search from translated languages"
-msgstr "API 기능: 번역된 언어에서 검색"
+#: inc/admin/option-page-settings.php:451
+msgid "Search from translated languages"
+msgstr "번역된 언어에서 검색"
 
-#: inc/admin/option-page-settings.php:450
+#: inc/admin/option-page-settings.php:457
 msgid "Enable visitors to search on your website in their own language."
 msgstr "방문자가 자신의 언어로 웹사이트에서 검색할 수 있도록 합니다."
 
-#: inc/admin/option-page-settings.php:454
+#: inc/admin/option-page-settings.php:461
 msgid ""
 "Example: if your website is translated from English to French and you have a "
 "post named \"Hello\". When a French visitor searches for the term \"Bonjour\" "
@@ -1449,30 +1442,62 @@ msgstr ""
 "자가 \"봉주르\"를 검색했을 때 워드프레스에서 \"안녕하세요\"라는 이름의 글을 찾"
 "을 수 있습니다."
 
-#: inc/admin/option-page-settings.php:479
+#: inc/admin/option-page-settings.php:483
+msgid "Plugin translation features: "
+msgstr "플러그인 번역 기능: "
+
+#: inc/admin/option-page-settings.php:489
+msgid "Progress bar for editors"
+msgstr "편집자를 위한 진행률 표시줄"
+
+#: inc/admin/option-page-settings.php:495
+msgid "Enable progress bar: Smooth translations loading for editors"
+msgstr "진행률 표시줄을 활성화합니다: 편집자를 위한 원활한 번역 로딩"
+
+#: inc/admin/option-page-settings.php:499
+msgid ""
+"Activate a progress bar when a page requires the generation of more than 20 "
+"new string translations. This feature only applies to connected editors."
+msgstr ""
+"페이지에 20개 이상의 새 문자열 번역을 생성해야 하는 경우 진행률 표시줄을 활성"
+"화합니다. 이 기능은 연결된 편집기에만 적용됩니다."
+
+#: inc/admin/option-page-settings.php:508
+msgid "Enable multilingual XML Sitemap"
+msgstr "다국어 XML 사이트맵 사용"
+
+#: inc/admin/option-page-settings.php:514
+msgid ""
+"Enable multilingual Sitemap XML: Automatically add links to your wpLingua "
+"translated pages in your XML Sitemap files."
+msgstr ""
+"다국어 사이트맵 XML을 활성화합니다: XML 사이트맵 파일에 wpLingua 번역 페이지"
+"에 대한 링크를 자동으로 추가합니다."
+
+#: inc/admin/option-page-settings.php:533
 msgid "Website API key: "
 msgstr "웹사이트 API 키: "
 
-#: inc/admin/option-page-settings.php:484
+#: inc/admin/option-page-settings.php:538
 msgid ""
 "The API key connects the website to wpLingua's online services and automatic "
 "translation generators."
 msgstr ""
 "API 키는 웹사이트를 wpLingua의 온라인 서비스 및 자동 번역 생성기에 연결합니다."
 
-#: inc/admin/option-page-settings.php:498
+#: inc/admin/option-page-settings.php:560
 msgid "Show API key"
 msgstr "API 키 표시"
 
-#: inc/admin/option-page-settings.php:500
+#: inc/admin/option-page-settings.php:562
 msgid "Hide API key"
 msgstr "API 키 숨기기"
 
-#: inc/admin/option-page-settings.php:506
+#: inc/admin/option-page-settings.php:568
 msgid "API key status: "
 msgstr "API 키 상태: "
 
-#: inc/admin/option-page-settings.php:521
+#: inc/admin/option-page-settings.php:583
 msgid "Premium expiration: "
 msgstr "프리미엄 만료: "
 
@@ -1898,8 +1923,7 @@ msgstr "링크 및 미디어"
 msgid "wpLingua: Website slugs"
 msgstr "wpLingua: 웹사이트 슬러그"
 
-#: inc/admin/option-page.php:93 inc/admin/slug-cpt.php:19
-#: inc/admin/slug-cpt.php:23
+#: inc/admin/option-page.php:93 inc/admin/slug-cpt.php:23
 msgid "Website slugs"
 msgstr "웹사이트 슬러그"
 
@@ -1907,36 +1931,36 @@ msgstr "웹사이트 슬러그"
 msgid "wpLingua: Translations"
 msgstr "wpLingua: 번역"
 
-#: inc/admin/option-page.php:102 inc/admin/translation-cpt.php:21
+#: inc/admin/option-page.php:102
 msgid "All translations"
 msgstr "모든 번역"
 
-#: inc/admin/option-page.php:169
+#: inc/admin/option-page.php:221
 msgid "Thank you for choosing wpLingua!"
 msgstr "WpLingua를 선택해 주셔서 감사합니다!"
 
-#: inc/admin/option-page.php:172
+#: inc/admin/option-page.php:224
 #, php-format
 msgid "If you like wpLingua please leave us a %1$s rating. A huge thanks!"
 msgstr "WpLingua가 마음에 들면 %1$s 등급을 남겨주세요. 감사합니다!"
 
-#: inc/admin/option-page.php:173
+#: inc/admin/option-page.php:225
 msgid "five stars"
 msgstr "별 5개"
 
-#: inc/admin/option-page.php:208
+#: inc/admin/option-page.php:249
 msgid "Version"
 msgstr "버전"
 
-#: inc/admin/option-page.php:231
+#: inc/admin/option-page.php:272
 msgid "Settings"
 msgstr "설정"
 
-#: inc/admin/option-page.php:273
+#: inc/admin/option-page.php:314
 msgid "wpLingua - Translation solution for multilingual website"
 msgstr "wpLingua - 다국어 웹사이트를 위한 번역 솔루션"
 
-#: inc/admin/option-page.php:276
+#: inc/admin/option-page.php:317
 msgid ""
 "wpLingua is installed, but not yet configured. You are just a few clicks away "
 "from making your website multilingual!"
@@ -1944,15 +1968,15 @@ msgstr ""
 "wpLingua가 설치되었지만 아직 구성되지 않았습니다. 클릭 몇 번이면 웹사이트를 다"
 "국어로 만들 수 있습니다!"
 
-#: inc/admin/option-page.php:279
+#: inc/admin/option-page.php:320
 msgid "Go to the configuration page"
 msgstr "구성 페이지로 이동"
 
-#: inc/admin/option-page.php:353
+#: inc/admin/option-page.php:394
 msgid "wpLingua - Incompatible plugin detected"
 msgstr "wpLingua - 호환되지 않는 플러그인이 감지되었습니다"
 
-#: inc/admin/option-page.php:356
+#: inc/admin/option-page.php:397
 msgid ""
 "You have several translation plugins. This may result in unpredictable or "
 "incorrect behavior. For best results, use only one translation plugin at a "
@@ -1962,40 +1986,40 @@ msgstr ""
 "생할 수 있습니다. 최상의 결과를 얻으려면 한 번에 하나의 번역 플러그인만 사용하"
 "세요. 이러한 플러그인은 wpLingua에 문제를 일으킬 수 있습니다: "
 
-#: inc/admin/option-page.php:373
+#: inc/admin/option-page.php:414
 #, php-format
 msgid "Deactivate plugin: %1$s"
 msgstr "플러그인을 비활성화합니다: %1$s"
 
-#: inc/admin/option-page.php:382
+#: inc/admin/option-page.php:423
 msgid "Deactivate"
 msgstr "비활성화"
 
-#: inc/admin/option-page.php:399
+#: inc/admin/option-page.php:440
 msgid "Manage active plugins"
 msgstr "활성 플러그인 관리"
 
-#: inc/admin/option-page.php:424
+#: inc/admin/option-page.php:465
 msgid "wpLingua - Incompatible with multisite"
 msgstr "wpLingua - 멀티사이트와 호환되지 않음"
 
-#: inc/admin/option-page.php:427
+#: inc/admin/option-page.php:468
 msgid "wpLingua is not compatible with multisite."
 msgstr "wpLingua는 멀티사이트와 호환되지 않습니다."
 
-#: inc/admin/option-page.php:451
+#: inc/admin/option-page.php:492
 msgid "wpLingua - Incompatible with WordPress installed in a subfolder"
 msgstr "wpLingua - 하위 폴더에 설치된 워드프레스와 호환되지 않습니다"
 
-#: inc/admin/option-page.php:454
+#: inc/admin/option-page.php:495
 msgid "wpLingua is not compatible with WordPress installed in a subfolder."
 msgstr "wpLingua는 하위 폴더에 설치된 워드프레스와 호환되지 않습니다."
 
-#: inc/admin/option-page.php:478
+#: inc/admin/option-page.php:519
 msgid "wpLingua - Incompatible PHP version"
 msgstr "wpLingua - 호환되지 않는 PHP 버전"
 
-#: inc/admin/option-page.php:481
+#: inc/admin/option-page.php:522
 msgid ""
 "wpLingua is not compatible with your PHP version. wpLingua requires PHP 7.4 "
 "or higher."
@@ -2003,56 +2027,79 @@ msgstr ""
 "wpLingua는 PHP 버전과 호환되지 않습니다. wpLingua에는 PHP 7.4 이상이 필요합니"
 "다."
 
+#: inc/admin/option-page.php:585
+msgid "wpLingua - Incompatible HTACCESS file"
+msgstr "wpLingua - 호환되지 않는 HTACCESS 파일"
+
+#: inc/admin/option-page.php:588
+msgid ""
+"It seems that a plugin was incorrectly deactivated and corrupted the site's "
+"HTACCESS file, preventing the correct redirection of translated pages. Please "
+"edit the \".htaccess\" file located at the root of the site and delete the "
+"lines between :"
+msgstr ""
+"플러그인이 잘못 비활성화되어 사이트의 HTACCESS 파일이 손상되어 번역된 페이지"
+"가 올바르게 리디렉션되지 않는 것 같습니다. 사이트 루트에 있는 '.htaccess' 파일"
+"을 편집하고 . 사이의 줄을 삭제하세요:"
+
+#: inc/admin/slug-cpt.php:19
+msgid "wpLingua - Website slugs"
+msgstr "wpLingua - 웹사이트 슬러그"
+
 #: inc/admin/slug-cpt.php:20
-msgid "Website slug"
-msgstr "웹사이트 슬러그"
+msgid "wpLingua - Website slug"
+msgstr "wpLingua - 웹사이트 슬러그"
 
 #: inc/admin/slug-cpt.php:21
-msgid "All slugs"
-msgstr "모든 슬러그"
+msgid "wpLingua - All slugs"
+msgstr "wpLingua - 모든 슬러그"
 
 #: inc/admin/slug-cpt.php:22
-msgid "Edit slug"
-msgstr "슬러그 편집"
+msgid "wpLingua - Edit slug"
+msgstr "wpLingua - 슬러그 편집"
 
-#: inc/admin/slug-cpt.php:111
+#: inc/admin/slug-cpt.php:24
+msgid "Search slugs"
+msgstr "슬러그 검색"
+
+#: inc/admin/slug-cpt.php:112
 msgid "All slug status"
 msgstr "모든 슬러그 상태"
 
-#: inc/admin/slug-cpt.php:126 inc/admin/slug-cpt.php:138
-#: inc/admin/translation-cpt.php:110 inc/admin/translation-cpt.php:118
+#: inc/admin/slug-cpt.php:127 inc/admin/slug-cpt.php:139
+#: inc/admin/translation-cpt.php:111 inc/admin/translation-cpt.php:119
 #: inc/dom/mode-list.php:193
 msgid "Reviewed"
 msgstr "검토완료"
 
-#: inc/admin/slug-cpt.php:127 inc/admin/slug-cpt.php:398
-#: inc/admin/slug-cpt.php:437 inc/admin/translation-cpt.php:111
-#: inc/admin/translation-cpt.php:378 inc/admin/translation-cpt.php:417
+#: inc/admin/slug-cpt.php:128 inc/admin/slug-cpt.php:399
+#: inc/admin/slug-cpt.php:438 inc/admin/translation-cpt.php:112
+#: inc/admin/translation-cpt.php:379 inc/admin/translation-cpt.php:418
 #: inc/dom/mode-list.php:197
 msgid "Unreviewed"
 msgstr "검토되지 않음"
 
-#: inc/admin/slug-cpt.php:136 inc/admin/slug-cpt.php:388
-#: inc/admin/slug-cpt.php:425 inc/admin/translation-cpt.php:116
-#: inc/admin/translation-cpt.php:368 inc/admin/translation-cpt.php:405
+#: inc/admin/slug-cpt.php:137 inc/admin/slug-cpt.php:389
+#: inc/admin/slug-cpt.php:426 inc/admin/translation-cpt.php:117
+#: inc/admin/translation-cpt.php:369 inc/admin/translation-cpt.php:406
 msgid "Full reviewed"
 msgstr "전체 검토 완료"
 
-#: inc/admin/slug-cpt.php:137 inc/admin/slug-cpt.php:393
-#: inc/admin/slug-cpt.php:431 inc/admin/translation-cpt.php:117
-#: inc/admin/translation-cpt.php:373 inc/admin/translation-cpt.php:411
+#: inc/admin/slug-cpt.php:138 inc/admin/slug-cpt.php:394
+#: inc/admin/slug-cpt.php:432 inc/admin/translation-cpt.php:118
+#: inc/admin/translation-cpt.php:374 inc/admin/translation-cpt.php:412
 msgid "Partially reviewed"
 msgstr "부분적으로 검토됨"
 
-#: inc/admin/slug-cpt.php:139 inc/admin/translation-cpt.php:119
+#: inc/admin/slug-cpt.php:140 inc/admin/translation-cpt.php:120
 msgid "Full unreviewed"
 msgstr "전체 미검토"
 
-#: inc/admin/slug-cpt.php:284
+#: inc/admin/slug-cpt.php:285
 msgid "Slug status"
 msgstr "슬러그 상태"
 
-#: inc/admin/slug-cpt.php:420
+#: inc/admin/slug-cpt.php:421
 msgid "Slug status: "
 msgstr "슬러그 상태: "
 
@@ -2125,23 +2172,35 @@ msgstr "언어 스위치"
 msgid "Add to menu"
 msgstr "메뉴 추가"
 
-#: inc/admin/translation-cpt.php:20 inc/admin/translation-meta.php:23
-msgid "Translation"
-msgstr "번역"
+#: inc/admin/translation-cpt.php:19
+msgid "wpLingua - Translations"
+msgstr "wpLingua - 번역"
 
-#: inc/admin/translation-cpt.php:22 inc/admin/translation-edit-modal.php:58
-msgid "Edit translation"
-msgstr "번역 편집"
+#: inc/admin/translation-cpt.php:20
+msgid "wpLingua - Translation"
+msgstr "wpLingua - 번역"
 
-#: inc/admin/translation-cpt.php:109 inc/admin/translation-cpt.php:115
+#: inc/admin/translation-cpt.php:21
+msgid "wpLingua - All translations"
+msgstr "wpLingua - 모든 번역"
+
+#: inc/admin/translation-cpt.php:22
+msgid "wpLingua - Edit translation"
+msgstr "wpLingua - 번역 편집"
+
+#: inc/admin/translation-cpt.php:24
+msgid "Search translations"
+msgstr "번역 검색"
+
+#: inc/admin/translation-cpt.php:110 inc/admin/translation-cpt.php:116
 msgid "All translation status"
 msgstr "모든 번역 상태"
 
-#: inc/admin/translation-cpt.php:264
+#: inc/admin/translation-cpt.php:265
 msgid "Translation status"
 msgstr "번역 상태"
 
-#: inc/admin/translation-cpt.php:400
+#: inc/admin/translation-cpt.php:401
 msgid "Translation status: "
 msgstr "번역 상태: "
 
@@ -2152,6 +2211,10 @@ msgstr "모든 언어"
 #: inc/admin/translation-edit-modal.php:42
 msgid "Open edit page"
 msgstr "편집 페이지 열기"
+
+#: inc/admin/translation-edit-modal.php:58
+msgid "Edit translation"
+msgstr "번역 편집"
 
 #: inc/admin/translation-edit-modal.php:96
 #: inc/admin/translation-edit-modal.php:155
@@ -2165,6 +2228,10 @@ msgstr "잘못된 번역 게시물"
 #: inc/admin/translation-edit-modal.php:178
 msgid "Translation saving failed"
 msgstr "번역 저장 실패"
+
+#: inc/admin/translation-meta.php:23
+msgid "Translation"
+msgstr "번역"
 
 #: inc/admin/translation-meta.php:87
 msgid " - Original text: "
@@ -2222,23 +2289,23 @@ msgstr ""
 msgid "Save in progress..."
 msgstr "저장 진행 중..."
 
-#: inc/dom/load-overload.php:36
+#: inc/dom/load-overload.php:35
 msgid "Translation API overloaded"
 msgstr "API 번역 기능"
 
-#: inc/dom/load-overload.php:40
+#: inc/dom/load-overload.php:39
 msgid "Translation API overloaded. Retry in a few minutes."
 msgstr "번역 API에 과부하가 걸렸습니다. 몇 분 후에 다시 시도하세요."
 
-#: inc/dom/load-overload.php:46
+#: inc/dom/load-overload.php:45
 msgid "Close"
 msgstr "닫기"
 
-#: inc/dom/load-progress.php:150 inc/dom/load-progress.php:215
+#: inc/dom/load-progress.php:86 inc/dom/load-progress.php:167
 msgid "Translation in progress"
 msgstr "번역 진행 중"
 
-#: inc/dom/load-progress.php:219
+#: inc/dom/load-progress.php:171
 msgid "In progress: Translation and saving of new texts"
 msgstr "진행 중입니다: 새 텍스트 번역 및 저장"
 
@@ -2355,6 +2422,27 @@ msgstr ""
 #. Author of the plugin/theme
 msgid "wpLingua Translation Service"
 msgstr "wpLingua 번역 서비스"
+
+#~ msgid "wpLingua is not compatible with Multisite."
+#~ msgstr "wpLingua는 멀티사이트와 호환되지 않습니다."
+
+#~ msgid "Contact support on wplingua.com"
+#~ msgstr "Wplingua.com에서 지원팀에 문의"
+
+#~ msgid "Upgrade your API key on wplingua.com"
+#~ msgstr "Wplingua.com에서 API 키 업그레이드하기"
+
+#~ msgid "API feature: Use wpLingua on commercial website"
+#~ msgstr "API 기능: 상업용 웹사이트에서 wpLingua 사용"
+
+#~ msgid "Website slug"
+#~ msgstr "웹사이트 슬러그"
+
+#~ msgid "All slugs"
+#~ msgstr "모든 슬러그"
+
+#~ msgid "Edit slug"
+#~ msgstr "슬러그 편집"
 
 #~ msgid "Edit entry"
 #~ msgstr "항목 수정"

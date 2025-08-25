@@ -1,15 +1,15 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: wpLingua\n"
-"POT-Creation-Date: 2025-05-19 15:08+0200\n"
-"PO-Revision-Date: 2025-05-19 15:21+0200\n"
+"POT-Creation-Date: 2025-08-25 11:57+0200\n"
+"PO-Revision-Date: 2025-08-25 16:09+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: hi_IN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 3.6\n"
+"X-Generator: Poedit 3.7\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-Flags-xgettext: --add-comments=translators:\n"
 "X-Poedit-WPHeader: wplingua.php\n"
@@ -19,675 +19,675 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: *.min.js\n"
 
-#: data.php:550
+#: data.php:559
 msgid "Bottom right"
 msgstr "नीचे दाएं"
 
-#: data.php:551
+#: data.php:560
 msgid "Bottom center"
 msgstr "निचला बीच का"
 
-#: data.php:552
+#: data.php:561
 msgid "Bottom left"
 msgstr "तली छोड़ें"
 
-#: data.php:553
+#: data.php:562
 msgid "None"
 msgstr "कोई नहीं"
 
-#: data.php:565
+#: data.php:574
 msgid "Light - Double - Smooth"
 msgstr "हल्का - दोहरा - चिकना"
 
-#: data.php:566
+#: data.php:575
 msgid "Light - Double - Square"
 msgstr "हल्का - दोहरा - वर्ग"
 
-#: data.php:567
+#: data.php:576
 msgid "Light - Simple - Smooth"
 msgstr "हल्का - सरल - चिकना"
 
-#: data.php:568
+#: data.php:577
 msgid "Light - Simple - Square"
 msgstr "हल्का - सरल - वर्गाकार"
 
-#: data.php:569
+#: data.php:578
 msgid "Grey - Double - Smooth"
 msgstr "ग्रे - डबल - चिकना"
 
-#: data.php:570
+#: data.php:579
 msgid "Grey - Double - Square"
 msgstr "ग्रे - डबल - स्क्वायर"
 
-#: data.php:571
+#: data.php:580
 msgid "Grey - Simple - Smooth"
 msgstr "ग्रे - सरल - चिकना"
 
-#: data.php:572
+#: data.php:581
 msgid "Grey - Simple - Square"
 msgstr "ग्रे - सरल - वर्ग"
 
-#: data.php:573
+#: data.php:582
 msgid "Dark - Double - Smooth"
 msgstr "गहरा - दोहरा - चिकना"
 
-#: data.php:574
+#: data.php:583
 msgid "Dark - Double - Square"
 msgstr "गहरा - दोहरा - वर्ग"
 
-#: data.php:575
+#: data.php:584
 msgid "Dark - Simple - Smooth"
 msgstr "गहरा - सरल - चिकना"
 
-#: data.php:576
+#: data.php:585
 msgid "Dark - Simple - Square"
 msgstr "गहरा - सरल - वर्गाकार"
 
-#: data.php:577
+#: data.php:586
 msgid "Blur Black - Double - Smooth"
 msgstr "धुंधला काला - डबल - चिकना"
 
-#: data.php:578
+#: data.php:587
 msgid "Blur Black - Double - Square"
 msgstr "धुंधला काला - डबल - वर्ग"
 
-#: data.php:579
+#: data.php:588
 msgid "Blur Black - Simple - Smooth"
 msgstr "धुंधला काला - सरल - चिकना"
 
-#: data.php:580
+#: data.php:589
 msgid "Blur Black - Simple - Square"
 msgstr "धुंधला काला - सरल - वर्ग"
 
-#: data.php:581
+#: data.php:590
 msgid "Blur White - Double - Smooth"
 msgstr "धुंधला सफ़ेद - डबल - चिकना"
 
-#: data.php:582
+#: data.php:591
 msgid "Blur White - Double - Square"
 msgstr "धुंधला सफ़ेद - डबल - स्क्वायर"
 
-#: data.php:583
+#: data.php:592
 msgid "Blur White - Simple - Smooth"
 msgstr "धुंधला सफ़ेद - सरल - चिकना"
 
-#: data.php:584
+#: data.php:593
 msgid "Blur White - Simple - Square"
 msgstr "धुंधला सफ़ेद - सरल - वर्ग"
 
-#: data.php:596
+#: data.php:605
 msgid "Inline list"
 msgstr "इनलाइन सूची"
 
-#: data.php:597
+#: data.php:606
 msgid "Block"
 msgstr "खंड"
 
-#: data.php:598
+#: data.php:607
 msgid "Dropdown"
 msgstr "ड्रॉप डाउन"
 
-#: data.php:610 data.php:644
+#: data.php:619 data.php:653
 msgid "Original name"
 msgstr "मूल नाम"
 
-#: data.php:611 data.php:645
+#: data.php:620 data.php:654
 msgid "Translated name"
 msgstr "अनूदित नाम"
 
-#: data.php:612 data.php:646
+#: data.php:621 data.php:655
 msgid "Language ID"
 msgstr "भाषा आईडी"
 
-#: data.php:613 data.php:628 data.php:647 data.php:660
+#: data.php:622 data.php:637 data.php:656 data.php:669
 msgid "No display"
 msgstr "कोई प्रदर्शन नहीं"
 
-#: data.php:625
+#: data.php:634
 msgid "Circle"
 msgstr "वृत्त"
 
-#: data.php:626
+#: data.php:635
 msgid "Rectangular"
 msgstr "आयताकार"
 
-#: data.php:627
+#: data.php:636
 msgid "Wave"
 msgstr "लहर"
 
-#: data.php:659
+#: data.php:668
 msgid "Display"
 msgstr "डिस्प्ले"
 
-#: data.php:672
+#: data.php:681
 msgid "List without current language"
 msgstr "वर्तमान भाषा के बिना सूची"
 
-#: data.php:673
+#: data.php:682
 msgid "List without active class"
 msgstr "सक्रिय वर्ग के बिना सूची"
 
-#: data.php:674
+#: data.php:683
 msgid "List with active class"
 msgstr "सक्रिय वर्ग के साथ सूची बनाएं"
 
-#: data.php:675
+#: data.php:684
 msgid "Sub-list"
 msgstr "उप-सूची"
 
-#: data.php:728
+#: data.php:737
 msgid "Arabic"
 msgstr "अरबी"
 
-#: data.php:734 data.php:888
+#: data.php:743 data.php:897
 msgid "Global"
 msgstr "वैश्विक"
 
-#: data.php:739
+#: data.php:748
 msgid "Egypt"
 msgstr "मिस्र"
 
-#: data.php:744
+#: data.php:753
 msgid "Saudi Arabia"
 msgstr "सऊदी अरब"
 
-#: data.php:749
+#: data.php:758
 msgid "Algeria"
 msgstr "एलजीरिया"
 
-#: data.php:754
+#: data.php:763
 msgid "Bahrain"
 msgstr "बहरीन"
 
-#: data.php:759
+#: data.php:768
 msgid "Chad"
 msgstr "काग़ज़ का टुकड़ा"
 
-#: data.php:764
+#: data.php:773
 msgid "Comoros"
 msgstr "कोमोरोस"
 
-#: data.php:769
+#: data.php:778
 msgid "Djibouti"
 msgstr "ज़िबूटी"
 
-#: data.php:774
+#: data.php:783
 msgid "Iraq"
 msgstr "इराक"
 
-#: data.php:779
+#: data.php:788
 msgid "Jordan"
 msgstr "जॉर्डन"
 
-#: data.php:784
+#: data.php:793
 msgid "Kuwait"
 msgstr "कुवैट"
 
-#: data.php:789
+#: data.php:798
 msgid "Lebanon"
 msgstr "लेबनान"
 
-#: data.php:794
+#: data.php:803
 msgid "Libya"
 msgstr "लीबिया"
 
-#: data.php:799
+#: data.php:808
 msgid "Mauritania"
 msgstr "मॉरिटानिया"
 
-#: data.php:804
+#: data.php:813
 msgid "Morocco"
 msgstr "मोरक्को"
 
-#: data.php:809
+#: data.php:818
 msgid "Oman"
 msgstr "ओमान"
 
-#: data.php:814
+#: data.php:823
 msgid "Palestine"
 msgstr "फिलिस्तीन"
 
-#: data.php:819
+#: data.php:828
 msgid "Qatar"
 msgstr "कतर"
 
-#: data.php:824
+#: data.php:833
 msgid "Somalia"
 msgstr "सोमालिया"
 
-#: data.php:829
+#: data.php:838
 msgid "Sudan"
 msgstr "सूडान"
 
-#: data.php:834
+#: data.php:843
 msgid "Syria"
 msgstr "सीरिया"
 
-#: data.php:839
+#: data.php:848
 msgid "Tunisia"
 msgstr "ट्यूनीशिया"
 
-#: data.php:844
+#: data.php:853
 msgid "United Arab Emirates"
 msgstr "संयुक्त अरब अमीरात"
 
-#: data.php:849
+#: data.php:858
 msgid "Yemen"
 msgstr "यमन"
 
-#: data.php:883
+#: data.php:892
 msgid "Chinese"
 msgstr "चीनी"
 
-#: data.php:893
+#: data.php:902
 msgid "China"
 msgstr "चीन"
 
-#: data.php:898
+#: data.php:907
 msgid "Hong Kong"
 msgstr "हांगकांग"
 
-#: data.php:903
+#: data.php:912
 msgid "Malaysia"
 msgstr "मलेशिया"
 
-#: data.php:908 data.php:1144
+#: data.php:917 data.php:1153
 msgid "Singapore"
 msgstr "सिंगापुर"
 
-#: data.php:942
+#: data.php:951
 msgid "Danish"
 msgstr "डेनिश"
 
-#: data.php:947
+#: data.php:956
 msgid "Denmark"
 msgstr "डेनमार्क"
 
-#: data.php:981
+#: data.php:990
 msgid "Dutch"
 msgstr "डच"
 
-#: data.php:986
+#: data.php:995
 msgid "Netherlands"
 msgstr "नीदरलैंड"
 
-#: data.php:991 data.php:1237
+#: data.php:1000 data.php:1246
 msgid "Belgium"
 msgstr "बेल्जियम"
 
-#: data.php:996
+#: data.php:1005
 msgid "Suriname"
 msgstr "सूरीनाम"
 
-#: data.php:1030
+#: data.php:1039
 msgid "Slovak"
 msgstr "स्लोवाक"
 
-#: data.php:1035
+#: data.php:1044
 msgid "Slovakia"
 msgstr "स्लोवाकिया"
 
-#: data.php:1040
+#: data.php:1049
 msgid "Czech Republic"
 msgstr "चेक रिपब्लिक"
 
-#: data.php:1074
+#: data.php:1083
 msgid "English"
 msgstr "English"
 
-#: data.php:1079
+#: data.php:1088
 msgid "US / GB"
 msgstr "यूएस / जीबी"
 
-#: data.php:1084
+#: data.php:1093
 msgid "United Kingdom"
 msgstr "यूनाइटेड किंगडम"
 
-#: data.php:1089
+#: data.php:1098
 msgid "United States"
 msgstr "संयुक्त राज्य अमेरिका"
 
-#: data.php:1094
+#: data.php:1103
 msgid "Australia"
 msgstr "ऑस्ट्रेलिया"
 
-#: data.php:1099 data.php:1247
+#: data.php:1108 data.php:1256
 msgid "Canada"
 msgstr "कनाडा"
 
-#: data.php:1104
+#: data.php:1113
 msgid "Ireland"
 msgstr "आयरलैंड"
 
-#: data.php:1109
+#: data.php:1118
 msgid "New Zealand"
 msgstr "न्यूज़ीलैंड"
 
-#: data.php:1114
+#: data.php:1123
 msgid "Nigeria"
 msgstr "नाइजीरिया"
 
-#: data.php:1119
+#: data.php:1128
 msgid "South Africa"
 msgstr "दक्षिण अफ़्रीका"
 
-#: data.php:1124
+#: data.php:1133
 msgid "Kenya"
 msgstr "केन्या"
 
-#: data.php:1129
+#: data.php:1138
 msgid "Ghana"
 msgstr "घाना"
 
-#: data.php:1134
+#: data.php:1143
 msgid "South Sudan"
 msgstr "दक्षिण सूडान"
 
-#: data.php:1139
+#: data.php:1148
 msgid "Sierra Leone"
 msgstr "सेरा लिओन"
 
-#: data.php:1149
+#: data.php:1158
 msgid "Liberia"
 msgstr "लाइबेरिया"
 
-#: data.php:1154
+#: data.php:1163
 msgid "Jamaica"
 msgstr "जमैका"
 
-#: data.php:1188
+#: data.php:1197
 msgid "Finnish"
 msgstr "फिनिश"
 
-#: data.php:1193 data.php:1979
+#: data.php:1202 data.php:1988
 msgid "Finland"
 msgstr "फिनलैंड"
 
-#: data.php:1227
+#: data.php:1236
 msgid "French"
 msgstr "फ्रेंच"
 
-#: data.php:1232
+#: data.php:1241
 msgid "France"
 msgstr "फ्रांस"
 
-#: data.php:1242
+#: data.php:1251
 msgid "Quebec"
 msgstr "क्यूबेक"
 
-#: data.php:1252
+#: data.php:1261
 msgid "Congo - Kinshasa"
 msgstr "कांगो - किंशासा"
 
-#: data.php:1257
+#: data.php:1266
 msgid "Congo - Brazzaville"
 msgstr "कांगो - ब्राज़ाविल"
 
-#: data.php:1262
+#: data.php:1271
 msgid "Cameroon"
 msgstr "कैमरून"
 
-#: data.php:1267
+#: data.php:1276
 msgid "Ivory Coast"
 msgstr "हाथीदांत का किनारा"
 
-#: data.php:1272 data.php:1321
+#: data.php:1281 data.php:1330
 msgid "Switzerland"
 msgstr "स्विट्ज़रलैंड"
 
-#: data.php:1306
+#: data.php:1315
 msgid "German"
 msgstr "जर्मन"
 
-#: data.php:1311
+#: data.php:1320
 msgid "Germany"
 msgstr "जर्मनी"
 
-#: data.php:1316
+#: data.php:1325
 msgid "Austria"
 msgstr "ऑस्ट्रिया"
 
-#: data.php:1326
+#: data.php:1335
 msgid "Liechtenstein"
 msgstr "लिकटेंस्टाइन"
 
-#: data.php:1360
+#: data.php:1369
 msgid "Greek"
 msgstr "यूनानी"
 
-#: data.php:1365
+#: data.php:1374
 msgid "Greece"
 msgstr "ग्रीस"
 
-#: data.php:1370 data.php:2023
+#: data.php:1379 data.php:2032
 msgid "Cyprus"
 msgstr "साइप्रस"
 
-#: data.php:1404
+#: data.php:1413
 msgid "Hebrew"
 msgstr "यहूदी"
 
-#: data.php:1410
+#: data.php:1419
 msgid "Israel"
 msgstr "इजराइल"
 
-#: data.php:1444
+#: data.php:1453
 msgid "Hindi"
 msgstr "हिंदी"
 
-#: data.php:1449
+#: data.php:1458
 msgid "India"
 msgstr "भारत"
 
-#: data.php:1454
+#: data.php:1463
 msgid "Pakistan"
 msgstr "पाकिस्तान"
 
-#: data.php:1488
+#: data.php:1497
 msgid "Hungarian"
 msgstr "हंगेरी"
 
-#: data.php:1493
+#: data.php:1502
 msgid "Hungary"
 msgstr "हंगरी"
 
-#: data.php:1527
+#: data.php:1536
 msgid "Indonesian"
 msgstr "इन्डोनेशियाई"
 
-#: data.php:1532
+#: data.php:1541
 msgid "Indonesia"
 msgstr "इंडोनेशिया"
 
-#: data.php:1566
+#: data.php:1575
 msgid "Italian"
 msgstr "इतालवी"
 
-#: data.php:1571
+#: data.php:1580
 msgid "Italy"
 msgstr "इटली"
 
-#: data.php:1605
+#: data.php:1614
 msgid "Japanese"
 msgstr "जापानी"
 
-#: data.php:1610
+#: data.php:1619
 msgid "Japan"
 msgstr "जापान"
 
-#: data.php:1644
+#: data.php:1653
 msgid "Korean"
 msgstr "कोरियाई"
 
-#: data.php:1649
+#: data.php:1658
 msgid "South Korea"
 msgstr "दक्षिणी कोरिया"
 
-#: data.php:1654
+#: data.php:1663
 msgid "North Korea"
 msgstr "उत्तर कोरिया"
 
-#: data.php:1688
+#: data.php:1697
 msgid "Polish"
 msgstr "पोलिश"
 
-#: data.php:1693
+#: data.php:1702
 msgid "Poland"
 msgstr "पोलैंड"
 
-#: data.php:1727
+#: data.php:1736
 msgid "Portuguese"
 msgstr "पुर्तगाली"
 
-#: data.php:1732
+#: data.php:1741
 msgid "Portugal"
 msgstr "पुर्तगाल"
 
-#: data.php:1737
+#: data.php:1746
 msgid "Brazil"
 msgstr "ब्राज़िल"
 
-#: data.php:1742
+#: data.php:1751
 msgid "Mozambique"
 msgstr "मोज़ाम्बिक"
 
-#: data.php:1747
+#: data.php:1756
 msgid "Angola"
 msgstr "अंगोला"
 
-#: data.php:1781
+#: data.php:1790
 msgid "Russian"
 msgstr "रूसी"
 
-#: data.php:1786
+#: data.php:1795
 msgid "Russia"
 msgstr "रूस"
 
-#: data.php:1791
+#: data.php:1800
 msgid "Kazakhstan"
 msgstr "कजाखस्तान"
 
-#: data.php:1796
+#: data.php:1805
 msgid "Belarus"
 msgstr "बेलोरूस"
 
-#: data.php:1801
+#: data.php:1810
 msgid "Kyrgyzstan"
 msgstr "किर्गिज़स्तान"
 
-#: data.php:1806
+#: data.php:1815
 msgid "Tajikistan"
 msgstr "तजाकिस्तान"
 
-#: data.php:1840
+#: data.php:1849
 msgid "Spanish"
 msgstr "स्पेनिश"
 
-#: data.php:1845
+#: data.php:1854
 msgid "Spain"
 msgstr "स्पेन"
 
-#: data.php:1850
+#: data.php:1859
 msgid "Mexico"
 msgstr "मेक्सिको"
 
-#: data.php:1855
+#: data.php:1864
 msgid "Argentina"
 msgstr "अर्जेंटीना"
 
-#: data.php:1860
+#: data.php:1869
 msgid "Colombia"
 msgstr "कोलंबिया"
 
-#: data.php:1865
+#: data.php:1874
 msgid "Peru"
 msgstr "पेरू"
 
-#: data.php:1870
+#: data.php:1879
 msgid "Ecuador"
 msgstr "इक्वेडोर"
 
-#: data.php:1875
+#: data.php:1884
 msgid "Bolivia"
 msgstr "बोलीविया"
 
-#: data.php:1880
+#: data.php:1889
 msgid "Chile"
 msgstr "चिली"
 
-#: data.php:1885
+#: data.php:1894
 msgid "Equatorial Guinea"
 msgstr "इक्वेटोरियल गिनी"
 
-#: data.php:1890
+#: data.php:1899
 msgid "Guatemala"
 msgstr "ग्वाटेमाला"
 
-#: data.php:1895
+#: data.php:1904
 msgid "Cuba"
 msgstr "क्यूबा"
 
-#: data.php:1900
+#: data.php:1909
 msgid "Dominican Republic"
 msgstr "डोमिनिकन गणराज्य"
 
-#: data.php:1905
+#: data.php:1914
 msgid "Honduras"
 msgstr "होंडुरस"
 
-#: data.php:1910
+#: data.php:1919
 msgid "Paraguay"
 msgstr "परागुआ"
 
-#: data.php:1915
+#: data.php:1924
 msgid "El Salvador"
 msgstr "अल साल्वाडोर"
 
-#: data.php:1920
+#: data.php:1929
 msgid "Nicaragua"
 msgstr "निकारागुआ"
 
-#: data.php:1925
+#: data.php:1934
 msgid "Costa Rica"
 msgstr "कोस्टा रिका"
 
-#: data.php:1930
+#: data.php:1939
 msgid "Panama"
 msgstr "पनामा"
 
-#: data.php:1935
+#: data.php:1944
 msgid "Uruguay"
 msgstr "उरुग्वे"
 
-#: data.php:1969
+#: data.php:1978
 msgid "Swedish"
 msgstr "स्वीडिश"
 
-#: data.php:1974
+#: data.php:1983
 msgid "Sweden"
 msgstr "स्वीडन"
 
-#: data.php:2013
+#: data.php:2022
 msgid "Turkish"
 msgstr "तुर्की"
 
-#: data.php:2018
+#: data.php:2027
 msgid "Turkey"
 msgstr "टर्की"
 
-#: data.php:2057
+#: data.php:2066
 msgid "Ukrainian"
 msgstr "यूक्रेनी"
 
-#: data.php:2062
+#: data.php:2071
 msgid "Ukraine"
 msgstr "यूक्रेन"
 
-#: data.php:2096
+#: data.php:2105
 msgid "Vietnamese"
 msgstr "विएतनामी"
 
-#: data.php:2101
+#: data.php:2110
 msgid "Vietnam"
 msgstr "वियतनाम"
 
@@ -717,8 +717,7 @@ msgstr "सभी अनुवाद पृष्ठ पर हैं"
 msgid "Edit the page slug"
 msgstr "पेज स्लग संपादित करें"
 
-#: inc/admin/admin-bar.php:279 inc/admin/admin.php:59 inc/admin/translation-cpt.php:19
-#: inc/admin/translation-cpt.php:23
+#: inc/admin/admin-bar.php:279 inc/admin/admin.php:59 inc/admin/translation-cpt.php:23
 msgid "Translations"
 msgstr "अनुवाद"
 
@@ -726,7 +725,7 @@ msgstr "अनुवाद"
 msgid "Edit translations"
 msgstr "अनुवाद संपादित करें"
 
-#: inc/admin/assets.php:366 inc/admin/assets.php:431 inc/assets.php:89
+#: inc/admin/assets.php:366 inc/admin/assets.php:458 inc/assets.php:89
 msgid ""
 "You are about to leave the page without saving your changes. They will be lost if you continue. "
 "Would you like to leave the page anyway?"
@@ -777,12 +776,12 @@ msgid "Rule N°"
 msgstr "नियम N°"
 
 #: inc/admin/option-page-dictionary.php:127 inc/admin/option-page-link-media.php:127
-#: inc/admin/option-page-settings.php:263 inc/admin/option-page-settings.php:328
+#: inc/admin/option-page-settings.php:272 inc/admin/option-page-settings.php:337
 msgid "Edit"
 msgstr "संपादित करें"
 
 #: inc/admin/option-page-dictionary.php:134 inc/admin/option-page-link-media.php:134
-#: inc/admin/option-page-settings.php:329
+#: inc/admin/option-page-settings.php:338
 msgid "Remove"
 msgstr "हटाना"
 
@@ -889,7 +888,7 @@ msgstr "वर्ग विशेषता के आधार पर तत्�
 msgid "Exclude elements by CSS selector"
 msgstr "CSS चयनकर्ता द्वारा तत्वों को बाहर निकालें"
 
-#: inc/admin/option-page-exclusions.php:69 inc/admin/option-page-settings.php:78
+#: inc/admin/option-page-exclusions.php:69 inc/admin/option-page-settings.php:86
 #: inc/admin/option-page-switcher.php:496 inc/admin/translation-edit-modal.php:71
 #: inc/assets.php:96
 msgid "Save"
@@ -963,43 +962,39 @@ msgstr "Regex"
 msgid " - URL: "
 msgstr " - यूआरएल: "
 
-#: inc/admin/option-page-register.php:19
-msgid "wpLingua is not compatible with Multisite."
-msgstr "wpLingua मल्टीसाइट के साथ संगत नहीं है।"
-
-#: inc/admin/option-page-register.php:40 inc/admin/option-page-register.php:79
+#: inc/admin/option-page-register.php:31 inc/admin/option-page-register.php:70
 msgid "Message: "
 msgstr "संदेश: "
 
-#: inc/admin/option-page-register.php:46
+#: inc/admin/option-page-register.php:37
 msgid "An error occurred with API key."
 msgstr "API कुंजी के साथ एक त्रुटि घटित हुई."
 
-#: inc/admin/option-page-register.php:62
+#: inc/admin/option-page-register.php:53
 msgid "Invalid API key."
 msgstr "अमान्य API कुंजी."
 
-#: inc/admin/option-page-register.php:86
+#: inc/admin/option-page-register.php:77
 msgid "An error occurred while creating the API key."
 msgstr "API कुंजी बनाते समय एक त्रुटि हुई."
 
-#: inc/admin/option-page-register.php:102
+#: inc/admin/option-page-register.php:93
 msgid "wpLingua - Register API key"
 msgstr "wpLingua - API कुंजी पंजीकृत करें"
 
-#: inc/admin/option-page-register.php:122
+#: inc/admin/option-page-register.php:113
 msgid "API key created"
 msgstr "API कुंजी बनाई गई"
 
-#: inc/admin/option-page-register.php:126
+#: inc/admin/option-page-register.php:117
 msgid "API key created and sent by email"
 msgstr "API कुंजी बनाई गई और ईमेल द्वारा भेजी गई"
 
-#: inc/admin/option-page-register.php:130
+#: inc/admin/option-page-register.php:121
 msgid "The API key has been correctly created and sent to the following e-mail address: "
 msgstr "API कुंजी सही ढंग से बनाई गई है और निम्नलिखित ई-मेल पते पर भेजी गई है: "
 
-#: inc/admin/option-page-register.php:136
+#: inc/admin/option-page-register.php:127
 msgid ""
 "Go to your mailbox and copy the API key sent to you (don't forget to check the spam section of "
 "your mailbox). Then paste it in the section below, and click \"Set API key\" to make your "
@@ -1009,24 +1004,24 @@ msgstr ""
 "फिर इसे नीचे दिए गए सेक्शन में पेस्ट करें, और अपनी वेबसाइट को बहुभाषी बनाने के लिए \"API कुंजी सेट करें\" पर क्लिक "
 "करें।"
 
-#: inc/admin/option-page-register.php:142 inc/admin/option-page-register.php:158
+#: inc/admin/option-page-register.php:133 inc/admin/option-page-register.php:149
 msgid "Set API Key"
 msgstr "API कुंजी सेट करें"
 
-#: inc/admin/option-page-register.php:151 inc/admin/option-page-register.php:196
-#: inc/admin/option-page-register.php:373
+#: inc/admin/option-page-register.php:142 inc/admin/option-page-register.php:187
+#: inc/admin/option-page-register.php:372
 msgid "Get API key"
 msgstr "API कुंजी प्राप्त करें"
 
-#: inc/admin/option-page-register.php:165
+#: inc/admin/option-page-register.php:156
 msgid "Start with wpLingua"
 msgstr "wpLingua से शुरू करें"
 
-#: inc/admin/option-page-register.php:168
+#: inc/admin/option-page-register.php:159
 msgid "You are just a few clicks away from making your website multilingual!"
 msgstr "आप अपनी वेबसाइट को बहुभाषी बनाने से बस कुछ ही क्लिक दूर हैं!"
 
-#: inc/admin/option-page-register.php:174
+#: inc/admin/option-page-register.php:165
 msgid ""
 "For wpLingua to work, an API key is required so that your website has access to the automatic "
 "translation service. On this page you can enter your API key if you already have one, or create "
@@ -1036,7 +1031,7 @@ msgstr ""
 "पहुँच मिल सके। इस पृष्ठ पर आप अपनी API कुंजी दर्ज कर सकते हैं यदि आपके पास पहले से ही एक है, या मुफ़्त में एक बना "
 "सकते हैं।"
 
-#: inc/admin/option-page-register.php:179
+#: inc/admin/option-page-register.php:170
 msgid ""
 "An <strong>instantly multilingual website</strong> thanks to automatic text detection and "
 "translation. Easy to use, no knowledge required."
@@ -1044,7 +1039,7 @@ msgstr ""
 "स्वचालित टेक्स्ट पहचान और अनुवाद के कारण यह <strong>तुरन्त बहुभाषी वेबसाइट है</strong> । उपयोग में आसान, "
 "किसी ज्ञान की आवश्यकता नहीं।"
 
-#: inc/admin/option-page-register.php:183
+#: inc/admin/option-page-register.php:174
 msgid ""
 "<strong>SEO friendly</strong> to allow search engines to index translated pages. Open up your "
 "website and your business to the whole world."
@@ -1052,7 +1047,7 @@ msgstr ""
 "खोज इंजन को अनुवादित पृष्ठों को अनुक्रमित करने की अनुमति देने के लिए <strong>SEO अनुकूल</strong> । अपनी "
 "वेबसाइट और अपने व्यवसाय को पूरी दुनिया के लिए खोलें।"
 
-#: inc/admin/option-page-register.php:187
+#: inc/admin/option-page-register.php:178
 msgid ""
 "All <strong>translations are editable</strong>. Discover the visual editor and edit "
 "translations simply by clicking on them. With a fully customizable language switcher."
@@ -1060,7 +1055,7 @@ msgstr ""
 "सभी <strong>अनुवाद संपादन योग्य हैं</strong> । विज़ुअल एडिटर की खोज करें और उन पर क्लिक करके अनुवाद संपादित "
 "करें। पूरी तरह से अनुकूलन योग्य भाषा स्विचर के साथ।"
 
-#: inc/admin/option-page-register.php:191
+#: inc/admin/option-page-register.php:182
 msgid ""
 "One <strong>free and unlimited</strong> language for personal blogs and non-commercial "
 "websites. And many more features!"
@@ -1068,19 +1063,19 @@ msgstr ""
 "व्यक्तिगत ब्लॉग और गैर-वाणिज्यिक वेबसाइटों के लिए एक <strong>निःशुल्क और असीमित</strong> भाषा। और भी बहुत "
 "सी सुविधाएँ!"
 
-#: inc/admin/option-page-register.php:200 inc/admin/option-page-register.php:251
+#: inc/admin/option-page-register.php:191 inc/admin/option-page-register.php:242
 msgid "Set API key"
 msgstr "API कुंजी सेट करें"
 
-#: inc/admin/option-page-register.php:206
+#: inc/admin/option-page-register.php:197
 msgid "Advanced API features"
 msgstr "उन्नत API सुविधाएँ"
 
-#: inc/admin/option-page-register.php:231
+#: inc/admin/option-page-register.php:222
 msgid "Set the wpLingua API key: "
 msgstr "wpLingua API कुंजी सेट करें: "
 
-#: inc/admin/option-page-register.php:237
+#: inc/admin/option-page-register.php:228
 msgid ""
 "If you already have an API key, enter it below. If you've forgotten your website's API key, "
 "visit"
@@ -1088,15 +1083,16 @@ msgstr ""
 "अगर आपके पास पहले से ही API कुंजी है, तो उसे नीचे दर्ज करें। अगर आप अपनी वेबसाइट की API कुंजी भूल गए हैं, तो यहाँ "
 "जाएँ"
 
-#: inc/admin/option-page-register.php:237
+#: inc/admin/option-page-register.php:228
 msgid "the API key retrieval page"
 msgstr "API कुंजी पुनर्प्राप्ति पृष्ठ"
 
-#: inc/admin/option-page-register.php:238 inc/admin/option-page-register.php:294
-#: inc/admin/option-page-register.php:310 inc/admin/option-page-register.php:326
-#: inc/admin/option-page-register.php:342 inc/admin/option-page-settings.php:235
-#: inc/admin/option-page-settings.php:367 inc/admin/option-page-settings.php:423
-#: inc/admin/option-page-settings.php:445 inc/admin/option-page-settings.php:485
+#: inc/admin/option-page-register.php:229 inc/admin/option-page-register.php:293
+#: inc/admin/option-page-register.php:309 inc/admin/option-page-register.php:325
+#: inc/admin/option-page-register.php:341 inc/admin/option-page-settings.php:244
+#: inc/admin/option-page-settings.php:376 inc/admin/option-page-settings.php:432
+#: inc/admin/option-page-settings.php:452 inc/admin/option-page-settings.php:490
+#: inc/admin/option-page-settings.php:509 inc/admin/option-page-settings.php:539
 #: inc/admin/option-page-switcher.php:73 inc/admin/option-page-switcher.php:124
 #: inc/admin/option-page-switcher.php:179 inc/admin/option-page-switcher.php:237
 #: inc/admin/option-page-switcher.php:331 inc/admin/option-page-switcher.php:384
@@ -1105,7 +1101,7 @@ msgstr "API कुंजी पुनर्प्राप्ति पृष्
 msgid "Click to expand"
 msgstr "विस्तार करें"
 
-#: inc/admin/option-page-register.php:242 inc/admin/option-page-settings.php:489
+#: inc/admin/option-page-register.php:233 inc/admin/option-page-settings.php:544
 msgid ""
 "A wpLingua API key consists of 42 characters (uppercase, lowercase and numbers). It is emailed "
 "to you when you request it using the form provided when you install the plugin. You must keep "
@@ -1115,11 +1111,11 @@ msgstr ""
 "फ़ॉर्म का उपयोग करके इसका अनुरोध करते हैं तो यह आपको ईमेल किया जाता है। आपको इस कुंजी को गुप्त रखना चाहिए और "
 "इसे केवल wplingua.com सेवाओं को ही बताना चाहिए।"
 
-#: inc/admin/option-page-register.php:278
+#: inc/admin/option-page-register.php:277
 msgid "Register wpLingua API key: "
 msgstr "wpLingua API कुंजी पंजीकृत करें: "
 
-#: inc/admin/option-page-register.php:284
+#: inc/admin/option-page-register.php:283
 msgid ""
 "Claim a wpLingua API key and make your website multilingual in a minute! For a personal blog or "
 "a non-commercial website, get one unlimited free language."
@@ -1127,11 +1123,23 @@ msgstr ""
 "wpLingua API कुंजी का दावा करें और अपनी वेबसाइट को एक मिनट में बहुभाषी बनाएं! किसी व्यक्तिगत ब्लॉग या गैर-"
 "वाणिज्यिक वेबसाइट के लिए, एक असीमित मुफ़्त भाषा प्राप्त करें।"
 
-#: inc/admin/option-page-register.php:293
+#: inc/admin/option-page-register.php:292
+msgid "Email address: "
+msgstr "मेल पता: "
+
+#: inc/admin/option-page-register.php:300
+msgid ""
+"The email address is detected and pre-filled. This is the administrative email address entered "
+"in the Settings ➔ General tab. You can use another email address used to receive your API key."
+msgstr ""
+"ईमेल पता पहचाना गया है और पहले से भरा हुआ है। यह सेटिंग्स ➔ जनरल टैब में दर्ज किया गया प्रशासनिक ईमेल पता है। "
+"आप अपनी API कुंजी प्राप्त करने के लिए उपयोग किए गए किसी अन्य ईमेल पते का उपयोग कर सकते हैं।"
+
+#: inc/admin/option-page-register.php:308
 msgid "Website URL: "
 msgstr "वेबसाइट यूआरएल: "
 
-#: inc/admin/option-page-register.php:301
+#: inc/admin/option-page-register.php:316
 msgid ""
 "This is the URL of your website, it is detected and pre-filled automatically. Please check it "
 "and only enter the address of your production website (no test website or development "
@@ -1140,23 +1148,11 @@ msgstr ""
 "यह आपकी वेबसाइट का URL है, यह स्वचालित रूप से पहचाना और पहले से भरा हुआ है। कृपया इसे जांचें और केवल अपनी "
 "उत्पादन वेबसाइट का पता दर्ज करें (कोई परीक्षण वेबसाइट या विकास वातावरण नहीं)।"
 
-#: inc/admin/option-page-register.php:309
-msgid "Email address: "
-msgstr "मेल पता: "
-
-#: inc/admin/option-page-register.php:317
-msgid ""
-"The email address is detected and pre-filled. This is the administrative email address entered "
-"in the Settings ➔ General tab. You can use another email address used to receive your API key."
-msgstr ""
-"ईमेल पता पहचाना गया है और पहले से भरा हुआ है। यह सेटिंग्स ➔ जनरल टैब में दर्ज किया गया प्रशासनिक ईमेल पता है। "
-"आप अपनी API कुंजी प्राप्त करने के लिए उपयोग किए गए किसी अन्य ईमेल पते का उपयोग कर सकते हैं।"
-
-#: inc/admin/option-page-register.php:325
+#: inc/admin/option-page-register.php:324
 msgid "Website language: "
 msgstr "वेबसाइट की भाषा: "
 
-#: inc/admin/option-page-register.php:333 inc/admin/option-page-settings.php:242
+#: inc/admin/option-page-register.php:332 inc/admin/option-page-settings.php:251
 msgid ""
 "This is the language of your website, defined by the associated API key. Make sure your website "
 "language is also correctly set in WordPress options (Settings ➔ General ➔ Website Language)."
@@ -1164,11 +1160,11 @@ msgstr ""
 "यह आपकी वेबसाइट की भाषा है, जिसे संबंधित API कुंजी द्वारा परिभाषित किया गया है। सुनिश्चित करें कि आपकी "
 "वेबसाइट की भाषा भी वर्डप्रेस विकल्पों (सेटिंग्स ➔ सामान्य ➔ वेबसाइट भाषा) में सही ढंग से सेट की गई है।"
 
-#: inc/admin/option-page-register.php:341
+#: inc/admin/option-page-register.php:340
 msgid "Target language: "
 msgstr "लक्ष्य भाषा: "
 
-#: inc/admin/option-page-register.php:349
+#: inc/admin/option-page-register.php:348
 msgid ""
 "This is the language you want to translate your website into. Be careful not to make a mistake "
 "because you will not be able to change the language afterwards."
@@ -1176,42 +1172,42 @@ msgstr ""
 "यह वह भाषा है जिसमें आप अपनी वेबसाइट का अनुवाद करना चाहते हैं। सावधान रहें कि कोई गलती न हो क्योंकि आप बाद "
 "में भाषा नहीं बदल पाएँगे।"
 
-#: inc/admin/option-page-register.php:358
+#: inc/admin/option-page-register.php:357
 msgid "I have read and accept the"
 msgstr "मैंने पढ़ा है और स्वीकार किया है"
 
-#: inc/admin/option-page-register.php:358
+#: inc/admin/option-page-register.php:357
 msgid "API terms of use"
 msgstr "API उपयोग की शर्तें"
 
-#: inc/admin/option-page-register.php:366
+#: inc/admin/option-page-register.php:365
 msgid "Website Locale: "
 msgstr "वेबसाइट का स्थान: "
 
-#: inc/admin/option-page-register.php:387
+#: inc/admin/option-page-register.php:386
 msgid "Get more target languages and advanced features: "
 msgstr "अधिक लक्ष्य भाषाएं और उन्नत सुविधाएं प्राप्त करें: "
 
-#: inc/admin/option-page-register.php:393
+#: inc/admin/option-page-register.php:392
 msgid ""
 "To translate your website into more languages and access advanced features, visit wpLingua "
 "website."
 msgstr ""
 "अपनी वेबसाइट को अधिक भाषाओं में अनुवाद करने और उन्नत सुविधाओं तक पहुंचने के लिए, wpLingua वेबसाइट पर जाएं।"
 
-#: inc/admin/option-page-register.php:397
+#: inc/admin/option-page-register.php:396 inc/admin/option-page-settings.php:431
 msgid "Use wpLingua on commercial website"
 msgstr "व्यावसायिक वेबसाइट पर wpLingua का उपयोग करें"
 
-#: inc/admin/option-page-register.php:398
+#: inc/admin/option-page-register.php:397
 msgid "Allow search from all languages"
 msgstr "सभी भाषाओं से खोज की अनुमति दें"
 
-#: inc/admin/option-page-register.php:399
+#: inc/admin/option-page-register.php:398
 msgid "Get more target languages"
 msgstr "अधिक लक्ष्य भाषाएँ प्राप्त करें"
 
-#: inc/admin/option-page-register.php:404
+#: inc/admin/option-page-register.php:403
 msgid "Visit wpLingua website"
 msgstr "wpLingua वेबसाइट पर जाएँ"
 
@@ -1228,18 +1224,18 @@ msgid "Translated languages"
 msgstr "अनूदित भाषाएँ"
 
 #: inc/admin/option-page-settings.php:64
-msgid "API features"
-msgstr "एपीआई सुविधाएँ"
+msgid "Features"
+msgstr "विशेषताएँ"
 
-#: inc/admin/option-page-settings.php:72
+#: inc/admin/option-page-settings.php:80
 msgid "API Key"
 msgstr "एपीआई कुंजी"
 
-#: inc/admin/option-page-settings.php:158
+#: inc/admin/option-page-settings.php:167
 msgid "Your website is being translated and will be ready soon."
 msgstr "आपकी वेबसाइट का अनुवाद किया जा रहा है और यह शीघ्र ही तैयार हो जाएगी।"
 
-#: inc/admin/option-page-settings.php:159
+#: inc/admin/option-page-settings.php:168
 msgid ""
 "In just a few seconds, your website will be multilingual, and search engines will be able to "
 "index these new pages. wpLingua detects all the texts on your pages and offers you a first "
@@ -1251,11 +1247,11 @@ msgstr ""
 "है। सभी अनुवाद संपादन योग्य हैं: प्रशासन बार से दृश्य संपादक खोलें और अपनी वेबसाइट पर पाठों पर क्लिक करके उन्हें "
 "संपादित करें।"
 
-#: inc/admin/option-page-settings.php:163
+#: inc/admin/option-page-settings.php:172
 msgid "Your website is now multilingual! You can start visiting the translated version."
 msgstr "आपकी वेबसाइट अब बहुभाषी है! आप अनुवादित संस्करण पर जाना शुरू कर सकते हैं।"
 
-#: inc/admin/option-page-settings.php:164
+#: inc/admin/option-page-settings.php:173
 msgid ""
 "The first time a translated page is loaded, the translations are automatically generated and "
 "saved in the database. This may take some time (on first generation only) depending on the size "
@@ -1266,7 +1262,7 @@ msgstr ""
 "जाते हैं। आपकी सामग्री के आकार के आधार पर इसमें कुछ समय लग सकता है (केवल पहली पीढ़ी पर)। यही कारण है कि हम "
 "आपको सलाह देते हैं कि सभी बहुभाषी संस्करण जेनरेट करने के लिए पहली बार अपनी पूरी वेबसाइट ब्राउज़ करें।"
 
-#: inc/admin/option-page-settings.php:165
+#: inc/admin/option-page-settings.php:174
 msgid ""
 "All translations are editable: open the visual editor from the administration bar and edit them "
 "simply by clicking on the texts on your website."
@@ -1274,45 +1270,45 @@ msgstr ""
 "सभी अनुवाद संपादन योग्य हैं: प्रशासन बार से दृश्य संपादक खोलें और अपनी वेबसाइट पर पाठ पर क्लिक करके उन्हें संपादित "
 "करें।"
 
-#: inc/admin/option-page-settings.php:168
+#: inc/admin/option-page-settings.php:177
 msgid "Visit your multilingual website"
 msgstr "अपनी बहुभाषी वेबसाइट पर जाएँ"
 
-#: inc/admin/option-page-settings.php:195
+#: inc/admin/option-page-settings.php:204
 msgid "Original website language: "
 msgstr "मूल वेबसाइट भाषा: "
 
-#: inc/admin/option-page-settings.php:221
+#: inc/admin/option-page-settings.php:230
 msgid "Please choose an option"
 msgstr "एक विकल्प का चयन करें"
 
-#: inc/admin/option-page-settings.php:232
+#: inc/admin/option-page-settings.php:241
 msgid "Original website language, defined by API key: "
 msgstr "मूल वेबसाइट भाषा, API कुंजी द्वारा परिभाषित: "
 
-#: inc/admin/option-page-settings.php:244
+#: inc/admin/option-page-settings.php:253
 msgid ""
 "If you have mistakenly entered the wrong language, contact wpLingua support to request a "
 "correction."
 msgstr "यदि आपने गलती से गलत भाषा दर्ज कर दी है, तो सुधार के लिए wpLingua सहायता से संपर्क करें।"
 
-#: inc/admin/option-page-settings.php:247
-msgid "Contact support on wplingua.com"
-msgstr "wplingua.com पर सहायता से संपर्क करें"
+#: inc/admin/option-page-settings.php:256
+msgid "wplingua.com : Contact support"
+msgstr "wplingua.com : सहायता से संपर्क करें"
 
-#: inc/admin/option-page-settings.php:254
+#: inc/admin/option-page-settings.php:263
 msgid "Custom"
 msgstr "रुचि अनुसरणीय"
 
-#: inc/admin/option-page-settings.php:269 inc/admin/option-page-settings.php:335
+#: inc/admin/option-page-settings.php:278 inc/admin/option-page-settings.php:344
 msgid "Flag to use for this language: "
 msgstr "इस भाषा के लिए उपयोग हेतु ध्वज: "
 
-#: inc/admin/option-page-settings.php:278 inc/admin/option-page-settings.php:343
+#: inc/admin/option-page-settings.php:287 inc/admin/option-page-settings.php:352
 msgid "Custom flag URL for this language: "
 msgstr "इस भाषा के लिए कस्टम ध्वज URL: "
 
-#: inc/admin/option-page-settings.php:301
+#: inc/admin/option-page-settings.php:310
 msgid ""
 "Important: space out the addition of new languages ​​by at least ten days and browse your site "
 "for the first time in the added languages. This promotes better indexing by search engines, "
@@ -1322,23 +1318,23 @@ msgstr ""
 "में ब्राउज़ करें। यह सर्च इंजन द्वारा बेहतर इंडेक्सिंग को बढ़ावा देता है, आपके सर्वर पर लोड कम करता है और आपकी साइट "
 "पर स्लोडाउन के जोखिम को कम करता है।"
 
-#: inc/admin/option-page-settings.php:305
+#: inc/admin/option-page-settings.php:314
 msgid "Add new target Language: "
 msgstr "नई लक्ष्य भाषा जोड़ें: "
 
-#: inc/admin/option-page-settings.php:311
+#: inc/admin/option-page-settings.php:320
 msgid "Add language"
 msgstr "भाषा जोड़ें"
 
-#: inc/admin/option-page-settings.php:324
+#: inc/admin/option-page-settings.php:333
 msgid "(Private)"
 msgstr "(निजी)"
 
-#: inc/admin/option-page-settings.php:349
+#: inc/admin/option-page-settings.php:358
 msgid "Make this language private"
 msgstr "इस भाषा को निजी बनाएं"
 
-#: inc/admin/option-page-settings.php:350
+#: inc/admin/option-page-settings.php:359
 msgid ""
 "Private languages will only be visible to logged-in users with editing rights. This option "
 "allows administrators to pre-generate and correct translations before they are accessible to "
@@ -1347,39 +1343,35 @@ msgstr ""
 "निजी भाषाएँ केवल संपादन अधिकार वाले लॉग-इन उपयोगकर्ताओं को ही दिखाई देंगी। यह विकल्प प्रशासकों को सार्वजनिक "
 "रूप से उपलब्ध होने से पहले अनुवादों को पहले से तैयार करने और सही करने की अनुमति देता है।"
 
-#: inc/admin/option-page-settings.php:359
+#: inc/admin/option-page-settings.php:368
 msgid "Target languages enabled: "
 msgstr "सक्षम लक्ष्य भाषाएँ: "
 
-#: inc/admin/option-page-settings.php:366
+#: inc/admin/option-page-settings.php:375
 msgid "Access more target languages by upgrading your API key."
 msgstr "अपनी API कुंजी को अपग्रेड करके अधिक लक्ष्य भाषाओं तक पहुँच प्राप्त करें."
 
-#: inc/admin/option-page-settings.php:375
+#: inc/admin/option-page-settings.php:384
 msgid "Available languages: "
 msgstr "उपलब्ध भाषाएँ: "
 
-#: inc/admin/option-page-settings.php:395 inc/admin/option-page-settings.php:435
-#: inc/admin/option-page-settings.php:459
-msgid "Upgrade your API key on wplingua.com"
-msgstr "wplingua.com पर अपनी API कुंजी अपग्रेड करें"
+#: inc/admin/option-page-settings.php:404 inc/admin/option-page-settings.php:442
+#: inc/admin/option-page-settings.php:466 inc/admin/option-page-settings.php:549
+msgid "wplingua.com : Upgrade your API key"
+msgstr "wplingua.com : अपनी API कुंजी अपग्रेड करें"
 
-#: inc/admin/option-page-settings.php:413
+#: inc/admin/option-page-settings.php:422
 msgid "API translation features: "
 msgstr "एपीआई अनुवाद सुविधाएँ: "
 
-#: inc/admin/option-page-settings.php:416
+#: inc/admin/option-page-settings.php:425
 msgid ""
 "The options below require extended access to the wpLingua API to be functional on your website."
 msgstr ""
 "नीचे दिए गए विकल्पों को आपकी वेबसाइट पर कार्यात्मक बनाने के लिए wpLingua API तक विस्तारित पहुंच की आवश्यकता "
 "होती है।"
 
-#: inc/admin/option-page-settings.php:422
-msgid "API feature: Use wpLingua on commercial website"
-msgstr "API सुविधा: व्यावसायिक वेबसाइट पर wpLingua का उपयोग करें"
-
-#: inc/admin/option-page-settings.php:428
+#: inc/admin/option-page-settings.php:437
 msgid ""
 "Use of the free wpLingua API keys is reserved for personal blogs and non-profit websites; paid "
 "subscriptions are available for companies and commercial websites."
@@ -1387,15 +1379,15 @@ msgstr ""
 "निःशुल्क wpLingua API कुंजियों का उपयोग व्यक्तिगत ब्लॉगों और गैर-लाभकारी वेबसाइटों के लिए आरक्षित है; कम्पनियों "
 "और वाणिज्यिक वेबसाइटों के लिए सशुल्क सदस्यता उपलब्ध है।"
 
-#: inc/admin/option-page-settings.php:444
-msgid "API feature: Search from translated languages"
-msgstr "API सुविधा: अनुवादित भाषाओं से खोजें"
+#: inc/admin/option-page-settings.php:451
+msgid "Search from translated languages"
+msgstr "अनुवादित भाषाओं से खोजें"
 
-#: inc/admin/option-page-settings.php:450
+#: inc/admin/option-page-settings.php:457
 msgid "Enable visitors to search on your website in their own language."
 msgstr "आगंतुकों को अपनी वेबसाइट पर अपनी भाषा में खोज करने में सक्षम बनाएं।"
 
-#: inc/admin/option-page-settings.php:454
+#: inc/admin/option-page-settings.php:461
 msgid ""
 "Example: if your website is translated from English to French and you have a post named "
 "\"Hello\". When a French visitor searches for the term \"Bonjour\" on the website, this feature "
@@ -1406,29 +1398,61 @@ msgstr ""
 "विज़िटर वेबसाइट पर \"बोनजोर\" शब्द खोजता है, तो यह सुविधा खोज शुरू करने से पहले इसे \"हैलो\" में अनुवाद कर "
 "देगी। यह वर्डप्रेस को \"हैलो\" नामक पोस्ट को खोजने की अनुमति देगा जब आपका विज़िटर \"बोनजोर\" खोजेगा।"
 
-#: inc/admin/option-page-settings.php:479
+#: inc/admin/option-page-settings.php:483
+msgid "Plugin translation features: "
+msgstr "प्लगइन अनुवाद सुविधाएँ: "
+
+#: inc/admin/option-page-settings.php:489
+msgid "Progress bar for editors"
+msgstr "संपादकों के लिए प्रगति पट्टी"
+
+#: inc/admin/option-page-settings.php:495
+msgid "Enable progress bar: Smooth translations loading for editors"
+msgstr "प्रगति पट्टी सक्षम करें: संपादकों के लिए अनुवादों को सुचारू रूप से लोड करना"
+
+#: inc/admin/option-page-settings.php:499
+msgid ""
+"Activate a progress bar when a page requires the generation of more than 20 new string "
+"translations. This feature only applies to connected editors."
+msgstr ""
+"जब किसी पृष्ठ पर 20 से ज़्यादा नए स्ट्रिंग अनुवाद तैयार करने की आवश्यकता हो, तो प्रगति पट्टी सक्रिय करें। यह "
+"सुविधा केवल कनेक्टेड संपादकों पर लागू होती है।"
+
+#: inc/admin/option-page-settings.php:508
+msgid "Enable multilingual XML Sitemap"
+msgstr "बहुभाषी XML साइटमैप सक्षम करें"
+
+#: inc/admin/option-page-settings.php:514
+msgid ""
+"Enable multilingual Sitemap XML: Automatically add links to your wpLingua translated pages in "
+"your XML Sitemap files."
+msgstr ""
+"बहुभाषी साइटमैप XML सक्षम करें: अपने XML साइटमैप फ़ाइलों में अपने wpLingua अनुवादित पृष्ठों के लिंक स्वचालित रूप से "
+"जोड़ें।"
+
+#: inc/admin/option-page-settings.php:533
 msgid "Website API key: "
 msgstr "वेबसाइट API कुंजी: "
 
-#: inc/admin/option-page-settings.php:484
+#: inc/admin/option-page-settings.php:538
 msgid ""
 "The API key connects the website to wpLingua's online services and automatic translation "
 "generators."
 msgstr "एपीआई कुंजी वेबसाइट को wpLingua की ऑनलाइन सेवाओं और स्वचालित अनुवाद जनरेटर से जोड़ती है।"
 
-#: inc/admin/option-page-settings.php:498
+#: inc/admin/option-page-settings.php:560
 msgid "Show API key"
 msgstr "API कुंजी दिखाएं"
 
-#: inc/admin/option-page-settings.php:500
+#: inc/admin/option-page-settings.php:562
 msgid "Hide API key"
 msgstr "API कुंजी छिपाएँ"
 
-#: inc/admin/option-page-settings.php:506
+#: inc/admin/option-page-settings.php:568
 msgid "API key status: "
 msgstr "API कुंजी स्थिति: "
 
-#: inc/admin/option-page-settings.php:521
+#: inc/admin/option-page-settings.php:583
 msgid "Premium expiration: "
 msgstr "प्रीमियम समाप्ति: "
 
@@ -1831,7 +1855,7 @@ msgstr "लिंक और मीडिया"
 msgid "wpLingua: Website slugs"
 msgstr "wpLingua: वेबसाइट स्लग"
 
-#: inc/admin/option-page.php:93 inc/admin/slug-cpt.php:19 inc/admin/slug-cpt.php:23
+#: inc/admin/option-page.php:93 inc/admin/slug-cpt.php:23
 msgid "Website slugs"
 msgstr "वेबसाइट स्लग"
 
@@ -1839,36 +1863,36 @@ msgstr "वेबसाइट स्लग"
 msgid "wpLingua: Translations"
 msgstr "wpLingua: अनुवाद"
 
-#: inc/admin/option-page.php:102 inc/admin/translation-cpt.php:21
+#: inc/admin/option-page.php:102
 msgid "All translations"
 msgstr "सभी अनुवाद"
 
-#: inc/admin/option-page.php:169
+#: inc/admin/option-page.php:221
 msgid "Thank you for choosing wpLingua!"
 msgstr "wpLingua को चुनने के लिए धन्यवाद!"
 
-#: inc/admin/option-page.php:172
+#: inc/admin/option-page.php:224
 #, php-format
 msgid "If you like wpLingua please leave us a %1$s rating. A huge thanks!"
 msgstr "अगर आपको wpLingua पसंद है तो कृपया हमें %1$s रेटिंग दें। बहुत-बहुत धन्यवाद!"
 
-#: inc/admin/option-page.php:173
+#: inc/admin/option-page.php:225
 msgid "five stars"
 msgstr "पांच सितारे"
 
-#: inc/admin/option-page.php:208
+#: inc/admin/option-page.php:249
 msgid "Version"
 msgstr "संस्करण"
 
-#: inc/admin/option-page.php:231
+#: inc/admin/option-page.php:272
 msgid "Settings"
 msgstr "सेटिंग्स"
 
-#: inc/admin/option-page.php:273
+#: inc/admin/option-page.php:314
 msgid "wpLingua - Translation solution for multilingual website"
 msgstr "wpLingua - बहुभाषी वेबसाइट के लिए अनुवाद समाधान"
 
-#: inc/admin/option-page.php:276
+#: inc/admin/option-page.php:317
 msgid ""
 "wpLingua is installed, but not yet configured. You are just a few clicks away from making your "
 "website multilingual!"
@@ -1876,15 +1900,15 @@ msgstr ""
 "wpLingua इंस्टॉल है, लेकिन अभी तक कॉन्फ़िगर नहीं किया गया है। आप अपनी वेबसाइट को बहुभाषी बनाने से बस कुछ ही "
 "क्लिक दूर हैं!"
 
-#: inc/admin/option-page.php:279
+#: inc/admin/option-page.php:320
 msgid "Go to the configuration page"
 msgstr "कॉन्फ़िगरेशन पृष्ठ पर जाएँ"
 
-#: inc/admin/option-page.php:353
+#: inc/admin/option-page.php:394
 msgid "wpLingua - Incompatible plugin detected"
 msgstr "wpLingua - असंगत प्लगइन का पता चला"
 
-#: inc/admin/option-page.php:356
+#: inc/admin/option-page.php:397
 msgid ""
 "You have several translation plugins. This may result in unpredictable or incorrect behavior. "
 "For best results, use only one translation plugin at a time. These plugins can cause problems "
@@ -1893,92 +1917,114 @@ msgstr ""
 "आपके पास कई अनुवाद प्लगइन हैं। इससे अप्रत्याशित या गलत व्यवहार हो सकता है। सर्वोत्तम परिणामों के लिए, एक समय "
 "में केवल एक अनुवाद प्लगइन का उपयोग करें। ये प्लगइन wpLingua के साथ समस्याएँ पैदा कर सकते हैं: "
 
-#: inc/admin/option-page.php:373
+#: inc/admin/option-page.php:414
 #, php-format
 msgid "Deactivate plugin: %1$s"
 msgstr "प्लगइन निष्क्रिय करें: %1$s"
 
-#: inc/admin/option-page.php:382
+#: inc/admin/option-page.php:423
 msgid "Deactivate"
 msgstr "अक्रिय"
 
-#: inc/admin/option-page.php:399
+#: inc/admin/option-page.php:440
 msgid "Manage active plugins"
 msgstr "सक्रिय प्लगइन प्रबंधित करें"
 
-#: inc/admin/option-page.php:424
+#: inc/admin/option-page.php:465
 msgid "wpLingua - Incompatible with multisite"
 msgstr "wpLingua - मल्टीसाइट के साथ असंगत"
 
-#: inc/admin/option-page.php:427
+#: inc/admin/option-page.php:468
 msgid "wpLingua is not compatible with multisite."
 msgstr "wpLingua मल्टीसाइट के साथ संगत नहीं है।"
 
-#: inc/admin/option-page.php:451
+#: inc/admin/option-page.php:492
 msgid "wpLingua - Incompatible with WordPress installed in a subfolder"
 msgstr "wpLingua - सबफ़ोल्डर में स्थापित वर्डप्रेस के साथ असंगत"
 
-#: inc/admin/option-page.php:454
+#: inc/admin/option-page.php:495
 msgid "wpLingua is not compatible with WordPress installed in a subfolder."
 msgstr "wpLingua किसी सबफ़ोल्डर में स्थापित वर्डप्रेस के साथ संगत नहीं है।"
 
-#: inc/admin/option-page.php:478
+#: inc/admin/option-page.php:519
 msgid "wpLingua - Incompatible PHP version"
 msgstr "wpLingua - असंगत PHP संस्करण"
 
-#: inc/admin/option-page.php:481
+#: inc/admin/option-page.php:522
 msgid "wpLingua is not compatible with your PHP version. wpLingua requires PHP 7.4 or higher."
 msgstr ""
 "wpLingua आपके PHP संस्करण के साथ संगत नहीं है। wpLingua के लिए PHP 7.4 या उच्चतर संस्करण की आवश्यकता है।"
 
+#: inc/admin/option-page.php:585
+msgid "wpLingua - Incompatible HTACCESS file"
+msgstr "wpLingua - असंगत HTACCESS फ़ाइल"
+
+#: inc/admin/option-page.php:588
+msgid ""
+"It seems that a plugin was incorrectly deactivated and corrupted the site's HTACCESS file, "
+"preventing the correct redirection of translated pages. Please edit the \".htaccess\" file "
+"located at the root of the site and delete the lines between :"
+msgstr ""
+"ऐसा लगता है कि किसी प्लगइन को गलत तरीके से निष्क्रिय कर दिया गया है और साइट की HTACCESS फ़ाइल को दूषित "
+"कर दिया है, जिससे अनुवादित पृष्ठों का सही पुनर्निर्देशन नहीं हो पा रहा है। कृपया साइट के रूट पर स्थित "
+"\".htaccess\" फ़ाइल को संपादित करें और इनके बीच की पंक्तियाँ हटा दें:"
+
+#: inc/admin/slug-cpt.php:19
+msgid "wpLingua - Website slugs"
+msgstr "wpLingua - वेबसाइट स्लग"
+
 #: inc/admin/slug-cpt.php:20
-msgid "Website slug"
-msgstr "वेबसाइट स्लग"
+msgid "wpLingua - Website slug"
+msgstr "wpLingua - वेबसाइट स्लग"
 
 #: inc/admin/slug-cpt.php:21
-msgid "All slugs"
-msgstr "सभी स्लग"
+msgid "wpLingua - All slugs"
+msgstr "wpLingua - सभी स्लग"
 
 #: inc/admin/slug-cpt.php:22
-msgid "Edit slug"
-msgstr "स्लग संपादित करें"
+msgid "wpLingua - Edit slug"
+msgstr "wpLingua - स्लग संपादित करें"
 
-#: inc/admin/slug-cpt.php:111
+#: inc/admin/slug-cpt.php:24
+msgid "Search slugs"
+msgstr "स्लग खोजें"
+
+#: inc/admin/slug-cpt.php:112
 msgid "All slug status"
 msgstr "सभी स्लग स्थिति"
 
-#: inc/admin/slug-cpt.php:126 inc/admin/slug-cpt.php:138 inc/admin/translation-cpt.php:110
-#: inc/admin/translation-cpt.php:118 inc/dom/mode-list.php:193
+#: inc/admin/slug-cpt.php:127 inc/admin/slug-cpt.php:139 inc/admin/translation-cpt.php:111
+#: inc/admin/translation-cpt.php:119 inc/dom/mode-list.php:193
 msgid "Reviewed"
 msgstr "समीक्षित"
 
-#: inc/admin/slug-cpt.php:127 inc/admin/slug-cpt.php:398 inc/admin/slug-cpt.php:437
-#: inc/admin/translation-cpt.php:111 inc/admin/translation-cpt.php:378
-#: inc/admin/translation-cpt.php:417 inc/dom/mode-list.php:197
+#: inc/admin/slug-cpt.php:128 inc/admin/slug-cpt.php:399 inc/admin/slug-cpt.php:438
+#: inc/admin/translation-cpt.php:112 inc/admin/translation-cpt.php:379
+#: inc/admin/translation-cpt.php:418 inc/dom/mode-list.php:197
 msgid "Unreviewed"
 msgstr "समीक्षा नहीं की गई"
 
-#: inc/admin/slug-cpt.php:136 inc/admin/slug-cpt.php:388 inc/admin/slug-cpt.php:425
-#: inc/admin/translation-cpt.php:116 inc/admin/translation-cpt.php:368
-#: inc/admin/translation-cpt.php:405
+#: inc/admin/slug-cpt.php:137 inc/admin/slug-cpt.php:389 inc/admin/slug-cpt.php:426
+#: inc/admin/translation-cpt.php:117 inc/admin/translation-cpt.php:369
+#: inc/admin/translation-cpt.php:406
 msgid "Full reviewed"
 msgstr "पूर्ण समीक्षा"
 
-#: inc/admin/slug-cpt.php:137 inc/admin/slug-cpt.php:393 inc/admin/slug-cpt.php:431
-#: inc/admin/translation-cpt.php:117 inc/admin/translation-cpt.php:373
-#: inc/admin/translation-cpt.php:411
+#: inc/admin/slug-cpt.php:138 inc/admin/slug-cpt.php:394 inc/admin/slug-cpt.php:432
+#: inc/admin/translation-cpt.php:118 inc/admin/translation-cpt.php:374
+#: inc/admin/translation-cpt.php:412
 msgid "Partially reviewed"
 msgstr "आंशिक रूप से समीक्षित"
 
-#: inc/admin/slug-cpt.php:139 inc/admin/translation-cpt.php:119
+#: inc/admin/slug-cpt.php:140 inc/admin/translation-cpt.php:120
 msgid "Full unreviewed"
 msgstr "पूर्णतः अपरीक्षित"
 
-#: inc/admin/slug-cpt.php:284
+#: inc/admin/slug-cpt.php:285
 msgid "Slug status"
 msgstr "स्लग स्थिति"
 
-#: inc/admin/slug-cpt.php:420
+#: inc/admin/slug-cpt.php:421
 msgid "Slug status: "
 msgstr "स्लग स्थिति: "
 
@@ -2051,23 +2097,35 @@ msgstr "भाषा स्विचर"
 msgid "Add to menu"
 msgstr "मेनू में जोड़ें"
 
-#: inc/admin/translation-cpt.php:20 inc/admin/translation-meta.php:23
-msgid "Translation"
-msgstr "अनुवाद"
+#: inc/admin/translation-cpt.php:19
+msgid "wpLingua - Translations"
+msgstr "wpLingua - अनुवाद"
 
-#: inc/admin/translation-cpt.php:22 inc/admin/translation-edit-modal.php:58
-msgid "Edit translation"
-msgstr "अनुवाद संपादित करें"
+#: inc/admin/translation-cpt.php:20
+msgid "wpLingua - Translation"
+msgstr "wpLingua - अनुवाद"
 
-#: inc/admin/translation-cpt.php:109 inc/admin/translation-cpt.php:115
+#: inc/admin/translation-cpt.php:21
+msgid "wpLingua - All translations"
+msgstr "wpLingua - सभी अनुवाद"
+
+#: inc/admin/translation-cpt.php:22
+msgid "wpLingua - Edit translation"
+msgstr "wpLingua - अनुवाद संपादित करें"
+
+#: inc/admin/translation-cpt.php:24
+msgid "Search translations"
+msgstr "अनुवाद खोजें"
+
+#: inc/admin/translation-cpt.php:110 inc/admin/translation-cpt.php:116
 msgid "All translation status"
 msgstr "सभी अनुवाद स्थिति"
 
-#: inc/admin/translation-cpt.php:264
+#: inc/admin/translation-cpt.php:265
 msgid "Translation status"
 msgstr "अनुवाद स्थिति"
 
-#: inc/admin/translation-cpt.php:400
+#: inc/admin/translation-cpt.php:401
 msgid "Translation status: "
 msgstr "अनुवाद स्थिति: "
 
@@ -2078,6 +2136,10 @@ msgstr "सभी भाषाएँ"
 #: inc/admin/translation-edit-modal.php:42
 msgid "Open edit page"
 msgstr "संपादन पृष्ठ खोलें"
+
+#: inc/admin/translation-edit-modal.php:58
+msgid "Edit translation"
+msgstr "अनुवाद संपादित करें"
 
 #: inc/admin/translation-edit-modal.php:96 inc/admin/translation-edit-modal.php:155
 msgid "Invalid translation ID"
@@ -2090,6 +2152,10 @@ msgstr "अमान्य अनुवाद पोस्ट"
 #: inc/admin/translation-edit-modal.php:178
 msgid "Translation saving failed"
 msgstr "अनुवाद सहेजना विफल"
+
+#: inc/admin/translation-meta.php:23
+msgid "Translation"
+msgstr "अनुवाद"
 
 #: inc/admin/translation-meta.php:87
 msgid " - Original text: "
@@ -2147,23 +2213,23 @@ msgstr ""
 msgid "Save in progress..."
 msgstr "सहेजना प्रगति पर है..."
 
-#: inc/dom/load-overload.php:36
+#: inc/dom/load-overload.php:35
 msgid "Translation API overloaded"
 msgstr "अनुवाद API अतिभारित"
 
-#: inc/dom/load-overload.php:40
+#: inc/dom/load-overload.php:39
 msgid "Translation API overloaded. Retry in a few minutes."
 msgstr "अनुवाद API ओवरलोड हो गया है। कुछ मिनट बाद पुनः प्रयास करें।"
 
-#: inc/dom/load-overload.php:46
+#: inc/dom/load-overload.php:45
 msgid "Close"
 msgstr "बंद"
 
-#: inc/dom/load-progress.php:150 inc/dom/load-progress.php:215
+#: inc/dom/load-progress.php:86 inc/dom/load-progress.php:167
 msgid "Translation in progress"
 msgstr "अनुवाद प्रगति पर है"
 
-#: inc/dom/load-progress.php:219
+#: inc/dom/load-progress.php:171
 msgid "In progress: Translation and saving of new texts"
 msgstr "प्रगति पर: नए पाठों का अनुवाद और संरक्षण"
 
@@ -2278,6 +2344,27 @@ msgstr ""
 #. Author of the plugin/theme
 msgid "wpLingua Translation Service"
 msgstr "wpLingua अनुवाद सेवा"
+
+#~ msgid "wpLingua is not compatible with Multisite."
+#~ msgstr "wpLingua मल्टीसाइट के साथ संगत नहीं है।"
+
+#~ msgid "Contact support on wplingua.com"
+#~ msgstr "wplingua.com पर सहायता से संपर्क करें"
+
+#~ msgid "Upgrade your API key on wplingua.com"
+#~ msgstr "wplingua.com पर अपनी API कुंजी अपग्रेड करें"
+
+#~ msgid "API feature: Use wpLingua on commercial website"
+#~ msgstr "API सुविधा: व्यावसायिक वेबसाइट पर wpLingua का उपयोग करें"
+
+#~ msgid "Website slug"
+#~ msgstr "वेबसाइट स्लग"
+
+#~ msgid "All slugs"
+#~ msgstr "सभी स्लग"
+
+#~ msgid "Edit slug"
+#~ msgstr "स्लग संपादित करें"
 
 #~ msgid "Edit entry"
 #~ msgstr "प्रविष्टि संपादित करें"
