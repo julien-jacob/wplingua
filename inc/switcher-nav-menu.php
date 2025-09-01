@@ -179,12 +179,13 @@ function wplng_switcher_nav_menu_replace_items( $items ) {
 					break;
 			}
 
-			$new_item->ID         = 'wplng-language-' . $language_current_id;
-			$new_item->title      = $title;
-			$new_item->attr_title = $title;
-			$new_item->url        = wplng_get_url_current();
-			$new_item->classes[]  = 'wplng-language-parent';
-			$new_item->classes[]  = 'wplng-language-current';
+			$new_item->ID            = 'wplng-language-' . $language_current_id;
+			$new_item->title         = $title;
+			$new_item->attr_title    = $title;
+			$new_item->url           = wplng_get_url_current();
+			$new_item->classes[]     = 'wplng-language-parent';
+			$new_item->classes[]     = 'wplng-language-current';
+			$new_item->wplng_lang_id = $language_current_id;
 
 			if ( 'y' === $args['flags_style']['value'] ) {
 
@@ -240,13 +241,14 @@ function wplng_switcher_nav_menu_replace_items( $items ) {
 					break;
 			}
 
-			$new_item->ID         = 'wplng-language-' . $language_website['id'];
-			$new_item->menu_order = $item_template->menu_order + $offset;
-			$new_item->title      = $title;
-			$new_item->attr_title = $title;
-			$new_item->url        = $url_website;
-			$new_item->db_id      = 0;
-			$new_item->classes[]  = 'wplng-language-website';
+			$new_item->ID            = 'wplng-language-' . $language_website['id'];
+			$new_item->menu_order    = $item_template->menu_order + $offset;
+			$new_item->title         = $title;
+			$new_item->attr_title    = $title;
+			$new_item->url           = $url_website;
+			$new_item->db_id         = 0;
+			$new_item->classes[]     = 'wplng-language-website';
+			$new_item->wplng_lang_id = $language_website['id'];
 
 			if ( 's' === $args['layout']['value'] ) {
 				$new_item->menu_item_parent = $item_template->ID;
@@ -320,13 +322,14 @@ function wplng_switcher_nav_menu_replace_items( $items ) {
 					break;
 			}
 
-			$new_item->ID         = 'wplng-language-' . $language_target['id'];
-			$new_item->menu_order = $item_template->menu_order + $offset;
-			$new_item->title      = $title;
-			$new_item->attr_title = $title;
-			$new_item->url        = wplng_get_url_current_for_language( $language_target['id'] );
-			$new_item->db_id      = 0;
-			$new_item->classes[]  = 'wplng-language-target';
+			$new_item->ID            = 'wplng-language-' . $language_target['id'];
+			$new_item->menu_order    = $item_template->menu_order + $offset;
+			$new_item->title         = $title;
+			$new_item->attr_title    = $title;
+			$new_item->url           = wplng_get_url_current_for_language( $language_target['id'] );
+			$new_item->db_id         = 0;
+			$new_item->classes[]     = 'wplng-language-target';
+			$new_item->wplng_lang_id = $language_target['id'];
 
 			if ( 's' === $args['layout']['value'] ) {
 				$new_item->menu_item_parent = $item_template->ID;
@@ -376,6 +379,10 @@ function wplng_add_nav_menu_link_attributes_atts( $atts, $menu_item ) {
 
 	if ( ! empty( $menu_item->wplng_alt ) ) {
 		$atts['data-wplng-alt'] = $menu_item->wplng_alt;
+	}
+
+	if ( ! empty( $menu_item->wplng_lang_id ) ) {
+		$atts['data-wplng-lang-id'] = $menu_item->wplng_lang_id;
 	}
 
 	if ( ! empty( $menu_item->classes )
