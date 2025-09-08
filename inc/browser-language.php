@@ -5,8 +5,35 @@ if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
-// Effectuer la redirection
-add_action( 'template_redirect', 'wplng_browser_language_redirect' );
+
+add_action( 'wp_head', 'wplng_browser_language_redirect_js_only', 2 );
+
+function wplng_browser_language_redirect_js_only() {
+
+	if ( current_user_can( 'edit_posts' )
+		|| wplng_is_bot()
+		|| ! is_front_page()
+		|| ( wplng_get_language_website_id() !== wplng_get_language_current_id() )
+	) {
+		return;
+	}
+
+	$script = file_get_contents( WPLNG_PLUGIN_PATH . '/assets/js/browser-redirect.js' );
+
+	if ( empty( $script ) ) {
+		return;
+	}
+
+	$script = str_replace(
+		'//# sourceMappingURL=browser-redirect.js.map',
+		'',
+		$script
+	);
+
+	echo '<script id="wplingue-browser-redirect-js">' . rtrim( $script ) . '</script>';
+}
+
+// add_action( 'template_redirect', 'wplng_browser_language_redirect_php_js' );
 
 /**
  * Redirects the user to the translated version of the page based on browser language or a user-defined cookie.
@@ -20,7 +47,7 @@ add_action( 'template_redirect', 'wplng_browser_language_redirect' );
  *
  * @return void
  */
-function wplng_browser_language_redirect() {
+function wplng_browser_language_redirect_php_js() {
 
 	// Exit early for users with editing permissions or for bots to prevent redirection loops.
 	if ( current_user_can( 'edit_posts' )
@@ -50,11 +77,12 @@ function wplng_browser_language_redirect() {
 		// If the cookie contains a valid language code, use it for redirection.
 		// This honors the user's last choice.
 		if ( wplng_is_valid_language_id( $cookie ) ) {
-			$redirect_language_id = $cookie;
-		} else {
-			// The cookie is set to 'original', which means the user wants the original language.
-			// Do not redirect and exit the function.
-			return;
+
+			if ( $cookie === $language_website_id ) {
+				return;
+			} else {
+				$redirect_language_id = $cookie;
+			}
 		}
 	} else {
 		// This is the very first visit (no cookie). Use the browser's language.
@@ -73,7 +101,7 @@ function wplng_browser_language_redirect() {
 		|| ! in_array( $redirect_language_id, wplng_get_languages_target_ids(), true )
 	) {
 		// If not, set the cookie to 'original' to prevent future redirects on the original page.
-		wplng_browser_language_cookie_set( 'original' );
+		wplng_browser_language_cookie_set( $language_website_id );
 		return;
 	}
 
@@ -81,7 +109,7 @@ function wplng_browser_language_redirect() {
 	$url_to_redirect = wplng_get_url_current_for_language( $redirect_language_id );
 
 	if ( $url_to_redirect === wplng_get_url_original() ) {
-		wplng_browser_language_cookie_set( 'original' );
+		wplng_browser_language_cookie_set( $language_website_id );
 		return;
 	}
 
@@ -110,7 +138,7 @@ function wplng_browser_language_cookie_get() {
 		// Sanitize the cookie value to ensure it's safe.
 		$cookie = sanitize_text_field( $_COOKIE['wplingua-lang'] );
 		// Validate the language code against known languages or the 'original' status.
-		if ( ! wplng_is_valid_language_id( $cookie ) && $cookie !== 'original' ) {
+		if ( ! wplng_is_valid_language_id( $cookie ) ) {
 			$cookie = false;
 		}
 	}
