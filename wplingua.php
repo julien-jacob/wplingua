@@ -191,7 +191,7 @@ function wplng_start() {
 
 		// Enqueue Script for wplng_translation admin: Edit
 		add_action( 'admin_print_scripts-post.php', 'wplng_translation_edit_assets' );
-		
+
 		// Enqueue Script for wplng_translation admin: List
 		add_action( 'admin_print_scripts-edit.php', 'wplng_translation_list_assets' );
 
@@ -244,7 +244,7 @@ function wplng_start() {
 
 		// Enqueue Script for wplng_slug admin: Edit
 		add_action( 'admin_print_scripts-post.php', 'wplng_slug_edit_assets' );
-		
+
 		// Enqueue Script for wplng_slug admin: List
 		add_action( 'admin_print_scripts-edit.php', 'wplng_slug_list_assets' );
 
@@ -311,6 +311,14 @@ function wplng_start() {
 			add_action( 'parse_query', 'wplng_translate_search_query' );
 		} else {
 			add_filter( 'wplng_url_is_translatable', 'wplng_exclude_search', 20 );
+		}
+
+		// Redirect by browser language
+		$browser_language_redirect = get_option( 'wplng_browser_language_redirect' );
+		if ( $browser_language_redirect === 'js_only' ) {
+			add_action( 'wp_head', 'wplng_browser_language_redirect_js_only', 2 );
+		} elseif ( $browser_language_redirect === 'php_js' ) {
+			add_action( 'template_redirect', 'wplng_browser_language_redirect_php_js' );
 		}
 
 		/**

@@ -6,8 +6,21 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 
-add_action( 'wp_head', 'wplng_browser_language_redirect_js_only', 2 );
-
+/**
+ * Outputs a JavaScript snippet to handle browser language-based redirection.
+ *
+ * This function is designed to inject a JavaScript script into the front-end
+ * for redirecting users based on their browser's language settings. It ensures
+ * that the script is only output under specific conditions:
+ * - The user is not logged in with editing permissions.
+ * - The user is not a bot.
+ * - The current page is the front page.
+ * - The current language matches the website's default language.
+ *
+ * If the JavaScript file is missing or empty, the function exits early.
+ *
+ * @return void
+ */
 function wplng_browser_language_redirect_js_only() {
 
 	if ( current_user_can( 'edit_posts' )
@@ -33,7 +46,6 @@ function wplng_browser_language_redirect_js_only() {
 	echo '<script id="wplingue-browser-redirect-js">' . rtrim( $script ) . '</script>';
 }
 
-// add_action( 'template_redirect', 'wplng_browser_language_redirect_php_js' );
 
 /**
  * Redirects the user to the translated version of the page based on browser language or a user-defined cookie.
@@ -61,14 +73,14 @@ function wplng_browser_language_redirect_php_js() {
 	$is_translated_page  = $language_website_id !== $language_current_id;
 	$cookie              = wplng_browser_language_cookie_get();
 
-	// 1. If the user is on a translated page.
+	// If the user is on a translated page.
 	if ( $is_translated_page ) {
 		// Update the cookie with the selected language code. This is a voluntary choice by the user.
 		wplng_browser_language_cookie_set( $language_current_id );
 		return;
 	}
 
-	// 2. The user is on the original language page (no language prefix).
+	// The user is on the original language page (no language prefix).
 
 	// Determine the language to redirect to.
 	$redirect_language_id = false;

@@ -68,7 +68,8 @@ function wplng_option_page_settings() {
 						</fieldset>
 					</td>
 				</tr>
-				<tr class="wplng-beta-hidden" style="display: none;">
+				<!-- <tr class="wplng-beta-hidden" style="display: none;"> -->
+				<tr>
 					<th scope="row"></th>
 					<td>
 						<fieldset>
@@ -512,8 +513,54 @@ function wplng_settings_part_features_plugin() {
 	<div class="wplng-help-box" id="wplng-hb-feature-sitemap-xml">
 		<p>
 			<?php esc_html_e( 'Enable multilingual Sitemap XML: Automatically add links to your wpLingua translated pages in your XML Sitemap files.', 'wplingua' ); ?>
-		</p>		
+		</p>
 	</div>
+
+	<hr>
+
+	<input type="checkbox" id="wplng_browser_language_redirect_checkbox" name="wplng_browser_language_redirect_checkbox" value="1" disabled="disabled"/> 
+	<label for="wplng-browser-language-enabled">BETA - <?php esc_html_e( 'Enable language browser redirection', 'wplingua' ); ?></label> 
+	<span title="<?php esc_attr_e( 'Click to expand', 'wplingua' ); ?>" wplng-help-box="#wplng-hb-feature-browser-language-redirect"></span>
+
+	<div class="wplng-help-box" id="wplng-hb-feature-browser-language-redirect">
+		<p><?php esc_html_e( 'This option automatically redirects visitors to the translated version of your site that matches their browser language when they land on the main homepage (https://your-site.com/). It can improve user experience by showing content in the right language immediately, but depending on your setup, it may introduce side effects.', 'wplingua' ); ?></p>
+		<hr>
+		<p><strong><?php esc_html_e( 'Disabled (recommended):', 'wplingua' ); ?></strong></p>
+		<p><?php esc_html_e( 'No redirection is applied. Every visitor always sees the default homepage, regardless of their browser language. This is the safest option and ensures maximum compatibility with caching systems, SEO, and shared links. Recommended if you are unsure which option to choose.', 'wplingua' ); ?></p>
+		<hr>
+		<p><strong><?php esc_html_e( 'JS only:', 'wplingua' ); ?></strong></p>
+		<p><?php esc_html_e( 'The redirect is handled with JavaScript, after the default homepage has loaded. This method works in almost all cases and avoids issues with caching plugins. However, it may cause a short flicker effect: users will briefly see the default page before being redirected to the translated version.', 'wplingua' ); ?></p>
+		<hr>
+		<p><strong><?php esc_html_e( 'PHP and JS:', 'wplingua' ); ?></strong></p>
+		<p><?php esc_html_e( 'The redirect is performed server-side with PHP, which makes it faster and more seamless for visitors. In addition, a cookie is set via JavaScript to remember the user’s preferred language for future visits. While this provides the smoothest experience, it can sometimes conflict with caching systems (static pages, CDN, aggressive cache settings) and may cause incorrect redirects in certain setups.', 'wplingua' ); ?></p>
+		<hr>
+		<p><strong><?php esc_html_e( 'If you are not sure which option is best for your site, keep it Disabled by default. You can then test the other modes depending on your caching configuration and the type of user experience you want to provide.', 'wplingua' ); ?></strong></p>
+	</div>
+
+
+	<fieldset id="wplng-browser-language-fieldset">
+
+		<?php $wbrowser_language_redirect = get_option( 'wplng_browser_language_redirect', 'disable' ); ?>
+
+		<label>
+			<input type="radio" name="wplng_browser_language_redirect" value="disable" <?php checked( $wbrowser_language_redirect, 'disable' ); ?> />
+			<?php esc_html_e( 'Disable (recommended)', 'wplingua' ); ?> 
+		</label>
+
+		<br>
+
+		<label>
+			<input type="radio" name="wplng_browser_language_redirect" value="js_only" <?php checked( $wbrowser_language_redirect, 'js_only' ); ?> />
+			<?php esc_html_e( 'Enable with JS only', 'wplingua' ); ?> 
+		</label>
+
+		<br>
+
+		<label>
+			<input type="radio" name="wplng_browser_language_redirect" value="php_js" <?php checked( $wbrowser_language_redirect, 'php_js' ); ?> />
+			<?php esc_html_e( 'Enable with PHP and JS', 'wplingua' ); ?> 
+		</label>
+	</fieldset>
 	
 	<?php
 }
