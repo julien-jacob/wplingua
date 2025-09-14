@@ -68,8 +68,7 @@ function wplng_option_page_settings() {
 						</fieldset>
 					</td>
 				</tr>
-				<!-- <tr class="wplng-beta-hidden" style="display: none;"> -->
-				<tr>
+				<tr class="wplng-beta-hidden" style="display: none;">
 					<th scope="row"></th>
 					<td>
 						<fieldset>
@@ -518,8 +517,8 @@ function wplng_settings_part_features_plugin() {
 
 	<hr>
 
-	<input type="checkbox" id="wplng_browser_language_redirect_checkbox" name="wplng_browser_language_redirect_checkbox" value="1" disabled="disabled"/> 
-	<label for="wplng-browser-language-enabled">BETA - <?php esc_html_e( 'Enable language browser redirection', 'wplingua' ); ?></label> 
+	<input type="checkbox" id="wplng_browser_language_redirect_checkbox" name="wplng_browser_language_redirect_checkbox" value="1"/> 
+	<label for="wplng_browser_language_redirect_checkbox">BETA - <?php esc_html_e( 'Enable language browser redirection', 'wplingua' ); ?></label> 
 	<span title="<?php esc_attr_e( 'Click to expand', 'wplingua' ); ?>" wplng-help-box="#wplng-hb-feature-browser-language-redirect"></span>
 
 	<div class="wplng-help-box" id="wplng-hb-feature-browser-language-redirect">
