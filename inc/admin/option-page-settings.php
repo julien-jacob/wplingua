@@ -510,9 +510,12 @@ function wplng_settings_part_features_plugin() {
 	</fieldset>
 
 	<div class="wplng-help-box" id="wplng-hb-feature-sitemap-xml">
-		<p>
-			<?php esc_html_e( 'Enable multilingual Sitemap XML: Automatically add links to your wpLingua translated pages in your XML Sitemap files.', 'wplingua' ); ?>
-		</p>
+		<p><?php esc_html_e( 'This option automatically adds your wpLingua translated pages into your XML Sitemap files.', 'wplingua' ); ?></p>
+		<hr>
+		<p><?php esc_html_e( 'An XML Sitemap is used by search engines (Google, Bing, etc.) to better discover and index the pages of your website. By default, only the default language pages are included. With this option enabled, all translated versions of your content will also be listed.', 'wplingua' ); ?></p>
+		<p><?php esc_html_e( 'This greatly improves SEO visibility, ensuring that search engines can easily find and index your content in every language.', 'wplingua' ); ?></p>
+		<hr>
+		<p><?php esc_html_e( 'wpLingua uses a universal method that intercepts and extends sitemap. It works with the native WordPress sitemap and with popular SEO plugins such as Yoast SEO, Rank Math, All in One SEO, SEOPress, etc.', 'wplingua' ); ?></p>
 	</div>
 
 	<hr>
@@ -532,10 +535,7 @@ function wplng_settings_part_features_plugin() {
 		<hr>
 		<p><strong><?php esc_html_e( 'PHP and JS:', 'wplingua' ); ?></strong></p>
 		<p><?php esc_html_e( 'The redirect is performed server-side with PHP, which makes it faster and more seamless for visitors. In addition, a cookie is set via JavaScript to remember the user’s preferred language for future visits. While this provides the smoothest experience, it can sometimes conflict with caching systems (static pages, CDN, aggressive cache settings) and may cause incorrect redirects in certain setups.', 'wplingua' ); ?></p>
-		<hr>
-		<p><strong><?php esc_html_e( 'If you are not sure which option is best for your site, keep it Disabled by default. You can then test the other modes depending on your caching configuration and the type of user experience you want to provide.', 'wplingua' ); ?></strong></p>
 	</div>
-
 
 	<fieldset id="wplng-browser-language-fieldset">
 
