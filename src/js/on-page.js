@@ -64,4 +64,3 @@
     setTimeout(wplngHeartBeat, 6000);
 
 })();
-

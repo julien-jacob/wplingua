@@ -42,7 +42,7 @@ jQuery(document).ready(function ($) {
 
 
     // ------------------------------------------------------------------------
-    // Code for switcher
+    // Code for switcher UI
     // ------------------------------------------------------------------------
 
     function wplngUpdateSwitcherOpening() {
@@ -85,6 +85,34 @@ jQuery(document).ready(function ($) {
 
     wplngUpdateSwitcherOpening();
 
+    // ------------------------------------------------------------------------
+    // Code for switcher Cookie for language browser redirection
+    // ------------------------------------------------------------------------
+
+    /**
+     * Handle clicks on all language links that have the data attribute.
+     */
+
+    $('a[data-wplng-lang-id]').on('click', function (event) {
+        // Check for the onclick attribute and its value
+        const onclickAttribute = $(this).attr('onclick');
+
+        if (onclickAttribute && onclickAttribute.trim() === 'event.preventDefault();') {
+            // If the onclick attribute is present and its value is 'event.preventDefault();',
+            // we assume this link is not meant for navigation. So, we don't set the cookie.
+            return;
+        }
+
+        // Get the language code directly from the data attribute.
+        const langCode = $(this).data('wplng-lang-id');
+
+        // Set the cookie with the retrieved language code.
+        const expires = new Date();
+        expires.setFullYear(expires.getFullYear() + 1);
+        document.cookie = 'wplingua-lang=' + langCode + '; expires=' + expires.toUTCString() + '; path=/';
+
+    });
+
 
     // ------------------------------------------------------------------------
     // Code for preloading
@@ -113,7 +141,7 @@ jQuery(document).ready(function ($) {
                         ) {
                             $("#wplng-in-progress-percent").html("100");
                             $("#wplng-progress-bar-value").animate(
-                                { width: "100%" }, 
+                                { width: "100%" },
                                 500
                             );
                         }
@@ -143,7 +171,7 @@ jQuery(document).ready(function ($) {
             percent++;
             $("#wplng-in-progress-percent").html(percent);
             $("#wplng-progress-bar-value").animate(
-                { width: percent.toString() + "%" }, 
+                { width: percent.toString() + "%" },
                 500
             );
         }

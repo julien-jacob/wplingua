@@ -553,6 +553,35 @@ jQuery(document).ready(function ($) {
     wplngUpdateOptionPage();
 
     /**
+     * Option for feature "Browser language redirection"
+     */
+
+    $("#wplng_browser_language_redirect_checkbox").on("change", function () {
+        if ($(this).is(":checked")) {
+            $("input[name=wplng_browser_language_redirect][value=js_only]").prop("checked", true);
+        } else {
+            $("input[name=wplng_browser_language_redirect][value=disable]").prop("checked", true);
+        }
+    });
+
+    function wplngUpdateBrowserLanguageRedirect() {
+
+        let selectedMethod = $("input[name=wplng_browser_language_redirect]:checked").val();
+
+        if (selectedMethod === "php_js" || selectedMethod === "js_only") {
+            $("#wplng_browser_language_redirect_checkbox").prop("checked", true);
+        } else {
+            $("#wplng_browser_language_redirect_checkbox").prop("checked", false);
+        }
+    }
+
+    $("input[name=wplng_browser_language_redirect]").on("change", function () {
+        wplngUpdateBrowserLanguageRedirect();
+    });
+
+    wplngUpdateBrowserLanguageRedirect();
+
+    /**
      * Show / Hide API key
      */
 
