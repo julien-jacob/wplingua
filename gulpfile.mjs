@@ -126,6 +126,8 @@ function folder_zip(cb) {
 function folder_create(cb) {
     gulp.src([
         "**",
+        "!docs/",
+        "!docs/**",
         "!wplingua/",
         "!wplingua/**",
         "!node_modules/",
