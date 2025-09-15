@@ -274,12 +274,8 @@ function wplng_settings_part_language_website() {
 		</div>
 
 		<div id="wplng-flag-website-container">
-			<p>
-				<strong><?php esc_html_e( 'Flag to use for this language: ', 'wplingua' ); ?></strong>
-			</p>
-			<p>
-				<span id="wplng-flags-radio-original-website"></span>
-			</p>
+			<p><strong><?php esc_html_e( 'Flag to use for this language: ', 'wplingua' ); ?></strong></p>
+			<p><span id="wplng-flags-radio-original-website"></span></p>
 
 			<div id="wplng-website-flag-container">
 				<hr>
@@ -340,41 +336,30 @@ function wplng_settings_part_languages_target() {
 			</div>
 
 			<div class="wplng-flag-target-container" wplng-target-lang="[LANG]">
-				<p>
-					<strong><?php esc_html_e( 'Flag to use for this language: ', 'wplingua' ); ?></strong>
-				</p>
-				<p>
-					<span class="wplng-subflags-radio-target-website">[FLAGS_OPTIONS]</span>
-				</p>
+				<p><strong><?php esc_html_e( 'Flag to use for this language: ', 'wplingua' ); ?></strong></p>
+				<p><span class="wplng-subflags-radio-target-website">[FLAGS_OPTIONS]</span></p>
 				<div class="wplng-subflag-target-custom" wplng-target-lang="[LANG]">
 					<hr>
-					<p>
-						<strong><?php esc_html_e( 'Custom flag URL for this language: ', 'wplingua' ); ?></strong>
-					</p>
+					<p><strong><?php esc_html_e( 'Custom flag URL for this language: ', 'wplingua' ); ?></strong></p>
 					[INPUT]
 				</div>
 				<hr>
 				<fieldset>
 					[PRIVATE_INPUT]<label for="wplng-language-private-[LANG]"><strong><?php _e( 'Make this language private', 'wplingua' ); ?></strong></label>
 					<p><?php _e( 'Private languages will only be visible to logged-in users with editing rights. This option allows administrators to pre-generate and correct translations before they are accessible to the public.', 'wplingua' ); ?></p>
-					
 				</fieldset>
 			</div>
 		</div>
 	</div>
 
 	<div id="wplng-target-languages-container">
-		<p>
-			<strong><?php esc_html_e( 'Target languages enabled: ', 'wplingua' ); ?></strong>
-		</p>
+		<p><strong><?php esc_html_e( 'Target languages enabled: ', 'wplingua' ); ?></strong></p>
 		<div id="wplng-target-languages-list"></div>
 		<textarea name="wplng_target_languages" id="wplng_target_languages"><?php echo esc_textarea( wp_json_encode( $languages_target, true ) ); ?></textarea>
 	</div>
 
-	<p>
-		<?php esc_html_e( 'Access more target languages by upgrading your API key.', 'wplingua' ); ?></strong>
-		<span title="<?php esc_attr_e( 'Click to expand', 'wplingua' ); ?>" wplng-help-box="#wplng-hb-language-adding"></span>
-	</p>
+	<p><?php esc_html_e( 'Access more target languages by upgrading your API key.', 'wplingua' ); ?></strong>
+		<span title="<?php esc_attr_e( 'Click to expand', 'wplingua' ); ?>" wplng-help-box="#wplng-hb-language-adding"></span></p>
 
 	<div class="wplng-help-box" id="wplng-hb-language-adding">
 		<p>
@@ -420,6 +405,7 @@ function wplng_settings_part_features_api() {
 
 	?>
 	<p><strong><?php esc_html_e( 'API translation features: ', 'wplingua' ); ?></strong></p>
+
 	<hr>
 
 	<p><?php esc_html_e( 'The options below require extended access to the wpLingua API to be functional on your website.', 'wplingua' ); ?></p>
@@ -433,9 +419,7 @@ function wplng_settings_part_features_api() {
 	</fieldset>
 
 	<div class="wplng-help-box" id="wplng-hb-feature-commercial">
-		<p>
-			<?php esc_html_e( 'Use of the free wpLingua API keys is reserved for personal blogs and non-profit websites; paid subscriptions are available for companies and commercial websites.', 'wplingua' ); ?>
-		</p>
+		<p><?php esc_html_e( 'Use of the free wpLingua API keys is reserved for personal blogs and non-profit websites; paid subscriptions are available for companies and commercial websites.', 'wplingua' ); ?></p>
 		<hr>
 		<p>
 			<a href="https://wplingua.com/pricing/" target="_blank">
@@ -453,13 +437,9 @@ function wplng_settings_part_features_api() {
 	</fieldset>
 
 	<div class="wplng-help-box" id="wplng-hb-feature-search">
-		<p>
-			<?php esc_html_e( 'Enable visitors to search on your website in their own language.', 'wplingua' ); ?>
-		</p>
+		<p><?php esc_html_e( 'Enable visitors to search on your website in their own language.', 'wplingua' ); ?></p>
 		<hr>
-		<p>
-			<?php esc_html_e( 'Example: if your website is translated from English to French and you have a post named "Hello". When a French visitor searches for the term "Bonjour" on the website, this feature will translate it on the fly to "Hello" before launching the search. This will allow WordPress to find the post named "Hello" when your visitor has searched for "Bonjour".', 'wplingua' ); ?>
-		</p>
+		<p><?php esc_html_e( 'Example: if your website is translated from English to French and you have a post named "Hello". When a French visitor searches for the term "Bonjour" on the website, this feature will translate it on the fly to "Hello" before launching the search. This will allow WordPress to find the post named "Hello" when your visitor has searched for "Bonjour".', 'wplingua' ); ?></p>
 		<hr>
 		<p>
 			<a href="https://wplingua.com/pricing/" target="_blank">
@@ -491,14 +471,9 @@ function wplng_settings_part_features_plugin() {
 	</fieldset>
 
 	<div class="wplng-help-box" id="wplng-hb-feature-load-in-progress">
-		<p>
-			<?php esc_html_e( 'Enable progress bar: Smooth translations loading for editors', 'wplingua' ); ?>
-		</p>
+		<p><?php esc_html_e( 'Enable progress bar: Smooth translations loading for editors', 'wplingua' ); ?></p>
 		<hr>
-		<p>
-			<?php esc_html_e( 'Activate a progress bar when a page requires the generation of more than 20 new string translations. This feature only applies to connected editors.', 'wplingua' ); ?>
-		</p>
-		
+		<p><?php esc_html_e( 'Activate a progress bar when a page requires the generation of more than 20 new string translations. This feature only applies to connected editors.', 'wplingua' ); ?></p>
 	</div>
 
 	<hr>
