@@ -68,7 +68,7 @@ function wplng_option_page_settings() {
 						</fieldset>
 					</td>
 				</tr>
-				<tr class="wplng-beta-hidden" style="display: none;">
+				<tr>
 					<th scope="row"></th>
 					<td>
 						<fieldset>
@@ -465,20 +465,6 @@ function wplng_settings_part_features_plugin() {
 	<hr>
 
 	<fieldset>
-		<input type="checkbox" id="wplng_load_in_progress" name="wplng_load_in_progress" value="1" <?php checked( 1, get_option( 'wplng_load_in_progress' ), true ); ?>/>
-		<label for="wplng_load_in_progress">BETA - <?php esc_html_e( 'Progress bar for editors', 'wplingua' ); ?></label> 
-		<span title="<?php esc_attr_e( 'Click to expand', 'wplingua' ); ?>" wplng-help-box="#wplng-hb-feature-load-in-progress"></span>
-	</fieldset>
-
-	<div class="wplng-help-box" id="wplng-hb-feature-load-in-progress">
-		<p><?php esc_html_e( 'Enable progress bar: Smooth translations loading for editors', 'wplingua' ); ?></p>
-		<hr>
-		<p><?php esc_html_e( 'Activate a progress bar when a page requires the generation of more than 20 new string translations. This feature only applies to connected editors.', 'wplingua' ); ?></p>
-	</div>
-
-	<hr>
-
-	<fieldset>
 		<input type="checkbox" id="wplng_sitemap_xml" name="wplng_sitemap_xml" value="1" <?php checked( 1, get_option( 'wplng_sitemap_xml' ), true ); ?>/>
 		<label for="wplng_sitemap_xml">BETA - <?php esc_html_e( 'Enable multilingual XML Sitemap', 'wplingua' ); ?></label> 
 		<span title="<?php esc_attr_e( 'Click to expand', 'wplingua' ); ?>" wplng-help-box="#wplng-hb-feature-sitemap-xml"></span>
@@ -493,48 +479,64 @@ function wplng_settings_part_features_plugin() {
 		<p><?php esc_html_e( 'wpLingua uses a universal method that intercepts and extends sitemap. It works with the native WordPress sitemap and with popular SEO plugins such as Yoast SEO, Rank Math, All in One SEO, SEOPress, etc.', 'wplingua' ); ?></p>
 	</div>
 
-	<hr>
-
-	<input type="checkbox" id="wplng_browser_language_redirect_checkbox" name="wplng_browser_language_redirect_checkbox" value="1"/> 
-	<label for="wplng_browser_language_redirect_checkbox">BETA - <?php esc_html_e( 'Enable language browser redirection', 'wplingua' ); ?></label> 
-	<span title="<?php esc_attr_e( 'Click to expand', 'wplingua' ); ?>" wplng-help-box="#wplng-hb-feature-browser-language-redirect"></span>
-
-	<div class="wplng-help-box" id="wplng-hb-feature-browser-language-redirect">
-		<p><?php esc_html_e( 'This option automatically redirects visitors to the translated version of your site that matches their browser language when they land on the main homepage (https://your-site.com/). It can improve user experience by showing content in the right language immediately, but depending on your setup, it may introduce side effects.', 'wplingua' ); ?></p>
+	<div class="wplng-beta-hidden" style="display: none;">
 		<hr>
-		<p><strong><?php esc_html_e( 'Disabled (recommended):', 'wplingua' ); ?></strong></p>
-		<p><?php esc_html_e( 'No redirection is applied. Every visitor always sees the default homepage, regardless of their browser language. This is the safest option and ensures maximum compatibility with caching systems, SEO, and shared links. Recommended if you are unsure which option to choose.', 'wplingua' ); ?></p>
+
+		<fieldset>
+			<input type="checkbox" id="wplng_load_in_progress" name="wplng_load_in_progress" value="1" <?php checked( 1, get_option( 'wplng_load_in_progress' ), true ); ?>/>
+			<label for="wplng_load_in_progress">BETA - <?php esc_html_e( 'Progress bar for editors', 'wplingua' ); ?></label> 
+			<span title="<?php esc_attr_e( 'Click to expand', 'wplingua' ); ?>" wplng-help-box="#wplng-hb-feature-load-in-progress"></span>
+		</fieldset>
+
+		<div class="wplng-help-box" id="wplng-hb-feature-load-in-progress">
+			<p><?php esc_html_e( 'Enable progress bar: Smooth translations loading for editors', 'wplingua' ); ?></p>
+			<hr>
+			<p><?php esc_html_e( 'Activate a progress bar when a page requires the generation of more than 20 new string translations. This feature only applies to connected editors.', 'wplingua' ); ?></p>
+		</div>
+
 		<hr>
-		<p><strong><?php esc_html_e( 'JS only:', 'wplingua' ); ?></strong></p>
-		<p><?php esc_html_e( 'The redirect is handled with JavaScript, after the default homepage has loaded. This method works in almost all cases and avoids issues with caching plugins. However, it may cause a short flicker effect: users will briefly see the default page before being redirected to the translated version.', 'wplingua' ); ?></p>
-		<hr>
-		<p><strong><?php esc_html_e( 'PHP and JS:', 'wplingua' ); ?></strong></p>
-		<p><?php esc_html_e( 'The redirect is performed server-side with PHP, which makes it faster and more seamless for visitors. In addition, a cookie is set via JavaScript to remember the user’s preferred language for future visits. While this provides the smoothest experience, it can sometimes conflict with caching systems (static pages, CDN, aggressive cache settings) and may cause incorrect redirects in certain setups.', 'wplingua' ); ?></p>
-	</div>
 
-	<fieldset id="wplng-browser-language-fieldset">
+		<input type="checkbox" id="wplng_browser_language_redirect_checkbox" name="wplng_browser_language_redirect_checkbox" value="1"/> 
+		<label for="wplng_browser_language_redirect_checkbox">BETA - <?php esc_html_e( 'Enable language browser redirection', 'wplingua' ); ?></label> 
+		<span title="<?php esc_attr_e( 'Click to expand', 'wplingua' ); ?>" wplng-help-box="#wplng-hb-feature-browser-language-redirect"></span>
 
-		<?php $wbrowser_language_redirect = get_option( 'wplng_browser_language_redirect', 'disable' ); ?>
+		<div class="wplng-help-box" id="wplng-hb-feature-browser-language-redirect">
+			<p><?php esc_html_e( 'This option automatically redirects visitors to the translated version of your site that matches their browser language when they land on the main homepage (https://your-site.com/). It can improve user experience by showing content in the right language immediately, but depending on your setup, it may introduce side effects.', 'wplingua' ); ?></p>
+			<hr>
+			<p><strong><?php esc_html_e( 'Disabled (recommended):', 'wplingua' ); ?></strong></p>
+			<p><?php esc_html_e( 'No redirection is applied. Every visitor always sees the default homepage, regardless of their browser language. This is the safest option and ensures maximum compatibility with caching systems, SEO, and shared links. Recommended if you are unsure which option to choose.', 'wplingua' ); ?></p>
+			<hr>
+			<p><strong><?php esc_html_e( 'JS only:', 'wplingua' ); ?></strong></p>
+			<p><?php esc_html_e( 'The redirect is handled with JavaScript, after the default homepage has loaded. This method works in almost all cases and avoids issues with caching plugins. However, it may cause a short flicker effect: users will briefly see the default page before being redirected to the translated version.', 'wplingua' ); ?></p>
+			<hr>
+			<p><strong><?php esc_html_e( 'PHP and JS:', 'wplingua' ); ?></strong></p>
+			<p><?php esc_html_e( 'The redirect is performed server-side with PHP, which makes it faster and more seamless for visitors. In addition, a cookie is set via JavaScript to remember the user’s preferred language for future visits. While this provides the smoothest experience, it can sometimes conflict with caching systems (static pages, CDN, aggressive cache settings) and may cause incorrect redirects in certain setups.', 'wplingua' ); ?></p>
+		</div>
 
-		<label>
-			<input type="radio" name="wplng_browser_language_redirect" value="disable" <?php checked( $wbrowser_language_redirect, 'disable' ); ?> />
-			<?php esc_html_e( 'Disable (recommended)', 'wplingua' ); ?> 
-		</label>
+		<fieldset id="wplng-browser-language-fieldset">
 
-		<br>
+			<?php $wbrowser_language_redirect = get_option( 'wplng_browser_language_redirect', 'disable' ); ?>
 
-		<label>
-			<input type="radio" name="wplng_browser_language_redirect" value="js_only" <?php checked( $wbrowser_language_redirect, 'js_only' ); ?> />
-			<?php esc_html_e( 'Enable with JS only', 'wplingua' ); ?> 
-		</label>
+			<label>
+				<input type="radio" name="wplng_browser_language_redirect" value="disable" <?php checked( $wbrowser_language_redirect, 'disable' ); ?> />
+				<?php esc_html_e( 'Disable (recommended)', 'wplingua' ); ?> 
+			</label>
 
-		<br>
+			<br>
 
-		<label>
-			<input type="radio" name="wplng_browser_language_redirect" value="php_js" <?php checked( $wbrowser_language_redirect, 'php_js' ); ?> />
-			<?php esc_html_e( 'Enable with PHP and JS', 'wplingua' ); ?> 
-		</label>
-	</fieldset>
+			<label>
+				<input type="radio" name="wplng_browser_language_redirect" value="js_only" <?php checked( $wbrowser_language_redirect, 'js_only' ); ?> />
+				<?php esc_html_e( 'Enable with JS only', 'wplingua' ); ?> 
+			</label>
+
+			<br>
+
+			<label>
+				<input type="radio" name="wplng_browser_language_redirect" value="php_js" <?php checked( $wbrowser_language_redirect, 'php_js' ); ?> />
+				<?php esc_html_e( 'Enable with PHP and JS', 'wplingua' ); ?> 
+			</label>
+		</fieldset>
+	</div><!-- End .wplng-beta-hidden -->
 	
 	<?php
 }
