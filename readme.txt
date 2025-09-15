@@ -4,7 +4,7 @@ Donate link: https://wplingua.com/
 Tags: translate, translation, multilingual, localization, language
 Requires at least: 6.0
 Tested up to: 6.8
-Stable tag: 2.7.2
+Stable tag: 2.8.0
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -191,39 +191,15 @@ Your server’s database holds all the translations locally.
 
 == Changelog ==
 
-= 2.7.2 =
+= 2.8.0 =
 
-* Update PO MO plugin language
-
-= 2.7.1 =
-
-* Better file exclusion from URL translation
- * Review and optimize used REGEX:
- * Exclude SVG
- * Exclude font files (ttf, otf, woff, woff2 and eot)
-* Better compatibility for displaying flags
-
-= 2.7.0 =
-
+* Enable multilingual sitemap XML in the main wpLingua option page.
+* Add attribute data-wplng-lang-id to language switcher.
 * New hidden BETA feature:
- * SEO: Make multilingual XML sitemap
- * Mode "Translation in progress"
+ * Enable redirection by user language browser with PHP and JS.
+ * Enable redirection by user language browser with JS only.
  * To display hidden BETA features, use the Konami code on the wpLingua general settings page.
-* Better admin UX
- * Header and footer on admin CPT translation (edit and list)
- * Header and footer on admin CPT slug (edit and list)
-* Translation editor
- * Better font family compatibility
- * Better flags displaying
-* Mode "Translations in progress":
- * Better UX
- * Add smooth animation
- * Clear one useless cycle
-* Review admin assets loading
-* Enforce browser translation disabling
-* Set hrefland head section priority to 1
-* Better plugin compatibility: Presto Player
-* Some code review
+* Some code review.
 
 All changelogs and previous versions of the wpLingua plugin are available on the releases page of the project's GitHub repo: [https://github.com/julien-jacob/wplingua/releases](https://github.com/julien-jacob/wplingua/releases).
 
