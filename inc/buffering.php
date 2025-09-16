@@ -242,6 +242,12 @@ function wplng_ob_callback_sitemap_xml( $content ) {
 	$xpath->registerNamespace( 'sm', 'http://www.sitemaps.org/schemas/sitemap/0.9' );
 	$xpath->registerNamespace( 'xhtml', 'http://www.w3.org/1999/xhtml' );
 
+	// Ensure the root element declares the xhtml namespace.
+	$urlset = $dom->documentElement;
+	if ( ! $urlset->hasAttribute( 'xmlns:xhtml' ) ) {
+		$urlset->setAttribute( 'xmlns:xhtml', 'http://www.w3.org/1999/xhtml' );
+	}
+
 	// Get all <url> nodes.
 	$url_nodes = $xpath->query( '//sm:url' );
 
