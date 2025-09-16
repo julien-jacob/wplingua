@@ -33,17 +33,19 @@ An all-in-one solution that makes your websites multilingual and translates them
 
 <br>
 
-When you use wpLingua on your website, all elements of your content - even those that are invisible - are translated. wpLingua is "SEO-Friendly" because it takes care of translating:
+When you use wpLingua on your website, all elements of your content – even those that are invisible – are translated.  
+wpLingua is **SEO-Friendly** because it takes care of translating:
 
 ✅ Meta Title tags<br>
 ✅ Meta Description tags<br>
 ✅ Hreflang alternative links<br>
 ✅ Meta tags for social networks (Twitter X, OpenGraph Facebook...)<br>
 ✅ ALT attributes of images<br>
-✅ Translate website URLs<br>
+✅ Website URLs<br>
+✅ XML Sitemaps (automatically multilingual)<br>
 ✅ And more.<br>
 
-By optimizing indexing, we ensure that your translated pages are not only understood by your audience, but are also easily found by search engines.
+By optimizing indexing, wpLingua ensures that your translated pages are not only understood by your audience, but also easily discovered by search engines.
 
 <br><br>
 

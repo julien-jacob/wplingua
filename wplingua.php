@@ -7,7 +7,7 @@
  * Author URI: https://wplingua.com/
  * Text Domain: wplingua
  * Domain Path: /languages/
- * Version: 2.7.2
+ * Version: 2.8.0
  * Requires PHP: 7.4
  * License: GPL v2 or later
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -24,7 +24,7 @@ if ( ! defined( 'WPINC' ) ) {
 define( 'WPLNG_API_URL', 'https://api.wplingua.com' );
 define( 'WPLNG_API_VERSION', '3.0' );
 define( 'WPLNG_API_SSLVERIFY', true );
-define( 'WPLNG_PLUGIN_VERSION', '2.7.2' );
+define( 'WPLNG_PLUGIN_VERSION', '2.8.0' );
 define( 'WPLNG_PLUGIN_FILE', plugin_basename( __FILE__ ) );
 define( 'WPLNG_PLUGIN_PATH', __DIR__ );
 define( 'WPLNG_PHP_MIN_VERSION', '7.4' );
@@ -37,6 +37,7 @@ define( 'WPLNG_MAX_FILE_SIZE', 5000000 );
 defined( 'WPLNG_DEBUG_JSON' ) || define( 'WPLNG_DEBUG_JSON', false );
 defined( 'WPLNG_DEBUG_AJAX' ) || define( 'WPLNG_DEBUG_AJAX', false );
 defined( 'WPLNG_DEBUG_BEAT' ) || define( 'WPLNG_DEBUG_BEAT', false );
+defined( 'WPLNG_DEBUG_XML' ) || define( 'WPLNG_DEBUG_XML', false );
 
 
 // Load all needed PHP files
@@ -191,7 +192,7 @@ function wplng_start() {
 
 		// Enqueue Script for wplng_translation admin: Edit
 		add_action( 'admin_print_scripts-post.php', 'wplng_translation_edit_assets' );
-		
+
 		// Enqueue Script for wplng_translation admin: List
 		add_action( 'admin_print_scripts-edit.php', 'wplng_translation_list_assets' );
 
@@ -244,7 +245,7 @@ function wplng_start() {
 
 		// Enqueue Script for wplng_slug admin: Edit
 		add_action( 'admin_print_scripts-post.php', 'wplng_slug_edit_assets' );
-		
+
 		// Enqueue Script for wplng_slug admin: List
 		add_action( 'admin_print_scripts-edit.php', 'wplng_slug_list_assets' );
 
@@ -311,6 +312,14 @@ function wplng_start() {
 			add_action( 'parse_query', 'wplng_translate_search_query' );
 		} else {
 			add_filter( 'wplng_url_is_translatable', 'wplng_exclude_search', 20 );
+		}
+
+		// Redirect by browser language
+		$browser_language_redirect = get_option( 'wplng_browser_language_redirect' );
+		if ( $browser_language_redirect === 'js_only' ) {
+			add_action( 'wp_head', 'wplng_browser_language_redirect_js_only', 2 );
+		} elseif ( $browser_language_redirect === 'php_js' ) {
+			add_action( 'template_redirect', 'wplng_browser_language_redirect_php_js' );
 		}
 
 		/**
