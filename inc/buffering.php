@@ -208,7 +208,7 @@ function wplng_ob_callback_sitemap_xml( $content ) {
 		return $content;
 	}
 
-	// Check if multilingua XML sitemap is enabled
+	// Check if multilingual XML sitemap is enabled.
 	$sitemap_xml_enabled = apply_filters(
 		'wplng_enable_sitemap_xml_feature',
 		get_option( 'wplng_sitemap_xml', false )
@@ -242,8 +242,11 @@ function wplng_ob_callback_sitemap_xml( $content ) {
 	$xpath->registerNamespace( 'sm', 'http://www.sitemaps.org/schemas/sitemap/0.9' );
 	$xpath->registerNamespace( 'xhtml', 'http://www.w3.org/1999/xhtml' );
 
-	// Ensure the root element declares the xhtml namespace.
+	// Ensure the root element declares the required namespaces.
 	$urlset = $dom->documentElement;
+	if ( ! $urlset->hasAttribute( 'xmlns' ) ) {
+		$urlset->setAttribute( 'xmlns', 'http://www.sitemaps.org/schemas/sitemap/0.9' );
+	}
 	if ( ! $urlset->hasAttribute( 'xmlns:xhtml' ) ) {
 		$urlset->setAttribute( 'xmlns:xhtml', 'http://www.w3.org/1999/xhtml' );
 	}
@@ -257,7 +260,7 @@ function wplng_ob_callback_sitemap_xml( $content ) {
 
 	foreach ( $url_nodes as $url_node ) {
 
-		// Get original URL
+		// Get original URL.
 		$loc_node = $xpath->query( 'sm:loc', $url_node )->item( 0 );
 
 		if ( empty( $loc_node ) ) {
@@ -270,17 +273,27 @@ function wplng_ob_callback_sitemap_xml( $content ) {
 			continue;
 		}
 
-		// Add link for original language
+		// Add link for original language.
 		$link_node = $dom->createElement( 'xhtml:link' );
 		$link_node->setAttribute( 'rel', 'alternate' );
 		$link_node->setAttribute( 'hreflang', esc_attr( $language_website_id ) );
 		$link_node->setAttribute( 'href', esc_url( $url_original ) );
 		$url_node->appendChild( $link_node );
 
-		// Add link for target languages
+		// Add links for target languages.
 		foreach ( $languages_target_ids as $language_id ) {
 
-			$translated_url = wplng_url_translate( $url_original, $language_id );
+			$translated_url = wplng_url_translate( 
+				$url_original, 
+				$language_id 
+			);
+
+			// Validate the translated URL.
+			if ( empty( $translated_url ) 
+				|| ! filter_var( $translated_url, FILTER_VALIDATE_URL ) 
+			) {
+				continue;
+			}
 
 			$link_node = $dom->createElement( 'xhtml:link' );
 			$link_node->setAttribute( 'rel', 'alternate' );
