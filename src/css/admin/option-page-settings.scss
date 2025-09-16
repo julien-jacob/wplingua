@@ -103,15 +103,27 @@
             justify-content: space-between;
 
             .wplng-target-lang-move-up,
-            .wplng-target-lang-move-down {
-                color: #646970;
+            .wplng-target-lang-move-down,
+            .wplng-target-lang-update-flag {
+                color: #0073aa;
                 text-decoration: none;
-                margin-right: 8px;
                 
                 &:hover {
-                    color: #2271b1;
+                    color: #005177;
                 }
                 
+                &::before {
+                    content: "|";
+                    display: inline;
+                    color: #8c8f94;
+                    text-decoration: none;
+                    margin-right: 5px;
+                    font-weight: lighter;
+                }
+            }
+            
+            .wplng-target-lang-move-up,
+            .wplng-target-lang-move-down {
                 .dashicons {
                     font-size: 14px;
                     vertical-align: middle;
