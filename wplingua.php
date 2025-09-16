@@ -37,6 +37,7 @@ define( 'WPLNG_MAX_FILE_SIZE', 5000000 );
 defined( 'WPLNG_DEBUG_JSON' ) || define( 'WPLNG_DEBUG_JSON', false );
 defined( 'WPLNG_DEBUG_AJAX' ) || define( 'WPLNG_DEBUG_AJAX', false );
 defined( 'WPLNG_DEBUG_BEAT' ) || define( 'WPLNG_DEBUG_BEAT', false );
+defined( 'WPLNG_DEBUG_XML' ) || define( 'WPLNG_DEBUG_XML', false );
 
 
 // Load all needed PHP files

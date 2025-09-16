@@ -231,9 +231,33 @@ function wplng_ob_callback_sitemap_xml( $content ) {
 	$dom->preserveWhiteSpace = false;
 	$dom->formatOutput       = true;
 
-	if ( ! @$dom->loadXML( $content ) ) {
+	// Enable internal error handling
+	$previous_libxml_setting = libxml_use_internal_errors( true ); 
+	
+	// Check XML errors
+	if ( ! $dom->loadXML( $content ) ) {
+		if ( defined( 'WPLNG_DEBUG_JSON' ) && true === WPLNG_DEBUG_JSON ) {
+			$errors = array();
+
+			foreach ( libxml_get_errors() as $error ) {
+				$errors[] = $error->message;
+			}
+
+			libxml_clear_errors();
+
+			$debug = array(
+				'title'  => 'wpLingua XML debug - Invalid XML content',
+				'errors' => $errors,
+			);
+
+			error_log( var_export( $debug, true ) );
+		}
+
 		return $content;
 	}
+
+	// Restore previous setting
+	libxml_use_internal_errors( $previous_libxml_setting ); 
 
 	$signature = '<!-- XML Sitemap is made multilingual by wpLingua -->' . PHP_EOL;
 
