@@ -102,6 +102,22 @@
             display: flex;
             justify-content: space-between;
 
+            .wplng-target-lang-move-up,
+            .wplng-target-lang-move-down {
+                color: #646970;
+                text-decoration: none;
+                margin-right: 8px;
+                
+                &:hover {
+                    color: #2271b1;
+                }
+                
+                .dashicons {
+                    font-size: 14px;
+                    vertical-align: middle;
+                }
+            }
+
             .wplng-target-lang-remove {
                 &::before {
                     content: "|";
@@ -135,6 +151,26 @@
             .wplng-private-label {
                 display: inline;
                 opacity: .65;
+            }
+        }
+
+        // Arrow visibility rules
+        &.wplng-hide-arrows {
+            .wplng-target-lang-move-up,
+            .wplng-target-lang-move-down {
+                display: none;
+            }
+        }
+
+        &.wplng-hide-up-arrow {
+            .wplng-target-lang-move-up {
+                display: none;
+            }
+        }
+
+        &.wplng-hide-down-arrow {
+            .wplng-target-lang-move-down {
+                display: none;
             }
         }
     }

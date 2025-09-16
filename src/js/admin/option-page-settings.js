@@ -249,109 +249,138 @@ jQuery(document).ready(function ($) {
         let html = "";
         let htmlTemplate = $("#wplng-target-language-template").html();
 
-        wplngAllLanguages.forEach((language) => {
+        // Process languages in the order they appear in wplngTargetLanguages
+        wplngTargetLanguages.forEach((targetLang, index) => {
+
+            // Find the full language data from wplngAllLanguages
+            let language = wplngAllLanguages.find(lang => lang.id === targetLang.id);
+            if (!language) return;
 
             let htmlElement = "";
+            let textCustomRadio = $("#wplng-flags-radio-original-website-custom").text();
+            let flagsRadiosHTML = "";
+            let flagFirstChecked = false;
+            let flagCustomChecked = " checked";
+            let targetFlagUrl = targetLang.flag || "";
 
-            if (wplngTargetLanguagesIncludes(language.id)) {
+            if (targetFlagUrl == "") {
+                flagFirstChecked = true;
+            }
 
-                let textCustomRadio = $("#wplng-flags-radio-original-website-custom").text();
-                let flagsRadiosHTML = "";
-                let flagFirstChecked = false;
-                let flagCustomChecked = " checked";
-                let targetFlagUrl = language.flag;
+            language.flags.forEach(flag => {
 
-                if (targetFlagUrl == "") {
-                    flagFirstChecked = true;
+                let checked = "";
+
+                if (targetFlagUrl == flag.flag) {
+                    checked = " checked";
+                    flagCustomChecked = "";
                 }
 
-                language.flags.forEach(flag => {
-
-                    let checked = "";
-
-                    if (targetFlagUrl == flag.flag) {
-                        checked = " checked";
-                        flagCustomChecked = "";
-                    }
-
-                    if (flagFirstChecked) {
-                        checked = " checked";
-                        flagCustomChecked = "";
-                        flagFirstChecked = false;
-                        value = flag.flag;
-                    }
-
-                    flagsRadiosHTML +=
-                        '<span class="wplng-subflags-radio">' +
-                        '<input type="radio" ' +
-                        'name="wplng-target-subflag-' + language.id + '" ' +
-                        'value="' + flag.flag + '" ' +
-                        'wplng-target-lang="' + language.id + '" ' +
-                        'id="wplng-subflag-' + language.id + '-' + flag.id + '"' + checked + '>' +
-                        '<label for="wplng-subflag-' + language.id + '-' + flag.id + '">' +
-                        flag.name + ' (<img src="' + flag.flag + '">)' +
-                        '</label></span>';
-                });
+                if (flagFirstChecked) {
+                    checked = " checked";
+                    flagCustomChecked = "";
+                    flagFirstChecked = false;
+                    value = flag.flag;
+                }
 
                 flagsRadiosHTML +=
-                    '<span class="wplng-flags-radio">' +
-                    '<input type="radio" name="wplng-target-subflag-' + language.id +
-                    '" id="wplng-target-flag-custom-' + language.id + '" value="custom"' +
-                    ' wplng-target-lang="' + language.id + '" ' +
-                    flagCustomChecked + '>' +
-                    '<label for="wplng-target-flag-custom-' +
-                    language.id + '">' + textCustomRadio + '</label>' +
-                    '</span>';
+                    '<span class="wplng-subflags-radio">' +
+                    '<input type="radio" ' +
+                    'name="wplng-target-subflag-' + language.id + '" ' +
+                    'value="' + flag.flag + '" ' +
+                    'wplng-target-lang="' + language.id + '" ' +
+                    'id="wplng-subflag-' + language.id + '-' + flag.id + '"' + checked + '>' +
+                    '<label for="wplng-subflag-' + language.id + '-' + flag.id + '">' +
+                    flag.name + ' (<img src="' + flag.flag + '">)' +
+                    '</label></span>';
+            });
 
-                let isPrivate = wplngLanguagesIsPrivate(language.id);
-                let inputPrivate = '';
+            flagsRadiosHTML +=
+                '<span class="wplng-flags-radio">' +
+                '<input type="radio" name="wplng-target-subflag-' + language.id +
+                '" id="wplng-target-flag-custom-' + language.id + '" value="custom"' +
+                ' wplng-target-lang="' + language.id + '" ' +
+                flagCustomChecked + '>' +
+                '<label for="wplng-target-flag-custom-' +
+                language.id + '">' + textCustomRadio + '</label>' +
+                '</span>';
 
-                inputPrivate += '<input ';
-                inputPrivate += ' type="checkbox"';
-                inputPrivate += ' id="wplng-language-private-' + language.id + '"';
-                inputPrivate += ' name="wplng-language-private"';
-                inputPrivate += ' value="private"';
-                inputPrivate += ' wplng-target-lang="' + language.id + '"';
+            let isPrivate = wplngLanguagesIsPrivate(language.id);
+            let inputPrivate = '';
 
-                if (isPrivate) {
-                    inputPrivate += ' checked';
-                }
+            inputPrivate += '<input ';
+            inputPrivate += ' type="checkbox"';
+            inputPrivate += ' id="wplng-language-private-' + language.id + '"';
+            inputPrivate += ' name="wplng-language-private"';
+            inputPrivate += ' value="private"';
+            inputPrivate += ' wplng-target-lang="' + language.id + '"';
 
-                inputPrivate += '/>';
-
-                htmlElement = htmlTemplate;
-                htmlElement = htmlElement.replaceAll("[PRIVATE_INPUT]", inputPrivate);
-                htmlElement = htmlElement.replaceAll("[NAME]", language.name);
-                htmlElement = htmlElement.replaceAll("[LANG]", language.id);
-                let htmlFlag =
-                    '<img src="' + targetFlagUrl + '" class="wplng-target-flag">';
-                htmlElement = htmlElement.replaceAll("[FLAG]", htmlFlag);
-                htmlElement = htmlElement.replaceAll("[FLAGS_OPTIONS]", flagsRadiosHTML);
-
-                if (isPrivate) {
-                    htmlElement = htmlElement.replaceAll(
-                        'class="wplng-target-language"',
-                        'class="wplng-target-language wplng-is-private"'
-                    );
-                }
-
-                let htmlInput = '<input type="url" class="wplng-target-subflag" wplng-target-lang="' + language.id + '" value="' + language.flag + '" />';
-                htmlElement = htmlElement.replaceAll("[INPUT]", htmlInput);
-
-                if (flagCustomChecked == "") {
-                    htmlElement = htmlElement.replaceAll(
-                        'class="wplng-subflag-target-custom"',
-                        'class="wplng-subflag-target-custom hide"'
-                    );
-                } else {
-                    htmlElement = htmlElement.replaceAll(
-                        'class="wplng-subflag-target-custom"',
-                        'class="wplng-subflag-target-custom show"'
-                    );
-                }
-
-                html += htmlElement;
+            if (isPrivate) {
+                inputPrivate += ' checked';
             }
+
+            inputPrivate += '/>';
+
+            htmlElement = htmlTemplate;
+            htmlElement = htmlElement.replaceAll("[PRIVATE_INPUT]", inputPrivate);
+            htmlElement = htmlElement.replaceAll("[NAME]", language.name);
+            htmlElement = htmlElement.replaceAll("[LANG]", language.id);
+            let htmlFlag =
+                '<img src="' + targetFlagUrl + '" class="wplng-target-flag">';
+            htmlElement = htmlElement.replaceAll("[FLAG]", htmlFlag);
+            htmlElement = htmlElement.replaceAll("[FLAGS_OPTIONS]", flagsRadiosHTML);
+
+            if (isPrivate) {
+                htmlElement = htmlElement.replaceAll(
+                    'class="wplng-target-language"',
+                    'class="wplng-target-language wplng-is-private"'
+                );
+            }
+
+            // Add ordering attributes and visibility classes for arrows
+            let orderClass = '';
+            let arrowsVisibility = '';
+            
+            if (wplngTargetLanguages.length > 1) {
+                if (index === 0) {
+                    // First item: only down arrow
+                    arrowsVisibility = 'wplng-hide-up-arrow';
+                } else if (index === wplngTargetLanguages.length - 1) {
+                    // Last item: only up arrow
+                    arrowsVisibility = 'wplng-hide-down-arrow';
+                }
+                // Middle items: both arrows visible (no class needed)
+            } else {
+                // Single item: hide both arrows
+                arrowsVisibility = 'wplng-hide-arrows';
+            }
+
+            htmlElement = htmlElement.replaceAll(
+                'class="wplng-target-language"',
+                'class="wplng-target-language ' + arrowsVisibility + '"'
+            );
+            
+            htmlElement = htmlElement.replaceAll(
+                'class="wplng-target-language wplng-is-private"',
+                'class="wplng-target-language wplng-is-private ' + arrowsVisibility + '"'
+            );
+
+            let htmlInput = '<input type="url" class="wplng-target-subflag" wplng-target-lang="' + language.id + '" value="' + targetLang.flag + '" />';
+            htmlElement = htmlElement.replaceAll("[INPUT]", htmlInput);
+
+            if (flagCustomChecked == "") {
+                htmlElement = htmlElement.replaceAll(
+                    'class="wplng-subflag-target-custom"',
+                    'class="wplng-subflag-target-custom hide"'
+                );
+            } else {
+                htmlElement = htmlElement.replaceAll(
+                    'class="wplng-subflag-target-custom"',
+                    'class="wplng-subflag-target-custom show"'
+                );
+            }
+
+            html += htmlElement;
         });
 
         if ("" == html) {
@@ -422,6 +451,48 @@ jQuery(document).ready(function ($) {
             wplngTargetLanguages = newTargetLanguages;
 
             wplngUpdateOptionPage();
+        }
+    );
+
+    // Handle move up functionality
+    $("#wplng-target-languages-list").on(
+        "click",
+        ".wplng-target-lang-move-up",
+        (event) => {
+            event.preventDefault();
+            
+            let languageId = $(event.target).closest('a').attr("wplng-target-lang");
+            let currentIndex = wplngTargetLanguages.findIndex(lang => lang.id === languageId);
+            
+            if (currentIndex > 0) {
+                // Swap with previous item
+                let temp = wplngTargetLanguages[currentIndex];
+                wplngTargetLanguages[currentIndex] = wplngTargetLanguages[currentIndex - 1];
+                wplngTargetLanguages[currentIndex - 1] = temp;
+                
+                wplngUpdateOptionPage();
+            }
+        }
+    );
+
+    // Handle move down functionality
+    $("#wplng-target-languages-list").on(
+        "click",
+        ".wplng-target-lang-move-down",
+        (event) => {
+            event.preventDefault();
+            
+            let languageId = $(event.target).closest('a').attr("wplng-target-lang");
+            let currentIndex = wplngTargetLanguages.findIndex(lang => lang.id === languageId);
+            
+            if (currentIndex < wplngTargetLanguages.length - 1) {
+                // Swap with next item
+                let temp = wplngTargetLanguages[currentIndex];
+                wplngTargetLanguages[currentIndex] = wplngTargetLanguages[currentIndex + 1];
+                wplngTargetLanguages[currentIndex + 1] = temp;
+                
+                wplngUpdateOptionPage();
+            }
         }
     );
 
