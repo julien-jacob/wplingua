@@ -193,7 +193,10 @@ Your server’s database holds all the translations locally.
 
 = 2.8.0 =
 
-* Enable multilingual sitemap XML in the main wpLingua option page.
+* Multilingual sitemap XML
+ * Enable multilingual sitemap XML in the main wpLingua option page.
+ * Fix spacename for xhtml (Multilingual sitemap XML).
+ * Ensure required namespaces in multilingual XML sitemap.
 * Add attribute data-wplng-lang-id to language switcher.
 * New hidden BETA feature:
  * Enable redirection by user language browser with PHP and JS.
