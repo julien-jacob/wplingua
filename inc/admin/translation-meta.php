@@ -316,7 +316,7 @@ function wplng_translation_save_meta_boxes_data( $post_id ) {
 	}
 
 	// check for correct user capabilities - stop internal xss from customers
-	if ( ! current_user_can( 'edit_post', $post_id ) ) {
+	if ( ! current_user_can( 'wplng_edit_translations' ) ) {
 		return false;
 	}
 

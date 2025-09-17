@@ -91,7 +91,7 @@ function wplng_ajax_edit_modal() {
 	 */
 
 	if ( empty( $_POST['post_id'] )
-		|| ! current_user_can( 'edit_post', $_POST['post_id'] )
+		|| ! current_user_can( 'wplng_edit_translations' )
 	) {
 		wp_send_json_error( __( 'Invalid translation ID', 'wplingua' ) );
 		return;
@@ -150,7 +150,7 @@ function wplng_ajax_save_modal() {
 	 */
 
 	if ( empty( $_POST['post_id'] )
-		|| ! current_user_can( 'edit_post', $_POST['post_id'] )
+		|| ! current_user_can( 'wplng_edit_translations' )
 	) {
 		wp_send_json_error( __( 'Invalid translation ID', 'wplingua' ) );
 		return;

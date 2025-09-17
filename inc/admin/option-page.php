@@ -16,7 +16,7 @@ function wplng_create_menu_register() {
 	add_menu_page(
 		__( 'wpLingua: Register', 'wplingua' ),
 		__( 'wpLingua', 'wplingua' ),
-		'administrator',
+		'wplng_edit_translations',
 		'wplingua-settings',
 		'wplng_option_page_register',
 		'dashicons-translation',
@@ -35,7 +35,7 @@ function wplng_create_menu() {
 	add_menu_page(
 		__( 'wpLingua: Settings', 'wplingua' ),
 		__( 'wpLingua', 'wplingua' ),
-		'administrator',
+		'wplng_edit_translations',
 		'wplingua-settings',
 		'',
 		'dashicons-translation',
@@ -46,7 +46,7 @@ function wplng_create_menu() {
 		'wplingua-settings',
 		__( 'wpLingua: Settings', 'wplingua' ),
 		__( 'General settings', 'wplingua' ),
-		'administrator',
+		'wplng_edit_translations',
 		'wplingua-settings',
 		'wplng_option_page_settings'
 	);
@@ -55,7 +55,7 @@ function wplng_create_menu() {
 		'wplingua-settings',
 		__( 'wpLingua: Switcher', 'wplingua' ),
 		__( 'Switcher', 'wplingua' ),
-		'administrator',
+		'wplng_edit_translations',
 		'wplingua-switcher',
 		'wplng_option_page_switcher'
 	);
@@ -64,7 +64,7 @@ function wplng_create_menu() {
 		'wplingua-settings',
 		__( 'wpLingua: Exclusion', 'wplingua' ),
 		__( 'Exclusion', 'wplingua' ),
-		'administrator',
+		'wplng_edit_translations',
 		'wplingua-exclusions',
 		'wplng_option_page_exclusions'
 	);
@@ -73,7 +73,7 @@ function wplng_create_menu() {
 		'wplingua-settings',
 		__( 'wpLingua: Dictionary', 'wplingua' ),
 		__( 'Dictionary', 'wplingua' ),
-		'administrator',
+		'wplng_edit_translations',
 		'wplingua-dictionary',
 		'wplng_option_page_dictionary'
 	);
@@ -82,7 +82,7 @@ function wplng_create_menu() {
 		'wplingua-settings',
 		__( 'wplingua: Links & Medias', 'wplingua' ),
 		__( 'Links & Medias', 'wplingua' ),
-		'administrator',
+		'wplng_edit_translations',
 		'wplingua-link-media',
 		'wplng_option_page_link_media'
 	);
@@ -91,7 +91,7 @@ function wplng_create_menu() {
 		'wplingua-settings',
 		__( 'wpLingua: Website slugs', 'wplingua' ),
 		__( 'Website slugs', 'wplingua' ),
-		'administrator',
+		'wplng_edit_translations',
 		'edit.php?post_type=wplng_slug',
 		false
 	);
@@ -100,7 +100,7 @@ function wplng_create_menu() {
 		'wplingua-settings',
 		__( 'wpLingua: Translations', 'wplingua' ),
 		__( 'All translations', 'wplingua' ),
-		'administrator',
+		'wplng_edit_translations',
 		'edit.php?post_type=wplng_translation',
 		false
 	);
