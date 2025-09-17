@@ -309,7 +309,7 @@ function wplng_admin_notice_no_key_set() {
 		get_admin_url() . 'admin.php'
 	);
 
-	$html  = '<div class="notice notice-info is-dismissible">';
+	$html  = '<div class="notice notice-info is-dismissible no-translate">';
 	$html .= '<p style="font-weight: 600;">';
 	$html .= '<span class="dashicons dashicons-translation"></span> ';
 	$html .= esc_html__( 'wpLingua - Translation solution for multilingual website', 'wplingua' );
@@ -388,7 +388,7 @@ function wplng_admin_notice_incompatible_plugin() {
 	}
 
 	$html  = '<div ';
-	$html .= 'class="wplng-notice notice notice-error is-dismissible" ';
+	$html .= 'class="wplng-notice notice notice-error is-dismissible no-translate" ';
 	$html .= 'style="background-color: rgba(255, 0, 0, .1);">';
 	$html .= '<p style="font-weight: 600;">';
 	$html .= '<span class="dashicons dashicons-translation"></span> ';
@@ -459,7 +459,7 @@ function wplng_admin_notice_incompatible_multisite() {
 	}
 
 	$html  = '<div ';
-	$html .= 'class="wplng-notice notice notice-error is-dismissible" ';
+	$html .= 'class="wplng-notice notice notice-error is-dismissible no-translate" ';
 	$html .= 'style="background-color: rgba(255, 0, 0, .1);">';
 	$html .= '<p style="font-weight: 600;">';
 	$html .= '<span class="dashicons dashicons-translation"></span> ';
@@ -486,7 +486,7 @@ function wplng_admin_notice_incompatible_sub_folder() {
 	}
 
 	$html  = '<div ';
-	$html .= 'class="wplng-notice notice notice-error is-dismissible" ';
+	$html .= 'class="wplng-notice notice notice-error is-dismissible no-translate" ';
 	$html .= 'style="background-color: rgba(255, 0, 0, .1);">';
 	$html .= '<p style="font-weight: 600;">';
 	$html .= '<span class="dashicons dashicons-translation"></span> ';
@@ -513,7 +513,7 @@ function wplng_admin_notice_incompatible_php_version() {
 	}
 
 	$html  = '<div ';
-	$html .= 'class="wplng-notice notice notice-error is-dismissible" ';
+	$html .= 'class="wplng-notice notice notice-error is-dismissible no-translate" ';
 	$html .= 'style="background-color: rgba(255, 0, 0, .1);">';
 	$html .= '<p style="font-weight: 600;">';
 	$html .= '<span class="dashicons dashicons-translation"></span> ';
@@ -579,7 +579,7 @@ function wplng_admin_notice_incompatible_htaccess() {
 	if ( ! empty( $message ) ) {
 
 		$html  = '<div ';
-		$html .= 'class="wplng-notice notice notice-error is-dismissible" ';
+		$html .= 'class="wplng-notice notice notice-error is-dismissible no-translate" ';
 		$html .= 'style="background-color: rgba(255, 0, 0, .1);">';
 		$html .= '<p style="font-weight: 600;">';
 		$html .= '<span class="dashicons dashicons-translation"></span> ';
