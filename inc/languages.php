@@ -202,18 +202,30 @@ function wplng_get_languages_target_simplified() {
 	$all_languages    = wplng_get_languages_allow();
 	$ordered          = array();
 
-	foreach ( $all_languages as $language ) {
-		foreach ( $languages_target as $language_target ) {
-			if ( empty( $language['id'] )
-				|| empty( $language_target['id'] )
-				|| $language['id'] !== $language_target['id']
-				|| ( ! empty( $language_target['private'] )
-					&& ! current_user_can( 'edit_posts' )
-				)
-			) {
-				continue;
-			}
+	// Process languages in the order they appear in the settings (preserve order)
+	foreach ( $languages_target as $language_target ) {
+		if ( empty( $language_target['id'] ) ) {
+			continue;
+		}
 
+		// Skip private languages for non-authorized users
+		if ( ! empty( $language_target['private'] )
+			&& ! current_user_can( 'edit_posts' )
+		) {
+			continue;
+		}
+
+		// Find the language in allowed languages to validate it exists
+		$language_found = false;
+		foreach ( $all_languages as $language ) {
+			if ( ! empty( $language['id'] ) && $language['id'] === $language_target['id'] ) {
+				$language_found = true;
+				break;
+			}
+		}
+
+		// Only add if the language is found in allowed languages
+		if ( $language_found ) {
 			$ordered[] = $language_target;
 		}
 	}
