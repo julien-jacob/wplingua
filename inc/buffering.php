@@ -355,7 +355,7 @@ function wplng_ob_callback_page( $content ) {
 
 		$args = array();
 
-		if ( current_user_can( 'edit_posts' ) ) {
+		if ( current_user_can( 'wplng_edit_translations' ) ) {
 
 			if ( ! empty( $_GET['wplng-mode'] ) ) {
 

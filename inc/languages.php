@@ -210,7 +210,7 @@ function wplng_get_languages_target_simplified() {
 
 		// Skip private languages for non-authorized users
 		if ( ! empty( $language_target['private'] )
-			&& ! current_user_can( 'edit_posts' )
+			&& ! current_user_can( 'wplng_edit_translations' )
 		) {
 			continue;
 		}

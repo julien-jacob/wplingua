@@ -260,7 +260,7 @@ function wplng_slug_translate_path( $path, $language_id ) {
 function wplng_create_slug( $slug ) {
 
 	if ( is_404()
-		|| ! current_user_can( 'edit_posts' )
+		|| ! current_user_can( 'wplng_edit_translations' )
 		|| wplng_str_contains( $slug, '.' )
 	) {
 		return false;

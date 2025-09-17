@@ -23,7 +23,7 @@ if ( ! defined( 'WPINC' ) ) {
  */
 function wplng_browser_language_redirect_js_only() {
 
-	if ( current_user_can( 'edit_posts' )
+	if ( current_user_can( 'wplng_edit_translations' )
 		|| wplng_is_bot()
 		|| ! is_front_page()
 		|| ( wplng_get_language_website_id() !== wplng_get_language_current_id() )
@@ -62,7 +62,7 @@ function wplng_browser_language_redirect_js_only() {
 function wplng_browser_language_redirect_php_js() {
 
 	// Exit early for users with editing permissions or for bots to prevent redirection loops.
-	if ( current_user_can( 'edit_posts' )
+	if ( current_user_can( 'wplng_edit_translations' )
 		|| wplng_is_bot()
 	) {
 		return;

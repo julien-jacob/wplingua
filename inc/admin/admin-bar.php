@@ -13,7 +13,7 @@ if ( ! defined( 'WPINC' ) ) {
  */
 function wplng_admin_bar_menu() {
 
-	if ( is_admin() || ! current_user_can( 'edit_posts' ) ) {
+	if ( is_admin() || ! current_user_can( 'wplng_edit_translations' ) ) {
 		return;
 	}
 
@@ -220,7 +220,7 @@ function wplng_admin_bar_edit() {
 
 	if ( ! function_exists( 'get_current_screen' )
 		|| ! is_admin()
-		|| ! current_user_can( 'edit_posts' )
+		|| ! current_user_can( 'wplng_edit_translations' )
 	) {
 		return;
 	}

@@ -340,4 +340,62 @@ function wplng_start() {
 
 	}
 }
+
+
+/**
+ * Plugin activation function
+ * Add custom role and capability for translation editing
+ *
+ * @return void
+ */
+function wplng_plugin_activate() {
+	// Add custom capability to editor role
+	$editor = get_role( 'editor' );
+	if ( $editor ) {
+		$editor->add_cap( 'wplng_edit_translations' );
+	}
+
+	// Ensure administrators have the capability (they should inherit all, but let's be explicit)
+	$administrator = get_role( 'administrator' );
+	if ( $administrator ) {
+		$administrator->add_cap( 'wplng_edit_translations' );
+	}
+
+	// Create wpLingua translator role with limited capabilities
+	add_role(
+		'wplng_translator',
+		__( 'wpLingua Translator', 'wplingua' ),
+		array(
+			'read' => true,
+			'wplng_edit_translations' => true,
+		)
+	);
+}
+
+
+/**
+ * Plugin deactivation function
+ * Clean up custom role and remove capability from editor role
+ *
+ * @return void
+ */
+function wplng_plugin_deactivate() {
+	// Remove custom capability from editor role
+	$editor = get_role( 'editor' );
+	if ( $editor ) {
+		$editor->remove_cap( 'wplng_edit_translations' );
+	}
+
+	// Remove the wpLingua translator role
+	remove_role( 'wplng_translator' );
+
+	// Note: We don't remove the capability from administrators as they inherit all capabilities
+}
+
+
+// Register activation and deactivation hooks
+register_activation_hook( __FILE__, 'wplng_plugin_activate' );
+register_deactivation_hook( __FILE__, 'wplng_plugin_deactivate' );
+
+
 wplng_start();

@@ -208,7 +208,7 @@ function wplng_url_is_translatable_no_filter( $url ) {
 	}
 
 	// Check if is Divi editor
-	if ( current_user_can( 'edit_posts' )
+	if ( current_user_can( 'wplng_edit_translations' )
 		&& (
 			wplng_str_contains( $url, '/?et_fb=1' )
 			|| wplng_str_contains( $url, '&et_fb=1' )
