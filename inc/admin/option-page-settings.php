@@ -330,12 +330,8 @@ function wplng_settings_part_languages_target() {
 				</div>
 
 				<div class="wplng-target-language-right">
-					<a href="javascript:void(0);" class="wplng-target-lang-move-up" wplng-target-lang="[LANG]" title="<?php esc_attr_e( 'Move up', 'wplingua' ); ?>">
-						<span class="dashicons dashicons-arrow-up-alt2"></span>
-					</a>
-					<a href="javascript:void(0);" class="wplng-target-lang-move-down" wplng-target-lang="[LANG]" title="<?php esc_attr_e( 'Move down', 'wplingua' ); ?>">
-						<span class="dashicons dashicons-arrow-down-alt2"></span>
-					</a>
+					<a href="javascript:void(0);" class="wplng-target-lang-move-up" wplng-target-lang="[LANG]" title="<?php esc_attr_e( 'Move up', 'wplingua' ); ?>"><span class="dashicons dashicons-arrow-up-alt2"></span></a>
+					<a href="javascript:void(0);" class="wplng-target-lang-move-down" wplng-target-lang="[LANG]" title="<?php esc_attr_e( 'Move down', 'wplingua' ); ?>"><span class="dashicons dashicons-arrow-down-alt2"></span></a>
 					<a href="javascript:void(0);" class="wplng-target-lang-update-flag" wplng-target-lang="[LANG]"><?php esc_html_e( 'Edit', 'wplingua' ); ?></a>
 					<a href="javascript:void(0);" class="wplng-target-lang-remove" wplng-target-lang="[LANG]"><?php esc_html_e( 'Remove', 'wplingua' ); ?></a>
 				</div>
