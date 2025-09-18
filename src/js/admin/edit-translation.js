@@ -321,6 +321,9 @@ jQuery(document).ready(function ($) {
 
     function wplngEdit() {
 
+        // Change cursor to "progress" to indicate loading
+        $("html, body").css("cursor", "progress");
+
         $("#wplng-modal-edit-save").text(wplngI18nTranslation.message.buttonSave);
         $("#wplng-modal-edit-save").prop("disabled", true);
 
@@ -383,6 +386,10 @@ jQuery(document).ready(function ($) {
             error: function (data) {
                 console.log("wpLingua - Error:");
                 console.log(data);
+            },
+            complete: function () {
+                // Reset cursor to default after AJAX completes
+                $("html, body").css("cursor", "default");
             }
         });
     }
