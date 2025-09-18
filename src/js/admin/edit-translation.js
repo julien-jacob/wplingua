@@ -476,6 +476,7 @@ jQuery(document).ready(function ($) {
     function wplngFilterSearch() {
 
         let status = $("#wplng-filter-status").val();
+        let itemsVisible = false;
 
         let searched = $("#wplng-filter-search").val();
         searched = searched.trim().toLowerCase();
@@ -492,18 +493,24 @@ jQuery(document).ready(function ($) {
             is_show_search = is_show_search || text_translation.indexOf(searched) >= 0;
             is_show_search = is_show_search || text_source.indexOf(searched) >= 0;
 
-
             let is_show_status = status == "all";
             is_show_status = is_show_status || (status == "reviewed" && $(this).hasClass("wplng-is-review"));
             is_show_status = is_show_status || (status == "unreviewed" && !$(this).hasClass("wplng-is-review"));
 
             if (is_show_search && is_show_status) {
                 $(this).show();
+                itemsVisible = true;
             } else {
                 $(this).hide();
             }
         });
 
+        // Show or hide the "no items found" message
+        if (itemsVisible) {
+            $("#wplng-modal-no-item-found").hide();
+        } else {
+            $("#wplng-modal-no-item-found").show();
+        }
     }
 
     /**
