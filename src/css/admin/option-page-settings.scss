@@ -173,7 +173,8 @@
         }
 
         // Arrow visibility rules
-        &.wplng-hide-arrows,
+        &.wplng-hide-arrows .wplng-target-lang-move-up,
+        &.wplng-hide-arrows .wplng-target-lang-move-down,
         &.wplng-hide-up-arrow .wplng-target-lang-move-up,
         &.wplng-hide-down-arrow .wplng-target-lang-move-down {
             color: lightgrey;
