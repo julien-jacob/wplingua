@@ -342,6 +342,7 @@ function wplng_args_update_from_texts( &$args, $texts ) {
 		&& $args['count_texts_unknow'] > 20
 		&& ! $args['overloaded']
 		&& wplng_api_feature_is_allow( 'detection' )
+		&& wplng_check_page_can_be_update()
 	) {
 
 		/**

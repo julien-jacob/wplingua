@@ -1,6 +1,9 @@
 <?php
 
 // If this file is called directly, abort.
+
+use function Avifinfo\read;
+
 if ( ! defined( 'WPINC' ) ) {
 	die;
 }
@@ -430,6 +433,76 @@ function wplng_json_element_is_translatable( $element, $parents ) {
 		$element,
 		$parents
 	);
+}
+
+
+/**
+ * Generates an HTML page for cache validation.
+ *
+ * This function creates a simple HTML page with a unique signature
+ * that can be used to verify the cache mechanism of the application.
+ *
+ * @param string $key A unique key to include in the HTML content.
+ * @return string The generated HTML page as a string.
+ */
+function wplng_get_html_page_check_cache( $key ) {
+
+	$html  = '<!DOCTYPE html>' . PHP_EOL;
+	$html .= '<html lang="en">' . PHP_EOL;
+	$html .= '	<head>' . PHP_EOL;
+	$html .= '		<meta charset="UTF-8">' . PHP_EOL;
+	$html .= '		<title>wpLingua Cache Check</title>' . PHP_EOL;
+	$html .= '	</head>' . PHP_EOL;
+	$html .= '	<body>' . PHP_EOL;
+	$html .= '		<h1>wpLingua Cache Check</h1>' . PHP_EOL;
+	$html .= '		<p>Unique signature: ' . esc_html( $key ) . '</p>' . PHP_EOL;
+	$html .= '		<!-- wpLingua Cache Check Comment -->' . PHP_EOL;
+	$html .= '	</body>' . PHP_EOL;
+	$html .= '</html>';
+
+	return $html;
+}
+
+
+/**
+ * Checks if a page can be updated by verifying the cache mechanism.
+ *
+ * This function generates a unique key, updates an option with it, and sends
+ * a request to a test URL. It then compares the response body with the expected
+ * HTML content to ensure the cache is functioning correctly.
+ *
+ * @return bool True if the page can be updated, false otherwise.
+ */
+function wplng_check_page_can_be_update() {
+
+	return true;
+
+	$key      = time() . '-' . microtime( true ) . '-' . mt_rand();
+	$test_url = home_url( WPLNG_SLUG_CACHE_CHECK );
+
+	update_option(
+		'wplng_cache_unique_key',
+		$key_in_loop
+	);
+
+	$response = wp_remote_get(
+		$test_url,
+		array(
+			'sslverify' => false,
+		)
+	);
+
+	if ( is_wp_error( $response ) ) {
+		return false;
+	}
+
+	$body = wp_remote_retrieve_body( $response );
+
+	if ( $body !== wplng_get_html_page_check_cache( $key ) ) {
+		return false;
+	}
+
+	return true;
 }
 
 

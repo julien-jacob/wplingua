@@ -13,7 +13,14 @@ if ( ! defined( 'WPINC' ) ) {
  */
 function wplng_redirect_translated_slug() {
 
-	if ( is_404() ) {
+	$url_current = wplng_get_url_current();
+
+	if ( ! is_string( $url_current )
+		|| $url_current === ''
+		|| $url_current === '/'
+		|| $url_current === WPLNG_SLUG_CACHE_CHECK
+		|| is_404()
+	) {
 		return;
 	}
 
@@ -34,15 +41,6 @@ function wplng_redirect_translated_slug() {
 		if ( ! defined( 'DONOTCACHEPAGE' ) ) {
 			define( 'DONOTCACHEPAGE', true );
 		}
-	}
-
-	$url_current = wplng_get_url_current();
-
-	if ( ! is_string( $url_current )
-		|| '' === $url_current
-		|| '/' === $url_current
-	) {
-		return;
 	}
 
 	$url_translated = wplng_get_url_current_for_language(
@@ -70,7 +68,19 @@ function wplng_redirect_translated_slug() {
  */
 function wplng_ob_start() {
 
-	if ( defined( 'DOING_AJAX' ) && DOING_AJAX ) {
+	global $wplng_request_uri;
+
+	if ( $wplng_request_uri === WPLNG_SLUG_CACHE_CHECK
+		// && current_user_can( 'edit_posts' )
+	) {
+
+		/**
+		 * Is the cahe test page
+		 */
+
+		ob_start( 'wplng_ob_callback_cache_check' );
+
+	} elseif ( defined( 'DOING_AJAX' ) && DOING_AJAX ) {
 
 		/**
 		 * Is an AJAX call
@@ -96,7 +106,6 @@ function wplng_ob_start() {
 			return;
 		}
 
-		global $wplng_request_uri;
 		$wplng_request_uri = wp_make_link_relative( $referer );
 
 		if ( ! wplng_url_is_translatable( $wplng_request_uri )
@@ -121,7 +130,6 @@ function wplng_ob_start() {
 			return;
 		}
 
-		global $wplng_request_uri;
 		$current_path = $wplng_request_uri;
 
 		if ( ! is_string( $current_path ) ) {
@@ -139,6 +147,24 @@ function wplng_ob_start() {
 
 		ob_start( 'wplng_ob_callback_page' );
 	}
+}
+
+
+function wplng_ob_callback_cache_check( $output ) {
+
+	// Forcer le code HTTP 200
+	status_header( 200 );
+	global $wp_query;
+	$wp_query->is_404 = false;
+
+	// Get the key from option in DB
+	$cache_unique_key = get_option( 'wplng_cache_unique_key' );
+
+	if ( empty( $cache_unique_key ) ) {
+		$cache_unique_key = 'UNDEFINED';
+	}
+
+	return wplng_get_html_page_check_cache( $cache_unique_key );
 }
 
 
@@ -232,8 +258,8 @@ function wplng_ob_callback_sitemap_xml( $content ) {
 	$dom->formatOutput       = true;
 
 	// Enable internal error handling
-	$previous_libxml_setting = libxml_use_internal_errors( true ); 
-	
+	$previous_libxml_setting = libxml_use_internal_errors( true );
+
 	// Check XML errors
 	if ( ! $dom->loadXML( $content ) ) {
 		if ( defined( 'WPLNG_DEBUG_JSON' ) && true === WPLNG_DEBUG_JSON ) {
@@ -257,7 +283,7 @@ function wplng_ob_callback_sitemap_xml( $content ) {
 	}
 
 	// Restore previous setting
-	libxml_use_internal_errors( $previous_libxml_setting ); 
+	libxml_use_internal_errors( $previous_libxml_setting );
 
 	$signature = '<!-- XML Sitemap is made multilingual by wpLingua -->' . PHP_EOL;
 
@@ -307,14 +333,14 @@ function wplng_ob_callback_sitemap_xml( $content ) {
 		// Add links for target languages.
 		foreach ( $languages_target_ids as $language_id ) {
 
-			$translated_url = wplng_url_translate( 
-				$url_original, 
-				$language_id 
+			$translated_url = wplng_url_translate(
+				$url_original,
+				$language_id
 			);
 
 			// Validate the translated URL.
-			if ( empty( $translated_url ) 
-				|| ! filter_var( $translated_url, FILTER_VALIDATE_URL ) 
+			if ( empty( $translated_url )
+				|| ! filter_var( $translated_url, FILTER_VALIDATE_URL )
 			) {
 				continue;
 			}

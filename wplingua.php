@@ -31,6 +31,7 @@ define( 'WPLNG_PHP_MIN_VERSION', '7.4' );
 define( 'WPLNG_MAX_TRANSLATIONS_STR', 220 );
 define( 'WPLNG_MAX_TRANSLATIONS_CHAR', 4200 );
 define( 'WPLNG_MAX_FILE_SIZE', 5000000 );
+define( 'WPLNG_SLUG_CACHE_CHECK', '/wplingua-page-cache-check/' );
 
 
 // Define debug constants
