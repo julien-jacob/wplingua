@@ -272,6 +272,10 @@ function wplng_dom_mode_list( $dom, $args ) {
 
 	$html .= '<div id="wplng-modal-items">';
 
+	$html .= '<p id="wplng-modal-no-item-found" style="display: none;">';
+	$html .= esc_html( 'No translation found.', 'wplingua' );
+	$html .= '</p>';
+
 	foreach ( $args['translations'] as $key => $translation ) {
 
 		if ( empty( $translation['post_id'] )

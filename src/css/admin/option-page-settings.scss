@@ -102,14 +102,48 @@
             display: flex;
             justify-content: space-between;
 
+            .wplng-target-lang-move-up,
+            .wplng-target-lang-move-down,
+            .wplng-target-lang-update-flag,
             .wplng-target-lang-remove {
+                color: #0073aa;
+                text-decoration: none;
+                
+                &:hover {
+                    color: #005177;
+                }
+
+                .dashicons {
+                    font-size: 14px;
+                    vertical-align: middle;
+                    line-height: 20px;
+                    width: 14px;
+                }
+                
+            }
+            
+            .wplng-target-lang-move-up {
+                // border: 1px solid red;
+                margin-right: 4px;
+            }
+
+            // .wplng-target-lang-move-down,
+            .wplng-target-lang-update-flag,
+            .wplng-target-lang-remove  {
+                
                 &::before {
                     content: "|";
-                    display: inline;
+                    display: inline-block;
                     color: #8c8f94;
                     text-decoration: none;
-                    margin-right: 5px;
+                    margin-right: 8px;
+                    margin-left: 3px;
                     font-weight: lighter;
+                    font-size: 14px;
+                    line-height: 1;
+                    width: 1px;
+                    height: 100%;
+                    box-sizing: border-box;
                 }
             }
 
@@ -135,6 +169,19 @@
             .wplng-private-label {
                 display: inline;
                 opacity: .65;
+            }
+        }
+
+        // Arrow visibility rules
+        &.wplng-hide-arrows .wplng-target-lang-move-up,
+        &.wplng-hide-arrows .wplng-target-lang-move-down,
+        &.wplng-hide-up-arrow .wplng-target-lang-move-up,
+        &.wplng-hide-down-arrow .wplng-target-lang-move-down {
+            color: lightgrey;
+            &:hover,
+            &:active {
+                color: lightgrey;
+                cursor: default;
             }
         }
     }
