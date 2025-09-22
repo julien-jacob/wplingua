@@ -4,7 +4,7 @@ Donate link: https://wplingua.com/
 Tags: translate, translation, multilingual, localization, language
 Requires at least: 6.0
 Tested up to: 6.8
-Stable tag: 2.8.0
+Stable tag: 2.9.0
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -191,18 +191,12 @@ Your server’s database holds all the translations locally.
 
 == Changelog ==
 
-= 2.8.0 =
+= 2.9.0 =
 
-* Multilingual sitemap XML
- * Enable multilingual sitemap XML in the main wpLingua option page.
- * Fix spacename for xhtml (Multilingual sitemap XML).
- * Ensure required namespaces in multilingual XML sitemap.
-* Add attribute data-wplng-lang-id to language switcher.
-* New hidden BETA feature:
- * Enable redirection by user language browser with PHP and JS.
- * Enable redirection by user language browser with JS only.
- * To display hidden BETA features, use the Konami code on the wpLingua general settings page.
-* Some code review.
+* New feature: target language ordering
+* Improved user experience:
+ * In all translations on the page: message if no translation is found
+ * In-page translation editor: loading indicator when loading the editor
 
 All changelogs and previous versions of the wpLingua plugin are available on the releases page of the project's GitHub repo: [https://github.com/julien-jacob/wplingua/releases](https://github.com/julien-jacob/wplingua/releases).
 
