@@ -155,9 +155,7 @@ function folder_create(cb) {
  */
 
 function folder_delete(cb) {
-    deleteSync([
-        'wplingua'
-    ]);
+    deleteSync(['wplingua/**/*', 'wplingua'], { force: true });
     cb();
 };
 
