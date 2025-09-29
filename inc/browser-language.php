@@ -75,7 +75,8 @@ function wplng_browser_language_redirect_php_js() {
 
 	// If the user is on a translated page.
 	if ( $is_translated_page ) {
-		// Update the cookie with the selected language code. This is a voluntary choice by the user.
+		// Update the cookie with the selected language code.
+		// This is a voluntary choice by the user.
 		wplng_browser_language_cookie_set( $language_current_id );
 		return;
 	}
@@ -99,7 +100,7 @@ function wplng_browser_language_redirect_php_js() {
 	} else {
 		// This is the very first visit (no cookie). Use the browser's language.
 		if ( ! empty( $_SERVER['HTTP_ACCEPT_LANGUAGE'] ) ) {
-			$langs = explode( ',', $_SERVER['HTTP_ACCEPT_LANGUAGE'] );
+			$langs = explode( ',', sanitize_text_field( $_SERVER['HTTP_ACCEPT_LANGUAGE'] ) );
 			if ( ! empty( $langs ) ) {
 				$language_browser_id  = strtolower( substr( trim( $langs[0] ), 0, 2 ) );
 				$redirect_language_id = $language_browser_id;
@@ -147,9 +148,7 @@ function wplng_browser_language_redirect_php_js() {
 function wplng_browser_language_cookie_get() {
 	$cookie = false;
 	if ( ! empty( $_COOKIE['wplingua-lang'] ) ) {
-		// Sanitize the cookie value to ensure it's safe.
 		$cookie = sanitize_text_field( $_COOKIE['wplingua-lang'] );
-		// Validate the language code against known languages or the 'original' status.
 		if ( ! wplng_is_valid_language_id( $cookie ) ) {
 			$cookie = false;
 		}
