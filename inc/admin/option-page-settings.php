@@ -488,7 +488,7 @@ function wplng_settings_part_features_plugin() {
 	<span title="<?php esc_attr_e( 'Click to expand', 'wplingua' ); ?>" wplng-help-box="#wplng-hb-feature-browser-language-redirect"></span>
 
 	<div class="wplng-help-box" id="wplng-hb-feature-browser-language-redirect">
-		<p><?php esc_html_e( 'This option automatically redirects visitors to the translated version of your site that matches their browser language when they land on the main homepage (https://your-site.com/). It can improve user experience by showing content in the right language immediately, but depending on your setup, it may introduce side effects.', 'wplingua' ); ?></p>
+		<p><?php esc_html_e( 'This option automatically redirects visitors to the translated version of your site that matches their browser language when they land on the main homepage. It can improve user experience by showing content in the right language immediately, but depending on your setup, it may introduce side effects.', 'wplingua' ); ?></p>
 		<hr>
 		<p><strong><?php esc_html_e( 'Disabled (recommended):', 'wplingua' ); ?></strong></p>
 		<p><?php esc_html_e( 'No redirection is applied. Every visitor always sees the default homepage, regardless of their browser language. This is the safest option and ensures maximum compatibility with caching systems, SEO, and shared links. Recommended if you are unsure which option to choose.', 'wplingua' ); ?></p>
