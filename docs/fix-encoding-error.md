@@ -4,7 +4,7 @@
 
 ```php
 /**
- * Add a filter to modify intercepted HTML content
+ * wpLingua - Add a filter to modify intercepted HTML content
  */
 add_filter(
 	'wplng_intercepted_html',
@@ -27,7 +27,7 @@ add_filter(
 
 ```php
 /**
- * Add a filter to modify intercepted HTML content
+ * pLingua - Add a filter to modify intercepted HTML content
  */
 add_filter(
 	'wplng_intercepted_html',
@@ -89,7 +89,7 @@ add_filter(
 
 ```php
 /**
- * Add a filter to control whether the wptexturize function should run
+ * pLingua - Add a filter to control whether the wptexturize function should run
  */
 add_filter(
 	'run_wptexturize',
