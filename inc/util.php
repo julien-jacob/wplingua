@@ -352,6 +352,20 @@ function wplng_json_element_is_translatable( $element, $parents ) {
 
 		} elseif (
 			! empty( $parents[0] )
+			&& ( 'wc_country_select_params' === $parents[0] )
+			&& ! empty( $parents[1] )
+			&& ( 'countries' === $parents[1] )
+			&& ( count( $parents ) === 4 )
+		) {
+
+			/**
+			 * Is WooCommerce country select
+			 */
+
+			$is_translatable = true;
+
+		} elseif (
+			! empty( $parents[0] )
 			&& wplng_str_starts_with( $parents[0], 'CASE' )
 			&& ! empty( $parents[1] )
 			&& 'l10n' === $parents[1]
