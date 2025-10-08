@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: wpLingua\n"
-"POT-Creation-Date: 2025-08-25 11:57+0200\n"
-"PO-Revision-Date: 2025-08-25 15:10+0200\n"
+"POT-Creation-Date: 2025-10-06 21:56+0200\n"
+"PO-Revision-Date: 2025-10-06 22:46+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: de_DE\n"
@@ -785,13 +785,13 @@ msgstr "Regel Nr"
 
 #: inc/admin/option-page-dictionary.php:127
 #: inc/admin/option-page-link-media.php:127
-#: inc/admin/option-page-settings.php:272 inc/admin/option-page-settings.php:337
+#: inc/admin/option-page-settings.php:272 inc/admin/option-page-settings.php:335
 msgid "Edit"
 msgstr "Bearbeiten"
 
 #: inc/admin/option-page-dictionary.php:134
 #: inc/admin/option-page-link-media.php:134
-#: inc/admin/option-page-settings.php:338
+#: inc/admin/option-page-settings.php:336
 msgid "Remove"
 msgstr "Entfernen"
 
@@ -1130,18 +1130,18 @@ msgstr "die Seite zum Abrufen des API-Schlüssels"
 #: inc/admin/option-page-register.php:229 inc/admin/option-page-register.php:293
 #: inc/admin/option-page-register.php:309 inc/admin/option-page-register.php:325
 #: inc/admin/option-page-register.php:341 inc/admin/option-page-settings.php:244
-#: inc/admin/option-page-settings.php:376 inc/admin/option-page-settings.php:432
-#: inc/admin/option-page-settings.php:452 inc/admin/option-page-settings.php:490
-#: inc/admin/option-page-settings.php:509 inc/admin/option-page-settings.php:539
-#: inc/admin/option-page-switcher.php:73 inc/admin/option-page-switcher.php:124
-#: inc/admin/option-page-switcher.php:179 inc/admin/option-page-switcher.php:237
-#: inc/admin/option-page-switcher.php:331 inc/admin/option-page-switcher.php:384
-#: inc/admin/option-page-switcher.php:437 inc/admin/option-page-switcher.php:451
-#: inc/admin/option-page-switcher.php:465
+#: inc/admin/option-page-settings.php:364 inc/admin/option-page-settings.php:420
+#: inc/admin/option-page-settings.php:438 inc/admin/option-page-settings.php:472
+#: inc/admin/option-page-settings.php:488 inc/admin/option-page-settings.php:533
+#: inc/admin/option-page-settings.php:565 inc/admin/option-page-switcher.php:73
+#: inc/admin/option-page-switcher.php:124 inc/admin/option-page-switcher.php:179
+#: inc/admin/option-page-switcher.php:237 inc/admin/option-page-switcher.php:331
+#: inc/admin/option-page-switcher.php:384 inc/admin/option-page-switcher.php:437
+#: inc/admin/option-page-switcher.php:451 inc/admin/option-page-switcher.php:465
 msgid "Click to expand"
 msgstr "Klicken zum Erweitern"
 
-#: inc/admin/option-page-register.php:233 inc/admin/option-page-settings.php:544
+#: inc/admin/option-page-register.php:233 inc/admin/option-page-settings.php:570
 msgid ""
 "A wpLingua API key consists of 42 characters (uppercase, lowercase and "
 "numbers). It is emailed to you when you request it using the form provided "
@@ -1249,7 +1249,7 @@ msgstr ""
 "Um Ihre Website in weitere Sprachen zu übersetzen und auf erweiterte "
 "Funktionen zuzugreifen, besuchen Sie die Website von wpLingua."
 
-#: inc/admin/option-page-register.php:396 inc/admin/option-page-settings.php:431
+#: inc/admin/option-page-register.php:396 inc/admin/option-page-settings.php:419
 msgid "Use wpLingua on commercial website"
 msgstr "Verwenden Sie wpLingua auf einer kommerziellen Website"
 
@@ -1367,15 +1367,15 @@ msgstr "wplingua.com : Kontakt zur Unterstützung"
 msgid "Custom"
 msgstr "Benutzerdefiniert"
 
-#: inc/admin/option-page-settings.php:278 inc/admin/option-page-settings.php:344
+#: inc/admin/option-page-settings.php:277 inc/admin/option-page-settings.php:341
 msgid "Flag to use for this language: "
 msgstr "Flagge, die für diese Sprache zu verwenden ist: "
 
-#: inc/admin/option-page-settings.php:287 inc/admin/option-page-settings.php:352
+#: inc/admin/option-page-settings.php:283 inc/admin/option-page-settings.php:345
 msgid "Custom flag URL for this language: "
 msgstr "Benutzerdefinierte Flaggen-URL für diese Sprache: "
 
-#: inc/admin/option-page-settings.php:310
+#: inc/admin/option-page-settings.php:306
 msgid ""
 "Important: space out the addition of new languages ​​by at least ten days and "
 "browse your site for the first time in the added languages. This promotes "
@@ -1388,23 +1388,31 @@ msgstr ""
 "Belastung Ihres Servers und minimiert das Risiko von Verlangsamungen auf "
 "Ihrer Website."
 
-#: inc/admin/option-page-settings.php:314
+#: inc/admin/option-page-settings.php:310
 msgid "Add new target Language: "
 msgstr "Neue Zielsprache hinzufügen: "
 
-#: inc/admin/option-page-settings.php:320
+#: inc/admin/option-page-settings.php:316
 msgid "Add language"
 msgstr "Sprache hinzufügen"
 
-#: inc/admin/option-page-settings.php:333
+#: inc/admin/option-page-settings.php:329
 msgid "(Private)"
 msgstr "(Privat)"
 
-#: inc/admin/option-page-settings.php:358
+#: inc/admin/option-page-settings.php:333
+msgid "Move up"
+msgstr "Nach oben"
+
+#: inc/admin/option-page-settings.php:334
+msgid "Move down"
+msgstr "Nach unten verschieben"
+
+#: inc/admin/option-page-settings.php:350
 msgid "Make this language private"
 msgstr "Diese Sprache privat machen"
 
-#: inc/admin/option-page-settings.php:359
+#: inc/admin/option-page-settings.php:351
 msgid ""
 "Private languages will only be visible to logged-in users with editing "
 "rights. This option allows administrators to pre-generate and correct "
@@ -1415,30 +1423,30 @@ msgstr ""
 "erstellen und zu korrigieren, bevor sie der Öffentlichkeit zugänglich gemacht "
 "werden."
 
-#: inc/admin/option-page-settings.php:368
+#: inc/admin/option-page-settings.php:358
 msgid "Target languages enabled: "
 msgstr "Zielsprachen aktiviert: "
 
-#: inc/admin/option-page-settings.php:375
+#: inc/admin/option-page-settings.php:363
 msgid "Access more target languages by upgrading your API key."
 msgstr ""
 "Greifen Sie auf mehr Zielsprachen zu, indem Sie Ihren API-Schlüssel "
 "aktualisieren."
 
-#: inc/admin/option-page-settings.php:384
+#: inc/admin/option-page-settings.php:371
 msgid "Available languages: "
 msgstr "Verfügbare Sprachen: "
 
-#: inc/admin/option-page-settings.php:404 inc/admin/option-page-settings.php:442
-#: inc/admin/option-page-settings.php:466 inc/admin/option-page-settings.php:549
+#: inc/admin/option-page-settings.php:391 inc/admin/option-page-settings.php:428
+#: inc/admin/option-page-settings.php:448 inc/admin/option-page-settings.php:575
 msgid "wplingua.com : Upgrade your API key"
 msgstr "wplingua.com : Aktualisieren Sie Ihren API-Schlüssel"
 
-#: inc/admin/option-page-settings.php:422
+#: inc/admin/option-page-settings.php:409
 msgid "API translation features: "
 msgstr "API-Übersetzungsfunktionen: "
 
-#: inc/admin/option-page-settings.php:425
+#: inc/admin/option-page-settings.php:413
 msgid ""
 "The options below require extended access to the wpLingua API to be "
 "functional on your website."
@@ -1446,7 +1454,7 @@ msgstr ""
 "Die unten aufgeführten Optionen erfordern einen erweiterten Zugriff auf die "
 "wpLingua API, um auf Ihrer Website funktionieren zu können."
 
-#: inc/admin/option-page-settings.php:437
+#: inc/admin/option-page-settings.php:424
 msgid ""
 "Use of the free wpLingua API keys is reserved for personal blogs and non-"
 "profit websites; paid subscriptions are available for companies and "
@@ -1456,17 +1464,17 @@ msgstr ""
 "gemeinnützigen Websites vorbehalten; kostenpflichtige Abonnements sind für "
 "Unternehmen und kommerzielle Websites erhältlich."
 
-#: inc/admin/option-page-settings.php:451
+#: inc/admin/option-page-settings.php:437
 msgid "Search from translated languages"
 msgstr "Suche aus übersetzten Sprachen"
 
-#: inc/admin/option-page-settings.php:457
+#: inc/admin/option-page-settings.php:442
 msgid "Enable visitors to search on your website in their own language."
 msgstr ""
 "Ermöglichen Sie es Ihren Besuchern, auf Ihrer Website in ihrer eigenen "
 "Sprache zu suchen."
 
-#: inc/admin/option-page-settings.php:461
+#: inc/admin/option-page-settings.php:444
 msgid ""
 "Example: if your website is translated from English to French and you have a "
 "post named \"Hello\". When a French visitor searches for the term \"Bonjour\" "
@@ -1481,21 +1489,149 @@ msgstr ""
 "WordPress den Beitrag mit dem Namen \"Hello\" finden, wenn Ihr Besucher nach "
 "\"Bonjour\" gesucht hat."
 
-#: inc/admin/option-page-settings.php:483
+#: inc/admin/option-page-settings.php:465
 msgid "Plugin translation features: "
 msgstr "Plugin-Übersetzungsfunktionen: "
 
-#: inc/admin/option-page-settings.php:489
+#: inc/admin/option-page-settings.php:471
+msgid "Enable multilingual XML Sitemap"
+msgstr "Aktivieren Sie die mehrsprachige XML-Sitemap"
+
+#: inc/admin/option-page-settings.php:476
+msgid ""
+"This option automatically adds your wpLingua translated pages into your XML "
+"Sitemap files."
+msgstr ""
+"Diese Option fügt Ihre mit wpLingua übersetzten Seiten automatisch in Ihre "
+"XML-Sitemap-Dateien ein."
+
+#: inc/admin/option-page-settings.php:478
+msgid ""
+"An XML Sitemap is used by search engines (Google, Bing, etc.) to better "
+"discover and index the pages of your website. By default, only the default "
+"language pages are included. With this option enabled, all translated "
+"versions of your content will also be listed."
+msgstr ""
+"Eine XML-Sitemap wird von Suchmaschinen (Google, Bing usw.) verwendet, um die "
+"Seiten Ihrer Website besser zu finden und zu indizieren. Standardmäßig sind "
+"nur die Seiten in der Standardsprache enthalten. Wenn Sie diese Option "
+"aktivieren, werden auch alle übersetzten Versionen Ihrer Inhalte aufgeführt."
+
+#: inc/admin/option-page-settings.php:479
+msgid ""
+"This greatly improves SEO visibility, ensuring that search engines can easily "
+"find and index your content in every language."
+msgstr ""
+"Dies verbessert die SEO-Sichtbarkeit erheblich und stellt sicher, dass die "
+"Suchmaschinen Ihre Inhalte in jeder Sprache leicht finden und indizieren "
+"können."
+
+#: inc/admin/option-page-settings.php:481
+msgid ""
+"wpLingua uses a universal method that intercepts and extends sitemap. It "
+"works with the native WordPress sitemap and with popular SEO plugins such as "
+"Yoast SEO, Rank Math, All in One SEO, SEOPress, etc."
+msgstr ""
+"wpLingua verwendet eine universelle Methode, die die Sitemap abfängt und "
+"erweitert. Es funktioniert mit der nativen WordPress-Sitemap und mit "
+"beliebten SEO-Plugins wie Yoast SEO, Rank Math, All in One SEO, SEOPress, etc."
+
+#: inc/admin/option-page-settings.php:487
+msgid "Enable language browser redirection"
+msgstr "Sprachliche Browserumleitung aktivieren"
+
+#: inc/admin/option-page-settings.php:491
+msgid ""
+"This option automatically redirects visitors to the translated version of "
+"your site that matches their browser language when they land on the main "
+"homepage. It can improve user experience by showing content in the right "
+"language immediately, but depending on your setup, it may introduce side "
+"effects."
+msgstr ""
+"Diese Option leitet Besucher automatisch auf die übersetzte Version Ihrer "
+"Website um, die ihrer Browsersprache entspricht, wenn sie auf der Hauptseite "
+"landen. Sie kann die Benutzerfreundlichkeit verbessern, indem Inhalte sofort "
+"in der richtigen Sprache angezeigt werden, aber je nach Ihrer Einrichtung "
+"kann sie Nebenwirkungen haben."
+
+#: inc/admin/option-page-settings.php:493
+msgid "Disabled (recommended):"
+msgstr "Deaktiviert (empfohlen):"
+
+#: inc/admin/option-page-settings.php:494
+msgid ""
+"No redirection is applied. Every visitor always sees the default homepage, "
+"regardless of their browser language. This is the safest option and ensures "
+"maximum compatibility with caching systems, SEO, and shared links. "
+"Recommended if you are unsure which option to choose."
+msgstr ""
+"Es wird keine Umleitung vorgenommen. Jeder Besucher sieht immer die Standard-"
+"Homepage, unabhängig von der Sprache seines Browsers. Dies ist die sicherste "
+"Option und gewährleistet maximale Kompatibilität mit Caching-Systemen, SEO "
+"und gemeinsamen Links. Empfohlen, wenn Sie sich nicht sicher sind, welche "
+"Option Sie wählen sollen."
+
+#: inc/admin/option-page-settings.php:496
+msgid "JS only:"
+msgstr "Nur JS:"
+
+#: inc/admin/option-page-settings.php:497
+msgid ""
+"The redirect is handled with JavaScript, after the default homepage has "
+"loaded. This method works in almost all cases and avoids issues with caching "
+"plugins. However, it may cause a short flicker effect: users will briefly see "
+"the default page before being redirected to the translated version."
+msgstr ""
+"Die Weiterleitung wird mit JavaScript durchgeführt, nachdem die Standard-"
+"Homepage geladen wurde. Diese Methode funktioniert in fast allen Fällen und "
+"vermeidet Probleme mit Caching-Plugins. Allerdings kann es zu einem kurzen "
+"Flimmereffekt kommen: Die Benutzer sehen kurz die Standardseite, bevor sie "
+"zur übersetzten Version weitergeleitet werden."
+
+#: inc/admin/option-page-settings.php:499
+msgid "PHP and JS:"
+msgstr "PHP und JS:"
+
+#: inc/admin/option-page-settings.php:500
+msgid ""
+"The redirect is performed server-side with PHP, which makes it faster and "
+"more seamless for visitors. In addition, a cookie is set via JavaScript to "
+"remember the user’s preferred language for future visits. While this provides "
+"the smoothest experience, it can sometimes conflict with caching systems "
+"(static pages, CDN, aggressive cache settings) and may cause incorrect "
+"redirects in certain setups."
+msgstr ""
+"Die Umleitung wird serverseitig mit PHP durchgeführt, was sie für die "
+"Besucher schneller und reibungsloser macht. Außerdem wird über JavaScript ein "
+"Cookie gesetzt, um die bevorzugte Sprache des Nutzers für künftige Besuche zu "
+"speichern. Dies sorgt zwar für einen reibungslosen Ablauf, kann aber manchmal "
+"zu Konflikten mit Cache-Systemen führen (statische Seiten, CDN, aggressive "
+"Cache-Einstellungen) und bei bestimmten Konfigurationen falsche "
+"Weiterleitungen verursachen."
+
+#: inc/admin/option-page-settings.php:509
+msgid "Disable (recommended)"
+msgstr "Deaktivieren (empfohlen)"
+
+#: inc/admin/option-page-settings.php:516
+msgid "Enable with JS only"
+msgstr "Nur mit JS aktivieren"
+
+#: inc/admin/option-page-settings.php:523
+msgid "Enable with PHP and JS"
+msgstr "Aktivieren mit PHP und JS"
+
+#: inc/admin/option-page-settings.php:532
 msgid "Progress bar for editors"
 msgstr "Fortschrittsbalken für Redakteure"
 
-#: inc/admin/option-page-settings.php:495
+#: inc/admin/option-page-settings.php:537
 msgid "Enable progress bar: Smooth translations loading for editors"
 msgstr ""
 "Fortschrittsbalken einschalten: Reibungsloses Laden von Übersetzungen für "
 "Redakteure"
 
-#: inc/admin/option-page-settings.php:499
+#: inc/admin/option-page-settings.php:539
 msgid ""
 "Activate a progress bar when a page requires the generation of more than 20 "
 "new string translations. This feature only applies to connected editors."
@@ -1504,23 +1640,11 @@ msgstr ""
 "mehr als 20 neuen String-Übersetzungen erfordert. Diese Funktion gilt nur für "
 "verbundene Editoren."
 
-#: inc/admin/option-page-settings.php:508
-msgid "Enable multilingual XML Sitemap"
-msgstr "Aktivieren Sie die mehrsprachige XML-Sitemap"
-
-#: inc/admin/option-page-settings.php:514
-msgid ""
-"Enable multilingual Sitemap XML: Automatically add links to your wpLingua "
-"translated pages in your XML Sitemap files."
-msgstr ""
-"Aktivieren Sie mehrsprachige XML-Sitemaps: Fügen Sie automatisch Links zu "
-"Ihren mit wpLingua übersetzten Seiten in Ihre XML-Sitemap-Dateien ein."
-
-#: inc/admin/option-page-settings.php:533
+#: inc/admin/option-page-settings.php:559
 msgid "Website API key: "
 msgstr "Website-API-Schlüssel: "
 
-#: inc/admin/option-page-settings.php:538
+#: inc/admin/option-page-settings.php:564
 msgid ""
 "The API key connects the website to wpLingua's online services and automatic "
 "translation generators."
@@ -1528,19 +1652,19 @@ msgstr ""
 "Der API-Schlüssel verbindet die Website mit den Online-Diensten und "
 "automatischen Übersetzungsgeneratoren von wpLingua."
 
-#: inc/admin/option-page-settings.php:560
+#: inc/admin/option-page-settings.php:586
 msgid "Show API key"
 msgstr "API-Schlüssel anzeigen"
 
-#: inc/admin/option-page-settings.php:562
+#: inc/admin/option-page-settings.php:588
 msgid "Hide API key"
 msgstr "API-Schlüssel ausblenden"
 
-#: inc/admin/option-page-settings.php:568
+#: inc/admin/option-page-settings.php:594
 msgid "API key status: "
 msgstr "Status des API-Schlüssels: "
 
-#: inc/admin/option-page-settings.php:583
+#: inc/admin/option-page-settings.php:609
 msgid "Premium expiration: "
 msgstr "Ablauf des Premium-Plans: "
 
@@ -1994,34 +2118,34 @@ msgstr "wpLingua: Übersetzungen"
 msgid "All translations"
 msgstr "Alle Übersetzungen"
 
-#: inc/admin/option-page.php:221
+#: inc/admin/option-page.php:222
 msgid "Thank you for choosing wpLingua!"
 msgstr "Danke, dass Sie sich für wpLingua entschieden haben!"
 
-#: inc/admin/option-page.php:224
+#: inc/admin/option-page.php:225
 #, php-format
 msgid "If you like wpLingua please leave us a %1$s rating. A huge thanks!"
 msgstr ""
 "Wenn Ihnen wpLingua gefällt, hinterlassen Sie uns bitte eine %1$s-Bewertung. "
 "Ein großes Dankeschön!"
 
-#: inc/admin/option-page.php:225
+#: inc/admin/option-page.php:226
 msgid "five stars"
 msgstr "fünf Sterne"
 
-#: inc/admin/option-page.php:249
+#: inc/admin/option-page.php:250
 msgid "Version"
 msgstr "Version"
 
-#: inc/admin/option-page.php:272
+#: inc/admin/option-page.php:273
 msgid "Settings"
 msgstr "Einstellungen"
 
-#: inc/admin/option-page.php:314
+#: inc/admin/option-page.php:315
 msgid "wpLingua - Translation solution for multilingual website"
 msgstr "wpLingua - Übersetzungslösung für mehrsprachige Websites"
 
-#: inc/admin/option-page.php:317
+#: inc/admin/option-page.php:318
 msgid ""
 "wpLingua is installed, but not yet configured. You are just a few clicks away "
 "from making your website multilingual!"
@@ -2029,15 +2153,15 @@ msgstr ""
 "wpLingua ist installiert, aber noch nicht konfiguriert. Sie sind nur ein paar "
 "Klicks davon entfernt, Ihre Website mehrsprachig zu machen!"
 
-#: inc/admin/option-page.php:320
+#: inc/admin/option-page.php:321
 msgid "Go to the configuration page"
 msgstr "Gehen Sie zur Konfigurationsseite"
 
-#: inc/admin/option-page.php:394
+#: inc/admin/option-page.php:395
 msgid "wpLingua - Incompatible plugin detected"
 msgstr "wpLingua - Inkompatibles Plugin entdeckt"
 
-#: inc/admin/option-page.php:397
+#: inc/admin/option-page.php:398
 msgid ""
 "You have several translation plugins. This may result in unpredictable or "
 "incorrect behavior. For best results, use only one translation plugin at a "
@@ -2048,44 +2172,44 @@ msgstr ""
 "jeweils nur ein Übersetzungs-Plugin verwenden. Diese Plugins können Probleme "
 "mit wpLingua verursachen: "
 
-#: inc/admin/option-page.php:414
+#: inc/admin/option-page.php:415
 #, php-format
 msgid "Deactivate plugin: %1$s"
 msgstr "Deaktivieren Sie das Plugin: %1$s"
 
-#: inc/admin/option-page.php:423
+#: inc/admin/option-page.php:424
 msgid "Deactivate"
 msgstr "Deaktiviert"
 
-#: inc/admin/option-page.php:440
+#: inc/admin/option-page.php:441
 msgid "Manage active plugins"
 msgstr "Aktive Plugins verwalten"
 
-#: inc/admin/option-page.php:465
+#: inc/admin/option-page.php:466
 msgid "wpLingua - Incompatible with multisite"
 msgstr "wpLingua - Unvereinbar mit Multisite"
 
-#: inc/admin/option-page.php:468
+#: inc/admin/option-page.php:469
 msgid "wpLingua is not compatible with multisite."
 msgstr "wpLingua ist nicht mit Multisite kompatibel."
 
-#: inc/admin/option-page.php:492
+#: inc/admin/option-page.php:493
 msgid "wpLingua - Incompatible with WordPress installed in a subfolder"
 msgstr ""
 "wpLingua - Inkompatibel mit WordPress, das in einem Unterordner installiert "
 "ist"
 
-#: inc/admin/option-page.php:495
+#: inc/admin/option-page.php:496
 msgid "wpLingua is not compatible with WordPress installed in a subfolder."
 msgstr ""
 "wpLingua ist nicht kompatibel mit WordPress, das in einem Unterordner "
 "installiert ist."
 
-#: inc/admin/option-page.php:519
+#: inc/admin/option-page.php:520
 msgid "wpLingua - Incompatible PHP version"
 msgstr "wpLingua - Inkompatible PHP-Version"
 
-#: inc/admin/option-page.php:522
+#: inc/admin/option-page.php:523
 msgid ""
 "wpLingua is not compatible with your PHP version. wpLingua requires PHP 7.4 "
 "or higher."
@@ -2093,11 +2217,11 @@ msgstr ""
 "wpLingua ist nicht mit Ihrer PHP-Version kompatibel. wpLingua benötigt PHP "
 "7.4 oder höher."
 
-#: inc/admin/option-page.php:585
+#: inc/admin/option-page.php:586
 msgid "wpLingua - Incompatible HTACCESS file"
 msgstr "wpLingua - Inkompatible HTACCESS-Datei"
 
-#: inc/admin/option-page.php:588
+#: inc/admin/option-page.php:589
 msgid ""
 "It seems that a plugin was incorrectly deactivated and corrupted the site's "
 "HTACCESS file, preventing the correct redirection of translated pages. Please "
@@ -2380,7 +2504,7 @@ msgstr "Übersetzung in Arbeit"
 msgid "In progress: Translation and saving of new texts"
 msgstr "In Arbeit: Übersetzung und Speicherung der neuen Texte"
 
-#: inc/dom/mode-editor.php:118 inc/dom/mode-list.php:306
+#: inc/dom/mode-editor.php:118 inc/dom/mode-list.php:310
 msgid "Edit this translation"
 msgstr "Diese Übersetzung bearbeiten"
 
@@ -2412,7 +2536,7 @@ msgstr "Alphabetisch - Quellen"
 msgid "Alphabetical - translations"
 msgstr "Alphabetisch - Übersetzungen"
 
-#: inc/dom/mode-list.php:322
+#: inc/dom/mode-list.php:326
 msgid "Go to top"
 msgstr "Nach oben"
 

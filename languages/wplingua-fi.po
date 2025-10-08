@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: wpLingua\n"
-"POT-Creation-Date: 2025-08-25 11:57+0200\n"
-"PO-Revision-Date: 2025-08-25 15:49+0200\n"
+"POT-Creation-Date: 2025-10-06 21:56+0200\n"
+"PO-Revision-Date: 2025-10-06 22:49+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fi\n"
@@ -783,13 +783,13 @@ msgstr "Sääntö nro"
 
 #: inc/admin/option-page-dictionary.php:127
 #: inc/admin/option-page-link-media.php:127
-#: inc/admin/option-page-settings.php:272 inc/admin/option-page-settings.php:337
+#: inc/admin/option-page-settings.php:272 inc/admin/option-page-settings.php:335
 msgid "Edit"
 msgstr "Muokkaa"
 
 #: inc/admin/option-page-dictionary.php:134
 #: inc/admin/option-page-link-media.php:134
-#: inc/admin/option-page-settings.php:338
+#: inc/admin/option-page-settings.php:336
 msgid "Remove"
 msgstr "Poista"
 
@@ -1123,18 +1123,18 @@ msgstr "aPI-avaimen hakusivu"
 #: inc/admin/option-page-register.php:229 inc/admin/option-page-register.php:293
 #: inc/admin/option-page-register.php:309 inc/admin/option-page-register.php:325
 #: inc/admin/option-page-register.php:341 inc/admin/option-page-settings.php:244
-#: inc/admin/option-page-settings.php:376 inc/admin/option-page-settings.php:432
-#: inc/admin/option-page-settings.php:452 inc/admin/option-page-settings.php:490
-#: inc/admin/option-page-settings.php:509 inc/admin/option-page-settings.php:539
-#: inc/admin/option-page-switcher.php:73 inc/admin/option-page-switcher.php:124
-#: inc/admin/option-page-switcher.php:179 inc/admin/option-page-switcher.php:237
-#: inc/admin/option-page-switcher.php:331 inc/admin/option-page-switcher.php:384
-#: inc/admin/option-page-switcher.php:437 inc/admin/option-page-switcher.php:451
-#: inc/admin/option-page-switcher.php:465
+#: inc/admin/option-page-settings.php:364 inc/admin/option-page-settings.php:420
+#: inc/admin/option-page-settings.php:438 inc/admin/option-page-settings.php:472
+#: inc/admin/option-page-settings.php:488 inc/admin/option-page-settings.php:533
+#: inc/admin/option-page-settings.php:565 inc/admin/option-page-switcher.php:73
+#: inc/admin/option-page-switcher.php:124 inc/admin/option-page-switcher.php:179
+#: inc/admin/option-page-switcher.php:237 inc/admin/option-page-switcher.php:331
+#: inc/admin/option-page-switcher.php:384 inc/admin/option-page-switcher.php:437
+#: inc/admin/option-page-switcher.php:451 inc/admin/option-page-switcher.php:465
 msgid "Click to expand"
 msgstr "Laajenna klikkaamalla"
 
-#: inc/admin/option-page-register.php:233 inc/admin/option-page-settings.php:544
+#: inc/admin/option-page-register.php:233 inc/admin/option-page-settings.php:570
 msgid ""
 "A wpLingua API key consists of 42 characters (uppercase, lowercase and "
 "numbers). It is emailed to you when you request it using the form provided "
@@ -1239,7 +1239,7 @@ msgstr ""
 "Jos haluat kääntää verkkosivustosi useammalle kielelle ja käyttää "
 "lisäominaisuuksia, käy wpLingua-sivustolla."
 
-#: inc/admin/option-page-register.php:396 inc/admin/option-page-settings.php:431
+#: inc/admin/option-page-register.php:396 inc/admin/option-page-settings.php:419
 msgid "Use wpLingua on commercial website"
 msgstr "Käytä wpLingua kaupallisella verkkosivustolla"
 
@@ -1355,15 +1355,15 @@ msgstr "wplingua.com : Yhteydenotto tukeen"
 msgid "Custom"
 msgstr "Mukautettu"
 
-#: inc/admin/option-page-settings.php:278 inc/admin/option-page-settings.php:344
+#: inc/admin/option-page-settings.php:277 inc/admin/option-page-settings.php:341
 msgid "Flag to use for this language: "
 msgstr "Tätä kieltä varten käytettävä lippu: "
 
-#: inc/admin/option-page-settings.php:287 inc/admin/option-page-settings.php:352
+#: inc/admin/option-page-settings.php:283 inc/admin/option-page-settings.php:345
 msgid "Custom flag URL for this language: "
 msgstr "Tämän kielen mukautetun lipun URL-osoite: "
 
-#: inc/admin/option-page-settings.php:310
+#: inc/admin/option-page-settings.php:306
 msgid ""
 "Important: space out the addition of new languages ​​by at least ten days and "
 "browse your site for the first time in the added languages. This promotes "
@@ -1375,23 +1375,31 @@ msgstr ""
 "parempaa indeksointia, vähentää palvelimesi kuormitusta ja minimoi sivustosi "
 "hidastumisen riskin."
 
-#: inc/admin/option-page-settings.php:314
+#: inc/admin/option-page-settings.php:310
 msgid "Add new target Language: "
 msgstr "Lisää uusi kohde Kieli: "
 
-#: inc/admin/option-page-settings.php:320
+#: inc/admin/option-page-settings.php:316
 msgid "Add language"
 msgstr "Lisää kieli"
 
-#: inc/admin/option-page-settings.php:333
+#: inc/admin/option-page-settings.php:329
 msgid "(Private)"
 msgstr "(Yksityinen)"
 
-#: inc/admin/option-page-settings.php:358
+#: inc/admin/option-page-settings.php:333
+msgid "Move up"
+msgstr "Siirrä ylös"
+
+#: inc/admin/option-page-settings.php:334
+msgid "Move down"
+msgstr "Siirrä alas"
+
+#: inc/admin/option-page-settings.php:350
 msgid "Make this language private"
 msgstr "Tee tästä kielestä yksityinen"
 
-#: inc/admin/option-page-settings.php:359
+#: inc/admin/option-page-settings.php:351
 msgid ""
 "Private languages will only be visible to logged-in users with editing "
 "rights. This option allows administrators to pre-generate and correct "
@@ -1401,28 +1409,28 @@ msgstr ""
 "muokkausoikeudet. Tämän vaihtoehdon avulla ylläpitäjät voivat luoda ja "
 "korjata käännöksiä etukäteen ennen kuin ne ovat yleisön saatavilla."
 
-#: inc/admin/option-page-settings.php:368
+#: inc/admin/option-page-settings.php:358
 msgid "Target languages enabled: "
 msgstr "Kohdekielet käytössä: "
 
-#: inc/admin/option-page-settings.php:375
+#: inc/admin/option-page-settings.php:363
 msgid "Access more target languages by upgrading your API key."
 msgstr "Pääset käyttämään useampia kohdekieliä päivittämällä API-avaimesi."
 
-#: inc/admin/option-page-settings.php:384
+#: inc/admin/option-page-settings.php:371
 msgid "Available languages: "
 msgstr "Käytettävissä olevat kielet: - Kieli: "
 
-#: inc/admin/option-page-settings.php:404 inc/admin/option-page-settings.php:442
-#: inc/admin/option-page-settings.php:466 inc/admin/option-page-settings.php:549
+#: inc/admin/option-page-settings.php:391 inc/admin/option-page-settings.php:428
+#: inc/admin/option-page-settings.php:448 inc/admin/option-page-settings.php:575
 msgid "wplingua.com : Upgrade your API key"
 msgstr "wplingua.com : Päivitä API-avaimesi"
 
-#: inc/admin/option-page-settings.php:422
+#: inc/admin/option-page-settings.php:409
 msgid "API translation features: "
 msgstr "API-käännösominaisuudet: "
 
-#: inc/admin/option-page-settings.php:425
+#: inc/admin/option-page-settings.php:413
 msgid ""
 "The options below require extended access to the wpLingua API to be "
 "functional on your website."
@@ -1430,7 +1438,7 @@ msgstr ""
 "Alla olevat vaihtoehdot edellyttävät laajennettua wpLingua API:n "
 "käyttöoikeutta, jotta ne toimisivat verkkosivustollasi."
 
-#: inc/admin/option-page-settings.php:437
+#: inc/admin/option-page-settings.php:424
 msgid ""
 "Use of the free wpLingua API keys is reserved for personal blogs and non-"
 "profit websites; paid subscriptions are available for companies and "
@@ -1440,17 +1448,17 @@ msgstr ""
 "blogeille ja voittoa tavoittelemattomille verkkosivustoille; maksulliset "
 "tilaukset ovat saatavilla yrityksille ja kaupallisille verkkosivustoille."
 
-#: inc/admin/option-page-settings.php:451
+#: inc/admin/option-page-settings.php:437
 msgid "Search from translated languages"
 msgstr "Haku käännetyistä kielistä"
 
-#: inc/admin/option-page-settings.php:457
+#: inc/admin/option-page-settings.php:442
 msgid "Enable visitors to search on your website in their own language."
 msgstr ""
 "Anna kävijöille mahdollisuus tehdä hakuja verkkosivustollasi omalla "
 "kielellään."
 
-#: inc/admin/option-page-settings.php:461
+#: inc/admin/option-page-settings.php:444
 msgid ""
 "Example: if your website is translated from English to French and you have a "
 "post named \"Hello\". When a French visitor searches for the term \"Bonjour\" "
@@ -1464,20 +1472,147 @@ msgstr ""
 "ennen haun käynnistämistä. Näin WordPress löytää \"Hello\" -nimisen viestin, "
 "kun kävijä on hakenut \"Bonjour\" -nimellä."
 
-#: inc/admin/option-page-settings.php:483
+#: inc/admin/option-page-settings.php:465
 msgid "Plugin translation features: "
 msgstr "Liitännäisen käännösominaisuudet: "
 
-#: inc/admin/option-page-settings.php:489
+#: inc/admin/option-page-settings.php:471
+msgid "Enable multilingual XML Sitemap"
+msgstr "Ota käyttöön monikielinen XML-sivukartta"
+
+#: inc/admin/option-page-settings.php:476
+msgid ""
+"This option automatically adds your wpLingua translated pages into your XML "
+"Sitemap files."
+msgstr ""
+"Tämä vaihtoehto lisää automaattisesti wpLingua-käännetyt sivut XML-"
+"sivukarttatiedostoihin."
+
+#: inc/admin/option-page-settings.php:478
+msgid ""
+"An XML Sitemap is used by search engines (Google, Bing, etc.) to better "
+"discover and index the pages of your website. By default, only the default "
+"language pages are included. With this option enabled, all translated "
+"versions of your content will also be listed."
+msgstr ""
+"Hakukoneet (Google, Bing jne.) käyttävät XML-sivukarttaa löytääkseen ja "
+"indeksoidakseen verkkosivustosi sivut paremmin. Oletusarvoisesti vain "
+"oletuskieliset sivut sisällytetään. Kun tämä vaihtoehto on käytössä, myös "
+"kaikki sisällön käännetyt versiot listataan."
+
+#: inc/admin/option-page-settings.php:479
+msgid ""
+"This greatly improves SEO visibility, ensuring that search engines can easily "
+"find and index your content in every language."
+msgstr ""
+"Tämä parantaa SEO-näkyvyyttä huomattavasti, sillä hakukoneet löytävät ja "
+"indeksoivat sisältösi helposti kaikilla kielillä."
+
+#: inc/admin/option-page-settings.php:481
+msgid ""
+"wpLingua uses a universal method that intercepts and extends sitemap. It "
+"works with the native WordPress sitemap and with popular SEO plugins such as "
+"Yoast SEO, Rank Math, All in One SEO, SEOPress, etc."
+msgstr ""
+"wpLingua käyttää yleispätevää menetelmää, joka sieppaa ja laajentaa "
+"sivukarttaa. Se toimii natiivin WordPress-sitemapin ja suosittujen SEO-"
+"liitännäisten kanssa, kuten Yoast SEO, Rank Math, All in One SEO, SEOPress "
+"jne."
+
+#: inc/admin/option-page-settings.php:487
+msgid "Enable language browser redirection"
+msgstr "Ota kieliselaimen uudelleenohjaus käyttöön"
+
+#: inc/admin/option-page-settings.php:491
+msgid ""
+"This option automatically redirects visitors to the translated version of "
+"your site that matches their browser language when they land on the main "
+"homepage. It can improve user experience by showing content in the right "
+"language immediately, but depending on your setup, it may introduce side "
+"effects."
+msgstr ""
+"Tämä vaihtoehto ohjaa kävijät automaattisesti heidän selaimensa kieltä "
+"vastaavaan käännettyyn versioon sivustostasi, kun he laskeutuvat pääsivulle. "
+"Se voi parantaa käyttäjäkokemusta, kun sisältö näytetään heti oikealla "
+"kielellä, mutta asetuksista riippuen se voi aiheuttaa sivuvaikutuksia."
+
+#: inc/admin/option-page-settings.php:493
+msgid "Disabled (recommended):"
+msgstr "Ei käytössä (suositellaan):"
+
+#: inc/admin/option-page-settings.php:494
+msgid ""
+"No redirection is applied. Every visitor always sees the default homepage, "
+"regardless of their browser language. This is the safest option and ensures "
+"maximum compatibility with caching systems, SEO, and shared links. "
+"Recommended if you are unsure which option to choose."
+msgstr ""
+"Uudelleenohjausta ei tehdä. Jokainen kävijä näkee aina oletusarvoisen "
+"etusivun selaimen kielestä riippumatta. Tämä on turvallisin vaihtoehto, ja se "
+"takaa maksimaalisen yhteensopivuuden välimuistijärjestelmien, SEO:n ja "
+"jaettujen linkkien kanssa. Suositellaan, jos et ole varma, mikä vaihtoehto "
+"kannattaa valita."
+
+#: inc/admin/option-page-settings.php:496
+msgid "JS only:"
+msgstr "Vain JS:"
+
+#: inc/admin/option-page-settings.php:497
+msgid ""
+"The redirect is handled with JavaScript, after the default homepage has "
+"loaded. This method works in almost all cases and avoids issues with caching "
+"plugins. However, it may cause a short flicker effect: users will briefly see "
+"the default page before being redirected to the translated version."
+msgstr ""
+"Uudelleenohjaus hoidetaan JavaScriptillä, kun oletusetusivu on latautunut. "
+"Tämä menetelmä toimii lähes kaikissa tapauksissa, ja sillä vältetään ongelmat "
+"välimuistilaajennusten kanssa. Se voi kuitenkin aiheuttaa lyhyen "
+"välkkymisilmiön: käyttäjät näkevät hetkeksi oletussivun ennen kuin heidät "
+"ohjataan käännettyyn versioon."
+
+#: inc/admin/option-page-settings.php:499
+msgid "PHP and JS:"
+msgstr "PHP ja JS:"
+
+#: inc/admin/option-page-settings.php:500
+msgid ""
+"The redirect is performed server-side with PHP, which makes it faster and "
+"more seamless for visitors. In addition, a cookie is set via JavaScript to "
+"remember the user’s preferred language for future visits. While this provides "
+"the smoothest experience, it can sometimes conflict with caching systems "
+"(static pages, CDN, aggressive cache settings) and may cause incorrect "
+"redirects in certain setups."
+msgstr ""
+"Uudelleenohjaus suoritetaan palvelinpuolella PHP:n avulla, mikä nopeuttaa ja "
+"tekee siitä saumattomamman kävijöille. Lisäksi JavaScriptin avulla asetetaan "
+"eväste, joka muistaa käyttäjän valitseman kielen tulevia vierailuja varten. "
+"Vaikka tämä tarjoaa sujuvimman käyttökokemuksen, se voi joskus olla "
+"ristiriidassa välimuistijärjestelmien kanssa (staattiset sivut, CDN, "
+"aggressiiviset välimuistiasetukset) ja voi aiheuttaa virheellisiä "
+"uudelleenohjauksia tietyissä asetuksissa."
+
+#: inc/admin/option-page-settings.php:509
+msgid "Disable (recommended)"
+msgstr "Pois käytöstä (suositellaan)"
+
+#: inc/admin/option-page-settings.php:516
+msgid "Enable with JS only"
+msgstr "Ota käyttöön vain JS:llä"
+
+#: inc/admin/option-page-settings.php:523
+msgid "Enable with PHP and JS"
+msgstr "PHP:n ja JS:n käyttöönotto"
+
+#: inc/admin/option-page-settings.php:532
 msgid "Progress bar for editors"
 msgstr "Edistymispalkki muokkaajille"
 
-#: inc/admin/option-page-settings.php:495
+#: inc/admin/option-page-settings.php:537
 msgid "Enable progress bar: Smooth translations loading for editors"
 msgstr ""
 "Ota edistymispalkki käyttöön: Käännösten sujuva lataaminen toimittajille"
 
-#: inc/admin/option-page-settings.php:499
+#: inc/admin/option-page-settings.php:539
 msgid ""
 "Activate a progress bar when a page requires the generation of more than 20 "
 "new string translations. This feature only applies to connected editors."
@@ -1485,23 +1620,11 @@ msgstr ""
 "Aktivoi edistymispalkki, kun sivu vaatii yli 20 uuden merkkijonokäännöksen "
 "luomista. Tämä ominaisuus koskee vain liitettyjä muokkaajia."
 
-#: inc/admin/option-page-settings.php:508
-msgid "Enable multilingual XML Sitemap"
-msgstr "Ota käyttöön monikielinen XML-sivukartta"
-
-#: inc/admin/option-page-settings.php:514
-msgid ""
-"Enable multilingual Sitemap XML: Automatically add links to your wpLingua "
-"translated pages in your XML Sitemap files."
-msgstr ""
-"Ota käyttöön monikielinen Sitemap XML: Lisää automaattisesti linkit wpLingua-"
-"käännettyihin sivuihin XML-sivukarttatiedostoihin."
-
-#: inc/admin/option-page-settings.php:533
+#: inc/admin/option-page-settings.php:559
 msgid "Website API key: "
 msgstr "Verkkosivuston API-avain: "
 
-#: inc/admin/option-page-settings.php:538
+#: inc/admin/option-page-settings.php:564
 msgid ""
 "The API key connects the website to wpLingua's online services and automatic "
 "translation generators."
@@ -1509,19 +1632,19 @@ msgstr ""
 "API-avain yhdistää verkkosivuston wpLinguan verkkopalveluihin ja "
 "automaattisiin käännösgeneraattoreihin."
 
-#: inc/admin/option-page-settings.php:560
+#: inc/admin/option-page-settings.php:586
 msgid "Show API key"
 msgstr "Näytä API-avain"
 
-#: inc/admin/option-page-settings.php:562
+#: inc/admin/option-page-settings.php:588
 msgid "Hide API key"
 msgstr "Piilota API-avain"
 
-#: inc/admin/option-page-settings.php:568
+#: inc/admin/option-page-settings.php:594
 msgid "API key status: "
 msgstr "API-avaimen tila: "
 
-#: inc/admin/option-page-settings.php:583
+#: inc/admin/option-page-settings.php:609
 msgid "Premium expiration: "
 msgstr "Palkkion päättyminen: "
 
@@ -1966,32 +2089,32 @@ msgstr "wpLingua: Käännökset"
 msgid "All translations"
 msgstr "Kaikki käännökset"
 
-#: inc/admin/option-page.php:221
+#: inc/admin/option-page.php:222
 msgid "Thank you for choosing wpLingua!"
 msgstr "Kiitos, että valitsit wpLinguan!"
 
-#: inc/admin/option-page.php:224
+#: inc/admin/option-page.php:225
 #, php-format
 msgid "If you like wpLingua please leave us a %1$s rating. A huge thanks!"
 msgstr "Jos pidät wpLingua jätä meille %1$s-luokitus. Suuret kiitokset!"
 
-#: inc/admin/option-page.php:225
+#: inc/admin/option-page.php:226
 msgid "five stars"
 msgstr "viisi tähteä"
 
-#: inc/admin/option-page.php:249
+#: inc/admin/option-page.php:250
 msgid "Version"
 msgstr "Versio"
 
-#: inc/admin/option-page.php:272
+#: inc/admin/option-page.php:273
 msgid "Settings"
 msgstr "Asetukset"
 
-#: inc/admin/option-page.php:314
+#: inc/admin/option-page.php:315
 msgid "wpLingua - Translation solution for multilingual website"
 msgstr "wpLingua - Käännösratkaisu monikieliselle verkkosivustolle"
 
-#: inc/admin/option-page.php:317
+#: inc/admin/option-page.php:318
 msgid ""
 "wpLingua is installed, but not yet configured. You are just a few clicks away "
 "from making your website multilingual!"
@@ -1999,15 +2122,15 @@ msgstr ""
 "wpLingua on asennettu, mutta sitä ei ole vielä määritetty. Olet vain muutaman "
 "klikkauksen päässä siitä, että verkkosivustosi on monikielinen!"
 
-#: inc/admin/option-page.php:320
+#: inc/admin/option-page.php:321
 msgid "Go to the configuration page"
 msgstr "Siirry määrityssivulle"
 
-#: inc/admin/option-page.php:394
+#: inc/admin/option-page.php:395
 msgid "wpLingua - Incompatible plugin detected"
 msgstr "wpLingua - Yhteensopimaton lisäosa havaittu"
 
-#: inc/admin/option-page.php:397
+#: inc/admin/option-page.php:398
 msgid ""
 "You have several translation plugins. This may result in unpredictable or "
 "incorrect behavior. For best results, use only one translation plugin at a "
@@ -2018,40 +2141,40 @@ msgstr ""
 "käännöslaajennusta kerrallaan. Nämä lisäosat voivat aiheuttaa ongelmia "
 "wpLinguan kanssa: "
 
-#: inc/admin/option-page.php:414
+#: inc/admin/option-page.php:415
 #, php-format
 msgid "Deactivate plugin: %1$s"
 msgstr "Deaktivoi lisäosa: %1$s"
 
-#: inc/admin/option-page.php:423
+#: inc/admin/option-page.php:424
 msgid "Deactivate"
 msgstr "Poista käytöstä"
 
-#: inc/admin/option-page.php:440
+#: inc/admin/option-page.php:441
 msgid "Manage active plugins"
 msgstr "Hallitse aktiivisia lisäosia"
 
-#: inc/admin/option-page.php:465
+#: inc/admin/option-page.php:466
 msgid "wpLingua - Incompatible with multisite"
 msgstr "wpLingua - Yhteensopimaton monisivuston kanssa"
 
-#: inc/admin/option-page.php:468
+#: inc/admin/option-page.php:469
 msgid "wpLingua is not compatible with multisite."
 msgstr "wpLingua ei ole yhteensopiva monisivuston kanssa."
 
-#: inc/admin/option-page.php:492
+#: inc/admin/option-page.php:493
 msgid "wpLingua - Incompatible with WordPress installed in a subfolder"
 msgstr "wpLingua - Yhteensopimaton alikansioon asennetun WordPressin kanssa"
 
-#: inc/admin/option-page.php:495
+#: inc/admin/option-page.php:496
 msgid "wpLingua is not compatible with WordPress installed in a subfolder."
 msgstr "wpLingua ei ole yhteensopiva alikansioon asennetun WordPressin kanssa."
 
-#: inc/admin/option-page.php:519
+#: inc/admin/option-page.php:520
 msgid "wpLingua - Incompatible PHP version"
 msgstr "wpLingua - Yhteensopimaton PHP-versio"
 
-#: inc/admin/option-page.php:522
+#: inc/admin/option-page.php:523
 msgid ""
 "wpLingua is not compatible with your PHP version. wpLingua requires PHP 7.4 "
 "or higher."
@@ -2059,11 +2182,11 @@ msgstr ""
 "wpLingua ei ole yhteensopiva PHP-versiosi kanssa. wpLingua vaatii PHP 7.4:n "
 "tai uudemman version."
 
-#: inc/admin/option-page.php:585
+#: inc/admin/option-page.php:586
 msgid "wpLingua - Incompatible HTACCESS file"
 msgstr "wpLingua - Yhteensopimaton HTACCESS-tiedosto"
 
-#: inc/admin/option-page.php:588
+#: inc/admin/option-page.php:589
 msgid ""
 "It seems that a plugin was incorrectly deactivated and corrupted the site's "
 "HTACCESS file, preventing the correct redirection of translated pages. Please "
@@ -2342,7 +2465,7 @@ msgstr "Käännös tekeillä"
 msgid "In progress: Translation and saving of new texts"
 msgstr "Käynnissä: Uusien tekstien kääntäminen ja tallentaminen"
 
-#: inc/dom/mode-editor.php:118 inc/dom/mode-list.php:306
+#: inc/dom/mode-editor.php:118 inc/dom/mode-list.php:310
 msgid "Edit this translation"
 msgstr "Muokkaa tätä käännöstä"
 
@@ -2374,7 +2497,7 @@ msgstr "Aakkosjärjestys - lähteet"
 msgid "Alphabetical - translations"
 msgstr "Aakkosjärjestys - käännökset"
 
-#: inc/dom/mode-list.php:322
+#: inc/dom/mode-list.php:326
 msgid "Go to top"
 msgstr "Siirry sivun alkuun"
 

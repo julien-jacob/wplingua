@@ -274,41 +274,45 @@ function wplng_dictionary_replace_tags( $texts, $dictionary_entries = false, $la
 	foreach ( $texts as $text_key => $text ) {
 		foreach ( $dictionary_entries as $key => $entry ) {
 
+			// For ruls "Do not translate
 			$replacement = $entry['source'];
 
+			// For specific rule by language
 			if ( ! empty( $entry['rules'][ $language_id ] ) ) {
-
 				$replacement = $entry['rules'][ $language_id ];
-
-				$text = preg_replace(
-					'#\[wplng_dictionary key="' . $key . '" upper="all"\].+\[\/wplng_dictionary\]#U',
-					strtoupper( $replacement ),
-					$text
-				);
-
-				$text = preg_replace(
-					'#\[wplng_dictionary key="' . $key . '" upper="first"\].+\[\/wplng_dictionary\]#U',
-					ucfirst( $replacement ),
-					$text
-				);
-
-				$text = preg_replace(
-					'#\[wplng_dictionary key="' . $key . '" upper="none"\].+\[\/wplng_dictionary\]#U',
-					$replacement,
-					$text
-				);
-
-			} else {
-
-				$text = preg_replace(
-					'#\[wplng_dictionary key="' . $key . '" upper="(all|first|none)"\](.+)\[\/wplng_dictionary\]#U',
-					'${2}',
-					$text
-				);
 			}
 
-			$texts[ $text_key ] = $text;
+			// Replacement for text in uppercase
+			$text = preg_replace(
+				'#\[wplng_dictionary key="' . $key . '" upper="all"\].+\[\/wplng_dictionary\]#U',
+				strtoupper( $replacement ),
+				$text
+			);
+
+			// Replacement for text when only the first letter is uppercase
+			$text = preg_replace(
+				'#\[wplng_dictionary key="' . $key . '" upper="first"\].+\[\/wplng_dictionary\]#U',
+				ucfirst( $replacement ),
+				$text
+			);
+
+			// Replacement for other case
+			$text = preg_replace(
+				'#\[wplng_dictionary key="' . $key . '" upper="none"\].+\[\/wplng_dictionary\]#U',
+				$replacement,
+				$text
+			);
+
 		}
+
+		// Cleaning of any residual rules
+		$text = preg_replace(
+			'#\[wplng_dictionary key=".*" upper=".*"\](.+)\[\/wplng_dictionary\]#U',
+			'${1}',
+			$text
+		);
+
+		$texts[ $text_key ] = $text;
 	}
 
 	return $texts;

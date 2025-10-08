@@ -162,8 +162,42 @@ function wplng_data_json_to_translate() {
 			array( 'wc_country_select_params', 'i18n_selection_too_long_n' ),
 			array( 'wc_country_select_params', 'i18n_load_more' ),
 			array( 'wc_country_select_params', 'i18n_searching' ),
-			array( 'wc_address_i18n_params', 'i18n_required_text' ),
-			array( 'wc_address_i18n_params', 'i18n_optional_text' ),
+
+			array( 'wc_country_select_params', 'countries', 'i18n_select_state_text' ),
+			array( 'wc_country_select_params', 'countries', 'i18n_no_matches' ),
+			array( 'wc_country_select_params', 'countries', 'i18n_ajax_error' ),
+			array( 'wc_country_select_params', 'countries', 'i18n_input_too_short_1' ),
+			array( 'wc_country_select_params', 'countries', 'i18n_input_too_short_n' ),
+			array( 'wc_country_select_params', 'countries', 'i18n_input_too_long_1' ),
+			array( 'wc_country_select_params', 'countries', 'i18n_input_too_long_n' ),
+			array( 'wc_country_select_params', 'countries', 'i18n_selection_too_long_1' ),
+			array( 'wc_country_select_params', 'countries', 'i18n_selection_too_long_n' ),
+			array( 'wc_country_select_params', 'countries', 'i18n_load_more' ),
+			array( 'wc_country_select_params', 'countries', 'i18n_searching' ),
+
+			array( 'wc_address_i18n_params', 'locale', 'locale_fields', 'i18n_required_text' ),
+			array( 'wc_address_i18n_params', 'locale', 'locale_fields', 'i18n_optional_text' ),
+
+			array( 'woocommerce_params', 'i18n_password_show' ),
+			array( 'woocommerce_params', 'i18n_password_hide' ),
+
+			// Plugin: woocommerce-paypal-payments
+			array( 'PayPalCommerceGateway', 'hosted_fields', 'labels', 'fields_empty' ),
+			array( 'PayPalCommerceGateway', 'hosted_fields', 'labels', 'fields_not_valid' ),
+			array( 'PayPalCommerceGateway', 'hosted_fields', 'labels', 'card_not_supported' ),
+			array( 'PayPalCommerceGateway', 'hosted_fields', 'labels', 'cardholder_name_required' ),
+			array( 'PayPalCommerceGateway', 'labels', 'error', 'generic' ),
+			array( 'PayPalCommerceGateway', 'labels', 'error', 'required', 'generic' ),
+			array( 'PayPalCommerceGateway', 'labels', 'error', 'required', 'field' ),
+			array( 'PayPalCommerceGateway', 'labels', 'error', 'required', 'elements', 'terms' ),
+			array( 'PayPalCommerceGateway', 'labels', 'billing_field' ),
+			array( 'PayPalCommerceGateway', 'labels', 'shipping_field' ),
+			array( 'PayPalCommerceGateway', 'labels', 'shipping_field' ),
+
+			// Plugin: NM Gift Registry and Wishlist Lite (nm-wishlist)
+			array( 'nm_wishlist_vars', 'wlButtonTitleAdd' ),
+			array( 'nm_wishlist_vars', 'wlButtonTitleRemove' ),
+			array( 'nm_wishlist_vars', 'wlButtonTitleRemove' ),
 
 			// Plugin: YITH
 			array( 'yith_wcwl_l10n', 'labels', 'cookie_disabled' ),
@@ -243,9 +277,6 @@ function wplng_data_excluded_json() {
 			array( 'wplngI18nTranslation' ),
 			array( 'wplngI18nSlug' ),
 			array( 'wplngI18nGutenberg' ),
-
-			// Plugin: WooCommerce
-			array( 'wc_country_select_params', 'countries' ),
 
 			// Plugin: Google Site Kit
 			array( '_googlesitekitBaseData' ),
