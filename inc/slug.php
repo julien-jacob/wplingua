@@ -380,6 +380,13 @@ function wplng_get_slugs_from_query() {
 		'update_post_meta_cache' => false,
 		'cache_results'          => false,
 		'fields'                 => 'ids', // Only retrieve post IDs
+		'meta_query'             => array(
+			array(
+				'key'     => 'wplng_translation_original_language_id',
+				'value'   => wplng_get_language_website_id(),
+				'compare' => '='
+			),
+		),
 	);
 
 	// Get all slug IDs
@@ -555,6 +562,13 @@ function wplng_get_slug_saved_from_original( $original ) {
 			),
 		),
 		'fields'         => 'ids',
+		'meta_query'             => array(
+			array(
+				'key'     => 'wplng_translation_original_language_id',
+				'value'   => wplng_get_language_website_id(),
+				'compare' => '='
+			),
+		),
 	);
 
 	$posts = get_posts( $args );

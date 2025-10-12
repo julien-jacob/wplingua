@@ -82,6 +82,13 @@ function wplng_get_translation_saved_from_original( $original ) {
 			),
 		),
 		'fields'         => 'ids',
+		'meta_query'             => array(
+			array(
+				'key'     => 'wplng_translation_original_language_id',
+				'value'   => wplng_get_language_website_id(),
+				'compare' => '='
+			),
+		),
 	);
 
 	$posts = get_posts( $args );
@@ -123,6 +130,13 @@ function wplng_get_translations_from_query() {
 		'update_post_meta_cache' => false,
 		'cache_results'          => false,
 		'fields'                 => 'ids', // Retrieve only post IDs for better performance
+		'meta_query'             => array(
+			array(
+				'key'     => 'wplng_translation_original_language_id',
+				'value'   => wplng_get_language_website_id(),
+				'compare' => '='
+			),
+		),
 	);
 
 	$post_ids = get_posts( $args );

@@ -196,6 +196,9 @@ function wplng_start() {
 		// Enqueue Script for wplng_translation admin: List
 		add_action( 'admin_print_scripts-edit.php', 'wplng_translation_list_assets' );
 
+		// Only show translations for the website languages
+		add_action( 'pre_get_posts', 'wplng_filter_wplng_translation_posts' );
+
 		// Remove Quick edit from translations list
 		add_filter( 'post_row_actions', 'wplng_translation_remove_quick_edit', 10, 2 );
 
@@ -248,6 +251,9 @@ function wplng_start() {
 
 		// Enqueue Script for wplng_slug admin: List
 		add_action( 'admin_print_scripts-edit.php', 'wplng_slug_list_assets' );
+
+		// Only show slugs for the website languages
+		add_action( 'pre_get_posts', 'wplng_filter_wplng_slug_posts' );
 
 		// Remove Quick edit from slugs list
 		add_filter( 'post_row_actions', 'wplng_slug_remove_quick_edit', 10, 2 );
