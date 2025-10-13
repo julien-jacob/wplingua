@@ -250,11 +250,7 @@ function wplng_settings_part_language_website() {
 		echo '<p>';
 		echo esc_html__( 'This is the language of your website, defined by the associated API key. Make sure your website language is also correctly set in WordPress options (Settings ➔ General ➔ Website Language).', 'wplingua' );
 		echo '<hr>';
-		echo esc_html__( 'If you have mistakenly entered the wrong language, contact wpLingua support to request a correction.', 'wplingua' );
-		echo ' ';
-		echo '<a href="https://wplingua.com/support/" target="_blank">';
-		echo esc_html__( 'wplingua.com : Contact support', 'wplingua' );
-		echo '</a>';
+		echo esc_html__( 'If you have mistakenly selected the wrong language, you can delete the API key in the site options below and request a new API key.', 'wplingua' );
 		echo '</p>';
 		echo '</div>';
 	}
