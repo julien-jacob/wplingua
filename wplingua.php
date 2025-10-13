@@ -7,7 +7,7 @@
  * Author URI: https://wplingua.com/
  * Text Domain: wplingua
  * Domain Path: /languages/
- * Version: 2.9.2
+ * Version: 2.9.3
  * Requires PHP: 7.4
  * License: GPL v2 or later
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -24,7 +24,7 @@ if ( ! defined( 'WPINC' ) ) {
 define( 'WPLNG_API_URL', 'https://api.wplingua.com' );
 define( 'WPLNG_API_VERSION', '3.0' );
 define( 'WPLNG_API_SSLVERIFY', true );
-define( 'WPLNG_PLUGIN_VERSION', '2.9.2' );
+define( 'WPLNG_PLUGIN_VERSION', '2.9.3' );
 define( 'WPLNG_PLUGIN_FILE', plugin_basename( __FILE__ ) );
 define( 'WPLNG_PLUGIN_PATH', __DIR__ );
 define( 'WPLNG_PHP_MIN_VERSION', '7.4' );
@@ -196,6 +196,9 @@ function wplng_start() {
 		// Enqueue Script for wplng_translation admin: List
 		add_action( 'admin_print_scripts-edit.php', 'wplng_translation_list_assets' );
 
+		// Only show translations for the website languages
+		add_action( 'pre_get_posts', 'wplng_filter_wplng_translation_posts' );
+
 		// Remove Quick edit from translations list
 		add_filter( 'post_row_actions', 'wplng_translation_remove_quick_edit', 10, 2 );
 
@@ -248,6 +251,9 @@ function wplng_start() {
 
 		// Enqueue Script for wplng_slug admin: List
 		add_action( 'admin_print_scripts-edit.php', 'wplng_slug_list_assets' );
+
+		// Only show slugs for the website languages
+		add_action( 'pre_get_posts', 'wplng_filter_wplng_slug_posts' );
 
 		// Remove Quick edit from slugs list
 		add_filter( 'post_row_actions', 'wplng_slug_remove_quick_edit', 10, 2 );
