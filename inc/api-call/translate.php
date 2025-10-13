@@ -84,7 +84,7 @@ function wplng_api_call_translate(
 
 	$api_key = wplng_get_api_key();
 
-	if ( empty( $api_key ) ) {
+	if ( ! wplng_is_valid_api_key_format( $api_key ) ) {
 		return array();
 	}
 
