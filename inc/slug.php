@@ -382,7 +382,7 @@ function wplng_get_slugs_from_query() {
 		'fields'                 => 'ids', // Only retrieve post IDs
 		'meta_query'             => array(
 			array(
-				'key'     => 'wplng_translation_original_language_id',
+				'key'     => 'wplng_slug_original_language_id',
 				'value'   => wplng_get_language_website_id(),
 				'compare' => '='
 			),
@@ -564,7 +564,7 @@ function wplng_get_slug_saved_from_original( $original ) {
 		'fields'         => 'ids',
 		'meta_query'             => array(
 			array(
-				'key'     => 'wplng_translation_original_language_id',
+				'key'     => 'wplng_slug_original_language_id',
 				'value'   => wplng_get_language_website_id(),
 				'compare' => '='
 			),
