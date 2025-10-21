@@ -201,7 +201,7 @@ function wplng_ob_callback_ajax( $output ) {
 function wplng_ob_callback_sitemap_xml( $content ) {
 
 	// Return the content as is if it's empty or not valid XML.
-	if ( ! get_option( 'wplng_sitemap_xml', false )
+	if ( ! get_option( 'wplng_sitemap_xml', true )
 		|| empty( $content )
 		|| ! wplng_str_is_xml( $content )
 	) {
@@ -211,7 +211,7 @@ function wplng_ob_callback_sitemap_xml( $content ) {
 	// Check if multilingual XML sitemap is enabled.
 	$sitemap_xml_enabled = apply_filters(
 		'wplng_enable_sitemap_xml_feature',
-		get_option( 'wplng_sitemap_xml', false )
+		get_option( 'wplng_sitemap_xml', true )
 	);
 
 	if ( empty( $sitemap_xml_enabled ) ) {
