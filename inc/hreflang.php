@@ -45,6 +45,11 @@ function wplng_link_alternate_hreflang() {
 	$html .= ' content="wpLingua ' . esc_attr( WPLNG_PLUGIN_VERSION ) . '"';
 	$html .= '/>' . PHP_EOL;
 
+	if ( empty( get_option( 'wplng_hreflang', true ) ) ) {
+		echo $html . PHP_EOL;
+		return;
+	}
+
 	// Create alternate link for website language
 
 	if ( 'en' === $language_website['id'] ) {

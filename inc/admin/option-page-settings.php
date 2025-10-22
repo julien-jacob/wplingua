@@ -72,7 +72,15 @@ function wplng_option_page_settings() {
 					<th scope="row"></th>
 					<td>
 						<fieldset>
-							<?php wplng_settings_part_features_plugin(); ?>
+							<?php wplng_settings_part_features_seo(); ?>
+						</fieldset>
+					</td>
+				</tr>
+				<tr>
+					<th scope="row"></th>
+					<td>
+						<fieldset>
+							<?php wplng_settings_part_features_more(); ?>
 						</fieldset>
 					</td>
 				</tr>
@@ -455,16 +463,16 @@ function wplng_settings_part_features_api() {
  *
  * @return void
  */
-function wplng_settings_part_features_plugin() {
+function wplng_settings_part_features_seo() {
 
 	?>
-	<p><strong><?php esc_html_e( 'Plugin translation features: ', 'wplingua' ); ?></strong></p>
+	<p><strong><?php esc_html_e( 'SEO features: ', 'wplingua' ); ?></strong></p>
 
 	<hr>
 
 	<fieldset>
-		<input type="checkbox" id="wplng_sitemap_xml" name="wplng_sitemap_xml" value="1" <?php checked( 1, get_option( 'wplng_sitemap_xml' ), true ); ?>/>
-		<label for="wplng_sitemap_xml">BETA - <?php esc_html_e( 'Enable multilingual XML Sitemap', 'wplingua' ); ?></label> 
+		<input type="checkbox" id="wplng_sitemap_xml" name="wplng_sitemap_xml" value="1" <?php checked( 1, get_option( 'wplng_sitemap_xml', true ), true ); ?>/>
+		<label for="wplng_sitemap_xml"><?php esc_html_e( 'Enable multilingual XML Sitemap', 'wplingua' ); ?></label> 
 		<span title="<?php esc_attr_e( 'Click to expand', 'wplingua' ); ?>" wplng-help-box="#wplng-hb-feature-sitemap-xml"></span>
 	</fieldset>
 
@@ -476,6 +484,34 @@ function wplng_settings_part_features_plugin() {
 		<hr>
 		<p><?php esc_html_e( 'wpLingua uses a universal method that intercepts and extends sitemap. It works with the native WordPress sitemap and with popular SEO plugins such as Yoast SEO, Rank Math, All in One SEO, SEOPress, etc.', 'wplingua' ); ?></p>
 	</div>
+
+	<hr>
+
+	<fieldset>
+		<input type="checkbox" id="wplng_hreflang" name="wplng_hreflang" value="1" <?php checked( 1, get_option( 'wplng_hreflang', true ), true ); ?>/>
+		<label for="wplng_hreflang"><?php esc_html_e( 'Add hreflang tags to translated pages', 'wplingua' ); ?></label> 
+		<span title="<?php esc_attr_e( 'Click to expand', 'wplingua' ); ?>" wplng-help-box="#wplng-hb-feature-hreflang"></span>
+	</fieldset>
+
+	<div class="wplng-help-box" id="wplng-hb-feature-hreflang">
+		<p><?php esc_html_e( 'This option automatically adds hreflang tags to your pages that are available in multiple languages.', 'wplingua' ); ?></p>
+		<hr>
+		<p><?php esc_html_e( 'Hreflang tags are HTML metadata used to indicate the URLs of each language version of a page. They are not visible to visitors, but they allow search engines (Google, Bing, etc.) to identify the multilingual structure of the site and display the correct version according to the user\'s language.', 'wplingua' ); ?></p>
+	</div>
+	
+	<?php
+}
+
+
+/**
+ * Print HTML subsection of Option page : wpLingua Settings - Plugin feature
+ *
+ * @return void
+ */
+function wplng_settings_part_features_more() {
+
+	?>
+	<p><strong><?php esc_html_e( 'More features: ', 'wplingua' ); ?></strong></p>
 
 	<hr>
 
