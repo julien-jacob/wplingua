@@ -323,6 +323,21 @@ function wplng_json_element_is_translatable( $element, $parents ) {
 			$is_translatable = true;
 
 		} elseif (
+			! empty( $parents[0] )
+			&& ( 'itemListElement' === $parents[0] )
+			&& ! empty( $parents[2] )
+			&& ( 'item' === $parents[2] )
+			&& ! empty( $parents[3] )
+			&& ( 'name' === $parents[3] )
+		) {
+
+			/**
+			 * Is schema BreadcrumbList
+			 */
+
+			 $is_translatable = true;
+
+		} elseif (
 			count( $parents ) == 3
 			&& ( 'elementorFrontendConfig' === $parents[0] )
 			&& ( 'i18n' === $parents[1] )
