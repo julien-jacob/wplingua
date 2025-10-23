@@ -32,6 +32,13 @@ function wplng_parse_html( $html ) {
 		);
 	}
 
+	foreach ( $dom->find( 'script[type="application/json"]' ) as $element ) {
+		$texts = array_merge(
+			$texts,
+			wplng_parse_json( $element->innertext )
+		);
+	}
+
 	/**
 	 * Parse JSON in attriutes
 	 */

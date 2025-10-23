@@ -28,6 +28,13 @@ function wplng_dom_translate_json( $dom, $args ) {
 		);
 	}
 
+	foreach ( $dom->find( 'script[type="application/json"]' ) as $element ) {
+		$element->innertext = wplng_translate_json(
+			$element->innertext,
+			$args
+		);
+	}
+
 	/**
 	 * Translate JSON in attributes
 	 */
