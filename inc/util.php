@@ -453,6 +453,29 @@ function wplng_json_element_is_translatable( $element, $parents ) {
 		) {
 
 			/**
+			 * Is WooCommerce product data (JSON in content, encoded as URL)
+			 * Name, description, image alt, image name, etc
+			 */
+
+			$is_translatable = true;
+
+		} elseif (
+			! empty( $parents[0] )
+			&& ( 'state' === $parents[0] )
+			&& ! empty( $parents[1] )
+			&& ( 'woocommerce' === $parents[1] )
+			&& ! empty( $parents[2] )
+			&& ( 'cart' === $parents[2] )
+			&& ! empty( $parents[3] )
+			&& ( 'items' === $parents[3] )
+			&& ! empty( $parents[5] )
+			&& ( 
+				'name' === $parents[5] 
+				|| 'short_description' === $parents[5] 
+			)
+		) {
+
+			/**
 			 * Is WooCommerce product data
 			 * Name, description, image alt, image name, etc
 			 */
