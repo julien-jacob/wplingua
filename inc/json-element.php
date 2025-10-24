@@ -39,21 +39,21 @@ function wplng_json_element_is_translatable( $element, $parents ) {
 
 		if (
 			! empty( $parents[0] )
-			&& ( '@graph' === $parents[0] )
-			&& ( count( $parents ) > 2 )
+			&& $parents[0] === '@graph'
+			&& count( $parents ) > 2
 			&& (
 				(
-					( 'author' === $parents[ count( $parents ) - 2 ] )
-					&& ( 'headline' === $parents[ count( $parents ) - 1 ] )
+					$parents[ count( $parents ) - 2 ] === 'author'
+					&& $parents[ count( $parents ) - 1 ] === 'headline'
 				)
 				|| (
-					( 'articleSection' === $parents[ count( $parents ) - 2 ] )
-					&& ( is_int( $parents[ count( $parents ) - 1 ] ) )
+					$parents[ count( $parents ) - 2 ] === 'articleSection'
+					&& is_int( $parents[ count( $parents ) - 1 ] )
 				)
-				|| ( 'caption' === $parents[ count( $parents ) - 1 ] )
-				|| ( 'name' === $parents[ count( $parents ) - 1 ] )
-				|| ( 'alternateName' === $parents[ count( $parents ) - 1 ] )
-				|| ( 'description' === $parents[ count( $parents ) - 1 ] )
+				|| $parents[ count( $parents ) - 1 ] === 'caption'
+				|| $parents[ count( $parents ) - 1 ] === 'name'
+				|| $parents[ count( $parents ) - 1 ] === 'alternateName'
+				|| $parents[ count( $parents ) - 1 ] === 'description'
 			)
 		) {
 
@@ -65,11 +65,11 @@ function wplng_json_element_is_translatable( $element, $parents ) {
 
 		} elseif (
 			! empty( $parents[0] )
-			&& ( 'itemListElement' === $parents[0] )
 			&& ! empty( $parents[2] )
-			&& ( 'item' === $parents[2] )
 			&& ! empty( $parents[3] )
-			&& ( 'name' === $parents[3] )
+			&& $parents[0] === 'itemListElement'
+			&& $parents[2] === 'item'
+			&& $parents[3] === 'name'
 		) {
 
 			/**
@@ -79,9 +79,9 @@ function wplng_json_element_is_translatable( $element, $parents ) {
 			 $is_translatable = true;
 
 		} elseif (
-			count( $parents ) == 3
-			&& ( 'elementorFrontendConfig' === $parents[0] )
-			&& ( 'i18n' === $parents[1] )
+			count( $parents ) === 3
+			&& $parents[0] === 'elementorFrontendConfig'
+			&& $parents[1] === 'i18n'
 		) {
 
 			/**
@@ -92,11 +92,11 @@ function wplng_json_element_is_translatable( $element, $parents ) {
 
 		} elseif (
 			! empty( $parents[0] )
-			&& ( 'wc_address_i18n_params' === $parents[0] )
-			&& ( count( $parents ) > 1 )
+			&& $parents[0] === 'wc_address_i18n_params'
+			&& count( $parents ) > 1
 			&& (
-				( 'placeholder' === $parents[ count( $parents ) - 1 ] )
-				|| ( 'label' === $parents[ count( $parents ) - 1 ] )
+				$parents[ count( $parents ) - 1 ] === 'placeholder'
+				|| $parents[ count( $parents ) - 1 ] === 'label'
 			)
 		) {
 
@@ -108,10 +108,10 @@ function wplng_json_element_is_translatable( $element, $parents ) {
 
 		} elseif (
 			! empty( $parents[0] )
-			&& ( 'EncodedAsURL' === $parents[0] )
 			&& ! empty( $parents[1] )
-			&& ( 'orderStatuses' === $parents[1] )
 			&& ! empty( $parents[2] )
+			&& $parents[0] === 'EncodedAsURL'
+			&& $parents[1] === 'orderStatuses'
 			&& is_string( $parents[2] )
 		) {
 
@@ -123,20 +123,20 @@ function wplng_json_element_is_translatable( $element, $parents ) {
 
 		} elseif (
 			! empty( $parents[0] )
-			&& ( 'EncodedAsURL' === $parents[0] )
 			&& ! empty( $parents[1] )
-			&& ( 'countryData' === $parents[1] )
 			&& ! empty( $parents[2] )
-			&& is_string( $parents[2] )
 			&& ! empty( $parents[3] )
-			&& ( 'locale' === $parents[3] )
 			&& ! empty( $parents[4] )
+			&& $parents[0] === 'EncodedAsURL'
+			&& $parents[1] === 'countryData'
+			&& is_string( $parents[2] )
+			&& $parents[3] === 'locale'
 			&& (
-				( 'state' === $parents[4] )
-				|| ( 'postcode' === $parents[4] )
+				 $parents[4] === 'state'
+				|| $parents[4] === 'postcode'
 			)
 			&& ! empty( $parents[5] )
-			&& ( 'label' === $parents[5] )
+			&& $parents[5] === 'label'
 		) {
 
 			/**
@@ -147,12 +147,12 @@ function wplng_json_element_is_translatable( $element, $parents ) {
 
 		} elseif (
 			! empty( $parents[0] )
-			&& ( 'EncodedAsURL' === $parents[0] )
 			&& ! empty( $parents[1] )
-			&& ( 'locale' === $parents[1] )
 			&& ! empty( $parents[2] )
-			&& ( 'weekdaysShort' === $parents[2] )
 			&& ! empty( $parents[3] )
+			&&  $parents[0] === 'EncodedAsURL'
+			&&  $parents[1] === 'locale'
+			&&  $parents[2] === 'weekdaysShort'
 			&& is_int( $parents[3] )
 		) {
 
@@ -164,28 +164,28 @@ function wplng_json_element_is_translatable( $element, $parents ) {
 
 		} elseif (
 			! empty( $parents[0] )
-			&& ( 'EncodedAsURL' === $parents[0] )
 			&& ! empty( $parents[1] )
-			&& is_string( $parents[1] )
 			&& ! empty( $parents[2] )
-			&& ( 'body' === $parents[2] )
 			&& ! empty( $parents[3] )
-			&& ( 'items' === $parents[3] )
 			&& ! empty( $parents[4] )
-			&& is_int( $parents[4] )
 			&& ! empty( $parents[5] )
+			&& $parents[0] === 'EncodedAsURL'
+			&& is_string( $parents[1] )
+			&&  $parents[2] === 'body'
+			&&  $parents[3] === 'items'
+			&& is_int( $parents[4] )
 			&& (
-				( 'name' === $parents[5] )
-				|| ( 'short_description' === $parents[5] )
-				|| ( 'description' === $parents[5] )
+				$parents[5] === 'name'
+				|| $parents[5] === 'short_description'
+				|| $parents[5] === 'description'
 				|| (
-					( 'images' === $parents[5] )
+					$parents[5] === 'images'
 					&& ! empty( $parents[6] )
 					&& is_int( $parents[6] )
 					&& ! empty( $parents[7] )
 					&& (
-						'alt' === $parents[7]
-						|| 'name' === $parents[7]
+						$parents[7] === 'alt'
+						|| $parents[7] === 'name'
 					)
 				)
 			)
@@ -200,17 +200,17 @@ function wplng_json_element_is_translatable( $element, $parents ) {
 
 		} elseif (
 			! empty( $parents[0] )
-			&& ( 'state' === $parents[0] )
 			&& ! empty( $parents[1] )
-			&& ( 'woocommerce' === $parents[1] )
 			&& ! empty( $parents[2] )
-			&& ( 'cart' === $parents[2] )
 			&& ! empty( $parents[3] )
-			&& ( 'items' === $parents[3] )
 			&& ! empty( $parents[5] )
+			&& $parents[0] === 'state'
+			&& $parents[1] === 'woocommerce'
+			&& $parents[2] === 'cart'
+			&& $parents[3] === 'items'
 			&& ( 
-				'name' === $parents[5] 
-				|| 'short_description' === $parents[5] 
+				$parents[5] === 'name'
+				|| $parents[5] === 'short_description'
 			)
 		) {
 
@@ -223,15 +223,15 @@ function wplng_json_element_is_translatable( $element, $parents ) {
 
 		} elseif (
 			! empty( $parents[0] )
-			&& ( 'EncodedAsURL' === $parents[0] )
 			&& ! empty( $parents[1] )
-			&& ( 'defaultFields' === $parents[1] )
 			&& ! empty( $parents[2] )
-			&& is_string( $parents[2] )
 			&& ! empty( $parents[3] )
+			&&  $parents[0] === 'EncodedAsURL'
+			&&  $parents[1] === 'defaultFields'
+			&& is_string( $parents[2] )
 			&& (
-				( 'label' === $parents[3] )
-				|| ( 'optionalLabel' === $parents[3] )
+				$parents[3] === 'label'
+				|| $parents[3] === 'optionalLabel'
 			)
 		) {
 
@@ -243,13 +243,13 @@ function wplng_json_element_is_translatable( $element, $parents ) {
 
 		} elseif (
 			! empty( $parents[0] )
-			&& ( 'EncodedAsURL' === $parents[0] )
 			&& ! empty( $parents[1] )
-			&& ( 'storePages' === $parents[1] )
 			&& ! empty( $parents[2] )
-			&& is_string( $parents[2] )
 			&& ! empty( $parents[3] )
-			&& ( 'title' === $parents[3] )
+			&& $parents[0] === 'EncodedAsURL'
+			&& $parents[1] === 'storePages'
+			&& is_string( $parents[2] )
+			&& $parents[3] === 'title'
 		) {
 
 			/**
@@ -260,12 +260,12 @@ function wplng_json_element_is_translatable( $element, $parents ) {
 
 		} elseif (
 			! empty( $parents[0] )
-			&& is_string( $parents[0] )
 			&& ! empty( $parents[1] )
-			&& ( 'locale_data' === $parents[1] )
 			&& ! empty( $parents[2] )
-			&& ( 'messages' === $parents[2] )
 			&& ! empty( $parents[3] )
+			&& is_string( $parents[0] )
+			&& $parents[1] === 'locale_data'
+			&& $parents[2] === 'messages'
 			&& is_string( $parents[3] )
 			&& isset( $parents[4] )
 			&& is_int( $parents[4] )
@@ -279,10 +279,10 @@ function wplng_json_element_is_translatable( $element, $parents ) {
 
 		} elseif (
 			! empty( $parents[0] )
-			&& ( 'wc_country_select_params' === $parents[0] )
 			&& ! empty( $parents[1] )
-			&& ( 'countries' === $parents[1] )
-			&& ( count( $parents ) === 4 )
+			&& $parents[0] === 'wc_country_select_params'
+			&& $parents[1] === 'countries'
+			&& count( $parents ) === 4
 		) {
 
 			/**
@@ -293,10 +293,10 @@ function wplng_json_element_is_translatable( $element, $parents ) {
 
 		} elseif (
 			! empty( $parents[0] )
-			&& wplng_str_starts_with( $parents[0], 'CASE' )
 			&& ! empty( $parents[1] )
-			&& 'l10n' === $parents[1]
 			&& ! empty( $parents[2] )
+			&& wplng_str_starts_with( $parents[0], 'CASE' )
+			&& $parents[1] === 'l10n'
 			&& (
 				$parents[2] === 'selectOption'
 				|| $parents[2] === 'errorLoading'
@@ -338,13 +338,13 @@ function wplng_json_element_is_translatable( $element, $parents ) {
 
 		} elseif (
 			! empty( $parents[0] )
-			&& ( 'children' === $parents[0] )
 			&& ! empty( $parents[1] )
-			&& ( wplng_str_starts_with( $parents[1], 'term_' ) )
 			&& ! empty( $parents[2] )
+			&& $parents[0] === 'children'
+			&& wplng_str_starts_with( $parents[1], 'term_' )
 			&& (
-				( 'name' === $parents[2] )
-				|| ( 'description' === $parents[2] )
+				$parents[2] === 'name'
+				|| $parents[2] === 'description'
 			)
 		) {
 
@@ -354,7 +354,7 @@ function wplng_json_element_is_translatable( $element, $parents ) {
 
 			$is_translatable = true;
 
-		} elseif ( 'label' === $parents[ count( $parents ) - 1 ] ) {
+		} elseif ( $parents[ count( $parents ) - 1 ] === 'label' ) {
 			$is_translatable = true;
 		}
 
