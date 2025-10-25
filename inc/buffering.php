@@ -239,7 +239,7 @@ function wplng_ob_callback_sitemap_xml( $content ) {
 	
 	// Check XML errors
 	if ( ! $dom->loadXML( $content ) ) {
-		if ( defined( 'WPLNG_DEBUG_JSON' ) && true === WPLNG_DEBUG_JSON ) {
+		if ( defined( 'WPLNG_DEBUG_XML' ) && true === WPLNG_DEBUG_XML ) {
 			$errors = array();
 
 			foreach ( libxml_get_errors() as $error ) {
