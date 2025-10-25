@@ -443,7 +443,7 @@ function wplng_ob_callback_wp_json( $output ) {
 	}
 
 	// Print debug data in debug.log file
-	if ( true === WPLNG_LOG_REST_DEBUG ) {
+	if ( true === WPLNG_DEBUG_REST ) {
 
 		$debug = array(
 			'title'       => 'wpLingua /wp-json/ debug',
