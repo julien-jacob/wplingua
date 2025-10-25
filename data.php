@@ -131,9 +131,9 @@ function wplng_data_excluded_node_text() {
  *
  * @return array
  */
-function wplng_data_json_to_translate() {
+function wplng_data_included_json_element() {
 	return apply_filters(
-		'wplng_json_to_translate',
+		'wplng_included_json_element',
 		array(
 			// Theme: Divi
 			array( 'DIVI', 'item_count' ),
@@ -267,9 +267,9 @@ function wplng_data_json_to_translate() {
  *
  * @return array
  */
-function wplng_data_excluded_json() {
+function wplng_data_excluded_json_element() {
 	return apply_filters(
-		'wplng_excluded_json',
+		'wplng_excluded_json_element',
 		array(
 			// wpLingua: Ajax edit modal
 			array( 'data', 'wplng_edit_html' ),

@@ -41,7 +41,7 @@ function wplng_parse_json( $json, $parents = array() ) {
 function wplng_parse_json_array( $json_decoded, $parents = array() ) {
 
 	$texts         = array();
-	$json_excluded = wplng_data_excluded_json();
+	$json_excluded = wplng_data_excluded_json_element();
 
 	/**
 	 * Don't parse JSON if it's exclude

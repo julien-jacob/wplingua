@@ -75,7 +75,7 @@ function wplng_translate_json( $json, $args = array() ) {
 function wplng_translate_json_array( $json_decoded, $args = array() ) {
 
 	$array_translated = $json_decoded;
-	$json_excluded    = wplng_data_excluded_json();
+	$json_excluded    = wplng_data_excluded_json_element();
 
 	/**
 	 * Update args
@@ -263,12 +263,7 @@ function wplng_translate_json_array( $json_decoded, $args = array() ) {
 					$debug['translated'] = $array_translated[ $key ];
 				}
 
-				error_log(
-					var_export(
-						$debug,
-						true
-					)
-				);
+				error_log( var_export( $debug, true ) );
 			}
 		}
 	}

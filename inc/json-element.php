@@ -16,8 +16,8 @@ if ( ! defined( 'WPINC' ) ) {
 function wplng_json_element_is_translatable( $element, $parents ) {
 
 	$is_translatable   = false;
-	$json_excluded     = wplng_data_excluded_json();
-	$json_to_translate = wplng_data_json_to_translate();
+	$json_excluded     = wplng_data_excluded_json_element();
+	$json_included = wplng_data_included_json_element();
 
 	if ( in_array( $parents, $json_excluded ) ) {
 
@@ -27,7 +27,7 @@ function wplng_json_element_is_translatable( $element, $parents ) {
 
 		$is_translatable = false;
 
-	} elseif ( in_array( $parents, $json_to_translate ) ) {
+	} elseif ( in_array( $parents, $json_included ) ) {
 
 		/**
 		 * Is an included JSON
