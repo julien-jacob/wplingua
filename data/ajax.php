@@ -5,6 +5,7 @@ if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
+
 /**
  * Get AJAX action to exclude from translation
  *

@@ -280,7 +280,7 @@ function wplng_data_json_rules_inclusion() {
 					)
 				)
 			)
-					);
+		);
 	};
 
 	/**
