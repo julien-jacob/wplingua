@@ -9,8 +9,13 @@ if ( ! defined( 'WPINC' ) ) {
  * Require all wpLingua PHP files
  */
 
-// Require data functions
-require_once WPLNG_PLUGIN_PATH . '/data.php';
+// Require files in /data/ folder
+require_once WPLNG_PLUGIN_PATH . '/data/ajax.php';
+require_once WPLNG_PLUGIN_PATH . '/data/attribute.php';
+require_once WPLNG_PLUGIN_PATH . '/data/json.php';
+require_once WPLNG_PLUGIN_PATH . '/data/language.php';
+require_once WPLNG_PLUGIN_PATH . '/data/node.php';
+require_once WPLNG_PLUGIN_PATH . '/data/switcher.php';
 
 // Require files in /inc/ folder
 require_once WPLNG_PLUGIN_PATH . '/inc/api-key.php';
