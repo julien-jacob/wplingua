@@ -233,18 +233,6 @@ function wplng_str_is_xml( $string ) {
 
 
 /**
- * Return true is $str is a JSON
- *
- * @param string $str
- * @return string
- */
-function wplng_str_is_json( $str ) {
-	$decoded = json_decode( $str, true );
-	return ( json_last_error() === JSON_ERROR_NONE ) && is_array( $decoded );
-}
-
-
-/**
  * Return true if $str is a local ID
  * Ex: fr_FR, fr, FR, ...
  *
@@ -264,6 +252,62 @@ function wplng_str_is_locale_id( $str ) {
 	);
 
 	return in_array( $str, $locales );
+}
+
+
+/**
+ * Return true is $str is a JSON
+ *
+ * @param string $str
+ * @return string
+ */
+function wplng_str_is_json( $str ) {
+	$decoded = json_decode( $str, true );
+	return ( json_last_error() === JSON_ERROR_NONE ) && is_array( $decoded );
+}
+
+
+/**
+ * Checks if a JSON element should be excluded based on defined exclusion rules.
+ *
+ * @param mixed $element The JSON element to check.
+ * @param array $parents The parent elements of the JSON element.
+ *
+ * @return bool True if the element matches any exclusion rule, false otherwise.
+ */
+function wplng_json_element_is_excluded( $element, $parents ) {
+
+	$rules = wplng_data_json_rules_exclusion();
+
+	foreach ( $rules as $rule ) {
+		if ( $rule( $element, $parents ) === true ) {
+			return true;
+		}
+	}
+
+	return false;
+}
+
+
+/**
+ * Checks if a JSON element should be included based on defined inclusion rules.
+ *
+ * @param mixed $element The JSON element to check.
+ * @param array $parents The parent elements of the JSON element.
+ *
+ * @return bool True if the element matches any inclusion rule, false otherwise.
+ */
+function wplng_json_element_is_included( $element, $parents ) {
+
+	$rules = wplng_data_json_rules_inclusion();
+
+	foreach ( $rules as $rule ) {
+		if ( $rule( $element, $parents ) === true ) {
+			return true;
+		}
+	}
+
+	return false;
 }
 
 
