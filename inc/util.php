@@ -199,7 +199,9 @@ function wplng_text_esc_displayed( $text ) {
  * @return string
  */
 function wplng_str_is_html( $str ) {
-	return $str !== wp_strip_all_tags( $str );
+	return wplng_str_contains( $str, '<' )
+		&& wplng_str_contains( $str, '>' )
+		&& ( $str !== wp_strip_all_tags( $str ) );
 }
 
 
