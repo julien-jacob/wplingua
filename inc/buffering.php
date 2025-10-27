@@ -106,11 +106,20 @@ function wplng_ob_start() {
 		}
 
 		ob_start( 'wplng_ob_callback_ajax' );
+
 	} elseif ( wp_is_json_request() ) {
+
+		/**
+		 * Is a REST API call
+		 */
+
 		ob_start( 'wplng_ob_callback_wp_json' );
 
-
 	} elseif ( wplng_url_is_sitemap_xml() ) {
+
+		/**
+		 * Is an XML sitemap
+		 */
 
 		ob_start( 'wplng_ob_callback_sitemap_xml' );
 
@@ -164,7 +173,9 @@ function wplng_ob_callback_ajax( $output ) {
 		$output_translated = wplng_translate_html( $output );
 
 	} else {
+
 		$output_translated = $output;
+
 	}
 
 	// Print debug data in debug.log file
@@ -235,8 +246,8 @@ function wplng_ob_callback_sitemap_xml( $content ) {
 	$dom->formatOutput       = true;
 
 	// Enable internal error handling
-	$previous_libxml_setting = libxml_use_internal_errors( true ); 
-	
+	$previous_libxml_setting = libxml_use_internal_errors( true );
+
 	// Check XML errors
 	if ( ! $dom->loadXML( $content ) ) {
 		if ( defined( 'WPLNG_DEBUG_XML' ) && true === WPLNG_DEBUG_XML ) {
@@ -260,7 +271,7 @@ function wplng_ob_callback_sitemap_xml( $content ) {
 	}
 
 	// Restore previous setting
-	libxml_use_internal_errors( $previous_libxml_setting ); 
+	libxml_use_internal_errors( $previous_libxml_setting );
 
 	$signature = '<!-- XML Sitemap is made multilingual by wpLingua -->' . PHP_EOL;
 
@@ -310,14 +321,14 @@ function wplng_ob_callback_sitemap_xml( $content ) {
 		// Add links for target languages.
 		foreach ( $languages_target_ids as $language_id ) {
 
-			$translated_url = wplng_url_translate( 
-				$url_original, 
-				$language_id 
+			$translated_url = wplng_url_translate(
+				$url_original,
+				$language_id
 			);
 
 			// Validate the translated URL.
-			if ( empty( $translated_url ) 
-				|| ! filter_var( $translated_url, FILTER_VALIDATE_URL ) 
+			if ( empty( $translated_url )
+				|| ! filter_var( $translated_url, FILTER_VALIDATE_URL )
 			) {
 				continue;
 			}

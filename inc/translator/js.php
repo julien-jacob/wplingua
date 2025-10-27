@@ -77,42 +77,45 @@ function wplng_translate_js( $js, $args = array() ) {
 	 * Translate i18n JSON
 	 */
 
-	$json = array();
+	if ( wplng_str_contains( $js, 'translations.locale_data.messages' ) ) {
+		
+		$json = array();
 
-	preg_match_all(
-		'#\(\s?["|\'](.*)["|\'],\s?(.*)\s?\);#Ui',
-		$js,
-		$json
-	);
+		preg_match_all(
+			'#\(\s?["|\'](.*)["|\'],\s?(.*)\s?\);#Ui',
+			$js,
+			$json
+		);
 
-	if ( ! empty( $json[1] ) && is_array( $json[1] ) ) {
-		foreach ( $json[1] as $key => $var_name ) {
+		if ( ! empty( $json[1] ) && is_array( $json[1] ) ) {
+			foreach ( $json[1] as $key => $var_name ) {
 
-			$var_name = trim( $var_name );
+				$var_name = trim( $var_name );
 
-			if ( empty( $var_name ) || empty( $json[2][ $key ] ) ) {
-				continue;
-			}
+				if ( empty( $var_name ) || empty( $json[2][ $key ] ) ) {
+					continue;
+				}
 
-			$var_json = trim( $json[2][ $key ] );
+				$var_json = trim( $json[2][ $key ] );
 
-			// Prepare arguments for translation
-			wplng_args_setup( $args );
-			$args['parents'] = array( $var_name );
+				// Prepare arguments for translation
+				wplng_args_setup( $args );
+				$args['parents'] = array( $var_name );
 
-			// Translate the JSON string
-			$json_translated = wplng_translate_json(
-				$var_json,
-				$args
-			);
-
-			// Replace the original JSON with the translated version if different
-			if ( $var_json != $json_translated ) {
-				$js = str_replace(
+				// Translate the JSON string
+				$json_translated = wplng_translate_json(
 					$var_json,
-					$json_translated,
-					$js
+					$args
 				);
+
+				// Replace the original JSON with the translated version if different
+				if ( $var_json != $json_translated ) {
+					$js = str_replace(
+						$var_json,
+						$json_translated,
+						$js
+					);
+				}
 			}
 		}
 	}

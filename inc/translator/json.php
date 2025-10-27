@@ -231,20 +231,20 @@ function wplng_translate_json_array( $json_decoded, $args = array() ) {
 				if ( ! wplng_text_is_translatable( $value ) ) {
 
 					$debug_type = 'String - Untranslatable';
-					continue;
 
 				} elseif ( ! wplng_json_element_is_included( $value, $current_parents ) ) {
 
 					$debug_type = 'String - Not included';
-					continue;
 
+				} else {
+
+					$debug_type               = 'String - Translatable';
+					$array_translated[ $key ] = wplng_get_translated_text_from_translations(
+						$value,
+						$args['translations']
+					);
+					
 				}
-
-				$debug_type               = 'String - Translatable';
-				$array_translated[ $key ] = wplng_get_translated_text_from_translations(
-					$value,
-					$args['translations']
-				);
 
 			}
 

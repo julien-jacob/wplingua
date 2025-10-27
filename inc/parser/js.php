@@ -61,33 +61,36 @@ function wplng_parse_js( $js ) {
 	 * Translate i18n JSON
 	 */
 
-	$json = array();
+	if ( wplng_str_contains( $js, 'translations.locale_data.messages' ) ) {
 
-	preg_match_all(
-		'#\(\s?["|\'](.*)["|\'],\s?(.*)\s?\);#Ui',
-		$js,
-		$json
-	);
+		$json = array();
 
-	if ( ! empty( $json[1] ) && is_array( $json[1] ) ) {
-		foreach ( $json[1] as $key => $var_name ) {
+		preg_match_all(
+			'#\(\s?["|\'](.*)["|\'],\s?(.*)\s?\);#Ui',
+			$js,
+			$json
+		);
 
-			$var_name = trim( $var_name );
+		if ( ! empty( $json[1] ) && is_array( $json[1] ) ) {
+			foreach ( $json[1] as $key => $var_name ) {
 
-			if ( empty( $var_name ) || empty( $json[2][ $key ] ) ) {
-				continue;
+				$var_name = trim( $var_name );
+
+				if ( empty( $var_name ) || empty( $json[2][ $key ] ) ) {
+					continue;
+				}
+
+				$var_json = trim( $json[2][ $key ] );
+
+				$texts = array_merge(
+					$texts,
+					wplng_parse_json(
+						$var_json,
+						array( $var_name )
+					)
+				);
+
 			}
-
-			$var_json = trim( $json[2][ $key ] );
-
-			$texts = array_merge(
-				$texts,
-				wplng_parse_json(
-					$var_json,
-					array( $var_name )
-				)
-			);
-
 		}
 	}
 
@@ -104,6 +107,7 @@ function wplng_parse_js( $js ) {
 	);
 
 	if ( ! empty( $json[1] ) && is_array( $json[1] ) ) {
+
 		foreach ( $json[1] as $key => $encoded_json ) {
 
 			$var_json = urldecode( $encoded_json );
