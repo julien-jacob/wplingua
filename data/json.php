@@ -64,13 +64,36 @@ function wplng_data_json_rules_inclusion() {
 	$logical_rules = array();
 
 	// ------------------------------------------------------------------------
-	// Some case tagged as label
+	// Global methods
 	// ------------------------------------------------------------------------
+
+	/**
+	 * Some case tagged as label
+	 */
 
 	$logical_rules[] = function ( $element, $parents ) {
 		return (
 			! empty( $parents[ count( $parents ) - 1 ] )
 			&& $parents[ count( $parents ) - 1 ] === 'label'
+		);
+	};
+
+	/**
+	 * i18n scripts
+	 */
+	 
+	 $logical_rules[] = function ( $element, $parents ) {
+		return (
+			! empty( $parents[0] )
+			&& ! empty( $parents[1] )
+			&& ! empty( $parents[2] )
+			&& ! empty( $parents[3] )
+			&& is_string( $parents[0] )
+			&& $parents[1] === 'locale_data'
+			&& $parents[2] === 'messages'
+			&& is_string( $parents[3] )
+			&& isset( $parents[4] )
+			&& is_int( $parents[4] )
 		);
 	};
 
@@ -341,25 +364,6 @@ function wplng_data_json_rules_inclusion() {
 			&& $parents[1] === 'storePages'
 			&& is_string( $parents[2] )
 			&& $parents[3] === 'title'
-		);
-	};
-
-	/**
-	 * Plugin: WooCommerce - i18n scripts
-	 */
-
-	$logical_rules[] = function ( $element, $parents ) {
-		return (
-			! empty( $parents[0] )
-			&& ! empty( $parents[1] )
-			&& ! empty( $parents[2] )
-			&& ! empty( $parents[3] )
-			&& is_string( $parents[0] )
-			&& $parents[1] === 'locale_data'
-			&& $parents[2] === 'messages'
-			&& is_string( $parents[3] )
-			&& isset( $parents[4] )
-			&& is_int( $parents[4] )
 		);
 	};
 
