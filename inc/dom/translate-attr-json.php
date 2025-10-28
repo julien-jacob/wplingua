@@ -30,6 +30,10 @@ function wplng_dom_translate_json_attr( $dom, $args ) {
 				continue;
 			}
 
+			// Prepare arguments for translation
+			wplng_args_setup( $args );
+			$args['parents'] = array( $attr['attr'] );
+
 			$translated_json = wplng_translate_json(
 				wp_specialchars_decode(
 					$element->attr[ $attr['attr'] ],
