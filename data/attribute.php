@@ -36,6 +36,10 @@ function wplng_data_attr_json_to_translate() {
 				'attr'     => 'data-wc-context',
 				'selector' => '[data-wc-context]',
 			),
+			array(
+				'attr'     => 'data-wp-context',
+				'selector' => '[data-wp-context]',
+			),
 		)
 	);
 }
