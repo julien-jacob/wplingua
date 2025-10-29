@@ -202,7 +202,25 @@ function wplng_data_json_rules_inclusion() {
 				array( 'data-wp-context', 'addToCartText' ),
 				array( 'data-wp-context', 'inTheCartText' ),
 				array( 'data-wp-context', 'inTheCartText' ),
+
+				// Product rating
+				array( 'wc_single_product_params', 'i18n_required_rating_text' ),
 			)
+		);
+	};
+
+	/**
+	 * Plugin: WooCommerce - Product rating
+	 */
+
+	 $logical_rules[] = function ( $element, $parents ) {
+		return (
+			isset( $parents[0] )
+			&& isset( $parents[1] )
+			&& isset( $parents[2] )
+			&& $parents[0] === 'wc_single_product_params'
+			&& $parents[1] === 'i18n_rating_options'
+			&& is_int($parents[2])
 		);
 	};
 
