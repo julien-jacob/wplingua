@@ -149,8 +149,8 @@ function wplng_text_is_translatable( $text ) {
 /**
  * Escape texte (used for comparison)
  *
- * @param string $text
- * @return string
+ * @param string $text String to escape
+ * @return string Escape texte for comparison
  */
 function wplng_text_esc( $text ) {
 
@@ -174,8 +174,8 @@ function wplng_text_esc( $text ) {
 /**
  * Escape texte (used for editor)
  *
- * @param string $text
- * @return string
+ * @param string $text String to escape
+ * @return string Escape texte for editor
  */
 function wplng_text_esc_displayed( $text ) {
 
@@ -195,8 +195,8 @@ function wplng_text_esc_displayed( $text ) {
 /**
  * Return true if $str is HTML
  *
- * @param string $str
- * @return string
+ * @param string $str String to check
+ * @return bool true if $str is HTML
  */
 function wplng_str_is_html( $str ) {
 	return wplng_str_contains( $str, '<' )
@@ -208,12 +208,12 @@ function wplng_str_is_html( $str ) {
 /**
  * Checks whether a string is a valid XML.
  *
- * @param string $string The string to validate.
+ * @param string $str The string to validate.
  * @return bool Returns true if the string is valid XML, false otherwise.
  */
-function wplng_str_is_xml( $string ) {
+function wplng_str_is_xml( $str ) {
 	// Return false if the input is empty or not a string.
-	if ( empty( $string ) || ! is_string( $string ) ) {
+	if ( empty( $str ) || ! is_string( $str ) ) {
 		return false;
 	}
 
@@ -221,7 +221,7 @@ function wplng_str_is_xml( $string ) {
 	libxml_use_internal_errors( true );
 
 	// Try to load the string as XML.
-	$xml = simplexml_load_string( $string );
+	$xml = simplexml_load_string( $str );
 
 	// Determine if parsing was successful.
 	$is_valid_xml = ( $xml !== false );
@@ -238,8 +238,8 @@ function wplng_str_is_xml( $string ) {
  * Return true if $str is a local ID
  * Ex: fr_FR, fr, FR, ...
  *
- * @param string $str
- * @return bool
+ * @param string $str String to check
+ * @return bool true if $str is a local ID
  */
 function wplng_str_is_locale_id( $str ) {
 
@@ -258,10 +258,29 @@ function wplng_str_is_locale_id( $str ) {
 
 
 /**
+ * Return true if $str contains sub-strings present in the i18n script
+ *
+ * @param string $str String to check
+ * @return bool String is a i18n script
+ */
+function wplng_str_is_script_i18n( $str ) {
+
+	$str = trim( $str );
+
+	return wplng_str_contains( $str, 'wp.i18n.setLocaleData' )
+		&& wplng_str_contains( $str, 'translations.locale_data.messages' )
+		// Check if $str ends with ");"
+		&& wplng_str_ends_with( $str, ');' )
+		// Check if $str starts with "( function( domain, translations ) {"
+		&& ( preg_match( '#^\(\s*function\s*\(\s*domain\s*,\s*translations\s*\)\s*\{#', $str ) === 1 );
+}
+
+
+/**
  * Return true is $str is a JSON
  *
- * @param string $str
- * @return string
+ * @param string $str String to check
+ * @return bool true is $str is a JSON
  */
 function wplng_str_is_json( $str ) {
 	$decoded = json_decode( $str, true );

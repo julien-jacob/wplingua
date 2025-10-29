@@ -205,6 +205,8 @@ function wplng_translate_json_array( $json_decoded, $args = array() ) {
 				 * If element is a HTML, parse and translate it
 				 */
 
+				 // TODO : Check for parse here ?
+
 				$debug_type               = 'String - HTML';
 				$array_translated[ $key ] = wplng_translate_html(
 					$value,
@@ -219,6 +221,16 @@ function wplng_translate_json_array( $json_decoded, $args = array() ) {
 
 				$debug_type               = 'String - URL';
 				$array_translated[ $key ] = wplng_url_translate( $value );
+
+			} elseif ( wplng_str_is_script_i18n( $value ) ) {
+
+				/**
+				 * If element is a i18n script, replace by translated script
+				 */
+
+				// Voluntarily don't pass $current_parents
+				$debug_type               = 'String - Script i18n';
+				$array_translated[ $key ] = wplng_translate_js_json_in_i18n_script( $value );
 
 			} else {
 

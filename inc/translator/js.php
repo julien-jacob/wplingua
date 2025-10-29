@@ -28,21 +28,27 @@ function wplng_translate_js( $js, $args = array() ) {
 	}
 
 	$js = wplng_translate_js_json_in_var( $js, $args );
-	$js = wplng_translate_js_json_in_i18n_script( $js, $args );
 	$js = wplng_translate_js_json_encoded_as_url( $js, $args );
+
+	if ( wplng_str_is_script_i18n( $js ) ) {
+		$js = wplng_translate_js_json_in_i18n_script( $js, $args );
+	}
 
 	return $js;  // Return the translated JavaScript
 }
 
 
+/**
+ * Translate JSON contained in 'var', 'let' or 'window._'
+ *
+ * @param string $js The JavaScript code to translate.
+ * @param array  $args Additional arguments for translation processing.
+ * @return string The translated JavaScript code.
+ */
 function wplng_translate_js_json_in_var( $js, $args = array() ) {
 
 	// Array to hold matched JSON objects
 	$json = array();
-
-	/**
-	 * Get the first 'var', 'let' or 'window._' declaration
-	 */
 
 	preg_match_all(
 		'#(var\s|let\s|window\._)([A-Za-z0-9_]+)\s?=\s?(\{(?:[^{}"\'\\\\]+|"(?:\\\\.|[^"\\\\])*"|\'(?:\\\\.|[^\'\\\\])*\'|(?3))*\}|\[(?:[^\[\]"\'\\\\]+|"(?:\\\\.|[^"\\\\])*"|\'(?:\\\\.|[^\'\\\\])*\'|(?3))*\])\s*;#Us',
@@ -87,51 +93,54 @@ function wplng_translate_js_json_in_var( $js, $args = array() ) {
 }
 
 
+/**
+ * Translate JSON in i18n script
+ *
+ * You can use wplng_parse_js_json_in_i18n_script( $js )
+ * to check if the string is a i18n script
+ *
+ * @param string $js The JavaScript code to translate.
+ * @param array  $args Additional arguments for translation processing.
+ * @return string The translated JavaScript code.
+ */
 function wplng_translate_js_json_in_i18n_script( $js, $args = array() ) {
 
-	/**
-	 * Translate i18n JSON
-	 */
+	$json = array();
 
-	if ( wplng_str_contains( $js, 'translations.locale_data.messages' ) ) {
+	preg_match_all(
+		'#\(\s?["|\'](.*)["|\'],\s?(.*)\s?\);#Ui',
+		$js,
+		$json
+	);
 
-		$json = array();
+	if ( ! empty( $json[1] ) && is_array( $json[1] ) ) {
+		foreach ( $json[1] as $key => $var_name ) {
 
-		preg_match_all(
-			'#\(\s?["|\'](.*)["|\'],\s?(.*)\s?\);#Ui',
-			$js,
-			$json
-		);
+			$var_name = trim( $var_name );
 
-		if ( ! empty( $json[1] ) && is_array( $json[1] ) ) {
-			foreach ( $json[1] as $key => $var_name ) {
+			if ( empty( $var_name ) || empty( $json[2][ $key ] ) ) {
+				continue;
+			}
 
-				$var_name = trim( $var_name );
+			$var_json = trim( $json[2][ $key ] );
 
-				if ( empty( $var_name ) || empty( $json[2][ $key ] ) ) {
-					continue;
-				}
+			// Prepare arguments for translation
+			wplng_args_setup( $args );
+			$args['parents'] = array( $var_name );
 
-				$var_json = trim( $json[2][ $key ] );
+			// Translate the JSON string
+			$json_translated = wplng_translate_json(
+				$var_json,
+				$args
+			);
 
-				// Prepare arguments for translation
-				wplng_args_setup( $args );
-				$args['parents'] = array( $var_name );
-
-				// Translate the JSON string
-				$json_translated = wplng_translate_json(
+			// Replace the original JSON with the translated version if different
+			if ( $var_json != $json_translated ) {
+				$js = str_replace(
 					$var_json,
-					$args
+					$json_translated,
+					$js
 				);
-
-				// Replace the original JSON with the translated version if different
-				if ( $var_json != $json_translated ) {
-					$js = str_replace(
-						$var_json,
-						$json_translated,
-						$js
-					);
-				}
 			}
 		}
 	}
@@ -140,11 +149,14 @@ function wplng_translate_js_json_in_i18n_script( $js, $args = array() ) {
 }
 
 
+/**
+ * Translate JSON encoded as URL
+ *
+ * @param string $js The JavaScript code to translate.
+ * @param array  $args Additional arguments for translation processing.
+ * @return string The translated JavaScript code.
+ */
 function wplng_translate_js_json_encoded_as_url( $js, $args = array() ) {
-
-	/**
-	 * URL encoded JSON
-	 */
 
 	$json = array();
 

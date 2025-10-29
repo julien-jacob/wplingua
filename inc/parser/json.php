@@ -116,6 +116,18 @@ function wplng_parse_json_array( $json_decoded, $parents = array() ) {
 					wplng_parse_json( $value, $current_parents )
 				);
 
+			} elseif ( wplng_str_is_script_i18n( $value ) ) {
+
+				/**
+				 * If element is a i18n JSON, parse it
+				 */
+
+				// Voluntarily don't pass $current_parents
+				$texts = array_merge(
+					$texts,
+					wplng_parse_js_json_in_i18n_script( $value )
+				);
+
 			} else {
 
 				/**
