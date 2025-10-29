@@ -193,6 +193,15 @@ function wplng_data_json_rules_inclusion() {
 				array( 'wc_address_i18n_params', 'locale', 'locale_fields', 'i18n_optional_text' ),
 				array( 'woocommerce_params', 'i18n_password_show' ),
 				array( 'woocommerce_params', 'i18n_password_hide' ),
+
+				// JSON in attribute data-"wp-context"
+				array( 'data-wp-context', 'addToCartText' ),
+				array( 'data-wp-context', 'ariaLabel' ),
+				array( 'data-wp-context', 'ariaLabelPrevious' ),
+				array( 'data-wp-context', 'ariaLabelNext' ),
+				array( 'data-wp-context', 'addToCartText' ),
+				array( 'data-wp-context', 'inTheCartText' ),
+				array( 'data-wp-context', 'inTheCartText' ),
 			)
 		);
 	};
