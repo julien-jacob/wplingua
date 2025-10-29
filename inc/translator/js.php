@@ -27,6 +27,16 @@ function wplng_translate_js( $js, $args = array() ) {
 		return $js;
 	}
 
+	$js = wplng_translate_js_json_in_var( $js, $args );
+	$js = wplng_translate_js_json_in_i18n_script( $js, $args );
+	$js = wplng_translate_js_json_encoded_as_url( $js, $args );
+
+	return $js;  // Return the translated JavaScript
+}
+
+
+function wplng_translate_js_json_in_var( $js, $args = array() ) {
+
 	// Array to hold matched JSON objects
 	$json = array();
 
@@ -73,12 +83,18 @@ function wplng_translate_js( $js, $args = array() ) {
 		}
 	}
 
+	return $js;  // Return the translated JavaScript
+}
+
+
+function wplng_translate_js_json_in_i18n_script( $js, $args = array() ) {
+
 	/**
 	 * Translate i18n JSON
 	 */
 
 	if ( wplng_str_contains( $js, 'translations.locale_data.messages' ) ) {
-		
+
 		$json = array();
 
 		preg_match_all(
@@ -119,6 +135,12 @@ function wplng_translate_js( $js, $args = array() ) {
 			}
 		}
 	}
+
+	return $js;  // Return the translated JavaScript
+}
+
+
+function wplng_translate_js_json_encoded_as_url( $js, $args = array() ) {
 
 	/**
 	 * URL encoded JSON

@@ -14,16 +14,29 @@ if ( ! defined( 'WPINC' ) ) {
  */
 function wplng_parse_js( $js ) {
 
-	$texts = array();
-	$json  = array();
-	$js    = trim( $js );
+	$js = trim( $js );
 
 	// Check if $JS is empty or is wp emoji script
-	if ( '' === trim( $js )
+	if ( '' === $js
 		|| wplng_str_contains( $js, '_wpemojiSettings' )
 	) {
 		return array();
 	}
+
+	$texts = array_merge(
+		wplng_parse_js_json_in_var( $js ),
+		wplng_parse_js_json_in_i18n_script( $js ),
+		wplng_parse_js_json_encoded_as_url( $js ),
+	);
+
+	return $texts;
+}
+
+
+function wplng_parse_js_json_in_var( $js ) {
+
+	$texts = array();
+	$json  = array();
 
 	/**
 	 * Get the first 'var', 'let' or 'window._' declaration
@@ -57,13 +70,20 @@ function wplng_parse_js( $js ) {
 		}
 	}
 
+	return $texts;
+}
+
+
+function wplng_parse_js_json_in_i18n_script( $js ) {
+
+	$texts = array();
+	$json  = array();
+
 	/**
 	 * Translate i18n JSON
 	 */
 
 	if ( wplng_str_contains( $js, 'translations.locale_data.messages' ) ) {
-
-		$json = array();
 
 		preg_match_all(
 			'#\(\s?["|\'](.*)["|\'],\s?(.*)\s?\);#Ui',
@@ -94,11 +114,18 @@ function wplng_parse_js( $js ) {
 		}
 	}
 
+	return $texts;
+}
+
+
+function wplng_parse_js_json_encoded_as_url( $js ) {
+
+	$texts = array();
+	$json  = array();
+
 	/**
 	 * URL encoded JSON
 	 */
-
-	$json = array();
 
 	preg_match_all(
 		'#JSON\.parse\(\sdecodeURIComponent\(\s\'(.*)\'\s\)\s\)#Ui',
