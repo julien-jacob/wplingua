@@ -113,6 +113,26 @@ function wplng_ob_start() {
 		 * Is a REST API call
 		 */
 
+		if ( empty( $_SERVER['HTTP_REFERER'] ) ) {
+			return;
+		}
+
+		$referer = sanitize_url( $_SERVER['HTTP_REFERER'] );
+
+		// Check if the referer is clean
+		if ( strtolower( esc_url_raw( $referer ) ) !== strtolower( $referer ) ) {
+			return;
+		}
+
+		global $wplng_request_uri;
+		$wplng_request_uri = wp_make_link_relative( $referer );
+
+		if ( ! wplng_url_is_translatable( $wplng_request_uri )
+			|| wplng_get_language_website_id() === wplng_get_language_current_id()
+		) {
+			return;
+		}
+
 		ob_start( 'wplng_ob_callback_wp_json' );
 
 	} elseif ( wplng_url_is_sitemap_xml() ) {
@@ -427,25 +447,7 @@ function wplng_ob_callback_page( $content ) {
  */
 function wplng_ob_callback_wp_json( $output ) {
 
-	if ( empty( $_SERVER['HTTP_REFERER'] ) ) {
-		return $output;
-	}
-
-	$referer = sanitize_url( $_SERVER['HTTP_REFERER'] );
-
-	// Check if the referer is clean
-	if ( strtolower( esc_url_raw( $referer ) ) !== strtolower( $referer ) ) {
-		return $output;
-	}
-
 	global $wplng_request_uri;
-	$wplng_request_uri = wp_make_link_relative( $referer );
-
-	if ( ! wplng_url_is_translatable( $wplng_request_uri )
-		|| wplng_get_language_website_id() === wplng_get_language_current_id()
-	) {
-		return $output;
-	}
 
 	if ( wplng_str_is_json( $output ) ) {
 		$output_translated = wplng_translate_json( $output );
