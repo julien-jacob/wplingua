@@ -40,14 +40,13 @@ function wplng_parse_json( $json, $parents = array() ) {
  */
 function wplng_parse_json_array( $json_decoded, $parents = array() ) {
 
-	$texts         = array();
-	$json_excluded = wplng_data_excluded_json();
+	$texts = array();
 
 	/**
 	 * Don't parse JSON if it's exclude
 	 */
 
-	if ( in_array( $parents, $json_excluded ) ) {
+	if ( wplng_json_element_is_excluded( $json_decoded, $parents ) ) {
 		return array();
 	}
 
@@ -57,13 +56,19 @@ function wplng_parse_json_array( $json_decoded, $parents = array() ) {
 
 	foreach ( $json_decoded as $key => $value ) {
 
+		$current_parents = array_merge( $parents, array( $key ) );
+
 		/**
 		 * Don't parse element if it's exclude
 		 */
 
-		if ( in_array( array_merge( $parents, array( $key ) ), $json_excluded ) ) {
+		if ( wplng_json_element_is_excluded( $value, $current_parents ) ) {
 			continue;
 		}
+
+		/**
+		 * Check the value
+		 */
 
 		if ( is_array( $value ) ) {
 
@@ -73,7 +78,7 @@ function wplng_parse_json_array( $json_decoded, $parents = array() ) {
 
 			$texts = array_merge(
 				$texts,
-				wplng_parse_json_array( $value, array_merge( $parents, array( $key ) ) )
+				wplng_parse_json_array( $value, $current_parents )
 			);
 
 		} elseif ( is_string( $value ) ) {
@@ -108,7 +113,19 @@ function wplng_parse_json_array( $json_decoded, $parents = array() ) {
 
 				$texts = array_merge(
 					$texts,
-					wplng_parse_json( $value, array_merge( $parents, array( $key ) ) )
+					wplng_parse_json( $value, $current_parents )
+				);
+
+			} elseif ( wplng_str_is_script_i18n( $value ) ) {
+
+				/**
+				 * If element is a i18n JSON, parse it
+				 */
+
+				// Voluntarily don't pass $current_parents
+				$texts = array_merge(
+					$texts,
+					wplng_parse_js_json_in_i18n_script( $value )
 				);
 
 			} else {
@@ -117,12 +134,9 @@ function wplng_parse_json_array( $json_decoded, $parents = array() ) {
 				 * Element is a unknow string, check if it's translatable
 				 */
 
-				$is_translatable = wplng_json_element_is_translatable(
-					$value,
-					array_merge( $parents, array( $key ) )
-				);
-
-				if ( ! $is_translatable ) {
+				if ( ! wplng_text_is_translatable( $value )
+					|| ! wplng_json_element_is_included( $value, $current_parents )
+				) {
 					continue;
 				}
 

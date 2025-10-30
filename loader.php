@@ -9,8 +9,13 @@ if ( ! defined( 'WPINC' ) ) {
  * Require all wpLingua PHP files
  */
 
-// Require data functions
-require_once WPLNG_PLUGIN_PATH . '/data.php';
+// Require files in /data/ folder
+require_once WPLNG_PLUGIN_PATH . '/data/ajax.php';
+require_once WPLNG_PLUGIN_PATH . '/data/attribute.php';
+require_once WPLNG_PLUGIN_PATH . '/data/json.php';
+require_once WPLNG_PLUGIN_PATH . '/data/language.php';
+require_once WPLNG_PLUGIN_PATH . '/data/node.php';
+require_once WPLNG_PLUGIN_PATH . '/data/switcher.php';
 
 // Require files in /inc/ folder
 require_once WPLNG_PLUGIN_PATH . '/inc/api-key.php';
@@ -68,10 +73,10 @@ require_once WPLNG_PLUGIN_PATH . '/inc/dom/replace-attr-lang.php';
 require_once WPLNG_PLUGIN_PATH . '/inc/dom/replace-body-class.php';
 require_once WPLNG_PLUGIN_PATH . '/inc/dom/replace-links.php';
 require_once WPLNG_PLUGIN_PATH . '/inc/dom/translate-attr-html.php';
+require_once WPLNG_PLUGIN_PATH . '/inc/dom/translate-attr-json.php';
 require_once WPLNG_PLUGIN_PATH . '/inc/dom/translate-attr-texts.php';
-require_once WPLNG_PLUGIN_PATH . '/inc/dom/translate-js.php';
-require_once WPLNG_PLUGIN_PATH . '/inc/dom/translate-json.php';
 require_once WPLNG_PLUGIN_PATH . '/inc/dom/translate-node-texts.php';
+require_once WPLNG_PLUGIN_PATH . '/inc/dom/translate-script.php';
 
 // Require files in /inc/lib/ folder
 require_once WPLNG_PLUGIN_PATH . '/inc/lib/simple-html-dom.php';

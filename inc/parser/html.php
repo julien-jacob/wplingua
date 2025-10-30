@@ -22,17 +22,6 @@ function wplng_parse_html( $html ) {
 	}
 
 	/**
-	 * Find and parse JSON in scripts
-	 */
-
-	foreach ( $dom->find( 'script[type="application/ld+json"]' ) as $element ) {
-		$texts = array_merge(
-			$texts,
-			wplng_parse_json( $element->innertext )
-		);
-	}
-
-	/**
 	 * Parse JSON in attriutes
 	 */
 
@@ -52,20 +41,47 @@ function wplng_parse_html( $html ) {
 
 			$texts = array_merge(
 				$texts,
-				wplng_parse_json( $json )
+				wplng_parse_json( 
+					$json,
+					array( $attr['attr'] )
+				)
 			);
 		}
 	}
 
 	/**
-	 * Find and translate JS
+	 * Find and translate script
 	 */
 
 	foreach ( $dom->find( 'script' ) as $element ) {
-		$texts = array_merge(
-			$texts,
-			wplng_parse_js( $element->innertext )
-		);
+
+		if ( ! empty( $element->attr['type'] )
+			&& (
+				$element->attr['type'] === 'application/ld+json'
+				|| $element->attr['type'] === 'application/json'
+			)
+		) {
+
+			/**
+			 * Find and parse JSON in scripts
+			 */
+
+			$texts = array_merge(
+				$texts,
+				wplng_parse_json( $element->innertext )
+			);
+
+		} else {
+
+			/**
+			 * Find and translate JS in scripts
+			 */
+
+			$texts = array_merge(
+				$texts,
+				wplng_parse_js( $element->innertext )
+			);
+		}
 	}
 
 	/**

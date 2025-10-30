@@ -69,6 +69,8 @@ function wplng_str_is_url( $str ) {
 		&& ( '' !== trim( $str ) )
 		&& wplng_str_contains( $str, '/' )
 		&& ! wplng_str_starts_with( $str, 'wpgb-content-block/' ) // Plugin: WP Grid Builder
+		&& ! wplng_str_starts_with( $str, '/wc/store/v1' ) // Plugin: WooCommerce
+		&& ! wplng_str_starts_with( $str, 'GlotPress/' ) // Plugin: WooCommerce
 	) {
 		if ( isset( $parsed['scheme'] )
 			&& (
@@ -147,8 +149,8 @@ function wplng_text_is_translatable( $text ) {
 /**
  * Escape texte (used for comparison)
  *
- * @param string $text
- * @return string
+ * @param string $text String to escape
+ * @return string Escape texte for comparison
  */
 function wplng_text_esc( $text ) {
 
@@ -172,8 +174,8 @@ function wplng_text_esc( $text ) {
 /**
  * Escape texte (used for editor)
  *
- * @param string $text
- * @return string
+ * @param string $text String to escape
+ * @return string Escape texte for editor
  */
 function wplng_text_esc_displayed( $text ) {
 
@@ -193,23 +195,25 @@ function wplng_text_esc_displayed( $text ) {
 /**
  * Return true if $str is HTML
  *
- * @param string $str
- * @return string
+ * @param string $str String to check
+ * @return bool true if $str is HTML
  */
 function wplng_str_is_html( $str ) {
-	return $str !== wp_strip_all_tags( $str );
+	return wplng_str_contains( $str, '<' )
+		&& wplng_str_contains( $str, '>' )
+		&& ( $str !== wp_strip_all_tags( $str ) );
 }
 
 
 /**
  * Checks whether a string is a valid XML.
  *
- * @param string $string The string to validate.
+ * @param string $str The string to validate.
  * @return bool Returns true if the string is valid XML, false otherwise.
  */
-function wplng_str_is_xml( $string ) {
+function wplng_str_is_xml( $str ) {
 	// Return false if the input is empty or not a string.
-	if ( empty( $string ) || ! is_string( $string ) ) {
+	if ( empty( $str ) || ! is_string( $str ) ) {
 		return false;
 	}
 
@@ -217,7 +221,7 @@ function wplng_str_is_xml( $string ) {
 	libxml_use_internal_errors( true );
 
 	// Try to load the string as XML.
-	$xml = simplexml_load_string( $string );
+	$xml = simplexml_load_string( $str );
 
 	// Determine if parsing was successful.
 	$is_valid_xml = ( $xml !== false );
@@ -231,23 +235,11 @@ function wplng_str_is_xml( $string ) {
 
 
 /**
- * Return true is $str is a JSON
- *
- * @param string $str
- * @return string
- */
-function wplng_str_is_json( $str ) {
-	$decoded = json_decode( $str, true );
-	return ( json_last_error() === JSON_ERROR_NONE ) && is_array( $decoded );
-}
-
-
-/**
  * Return true if $str is a local ID
  * Ex: fr_FR, fr, FR, ...
  *
- * @param string $str
- * @return bool
+ * @param string $str String to check
+ * @return bool true if $str is a local ID
  */
 function wplng_str_is_locale_id( $str ) {
 
@@ -266,184 +258,77 @@ function wplng_str_is_locale_id( $str ) {
 
 
 /**
- * Return true if a JSON string element is translatable
+ * Return true if $str contains sub-strings present in the i18n script
  *
- * @param string $element
- * @param array  $parents
- * @return bool
+ * @param string $str String to check
+ * @return bool String is a i18n script
  */
-function wplng_json_element_is_translatable( $element, $parents ) {
+function wplng_str_is_script_i18n( $str ) {
 
-	$is_translatable   = false;
-	$json_excluded     = wplng_data_excluded_json();
-	$json_to_translate = wplng_data_json_to_translate();
+	$str = trim( $str );
 
-	if ( in_array( $parents, $json_excluded ) ) {
+	return wplng_str_contains( $str, 'wp.i18n.setLocaleData' )
+		&& wplng_str_contains( $str, 'translations.locale_data.messages' )
+		// Check if $str ends with ");"
+		&& wplng_str_ends_with( $str, ');' )
+		// Check if $str starts with "( function( domain, translations ) {"
+		&& ( preg_match( '#^\(\s*function\s*\(\s*domain\s*,\s*translations\s*\)\s*\{#', $str ) === 1 );
+}
 
-		/**
-		 * Is an excluded JSON
-		 */
 
-		$is_translatable = false;
+/**
+ * Return true is $str is a JSON
+ *
+ * @param string $str String to check
+ * @return bool true is $str is a JSON
+ */
+function wplng_str_is_json( $str ) {
+	$decoded = json_decode( $str, true );
+	return ( json_last_error() === JSON_ERROR_NONE ) && is_array( $decoded );
+}
 
-	} elseif ( in_array( $parents, $json_to_translate ) ) {
 
-		/**
-		 * Is an included JSON
-		 */
+/**
+ * Checks if a JSON element should be excluded based on defined exclusion rules.
+ *
+ * @param mixed $element The JSON element to check.
+ * @param array $parents The parent elements of the JSON element.
+ *
+ * @return bool True if the element matches any exclusion rule, false otherwise.
+ */
+function wplng_json_element_is_excluded( $element, $parents ) {
 
-		$is_translatable = true;
+	$rules = wplng_data_json_rules_exclusion();
 
-	} else {
-
-		if (
-			! empty( $parents[0] )
-			&& ( '@graph' === $parents[0] )
-			&& ( count( $parents ) > 2 )
-			&& (
-				(
-					( 'author' === $parents[ count( $parents ) - 2 ] )
-					&& ( 'headline' === $parents[ count( $parents ) - 1 ] )
-				)
-				|| (
-					( 'articleSection' === $parents[ count( $parents ) - 2 ] )
-					&& ( is_int( $parents[ count( $parents ) - 1 ] ) )
-				)
-				|| ( 'caption' === $parents[ count( $parents ) - 1 ] )
-				|| ( 'name' === $parents[ count( $parents ) - 1 ] )
-				|| ( 'alternateName' === $parents[ count( $parents ) - 1 ] )
-				|| ( 'description' === $parents[ count( $parents ) - 1 ] )
-			)
-		) {
-
-			/**
-			 * Is schema-graph
-			 */
-
-			$is_translatable = true;
-
-		} elseif (
-			count( $parents ) == 3
-			&& ( 'elementorFrontendConfig' === $parents[0] )
-			&& ( 'i18n' === $parents[1] )
-		) {
-
-			/**
-			 * Plugin: Elementor - elementorFrontendConfig
-			 */
-
-			$is_translatable = true;
-
-		} elseif (
-			! empty( $parents[0] )
-			&& ( 'wc_address_i18n_params' === $parents[0] )
-			&& ( count( $parents ) > 1 )
-			&& (
-				( 'placeholder' === $parents[ count( $parents ) - 1 ] )
-				|| ( 'label' === $parents[ count( $parents ) - 1 ] )
-			)
-		) {
-
-			/**
-			 * Is WooCommerce address params
-			 */
-
-			$is_translatable = true;
-
-		} elseif (
-			! empty( $parents[0] )
-			&& ( 'wc_country_select_params' === $parents[0] )
-			&& ! empty( $parents[1] )
-			&& ( 'countries' === $parents[1] )
-			&& ( count( $parents ) === 4 )
-		) {
-
-			/**
-			 * Is WooCommerce country select
-			 */
-
-			$is_translatable = true;
-
-		} elseif (
-			! empty( $parents[0] )
-			&& wplng_str_starts_with( $parents[0], 'CASE' )
-			&& ! empty( $parents[1] )
-			&& 'l10n' === $parents[1]
-			&& ! empty( $parents[2] )
-			&& (
-				$parents[2] === 'selectOption'
-				|| $parents[2] === 'errorLoading'
-				|| $parents[2] === 'removeAllItems'
-				|| $parents[2] === 'loadingMore'
-				|| $parents[2] === 'noResults'
-				|| $parents[2] === 'searching'
-				|| $parents[2] === 'irreversible_action'
-				|| $parents[2] === 'delete_listing_confirm'
-				|| $parents[2] === 'copied_to_clipboard'
-				|| $parents[2] === 'nearby_listings_location_required'
-				|| $parents[2] === 'nearby_listings_retrieving_location'
-				|| $parents[2] === 'nearby_listings_searching'
-				|| $parents[2] === 'geolocation_failed'
-				|| $parents[2] === 'something_went_wrong'
-				|| $parents[2] === 'all_in_category'
-				|| $parents[2] === 'invalid_file_type'
-				|| $parents[2] === 'file_limit_exceeded'
-				|| $parents[2] === 'file_size_limit'
-				|| (
-					$parents[2] === 'datepicker'
-					&& ! empty( $parents[3] )
-					&& (
-						$parents[3] === 'applyLabel'
-						|| $parents[3] === 'cancelLabel'
-						|| $parents[3] === 'customRangeLabel'
-						|| $parents[3] === 'daysOfWeek'
-						|| $parents[3] === 'monthNames'
-					)
-				)
-			)
-		) {
-
-			/**
-			 * Is 'My listing' theme - JSON in HTML
-			 */
-
-			$is_translatable = true;
-
-		} elseif (
-			! empty( $parents[0] )
-			&& ( 'children' === $parents[0] )
-			&& ! empty( $parents[1] )
-			&& ( wplng_str_starts_with( $parents[1], 'term_' ) )
-			&& ! empty( $parents[2] )
-			&& (
-				( 'name' === $parents[2] )
-				|| ( 'description' === $parents[2] )
-			)
-		) {
-
-			/**
-			 * Is 'My listing' theme - JSON in AJAX
-			 */
-
-			$is_translatable = true;
-
-		} elseif ( 'label' === $parents[ count( $parents ) - 1 ] ) {
-			$is_translatable = true;
-		}
-
-		$element = wplng_text_esc( $element );
-
-		if ( ! wplng_text_is_translatable( $element ) ) {
-			$is_translatable = false;
+	foreach ( $rules as $rule ) {
+		if ( $rule( $element, $parents ) === true ) {
+			return true;
 		}
 	}
 
-	return apply_filters(
-		'wplng_json_element_is_translatable',
-		$is_translatable,
-		$element,
-		$parents
-	);
+	return false;
+}
+
+
+/**
+ * Checks if a JSON element should be included based on defined inclusion rules.
+ *
+ * @param mixed $element The JSON element to check.
+ * @param array $parents The parent elements of the JSON element.
+ *
+ * @return bool True if the element matches any inclusion rule, false otherwise.
+ */
+function wplng_json_element_is_included( $element, $parents ) {
+
+	$rules = wplng_data_json_rules_inclusion();
+
+	foreach ( $rules as $rule ) {
+		if ( $rule( $element, $parents ) === true ) {
+			return true;
+		}
+	}
+
+	return false;
 }
 
 

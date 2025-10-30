@@ -4,7 +4,7 @@ Donate link: https://wplingua.com/
 Tags: translate, translation, multilingual, localization, language
 Requires at least: 6.0
 Tested up to: 6.8
-Stable tag: 2.9.4
+Stable tag: 2.10.0
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -191,43 +191,21 @@ Your server’s database holds all the translations locally.
 
 == Changelog ==
 
-= 2.9.4 =
+= 2.10.0 =
 
-* Main option page
- * Add SEO section
- * Add option for Hreflang
- * Review Sitemap XML option
-
-= 2.9.3 =
-
-* Check original language on translations
-* HeartBeat:
- * Check and clear bad slugs
- * Clear translations with bad original language
- * Clear more slugs or translation per occurrence
-* Better API key management 
-
-= 2.9.2 =
-
-* Better dictionary management
-* Better JSON detection in JS script
-* Better plugin compatibility:
- * WooCommerce
- * woocommerce-paypal-payments
- * NM Gift Registry and Wishlist Lite
-* Better admin UX
-* Update plugin translations
-
-= 2.9.1 =
-
-* Show BETA feature: Redirection by language browser
-
-= 2.9.0 =
-
-* New feature: target language ordering
-* Improved user experience:
- * In all translations on the page: message if no translation is found
- * In-page translation editor: loading indicator when loading the editor
+* Better compatibility
+ * WooCommerce (Block, REST)
+ * Divi
+* Upgrade JSON translation system:
+ * Better translation of shema JSON
+ * Review method for JSON in HTML attribute
+ * Review JSON inclusion and exclusion method
+ * Detect, parse and translate i18n script in JSON
+* Review method to parse and translate JS
+ * Automatically detect and translate i18n scripts
+ * Detect JSON encoded as URL in scripts
+* Better HTML check
+* Review plugin data system 
 
 All changelogs and previous versions of the wpLingua plugin are available on the releases page of the project's GitHub repo: [https://github.com/julien-jacob/wplingua/releases](https://github.com/julien-jacob/wplingua/releases).
 

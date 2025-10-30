@@ -107,7 +107,39 @@ function wplng_ob_start() {
 
 		ob_start( 'wplng_ob_callback_ajax' );
 
+	} elseif ( wp_is_json_request() ) {
+
+		/**
+		 * Is a REST API call
+		 */
+
+		if ( empty( $_SERVER['HTTP_REFERER'] ) ) {
+			return;
+		}
+
+		$referer = sanitize_url( $_SERVER['HTTP_REFERER'] );
+
+		// Check if the referer is clean
+		if ( strtolower( esc_url_raw( $referer ) ) !== strtolower( $referer ) ) {
+			return;
+		}
+
+		global $wplng_request_uri;
+		$wplng_request_uri = wp_make_link_relative( $referer );
+
+		if ( ! wplng_url_is_translatable( $wplng_request_uri )
+			|| wplng_get_language_website_id() === wplng_get_language_current_id()
+		) {
+			return;
+		}
+
+		ob_start( 'wplng_ob_callback_wp_json' );
+
 	} elseif ( wplng_url_is_sitemap_xml() ) {
+
+		/**
+		 * Is an XML sitemap
+		 */
 
 		ob_start( 'wplng_ob_callback_sitemap_xml' );
 
@@ -161,7 +193,9 @@ function wplng_ob_callback_ajax( $output ) {
 		$output_translated = wplng_translate_html( $output );
 
 	} else {
+
 		$output_translated = $output;
+
 	}
 
 	// Print debug data in debug.log file
@@ -232,11 +266,11 @@ function wplng_ob_callback_sitemap_xml( $content ) {
 	$dom->formatOutput       = true;
 
 	// Enable internal error handling
-	$previous_libxml_setting = libxml_use_internal_errors( true ); 
-	
+	$previous_libxml_setting = libxml_use_internal_errors( true );
+
 	// Check XML errors
 	if ( ! $dom->loadXML( $content ) ) {
-		if ( defined( 'WPLNG_DEBUG_JSON' ) && true === WPLNG_DEBUG_JSON ) {
+		if ( defined( 'WPLNG_DEBUG_XML' ) && true === WPLNG_DEBUG_XML ) {
 			$errors = array();
 
 			foreach ( libxml_get_errors() as $error ) {
@@ -257,7 +291,7 @@ function wplng_ob_callback_sitemap_xml( $content ) {
 	}
 
 	// Restore previous setting
-	libxml_use_internal_errors( $previous_libxml_setting ); 
+	libxml_use_internal_errors( $previous_libxml_setting );
 
 	$signature = '<!-- XML Sitemap is made multilingual by wpLingua -->' . PHP_EOL;
 
@@ -307,14 +341,14 @@ function wplng_ob_callback_sitemap_xml( $content ) {
 		// Add links for target languages.
 		foreach ( $languages_target_ids as $language_id ) {
 
-			$translated_url = wplng_url_translate( 
-				$url_original, 
-				$language_id 
+			$translated_url = wplng_url_translate(
+				$url_original,
+				$language_id
 			);
 
 			// Validate the translated URL.
-			if ( empty( $translated_url ) 
-				|| ! filter_var( $translated_url, FILTER_VALIDATE_URL ) 
+			if ( empty( $translated_url )
+				|| ! filter_var( $translated_url, FILTER_VALIDATE_URL )
 			) {
 				continue;
 			}
@@ -402,4 +436,42 @@ function wplng_ob_callback_page( $content ) {
 	}
 
 	return $content;
+}
+
+
+/**
+ * wpLingua OB Callback function : /wp-json/
+ *
+ * @param string $output
+ * @return string
+ */
+function wplng_ob_callback_wp_json( $output ) {
+
+	global $wplng_request_uri;
+
+	if ( wplng_str_is_json( $output ) ) {
+		$output_translated = wplng_translate_json( $output );
+	} else {
+		$output_translated = $output;
+	}
+
+	// Print debug data in debug.log file
+	if ( true === WPLNG_DEBUG_REST ) {
+
+		$debug = array(
+			'title'       => 'wpLingua /wp-json/ debug',
+			'request_uri' => $wplng_request_uri,
+			'value'       => $output,
+			'translated'  => $output_translated,
+		);
+
+		error_log(
+			var_export(
+				$debug,
+				true
+			)
+		);
+	}
+
+	return $output_translated;
 }
