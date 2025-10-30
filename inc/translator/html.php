@@ -83,8 +83,8 @@ function wplng_translate_html( $html, $args = array() ) {
 	$dom = wplng_dom_translate_nodes_texts( $dom, $args );
 	$dom = wplng_dom_translate_attr_texts( $dom, $args );
 	$dom = wplng_dom_translate_html_attr( $dom, $args );
-	$dom = wplng_dom_translate_json( $dom, $args );
-	$dom = wplng_dom_translate_js( $dom, $args );
+	$dom = wplng_dom_translate_json_attr( $dom, $args );
+	$dom = wplng_dom_translate_script( $dom, $args );
 
 	$dom = wplng_dom_mode_editor( $dom, $args );
 	$dom = wplng_dom_mode_list( $dom, $args );

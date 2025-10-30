@@ -75,7 +75,6 @@ function wplng_translate_json( $json, $args = array() ) {
 function wplng_translate_json_array( $json_decoded, $args = array() ) {
 
 	$array_translated = $json_decoded;
-	$json_excluded    = wplng_data_excluded_json();
 
 	/**
 	 * Update args
@@ -99,9 +98,10 @@ function wplng_translate_json_array( $json_decoded, $args = array() ) {
 	/**
 	 * Don't parse JSON if it's exclude
 	 */
-	if ( in_array( $args['parents'], $json_excluded ) ) {
 
-		if ( true === WPLNG_DEBUG_JSON ) {
+	if ( wplng_json_element_is_excluded( $json_decoded, $args['parents'] ) ) {
+
+		if ( WPLNG_DEBUG_JSON === true ) {
 
 			$debug = array(
 				'title'   => 'wpLingua JSON debug - Excluded parent',
@@ -126,17 +126,19 @@ function wplng_translate_json_array( $json_decoded, $args = array() ) {
 
 	foreach ( $json_decoded as $key => $value ) {
 
+		$current_parents = array_merge( $args['parents'], array( $key ) );
+
 		/**
 		 * Don't parse element if it's exclude
 		 */
 
-		if ( in_array( array_merge( $args['parents'], array( $key ) ), $json_excluded ) ) {
+		if ( wplng_json_element_is_excluded( $json_decoded, $current_parents ) ) {
 
 			if ( true === WPLNG_DEBUG_JSON ) {
 
 				$debug = array(
 					'title'   => 'wpLingua JSON debug - Excluded element',
-					'parents' => array_merge( $args['parents'], array( $key ) ),
+					'parents' => $current_parents,
 					'value'   => $value,
 				);
 
@@ -157,7 +159,7 @@ function wplng_translate_json_array( $json_decoded, $args = array() ) {
 			 * If element is an array, parse it
 			 */
 
-			$args['parents'] = array_merge( $args['parents'], array( $key ) );
+			$args['parents'] = $current_parents;
 
 			$array_translated[ $key ] = wplng_translate_json_array(
 				$value,
@@ -190,7 +192,7 @@ function wplng_translate_json_array( $json_decoded, $args = array() ) {
 				 */
 
 				$debug_type      = 'String - JSON';
-				$args['parents'] = array_merge( $args['parents'], array( $key ) );
+				$args['parents'] = $current_parents;
 
 				$array_translated[ $key ] = wplng_translate_json(
 					$value,
@@ -202,6 +204,8 @@ function wplng_translate_json_array( $json_decoded, $args = array() ) {
 				/**
 				 * If element is a HTML, parse and translate it
 				 */
+
+				 // TODO : Check for parse here ?
 
 				$debug_type               = 'String - HTML';
 				$array_translated[ $key ] = wplng_translate_html(
@@ -218,29 +222,42 @@ function wplng_translate_json_array( $json_decoded, $args = array() ) {
 				$debug_type               = 'String - URL';
 				$array_translated[ $key ] = wplng_url_translate( $value );
 
+			} elseif ( wplng_str_is_script_i18n( $value ) ) {
+
+				/**
+				 * If element is a i18n script, replace by translated script
+				 */
+
+				// Voluntarily don't pass $current_parents
+				$debug_type               = 'String - Script i18n';
+				$array_translated[ $key ] = wplng_translate_js_json_in_i18n_script( $value );
+
 			} else {
 
 				/**
-				 * Element is a unknow string, check if it's translatable
-				 * - Check if is an excluded element
-				 * - Check if is an included element
-				 * - Check if is a translatable string
+				 * Element is a unknow string,
+				 *  - check if it's translatable
+				 *  - Check if is an included element
 				 */
 
-				$is_translatable = wplng_json_element_is_translatable(
-					$value,
-					array_merge( $args['parents'], array( $key ) )
-				);
+				if ( ! wplng_text_is_translatable( $value ) ) {
 
-				if ( $is_translatable ) {
+					$debug_type = 'String - Untranslatable';
+
+				} elseif ( ! wplng_json_element_is_included( $value, $current_parents ) ) {
+
+					$debug_type = 'String - Not included';
+
+				} else {
+
 					$debug_type               = 'String - Translatable';
 					$array_translated[ $key ] = wplng_get_translated_text_from_translations(
 						$value,
 						$args['translations']
 					);
-				} else {
-					$debug_type = 'String - Untranslatable';
+					
 				}
+
 			}
 
 			/**
@@ -250,11 +267,12 @@ function wplng_translate_json_array( $json_decoded, $args = array() ) {
 			if ( true === WPLNG_DEBUG_JSON
 				&& isset( $json_decoded[ $key ] )
 				&& isset( $array_translated[ $key ] )
+				// && $debug_type === 'String - Not included'
 			) {
 
 				$debug = array(
 					'title'   => 'wpLingua JSON debug',
-					'parents' => array_merge( $args['parents'], array( $key ) ),
+					'parents' => $current_parents,
 					'type'    => $debug_type,
 					'value'   => $json_decoded[ $key ],
 				);
@@ -263,12 +281,7 @@ function wplng_translate_json_array( $json_decoded, $args = array() ) {
 					$debug['translated'] = $array_translated[ $key ];
 				}
 
-				error_log(
-					var_export(
-						$debug,
-						true
-					)
-				);
+				error_log( var_export( $debug, true ) );
 			}
 		}
 	}
