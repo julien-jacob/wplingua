@@ -2,8 +2,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: wpLingua\n"
-"POT-Creation-Date: 2025-10-06 21:56+0200\n"
-"PO-Revision-Date: 2025-10-06 21:56+0200\n"
+"POT-Creation-Date: 2025-10-30 23:52+0100\n"
+"PO-Revision-Date: 2025-10-30 23:51+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -20,676 +20,677 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: *.min.js\n"
 
-#: data.php:559
-msgid "Bottom right"
-msgstr ""
-
-#: data.php:560
-msgid "Bottom center"
-msgstr ""
-
-#: data.php:561
-msgid "Bottom left"
-msgstr ""
-
-#: data.php:562
-msgid "None"
-msgstr ""
-
-#: data.php:574
-msgid "Light - Double - Smooth"
-msgstr ""
-
-#: data.php:575
-msgid "Light - Double - Square"
-msgstr ""
-
-#: data.php:576
-msgid "Light - Simple - Smooth"
-msgstr ""
-
-#: data.php:577
-msgid "Light - Simple - Square"
-msgstr ""
-
-#: data.php:578
-msgid "Grey - Double - Smooth"
-msgstr ""
-
-#: data.php:579
-msgid "Grey - Double - Square"
-msgstr ""
-
-#: data.php:580
-msgid "Grey - Simple - Smooth"
-msgstr ""
-
-#: data.php:581
-msgid "Grey - Simple - Square"
-msgstr ""
-
-#: data.php:582
-msgid "Dark - Double - Smooth"
-msgstr ""
-
-#: data.php:583
-msgid "Dark - Double - Square"
-msgstr ""
-
-#: data.php:584
-msgid "Dark - Simple - Smooth"
-msgstr ""
-
-#: data.php:585
-msgid "Dark - Simple - Square"
-msgstr ""
-
-#: data.php:586
-msgid "Blur Black - Double - Smooth"
-msgstr ""
-
-#: data.php:587
-msgid "Blur Black - Double - Square"
-msgstr ""
-
-#: data.php:588
-msgid "Blur Black - Simple - Smooth"
-msgstr ""
-
-#: data.php:589
-msgid "Blur Black - Simple - Square"
-msgstr ""
-
-#: data.php:590
-msgid "Blur White - Double - Smooth"
-msgstr ""
-
-#: data.php:591
-msgid "Blur White - Double - Square"
-msgstr ""
-
-#: data.php:592
-msgid "Blur White - Simple - Smooth"
-msgstr ""
-
-#: data.php:593
-msgid "Blur White - Simple - Square"
-msgstr ""
-
-#: data.php:605
-msgid "Inline list"
-msgstr ""
-
-#: data.php:606
-msgid "Block"
-msgstr ""
-
-#: data.php:607
-msgid "Dropdown"
-msgstr ""
-
-#: data.php:619 data.php:653
-msgid "Original name"
-msgstr ""
-
-#: data.php:620 data.php:654
-msgid "Translated name"
-msgstr ""
-
-#: data.php:621 data.php:655
-msgid "Language ID"
-msgstr ""
-
-#: data.php:622 data.php:637 data.php:656 data.php:669
-msgid "No display"
-msgstr ""
-
-#: data.php:634
-msgid "Circle"
-msgstr ""
-
-#: data.php:635
-msgid "Rectangular"
-msgstr ""
-
-#: data.php:636
-msgid "Wave"
-msgstr ""
-
-#: data.php:668
-msgid "Display"
-msgstr ""
-
-#: data.php:681
-msgid "List without current language"
-msgstr ""
-
-#: data.php:682
-msgid "List without active class"
-msgstr ""
-
-#: data.php:683
-msgid "List with active class"
-msgstr ""
-
-#: data.php:684
-msgid "Sub-list"
-msgstr ""
-
-#: data.php:737
+#: data/language.php:57
 msgid "Arabic"
 msgstr ""
 
-#: data.php:743 data.php:897
+#: data/language.php:63 data/language.php:217
 msgid "Global"
 msgstr ""
 
-#: data.php:748
+#: data/language.php:68
 msgid "Egypt"
 msgstr ""
 
-#: data.php:753
+#: data/language.php:73
 msgid "Saudi Arabia"
 msgstr ""
 
-#: data.php:758
+#: data/language.php:78
 msgid "Algeria"
 msgstr ""
 
-#: data.php:763
+#: data/language.php:83
 msgid "Bahrain"
 msgstr ""
 
-#: data.php:768
+#: data/language.php:88
 msgid "Chad"
 msgstr ""
 
-#: data.php:773
+#: data/language.php:93
 msgid "Comoros"
 msgstr ""
 
-#: data.php:778
+#: data/language.php:98
 msgid "Djibouti"
 msgstr ""
 
-#: data.php:783
+#: data/language.php:103
 msgid "Iraq"
 msgstr ""
 
-#: data.php:788
+#: data/language.php:108
 msgid "Jordan"
 msgstr ""
 
-#: data.php:793
+#: data/language.php:113
 msgid "Kuwait"
 msgstr ""
 
-#: data.php:798
+#: data/language.php:118
 msgid "Lebanon"
 msgstr ""
 
-#: data.php:803
+#: data/language.php:123
 msgid "Libya"
 msgstr ""
 
-#: data.php:808
+#: data/language.php:128
 msgid "Mauritania"
 msgstr ""
 
-#: data.php:813
+#: data/language.php:133
 msgid "Morocco"
 msgstr ""
 
-#: data.php:818
+#: data/language.php:138
 msgid "Oman"
 msgstr ""
 
-#: data.php:823
+#: data/language.php:143
 msgid "Palestine"
 msgstr ""
 
-#: data.php:828
+#: data/language.php:148
 msgid "Qatar"
 msgstr ""
 
-#: data.php:833
+#: data/language.php:153
 msgid "Somalia"
 msgstr ""
 
-#: data.php:838
+#: data/language.php:158
 msgid "Sudan"
 msgstr ""
 
-#: data.php:843
+#: data/language.php:163
 msgid "Syria"
 msgstr ""
 
-#: data.php:848
+#: data/language.php:168
 msgid "Tunisia"
 msgstr ""
 
-#: data.php:853
+#: data/language.php:173
 msgid "United Arab Emirates"
 msgstr ""
 
-#: data.php:858
+#: data/language.php:178
 msgid "Yemen"
 msgstr ""
 
-#: data.php:892
+#: data/language.php:212
 msgid "Chinese"
 msgstr ""
 
-#: data.php:902
+#: data/language.php:222
 msgid "China"
 msgstr ""
 
-#: data.php:907
+#: data/language.php:227
 msgid "Hong Kong"
 msgstr ""
 
-#: data.php:912
+#: data/language.php:232
 msgid "Malaysia"
 msgstr ""
 
-#: data.php:917 data.php:1153
+#: data/language.php:237 data/language.php:473
 msgid "Singapore"
 msgstr ""
 
-#: data.php:951
+#: data/language.php:271
 msgid "Danish"
 msgstr ""
 
-#: data.php:956
+#: data/language.php:276
 msgid "Denmark"
 msgstr ""
 
-#: data.php:990
+#: data/language.php:310
 msgid "Dutch"
 msgstr ""
 
-#: data.php:995
+#: data/language.php:315
 msgid "Netherlands"
 msgstr ""
 
-#: data.php:1000 data.php:1246
+#: data/language.php:320 data/language.php:566
 msgid "Belgium"
 msgstr ""
 
-#: data.php:1005
+#: data/language.php:325
 msgid "Suriname"
 msgstr ""
 
-#: data.php:1039
+#: data/language.php:359
 msgid "Slovak"
 msgstr ""
 
-#: data.php:1044
+#: data/language.php:364
 msgid "Slovakia"
 msgstr ""
 
-#: data.php:1049
+#: data/language.php:369
 msgid "Czech Republic"
 msgstr ""
 
-#: data.php:1083
+#: data/language.php:403
 msgid "English"
 msgstr ""
 
-#: data.php:1088
+#: data/language.php:408
 msgid "US / GB"
 msgstr ""
 
-#: data.php:1093
+#: data/language.php:413
 msgid "United Kingdom"
 msgstr ""
 
-#: data.php:1098
+#: data/language.php:418
 msgid "United States"
 msgstr ""
 
-#: data.php:1103
+#: data/language.php:423
 msgid "Australia"
 msgstr ""
 
-#: data.php:1108 data.php:1256
+#: data/language.php:428 data/language.php:576
 msgid "Canada"
 msgstr ""
 
-#: data.php:1113
+#: data/language.php:433
 msgid "Ireland"
 msgstr ""
 
-#: data.php:1118
+#: data/language.php:438
 msgid "New Zealand"
 msgstr ""
 
-#: data.php:1123
+#: data/language.php:443
 msgid "Nigeria"
 msgstr ""
 
-#: data.php:1128
+#: data/language.php:448
 msgid "South Africa"
 msgstr ""
 
-#: data.php:1133
+#: data/language.php:453
 msgid "Kenya"
 msgstr ""
 
-#: data.php:1138
+#: data/language.php:458
 msgid "Ghana"
 msgstr ""
 
-#: data.php:1143
+#: data/language.php:463
 msgid "South Sudan"
 msgstr ""
 
-#: data.php:1148
+#: data/language.php:468
 msgid "Sierra Leone"
 msgstr ""
 
-#: data.php:1158
+#: data/language.php:478
 msgid "Liberia"
 msgstr ""
 
-#: data.php:1163
+#: data/language.php:483
 msgid "Jamaica"
 msgstr ""
 
-#: data.php:1197
+#: data/language.php:517
 msgid "Finnish"
 msgstr ""
 
-#: data.php:1202 data.php:1988
+#: data/language.php:522 data/language.php:1308
 msgid "Finland"
 msgstr ""
 
-#: data.php:1236
+#: data/language.php:556
 msgid "French"
 msgstr ""
 
-#: data.php:1241
+#: data/language.php:561
 msgid "France"
 msgstr ""
 
-#: data.php:1251
+#: data/language.php:571
 msgid "Quebec"
 msgstr ""
 
-#: data.php:1261
+#: data/language.php:581
 msgid "Congo - Kinshasa"
 msgstr ""
 
-#: data.php:1266
+#: data/language.php:586
 msgid "Congo - Brazzaville"
 msgstr ""
 
-#: data.php:1271
+#: data/language.php:591
 msgid "Cameroon"
 msgstr ""
 
-#: data.php:1276
+#: data/language.php:596
 msgid "Ivory Coast"
 msgstr ""
 
-#: data.php:1281 data.php:1330
+#: data/language.php:601 data/language.php:650
 msgid "Switzerland"
 msgstr ""
 
-#: data.php:1315
+#: data/language.php:635
 msgid "German"
 msgstr ""
 
-#: data.php:1320
+#: data/language.php:640
 msgid "Germany"
 msgstr ""
 
-#: data.php:1325
+#: data/language.php:645
 msgid "Austria"
 msgstr ""
 
-#: data.php:1335
+#: data/language.php:655
 msgid "Liechtenstein"
 msgstr ""
 
-#: data.php:1369
+#: data/language.php:689
 msgid "Greek"
 msgstr ""
 
-#: data.php:1374
+#: data/language.php:694
 msgid "Greece"
 msgstr ""
 
-#: data.php:1379 data.php:2032
+#: data/language.php:699 data/language.php:1352
 msgid "Cyprus"
 msgstr ""
 
-#: data.php:1413
+#: data/language.php:733
 msgid "Hebrew"
 msgstr ""
 
-#: data.php:1419
+#: data/language.php:739
 msgid "Israel"
 msgstr ""
 
-#: data.php:1453
+#: data/language.php:773
 msgid "Hindi"
 msgstr ""
 
-#: data.php:1458
+#: data/language.php:778
 msgid "India"
 msgstr ""
 
-#: data.php:1463
+#: data/language.php:783
 msgid "Pakistan"
 msgstr ""
 
-#: data.php:1497
+#: data/language.php:817
 msgid "Hungarian"
 msgstr ""
 
-#: data.php:1502
+#: data/language.php:822
 msgid "Hungary"
 msgstr ""
 
-#: data.php:1536
+#: data/language.php:856
 msgid "Indonesian"
 msgstr ""
 
-#: data.php:1541
+#: data/language.php:861
 msgid "Indonesia"
 msgstr ""
 
-#: data.php:1575
+#: data/language.php:895
 msgid "Italian"
 msgstr ""
 
-#: data.php:1580
+#: data/language.php:900
 msgid "Italy"
 msgstr ""
 
-#: data.php:1614
+#: data/language.php:934
 msgid "Japanese"
 msgstr ""
 
-#: data.php:1619
+#: data/language.php:939
 msgid "Japan"
 msgstr ""
 
-#: data.php:1653
+#: data/language.php:973
 msgid "Korean"
 msgstr ""
 
-#: data.php:1658
+#: data/language.php:978
 msgid "South Korea"
 msgstr ""
 
-#: data.php:1663
+#: data/language.php:983
 msgid "North Korea"
 msgstr ""
 
-#: data.php:1697
+#: data/language.php:1017
 msgid "Polish"
 msgstr ""
 
-#: data.php:1702
+#: data/language.php:1022
 msgid "Poland"
 msgstr ""
 
-#: data.php:1736
+#: data/language.php:1056
 msgid "Portuguese"
 msgstr ""
 
-#: data.php:1741
+#: data/language.php:1061
 msgid "Portugal"
 msgstr ""
 
-#: data.php:1746
+#: data/language.php:1066
 msgid "Brazil"
 msgstr ""
 
-#: data.php:1751
+#: data/language.php:1071
 msgid "Mozambique"
 msgstr ""
 
-#: data.php:1756
+#: data/language.php:1076
 msgid "Angola"
 msgstr ""
 
-#: data.php:1790
+#: data/language.php:1110
 msgid "Russian"
 msgstr ""
 
-#: data.php:1795
+#: data/language.php:1115
 msgid "Russia"
 msgstr ""
 
-#: data.php:1800
+#: data/language.php:1120
 msgid "Kazakhstan"
 msgstr ""
 
-#: data.php:1805
+#: data/language.php:1125
 msgid "Belarus"
 msgstr ""
 
-#: data.php:1810
+#: data/language.php:1130
 msgid "Kyrgyzstan"
 msgstr ""
 
-#: data.php:1815
+#: data/language.php:1135
 msgid "Tajikistan"
 msgstr ""
 
-#: data.php:1849
+#: data/language.php:1169
 msgid "Spanish"
 msgstr ""
 
-#: data.php:1854
+#: data/language.php:1174
 msgid "Spain"
 msgstr ""
 
-#: data.php:1859
+#: data/language.php:1179
 msgid "Mexico"
 msgstr ""
 
-#: data.php:1864
+#: data/language.php:1184
 msgid "Argentina"
 msgstr ""
 
-#: data.php:1869
+#: data/language.php:1189
 msgid "Colombia"
 msgstr ""
 
-#: data.php:1874
+#: data/language.php:1194
 msgid "Peru"
 msgstr ""
 
-#: data.php:1879
+#: data/language.php:1199
 msgid "Ecuador"
 msgstr ""
 
-#: data.php:1884
+#: data/language.php:1204
 msgid "Bolivia"
 msgstr ""
 
-#: data.php:1889
+#: data/language.php:1209
 msgid "Chile"
 msgstr ""
 
-#: data.php:1894
+#: data/language.php:1214
 msgid "Equatorial Guinea"
 msgstr ""
 
-#: data.php:1899
+#: data/language.php:1219
 msgid "Guatemala"
 msgstr ""
 
-#: data.php:1904
+#: data/language.php:1224
 msgid "Cuba"
 msgstr ""
 
-#: data.php:1909
+#: data/language.php:1229
 msgid "Dominican Republic"
 msgstr ""
 
-#: data.php:1914
+#: data/language.php:1234
 msgid "Honduras"
 msgstr ""
 
-#: data.php:1919
+#: data/language.php:1239
 msgid "Paraguay"
 msgstr ""
 
-#: data.php:1924
+#: data/language.php:1244
 msgid "El Salvador"
 msgstr ""
 
-#: data.php:1929
+#: data/language.php:1249
 msgid "Nicaragua"
 msgstr ""
 
-#: data.php:1934
+#: data/language.php:1254
 msgid "Costa Rica"
 msgstr ""
 
-#: data.php:1939
+#: data/language.php:1259
 msgid "Panama"
 msgstr ""
 
-#: data.php:1944
+#: data/language.php:1264
 msgid "Uruguay"
 msgstr ""
 
-#: data.php:1978
+#: data/language.php:1298
 msgid "Swedish"
 msgstr ""
 
-#: data.php:1983
+#: data/language.php:1303
 msgid "Sweden"
 msgstr ""
 
-#: data.php:2022
+#: data/language.php:1342
 msgid "Turkish"
 msgstr ""
 
-#: data.php:2027
+#: data/language.php:1347
 msgid "Turkey"
 msgstr ""
 
-#: data.php:2066
+#: data/language.php:1386
 msgid "Ukrainian"
 msgstr ""
 
-#: data.php:2071
+#: data/language.php:1391
 msgid "Ukraine"
 msgstr ""
 
-#: data.php:2105
+#: data/language.php:1425
 msgid "Vietnamese"
 msgstr ""
 
-#: data.php:2110
+#: data/language.php:1430
 msgid "Vietnam"
+msgstr ""
+
+#: data/switcher.php:20
+msgid "Bottom right"
+msgstr ""
+
+#: data/switcher.php:21
+msgid "Bottom center"
+msgstr ""
+
+#: data/switcher.php:22
+msgid "Bottom left"
+msgstr ""
+
+#: data/switcher.php:23
+msgid "None"
+msgstr ""
+
+#: data/switcher.php:35
+msgid "Light - Double - Smooth"
+msgstr ""
+
+#: data/switcher.php:36
+msgid "Light - Double - Square"
+msgstr ""
+
+#: data/switcher.php:37
+msgid "Light - Simple - Smooth"
+msgstr ""
+
+#: data/switcher.php:38
+msgid "Light - Simple - Square"
+msgstr ""
+
+#: data/switcher.php:39
+msgid "Grey - Double - Smooth"
+msgstr ""
+
+#: data/switcher.php:40
+msgid "Grey - Double - Square"
+msgstr ""
+
+#: data/switcher.php:41
+msgid "Grey - Simple - Smooth"
+msgstr ""
+
+#: data/switcher.php:42
+msgid "Grey - Simple - Square"
+msgstr ""
+
+#: data/switcher.php:43
+msgid "Dark - Double - Smooth"
+msgstr ""
+
+#: data/switcher.php:44
+msgid "Dark - Double - Square"
+msgstr ""
+
+#: data/switcher.php:45
+msgid "Dark - Simple - Smooth"
+msgstr ""
+
+#: data/switcher.php:46
+msgid "Dark - Simple - Square"
+msgstr ""
+
+#: data/switcher.php:47
+msgid "Blur Black - Double - Smooth"
+msgstr ""
+
+#: data/switcher.php:48
+msgid "Blur Black - Double - Square"
+msgstr ""
+
+#: data/switcher.php:49
+msgid "Blur Black - Simple - Smooth"
+msgstr ""
+
+#: data/switcher.php:50
+msgid "Blur Black - Simple - Square"
+msgstr ""
+
+#: data/switcher.php:51
+msgid "Blur White - Double - Smooth"
+msgstr ""
+
+#: data/switcher.php:52
+msgid "Blur White - Double - Square"
+msgstr ""
+
+#: data/switcher.php:53
+msgid "Blur White - Simple - Smooth"
+msgstr ""
+
+#: data/switcher.php:54
+msgid "Blur White - Simple - Square"
+msgstr ""
+
+#: data/switcher.php:66
+msgid "Inline list"
+msgstr ""
+
+#: data/switcher.php:67
+msgid "Block"
+msgstr ""
+
+#: data/switcher.php:68
+msgid "Dropdown"
+msgstr ""
+
+#: data/switcher.php:80 data/switcher.php:114
+msgid "Original name"
+msgstr ""
+
+#: data/switcher.php:81 data/switcher.php:115
+msgid "Translated name"
+msgstr ""
+
+#: data/switcher.php:82 data/switcher.php:116
+msgid "Language ID"
+msgstr ""
+
+#: data/switcher.php:83 data/switcher.php:98 data/switcher.php:117
+#: data/switcher.php:130
+msgid "No display"
+msgstr ""
+
+#: data/switcher.php:95
+msgid "Circle"
+msgstr ""
+
+#: data/switcher.php:96
+msgid "Rectangular"
+msgstr ""
+
+#: data/switcher.php:97
+msgid "Wave"
+msgstr ""
+
+#: data/switcher.php:129
+msgid "Display"
+msgstr ""
+
+#: data/switcher.php:142
+msgid "List without current language"
+msgstr ""
+
+#: data/switcher.php:143
+msgid "List without active class"
+msgstr ""
+
+#: data/switcher.php:144
+msgid "List with active class"
+msgstr ""
+
+#: data/switcher.php:145
+msgid "Sub-list"
 msgstr ""
 
 #. Plugin Name of the plugin/theme
@@ -779,14 +780,14 @@ msgstr ""
 
 #: inc/admin/option-page-dictionary.php:127
 #: inc/admin/option-page-link-media.php:127
-#: inc/admin/option-page-settings.php:272
-#: inc/admin/option-page-settings.php:335
+#: inc/admin/option-page-settings.php:276
+#: inc/admin/option-page-settings.php:339
 msgid "Edit"
 msgstr ""
 
 #: inc/admin/option-page-dictionary.php:134
 #: inc/admin/option-page-link-media.php:134
-#: inc/admin/option-page-settings.php:336
+#: inc/admin/option-page-settings.php:340
 msgid "Remove"
 msgstr ""
 
@@ -898,7 +899,7 @@ msgid "Exclude elements by CSS selector"
 msgstr ""
 
 #: inc/admin/option-page-exclusions.php:69
-#: inc/admin/option-page-settings.php:86 inc/admin/option-page-switcher.php:496
+#: inc/admin/option-page-settings.php:94 inc/admin/option-page-switcher.php:496
 #: inc/admin/translation-edit-modal.php:71 inc/assets.php:96
 msgid "Save"
 msgstr ""
@@ -1093,14 +1094,15 @@ msgstr ""
 #: inc/admin/option-page-register.php:309
 #: inc/admin/option-page-register.php:325
 #: inc/admin/option-page-register.php:341
-#: inc/admin/option-page-settings.php:244
-#: inc/admin/option-page-settings.php:364
-#: inc/admin/option-page-settings.php:420
-#: inc/admin/option-page-settings.php:438
-#: inc/admin/option-page-settings.php:472
-#: inc/admin/option-page-settings.php:488
-#: inc/admin/option-page-settings.php:533
-#: inc/admin/option-page-settings.php:565 inc/admin/option-page-switcher.php:73
+#: inc/admin/option-page-settings.php:252
+#: inc/admin/option-page-settings.php:368
+#: inc/admin/option-page-settings.php:424
+#: inc/admin/option-page-settings.php:442
+#: inc/admin/option-page-settings.php:476
+#: inc/admin/option-page-settings.php:493
+#: inc/admin/option-page-settings.php:520
+#: inc/admin/option-page-settings.php:565
+#: inc/admin/option-page-settings.php:597 inc/admin/option-page-switcher.php:73
 #: inc/admin/option-page-switcher.php:124
 #: inc/admin/option-page-switcher.php:179
 #: inc/admin/option-page-switcher.php:237
@@ -1113,7 +1115,7 @@ msgid "Click to expand"
 msgstr ""
 
 #: inc/admin/option-page-register.php:233
-#: inc/admin/option-page-settings.php:570
+#: inc/admin/option-page-settings.php:602
 msgid ""
 "A wpLingua API key consists of 42 characters (uppercase, lowercase and "
 "numbers). It is emailed to you when you request it using the form provided "
@@ -1158,7 +1160,7 @@ msgid "Website language: "
 msgstr ""
 
 #: inc/admin/option-page-register.php:332
-#: inc/admin/option-page-settings.php:251
+#: inc/admin/option-page-settings.php:259
 msgid ""
 "This is the language of your website, defined by the associated API key. "
 "Make sure your website language is also correctly set in WordPress options "
@@ -1199,7 +1201,7 @@ msgid ""
 msgstr ""
 
 #: inc/admin/option-page-register.php:396
-#: inc/admin/option-page-settings.php:419
+#: inc/admin/option-page-settings.php:423
 msgid "Use wpLingua on commercial website"
 msgstr ""
 
@@ -1231,15 +1233,15 @@ msgstr ""
 msgid "Features"
 msgstr ""
 
-#: inc/admin/option-page-settings.php:80
+#: inc/admin/option-page-settings.php:88
 msgid "API Key"
 msgstr ""
 
-#: inc/admin/option-page-settings.php:167
+#: inc/admin/option-page-settings.php:175
 msgid "Your website is being translated and will be ready soon."
 msgstr ""
 
-#: inc/admin/option-page-settings.php:168
+#: inc/admin/option-page-settings.php:176
 msgid ""
 "In just a few seconds, your website will be multilingual, and search engines "
 "will be able to index these new pages. wpLingua detects all the texts on "
@@ -1248,13 +1250,13 @@ msgid ""
 "bar and edit them simply by clicking on the texts on your website."
 msgstr ""
 
-#: inc/admin/option-page-settings.php:172
+#: inc/admin/option-page-settings.php:180
 msgid ""
 "Your website is now multilingual! You can start visiting the translated "
 "version."
 msgstr ""
 
-#: inc/admin/option-page-settings.php:173
+#: inc/admin/option-page-settings.php:181
 msgid ""
 "The first time a translated page is loaded, the translations are "
 "automatically generated and saved in the database. This may take some time "
@@ -1263,54 +1265,50 @@ msgid ""
 "to generate all the multilingual versions."
 msgstr ""
 
-#: inc/admin/option-page-settings.php:174
+#: inc/admin/option-page-settings.php:182
 msgid ""
 "All translations are editable: open the visual editor from the "
 "administration bar and edit them simply by clicking on the texts on your "
 "website."
 msgstr ""
 
-#: inc/admin/option-page-settings.php:177
+#: inc/admin/option-page-settings.php:185
 msgid "Visit your multilingual website"
 msgstr ""
 
-#: inc/admin/option-page-settings.php:204
+#: inc/admin/option-page-settings.php:212
 msgid "Original website language: "
 msgstr ""
 
-#: inc/admin/option-page-settings.php:230
+#: inc/admin/option-page-settings.php:238
 msgid "Please choose an option"
 msgstr ""
 
-#: inc/admin/option-page-settings.php:241
+#: inc/admin/option-page-settings.php:249
 msgid "Original website language, defined by API key: "
 msgstr ""
 
-#: inc/admin/option-page-settings.php:253
+#: inc/admin/option-page-settings.php:261
 msgid ""
-"If you have mistakenly entered the wrong language, contact wpLingua support "
-"to request a correction."
+"If you have mistakenly selected the wrong language, you can delete the API "
+"key in the site options below and request a new API key."
 msgstr ""
 
-#: inc/admin/option-page-settings.php:256
-msgid "wplingua.com : Contact support"
-msgstr ""
-
-#: inc/admin/option-page-settings.php:263
+#: inc/admin/option-page-settings.php:267
 msgid "Custom"
 msgstr ""
 
-#: inc/admin/option-page-settings.php:277
-#: inc/admin/option-page-settings.php:341
+#: inc/admin/option-page-settings.php:281
+#: inc/admin/option-page-settings.php:345
 msgid "Flag to use for this language: "
 msgstr ""
 
-#: inc/admin/option-page-settings.php:283
-#: inc/admin/option-page-settings.php:345
+#: inc/admin/option-page-settings.php:287
+#: inc/admin/option-page-settings.php:349
 msgid "Custom flag URL for this language: "
 msgstr ""
 
-#: inc/admin/option-page-settings.php:306
+#: inc/admin/option-page-settings.php:310
 msgid ""
 "Important: space out the addition of new languages ​​by at least ten days and "
 "browse your site for the first time in the added languages. This promotes "
@@ -1318,82 +1316,82 @@ msgid ""
 "minimizes the risk of slowdowns on your site."
 msgstr ""
 
-#: inc/admin/option-page-settings.php:310
+#: inc/admin/option-page-settings.php:314
 msgid "Add new target Language: "
 msgstr ""
 
-#: inc/admin/option-page-settings.php:316
+#: inc/admin/option-page-settings.php:320
 msgid "Add language"
 msgstr ""
 
-#: inc/admin/option-page-settings.php:329
+#: inc/admin/option-page-settings.php:333
 msgid "(Private)"
 msgstr ""
 
-#: inc/admin/option-page-settings.php:333
+#: inc/admin/option-page-settings.php:337
 msgid "Move up"
 msgstr ""
 
-#: inc/admin/option-page-settings.php:334
+#: inc/admin/option-page-settings.php:338
 msgid "Move down"
 msgstr ""
 
-#: inc/admin/option-page-settings.php:350
+#: inc/admin/option-page-settings.php:354
 msgid "Make this language private"
 msgstr ""
 
-#: inc/admin/option-page-settings.php:351
+#: inc/admin/option-page-settings.php:355
 msgid ""
 "Private languages will only be visible to logged-in users with editing "
 "rights. This option allows administrators to pre-generate and correct "
 "translations before they are accessible to the public."
 msgstr ""
 
-#: inc/admin/option-page-settings.php:358
+#: inc/admin/option-page-settings.php:362
 msgid "Target languages enabled: "
 msgstr ""
 
-#: inc/admin/option-page-settings.php:363
+#: inc/admin/option-page-settings.php:367
 msgid "Access more target languages by upgrading your API key."
 msgstr ""
 
-#: inc/admin/option-page-settings.php:371
+#: inc/admin/option-page-settings.php:375
 msgid "Available languages: "
 msgstr ""
 
-#: inc/admin/option-page-settings.php:391
-#: inc/admin/option-page-settings.php:428
-#: inc/admin/option-page-settings.php:448
-#: inc/admin/option-page-settings.php:575
+#: inc/admin/option-page-settings.php:395
+#: inc/admin/option-page-settings.php:432
+#: inc/admin/option-page-settings.php:452
+#: inc/admin/option-page-settings.php:607
 msgid "wplingua.com : Upgrade your API key"
 msgstr ""
 
-#: inc/admin/option-page-settings.php:409
+#: inc/admin/option-page-settings.php:413
 msgid "API translation features: "
 msgstr ""
 
-#: inc/admin/option-page-settings.php:413
+#: inc/admin/option-page-settings.php:417
 msgid ""
 "The options below require extended access to the wpLingua API to be "
 "functional on your website."
 msgstr ""
 
-#: inc/admin/option-page-settings.php:424
+#: inc/admin/option-page-settings.php:428
 msgid ""
 "Use of the free wpLingua API keys is reserved for personal blogs and non-"
 "profit websites; paid subscriptions are available for companies and "
 "commercial websites."
 msgstr ""
 
-#: inc/admin/option-page-settings.php:437
+#: inc/admin/option-page-settings.php:441
 msgid "Search from translated languages"
 msgstr ""
 
-#: inc/admin/option-page-settings.php:442
+#: inc/admin/option-page-settings.php:446
 msgid "Enable visitors to search on your website in their own language."
 msgstr ""
 
-#: inc/admin/option-page-settings.php:444
+#: inc/admin/option-page-settings.php:448
 msgid ""
 "Example: if your website is translated from English to French and you have a "
 "post named \"Hello\". When a French visitor searches for the term "
@@ -1402,21 +1400,21 @@ msgid ""
 "post named \"Hello\" when your visitor has searched for \"Bonjour\"."
 msgstr ""
 
-#: inc/admin/option-page-settings.php:465
-msgid "Plugin translation features: "
+#: inc/admin/option-page-settings.php:469
+msgid "SEO features: "
 msgstr ""
 
-#: inc/admin/option-page-settings.php:471
+#: inc/admin/option-page-settings.php:475
 msgid "Enable multilingual XML Sitemap"
 msgstr ""
 
-#: inc/admin/option-page-settings.php:476
+#: inc/admin/option-page-settings.php:480
 msgid ""
 "This option automatically adds your wpLingua translated pages into your XML "
 "Sitemap files."
 msgstr ""
 
-#: inc/admin/option-page-settings.php:478
+#: inc/admin/option-page-settings.php:482
 msgid ""
 "An XML Sitemap is used by search engines (Google, Bing, etc.) to better "
 "discover and index the pages of your website. By default, only the default "
@@ -1424,24 +1422,46 @@ msgid ""
 "versions of your content will also be listed."
 msgstr ""
 
-#: inc/admin/option-page-settings.php:479
+#: inc/admin/option-page-settings.php:483
 msgid ""
 "This greatly improves SEO visibility, ensuring that search engines can "
 "easily find and index your content in every language."
 msgstr ""
 
-#: inc/admin/option-page-settings.php:481
+#: inc/admin/option-page-settings.php:485
 msgid ""
 "wpLingua uses a universal method that intercepts and extends sitemap. It "
 "works with the native WordPress sitemap and with popular SEO plugins such as "
 "Yoast SEO, Rank Math, All in One SEO, SEOPress, etc."
 msgstr ""
 
-#: inc/admin/option-page-settings.php:487
+#: inc/admin/option-page-settings.php:492
+msgid "Add hreflang tags to translated pages"
+msgstr ""
+
+#: inc/admin/option-page-settings.php:497
+msgid ""
+"This option automatically adds hreflang tags to your pages that are "
+"available in multiple languages."
+msgstr ""
+
+#: inc/admin/option-page-settings.php:499
+msgid ""
+"Hreflang tags are HTML metadata used to indicate the URLs of each language "
+"version of a page. They are not visible to visitors, but they allow search "
+"engines (Google, Bing, etc.) to identify the multilingual structure of the "
+"site and display the correct version according to the user's language."
+msgstr ""
+
+#: inc/admin/option-page-settings.php:514
+msgid "More features: "
+msgstr ""
+
+#: inc/admin/option-page-settings.php:519
 msgid "Enable language browser redirection"
 msgstr ""
 
-#: inc/admin/option-page-settings.php:491
+#: inc/admin/option-page-settings.php:523
 msgid ""
 "This option automatically redirects visitors to the translated version of "
 "your site that matches their browser language when they land on the main "
@@ -1450,11 +1470,11 @@ msgid ""
 "effects."
 msgstr ""
 
-#: inc/admin/option-page-settings.php:493
+#: inc/admin/option-page-settings.php:525
 msgid "Disabled (recommended):"
 msgstr ""
 
-#: inc/admin/option-page-settings.php:494
+#: inc/admin/option-page-settings.php:526
 msgid ""
 "No redirection is applied. Every visitor always sees the default homepage, "
 "regardless of their browser language. This is the safest option and ensures "
@@ -1462,11 +1482,11 @@ msgid ""
 "Recommended if you are unsure which option to choose."
 msgstr ""
 
-#: inc/admin/option-page-settings.php:496
+#: inc/admin/option-page-settings.php:528
 msgid "JS only:"
 msgstr ""
 
-#: inc/admin/option-page-settings.php:497
+#: inc/admin/option-page-settings.php:529
 msgid ""
 "The redirect is handled with JavaScript, after the default homepage has "
 "loaded. This method works in almost all cases and avoids issues with caching "
@@ -1474,11 +1494,11 @@ msgid ""
 "see the default page before being redirected to the translated version."
 msgstr ""
 
-#: inc/admin/option-page-settings.php:499
+#: inc/admin/option-page-settings.php:531
 msgid "PHP and JS:"
 msgstr ""
 
-#: inc/admin/option-page-settings.php:500
+#: inc/admin/option-page-settings.php:532
 msgid ""
 "The redirect is performed server-side with PHP, which makes it faster and "
 "more seamless for visitors. In addition, a cookie is set via JavaScript to "
@@ -1488,55 +1508,55 @@ msgid ""
 "incorrect redirects in certain setups."
 msgstr ""
 
-#: inc/admin/option-page-settings.php:509
+#: inc/admin/option-page-settings.php:541
 msgid "Disable (recommended)"
 msgstr ""
 
-#: inc/admin/option-page-settings.php:516
+#: inc/admin/option-page-settings.php:548
 msgid "Enable with JS only"
 msgstr ""
 
-#: inc/admin/option-page-settings.php:523
+#: inc/admin/option-page-settings.php:555
 msgid "Enable with PHP and JS"
 msgstr ""
 
-#: inc/admin/option-page-settings.php:532
+#: inc/admin/option-page-settings.php:564
 msgid "Progress bar for editors"
 msgstr ""
 
-#: inc/admin/option-page-settings.php:537
+#: inc/admin/option-page-settings.php:569
 msgid "Enable progress bar: Smooth translations loading for editors"
 msgstr ""
 
-#: inc/admin/option-page-settings.php:539
+#: inc/admin/option-page-settings.php:571
 msgid ""
 "Activate a progress bar when a page requires the generation of more than 20 "
 "new string translations. This feature only applies to connected editors."
 msgstr ""
 
-#: inc/admin/option-page-settings.php:559
+#: inc/admin/option-page-settings.php:591
 msgid "Website API key: "
 msgstr ""
 
-#: inc/admin/option-page-settings.php:564
+#: inc/admin/option-page-settings.php:596
 msgid ""
 "The API key connects the website to wpLingua's online services and automatic "
 "translation generators."
 msgstr ""
 
-#: inc/admin/option-page-settings.php:586
+#: inc/admin/option-page-settings.php:618
 msgid "Show API key"
 msgstr ""
 
-#: inc/admin/option-page-settings.php:588
+#: inc/admin/option-page-settings.php:620
 msgid "Hide API key"
 msgstr ""
 
-#: inc/admin/option-page-settings.php:594
+#: inc/admin/option-page-settings.php:626
 msgid "API key status: "
 msgstr ""
 
-#: inc/admin/option-page-settings.php:609
+#: inc/admin/option-page-settings.php:641
 msgid "Premium expiration: "
 msgstr ""
 
@@ -1951,96 +1971,96 @@ msgstr ""
 msgid "All translations"
 msgstr ""
 
-#: inc/admin/option-page.php:222
+#: inc/admin/option-page.php:223
 msgid "Thank you for choosing wpLingua!"
 msgstr ""
 
-#: inc/admin/option-page.php:225
+#: inc/admin/option-page.php:226
 #, php-format
 msgid "If you like wpLingua please leave us a %1$s rating. A huge thanks!"
 msgstr ""
 
-#: inc/admin/option-page.php:226
+#: inc/admin/option-page.php:227
 msgid "five stars"
 msgstr ""
 
-#: inc/admin/option-page.php:250
+#: inc/admin/option-page.php:251
 msgid "Version"
 msgstr ""
 
-#: inc/admin/option-page.php:273
+#: inc/admin/option-page.php:274
 msgid "Settings"
 msgstr ""
 
-#: inc/admin/option-page.php:315
+#: inc/admin/option-page.php:316
 msgid "wpLingua - Translation solution for multilingual website"
 msgstr ""
 
-#: inc/admin/option-page.php:318
+#: inc/admin/option-page.php:319
 msgid ""
 "wpLingua is installed, but not yet configured. You are just a few clicks "
 "away from making your website multilingual!"
 msgstr ""
 
-#: inc/admin/option-page.php:321
+#: inc/admin/option-page.php:322
 msgid "Go to the configuration page"
 msgstr ""
 
-#: inc/admin/option-page.php:395
+#: inc/admin/option-page.php:396
 msgid "wpLingua - Incompatible plugin detected"
 msgstr ""
 
-#: inc/admin/option-page.php:398
+#: inc/admin/option-page.php:399
 msgid ""
 "You have several translation plugins. This may result in unpredictable or "
 "incorrect behavior. For best results, use only one translation plugin at a "
 "time. These plugins can cause problems with wpLingua: "
 msgstr ""
 
-#: inc/admin/option-page.php:415
+#: inc/admin/option-page.php:416
 #, php-format
 msgid "Deactivate plugin: %1$s"
 msgstr ""
 
-#: inc/admin/option-page.php:424
+#: inc/admin/option-page.php:425
 msgid "Deactivate"
 msgstr ""
 
-#: inc/admin/option-page.php:441
+#: inc/admin/option-page.php:442
 msgid "Manage active plugins"
 msgstr ""
 
-#: inc/admin/option-page.php:466
+#: inc/admin/option-page.php:467
 msgid "wpLingua - Incompatible with multisite"
 msgstr ""
 
-#: inc/admin/option-page.php:469
+#: inc/admin/option-page.php:470
 msgid "wpLingua is not compatible with multisite."
 msgstr ""
 
-#: inc/admin/option-page.php:493
+#: inc/admin/option-page.php:494
 msgid "wpLingua - Incompatible with WordPress installed in a subfolder"
 msgstr ""
 
-#: inc/admin/option-page.php:496
+#: inc/admin/option-page.php:497
 msgid "wpLingua is not compatible with WordPress installed in a subfolder."
 msgstr ""
 
-#: inc/admin/option-page.php:520
+#: inc/admin/option-page.php:521
 msgid "wpLingua - Incompatible PHP version"
 msgstr ""
 
-#: inc/admin/option-page.php:523
+#: inc/admin/option-page.php:524
 msgid ""
 "wpLingua is not compatible with your PHP version. wpLingua requires PHP 7.4 "
 "or higher."
 msgstr ""
 
-#: inc/admin/option-page.php:586
+#: inc/admin/option-page.php:587
 msgid "wpLingua - Incompatible HTACCESS file"
 msgstr ""
 
-#: inc/admin/option-page.php:589
+#: inc/admin/option-page.php:590
 msgid ""
 "It seems that a plugin was incorrectly deactivated and corrupted the site's "
 "HTACCESS file, preventing the correct redirection of translated pages. "
@@ -2068,44 +2088,44 @@ msgstr ""
 msgid "Search slugs"
 msgstr ""
 
-#: inc/admin/slug-cpt.php:112
+#: inc/admin/slug-cpt.php:144
 msgid "All slug status"
 msgstr ""
 
-#: inc/admin/slug-cpt.php:127 inc/admin/slug-cpt.php:139
-#: inc/admin/translation-cpt.php:111 inc/admin/translation-cpt.php:119
+#: inc/admin/slug-cpt.php:159 inc/admin/slug-cpt.php:171
+#: inc/admin/translation-cpt.php:144 inc/admin/translation-cpt.php:152
 #: inc/dom/mode-list.php:193
 msgid "Reviewed"
 msgstr ""
 
-#: inc/admin/slug-cpt.php:128 inc/admin/slug-cpt.php:399
-#: inc/admin/slug-cpt.php:438 inc/admin/translation-cpt.php:112
-#: inc/admin/translation-cpt.php:379 inc/admin/translation-cpt.php:418
+#: inc/admin/slug-cpt.php:160 inc/admin/slug-cpt.php:431
+#: inc/admin/slug-cpt.php:470 inc/admin/translation-cpt.php:145
+#: inc/admin/translation-cpt.php:412 inc/admin/translation-cpt.php:451
 #: inc/dom/mode-list.php:197
 msgid "Unreviewed"
 msgstr ""
 
-#: inc/admin/slug-cpt.php:137 inc/admin/slug-cpt.php:389
-#: inc/admin/slug-cpt.php:426 inc/admin/translation-cpt.php:117
-#: inc/admin/translation-cpt.php:369 inc/admin/translation-cpt.php:406
+#: inc/admin/slug-cpt.php:169 inc/admin/slug-cpt.php:421
+#: inc/admin/slug-cpt.php:458 inc/admin/translation-cpt.php:150
+#: inc/admin/translation-cpt.php:402 inc/admin/translation-cpt.php:439
 msgid "Full reviewed"
 msgstr ""
 
-#: inc/admin/slug-cpt.php:138 inc/admin/slug-cpt.php:394
-#: inc/admin/slug-cpt.php:432 inc/admin/translation-cpt.php:118
-#: inc/admin/translation-cpt.php:374 inc/admin/translation-cpt.php:412
+#: inc/admin/slug-cpt.php:170 inc/admin/slug-cpt.php:426
+#: inc/admin/slug-cpt.php:464 inc/admin/translation-cpt.php:151
+#: inc/admin/translation-cpt.php:407 inc/admin/translation-cpt.php:445
 msgid "Partially reviewed"
 msgstr ""
 
-#: inc/admin/slug-cpt.php:140 inc/admin/translation-cpt.php:120
+#: inc/admin/slug-cpt.php:172 inc/admin/translation-cpt.php:153
 msgid "Full unreviewed"
 msgstr ""
 
-#: inc/admin/slug-cpt.php:285
+#: inc/admin/slug-cpt.php:317
 msgid "Slug status"
 msgstr ""
 
-#: inc/admin/slug-cpt.php:421
+#: inc/admin/slug-cpt.php:453
 msgid "Slug status: "
 msgstr ""
 
@@ -2196,15 +2216,15 @@ msgstr ""
 msgid "Search translations"
 msgstr ""
 
-#: inc/admin/translation-cpt.php:110 inc/admin/translation-cpt.php:116
+#: inc/admin/translation-cpt.php:143 inc/admin/translation-cpt.php:149
 msgid "All translation status"
 msgstr ""
 
-#: inc/admin/translation-cpt.php:265
+#: inc/admin/translation-cpt.php:298
 msgid "Translation status"
 msgstr ""
 
-#: inc/admin/translation-cpt.php:401
+#: inc/admin/translation-cpt.php:434
 msgid "Translation status: "
 msgstr ""
 
@@ -2347,7 +2367,7 @@ msgstr ""
 msgid "Go to top"
 msgstr ""
 
-#: inc/slug.php:294 inc/translation.php:238
+#: inc/slug.php:294 inc/translation.php:252
 msgid "..."
 msgstr ""
 
