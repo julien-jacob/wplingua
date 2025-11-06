@@ -471,7 +471,7 @@ function wplng_settings_part_features_seo() {
 	<hr>
 
 	<fieldset>
-		<input type="checkbox" id="wplng_sitemap_xml" name="wplng_sitemap_xml" value="1" <?php checked( 1, get_option( 'wplng_sitemap_xml', true ), true ); ?>/>
+		<input type="checkbox" id="wplng_sitemap_xml" name="wplng_sitemap_xml" value="1" <?php checked( 1, get_option( 'wplng_sitemap_xml', 1 ), true ); ?>/>
 		<label for="wplng_sitemap_xml"><?php esc_html_e( 'Enable multilingual XML Sitemap', 'wplingua' ); ?></label> 
 		<span title="<?php esc_attr_e( 'Click to expand', 'wplingua' ); ?>" wplng-help-box="#wplng-hb-feature-sitemap-xml"></span>
 	</fieldset>
@@ -488,7 +488,7 @@ function wplng_settings_part_features_seo() {
 	<hr>
 
 	<fieldset>
-		<input type="checkbox" id="wplng_hreflang" name="wplng_hreflang" value="1" <?php checked( 1, get_option( 'wplng_hreflang', true ), true ); ?>/>
+		<input type="checkbox" id="wplng_hreflang" name="wplng_hreflang" value="1" <?php checked( 1, get_option( 'wplng_hreflang', 1 ), true ); ?>/>
 		<label for="wplng_hreflang"><?php esc_html_e( 'Add hreflang tags to translated pages', 'wplingua' ); ?></label> 
 		<span title="<?php esc_attr_e( 'Click to expand', 'wplingua' ); ?>" wplng-help-box="#wplng-hb-feature-hreflang"></span>
 	</fieldset>
