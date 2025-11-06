@@ -533,9 +533,18 @@ function wplng_settings_part_features_more() {
 	</div>
 
 	<fieldset id="wplng-browser-language-fieldset">
+		<?php
 
-		<?php $wbrowser_language_redirect = get_option( 'wplng_browser_language_redirect', 'disable' ); ?>
+		$wbrowser_language_redirect = get_option( 'wplng_browser_language_redirect', 'disable' );
 
+		if ( $wbrowser_language_redirect !== 'disable'
+			&& $wbrowser_language_redirect !== 'js_only'
+			&& $wbrowser_language_redirect !== 'php_js'
+		) {
+			$wbrowser_language_redirect = 'disable';
+		}
+
+		?>
 		<label>
 			<input type="radio" name="wplng_browser_language_redirect" value="disable" <?php checked( $wbrowser_language_redirect, 'disable' ); ?> />
 			<?php esc_html_e( 'Disable (recommended)', 'wplingua' ); ?> 
