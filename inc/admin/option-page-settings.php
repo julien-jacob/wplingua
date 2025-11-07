@@ -156,6 +156,10 @@ function wplng_settings_part_first_use() {
 		return false;
 	}
 
+	// Enable SEO feature
+	update_option( 'wplng_sitemap_xml', 1 );
+	update_option( 'wplng_hreflang', 1 );
+
 	// Get URL for first registered language of front page
 	$url_front_page_translated = wplng_url_translate(
 		get_home_url(),
