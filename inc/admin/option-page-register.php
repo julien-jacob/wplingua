@@ -165,6 +165,7 @@ function wplng_option_page_register() {
 							<?php esc_html_e( 'For wpLingua to work, an API key is required so that your website has access to the automatic translation service. On this page you can enter your API key if you already have one, or create one for free.', 'wplingua' ); ?>
 						</p>
 
+						<br>
 						<hr>
 
 						<p><span class="dashicons dashicons-star-filled"></span> <?php _e( 'An <strong>instantly multilingual website</strong> thanks to automatic text detection and translation. Easy to use, no knowledge required.', 'wplingua' ); ?></p>
@@ -182,6 +183,7 @@ function wplng_option_page_register() {
 						<p><span class="dashicons dashicons-heart"></span> <?php _e( 'One <strong>free and unlimited</strong> language for personal blogs and non-commercial websites. And many more features!', 'wplingua' ); ?></p>
 
 						<hr>
+						<br>
 
 						<div class="wplng-fe-50">
 							<a href="#wplng-get-api-key" class="button button-primary"><?php esc_html_e( 'Get API key', 'wplingua' ); ?></a>
@@ -233,9 +235,12 @@ function wplng_register_part_api_key( $api_key ) {
 			<p><?php esc_html_e( 'A wpLingua API key consists of 42 characters (uppercase, lowercase and numbers). It is emailed to you when you request it using the form provided when you install the plugin. You must keep this key secret and only communicate it to wplingua.com services.', 'wplingua' ); ?></p>
 		</div>
 
-		<br>
+		<hr>
 
 		<input type="text" name="wplng_api_key" id="wplng_api_key" value="<?php echo esc_attr( $api_key ); ?>"></input>
+
+		<hr>
+		<br>
 
 		<?php
 		submit_button(
