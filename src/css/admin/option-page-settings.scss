@@ -1,8 +1,8 @@
-@import "../header";
-@import "../dashicons-spin";
-@import "admin-footer";
-@import "help-box";
-@import "option-page";
+@use "../header";
+@use "../dashicons-spin";
+@use "admin-footer";
+@use "help-box";
+@use "option-page";
 
 #wplng-target-language-template,
 #wplng_target_languages,

@@ -1,9 +1,17 @@
+@use "header";
+@use "dashicons-spin";
+@use "front/flags-style";
+@use "front/insert";
+@use "front/name-format";
+@use "front/style";
+@use "front/theme";
+@use "admin-bar";
+@use "in-progress";
+@use "overloaded";
+
 /*
  * Language Switcher
  */
-
-@import "header";
-@import "dashicons-spin";
 
 .wp-block .wplng-switcher,
 .wplng-switcher {
@@ -76,12 +84,3 @@ a[data-wplng-flag] {
         text-transform: none;
     }
 }
-
-@import "front/flags-style";
-@import "front/insert";
-@import "front/name-format";
-@import "front/style";
-@import "front/theme";
-@import "admin-bar";
-@import "in-progress";
-@import "overloaded";
