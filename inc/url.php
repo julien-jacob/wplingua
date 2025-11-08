@@ -93,6 +93,10 @@ function wplng_url_translate_no_filter( $url, $language_target_id = '' ) {
 			if ( ! empty( $home_path ) && wplng_str_starts_with( $parsed_url['path'], $home_path ) ) {
 				// Remove home path to get the relative path
 				$path_to_translate = substr( $parsed_url['path'], strlen( $home_path ) );
+				// Ensure we don't have the home path duplicated in the relative path
+				if ( wplng_str_starts_with( $path_to_translate, $home_path ) ) {
+					$path_to_translate = substr( $path_to_translate, strlen( $home_path ) );
+				}
 			} else {
 				$path_to_translate = $parsed_url['path'];
 			}
@@ -104,6 +108,10 @@ function wplng_url_translate_no_filter( $url, $language_target_id = '' ) {
 				$path_to_translate,
 				$language_target_id
 			);
+			// Safety check: ensure the translated path doesn't start with the home path
+			if ( ! empty( $home_path ) && wplng_str_starts_with( $translated_relative_path, $home_path ) ) {
+				$translated_relative_path = substr( $translated_relative_path, strlen( $home_path ) );
+			}
 		} else {
 			$translated_relative_path = '';
 		}
@@ -173,6 +181,10 @@ function wplng_url_translate_no_filter( $url, $language_target_id = '' ) {
 		if ( ! empty( $home_path ) && wplng_str_starts_with( $url, $home_path ) ) {
 			// Remove home path to get the relative path
 			$path_to_translate = substr( $url, strlen( $home_path ) );
+			// Ensure we don't have the home path duplicated
+			if ( wplng_str_starts_with( $path_to_translate, $home_path ) ) {
+				$path_to_translate = substr( $path_to_translate, strlen( $home_path ) );
+			}
 		}
 
 		// Translate slugs in the relative path
@@ -180,6 +192,11 @@ function wplng_url_translate_no_filter( $url, $language_target_id = '' ) {
 			$path_to_translate,
 			$language_target_id
 		);
+		
+		// Safety check: ensure the translated path doesn't start with the home path
+		if ( ! empty( $home_path ) && wplng_str_starts_with( $translated_relative_path, $home_path ) ) {
+			$translated_relative_path = substr( $translated_relative_path, strlen( $home_path ) );
+		}
 
 		// Insert language code after the home path (subdirectory)
 		if ( ! empty( $home_path ) && wplng_str_starts_with( $url, $home_path ) ) {
