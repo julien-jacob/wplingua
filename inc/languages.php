@@ -317,9 +317,20 @@ function wplng_get_language_current_id() {
 		return wplng_get_language_website_id();
 	}
 
+	// Get the home path (subdirectory if WordPress is in a subdirectory)
+	$parsed_url_home = wp_parse_url( home_url() );
+	$home_path       = isset( $parsed_url_home['path'] ) ? trailingslashit( $parsed_url_home['path'] ) : '/';
+
+	// Remove the home path from current path to get the relative path
+	if ( $home_path !== '/' && wplng_str_starts_with( $current_path, $home_path ) ) {
+		$relative_path = substr( $current_path, strlen( $home_path ) - 1 );
+	} else {
+		$relative_path = $current_path;
+	}
+
 	foreach ( $languages_target as $language ) {
-		if ( substr( $current_path, 0, 4 ) === '/' . $language . '/'
-			|| substr( $current_path, 0, 3 ) === $language . '/'
+		if ( substr( $relative_path, 0, 4 ) === '/' . $language . '/'
+			|| substr( $relative_path, 0, 3 ) === $language . '/'
 		) {
 
 			$wplng_language_current_id = $language;

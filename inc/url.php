@@ -62,6 +62,7 @@ function wplng_url_translate_no_filter( $url, $language_target_id = '' ) {
 	$languages_target = wplng_get_languages_target();
 	$preg_domain      = '';
 	$parsed_url_home  = wp_parse_url( home_url() );
+	$home_path        = isset( $parsed_url_home['path'] ) ? $parsed_url_home['path'] : '';
 
 	if ( isset( $parsed_url_home['host'] )
 		&& is_string( $parsed_url_home['host'] )
@@ -97,11 +98,23 @@ function wplng_url_translate_no_filter( $url, $language_target_id = '' ) {
 			);
 		}
 
-		$url = preg_replace(
-			'#^(http:\/\/|https:\/\/)?' . $preg_domain . '(.*)$#',
-			'${1}' . $parsed_url_home['host'] . '/' . $language_target_id . '${2}',
-			$url
-		);
+		// Insert language code after the home path (subdirectory)
+		if ( ! empty( $home_path ) ) {
+			// WordPress is in a subdirectory
+			$preg_home_path = preg_quote( $home_path, '#' );
+			$url = preg_replace(
+				'#^(http:\/\/|https:\/\/)?' . $preg_domain . $preg_home_path . '(.*)$#',
+				'${1}' . $parsed_url_home['host'] . $home_path . '/' . $language_target_id . '${2}',
+				$url
+			);
+		} else {
+			// WordPress is at the domain root
+			$url = preg_replace(
+				'#^(http:\/\/|https:\/\/)?' . $preg_domain . '(.*)$#',
+				'${1}' . $parsed_url_home['host'] . '/' . $language_target_id . '${2}',
+				$url
+			);
+		}
 
 		if ( empty( $parsed_url['fragment'] )
 			&& empty( $parsed_url['query'] )
@@ -115,12 +128,25 @@ function wplng_url_translate_no_filter( $url, $language_target_id = '' ) {
 		 * It's a path
 		 */
 
+		// Get the home path (subdirectory if WordPress is in a subdirectory)
+		$home_path = isset( $parsed_url_home['path'] ) ? $parsed_url_home['path'] : '';
+
 		// Check if URL is already translated
 		foreach ( $languages_target as $language_target ) {
-			if ( substr( $url, 0, 4 ) == '/' . $language_target['id'] . '/'
-				|| substr( $url, 0, 3 ) == $language_target['id'] . '/'
-			) {
-				return $url;
+			// Check for language code after the home path
+			if ( ! empty( $home_path ) ) {
+				$home_path_with_slash = trailingslashit( $home_path );
+				if ( wplng_str_starts_with( $url, $home_path_with_slash . $language_target['id'] . '/' )
+					|| wplng_str_starts_with( $url, $home_path . '/' . $language_target['id'] . '/' )
+				) {
+					return $url;
+				}
+			} else {
+				if ( substr( $url, 0, 4 ) == '/' . $language_target['id'] . '/'
+					|| substr( $url, 0, 3 ) == $language_target['id'] . '/'
+				) {
+					return $url;
+				}
 			}
 		}
 
@@ -129,7 +155,11 @@ function wplng_url_translate_no_filter( $url, $language_target_id = '' ) {
 			$language_target_id
 		);
 
-		if ( wplng_str_starts_with( $url, '/' ) ) {
+		// Insert language code after the home path (subdirectory)
+		if ( ! empty( $home_path ) && wplng_str_starts_with( $url, $home_path ) ) {
+			// WordPress is in a subdirectory
+			$url = $home_path . '/' . $language_target_id . substr( $url, strlen( $home_path ) );
+		} elseif ( wplng_str_starts_with( $url, '/' ) ) {
 			$url = '/' . $language_target_id . $url;
 		} else {
 			$url = $language_target_id . '/' . $url;

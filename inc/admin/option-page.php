@@ -476,33 +476,6 @@ function wplng_admin_notice_incompatible_multisite() {
 
 
 /**
- * Display a notice if the WordPress installed in a subfolder
- *
- * @return void|string Outputs the admin notice if applicable, or returns void if no notice is needed.
- */
-function wplng_admin_notice_incompatible_sub_folder() {
-
-	if ( ! wplng_website_in_sub_folder() ) {
-		return;
-	}
-
-	$html  = '<div ';
-	$html .= 'class="wplng-notice notice notice-error is-dismissible" ';
-	$html .= 'style="background-color: rgba(255, 0, 0, .1);">';
-	$html .= '<p style="font-weight: 600;">';
-	$html .= '<span class="dashicons dashicons-translation"></span> ';
-	$html .= esc_html__( 'wpLingua - Incompatible with WordPress installed in a subfolder', 'wplingua' );
-	$html .= '</p>';
-	$html .= '<p>';
-	$html .= esc_html__( 'wpLingua is not compatible with WordPress installed in a subfolder.', 'wplingua' );
-	$html .= '</p>';
-	$html .= '</div>'; // End .notice
-
-	echo $html;
-}
-
-
-/**
  * Display a notice if the PHP version is incompatible
  *
  * @return void|string Outputs the admin notice if applicable, or returns void if no notice is required.
