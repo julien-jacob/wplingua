@@ -1,7 +1,7 @@
-@import "../header";
-@import "admin-footer";
-@import "help-box";
-@import "option-page";
+@use "../header";
+@use "admin-footer";
+@use "help-box";
+@use "option-page";
 
 #wplng_excluded_selectors,
 #wplng_excluded_url {
