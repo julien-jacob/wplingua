@@ -3,6 +3,11 @@
 @use "help-box";
 @use "option-page";
 
+#wplng_link_media_entries {
+    width: 100%;
+    height: 150px;
+}
+
 .wplng-flag {
     max-width: 1.5em;
     max-height: 1.5em;
