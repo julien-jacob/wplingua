@@ -397,13 +397,33 @@ function wplng_get_url_original( $url = '' ) {
 			&& $parsed_url['path'] !== ''
 			&& $parsed_url['path'] !== '/'
 		) {
+			// Get the home path (subdirectory)
+			$parsed_url_home = wp_parse_url( home_url() );
+			$home_path = isset( $parsed_url_home['path'] ) ? $parsed_url_home['path'] : '';
+
+			// Extract the path relative to the home path
+			$path_to_translate = $parsed_url['path'];
+			if ( ! empty( $home_path ) && wplng_str_starts_with( $parsed_url['path'], $home_path ) ) {
+				// Remove home path to get the relative path
+				$path_to_translate = substr( $parsed_url['path'], strlen( $home_path ) );
+			}
+
+			// Translate only the relative path back to original
+			$original_relative_path = wplng_slug_original_path(
+				$path_to_translate,
+				$target_id
+			);
+
+			// Reconstruct the full path
+			if ( ! empty( $home_path ) ) {
+				$original_full_path = $home_path . $original_relative_path;
+			} else {
+				$original_full_path = $original_relative_path;
+			}
 
 			$url = str_replace(
 				$parsed_url['path'],
-				wplng_slug_original_path(
-					$parsed_url['path'],
-					$target_id
-				),
+				$original_full_path,
 				$url
 			);
 		}
