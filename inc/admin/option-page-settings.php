@@ -499,7 +499,7 @@ function wplng_settings_part_features_more() {
 	<hr>
 
 	<input type="checkbox" id="wplng_browser_language_redirect_checkbox" name="wplng_browser_language_redirect_checkbox" value="1"/> 
-	<label for="wplng_browser_language_redirect_checkbox">BETA - <?php esc_html_e( 'Enable language browser redirection', 'wplingua' ); ?></label> 
+	<label for="wplng_browser_language_redirect_checkbox"><?php esc_html_e( 'Enable language browser redirection', 'wplingua' ); ?></label> 
 	<span title="<?php esc_attr_e( 'Click to expand', 'wplingua' ); ?>" wplng-help-box="#wplng-hb-feature-browser-language-redirect"></span>
 
 	<div class="wplng-help-box" id="wplng-hb-feature-browser-language-redirect">
