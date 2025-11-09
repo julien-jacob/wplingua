@@ -304,6 +304,13 @@ function wplng_option_page_dictionary_assets( $hook ) {
 	 */
 
 	wp_enqueue_script(
+		'wplingua-option',
+		plugins_url() . '/wplingua/assets/js/admin/option-page.js',
+		array( 'jquery' ),
+		WPLNG_PLUGIN_VERSION
+	);
+
+	wp_enqueue_script(
 		'wplingua-option-dictionary',
 		plugins_url() . '/wplingua/assets/js/admin/option-page-dictionary.js',
 		array( 'jquery' ),

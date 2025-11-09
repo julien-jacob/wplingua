@@ -26,10 +26,17 @@ function wplng_option_page_dictionary() {
 			settings_fields( 'wplng_dictionary' );
 			do_settings_sections( 'wplng_dictionary' );
 			?>
-
-			<textarea name="wplng_dictionary_entries" id="wplng_dictionary_entries" style="display: none;" type="hidden"><?php echo esc_textarea( $entries_json ); ?></textarea>
-
 			<table class="form-table wplng-form-table">
+
+				<tr class="wplng-beta-hidden" style="display: none;">
+					<th scope="row"><span class="dashicons dashicons-printer"></span> <?php esc_html_e( 'Debug', 'wplingua' ); ?></th>
+					<td>
+						<fieldset>
+							<textarea name="wplng_dictionary_entries" id="wplng_dictionary_entries"><?php echo esc_textarea( $entries_json ); ?></textarea>
+						</fieldset>
+					</td>
+				</tr>
+					
 				<tr id="wplng-section-entries-all">
 					<th scope="row"><span class="dashicons dashicons-book"></span> <?php esc_html_e( 'Dictionary entries', 'wplingua' ); ?></th>
 					<td>
