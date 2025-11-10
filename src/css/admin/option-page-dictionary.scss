@@ -1,7 +1,12 @@
-@import "../header";
-@import "admin-footer";
-@import "help-box";
-@import "option-page";
+@use "../header";
+@use "admin-footer";
+@use "help-box";
+@use "option-page";
+
+#wplng_dictionary_entries {
+    width: 100%;
+    height: 150px;
+}
 
 .wplng-flag {
     max-width: 1.5em;

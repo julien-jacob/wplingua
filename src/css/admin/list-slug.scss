@@ -1,5 +1,5 @@
-@import "../header";
-@import "admin-footer";
+@use "../header";
+@use "admin-footer";
 
 #wpbody #wpbody-content {
     h1.wp-heading-inline {

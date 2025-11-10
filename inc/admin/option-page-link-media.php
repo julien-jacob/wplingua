@@ -26,10 +26,17 @@ function wplng_option_page_link_media() {
 			settings_fields( 'wplng_link_media' );
 			do_settings_sections( 'wplng_link_media' );
 			?>
-
-			<textarea name="wplng_link_media_entries" id="wplng_link_media_entries" style="display: none;" type="hidden"><?php echo esc_textarea( $entries_json ); ?></textarea>
-
 			<table class="form-table wplng-form-table">
+
+				<tr class="wplng-beta-hidden" style="display: none;">
+					<th scope="row"><span class="dashicons dashicons-printer"></span> <?php esc_html_e( 'Debug', 'wplingua' ); ?></th>
+					<td>
+						<fieldset>
+							<textarea name="wplng_link_media_entries" id="wplng_link_media_entries"><?php echo esc_textarea( $entries_json ); ?></textarea>
+						</fieldset>
+					</td>
+				</tr>
+
 				<tr id="wplng-section-entries-all">
 					<th scope="row"><span class="dashicons dashicons-format-gallery"></span> <?php esc_html_e( 'Links & medias', 'wplingua' ); ?></th>
 					<td>

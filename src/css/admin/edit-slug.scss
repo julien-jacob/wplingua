@@ -1,6 +1,6 @@
-@import "../header";
-@import "../dashicons-spin";
-@import "admin-footer";
+@use "../header";
+@use "../dashicons-spin";
+@use "admin-footer";
 
 #wpbody #wpbody-content {
     h1.wp-heading-inline {

@@ -4,18 +4,38 @@
   "author": "wpLingua Team",
   "description": "Gulp configuration for wpLingua WordPress plugin",
   "main": "gulpfile.mjs",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/julien-jacob/wplingua.git"
+  },
+  "bugs": {
+    "url": "https://github.com/julien-jacob/wplingua/issues"
+  },
+  "homepage": "https://wplingua.com",
+  "engines": {
+    "node": ">=16.0.0"
+  },
   "scripts": {
     "build": "gulp",
     "clear": "gulp clear",
-    "archive": "gulp archive"
+    "archive": "gulp archive",
+    "watch": "gulp watch"
   },
-  "dependencies": {
-    "del": "^7.1.0",
+  "devDependencies": {
+    "del": "^8.0.1",
+    "glob": "^9.0.0",
     "gulp": "^5.0.0",
     "gulp-autoprefixer": "^9.0.0",
-    "gulp-sass": "^5.1.0",
+    "gulp-dart-sass": "^1.1.0",
     "gulp-uglify": "^3.0.2",
     "gulp-zip": "^6.0.0",
-    "sass": "^1.72.0"
-  }
+    "rimraf": "^4.0.0",
+    "sass": "^1.72.0",
+    "gulp-sass": "^6.0.1"
+  },
+  "overrides": {
+    "glob": "^9.0.0",
+    "inflight": "latest"
+  },
+  "dependencies": {}
 }

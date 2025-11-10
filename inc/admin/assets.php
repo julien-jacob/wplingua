@@ -260,6 +260,13 @@ function wplng_option_page_link_media_assets( $hook ) {
 	 */
 
 	wp_enqueue_script(
+		'wplingua-option',
+		plugins_url() . '/wplingua/assets/js/admin/option-page.js',
+		array( 'jquery' ),
+		WPLNG_PLUGIN_VERSION
+	);
+
+	wp_enqueue_script(
 		'wplingua-option-link-media',
 		plugins_url() . '/wplingua/assets/js/admin/option-page-link-media.js',
 		array( 'jquery' ),
@@ -302,6 +309,13 @@ function wplng_option_page_dictionary_assets( $hook ) {
 	/**
 	 * Enqueue wpLingua JS scripts
 	 */
+
+	wp_enqueue_script(
+		'wplingua-option',
+		plugins_url() . '/wplingua/assets/js/admin/option-page.js',
+		array( 'jquery' ),
+		WPLNG_PLUGIN_VERSION
+	);
 
 	wp_enqueue_script(
 		'wplingua-option-dictionary',
