@@ -466,6 +466,7 @@ function wplng_get_slugs_from_query() {
 		// Add source and translations to slugs array
 		$slugs[] = array(
 			'source'       => $source,
+			'id'           => $slug_id,
 			'translations' => $translations,
 		);
 	}
