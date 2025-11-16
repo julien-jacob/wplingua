@@ -17,208 +17,265 @@ if ( ! defined( 'WPINC' ) ) {
  */
 function wplng_option_page_register() {
 
-    // Initialize variables
-    $mail             = '';
-    $api_key          = wplng_get_api_key(); // Retrieve the current API key
-    $json_request_key = get_option( 'wplng_request_free_key' ); // Get the free key request data
-    $error_validation = get_transient( 'wplng_api_key_error' ); // Check for any API key error
-    $error_validation = sanitize_text_field( $error_validation );
+	// Check if DB size is compatible with wpLingua
+	if ( wplng_count_public_content() > 500
+		&& ! empty( wplng_get_translation_count() )
+		&& ! empty( wplng_get_slug_count() )
+	) {
+		wplng_register_part_incompatible_db();
+		return;
+	}
 
-    // Clear any existing API key data
-    delete_option( 'wplng_api_key_data' );
+	// Initialize variables
+	$mail             = '';
+	$api_key          = wplng_get_api_key();
+	$json_request_key = get_option( 'wplng_request_free_key' );
+	$error_validation = get_transient( 'wplng_api_key_error' );
+	$error_validation = sanitize_text_field( $error_validation );
 
-    // Handle API key error validation
-    if ( ! empty( $error_validation ) && is_string( $error_validation ) ) :
+	// Clear any existing API key data
+	delete_option( 'wplng_api_key_data' );
 
-        // Clear the transient storing the error message
-        delete_transient( 'wplng_api_key_error' );
+	// Handle API key error validation
+	if ( ! empty( $error_validation ) && is_string( $error_validation ) ) :
 
-        // Display the error message
-        $message  = '';
-        $message .= __( 'Message: ', 'wplingua' );
-        $message .= $error_validation;
+		// Clear the transient storing the error message
+		delete_transient( 'wplng_api_key_error' );
 
-        ?>
-        <div class="wplng-notice notice notice-error is-dismissible">
-            <p>
-                <strong><?php esc_html_e( 'An error occurred with API key.', 'wplingua' ); ?></strong>
-                <br>
-                <?php echo esc_html( $message ); ?>
-            </p>
-        </div>
-        <?php
+		// Display the error message
+		$message  = '';
+		$message .= __( 'Message: ', 'wplingua' );
+		$message .= $error_validation;
 
-    // Handle invalid API key scenario
-    elseif ( get_option( 'wplng_api_key' ) !== $api_key && empty( wplng_get_api_data() ) ) :
+		?>
+		<div class="wplng-notice notice notice-error is-dismissible">
+			<p>
+				<strong><?php esc_html_e( 'An error occurred with API key.', 'wplingua' ); ?></strong>
+				<br>
+				<?php echo esc_html( $message ); ?>
+			</p>
+		</div>
+		<?php
 
-        // Reset the API key option
-        update_option( 'wplng_api_key', '' );
+		// Handle invalid API key scenario
+	elseif ( get_option( 'wplng_api_key' ) !== $api_key && empty( wplng_get_api_data() ) ) :
 
-        // Display an error message if the API key is invalid
-        if ( ! empty( get_option( 'wplng_api_key' ) ) ) :
-            ?>
-            <div class="wplng-notice notice notice-error is-dismissible">
-                <p><strong><?php esc_html_e( 'Invalid API key.', 'wplingua' ); ?></strong></p>
-            </div>
-            <?php
-        endif;
+		// Reset the API key option
+		update_option( 'wplng_api_key', '' );
 
-    // Handle free API key request
-    elseif ( ! empty( $json_request_key ) ) :
+		// Display an error message if the API key is invalid
+		if ( ! empty( get_option( 'wplng_api_key' ) ) ) :
+			?>
+			<div class="wplng-notice notice notice-error is-dismissible">
+				<p><strong><?php esc_html_e( 'Invalid API key.', 'wplingua' ); ?></strong></p>
+			</div>
+			<?php
+		endif;
 
-        // Clear the free key request option
-        delete_option( 'wplng_request_free_key' );
+		// Handle free API key request
+	elseif ( ! empty( $json_request_key ) ) :
 
-        // Decode the JSON request data
-        $data_request_key = json_decode( $json_request_key, true );
-        $response         = wplng_api_call_request_api_key( $data_request_key ); // Make API call
+		// Clear the free key request option
+		delete_option( 'wplng_request_free_key' );
 
-        // Handle errors in the API response
-        if ( ! empty( $response['error'] ) ) {
+		// Decode the JSON request data
+		$data_request_key = json_decode( $json_request_key, true );
+		$response         = wplng_api_call_request_api_key( $data_request_key ); // Make API call
 
-            $message = '';
+		// Handle errors in the API response
+		if ( ! empty( $response['error'] ) ) {
 
-            if ( ! empty( $response['message'] ) ) {
-                $message .= __( 'Message: ', 'wplingua' );
-                $message .= $response['message'];
-            }
+			$message = '';
 
-            ?>
-            <div class="wplng-notice notice notice-error is-dismissible">
-                <p>
-                    <strong><?php esc_html_e( 'An error occurred while creating the API key.', 'wplingua' ); ?></strong>
-                    <br>
-                    <?php echo esc_html( $message ); ?>
-                </p>
-            </div>
-            <?php
-        } elseif ( ! empty( $response['register'] ) ) {
-            // If registration is successful, sanitize and store the email address
-            if ( ! empty( $data_request_key['mail_address'] ) && is_email( $data_request_key['mail_address'] ) ) {
-                $mail = sanitize_email( $data_request_key['mail_address'] );
-            }
-        }
-    endif;
+			if ( ! empty( $response['message'] ) ) {
+				$message .= __( 'Message: ', 'wplingua' );
+				$message .= $response['message'];
+			}
 
-    // Display the main option page content
-    ?>
-    <h1 class="wplng-option-page-title"><span class="dashicons dashicons-translation"></span> <?php esc_html_e( 'wpLingua - Register API key', 'wplingua' ); ?></h1>
+			?>
+			<div class="wplng-notice notice notice-error is-dismissible">
+				<p>
+					<strong><?php esc_html_e( 'An error occurred while creating the API key.', 'wplingua' ); ?></strong>
+					<br>
+					<?php echo esc_html( $message ); ?>
+				</p>
+			</div>
+			<?php
+		} elseif ( ! empty( $response['register'] ) ) {
+			// If registration is successful, sanitize and store the email address
+			if ( ! empty( $data_request_key['mail_address'] ) && is_email( $data_request_key['mail_address'] ) ) {
+				$mail = sanitize_email( $data_request_key['mail_address'] );
+			}
+		}
+	endif;
 
-    <div class="wrap">
-        <hr class="wp-header-end">
-        <form method="post" action="options.php">
-            <?php
-            // Output settings fields and sections for the plugin
-            settings_fields( 'wplng_settings' );
-            do_settings_sections( 'wplng_settings' );
-            ?>
-            <table class="form-table wplng-form-table">
+	// Display the main option page content
+	?>
+	<h1 class="wplng-option-page-title"><span class="dashicons dashicons-translation"></span> <?php esc_html_e( 'wpLingua - Register API key', 'wplingua' ); ?></h1>
 
-                <?php
-                // Display success message if an API key was created and sent via email
-                if ( ! empty( $mail ) ) :
-                    ?>
+	<div class="wrap">
+		<hr class="wp-header-end">
+		<form method="post" action="options.php">
+			<?php
+			// Output settings fields and sections for the plugin
+			settings_fields( 'wplng_settings' );
+			do_settings_sections( 'wplng_settings' );
+			?>
+			<table class="form-table wplng-form-table">
 
-                <tr>
-                    <th scope="row"><span class="dashicons dashicons-yes-alt"></span> <?php esc_html_e( 'API key created', 'wplingua' ); ?></th>
-                    <td id="wplng-register-success-message">
+				<?php
+				// Display success message if an API key was created and sent via email
+				if ( ! empty( $mail ) ) :
+					?>
 
-                        <p id="wplng-register-success-title">
-                            <span class="dashicons dashicons-email-alt"></span> <?php esc_html_e( 'API key created and sent by email', 'wplingua' ); ?>
-                        </p>
+				<tr>
+					<th scope="row"><span class="dashicons dashicons-yes-alt"></span> <?php esc_html_e( 'API key created', 'wplingua' ); ?></th>
+					<td id="wplng-register-success-message">
 
-                        <p>
-                            <strong><?php esc_html_e( 'The API key has been correctly created and sent to the following e-mail address: ', 'wplingua' ); ?><span id="wplng-register-success-mail"><?php esc_html_e( $mail ); ?><span></strong>
-                        </p>
+						<p id="wplng-register-success-title">
+							<span class="dashicons dashicons-email-alt"></span> <?php esc_html_e( 'API key created and sent by email', 'wplingua' ); ?>
+						</p>
 
-                        <hr>
+						<p>
+							<strong><?php esc_html_e( 'The API key has been correctly created and sent to the following e-mail address: ', 'wplingua' ); ?><span id="wplng-register-success-mail"><?php esc_html_e( $mail ); ?><span></strong>
+						</p>
 
-                        <p>
-                            <?php esc_html_e( 'Go to your mailbox and copy the API key sent to you (don\'t forget to check the spam section of your mailbox). Then paste it in the section below, and click "Set API key" to make your website multilingual.', 'wplingua' ); ?>
-                        </p>
-                    </td>
-                </tr>
+						<hr>
 
-                <tr>
-                    <th scope="row"><span class="dashicons dashicons-admin-network"></span> <?php esc_html_e( 'Set API Key', 'wplingua' ); ?></th>
-                    <td class="wplng-td-last">
-                        <?php wplng_register_part_api_key( $api_key ); ?>
-                    </td>
-                </tr>
+						<p>
+							<?php esc_html_e( 'Go to your mailbox and copy the API key sent to you (don\'t forget to check the spam section of your mailbox). Then paste it in the section below, and click "Set API key" to make your website multilingual.', 'wplingua' ); ?>
+						</p>
+					</td>
+				</tr>
 
-                <?php else : ?>
+				<tr>
+					<th scope="row"><span class="dashicons dashicons-admin-network"></span> <?php esc_html_e( 'Set API Key', 'wplingua' ); ?></th>
+					<td class="wplng-td-last">
+						<?php wplng_register_part_api_key( $api_key ); ?>
+					</td>
+				</tr>
 
-                <!-- Display forms for getting or setting the API key -->
-                <tr id="wplng-get-api-key">
-                    <th scope="row"><span class="dashicons dashicons-yes-alt"></span> <?php esc_html_e( 'Get API key', 'wplingua' ); ?></th>
-                    <td>
-                        <?php wplng_register_part_free_api_key(); ?>
-                    </td>
-                </tr>
+				<?php else : ?>
 
-                <tr id="wplng-set-api-key">
-                    <th scope="row"><span class="dashicons dashicons-admin-network"></span> <?php esc_html_e( 'Set API Key', 'wplingua' ); ?></th>
-                    <td>
-                        <?php wplng_register_part_api_key( $api_key ); ?>
-                    </td>
-                </tr>
+				<!-- Display forms for getting or setting the API key -->
+				<tr id="wplng-get-api-key">
+					<th scope="row"><span class="dashicons dashicons-yes-alt"></span> <?php esc_html_e( 'Get API key', 'wplingua' ); ?></th>
+					<td>
+						<?php wplng_register_part_free_api_key(); ?>
+					</td>
+				</tr>
 
-                <tr>
-                    <th scope="row"><span class="dashicons dashicons-info"></span> <?php esc_html_e( 'Start with wpLingua', 'wplingua' ); ?></th>
-                    <td>
-                        <p>
-                            <strong><?php esc_html_e( 'You are just a few clicks away from making your website multilingual!', 'wplingua' ); ?></strong>
-                        </p>
+				<tr id="wplng-set-api-key">
+					<th scope="row"><span class="dashicons dashicons-admin-network"></span> <?php esc_html_e( 'Set API Key', 'wplingua' ); ?></th>
+					<td>
+						<?php wplng_register_part_api_key( $api_key ); ?>
+					</td>
+				</tr>
 
-                        <hr>
+				<tr>
+					<th scope="row"><span class="dashicons dashicons-info"></span> <?php esc_html_e( 'Start with wpLingua', 'wplingua' ); ?></th>
+					<td>
+						<p>
+							<strong><?php esc_html_e( 'You are just a few clicks away from making your website multilingual!', 'wplingua' ); ?></strong>
+						</p>
 
-                        <p>
-                            <?php esc_html_e( 'For wpLingua to work, an API key is required so that your website has access to the automatic translation service. On this page you can enter your API key if you already have one, or create one for free.', 'wplingua' ); ?>
-                        </p>
+						<hr>
 
-                        <br>
-                        <hr>
+						<p>
+							<?php esc_html_e( 'For wpLingua to work, an API key is required so that your website has access to the automatic translation service. On this page you can enter your API key if you already have one, or create one for free.', 'wplingua' ); ?>
+						</p>
 
-                        <p><span class="dashicons dashicons-star-filled"></span> <?php _e( 'An <strong>instantly multilingual website</strong> thanks to automatic text detection and translation. Easy to use, no knowledge required.', 'wplingua' ); ?></p>
+						<br>
+						<hr>
 
-                        <hr>
+						<p><span class="dashicons dashicons-star-filled"></span> <?php _e( 'An <strong>instantly multilingual website</strong> thanks to automatic text detection and translation. Easy to use, no knowledge required.', 'wplingua' ); ?></p>
 
-                        <p><span class="dashicons dashicons-admin-site"></span> <?php _e( '<strong>SEO friendly</strong> to allow search engines to index translated pages. Open up your website and your business to the whole world.', 'wplingua' ); ?></p>
+						<hr>
 
-                        <hr>
+						<p><span class="dashicons dashicons-admin-site"></span> <?php _e( '<strong>SEO friendly</strong> to allow search engines to index translated pages. Open up your website and your business to the whole world.', 'wplingua' ); ?></p>
 
-                        <p><span class="dashicons dashicons-edit"></span> <?php _e( 'All <strong>translations are editable</strong>. Discover the visual editor and edit translations simply by clicking on them. With a fully customizable language switcher.', 'wplingua' ); ?></p>
+						<hr>
 
-                        <hr>
+						<p><span class="dashicons dashicons-edit"></span> <?php _e( 'All <strong>translations are editable</strong>. Discover the visual editor and edit translations simply by clicking on them. With a fully customizable language switcher.', 'wplingua' ); ?></p>
 
-                        <p><span class="dashicons dashicons-heart"></span> <?php _e( 'One <strong>free and unlimited</strong> language for personal blogs and non-commercial websites. And many more features!', 'wplingua' ); ?></p>
+						<hr>
 
-                        <hr>
-                        <br>
+						<p><span class="dashicons dashicons-heart"></span> <?php _e( 'One <strong>free and unlimited</strong> language for personal blogs and non-commercial websites. And many more features!', 'wplingua' ); ?></p>
 
-                        <div class="wplng-fe-50">
-                            <a href="#wplng-get-api-key" class="button button-primary"><?php esc_html_e( 'Get API key', 'wplingua' ); ?></a>
-                        </div>
+						<hr>
+						<br>
 
-                        <div class="wplng-fe-50">
-                            <a href="#wplng-set-api-key" class="button button-primary"><?php esc_html_e( 'Set API key', 'wplingua' ); ?></a>
-                        </div>
-                    </td>
-                </tr>
+						<div class="wplng-fe-50">
+							<a href="#wplng-get-api-key" class="button button-primary"><?php esc_html_e( 'Get API key', 'wplingua' ); ?></a>
+						</div>
 
-                <tr>
-                    <th scope="row"><span class="dashicons dashicons-admin-settings"></span> <?php esc_html_e( 'Advanced API features', 'wplingua' ); ?></th>
-                    <td class="wplng-td-last">
-                        <?php wplng_register_part_premium(); ?>
-                    </td>
-                </tr>
+						<div class="wplng-fe-50">
+							<a href="#wplng-set-api-key" class="button button-primary"><?php esc_html_e( 'Set API key', 'wplingua' ); ?></a>
+						</div>
+					</td>
+				</tr>
 
-                <?php endif; ?>
+				<tr>
+					<th scope="row"><span class="dashicons dashicons-admin-settings"></span> <?php esc_html_e( 'Advanced API features', 'wplingua' ); ?></th>
+					<td class="wplng-td-last">
+						<?php wplng_register_part_premium(); ?>
+					</td>
+				</tr>
 
-            </table>
-        </form>
-    </div>
-    <?php
+				<?php endif; ?>
+
+			</table>
+		</form>
+	</div>
+	<?php
+}
+
+
+/**
+ * Display a notice for websites incompatible with string translation
+ *
+ * @return void
+ */
+function wplng_register_part_incompatible_db() {
+	?>
+	<h1 class="wplng-option-page-title"><span class="dashicons dashicons-translation"></span> <?php esc_html_e( 'wpLingua', 'wplingua' ); ?></h1>
+
+	<div class="wrap">
+		<hr class="wp-header-end">
+		<table class="form-table wplng-form-table">
+
+			<tr>
+				<th scope="row"><span class="dashicons dashicons-warning"></span> <?php esc_html_e( 'Important Notice', 'wplingua' ); ?></th>
+				<td>
+					<p><strong><?php esc_html_e( 'Website incompatible with string translation', 'wplingua' ); ?></strong></p>
+
+					<hr>
+
+					<p><?php esc_html_e( 'Your website contains a large amount of content, which exceeds the limits of the string translation method used by wpLingua.', 'wplingua' ); ?></p>
+
+					<br>
+					<hr>
+
+					<p><strong><?php esc_html_e( 'Why the website is incompatible', 'wplingua' ); ?></strong></p>
+
+					<hr>
+
+					<p><?php esc_html_e( 'wpLingua works by identifying and translating each string of characters individually. On a large website, this method generates a very large number of database entries, causing overload and slowdowns.' ); ?></p>
+
+					<br>
+					<hr>
+
+					<p><strong><?php esc_html_e( 'Recommended solution', 'wplingua' ); ?></strong></p>
+
+					<hr>
+
+					<p><?php esc_html_e( 'To make large websites multilingual, we recommend using a translation plugin based on content duplication, such as Polylang or WPML. These solutions are specifically designed to efficiently manage large websites.' ); ?></p>
+				</td>
+			</tr>
+
+		</table>
+	</div>
+	<?php
 }
 
 
