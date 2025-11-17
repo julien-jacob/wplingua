@@ -113,11 +113,17 @@ function wplng_ajax_heartbeat_clear_bad_translations( $counter ) {
 
 			--$counter;
 
-			$deleted[] = array(
-				'reason' => 'Delete translation - Incorrect original language',
-				'title'  => get_the_title( $id ),
-				'id'     => $id,
-			);
+			// Debug (if enabled)
+			if ( true === WPLNG_DEBUG_BEAT ) {
+				$debug = array(
+					'title'  => 'wpLingua HeartBeat debug',
+					'action' => 'Delete translation - Incorrect original language',
+					'title'  => get_the_title( $id ),
+					'id'     => $id,
+				);
+
+				error_log( var_export( $debug, true ) );
+			}
 
 			// Permanently delete the translation
 			wp_delete_post( $id, true );
@@ -205,11 +211,17 @@ function wplng_ajax_heartbeat_clear_bad_slugs( $counter ) {
 
 			--$counter;
 
-			$deleted[] = array(
-				'reason' => 'Delete slug - Incorrect original language',
-				'title'  => get_the_title( $id ),
-				'id'     => $id,
-			);
+			// Debug (if enabled)
+			if ( true === WPLNG_DEBUG_BEAT ) {
+				$debug = array(
+					'title'  => 'wpLingua HeartBeat debug',
+					'action' => 'Delete slug - Incorrect original language',
+					'title'  => get_the_title( $id ),
+					'id'     => $id,
+				);
+
+				error_log( var_export( $debug, true ) );
+			}
 
 			// Permanently delete the translation
 			wp_delete_post( $id, true );
