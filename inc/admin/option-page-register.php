@@ -9,24 +9,40 @@ if ( ! defined( 'WPINC' ) ) {
 /**
  * Print HTML Option page : wpLingua Register
  *
+ * This function generates the HTML for the wpLingua option page where users can register
+ * or set their API key. It handles various scenarios such as displaying error messages,
+ * validating API keys, and providing forms for API key registration and input.
+ *
  * @return void
  */
 function wplng_option_page_register() {
 
+	// Check if DB size is compatible with wpLingua
+	if ( wplng_count_public_content() > 500
+		&& ! empty( wplng_get_translation_count() )
+		&& ! empty( wplng_get_slug_count() )
+	) {
+		wplng_register_part_incompatible_db();
+		return;
+	}
+
+	// Initialize variables
 	$mail             = '';
 	$api_key          = wplng_get_api_key();
 	$json_request_key = get_option( 'wplng_request_free_key' );
 	$error_validation = get_transient( 'wplng_api_key_error' );
 	$error_validation = sanitize_text_field( $error_validation );
 
+	// Clear any existing API key data
 	delete_option( 'wplng_api_key_data' );
 
-	if ( ! empty( $error_validation )
-		&& is_string( $error_validation )
-	) :
+	// Handle API key error validation
+	if ( ! empty( $error_validation ) && is_string( $error_validation ) ) :
 
+		// Clear the transient storing the error message
 		delete_transient( 'wplng_api_key_error' );
 
+		// Display the error message
 		$message  = '';
 		$message .= __( 'Message: ', 'wplingua' );
 		$message .= $error_validation;
@@ -41,12 +57,13 @@ function wplng_option_page_register() {
 		</div>
 		<?php
 
-	elseif ( get_option( 'wplng_api_key' ) !== $api_key
-		&& empty( wplng_get_api_data() )
-	) :
+		// Handle invalid API key scenario
+	elseif ( get_option( 'wplng_api_key' ) !== $api_key && empty( wplng_get_api_data() ) ) :
 
+		// Reset the API key option
 		update_option( 'wplng_api_key', '' );
 
+		// Display an error message if the API key is invalid
 		if ( ! empty( get_option( 'wplng_api_key' ) ) ) :
 			?>
 			<div class="wplng-notice notice notice-error is-dismissible">
@@ -55,13 +72,17 @@ function wplng_option_page_register() {
 			<?php
 		endif;
 
+		// Handle free API key request
 	elseif ( ! empty( $json_request_key ) ) :
 
+		// Clear the free key request option
 		delete_option( 'wplng_request_free_key' );
 
+		// Decode the JSON request data
 		$data_request_key = json_decode( $json_request_key, true );
-		$response         = wplng_api_call_request_api_key( $data_request_key );
+		$response         = wplng_api_call_request_api_key( $data_request_key ); // Make API call
 
+		// Handle errors in the API response
 		if ( ! empty( $response['error'] ) ) {
 
 			$message = '';
@@ -81,31 +102,29 @@ function wplng_option_page_register() {
 			</div>
 			<?php
 		} elseif ( ! empty( $response['register'] ) ) {
-			if ( ! empty( $data_request_key['mail_address'] )
-				&& is_email( $data_request_key['mail_address'] )
-			) {
+			// If registration is successful, sanitize and store the email address
+			if ( ! empty( $data_request_key['mail_address'] ) && is_email( $data_request_key['mail_address'] ) ) {
 				$mail = sanitize_email( $data_request_key['mail_address'] );
 			}
 		}
 	endif;
-	?>
 
+	// Display the main option page content
+	?>
 	<h1 class="wplng-option-page-title"><span class="dashicons dashicons-translation"></span> <?php esc_html_e( 'wpLingua - Register API key', 'wplingua' ); ?></h1>
 
 	<div class="wrap">
 		<hr class="wp-header-end">
 		<form method="post" action="options.php">
 			<?php
+			// Output settings fields and sections for the plugin
 			settings_fields( 'wplng_settings' );
 			do_settings_sections( 'wplng_settings' );
 			?>
 			<table class="form-table wplng-form-table">
 
 				<?php
-				/**
-				 * After register a new API key without error
-				 */
-
+				// Display success message if an API key was created and sent via email
 				if ( ! empty( $mail ) ) :
 					?>
 
@@ -138,6 +157,7 @@ function wplng_option_page_register() {
 
 				<?php else : ?>
 
+				<!-- Display forms for getting or setting the API key -->
 				<tr id="wplng-get-api-key">
 					<th scope="row"><span class="dashicons dashicons-yes-alt"></span> <?php esc_html_e( 'Get API key', 'wplingua' ); ?></th>
 					<td>
@@ -206,6 +226,54 @@ function wplng_option_page_register() {
 
 			</table>
 		</form>
+	</div>
+	<?php
+}
+
+
+/**
+ * Display a notice for websites incompatible with string translation
+ *
+ * @return void
+ */
+function wplng_register_part_incompatible_db() {
+	?>
+	<h1 class="wplng-option-page-title"><span class="dashicons dashicons-translation"></span> <?php esc_html_e( 'wpLingua', 'wplingua' ); ?></h1>
+
+	<div class="wrap">
+		<hr class="wp-header-end">
+		<table class="form-table wplng-form-table">
+
+			<tr>
+				<th scope="row"><span class="dashicons dashicons-warning"></span> <?php esc_html_e( 'Important Notice', 'wplingua' ); ?></th>
+				<td>
+					<p><strong><?php esc_html_e( 'Website incompatible with string translation', 'wplingua' ); ?></strong></p>
+
+					<hr>
+
+					<p><?php esc_html_e( 'Your website contains a large amount of content, which exceeds the limits of the string translation method used by wpLingua.', 'wplingua' ); ?></p>
+
+					<br>
+					<hr>
+
+					<p><strong><?php esc_html_e( 'Why the website is incompatible', 'wplingua' ); ?></strong></p>
+
+					<hr>
+
+					<p><?php esc_html_e( 'wpLingua works by identifying and translating each string of characters individually. On a large website, this method generates a very large number of database entries, causing overload and slowdowns.' ); ?></p>
+
+					<br>
+					<hr>
+
+					<p><strong><?php esc_html_e( 'Recommended solution', 'wplingua' ); ?></strong></p>
+
+					<hr>
+
+					<p><?php esc_html_e( 'To make large websites multilingual, we recommend using a translation plugin based on content duplication, such as Polylang or WPML. These solutions are specifically designed to efficiently manage large websites.' ); ?></p>
+				</td>
+			</tr>
+
+		</table>
 	</div>
 	<?php
 }

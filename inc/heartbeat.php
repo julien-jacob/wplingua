@@ -7,17 +7,17 @@ if ( ! defined( 'WPINC' ) ) {
 
 
 /**
- * HeartBeat: Clear bad translations and slugs
+ * HeartBeat:
+ * - Slug automatic translation
+ * - Clear bad translations and slugs
  *
  * @return void
  */
 function wplng_ajax_heartbeat() {
 
-	$language_website_id = wplng_get_language_website_id();
-	$last_beat           = get_option( 'wplng_hb_last_update' );
-	$now                 = time();
-	$counter             = 100;
-	$deleted             = array();
+	$last_beat = get_option( 'wplng_hb_last_update' );
+	$now       = time();
+	$counter   = 100;
 
 	// Prevents frequent execution if the last heartbeat was within 10 minutes
 	if ( ! empty( $last_beat )
@@ -29,6 +29,31 @@ function wplng_ajax_heartbeat() {
 
 	// Update last heartbeat timestamp
 	update_option( 'wplng_hb_last_update', $now );
+
+	$counter = wplng_ajax_heartbeat_clear_bad_translations( $counter );
+	$counter = wplng_ajax_heartbeat_clear_bad_slugs( $counter );
+
+	wp_send_json_success();
+}
+
+
+/**
+ * Clears invalid or incorrect translations based on metadata validation and language checks.
+ *
+ * This function iterates through all translation posts of type 'wplng_translation',
+ * validates their metadata, and deletes those that are invalid or do not match the
+ * current language website ID. The deletion process is limited by the $counter parameter.
+ *
+ * @param int $counter The maximum number of translations to process and delete.
+ * @return int The remaining counter after processing.
+ */
+function wplng_ajax_heartbeat_clear_bad_translations( $counter ) {
+
+	if ( $counter <= 0 ) {
+		return 0;
+	}
+
+	$language_website_id = wplng_get_language_website_id();
 
 	/**
 	 * Check translations
@@ -64,11 +89,17 @@ function wplng_ajax_heartbeat() {
 
 			--$counter;
 
-			$deleted[] = array(
-				'reason' => 'Delete translation - Invalid data',
-				'title'  => get_the_title( $id ),
-				'id'     => $id,
-			);
+			// Debug (if enabled)
+			if ( true === WPLNG_DEBUG_BEAT ) {
+				$debug = array(
+					'title'  => 'wpLingua HeartBeat debug',
+					'action' => 'Delete translation - Invalid data',
+					'title'  => get_the_title( $id ),
+					'id'     => $id,
+				);
+
+				error_log( var_export( $debug, true ) );
+			}
 
 			// Permanently delete the invalid translation
 			wp_delete_post( $id, true );
@@ -82,17 +113,45 @@ function wplng_ajax_heartbeat() {
 
 			--$counter;
 
-			$deleted[] = array(
-				'reason' => 'Delete translation - Incorrect original language',
-				'title'  => get_the_title( $id ),
-				'id'     => $id,
-			);
+			// Debug (if enabled)
+			if ( true === WPLNG_DEBUG_BEAT ) {
+				$debug = array(
+					'title'  => 'wpLingua HeartBeat debug',
+					'action' => 'Delete translation - Incorrect original language',
+					'title'  => get_the_title( $id ),
+					'id'     => $id,
+				);
+
+				error_log( var_export( $debug, true ) );
+			}
 
 			// Permanently delete the translation
 			wp_delete_post( $id, true );
 			continue;
 		}
 	}
+
+	return $counter;
+}
+
+
+/**
+ * Clears invalid or incorrect slugs based on metadata validation and language checks.
+ *
+ * This function iterates through all slug posts of type 'wplng_slug',
+ * validates their metadata, and deletes those that are invalid or do not match the
+ * current language website ID. The deletion process is limited by the $counter parameter.
+ *
+ * @param int $counter The maximum number of slugs to process and delete.
+ * @return int The remaining counter after processing.
+ */
+function wplng_ajax_heartbeat_clear_bad_slugs( $counter ) {
+
+	if ( $counter <= 0 ) {
+		return 0;
+	}
+
+	$language_website_id = wplng_get_language_website_id();
 
 	/**
 	 * Check slugs
@@ -128,11 +187,17 @@ function wplng_ajax_heartbeat() {
 
 			--$counter;
 
-			$deleted[] = array(
-				'reason' => 'Delete slug - Invalid data',
-				'title'  => get_the_title( $id ),
-				'id'     => $id,
-			);
+			// Debug (if enabled)
+			if ( true === WPLNG_DEBUG_BEAT ) {
+				$debug = array(
+					'title'  => 'wpLingua HeartBeat debug',
+					'action' => 'Delete slug - Invalid data',
+					'title'  => get_the_title( $id ),
+					'id'     => $id,
+				);
+
+				error_log( var_export( $debug, true ) );
+			}
 
 			// Permanently delete the invalid slug
 			wp_delete_post( $id, true );
@@ -146,11 +211,17 @@ function wplng_ajax_heartbeat() {
 
 			--$counter;
 
-			$deleted[] = array(
-				'reason' => 'Delete slug - Incorrect original language',
-				'title'  => get_the_title( $id ),
-				'id'     => $id,
-			);
+			// Debug (if enabled)
+			if ( true === WPLNG_DEBUG_BEAT ) {
+				$debug = array(
+					'title'  => 'wpLingua HeartBeat debug',
+					'action' => 'Delete slug - Incorrect original language',
+					'title'  => get_the_title( $id ),
+					'id'     => $id,
+				);
+
+				error_log( var_export( $debug, true ) );
+			}
 
 			// Permanently delete the translation
 			wp_delete_post( $id, true );
@@ -158,19 +229,5 @@ function wplng_ajax_heartbeat() {
 		}
 	}
 
-	/**
-	 * Debug logging (if enabled)
-	 */
-
-	if ( true === WPLNG_DEBUG_BEAT ) {
-		$debug = array(
-			'title'   => 'wpLingua HeartBeat debug',
-			'time'    => date( 'Y-m-d H:i:s', $now ),
-			'deleted' => $deleted,
-		);
-
-		error_log( var_export( $debug, true ) );
-	}
-
-	wp_send_json_success();
+	return $counter;
 }

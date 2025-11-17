@@ -60,6 +60,29 @@ function wplng_get_translated_text_from_translations( $text, $translations ) {
 
 
 /**
+ * Get the count of published 'wplng_translation' posts.
+ *
+ * This function retrieves the number of posts of type 'wplng_translation'
+ * that are currently published on the site.
+ *
+ * @return int The number of published 'wplng_translation' posts.
+ */
+function wplng_get_translation_count() {
+
+	global $wplng_translation_count;
+
+	if ( null !== $wplng_translation_count ) {
+		return $wplng_translation_count;
+	}
+
+	$count_posts             = wp_count_posts( 'wplng_translation' );
+	$wplng_translation_count = (int) ( $count_posts->publish ?? 0 );
+
+	return $wplng_translation_count;
+}
+
+
+/**
  * Get translation data from original text
  *
  * @param string $original
@@ -82,11 +105,11 @@ function wplng_get_translation_saved_from_original( $original ) {
 			),
 		),
 		'fields'         => 'ids',
-		'meta_query'             => array(
+		'meta_query'     => array(
 			array(
 				'key'     => 'wplng_translation_original_language_id',
 				'value'   => wplng_get_language_website_id(),
-				'compare' => '='
+				'compare' => '=',
 			),
 		),
 	);
@@ -134,7 +157,7 @@ function wplng_get_translations_from_query() {
 			array(
 				'key'     => 'wplng_translation_original_language_id',
 				'value'   => wplng_get_language_website_id(),
-				'compare' => '='
+				'compare' => '=',
 			),
 		),
 	);

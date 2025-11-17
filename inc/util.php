@@ -372,3 +372,41 @@ function wplng_website_in_sub_folder() {
 	$parsed = wp_parse_url( get_home_url() );
 	return ! empty( $parsed['path'] );
 }
+
+
+/**
+ * Counts the number of published posts for all public post types.
+ *
+ * This function retrieves all registered public post types, excluding attachments,
+ * and counts the total number of published posts for those post types.
+ *
+ * @global wpdb $wpdb WordPress database abstraction object.
+ *
+ * @return int The total count of published posts for the specified post types.
+ */
+function wplng_count_public_content() {
+
+	global $wpdb;
+
+	// Retrieve all registered public post types
+	$public_post_types   = get_post_types( array( 'public' => true ), 'names' );
+	$public_post_types[] = 'product';
+
+	// Exclude unnecessary post types (e.g., attachments)
+	unset( $public_post_types['attachment'] );
+
+	// Prepare the SQL placeholders for the post types
+	$placeholders = implode( ',', array_fill( 0, count( $public_post_types ), '%s' ) );
+
+	// Define the SQL query to count published posts
+	$sql  = 'SELECT COUNT(ID)' . PHP_EOL;
+	$sql .= "FROM {$wpdb->posts}" . PHP_EOL;
+	$sql .= "WHERE post_status = 'publish'" . PHP_EOL;
+	$sql .= "AND post_type IN ($placeholders)";
+
+	// Prepare and execute the query
+	$query = $wpdb->prepare( $sql, $public_post_types );
+
+	// Return the count as an integer
+	return (int) $wpdb->get_var( $query );
+}
