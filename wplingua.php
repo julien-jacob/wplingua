@@ -60,6 +60,45 @@ function wplng_load_plugin_textdomain() {
 
 
 /**
+ * Overrides the default textdomain loading behavior for the 'wplingua' domain.
+ * Ensures that a custom translation file is used for the 'fr_FR' locale.
+ *
+ * @param bool   $override Whether to override the default textdomain loading. Default false.
+ * @param string $domain   The text domain to load.
+ * @param string $mofile   The path to the .mo file.
+ * @return bool True to override, false to use the default behavior.
+ */
+function wplng_override_load_textdomain( $override, $domain, $mofile ) {
+	if ( $domain === 'wplingua' && strpos( $mofile, 'fr_FR' ) !== false ) {
+
+		$custom_mofile = WPLNG_PLUGIN_PATH . '/languages/wplingua-fr_FR.mo';
+
+		if ( file_exists( $custom_mofile ) && is_readable( $custom_mofile ) ) {
+
+			// Prevent infinite loops by checking if the file is already being loaded
+			static $is_loading = false;
+
+			if ( $is_loading ) {
+				// Return default behavior if already loading
+				return $override;
+			}
+
+			$is_loading = true; // Mark the start of the loading process
+			$loaded     = load_textdomain( $domain, $custom_mofile );
+			$is_loading = false; // Reset after loading
+
+			// If the custom file was successfully loaded, prevent GlotPress translations
+			if ( $loaded ) {
+				return true;
+			}
+		}
+	}
+
+	return $override;
+}
+
+
+/**
  * Register all wpLingua Hook
  *
  * @return void
@@ -93,6 +132,7 @@ function wplng_start() {
 
 	// Load plugin text domain /languages/
 	add_action( 'init', 'wplng_load_plugin_textdomain' );
+	add_filter( 'override_load_textdomain', 'wplng_override_load_textdomain', 10, 3 );
 
 	// Display a notice if incompatibility is detected
 	add_action( 'admin_notices', 'wplng_admin_notice_incompatible_plugin', 1 );
