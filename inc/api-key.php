@@ -56,6 +56,12 @@ function wplng_get_api_key() {
  */
 function wplng_get_api_data() {
 
+	global $wplng_api_data;
+
+	if ( $wplng_api_data !== null ) {
+		return $wplng_api_data;
+	}
+
 	if ( empty( wplng_get_api_key() ) ) {
 		return array();
 	}
@@ -185,6 +191,8 @@ function wplng_get_api_data() {
 		wp_cache_flush();
 
 	}
+
+	$wplng_api_data = $data_checked;
 
 	return $data_checked;
 }
