@@ -40,6 +40,12 @@ function wplng_data_attr_json_to_translate() {
 				'attr'     => 'data-wp-context',
 				'selector' => '[data-wp-context]',
 			),
+
+			// Plugin: Elementor (or addon)
+			array(
+				'attr'     => 'data-premium-element-link',
+				'selector' => '[data-premium-element-link]',
+			),
 		)
 	);
 }
