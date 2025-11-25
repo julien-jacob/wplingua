@@ -35,13 +35,21 @@ function wplng_dom_load_overload( $dom, $args ) {
 	$html .= esc_html__( 'Translation API overloaded', 'wplingua' );
 	$html .= '</span>';
 
-	$html .= '<span id="wplng-overloaded-text-desktop">';
-	$html .= esc_html__( 'Translation API overloaded. Retry in a few minutes or ', 'wplingua' );
-	$html .= '<a href="https://wplingua.com/pricing/" target="_blank" rel="noopener noreferrer">';
-	$html .= esc_html__( 'upgrade your API key', 'wplingua' );
-	$html .= '</a>';
-	$html .= esc_html__( ' to get priority API access.', 'wplingua' );
-	$html .= '</span>';
+	$api_data = wplng_get_api_data();
+
+	if ( empty( $api_data['status'] ) || $api_data['status'] === 'FREE' ) {
+		$html .= '<span id="wplng-overloaded-text-desktop">';
+		$html .= esc_html__( 'Translation API overloaded. Retry in a few minutes or ', 'wplingua' );
+		$html .= '<a href="https://wplingua.com/pricing/" target="_blank" rel="noopener noreferrer">';
+		$html .= esc_html__( 'upgrade your API key', 'wplingua' );
+		$html .= '</a>';
+		$html .= esc_html__( ' to get priority API access.', 'wplingua' );
+		$html .= '</span>';
+	} else {
+		$html .= '<span id="wplng-overloaded-text-desktop">';
+		$html .= esc_html__( 'Translation API overloaded. Please retry in a few minutes.', 'wplingua' );
+		$html .= '</span>';
+	}
 
 	$html .= '<span';
 	$html .= ' id="wplng-overloaded-close"';
