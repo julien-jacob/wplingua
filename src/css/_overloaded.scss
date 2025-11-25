@@ -32,6 +32,19 @@
         margin: 6px;
         cursor: pointer;
     }
+
+    a {
+        color: inherit;
+        text-decoration: underline;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .wplingua-api-overloaded {
+        #wpadminbar {
+            position: fixed;
+        }
+    }
 }
 
 @media screen and (max-width: 782px) {
