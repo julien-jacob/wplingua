@@ -173,6 +173,9 @@ function wplng_start() {
 		add_filter( 'page_row_actions', 'wplng_row_edit_translation_link', 10, 2 );
 		add_filter( 'post_row_actions', 'wplng_row_edit_translation_link', 10, 2 );
 
+		// Special notice
+		add_action( 'admin_notices', 'wplng_admin_notice_bf');
+
 		/**
 		 * wplng_translation : CPT, taxo, meta
 		 */
