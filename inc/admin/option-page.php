@@ -298,6 +298,45 @@ function wplng_plugin_activation_redirect( $plugin ) {
 
 
 /**
+ * Displays a Black Friday notice on wpLingua admin pages.
+ *
+ * This notice is shown only if:
+ * - The API status is 'FREE'.
+ * - The current date is on or before December 1, 2025.
+ * - The user is on a wpLingua admin page.
+ *
+ * @return void
+ */
+function wplng_admin_notice_bf() {
+
+	$api_data     = wplng_get_api_data();
+	$current_date = current_time( 'Y-m-d' );
+
+	if ( empty( $api_data['status'] )
+		|| $api_data['status'] !== 'FREE'
+		|| empty( $current_date )
+		|| strtotime( $current_date ) > strtotime( '2025-12-01' )
+		|| ! wplng_is_wplingua_admin_page()
+	) {
+		return;
+	}
+
+	$html  = '<div class="wplng-notice notice notice-info">';
+	$html .= '<p style="font-weight: 600; text-align: center;">';
+	$html .= '<span class="dashicons dashicons-info-outline"></span> ';
+	$html .= 'Black Friday: Get 35% off on ';
+	$html .= '<a href="https://wplingua.com/pricing/" target="_blank" rel="noopener noreferrer">';
+	$html .= 'wpLingua.com';
+	$html .= '</a> ';
+	$html .= 'with the code BF2025';
+	$html .= '</p>';
+	$html .= '</div>'; // End .notice
+
+	echo $html;
+}
+
+
+/**
  * Display a notice if the plugin is activate but not configured
  *
  * @return void
