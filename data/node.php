@@ -78,6 +78,9 @@ function wplng_data_excluded_selector_default() {
 
 		// Plugin: SEOPress
 		'#seopress-metabox-js-extra',
+
+		// Plugin: WooCommerce
+		'.woocommerce-Price-amount',
 	);
 }
 
