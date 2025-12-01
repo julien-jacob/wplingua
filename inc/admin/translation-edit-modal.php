@@ -64,30 +64,6 @@ function wplng_translation_edit_modal_get_html() {
 	$html .= '</div>';
 
 	$html .= '<div id="wplng-modal-edit-main">';
-
-	// Start special message
-
-	$api_data     = wplng_get_api_data();
-	$current_date = current_time( 'Y-m-d' );
-
-	if ( ! empty( $api_data['status'] )
-		&& $api_data['status'] === 'FREE'
-		&& ! empty( $current_date )
-		&& strtotime( $current_date ) <= strtotime( '2025-12-01' )
-	) {
-		$html .= '<p style="font-weight: 600; text-align: center; margin: 0;">';
-		$html .= '<span class="dashicons dashicons-info-outline" style="vertical-align: text-bottom;"></span> ';
-		$html .= 'Black Friday: Get 35% off on ';
-		$html .= '<a href="https://wplingua.com/pricing/" target="_blank" rel="noopener noreferrer" style="color: #2271b1; text-decoration: underline;">';
-		$html .= 'wpLingua.com';
-		$html .= '</a> ';
-		$html .= 'with the code BF2025';
-		$html .= '</p>';
-		$html .= '<hr>';
-	}
-
-	// End special message
-
 	$html .= '<div id="wplng-translation-editor">';
 	$html .= '</div>'; // End #wplng-translation-editor
 
