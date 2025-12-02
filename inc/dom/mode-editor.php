@@ -135,5 +135,25 @@ function wplng_dom_mode_editor( $dom, $args ) {
 		$body->innertext .= $html;
 	}
 
+	/**
+	 * CSS for excluded elements (Orange border)
+	 */
+
+	$selector_exclude = wplng_get_excluded_selectors();
+
+	$css_for_excluded = implode(
+		', ', 
+		$selector_exclude
+	);
+
+	foreach ( $dom->find( 'head' ) as $head ) {
+
+		$css = '<style>';
+		$css .= $css_for_excluded . ' { outline: 2px dotted orange !important; }';
+		$css .= '</style>';
+
+		$head->innertext .= $css;
+	}
+
 	return $dom;
 }
