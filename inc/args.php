@@ -139,6 +139,7 @@ function wplng_args_setup( &$args ) {
 				'wplng-mode',
 				'wplng-load',
 				'nocache',
+				'cache',
 			),
 			wp_make_link_relative(
 				wplng_get_url_current()
@@ -158,6 +159,7 @@ function wplng_args_setup( &$args ) {
 				'wplng-mode',
 				'wplng-load',
 				'nocache',
+				'cache',
 			),
 			wp_make_link_relative(
 				wplng_get_url_original()
@@ -356,6 +358,7 @@ function wplng_args_update_from_texts( &$args, $texts ) {
 		}
 
 		$redirect_query_arg['wplng-load'] = 'progress';
+		$redirect_query_arg['cache']      = 'nocache';
 		$redirect_query_arg['nocache']    = (string) time() . (string) rand( 100, 999 );
 
 		wp_safe_redirect(
@@ -371,24 +374,9 @@ function wplng_args_update_from_texts( &$args, $texts ) {
 	} elseif ( $args['load'] === 'progress' ) {
 		$max_translations = 0;
 	} elseif ( $args['load'] === 'loading' ) {
-		$max_translations = 60;
+		$max_translations = 100;
 	} else {
 		$args['load'] = 'disabled';
-	}
-
-	if ( $args['load'] !== 'disabled' ) {
-
-		// Set HTTP no-cache header
-		nocache_headers();
-
-		// Disable cache for plugins
-		if ( ! defined( 'DONOTCACHEPAGE' ) ) {
-			define( 'DONOTCACHEPAGE', true );
-		}
-
-		if ( function_exists( 'do_action' ) ) {
-			do_action( 'litespeed_purge_all' );
-		}
 	}
 
 	$texts_unknow = array_splice(

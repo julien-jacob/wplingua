@@ -325,7 +325,7 @@ function wplng_save_translation_new( $language_id, $original, $translation ) {
 	$discovery_url = wplng_get_url_original();
 	$discovery_url = wp_make_link_relative( $discovery_url );
 	$discovery_url = remove_query_arg(
-		array( 'wplng-mode', 'wplng-load', 'nocache' ),
+		array( 'wplng-mode', 'wplng-load', 'nocache', 'cache' ),
 		$discovery_url
 	);
 

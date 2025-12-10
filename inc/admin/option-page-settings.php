@@ -154,6 +154,7 @@ function wplng_settings_part_first_use() {
 	$url_front_page_load = add_query_arg(
 		array(
 			'wplng-load' => 'disabled',
+			'cache'      => 'nocache',
 			'nocache'    => (string) time() . (string) rand( 100, 999 ),
 		),
 		$url_front_page_translated

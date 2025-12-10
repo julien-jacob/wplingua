@@ -345,6 +345,8 @@ function wplng_start() {
 		add_action( 'init', 'wplng_register_block' );
 		add_action( 'enqueue_block_editor_assets', 'wplng_register_block_assets' );
 
+		add_action( 'init', 'wplng_no_cache_for_editor');
+
 	}
 }
 wplng_start();

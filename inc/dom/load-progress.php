@@ -19,7 +19,7 @@ function wplng_dom_load_progress( $dom, $args ) {
 
 	if ( 'progress' !== $args['load'] ) {
 		return $dom;
-	} 
+	}
 
 	/**
 	 * Add effect on unknow texts and translate know texts
@@ -107,7 +107,7 @@ function wplng_dom_load_progress( $dom, $args ) {
 	// Calculate percentage
 
 	$percentage = 0;
-	if ($number_of_texts > 0) {
+	if ( $number_of_texts > 0 ) {
 		$percentage = (int) ( ( $numer_of_translated_texts / $number_of_texts ) * 100 );
 	}
 
@@ -135,6 +135,7 @@ function wplng_dom_load_progress( $dom, $args ) {
 		$url_reload = add_query_arg(
 			array(
 				'wplng-load' => 'progress',
+				'cache'      => 'nocache',
 				'nocache'    => (string) time() . (string) rand( 100, 999 ),
 			),
 			$url_reload
@@ -147,6 +148,7 @@ function wplng_dom_load_progress( $dom, $args ) {
 	$url_load = add_query_arg(
 		array(
 			'wplng-load' => 'loading',
+			'cache'      => 'nocache',
 			'nocache'    => (string) time() . (string) rand( 100, 999 ),
 		),
 		$args['url_current']
