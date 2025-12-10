@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: wpLingua\n"
-"POT-Creation-Date: 2025-10-30 23:52+0100\n"
-"PO-Revision-Date: 2025-10-31 00:08+0100\n"
+"POT-Creation-Date: 2025-12-02 14:13+0100\n"
+"PO-Revision-Date: 2025-12-02 17:04+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: id_ID\n"
@@ -693,8 +693,9 @@ msgid "Sub-list"
 msgstr "Sub-daftar"
 
 #. Plugin Name of the plugin/theme
-#: inc/admin/admin-bar.php:25 inc/admin/option-page.php:18
-#: inc/admin/option-page.php:37 inc/admin/switcher-nav-menu.php:167
+#: inc/admin/admin-bar.php:25 inc/admin/option-page-register.php:241
+#: inc/admin/option-page.php:18 inc/admin/option-page.php:37
+#: inc/admin/switcher-nav-menu.php:167
 msgid "wpLingua"
 msgstr "wpLingua"
 
@@ -728,7 +729,7 @@ msgstr "Terjemahan"
 msgid "Edit translations"
 msgstr "Edit terjemahan"
 
-#: inc/admin/assets.php:366 inc/admin/assets.php:458 inc/assets.php:89
+#: inc/admin/assets.php:380 inc/admin/assets.php:472 inc/assets.php:89
 msgid ""
 "You are about to leave the page without saving your changes. They will be "
 "lost if you continue. Would you like to leave the page anyway?"
@@ -741,15 +742,20 @@ msgstr ""
 msgid "wpLingua - Dictionary rules"
 msgstr "wpLingua - Aturan kamus"
 
-#: inc/admin/option-page-dictionary.php:34
+#: inc/admin/option-page-dictionary.php:32
+#: inc/admin/option-page-link-media.php:32
+msgid "Debug"
+msgstr "Awakutu"
+
+#: inc/admin/option-page-dictionary.php:41
 msgid "Dictionary entries"
 msgstr "Entri kamus"
 
-#: inc/admin/option-page-dictionary.php:38
+#: inc/admin/option-page-dictionary.php:45
 msgid "Translation rules by dictionary: "
 msgstr "Aturan penerjemahan berdasarkan kamus: "
 
-#: inc/admin/option-page-dictionary.php:40
+#: inc/admin/option-page-dictionary.php:47
 msgid ""
 "The dictionary allows you to define translation rules that apply when "
 "generating machine translations. You can specify words or sets of words that "
@@ -761,83 +767,83 @@ msgstr ""
 "kata yang tidak boleh diterjemahkan, atau menentukan bagaimana kata tersebut "
 "harus diterjemahkan untuk setiap bahasa."
 
-#: inc/admin/option-page-dictionary.php:47
+#: inc/admin/option-page-dictionary.php:54
 msgid "Add a dictionary entry"
 msgstr "Menambahkan entri kamus"
 
-#: inc/admin/option-page-dictionary.php:55
-#: inc/admin/option-page-link-media.php:55
+#: inc/admin/option-page-dictionary.php:62
+#: inc/admin/option-page-link-media.php:62
 msgid "Add an entry"
 msgstr "Menambahkan entri"
 
-#: inc/admin/option-page-dictionary.php:64
-#: inc/admin/option-page-link-media.php:64
+#: inc/admin/option-page-dictionary.php:71
+#: inc/admin/option-page-link-media.php:71
 msgid "Edit the entry"
 msgstr "Mengedit entri"
 
-#: inc/admin/option-page-dictionary.php:102
+#: inc/admin/option-page-dictionary.php:109
 msgid "All dictionary entries: "
 msgstr "Semua entri kamus: "
 
-#: inc/admin/option-page-dictionary.php:117
-#: inc/admin/option-page-link-media.php:117
+#: inc/admin/option-page-dictionary.php:124
+#: inc/admin/option-page-link-media.php:124
 msgid "Rule N°"
 msgstr "Aturan No"
 
-#: inc/admin/option-page-dictionary.php:127
-#: inc/admin/option-page-link-media.php:127
-#: inc/admin/option-page-settings.php:276 inc/admin/option-page-settings.php:339
+#: inc/admin/option-page-dictionary.php:134
+#: inc/admin/option-page-link-media.php:134
+#: inc/admin/option-page-settings.php:265 inc/admin/option-page-settings.php:328
 msgid "Edit"
 msgstr "Edit"
 
-#: inc/admin/option-page-dictionary.php:134
-#: inc/admin/option-page-link-media.php:134
-#: inc/admin/option-page-settings.php:340
+#: inc/admin/option-page-dictionary.php:141
+#: inc/admin/option-page-link-media.php:141
+#: inc/admin/option-page-settings.php:329
 msgid "Remove"
 msgstr "Hapus"
 
-#: inc/admin/option-page-dictionary.php:146
+#: inc/admin/option-page-dictionary.php:153
 msgid "Always translate: "
 msgstr "Selalu terjemahkan: "
 
-#: inc/admin/option-page-dictionary.php:162
+#: inc/admin/option-page-dictionary.php:169
 msgid " - By: "
 msgstr " - Oleh: "
 
-#: inc/admin/option-page-dictionary.php:168
+#: inc/admin/option-page-dictionary.php:175
 msgid "Never translate: "
 msgstr "Jangan pernah menerjemahkan: "
 
-#: inc/admin/option-page-dictionary.php:206
-#: inc/admin/option-page-dictionary.php:320
+#: inc/admin/option-page-dictionary.php:213
+#: inc/admin/option-page-dictionary.php:327
 msgid "Source text: "
 msgstr "Teks sumber: "
 
-#: inc/admin/option-page-dictionary.php:230
-#: inc/admin/option-page-dictionary.php:344
+#: inc/admin/option-page-dictionary.php:237
+#: inc/admin/option-page-dictionary.php:351
 msgid "Never translate"
 msgstr "Jangan pernah menerjemahkan"
 
-#: inc/admin/option-page-dictionary.php:252
-#: inc/admin/option-page-dictionary.php:366
-#: inc/admin/option-page-link-media.php:446
+#: inc/admin/option-page-dictionary.php:259
+#: inc/admin/option-page-dictionary.php:373
+#: inc/admin/option-page-link-media.php:453
 msgid " - Always translate by: "
 msgstr " - Selalu terjemahkan oleh: "
 
-#: inc/admin/option-page-dictionary.php:279
-#: inc/admin/option-page-dictionary.php:393
-#: inc/admin/option-page-link-media.php:336
-#: inc/admin/option-page-link-media.php:472
+#: inc/admin/option-page-dictionary.php:286
+#: inc/admin/option-page-dictionary.php:400
+#: inc/admin/option-page-link-media.php:343
+#: inc/admin/option-page-link-media.php:479
 msgid "Cancel"
 msgstr "Batal"
 
-#: inc/admin/option-page-dictionary.php:287
-#: inc/admin/option-page-link-media.php:344
+#: inc/admin/option-page-dictionary.php:294
+#: inc/admin/option-page-link-media.php:351
 msgid "Save new entry"
 msgstr "Menyimpan entri baru"
 
-#: inc/admin/option-page-dictionary.php:401
-#: inc/admin/option-page-link-media.php:480
+#: inc/admin/option-page-dictionary.php:408
+#: inc/admin/option-page-link-media.php:487
 msgid "Save edited entry"
 msgstr "Menyimpan entri yang telah diedit"
 
@@ -909,7 +915,7 @@ msgstr "Mengecualikan elemen berdasarkan atribut kelas"
 msgid "Exclude elements by CSS selector"
 msgstr "Mengecualikan elemen dengan pemilih CSS"
 
-#: inc/admin/option-page-exclusions.php:69 inc/admin/option-page-settings.php:94
+#: inc/admin/option-page-exclusions.php:69 inc/admin/option-page-settings.php:82
 #: inc/admin/option-page-switcher.php:496
 #: inc/admin/translation-edit-modal.php:71 inc/assets.php:96
 msgid "Save"
@@ -919,15 +925,15 @@ msgstr "Simpan"
 msgid "wpLingua - Links & Medias"
 msgstr "wpLingua - Tautan & Media"
 
-#: inc/admin/option-page-link-media.php:34
+#: inc/admin/option-page-link-media.php:41
 msgid "Links & medias"
 msgstr "Tautan & media"
 
-#: inc/admin/option-page-link-media.php:38
+#: inc/admin/option-page-link-media.php:45
 msgid "Links and medias translations rules: "
 msgstr "Aturan penerjemahan tautan dan media: "
 
-#: inc/admin/option-page-link-media.php:40
+#: inc/admin/option-page-link-media.php:47
 msgid ""
 "Translation rules on links and media allow different images to be displayed "
 "or link URLs to be changed according to the current language. These rules "
@@ -939,92 +945,92 @@ msgstr ""
 "Aturan ini berlaku untuk elemen-elemen seperti: URL target tautan, URL sumber "
 "gambar, URL sumber iframe, URL dalam JSON yang disadap..."
 
-#: inc/admin/option-page-link-media.php:47
+#: inc/admin/option-page-link-media.php:54
 msgid "Add a rule"
 msgstr "Menambahkan aturan"
 
-#: inc/admin/option-page-link-media.php:102
+#: inc/admin/option-page-link-media.php:109
 msgid "All links and medias rules: "
 msgstr "Semua aturan tautan dan media: "
 
-#: inc/admin/option-page-link-media.php:149
+#: inc/admin/option-page-link-media.php:156
 msgid "Mode: "
 msgstr "Mode: "
 
-#: inc/admin/option-page-link-media.php:158
-#: inc/admin/option-page-link-media.php:266
-#: inc/admin/option-page-link-media.php:402
+#: inc/admin/option-page-link-media.php:165
+#: inc/admin/option-page-link-media.php:273
+#: inc/admin/option-page-link-media.php:409
 msgid "Exactly equal"
 msgstr "Persis sama"
 
-#: inc/admin/option-page-link-media.php:162
-#: inc/admin/option-page-link-media.php:275
-#: inc/admin/option-page-link-media.php:411
+#: inc/admin/option-page-link-media.php:169
+#: inc/admin/option-page-link-media.php:282
+#: inc/admin/option-page-link-media.php:418
 msgid "Partially equal"
 msgstr "Sebagian sama"
 
-#: inc/admin/option-page-link-media.php:166
+#: inc/admin/option-page-link-media.php:173
 msgid "Regex"
 msgstr "Regex"
 
-#: inc/admin/option-page-link-media.php:170
+#: inc/admin/option-page-link-media.php:177
 msgid "Error"
 msgstr "Kesalahan"
 
-#: inc/admin/option-page-link-media.php:182
+#: inc/admin/option-page-link-media.php:189
 msgid "Original: "
 msgstr "Asli: "
 
-#: inc/admin/option-page-link-media.php:241
-#: inc/admin/option-page-link-media.php:377
+#: inc/admin/option-page-link-media.php:248
+#: inc/admin/option-page-link-media.php:384
 msgid "Original URL: "
 msgstr "URL asli: "
 
-#: inc/admin/option-page-link-media.php:284
-#: inc/admin/option-page-link-media.php:420
+#: inc/admin/option-page-link-media.php:291
+#: inc/admin/option-page-link-media.php:427
 msgid "REGEX"
 msgstr "REGEX"
 
-#: inc/admin/option-page-link-media.php:310
+#: inc/admin/option-page-link-media.php:317
 msgid " - URL: "
 msgstr " - URL: "
 
-#: inc/admin/option-page-register.php:31 inc/admin/option-page-register.php:70
+#: inc/admin/option-page-register.php:47 inc/admin/option-page-register.php:91
 msgid "Message: "
 msgstr "Pesan: "
 
-#: inc/admin/option-page-register.php:37
+#: inc/admin/option-page-register.php:53
 msgid "An error occurred with API key."
 msgstr "Terjadi kesalahan pada kunci API."
 
-#: inc/admin/option-page-register.php:53
+#: inc/admin/option-page-register.php:70
 msgid "Invalid API key."
 msgstr "Kunci API tidak valid."
 
-#: inc/admin/option-page-register.php:77
+#: inc/admin/option-page-register.php:98
 msgid "An error occurred while creating the API key."
 msgstr "Terjadi kesalahan saat membuat kunci API."
 
-#: inc/admin/option-page-register.php:93
+#: inc/admin/option-page-register.php:114
 msgid "wpLingua - Register API key"
 msgstr "wpLingua - Daftarkan kunci API"
 
-#: inc/admin/option-page-register.php:113
+#: inc/admin/option-page-register.php:132
 msgid "API key created"
 msgstr "Kunci API dibuat"
 
-#: inc/admin/option-page-register.php:117
+#: inc/admin/option-page-register.php:136
 msgid "API key created and sent by email"
 msgstr "Kunci API dibuat dan dikirim melalui email"
 
-#: inc/admin/option-page-register.php:121
+#: inc/admin/option-page-register.php:140
 msgid ""
 "The API key has been correctly created and sent to the following e-mail "
 "address: "
 msgstr ""
 "Kunci API telah dibuat dengan benar dan dikirim ke alamat email berikut: "
 
-#: inc/admin/option-page-register.php:127
+#: inc/admin/option-page-register.php:146
 msgid ""
 "Go to your mailbox and copy the API key sent to you (don't forget to check "
 "the spam section of your mailbox). Then paste it in the section below, and "
@@ -1035,26 +1041,26 @@ msgstr ""
 "pada bagian di bawah ini, dan klik \"Set API key\" untuk menjadikan situs web "
 "Anda multibahasa."
 
-#: inc/admin/option-page-register.php:133 inc/admin/option-page-register.php:149
+#: inc/admin/option-page-register.php:152 inc/admin/option-page-register.php:169
 msgid "Set API Key"
 msgstr "Mengatur Kunci API"
 
-#: inc/admin/option-page-register.php:142 inc/admin/option-page-register.php:187
-#: inc/admin/option-page-register.php:372
+#: inc/admin/option-page-register.php:162 inc/admin/option-page-register.php:209
+#: inc/admin/option-page-register.php:445
 msgid "Get API key"
 msgstr "Dapatkan kunci API"
 
-#: inc/admin/option-page-register.php:156
+#: inc/admin/option-page-register.php:176
 msgid "Start with wpLingua"
 msgstr "Mulai dengan wpLingua"
 
-#: inc/admin/option-page-register.php:159
+#: inc/admin/option-page-register.php:179
 msgid "You are just a few clicks away from making your website multilingual!"
 msgstr ""
 "Anda hanya perlu beberapa klik saja untuk membuat situs web Anda menjadi "
 "multibahasa!"
 
-#: inc/admin/option-page-register.php:165
+#: inc/admin/option-page-register.php:185
 msgid ""
 "For wpLingua to work, an API key is required so that your website has access "
 "to the automatic translation service. On this page you can enter your API key "
@@ -1065,7 +1071,7 @@ msgstr ""
 "memasukkan kunci API jika Anda sudah memilikinya, atau membuatnya secara "
 "gratis."
 
-#: inc/admin/option-page-register.php:170
+#: inc/admin/option-page-register.php:191
 msgid ""
 "An <strong>instantly multilingual website</strong> thanks to automatic text "
 "detection and translation. Easy to use, no knowledge required."
@@ -1073,7 +1079,7 @@ msgstr ""
 "<strong>Situs web multibahasa secara instan</strong> berkat deteksi dan "
 "terjemahan teks otomatis. Mudah digunakan, tidak perlu pengetahuan khusus."
 
-#: inc/admin/option-page-register.php:174
+#: inc/admin/option-page-register.php:195
 msgid ""
 "<strong>SEO friendly</strong> to allow search engines to index translated "
 "pages. Open up your website and your business to the whole world."
@@ -1081,7 +1087,7 @@ msgstr ""
 "<strong>Ramah SEO</strong> agar mesin pencari dapat mengindeks halaman yang "
 "diterjemahkan. Buka situs web dan bisnis Anda ke seluruh dunia."
 
-#: inc/admin/option-page-register.php:178
+#: inc/admin/option-page-register.php:199
 msgid ""
 "All <strong>translations are editable</strong>. Discover the visual editor "
 "and edit translations simply by clicking on them. With a fully customizable "
@@ -1091,7 +1097,7 @@ msgstr ""
 "edit terjemahan hanya dengan mengekliknya. Dengan pengalih bahasa yang dapat "
 "disesuaikan sepenuhnya."
 
-#: inc/admin/option-page-register.php:182
+#: inc/admin/option-page-register.php:203
 msgid ""
 "One <strong>free and unlimited</strong> language for personal blogs and non-"
 "commercial websites. And many more features!"
@@ -1099,19 +1105,65 @@ msgstr ""
 "Satu bahasa <strong>gratis dan tak terbatas</strong> untuk blog pribadi dan "
 "situs web non-komersial. Dan masih banyak lagi fitur lainnya!"
 
-#: inc/admin/option-page-register.php:191 inc/admin/option-page-register.php:242
+#: inc/admin/option-page-register.php:213 inc/admin/option-page-register.php:315
 msgid "Set API key"
 msgstr "Tetapkan kunci API"
 
-#: inc/admin/option-page-register.php:197
+#: inc/admin/option-page-register.php:219
 msgid "Advanced API features"
 msgstr "Fitur API tingkat lanjut"
 
-#: inc/admin/option-page-register.php:222
+#: inc/admin/option-page-register.php:248
+msgid "Important Notice"
+msgstr "Pemberitahuan Penting"
+
+#: inc/admin/option-page-register.php:250
+msgid "Website incompatible with string translation"
+msgstr "Situs web tidak kompatibel dengan terjemahan teks"
+
+#: inc/admin/option-page-register.php:254
+msgid ""
+"Your website contains a large amount of content, which exceeds the limits of "
+"the string translation method used by wpLingua."
+msgstr ""
+"Situs web Anda mengandung sejumlah besar konten, yang melebihi batas metode "
+"terjemahan string yang digunakan oleh wpLingua."
+
+#: inc/admin/option-page-register.php:259
+msgid "Why the website is incompatible"
+msgstr "Mengapa situs web tidak kompatibel"
+
+#: inc/admin/option-page-register.php:263
+msgid ""
+"wpLingua works by identifying and translating each string of characters "
+"individually. On a large website, this method generates a very large number "
+"of database entries, causing overload and slowdowns."
+msgstr ""
+"wpLingua bekerja dengan mengidentifikasi dan menerjemahkan setiap rangkaian "
+"karakter secara individual. Pada situs web yang besar, metode ini "
+"menghasilkan jumlah entri database yang sangat besar, menyebabkan kelebihan "
+"beban dan perlambatan."
+
+#: inc/admin/option-page-register.php:268
+msgid "Recommended solution"
+msgstr "Solusi yang direkomendasikan"
+
+#: inc/admin/option-page-register.php:272
+msgid ""
+"To make large websites multilingual, we recommend using a translation plugin "
+"based on content duplication, such as Polylang or WPML. These solutions are "
+"specifically designed to efficiently manage large websites."
+msgstr ""
+"Untuk membuat situs web besar menjadi multibahasa, kami merekomendasikan "
+"penggunaan plugin terjemahan yang berbasis duplikasi konten, seperti Polylang "
+"atau WPML. Solusi-solusi ini dirancang khusus untuk mengelola situs web besar "
+"dengan efisien."
+
+#: inc/admin/option-page-register.php:292
 msgid "Set the wpLingua API key: "
 msgstr "Tetapkan kunci API wpLingua: "
 
-#: inc/admin/option-page-register.php:228
+#: inc/admin/option-page-register.php:298
 msgid ""
 "If you already have an API key, enter it below. If you've forgotten your "
 "website's API key, visit"
@@ -1119,17 +1171,17 @@ msgstr ""
 "Jika Anda sudah memiliki kunci API, masukkan di bawah ini. Jika Anda lupa "
 "kunci API situs web Anda, kunjungi"
 
-#: inc/admin/option-page-register.php:228
+#: inc/admin/option-page-register.php:298
 msgid "the API key retrieval page"
 msgstr "halaman pengambilan kunci API"
 
-#: inc/admin/option-page-register.php:229 inc/admin/option-page-register.php:293
-#: inc/admin/option-page-register.php:309 inc/admin/option-page-register.php:325
-#: inc/admin/option-page-register.php:341 inc/admin/option-page-settings.php:252
-#: inc/admin/option-page-settings.php:368 inc/admin/option-page-settings.php:424
-#: inc/admin/option-page-settings.php:442 inc/admin/option-page-settings.php:476
-#: inc/admin/option-page-settings.php:493 inc/admin/option-page-settings.php:520
-#: inc/admin/option-page-settings.php:565 inc/admin/option-page-settings.php:597
+#: inc/admin/option-page-register.php:299 inc/admin/option-page-register.php:366
+#: inc/admin/option-page-register.php:382 inc/admin/option-page-register.php:398
+#: inc/admin/option-page-register.php:414 inc/admin/option-page-settings.php:241
+#: inc/admin/option-page-settings.php:359 inc/admin/option-page-settings.php:411
+#: inc/admin/option-page-settings.php:427 inc/admin/option-page-settings.php:461
+#: inc/admin/option-page-settings.php:476 inc/admin/option-page-settings.php:503
+#: inc/admin/option-page-settings.php:557 inc/admin/option-page-settings.php:589
 #: inc/admin/option-page-switcher.php:73 inc/admin/option-page-switcher.php:124
 #: inc/admin/option-page-switcher.php:179 inc/admin/option-page-switcher.php:237
 #: inc/admin/option-page-switcher.php:331 inc/admin/option-page-switcher.php:384
@@ -1138,7 +1190,7 @@ msgstr "halaman pengambilan kunci API"
 msgid "Click to expand"
 msgstr "Klik untuk memperluas"
 
-#: inc/admin/option-page-register.php:233 inc/admin/option-page-settings.php:602
+#: inc/admin/option-page-register.php:303 inc/admin/option-page-settings.php:594
 msgid ""
 "A wpLingua API key consists of 42 characters (uppercase, lowercase and "
 "numbers). It is emailed to you when you request it using the form provided "
@@ -1151,11 +1203,11 @@ msgstr ""
 "Anda harus merahasiakan kunci ini dan hanya mengomunikasikannya ke layanan "
 "wplingua.com."
 
-#: inc/admin/option-page-register.php:277
+#: inc/admin/option-page-register.php:350
 msgid "Register wpLingua API key: "
 msgstr "Daftarkan kunci API wpLingua: "
 
-#: inc/admin/option-page-register.php:283
+#: inc/admin/option-page-register.php:356
 msgid ""
 "Claim a wpLingua API key and make your website multilingual in a minute! For "
 "a personal blog or a non-commercial website, get one unlimited free language."
@@ -1164,11 +1216,11 @@ msgstr ""
 "menit! Untuk blog pribadi atau situs web non-komersial, dapatkan satu bahasa "
 "gratis tanpa batas."
 
-#: inc/admin/option-page-register.php:292
+#: inc/admin/option-page-register.php:365
 msgid "Email address: "
 msgstr "Alamat email: "
 
-#: inc/admin/option-page-register.php:300
+#: inc/admin/option-page-register.php:373
 msgid ""
 "The email address is detected and pre-filled. This is the administrative "
 "email address entered in the Settings ➔ General tab. You can use another "
@@ -1178,11 +1230,11 @@ msgstr ""
 "administratif yang dimasukkan di tab Pengaturan ➔ Umum. Anda dapat "
 "menggunakan alamat email lain yang digunakan untuk menerima kunci API."
 
-#: inc/admin/option-page-register.php:308
+#: inc/admin/option-page-register.php:381
 msgid "Website URL: "
 msgstr "URL situs web: "
 
-#: inc/admin/option-page-register.php:316
+#: inc/admin/option-page-register.php:389
 msgid ""
 "This is the URL of your website, it is detected and pre-filled automatically. "
 "Please check it and only enter the address of your production website (no "
@@ -1192,11 +1244,11 @@ msgstr ""
 "periksa dan masukkan alamat situs web produksi Anda saja (jangan masukkan "
 "situs web uji coba atau lingkungan pengembangan)."
 
-#: inc/admin/option-page-register.php:324
+#: inc/admin/option-page-register.php:397
 msgid "Website language: "
 msgstr "Bahasa situs web: "
 
-#: inc/admin/option-page-register.php:332 inc/admin/option-page-settings.php:259
+#: inc/admin/option-page-register.php:405 inc/admin/option-page-settings.php:248
 msgid ""
 "This is the language of your website, defined by the associated API key. Make "
 "sure your website language is also correctly set in WordPress options "
@@ -1206,11 +1258,11 @@ msgstr ""
 "Pastikan bahasa situs web Anda juga diatur dengan benar dalam opsi WordPress "
 "(Pengaturan ➔ Umum ➔ Bahasa Situs Web)."
 
-#: inc/admin/option-page-register.php:340
+#: inc/admin/option-page-register.php:413
 msgid "Target language: "
 msgstr "Bahasa target: "
 
-#: inc/admin/option-page-register.php:348
+#: inc/admin/option-page-register.php:421
 msgid ""
 "This is the language you want to translate your website into. Be careful not "
 "to make a mistake because you will not be able to change the language "
@@ -1220,23 +1272,23 @@ msgstr ""
 "Berhati-hatilah agar tidak membuat kesalahan karena Anda tidak dapat mengubah "
 "bahasa setelahnya."
 
-#: inc/admin/option-page-register.php:357
+#: inc/admin/option-page-register.php:430
 msgid "I have read and accept the"
 msgstr "Saya telah membaca dan menerima"
 
-#: inc/admin/option-page-register.php:357
+#: inc/admin/option-page-register.php:430
 msgid "API terms of use"
 msgstr "Ketentuan penggunaan API"
 
-#: inc/admin/option-page-register.php:365
+#: inc/admin/option-page-register.php:438
 msgid "Website Locale: "
 msgstr "Lokasi Situs Web: "
 
-#: inc/admin/option-page-register.php:386
+#: inc/admin/option-page-register.php:459
 msgid "Get more target languages and advanced features: "
 msgstr "Dapatkan lebih banyak bahasa target dan fitur-fitur canggih: "
 
-#: inc/admin/option-page-register.php:392
+#: inc/admin/option-page-register.php:465
 msgid ""
 "To translate your website into more languages and access advanced features, "
 "visit wpLingua website."
@@ -1244,19 +1296,19 @@ msgstr ""
 "Untuk menerjemahkan situs web Anda ke dalam lebih banyak bahasa dan mengakses "
 "fitur-fitur canggih, kunjungi situs web wpLingua."
 
-#: inc/admin/option-page-register.php:396 inc/admin/option-page-settings.php:423
+#: inc/admin/option-page-register.php:469 inc/admin/option-page-settings.php:410
 msgid "Use wpLingua on commercial website"
 msgstr "Gunakan wpLingua di situs web komersial"
 
-#: inc/admin/option-page-register.php:397
+#: inc/admin/option-page-register.php:470
 msgid "Allow search from all languages"
 msgstr "Izinkan pencarian dari semua bahasa"
 
-#: inc/admin/option-page-register.php:398
+#: inc/admin/option-page-register.php:471
 msgid "Get more target languages"
 msgstr "Dapatkan lebih banyak bahasa target"
 
-#: inc/admin/option-page-register.php:403
+#: inc/admin/option-page-register.php:476
 msgid "Visit wpLingua website"
 msgstr "Kunjungi situs web wpLingua"
 
@@ -1276,15 +1328,15 @@ msgstr "Bahasa yang diterjemahkan"
 msgid "Features"
 msgstr "Fitur"
 
-#: inc/admin/option-page-settings.php:88
+#: inc/admin/option-page-settings.php:76
 msgid "API Key"
 msgstr "API Key"
 
-#: inc/admin/option-page-settings.php:175
+#: inc/admin/option-page-settings.php:164
 msgid "Your website is being translated and will be ready soon."
 msgstr "Situs web Anda sedang diterjemahkan dan akan segera siap."
 
-#: inc/admin/option-page-settings.php:176
+#: inc/admin/option-page-settings.php:165
 msgid ""
 "In just a few seconds, your website will be multilingual, and search engines "
 "will be able to index these new pages. wpLingua detects all the texts on your "
@@ -1299,7 +1351,7 @@ msgstr ""
 "dari bilah administrasi dan edit hanya dengan mengeklik teks di situs web "
 "Anda."
 
-#: inc/admin/option-page-settings.php:180
+#: inc/admin/option-page-settings.php:169
 msgid ""
 "Your website is now multilingual! You can start visiting the translated "
 "version."
@@ -1307,7 +1359,7 @@ msgstr ""
 "Situs web Anda sekarang multibahasa! Anda dapat mulai mengunjungi versi "
 "terjemahan."
 
-#: inc/admin/option-page-settings.php:181
+#: inc/admin/option-page-settings.php:170
 msgid ""
 "The first time a translated page is loaded, the translations are "
 "automatically generated and saved in the database. This may take some time "
@@ -1321,7 +1373,7 @@ msgstr ""
 "sebabnya mengapa kami menyarankan Anda untuk menelusuri seluruh situs web "
 "Anda untuk pertama kalinya agar dapat menghasilkan semua versi multibahasa."
 
-#: inc/admin/option-page-settings.php:182
+#: inc/admin/option-page-settings.php:171
 msgid ""
 "All translations are editable: open the visual editor from the administration "
 "bar and edit them simply by clicking on the texts on your website."
@@ -1329,23 +1381,23 @@ msgstr ""
 "Semua terjemahan dapat diedit: buka editor visual dari bilah administrasi dan "
 "edit hanya dengan mengeklik teks pada situs web Anda."
 
-#: inc/admin/option-page-settings.php:185
+#: inc/admin/option-page-settings.php:174
 msgid "Visit your multilingual website"
 msgstr "Kunjungi situs web multibahasa Anda"
 
-#: inc/admin/option-page-settings.php:212
+#: inc/admin/option-page-settings.php:201
 msgid "Original website language: "
 msgstr "Bahasa asli situs web: "
 
-#: inc/admin/option-page-settings.php:238
+#: inc/admin/option-page-settings.php:227
 msgid "Please choose an option"
 msgstr "Silakan pilih salah satu opsi"
 
-#: inc/admin/option-page-settings.php:249
+#: inc/admin/option-page-settings.php:238
 msgid "Original website language, defined by API key: "
 msgstr "Bahasa situs web asli, ditentukan oleh kunci API: "
 
-#: inc/admin/option-page-settings.php:261
+#: inc/admin/option-page-settings.php:250
 msgid ""
 "If you have mistakenly selected the wrong language, you can delete the API "
 "key in the site options below and request a new API key."
@@ -1353,19 +1405,19 @@ msgstr ""
 "Jika Anda salah memilih bahasa, Anda dapat menghapus kunci API pada opsi "
 "situs di bawah ini dan meminta kunci API yang baru."
 
-#: inc/admin/option-page-settings.php:267
+#: inc/admin/option-page-settings.php:256
 msgid "Custom"
 msgstr "Kustom"
 
-#: inc/admin/option-page-settings.php:281 inc/admin/option-page-settings.php:345
+#: inc/admin/option-page-settings.php:270 inc/admin/option-page-settings.php:334
 msgid "Flag to use for this language: "
 msgstr "Tandai untuk digunakan untuk bahasa ini: "
 
-#: inc/admin/option-page-settings.php:287 inc/admin/option-page-settings.php:349
+#: inc/admin/option-page-settings.php:276 inc/admin/option-page-settings.php:338
 msgid "Custom flag URL for this language: "
 msgstr "URL bendera khusus untuk bahasa ini: "
 
-#: inc/admin/option-page-settings.php:310
+#: inc/admin/option-page-settings.php:299
 msgid ""
 "Important: space out the addition of new languages ​​by at least ten days and "
 "browse your site for the first time in the added languages. This promotes "
@@ -1377,31 +1429,31 @@ msgstr ""
 "Hal ini mendorong pengindeksan yang lebih baik oleh mesin pencari, mengurangi "
 "beban pada server Anda dan meminimalkan risiko perlambatan pada situs Anda."
 
-#: inc/admin/option-page-settings.php:314
+#: inc/admin/option-page-settings.php:303
 msgid "Add new target Language: "
 msgstr "Menambahkan Bahasa target baru: "
 
-#: inc/admin/option-page-settings.php:320
+#: inc/admin/option-page-settings.php:309
 msgid "Add language"
 msgstr "Tambahkan bahasa"
 
-#: inc/admin/option-page-settings.php:333
+#: inc/admin/option-page-settings.php:322
 msgid "(Private)"
 msgstr "(Pribadi)"
 
-#: inc/admin/option-page-settings.php:337
+#: inc/admin/option-page-settings.php:326
 msgid "Move up"
 msgstr "Bergerak ke atas"
 
-#: inc/admin/option-page-settings.php:338
+#: inc/admin/option-page-settings.php:327
 msgid "Move down"
 msgstr "Bergerak ke bawah"
 
-#: inc/admin/option-page-settings.php:354
+#: inc/admin/option-page-settings.php:343
 msgid "Make this language private"
 msgstr "Jadikan bahasa ini pribadi"
 
-#: inc/admin/option-page-settings.php:355
+#: inc/admin/option-page-settings.php:344
 msgid ""
 "Private languages will only be visible to logged-in users with editing "
 "rights. This option allows administrators to pre-generate and correct "
@@ -1411,28 +1463,28 @@ msgstr ""
 "pengeditan. Opsi ini memungkinkan administrator untuk membuat dan mengoreksi "
 "terjemahan sebelum dapat diakses oleh publik."
 
-#: inc/admin/option-page-settings.php:362
+#: inc/admin/option-page-settings.php:351
 msgid "Target languages enabled: "
 msgstr "Bahasa target diaktifkan: "
 
-#: inc/admin/option-page-settings.php:367
+#: inc/admin/option-page-settings.php:358
 msgid "Access more target languages by upgrading your API key."
 msgstr "Akses lebih banyak bahasa target dengan meningkatkan kunci API Anda."
 
-#: inc/admin/option-page-settings.php:375
+#: inc/admin/option-page-settings.php:366
 msgid "Available languages: "
 msgstr "Bahasa yang tersedia: "
 
-#: inc/admin/option-page-settings.php:395 inc/admin/option-page-settings.php:432
-#: inc/admin/option-page-settings.php:452 inc/admin/option-page-settings.php:607
+#: inc/admin/option-page-settings.php:386 inc/admin/option-page-settings.php:419
+#: inc/admin/option-page-settings.php:437 inc/admin/option-page-settings.php:599
 msgid "wplingua.com : Upgrade your API key"
 msgstr "wplingua.com : Tingkatkan kunci API Anda"
 
-#: inc/admin/option-page-settings.php:413
+#: inc/admin/option-page-settings.php:404
 msgid "API translation features: "
 msgstr "Fitur terjemahan API: "
 
-#: inc/admin/option-page-settings.php:417
+#: inc/admin/option-page-settings.php:406
 msgid ""
 "The options below require extended access to the wpLingua API to be "
 "functional on your website."
@@ -1440,7 +1492,7 @@ msgstr ""
 "Opsi-opsi di bawah ini memerlukan akses yang diperluas ke API wpLingua agar "
 "dapat berfungsi di situs web Anda."
 
-#: inc/admin/option-page-settings.php:428
+#: inc/admin/option-page-settings.php:415
 msgid ""
 "Use of the free wpLingua API keys is reserved for personal blogs and non-"
 "profit websites; paid subscriptions are available for companies and "
@@ -1450,17 +1502,17 @@ msgstr ""
 "situs web nirlaba; langganan berbayar tersedia untuk perusahaan dan situs web "
 "komersial."
 
-#: inc/admin/option-page-settings.php:441
+#: inc/admin/option-page-settings.php:426
 msgid "Search from translated languages"
 msgstr "Cari dari bahasa yang diterjemahkan"
 
-#: inc/admin/option-page-settings.php:446
+#: inc/admin/option-page-settings.php:431
 msgid "Enable visitors to search on your website in their own language."
 msgstr ""
 "Memungkinkan pengunjung untuk mencari di situs web Anda dalam bahasa mereka "
 "sendiri."
 
-#: inc/admin/option-page-settings.php:448
+#: inc/admin/option-page-settings.php:433
 msgid ""
 "Example: if your website is translated from English to French and you have a "
 "post named \"Hello\". When a French visitor searches for the term \"Bonjour\" "
@@ -1475,15 +1527,15 @@ msgstr ""
 "pencarian. Hal ini akan memungkinkan WordPress untuk menemukan postingan "
 "bernama \"Hello\" ketika pengunjung Anda mencari \"Bonjour\"."
 
-#: inc/admin/option-page-settings.php:469
+#: inc/admin/option-page-settings.php:454
 msgid "SEO features: "
 msgstr "Fitur SEO: "
 
-#: inc/admin/option-page-settings.php:475
+#: inc/admin/option-page-settings.php:460
 msgid "Enable multilingual XML Sitemap"
 msgstr "Mengaktifkan Peta Situs Web XML multibahasa"
 
-#: inc/admin/option-page-settings.php:480
+#: inc/admin/option-page-settings.php:465
 msgid ""
 "This option automatically adds your wpLingua translated pages into your XML "
 "Sitemap files."
@@ -1491,7 +1543,7 @@ msgstr ""
 "Opsi ini secara otomatis menambahkan halaman hasil terjemahan wpLingua Anda "
 "ke dalam file Sitemap XML."
 
-#: inc/admin/option-page-settings.php:482
+#: inc/admin/option-page-settings.php:467
 msgid ""
 "An XML Sitemap is used by search engines (Google, Bing, etc.) to better "
 "discover and index the pages of your website. By default, only the default "
@@ -1503,7 +1555,7 @@ msgstr ""
 "default, hanya halaman bahasa default yang disertakan. Dengan mengaktifkan "
 "opsi ini, semua versi terjemahan konten Anda juga akan dicantumkan."
 
-#: inc/admin/option-page-settings.php:483
+#: inc/admin/option-page-settings.php:468
 msgid ""
 "This greatly improves SEO visibility, ensuring that search engines can easily "
 "find and index your content in every language."
@@ -1511,7 +1563,7 @@ msgstr ""
 "Hal ini sangat meningkatkan visibilitas SEO, memastikan bahwa mesin pencari "
 "dapat dengan mudah menemukan dan mengindeks konten Anda dalam setiap bahasa."
 
-#: inc/admin/option-page-settings.php:485
+#: inc/admin/option-page-settings.php:470
 msgid ""
 "wpLingua uses a universal method that intercepts and extends sitemap. It "
 "works with the native WordPress sitemap and with popular SEO plugins such as "
@@ -1521,11 +1573,11 @@ msgstr ""
 "situs. Metode ini bekerja dengan peta situs WordPress asli dan dengan plugin "
 "SEO populer seperti Yoast SEO, Rank Math, All in One SEO, SEOPress, dll."
 
-#: inc/admin/option-page-settings.php:492
+#: inc/admin/option-page-settings.php:475
 msgid "Add hreflang tags to translated pages"
 msgstr "Menambahkan tag hreflang ke halaman yang diterjemahkan"
 
-#: inc/admin/option-page-settings.php:497
+#: inc/admin/option-page-settings.php:480
 msgid ""
 "This option automatically adds hreflang tags to your pages that are available "
 "in multiple languages."
@@ -1533,7 +1585,7 @@ msgstr ""
 "Opsi ini secara otomatis menambahkan tag hreflang ke halaman Anda yang "
 "tersedia dalam berbagai bahasa."
 
-#: inc/admin/option-page-settings.php:499
+#: inc/admin/option-page-settings.php:482
 msgid ""
 "Hreflang tags are HTML metadata used to indicate the URLs of each language "
 "version of a page. They are not visible to visitors, but they allow search "
@@ -1546,15 +1598,15 @@ msgstr ""
 "struktur multibahasa situs dan menampilkan versi yang benar sesuai dengan "
 "bahasa pengguna."
 
-#: inc/admin/option-page-settings.php:514
+#: inc/admin/option-page-settings.php:497
 msgid "More features: "
 msgstr "Fitur lainnya: "
 
-#: inc/admin/option-page-settings.php:519
+#: inc/admin/option-page-settings.php:502
 msgid "Enable language browser redirection"
 msgstr "Mengaktifkan pengalihan browser bahasa"
 
-#: inc/admin/option-page-settings.php:523
+#: inc/admin/option-page-settings.php:506
 msgid ""
 "This option automatically redirects visitors to the translated version of "
 "your site that matches their browser language when they land on the main "
@@ -1568,11 +1620,11 @@ msgstr ""
 "menampilkan konten dalam bahasa yang tepat dengan segera, tetapi tergantung "
 "pada pengaturan Anda, opsi ini dapat menimbulkan efek samping."
 
-#: inc/admin/option-page-settings.php:525
+#: inc/admin/option-page-settings.php:508
 msgid "Disabled (recommended):"
 msgstr "Dinonaktifkan (disarankan):"
 
-#: inc/admin/option-page-settings.php:526
+#: inc/admin/option-page-settings.php:509
 msgid ""
 "No redirection is applied. Every visitor always sees the default homepage, "
 "regardless of their browser language. This is the safest option and ensures "
@@ -1585,11 +1637,11 @@ msgstr ""
 "tautan bersama. Direkomendasikan jika Anda tidak yakin opsi mana yang harus "
 "dipilih."
 
-#: inc/admin/option-page-settings.php:528
+#: inc/admin/option-page-settings.php:511
 msgid "JS only:"
 msgstr "JS saja:"
 
-#: inc/admin/option-page-settings.php:529
+#: inc/admin/option-page-settings.php:512
 msgid ""
 "The redirect is handled with JavaScript, after the default homepage has "
 "loaded. This method works in almost all cases and avoids issues with caching "
@@ -1602,11 +1654,11 @@ msgstr ""
 "singkat: pengguna akan melihat halaman default secara singkat sebelum "
 "dialihkan ke versi terjemahan."
 
-#: inc/admin/option-page-settings.php:531
+#: inc/admin/option-page-settings.php:514
 msgid "PHP and JS:"
 msgstr "PHP dan JS:"
 
-#: inc/admin/option-page-settings.php:532
+#: inc/admin/option-page-settings.php:515
 msgid ""
 "The redirect is performed server-side with PHP, which makes it faster and "
 "more seamless for visitors. In addition, a cookie is set via JavaScript to "
@@ -1623,28 +1675,28 @@ msgstr ""
 "yang agresif) dan dapat menyebabkan pengalihan yang salah dalam pengaturan "
 "tertentu."
 
-#: inc/admin/option-page-settings.php:541
+#: inc/admin/option-page-settings.php:533
 msgid "Disable (recommended)"
 msgstr "Nonaktifkan (disarankan)"
 
-#: inc/admin/option-page-settings.php:548
+#: inc/admin/option-page-settings.php:540
 msgid "Enable with JS only"
 msgstr "Aktifkan hanya dengan JS"
 
-#: inc/admin/option-page-settings.php:555
+#: inc/admin/option-page-settings.php:547
 msgid "Enable with PHP and JS"
 msgstr "Aktifkan dengan PHP dan JS"
 
-#: inc/admin/option-page-settings.php:564
+#: inc/admin/option-page-settings.php:556
 msgid "Progress bar for editors"
 msgstr "Bilah kemajuan untuk editor"
 
-#: inc/admin/option-page-settings.php:569
+#: inc/admin/option-page-settings.php:561
 msgid "Enable progress bar: Smooth translations loading for editors"
 msgstr ""
 "Mengaktifkan bilah kemajuan: Pemuatan terjemahan yang lancar untuk editor"
 
-#: inc/admin/option-page-settings.php:571
+#: inc/admin/option-page-settings.php:563
 msgid ""
 "Activate a progress bar when a page requires the generation of more than 20 "
 "new string translations. This feature only applies to connected editors."
@@ -1652,11 +1704,11 @@ msgstr ""
 "Mengaktifkan bilah kemajuan saat halaman memerlukan pembuatan lebih dari 20 "
 "terjemahan string baru. Fitur ini hanya berlaku untuk editor yang terhubung."
 
-#: inc/admin/option-page-settings.php:591
+#: inc/admin/option-page-settings.php:583
 msgid "Website API key: "
 msgstr "Kunci API situs web: "
 
-#: inc/admin/option-page-settings.php:596
+#: inc/admin/option-page-settings.php:588
 msgid ""
 "The API key connects the website to wpLingua's online services and automatic "
 "translation generators."
@@ -1664,19 +1716,19 @@ msgstr ""
 "Kunci API menghubungkan situs web ke layanan online wpLingua dan generator "
 "terjemahan otomatis."
 
-#: inc/admin/option-page-settings.php:618
+#: inc/admin/option-page-settings.php:610
 msgid "Show API key"
 msgstr "Tampilkan kunci API"
 
-#: inc/admin/option-page-settings.php:620
+#: inc/admin/option-page-settings.php:612
 msgid "Hide API key"
 msgstr "Sembunyikan kunci API"
 
-#: inc/admin/option-page-settings.php:626
+#: inc/admin/option-page-settings.php:618
 msgid "API key status: "
 msgstr "Status kunci API: "
 
-#: inc/admin/option-page-settings.php:641
+#: inc/admin/option-page-settings.php:633
 msgid "Premium expiration: "
 msgstr "Masa berlaku premi berakhir: "
 
@@ -2490,11 +2542,23 @@ msgstr "Menyimpan dalam proses..."
 msgid "Translation API overloaded"
 msgstr "API terjemahan kelebihan beban"
 
-#: inc/dom/load-overload.php:39
-msgid "Translation API overloaded. Retry in a few minutes."
-msgstr "API terjemahan kelebihan beban. Coba lagi dalam beberapa menit."
+#: inc/dom/load-overload.php:42
+msgid "Translation API overloaded. Retry in a few minutes or "
+msgstr "API Terjemahan overload. Coba lagi dalam beberapa menit atau "
 
-#: inc/dom/load-overload.php:45
+#: inc/dom/load-overload.php:44
+msgid "upgrade your API key"
+msgstr "perbarui kunci API Anda"
+
+#: inc/dom/load-overload.php:46
+msgid " to get priority API access."
+msgstr " untuk mendapatkan akses prioritas ke API."
+
+#: inc/dom/load-overload.php:50
+msgid "Translation API overloaded. Please retry in a few minutes."
+msgstr "API Terjemahan sedang sibuk. Silakan coba lagi dalam beberapa menit."
+
+#: inc/dom/load-overload.php:57
 msgid "Close"
 msgstr "Tutup"
 
@@ -2542,7 +2606,7 @@ msgstr "Abjad - terjemahan"
 msgid "Go to top"
 msgstr "Pergi ke atas"
 
-#: inc/slug.php:294 inc/translation.php:252
+#: inc/slug.php:294 inc/translation.php:275
 msgid "..."
 msgstr "..."
 
