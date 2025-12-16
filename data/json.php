@@ -711,6 +711,60 @@ function wplng_data_json_rules_inclusion() {
 	};
 
 	// ------------------------------------------------------------------------
+	// Plugin: WP Amelia
+	// ------------------------------------------------------------------------
+
+	$logical_rules[] = function ( $element, $parents ) {
+		return (
+			// -> wpAmeliaSettings
+			isset( $parents[0] )
+			&& $parents[0] === 'wpAmeliaSettings'
+			&& (
+				// -> appointments
+				(
+					isset( $parents[1] )
+					&& $parents[1] === 'appointments'
+				)
+				// -> roles -> providerBadges -> badges -> content
+				|| (
+					isset( $parents[1] )
+					&& isset( $parents[2] )
+					&& isset( $parents[3] )
+					&& isset( $parents[4] )
+					&& isset( $parents[5] )
+					&& $parents[1] === 'roles'
+					&& $parents[2] === 'providerBadges'
+					&& $parents[3] === 'badges'
+					&& is_int( $parents[4] )
+					&& $parents[5] === 'content'
+				)
+				// -> customizedData -> sbsNew -> ... -> ... -> ... -> name
+				|| (
+					isset( $parents[1] )
+					&& isset( $parents[2] )
+					&& isset( $parents[3] )
+					&& isset( $parents[4] )
+					&& isset( $parents[5] )
+					&& isset( $parents[6] )
+					&& $parents[1] === 'customizedData'
+					&& $parents[2] === 'sbsNew'
+					&& $parents[6] === 'name'
+				)
+			)
+		);
+	};
+
+	$logical_rules[] = function ( $element, $parents ) {
+		return (
+			// wpAmeliaLabels -> welcome_back
+			isset( $parents[0] )
+			&& $parents[0] === 'wpAmeliaLabels'
+			&& isset( $parents[1] )
+			&& is_string($parents[1])
+		);
+	};
+
+	// ------------------------------------------------------------------------
 	// Theme: Divi
 	// ------------------------------------------------------------------------
 
