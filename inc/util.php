@@ -377,36 +377,46 @@ function wplng_website_in_sub_folder() {
 /**
  * Counts the number of published posts for all public post types.
  *
- * This function retrieves all registered public post types, excluding attachments,
+ * This function retrieves all registered public post types, including custom post types,
  * and counts the total number of published posts for those post types.
+ * It explicitly includes 'post', 'page', and 'product' post types to ensure they are counted.
  *
  * @global wpdb $wpdb WordPress database abstraction object.
  *
  * @return int The total count of published posts for the specified post types.
  */
 function wplng_count_public_content() {
-
 	global $wpdb;
 
-	// Retrieve all registered public post types
-	$public_post_types   = get_post_types( array( 'public' => true ), 'names' );
-	$public_post_types[] = 'product';
+	// Retrieve all public post types
+	$post_types = get_post_types( array( 'public' => true ), 'names' );
 
-	// Exclude unnecessary post types (e.g., attachments)
-	unset( $public_post_types['attachment'] );
+	// Explicitly add specific post types to ensure they are included
+	$post_types = array_merge( $post_types, array( 'post', 'page', 'product' ) );
 
-	// Prepare the SQL placeholders for the post types
-	$placeholders = implode( ',', array_fill( 0, count( $public_post_types ), '%s' ) );
+	// Remove duplicate post types
+	$post_types = array_unique( $post_types );
 
-	// Define the SQL query to count published posts
-	$sql  = 'SELECT COUNT(ID)' . PHP_EOL;
+	// Check if any post types were found
+	if ( empty( $post_types ) ) {
+		return 0; // Return 0 if no post types are found
+	}
+
+	// Prepare placeholders for the SQL query
+	$placeholders = implode( ',', array_fill( 0, count( $post_types ), '%s' ) );
+
+	// Build the SQL query to count published posts for the specified post types
+	$sql  = 'SELECT COUNT(*)' . PHP_EOL;
 	$sql .= "FROM {$wpdb->posts}" . PHP_EOL;
 	$sql .= "WHERE post_status = 'publish'" . PHP_EOL;
-	$sql .= "AND post_type IN ($placeholders)";
+	$sql .= "AND post_type IN ($placeholders)" . PHP_EOL;
 
-	// Prepare and execute the query
-	$query = $wpdb->prepare( $sql, $public_post_types );
+	// Secure the SQL query using $wpdb->prepare()
+	$query = $wpdb->prepare( $sql, $post_types );
 
-	// Return the count as an integer
-	return (int) $wpdb->get_var( $query );
+	// Execute the query and retrieve the result
+	$nombre_de_posts = $wpdb->get_var( $query );
+
+	// Return the total count as an integer
+	return intval( $nombre_de_posts );
 }

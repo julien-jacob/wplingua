@@ -105,8 +105,8 @@ function wplng_data_json_rules_inclusion() {
 	/**
 	 * i18n scripts
 	 */
-	 
-	 $logical_rules[] = function ( $element, $parents ) {
+
+	$logical_rules[] = function ( $element, $parents ) {
 		return (
 			! empty( $parents[0] )
 			&& ! empty( $parents[1] )
@@ -240,14 +240,14 @@ function wplng_data_json_rules_inclusion() {
 	 * Plugin: WooCommerce - Product rating
 	 */
 
-	 $logical_rules[] = function ( $element, $parents ) {
+	$logical_rules[] = function ( $element, $parents ) {
 		return (
 			isset( $parents[0] )
 			&& isset( $parents[1] )
 			&& isset( $parents[2] )
 			&& $parents[0] === 'wc_single_product_params'
 			&& $parents[1] === 'i18n_rating_options'
-			&& is_int($parents[2])
+			&& is_int( $parents[2] )
 		);
 	};
 
@@ -460,7 +460,6 @@ function wplng_data_json_rules_inclusion() {
 			)
 		);
 	};
-	
 
 	/**
 	 * Plugin: WooCommerce - Form fields
@@ -517,7 +516,7 @@ function wplng_data_json_rules_inclusion() {
 	 * Plugin: WooCommerce - Country name
 	 */
 
-	 $logical_rules[] = function ( $element, $parents ) {
+	$logical_rules[] = function ( $element, $parents ) {
 		return (
 			! empty( $parents[0] )
 			&& ! empty( $parents[1] )
@@ -525,7 +524,7 @@ function wplng_data_json_rules_inclusion() {
 			&& $parents[0] === 'EncodedAsURL'
 			&& $parents[1] === 'countries'
 			&& is_string( $parents[2] )
-			&& (preg_match('#^[A-Z]{2}$#', $parents[2]) === 1)
+			&& ( preg_match( '#^[A-Z]{2}$#', $parents[2] ) === 1 )
 		);
 	};
 
@@ -533,7 +532,7 @@ function wplng_data_json_rules_inclusion() {
 	 * Plugin: WooCommerce - Countries label
 	 */
 
-	 $logical_rules[] = function ( $element, $parents ) {
+	$logical_rules[] = function ( $element, $parents ) {
 		return (
 			! empty( $parents[0] )
 			&& ! empty( $parents[1] )
@@ -707,6 +706,60 @@ function wplng_data_json_rules_inclusion() {
 				array( 'wpgb_settings', 'range', 'minLabel' ),
 				array( 'wpgb_settings', 'range', 'maxLabel' ),
 			)
+		);
+	};
+
+	// ------------------------------------------------------------------------
+	// Plugin: WP Amelia
+	// ------------------------------------------------------------------------
+
+	$logical_rules[] = function ( $element, $parents ) {
+		return (
+			// -> wpAmeliaSettings
+			isset( $parents[0] )
+			&& $parents[0] === 'wpAmeliaSettings'
+			&& (
+				// -> appointments
+				(
+					isset( $parents[1] )
+					&& $parents[1] === 'appointments'
+				)
+				// -> roles -> providerBadges -> badges -> content
+				|| (
+					isset( $parents[1] )
+					&& isset( $parents[2] )
+					&& isset( $parents[3] )
+					&& isset( $parents[4] )
+					&& isset( $parents[5] )
+					&& $parents[1] === 'roles'
+					&& $parents[2] === 'providerBadges'
+					&& $parents[3] === 'badges'
+					&& is_int( $parents[4] )
+					&& $parents[5] === 'content'
+				)
+				// -> customizedData -> sbsNew -> ... -> ... -> ... -> name
+				|| (
+					isset( $parents[1] )
+					&& isset( $parents[2] )
+					&& isset( $parents[3] )
+					&& isset( $parents[4] )
+					&& isset( $parents[5] )
+					&& isset( $parents[6] )
+					&& $parents[1] === 'customizedData'
+					&& $parents[2] === 'sbsNew'
+					&& $parents[6] === 'name'
+				)
+			)
+		);
+	};
+
+	$logical_rules[] = function ( $element, $parents ) {
+		return (
+			// wpAmeliaLabels -> welcome_back
+			isset( $parents[0] )
+			&& $parents[0] === 'wpAmeliaLabels'
+			&& isset( $parents[1] )
+			&& is_string( $parents[1] )
 		);
 	};
 

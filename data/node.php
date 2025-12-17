@@ -81,6 +81,9 @@ function wplng_data_excluded_selector_default() {
 
 		// Plugin: WooCommerce
 		'.woocommerce-Price-amount',
+
+		// Plugin: events-calendar-pro
+		'.tribe-event-date-start',
 	);
 }
 

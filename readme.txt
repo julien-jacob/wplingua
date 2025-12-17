@@ -3,8 +3,8 @@ Contributors: wpr0ck, lyly13, pierrelannoy, wplingua
 Donate link: https://wplingua.com/
 Tags: translate, translation, multilingual, localization, language
 Requires at least: 6.0
-Tested up to: 6.8
-Stable tag: 2.10.6
+Tested up to: 6.9
+Stable tag: 2.10.7
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -190,6 +190,14 @@ Your server’s database holds all the translations locally.
 12. SEO-Friendly: wpLingua add the HTML code needed for your translated pages to be indexed by search engines.
 
 == Changelog ==
+
+= 2.10.7 =
+
+* Update "Tested up to" version to WP 6.9
+* Better plugin compatibility:
+ * WP Amelia
+ * The Events Calendar
+* Better incompatible websites detection
 
 = 2.10.6 =
 
