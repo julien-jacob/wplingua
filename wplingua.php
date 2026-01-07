@@ -282,6 +282,9 @@ function wplng_start() {
 		// Enqueue CSS and JS files
 		add_action( 'wp_enqueue_scripts', 'wplng_register_assets' );
 
+		// Add custom inline styles (option page: switcher)
+		add_action( 'wp_head', 'wplng_add_custom_inline_styles', 50 );
+
 		// Script JS in page
 		add_action( 'wp_footer', 'wplng_on_page_script' );
 
