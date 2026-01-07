@@ -7,7 +7,7 @@
  * Author URI: https://wplingua.com/
  * Text Domain: wplingua
  * Domain Path: /languages/
- * Version: 2.10.7
+ * Version: 2.10.8
  * Requires PHP: 7.4
  * License: GPL v2 or later
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -24,7 +24,7 @@ if ( ! defined( 'WPINC' ) ) {
 define( 'WPLNG_API_URL', 'https://api.wplingua.com' );
 define( 'WPLNG_API_VERSION', '3.0' );
 define( 'WPLNG_API_SSLVERIFY', true );
-define( 'WPLNG_PLUGIN_VERSION', '2.10.7' );
+define( 'WPLNG_PLUGIN_VERSION', '2.10.8' );
 define( 'WPLNG_PLUGIN_FILE', plugin_basename( __FILE__ ) );
 define( 'WPLNG_PLUGIN_PATH', __DIR__ );
 define( 'WPLNG_PHP_MIN_VERSION', '7.4' );
@@ -282,6 +282,9 @@ function wplng_start() {
 		// Enqueue CSS and JS files
 		add_action( 'wp_enqueue_scripts', 'wplng_register_assets' );
 
+		// Add custom inline styles (option page: switcher)
+		add_action( 'wp_head', 'wplng_add_custom_inline_styles', 50 );
+
 		// Script JS in page
 		add_action( 'wp_footer', 'wplng_on_page_script' );
 
@@ -344,6 +347,12 @@ function wplng_start() {
 		add_filter( 'block_categories_all', 'wplng_block_category' );
 		add_action( 'init', 'wplng_register_block' );
 		add_action( 'enqueue_block_editor_assets', 'wplng_register_block_assets' );
+
+		/**
+		 * Do action after wpLingua fully initialized
+		 */
+
+		do_action( 'wplng_initialized' );
 
 	}
 }

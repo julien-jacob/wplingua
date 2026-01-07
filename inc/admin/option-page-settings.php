@@ -13,9 +13,18 @@ if ( ! defined( 'WPINC' ) ) {
  */
 function wplng_option_page_settings() {
 
-	delete_option( 'wplng_api_key_data' );
+	/**
+	 * Try to get API key data from API
+	 * (From cache if API can not be called
+	 */
 
-	if ( empty( wplng_get_api_data() ) ) {
+	$api_data = wplng_get_api_data( true );
+
+	/**
+	 * Show register screen if empty API data
+	 */
+
+	if ( empty( $api_data ) ) {
 		wplng_option_page_register();
 		return;
 	}

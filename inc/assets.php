@@ -13,7 +13,7 @@ if ( ! defined( 'WPINC' ) ) {
  */
 function wplng_register_assets() {
 
-	if ( is_admin() ) {
+	if ( is_admin() || ! wplng_url_is_translatable() ) {
 		return;
 	}
 
@@ -46,22 +46,8 @@ function wplng_register_assets() {
 	);
 
 	/**
-	 * Add inline style for wpLingua custom CSS
+	 * Add scripts and CSS for translation editor
 	 */
-
-	if ( empty( $_GET['wplng-mode'] )
-		|| 'list' !== $_GET['wplng-mode']
-	) {
-
-		$custom_css = get_option( 'wplng_custom_css' );
-
-		if ( ! empty( $custom_css )
-			&& is_string( $custom_css )
-		) {
-			$custom_css = wp_strip_all_tags( $custom_css );
-			wp_add_inline_style( 'wplingua', $custom_css );
-		}
-	}
 
 	if ( ! empty( $_GET['wplng-mode'] )
 		&& empty( $_GET['wplng-load'] )
@@ -99,6 +85,32 @@ function wplng_register_assets() {
 			)
 		);
 
+	}
+
+}
+
+
+/**
+ * Add custom inline styles for wpLingua.
+ *
+ * This function retrieves custom CSS from the database (stored in the 'wplng_custom_css' option),
+ * sanitizes it, and outputs it directly into the <head> section of the page.
+ *
+ * @return void
+ */
+function wplng_add_custom_inline_styles() {
+
+	if ( ! empty( $_GET['wplng-mode'] )
+		&& 'list' === $_GET['wplng-mode']
+	) {
+		return;
+	}
+
+	$custom_css = get_option( 'wplng_custom_css' );
+
+	if ( ! empty( $custom_css ) && is_string( $custom_css ) ) {
+		$custom_css = wp_strip_all_tags( $custom_css );
+		echo '<style id="wplingua-inline-styles">' . $custom_css . '</style>';
 	}
 }
 
