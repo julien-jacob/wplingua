@@ -13,7 +13,7 @@ Make your websites multilingual and translate them automatically: no word limits
 
 == Description ==
 
-**An all-in-one solution that makes your websites multilingual and translate them automatically, without word or page limits.**
+**An all-in-one solution that makes your websites multilingual and translate them automatically, without word limits.**
 
 ✓ One free first language for non-commercial websites
 ✓ Automatic translation API
@@ -22,6 +22,7 @@ Make your websites multilingual and translate them automatically: no word limits
 ✓ On-page visual editor for editing translations
 ✓ Customizable language switcher
 ✓ Translate website URLs
+✓ Making XML sitemaps automatically multilingual
 ✓ No coding knowledge needed
 ✓ Self-hosted data
 ✓ Open source, find [wpLingua on GitHub](https://github.com/julien-jacob/wplingua)
@@ -115,6 +116,9 @@ Arabic ∘ Chinese ∘ Danish ∘ Dutch ∘ Slovak ∘ English ∘ Finnish ∘ F
 
 Danish ∘ Dutch ∘ English ∘ Finnish ∘ French ∘ German ∘ Hindi ∘ Hungarian ∘ Indonesian ∘ Italian ∘ Japanese ∘ Korean ∘ Portuguese ∘ Spanish ∘ Swedish
 
+You can contribute to the translation of the [wpLingua plugin on translate.wordpress.org](https://translate.wordpress.org/projects/wp-plugins/wplingua/) and contribute to the editing of [PO/MO translation files on GitHub](https://github.com/julien-jacob/wplingua/tree/develop/languages).
+
+
 ### 🔌 Theme and plugin compatibility ###
 The method used by wpLingua to translate website texts ensures compatibility with most themes and plugins.
 
@@ -124,6 +128,8 @@ The method used by wpLingua to translate website texts ensures compatibility wit
 
 ### ⚡️ The wpLingua API ###
 The wpLingua plugin relies on our own wpLingua API, an integrated third-party service, to provide its machine translation functionality. The call to this Third Party Service (wpLingua API) is made when creating an API key from the plugin, during API key verification and when your website requests a new automatic translation (new texts discovered on a page web or request automatic translations from the translation edition). We invite you to consult our [Terms & Conditions page](https://wplingua.com/terms-and-conditions/) for more information.
+
+**Keywords**: wpLingua, WP Lingua, WP-Lingua, Multilingual, Bilingual, Translation, Translate, Translated, Translator, Localization, Automatic translation, Machine translation, Languages, Language switcher, Language selector, API, SEO, Custom flags
 
 
 == Installation ==
