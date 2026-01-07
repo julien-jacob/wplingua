@@ -183,6 +183,38 @@ function wplng_data_json_rules_inclusion() {
 	};
 
 	// ------------------------------------------------------------------------
+	// Plugin: Elementor Essential Addons
+	// ------------------------------------------------------------------------
+
+	/**
+	 * Plugin: Elementor - Event Calendar
+	 */
+
+	$logical_rules[] = function ( $element, $parents ) {
+		return in_array(
+			$parents,
+			array(
+				array( 'data-translate', 'today' ),
+				array( 'data-translate', 'tomorrow' ),
+			)
+		);
+	};
+
+	$logical_rules[] = function ( $element, $parents ) {
+		return (
+			! empty( $parents[0] )
+			&& ! empty( $parents[1] )
+			&& ! empty( $parents[2] )
+			&& $parents[0] === 'data-events'
+			&& is_int( $parents[1] )
+			&& (
+				$parents[2] === 'title'
+				|| $parents[2] === 'description'
+			)
+		);
+	};
+
+	// ------------------------------------------------------------------------
 	// Plugin: WooCommerce
 	// ------------------------------------------------------------------------
 
