@@ -348,6 +348,12 @@ function wplng_start() {
 		add_action( 'init', 'wplng_register_block' );
 		add_action( 'enqueue_block_editor_assets', 'wplng_register_block_assets' );
 
+		/**
+		 * Do action after wpLingua fully initialized
+		 */
+
+		do_action( 'wplng_initialized' );
+
 	}
 }
 wplng_start();
