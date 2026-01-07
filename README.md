@@ -42,7 +42,7 @@ wpLingua is **SEO-Friendly** because it takes care of translating:
 ✅ Meta tags for social networks (Twitter X, OpenGraph Facebook...)<br>
 ✅ ALT attributes of images<br>
 ✅ Website URLs<br>
-✅ XML Sitemaps (automatically multilingual)<br>
+✅ Making XML sitemaps automatically multilingual<br>
 ✅ And more.<br>
 
 By optimizing indexing, wpLingua ensures that your translated pages are not only understood by your audience, but also easily discovered by search engines.
@@ -187,4 +187,4 @@ $ gulp archive
 
 <br><hr>
 
-**Tags:** wpLingua, WP Lingua, WP-Lingua, Multilingual, Bilingual, Translation, Translate, Translated, Localization, Automatic translation, Machine translation, Languages, WordPress, WP, Plugin, Language switcher, Language selector, API, SEO, Custom flags
+**Keywords:** wpLingua, WP Lingua, WP-Lingua, Multilingual, Bilingual, Translation, Translate, Translated, Translator, Localization, Automatic translation, Machine translation, Languages, WordPress, WP, Plugin, Language switcher, Language selector, API, SEO, Custom flags
