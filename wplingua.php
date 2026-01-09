@@ -315,6 +315,15 @@ function wplng_start() {
 		 * Features
 		 */
 
+		// Make multilingua Sitemap XML for All In One SEO plugin
+		// Il other case, multilingual Sitemap is make by output buffering
+		if ( get_option( 'wplng_sitemap_xml', true )
+			&& function_exists( 'aioseo' )
+		) {
+			add_filter( 'aioseo_sitemap_post', 'wplng_aioseo_filter_sitemap_post', 10, 2 );
+			add_filter( 'aioseo_sitemap_term', 'wplng_aioseo_filter_sitemap_term', 10, 2 );
+		}
+
 		// Search from translated languages
 		if ( ! empty( get_option( 'wplng_translate_search' ) )
 			&& wplng_api_feature_is_allow( 'search' )
