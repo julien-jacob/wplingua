@@ -491,19 +491,21 @@ function wplng_settings_part_features_seo() {
 		<p><?php esc_html_e( 'wpLingua uses a universal method that intercepts and extends sitemap. It works with the native WordPress sitemap and with popular SEO plugins such as Yoast SEO, Rank Math, All in One SEO, SEOPress, etc.', 'wplingua' ); ?></p>
 	</div>
 
-	<fieldset>
-		<input type="checkbox" id="wplng_sitemap_xsl_override" name="wplng_sitemap_xsl_override" value="1" <?php checked( 1, get_option( 'wplng_sitemap_xsl_override', false ), true ); ?>/>
-		<label for="wplng_sitemap_xsl_override"><?php esc_html_e( 'Use wpLingua display for XML Sitemap', 'wplingua' ); ?></label> 
-		<span title="<?php esc_attr_e( 'Click to expand', 'wplingua' ); ?>" wplng-help-box="#wplng-hb-feature-sitemap-xsl"></span>
-	</fieldset>
+	<div class="wplng-beta-hidden" style="display: none;">
+		<fieldset>
+			<input type="checkbox" id="wplng_sitemap_xsl_override" name="wplng_sitemap_xsl_override" value="1" <?php checked( 1, get_option( 'wplng_sitemap_xsl_override', false ), true ); ?>/>
+			<label for="wplng_sitemap_xsl_override">BETA - <?php esc_html_e( 'Use wpLingua display for XML Sitemap', 'wplingua' ); ?></label> 
+			<span title="<?php esc_attr_e( 'Click to expand', 'wplingua' ); ?>" wplng-help-box="#wplng-hb-feature-sitemap-xsl"></span>
+		</fieldset>
 
-	<div class="wplng-help-box" id="wplng-hb-feature-sitemap-xsl">
-        <p><?php esc_html_e( 'This option replaces the default XML Sitemap stylesheet with wpLingua\'s custom display.', 'wplingua' ); ?></p>
-        <hr>
-        <p><?php esc_html_e( 'When enabled, the XML Sitemap will use a wpLingua-designed stylesheet that visually displays all translated URLs directly under each original URL. This makes it easy to verify that all language versions are correctly included in your sitemap.', 'wplingua' ); ?></p>
-        <hr>
-        <p><?php esc_html_e( 'Note: This only affects how the sitemap is displayed in your browser. The actual XML data sent to search engines remains unchanged and fully compatible with all SEO standards.', 'wplingua' ); ?></p>
-        <p><?php esc_html_e( 'This option has no effect when using All In One SEO, as this plugin handles the display of translated links itself.', 'wplingua' ); ?></p>
+		<div class="wplng-help-box" id="wplng-hb-feature-sitemap-xsl">
+			<p><?php esc_html_e( 'This option replaces the default XML Sitemap stylesheet with wpLingua\'s custom display.', 'wplingua' ); ?></p>
+			<hr>
+			<p><?php esc_html_e( 'When enabled, the XML Sitemap will use a wpLingua-designed stylesheet that visually displays all translated URLs directly under each original URL. This makes it easy to verify that all language versions are correctly included in your sitemap.', 'wplingua' ); ?></p>
+			<hr>
+			<p><?php esc_html_e( 'Note: This only affects how the sitemap is displayed in your browser. The actual XML data sent to search engines remains unchanged and fully compatible with all SEO standards.', 'wplingua' ); ?></p>
+			<p><?php esc_html_e( 'This option has no effect when using All In One SEO, as this plugin handles the display of translated links itself.', 'wplingua' ); ?></p>
+		</div>
     </div>
 	
 	<?php
