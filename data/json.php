@@ -7,6 +7,25 @@ if ( ! defined( 'WPINC' ) ) {
 
 
 /**
+ * Retrieves an array of function calls that contain translatable JSON.
+ *
+ * This whitelist is used to identify JavaScript function calls where the
+ * JSON argument should be parsed and translated (e.g., jQuery datepicker).
+ *
+ * @return array Array of function names with dot notation.
+ */
+function wplng_data_json_in_js_functions() {
+    return apply_filters(
+        'wplng_json_in_js_functions',
+        array(
+            'jQuery.datepicker.setDefaults',
+            '$.datepicker.setDefaults',
+        )
+    );
+}
+
+
+/**
  * Retrieves an array of exclusion rules for JSON elements.
  *
  * Each rule is a callback function that determines whether a JSON element
@@ -211,6 +230,15 @@ function wplng_data_json_rules_inclusion() {
 				$parents[2] === 'title'
 				|| $parents[2] === 'description'
 			)
+		);
+	};
+
+	$logical_rules[] = function ( $element, $parents ) {
+		return (
+			! empty( $parents[0] )
+			&& ! empty( $parents[1] )
+			&& $parents[0] === 'jQuery.datepicker.setDefaults'
+			&& $parents[1] !== 'dateFormat'
 		);
 	};
 
