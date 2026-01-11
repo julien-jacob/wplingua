@@ -318,22 +318,6 @@ function wplng_sitemap_modify_xsl( $content ) {
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /**
  * Filter All In One SEO sitemap post entries to add multilingual alternate URLs.
  *
@@ -361,8 +345,14 @@ function wplng_aioseo_filter_sitemap_post( $entry, $post_id ) {
 	// Set the main language
 	$entry['language'] = $language_website_id;
 
-	// Add translated versions
+	// Add translated versions (including original language for self-reference)
 	$entry['languages'] = array();
+
+	// Add original language (self-referencing hreflang)
+	$entry['languages'][] = array(
+		'language' => $language_website_id,
+		'location' => $post_url,
+	);
 
 	foreach ( $languages_target_ids as $language_id ) {
 		$translated_url = wplng_url_translate( $post_url, $language_id );
@@ -413,8 +403,14 @@ function wplng_aioseo_filter_sitemap_term( $entry, $term_id ) {
 	// Set the main language
 	$entry['language'] = $language_website_id;
 
-	// Add translated versions
+	// Add translated versions (including original language for self-reference)
 	$entry['languages'] = array();
+
+	// Add original language (self-referencing hreflang)
+	$entry['languages'][] = array(
+		'language' => $language_website_id,
+		'location' => $term_url,
+	);
 
 	foreach ( $languages_target_ids as $language_id ) {
 		$translated_url = wplng_url_translate( $term_url, $language_id );
