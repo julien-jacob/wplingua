@@ -162,10 +162,6 @@ function wplng_sitemap_add_hreflang_links( $content ) {
 }
 
 
-
-
-
-
 /**
  * Modify XSL stylesheet to display translated links in sitemap.
  *
