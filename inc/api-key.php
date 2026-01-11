@@ -70,10 +70,16 @@ function wplng_get_api_data( $try_update_from_api = false ) {
 	 * Get data from cache or API
 	 */
 
-	$data_checked = array();
-	$data         = array();
-
+	$data_checked    = array();
+	$data            = array();
 	$data_from_cache = get_option( 'wplng_api_key_data' );
+
+	if ( ! empty( $data_from_cache ) ) {
+		$data_from_cache = json_decode( $data_from_cache, true );
+		if ( ! is_array( $data_from_cache ) ) {
+			$data_from_cache = array();
+		}
+	}
 
 	if ( empty( $data_from_cache ) ) {
 
@@ -97,11 +103,11 @@ function wplng_get_api_data( $try_update_from_api = false ) {
 		 * Data is in cache
 		 */
 
-		$data = json_decode( $data_from_cache, true );
+		$data = $data_from_cache;
 
 		// Time of last update is not define, set is as current time
 		if ( empty( $data['time'] )
-			|| is_int( $data['time'] )
+			|| ! is_int( $data['time'] )
 		) {
 			$data['time'] = time();
 		}
@@ -194,6 +200,7 @@ function wplng_get_api_data( $try_update_from_api = false ) {
 			'languages_target'  => $languages_target,
 			'features'          => $features,
 			'status'            => $status,
+			'time'              => $data['time'],
 		);
 
 		/**
@@ -205,7 +212,6 @@ function wplng_get_api_data( $try_update_from_api = false ) {
 		) {
 			$data_checked['expiration'] = $data['expiration'];
 		}
-
 	}
 
 	// Set data in DB cache (option)
