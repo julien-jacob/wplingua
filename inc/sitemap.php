@@ -60,6 +60,30 @@ function wplng_sitemap_add_hreflang_links( $content ) {
 	// Restore previous setting
 	libxml_use_internal_errors( $previous_libxml_setting );
 
+	// Replace XSL stylesheet URL if option enabled
+	if ( get_option( 'wplng_sitemap_xsl_override', false ) ) {
+		$wplng_xsl_url = plugins_url( 'assets/sitemap.xsl', __DIR__ );
+
+		// Find existing xml-stylesheet processing instruction
+		$xsl_found = false;
+		foreach ( $dom->childNodes as $node ) {
+			if ( $node->nodeType === XML_PI_NODE && $node->target === 'xml-stylesheet' ) {
+				$node->data = 'type="text/xsl" href="' . esc_url( $wplng_xsl_url ) . '"';
+				$xsl_found  = true;
+				break;
+			}
+		}
+
+		// If no xml-stylesheet found, add one before the root element
+		if ( ! $xsl_found ) {
+			$xsl_pi = $dom->createProcessingInstruction(
+				'xml-stylesheet',
+				'type="text/xsl" href="' . esc_url( $wplng_xsl_url ) . '"'
+			);
+			$dom->insertBefore( $xsl_pi, $dom->documentElement );
+		}
+	}
+
 	$signature = '<!-- XML Sitemap is made multilingual by wpLingua -->' . PHP_EOL;
 
 	// Register namespaces and prepare XPath.
@@ -80,7 +104,7 @@ function wplng_sitemap_add_hreflang_links( $content ) {
 	$url_nodes = $xpath->query( '//sm:url' );
 
 	if ( empty( $url_nodes ) ) {
-		return $content . $signature;
+		return $dom->saveXML() . $signature;
 	}
 
 	foreach ( $url_nodes as $url_node ) {
@@ -136,6 +160,178 @@ function wplng_sitemap_add_hreflang_links( $content ) {
 
 	return $sitemap . $signature;
 }
+
+
+
+
+
+
+/**
+ * Modify XSL stylesheet to display translated links in sitemap.
+ *
+ * @param string $content The original XSL content.
+ * @return string The modified XSL content with translations displayed under each URL.
+ */
+function wplng_sitemap_modify_xsl( $content ) {
+
+	if ( empty( $content ) ) {
+		return $content;
+	}
+
+	// Check if this XSL already has translations support
+	if ( strpos( $content, 'wplng-translations' ) !== false ) {
+		return $content;
+	}
+
+	// Load XSL into DOMDocument
+	$dom                     = new DOMDocument( '1.0', 'UTF-8' );
+	$dom->preserveWhiteSpace = false;
+	$dom->formatOutput       = true;
+
+	// Enable internal error handling
+	$previous_libxml_setting = libxml_use_internal_errors( true );
+
+	if ( ! $dom->loadXML( $content ) ) {
+		libxml_clear_errors();
+		libxml_use_internal_errors( $previous_libxml_setting );
+		return $content;
+	}
+
+	libxml_use_internal_errors( $previous_libxml_setting );
+
+	$xpath = new DOMXPath( $dom );
+	$xpath->registerNamespace( 'xsl', 'http://www.w3.org/1999/XSL/Transform' );
+
+	// Add xhtml namespace to xsl:stylesheet if not present
+	$stylesheet = $dom->documentElement;
+	if ( ! $stylesheet->hasAttribute( 'xmlns:xhtml' ) ) {
+		$stylesheet->setAttribute( 'xmlns:xhtml', 'http://www.w3.org/1999/xhtml' );
+	}
+
+	// Add CSS to existing <style> element or create one in <head>
+	$css = '
+        .wplng-translations { margin-top: 8px; padding-top: 8px; border-top: 1px dashed #ddd; }
+        .wplng-translation-row { display: block; margin: 4px 0; font-size: 13px; }
+        .wplng-lang-badge { display: inline-block; min-width: 24px; padding: 2px 6px; margin-right: 8px; background: #0073aa; color: white; border-radius: 3px; font-size: 11px; text-align: center; font-weight: bold; }
+        .wplng-translation-row a { color: #0073aa; text-decoration: none; }
+        .wplng-translation-row a:hover { text-decoration: underline; }
+        .wplng-credit { margin-top: 20px; padding: 10px; background: #f5f5f5; border-radius: 4px; font-size: 12px; color: #666; text-align: center; }
+        .wplng-credit a { color: #0073aa; }
+    ';
+
+	$style_nodes = $xpath->query( '//style' );
+	if ( $style_nodes->length > 0 ) {
+		$style_node             = $style_nodes->item( 0 );
+		$style_node->nodeValue .= $css;
+	} else {
+		$head_nodes = $xpath->query( '//head' );
+		if ( $head_nodes->length > 0 ) {
+			$style_element = $dom->createElement( 'style', $css );
+			$head_nodes->item( 0 )->appendChild( $style_element );
+		}
+	}
+
+	// Create the XSL fragment for translations
+	$xsl_ns = 'http://www.w3.org/1999/XSL/Transform';
+
+	// Find the <td> containing the URL (class="loc" or containing sitemap:loc)
+	$loc_cells = $xpath->query( '//td[contains(@class, "loc")]' );
+
+	if ( $loc_cells->length > 0 ) {
+		$loc_cell = $loc_cells->item( 0 );
+
+		// Create xsl:if element
+		$xsl_if = $dom->createElementNS( $xsl_ns, 'xsl:if' );
+		$xsl_if->setAttribute( 'test', "xhtml:link[@rel='alternate']" );
+
+		// Create wrapper div
+		$div = $dom->createElement( 'div' );
+		$div->setAttribute( 'class', 'wplng-translations' );
+
+		// Create xsl:for-each element
+		$xsl_foreach = $dom->createElementNS( $xsl_ns, 'xsl:for-each' );
+		$xsl_foreach->setAttribute( 'select', "xhtml:link[@rel='alternate']" );
+
+		// Create span.wplng-translation-row
+		$span_row = $dom->createElement( 'span' );
+		$span_row->setAttribute( 'class', 'wplng-translation-row' );
+
+		// Create span.wplng-lang-badge with xsl:value-of
+		$span_badge = $dom->createElement( 'span' );
+		$span_badge->setAttribute( 'class', 'wplng-lang-badge' );
+		$xsl_value_lang = $dom->createElementNS( $xsl_ns, 'xsl:value-of' );
+		$xsl_value_lang->setAttribute( 'select', '@hreflang' );
+		$span_badge->appendChild( $xsl_value_lang );
+
+		// Create anchor element
+		$anchor = $dom->createElement( 'a' );
+		$anchor->setAttribute( 'href', '{@href}' );
+		$xsl_value_href = $dom->createElementNS( $xsl_ns, 'xsl:value-of' );
+		$xsl_value_href->setAttribute( 'select', '@href' );
+		$anchor->appendChild( $xsl_value_href );
+
+		// Assemble the structure
+		$span_row->appendChild( $span_badge );
+		$span_row->appendChild( $anchor );
+		$xsl_foreach->appendChild( $span_row );
+		$div->appendChild( $xsl_foreach );
+		$xsl_if->appendChild( $div );
+
+		// Append to loc cell
+		$loc_cell->appendChild( $xsl_if );
+	}
+
+	// Add credit message to the page footer
+	$body_nodes = $xpath->query( '//body' );
+	if ( $body_nodes->length > 0 ) {
+		$body = $body_nodes->item( 0 );
+
+		// Find the main container div or append to body
+		$container_nodes = $xpath->query( '//div[@id="sitemap"] | //div[@id="content"] | //div[contains(@class, "sitemap")]' );
+		$target          = ( $container_nodes->length > 0 ) ? $container_nodes->item( 0 ) : $body;
+
+		$credit_div = $dom->createElement( 'p' );
+		$credit_div->setAttribute( 'class', 'wplng-credit' );
+
+		$credit_text = $dom->createTextNode( 'Multilingual sitemap powered by ' );
+		$credit_div->appendChild( $credit_text );
+
+		$credit_link = $dom->createElement( 'a', 'wpLingua' );
+		$credit_link->setAttribute( 'href', 'https://wplingua.com' );
+		$credit_link->setAttribute( 'target', '_blank' );
+		$credit_link->setAttribute( 'rel', 'noopener' );
+		$credit_div->appendChild( $credit_link );
+
+		$target->appendChild( $credit_div );
+	}
+
+	$result = $dom->saveXML();
+
+	if ( empty( $result ) ) {
+		return $content;
+	}
+
+	// Add XML comment at the end
+	$result .= PHP_EOL . '<!-- XSL Sitemap stylesheet is made multilingual by wpLingua -->';
+
+	return $result;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 /**
