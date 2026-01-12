@@ -4,7 +4,7 @@ Donate link: https://wplingua.com/
 Tags: translate, translation, multilingual, localization, language
 Requires at least: 6.0
 Tested up to: 6.9
-Stable tag: 2.10.8
+Stable tag: 2.10.9
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -196,6 +196,22 @@ Your server’s database holds all the translations locally.
 12. SEO-Friendly: wpLingua add the HTML code needed for your translated pages to be indexed by search engines.
 
 == Changelog ==
+
+= 2.10.9 =
+
+* Better plugins compatibility:
+  * All In One SEO sitemaps
+  * Elementor Essential Addons Calendar
+  * jQuery Datepicker
+* Better JSON translation:
+  * Intercept JSON in JavaScript functions
+* Security improvements:
+  * Block suspicious strings from translation (SQL injection, XSS patterns)
+  * Stop plugin execution if URL contains malicious patterns
+* New hidden BETA feature:
+  * Apply wpLingua style to XML sitemaps
+  * Use the Konami code to reveal this option
+* Fix: API data retrieval
 
 = 2.10.8 =
 
