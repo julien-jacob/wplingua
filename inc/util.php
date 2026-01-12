@@ -110,55 +110,8 @@ function wplng_text_is_translatable( $text ) {
 		return false;
 	}
 
-	// Check for SQL injection attempts
-	$sql_patterns = array(
-		'/\bOR\b\s*\d+\s*=\s*\(\s*SELECT\b/i',           // OR-based injection: OR 123=(SELECT ...)
-		'/\bAND\b\s*\d+\s*=\s*\(\s*SELECT\b/i',          // AND-based injection: AND 123=(SELECT ...)
-		'/\bUNION\b\s+(ALL\s+)?SELECT\b/i',              // UNION-based injection: UNION SELECT or UNION ALL SELECT
-		'/PG_SLEEP\s*\(/i',                              // PostgreSQL time-based injection: PG_SLEEP()
-		'/\bSLEEP\s*\(\s*\d/i',                          // MySQL time-based injection: SLEEP(15)
-		'/BENCHMARK\s*\(/i',                             // MySQL time-based injection: BENCHMARK()
-		'/WAITFOR\s+DELAY\s+\'/i',                       // SQL Server time-based injection: WAITFOR DELAY '...'
-		'/;\s*DROP\s+TABLE\b/i',                         // Destructive query: ;DROP TABLE
-		'/;\s*DELETE\s+FROM\b/i',                        // Destructive query: ;DELETE FROM
-		'/;\s*INSERT\s+INTO\b/i',                        // Stacked query: ;INSERT INTO
-		'/;\s*UPDATE\s+\w+\s+SET\b/i',                   // Stacked query: ;UPDATE ... SET
-		'/\'\s*OR\s*\'[\d\w]+\'\s*=\s*\'[\d\w]+/i',      // Classic bypass: ' OR '1'='1
-		'/\'\s*OR\s+\d+\s*=\s*\d+/i',                    // Classic bypass: ' OR 1=1
-		'/\)\s*OR\s+\d+\s*=\s*\(\s*SELECT\b/i',          // Subquery injection: ) OR 123=(SELECT ...)
-		'/LOAD_FILE\s*\(/i',                             // MySQL file read: LOAD_FILE()
-		'/INTO\s+(OUT|DUMP)FILE/i',                      // MySQL file write: INTO OUTFILE / INTO DUMPFILE
-		'/\bEXEC\s*\(/i',                                // SQL Server command execution: EXEC()
-		'/\bXP_\w+\s*\(/i',                              // SQL Server extended stored procedures: XP_CMDSHELL(), etc.
-		'/@@(version|datadir|hostname|basedir|tmpdir|global|session)\b/i', // MySQL system variables extraction
-		'/CHAR\s*\(\s*\d+\s*(,\s*\d+\s*){2,}\)/i',       // String obfuscation: CHAR(65,66,67) with 3+ args
-		'/0x[0-9a-f]{16,}/i',                            // Hex-encoded payload: long hexadecimal string (16+ chars)
-		'/CONCAT\s*\([^)]*SELECT/i',                     // Obfuscated injection: CONCAT() containing SELECT
-		'/ORDER\s+BY\s+\d+\s*--/i',                      // Column enumeration: ORDER BY 1--
-		'/INFORMATION_SCHEMA\./i',                       // Database schema enumeration: INFORMATION_SCHEMA.tables, etc.
-		'/EXTRACTVALUE\s*\(/i',                          // MySQL XML-based injection: EXTRACTVALUE()
-		'/UPDATEXML\s*\(/i',                             // MySQL XML-based injection: UPDATEXML()
-	);
-
-	foreach ( $sql_patterns as $pattern ) {
-		if ( preg_match( $pattern, $text ) ) {
-			return false;
-		}
-	}
-
-	// Check for XSS attempts
-	$xss_patterns = array(
-		'/<script\b[^>]*>/i',                            // Script tag injection: <script> or <script src="...">
-		'/javascript\s*:/i',                             // JavaScript protocol handler: javascript:alert()
-		'/\bon(error|load|click|mouseover|focus|blur)\s*=/i', // Event handler injection: onerror=, onclick=, etc.
-		'/data\s*:\s*text\/html/i',                      // Data URI XSS: data:text/html,...
-		'/vbscript\s*:/i',                               // VBScript protocol handler: vbscript:msgbox()
-	);
-
-	foreach ( $xss_patterns as $pattern ) {
-		if ( preg_match( $pattern, $text ) ) {
-			return false;
-		}
+	if ( wplng_str_is_malicious( $text ) ) {
+		return false;
 	}
 
 	// Check for better plugin compatibility
@@ -194,6 +147,79 @@ function wplng_text_is_translatable( $text ) {
 	$letters = preg_replace( '#[\d\s]#u', '', $letters );
 
 	return ! empty( $letters );
+}
+
+
+/**
+ * Check if a string contains malicious patterns (SQL injection, XSS, etc.)
+ *
+ * This function detects common attack patterns used in:
+ * - SQL injection (UNION, SELECT, SLEEP, BENCHMARK, etc.)
+ * - XSS attacks (script tags, javascript: protocol, event handlers)
+ * - Database enumeration (INFORMATION_SCHEMA, system variables)
+ * - File operations (LOAD_FILE, INTO OUTFILE)
+ *
+ * @param string $text The string to check for malicious patterns.
+ * @return bool True if the string contains malicious patterns, false otherwise.
+ */
+function wplng_str_is_malicious( $text ) {
+
+	// Check for SQL injection attempts
+	$sql_patterns = array(
+		'/[\'\"=\)]\s*--\s*$/i',                           // Matches: ' --, " --, = --, ) --
+		'/\bOR\b\s*\d+\s*=\s*\(\s*SELECT\b/i',             // OR-based injection: OR 123=(SELECT ...)
+		'/\bAND\b\s*\d+\s*=\s*\(\s*SELECT\b/i',            // AND-based injection: AND 123=(SELECT ...)
+		'/\bUNION\b\s+(ALL\s+)?SELECT\b/i',                // UNION-based injection: UNION SELECT or UNION ALL SELECT
+		'/PG_SLEEP\s*\(/i',                                // PostgreSQL time-based injection: PG_SLEEP()
+		'/\bSLEEP\s*\(\s*\d/i',                            // MySQL time-based injection: SLEEP(15)
+		'/BENCHMARK\s*\(/i',                               // MySQL time-based injection: BENCHMARK()
+		'/WAITFOR\s+DELAY\s+\'/i',                         // SQL Server time-based injection: WAITFOR DELAY '...'
+		'/;\s*DROP\s+TABLE\b/i',                           // Destructive query: ;DROP TABLE
+		'/;\s*DELETE\s+FROM\b/i',                          // Destructive query: ;DELETE FROM
+		'/;\s*INSERT\s+INTO\b/i',                          // Stacked query: ;INSERT INTO
+		'/;\s*UPDATE\s+\w+\s+SET\b/i',                     // Stacked query: ;UPDATE ... SET
+		'/\'\s*OR\s*\'[\d\w]+\'\s*=\s*\'[\d\w]+/i',        // Classic bypass: ' OR '1'='1
+		'/\'\s*OR\s+\d+\s*=\s*\d+/i',                      // Classic bypass: ' OR 1=1
+		'/\)\s*OR\s+\d+\s*=\s*\(\s*SELECT\b/i',            // Subquery injection: ) OR 123=(SELECT ...)
+		'/^-?\d+\s+OR\s+[\d+\-*\/]+\s*=\s*[\d+\-*\/]+/i',  // Boolean injection: -1 OR 2+866-866-1=0+0+0+1
+		'/\bOR\b\s+[\d+\-*\/]+\s*=\s*[\d+\-*\/]+\s*--/i',  // Boolean injection with comment: OR 1+1=2 --
+		'/\bAND\b\s+[\d+\-*\/]+\s*=\s*[\d+\-*\/]+/i',      // Boolean injection: AND 1+1=2
+		'/LOAD_FILE\s*\(/i',                               // MySQL file read: LOAD_FILE()
+		'/INTO\s+(OUT|DUMP)FILE/i',                        // MySQL file write: INTO OUTFILE / INTO DUMPFILE
+		'/\bEXEC\s*\(/i',                                  // SQL Server command execution: EXEC()
+		'/\bXP_\w+\s*\(/i',                                // SQL Server extended stored procedures: XP_CMDSHELL(), etc.
+		'/@@[a-zA-Z_]\w*/i',                               // MySQL system variables extraction
+		'/CHAR\s*\(\s*\d+\s*(,\s*\d+\s*){2,}\)/i',         // String obfuscation: CHAR(65,66,67) with 3+ args
+		'/0x[0-9a-f]{16,}/i',                              // Hex-encoded payload: long hexadecimal string (16+ chars)
+		'/CONCAT\s*\([^)]*SELECT/i',                       // Obfuscated injection: CONCAT() containing SELECT
+		'/ORDER\s+BY\s+\d+\s*--/i',                        // Column enumeration: ORDER BY 1--
+		'/INFORMATION_SCHEMA\./i',                         // Database schema enumeration: INFORMATION_SCHEMA.tables, etc.
+		'/EXTRACTVALUE\s*\(/i',                            // MySQL XML-based injection: EXTRACTVALUE()
+		'/UPDATEXML\s*\(/i',                               // MySQL XML-based injection: UPDATEXML()
+	);
+
+	foreach ( $sql_patterns as $pattern ) {
+		if ( preg_match( $pattern, $text ) ) {
+			return true;
+		}
+	}
+
+	// Check for XSS attempts
+	$xss_patterns = array(
+		'/<script\b[^>]*>/i',                                 // Script tag injection: <script> or <script src="...">
+		'/javascript\s*:/i',                                  // JavaScript protocol handler: javascript:alert()
+		'/\bon(error|load|click|mouseover|focus|blur)\s*=/i', // Event handler injection: onerror=, onclick=, etc.
+		'/data\s*:\s*text\/html/i',                           // Data URI XSS: data:text/html,...
+		'/vbscript\s*:/i',                                    // VBScript protocol handler: vbscript:msgbox()
+	);
+
+	foreach ( $xss_patterns as $pattern ) {
+		if ( preg_match( $pattern, $text ) ) {
+			return true;
+		}
+	}
+
+	return false;
 }
 
 
