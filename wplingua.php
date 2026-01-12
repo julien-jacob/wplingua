@@ -74,10 +74,24 @@ function wplng_start() {
 	if ( isset( $_SERVER['REQUEST_URI'] ) ) {
 
 		$request_uri = sanitize_url( $_SERVER['REQUEST_URI'] );
+		$decoded_uri = urldecode( $request_uri );
 
-		// Check if the referer is clean
-		if ( strtolower( esc_url_raw( $request_uri ) ) !== strtolower( $request_uri ) ) {
+		// Check if the request URI is clean
+		if ( strtolower( esc_url_raw( $request_uri ) ) !== strtolower( $request_uri )
+			|| wplng_str_is_malicious( $request_uri )
+			|| wplng_str_is_malicious( $decoded_uri )
+		) {
 			return;
+		}
+
+		// Also check query string for double-encoded attacks
+		if ( isset( $_SERVER['QUERY_STRING'] ) ) {
+			$query_string  = sanitize_text_field( $_SERVER['QUERY_STRING'] );
+			$decoded_query = urldecode( urldecode( $query_string ) );
+
+			if ( wplng_str_is_malicious( $decoded_query ) ) {
+				return;
+			}
 		}
 
 		global $wplng_request_uri;
