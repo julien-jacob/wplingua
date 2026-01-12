@@ -29,6 +29,7 @@ function wplng_translate_js( $js, $args = array() ) {
 
 	$js = wplng_translate_js_json_in_var( $js, $args );
 	$js = wplng_translate_js_json_encoded_as_url( $js, $args );
+	$js = wplng_translate_js_json_in_function_call( $js, $args );
 
 	if ( wplng_str_is_script_i18n( $js ) ) {
 		$js = wplng_translate_js_json_in_i18n_script( $js, $args );
@@ -187,6 +188,71 @@ function wplng_translate_js_json_encoded_as_url( $js, $args = array() ) {
 			if ( $encoded_json != $json_translated ) {
 				$js = str_replace(
 					$encoded_json,
+					$json_translated,
+					$js
+				);
+			}
+		}
+	}
+
+	return $js;  // Return the translated JavaScript
+}
+
+
+/**
+ * Translate JSON passed as argument to function calls like jQuery.datepicker.setDefaults({...})
+ *
+ * @param string $js The JavaScript code to translate.
+ * @param array  $args Additional arguments for translation processing.
+ * @return string The translated JavaScript code.
+ */
+function wplng_translate_js_json_in_function_call( $js, $args = array() ) {
+
+	$json = array();
+
+	// Whitelist of function calls that contain translatable JSON
+	$allowed_functions = wplng_data_json_in_js_functions();
+
+	if ( empty( $allowed_functions ) ) {
+		return array();
+	}
+
+	preg_match_all(
+		'#([a-zA-Z_$][a-zA-Z0-9_$]*(?:\.[a-zA-Z_$][a-zA-Z0-9_$]*)+)\s*\(\s*(\{(?:[^{}"\'\\\\]+|"(?:\\\\.|[^"\\\\])*"|\'(?:\\\\.|[^\'\\\\])*\'|(?2))*\})\s*\)#Us',
+		$js,
+		$json
+	);
+
+	if ( ! empty( $json[1] ) && is_array( $json[1] ) ) {
+		foreach ( $json[1] as $key => $func_name ) {
+
+			$func_name = trim( $func_name );
+
+			// Skip if not in whitelist
+			if ( ! in_array( $func_name, $allowed_functions, true ) ) {
+				continue;
+			}
+
+			if ( empty( $json[2][ $key ] ) ) {
+				continue;
+			}
+
+			$var_json = trim( $json[2][ $key ] );
+
+			// Prepare arguments for translation
+			wplng_args_setup( $args );
+			$args['parents'] = array( $func_name );
+
+			// Translate the JSON string
+			$json_translated = wplng_translate_json(
+				$var_json,
+				$args
+			);
+
+			// Replace the original JSON with the translated version if different
+			if ( $var_json != $json_translated ) {
+				$js = str_replace(
+					$var_json,
 					$json_translated,
 					$js
 				);

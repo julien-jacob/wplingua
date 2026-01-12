@@ -7,7 +7,7 @@
  * Author URI: https://wplingua.com/
  * Text Domain: wplingua
  * Domain Path: /languages/
- * Version: 2.10.8
+ * Version: 2.10.9
  * Requires PHP: 7.4
  * License: GPL v2 or later
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -24,7 +24,7 @@ if ( ! defined( 'WPINC' ) ) {
 define( 'WPLNG_API_URL', 'https://api.wplingua.com' );
 define( 'WPLNG_API_VERSION', '3.0' );
 define( 'WPLNG_API_SSLVERIFY', true );
-define( 'WPLNG_PLUGIN_VERSION', '2.10.8' );
+define( 'WPLNG_PLUGIN_VERSION', '2.10.9' );
 define( 'WPLNG_PLUGIN_FILE', plugin_basename( __FILE__ ) );
 define( 'WPLNG_PLUGIN_PATH', __DIR__ );
 define( 'WPLNG_PHP_MIN_VERSION', '7.4' );
@@ -74,10 +74,24 @@ function wplng_start() {
 	if ( isset( $_SERVER['REQUEST_URI'] ) ) {
 
 		$request_uri = sanitize_url( $_SERVER['REQUEST_URI'] );
+		$decoded_uri = urldecode( $request_uri );
 
-		// Check if the referer is clean
-		if ( strtolower( esc_url_raw( $request_uri ) ) !== strtolower( $request_uri ) ) {
+		// Check if the request URI is clean
+		if ( strtolower( esc_url_raw( $request_uri ) ) !== strtolower( $request_uri )
+			|| wplng_str_is_malicious( $request_uri )
+			|| wplng_str_is_malicious( $decoded_uri )
+		) {
 			return;
+		}
+
+		// Also check query string for double-encoded attacks
+		if ( isset( $_SERVER['QUERY_STRING'] ) ) {
+			$query_string  = sanitize_text_field( $_SERVER['QUERY_STRING'] );
+			$decoded_query = urldecode( urldecode( $query_string ) );
+
+			if ( wplng_str_is_malicious( $decoded_query ) ) {
+				return;
+			}
 		}
 
 		global $wplng_request_uri;
@@ -314,6 +328,15 @@ function wplng_start() {
 		/**
 		 * Features
 		 */
+
+		// Make multilingua Sitemap XML for All In One SEO plugin
+		// Il other case, multilingual Sitemap is make by output buffering
+		if ( get_option( 'wplng_sitemap_xml', true )
+			&& function_exists( 'aioseo' )
+		) {
+			add_filter( 'aioseo_sitemap_post', 'wplng_aioseo_filter_sitemap_post', 10, 2 );
+			add_filter( 'aioseo_sitemap_term', 'wplng_aioseo_filter_sitemap_term', 10, 2 );
+		}
 
 		// Search from translated languages
 		if ( ! empty( get_option( 'wplng_translate_search' ) )

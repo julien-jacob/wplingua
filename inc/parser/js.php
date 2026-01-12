@@ -26,6 +26,7 @@ function wplng_parse_js( $js ) {
 	$texts = array_merge(
 		wplng_parse_js_json_in_var( $js ),
 		wplng_parse_js_json_encoded_as_url( $js ),
+		wplng_parse_js_json_in_function_call( $js ),
 	);
 
 	if ( wplng_str_is_script_i18n( $js ) ) {
@@ -160,6 +161,61 @@ function wplng_parse_js_json_encoded_as_url( $js ) {
 				wplng_parse_json(
 					$var_json,
 					array( 'EncodedAsURL' )
+				)
+			);
+
+		}
+	}
+
+	return $texts;
+}
+
+
+/**
+ * Parse JSON passed as argument to function calls like jQuery.datepicker.setDefaults({...})
+ *
+ * @param string $js
+ * @return array Texts
+ */
+function wplng_parse_js_json_in_function_call( $js ) {
+
+	$texts = array();
+	$json  = array();
+
+	// Whitelist of function calls that contain translatable JSON
+	$allowed_functions = wplng_data_json_in_js_functions();
+
+	if ( empty( $allowed_functions ) ) {
+		return array();
+	}
+
+	preg_match_all(
+		'#([a-zA-Z_$][a-zA-Z0-9_$]*(?:\.[a-zA-Z_$][a-zA-Z0-9_$]*)+)\s*\(\s*(\{(?:[^{}"\'\\\\]+|"(?:\\\\.|[^"\\\\])*"|\'(?:\\\\.|[^\'\\\\])*\'|(?2))*\})\s*\)#Us',
+		$js,
+		$json
+	);
+
+	if ( ! empty( $json[1] ) && is_array( $json[1] ) ) {
+		foreach ( $json[1] as $key => $func_name ) {
+
+			$func_name = trim( $func_name );
+
+			// Skip if not in whitelist
+			if ( ! in_array( $func_name, $allowed_functions, true ) ) {
+				continue;
+			}
+
+			if ( empty( $json[2][ $key ] ) ) {
+				continue;
+			}
+
+			$var_json = trim( $json[2][ $key ] );
+
+			$texts = array_merge(
+				$texts,
+				wplng_parse_json(
+					$var_json,
+					array( $func_name )
 				)
 			);
 

@@ -46,6 +46,16 @@ function wplng_data_attr_json_to_translate() {
 				'attr'     => 'data-premium-element-link',
 				'selector' => '[data-premium-element-link]',
 			),
+
+			// Plugin: Elementor Essential Addons (Event Calendar)
+			array(
+				'attr'     => 'data-translate',
+				'selector' => '.eael-event-calendar-cls[data-translate]',
+			),
+			array(
+				'attr'     => 'data-events',
+				'selector' => '.eael-event-calendar-cls[data-events]',
+			),
 		)
 	);
 }
@@ -189,6 +199,12 @@ function wplng_data_attr_text_to_translate() {
 				'attr'     => 'data-order_button_text',
 				'selector' => '[data-order_button_text]',
 			),
+
+			// Plugin: Elementor Essential Addons (Event Calendar)
+			array(
+				'attr'     => 'data-detailsButtonText',
+				'selector' => '.eael-event-calendar-cls[data-detailsButtonText]',
+			),
 		)
 	);
 }
@@ -284,6 +300,12 @@ function wplng_data_attr_lang_id_to_replace() {
 			array(
 				'attr'     => 'content',
 				'selector' => 'meta[name="dc.language"]',
+			),
+
+			// Plugin: Elementor Essential Addons (Event Calendar)
+			array(
+				'attr'     => 'data-locale',
+				'selector' => '.eael-event-calendar-cls[data-locale]',
 			),
 		)
 	);

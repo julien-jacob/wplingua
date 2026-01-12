@@ -30,6 +30,7 @@ require_once WPLNG_PLUGIN_PATH . '/inc/languages.php';
 require_once WPLNG_PLUGIN_PATH . '/inc/link-media.php';
 require_once WPLNG_PLUGIN_PATH . '/inc/search.php';
 require_once WPLNG_PLUGIN_PATH . '/inc/shortcode.php';
+require_once WPLNG_PLUGIN_PATH . '/inc/sitemap.php';
 require_once WPLNG_PLUGIN_PATH . '/inc/slug.php';
 require_once WPLNG_PLUGIN_PATH . '/inc/switcher-block.php';
 require_once WPLNG_PLUGIN_PATH . '/inc/switcher-nav-menu.php';

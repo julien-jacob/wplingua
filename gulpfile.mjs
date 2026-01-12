@@ -100,6 +100,21 @@ function images(cb) {
 gulp.task(images);
 
 /**
+ * Task copy
+ * 
+ * Copy files from /src/ root
+ * Exclude css, js, images folders
+ */
+
+function copy(cb) {
+    gulp.src("src/*.*", { removeBOM: false })
+        .pipe(gulp.dest("assets/"))
+        .on('end', function () { cb() });
+};
+
+gulp.task(copy);
+
+/**
  * Function folder-zip
  * 
  * Create or update a zip archive 
@@ -189,7 +204,8 @@ gulp.task("archive", gulp.series(
     gulp.parallel(
         css,
         js,
-        images
+        images,
+        copy
     ),
     folder_create,
     folder_zip,
@@ -224,6 +240,7 @@ export default gulp.series(
     gulp.parallel(
         css,
         js,
-        images
+        images,
+        copy
     )
 );
