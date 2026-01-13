@@ -127,10 +127,10 @@ function wplng_data_json_rules_inclusion() {
 
 	$logical_rules[] = function ( $element, $parents ) {
 		return (
-			! empty( $parents[0] )
-			&& ! empty( $parents[1] )
-			&& ! empty( $parents[2] )
-			&& ! empty( $parents[3] )
+			isset( $parents[0] )
+			&& isset( $parents[1] )
+			&& isset( $parents[2] )
+			&& isset( $parents[3] )
 			&& is_string( $parents[0] )
 			&& $parents[1] === 'locale_data'
 			&& $parents[2] === 'messages'
@@ -221,9 +221,9 @@ function wplng_data_json_rules_inclusion() {
 
 	$logical_rules[] = function ( $element, $parents ) {
 		return (
-			! empty( $parents[0] )
-			&& ! empty( $parents[1] )
-			&& ! empty( $parents[2] )
+			isset( $parents[0] )
+			&& isset( $parents[1] )
+			&& isset( $parents[2] )
 			&& $parents[0] === 'data-events'
 			&& is_int( $parents[1] )
 			&& (
@@ -348,9 +348,9 @@ function wplng_data_json_rules_inclusion() {
 
 	$logical_rules[] = function ( $element, $parents ) {
 		return (
-			! empty( $parents[0] )
-			&& ! empty( $parents[1] )
-			&& ! empty( $parents[2] )
+			isset( $parents[0] )
+			&& isset( $parents[1] )
+			&& isset( $parents[2] )
 			&& isset( $parents[3] )
 			&& $parents[0] === 'EncodedAsURL'
 			&& $parents[1] === 'locale'
@@ -367,10 +367,10 @@ function wplng_data_json_rules_inclusion() {
 
 	$logical_rules[] = function ( $element, $parents ) {
 		return (
-			! empty( $parents[0] )
-			&& ! empty( $parents[2] )
-			&& ! empty( $parents[3] )
-			&& ! empty( $parents[5] )
+			isset( $parents[0] )
+			&& isset( $parents[2] )
+			&& isset( $parents[3] )
+			&& isset( $parents[5] )
 			&& (
 				$parents[0] === 'EncodedAsURL'
 				|| $parents[0] === 'responses'
@@ -907,9 +907,9 @@ function wplng_data_json_rules_inclusion() {
 
 	$logical_rules[] = function ( $element, $parents ) {
 		return (
-			! empty( $parents[0] )
-			&& ! empty( $parents[1] )
-			&& ! empty( $parents[2] )
+			isset( $parents[0] )
+			&& isset( $parents[1] )
+			&& isset( $parents[2] )
 			&& $parents[0] === 'children'
 			&& wplng_str_starts_with( $parents[1], 'term_' )
 			&& (
