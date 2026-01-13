@@ -80,7 +80,11 @@ function wplng_data_json_rules_exclusion() {
 			)
 		);
 	};
-	return $logical_rules;
+
+	return apply_filters(
+        'wplng_json_rules_exclusion',
+        $logical_rules
+    );
 }
 
 
@@ -919,5 +923,8 @@ function wplng_data_json_rules_inclusion() {
 		);
 	};
 
-	return $logical_rules;
+	return apply_filters(
+        'wplng_data_json_rules_inclusion',
+        $logical_rules
+    );
 }
