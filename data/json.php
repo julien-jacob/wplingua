@@ -924,7 +924,7 @@ function wplng_data_json_rules_inclusion() {
 	};
 
 	return apply_filters(
-        'wplng_data_json_rules_inclusion',
+        'wplng_json_rules_inclusion',
         $logical_rules
     );
 }
