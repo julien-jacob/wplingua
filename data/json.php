@@ -655,6 +655,33 @@ function wplng_data_json_rules_inclusion() {
 	};
 
 	// ------------------------------------------------------------------------
+	// Plugin: Contact Form 7
+	// ------------------------------------------------------------------------
+
+	$logical_rules[] = function ( $element, $parents ) {
+		return (
+			isset( $parents[0] )
+			&& (
+				$parents[0] === 'message'
+				|| (
+					isset( $parents[1] )
+					&& isset( $parents[2] )
+					&& $parents[0] === 'rules'
+					&& is_int($parents[1])
+					&& $parents[2] === 'error'
+				)
+				|| (
+					isset( $parents[1] )
+					&& isset( $parents[2] )
+					&& $parents[0] === 'invalid_fields'
+					&& is_int($parents[1])
+					&& $parents[2] === 'message'
+				)
+			)
+		);
+	};
+
+	// ------------------------------------------------------------------------
 	// Plugin: YITH
 	// ------------------------------------------------------------------------
 
