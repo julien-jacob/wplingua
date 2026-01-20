@@ -71,6 +71,7 @@ function wplng_str_is_url( $str ) {
 		&& ! wplng_str_starts_with( $str, 'wpgb-content-block/' ) // Plugin: WP Grid Builder
 		&& ! wplng_str_starts_with( $str, '/wc/store/v1' ) // Plugin: WooCommerce
 		&& ! wplng_str_starts_with( $str, 'GlotPress/' ) // Plugin: WooCommerce
+		&& ! wplng_str_starts_with( $str, 'contact-form-7/v1' ) // Plugin: Contact Form 7
 	) {
 		if ( isset( $parsed['scheme'] )
 			&& (
