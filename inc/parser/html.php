@@ -41,7 +41,7 @@ function wplng_parse_html( $html ) {
 
 			$texts = array_merge(
 				$texts,
-				wplng_parse_json( 
+				wplng_parse_json(
 					$json,
 					array( $attr['attr'] )
 				)

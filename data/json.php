@@ -15,13 +15,13 @@ if ( ! defined( 'WPINC' ) ) {
  * @return array Array of function names with dot notation.
  */
 function wplng_data_json_in_js_functions() {
-    return apply_filters(
-        'wplng_json_in_js_functions',
-        array(
-            'jQuery.datepicker.setDefaults',
-            '$.datepicker.setDefaults',
-        )
-    );
+	return apply_filters(
+		'wplng_json_in_js_functions',
+		array(
+			'jQuery.datepicker.setDefaults',
+			'$.datepicker.setDefaults',
+		)
+	);
 }
 
 
@@ -82,9 +82,9 @@ function wplng_data_json_rules_exclusion() {
 	};
 
 	return apply_filters(
-        'wplng_json_rules_exclusion',
-        $logical_rules
-    );
+		'wplng_json_rules_exclusion',
+		$logical_rules
+	);
 }
 
 
@@ -667,14 +667,14 @@ function wplng_data_json_rules_inclusion() {
 					isset( $parents[1] )
 					&& isset( $parents[2] )
 					&& $parents[0] === 'rules'
-					&& is_int($parents[1])
+					&& is_int( $parents[1] )
 					&& $parents[2] === 'error'
 				)
 				|| (
 					isset( $parents[1] )
 					&& isset( $parents[2] )
 					&& $parents[0] === 'invalid_fields'
-					&& is_int($parents[1])
+					&& is_int( $parents[1] )
 					&& $parents[2] === 'message'
 				)
 			)
@@ -951,7 +951,7 @@ function wplng_data_json_rules_inclusion() {
 	};
 
 	return apply_filters(
-        'wplng_json_rules_inclusion',
-        $logical_rules
-    );
+		'wplng_json_rules_inclusion',
+		$logical_rules
+	);
 }

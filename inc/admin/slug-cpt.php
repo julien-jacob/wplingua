@@ -93,9 +93,9 @@ function wplng_slug_per_page( $result ) {
  * Filters the query for the 'wplng_slug' post type in the WordPress admin area.
  *
  * This function modifies the main query in the admin area to include a meta query
- * that filters posts of type 'wplng_slug' based on the meta key 
+ * that filters posts of type 'wplng_slug' based on the meta key
  * 'wplng_slug_original_language_id'. Only posts where this meta key matches
- * the current website's language ID (retrieved via `wplng_get_language_website_id()`) 
+ * the current website's language ID (retrieved via `wplng_get_language_website_id()`)
  * will be included in the results.
  *
  * @param WP_Query $query The current query instance.
@@ -103,22 +103,23 @@ function wplng_slug_per_page( $result ) {
  */
 function wplng_filter_wplng_slug_posts( $query ) {
 
-    // Check if we are in the admin area, working with the main query,
-    // and the post type is 'wplng_translation'.
-    if ( is_admin() 
-        && $query->is_main_query() 
-        && $query->get('post_type') === 'wplng_slug' 
-    ) {
-        $query->set( 'meta_query', 
+	// Check if we are in the admin area, working with the main query,
+	// and the post type is 'wplng_translation'.
+	if ( is_admin()
+		&& $query->is_main_query()
+		&& $query->get( 'post_type' ) === 'wplng_slug'
+	) {
+		$query->set(
+			'meta_query',
 			array(
 				array(
 					'key'     => 'wplng_slug_original_language_id',
 					'value'   => wplng_get_language_website_id(),
-					'compare' => '='
+					'compare' => '=',
 				),
 			)
 		);
-    }
+	}
 }
 
 

@@ -506,7 +506,7 @@ function wplng_settings_part_features_seo() {
 			<p><?php esc_html_e( 'Note: This only affects how the sitemap is displayed in your browser. The actual XML data sent to search engines remains unchanged and fully compatible with all SEO standards.', 'wplingua' ); ?></p>
 			<p><?php esc_html_e( 'This option has no effect when using All In One SEO, as this plugin handles the display of translated links itself.', 'wplingua' ); ?></p>
 		</div>
-    </div>
+	</div>
 	
 	<?php
 }

@@ -205,8 +205,6 @@ function wplng_translate_json_array( $json_decoded, $args = array() ) {
 				 * If element is a HTML, parse and translate it
 				 */
 
-				 // TODO : Check for parse here ?
-
 				$debug_type               = 'String - HTML';
 				$array_translated[ $key ] = wplng_translate_html(
 					$value,
@@ -255,9 +253,8 @@ function wplng_translate_json_array( $json_decoded, $args = array() ) {
 						$value,
 						$args['translations']
 					);
-					
-				}
 
+				}
 			}
 
 			/**
