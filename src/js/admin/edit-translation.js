@@ -31,17 +31,21 @@ jQuery(document).ready(function ($) {
         .addClass("wp-menu-open")
         .addClass("wp-has-current-submenu");
 
+
     /**
      * Resize text area
      */
+
     function wplngResizeTextArea($element) {
         $element.height(0);
         $element.height($element[0].scrollHeight - 4);
     }
 
+
     /**
      * Decode HTML
      */
+
     function wplngDecodeHtml(string) {
         let returnText = string;
         returnText = returnText.replace(/&nbsp;/gi, " ");
@@ -52,9 +56,11 @@ jQuery(document).ready(function ($) {
         return returnText;
     }
 
+
     /**
      * CLose editor modal
      */
+
     function wplngCloseEditorModal() {
         $("#wplng-modal-edit-container").hide();
         $("#wplng-modal-edit-save").prop("disabled", false);
@@ -62,6 +68,7 @@ jQuery(document).ready(function ($) {
         wplngInputSignature.onload = '';
         wplngInputSignature.now = '';
     }
+
 
     /**
      * Go to top button
@@ -81,6 +88,7 @@ jQuery(document).ready(function ($) {
     $("#wplng-scroll-to-top").click(function () {
         $("#wplng-modal-container").animate({ scrollTop: 0 }, 800);
     });
+
 
     /**
      * Prepare all events and default value on translation editor
@@ -264,6 +272,7 @@ jQuery(document).ready(function ($) {
 
     }
 
+
     /**
      * Show all languages
      */
@@ -310,8 +319,8 @@ jQuery(document).ready(function ($) {
         }
     }
 
-
     wplngUpdateEditorEvents();
+
 
     /**
      * Ajax edit modal
@@ -403,6 +412,7 @@ jQuery(document).ready(function ($) {
             wplngCloseEditorModal();
         }
     });
+
 
     /**
      * Save edited translation
@@ -520,6 +530,7 @@ jQuery(document).ready(function ($) {
         }
     }
 
+
     /**
      * Ordering
      */
@@ -591,6 +602,5 @@ jQuery(document).ready(function ($) {
             return aVal - bVal;
         }));
     }
-
 
 }); // End jQuery loaded event
