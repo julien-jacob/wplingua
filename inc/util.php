@@ -493,8 +493,8 @@ function wplng_count_public_content() {
 	$query = $wpdb->prepare( $sql, $post_types );
 
 	// Execute the query and retrieve the result
-	$nombre_de_posts = $wpdb->get_var( $query );
+	$count_posts = $wpdb->get_var( $query );
 
 	// Return the total count as an integer
-	return intval( $nombre_de_posts );
+	return intval( $count_posts );
 }
