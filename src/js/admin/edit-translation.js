@@ -20,7 +20,7 @@ jQuery(document).ready(function ($) {
     let wplngEditor = $("#wplng-translation-editor");
 
     /**
-     * Epand wpLingua sub-menu
+     * Expand wpLingua sub-menu
      */
 
     $("#toplevel_page_wplingua-settings")
