@@ -107,6 +107,7 @@ function wplng_data_excluded_editor_link() {
 
 /**
  * Get selectors of excluded nodes text
+ * Exclude the node content, not the attributes (title, href, ...)
  *
  * @return array
  */
