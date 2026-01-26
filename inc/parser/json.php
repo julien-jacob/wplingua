@@ -134,13 +134,12 @@ function wplng_parse_json_array( $json_decoded, $parents = array() ) {
 				 * Element is a unknow string, check if it's translatable
 				 */
 
-				if ( ! wplng_text_is_translatable( $value )
-					|| ! wplng_json_element_is_included( $value, $current_parents )
+				if ( wplng_text_is_translatable( $value )
+					&& wplng_json_element_is_included( $value, $current_parents )
 				) {
-					continue;
+					$texts[] = $value;
 				}
 
-				$texts[] = $value;
 			}
 		}
 	}
