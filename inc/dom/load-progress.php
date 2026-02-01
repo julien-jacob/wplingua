@@ -177,7 +177,7 @@ function wplng_dom_load_progress( $dom, $args ) {
 	$max_items_per_chunk   = (int) ( WPLNG_MAX_TRANSLATIONS_STR / 4 );
 	$max_chars_per_chunk   = (int) ( WPLNG_MAX_TRANSLATIONS_CHAR / 2 );
 
-	foreach ( $args['texts_unknow'] as $key => $text_unknow ) {
+	foreach ( $args['texts_unknow'] as $text_unknow ) {
 
 		$text = (string) $text_unknow;
 		$len  = function_exists( 'mb_strlen' ) ? mb_strlen( $text, 'UTF-8' ) : strlen( $text );
@@ -200,7 +200,7 @@ function wplng_dom_load_progress( $dom, $args ) {
 			}
 		}
 
-		$current_chunk[] = $text;
+		$current_chunk[] = wplng_encryption_encrypt( $text );
 		$current_chars  += $len;
 		++$numer_of_translated_texts;
 	}
@@ -374,7 +374,24 @@ function wplng_ajax_load_in_progress() {
 		return;
 	}
 
-	$texts_original = $_POST['wplng_texts'];
+	$texts_original_encrypted = $_POST['wplng_texts'];
+	$texts_original           = array();
+
+	foreach ( $texts_original_encrypted as $text_encrypted ) {
+		$text_decrypted = wplng_encryption_decrypt( $text_encrypted );
+
+		if ( $text_decrypted === '' ) {
+			wp_send_json_error(
+				array(
+					'error_load_in_progress' => true,
+					'error_message'          => 'Texts decryption failed',
+				)
+			);
+			return;
+		}
+
+		$texts_original[] = $text_decrypted;
+	}
 
 	/**
 	 * Setup $args and get translations

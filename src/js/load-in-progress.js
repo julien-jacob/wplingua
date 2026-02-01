@@ -121,7 +121,7 @@ jQuery(document).ready(function ($) {
             },
             success: function (response) {
 
-                if ( ! response.success) {
+                if (!response.success) {
 
                     if (typeof response.data === "object"
                         && typeof response.data.error_message === "string"
@@ -197,13 +197,13 @@ jQuery(document).ready(function ($) {
         $("#wplng-in-progress-message").hide();
         $("#wplng-progress-bar").hide();
         $("#wplng-in-progress-error").show();
-        
+
         message = "wpLingua error - Load in progress: " + message;
         console.error(message);
 
     }
 
-    $("#wplng-in-progress-error-close").on("click", function() {
+    $("#wplng-in-progress-error-close").on("click", function () {
 
         $("#wplng-in-progress-container").hide();
         $("#wpadminbar").show();
@@ -228,13 +228,13 @@ jQuery(document).ready(function ($) {
     function wplngLoadInProgressUpdatePercent() {
         let percent = parseInt($("#wplng-in-progress-percent").html());
 
-        if (percent < wplngLoadInProgressPercentageMin 
-            && ! wplngLoadInProgressErrorOccurred
+        if (percent < wplngLoadInProgressPercentageMin
+            && !wplngLoadInProgressErrorOccurred
         ) {
             wplngLoadInProgressUpdatePercentValue(wplngLoadInProgressPercentageMin);
-        } else if (percent < wplngLoadInProgressPercentageMax 
+        } else if (percent < wplngLoadInProgressPercentageMax
             && percent < 99
-            && ! wplngLoadInProgressErrorOccurred
+            && !wplngLoadInProgressErrorOccurred
         ) {
             percent++;
             wplngLoadInProgressUpdatePercentValue(percent);
