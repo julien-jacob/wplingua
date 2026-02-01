@@ -50,11 +50,11 @@ function wplng_register_assets() {
 	 */
 
 	if ( ! empty( $_GET['wplng-mode'] )
-		&& empty( $_GET['wplng-load'] )
 		&& (
 			'editor' === $_GET['wplng-mode']
 			|| 'list' === $_GET['wplng-mode']
 		)
+		&& current_user_can( 'edit_posts' )
 	) {
 
 		wp_enqueue_script(

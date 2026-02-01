@@ -287,8 +287,7 @@ function wplng_ob_callback_page( $content ) {
 
 				if ( ! empty( $_GET['wplng-load'] )
 					&& (
-						$_GET['wplng-load'] === 'loading'
-						|| $_GET['wplng-load'] === 'progress'
+						$_GET['wplng-load'] === 'translated'
 						|| $_GET['wplng-load'] === 'disabled'
 					)
 				) {
@@ -296,6 +295,18 @@ function wplng_ob_callback_page( $content ) {
 					$args['load'] = $_GET['wplng-load'];
 
 					wp_cache_flush();
+
+					// Set HTTP no-cache header
+					nocache_headers();
+
+					// Disable cache for plugins
+					if ( ! defined( 'DONOTCACHEPAGE' ) ) {
+						define( 'DONOTCACHEPAGE', true );
+					}
+
+					if ( function_exists( 'do_action' ) ) {
+						do_action( 'litespeed_purge_all' );
+					}
 				}
 			}
 		}

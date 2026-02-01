@@ -33,6 +33,9 @@ function wplng_data_excluded_selector_default() {
 		'.no-translate',
 		'.notranslate',
 
+		// wpLingua
+		'#wplingua-load-in-progress-data',
+
 		// Wordpress
 		'#wpadminbar',
 		'.wp-embed-share-input',

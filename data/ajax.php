@@ -24,6 +24,7 @@ function wplng_data_excluded_ajax_action() {
 			'wplng_ajax_edit_modal',
 			'wplng_ajax_save_modal',
 			'wplng_ajax_slug',
+			'wplng_load_in_progress',
 		)
 	);
 }

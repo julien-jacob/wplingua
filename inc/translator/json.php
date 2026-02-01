@@ -32,7 +32,7 @@ function wplng_translate_json( $json, $args = array() ) {
 
 	wplng_args_setup( $args );
 
-	if ( empty( $args['translations'] ) ) {
+	if ( empty( $args['translations'] ) && empty( $args['texts_unknow'] )  ) {
 
 		$texts = wplng_parse_json_array(
 			$json_decoded,
@@ -82,7 +82,7 @@ function wplng_translate_json_array( $json_decoded, $args = array() ) {
 
 	wplng_args_setup( $args );
 
-	if ( empty( $args['translations'] ) ) {
+	if ( empty( $args['translations'] ) && empty( $args['texts_unknow'] ) ) {
 
 		$texts = wplng_parse_json_array(
 			$json_decoded,
