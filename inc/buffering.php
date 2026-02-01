@@ -141,6 +141,10 @@ function wplng_ob_start() {
 		 * Is an XML sitemap
 		 */
 
+		if ( ! get_option( 'wplng_sitemap_xml', true ) ) {
+			return;
+		}
+
 		ob_start( 'wplng_ob_callback_sitemap_xml' );
 
 	} else {
@@ -233,11 +237,6 @@ function wplng_ob_callback_ajax( $output ) {
  * @return string The modified XML content with added <xhtml:link> tags or the original content if no changes are made.
  */
 function wplng_ob_callback_sitemap_xml( $content ) {
-
-	if ( ! get_option( 'wplng_sitemap_xml', true ) ) {
-		return $content;
-	}
-
 	return wplng_sitemap_add_hreflang_links( $content );
 }
 
