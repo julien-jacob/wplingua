@@ -17,8 +17,8 @@ function wplng_dom_mode_list( $dom, $args ) {
 	wplng_args_setup( $args );
 
 	if ( 'list' !== $args['mode']
-		|| 'disabled' !== $args['load']
-		|| empty( $args['translations'] )
+		|| 'progress' === $args['load']
+		|| ! current_user_can( 'edit_posts' )
 	) {
 		return $dom;
 	}

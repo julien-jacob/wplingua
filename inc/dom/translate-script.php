@@ -27,7 +27,7 @@ function wplng_dom_translate_script( $dom, $args ) {
 		) {
 
 			/**
-			 * Translate JSON in scripts
+			 * Translate JSON in JSON scripts
 			 */
 
 			$element->innertext = wplng_translate_json(
@@ -38,7 +38,7 @@ function wplng_dom_translate_script( $dom, $args ) {
 		} else {
 
 			/**
-			 * Translate JS in scripts
+			 * Translate JS in JS scripts
 			 */
 
 			$element->innertext = wplng_translate_js(

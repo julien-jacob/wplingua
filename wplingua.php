@@ -315,6 +315,9 @@ function wplng_start() {
 		// Disable web browser automatic translation
 		add_action( 'language_attributes', 'wplng_disable_web_browser_auto_translate' );
 
+		// Ajax function for Load in progress
+		add_action( 'wp_ajax_wplng_load_in_progress', 'wplng_ajax_load_in_progress' );
+
 		/**
 		 * OB and REQUEST_URI
 		 */

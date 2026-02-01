@@ -42,6 +42,18 @@
     text-align: center;
     font-weight: 600;
 
+    // Texts
+
+    .wplng-in-progress-text-mobile {
+        display: none;
+    }
+
+    .wplng-in-progress-text-desktop {
+        display: inline;
+    }
+
+    // Progress bar 
+
     #wplng-progress-bar {
 
         position: absolute;
@@ -60,15 +72,27 @@
             animation-fill-mode: forwards;
             animation-timing-function: linear;
         }
+        
     }
 
-    #wplng-in-progress-text-mobile {
-        display: none;
+    // Error bar
+
+    #wplng-in-progress-error {
+
+        line-height: 26px;
+
+        .dashicons.dashicons-info-outline {
+            margin: 5px 2px;
+            font-size: 18px;
+        }
+
+        #wplng-in-progress-error-close {
+            float: right;
+            margin: 6px;
+            cursor: pointer;
+        }
     }
 
-    #wplng-in-progress-text-desktop {
-        display: inline;
-    }
 }
 
 
