@@ -33,7 +33,7 @@
                 </title>
                 <style>
                     body {
-                        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+                        font-family:  -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
                         color: #333;
                         max-width: 1200px;
                         margin: 0 auto;
@@ -101,8 +101,8 @@
                     }
                     .lang-badge {
                         display: inline-block;
-                        min-width: 28px;
-                        padding: 3px 8px;
+                        min-width: 20px;
+                        padding: 2px;
                         margin-right: 10px;
                         background: #0073aa;
                         color: white;
