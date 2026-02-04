@@ -525,6 +525,18 @@ function wplng_settings_part_features_more() {
 
 	<hr>
 
+	<fieldset>
+		<input type="checkbox" id="wplng_load_in_progress" name="wplng_load_in_progress" value="1" <?php checked( 1, get_option( 'wplng_load_in_progress' ), true ); ?>/>
+		<label for="wplng_load_in_progress"><?php esc_html_e( 'Translation progress bar for editors', 'wplingua' ); ?></label> 
+		<span title="<?php esc_attr_e( 'Click to expand', 'wplingua' ); ?>" wplng-help-box="#wplng-hb-feature-load-in-progress"></span>
+	</fieldset>
+
+	<div class="wplng-help-box" id="wplng-hb-feature-load-in-progress">
+		<p><?php esc_html_e( 'Enable progress bar: Smooth translations loading for editors', 'wplingua' ); ?></p>
+		<hr>
+		<p><?php esc_html_e( 'Activate a progress bar when a page requires the generation of more than 10 new string translations. This feature only applies to connected editors.', 'wplingua' ); ?></p>
+	</div>
+
 	<input type="checkbox" id="wplng_browser_language_redirect_checkbox" name="wplng_browser_language_redirect_checkbox" value="1"/> 
 	<label for="wplng_browser_language_redirect_checkbox"><?php esc_html_e( 'Enable language browser redirection', 'wplingua' ); ?></label> 
 	<span title="<?php esc_attr_e( 'Click to expand', 'wplingua' ); ?>" wplng-help-box="#wplng-hb-feature-browser-language-redirect"></span>
@@ -574,23 +586,6 @@ function wplng_settings_part_features_more() {
 			<?php esc_html_e( 'Enable with PHP and JS', 'wplingua' ); ?> 
 		</label>
 	</fieldset>
-
-	<div class="wplng-beta-hidden" style="display: none;">
-		<hr>
-
-		<fieldset>
-			<input type="checkbox" id="wplng_load_in_progress" name="wplng_load_in_progress" value="1" <?php checked( 1, get_option( 'wplng_load_in_progress' ), true ); ?>/>
-			<label for="wplng_load_in_progress">BETA - <?php esc_html_e( 'Progress bar for editors', 'wplingua' ); ?></label> 
-			<span title="<?php esc_attr_e( 'Click to expand', 'wplingua' ); ?>" wplng-help-box="#wplng-hb-feature-load-in-progress"></span>
-		</fieldset>
-
-		<div class="wplng-help-box" id="wplng-hb-feature-load-in-progress">
-			<p><?php esc_html_e( 'Enable progress bar: Smooth translations loading for editors', 'wplingua' ); ?></p>
-			<hr>
-			<p><?php esc_html_e( 'Activate a progress bar when a page requires the generation of more than 20 new string translations. This feature only applies to connected editors.', 'wplingua' ); ?></p>
-		</div>
-
-	</div><!-- End .wplng-beta-hidden -->
 	
 	<?php
 }
