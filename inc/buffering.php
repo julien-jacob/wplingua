@@ -27,13 +27,7 @@ function wplng_redirect_translated_slug() {
 	if ( empty( $_COOKIE['wplingua'] )
 		&& apply_filters( 'wplng_cookie_check', true )
 	) {
-		// Set HTTP no-cache header
-		nocache_headers();
-
-		// Disable cache for plugins
-		if ( ! defined( 'DONOTCACHEPAGE' ) ) {
-			define( 'DONOTCACHEPAGE', true );
-		}
+		wplng_do_not_cache_page();
 	}
 
 	$url_current = wplng_get_url_current();
@@ -292,20 +286,7 @@ function wplng_ob_callback_page( $content ) {
 				) {
 
 					$args['load'] = $_GET['wplng-load'];
-
-					wp_cache_flush();
-
-					// Set HTTP no-cache header
-					nocache_headers();
-
-					// Disable cache for plugins
-					if ( ! defined( 'DONOTCACHEPAGE' ) ) {
-						define( 'DONOTCACHEPAGE', true );
-					}
-
-					if ( function_exists( 'do_action' ) ) {
-						do_action( 'litespeed_purge_all' );
-					}
+					wplng_do_not_cache_page();
 				}
 			}
 		}

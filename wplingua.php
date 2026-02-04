@@ -108,6 +108,9 @@ function wplng_start() {
 	// Load plugin text domain /languages/
 	add_action( 'init', 'wplng_load_plugin_textdomain' );
 
+	// Do not cache page for connected editor
+	add_action( 'init', 'wplng_init_manage_cache' );
+
 	// Display a notice if incompatibility is detected
 	add_action( 'admin_notices', 'wplng_admin_notice_incompatible_plugin', 1 );
 	add_action( 'admin_notices', 'wplng_admin_notice_incompatible_multisite', 1 );

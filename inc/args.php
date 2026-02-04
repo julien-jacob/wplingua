@@ -362,6 +362,8 @@ function wplng_args_update_from_texts( &$args, $texts ) {
 
 		$max_translations = 0;
 
+		wplng_clear_website_cache();
+
 	} elseif ( $args['load'] === 'enabled'
 		&& $args['count_texts_unknow'] > 10
 		&& ! $args['overloaded']
@@ -378,23 +380,6 @@ function wplng_args_update_from_texts( &$args, $texts ) {
 
 	} else {
 		$args['load'] = 'disabled';
-	}
-
-	if ( $args['load'] !== 'disabled' ) {
-
-		wp_cache_flush();
-
-		// Set HTTP no-cache header
-		nocache_headers();
-
-		// Disable cache for plugins
-		if ( ! defined( 'DONOTCACHEPAGE' ) ) {
-			define( 'DONOTCACHEPAGE', true );
-		}
-
-		if ( function_exists( 'do_action' ) ) {
-			do_action( 'litespeed_purge_all' );
-		}
 	}
 
 	$texts_unknow_limited = array_splice(
