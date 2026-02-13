@@ -115,6 +115,55 @@ function wplng_get_language_name( $language ) {
 
 
 /**
+ * Get language plural forms from language ID ("en" or "en_US") or data
+ *
+ * @param mixed $language
+ * @return string
+ */
+function wplng_get_language_plural_forms( $language ) {
+
+	// if $language is a language array, return plural_forms
+	if ( is_array( $language )
+		&& ! empty( $language['plural_forms'] )
+	) {
+		return $language['plural_forms'];
+	}
+
+	if ( ! is_string( $language ) ) {
+		// Return most current plural form
+		return 'nplurals=2; plural=n != 1;';
+	}
+
+	// If string is like "en_US"
+	if ( strlen( $language ) > 2 ) {
+		$language = strtolower( explode( '_', $language )[0] );
+	}
+
+	if ( ! wplng_is_valid_language_id( $language ) ) {
+		// Return most current plural form
+		return 'nplurals=2; plural=n != 1;';
+	}
+
+	// $language is a language ID
+	// convert language ID to language array
+	$language = wplng_get_language_by_id( $language );
+
+	// If $language is not a valid, return most current plural form
+	if ( false === $language ) {
+		return 'nplurals=2; plural=n != 1;';
+	}
+
+	// If plural forms is know, return it
+	if ( ! empty( $language['plural_forms'] ) ) {
+		return $language['plural_forms'];
+	}
+
+	// If no plural forms returned here, return most current plural form
+	return 'nplurals=2; plural=n != 1;';
+}
+
+
+/**
  * Get language ID from language ID or data
  *
  * @param mixed $language

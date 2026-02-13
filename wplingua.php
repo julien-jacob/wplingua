@@ -27,6 +27,8 @@ define( 'WPLNG_API_SSLVERIFY', true );
 define( 'WPLNG_PLUGIN_VERSION', '2.11.0' );
 define( 'WPLNG_PLUGIN_FILE', plugin_basename( __FILE__ ) );
 define( 'WPLNG_PLUGIN_PATH', __DIR__ );
+define( 'WPLNG_CACHE_MAIN_PATH', WP_CONTENT_DIR . '/wplingua-cache' );
+define( 'WPLNG_CACHE_SCRIPT_I18N_PATH', WPLNG_CACHE_MAIN_PATH . '/script-i18n' );
 define( 'WPLNG_PHP_MIN_VERSION', '7.4' );
 define( 'WPLNG_MAX_TRANSLATIONS_STR', 220 );
 define( 'WPLNG_MAX_TRANSLATIONS_CHAR', 4200 );

@@ -28,6 +28,7 @@ require_once WPLNG_PLUGIN_PATH . '/inc/dictionary.php';
 require_once WPLNG_PLUGIN_PATH . '/inc/encryption.php';
 require_once WPLNG_PLUGIN_PATH . '/inc/heartbeat.php';
 require_once WPLNG_PLUGIN_PATH . '/inc/hreflang.php';
+require_once WPLNG_PLUGIN_PATH . '/inc/i18n-script.php';
 require_once WPLNG_PLUGIN_PATH . '/inc/languages.php';
 require_once WPLNG_PLUGIN_PATH . '/inc/link-media.php';
 require_once WPLNG_PLUGIN_PATH . '/inc/search.php';
