@@ -431,6 +431,39 @@ function wplng_clear_cache_folder( $file = false ) {
 
 
 /**
+ * Clear wpLingua cache when WordPress core, plugins, themes or translations are updated.
+ *
+ * Hooked to:
+ * - upgrader_process_complete (core, plugins, themes, translations updates)
+ * - activated_plugin
+ * - deactivated_plugin
+ * - switch_theme
+ *
+ * @param mixed $upgrader_or_plugin WP_Upgrader instance or plugin slug (depends on hook).
+ * @param array $options            Array of update data (only for upgrader_process_complete).
+ * @return void
+ */
+function wplng_clear_cache_on_update( $upgrader_or_plugin = null, $options = array() ) {
+
+	// For upgrader_process_complete hook, check update type
+	if ( ! empty( $options ) && is_array( $options ) ) {
+
+		$type = isset( $options['type'] ) ? $options['type'] : '';
+
+		// Clear cache for core, plugin, theme or translation updates
+		if ( in_array( $type, array( 'core', 'plugin', 'theme', 'translation' ), true ) ) {
+			wplng_clear_cache_folder();
+		}
+
+		return;
+	}
+
+	// For other hooks (activated_plugin, deactivated_plugin, switch_theme)
+	wplng_clear_cache_folder();
+}
+
+
+/**
  * Recursively delete a directory and all its contents.
  *
  * Only deletes directories within WPLNG_CACHE_MAIN_PATH for security.
