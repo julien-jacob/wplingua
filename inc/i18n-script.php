@@ -99,7 +99,7 @@ function wplng_load_script_translation_file( $file, $handle, $domain ) {
 		return $file;
 	}
 
-	$file_cache_absolute = WPLNG_CACHE_MAIN_PATH . $dir_cache_script . $file_cache_relative;
+	$file_cache_absolute = WPLNG_CACHE_DIR . $dir_cache_script . $file_cache_relative;
 
 	if ( is_readable( $file_cache_absolute ) ) {
 		return $file_cache_absolute;
