@@ -405,7 +405,7 @@ function wplng_get_cache_file( $file_name ) {
  * @param string|false $file Relative path to delete, or false to delete entire cache folder.
  * @return bool True on success, false on failure.
  */
-function wplng_clear_cache_folder( $file = false ) {
+function wplng_clear_folder_cache( $file = false ) {
 
 	if ( $file === false ) {
 		$path = WPLNG_CACHE_DIR;
@@ -452,14 +452,14 @@ function wplng_clear_cache_on_update( $upgrader_or_plugin = null, $options = arr
 
 		// Clear cache for core, plugin, theme or translation updates
 		if ( in_array( $type, array( 'core', 'plugin', 'theme', 'translation' ), true ) ) {
-			wplng_clear_cache_folder();
+			wplng_clear_folder_cache();
 		}
 
 		return;
 	}
 
 	// For other hooks (activated_plugin, deactivated_plugin, switch_theme)
-	wplng_clear_cache_folder();
+	wplng_clear_folder_cache();
 }
 
 

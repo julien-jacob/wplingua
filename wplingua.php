@@ -104,7 +104,7 @@ function wplng_start() {
 		update_option( 'wplng_version', WPLNG_PLUGIN_VERSION, true );
 		wplng_clear_translations_cache();
 		wplng_clear_slugs_cache();
-		wplng_clear_cache_folder();
+		wplng_clear_folder_cache();
 	}
 
 	// Load plugin text domain /languages/
@@ -348,18 +348,18 @@ function wplng_start() {
         add_action( 'upgrader_process_complete', 'wplng_clear_cache_on_update', 10, 2 );
 
         // Clear wpLingua cache on plugin activation/deactivation
-        add_action( 'activated_plugin', 'wplng_clear_cache_folder' );
-        add_action( 'deactivated_plugin', 'wplng_clear_cache_folder' );
+        add_action( 'activated_plugin', 'wplng_clear_folder_cache' );
+        add_action( 'deactivated_plugin', 'wplng_clear_folder_cache' );
 
         // Clear wpLingua cache on theme switch
-        add_action( 'switch_theme', 'wplng_clear_cache_folder' );
+        add_action( 'switch_theme', 'wplng_clear_folder_cache' );
 
         // Clear wpLingua cache on site language change
-        add_action( 'update_option_WPLANG', 'wplng_clear_cache_folder' );
+        add_action( 'update_option_WPLANG', 'wplng_clear_folder_cache' );
 
         // Clear wpLingua cache on wpLingua settings change
-        add_action( 'update_option_wplng_website_language', 'wplng_clear_cache_folder' );
-        add_action( 'update_option_wplng_target_languages', 'wplng_clear_cache_folder' );
+        add_action( 'update_option_wplng_website_language', 'wplng_clear_folder_cache' );
+        add_action( 'update_option_wplng_target_languages', 'wplng_clear_folder_cache' );
 
         /**
          * Features
