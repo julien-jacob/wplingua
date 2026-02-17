@@ -6,9 +6,24 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 
-
-add_filter( 'load_script_translation_file', 'wplng_load_script_translation_file', 20, 4 );
-
+/**
+ * Load or generate a translation JSON for a registered script.
+ *
+ * Checks whether wpLingua should provide a replacement wp-i18n JSON file for
+ * the given script. If needed, reads the original JS, extracts wp-i18n strings,
+ * builds a translations JSON and writes a cached file that WordPress can use.
+ *
+ * Behavior:
+ *  - Skips processing in admin or when the default file is already readable.
+ *  - Maps registered scripts that depend on 'wp-i18n' and live under wp-content.
+ *  - Returns either the original $file, a generated cached JSON path, or an
+ *    empty placeholder file path when no strings are found.
+ *
+ * @param string $file   Path to the default translation file provided by WP.
+ * @param string $handle Registered script handle.
+ * @param string $domain Text domain passed by WordPress.
+ * @return string Path to the translation JSON file to use.
+ */
 function wplng_load_script_translation_file( $file, $handle, $domain ) {
 
 	global $wplng_i18n_scripts;
@@ -72,23 +87,26 @@ function wplng_load_script_translation_file( $file, $handle, $domain ) {
 	 */
 
 	$file_nomalized = wp_normalize_path( $file );
+	$dir_cache_script = '/script-i18n';
 
-	$file_cache_wplingua = str_replace(
+	$file_cache_relative = str_replace(
 		wp_normalize_path( WP_CONTENT_DIR ),
-		wp_normalize_path( WPLNG_CACHE_SCRIPT_I18N_PATH ),
+		'',
 		$file_nomalized
 	);
 
-	if ( $file_nomalized === $file_cache_wplingua ) {
+	if ( $file_nomalized === $file_cache_relative ) {
 		return $file;
 	}
 
-	if ( is_readable( $file_cache_wplingua ) ) {
-		return $file_cache_wplingua;
+	$file_cache_absolute = WPLNG_CACHE_MAIN_PATH . $dir_cache_script . $file_cache_relative;
+
+	if ( is_readable( $file_cache_absolute ) ) {
+		return $file_cache_absolute;
 	}
 
 	/**
-	 * Get the original script path and content (managed by WordPress)
+	 * Get the original script path and content
 	 */
 
 	$script_path = str_replace(
@@ -122,13 +140,13 @@ function wplng_load_script_translation_file( $file, $handle, $domain ) {
 
 	if ( $texts_is_empty ) {
 
-		// Create destination folder if it doesn't exist
-		$dir = dirname( $file_cache_wplingua );
-		if ( ! is_dir( $dir ) ) {
-			wp_mkdir_p( $dir );
-		}
+		// file_put_contents( $file_cache_relative, '' );
 
-		file_put_contents( $file_cache_wplingua, '' );
+		wplng_put_cache_file(
+			'/script-i18n' . $file_cache_relative,
+			''
+		);
+		
 
 		return $file;
 	}
@@ -146,28 +164,44 @@ function wplng_load_script_translation_file( $file, $handle, $domain ) {
 	 * Generate the wpLingua cached JSON file
 	 */
 
-	// Create destination folder if it doesn't exist
-	$dir = dirname( $file_cache_wplingua );
-	if ( ! is_dir( $dir ) ) {
-		wp_mkdir_p( $dir );
-	}
-
-	$file_writing_ok = file_put_contents(
-		$file_cache_wplingua,
+	$file_writing_result = wplng_put_cache_file(
+		'/script-i18n' . $file_cache_relative,
 		$json_content
-	) !== false;
+	);
 
 	// Return the generated file if writing was successful
-	if ( $file_writing_ok !== false ) {
-		return $file_cache_wplingua;
+	if ( $file_writing_result !== false ) {
+		return $file_cache_absolute;
 	}
 
-	// IMPORTANT: do not modify anything for now
 	return $file;
 }
 
 
+/**
+ * Extract translatable strings from a JavaScript script.
+ *
+ * Scans minified WP JS for wp-i18n call patterns used in builds like:
+ *   (0,x.__)("text")
+ *   (0,x._x)("text","context")
+ *   (0,x._n)("singular","plural",count)
+ *   (0,x._nx)("singular","plural",count,"context")
+ *
+ * The function handles both single and double quoted strings, escaped characters,
+ * optional domain arguments and returns an associative array grouping extracted
+ * items by function name ('__', '_x', '_n', '_nx').
+ *
+ * @param string $script JavaScript source code to scan.
+ * @return array {
+ *   Associative array with keys:
+ *     '__'  => array of [ 'text' => string, 'domain' => ?string ],
+ *     '_x'  => array of [ 'text' => string, 'context' => string, 'domain' => ?string ],
+ *     '_n'  => array of [ 'singular' => string, 'plural' => string, 'domain' => ?string ],
+ *     '_nx' => array of [ 'singular' => string, 'plural' => string, 'context' => string, 'domain' => ?string ],
+ * }
+ */
 function wplng_i18n_script_extract_strings( $script ) {
+
 	$results = array(
 		'__'  => array(),
 		'_x'  => array(),
@@ -324,13 +358,6 @@ function wplng_i18n_script_generate_json( $texts, $domain = 'messages' ) {
 			'messages' => $messages,
 		),
 	);
-
-	// Add the script reference if provided
-	// if ( ! empty( $script_path ) ) {
-	// $json_data['comment'] = array(
-	// 'reference' => $script_path,
-	// );
-	// }
 
 	return wp_json_encode( $json_data, JSON_UNESCAPED_UNICODE );
 }
