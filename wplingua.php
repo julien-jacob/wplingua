@@ -26,7 +26,7 @@ define( 'WPLNG_API_VERSION', '3.0' );
 define( 'WPLNG_API_SSLVERIFY', true );
 define( 'WPLNG_PLUGIN_VERSION', '2.11.0' );
 define( 'WPLNG_PLUGIN_FILE', plugin_basename( __FILE__ ) );
-define( 'WPLNG_PLUGIN_PATH', __DIR__ );
+define( 'WPLNG_PLUGIN_DIR', __DIR__ );
 define( 'WPLNG_CACHE_MAIN_PATH', WP_CONTENT_DIR . '/wplingua-cache' );
 define( 'WPLNG_PHP_MIN_VERSION', '7.4' );
 define( 'WPLNG_MAX_TRANSLATIONS_STR', 220 );
@@ -43,7 +43,7 @@ defined( 'WPLNG_DEBUG_XML' ) || define( 'WPLNG_DEBUG_XML', false );
 
 
 // Load all needed PHP files
-require_once WPLNG_PLUGIN_PATH . '/loader.php';
+require_once WPLNG_PLUGIN_DIR . '/loader.php';
 
 
 /**
