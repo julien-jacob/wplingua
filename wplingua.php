@@ -104,6 +104,7 @@ function wplng_start() {
 		update_option( 'wplng_version', WPLNG_PLUGIN_VERSION, true );
 		wplng_clear_translations_cache();
 		wplng_clear_slugs_cache();
+		wplng_clear_cache_folder();
 	}
 
 	// Load plugin text domain /languages/
