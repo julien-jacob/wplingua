@@ -74,9 +74,9 @@ function wplng_data_json_rules_exclusion() {
 		return in_array(
 			$parents,
 			array(
-				array( 'EncodedAsURL','wcSettings', 'wcBlocksConfig', 'pluginUrl' ),
-				array( 'EncodedAsURL','wcSettings', 'wcBlocksConfig', 'restApiRoutes' ),
-				array( 'EncodedAsURL','wcSettings', 'wcBlocksConfig', 'defaultAvatar' ),
+				array( 'encoded_as_url','wcSettings', 'wcBlocksConfig', 'pluginUrl' ),
+				array( 'encoded_as_url','wcSettings', 'wcBlocksConfig', 'restApiRoutes' ),
+				array( 'encoded_as_url','wcSettings', 'wcBlocksConfig', 'defaultAvatar' ),
 			)
 		);
 	};
@@ -290,8 +290,8 @@ function wplng_data_json_rules_inclusion() {
 				array( 'data-wp-context', 'inTheCartText' ),
 
 				// JSON encoded as URL
-				array( 'EncodedAsURL', 'wcSettings', 'wcBlocksConfig', 'wordCountType' ),
-				array( 'EncodedAsURL', 'wcSettings', 'siteTitle' ),
+				array( 'encoded_as_url', 'wcSettings', 'wcBlocksConfig', 'wordCountType' ),
+				array( 'encoded_as_url', 'wcSettings', 'siteTitle' ),
 
 				array( 'config', 'woocommerce/mini-cart-title-items-counter-block', 'itemsInCartTextTemplate' ),
 				array( 'config', 'woocommerce/mini-cart-products-table-block', 'reduceQuantityLabel' ),
@@ -332,7 +332,7 @@ function wplng_data_json_rules_inclusion() {
 				$parents[2],
 				$parents[3],
 			)
-			&& $parents[0] === 'EncodedAsURL'
+			&& $parents[0] === 'encoded_as_url'
 			&& $parents[1] === 'wcSettings'
 			&& $parents[2] === 'orderStatuses'
 			&& is_string( $parents[3] )
@@ -395,7 +395,7 @@ function wplng_data_json_rules_inclusion() {
 				$parents[3],
 				$parents[4],
 			)
-			&& $parents[0] === 'EncodedAsURL'
+			&& $parents[0] === 'encoded_as_url'
 			&& $parents[1] === 'wcSettings'
 			&& $parents[2] === 'defaultFields'
 			&& is_string( $parents[3] )
@@ -419,7 +419,7 @@ function wplng_data_json_rules_inclusion() {
 				$parents[3],
 				$parents[4],
 			)
-			&& $parents[0] === 'EncodedAsURL'
+			&& $parents[0] === 'encoded_as_url'
 			&& $parents[1] === 'wcSettings'
 			&& $parents[2] === 'storePages'
 			&& is_string( $parents[3] )
@@ -457,7 +457,7 @@ function wplng_data_json_rules_inclusion() {
 				$parents[2],
 				$parents[3],
 			)
-			&& $parents[0] === 'EncodedAsURL'
+			&& $parents[0] === 'encoded_as_url'
 			&& $parents[1] === 'wcSettings'
 			&& $parents[2] === 'countries'
 			&& is_string( $parents[2] )
@@ -478,7 +478,7 @@ function wplng_data_json_rules_inclusion() {
 				$parents[4],
 				$parents[5],
 			)
-			&& $parents[0] === 'EncodedAsURL'
+			&& $parents[0] === 'encoded_as_url'
 			&& $parents[1] === 'wcSettings'
 			&& $parents[2] === 'countryData'
 			&& is_string( $parents[3] )

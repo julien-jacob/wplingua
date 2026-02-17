@@ -162,7 +162,7 @@ function wplng_parse_js_json_encoded_as_url( $js ) {
 				$texts,
 				wplng_parse_json(
 					$var_json,
-					array( 'EncodedAsURL', $var_name )
+					array( 'encoded_as_url', $var_name )
 				)
 			);
 		}

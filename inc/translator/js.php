@@ -181,7 +181,7 @@ function wplng_translate_js_json_encoded_as_url( $js, $args = array() ) {
 
 			// Prepare arguments for translation
 			wplng_args_setup( $args );
-			$args['parents'] = array( 'EncodedAsURL', $var_name );
+			$args['parents'] = array( 'encoded_as_url', $var_name );
 
 			// Translate the JSON string
 			$json_translated = wplng_translate_json(
