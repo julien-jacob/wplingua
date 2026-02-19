@@ -117,8 +117,8 @@ function wplng_url_translate_no_filter( $url, $language_target_id = '' ) {
 
 		// Check if URL is already translated
 		foreach ( $languages_target as $language_target ) {
-			if ( substr( $url, 0, 4 ) == '/' . $language_target['id'] . '/'
-				|| substr( $url, 0, 3 ) == $language_target['id'] . '/'
+			if ( substr( $url, 0, 4 ) === ( '/' . $language_target['id'] . '/' )
+				|| substr( $url, 0, 3 ) === ( $language_target['id'] . '/' )
 			) {
 				return $url;
 			}

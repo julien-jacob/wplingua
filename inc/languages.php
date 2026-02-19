@@ -534,7 +534,7 @@ function wplng_get_languages_all() {
 
 		// Set custom website flag if defined
 		if ( ! empty( $source_language )
-			&& $language['id'] == $source_language
+			&& $language['id'] === $source_language
 			&& ! empty( $source_flag )
 		) {
 			$languages[ $key ]['flag'] = $source_flag;
@@ -544,7 +544,7 @@ function wplng_get_languages_all() {
 
 		// Set custom target flag if defined
 		foreach ( $target_flags as $target_key => $target_flag ) {
-			if ( ! empty( $target_flag['id'] ) && $target_flag['id'] == $language['id'] ) {
+			if ( ! empty( $target_flag['id'] ) && $target_flag['id'] === $language['id'] ) {
 				$languages[ $key ]['flag'] = $target_flag['flag'];
 				break;
 			}

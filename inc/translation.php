@@ -516,7 +516,7 @@ function wplng_update_translation( $post, $language_id, $translation ) {
 		$translation_already_in = false;
 
 		foreach ( $translation_meta as $key => $translation_e ) {
-			if ( $translation_e['language_id'] == $language_id ) {
+			if ( $translation_e['language_id'] === $language_id ) {
 				$translation_already_in   = true;
 				$translation_meta[ $key ] = array(
 					'language_id' => $language_id,
