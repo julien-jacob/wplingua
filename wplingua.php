@@ -111,7 +111,7 @@ function wplng_start() {
 	add_action( 'init', 'wplng_load_plugin_textdomain' );
 
 	// Do not cache page for connected editor
-	add_action( 'init', 'wplng_init_manage_cache' );
+	add_action( 'init', 'wplng_init_manage_cache', 1 );
 
 	// Display a notice if incompatibility is detected
 	add_action( 'admin_notices', 'wplng_admin_notice_incompatible_plugin', 1 );
