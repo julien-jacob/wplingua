@@ -15,7 +15,7 @@ function wplng_get_language_website() {
 
 	global $wplng_language_website;
 
-	if ( null != $wplng_language_website ) {
+	if ( null !== $wplng_language_website ) {
 		return $wplng_language_website;
 	}
 

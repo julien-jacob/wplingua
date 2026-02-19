@@ -80,7 +80,7 @@ function wplng_translate_js_json_in_var( $js, $args = array() ) {
 			);
 
 			// Replace the original JSON with the translated version if different
-			if ( $var_json != $json_translated ) {
+			if ( $var_json !== $json_translated ) {
 				$js = str_replace(
 					$var_json,
 					$json_translated,
@@ -136,7 +136,7 @@ function wplng_translate_js_json_in_i18n_script( $js, $args = array() ) {
 			);
 
 			// Replace the original JSON with the translated version if different
-			if ( $var_json != $json_translated ) {
+			if ( $var_json !== $json_translated ) {
 				$js = str_replace(
 					$var_json,
 					$json_translated,
@@ -192,7 +192,7 @@ function wplng_translate_js_json_encoded_as_url( $js, $args = array() ) {
 			$json_translated = rawurlencode( $json_translated );
 
 			// Replace the original JSON with the translated version if different
-			if ( $encoded_json != $json_translated ) {
+			if ( $encoded_json !== $json_translated ) {
 				$js = str_replace(
 					$encoded_json,
 					$json_translated,
@@ -257,7 +257,7 @@ function wplng_translate_js_json_in_function_call( $js, $args = array() ) {
 			);
 
 			// Replace the original JSON with the translated version if different
-			if ( $var_json != $json_translated ) {
+			if ( $var_json !== $json_translated ) {
 				$js = str_replace(
 					$var_json,
 					$json_translated,

@@ -58,7 +58,7 @@ function wplng_register_post_type_translation() {
 function wplng_translation_remove_quick_edit( $actions, $post ) {
 
 	// Check that the post type is a wpLingua translation
-	if ( $post->post_type != 'wplng_translation' ) {
+	if ( $post->post_type !== 'wplng_translation' ) {
 		return $actions;
 	}
 

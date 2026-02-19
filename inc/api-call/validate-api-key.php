@@ -88,7 +88,7 @@ function wplng_api_call_validate_api_key( $api_key = '' ) {
 	 */
 
 	if ( is_wp_error( $request )
-		|| wp_remote_retrieve_response_code( $request ) != 200
+		|| wp_remote_retrieve_response_code( $request ) !== 200
 	) {
 		return array();
 	}

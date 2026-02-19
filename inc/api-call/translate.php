@@ -154,7 +154,7 @@ function wplng_api_call_translate(
 	 */
 
 	if ( is_wp_error( $request )
-		|| wp_remote_retrieve_response_code( $request ) != 200
+		|| wp_remote_retrieve_response_code( $request ) !== 200
 	) {
 		wplng_set_api_overloaded();
 		return array();
