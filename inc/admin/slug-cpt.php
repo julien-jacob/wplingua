@@ -59,7 +59,7 @@ function wplng_register_post_type_slug() {
 function wplng_slug_remove_quick_edit( $actions, $post ) {
 
 	// Check if the post type is 'wplng_slug'.
-	if ( $post->post_type != 'wplng_slug' ) {
+	if ( $post->post_type !== 'wplng_slug' ) {
 		return $actions;
 	}
 

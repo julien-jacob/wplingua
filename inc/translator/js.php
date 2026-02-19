@@ -80,7 +80,7 @@ function wplng_translate_js_json_in_var( $js, $args = array() ) {
 			);
 
 			// Replace the original JSON with the translated version if different
-			if ( $var_json != $json_translated ) {
+			if ( $var_json !== $json_translated ) {
 				$js = str_replace(
 					$var_json,
 					$json_translated,
@@ -127,7 +127,7 @@ function wplng_translate_js_json_in_i18n_script( $js, $args = array() ) {
 
 			// Prepare arguments for translation
 			wplng_args_setup( $args );
-			$args['parents'] = array( $var_name );
+			$args['parents'] = array( 'i18n_script', $var_name );
 
 			// Translate the JSON string
 			$json_translated = wplng_translate_json(
@@ -136,7 +136,7 @@ function wplng_translate_js_json_in_i18n_script( $js, $args = array() ) {
 			);
 
 			// Replace the original JSON with the translated version if different
-			if ( $var_json != $json_translated ) {
+			if ( $var_json !== $json_translated ) {
 				$js = str_replace(
 					$var_json,
 					$json_translated,
@@ -162,19 +162,26 @@ function wplng_translate_js_json_encoded_as_url( $js, $args = array() ) {
 	$json = array();
 
 	preg_match_all(
-		'#JSON\.parse\(\sdecodeURIComponent\(\s\'(.*)\'\s\)\s\)#Ui',
+		'#(var\s|let\s|window\._)([A-Za-z0-9_]+)\s?=\s?JSON\.parse\(\sdecodeURIComponent\(\s\'(.*)\'\s\)\s\)#Ui',
 		$js,
 		$json
 	);
 
-	if ( ! empty( $json[1] ) && is_array( $json[1] ) ) {
-		foreach ( $json[1] as $key => $encoded_json ) {
+	if ( ! empty( $json[2] ) && is_array( $json[2] ) ) {
+		foreach ( $json[2] as $key => $var_name ) {
 
+			$var_name = trim( $var_name );
+
+			if ( empty( $var_name ) || empty( $json[3][ $key ] ) ) {
+				continue;
+			}
+
+			$encoded_json = trim( $json[3][ $key ] );
 			$var_json = urldecode( $encoded_json );
 
 			// Prepare arguments for translation
 			wplng_args_setup( $args );
-			$args['parents'] = array( 'EncodedAsURL' );
+			$args['parents'] = array( 'encoded_as_url', $var_name );
 
 			// Translate the JSON string
 			$json_translated = wplng_translate_json(
@@ -185,7 +192,7 @@ function wplng_translate_js_json_encoded_as_url( $js, $args = array() ) {
 			$json_translated = rawurlencode( $json_translated );
 
 			// Replace the original JSON with the translated version if different
-			if ( $encoded_json != $json_translated ) {
+			if ( $encoded_json !== $json_translated ) {
 				$js = str_replace(
 					$encoded_json,
 					$json_translated,
@@ -250,7 +257,7 @@ function wplng_translate_js_json_in_function_call( $js, $args = array() ) {
 			);
 
 			// Replace the original JSON with the translated version if different
-			if ( $var_json != $json_translated ) {
+			if ( $var_json !== $json_translated ) {
 				$js = str_replace(
 					$var_json,
 					$json_translated,

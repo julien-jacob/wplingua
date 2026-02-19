@@ -309,7 +309,9 @@ function wplng_ajax_load_in_progress() {
 	}
 
 	// Verify nonce sent from client
-	if ( empty( $_POST['wplng_nonce'] ) || ! wp_verify_nonce( wp_unslash( $_POST['wplng_nonce'] ), 'wplng_load_in_progress' ) ) {
+	if ( empty( $_POST['wplng_nonce'] )
+		|| ! wp_verify_nonce( wp_unslash( $_POST['wplng_nonce'] ), 'wplng_load_in_progress' )
+	) {
 		wp_send_json_error(
 			array(
 				'error_load_in_progress' => true,
@@ -333,9 +335,23 @@ function wplng_ajax_load_in_progress() {
 	 * Check target language
 	 */
 
-	if ( empty( $_POST['wplng_language'] )
-		|| ! wplng_is_valid_language_id( $_POST['wplng_language'] )
-	) {
+	// Check if language is defined
+
+	if ( empty( $_POST['wplng_language'] ) ) {
+		wp_send_json_error(
+			array(
+				'error_load_in_progress' => true,
+				'error_message'          => 'Empty language',
+			)
+		);
+		return;
+	}
+
+	$language_target = $_POST['wplng_language'];
+
+	// Check if is a valid language ID
+
+	if ( ! wplng_is_valid_language_id( $language_target ) ) {
 		wp_send_json_error(
 			array(
 				'error_load_in_progress' => true,
@@ -345,14 +361,13 @@ function wplng_ajax_load_in_progress() {
 		return;
 	}
 
-	$language_target  = $_POST['wplng_language'];
-	$language_website = wplng_get_api_language_website();
+	// Check if languagd is allow
 
-	if ( $language_website !== 'all' && $language_website !== $language_target ) {
+	if ( ! in_array( $language_target, wplng_get_languages_target_ids() ) ) {
 		wp_send_json_error(
 			array(
 				'error_load_in_progress' => true,
-				'error_message'          => 'Unauthorized website language',
+				'error_message'          => 'Unauthorized website language - ' . esc_attr(),
 			)
 		);
 		return;

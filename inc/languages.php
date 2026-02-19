@@ -15,7 +15,7 @@ function wplng_get_language_website() {
 
 	global $wplng_language_website;
 
-	if ( null != $wplng_language_website ) {
+	if ( null !== $wplng_language_website ) {
 		return $wplng_language_website;
 	}
 
@@ -111,6 +111,55 @@ function wplng_get_language_name( $language ) {
 
 	// If no name returned here, return empty string
 	return '';
+}
+
+
+/**
+ * Get language plural forms from language ID ("en" or "en_US") or data
+ *
+ * @param mixed $language
+ * @return string
+ */
+function wplng_get_language_plural_forms( $language ) {
+
+	// if $language is a language array, return plural_forms
+	if ( is_array( $language )
+		&& ! empty( $language['plural_forms'] )
+	) {
+		return $language['plural_forms'];
+	}
+
+	if ( ! is_string( $language ) ) {
+		// Return most current plural form
+		return 'nplurals=2; plural=n != 1;';
+	}
+
+	// If string is like "en_US"
+	if ( strlen( $language ) > 2 ) {
+		$language = strtolower( explode( '_', $language )[0] );
+	}
+
+	if ( ! wplng_is_valid_language_id( $language ) ) {
+		// Return most current plural form
+		return 'nplurals=2; plural=n != 1;';
+	}
+
+	// $language is a language ID
+	// convert language ID to language array
+	$language = wplng_get_language_by_id( $language );
+
+	// If $language is not a valid, return most current plural form
+	if ( false === $language ) {
+		return 'nplurals=2; plural=n != 1;';
+	}
+
+	// If plural forms is know, return it
+	if ( ! empty( $language['plural_forms'] ) ) {
+		return $language['plural_forms'];
+	}
+
+	// If no plural forms returned here, return most current plural form
+	return 'nplurals=2; plural=n != 1;';
 }
 
 
@@ -485,7 +534,7 @@ function wplng_get_languages_all() {
 
 		// Set custom website flag if defined
 		if ( ! empty( $source_language )
-			&& $language['id'] == $source_language
+			&& $language['id'] === $source_language
 			&& ! empty( $source_flag )
 		) {
 			$languages[ $key ]['flag'] = $source_flag;
@@ -495,7 +544,7 @@ function wplng_get_languages_all() {
 
 		// Set custom target flag if defined
 		foreach ( $target_flags as $target_key => $target_flag ) {
-			if ( ! empty( $target_flag['id'] ) && $target_flag['id'] == $language['id'] ) {
+			if ( ! empty( $target_flag['id'] ) && $target_flag['id'] === $language['id'] ) {
 				$languages[ $key ]['flag'] = $target_flag['flag'];
 				break;
 			}

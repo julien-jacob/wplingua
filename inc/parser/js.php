@@ -118,7 +118,7 @@ function wplng_parse_js_json_in_i18n_script( $js ) {
 				$texts,
 				wplng_parse_json(
 					$var_json,
-					array( $var_name )
+					array( 'i18n_script', $var_name )
 				)
 			);
 
@@ -140,30 +140,31 @@ function wplng_parse_js_json_encoded_as_url( $js ) {
 	$texts = array();
 	$json  = array();
 
-	/**
-	 * URL encoded JSON
-	 */
-
 	preg_match_all(
-		'#JSON\.parse\(\sdecodeURIComponent\(\s\'(.*)\'\s\)\s\)#Ui',
+		'#(var\s|let\s|window\._)([A-Za-z0-9_]+)\s?=\s?JSON\.parse\(\sdecodeURIComponent\(\s\'(.*)\'\s\)\s\)#Ui',
 		$js,
 		$json
 	);
 
-	if ( ! empty( $json[1] ) && is_array( $json[1] ) ) {
+	if ( ! empty( $json[2] ) && is_array( $json[2] ) ) {
+		foreach ( $json[2] as $key => $var_name ) {
 
-		foreach ( $json[1] as $key => $encoded_json ) {
+			$var_name = trim( $var_name );
 
+			if ( empty( $var_name ) || empty( $json[3][ $key ] ) ) {
+				continue;
+			}
+
+			$encoded_json = trim( $json[3][ $key ] );
 			$var_json = urldecode( $encoded_json );
 
 			$texts = array_merge(
 				$texts,
 				wplng_parse_json(
 					$var_json,
-					array( 'EncodedAsURL' )
+					array( 'encoded_as_url', $var_name )
 				)
 			);
-
 		}
 	}
 

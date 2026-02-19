@@ -26,7 +26,8 @@ define( 'WPLNG_API_VERSION', '3.0' );
 define( 'WPLNG_API_SSLVERIFY', true );
 define( 'WPLNG_PLUGIN_VERSION', '2.11.0' );
 define( 'WPLNG_PLUGIN_FILE', plugin_basename( __FILE__ ) );
-define( 'WPLNG_PLUGIN_PATH', __DIR__ );
+define( 'WPLNG_PLUGIN_DIR', __DIR__ );
+define( 'WPLNG_CACHE_DIR', WP_CONTENT_DIR . '/wplingua-cache' );
 define( 'WPLNG_PHP_MIN_VERSION', '7.4' );
 define( 'WPLNG_MAX_TRANSLATIONS_STR', 220 );
 define( 'WPLNG_MAX_TRANSLATIONS_CHAR', 4200 );
@@ -42,7 +43,7 @@ defined( 'WPLNG_DEBUG_XML' ) || define( 'WPLNG_DEBUG_XML', false );
 
 
 // Load all needed PHP files
-require_once WPLNG_PLUGIN_PATH . '/loader.php';
+require_once WPLNG_PLUGIN_DIR . '/loader.php';
 
 
 /**
@@ -103,13 +104,14 @@ function wplng_start() {
 		update_option( 'wplng_version', WPLNG_PLUGIN_VERSION, true );
 		wplng_clear_translations_cache();
 		wplng_clear_slugs_cache();
+		wplng_clear_folder_cache();
 	}
 
 	// Load plugin text domain /languages/
 	add_action( 'init', 'wplng_load_plugin_textdomain' );
 
 	// Do not cache page for connected editor
-	add_action( 'init', 'wplng_init_manage_cache' );
+	add_action( 'init', 'wplng_init_manage_cache', 1 );
 
 	// Display a notice if incompatibility is detected
 	add_action( 'admin_notices', 'wplng_admin_notice_incompatible_plugin', 1 );
@@ -332,8 +334,36 @@ function wplng_start() {
 		add_action( 'template_redirect', 'wplng_redirect_translated_slug' );
 
 		/**
-		 * Features
+		 * Generate JSON translation on the fly for wp-i18n.js
 		 */
+		
+        // Generate JSON translation
+        add_filter( 'load_script_translation_file', 'wplng_load_script_translation_file', 20, 4 );
+
+        /**
+         * Clear wpLingua cache on updates
+         */
+
+        // Clear wpLingua cache on WordPress core, plugins, themes or translations update
+        add_action( 'upgrader_process_complete', 'wplng_clear_cache_on_update', 10, 2 );
+
+        // Clear wpLingua cache on plugin activation/deactivation
+        add_action( 'activated_plugin', 'wplng_clear_folder_cache' );
+        add_action( 'deactivated_plugin', 'wplng_clear_folder_cache' );
+
+        // Clear wpLingua cache on theme switch
+        add_action( 'switch_theme', 'wplng_clear_folder_cache' );
+
+        // Clear wpLingua cache on site language change
+        add_action( 'update_option_WPLANG', 'wplng_clear_folder_cache' );
+
+        // Clear wpLingua cache on wpLingua settings change
+        add_action( 'update_option_wplng_website_language', 'wplng_clear_folder_cache' );
+        add_action( 'update_option_wplng_target_languages', 'wplng_clear_folder_cache' );
+
+        /**
+         * Features
+         */
 
 		// Make multilingua Sitemap XML for All In One SEO plugin
 		// Il other case, multilingual Sitemap is make by output buffering

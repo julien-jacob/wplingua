@@ -129,7 +129,7 @@ function wplng_api_call_request_api_key( $data ) {
 	 */
 
 	if ( is_wp_error( $request )
-		|| wp_remote_retrieve_response_code( $request ) != 200
+		|| wp_remote_retrieve_response_code( $request ) !== 200
 	) {
 		return array(
 			'error'   => true,

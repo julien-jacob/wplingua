@@ -125,7 +125,7 @@ function wplng_on_page_script() {
 		return;
 	}
 
-	$script = file_get_contents( WPLNG_PLUGIN_PATH . '/assets/js/on-page.js' );
+	$script = file_get_contents( WPLNG_PLUGIN_DIR . '/assets/js/on-page.js' );
 
 	if ( empty( $script ) ) {
 		return;
