@@ -338,7 +338,7 @@ function wplng_start() {
 		 */
 		
         // Generate JSON translation
-        add_filter( 'load_script_translation_file', 'wplng_load_script_translation_file', 20, 4 );
+        add_filter( 'load_script_translation_file', 'wplng_load_script_translation_file', 20, 3 );
 
         /**
          * Clear wpLingua cache on updates
