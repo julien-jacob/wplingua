@@ -289,6 +289,10 @@ function wplng_data_json_rules_inclusion() {
 				array( 'data-wp-context', 'inTheCartText' ),
 				array( 'data-wp-context', 'inTheCartText' ),
 
+				// Address placeholder
+				array( 'wc_address_i18n_params', 'locale', 'default', 'address_1', 'placeholder' ),
+				array( 'wc_address_i18n_params', 'locale', 'default', 'address_2', 'placeholder' ),
+
 				// JSON encoded as URL
 				array( 'encoded_as_url', 'wcSettings', 'wcBlocksConfig', 'wordCountType' ),
 				array( 'encoded_as_url', 'wcSettings', 'siteTitle' ),
