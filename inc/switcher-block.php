@@ -165,9 +165,6 @@ function wplng_register_block_assets() {
 		)
 	);
 
-	// Enqueue jQuery
-	wp_enqueue_script( 'jquery' );
-
 	// Enqueue wpLingua main JavaScript file
 	wp_enqueue_script(
 		'wplingua-script',
