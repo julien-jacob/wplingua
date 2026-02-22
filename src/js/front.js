@@ -86,18 +86,54 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    window.addEventListener('scroll', function () {
-        wplngUpdateSwitcherOpening();
+    document.querySelectorAll('.wplng-switcher.style-dropdown').forEach(function (switcher) {
+        switcher.addEventListener('pointerenter', function () {
+            wplngUpdateSwitcherOpening();
+        });
     });
 
-    const wplngStyleInput = document.getElementById('wplng_style');
-    if (wplngStyleInput) {
-        wplngStyleInput.addEventListener('input', function () {
-            wplngUpdateSwitcherOpening();
+    /**
+     * Init dropdown switcher
+     */
+
+    wplngUpdateSwitcherOpening();
+
+    /**
+     * Re-initialize switchers when DOM changes (for Gutenberg/FSE compatibility)
+     */
+
+    function wplngInitSwitcherEvents() {
+        document.querySelectorAll('.wplng-switcher.style-dropdown:not([data-wplng-initialized])').forEach(function (switcher) {
+            switcher.setAttribute('data-wplng-initialized', 'true');
+            switcher.addEventListener('pointerenter', function () {
+                wplngUpdateSwitcherOpening();
+            });
         });
     }
 
-    wplngUpdateSwitcherOpening();
+    /**
+     * Observer for Gutenberg/FSE dynamic content
+     */
+
+    const observer = new MutationObserver(function (mutations) {
+        let shouldReinit = false;
+        mutations.forEach(function (mutation) {
+            if (mutation.addedNodes.length) {
+                shouldReinit = true;
+            }
+        });
+        if (shouldReinit) {
+            wplngInitSwitcherEvents();
+            wplngUpdateSwitcherOpening();
+        }
+    });
+
+    observer.observe(document.body, {
+        childList: true,
+        subtree: true
+    });
+
+    wplngInitSwitcherEvents();
 
     // ------------------------------------------------------------------------
     // Code for switcher Cookie for language browser redirection
