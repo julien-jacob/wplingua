@@ -18,6 +18,12 @@
         display: inline-block;
     }
 
+    &.flags-none {
+        img {
+            display: none;
+        }
+    }
+
     &.style-dropdown {
 
         .switcher-content {

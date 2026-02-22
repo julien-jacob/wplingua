@@ -4,7 +4,7 @@ Donate link: https://wplingua.com/
 Tags: translate, translation, multilingual, localization, language
 Requires at least: 6.0
 Tested up to: 6.9
-Stable tag: 2.10.11
+Stable tag: 2.11.0
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -197,97 +197,31 @@ Your server’s database holds all the translations locally.
 
 == Changelog ==
 
-= 2.10.11 =
+= 2.11.0 =
 
-* Add plugin compatibility: Contact Form 7
+* Loading bar returned for new translations for the connected editor
+ * Smooth, AJAX-based translation loading
+ * Progress bar
+ * Translate all strings in a single process
+* Management of JS scripts using wp-i18n.js:
+ * Parsing and detection of text in JS files
+ * On-the-fly generation of missing translation JSON files
+ * Caching of generated translation JSON files
+* Front page translation on API key activation
+ * Increased translation payload (4,200 chars → 12,600 chars)
+ * Show translation progress percentage
+ * Improved UX
+* Improved sitemap XSL design
+ * BETA hidden feature - use the Konami code on the settings page to reveal it
+* Improvements:
+ * Better WooCommerce compatibility
+ * Recognize .map as a file
+ * Optimize JSON translation
+ * Better output buffering for sitemap XML
+ * Options page switcher: fix "No flag" preview
+ * Better cache management
+ * Extensive code review
 
-= 2.10.10 =
-
-* Improvement: Review JSON translation rules
-* New filter: `wplng_json_rules_exclusion` - Exclude specific JSON rules from translation
-* New filter: `wplng_json_rules_inclusion` - Include additional JSON rules for translation
-
-
-= 2.10.9 =
-
-* Better plugins compatibility:
-  * All In One SEO sitemaps
-  * Elementor Essential Addons Calendar
-  * jQuery Datepicker
-* Better JSON translation:
-  * Intercept JSON in JavaScript functions
-* Security improvements:
-  * Block suspicious strings from translation (SQL injection, XSS patterns)
-  * Stop plugin execution if URL contains malicious patterns
-* New hidden BETA feature:
-  * Apply wpLingua style to XML sitemaps
-  * Use the Konami code to reveal this option
-* Fix: API data retrieval
-
-= 2.10.8 =
-
-* Optimization: Do not load CSS and JS files on pages excluded from translations
-* Better management of API downtime: no disconnections
-
-= 2.10.7 =
-
-* Update "Tested up to" version to WP 6.9
-* Better plugin compatibility:
- * WP Amelia
- * The Events Calendar
-* Better incompatible websites detection
-
-= 2.10.6 =
-
-* Plugin translation update
-
-= 2.10.5 =
-
-* Better WooCommerce compatibility: Exclude ".woocommerce-Price-amount"
-
-= 2.10.4 =
-
-* Better compatibility with Elementor plugin
-* Minor improvement:
- * API overloaded bar: Fix display on mobile
- * Optimise data function
-
-= 2.10.3 =
-
-* Better wpLingua heartbeat management
-* Better detection of incompatible websites
-
-= 2.10.2 =
-
-* Improved options pages design and UX
-* SEO feature is now enabled by default
-* Feature - Browser language redirection
- * Removed BETA status from the option, now considered stable
- * Fixed inconsistent behavior when enabling it: the linked sub-option is now correctly activated
-* Added Konami code to display JSON formatted data for debugging, import, and export:
- * Option page: Dictionary
- * Option page: Links & Medias
-* Updated build process (Gulp configuration) and rebuilt CSS and JS assets
-
-= 2.10.1 =
-
-* Update plugin translations
-
-= 2.10.0 =
-
-* Better compatibility
- * WooCommerce (Block, REST)
- * Divi
-* Upgrade JSON translation system:
- * Better translation of shema JSON
- * Review method for JSON in HTML attribute
- * Review JSON inclusion and exclusion method
- * Detect, parse and translate i18n script in JSON
-* Review method to parse and translate JS
- * Automatically detect and translate i18n scripts
- * Detect JSON encoded as URL in scripts
-* Better HTML check
-* Review plugin data system 
 
 All changelogs and previous versions of the wpLingua plugin are available on the releases page of the project's GitHub repo: [https://github.com/julien-jacob/wplingua/releases](https://github.com/julien-jacob/wplingua/releases).
 

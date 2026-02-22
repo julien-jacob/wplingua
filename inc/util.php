@@ -343,14 +343,18 @@ function wplng_str_is_locale_id( $str ) {
  */
 function wplng_str_is_script_i18n( $str ) {
 
-	$str = trim( $str );
+    $str = trim( $str );
 
-	return wplng_str_contains( $str, 'wp.i18n.setLocaleData' )
-		&& wplng_str_contains( $str, 'translations.locale_data.messages' )
-		// Check if $str ends with ");"
-		&& wplng_str_ends_with( $str, ');' )
-		// Check if $str starts with "( function( domain, translations ) {"
-		&& ( preg_match( '#^\(\s*function\s*\(\s*domain\s*,\s*translations\s*\)\s*\{#', $str ) === 1 );
+    if ( empty($str) ) {
+        return false;
+    }
+
+	return (
+		wplng_str_contains( $str, 'wp.i18n.setLocaleData' )
+		&& wplng_str_contains( $str, 'translations.locale_data' )
+		&& ( preg_match( '#function\s*\(\s*domain\s*,\s*translations\s*\)\s*\{#i', $str ) === 1 )
+		&& wplng_str_contains( $str, ');' )
+	);
 }
 
 
@@ -363,6 +367,61 @@ function wplng_str_is_script_i18n( $str ) {
 function wplng_str_is_json( $str ) {
 	$decoded = json_decode( $str, true );
 	return ( json_last_error() === JSON_ERROR_NONE ) && is_array( $decoded );
+}
+
+
+/**
+ * Unescape a JavaScript string
+ *
+ * Converts escaped characters in a JS string back to their original form.
+ * Handles newlines, carriage returns, tabs, quotes, backslashes,
+ * Unicode sequences (\uXXXX), and hexadecimal sequences (\xXX).
+ *
+ * @param string $str The escaped JavaScript string.
+ * @return string The unescaped string.
+ */
+function wplng_unescape_js_string( $str ) {
+
+    if ( ! is_string( $str ) ) {
+        return '';
+    }
+
+    // Simple escape sequences
+    $replacements = array(
+        '\\n'  => "\n",
+        '\\r'  => "\r",
+        '\\t'  => "\t",
+        '\\v'  => "\v",
+        '\\f'  => "\f",
+        '\\b'  => "\x08",
+        '\\"'  => '"',
+        "\\'"  => "'",
+        '\\/'  => '/',
+        '\\0'  => "\0",
+        '\\\\' => '\\',
+    );
+
+    $str = str_replace( array_keys( $replacements ), array_values( $replacements ), $str );
+
+    // Unicode sequences: \uXXXX
+    $str = preg_replace_callback(
+        '/\\\\u([0-9a-fA-F]{4})/',
+        function ( $matches ) {
+            return mb_convert_encoding( pack( 'H*', $matches[1] ), 'UTF-8', 'UTF-16BE' );
+        },
+        $str
+    );
+
+    // Hexadecimal sequences: \xXX
+    $str = preg_replace_callback(
+        '/\\\\x([0-9a-fA-F]{2})/',
+        function ( $matches ) {
+            return chr( hexdec( $matches[1] ) );
+        },
+        $str
+    );
+
+    return $str;
 }
 
 
@@ -493,8 +552,8 @@ function wplng_count_public_content() {
 	$query = $wpdb->prepare( $sql, $post_types );
 
 	// Execute the query and retrieve the result
-	$nombre_de_posts = $wpdb->get_var( $query );
+	$count_posts = $wpdb->get_var( $query );
 
 	// Return the total count as an integer
-	return intval( $nombre_de_posts );
+	return intval( $count_posts );
 }

@@ -32,7 +32,7 @@ function wplng_translate_json( $json, $args = array() ) {
 
 	wplng_args_setup( $args );
 
-	if ( empty( $args['translations'] ) ) {
+	if ( empty( $args['translations'] ) && empty( $args['texts_unknow'] )  ) {
 
 		$texts = wplng_parse_json_array(
 			$json_decoded,
@@ -82,7 +82,7 @@ function wplng_translate_json_array( $json_decoded, $args = array() ) {
 
 	wplng_args_setup( $args );
 
-	if ( empty( $args['translations'] ) ) {
+	if ( empty( $args['translations'] ) && empty( $args['texts_unknow'] ) ) {
 
 		$texts = wplng_parse_json_array(
 			$json_decoded,
@@ -205,8 +205,6 @@ function wplng_translate_json_array( $json_decoded, $args = array() ) {
 				 * If element is a HTML, parse and translate it
 				 */
 
-				 // TODO : Check for parse here ?
-
 				$debug_type               = 'String - HTML';
 				$array_translated[ $key ] = wplng_translate_html(
 					$value,
@@ -255,9 +253,8 @@ function wplng_translate_json_array( $json_decoded, $args = array() ) {
 						$value,
 						$args['translations']
 					);
-					
-				}
 
+				}
 			}
 
 			/**
@@ -267,6 +264,7 @@ function wplng_translate_json_array( $json_decoded, $args = array() ) {
 			if ( true === WPLNG_DEBUG_JSON
 				&& isset( $json_decoded[ $key ] )
 				&& isset( $array_translated[ $key ] )
+				// && $debug_type === 'String - Not included'
 			) {
 
 				$debug = array(

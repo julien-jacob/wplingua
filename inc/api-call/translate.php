@@ -127,26 +127,22 @@ function wplng_api_call_translate(
 	 * Get the API call
 	 */
 
-	$body = array(
-		'request' => 'translate',
-		'api_key' => $api_key,
-		'version' => WPLNG_API_VERSION,
-		'context' => wplng_get_context(),
-		'source'  => $language_source_id,
-		'target'  => $language_target_id,
-		'texts'   => $json_texts,
-	);
-
-	$args = array(
-		'method'    => 'POST',
-		'timeout'   => 99, // 1 min 29 s
-		'sslverify' => WPLNG_API_SSLVERIFY,
-		'body'      => $body,
-	);
-
 	$request = wp_remote_post(
 		WPLNG_API_URL . '/app/',
-		$args
+		array(
+			'method'    => 'POST',
+			'timeout'   => 99, // 1 min 29 s
+			'sslverify' => WPLNG_API_SSLVERIFY,
+			'body'      => array(
+				'request' => 'translate',
+				'api_key' => $api_key,
+				'version' => WPLNG_API_VERSION,
+				'context' => wplng_get_context(),
+				'source'  => $language_source_id,
+				'target'  => $language_target_id,
+				'texts'   => $json_texts,
+			),
+		)
 	);
 
 	/**
@@ -154,7 +150,7 @@ function wplng_api_call_translate(
 	 */
 
 	if ( is_wp_error( $request )
-		|| wp_remote_retrieve_response_code( $request ) != 200
+		|| wp_remote_retrieve_response_code( $request ) !== 200
 	) {
 		wplng_set_api_overloaded();
 		return array();

@@ -150,9 +150,10 @@ function wplng_settings_part_first_use() {
 		return false;
 	}
 
-	// Enable SEO feature
+	// Enable default feature
 	update_option( 'wplng_sitemap_xml', 1 );
 	update_option( 'wplng_hreflang', 1 );
+	// update_option( 'wplng_load_in_progress', 1 );
 
 	// Get URL for first registered language of front page
 	$url_front_page_translated = wplng_url_translate(
@@ -172,17 +173,21 @@ function wplng_settings_part_first_use() {
 	<div class="wplng-notice notice notice-info" id="wplng-notice-first-loading-loading" data-wplng-url-first-load="<?php echo esc_url( $url_front_page_load ); ?>">
 		<h2><span class="dashicons dashicons-update wplng-spin"></span> <?php esc_html_e( 'Your website is being translated and will be ready soon.', 'wplingua' ); ?></h2>
 		<p><?php esc_html_e( 'In just a few seconds, your website will be multilingual, and search engines will be able to index these new pages. wpLingua detects all the texts on your pages and offers you a first automatically generated translation. All translations are editable: open the visual editor from the administration bar and edit them simply by clicking on the texts on your website.', 'wplingua' ); ?></p>
+		<p><strong><?php esc_html_e( 'Translation progress: ', 'wplingua' ); ?> <span id="wplng-notice-first-loading-loading-percent">1 %</span></strong></p>
 	</div>
 
 	<div class="wplng-notice notice notice-success is-dismissible" id="wplng-notice-first-loading-loaded" style="display: none;">
-		<h2>🎉 <?php esc_html_e( 'Your website is now multilingual! You can start visiting the translated version.', 'wplingua' ); ?></h2>
+		<h2>
+			🎉 <?php esc_html_e( 'Your website is now multilingual!', 'wplingua' ); ?>
+			<br>
+			<?php esc_html_e( 'You can start visiting the translated version.', 'wplingua' ); ?>
+		</h2>
 		<p><?php esc_html_e( 'The first time a translated page is loaded, the translations are automatically generated and saved in the database. This may take some time (on first generation only) depending on the size of your content. This is why we advise you to browse your entire website for the first time in order to generate all the multilingual versions.', 'wplingua' ); ?></p>
 		<p><?php esc_html_e( 'All translations are editable: open the visual editor from the administration bar and edit them simply by clicking on the texts on your website.', 'wplingua' ); ?></p>
-		<p>
-			<a href="<?php echo esc_url( $url_front_page_translated ); ?>" target="_blank" class="button button-primary">
-				<?php esc_html_e( 'Visit your multilingual website', 'wplingua' ); ?>
-			</a>
-		</p>
+
+		<a href="<?php echo esc_url( $url_front_page_translated ); ?>" target="_blank" class="button button-primary">
+			<?php esc_html_e( 'Visit your multilingual website', 'wplingua' ); ?>
+		</a>
 	</div>
 	<?php
 
@@ -506,7 +511,7 @@ function wplng_settings_part_features_seo() {
 			<p><?php esc_html_e( 'Note: This only affects how the sitemap is displayed in your browser. The actual XML data sent to search engines remains unchanged and fully compatible with all SEO standards.', 'wplingua' ); ?></p>
 			<p><?php esc_html_e( 'This option has no effect when using All In One SEO, as this plugin handles the display of translated links itself.', 'wplingua' ); ?></p>
 		</div>
-    </div>
+	</div>
 	
 	<?php
 }
@@ -523,6 +528,18 @@ function wplng_settings_part_features_more() {
 	<p><strong><?php esc_html_e( 'More features: ', 'wplingua' ); ?></strong></p>
 
 	<hr>
+
+	<fieldset>
+		<input type="checkbox" id="wplng_load_in_progress" name="wplng_load_in_progress" value="1" <?php checked( 1, get_option( 'wplng_load_in_progress' ), true ); ?>/>
+		<label for="wplng_load_in_progress"><?php esc_html_e( 'Translation progress bar for editors', 'wplingua' ); ?></label> 
+		<span title="<?php esc_attr_e( 'Click to expand', 'wplingua' ); ?>" wplng-help-box="#wplng-hb-feature-load-in-progress"></span>
+	</fieldset>
+
+	<div class="wplng-help-box" id="wplng-hb-feature-load-in-progress">
+		<p><?php esc_html_e( 'Enable progress bar: Smooth translations loading for editors', 'wplingua' ); ?></p>
+		<hr>
+		<p><?php esc_html_e( 'Activate a progress bar when a page requires the generation of more than 10 new string translations. This feature only applies to connected editors.', 'wplingua' ); ?></p>
+	</div>
 
 	<input type="checkbox" id="wplng_browser_language_redirect_checkbox" name="wplng_browser_language_redirect_checkbox" value="1"/> 
 	<label for="wplng_browser_language_redirect_checkbox"><?php esc_html_e( 'Enable language browser redirection', 'wplingua' ); ?></label> 
@@ -573,23 +590,6 @@ function wplng_settings_part_features_more() {
 			<?php esc_html_e( 'Enable with PHP and JS', 'wplingua' ); ?> 
 		</label>
 	</fieldset>
-
-	<div class="wplng-beta-hidden" style="display: none;">
-		<hr>
-
-		<fieldset>
-			<input type="checkbox" id="wplng_load_in_progress" name="wplng_load_in_progress" value="1" <?php checked( 1, get_option( 'wplng_load_in_progress' ), true ); ?>/>
-			<label for="wplng_load_in_progress">BETA - <?php esc_html_e( 'Progress bar for editors', 'wplingua' ); ?></label> 
-			<span title="<?php esc_attr_e( 'Click to expand', 'wplingua' ); ?>" wplng-help-box="#wplng-hb-feature-load-in-progress"></span>
-		</fieldset>
-
-		<div class="wplng-help-box" id="wplng-hb-feature-load-in-progress">
-			<p><?php esc_html_e( 'Enable progress bar: Smooth translations loading for editors', 'wplingua' ); ?></p>
-			<hr>
-			<p><?php esc_html_e( 'Activate a progress bar when a page requires the generation of more than 20 new string translations. This feature only applies to connected editors.', 'wplingua' ); ?></p>
-		</div>
-
-	</div><!-- End .wplng-beta-hidden -->
 	
 	<?php
 }

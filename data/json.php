@@ -15,13 +15,13 @@ if ( ! defined( 'WPINC' ) ) {
  * @return array Array of function names with dot notation.
  */
 function wplng_data_json_in_js_functions() {
-    return apply_filters(
-        'wplng_json_in_js_functions',
-        array(
-            'jQuery.datepicker.setDefaults',
-            '$.datepicker.setDefaults',
-        )
-    );
+	return apply_filters(
+		'wplng_json_in_js_functions',
+		array(
+			'jQuery.datepicker.setDefaults',
+			'$.datepicker.setDefaults',
+		)
+	);
 }
 
 
@@ -74,17 +74,24 @@ function wplng_data_json_rules_exclusion() {
 		return in_array(
 			$parents,
 			array(
-				array( 'EncodedAsURL', 'wcBlocksConfig', 'pluginUrl' ),
-				array( 'EncodedAsURL', 'wcBlocksConfig', 'restApiRoutes' ),
-				array( 'EncodedAsURL', 'wcBlocksConfig', 'defaultAvatar' ),
+				array( 'encoded_as_url','wcSettings', 'wcBlocksConfig', 'pluginUrl' ),
+				array( 'encoded_as_url','wcSettings', 'wcBlocksConfig', 'restApiRoutes' ),
+				array( 'encoded_as_url','wcSettings', 'wcBlocksConfig', 'defaultAvatar' ),
 			)
 		);
 	};
 
+	$logical_rules[] = function ( $element, $parents ) {
+		return (
+			isset( $parents[0] )
+			&& $parents[0] === 'wc_order_attribution'
+		);
+	};
+
 	return apply_filters(
-        'wplng_json_rules_exclusion',
-        $logical_rules
-    );
+		'wplng_json_rules_exclusion',
+		$logical_rules
+	);
 }
 
 
@@ -135,12 +142,14 @@ function wplng_data_json_rules_inclusion() {
 			&& isset( $parents[1] )
 			&& isset( $parents[2] )
 			&& isset( $parents[3] )
-			&& is_string( $parents[0] )
-			&& $parents[1] === 'locale_data'
-			&& $parents[2] === 'messages'
-			&& is_string( $parents[3] )
 			&& isset( $parents[4] )
-			&& is_int( $parents[4] )
+			&& isset( $parents[5] )
+			&& $parents[0] === 'i18n_script'
+			&& is_string( $parents[1] )
+			&& $parents[2] === 'locale_data'
+			&& $parents[3] === 'messages'
+			&& is_string( $parents[4] )
+			&& is_int( $parents[5] )
 		);
 	};
 
@@ -251,38 +260,25 @@ function wplng_data_json_rules_inclusion() {
 	// ------------------------------------------------------------------------
 
 	$logical_rules[] = function ( $element, $parents ) {
+		return (
+			isset( $parents[0] )
+			&& (
+				$parents[0] === 'wc_add_to_cart_params'
+				|| $parents[0] === 'wc_country_select_params'
+				|| $parents[0] === 'wc_address_i18n_params'
+				|| $parents[0] === 'woocommerce_params'
+				|| $parents[0] === 'wc_single_product_params'
+			)
+			&& count( $parents ) >= 2
+			&& wplng_str_starts_with( $parents[ array_key_last( $parents ) ], 'i18n_' )
+		);
+	};
+
+	$logical_rules[] = function ( $element, $parents ) {
 		return in_array(
 			$parents,
 			array(
 				array( 'config', 'woocommerce', 'messages', 'addedToCartText' ),
-				array( 'wc_add_to_cart_params', 'i18n_view_cart' ),
-				array( 'wc_country_select_params', 'i18n_select_state_text' ),
-				array( 'wc_country_select_params', 'i18n_no_matches' ),
-				array( 'wc_country_select_params', 'i18n_ajax_error' ),
-				array( 'wc_country_select_params', 'i18n_input_too_short_1' ),
-				array( 'wc_country_select_params', 'i18n_input_too_short_n' ),
-				array( 'wc_country_select_params', 'i18n_input_too_long_1' ),
-				array( 'wc_country_select_params', 'i18n_input_too_long_n' ),
-				array( 'wc_country_select_params', 'i18n_selection_too_long_1' ),
-				array( 'wc_country_select_params', 'i18n_selection_too_long_n' ),
-				array( 'wc_country_select_params', 'i18n_load_more' ),
-				array( 'wc_country_select_params', 'i18n_searching' ),
-				array( 'wc_country_select_params', 'countries', 'i18n_select_state_text' ),
-				array( 'wc_country_select_params', 'countries', 'i18n_no_matches' ),
-				array( 'wc_country_select_params', 'countries', 'i18n_ajax_error' ),
-				array( 'wc_country_select_params', 'countries', 'i18n_input_too_short_1' ),
-				array( 'wc_country_select_params', 'countries', 'i18n_input_too_short_n' ),
-				array( 'wc_country_select_params', 'countries', 'i18n_input_too_long_1' ),
-				array( 'wc_country_select_params', 'countries', 'i18n_input_too_long_n' ),
-				array( 'wc_country_select_params', 'countries', 'i18n_selection_too_long_1' ),
-				array( 'wc_country_select_params', 'countries', 'i18n_selection_too_long_n' ),
-				array( 'wc_country_select_params', 'countries', 'i18n_load_more' ),
-				array( 'wc_country_select_params', 'countries', 'i18n_searching' ),
-				array( 'wc_address_i18n_params', 'locale', 'locale_fields', 'i18n_required_text' ),
-				array( 'wc_address_i18n_params', 'locale', 'locale_fields', 'i18n_optional_text' ),
-				array( 'woocommerce_params', 'i18n_password_show' ),
-				array( 'woocommerce_params', 'i18n_password_hide' ),
-				array( 'wc_single_product_params', 'i18n_required_rating_text' ),
 
 				// JSON in attribute data-"wp-context"
 				array( 'data-wp-context', 'addToCartText' ),
@@ -293,16 +289,29 @@ function wplng_data_json_rules_inclusion() {
 				array( 'data-wp-context', 'inTheCartText' ),
 				array( 'data-wp-context', 'inTheCartText' ),
 
+				// Address placeholder
+				array( 'wc_address_i18n_params', 'locale', 'default', 'address_1', 'placeholder' ),
+				array( 'wc_address_i18n_params', 'locale', 'default', 'address_2', 'placeholder' ),
+
 				// JSON encoded as URL
-				array( 'EncodedAsURL', 'wcBlocksConfig', 'wordCountType' ),
-				array( 'EncodedAsURL', 'siteTitle' ),
+				array( 'encoded_as_url', 'wcSettings', 'wcBlocksConfig', 'wordCountType' ),
+				array( 'encoded_as_url', 'wcSettings', 'siteTitle' ),
+
+				array( 'config', 'woocommerce/mini-cart-title-items-counter-block', 'itemsInCartTextTemplate' ),
+				array( 'config', 'woocommerce/mini-cart-products-table-block', 'reduceQuantityLabel' ),
+				array( 'config', 'woocommerce/mini-cart-products-table-block', 'increaseQuantityLabel' ),
+				array( 'config', 'woocommerce/mini-cart-products-table-block', 'quantityDescriptionLabel' ),
+				array( 'config', 'woocommerce/mini-cart-products-table-block', 'removeFromCartLabel' ),
+				array( 'config', 'woocommerce/mini-cart-products-table-block', 'lowInStockLabel' ),
+				array( 'config', 'woocommerce/mini-cart', 'buttonAriaLabelTemplate' ),
+				array( 'state', 'woocommerce/mini-cart-title-items-counter-block', 'itemsInCartText' ),
 			)
 		);
 	};
 
 	/**
-	 * Plugin: WooCommerce - Product rating
-	 */
+	* Plugin: WooCommerce - Product rating
+	*/
 
 	$logical_rules[] = function ( $element, $parents ) {
 		return (
@@ -316,211 +325,63 @@ function wplng_data_json_rules_inclusion() {
 	};
 
 	/**
-	 * Plugin: WooCommerce - Address params
-	 */
-
-	$logical_rules[] = function ( $element, $parents ) {
-		return (
-			! empty( $parents[0] )
-			&& $parents[0] === 'wc_address_i18n_params'
-			&& count( $parents ) > 1
-			&& (
-				$parents[ count( $parents ) - 1 ] === 'placeholder'
-				|| $parents[ count( $parents ) - 1 ] === 'label'
-			)
-		);
-	};
-
-	/**
 	 * Plugin: WooCommerce - Order Statuses
 	 */
 
 	$logical_rules[] = function ( $element, $parents ) {
 		return (
-			! empty( $parents[0] )
-			&& ! empty( $parents[1] )
-			&& ! empty( $parents[2] )
-			&& $parents[0] === 'EncodedAsURL'
-			&& $parents[1] === 'orderStatuses'
-			&& is_string( $parents[2] )
+			isset(
+				$parents[0],
+				$parents[1],
+				$parents[2],
+				$parents[3],
+			)
+			&& $parents[0] === 'encoded_as_url'
+			&& $parents[1] === 'wcSettings'
+			&& $parents[2] === 'orderStatuses'
+			&& is_string( $parents[3] )
 		);
 	};
 
 	/**
-	 * Plugin: WooCommerce - weekdaysShort
+	 * Plugin: WooCommerce - Item name
 	 */
 
 	$logical_rules[] = function ( $element, $parents ) {
 		return (
-			isset( $parents[0] )
-			&& isset( $parents[1] )
-			&& isset( $parents[2] )
-			&& isset( $parents[3] )
-			&& $parents[0] === 'EncodedAsURL'
-			&& $parents[1] === 'locale'
-			&& $parents[2] === 'weekdaysShort'
-			&& is_int( $parents[3] )
+			count( $parents ) >= 3
+			&& isset(
+				$parents[ count( $parents ) - 3 ],
+				$parents[ count( $parents ) - 2 ],
+				$parents[ count( $parents ) - 1 ],
+			)
+			&& $parents[ count( $parents ) - 3 ] === 'items'
+			&& is_int( $parents[ count( $parents ) - 2 ] )
+			&& $parents[ count( $parents ) - 1 ] === 'name'
 		);
 	};
 
 	/**
-	 * Plugin: WooCommerce
-	 * Product data (JSON in content, encoded as URL)
-	 * Name, description, image alt, image name, etc
+	 * Plugin: WooCommerce - Item image name
 	 */
 
 	$logical_rules[] = function ( $element, $parents ) {
 		return (
-			isset( $parents[0] )
-			&& isset( $parents[2] )
-			&& isset( $parents[3] )
-			&& isset( $parents[5] )
-			&& (
-				$parents[0] === 'EncodedAsURL'
-				|| $parents[0] === 'responses'
+			count( $parents ) >= 5
+			&& isset(
+				$parents[ count( $parents ) - 5 ],
+				$parents[ count( $parents ) - 4 ],
+				$parents[ count( $parents ) - 3 ],
+				$parents[ count( $parents ) - 2 ],
+				$parents[ count( $parents ) - 1 ],
 			)
-			&& $parents[2] === 'body'
-			&& $parents[3] === 'items'
+			&& $parents[ count( $parents ) - 5 ] === 'items'
+			&& is_int( $parents[ count( $parents ) - 4 ] )
+			&& $parents[ count( $parents ) - 3 ] === 'images'
+			&& is_int( $parents[ count( $parents ) - 2 ] )
 			&& (
-				$parents[5] === 'name'
-				|| $parents[5] === 'short_description'
-				|| $parents[5] === 'description'
-				|| (
-					$parents[5] === 'images'
-					&& ! empty( $parents[6] )
-					&& is_int( $parents[6] )
-					&& ! empty( $parents[7] )
-					&& (
-						$parents[7] === 'alt'
-						|| $parents[7] === 'name'
-					)
-				)
-			)
-		);
-	};
-
-	/**
-	 * Plugin: WooCommerce
-	 * Is WooCommerce Cart product data
-	 * Name, description, image alt, image name, etc
-	 */
-
-	$logical_rules[] = function ( $element, $parents ) {
-		return (
-			! empty( $parents[0] )
-			&& ! empty( $parents[1] )
-			&& ! empty( $parents[2] )
-			&& ! empty( $parents[3] )
-			&& ! empty( $parents[5] )
-			&& $parents[0] === 'state'
-			&& $parents[1] === 'woocommerce'
-			&& $parents[2] === 'cart'
-			&& (
-				(
-					$parents[3] === 'items'
-					&& (
-						$parents[5] === 'name'
-						|| $parents[5] === 'short_description'
-						|| (
-							$parents[5] === 'images'
-							&& ! empty( $parents[7] )
-							&& (
-								$parents[7] === 'name'
-								|| $parents[7] === 'alt'
-							)
-						)
-					)
-				)
-				|| (
-					$parents[3] === 'shipping_rates'
-					&& (
-						$parents[5] === 'name'
-						|| (
-							$parents[5] === 'items'
-							&& ! empty( $parents[7] )
-							&& $parents[7] === 'name'
-						)
-						|| (
-							$parents[5] === 'shipping_rates'
-							&& ! empty( $parents[7] )
-							&& $parents[7] === 'meta_data'
-							&& ! empty( $parents[9] )
-							&& (
-								$parents[9] === 'key' // TODO : Check
-								|| $parents[9] === 'value'
-							)
-						)
-						|| (
-							$parents[5] === 'shipping_rates'
-							&& ! empty( $parents[7] )
-							&& $parents[7] === 'name'
-						)
-					)
-				)
-			)
-		);
-	};
-
-	/**
-	 * Plugin: WooCommerce
-	 * Is WooCommerce Cart product data in REST API
-	 * Name, description, image alt, image name, etc
-	 */
-
-	$logical_rules[] = function ( $element, $parents ) {
-		return (
-			! empty( $parents[0] )
-			&& ! empty( $parents[2] )
-			&& $parents[0] === 'shipping_rates'
-			&& (
-				$parents[2] === 'name'
-				|| (
-					$parents[2] === 'shipping_rates'
-					&& ! empty( $parents[4] )
-					&& (
-						$parents[4] === 'name'
-						|| $parents[4] === 'description'
-						|| (
-							$parents[4] === 'meta_data'
-							&& ! empty( $parents[6] )
-							&& (
-								$parents[6] === 'key'
-								|| $parents[6] === 'value'
-							)
-						)
-					)
-				)
-				|| (
-					$parents[2] === 'items'
-					&& ! empty( $parents[4] )
-					&& $parents[4] === 'name'
-				)
-			)
-		);
-	};
-
-	$logical_rules[] = function ( $element, $parents ) {
-		return (
-			! empty( $parents[0] )
-			&& ! empty( $parents[2] )
-			&& ! empty( $parents[4] )
-			&& $parents[0] === 'items'
-			&& $parents[2] === 'images'
-			&& (
-				$parents[4] === 'name'
-				|| $parents[4] === 'alt'
-			)
-		);
-	};
-
-	$logical_rules[] = function ( $element, $parents ) {
-		return (
-			! empty( $parents[0] )
-			&& ! empty( $parents[2] )
-			&& $parents[0] === 'items'
-			&& (
-				$parents[2] === 'short_description'
-				|| $parents[2] === 'name'
+				$parents[ count( $parents ) - 1 ] === 'name'
+				|| $parents[ count( $parents ) - 1 ] === 'alt'
 			)
 		);
 	};
@@ -531,16 +392,20 @@ function wplng_data_json_rules_inclusion() {
 
 	$logical_rules[] = function ( $element, $parents ) {
 		return (
-			! empty( $parents[0] )
-			&& ! empty( $parents[1] )
-			&& ! empty( $parents[2] )
-			&& ! empty( $parents[3] )
-			&& $parents[0] === 'EncodedAsURL'
-			&& $parents[1] === 'defaultFields'
-			&& is_string( $parents[2] )
+			isset(
+				$parents[0],
+				$parents[1],
+				$parents[2],
+				$parents[3],
+				$parents[4],
+			)
+			&& $parents[0] === 'encoded_as_url'
+			&& $parents[1] === 'wcSettings'
+			&& $parents[2] === 'defaultFields'
+			&& is_string( $parents[3] )
 			&& (
-				$parents[3] === 'label'
-				|| $parents[3] === 'optionalLabel'
+				$parents[4] === 'label'
+				|| $parents[4] === 'optionalLabel'
 			)
 		);
 	};
@@ -551,28 +416,36 @@ function wplng_data_json_rules_inclusion() {
 
 	$logical_rules[] = function ( $element, $parents ) {
 		return (
-			! empty( $parents[0] )
-			&& ! empty( $parents[1] )
-			&& ! empty( $parents[2] )
-			&& ! empty( $parents[3] )
-			&& $parents[0] === 'EncodedAsURL'
-			&& $parents[1] === 'storePages'
-			&& is_string( $parents[2] )
-			&& $parents[3] === 'title'
+			isset(
+				$parents[0],
+				$parents[1],
+				$parents[2],
+				$parents[3],
+				$parents[4],
+			)
+			&& $parents[0] === 'encoded_as_url'
+			&& $parents[1] === 'wcSettings'
+			&& $parents[2] === 'storePages'
+			&& is_string( $parents[3] )
+			&& $parents[4] === 'title'
 		);
 	};
 
 	/**
-	 * Plugin: WooCommerce - Country select
-	 */
+	* Plugin: WooCommerce - Country select
+	*/
 
 	$logical_rules[] = function ( $element, $parents ) {
 		return (
-			! empty( $parents[0] )
-			&& ! empty( $parents[1] )
+			isset(
+				$parents[0], 
+				$parents[1],
+				$parents[2],
+				$parents[3],
+			)
 			&& $parents[0] === 'wc_country_select_params'
 			&& $parents[1] === 'countries'
-			&& count( $parents ) === 4
+			&& count($parents) === 4
 		);
 	};
 
@@ -582,37 +455,38 @@ function wplng_data_json_rules_inclusion() {
 
 	$logical_rules[] = function ( $element, $parents ) {
 		return (
-			! empty( $parents[0] )
-			&& ! empty( $parents[1] )
-			&& ! empty( $parents[2] )
-			&& $parents[0] === 'EncodedAsURL'
-			&& $parents[1] === 'countries'
+			isset(
+				$parents[0],
+				$parents[1],
+				$parents[2],
+				$parents[3],
+			)
+			&& $parents[0] === 'encoded_as_url'
+			&& $parents[1] === 'wcSettings'
+			&& $parents[2] === 'countries'
 			&& is_string( $parents[2] )
-			&& ( preg_match( '#^[A-Z]{2}$#', $parents[2] ) === 1 )
 		);
 	};
 
 	/**
-	 * Plugin: WooCommerce - Countries label
-	 */
+	* Plugin: WooCommerce - Countries label
+	*/
 
 	$logical_rules[] = function ( $element, $parents ) {
 		return (
-			! empty( $parents[0] )
-			&& ! empty( $parents[1] )
-			&& ! empty( $parents[2] )
-			&& ! empty( $parents[3] )
-			&& ! empty( $parents[4] )
-			&& $parents[0] === 'EncodedAsURL'
-			&& $parents[1] === 'countryData'
-			&& is_string( $parents[2] )
-			&& $parents[3] === 'locale'
-			&& (
-				$parents[4] === 'state'
-				|| $parents[4] === 'postcode'
+			isset(
+				$parents[0],
+				$parents[1],
+				$parents[2],
+				$parents[3],
+				$parents[4],
+				$parents[5],
 			)
-			&& ! empty( $parents[5] )
-			&& $parents[5] === 'label'
+			&& $parents[0] === 'encoded_as_url'
+			&& $parents[1] === 'wcSettings'
+			&& $parents[2] === 'countryData'
+			&& is_string( $parents[3] )
+			&& $parents[4] === 'states'
 		);
 	};
 
@@ -667,14 +541,14 @@ function wplng_data_json_rules_inclusion() {
 					isset( $parents[1] )
 					&& isset( $parents[2] )
 					&& $parents[0] === 'rules'
-					&& is_int($parents[1])
+					&& is_int( $parents[1] )
 					&& $parents[2] === 'error'
 				)
 				|| (
 					isset( $parents[1] )
 					&& isset( $parents[2] )
 					&& $parents[0] === 'invalid_fields'
-					&& is_int($parents[1])
+					&& is_int( $parents[1] )
 					&& $parents[2] === 'message'
 				)
 			)
@@ -951,7 +825,7 @@ function wplng_data_json_rules_inclusion() {
 	};
 
 	return apply_filters(
-        'wplng_json_rules_inclusion',
-        $logical_rules
-    );
+		'wplng_json_rules_inclusion',
+		$logical_rules
+	);
 }

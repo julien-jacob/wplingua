@@ -31,7 +31,7 @@ function wplng_browser_language_redirect_js_only() {
 		return;
 	}
 
-	$script = file_get_contents( WPLNG_PLUGIN_PATH . '/assets/js/browser-redirect.js' );
+	$script = file_get_contents( WPLNG_PLUGIN_DIR . '/assets/js/browser-redirect.js' );
 
 	if ( empty( $script ) ) {
 		return;

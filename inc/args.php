@@ -121,7 +121,7 @@ function wplng_args_setup( &$args ) {
 		&& (
 			'enabled' === $args['load']
 			|| 'progress' === $args['load']
-			|| 'loading' === $args['load']
+			|| 'translated' === $args['load']
 		)
 	) {
 		$args_clear['load'] = $args['load'];
@@ -191,6 +191,18 @@ function wplng_args_setup( &$args ) {
 		$args_clear['translations'] = $args['translations'];
 	}
 
+	/**
+	 * Check texts unknow array
+	 */
+
+	if ( empty( $args['texts_unknow'] )
+		|| ! is_array( $args['texts_unknow'] )
+	) {
+		$args_clear['texts_unknow'] = array();
+	} else {
+		$args_clear['texts_unknow'] = $args['texts_unknow'];
+	}
+
 	$args = $args_clear;
 }
 
@@ -215,6 +227,10 @@ function wplng_args_update_from_texts( &$args, $texts ) {
 	 */
 
 	foreach ( $texts as $key => $text ) {
+
+		if ( ! is_string( $text ) ) {
+			continue;
+		}
 
 		$text = wplng_text_esc( $text );
 
@@ -301,23 +317,23 @@ function wplng_args_update_from_texts( &$args, $texts ) {
 		}
 	}
 
+	$args['texts_unknow'] = $texts_unknow;
+
 	/**
-	 * Limit $texts_unknow for a total of 1000 char
+	 * Limit $texts_unknow for a total of 4200 char
 	 */
 
 	$current_length       = 0;
-	$limited_texts_unknow = array();
+	$texts_unknow_limited = array();
 
 	foreach ( $texts_unknow as $text ) {
 		$text_length = strlen( $text );
 		if ( $current_length + $text_length > WPLNG_MAX_TRANSLATIONS_CHAR ) {
 			break;
 		}
-		$limited_texts_unknow[] = $text;
+		$texts_unknow_limited[] = $text;
 		$current_length        += $text_length + 8;
 	}
-
-	$texts_unknow = $limited_texts_unknow;
 
 	/**
 	 * Get count_texts
@@ -338,61 +354,36 @@ function wplng_args_update_from_texts( &$args, $texts ) {
 
 	$max_translations = WPLNG_MAX_TRANSLATIONS_STR + 1;
 
-	if ( $args['load'] === 'enabled'
-		&& $args['count_texts_unknow'] > 20
+	if ( $args['load'] === 'translated' ) {
+
+		/**
+		 * This is the page reloaded after "Load in progress" was complete
+		 */
+
+		$max_translations = 0;
+
+		wplng_clear_website_cache();
+
+	} elseif ( $args['load'] === 'enabled'
+		&& $args['count_texts_unknow'] > 10
 		&& ! $args['overloaded']
 		&& wplng_api_feature_is_allow( 'detection' )
+		&& current_user_can( 'edit_posts' )
 	) {
 
 		/**
 		 * Current page identified as requiring "in progress" mode
 		 */
 
-		$redirect_query_arg = array();
-
-		// Set mode to "editor" or "list" if needed
-		if ( 'vanilla' !== $args['mode'] ) {
-			$redirect_query_arg['wplng-mode'] = $args['mode'];
-		}
-
-		$redirect_query_arg['wplng-load'] = 'progress';
-		$redirect_query_arg['nocache']    = (string) time() . (string) rand( 100, 999 );
-
-		wp_safe_redirect(
-			add_query_arg(
-				$redirect_query_arg,
-				$args['url_current']
-			),
-			302
-		);
-		exit;
-		return;
-
-	} elseif ( $args['load'] === 'progress' ) {
+		$args['load']     = 'progress';
 		$max_translations = 0;
-	} elseif ( $args['load'] === 'loading' ) {
-		$max_translations = 60;
+
 	} else {
 		$args['load'] = 'disabled';
 	}
 
-	if ( $args['load'] !== 'disabled' ) {
-
-		// Set HTTP no-cache header
-		nocache_headers();
-
-		// Disable cache for plugins
-		if ( ! defined( 'DONOTCACHEPAGE' ) ) {
-			define( 'DONOTCACHEPAGE', true );
-		}
-
-		if ( function_exists( 'do_action' ) ) {
-			do_action( 'litespeed_purge_all' );
-		}
-	}
-
-	$texts_unknow = array_splice(
-		$texts_unknow,
+	$texts_unknow_limited = array_splice(
+		$texts_unknow_limited,
 		0,
 		$max_translations
 	);
@@ -402,10 +393,14 @@ function wplng_args_update_from_texts( &$args, $texts ) {
 	 */
 
 	$texts_translated = wplng_api_call_translate(
-		$texts_unknow,
+		$texts_unknow_limited,
 		$args['language_source'],
 		$args['language_target']
 	);
+
+	$texts_unknow = array_diff_assoc( $texts_unknow, $texts_unknow_limited );
+
+	$args['texts_unknow'] = $texts_unknow;
 
 	/**
 	 * Save new translation as wplng_translation CPT
@@ -413,7 +408,7 @@ function wplng_args_update_from_texts( &$args, $texts ) {
 
 	$translations_new = array();
 
-	foreach ( $texts_unknow as $key => $text_source ) {
+	foreach ( $texts_unknow_limited as $key => $text_source ) {
 		if ( isset( $texts_translated[ $key ] ) ) {
 			$translations_new[] = array(
 				'source'      => $text_source,

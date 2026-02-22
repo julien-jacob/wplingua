@@ -113,81 +113,6 @@ jQuery(document).ready(function ($) {
 
     });
 
-
-    // ------------------------------------------------------------------------
-    // Code for preloading
-    // ------------------------------------------------------------------------
-
-    /**
-     * Load the translation and reload the page
-     */
-
-    if ($("#wplng-in-progress-container").length) {
-
-        let loadUrl = $("#wplng-in-progress-container").attr("data-wplng-url-load");
-        let reloadUrl = $("#wplng-in-progress-container").attr("data-wplng-url-reload");
-
-        if (loadUrl && loadUrl.trim() !== "") {
-
-            $.ajax({
-                url: loadUrl,
-                method: "GET",
-                success: function (response) {
-                    if (reloadUrl && reloadUrl.trim() !== "") {
-
-                        // Set 100% if is the last load in progress reload
-                        if ((reloadUrl.indexOf("?wplng-load=") === -1)
-                            && (reloadUrl.indexOf("&wplng-load=") === -1)
-                        ) {
-                            $("#wplng-in-progress-percent").html("100");
-                            $("#wplng-progress-bar-value").animate(
-                                { width: "100%" },
-                                500
-                            );
-                        }
-
-                        window.location.href = reloadUrl;
-
-                    } else {
-                        console.log("wpLingua ERROR: Load in progress - Invalid reload URL");
-                    }
-                }
-            });
-
-        } else {
-            console.log("wpLingua ERROR: Load in progress - Invalid load URL");
-        }
-
-    }
-
-
-    /**
-     * Update percentage for the load in progress bar
-     */
-
-    function wplngUpdatePercent() {
-        let percent = parseInt($("#wplng-in-progress-percent").html());
-        if (percent < 99) {
-            percent++;
-            $("#wplng-in-progress-percent").html(percent);
-            $("#wplng-progress-bar-value").animate(
-                { width: percent.toString() + "%" },
-                500
-            );
-        }
-    }
-
-    wplngUpdatePercent();
-
-    if ($("#wplng-in-progress-percent").length) {
-        setInterval(wplngUpdatePercent, 2000);
-    }
-
-    if ($("#wpadminbar").length && $("#wplng-in-progress-container").length) {
-        $("#wpadminbar").hide();
-    }
-
-
     // ------------------------------------------------------------------------
     // Code for overload bar
     // ------------------------------------------------------------------------
@@ -195,5 +120,35 @@ jQuery(document).ready(function ($) {
     $("#wplng-overloaded-close").on("click", function () {
         $("#wplng-overloaded-container").hide();
     });
+
+    // ------------------------------------------------------------------------
+    // Clear URL after "Load in progress" reload
+    // ------------------------------------------------------------------------
+
+    try {
+        const url = new URL(window.location.href);
+        const params = url.searchParams;
+        let changed = false;
+
+        // Remove wplng-load only when it's "translated"
+        if (params.has('wplng-load') && params.get('wplng-load') === 'translated') {
+            params.delete('wplng-load');
+            changed = true;
+        }
+
+        // Remove nocache regardless of its value
+        if (params.has('nocache')) {
+            params.delete('nocache');
+            changed = true;
+        }
+
+        if (changed) {
+            const search = params.toString();
+            const newUrl = url.origin + url.pathname + (search ? '?' + search : '') + (url.hash || '');
+            history.replaceState(null, '', newUrl);
+        }
+    } catch (e) {
+        // ignore on unsupported environments
+    }
 
 }); // End jQuery loaded event

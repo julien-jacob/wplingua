@@ -27,19 +27,72 @@ jQuery(document).ready(function ($) {
 
     if ($("#wplng-notice-first-loading-loading").length) {
 
+        let percent = 1;
+        let percentMax = 0;
+
+        // store interval id so we can stop it
+        let percentInterval = setInterval(function() {
+
+            if (percent >= 99) {
+                // stop at 99% until the actual loads finish
+                percent = 99;
+                clearInterval(percentInterval);
+                return;
+            } else if (percent >= percentMax) {
+                percent = percentMax;
+                return;
+            }
+
+            percent++;
+
+            $("#wplng-notice-first-loading-loading-percent").text(percent + " %");
+
+        }, 800);
+
         let loadUrl = $("#wplng-notice-first-loading-loading").attr("data-wplng-url-first-load");
 
         if (loadUrl) {
-            $.ajax({
-                url: loadUrl,
-                method: "GET",
-                success: function (response) {
-                    $("#wplng-notice-first-loading-loading").hide();
-                    $("#wplng-notice-first-loading-loaded").slideDown();
-                    $("#wplng-option-settings-form").slideDown();
-                    $("#toplevel_page_wplingua-settings .wp-submenu-wrap").slideDown();
+            const times = 3;
+            const delayMs = 1000;
+
+            (async function () {
+                for (let i = 0; i < times; i++) {
+                    // wait for the request to finish (success or error) before starting the next one
+                    await new Promise((resolve) => {
+
+                        percent = percentMax;
+                        percentMax += 33;
+
+                        $.ajax({
+                            url: loadUrl,
+                            method: "GET",
+                            success: function (response) {
+                                resolve(response);
+                            },
+                            error: function () {
+                                // continue despite the error to perform all 3 loads
+                                resolve();
+                            }
+                        });
+                    });
+
+                    // small delay between loads
+                    if (i < times - 1) {
+                        await new Promise(r => setTimeout(r, delayMs));
+                    }
                 }
-            });
+
+                // ensure progress shows 100% and stop interval
+                clearInterval(percentInterval);
+                percent = 100;
+                $("#wplng-notice-first-loading-loading-percent").text("100 %");
+
+                // once the 3 loads are complete, show the UI
+                $("#wplng-notice-first-loading-loading").hide();
+                $("#wplng-notice-first-loading-loaded").slideDown();
+                $("#wplng-option-settings-form").slideDown();
+                $("#toplevel_page_wplingua-settings .wp-submenu-wrap").slideDown();
+            })();
         }
 
     }

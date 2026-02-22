@@ -50,11 +50,11 @@ function wplng_register_assets() {
 	 */
 
 	if ( ! empty( $_GET['wplng-mode'] )
-		&& empty( $_GET['wplng-load'] )
 		&& (
 			'editor' === $_GET['wplng-mode']
 			|| 'list' === $_GET['wplng-mode']
 		)
+		&& current_user_can( 'edit_posts' )
 	) {
 
 		wp_enqueue_script(
@@ -86,7 +86,6 @@ function wplng_register_assets() {
 		);
 
 	}
-
 }
 
 
@@ -126,7 +125,7 @@ function wplng_on_page_script() {
 		return;
 	}
 
-	$script = file_get_contents( WPLNG_PLUGIN_PATH . '/assets/js/on-page.js' );
+	$script = file_get_contents( WPLNG_PLUGIN_DIR . '/assets/js/on-page.js' );
 
 	if ( empty( $script ) ) {
 		return;

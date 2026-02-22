@@ -33,6 +33,9 @@ function wplng_data_excluded_selector_default() {
 		'.no-translate',
 		'.notranslate',
 
+		// wpLingua
+		'#wplingua-load-in-progress-data',
+
 		// Wordpress
 		'#wpadminbar',
 		'.wp-embed-share-input',
@@ -107,6 +110,7 @@ function wplng_data_excluded_editor_link() {
 
 /**
  * Get selectors of excluded nodes text
+ * Exclude the node content, not the attributes (title, href, ...)
  *
  * @return array
  */

@@ -71,7 +71,9 @@ jQuery(document).ready(function ($) {
 
     function wplngSwitcherUpdateTitle(val) {
 
-        if ("none" == val && "none" == $("#wplng_flags_style").val()) {
+        if (val === "none"
+            && $("#wplng_flags_style").val() === "none"
+        ) {
             $("#wplng_flags_style").val("rectangular");
             wplngSwitcherUpdateFlagsStyle("rectangular");
         }
@@ -90,7 +92,9 @@ jQuery(document).ready(function ($) {
             return;
         }
 
-        if ("none" == val && "none" == $("#wplng_name_format").val()) {
+        if (val === "none"
+            && $("#wplng_name_format").val() === "none"
+        ) {
             $("#wplng_name_format").val("name");
             wplngSwitcherUpdateTitle("name");
         }
@@ -102,7 +106,7 @@ jQuery(document).ready(function ($) {
             .removeClass("flags-none")
             .addClass("flags-" + val);
 
-        if ("none" != val) {
+        if (val !== "none") {
             let html = $(".wplng-switcher").html();
 
             html = html.replaceAll(

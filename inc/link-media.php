@@ -15,7 +15,7 @@ function wplng_link_media_get_entries() {
 
 	global $wplng_link_media_entries;
 
-	if ( null != $wplng_link_media_entries ) {
+	if ( null !== $wplng_link_media_entries ) {
 		return $wplng_link_media_entries;
 	}
 

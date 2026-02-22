@@ -102,26 +102,22 @@ function wplng_api_call_request_api_key( $data ) {
 	 * Get the API call
 	 */
 
-	$body = array(
-		'request'           => 'register',
-		'version'           => WPLNG_API_VERSION,
-		'website'           => $website,
-		'mail_address'      => $mail_address,
-		'language_original' => $language_original,
-		'languages_target'  => array( $languages_target ),
-		'accept_eula'       => true,
-	);
-
-	$args = array(
-		'method'    => 'POST',
-		'timeout'   => 5,
-		'sslverify' => WPLNG_API_SSLVERIFY,
-		'body'      => $body,
-	);
-
 	$request = wp_remote_post(
 		WPLNG_API_URL . '/account/',
-		$args
+		array(
+			'method'    => 'POST',
+			'timeout'   => 5,
+			'sslverify' => WPLNG_API_SSLVERIFY,
+			'body'      => array(
+				'request'           => 'register',
+				'version'           => WPLNG_API_VERSION,
+				'website'           => $website,
+				'mail_address'      => $mail_address,
+				'language_original' => $language_original,
+				'languages_target'  => array( $languages_target ),
+				'accept_eula'       => true,
+			),
+		)
 	);
 
 	/**
@@ -129,7 +125,7 @@ function wplng_api_call_request_api_key( $data ) {
 	 */
 
 	if ( is_wp_error( $request )
-		|| wp_remote_retrieve_response_code( $request ) != 200
+		|| wp_remote_retrieve_response_code( $request ) !== 200
 	) {
 		return array(
 			'error'   => true,

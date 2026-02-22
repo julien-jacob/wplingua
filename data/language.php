@@ -57,6 +57,7 @@ function wplng_data_languages() {
 			'name'             => __( 'Arabic', 'wplingua' ),
 			'id'               => 'ar',
 			'dir'              => 'rtl',
+			'plural_forms'     => 'nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 ? 4 : 5;',
 			'flag'             => '_a',
 			'flags'            => array(
 				array(
@@ -211,6 +212,7 @@ function wplng_data_languages() {
 		array(
 			'name'             => __( 'Chinese', 'wplingua' ),
 			'id'               => 'zh',
+			'plural_forms'     => 'nplurals=1; plural=0;',
 			'flag'             => '_c',
 			'flags'            => array(
 				array(
@@ -270,6 +272,7 @@ function wplng_data_languages() {
 		array(
 			'name'             => __( 'Danish', 'wplingua' ),
 			'id'               => 'da',
+			'plural_forms'     => 'nplurals=2; plural=n != 1;',
 			'flag'             => 'dk',
 			'flags'            => array(
 				array(
@@ -309,6 +312,7 @@ function wplng_data_languages() {
 		array(
 			'name'             => __( 'Dutch', 'wplingua' ),
 			'id'               => 'nl',
+			'plural_forms'     => 'nplurals=2; plural=n != 1;',
 			'flag'             => 'nl',
 			'flags'            => array(
 				array(
@@ -358,6 +362,7 @@ function wplng_data_languages() {
 		array(
 			'name'             => __( 'Slovak', 'wplingua' ),
 			'id'               => 'sk',
+			'plural_forms'     => 'nplurals=3; plural=n==1 ? 0 : (n>=2 && n<=4) ? 1 : 2;',
 			'flag'             => 'sk',
 			'flags'            => array(
 				array(
@@ -402,6 +407,7 @@ function wplng_data_languages() {
 		array(
 			'name'             => __( 'English', 'wplingua' ),
 			'id'               => 'en',
+			'plural_forms'     => 'nplurals=2; plural=n != 1;',
 			'flag'             => '_e',
 			'flags'            => array(
 				array(
@@ -516,6 +522,7 @@ function wplng_data_languages() {
 		array(
 			'name'             => __( 'Finnish', 'wplingua' ),
 			'id'               => 'fi',
+			'plural_forms'     => 'nplurals=2; plural=n != 1;',
 			'flag'             => 'fi',
 			'flags'            => array(
 				array(
@@ -555,6 +562,7 @@ function wplng_data_languages() {
 		array(
 			'name'             => __( 'French', 'wplingua' ),
 			'id'               => 'fr',
+			'plural_forms'     => 'nplurals=2; plural=n > 1;',
 			'flag'             => 'fr',
 			'flags'            => array(
 				array(
@@ -634,6 +642,7 @@ function wplng_data_languages() {
 		array(
 			'name'             => __( 'German', 'wplingua' ),
 			'id'               => 'de',
+			'plural_forms'     => 'nplurals=2; plural=n != 1;',
 			'flag'             => 'de',
 			'flags'            => array(
 				array(
@@ -688,6 +697,7 @@ function wplng_data_languages() {
 		array(
 			'name'             => __( 'Greek', 'wplingua' ),
 			'id'               => 'el',
+			'plural_forms'     => 'nplurals=2; plural=n != 1;',
 			'flag'             => 'gr',
 			'flags'            => array(
 				array(
@@ -733,6 +743,7 @@ function wplng_data_languages() {
 			'name'             => __( 'Hebrew', 'wplingua' ),
 			'id'               => 'he',
 			'dir'              => 'rtl',
+			'plural_forms'     => 'nplurals=2; plural=n != 1;',
 			'flag'             => 'il',
 			'flags'            => array(
 				array(
@@ -772,6 +783,7 @@ function wplng_data_languages() {
 		array(
 			'name'             => __( 'Hindi', 'wplingua' ),
 			'id'               => 'hi',
+			'plural_forms'     => 'nplurals=2; plural=n != 1;',
 			'flag'             => 'in',
 			'flags'            => array(
 				array(
@@ -816,6 +828,7 @@ function wplng_data_languages() {
 		array(
 			'name'             => __( 'Hungarian', 'wplingua' ),
 			'id'               => 'hu',
+			'plural_forms'     => 'nplurals=2; plural=n != 1;',
 			'flag'             => 'hu',
 			'flags'            => array(
 				array(
@@ -855,6 +868,7 @@ function wplng_data_languages() {
 		array(
 			'name'             => __( 'Indonesian', 'wplingua' ),
 			'id'               => 'id',
+			'plural_forms'     => 'nplurals=1; plural=0;',
 			'flag'             => 'id',
 			'flags'            => array(
 				array(
@@ -894,6 +908,7 @@ function wplng_data_languages() {
 		array(
 			'name'             => __( 'Italian', 'wplingua' ),
 			'id'               => 'it',
+			'plural_forms'     => 'nplurals=2; plural=n != 1;',
 			'flag'             => 'it',
 			'flags'            => array(
 				array(
@@ -933,6 +948,7 @@ function wplng_data_languages() {
 		array(
 			'name'             => __( 'Japanese', 'wplingua' ),
 			'id'               => 'ja',
+			'plural_forms'     => 'nplurals=1; plural=0;',
 			'flag'             => 'jp',
 			'flags'            => array(
 				array(
@@ -954,7 +970,7 @@ function wplng_data_languages() {
 				'hu' => 'Japán',
 				'id' => 'Jepang',
 				'it' => 'Giapponese',
-				'he' => 'יַפָּנִית',
+				'he' => 'יַפָּנִית',
 				'ja' => '日本語',
 				'ko' => '일본어',
 				'nl' => 'Japans',
@@ -972,6 +988,7 @@ function wplng_data_languages() {
 		array(
 			'name'             => __( 'Korean', 'wplingua' ),
 			'id'               => 'ko',
+			'plural_forms'     => 'nplurals=1; plural=0;',
 			'flag'             => 'kr',
 			'flags'            => array(
 				array(
@@ -1016,6 +1033,7 @@ function wplng_data_languages() {
 		array(
 			'name'             => __( 'Polish', 'wplingua' ),
 			'id'               => 'pl',
+			'plural_forms'     => 'nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;',
 			'flag'             => 'pl',
 			'flags'            => array(
 				array(
@@ -1055,6 +1073,7 @@ function wplng_data_languages() {
 		array(
 			'name'             => __( 'Portuguese', 'wplingua' ),
 			'id'               => 'pt',
+			'plural_forms'     => 'nplurals=2; plural=n > 1;',
 			'flag'             => 'pt',
 			'flags'            => array(
 				array(
@@ -1109,6 +1128,7 @@ function wplng_data_languages() {
 		array(
 			'name'             => __( 'Russian', 'wplingua' ),
 			'id'               => 'ru',
+			'plural_forms'     => 'nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;',
 			'flag'             => 'ru',
 			'flags'            => array(
 				array(
@@ -1168,6 +1188,7 @@ function wplng_data_languages() {
 		array(
 			'name'             => __( 'Spanish', 'wplingua' ),
 			'id'               => 'es',
+			'plural_forms'     => 'nplurals=2; plural=n != 1;',
 			'flag'             => 'es',
 			'flags'            => array(
 				array(
@@ -1297,6 +1318,7 @@ function wplng_data_languages() {
 		array(
 			'name'             => __( 'Swedish', 'wplingua' ),
 			'id'               => 'sv',
+			'plural_forms'     => 'nplurals=2; plural=n != 1;',
 			'flag'             => 'sv',
 			'flags'            => array(
 				array(
@@ -1341,6 +1363,7 @@ function wplng_data_languages() {
 		array(
 			'name'             => __( 'Turkish', 'wplingua' ),
 			'id'               => 'tr',
+			'plural_forms'     => 'nplurals=2; plural=n != 1;',
 			'flag'             => 'tr',
 			'flags'            => array(
 				array(
@@ -1385,6 +1408,7 @@ function wplng_data_languages() {
 		array(
 			'name'             => __( 'Ukrainian', 'wplingua' ),
 			'id'               => 'uk',
+			'plural_forms'     => 'nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;',
 			'flag'             => 'ua',
 			'flags'            => array(
 				array(
@@ -1424,6 +1448,7 @@ function wplng_data_languages() {
 		array(
 			'name'             => __( 'Vietnamese', 'wplingua' ),
 			'id'               => 'vi',
+			'plural_forms'     => 'nplurals=1; plural=0;',
 			'flag'             => 'vn',
 			'flags'            => array(
 				array(

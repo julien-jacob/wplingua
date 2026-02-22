@@ -16,17 +16,52 @@
 #wplng-notice-first-loading-loading {
     background-color: rgba(114, 174, 230, .33);
     text-align: center;
+
+    h2 {
+        font-size: 22px;
+        line-height: 28px;
+        margin-bottom: 30px;
+
+        .dashicons {
+            width: 26px;
+            height: 26px;
+            font-size: 26px;
+            vertical-align: sub;
+        }
+    }
+
+    p {
+        font-size: 16px;
+        line-height: 20px;
+        padding: 0 15px;
+        max-width: 650px;
+        margin: 15px auto 40px;
+    }
 }
 
 #wplng-notice-first-loading-loaded {
     background-color: rgba(0, 255, 0, .05);
     text-align: center;
 
+    h2 {
+        font-size: 22px;
+        line-height: 28px;
+        margin-bottom: 30px;
+    }
+
+    p {
+        font-size: 16px;
+        line-height: 20px;
+        padding: 0 15px;
+        max-width: 650px;
+        margin: 15px auto;
+    }
+
     .button {
-        font-size: 1.1em;
+        font-size: 18px;
         font-weight: 600;
-        padding-bottom: 2px;
-        margin: 10px 0 8px;
+        margin: 15px 0 25px;
+        padding: 0px 15px 3px;
     }
 
     button.notice-dismiss {

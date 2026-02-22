@@ -615,29 +615,3 @@ function wplng_get_slug_saved_from_original( $original ) {
 
 	return false;
 }
-
-
-/**
- * Clear cached slugs
- *
- * @return void
- */
-function wplng_clear_slugs_cache() {
-	delete_transient( 'wplng_cached_slugs' );
-	wp_cache_flush();
-}
-
-
-/**
- * Clear cached translations if $post_id parametter is a slug
- *
- * @return void
- */
-function wplng_clear_slugs_cache_trash_untrash( $post_id ) {
-
-	if ( 'wplng_slug' !== get_post_type( $post_id ) ) {
-		return;
-	}
-
-	wplng_clear_slugs_cache();
-}

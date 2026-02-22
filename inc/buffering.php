@@ -27,13 +27,7 @@ function wplng_redirect_translated_slug() {
 	if ( empty( $_COOKIE['wplingua'] )
 		&& apply_filters( 'wplng_cookie_check', true )
 	) {
-		// Set HTTP no-cache header
-		nocache_headers();
-
-		// Disable cache for plugins
-		if ( ! defined( 'DONOTCACHEPAGE' ) ) {
-			define( 'DONOTCACHEPAGE', true );
-		}
+		wplng_do_not_cache_page();
 	}
 
 	$url_current = wplng_get_url_current();
@@ -141,6 +135,10 @@ function wplng_ob_start() {
 		 * Is an XML sitemap
 		 */
 
+		if ( ! get_option( 'wplng_sitemap_xml', true ) ) {
+			return;
+		}
+
 		ob_start( 'wplng_ob_callback_sitemap_xml' );
 
 	} else {
@@ -233,11 +231,6 @@ function wplng_ob_callback_ajax( $output ) {
  * @return string The modified XML content with added <xhtml:link> tags or the original content if no changes are made.
  */
 function wplng_ob_callback_sitemap_xml( $content ) {
-
-	if ( ! get_option( 'wplng_sitemap_xml', true ) ) {
-		return $content;
-	}
-
 	return wplng_sitemap_add_hreflang_links( $content );
 }
 
@@ -287,15 +280,13 @@ function wplng_ob_callback_page( $content ) {
 
 				if ( ! empty( $_GET['wplng-load'] )
 					&& (
-						$_GET['wplng-load'] === 'loading'
-						|| $_GET['wplng-load'] === 'progress'
+						$_GET['wplng-load'] === 'translated'
 						|| $_GET['wplng-load'] === 'disabled'
 					)
 				) {
 
 					$args['load'] = $_GET['wplng-load'];
-
-					wp_cache_flush();
+					wplng_do_not_cache_page();
 				}
 			}
 		}
