@@ -197,23 +197,16 @@ Your server’s database holds all the translations locally.
 
 == Changelog ==
 
-= 2.10.11 =
-
-* Add plugin compatibility: Contact Form 7
-
-= 2.10.10 =
-
-* Improvement: Review JSON translation rules
-* New filter: `wplng_json_rules_exclusion` - Exclude specific JSON rules from translation
-* New filter: `wplng_json_rules_inclusion` - Include additional JSON rules for translation
-
-
 = 2.11.0 =
 
 * Loading bar returned for new translations for the connected editor
  * Smooth, AJAX-based translation loading
  * Progress bar
  * Translate all strings in a single process
+* Management of JS scripts using wp-i18n.js:
+ * Parsing and detection of text in JS files
+ * On-the-fly generation of missing translation JSON files
+ * Caching of generated translation JSON files
 * Front page translation on API key activation
  * Increased translation payload (4,200 chars → 12,600 chars)
  * Show translation progress percentage
@@ -221,6 +214,7 @@ Your server’s database holds all the translations locally.
 * Improved sitemap XSL design
  * BETA hidden feature - use the Konami code on the settings page to reveal it
 * Improvements:
+ * Better WooCommerce compatibility
  * Recognize .map as a file
  * Optimize JSON translation
  * Better output buffering for sitemap XML
