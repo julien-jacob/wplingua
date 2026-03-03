@@ -343,11 +343,11 @@ function wplng_str_is_locale_id( $str ) {
  */
 function wplng_str_is_script_i18n( $str ) {
 
-    $str = trim( $str );
+	$str = trim( $str );
 
-    if ( empty($str) ) {
-        return false;
-    }
+	if ( empty( $str ) ) {
+		return false;
+	}
 
 	return (
 		wplng_str_contains( $str, 'wp.i18n.setLocaleData' )
@@ -382,46 +382,46 @@ function wplng_str_is_json( $str ) {
  */
 function wplng_unescape_js_string( $str ) {
 
-    if ( ! is_string( $str ) ) {
-        return '';
-    }
+	if ( ! is_string( $str ) ) {
+		return '';
+	}
 
-    // Simple escape sequences
-    $replacements = array(
-        '\\n'  => "\n",
-        '\\r'  => "\r",
-        '\\t'  => "\t",
-        '\\v'  => "\v",
-        '\\f'  => "\f",
-        '\\b'  => "\x08",
-        '\\"'  => '"',
-        "\\'"  => "'",
-        '\\/'  => '/',
-        '\\0'  => "\0",
-        '\\\\' => '\\',
-    );
+	// Simple escape sequences
+	$replacements = array(
+		'\\n'  => "\n",
+		'\\r'  => "\r",
+		'\\t'  => "\t",
+		'\\v'  => "\v",
+		'\\f'  => "\f",
+		'\\b'  => "\x08",
+		'\\"'  => '"',
+		"\\'"  => "'",
+		'\\/'  => '/',
+		'\\0'  => "\0",
+		'\\\\' => '\\',
+	);
 
-    $str = str_replace( array_keys( $replacements ), array_values( $replacements ), $str );
+	$str = str_replace( array_keys( $replacements ), array_values( $replacements ), $str );
 
-    // Unicode sequences: \uXXXX
-    $str = preg_replace_callback(
-        '/\\\\u([0-9a-fA-F]{4})/',
-        function ( $matches ) {
-            return mb_convert_encoding( pack( 'H*', $matches[1] ), 'UTF-8', 'UTF-16BE' );
-        },
-        $str
-    );
+	// Unicode sequences: \uXXXX
+	$str = preg_replace_callback(
+		'/\\\\u([0-9a-fA-F]{4})/',
+		function ( $matches ) {
+			return mb_convert_encoding( pack( 'H*', $matches[1] ), 'UTF-8', 'UTF-16BE' );
+		},
+		$str
+	);
 
-    // Hexadecimal sequences: \xXX
-    $str = preg_replace_callback(
-        '/\\\\x([0-9a-fA-F]{2})/',
-        function ( $matches ) {
-            return chr( hexdec( $matches[1] ) );
-        },
-        $str
-    );
+	// Hexadecimal sequences: \xXX
+	$str = preg_replace_callback(
+		'/\\\\x([0-9a-fA-F]{2})/',
+		function ( $matches ) {
+			return chr( hexdec( $matches[1] ) );
+		},
+		$str
+	);
 
-    return $str;
+	return $str;
 }
 
 

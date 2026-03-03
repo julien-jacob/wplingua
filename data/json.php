@@ -74,9 +74,9 @@ function wplng_data_json_rules_exclusion() {
 		return in_array(
 			$parents,
 			array(
-				array( 'encoded_as_url','wcSettings', 'wcBlocksConfig', 'pluginUrl' ),
-				array( 'encoded_as_url','wcSettings', 'wcBlocksConfig', 'restApiRoutes' ),
-				array( 'encoded_as_url','wcSettings', 'wcBlocksConfig', 'defaultAvatar' ),
+				array( 'encoded_as_url', 'wcSettings', 'wcBlocksConfig', 'pluginUrl' ),
+				array( 'encoded_as_url', 'wcSettings', 'wcBlocksConfig', 'restApiRoutes' ),
+				array( 'encoded_as_url', 'wcSettings', 'wcBlocksConfig', 'defaultAvatar' ),
 			)
 		);
 	};
@@ -438,14 +438,14 @@ function wplng_data_json_rules_inclusion() {
 	$logical_rules[] = function ( $element, $parents ) {
 		return (
 			isset(
-				$parents[0], 
+				$parents[0],
 				$parents[1],
 				$parents[2],
 				$parents[3],
 			)
 			&& $parents[0] === 'wc_country_select_params'
 			&& $parents[1] === 'countries'
-			&& count($parents) === 4
+			&& count( $parents ) === 4
 		);
 	};
 

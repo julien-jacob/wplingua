@@ -139,7 +139,6 @@ function wplng_parse_json_array( $json_decoded, $parents = array() ) {
 				) {
 					$texts[] = $value;
 				}
-
 			}
 		}
 	}

@@ -278,7 +278,7 @@ body {
                 background-color: #f6f7f7;
                 margin-bottom: 15px;
                 padding: 8px 0;
-                
+
                 box-shadow: 0 0 8px rgba(0, 0, 0, .05);
                 border-radius: 3px;
                 border-top-left-radius: 0;
@@ -295,7 +295,7 @@ body {
                 }
 
                 .wplng-item-main {
-                    
+
                     display: flex;
                     align-items: stretch;
 
@@ -306,19 +306,19 @@ body {
                         font-size: 14px;
                         font-weight: 600;
                         line-height: 1.5em;
-    
+
                         .wplng-item-source,
                         .wplng-item-translation {
                             width: 50%;
                             padding: 4px 10px;
                         }
-    
+
                         .wplng-item-translation {
                             border-left: 1px solid #c3c4c7;
                         }
-    
+
                     }
-    
+
                     .wplng-item-edit {
                         padding: 0 10px;
                     }

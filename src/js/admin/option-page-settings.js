@@ -31,7 +31,7 @@ jQuery(document).ready(function ($) {
         let percentMax = 0;
 
         // store interval id so we can stop it
-        let percentInterval = setInterval(function() {
+        let percentInterval = setInterval(function () {
 
             if (percent >= 99) {
                 // stop at 99% until the actual loads finish
@@ -393,7 +393,7 @@ jQuery(document).ready(function ($) {
             // Add ordering attributes and visibility classes for arrows
             let orderClass = '';
             let arrowsVisibility = '';
-            
+
             if (wplngTargetLanguages.length > 1) {
                 if (index === 0) {
                     // First item: only down arrow
@@ -412,7 +412,7 @@ jQuery(document).ready(function ($) {
                 'class="wplng-target-language"',
                 'class="wplng-target-language ' + arrowsVisibility + '"'
             );
-            
+
             htmlElement = htmlElement.replaceAll(
                 'class="wplng-target-language wplng-is-private"',
                 'class="wplng-target-language wplng-is-private ' + arrowsVisibility + '"'
@@ -513,16 +513,16 @@ jQuery(document).ready(function ($) {
         ".wplng-target-lang-move-up",
         (event) => {
             event.preventDefault();
-            
+
             let languageId = $(event.target).closest('a').attr("wplng-target-lang");
             let currentIndex = wplngTargetLanguages.findIndex(lang => lang.id === languageId);
-            
+
             if (currentIndex > 0) {
                 // Swap with previous item
                 let temp = wplngTargetLanguages[currentIndex];
                 wplngTargetLanguages[currentIndex] = wplngTargetLanguages[currentIndex - 1];
                 wplngTargetLanguages[currentIndex - 1] = temp;
-                
+
                 wplngUpdateOptionPage();
             }
         }
@@ -534,16 +534,16 @@ jQuery(document).ready(function ($) {
         ".wplng-target-lang-move-down",
         (event) => {
             event.preventDefault();
-            
+
             let languageId = $(event.target).closest('a').attr("wplng-target-lang");
             let currentIndex = wplngTargetLanguages.findIndex(lang => lang.id === languageId);
-            
+
             if (currentIndex < wplngTargetLanguages.length - 1) {
                 // Swap with next item
                 let temp = wplngTargetLanguages[currentIndex];
                 wplngTargetLanguages[currentIndex] = wplngTargetLanguages[currentIndex + 1];
                 wplngTargetLanguages[currentIndex + 1] = temp;
-                
+
                 wplngUpdateOptionPage();
             }
         }
