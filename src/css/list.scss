@@ -61,8 +61,6 @@ body {
     }
 }
 
-
-
 #wplng-modal-container {
 
     display: none;
@@ -280,8 +278,7 @@ body {
                 background-color: #f6f7f7;
                 margin-bottom: 15px;
                 padding: 8px 0;
-                display: flex;
-                align-items: stretch;
+                
                 box-shadow: 0 0 8px rgba(0, 0, 0, .05);
                 border-radius: 3px;
                 border-top-left-radius: 0;
@@ -291,29 +288,42 @@ body {
                     border-left: 4px #00a32a solid;
                 }
 
-                .wplng-item-text {
+                .wplng-item-tag {
+                    margin-left: 12px;
+                    color: #6b6b6b;
+                    text-decoration: underline;
+                }
 
-                    width: calc(100% - 41px);
+                .wplng-item-main {
+                    
                     display: flex;
-                    font-size: 14px;
-                    font-weight: 600;
-                    line-height: 1.5em;
+                    align-items: stretch;
 
-                    .wplng-item-source,
-                    .wplng-item-translation {
-                        width: 50%;
-                        padding: 4px 10px;
+                    .wplng-item-text {
+
+                        width: calc(100% - 41px);
+                        display: flex;
+                        font-size: 14px;
+                        font-weight: 600;
+                        line-height: 1.5em;
+    
+                        .wplng-item-source,
+                        .wplng-item-translation {
+                            width: 50%;
+                            padding: 4px 10px;
+                        }
+    
+                        .wplng-item-translation {
+                            border-left: 1px solid #c3c4c7;
+                        }
+    
                     }
-
-                    .wplng-item-translation {
-                        border-left: 1px solid #c3c4c7;
+    
+                    .wplng-item-edit {
+                        padding: 0 10px;
                     }
-
                 }
 
-                .wplng-item-edit {
-                    padding: 0 10px;
-                }
             }
 
             #wplng-modal-no-item-found {

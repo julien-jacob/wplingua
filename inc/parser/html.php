@@ -22,69 +22,6 @@ function wplng_parse_html( $html ) {
 	}
 
 	/**
-	 * Parse JSON in attriutes
-	 */
-
-	$attr_json_to_translate = wplng_data_attr_json_to_translate();
-
-	foreach ( $attr_json_to_translate as $attr ) {
-		foreach ( $dom->find( $attr['selector'] ) as $element ) {
-
-			if ( empty( $element->attr[ $attr['attr'] ] ) ) {
-				continue;
-			}
-
-			$json = wp_specialchars_decode(
-				$element->attr[ $attr['attr'] ],
-				ENT_QUOTES | ENT_SUBSTITUTE | ENT_HTML401
-			);
-
-			$texts = array_merge(
-				$texts,
-				wplng_parse_json(
-					$json,
-					array( $attr['attr'] )
-				)
-			);
-		}
-	}
-
-	/**
-	 * Find and translate script
-	 */
-
-	foreach ( $dom->find( 'script' ) as $element ) {
-
-		if ( ! empty( $element->attr['type'] )
-			&& (
-				$element->attr['type'] === 'application/ld+json'
-				|| $element->attr['type'] === 'application/json'
-			)
-		) {
-
-			/**
-			 * Find and parse JSON in scripts
-			 */
-
-			$texts = array_merge(
-				$texts,
-				wplng_parse_json( $element->innertext )
-			);
-
-		} else {
-
-			/**
-			 * Find and translate JS in scripts
-			 */
-
-			$texts = array_merge(
-				$texts,
-				wplng_parse_js( $element->innertext )
-			);
-		}
-	}
-
-	/**
 	 * Parse Node text
 	 */
 
@@ -151,6 +88,69 @@ function wplng_parse_html( $html ) {
 				wplng_parse_html( $html )
 			);
 
+		}
+	}
+
+	/**
+	 * Parse JSON in attriutes
+	 */
+
+	$attr_json_to_translate = wplng_data_attr_json_to_translate();
+
+	foreach ( $attr_json_to_translate as $attr ) {
+		foreach ( $dom->find( $attr['selector'] ) as $element ) {
+
+			if ( empty( $element->attr[ $attr['attr'] ] ) ) {
+				continue;
+			}
+
+			$json = wp_specialchars_decode(
+				$element->attr[ $attr['attr'] ],
+				ENT_QUOTES | ENT_SUBSTITUTE | ENT_HTML401
+			);
+
+			$texts = array_merge(
+				$texts,
+				wplng_parse_json(
+					$json,
+					array( $attr['attr'] )
+				)
+			);
+		}
+	}
+
+	/**
+	 * Find and translate script
+	 */
+
+	foreach ( $dom->find( 'script' ) as $element ) {
+
+		if ( ! empty( $element->attr['type'] )
+			&& (
+				$element->attr['type'] === 'application/ld+json'
+				|| $element->attr['type'] === 'application/json'
+			)
+		) {
+
+			/**
+			 * Find and parse JSON in scripts
+			 */
+
+			$texts = array_merge(
+				$texts,
+				wplng_parse_json( $element->innertext )
+			);
+
+		} else {
+
+			/**
+			 * Find and translate JS in scripts
+			 */
+
+			$texts = array_merge(
+				$texts,
+				wplng_parse_js( $element->innertext )
+			);
 		}
 	}
 
