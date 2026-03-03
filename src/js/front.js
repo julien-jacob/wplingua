@@ -15,7 +15,7 @@
  **
  **/
 
-jQuery(document).ready(function ($) {
+document.addEventListener('DOMContentLoaded', function () {
 
     // ------------------------------------------------------------------------
     // Code for nav menu switcher
@@ -25,19 +25,17 @@ jQuery(document).ready(function ($) {
      * Set flags images in nav menu switcher
      */
 
-    $("a[data-wplng-flag][data-wplng-alt]").each(function () {
+    document.querySelectorAll('a[data-wplng-flag][data-wplng-alt]').forEach(function (element) {
 
-        let img = '';
+        const img = document.createElement('img');
+        img.src = element.getAttribute('data-wplng-flag');
+        img.alt = element.getAttribute('data-wplng-alt');
+        img.className = 'wplng-menu-flag';
 
-        img += '<img';
-        img += ' src="' + $(this).attr("data-wplng-flag") + '" ';
-        img += ' alt="' + $(this).attr("data-wplng-alt") + '" ';
-        img += ' class="wplng-menu-flag"';
-        img += '> ';
-
-        $(this).html(img + $(this).html());
-        $(this).removeAttr("data-wplng-flag");
-        $(this).removeAttr("data-wplng-alt");
+        element.insertBefore(img, element.firstChild);
+        element.insertBefore(document.createTextNode(' '), img.nextSibling);
+        element.removeAttribute('data-wplng-flag');
+        element.removeAttribute('data-wplng-alt');
     });
 
 
@@ -47,43 +45,95 @@ jQuery(document).ready(function ($) {
 
     function wplngUpdateSwitcherOpening() {
 
-        let windowMiddle = $(window).height() / 2;
+        const windowMiddle = window.innerHeight / 2;
 
-        $(".wplng-switcher.style-dropdown").each(function (e) {
+        document.querySelectorAll('.wplng-switcher.style-dropdown').forEach(function (switcher) {
 
-            let offsetFromWindow = $(this).offset().top - $(window).scrollTop();
+            const rect = switcher.getBoundingClientRect();
+            const offsetFromWindow = rect.top;
 
             if (offsetFromWindow < windowMiddle) {
-                if (!$(this).hasClass("open-bottom")) {
-                    $(this).addClass("open-bottom");
-                    $(this).removeClass("open-top");
+                if (!switcher.classList.contains('open-bottom')) {
+                    switcher.classList.add('open-bottom');
+                    switcher.classList.remove('open-top');
 
-                    let htmlLanguages = $(".wplng-languages", this).prop('outerHTML');
-                    let htmlLanguagecurrent = $(".wplng-language-current", this).prop('outerHTML');
-                    $(".switcher-content", this).html(htmlLanguagecurrent + htmlLanguages);
+                    const languages = switcher.querySelector('.wplng-languages');
+                    const languageCurrent = switcher.querySelector('.wplng-language-current');
+                    const switcherContent = switcher.querySelector('.switcher-content');
+
+                    if (switcherContent && languages && languageCurrent) {
+                        switcherContent.innerHTML = '';
+                        switcherContent.appendChild(languageCurrent.cloneNode(true));
+                        switcherContent.appendChild(languages.cloneNode(true));
+                    }
                 }
             } else {
-                if (!$(this).hasClass("open-top")) {
-                    $(this).addClass("open-top");
-                    $(this).removeClass("open-bottom");
+                if (!switcher.classList.contains('open-top')) {
+                    switcher.classList.add('open-top');
+                    switcher.classList.remove('open-bottom');
 
-                    let htmlLanguages = $(".wplng-languages", this).prop('outerHTML');
-                    let htmlLanguagecurrent = $(".wplng-language-current", this).prop('outerHTML');
-                    $(".switcher-content", this).html(htmlLanguages + htmlLanguagecurrent);
+                    const languages = switcher.querySelector('.wplng-languages');
+                    const languageCurrent = switcher.querySelector('.wplng-language-current');
+                    const switcherContent = switcher.querySelector('.switcher-content');
+
+                    if (switcherContent && languages && languageCurrent) {
+                        switcherContent.innerHTML = '';
+                        switcherContent.appendChild(languages.cloneNode(true));
+                        switcherContent.appendChild(languageCurrent.cloneNode(true));
+                    }
                 }
             }
         });
     }
 
-    $(window).scroll(function () {
-        wplngUpdateSwitcherOpening();
+    document.querySelectorAll('.wplng-switcher.style-dropdown').forEach(function (switcher) {
+        switcher.addEventListener('pointerenter', function () {
+            wplngUpdateSwitcherOpening();
+        });
     });
 
-    $("#wplng_style").on("input", function () {
-        wplngUpdateSwitcherOpening();
-    });
+    /**
+     * Init dropdown switcher
+     */
 
     wplngUpdateSwitcherOpening();
+
+    /**
+     * Re-initialize switchers when DOM changes (for Gutenberg/FSE compatibility)
+     */
+
+    function wplngInitSwitcherEvents() {
+        document.querySelectorAll('.wplng-switcher.style-dropdown:not([data-wplng-initialized])').forEach(function (switcher) {
+            switcher.setAttribute('data-wplng-initialized', 'true');
+            switcher.addEventListener('pointerenter', function () {
+                wplngUpdateSwitcherOpening();
+            });
+        });
+    }
+
+    /**
+     * Observer for Gutenberg/FSE dynamic content
+     */
+
+    const observer = new MutationObserver(function (mutations) {
+        let shouldReinit = false;
+        mutations.forEach(function (mutation) {
+            if (mutation.addedNodes.length) {
+                shouldReinit = true;
+            }
+        });
+        if (shouldReinit) {
+            wplngInitSwitcherEvents();
+            wplngUpdateSwitcherOpening();
+        }
+    });
+
+    observer.observe(document.body, {
+        childList: true,
+        subtree: true
+    });
+
+    wplngInitSwitcherEvents();
 
     // ------------------------------------------------------------------------
     // Code for switcher Cookie for language browser redirection
@@ -93,33 +143,38 @@ jQuery(document).ready(function ($) {
      * Handle clicks on all language links that have the data attribute.
      */
 
-    $('a[data-wplng-lang-id]').on('click', function (event) {
-        // Check for the onclick attribute and its value
-        const onclickAttribute = $(this).attr('onclick');
+    document.querySelectorAll('a[data-wplng-lang-id]').forEach(function (element) {
+        element.addEventListener('click', function (event) {
+            // Check for the onclick attribute and its value
+            const onclickAttribute = this.getAttribute('onclick');
 
-        if (onclickAttribute && onclickAttribute.trim() === 'event.preventDefault();') {
-            // If the onclick attribute is present and its value is 'event.preventDefault();',
-            // we assume this link is not meant for navigation. So, we don't set the cookie.
-            return;
-        }
+            if (onclickAttribute && onclickAttribute.trim() === 'event.preventDefault();') {
+                return;
+            }
 
-        // Get the language code directly from the data attribute.
-        const langCode = $(this).data('wplng-lang-id');
+            // Get the language code directly from the data attribute.
+            const langCode = this.dataset.wplngLangId;
 
-        // Set the cookie with the retrieved language code.
-        const expires = new Date();
-        expires.setFullYear(expires.getFullYear() + 1);
-        document.cookie = 'wplingua-lang=' + langCode + '; expires=' + expires.toUTCString() + '; path=/';
-
+            // Set the cookie with the retrieved language code.
+            const expires = new Date();
+            expires.setFullYear(expires.getFullYear() + 1);
+            document.cookie = 'wplingua-lang=' + langCode + '; expires=' + expires.toUTCString() + '; path=/';
+        });
     });
 
     // ------------------------------------------------------------------------
     // Code for overload bar
     // ------------------------------------------------------------------------
 
-    $("#wplng-overloaded-close").on("click", function () {
-        $("#wplng-overloaded-container").hide();
-    });
+    const overloadedClose = document.getElementById('wplng-overloaded-close');
+    if (overloadedClose) {
+        overloadedClose.addEventListener('click', function () {
+            const container = document.getElementById('wplng-overloaded-container');
+            if (container) {
+                container.style.display = 'none';
+            }
+        });
+    }
 
     // ------------------------------------------------------------------------
     // Clear URL after "Load in progress" reload
@@ -151,4 +206,4 @@ jQuery(document).ready(function ($) {
         // ignore on unsupported environments
     }
 
-}); // End jQuery loaded event
+}); // End DOMContentLoaded event
