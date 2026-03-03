@@ -24,7 +24,7 @@ function wplng_register_assets() {
 	wp_enqueue_script(
 		'wplingua-script',
 		plugins_url() . '/wplingua/assets/js/front.js',
-		array( 'jquery' ),
+		array(),
 		WPLNG_PLUGIN_VERSION
 	);
 
