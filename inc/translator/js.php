@@ -177,7 +177,7 @@ function wplng_translate_js_json_encoded_as_url( $js, $args = array() ) {
 			}
 
 			$encoded_json = trim( $json[3][ $key ] );
-			$var_json = urldecode( $encoded_json );
+			$var_json     = urldecode( $encoded_json );
 
 			// Prepare arguments for translation
 			wplng_args_setup( $args );

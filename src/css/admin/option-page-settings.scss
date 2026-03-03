@@ -143,7 +143,7 @@
             .wplng-target-lang-remove {
                 color: #0073aa;
                 text-decoration: none;
-                
+
                 &:hover {
                     color: #005177;
                 }
@@ -154,9 +154,9 @@
                     line-height: 20px;
                     width: 14px;
                 }
-                
+
             }
-            
+
             .wplng-target-lang-move-up {
                 // border: 1px solid red;
                 margin-right: 4px;
@@ -164,8 +164,8 @@
 
             // .wplng-target-lang-move-down,
             .wplng-target-lang-update-flag,
-            .wplng-target-lang-remove  {
-                
+            .wplng-target-lang-remove {
+
                 &::before {
                     content: "|";
                     display: inline-block;
@@ -213,6 +213,7 @@
         &.wplng-hide-up-arrow .wplng-target-lang-move-up,
         &.wplng-hide-down-arrow .wplng-target-lang-move-down {
             color: lightgrey;
+
             &:hover,
             &:active {
                 color: lightgrey;

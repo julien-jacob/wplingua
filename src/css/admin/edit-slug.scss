@@ -59,31 +59,31 @@
         background-color: #f6f7f7;
         box-shadow: rgba(0, 0, 0, 0.04) 0px 1px 1px 0px;
         font-size: 14px;
-    
+
         &.wplng-status-reviewed {
             border-left: 4px #00a32a solid;
             border-top-left-radius: 0;
             border-bottom-left-radius: 0;
         }
-    
+
         &.wplng-status-generated {
             border-left: 4px #72aee6 solid;
             border-top-left-radius: 0;
             border-bottom-left-radius: 0;
         }
-    
+
         &.wplng-status-ungenerated {
             border-left: 4px #c3c4c7 solid;
             border-top-left-radius: 0;
             border-bottom-left-radius: 0;
         }
-    
+
         label.wplng-target-title {
             font-weight: 600;
             margin-bottom: 8px;
             display: block;
         }
-    
+
         input[type=text] {
             box-sizing: border-box;
             overflow: hidden;
@@ -98,30 +98,30 @@
             font-size: inherit;
             min-height: 30px;
         }
-    
+
         .wplng-slug-footer {
-    
+
             color: #3c434a;
             display: flex;
             justify-content: space-between;
             margin-top: 4px;
-    
+
             a {
                 color: #135e96;
                 text-decoration: underline;
-    
+
                 &:focus {
                     box-shadow: none;
                 }
             }
-    
-    
+
+
             .wplng-mark-as-reviewed {
-    
+
                 display: inline-block;
                 border: none;
                 padding: 0;
-    
+
                 label {
                     color: #2271b1;
                     display: contents;
@@ -130,7 +130,7 @@
                     vertical-align: baseline;
                     font-weight: normal;
                 }
-    
+
                 input[type="checkbox"] {
                     border: 1px solid #8c8f94;
                     border-radius: 4px;
@@ -149,14 +149,14 @@
                     vertical-align: bottom;
                     width: 16px;
                     min-width: 16px;
-                    box-shadow: inset 0 1px 2px rgba(0,0,0,.1);
+                    box-shadow: inset 0 1px 2px rgba(0, 0, 0, .1);
                     transition: .05s border-color ease-in-out;
                     -webkit-appearance: checkbox;
                 }
             }
 
         }
-    
+
     }
 }
 
@@ -165,10 +165,10 @@
     #wplng-slug-editor {
         .wplng-edit-language {
             .wplng-slug-footer {
-    
+
                 display: block;
                 margin-top: 0;
-    
+
                 .wplng-slug-footer-left,
                 .wplng-slug-footer-right {
                     padding-top: 8px;

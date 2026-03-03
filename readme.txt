@@ -4,7 +4,7 @@ Donate link: https://wplingua.com/
 Tags: translate, translation, multilingual, localization, language
 Requires at least: 6.0
 Tested up to: 6.9
-Stable tag: 2.11.0
+Stable tag: 2.11.1
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -196,6 +196,17 @@ Your server’s database holds all the translations locally.
 12. SEO-Friendly: wpLingua add the HTML code needed for your translated pages to be indexed by search engines.
 
 == Changelog ==
+
+= 2.11.1 =
+
+* Better translation list on pages:
+ * Highlight SEO tags in translations.
+ * Display the page title tag.
+ * Display the page meta description tag.
+ * Translation order: Display text nodes first.
+* Optimization:
+ * jQuery is no longer required by the main wpLingua JS script.
+* Fix: Revision of the JS that allows the language switcher to be opened up or down in dropdown mode in the Gutenberg/FSE editor.
 
 = 2.11.0 =
 

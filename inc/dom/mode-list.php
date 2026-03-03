@@ -267,16 +267,72 @@ function wplng_dom_mode_list( $dom, $args ) {
 	$html .= '</div>'; // End #wplng-modal-header
 
 	/**
-	 * Modal items
+	 * Extract SEO title and description
+	 */
+
+	$translations                = $args['translations'];
+	$seo_title                   = '';
+	$seo_description             = '';
+	$translation_seo_title       = array();
+	$translation_seo_description = array();
+
+	foreach ( $dom->find( 'title' ) as $element ) {
+		$seo_title = wplng_text_esc( $element->innertext );
+		break;
+	}
+
+	foreach ( $dom->find( 'meta[name="description"]' ) as $element ) {
+		if ( isset( $element->attr['content'] ) ) {
+			$seo_description = wplng_text_esc( $element->attr['content'] );
+			break;
+		}
+	}
+
+	foreach ( $translations as $key => $translation ) {
+
+		if ( empty( $translation['post_id'] )
+			|| empty( $translation['source'] )
+			|| empty( $translation['translation'] )
+		) {
+			continue;
+		}
+
+		if ( $seo_title === $translation['translation'] ) {
+			$translation_seo_title        = $translation;
+			$translation_seo_title['tag'] = __( 'SEO - Title:', 'wplingua' );
+			unset( $translations[ $key ] );
+		} elseif ( $seo_description === $translation['translation'] ) {
+			$translation_seo_description        = $translation;
+			$translation_seo_description['tag'] = __( 'SEO - Description:', 'wplingua' );
+			unset( $translations[ $key ] );
+		}
+	}
+
+	if ( ! empty( $translation_seo_description ) ) {
+		$translations = array_merge(
+			array( $translation_seo_description ),
+			$translations
+		);
+	}
+
+	if ( ! empty( $translation_seo_title ) ) {
+		$translations = array_merge(
+			array( $translation_seo_title ),
+			$translations
+		);
+	}
+
+	/**
+	 * Make the Modal items
 	 */
 
 	$html .= '<div id="wplng-modal-items">';
 
 	$html .= '<p id="wplng-modal-no-item-found" style="display: none;">';
 	$html .= esc_html( 'No translation found.', 'wplingua' );
-	$html .= '</p>';
+	$html .= '</p>'; // End #wplng-modal-no-item-found
 
-	foreach ( $args['translations'] as $key => $translation ) {
+	foreach ( $translations as $key => $translation ) {
 
 		if ( empty( $translation['post_id'] )
 			|| empty( $translation['source'] )
@@ -295,6 +351,14 @@ function wplng_dom_mode_list( $dom, $args ) {
 		$html .= ' data-wplng-post="' . esc_attr( $translation['post_id'] ) . '"';
 		$html .= ' data-wplng-order="' . esc_attr( $key ) . '"';
 		$html .= '>';
+
+		if ( ! empty( $translation['tag'] ) ) {
+			$html .= '<div class="wplng-item-tag">';
+			$html .= esc_html( $translation['tag'] );
+			$html .= '</div>'; // End .wplng-item-tag
+		}
+
+		$html .= '<div class="wplng-item-main">';
 
 		$html .= '<div class="wplng-item-text">';
 		$html .= '<div class="wplng-item-source">';
@@ -315,6 +379,7 @@ function wplng_dom_mode_list( $dom, $args ) {
 		$html .= '</a>';
 
 		$html .= '</div>'; // End .wplng-item-edit
+		$html .= '</div>'; // End .wplng-item-main
 		$html .= '</div>'; // ENd .wplng-modal-item
 	}
 

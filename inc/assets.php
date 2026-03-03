@@ -18,19 +18,13 @@ function wplng_register_assets() {
 	}
 
 	/**
-	 * Enqueue jQuery
-	 */
-
-	wp_enqueue_script( 'jquery' );
-
-	/**
 	 * Enqueue wpLingua JS script
 	 */
 
 	wp_enqueue_script(
 		'wplingua-script',
 		plugins_url() . '/wplingua/assets/js/front.js',
-		array( 'jquery' ),
+		array(),
 		WPLNG_PLUGIN_VERSION
 	);
 
@@ -56,6 +50,12 @@ function wplng_register_assets() {
 		)
 		&& current_user_can( 'edit_posts' )
 	) {
+
+		/**
+		 * Enqueue jQuery
+		 */
+
+		wp_enqueue_script( 'jquery' );
 
 		wp_enqueue_script(
 			'wplingua-translation',
