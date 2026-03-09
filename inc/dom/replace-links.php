@@ -24,6 +24,7 @@ function wplng_dom_replace_links( $dom, $args ) {
 	$attr_url_to_translate = wplng_data_attr_url_to_translate();
 
 	foreach ( $attr_url_to_translate as $attr ) {
+
 		foreach ( $dom->find( $attr['selector'] ) as $element ) {
 
 			if ( empty( $element->attr[ $attr['attr'] ] ) ) {
@@ -37,7 +38,8 @@ function wplng_dom_replace_links( $dom, $args ) {
 				$args['language_target']
 			);
 
-			$element->attr[ $attr['attr'] ] = esc_url( $translated_url );
+			$element->setAttribute( $attr['attr'], esc_url( $translated_url ) );
+
 		}
 	}
 
@@ -59,7 +61,7 @@ function wplng_dom_replace_links( $dom, $args ) {
 		);
 
 		if ( $url_link_media_applied !== $link ) {
-			$element->attr['srcset'] = esc_attr( $url_link_media_applied );
+			$element->setAttribute( 'srcset', esc_attr( $url_link_media_applied ) );
 		}
 	}
 
