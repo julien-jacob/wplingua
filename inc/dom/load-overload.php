@@ -72,7 +72,5 @@ function wplng_dom_load_overload( $dom, $args ) {
 		$body->innertext .= $html;
 	}
 
-	$dom = wplng_sdh_str_get_html( $dom );
-
 	return $dom;
 }
