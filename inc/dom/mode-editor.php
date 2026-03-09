@@ -17,8 +17,8 @@ function wplng_dom_mode_editor( $dom, $args ) {
 
 	wplng_args_setup( $args );
 
-	if ( 'editor' !== $args['mode']
-		|| 'progress' === $args['load']
+	if ( $args['mode'] !== 'editor'
+		|| $args['load'] === 'progress'
 		|| empty( $args['translations'] )
 		|| ! current_user_can( 'edit_posts' )
 	) {

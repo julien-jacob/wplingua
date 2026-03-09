@@ -16,8 +16,8 @@ function wplng_dom_mode_list( $dom, $args ) {
 
 	wplng_args_setup( $args );
 
-	if ( 'list' !== $args['mode']
-		|| 'progress' === $args['load']
+	if ( $args['mode'] !== 'list'
+		|| $args['load'] === 'progress'
 		|| ! current_user_can( 'edit_posts' )
 	) {
 		return $dom;
