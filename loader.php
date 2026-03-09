@@ -61,9 +61,9 @@ require_once WPLNG_PLUGIN_DIR . '/inc/admin/translation-edit-modal.php';
 require_once WPLNG_PLUGIN_DIR . '/inc/admin/translation-meta.php';
 
 // Require files in /inc/api-call/ folder
-require_once WPLNG_PLUGIN_DIR . '/inc/api-call/request-api-key.php';
-require_once WPLNG_PLUGIN_DIR . '/inc/api-call/translate.php';
-require_once WPLNG_PLUGIN_DIR . '/inc/api-call/validate-api-key.php';
+require_once WPLNG_PLUGIN_DIR . '/inc/api/request-api-key.php';
+require_once WPLNG_PLUGIN_DIR . '/inc/api/translate.php';
+require_once WPLNG_PLUGIN_DIR . '/inc/api/validate-api-key.php';
 
 // Require files in /inc/dom/ folder
 require_once WPLNG_PLUGIN_DIR . '/inc/dom/exclusion-put-tags.php';
