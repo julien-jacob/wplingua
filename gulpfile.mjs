@@ -49,6 +49,7 @@ import uglify from 'gulp-uglify';
 import zip from 'gulp-zip';
 import autoprefixer from 'gulp-autoprefixer';
 import { deleteSync } from 'del';
+import cleanCSS from 'gulp-clean-css';
 
 
 /**
@@ -60,8 +61,9 @@ import { deleteSync } from 'del';
 
 function css(cb) {
     gulp.src('src/css/**/*.{css,scss}', { sourcemaps: true })
-        .pipe(sass({ outputStyle: 'compressed' }).on('error', sass.logError))
+        .pipe(sass().on('error', sass.logError))
         .pipe(autoprefixer())
+        .pipe(cleanCSS())
         .pipe(gulp.dest('assets/css/', { sourcemaps: '.' }))
         .on('end', function () { cb() });
 };
