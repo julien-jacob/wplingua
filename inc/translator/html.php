@@ -52,8 +52,7 @@ function wplng_translate_html( $html, $args = array() ) {
 	 * Update the dom
 	 */
 
-	$dom = wplng_dom_load_progress( $dom, $args );
-	$dom = wplng_dom_load_overload( $dom, $args );
+	
 
 	$dom = wplng_dom_replace_attr_dir( $dom, $args );
 	$dom = wplng_dom_replace_attr_lang( $dom, $args );
@@ -68,6 +67,9 @@ function wplng_translate_html( $html, $args = array() ) {
 
 	$dom = wplng_dom_mode_editor( $dom, $args );
 	$dom = wplng_dom_mode_list( $dom, $args );
+
+	$dom = wplng_dom_load_progress( $dom, $args );
+	$dom = wplng_dom_load_overload( $dom, $args );
 
 	/**
 	 * Replace exclude tags by HTML
