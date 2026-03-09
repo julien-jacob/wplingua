@@ -138,12 +138,14 @@ function wplng_data_json_rules_inclusion() {
 
 	$logical_rules[] = function ( $element, $parents ) {
 		return (
-			isset( $parents[0] )
-			&& isset( $parents[1] )
-			&& isset( $parents[2] )
-			&& isset( $parents[3] )
-			&& isset( $parents[4] )
-			&& isset( $parents[5] )
+			isset(
+				$parents[0],
+				$parents[1],
+				$parents[2],
+				$parents[3],
+				$parents[4],
+				$parents[5]
+			)
 			&& $parents[0] === 'i18n_script'
 			&& is_string( $parents[1] )
 			&& $parents[2] === 'locale_data'
@@ -189,9 +191,7 @@ function wplng_data_json_rules_inclusion() {
 
 	$logical_rules[] = function ( $element, $parents ) {
 		return (
-			! empty( $parents[0] )
-			&& ! empty( $parents[2] )
-			&& ! empty( $parents[3] )
+			isset( $parents[0], $parents[2], $parents[3] )
 			&& $parents[0] === 'itemListElement'
 			&& $parents[2] === 'item'
 			&& $parents[3] === 'name'
@@ -209,6 +209,7 @@ function wplng_data_json_rules_inclusion() {
 	$logical_rules[] = function ( $element, $parents ) {
 		return (
 			count( $parents ) === 3
+			&& isset( $parents[0], $parents[1] )
 			&& $parents[0] === 'elementorFrontendConfig'
 			&& $parents[1] === 'i18n'
 		);
@@ -234,9 +235,7 @@ function wplng_data_json_rules_inclusion() {
 
 	$logical_rules[] = function ( $element, $parents ) {
 		return (
-			isset( $parents[0] )
-			&& isset( $parents[1] )
-			&& isset( $parents[2] )
+			isset( $parents[0], $parents[1], $parents[2] )
 			&& $parents[0] === 'data-events'
 			&& is_int( $parents[1] )
 			&& (
@@ -248,8 +247,7 @@ function wplng_data_json_rules_inclusion() {
 
 	$logical_rules[] = function ( $element, $parents ) {
 		return (
-			! empty( $parents[0] )
-			&& ! empty( $parents[1] )
+			isset( $parents[0], $parents[1] )
 			&& $parents[0] === 'jQuery.datepicker.setDefaults'
 			&& $parents[1] !== 'dateFormat'
 		);
@@ -315,9 +313,7 @@ function wplng_data_json_rules_inclusion() {
 
 	$logical_rules[] = function ( $element, $parents ) {
 		return (
-			isset( $parents[0] )
-			&& isset( $parents[1] )
-			&& isset( $parents[2] )
+			isset( $parents[0], $parents[1], $parents[2] )
 			&& $parents[0] === 'wc_single_product_params'
 			&& $parents[1] === 'i18n_rating_options'
 			&& is_int( $parents[2] )
@@ -334,7 +330,7 @@ function wplng_data_json_rules_inclusion() {
 				$parents[0],
 				$parents[1],
 				$parents[2],
-				$parents[3],
+				$parents[3]
 			)
 			&& $parents[0] === 'encoded_as_url'
 			&& $parents[1] === 'wcSettings'
@@ -767,9 +763,7 @@ function wplng_data_json_rules_inclusion() {
 
 	$logical_rules[] = function ( $element, $parents ) {
 		return (
-			! empty( $parents[0] )
-			&& ! empty( $parents[1] )
-			&& ! empty( $parents[2] )
+			isset( $parents[0], $parents[1], $parents[2] )
 			&& wplng_str_starts_with( $parents[0], 'CASE' )
 			&& $parents[1] === 'l10n'
 			&& (
@@ -793,7 +787,7 @@ function wplng_data_json_rules_inclusion() {
 				|| $parents[2] === 'file_size_limit'
 				|| (
 					$parents[2] === 'datepicker'
-					&& ! empty( $parents[3] )
+					&& isset( $parents[3] )
 					&& (
 						$parents[3] === 'applyLabel'
 						|| $parents[3] === 'cancelLabel'
@@ -812,9 +806,7 @@ function wplng_data_json_rules_inclusion() {
 
 	$logical_rules[] = function ( $element, $parents ) {
 		return (
-			isset( $parents[0] )
-			&& isset( $parents[1] )
-			&& isset( $parents[2] )
+			isset( $parents[0], $parents[1], $parents[12] )
 			&& $parents[0] === 'children'
 			&& wplng_str_starts_with( $parents[1], 'term_' )
 			&& (
