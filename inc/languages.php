@@ -442,15 +442,7 @@ function wplng_is_valid_language_id( $language_id ) {
 		return false;
 	}
 
-	// wplng_data_languages_ids
-	$languages_data_id = wplng_data_languages_id();
-	foreach ( $languages_data_id as $language_data_id ) {
-		if ( $language_data_id === $language_id ) {
-			return true;
-		}
-	}
-
-	return false;
+	return in_array( $language_id, wplng_data_languages_id(), true );
 }
 
 
