@@ -17,7 +17,7 @@ function wplng_dom_load_progress( $dom, $args ) {
 
 	wplng_args_setup( $args );
 
-	if ( 'progress' !== $args['load']
+	if ( $args['load'] !== 'progress'
 		|| ! current_user_can( 'edit_posts' )
 	) {
 		return $dom;

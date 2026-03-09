@@ -52,22 +52,28 @@ function wplng_translate_html( $html, $args = array() ) {
 	 * Update the dom
 	 */
 
-	$dom = wplng_dom_load_progress( $dom, $args );
-	$dom = wplng_dom_load_overload( $dom, $args );
-
+	// Setup translated page (dir, attribute lang, class, links)
 	$dom = wplng_dom_replace_attr_dir( $dom, $args );
 	$dom = wplng_dom_replace_attr_lang( $dom, $args );
 	$dom = wplng_dom_replace_body_class( $dom, $args );
 	$dom = wplng_dom_replace_links( $dom, $args );
 
+	// Translate texts
 	$dom = wplng_dom_translate_nodes_texts( $dom, $args );
 	$dom = wplng_dom_translate_attr_texts( $dom, $args );
+
+	// Translate HTML, JS and JSON
 	$dom = wplng_dom_translate_html_attr( $dom, $args );
 	$dom = wplng_dom_translate_json_attr( $dom, $args );
 	$dom = wplng_dom_translate_script( $dom, $args );
 
+	// Load editor or list mode if needed
 	$dom = wplng_dom_mode_editor( $dom, $args );
 	$dom = wplng_dom_mode_list( $dom, $args );
+
+	// Load bar if needed (progress or overload)
+	$dom = wplng_dom_load_progress( $dom, $args );
+	$dom = wplng_dom_load_overload( $dom, $args );
 
 	/**
 	 * Replace exclude tags by HTML

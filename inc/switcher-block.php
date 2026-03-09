@@ -41,6 +41,36 @@ function wplng_block_category( $block_categories ) {
  * @see https://developer.wordpress.org/block-editor/developers/block-api/block-registration/
  */
 function wplng_register_block() {
+
+	$keywords = array_unique(
+		array(
+
+			// Untranslated keywords
+			'language',
+			'switcher',
+			'multilanguage',
+			'multilingual',
+			'translate',
+			'translation',
+			'flag',
+			'flags',
+
+			// Not editable
+			'wpLingua',
+
+			// Translated keywords
+			__( 'language', 'wplingua' ),
+			__( 'switcher', 'wplingua' ),
+			__( 'multilanguage', 'wplingua' ),
+			__( 'multilingual', 'wplingua' ),
+			__( 'translate', 'wplingua' ),
+			__( 'translation', 'wplingua' ),
+			__( 'flag', 'wplingua' ),
+			__( 'flags', 'wplingua' ),
+
+		)
+	);
+
 	register_block_type(
 		'wplingua/languages-switcher',
 		array(
@@ -49,17 +79,7 @@ function wplng_register_block() {
 			'icon'            => 'translation',
 			'category'        => 'wplingua',
 			'render_callback' => 'wplng_render_switcher_block',
-			'keywords'        => array(
-				__( 'language', 'wplingua' ),
-				__( 'switcher', 'wplingua' ),
-				__( 'multilanguage', 'wplingua' ),
-				__( 'multilingual', 'wplingua' ),
-				__( 'translate', 'wplingua' ),
-				__( 'translation', 'wplingua' ),
-				__( 'flag', 'wplingua' ),
-				__( 'flags', 'wplingua' ),
-				'wpLingua',
-			),
+			'keywords'        => $keywords,
 			'attributes'      => array(
 				'style' => array(
 					'type'    => 'string',

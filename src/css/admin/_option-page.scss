@@ -22,13 +22,15 @@
     }
 }
 
-.wplng-icon-button {
+.button.wplng-icon-button {
 
     width: 45px;
     text-align: center;
+    padding: 0;
 
     .dashicons {
-        line-height: 1.4em;
+        vertical-align: text-top;
+        line-height: 1rem;
     }
 
 }

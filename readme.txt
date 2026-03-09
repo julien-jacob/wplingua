@@ -4,7 +4,7 @@ Donate link: https://wplingua.com/
 Tags: translate, translation, multilingual, localization, language
 Requires at least: 6.0
 Tested up to: 6.9
-Stable tag: 2.11.1
+Stable tag: 2.11.2
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -196,6 +196,15 @@ Your server’s database holds all the translations locally.
 12. SEO-Friendly: wpLingua add the HTML code needed for your translated pages to be indexed by search engines.
 
 == Changelog ==
+
+= 2.11.2 =
+
+* Fix links translation in mode "Load in progress"
+* Normalize style for SEO tag in "All translations in page"
+* Prepare admin design for WordPress 7.0
+* Optimize DOM parsing in some cases
+* Update CSS/JS compiler
+* Extensive code review
 
 = 2.11.1 =
 
