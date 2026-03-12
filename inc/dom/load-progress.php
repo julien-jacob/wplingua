@@ -174,7 +174,7 @@ function wplng_dom_load_progress( $dom, $args ) {
 	$texts_unknow_by_chunk = array();
 	$current_chunk         = array();
 	$current_chars         = 0;
-	$max_items_per_chunk   = (int) ( WPLNG_MAX_TRANSLATIONS_STR / 4 );
+	$max_items_per_chunk   = (int) ( WPLNG_MAX_TRANSLATIONS_STR / 2 );
 	$max_chars_per_chunk   = (int) ( WPLNG_MAX_TRANSLATIONS_CHAR / 2 );
 
 	foreach ( $args['texts_unknow'] as $text_unknow ) {

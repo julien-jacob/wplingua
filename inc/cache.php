@@ -113,9 +113,13 @@ function wplng_clear_website_cache() {
 	}
 
 	// WP Rocket
-	if ( function_exists( 'rocket_clean_domain' ) ) {
-		rocket_clean_domain();
-	}
+    if ( function_exists( 'rocket_clean_domain' ) ) {
+        if ( did_action( 'wp_rocket_loaded' ) ) {
+            rocket_clean_domain();
+        } else {
+            add_action( 'wp_rocket_loaded', 'rocket_clean_domain' );
+        }
+    }
 
 	// Autoptimize
 	if ( class_exists( 'autoptimizeCache' )
