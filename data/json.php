@@ -816,6 +816,28 @@ function wplng_data_json_rules_inclusion() {
 		);
 	};
 
+	// ------------------------------------------------------------------------
+	// Theme: Breaks
+	// ------------------------------------------------------------------------
+
+	$logical_rules[] = function ( $element, $parents ) {
+		return in_array(
+			$parents,
+			array(
+				array( 'data', 'message' ),
+			)
+		);
+	};
+
+	$logical_rules[] = function ( $element, $parents ) {
+		return (
+			isset( $parents[0], $parents[1], $parents[2] )
+			&& $parents[0] === 'data'
+			&& $parents[1] === 'message'
+			&& is_int( $parents[2] )
+		);
+	};
+
 	return apply_filters(
 		'wplng_json_rules_inclusion',
 		$logical_rules

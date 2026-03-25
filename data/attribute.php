@@ -205,6 +205,12 @@ function wplng_data_attr_text_to_translate() {
 				'attr'     => 'data-detailsButtonText',
 				'selector' => '.eael-event-calendar-cls[data-detailsButtonText]',
 			),
+
+			// Theme: Breaks builder
+			array(
+				'attr'     => 'data-error-message',
+				'selector' => '[data-error-message]',
+			),
 		)
 	);
 }
