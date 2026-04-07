@@ -598,3 +598,38 @@ function wplng_admin_notice_incompatible_htaccess() {
 		echo $html;
 	}
 }
+
+
+/**
+ * Display a notice if the permalink structure is set to Plain
+ *
+ * @return void|string Outputs the admin notice if applicable, or returns void if no notice is required.
+ */
+function wplng_admin_notice_incompatible_plain_permalink() {
+
+	if ( ! empty( get_option( 'permalink_structure' ) ) ) {
+		return;
+	}
+
+	$url_permalinks = get_admin_url() . 'options-permalink.php';
+
+	$html  = '<div ';
+	$html .= 'class="wplng-notice notice notice-error is-dismissible" ';
+	$html .= 'style="background-color: rgba(255, 0, 0, .1);">';
+	$html .= '<p style="font-weight: 600;">';
+	$html .= '<span class="dashicons dashicons-translation"></span> ';
+	$html .= esc_html__( 'wpLingua - Incompatible permalink structure', 'wplingua' );
+	$html .= '</p>';
+	$html .= '<p>';
+	$html .= esc_html__( 'wpLingua is not compatible with the "Plain" permalink structure. Please update your permalink settings to use "Post name" or "Custom Structure".', 'wplingua' );
+	$html .= '</p>';
+	$html .= '<a ';
+	$html .= 'href="' . esc_url( $url_permalinks ) . '" ';
+	$html .= 'class="button button-primary" ';
+	$html .= 'style="margin-bottom: 10px;">';
+	$html .= esc_html__( 'Manage permalink settings', 'wplingua' );
+	$html .= '</a>';
+	$html .= '</div>'; // End .notice
+
+	echo $html;
+}

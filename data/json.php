@@ -591,6 +591,7 @@ function wplng_data_json_rules_inclusion() {
 				array( 'complianz', 'categories', 'marketing' ),
 				array( 'complianz', 'placeholdertext' ),
 				array( 'complianz', 'page_links', 'eu', 'privacy-statement', 'title' ),
+				array( 'complianz', 'page_links', 'eu', 'cookie-statement', 'title' ),
 				array( 'complianz', 'aria_label' ),
 			)
 		);
