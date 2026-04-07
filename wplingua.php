@@ -119,6 +119,7 @@ function wplng_start() {
 	add_action( 'admin_notices', 'wplng_admin_notice_incompatible_sub_folder', 1 );
 	add_action( 'admin_notices', 'wplng_admin_notice_incompatible_php_version', 1 );
 	add_action( 'admin_notices', 'wplng_admin_notice_incompatible_htaccess', 1 );
+	add_action( 'admin_notices', 'wplng_admin_notice_incompatible_plain_permalink', 1 );
 
 	// Return if incompatibility is detected
 	if ( ! empty( wplng_get_incompatible_plugins() )
@@ -126,6 +127,7 @@ function wplng_start() {
 		|| wplng_website_in_sub_folder()
 		|| ( version_compare( PHP_VERSION, WPLNG_PHP_MIN_VERSION ) < 0 )
 		|| ! wplng_htaccess_is_valid()
+		|| empty( get_option( 'permalink_structure' ) )
 	) {
 		return;
 	}
