@@ -153,7 +153,7 @@ function wplng_settings_part_first_use() {
 	// Enable default feature
 	update_option( 'wplng_sitemap_xml', 1 );
 	update_option( 'wplng_hreflang', 1 );
-	// update_option( 'wplng_load_in_progress', 1 );
+	update_option( 'wplng_load_in_progress', 1 );
 
 	// Get URL for first registered language of front page
 	$url_front_page_translated = wplng_url_translate(
@@ -542,7 +542,7 @@ function wplng_settings_part_features_more() {
 	</div>
 
 	<input type="checkbox" id="wplng_browser_language_redirect_checkbox" name="wplng_browser_language_redirect_checkbox" value="1"/> 
-	<label for="wplng_browser_language_redirect_checkbox"><?php esc_html_e( 'Enable language browser redirection', 'wplingua' ); ?></label> 
+	<label for="wplng_browser_language_redirect_checkbox"><?php esc_html_e( 'Enable redirection based on the web browser\'s language', 'wplingua' ); ?></label> 
 	<span title="<?php esc_attr_e( 'Click to expand', 'wplingua' ); ?>" wplng-help-box="#wplng-hb-feature-browser-language-redirect"></span>
 
 	<div class="wplng-help-box" id="wplng-hb-feature-browser-language-redirect">
