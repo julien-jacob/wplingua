@@ -441,6 +441,12 @@ function wplng_option_page_switcher() {
 						
 						<div class="wplng-help-box" id="wplng-hb-insert-shortcode">
 							<p><?php esc_html_e( 'If you want to insert the language switcher only in certain places on your website, you can use the shortcode provided for this purpose. Note that in this case, the previous option should be "None". This method is ideal for placing the switcher where you want it, whether you are using a Gutenberg block-based theme (FSE), a classic theme or even a page or theme builder like Divi, Elementor...', 'wplingua' ); ?></p>
+							<hr>
+							<p><?php esc_html_e( 'You can add parameters to the language selector shortcode, for example: ', 'wplingua' ); ?></p>
+							<pre>[wplng_switcher style="dropdown" theme="dark-simple-smooth"]</pre>
+							<hr>
+							<p><?php esc_html_e( 'Here is a list of all available settings: ', 'wplingua' ); ?></p>
+							<pre>[wplng_switcher style="list|block|dropdown" flags="circle|rectangular|wave|none" title="original|name|id|none" class="you-css-class" theme="light-double-smooth|light-double-square|light-simple-smooth|light-simple-square|grey-double-smooth|grey-double-square|grey-simple-smooth|grey-simple-square|dark-double-smooth|dark-double-square|dark-simple-smooth|dark-simple-square|blurblack-double-smooth|blurblack-double-square|blurblack-simple-smooth|blurblack-simple-square|blurwhite-double-smooth|blurwhite-double-square|blurwhite-simple-smooth|blurwhite-simple-square"]</pre>
 						</div>
 
 						<hr>
