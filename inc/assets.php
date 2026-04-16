@@ -28,6 +28,19 @@ function wplng_register_assets() {
 		WPLNG_PLUGIN_VERSION
 	);
 
+	wp_add_inline_script(
+		'wplingua-script',
+		'window.wplngCookiePath=' . wp_json_encode( COOKIEPATH ) . ';',
+		'before'
+	);
+
+	// The load-in-progress script relies on jQuery and is injected in translated pages.
+	if ( current_user_can( 'edit_posts' )
+		&& get_option( 'wplng_load_in_progress', false )
+	) {
+		wp_enqueue_script( 'jquery' );
+	}
+
 	/**
 	 * Enqueue wpLingua CSS style
 	 */
@@ -132,8 +145,8 @@ function wplng_on_page_script() {
 	}
 
 	$script = str_replace(
-		array( '[admin-ajax-php]', '//# sourceMappingURL=on-page.js.map' ),
-		array( admin_url( 'admin-ajax.php' ), '' ),
+		array( '[admin-ajax-php]', '[wplng-cookie-path]', '//# sourceMappingURL=on-page.js.map' ),
+		array( admin_url( 'admin-ajax.php' ), COOKIEPATH, '' ),
 		$script
 	);
 
