@@ -38,8 +38,8 @@ function wplng_browser_language_redirect_js_only() {
 	}
 
 	$script = str_replace(
-		'//# sourceMappingURL=browser-redirect.js.map',
-		'',
+		array( '[wplng-cookie-path]', '//# sourceMappingURL=browser-redirect.js.map' ),
+		array( COOKIEPATH, '' ),
 		$script
 	);
 

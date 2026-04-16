@@ -512,6 +512,139 @@ function wplng_website_in_sub_folder() {
 
 
 /**
+ * Get WordPress home base path.
+ *
+ * Examples:
+ * - Root install => ''
+ * - Subdirectory install => '/blog'
+ *
+ * @return string
+ */
+function wplng_get_home_base_path() {
+
+	static $base_path = null;
+
+	if ( null !== $base_path ) {
+		return $base_path;
+	}
+
+	$parsed_url = wp_parse_url( home_url() );
+	$base_path  = '';
+
+	if ( isset( $parsed_url['path'] )
+		&& is_string( $parsed_url['path'] )
+	) {
+		$base_path = untrailingslashit( $parsed_url['path'] );
+	}
+
+	return $base_path;
+}
+
+
+/**
+ * Normalize a relative request path by stripping WordPress home base path.
+ *
+ * @param string $path
+ * @return string
+ */
+function wplng_normalize_request_path( $path ) {
+
+	if ( ! is_string( $path ) || '' === $path ) {
+		return '/';
+	}
+
+	$parsed_url = wp_parse_url( $path );
+
+	if ( is_array( $parsed_url )
+		&& isset( $parsed_url['host'] )
+	) {
+		$path = '/';
+
+		if ( isset( $parsed_url['path'] ) && is_string( $parsed_url['path'] ) ) {
+			$path = $parsed_url['path'];
+		}
+
+		if ( isset( $parsed_url['query'] ) && is_string( $parsed_url['query'] ) && '' !== $parsed_url['query'] ) {
+			$path .= '?' . $parsed_url['query'];
+		}
+	}
+
+	if ( '' === $path ) {
+		$path = '/';
+	} elseif ( '?' === substr( $path, 0, 1 ) ) {
+		$path = '/' . $path;
+	} elseif ( ! wplng_str_starts_with( $path, '/' ) ) {
+		$path = '/' . $path;
+	}
+
+	$base_path = wplng_get_home_base_path();
+
+	if ( '' === $base_path ) {
+		return $path;
+	}
+
+	if ( $path === $base_path ) {
+		return '/';
+	}
+
+	if ( wplng_str_starts_with( $path, $base_path . '/' )
+		|| wplng_str_starts_with( $path, $base_path . '?' )
+	) {
+		$path = substr( $path, strlen( $base_path ) );
+
+		if ( '' === $path ) {
+			$path = '/';
+		} elseif ( '?' === substr( $path, 0, 1 ) ) {
+			$path = '/' . $path;
+		}
+	}
+
+	return $path;
+}
+
+
+/**
+ * Build request URI for WordPress core from an internal normalized path.
+ *
+ * @param string $path
+ * @return string
+ */
+function wplng_request_path_for_wp( $path ) {
+
+	if ( ! is_string( $path ) || '' === $path ) {
+		$path = '/';
+	}
+
+	$base_path = wplng_get_home_base_path();
+
+	if ( '' === $base_path ) {
+		return $path;
+	}
+
+	if ( $path === $base_path
+		|| wplng_str_starts_with( $path, $base_path . '/' )
+		|| wplng_str_starts_with( $path, $base_path . '?' )
+	) {
+		return $path;
+	}
+
+	if ( '/' === $path ) {
+		return trailingslashit( $base_path );
+	}
+
+	if ( '?' === substr( $path, 0, 1 ) ) {
+		$path = '/' . $path;
+	}
+
+	if ( wplng_str_starts_with( $path, '/' ) ) {
+		return $base_path . $path;
+	}
+
+	return trailingslashit( $base_path ) . $path;
+}
+
+
+/**
  * Counts the number of published posts for all public post types.
  *
  * This function retrieves all registered public post types, including custom post types,

@@ -7,6 +7,64 @@ if ( ! defined( 'WPINC' ) ) {
 
 
 /**
+ * Add language ID in path while preserving WordPress home base path.
+ *
+ * @param string $path
+ * @param string $language_target_id
+ * @return string
+ */
+function wplng_add_language_to_path( $path, $language_target_id ) {
+
+	if ( ! is_string( $path ) || '' === $path ) {
+		return '/' . $language_target_id . '/';
+	}
+
+	$path_only = $path;
+	$suffix    = '';
+
+	$query_pos    = strpos( $path_only, '?' );
+	$fragment_pos = strpos( $path_only, '#' );
+	$cut_pos      = false;
+
+	if ( false !== $query_pos && false !== $fragment_pos ) {
+		$cut_pos = min( $query_pos, $fragment_pos );
+	} elseif ( false !== $query_pos ) {
+		$cut_pos = $query_pos;
+	} elseif ( false !== $fragment_pos ) {
+		$cut_pos = $fragment_pos;
+	}
+
+	if ( false !== $cut_pos ) {
+		$path_only = substr( $path_only, 0, $cut_pos );
+		$suffix    = substr( $path, $cut_pos );
+	}
+
+	$home_base_path      = wplng_get_home_base_path();
+	$home_base_with_slash = trailingslashit( $home_base_path );
+
+	if ( '' !== $home_base_path
+		&& ( $path_only === $home_base_path
+			|| wplng_str_starts_with( $path_only, $home_base_with_slash ) )
+	) {
+		$path_after_base = substr( $path_only, strlen( $home_base_with_slash ) );
+		$path_only       = $home_base_with_slash . $language_target_id . '/';
+
+		if ( '' !== $path_after_base ) {
+			$path_only .= ltrim( $path_after_base, '/' );
+		}
+	} elseif ( wplng_str_starts_with( $path_only, '/' ) ) {
+		$path_only = '/' . $language_target_id . '/' . ltrim( $path_only, '/' );
+	} else {
+		$path_only = $language_target_id . '/' . $path_only;
+	}
+
+	$path_only = preg_replace( '#//+#', '/', $path_only );
+
+	return $path_only . $suffix;
+}
+
+
+/**
  * Get the translated URL
  *
  * @param string $url
@@ -62,6 +120,7 @@ function wplng_url_translate_no_filter( $url, $language_target_id = '' ) {
 	$languages_target = wplng_get_languages_target();
 	$preg_domain      = '';
 	$parsed_url_home  = wp_parse_url( home_url() );
+	$home_base_path   = wplng_get_home_base_path();
 
 	if ( isset( $parsed_url_home['host'] )
 		&& is_string( $parsed_url_home['host'] )
@@ -86,22 +145,49 @@ function wplng_url_translate_no_filter( $url, $language_target_id = '' ) {
 
 		$parsed_url = wp_parse_url( $url );
 
-		if ( ! empty( $parsed_url['path'] ) ) {
-			$url = str_replace(
-				$parsed_url['path'],
-				wplng_slug_translate_path(
+		if ( '' === $home_base_path ) {
+
+			if ( ! empty( $parsed_url['path'] ) ) {
+				$url = str_replace(
 					$parsed_url['path'],
-					$language_target_id
-				),
+					wplng_slug_translate_path(
+						$parsed_url['path'],
+						$language_target_id
+					),
+					$url
+				);
+			}
+
+			$url = preg_replace(
+				'#^(http:\/\/|https:\/\/)?' . $preg_domain . '(.*)$#',
+				'${1}' . $parsed_url_home['host'] . '/' . $language_target_id . '${2}',
 				$url
 			);
-		}
 
-		$url = preg_replace(
-			'#^(http:\/\/|https:\/\/)?' . $preg_domain . '(.*)$#',
-			'${1}' . $parsed_url_home['host'] . '/' . $language_target_id . '${2}',
-			$url
-		);
+		} else {
+
+			$path = '/';
+
+			if ( ! empty( $parsed_url['path'] ) ) {
+				$path = $parsed_url['path'];
+			}
+
+			$path = wplng_slug_translate_path(
+				$path,
+				$language_target_id
+			);
+
+			$path = wplng_add_language_to_path(
+				$path,
+				$language_target_id
+			);
+
+			if ( ! empty( $parsed_url['path'] ) ) {
+				$url = str_replace( $parsed_url['path'], $path, $url );
+			} else {
+				$url = untrailingslashit( $url ) . $path;
+			}
+		}
 
 		if ( empty( $parsed_url['fragment'] )
 			&& empty( $parsed_url['query'] )
@@ -129,10 +215,17 @@ function wplng_url_translate_no_filter( $url, $language_target_id = '' ) {
 			$language_target_id
 		);
 
-		if ( wplng_str_starts_with( $url, '/' ) ) {
-			$url = '/' . $language_target_id . $url;
+		if ( '' === $home_base_path ) {
+			if ( wplng_str_starts_with( $url, '/' ) ) {
+				$url = '/' . $language_target_id . $url;
+			} else {
+				$url = $language_target_id . '/' . $url;
+			}
 		} else {
-			$url = $language_target_id . '/' . $url;
+			$url = wplng_add_language_to_path(
+				$url,
+				$language_target_id
+			);
 		}
 	}
 

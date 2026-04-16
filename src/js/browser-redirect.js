@@ -28,6 +28,7 @@
      */
 
     const userLang = navigator.language.slice(0, 2);
+    const cookiePath = '[wplng-cookie-path]';
 
     /**
      * Get cookie wplingua-lang
@@ -72,7 +73,7 @@
                 const date = new Date();
                 date.setTime(date.getTime() + (30 * 24 * 60 * 60 * 1000));
                 const expires = "; expires=" + date.toUTCString();
-                document.cookie = cookieName + "=" + (userLang || "") + expires + "; path=/";
+                document.cookie = cookieName + "=" + (userLang || "") + expires + "; path=" + cookiePath;
 
                 // Redirect to the corresponding URL
                 window.location.href = availableLanguages[userLang];

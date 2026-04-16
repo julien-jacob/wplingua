@@ -158,7 +158,8 @@ document.addEventListener('DOMContentLoaded', function () {
             // Set the cookie with the retrieved language code.
             const expires = new Date();
             expires.setFullYear(expires.getFullYear() + 1);
-            document.cookie = 'wplingua-lang=' + langCode + '; expires=' + expires.toUTCString() + '; path=/';
+            const cookiePath = (window.wplngCookiePath && typeof window.wplngCookiePath === 'string') ? window.wplngCookiePath : '/';
+            document.cookie = 'wplingua-lang=' + langCode + '; expires=' + expires.toUTCString() + '; path=' + cookiePath;
         });
     });
 
