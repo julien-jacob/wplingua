@@ -39,7 +39,7 @@ function wplng_add_language_to_path( $path, $language_target_id ) {
 		$suffix    = substr( $path, $cut_pos );
 	}
 
-	$home_base_path      = wplng_get_home_base_path();
+	$home_base_path       = wplng_get_home_base_path();
 	$home_base_with_slash = trailingslashit( $home_base_path );
 
 	if ( '' !== $home_base_path
