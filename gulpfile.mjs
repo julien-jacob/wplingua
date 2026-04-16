@@ -101,6 +101,7 @@ function images(cb) {
 
 gulp.task(images);
 
+
 /**
  * Task copy
  * 
@@ -115,6 +116,7 @@ function copy(cb) {
 };
 
 gulp.task(copy);
+
 
 /**
  * Function folder-zip
