@@ -64,10 +64,7 @@ function wplng_register_assets() {
 		&& current_user_can( 'edit_posts' )
 	) {
 
-		/**
-		 * Enqueue jQuery
-		 */
-
+		wp_enqueue_style( 'dashicons' );
 		wp_enqueue_script( 'jquery' );
 
 		wp_enqueue_script(
