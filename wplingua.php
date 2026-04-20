@@ -7,7 +7,7 @@
  * Author URI: https://wplingua.com/
  * Text Domain: wplingua
  * Domain Path: /languages/
- * Version: 2.11.7
+ * Version: 2.12.0
  * Requires PHP: 7.4
  * License: GPL v2 or later
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -24,7 +24,7 @@ if ( ! defined( 'WPINC' ) ) {
 define( 'WPLNG_API_URL', 'https://api.wplingua.com' );
 define( 'WPLNG_API_VERSION', '3.0' );
 define( 'WPLNG_API_SSLVERIFY', true );
-define( 'WPLNG_PLUGIN_VERSION', '2.11.7' );
+define( 'WPLNG_PLUGIN_VERSION', '2.12.0' );
 define( 'WPLNG_PLUGIN_FILE', plugin_basename( __FILE__ ) );
 define( 'WPLNG_PLUGIN_DIR', __DIR__ );
 define( 'WPLNG_CACHE_DIR', WP_CONTENT_DIR . '/wplingua-cache' );
@@ -74,7 +74,8 @@ function wplng_start() {
 	// Setup $wplng_request_uri
 	if ( isset( $_SERVER['REQUEST_URI'] ) ) {
 
-		$request_uri = sanitize_url( $_SERVER['REQUEST_URI'] );
+		$request_uri = wp_unslash( (string) $_SERVER['REQUEST_URI'] );
+		$request_uri = wplng_normalize_request_path( $request_uri );
 		$decoded_uri = urldecode( $request_uri );
 
 		// Check if the request URI is clean
@@ -116,7 +117,6 @@ function wplng_start() {
 	// Display a notice if incompatibility is detected
 	add_action( 'admin_notices', 'wplng_admin_notice_incompatible_plugin', 1 );
 	add_action( 'admin_notices', 'wplng_admin_notice_incompatible_multisite', 1 );
-	add_action( 'admin_notices', 'wplng_admin_notice_incompatible_sub_folder', 1 );
 	add_action( 'admin_notices', 'wplng_admin_notice_incompatible_php_version', 1 );
 	add_action( 'admin_notices', 'wplng_admin_notice_incompatible_htaccess', 1 );
 	add_action( 'admin_notices', 'wplng_admin_notice_incompatible_plain_permalink', 1 );
@@ -124,7 +124,6 @@ function wplng_start() {
 	// Return if incompatibility is detected
 	if ( ! empty( wplng_get_incompatible_plugins() )
 		|| is_multisite()
-		|| wplng_website_in_sub_folder()
 		|| ( version_compare( PHP_VERSION, WPLNG_PHP_MIN_VERSION ) < 0 )
 		|| ! wplng_htaccess_is_valid()
 		|| empty( get_option( 'permalink_structure' ) )

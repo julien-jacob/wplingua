@@ -447,6 +447,8 @@ function wplng_option_page_switcher() {
 							<hr>
 							<p><?php esc_html_e( 'Here is a list of all available settings: ', 'wplingua' ); ?></p>
 							<pre>[wplng_switcher style="list|block|dropdown" flags="circle|rectangular|wave|none" title="original|name|id|none" class="you-css-class" theme="light-double-smooth|light-double-square|light-simple-smooth|light-simple-square|grey-double-smooth|grey-double-square|grey-simple-smooth|grey-simple-square|dark-double-smooth|dark-double-square|dark-simple-smooth|dark-simple-square|blurblack-double-smooth|blurblack-double-square|blurblack-simple-smooth|blurblack-simple-square|blurwhite-double-smooth|blurwhite-double-square|blurwhite-simple-smooth|blurwhite-simple-square"]</pre>
+							<hr>
+							<p><?php esc_html_e( 'If a setting is not specified, the value entered on the language switcher options page will be used.', 'wplingua' ); ?></p>
 						</div>
 
 						<hr>

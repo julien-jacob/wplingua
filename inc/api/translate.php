@@ -102,6 +102,10 @@ function wplng_api_call_translate(
 		return array();
 	}
 
+	if ( $language_target_id === $language_source_id ) {
+		return array();
+	}
+
 	/**
 	 * Add dictionary tag
 	 */
@@ -110,6 +114,7 @@ function wplng_api_call_translate(
 
 	$texts_tagged = wplng_dictionary_add_tags(
 		$texts,
+		$language_target_id,
 		$dictionary_entries
 	);
 
@@ -204,8 +209,8 @@ function wplng_api_call_translate(
 
 	$texts_untagged = wplng_dictionary_replace_tags(
 		$response['translations'],
-		$dictionary_entries,
-		$language_target_id
+		$language_target_id,
+		$dictionary_entries
 	);
 
 	// Check and sanitize each translation

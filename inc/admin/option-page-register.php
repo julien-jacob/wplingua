@@ -410,7 +410,7 @@ function wplng_register_part_free_api_key() {
 	<p>
 		<fieldset>
 			<label for="wplng-language-target" class="wplng-fe-50">
-				<strong><?php esc_html_e( 'Target language: ', 'wplingua' ); ?> </strong> 
+				<strong><?php esc_html_e( 'Language to add: ', 'wplingua' ); ?> </strong> 
 				<span title="<?php esc_attr_e( 'Click to expand', 'wplingua' ); ?>" wplng-help-box="#wplng-hb-register-language-target"></span>
 			</label>
 			<select name="wplng-language-target" id="wplng-language-target" class="wplng-fe-50"></select>
