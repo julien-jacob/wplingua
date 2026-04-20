@@ -148,7 +148,7 @@ function wplng_dictionary_get_entries_json() {
  * @param array $dictionary_entries
  * @return array Texts tagged
  */
-function wplng_dictionary_add_tags( $texts, $dictionary_entries = false ) {
+function wplng_dictionary_add_tags( $texts, $language_target_id, $dictionary_entries = false ) {
 
 	if ( false === $dictionary_entries ) {
 		$dictionary_entries = wplng_dictionary_get_entries();
@@ -171,6 +171,14 @@ function wplng_dictionary_add_tags( $texts, $dictionary_entries = false ) {
 		$entries_used = array();
 
 		foreach ( $dictionary_entries as $entry_key => $entry ) {
+
+			$has_rules = isset( $entry['rules'] )
+				&& is_array( $entry['rules'] )
+				&& ! empty( $entry['rules'] );
+
+			if ( $has_rules && empty( $entry['rules'][ $language_target_id ] ) ) {
+				continue;
+			}
 
 			$preg_match = array();
 
@@ -261,11 +269,7 @@ function wplng_dictionary_add_tags( $texts, $dictionary_entries = false ) {
  * @param array $dictionary_entries
  * @return array Texts untagged
  */
-function wplng_dictionary_replace_tags( $texts, $dictionary_entries = false, $language_id = false ) {
-
-	if ( false === $language_id ) {
-		$language_id = wplng_get_language_current_id();
-	}
+function wplng_dictionary_replace_tags( $texts, $language_target_id, $dictionary_entries = false ) {
 
 	if ( false === $dictionary_entries ) {
 		$dictionary_entries = wplng_dictionary_get_entries();
@@ -278,8 +282,8 @@ function wplng_dictionary_replace_tags( $texts, $dictionary_entries = false, $la
 			$replacement = $entry['source'];
 
 			// For specific rule by language
-			if ( ! empty( $entry['rules'][ $language_id ] ) ) {
-				$replacement = $entry['rules'][ $language_id ];
+			if ( ! empty( $entry['rules'][ $language_target_id ] ) ) {
+				$replacement = $entry['rules'][ $language_target_id ];
 			}
 
 			// Replacement for text in uppercase
