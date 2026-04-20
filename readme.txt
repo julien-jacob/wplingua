@@ -4,7 +4,7 @@ Donate link: https://wplingua.com/
 Tags: translate, translation, multilingual, localization, language
 Requires at least: 6.0
 Tested up to: 6.9
-Stable tag: 2.11.7
+Stable tag: 2.12.0
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -197,75 +197,14 @@ Your server’s database holds all the translations locally.
 
 == Changelog ==
 
-= 2.11.7 =
+= 2.12.0 =
 
-* Enhance language switcher shortcode documentation with usage examples and available settings.
-* Enable loading in progress option during first use setup.
-* Update label for browser language redirection option for clarity.
-
-= 2.11.6 =
-
-* Improved plugin compatibility: FooGallery
-
-= 2.11.5 =
-
-* Improved plugin compatibility: Complianz
-* Added check for incompatible permalink structure
-
-= 2.11.4 =
-
-* Better theme compatibility: Bricks Builder
-* Update plugin translations
-
-= 2.11.3 =
-
-* Improved WP Rocket compatibility: adjusted cache clearing behavior
-* Improved "Load in progress" mode: adjusted text chunk size
-
-= 2.11.2 =
-
-* Fix links translation in mode "Load in progress"
-* Normalize style for SEO tag in "All translations in page"
-* Prepare admin design for WordPress 7.0
-* Optimize DOM parsing in some cases
-* Update CSS/JS compiler
-* Extensive code review
-
-= 2.11.1 =
-
-* Better translation list on pages:
- * Highlight SEO tags in translations.
- * Display the page title tag.
- * Display the page meta description tag.
- * Translation order: Display text nodes first.
-* Optimization:
- * jQuery is no longer required by the main wpLingua JS script.
-* Fix: Revision of the JS that allows the language switcher to be opened up or down in dropdown mode in the Gutenberg/FSE editor.
-
-= 2.11.0 =
-
-* Loading bar returned for new translations for the connected editor
- * Smooth, AJAX-based translation loading
- * Progress bar
- * Translate all strings in a single process
-* Management of JS scripts using wp-i18n.js:
- * Parsing and detection of text in JS files
- * On-the-fly generation of missing translation JSON files
- * Caching of generated translation JSON files
-* Front page translation on API key activation
- * Increased translation payload (4,200 chars → 12,600 chars)
- * Show translation progress percentage
- * Improved UX
-* Improved sitemap XSL design
- * BETA hidden feature - use the Konami code on the settings page to reveal it
-* Improvements:
- * Better WooCommerce compatibility
- * Recognize .map as a file
- * Optimize JSON translation
- * Better output buffering for sitemap XML
- * Options page switcher: fix "No flag" preview
- * Better cache management
- * Extensive code review
+* Make wpLingua compatible with websites in subfolders
+* Refactor translation and dictionary functions to include target language IDs, improving tagging and replacement logic
+* Fix missing jQuery dependency for "Load in progress"
+* Enqueue Dashicons for better compatibility when the admin bar is disabled
+* Update the target language label in free API key registration
+* Clarify how default settings are used in switcher options documentation
 
 
 All changelogs and previous versions of the wpLingua plugin are available on the releases page of the project's GitHub repo: [https://github.com/julien-jacob/wplingua/releases](https://github.com/julien-jacob/wplingua/releases).
