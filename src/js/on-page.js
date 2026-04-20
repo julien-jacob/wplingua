@@ -26,7 +26,7 @@
     /**
      * Sets a cookie named "wplingua" with a value of 1.
      */
-    document.cookie = "wplingua=1;path=/";
+    document.cookie = "wplingua=1;path=[wplng-cookie-path]";
 
     // ------------------------------------------------------------------------
     // Reload the page if BODY contains the class "wplingua-reload"

@@ -17,7 +17,7 @@ function wplng_dom_translate_nodes_texts( $dom, $args ) {
 
 	wplng_args_setup( $args );
 
-	if ( empty( $args['translations'] ) 
+	if ( empty( $args['translations'] )
 		|| $args['load'] === 'progress'
 	) {
 		return $dom;

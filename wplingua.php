@@ -74,7 +74,8 @@ function wplng_start() {
 	// Setup $wplng_request_uri
 	if ( isset( $_SERVER['REQUEST_URI'] ) ) {
 
-		$request_uri = sanitize_url( $_SERVER['REQUEST_URI'] );
+		$request_uri = wp_unslash( (string) $_SERVER['REQUEST_URI'] );
+		$request_uri = wplng_normalize_request_path( $request_uri );
 		$decoded_uri = urldecode( $request_uri );
 
 		// Check if the request URI is clean
@@ -116,7 +117,6 @@ function wplng_start() {
 	// Display a notice if incompatibility is detected
 	add_action( 'admin_notices', 'wplng_admin_notice_incompatible_plugin', 1 );
 	add_action( 'admin_notices', 'wplng_admin_notice_incompatible_multisite', 1 );
-	add_action( 'admin_notices', 'wplng_admin_notice_incompatible_sub_folder', 1 );
 	add_action( 'admin_notices', 'wplng_admin_notice_incompatible_php_version', 1 );
 	add_action( 'admin_notices', 'wplng_admin_notice_incompatible_htaccess', 1 );
 	add_action( 'admin_notices', 'wplng_admin_notice_incompatible_plain_permalink', 1 );
@@ -124,7 +124,6 @@ function wplng_start() {
 	// Return if incompatibility is detected
 	if ( ! empty( wplng_get_incompatible_plugins() )
 		|| is_multisite()
-		|| wplng_website_in_sub_folder()
 		|| ( version_compare( PHP_VERSION, WPLNG_PHP_MIN_VERSION ) < 0 )
 		|| ! wplng_htaccess_is_valid()
 		|| empty( get_option( 'permalink_structure' ) )

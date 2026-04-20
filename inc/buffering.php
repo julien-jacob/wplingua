@@ -91,7 +91,9 @@ function wplng_ob_start() {
 		}
 
 		global $wplng_request_uri;
-		$wplng_request_uri = wp_make_link_relative( $referer );
+		$wplng_request_uri = wplng_normalize_request_path(
+			wp_make_link_relative( $referer )
+		);
 
 		if ( ! wplng_url_is_translatable( $wplng_request_uri )
 			|| wplng_get_language_website_id() === wplng_get_language_current_id()
@@ -119,7 +121,9 @@ function wplng_ob_start() {
 		}
 
 		global $wplng_request_uri;
-		$wplng_request_uri = wp_make_link_relative( $referer );
+		$wplng_request_uri = wplng_normalize_request_path(
+			wp_make_link_relative( $referer )
+		);
 
 		if ( ! wplng_url_is_translatable( $wplng_request_uri )
 			|| wplng_get_language_website_id() === wplng_get_language_current_id()
@@ -165,7 +169,7 @@ function wplng_ob_start() {
 			exit;
 		}
 
-		$_SERVER['REQUEST_URI'] = $origin_path;
+		$_SERVER['REQUEST_URI'] = wplng_request_path_for_wp( $origin_path );
 
 		ob_start( 'wplng_ob_callback_page' );
 	}
