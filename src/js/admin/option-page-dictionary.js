@@ -19,6 +19,202 @@ jQuery(document).ready(function ($) {
 
     let wplngDictionaryEntries = JSON.parse($("#wplng_dictionary_entries").val());
 
+    // Snapshot of the value saved in DB (used to detect changes and to restore on cancel)
+    let wplngDictionaryEntriesOriginal = $("#wplng_dictionary_entries").val();
+
+
+    // =========================================================
+    // OVERLAY HELPERS
+    // =========================================================
+
+    function wplngDictionaryOverlaySetState(state) {
+        $("#wplng-dictionary-loading-section").hide();
+        $("#wplng-dictionary-confirm-section").hide();
+        $("#wplng-dictionary-progress-section").hide();
+        $("#wplng-dictionary-success-section").hide();
+        $("#wplng-dictionary-error-section").hide();
+        if (state) {
+            $("#wplng-dictionary-" + state + "-section").show();
+        }
+    }
+
+    function wplngDictionaryOverlayShow() {
+        $("#wplng-dictionary-overlay").fadeIn(150);
+    }
+
+    function wplngDictionaryOverlayHide() {
+        $("#wplng-dictionary-overlay").fadeOut(150);
+    }
+
+    function wplngDictionaryShowLoading(message) {
+        $("#wplng-dictionary-overlay-title").text(wplngDictionaryData.i18n.loadingTitle);
+        $("#wplng-dictionary-overlay-message").text(message || "");
+        wplngDictionaryOverlaySetState("loading");
+    }
+
+    function wplngDictionaryShowConfirm(count, token) {
+        let message = wplngDictionaryData.i18n.confirmMessage.replace("%d", count);
+        $("#wplng-dictionary-overlay-title").text(wplngDictionaryData.i18n.confirmTitle);
+        $("#wplng-dictionary-overlay-message").text(message);
+        $("#wplng-dictionary-confirm-btn").text(wplngDictionaryData.i18n.confirmButton);
+        $("#wplng-dictionary-cancel-btn").text(wplngDictionaryData.i18n.cancelButton);
+        wplngDictionaryOverlaySetState("confirm");
+
+        $("#wplng-dictionary-confirm-btn").off("click.wplng").on("click.wplng", function () {
+            wplngDictionaryStartProgress(count, token);
+        });
+
+        $("#wplng-dictionary-cancel-btn").off("click.wplng").on("click.wplng", function () {
+            wplngDictionaryCancel();
+        });
+    }
+
+    function wplngDictionaryStartProgress(total, token) {
+        $("#wplng-dictionary-overlay-title").text(wplngDictionaryData.i18n.progressTitle);
+        $("#wplng-dictionary-overlay-message").text("");
+        wplngDictionaryOverlaySetState("progress");
+        wplngDictionaryUpdateProgress(0, total);
+        wplngDictionaryRunBatch(token, total);
+    }
+
+    function wplngDictionaryUpdateProgress(processed, total) {
+        let pct = total > 0 ? Math.round((processed / total) * 100) : 100;
+        $("#wplng-dictionary-progress-bar").css("width", pct + "%");
+        let text = wplngDictionaryData.i18n.progressText
+            .replace("%1$d", processed)
+            .replace("%2$d", total);
+        $("#wplng-dictionary-progress-text").text(text);
+    }
+
+    function wplngDictionaryShowError(message) {
+        $("#wplng-dictionary-overlay-title").text(wplngDictionaryData.i18n.errorTitle);
+        $("#wplng-dictionary-overlay-message").text(message);
+        $("#wplng-dictionary-error-close-btn").text(wplngDictionaryData.i18n.errorCloseBtn);
+        wplngDictionaryOverlaySetState("error");
+
+        $("#wplng-dictionary-error-close-btn").off("click.wplng").on("click.wplng", function () {
+            wplngDictionaryCancel();
+        });
+    }
+
+    function wplngDictionaryCancel() {
+        wplngDictionaryOverlayHide();
+        // Restore in-memory entries and the hidden textarea to the original DB value
+        wplngDictionaryEntries = JSON.parse(wplngDictionaryEntriesOriginal);
+        $("#wplng_dictionary_entries").val(wplngDictionaryEntriesOriginal);
+        // Restore UI to the entries list
+        $("#wplng-section-entries-all").show();
+        $("#wplng-section-entry-new").hide();
+        $("#wplng-section-entry-edit").hide();
+    }
+
+
+    // =========================================================
+    // BATCH PROCESSING
+    // =========================================================
+
+    function wplngDictionaryRunBatch(token, total) {
+        $.ajax({
+            url: wplngDictionaryData.ajaxUrl,
+            type: "POST",
+            data: {
+                action: "wplng_ajax_dictionary_apply_batch",
+                nonce: wplngDictionaryData.nonce,
+                token: token,
+            },
+            success: function (response) {
+                if (!response.success) {
+                    wplngDictionaryShowError(
+                        response.data && response.data.message
+                            ? response.data.message
+                            : wplngDictionaryData.i18n.errorMessage
+                    );
+                    return;
+                }
+
+                let processed = response.data.processed;
+                let done = response.data.done;
+
+                if (total > 0) {
+                    wplngDictionaryUpdateProgress(processed, total);
+                }
+
+                if (done) {
+                    wplngDictionaryOverlaySetState("success");
+                    $("#wplng-dictionary-overlay-title").text(wplngDictionaryData.i18n.successTitle);
+                    $("#wplng-dictionary-overlay-message").text(wplngDictionaryData.i18n.successMessage);
+                    setTimeout(function () {
+                        window.location.reload();
+                    }, 1500);
+                } else {
+                    wplngDictionaryRunBatch(token, total);
+                }
+            },
+            error: function () {
+                wplngDictionaryShowError(wplngDictionaryData.i18n.errorMessage);
+            },
+        });
+    }
+
+
+    // =========================================================
+    // FORM SUBMIT INTERCEPT
+    // =========================================================
+
+    $("form").on("submit.wplng_dictionary", function (e) {
+        let newVal = $("#wplng_dictionary_entries").val();
+
+        if (newVal === wplngDictionaryEntriesOriginal) {
+            // No dictionary change — let the form submit normally
+            return;
+        }
+
+        e.preventDefault();
+
+        wplngDictionaryShowLoading();
+        wplngDictionaryOverlayShow();
+
+        $.ajax({
+            url: wplngDictionaryData.ajaxUrl,
+            type: "POST",
+            data: {
+                action: "wplng_ajax_dictionary_preview",
+                nonce: wplngDictionaryData.nonce,
+                old_entries: wplngDictionaryEntriesOriginal,
+                new_entries: newVal,
+            },
+            success: function (response) {
+                if (!response.success) {
+                    wplngDictionaryShowError(
+                        response.data && response.data.message
+                            ? response.data.message
+                            : wplngDictionaryData.i18n.errorMessage
+                    );
+                    return;
+                }
+
+                let count = response.data.count;
+                let token = response.data.token;
+
+                if (count === 0) {
+                    // No translations affected — save immediately with a brief message
+                    wplngDictionaryShowLoading(wplngDictionaryData.i18n.noImpactMessage);
+                    wplngDictionaryRunBatch(token, 0);
+                } else {
+                    wplngDictionaryShowConfirm(count, token);
+                }
+            },
+            error: function () {
+                wplngDictionaryShowError(wplngDictionaryData.i18n.errorMessage);
+            },
+        });
+    });
+
+
+    // =========================================================
+    // EXISTING UI HANDLERS
+    // =========================================================
+
     /**
      * Add new dictionary entry button
      */

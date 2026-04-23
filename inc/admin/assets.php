@@ -324,6 +324,30 @@ function wplng_option_page_dictionary_assets( $hook ) {
 		WPLNG_PLUGIN_VERSION
 	);
 
+	wp_localize_script(
+		'wplingua-option-dictionary',
+		'wplngDictionaryData',
+		array(
+			'ajaxUrl' => admin_url( 'admin-ajax.php' ),
+			'nonce'   => wp_create_nonce( 'wplng_dictionary_ajax' ),
+			'i18n'    => array(
+				'loadingTitle'    => esc_html__( 'Analyzing changes…', 'wplingua' ),
+				'confirmTitle'    => esc_html__( 'Confirm dictionary changes', 'wplingua' ),
+				'confirmMessage'  => esc_html__( '%d translation(s) will be affected by this change. Non-reviewed translations will be deleted so they can be re-generated with the new rules.', 'wplingua' ),
+				'confirmButton'   => esc_html__( 'Validate changes', 'wplingua' ),
+				'cancelButton'    => esc_html__( 'Cancel', 'wplingua' ),
+				'progressTitle'   => esc_html__( 'Processing translations…', 'wplingua' ),
+				'progressText'    => esc_html__( '%1$d / %2$d translations processed', 'wplingua' ),
+				'successTitle'    => esc_html__( 'Changes saved', 'wplingua' ),
+				'successMessage'  => esc_html__( 'Dictionary rules saved. Affected translations will be re-generated automatically.', 'wplingua' ),
+				'noImpactMessage' => esc_html__( 'No existing translations are affected. Saving…', 'wplingua' ),
+				'errorTitle'      => esc_html__( 'An error occurred', 'wplingua' ),
+				'errorMessage'    => esc_html__( 'An error occurred. Please reload the page and try again.', 'wplingua' ),
+				'errorCloseBtn'   => esc_html__( 'Close', 'wplingua' ),
+			),
+		)
+	);
+
 	/**
 	 * Enqueue wpLingua CSS styles
 	 */
@@ -333,6 +357,45 @@ function wplng_option_page_dictionary_assets( $hook ) {
 		plugins_url() . '/wplingua/assets/css/admin/option-page-dictionary.css',
 		array(),
 		WPLNG_PLUGIN_VERSION
+	);
+
+	wp_add_inline_style(
+		'wplingua-option-dictionary',
+		'
+		#wplng-dictionary-overlay {
+			position: fixed;
+			top: 0; left: 0; right: 0; bottom: 0;
+			background: rgba(0,0,0,.55);
+			z-index: 99999;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+		#wplng-dictionary-overlay-inner {
+			background: #fff;
+			padding: 32px 40px;
+			border-radius: 4px;
+			max-width: 500px;
+			width: 90%;
+			box-shadow: 0 4px 24px rgba(0,0,0,.25);
+		}
+		#wplng-dictionary-overlay-title { margin-top: 0; }
+		#wplng-dictionary-confirm-section .button { margin-right: 8px; }
+		#wplng-dictionary-progress-wrap {
+			background: #f0f0f1;
+			border-radius: 3px;
+			height: 18px;
+			overflow: hidden;
+			margin: 16px 0 8px;
+		}
+		#wplng-dictionary-progress-bar {
+			height: 100%;
+			background: #2271b1;
+			transition: width .25s ease;
+			width: 0%;
+		}
+		#wplng-dictionary-success-section .dashicons { vertical-align: middle; }
+		'
 	);
 }
 

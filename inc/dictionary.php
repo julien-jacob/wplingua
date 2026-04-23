@@ -321,3 +321,495 @@ function wplng_dictionary_replace_tags( $texts, $language_target_id, $dictionary
 
 	return $texts;
 }
+
+
+/**
+ * Detect which dictionary sources changed between two serialized entry lists,
+ * and return the language IDs affected by each change.
+ *
+ * @param array $old_entries Decoded old entries array.
+ * @param array $new_entries Decoded new entries array.
+ * @return array [ 'source_text' => [ 'lang_id', … ], … ]
+ */
+function wplng_dictionary_detect_changes( $old_entries, $new_entries ) {
+
+	$old_by_source = array();
+	foreach ( $old_entries as $entry ) {
+		if ( ! empty( $entry['source'] ) ) {
+			$old_by_source[ $entry['source'] ] = $entry;
+		}
+	}
+
+	$new_by_source = array();
+	foreach ( $new_entries as $entry ) {
+		if ( ! empty( $entry['source'] ) ) {
+			$new_by_source[ $entry['source'] ] = $entry;
+		}
+	}
+
+	$all_sources = array_unique(
+		array_merge(
+			array_keys( $old_by_source ),
+			array_keys( $new_by_source )
+		)
+	);
+
+	$changes = array();
+
+	foreach ( $all_sources as $source ) {
+		$old_entry = isset( $old_by_source[ $source ] ) ? $old_by_source[ $source ] : null;
+		$new_entry = isset( $new_by_source[ $source ] ) ? $new_by_source[ $source ] : null;
+
+		if ( $old_entry === $new_entry ) {
+			continue;
+		}
+
+		$affected_ids = wplng_dictionary_get_affected_language_ids( $old_entry, $new_entry );
+
+		if ( ! empty( $affected_ids ) ) {
+			$changes[ $source ] = $affected_ids;
+		}
+	}
+
+	return $changes;
+}
+
+
+/**
+ * Determine which target-language IDs are affected by a dictionary entry change.
+ *
+ * Rules:
+ * – If either the old or new entry carries no language-specific rules
+ *   (i.e. "never translate"), every target language is affected.
+ * – Otherwise only the languages explicitly listed in old/new rules are affected.
+ *
+ * @param array|null $old_entry Previous entry (null = entry did not exist before).
+ * @param array|null $new_entry New entry      (null = entry has been deleted).
+ * @return array Language ID strings.
+ */
+function wplng_dictionary_get_affected_language_ids( $old_entry, $new_entry ) {
+
+	$languages_target = wplng_get_languages_target();
+	$all_language_ids = array_column( $languages_target, 'id' );
+
+	// "Never translate" = no 'rules' key or empty rules → all languages affected.
+	$old_is_global = null !== $old_entry
+		&& ( ! isset( $old_entry['rules'] ) || empty( $old_entry['rules'] ) );
+	$new_is_global = null !== $new_entry
+		&& ( ! isset( $new_entry['rules'] ) || empty( $new_entry['rules'] ) );
+
+	if ( $old_is_global || $new_is_global ) {
+		return $all_language_ids;
+	}
+
+	$affected = array();
+
+	if ( null !== $old_entry && ! empty( $old_entry['rules'] ) ) {
+		$affected = array_merge( $affected, array_keys( $old_entry['rules'] ) );
+	}
+
+	if ( null !== $new_entry && ! empty( $new_entry['rules'] ) ) {
+		$affected = array_merge( $affected, array_keys( $new_entry['rules'] ) );
+	}
+
+	return array_values( array_unique( $affected ) );
+}
+
+
+/**
+ * Batch-process all translation posts whose original text contains $source,
+ * removing non-reviewed entries for the given language IDs.
+ *
+ * @param string $source       Dictionary source text.
+ * @param array  $language_ids Target language IDs to invalidate.
+ * @return void
+ */
+function wplng_dictionary_reset_translations_for_source( $source, $language_ids ) {
+
+	global $wpdb;
+
+	if ( empty( $source ) || empty( $language_ids ) ) {
+		return;
+	}
+
+	$batch_size   = 50;
+	$offset       = 0;
+	$source_like  = '%' . $wpdb->esc_like( $source ) . '%';
+	$website_lang = wplng_get_language_website_id();
+
+	do {
+
+		// phpcs:disable WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching
+		$post_ids = $wpdb->get_col(
+			$wpdb->prepare(
+				"SELECT p.ID
+				FROM {$wpdb->posts} p
+				INNER JOIN {$wpdb->postmeta} pm_orig ON p.ID = pm_orig.post_id
+				INNER JOIN {$wpdb->postmeta} pm_lang ON p.ID = pm_lang.post_id
+				WHERE p.post_type   = 'wplng_translation'
+				AND   p.post_status = 'publish'
+				AND   pm_orig.meta_key   = 'wplng_translation_original'
+				AND   pm_orig.meta_value LIKE %s
+				AND   pm_lang.meta_key   = 'wplng_translation_original_language_id'
+				AND   pm_lang.meta_value = %s
+				LIMIT %d OFFSET %d",
+				$source_like,
+				$website_lang,
+				$batch_size,
+				$offset
+			)
+		);
+		// phpcs:enable
+
+		$fetched = count( $post_ids );
+
+		foreach ( $post_ids as $post_id ) {
+			wplng_dictionary_reset_translation_post( (int) $post_id, $language_ids );
+		}
+
+		$offset += $batch_size;
+
+	} while ( $fetched === $batch_size );
+}
+
+
+/**
+ * For a single wplng_translation post, remove every non-reviewed translation
+ * entry that belongs to one of the affected $language_ids.
+ * If no entries remain the post is deleted entirely.
+ *
+ * A translation is considered "reviewed" when its status is an integer
+ * (Unix timestamp set by the admin).
+ *
+ * @param int   $post_id
+ * @param array $language_ids Target language IDs to invalidate.
+ * @return void
+ */
+function wplng_dictionary_reset_translation_post( $post_id, $language_ids ) {
+
+	$translations_json = get_post_meta( $post_id, 'wplng_translation_translations', true );
+	$translations      = json_decode( $translations_json, true );
+
+	if ( empty( $translations ) || ! is_array( $translations ) ) {
+		return;
+	}
+
+	$kept = array();
+
+	foreach ( $translations as $translation ) {
+
+		if ( ! isset( $translation['language_id'] ) ) {
+			$kept[] = $translation;
+			continue;
+		}
+
+		$is_affected = in_array( $translation['language_id'], $language_ids, true );
+
+		if ( $is_affected ) {
+			// Keep only reviewed translations (integer Unix timestamp).
+			if ( isset( $translation['status'] ) && is_int( $translation['status'] ) ) {
+				$kept[] = $translation;
+			}
+			// Non-reviewed: drop the entry so it gets re-generated.
+		} else {
+			$kept[] = $translation;
+		}
+	}
+
+	if ( empty( $kept ) ) {
+		wp_delete_post( $post_id, true );
+	} else {
+		update_post_meta(
+			$post_id,
+			'wplng_translation_translations',
+			wp_json_encode( $kept, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES )
+		);
+	}
+}
+
+
+/**
+ * Count the translation posts that would be affected by a set of source changes.
+ * Uses one COUNT query per changed source (may overcount if a post matches
+ * multiple sources, but provides a fast, good-enough estimate for the UI).
+ *
+ * @param array $changes [ source => [lang_ids] ]
+ * @return int
+ */
+function wplng_dictionary_count_affected( $changes ) {
+
+	global $wpdb;
+
+	if ( empty( $changes ) ) {
+		return 0;
+	}
+
+	$website_lang = wplng_get_language_website_id();
+	$total        = 0;
+
+	foreach ( $changes as $source => $language_ids ) {
+
+		$source_like = '%' . $wpdb->esc_like( $source ) . '%';
+
+		// phpcs:disable WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching
+		$count = (int) $wpdb->get_var(
+			$wpdb->prepare(
+				"SELECT COUNT(DISTINCT p.ID)
+				FROM {$wpdb->posts} p
+				INNER JOIN {$wpdb->postmeta} pm_orig ON p.ID = pm_orig.post_id
+				INNER JOIN {$wpdb->postmeta} pm_lang ON p.ID = pm_lang.post_id
+				WHERE p.post_type   = 'wplng_translation'
+				AND   p.post_status = 'publish'
+				AND   pm_orig.meta_key   = 'wplng_translation_original'
+				AND   pm_orig.meta_value LIKE %s
+				AND   pm_lang.meta_key   = 'wplng_translation_original_language_id'
+				AND   pm_lang.meta_value = %s",
+				$source_like,
+				$website_lang
+			)
+		);
+		// phpcs:enable
+
+		$total += $count;
+	}
+
+	return $total;
+}
+
+
+/**
+ * AJAX — Preview dictionary changes.
+ *
+ * Detects which sources changed between the old and new entries JSON,
+ * counts the translation posts that would be affected, stores pending
+ * state in a transient, and returns the count + a session token.
+ *
+ * @return void
+ */
+function wplng_ajax_dictionary_preview() {
+
+	check_ajax_referer( 'wplng_dictionary_ajax', 'nonce' );
+
+	if ( ! current_user_can( 'manage_options' ) ) {
+		wp_send_json_error( array( 'message' => __( 'Unauthorized', 'wplingua' ) ), 403 );
+		return;
+	}
+
+	// phpcs:disable WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+	$old_json = isset( $_POST['old_entries'] ) ? wp_unslash( $_POST['old_entries'] ) : '';
+	$new_json = isset( $_POST['new_entries'] ) ? wp_unslash( $_POST['new_entries'] ) : '';
+	// phpcs:enable
+
+	$old_entries = array();
+	if ( ! empty( $old_json ) ) {
+		$decoded = json_decode( $old_json, true );
+		if ( is_array( $decoded ) ) {
+			$old_entries = $decoded;
+		}
+	}
+
+	$new_entries = array();
+	if ( ! empty( $new_json ) ) {
+		$decoded = json_decode( $new_json, true );
+		if ( is_array( $decoded ) ) {
+			$new_entries = $decoded;
+		}
+	}
+
+	$changes = wplng_dictionary_detect_changes( $old_entries, $new_entries );
+	$total   = wplng_dictionary_count_affected( $changes );
+
+	$token        = wp_generate_password( 32, false );
+	$sources_list = array_keys( $changes );
+
+	set_transient(
+		'wplng_dict_pending_' . $token,
+		array(
+			'changes'      => $changes,
+			'new_entries'  => $new_json,
+			'sources_list' => $sources_list,
+			'src_idx'      => 0,
+			'src_offset'   => 0,
+			'total'        => $total,
+			'processed'    => 0,
+		),
+		HOUR_IN_SECONDS
+	);
+
+	wp_send_json_success(
+		array(
+			'count' => $total,
+			'token' => $token,
+		)
+	);
+}
+
+
+/**
+ * AJAX — Apply one batch of translation resets, then save the dictionary
+ * entries once all affected posts have been processed.
+ *
+ * Expected POST params: token (string).
+ *
+ * Returns JSON: { processed, total, done }.
+ *
+ * @return void
+ */
+function wplng_ajax_dictionary_apply_batch() {
+
+	check_ajax_referer( 'wplng_dictionary_ajax', 'nonce' );
+
+	if ( ! current_user_can( 'manage_options' ) ) {
+		wp_send_json_error( array( 'message' => __( 'Unauthorized', 'wplingua' ) ), 403 );
+		return;
+	}
+
+	$token = isset( $_POST['token'] ) ? sanitize_text_field( wp_unslash( $_POST['token'] ) ) : '';
+
+	if ( empty( $token ) ) {
+		wp_send_json_error( array( 'message' => __( 'Invalid token', 'wplingua' ) ) );
+		return;
+	}
+
+	$transient_key = 'wplng_dict_pending_' . $token;
+	$pending       = get_transient( $transient_key );
+
+	if ( false === $pending || ! is_array( $pending ) ) {
+		wp_send_json_error( array( 'message' => __( 'Session expired, please try again.', 'wplingua' ) ) );
+		return;
+	}
+
+	global $wpdb;
+
+	$batch_size   = 50;
+	$changes      = $pending['changes'];
+	$sources_list = $pending['sources_list'];
+	$src_idx      = (int) $pending['src_idx'];
+	$src_offset   = (int) $pending['src_offset'];
+	$total        = (int) $pending['total'];
+	$processed    = (int) $pending['processed'];
+	$website_lang = wplng_get_language_website_id();
+
+	if ( empty( $changes ) || $src_idx >= count( $sources_list ) ) {
+
+		// Nothing left to process — save and finish.
+		delete_transient( $transient_key );
+		update_option( 'wplng_dictionary_entries', $pending['new_entries'] );
+		wplng_clear_translations_cache();
+
+		wp_send_json_success(
+			array(
+				'processed' => $processed,
+				'total'     => $total,
+				'done'      => true,
+			)
+		);
+		return;
+	}
+
+	$source       = $sources_list[ $src_idx ];
+	$language_ids = $changes[ $source ];
+	$source_like  = '%' . $wpdb->esc_like( $source ) . '%';
+
+	// phpcs:disable WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching
+	$post_ids = $wpdb->get_col(
+		$wpdb->prepare(
+			"SELECT p.ID
+			FROM {$wpdb->posts} p
+			INNER JOIN {$wpdb->postmeta} pm_orig ON p.ID = pm_orig.post_id
+			INNER JOIN {$wpdb->postmeta} pm_lang ON p.ID = pm_lang.post_id
+			WHERE p.post_type   = 'wplng_translation'
+			AND   p.post_status = 'publish'
+			AND   pm_orig.meta_key   = 'wplng_translation_original'
+			AND   pm_orig.meta_value LIKE %s
+			AND   pm_lang.meta_key   = 'wplng_translation_original_language_id'
+			AND   pm_lang.meta_value = %s
+			LIMIT %d OFFSET %d",
+			$source_like,
+			$website_lang,
+			$batch_size,
+			$src_offset
+		)
+	);
+	// phpcs:enable
+
+	$fetched = count( $post_ids );
+
+	foreach ( $post_ids as $post_id ) {
+		wplng_dictionary_reset_translation_post( (int) $post_id, $language_ids );
+		++$processed;
+	}
+
+	if ( $fetched < $batch_size ) {
+		++$src_idx;
+		$src_offset = 0;
+	} else {
+		$src_offset += $batch_size;
+	}
+
+	$is_done = ( $src_idx >= count( $sources_list ) );
+
+	if ( $is_done ) {
+		delete_transient( $transient_key );
+		update_option( 'wplng_dictionary_entries', $pending['new_entries'] );
+		wplng_clear_translations_cache();
+	} else {
+		$pending['src_idx']    = $src_idx;
+		$pending['src_offset'] = $src_offset;
+		$pending['processed']  = $processed;
+		set_transient( $transient_key, $pending, HOUR_IN_SECONDS );
+	}
+
+	wp_send_json_success(
+		array(
+			'processed' => $processed,
+			'total'     => $total,
+			'done'      => $is_done,
+		)
+	);
+}
+
+
+/**
+ * Hooked on update_option_wplng_dictionary_entries.
+ * Compares old and new dictionary entries, then resets every non-reviewed
+ * translation that is affected by the changes.
+ *
+ * @param mixed $old_value Previous serialized JSON value.
+ * @param mixed $new_value New serialized JSON value.
+ * @return void
+ */
+function wplng_dictionary_on_update( $old_value, $new_value ) {
+
+	if ( $old_value === $new_value ) {
+		return;
+	}
+
+	$old_entries = array();
+	if ( ! empty( $old_value ) && is_string( $old_value ) ) {
+		$decoded = json_decode( $old_value, true );
+		if ( is_array( $decoded ) ) {
+			$old_entries = $decoded;
+		}
+	}
+
+	$new_entries = array();
+	if ( ! empty( $new_value ) && is_string( $new_value ) ) {
+		$decoded = json_decode( $new_value, true );
+		if ( is_array( $decoded ) ) {
+			$new_entries = $decoded;
+		}
+	}
+
+	$changes = wplng_dictionary_detect_changes( $old_entries, $new_entries );
+
+	if ( empty( $changes ) ) {
+		return;
+	}
+
+	foreach ( $changes as $source => $language_ids ) {
+		wplng_dictionary_reset_translations_for_source( $source, $language_ids );
+	}
+
+	wplng_clear_translations_cache();
+}
