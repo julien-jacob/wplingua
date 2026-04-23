@@ -39,11 +39,17 @@ jQuery(document).ready(function ($) {
     }
 
     function wplngDictionaryOverlayShow() {
-        $("#wplng-dictionary-overlay").fadeIn(150);
+        $("#wplng-section-entries-all").hide();
+        $("#wplng-section-entry-new").hide();
+        $("#wplng-section-entry-edit").hide();
+        $("#wplng-section-entry-confirm").show();
+        window.scrollTo(0, 0);
     }
 
     function wplngDictionaryOverlayHide() {
-        $("#wplng-dictionary-overlay").fadeOut(150);
+        $("#wplng-section-entry-confirm").hide();
+        $("#wplng-section-entries-all").show();
+        window.scrollTo(0, 0);
     }
 
     function wplngDictionaryShowLoading(message) {

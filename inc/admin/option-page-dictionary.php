@@ -75,42 +75,50 @@ function wplng_option_page_dictionary() {
 						</div>
 					</td>
 				</tr>
+				<tr id="wplng-section-entry-confirm" style="display: none;">
+					<th scope="row"><span class="dashicons dashicons-update"></span> <?php esc_html_e( 'Pending changes', 'wplingua' ); ?></th>
+					<td>
+						<fieldset>
+							<p><strong id="wplng-dictionary-overlay-title"></strong></p>
+
+							<hr>
+
+							<p id="wplng-dictionary-overlay-message"></p>
+
+							<div id="wplng-dictionary-loading-section" style="display:none;">
+								<span class="spinner is-active" style="float:none;"></span>
+							</div>
+
+							<hr>
+
+							<div id="wplng-dictionary-confirm-section" style="display:none;">
+								<a href="javascript:void(0);" id="wplng-dictionary-cancel-btn" class="button"></a>
+								<a href="javascript:void(0);" id="wplng-dictionary-confirm-btn" class="button button-primary"></a>
+							</div>
+
+							<div id="wplng-dictionary-progress-section" style="display:none;">
+								<div id="wplng-dictionary-progress-wrap">
+									<div id="wplng-dictionary-progress-bar"></div>
+								</div>
+								<p id="wplng-dictionary-progress-text"></p>
+							</div>
+
+							<div id="wplng-dictionary-success-section" style="display:none;">
+								<span class="dashicons dashicons-yes-alt" style="color:#00a32a;font-size:2em;"></span>
+							</div>
+
+							<div id="wplng-dictionary-error-section" style="display:none;">
+								<a href="javascript:void(0);" id="wplng-dictionary-error-close-btn" class="button"></a>
+							</div>
+
+						</fieldset>
+					</td>
+				</tr>
 			</table>
 
 			<?php submit_button(); ?>
 
 		</form>
-	</div>
-
-	<div id="wplng-dictionary-overlay" style="display:none;">
-		<div id="wplng-dictionary-overlay-inner">
-			<h2 id="wplng-dictionary-overlay-title"></h2>
-			<p id="wplng-dictionary-overlay-message"></p>
-
-			<div id="wplng-dictionary-loading-section" style="display:none;">
-				<span class="spinner is-active" style="float:none;"></span>
-			</div>
-
-			<div id="wplng-dictionary-confirm-section" style="display:none;">
-				<a href="javascript:void(0);" id="wplng-dictionary-confirm-btn" class="button button-primary"></a>
-				<a href="javascript:void(0);" id="wplng-dictionary-cancel-btn" class="button"></a>
-			</div>
-
-			<div id="wplng-dictionary-progress-section" style="display:none;">
-				<div id="wplng-dictionary-progress-wrap">
-					<div id="wplng-dictionary-progress-bar"></div>
-				</div>
-				<p id="wplng-dictionary-progress-text"></p>
-			</div>
-
-			<div id="wplng-dictionary-success-section" style="display:none;">
-				<span class="dashicons dashicons-yes-alt" style="color:#00a32a;font-size:2em;"></span>
-			</div>
-
-			<div id="wplng-dictionary-error-section" style="display:none;">
-				<a href="javascript:void(0);" id="wplng-dictionary-error-close-btn" class="button"></a>
-			</div>
-		</div>
 	</div>
 
 	<?php

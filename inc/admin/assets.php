@@ -362,31 +362,13 @@ function wplng_option_page_dictionary_assets( $hook ) {
 	wp_add_inline_style(
 		'wplingua-option-dictionary',
 		'
-		#wplng-dictionary-overlay {
-			position: fixed;
-			top: 0; left: 0; right: 0; bottom: 0;
-			background: rgba(0,0,0,.55);
-			z-index: 99999;
-			display: flex;
-			align-items: center;
-			justify-content: center;
-		}
-		#wplng-dictionary-overlay-inner {
-			background: #fff;
-			padding: 32px 40px;
-			border-radius: 4px;
-			max-width: 500px;
-			width: 90%;
-			box-shadow: 0 4px 24px rgba(0,0,0,.25);
-		}
-		#wplng-dictionary-overlay-title { margin-top: 0; }
 		#wplng-dictionary-confirm-section .button { margin-right: 8px; }
 		#wplng-dictionary-progress-wrap {
 			background: #f0f0f1;
 			border-radius: 3px;
 			height: 18px;
 			overflow: hidden;
-			margin: 16px 0 8px;
+			margin: 8px 0;
 		}
 		#wplng-dictionary-progress-bar {
 			height: 100%;
