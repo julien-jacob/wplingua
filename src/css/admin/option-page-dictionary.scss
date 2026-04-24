@@ -77,6 +77,13 @@ p.submit,
     }
 }
 
+#wplng-dictionary-loading-section,
+#wplng-dictionary-success-section {
+    display: flex;
+    justify-content: center;
+    padding: 10px 0;
+}
+
 #wplng-dictionary-confirm-section {
     display: flex;
     justify-content: space-between;
