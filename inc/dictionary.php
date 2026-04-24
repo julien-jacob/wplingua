@@ -416,7 +416,6 @@ function wplng_dictionary_get_affected_language_ids( $old_entry, $new_entry ) {
 }
 
 
-
 /**
  * For a single wplng_translation post, remove every non-reviewed translation
  * entry that belongs to one of the affected $language_ids.
@@ -712,4 +711,3 @@ function wplng_ajax_dictionary_apply_batch() {
 		)
 	);
 }
-
