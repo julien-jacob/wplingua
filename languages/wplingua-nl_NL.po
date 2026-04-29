@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: wpLingua\n"
-"POT-Creation-Date: 2026-03-17 08:44+0100\n"
-"PO-Revision-Date: 2026-03-17 09:55+0100\n"
+"POT-Creation-Date: 2026-04-28 16:26+0200\n"
+"PO-Revision-Date: 2026-04-28 17:00+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: nl_NL\n"
@@ -729,7 +729,7 @@ msgstr "Vertalingen"
 msgid "Edit translations"
 msgstr "Vertalingen bewerken"
 
-#: inc/admin/assets.php:380 inc/admin/assets.php:472 inc/assets.php:75
+#: inc/admin/assets.php:380 inc/admin/assets.php:472 inc/assets.php:85
 msgid ""
 "You are about to leave the page without saving your changes. They will be "
 "lost if you continue. Would you like to leave the page anyway?"
@@ -916,8 +916,8 @@ msgid "Exclude elements by CSS selector"
 msgstr "Elementen uitsluiten met CSS-selector"
 
 #: inc/admin/option-page-exclusions.php:69 inc/admin/option-page-settings.php:91
-#: inc/admin/option-page-switcher.php:496
-#: inc/admin/translation-edit-modal.php:71 inc/assets.php:82
+#: inc/admin/option-page-switcher.php:504
+#: inc/admin/translation-edit-modal.php:71 inc/assets.php:92
 msgid "Save"
 msgstr "Opslaan"
 
@@ -1186,7 +1186,7 @@ msgstr "de API-sleutel opvraagpagina"
 #: inc/admin/option-page-switcher.php:124 inc/admin/option-page-switcher.php:179
 #: inc/admin/option-page-switcher.php:237 inc/admin/option-page-switcher.php:331
 #: inc/admin/option-page-switcher.php:384 inc/admin/option-page-switcher.php:437
-#: inc/admin/option-page-switcher.php:451 inc/admin/option-page-switcher.php:465
+#: inc/admin/option-page-switcher.php:459 inc/admin/option-page-switcher.php:473
 msgid "Click to expand"
 msgstr "Klik om uit te vouwen"
 
@@ -1259,8 +1259,8 @@ msgstr ""
 "van WordPress (Instellingen ➔ Algemeen ➔ Taal van website)."
 
 #: inc/admin/option-page-register.php:413
-msgid "Target language: "
-msgstr "Doeltaal: "
+msgid "Language to add: "
+msgstr "Toe te voegen taal: "
 
 #: inc/admin/option-page-register.php:421
 msgid ""
@@ -1663,8 +1663,8 @@ msgstr ""
 "editors."
 
 #: inc/admin/option-page-settings.php:545
-msgid "Enable language browser redirection"
-msgstr "Taalbrowseromleiding inschakelen"
+msgid "Enable redirection based on the web browser's language"
+msgstr "Schakel omleiding in op basis van de taal van de webbrowser"
 
 #: inc/admin/option-page-settings.php:549
 msgid ""
@@ -2115,15 +2115,33 @@ msgstr ""
 "gebruikt dat op blokken is gebaseerd (FSE), een klassiek thema of zelfs een "
 "pagina- of themabouwer zoals Divi, Elementor..."
 
-#: inc/admin/option-page-switcher.php:450
+#: inc/admin/option-page-switcher.php:445
+msgid "You can add parameters to the language selector shortcode, for example: "
+msgstr ""
+"Je kunt parameters toevoegen aan de shortcode voor de taalkeuze, "
+"bijvoorbeeld: "
+
+#: inc/admin/option-page-switcher.php:448
+msgid "Here is a list of all available settings: "
+msgstr "Hier volgt een overzicht van alle beschikbare instellingen: "
+
+#: inc/admin/option-page-switcher.php:451
+msgid ""
+"If a setting is not specified, the value entered on the language switcher "
+"options page will be used."
+msgstr ""
+"Als er geen instelling is opgegeven, wordt de waarde gebruikt die is "
+"ingevoerd op de optiepagina van de taalschakelaar."
+
+#: inc/admin/option-page-switcher.php:458
 msgid "Gutenberg & FSE: "
 msgstr "Gutenberg & FSE: "
 
-#: inc/admin/option-page-switcher.php:453
+#: inc/admin/option-page-switcher.php:461
 msgid "Block wpLingua Switcher"
 msgstr "Blok wpLingua Switcher"
 
-#: inc/admin/option-page-switcher.php:457
+#: inc/admin/option-page-switcher.php:465
 msgid ""
 "Block based themes, wpLingua offers a dedicated Gutenberg block. You can "
 "insert the switcher wherever you want, whether in the content or via the "
@@ -2133,15 +2151,15 @@ msgstr ""
 "kunt de switcher invoegen waar je maar wilt, in de inhoud of via de algemene "
 "site-editor."
 
-#: inc/admin/option-page-switcher.php:464
+#: inc/admin/option-page-switcher.php:472
 msgid "Switcher in menu: "
 msgstr "Switcher in menu: "
 
-#: inc/admin/option-page-switcher.php:479
+#: inc/admin/option-page-switcher.php:487
 msgid "Appearance ➔ Menus"
 msgstr "Uiterlijk ➔ Menu's"
 
-#: inc/admin/option-page-switcher.php:490
+#: inc/admin/option-page-switcher.php:498
 msgid ""
 "If the active theme manages menus (classic theme), it is possible to add a "
 "language switcher. The design of these language switchers will be defined by "
@@ -2323,6 +2341,22 @@ msgstr ""
 "bestand van de site heeft beschadigd, waardoor de vertaalde pagina's niet "
 "correct worden omgeleid. Bewerk het bestand \".htaccess\" in de root van de "
 "site en verwijder de regels tussen :"
+
+#: inc/admin/option-page.php:621
+msgid "wpLingua - Incompatible permalink structure"
+msgstr "wpLingua - Onverenigbare permalinkstructuur"
+
+#: inc/admin/option-page.php:624
+msgid ""
+"wpLingua is not compatible with the \"Plain\" permalink structure. Please "
+"update your permalink settings to use \"Post name\" or \"Custom Structure\"."
+msgstr ""
+"wpLingua is niet compatibel met de permalinkstructuur „Plain“. Pas je "
+"permalink-instellingen aan en kies voor „Postnaam“ of „Aangepaste structuur“."
+
+#: inc/admin/option-page.php:630
+msgid "Manage permalink settings"
+msgstr "Instellingen voor permalinks beheren"
 
 #: inc/admin/slug-cpt.php:19
 msgid "wpLingua - Website slugs"
@@ -2559,7 +2593,7 @@ msgstr "Code"
 msgid "API returned an unexpected response."
 msgstr "API heeft een onverwacht antwoord teruggestuurd."
 
-#: inc/assets.php:79
+#: inc/assets.php:89
 msgid ""
 "You are about to exit without saving your changes. They will be lost if you "
 "continue. Would you like to leave anyway?"
@@ -2567,7 +2601,7 @@ msgstr ""
 "Je staat op het punt af te sluiten zonder je wijzigingen op te slaan. Ze "
 "zullen verloren gaan als je doorgaat. Wil je toch weggaan?"
 
-#: inc/assets.php:83
+#: inc/assets.php:93
 msgid "Save in progress..."
 msgstr "Opslaan bezig..."
 
@@ -2736,6 +2770,12 @@ msgstr ""
 #. Author of the plugin/theme
 msgid "wpLingua Translation Service"
 msgstr "wpLingua Vertaaldienst"
+
+#~ msgid "Target language: "
+#~ msgstr "Doeltaal: "
+
+#~ msgid "Enable language browser redirection"
+#~ msgstr "Taalbrowseromleiding inschakelen"
 
 #~ msgid "wplingua.com : Contact support"
 #~ msgstr "wplingua.com : Contact ondersteuning"

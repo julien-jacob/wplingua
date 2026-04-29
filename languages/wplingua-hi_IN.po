@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: wpLingua\n"
-"POT-Creation-Date: 2026-03-17 08:44+0100\n"
-"PO-Revision-Date: 2026-03-17 09:44+0100\n"
+"POT-Creation-Date: 2026-04-28 16:26+0200\n"
+"PO-Revision-Date: 2026-04-28 16:50+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: hi_IN\n"
@@ -725,7 +725,7 @@ msgstr "अनुवाद"
 msgid "Edit translations"
 msgstr "अनुवाद संपादित करें"
 
-#: inc/admin/assets.php:380 inc/admin/assets.php:472 inc/assets.php:75
+#: inc/admin/assets.php:380 inc/admin/assets.php:472 inc/assets.php:85
 msgid ""
 "You are about to leave the page without saving your changes. They will be lost if you continue. "
 "Would you like to leave the page anyway?"
@@ -893,8 +893,8 @@ msgid "Exclude elements by CSS selector"
 msgstr "CSS चयनकर्ता द्वारा तत्वों को बाहर निकालें"
 
 #: inc/admin/option-page-exclusions.php:69 inc/admin/option-page-settings.php:91
-#: inc/admin/option-page-switcher.php:496 inc/admin/translation-edit-modal.php:71
-#: inc/assets.php:82
+#: inc/admin/option-page-switcher.php:504 inc/admin/translation-edit-modal.php:71
+#: inc/assets.php:92
 msgid "Save"
 msgstr "सेव करें"
 
@@ -1145,7 +1145,7 @@ msgstr "API कुंजी पुनर्प्राप्ति पृष्
 #: inc/admin/option-page-switcher.php:124 inc/admin/option-page-switcher.php:179
 #: inc/admin/option-page-switcher.php:237 inc/admin/option-page-switcher.php:331
 #: inc/admin/option-page-switcher.php:384 inc/admin/option-page-switcher.php:437
-#: inc/admin/option-page-switcher.php:451 inc/admin/option-page-switcher.php:465
+#: inc/admin/option-page-switcher.php:459 inc/admin/option-page-switcher.php:473
 msgid "Click to expand"
 msgstr "विस्तार करें"
 
@@ -1209,8 +1209,8 @@ msgstr ""
 "वेबसाइट की भाषा भी वर्डप्रेस विकल्पों (सेटिंग्स ➔ सामान्य ➔ वेबसाइट भाषा) में सही ढंग से सेट की गई है।"
 
 #: inc/admin/option-page-register.php:413
-msgid "Target language: "
-msgstr "लक्ष्य भाषा: "
+msgid "Language to add: "
+msgstr "जोड़ने के लिए भाषा: "
 
 #: inc/admin/option-page-register.php:421
 msgid ""
@@ -1576,8 +1576,8 @@ msgstr ""
 "सुविधा केवल कनेक्टेड संपादकों पर लागू होती है।"
 
 #: inc/admin/option-page-settings.php:545
-msgid "Enable language browser redirection"
-msgstr "भाषा ब्राउज़र पुनर्निर्देशन सक्षम करें"
+msgid "Enable redirection based on the web browser's language"
+msgstr "वेब ब्राउज़र की भाषा के आधार पर पुनर्निर्देशन सक्षम करें"
 
 #: inc/admin/option-page-settings.php:549
 msgid ""
@@ -1992,15 +1992,30 @@ msgstr ""
 "स्विचर को वहीं रखने के लिए आदर्श है जहाँ आप इसे रखना चाहते हैं, चाहे आप गुटेनबर्ग ब्लॉक-आधारित थीम (FSE), "
 "क्लासिक थीम या Divi, Elementor जैसे पेज या थीम बिल्डर का उपयोग कर रहे हों।"
 
-#: inc/admin/option-page-switcher.php:450
+#: inc/admin/option-page-switcher.php:445
+msgid "You can add parameters to the language selector shortcode, for example: "
+msgstr "आप भाषा चयनकर्ता शॉर्टकोड में पैरामीटर जोड़ सकते हैं, उदाहरण के लिए: "
+
+#: inc/admin/option-page-switcher.php:448
+msgid "Here is a list of all available settings: "
+msgstr "यहाँ सभी उपलब्ध सेटिंग्स की सूची है: "
+
+#: inc/admin/option-page-switcher.php:451
+msgid ""
+"If a setting is not specified, the value entered on the language switcher options page will be "
+"used."
+msgstr ""
+"यदि कोई सेटिंग निर्दिष्ट नहीं की गई है, तो भाषा स्विचर विकल्प पृष्ठ पर दर्ज किया गया मान उपयोग किया जाएगा।"
+
+#: inc/admin/option-page-switcher.php:458
 msgid "Gutenberg & FSE: "
 msgstr "गुटेनबर्ग और एफएसई: "
 
-#: inc/admin/option-page-switcher.php:453
+#: inc/admin/option-page-switcher.php:461
 msgid "Block wpLingua Switcher"
 msgstr "ब्लॉक wpLingua स्विचर"
 
-#: inc/admin/option-page-switcher.php:457
+#: inc/admin/option-page-switcher.php:465
 msgid ""
 "Block based themes, wpLingua offers a dedicated Gutenberg block. You can insert the switcher "
 "wherever you want, whether in the content or via the overall site editor."
@@ -2008,15 +2023,15 @@ msgstr ""
 "ब्लॉक-आधारित थीमों के लिए, wpLingua एक समर्पित गुटेनबर्ग ब्लॉक प्रदान करता है। आप स्विचर को जहाँ चाहें डाल "
 "सकते हैं, चाहे वह सामग्री में हो या समग्र साइट संपादक के माध्यम से।"
 
-#: inc/admin/option-page-switcher.php:464
+#: inc/admin/option-page-switcher.php:472
 msgid "Switcher in menu: "
 msgstr "मेनू में स्विचर: "
 
-#: inc/admin/option-page-switcher.php:479
+#: inc/admin/option-page-switcher.php:487
 msgid "Appearance ➔ Menus"
 msgstr "उपस्थिति ➔ मेनू"
 
-#: inc/admin/option-page-switcher.php:490
+#: inc/admin/option-page-switcher.php:498
 msgid ""
 "If the active theme manages menus (classic theme), it is possible to add a language switcher. "
 "The design of these language switchers will be defined by the theme. Go to the Appearance ➔ "
@@ -2188,6 +2203,22 @@ msgstr ""
 "ऐसा प्रतीत होता है कि एक प्लगइन को गलत तरीके से निष्क्रिय कर दिया गया था और इसने साइट की .htaccess फ़ाइल "
 "को भ्रष्ट कर दिया, जिससे अनुवादित पृष्ठों का सही रीडायरेक्शन नहीं हो पा रहा है। कृपया साइट की रूट में स्थित "
 "\".htaccess\" फ़ाइल को संपादित करें और निम्नलिखित पंक्तियों को हटा दें:"
+
+#: inc/admin/option-page.php:621
+msgid "wpLingua - Incompatible permalink structure"
+msgstr "wpLingua - असंगत पर्मालिंक संरचना"
+
+#: inc/admin/option-page.php:624
+msgid ""
+"wpLingua is not compatible with the \"Plain\" permalink structure. Please update your permalink "
+"settings to use \"Post name\" or \"Custom Structure\"."
+msgstr ""
+"wpLingua \"Plain\" पर्मालिंक संरचना के साथ संगत नहीं है। कृपया अपनी पर्मालिंक सेटिंग्स को \"Post name\" या "
+"\"Custom Structure\" में अपडेट करें।"
+
+#: inc/admin/option-page.php:630
+msgid "Manage permalink settings"
+msgstr "स्थायी लिंक सेटिंग्स प्रबंधित करें"
 
 #: inc/admin/slug-cpt.php:19
 msgid "wpLingua - Website slugs"
@@ -2421,7 +2452,7 @@ msgstr "कोड"
 msgid "API returned an unexpected response."
 msgstr "API ने अप्रत्याशित प्रतिक्रिया लौटाई."
 
-#: inc/assets.php:79
+#: inc/assets.php:89
 msgid ""
 "You are about to exit without saving your changes. They will be lost if you continue. Would you "
 "like to leave anyway?"
@@ -2429,7 +2460,7 @@ msgstr ""
 "आप अपने बदलावों को सहेजे बिना ही बाहर निकलने वाले हैं। अगर आप जारी रखेंगे तो वे खो जाएँगे। क्या आप फिर भी बाहर "
 "निकलना चाहेंगे?"
 
-#: inc/assets.php:83
+#: inc/assets.php:93
 msgid "Save in progress..."
 msgstr "सहेजना प्रगति पर है..."
 
@@ -2592,6 +2623,12 @@ msgstr ""
 #. Author of the plugin/theme
 msgid "wpLingua Translation Service"
 msgstr "wpLingua अनुवाद सेवा"
+
+#~ msgid "Target language: "
+#~ msgstr "लक्ष्य भाषा: "
+
+#~ msgid "Enable language browser redirection"
+#~ msgstr "भाषा ब्राउज़र पुनर्निर्देशन सक्षम करें"
 
 #~ msgid "wplingua.com : Contact support"
 #~ msgstr "wplingua.com : सहायता से संपर्क करें"

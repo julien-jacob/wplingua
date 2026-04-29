@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: wpLingua\n"
-"POT-Creation-Date: 2026-03-17 08:44+0100\n"
-"PO-Revision-Date: 2026-03-17 09:28+0100\n"
+"POT-Creation-Date: 2026-04-28 16:26+0200\n"
+"PO-Revision-Date: 2026-04-28 16:35+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fi\n"
@@ -729,7 +729,7 @@ msgstr "Käännökset"
 msgid "Edit translations"
 msgstr "Muokkaa käännöksiä"
 
-#: inc/admin/assets.php:380 inc/admin/assets.php:472 inc/assets.php:75
+#: inc/admin/assets.php:380 inc/admin/assets.php:472 inc/assets.php:85
 msgid ""
 "You are about to leave the page without saving your changes. They will be "
 "lost if you continue. Would you like to leave the page anyway?"
@@ -914,8 +914,8 @@ msgid "Exclude elements by CSS selector"
 msgstr "Sulje elementit pois CSS-valitsimen avulla"
 
 #: inc/admin/option-page-exclusions.php:69 inc/admin/option-page-settings.php:91
-#: inc/admin/option-page-switcher.php:496
-#: inc/admin/translation-edit-modal.php:71 inc/assets.php:82
+#: inc/admin/option-page-switcher.php:504
+#: inc/admin/translation-edit-modal.php:71 inc/assets.php:92
 msgid "Save"
 msgstr "Tallenna"
 
@@ -1183,7 +1183,7 @@ msgstr "aPI-avaimen hakusivu"
 #: inc/admin/option-page-switcher.php:124 inc/admin/option-page-switcher.php:179
 #: inc/admin/option-page-switcher.php:237 inc/admin/option-page-switcher.php:331
 #: inc/admin/option-page-switcher.php:384 inc/admin/option-page-switcher.php:437
-#: inc/admin/option-page-switcher.php:451 inc/admin/option-page-switcher.php:465
+#: inc/admin/option-page-switcher.php:459 inc/admin/option-page-switcher.php:473
 msgid "Click to expand"
 msgstr "Laajenna klikkaamalla"
 
@@ -1256,8 +1256,8 @@ msgstr ""
 "WordPressin asetuksissa (Asetukset ➔ Yleiset ➔ Verkkosivuston kieli)."
 
 #: inc/admin/option-page-register.php:413
-msgid "Target language: "
-msgstr "Kohdekieli: "
+msgid "Language to add: "
+msgstr "Lisättävä kieli: "
 
 #: inc/admin/option-page-register.php:421
 msgid ""
@@ -1660,8 +1660,8 @@ msgstr ""
 "merkkijonokäännöstä. Tämä ominaisuus koskee vain kytkettyjä editoria."
 
 #: inc/admin/option-page-settings.php:545
-msgid "Enable language browser redirection"
-msgstr "Ota käyttöön kielen mukainen selaimen uudelleenohjaus"
+msgid "Enable redirection based on the web browser's language"
+msgstr "Ota käyttöön selaimen kielen mukainen uudelleenohjaus"
 
 #: inc/admin/option-page-settings.php:549
 msgid ""
@@ -2114,15 +2114,31 @@ msgstr ""
 "riippumatta siitä, käytätkö Gutenberg-lohkopohjaista teemaa (FSE), klassista "
 "teemaa vai jopa sivun- tai teemarakentajaa, kuten Diviä tai Elementoria..."
 
-#: inc/admin/option-page-switcher.php:450
+#: inc/admin/option-page-switcher.php:445
+msgid "You can add parameters to the language selector shortcode, for example: "
+msgstr "Voit lisätä parametreja kielivalitsimen shortcodeen, esimerkiksi: "
+
+#: inc/admin/option-page-switcher.php:448
+msgid "Here is a list of all available settings: "
+msgstr "Tässä on luettelo kaikista käytettävissä olevista asetuksista: "
+
+#: inc/admin/option-page-switcher.php:451
+msgid ""
+"If a setting is not specified, the value entered on the language switcher "
+"options page will be used."
+msgstr ""
+"Jos asetusta ei ole määritetty, käytetään kielivalitsimen asetussivulla "
+"syötettyä arvoa."
+
+#: inc/admin/option-page-switcher.php:458
 msgid "Gutenberg & FSE: "
 msgstr "Gutenberg ja FSE: "
 
-#: inc/admin/option-page-switcher.php:453
+#: inc/admin/option-page-switcher.php:461
 msgid "Block wpLingua Switcher"
 msgstr "Estä wpLingua Switcher"
 
-#: inc/admin/option-page-switcher.php:457
+#: inc/admin/option-page-switcher.php:465
 msgid ""
 "Block based themes, wpLingua offers a dedicated Gutenberg block. You can "
 "insert the switcher wherever you want, whether in the content or via the "
@@ -2132,15 +2148,15 @@ msgstr ""
 "lisätä vaihtimen mihin tahansa haluat, joko suoraan sisältöön tai koko "
 "sivuston muokkausnäkymän kautta."
 
-#: inc/admin/option-page-switcher.php:464
+#: inc/admin/option-page-switcher.php:472
 msgid "Switcher in menu: "
 msgstr "Valikon vaihtokytkin: "
 
-#: inc/admin/option-page-switcher.php:479
+#: inc/admin/option-page-switcher.php:487
 msgid "Appearance ➔ Menus"
 msgstr "Ulkoasu ➔ Valikot"
 
-#: inc/admin/option-page-switcher.php:490
+#: inc/admin/option-page-switcher.php:498
 msgid ""
 "If the active theme manages menus (classic theme), it is possible to add a "
 "language switcher. The design of these language switchers will be defined by "
@@ -2324,6 +2340,23 @@ msgstr ""
 "oikeanlaisen uudelleenohjauksen. Muokkaa sivuston juurikansiossa sijaitsevaa "
 "\".htaccess\"-tiedostoa ja poista rivit, jotka sijaitsevat seuraavien "
 "merkkien välissä:"
+
+#: inc/admin/option-page.php:621
+msgid "wpLingua - Incompatible permalink structure"
+msgstr "wpLingua – Yhteensopimaton pysyvien linkkien rakenne"
+
+#: inc/admin/option-page.php:624
+msgid ""
+"wpLingua is not compatible with the \"Plain\" permalink structure. Please "
+"update your permalink settings to use \"Post name\" or \"Custom Structure\"."
+msgstr ""
+"wpLingua ei ole yhteensopiva ”Plain”-pysyvän linkin rakenteen kanssa. Päivitä "
+"pysyvien linkkien asetukset niin, että käytät ”Post name” tai ”Custom "
+"Structure” -vaihtoehtoa."
+
+#: inc/admin/option-page.php:630
+msgid "Manage permalink settings"
+msgstr "Hallitse pysyvien linkkien asetuksia"
 
 #: inc/admin/slug-cpt.php:19
 msgid "wpLingua - Website slugs"
@@ -2560,7 +2593,7 @@ msgstr "Koodi"
 msgid "API returned an unexpected response."
 msgstr "API palautti odottamattoman vastauksen."
 
-#: inc/assets.php:79
+#: inc/assets.php:89
 msgid ""
 "You are about to exit without saving your changes. They will be lost if you "
 "continue. Would you like to leave anyway?"
@@ -2568,7 +2601,7 @@ msgstr ""
 "Olet aikeissa poistua tallentamatta muutoksia. Ne menetetään, jos jatkat. "
 "Haluatko silti poistua?"
 
-#: inc/assets.php:83
+#: inc/assets.php:93
 msgid "Save in progress..."
 msgstr "Tallennetaan..."
 
@@ -2739,6 +2772,12 @@ msgstr ""
 #. Author of the plugin/theme
 msgid "wpLingua Translation Service"
 msgstr "wpLingua-käännöspalvelu"
+
+#~ msgid "Target language: "
+#~ msgstr "Kohdekieli: "
+
+#~ msgid "Enable language browser redirection"
+#~ msgstr "Ota käyttöön kielen mukainen selaimen uudelleenohjaus"
 
 #~ msgid "wplingua.com : Contact support"
 #~ msgstr "wplingua.com : Yhteydenotto tukeen"

@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: wpLingua\n"
-"POT-Creation-Date: 2026-03-17 08:44+0100\n"
-"PO-Revision-Date: 2026-03-17 08:50+0100\n"
+"POT-Creation-Date: 2026-04-28 16:26+0200\n"
+"PO-Revision-Date: 2026-04-28 16:31+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: de_DE\n"
@@ -729,7 +729,7 @@ msgstr "Übersetzungen"
 msgid "Edit translations"
 msgstr "Übersetzungen bearbeiten"
 
-#: inc/admin/assets.php:380 inc/admin/assets.php:472 inc/assets.php:75
+#: inc/admin/assets.php:380 inc/admin/assets.php:472 inc/assets.php:85
 msgid ""
 "You are about to leave the page without saving your changes. They will be "
 "lost if you continue. Would you like to leave the page anyway?"
@@ -917,8 +917,8 @@ msgid "Exclude elements by CSS selector"
 msgstr "Elemente per CSS-Selektor ausschließen"
 
 #: inc/admin/option-page-exclusions.php:69 inc/admin/option-page-settings.php:91
-#: inc/admin/option-page-switcher.php:496
-#: inc/admin/translation-edit-modal.php:71 inc/assets.php:82
+#: inc/admin/option-page-switcher.php:504
+#: inc/admin/translation-edit-modal.php:71 inc/assets.php:92
 msgid "Save"
 msgstr "Speichern"
 
@@ -1190,7 +1190,7 @@ msgstr "die Seite zum Abrufen des API-Schlüssels"
 #: inc/admin/option-page-switcher.php:124 inc/admin/option-page-switcher.php:179
 #: inc/admin/option-page-switcher.php:237 inc/admin/option-page-switcher.php:331
 #: inc/admin/option-page-switcher.php:384 inc/admin/option-page-switcher.php:437
-#: inc/admin/option-page-switcher.php:451 inc/admin/option-page-switcher.php:465
+#: inc/admin/option-page-switcher.php:459 inc/admin/option-page-switcher.php:473
 msgid "Click to expand"
 msgstr "Klicken zum Erweitern"
 
@@ -1265,8 +1265,8 @@ msgstr ""
 "Website-Sprache)."
 
 #: inc/admin/option-page-register.php:413
-msgid "Target language: "
-msgstr "Zielsprache: "
+msgid "Language to add: "
+msgstr "Zu fügende Sprache: "
 
 #: inc/admin/option-page-register.php:421
 msgid ""
@@ -1681,8 +1681,8 @@ msgstr ""
 "nur für verbundene Editoren."
 
 #: inc/admin/option-page-settings.php:545
-msgid "Enable language browser redirection"
-msgstr "Sprachliche Browserumleitung aktivieren"
+msgid "Enable redirection based on the web browser's language"
+msgstr "Weiterleitung basierend auf der Sprache des Webbrowsers aktivieren"
 
 #: inc/admin/option-page-settings.php:549
 msgid ""
@@ -2144,15 +2144,33 @@ msgstr ""
 "klassisches Theme oder sogar einen Seiten- oder Theme-Builder wie Divi, "
 "Elementor... verwenden."
 
-#: inc/admin/option-page-switcher.php:450
+#: inc/admin/option-page-switcher.php:445
+msgid "You can add parameters to the language selector shortcode, for example: "
+msgstr ""
+"Sie können dem Shortcode für die Sprachauswahl Parameter hinzufügen, zum "
+"Beispiel: "
+
+#: inc/admin/option-page-switcher.php:448
+msgid "Here is a list of all available settings: "
+msgstr "Hier ist eine Liste aller verfügbaren Einstellungen: "
+
+#: inc/admin/option-page-switcher.php:451
+msgid ""
+"If a setting is not specified, the value entered on the language switcher "
+"options page will be used."
+msgstr ""
+"Wenn keine Einstellung angegeben wird, wird der auf der Seite mit den "
+"Optionen für die Sprachumschaltung eingegebene Wert verwendet."
+
+#: inc/admin/option-page-switcher.php:458
 msgid "Gutenberg & FSE: "
 msgstr "Gutenberg & FSE: "
 
-#: inc/admin/option-page-switcher.php:453
+#: inc/admin/option-page-switcher.php:461
 msgid "Block wpLingua Switcher"
 msgstr "Block wpLingua Switcher"
 
-#: inc/admin/option-page-switcher.php:457
+#: inc/admin/option-page-switcher.php:465
 msgid ""
 "Block based themes, wpLingua offers a dedicated Gutenberg block. You can "
 "insert the switcher wherever you want, whether in the content or via the "
@@ -2162,15 +2180,15 @@ msgstr ""
 "können den Schalter einfügen, wo immer Sie wollen, ob im Inhalt oder über den "
 "gesamten Website-Editor."
 
-#: inc/admin/option-page-switcher.php:464
+#: inc/admin/option-page-switcher.php:472
 msgid "Switcher in menu: "
 msgstr "Switcher im Menü: "
 
-#: inc/admin/option-page-switcher.php:479
+#: inc/admin/option-page-switcher.php:487
 msgid "Appearance ➔ Menus"
 msgstr "Erscheinungsbild ➔ Menüs"
 
-#: inc/admin/option-page-switcher.php:490
+#: inc/admin/option-page-switcher.php:498
 msgid ""
 "If the active theme manages menus (classic theme), it is possible to add a "
 "language switcher. The design of these language switchers will be defined by "
@@ -2358,6 +2376,23 @@ msgstr ""
 "übersetzten Seiten verhindert wird. Bitte bearbeiten Sie die \".htaccess\"-"
 "Datei, die sich im Stammverzeichnis der Website befindet, und löschen Sie die "
 "Zeilen zwischen :"
+
+#: inc/admin/option-page.php:621
+msgid "wpLingua - Incompatible permalink structure"
+msgstr "wpLingua – Inkompatible Permalink-Struktur"
+
+#: inc/admin/option-page.php:624
+msgid ""
+"wpLingua is not compatible with the \"Plain\" permalink structure. Please "
+"update your permalink settings to use \"Post name\" or \"Custom Structure\"."
+msgstr ""
+"wpLingua ist nicht mit der Permalink-Struktur „Plain“ kompatibel. Bitte "
+"passen Sie Ihre Permalink-Einstellungen an, sodass „Beitragsname“ oder "
+"„Benutzerdefinierte Struktur“ verwendet wird."
+
+#: inc/admin/option-page.php:630
+msgid "Manage permalink settings"
+msgstr "Permalink-Einstellungen verwalten"
 
 #: inc/admin/slug-cpt.php:19
 msgid "wpLingua - Website slugs"
@@ -2595,7 +2630,7 @@ msgstr "Code"
 msgid "API returned an unexpected response."
 msgstr "API hat eine unerwartete Antwort zurückgegeben."
 
-#: inc/assets.php:79
+#: inc/assets.php:89
 msgid ""
 "You are about to exit without saving your changes. They will be lost if you "
 "continue. Would you like to leave anyway?"
@@ -2604,7 +2639,7 @@ msgstr ""
 "speichern. Wenn Sie fortfahren, gehen sie verloren. Möchten Sie trotzdem "
 "gehen?"
 
-#: inc/assets.php:83
+#: inc/assets.php:93
 msgid "Save in progress..."
 msgstr "Speichern in Arbeit..."
 
@@ -2775,6 +2810,12 @@ msgstr ""
 #. Author of the plugin/theme
 msgid "wpLingua Translation Service"
 msgstr "wpLingua Übersetzungsdienst"
+
+#~ msgid "Target language: "
+#~ msgstr "Zielsprache: "
+
+#~ msgid "Enable language browser redirection"
+#~ msgstr "Sprachliche Browserumleitung aktivieren"
 
 #~ msgid "wplingua.com : Contact support"
 #~ msgstr "wplingua.com : Kontakt zur Unterstützung"
