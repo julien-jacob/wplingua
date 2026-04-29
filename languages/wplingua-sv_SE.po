@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: wpLingua\n"
-"POT-Creation-Date: 2026-03-17 08:44+0100\n"
-"PO-Revision-Date: 2026-03-17 09:59+0100\n"
+"POT-Creation-Date: 2026-04-28 16:26+0200\n"
+"PO-Revision-Date: 2026-04-28 18:35+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: sv_SE\n"
@@ -729,7 +729,7 @@ msgstr "Översättningar"
 msgid "Edit translations"
 msgstr "Redigera översättningar"
 
-#: inc/admin/assets.php:380 inc/admin/assets.php:472 inc/assets.php:75
+#: inc/admin/assets.php:380 inc/admin/assets.php:472 inc/assets.php:85
 msgid ""
 "You are about to leave the page without saving your changes. They will be "
 "lost if you continue. Would you like to leave the page anyway?"
@@ -914,8 +914,8 @@ msgid "Exclude elements by CSS selector"
 msgstr "Uteslut element med CSS-väljare"
 
 #: inc/admin/option-page-exclusions.php:69 inc/admin/option-page-settings.php:91
-#: inc/admin/option-page-switcher.php:496
-#: inc/admin/translation-edit-modal.php:71 inc/assets.php:82
+#: inc/admin/option-page-switcher.php:504
+#: inc/admin/translation-edit-modal.php:71 inc/assets.php:92
 msgid "Save"
 msgstr "Spara"
 
@@ -1181,7 +1181,7 @@ msgstr "sidan för hämtning av API-nyckel"
 #: inc/admin/option-page-switcher.php:124 inc/admin/option-page-switcher.php:179
 #: inc/admin/option-page-switcher.php:237 inc/admin/option-page-switcher.php:331
 #: inc/admin/option-page-switcher.php:384 inc/admin/option-page-switcher.php:437
-#: inc/admin/option-page-switcher.php:451 inc/admin/option-page-switcher.php:465
+#: inc/admin/option-page-switcher.php:459 inc/admin/option-page-switcher.php:473
 msgid "Click to expand"
 msgstr "Visa större"
 
@@ -1254,8 +1254,8 @@ msgstr ""
 "WordPress-alternativen (Inställningar ➔ Allmänt ➔ Webbplatsspråk)."
 
 #: inc/admin/option-page-register.php:413
-msgid "Target language: "
-msgstr "Målspråk: "
+msgid "Language to add: "
+msgstr "Språk att lägga till: "
 
 #: inc/admin/option-page-register.php:421
 msgid ""
@@ -1663,8 +1663,8 @@ msgstr ""
 "redigerare."
 
 #: inc/admin/option-page-settings.php:545
-msgid "Enable language browser redirection"
-msgstr "Aktivera omdirigering av webbläsare för språk"
+msgid "Enable redirection based on the web browser's language"
+msgstr "Aktivera omdirigering baserat på webbläsarens språk"
 
 #: inc/admin/option-page-settings.php:549
 msgid ""
@@ -2114,15 +2114,32 @@ msgstr ""
 "du använder ett Gutenberg blockbaserat tema (FSE), ett klassiskt tema eller "
 "till och med en sid- eller temabyggare som Divi, Elementor..."
 
-#: inc/admin/option-page-switcher.php:450
+#: inc/admin/option-page-switcher.php:445
+msgid "You can add parameters to the language selector shortcode, for example: "
+msgstr ""
+"Du kan lägga till parametrar i kortkoden för språkväljaren, till exempel: "
+
+#: inc/admin/option-page-switcher.php:448
+msgid "Here is a list of all available settings: "
+msgstr "Här är en lista över alla tillgängliga inställningar: "
+
+#: inc/admin/option-page-switcher.php:451
+msgid ""
+"If a setting is not specified, the value entered on the language switcher "
+"options page will be used."
+msgstr ""
+"Om ingen inställning anges kommer det värde som angetts på inställningssidan "
+"för språkväljaren att användas."
+
+#: inc/admin/option-page-switcher.php:458
 msgid "Gutenberg & FSE: "
 msgstr "Gutenberg & FSE: "
 
-#: inc/admin/option-page-switcher.php:453
+#: inc/admin/option-page-switcher.php:461
 msgid "Block wpLingua Switcher"
 msgstr "Blockera wpLingua Switcher"
 
-#: inc/admin/option-page-switcher.php:457
+#: inc/admin/option-page-switcher.php:465
 msgid ""
 "Block based themes, wpLingua offers a dedicated Gutenberg block. You can "
 "insert the switcher wherever you want, whether in the content or via the "
@@ -2132,15 +2149,15 @@ msgstr ""
 "infoga switchen var du vill, oavsett om det är i innehållet eller via den "
 "övergripande webbplatsredigeraren."
 
-#: inc/admin/option-page-switcher.php:464
+#: inc/admin/option-page-switcher.php:472
 msgid "Switcher in menu: "
 msgstr "Omkopplare i menyn: "
 
-#: inc/admin/option-page-switcher.php:479
+#: inc/admin/option-page-switcher.php:487
 msgid "Appearance ➔ Menus"
 msgstr "Utseende ➔ Menyer"
 
-#: inc/admin/option-page-switcher.php:490
+#: inc/admin/option-page-switcher.php:498
 msgid ""
 "If the active theme manages menus (classic theme), it is possible to add a "
 "language switcher. The design of these language switchers will be defined by "
@@ -2322,6 +2339,23 @@ msgstr ""
 "webbplatsens HTACCESS-fil, vilket förhindrar korrekt omdirigering av "
 "översatta sidor. Vänligen redigera filen \".htaccess\" som finns i roten av "
 "webbplatsen och radera raderna mellan :"
+
+#: inc/admin/option-page.php:621
+msgid "wpLingua - Incompatible permalink structure"
+msgstr "wpLingua – Oförenlig struktur för permanenta länkar"
+
+#: inc/admin/option-page.php:624
+msgid ""
+"wpLingua is not compatible with the \"Plain\" permalink structure. Please "
+"update your permalink settings to use \"Post name\" or \"Custom Structure\"."
+msgstr ""
+"wpLingua är inte kompatibelt med permalänkstrukturen ”Plain”. Ändra dina "
+"permalänksinställningar så att du använder ”Inläggets namn” eller ”Anpassad "
+"struktur”."
+
+#: inc/admin/option-page.php:630
+msgid "Manage permalink settings"
+msgstr "Hantera inställningar för permanenta länkar"
 
 #: inc/admin/slug-cpt.php:19
 msgid "wpLingua - Website slugs"
@@ -2558,7 +2592,7 @@ msgstr "Kod"
 msgid "API returned an unexpected response."
 msgstr "API gav ett oväntat svar."
 
-#: inc/assets.php:79
+#: inc/assets.php:89
 msgid ""
 "You are about to exit without saving your changes. They will be lost if you "
 "continue. Would you like to leave anyway?"
@@ -2566,7 +2600,7 @@ msgstr ""
 "Du är på väg att avsluta utan att spara dina ändringar. De kommer att gå "
 "förlorade om du fortsätter. Skulle du vilja lämna ändå?"
 
-#: inc/assets.php:83
+#: inc/assets.php:93
 msgid "Save in progress..."
 msgstr "Spara under pågående..."
 
@@ -2735,6 +2769,12 @@ msgstr ""
 #. Author of the plugin/theme
 msgid "wpLingua Translation Service"
 msgstr "wpLingua Översättningstjänst"
+
+#~ msgid "Target language: "
+#~ msgstr "Målspråk: "
+
+#~ msgid "Enable language browser redirection"
+#~ msgstr "Aktivera omdirigering av webbläsare för språk"
 
 #~ msgid "wplingua.com : Contact support"
 #~ msgstr "wplingua.com : Kontakta support"

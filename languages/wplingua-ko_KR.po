@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: wpLingua\n"
-"POT-Creation-Date: 2026-03-17 08:44+0100\n"
-"PO-Revision-Date: 2026-03-17 09:53+0100\n"
+"POT-Creation-Date: 2026-04-28 16:26+0200\n"
+"PO-Revision-Date: 2026-04-28 16:59+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: ko_KR\n"
@@ -729,7 +729,7 @@ msgstr "번역"
 msgid "Edit translations"
 msgstr "번역 편집"
 
-#: inc/admin/assets.php:380 inc/admin/assets.php:472 inc/assets.php:75
+#: inc/admin/assets.php:380 inc/admin/assets.php:472 inc/assets.php:85
 msgid ""
 "You are about to leave the page without saving your changes. They will be "
 "lost if you continue. Would you like to leave the page anyway?"
@@ -912,8 +912,8 @@ msgid "Exclude elements by CSS selector"
 msgstr "CSS 선택기로 요소 제외"
 
 #: inc/admin/option-page-exclusions.php:69 inc/admin/option-page-settings.php:91
-#: inc/admin/option-page-switcher.php:496
-#: inc/admin/translation-edit-modal.php:71 inc/assets.php:82
+#: inc/admin/option-page-switcher.php:504
+#: inc/admin/translation-edit-modal.php:71 inc/assets.php:92
 msgid "Save"
 msgstr "저장"
 
@@ -1174,7 +1174,7 @@ msgstr "aPI 키 검색 페이지"
 #: inc/admin/option-page-switcher.php:124 inc/admin/option-page-switcher.php:179
 #: inc/admin/option-page-switcher.php:237 inc/admin/option-page-switcher.php:331
 #: inc/admin/option-page-switcher.php:384 inc/admin/option-page-switcher.php:437
-#: inc/admin/option-page-switcher.php:451 inc/admin/option-page-switcher.php:465
+#: inc/admin/option-page-switcher.php:459 inc/admin/option-page-switcher.php:473
 msgid "Click to expand"
 msgstr "클릭하여 확장"
 
@@ -1242,8 +1242,8 @@ msgstr ""
 "반 ➔ 웹사이트 언어)에서도 웹사이트 언어가 올바르게 설정되어 있는지 확인하세요."
 
 #: inc/admin/option-page-register.php:413
-msgid "Target language: "
-msgstr "대상 언어: "
+msgid "Language to add: "
+msgstr "추가할 언어: "
 
 #: inc/admin/option-page-register.php:421
 msgid ""
@@ -1632,8 +1632,8 @@ msgstr ""
 "활성화합니다. 이 기능은 연결된 편집기에만 적용됩니다."
 
 #: inc/admin/option-page-settings.php:545
-msgid "Enable language browser redirection"
-msgstr "언어 브라우저 리디렉션 사용"
+msgid "Enable redirection based on the web browser's language"
+msgstr "웹 브라우저의 언어에 따라 리디렉션을 활성화합니다"
 
 #: inc/admin/option-page-settings.php:549
 msgid ""
@@ -2074,15 +2074,30 @@ msgstr ""
 "텐베르크 블록 기반 테마(FSE), 클래식 테마 또는 Divi, Elementor와 같은 페이지 "
 "또는 테마 빌더를 사용하든 원하는 위치에 스위처를 배치하는 데 이상적입니다."
 
-#: inc/admin/option-page-switcher.php:450
+#: inc/admin/option-page-switcher.php:445
+msgid "You can add parameters to the language selector shortcode, for example: "
+msgstr "언어 선택기 숏코드에 매개변수를 추가할 수 있습니다. 예를 들어: "
+
+#: inc/admin/option-page-switcher.php:448
+msgid "Here is a list of all available settings: "
+msgstr "사용 가능한 모든 설정 목록은 다음과 같습니다: "
+
+#: inc/admin/option-page-switcher.php:451
+msgid ""
+"If a setting is not specified, the value entered on the language switcher "
+"options page will be used."
+msgstr ""
+"설정이 지정되지 않은 경우, 언어 전환기 옵션 페이지에 입력된 값이 사용됩니다."
+
+#: inc/admin/option-page-switcher.php:458
 msgid "Gutenberg & FSE: "
 msgstr "구텐베르크 및 FSE: "
 
-#: inc/admin/option-page-switcher.php:453
+#: inc/admin/option-page-switcher.php:461
 msgid "Block wpLingua Switcher"
 msgstr "언어 전환기 차단"
 
-#: inc/admin/option-page-switcher.php:457
+#: inc/admin/option-page-switcher.php:465
 msgid ""
 "Block based themes, wpLingua offers a dedicated Gutenberg block. You can "
 "insert the switcher wherever you want, whether in the content or via the "
@@ -2091,15 +2106,15 @@ msgstr ""
 "블록 기반 테마, wpLingua는 전용 구텐베르크 블록을 제공합니다. 콘텐츠 또는 전"
 "체 사이트 편집기를 통해 원하는 위치에 스위처를 삽입할 수 있습니다."
 
-#: inc/admin/option-page-switcher.php:464
+#: inc/admin/option-page-switcher.php:472
 msgid "Switcher in menu: "
 msgstr "메뉴의 전환기: "
 
-#: inc/admin/option-page-switcher.php:479
+#: inc/admin/option-page-switcher.php:487
 msgid "Appearance ➔ Menus"
 msgstr "모양 ➔ 메뉴"
 
-#: inc/admin/option-page-switcher.php:490
+#: inc/admin/option-page-switcher.php:498
 msgid ""
 "If the active theme manages menus (classic theme), it is possible to add a "
 "language switcher. The design of these language switchers will be defined by "
@@ -2277,6 +2292,22 @@ msgstr ""
 "플러그인이 잘못 비활성화되어 사이트의 HTACCESS 파일이 손상되어 번역된 페이지"
 "가 올바르게 리디렉션되지 않는 것 같습니다. 사이트 루트에 있는 '.htaccess' 파일"
 "을 편집하고 . 사이의 줄을 삭제하세요:"
+
+#: inc/admin/option-page.php:621
+msgid "wpLingua - Incompatible permalink structure"
+msgstr "wpLingua - 호환되지 않는 고정 링크 구조"
+
+#: inc/admin/option-page.php:624
+msgid ""
+"wpLingua is not compatible with the \"Plain\" permalink structure. Please "
+"update your permalink settings to use \"Post name\" or \"Custom Structure\"."
+msgstr ""
+"wpLingua는 “Plain” 고정 링크 구조와 호환되지 않습니다. 고정 링크 설정을 “글 제"
+"목” 또는 “사용자 정의 구조”로 변경해 주세요."
+
+#: inc/admin/option-page.php:630
+msgid "Manage permalink settings"
+msgstr "고정 링크 설정 관리"
 
 #: inc/admin/slug-cpt.php:19
 msgid "wpLingua - Website slugs"
@@ -2513,7 +2544,7 @@ msgstr "코드"
 msgid "API returned an unexpected response."
 msgstr "API가 예기치 않은 응답을 반환했습니다."
 
-#: inc/assets.php:79
+#: inc/assets.php:89
 msgid ""
 "You are about to exit without saving your changes. They will be lost if you "
 "continue. Would you like to leave anyway?"
@@ -2521,7 +2552,7 @@ msgstr ""
 "변경 사항을 저장하지 않고 종료하려고 합니다. 계속 진행하면 변경 내용이 손실됩"
 "니다. 그래도 나가시겠습니까?"
 
-#: inc/assets.php:83
+#: inc/assets.php:93
 msgid "Save in progress..."
 msgstr "저장 진행 중..."
 
@@ -2688,6 +2719,12 @@ msgstr ""
 #. Author of the plugin/theme
 msgid "wpLingua Translation Service"
 msgstr "wpLingua 번역 서비스"
+
+#~ msgid "Target language: "
+#~ msgstr "대상 언어: "
+
+#~ msgid "Enable language browser redirection"
+#~ msgstr "언어 브라우저 리디렉션 사용"
 
 #~ msgid "wplingua.com : Contact support"
 #~ msgstr "wplingua.com : 지원팀에 문의"

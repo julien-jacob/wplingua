@@ -221,7 +221,7 @@ function wplng_api_call_translate(
 		if ( is_string( $translation ) ) {
 			$translations[] = wp_kses( $translation, array() );
 		} elseif ( isset( $texts[ $key ] ) ) {
-			$translations = $texts[ $key ];
+			$translations[] = $texts[ $key ];
 		}
 	}
 

@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: wpLingua\n"
-"POT-Creation-Date: 2026-03-17 08:44+0100\n"
-"PO-Revision-Date: 2026-03-17 09:52+0100\n"
+"POT-Creation-Date: 2026-04-28 16:26+0200\n"
+"PO-Revision-Date: 2026-04-28 16:57+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -738,7 +738,7 @@ msgstr "翻訳"
 msgid "Edit translations"
 msgstr "翻訳を編集する"
 
-#: inc/admin/assets.php:380 inc/admin/assets.php:472 inc/assets.php:75
+#: inc/admin/assets.php:380 inc/admin/assets.php:472 inc/assets.php:85
 msgid ""
 "You are about to leave the page without saving your changes. They will be "
 "lost if you continue. Would you like to leave the page anyway?"
@@ -922,8 +922,8 @@ msgid "Exclude elements by CSS selector"
 msgstr "CSSセレクタによる要素の除外"
 
 #: inc/admin/option-page-exclusions.php:69 inc/admin/option-page-settings.php:91
-#: inc/admin/option-page-switcher.php:496
-#: inc/admin/translation-edit-modal.php:71 inc/assets.php:82
+#: inc/admin/option-page-switcher.php:504
+#: inc/admin/translation-edit-modal.php:71 inc/assets.php:92
 msgid "Save"
 msgstr "保存"
 
@@ -1185,7 +1185,7 @@ msgstr "APIキー取得ページ"
 #: inc/admin/option-page-switcher.php:124 inc/admin/option-page-switcher.php:179
 #: inc/admin/option-page-switcher.php:237 inc/admin/option-page-switcher.php:331
 #: inc/admin/option-page-switcher.php:384 inc/admin/option-page-switcher.php:437
-#: inc/admin/option-page-switcher.php:451 inc/admin/option-page-switcher.php:465
+#: inc/admin/option-page-switcher.php:459 inc/admin/option-page-switcher.php:473
 msgid "Click to expand"
 msgstr "クリックして展開"
 
@@ -1256,8 +1256,8 @@ msgstr ""
 "定されていることを確認してください。"
 
 #: inc/admin/option-page-register.php:413
-msgid "Target language: "
-msgstr "ターゲット言語："
+msgid "Language to add: "
+msgstr "追加する言語："
 
 #: inc/admin/option-page-register.php:421
 msgid ""
@@ -1654,8 +1654,8 @@ msgstr ""
 "表示します。この機能は、接続されたエディタにのみ適用されます。"
 
 #: inc/admin/option-page-settings.php:545
-msgid "Enable language browser redirection"
-msgstr "言語ブラウザのリダイレクトを有効にする"
+msgid "Enable redirection based on the web browser's language"
+msgstr "Webブラウザの言語に基づいてリダイレクトを有効にする"
 
 #: inc/admin/option-page-settings.php:549
 msgid ""
@@ -2100,15 +2100,31 @@ msgstr ""
 "ダーやテーマ・ビルダーを使用しているかどうかにかかわらず、スイッチャーを必要な"
 "場所に配置するのに理想的です。"
 
-#: inc/admin/option-page-switcher.php:450
+#: inc/admin/option-page-switcher.php:445
+msgid "You can add parameters to the language selector shortcode, for example: "
+msgstr "言語選択ショートコードにパラメータを追加することができます。例えば："
+
+#: inc/admin/option-page-switcher.php:448
+msgid "Here is a list of all available settings: "
+msgstr "利用可能な設定の一覧は以下の通りです："
+
+#: inc/admin/option-page-switcher.php:451
+msgid ""
+"If a setting is not specified, the value entered on the language switcher "
+"options page will be used."
+msgstr ""
+"設定が指定されていない場合、言語切り替えオプションページで入力された値が使用さ"
+"れます。"
+
+#: inc/admin/option-page-switcher.php:458
 msgid "Gutenberg & FSE: "
 msgstr "グーテンベルグ＆FSE "
 
-#: inc/admin/option-page-switcher.php:453
+#: inc/admin/option-page-switcher.php:461
 msgid "Block wpLingua Switcher"
 msgstr "ブロックwpLinguaスイッチャー"
 
-#: inc/admin/option-page-switcher.php:457
+#: inc/admin/option-page-switcher.php:465
 msgid ""
 "Block based themes, wpLingua offers a dedicated Gutenberg block. You can "
 "insert the switcher wherever you want, whether in the content or via the "
@@ -2117,15 +2133,15 @@ msgstr ""
 "ブロックベースのテーマ、wpLinguaは専用のGutenbergブロックを提供します。コンテ"
 "ンツ内でも、サイトエディタ全体でも、好きな場所にスイッチャーを挿入できます。"
 
-#: inc/admin/option-page-switcher.php:464
+#: inc/admin/option-page-switcher.php:472
 msgid "Switcher in menu: "
 msgstr "メニューのスイッチャー："
 
-#: inc/admin/option-page-switcher.php:479
+#: inc/admin/option-page-switcher.php:487
 msgid "Appearance ➔ Menus"
 msgstr "外観 ➔ メニュー"
 
-#: inc/admin/option-page-switcher.php:490
+#: inc/admin/option-page-switcher.php:498
 msgid ""
 "If the active theme manages menus (classic theme), it is possible to add a "
 "language switcher. The design of these language switchers will be defined by "
@@ -2306,6 +2322,22 @@ msgstr ""
 "プラグインが誤って無効化され、サイトのHTACCESSファイルが破損したため、翻訳され"
 "たページが正しくリダイレクトされないようです。サイトのルートにある"
 "「.htaccess」ファイルを編集し、："
+
+#: inc/admin/option-page.php:621
+msgid "wpLingua - Incompatible permalink structure"
+msgstr "wpLingua - 互換性のないパーマリンク構造"
+
+#: inc/admin/option-page.php:624
+msgid ""
+"wpLingua is not compatible with the \"Plain\" permalink structure. Please "
+"update your permalink settings to use \"Post name\" or \"Custom Structure\"."
+msgstr ""
+"wpLinguaは「Plain」パーマリンク構造に対応していません。「投稿名」または「カス"
+"タム構造」を使用するように、パーマリンク設定を更新してください。"
+
+#: inc/admin/option-page.php:630
+msgid "Manage permalink settings"
+msgstr "パーマリンク設定の管理"
 
 #: inc/admin/slug-cpt.php:19
 msgid "wpLingua - Website slugs"
@@ -2542,7 +2574,7 @@ msgstr "コード"
 msgid "API returned an unexpected response."
 msgstr "APIが予期しない応答を返した。"
 
-#: inc/assets.php:79
+#: inc/assets.php:89
 msgid ""
 "You are about to exit without saving your changes. They will be lost if you "
 "continue. Would you like to leave anyway?"
@@ -2550,7 +2582,7 @@ msgstr ""
 "変更を保存せずに終了しようとしています。続行すると変更内容が失われます。いずれ"
 "にせよ終了しますか？"
 
-#: inc/assets.php:83
+#: inc/assets.php:93
 msgid "Save in progress..."
 msgstr "保存中..."
 
@@ -2718,6 +2750,12 @@ msgstr ""
 #. Author of the plugin/theme
 msgid "wpLingua Translation Service"
 msgstr "wpLingua翻訳サービス"
+
+#~ msgid "Target language: "
+#~ msgstr "ターゲット言語："
+
+#~ msgid "Enable language browser redirection"
+#~ msgstr "言語ブラウザのリダイレクトを有効にする"
 
 #~ msgid "wplingua.com : Contact support"
 #~ msgstr "wplingua.com ：サポートへのお問い合わせ"

@@ -284,7 +284,7 @@ function wplng_option_page_link_media_new_entry_html() {
 	$html .= '<input';
 	$html .= ' type="radio"';
 	$html .= ' name="wplng_new_mode"';
-	$html .= ' value="wplng_new_mode_regex"';
+	$html .= ' value="regex"';
 	$html .= ' id="wplng_new_mode_regex"';
 	$html .= '>';
 	$html .= '<label for="wplng_new_mode_regex"> ';

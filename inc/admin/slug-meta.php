@@ -380,11 +380,11 @@ function wplng_slug_save_meta_boxes_data( $post_id ) {
 		$name     = 'wplng_slug_' . $translation['language_id'];
 		$reviewed = 'wplng_mark_as_reviewed_' . $translation['language_id'];
 
-		if ( ! isset( $_REQUEST[ $name ] ) ) {
+		if ( ! isset( $_POST[ $name ] ) ) {
 			continue;
 		}
 
-		$temp = sanitize_title( $_REQUEST[ $name ] );
+		$temp = sanitize_title( $_POST[ $name ] );
 
 		if ( empty( $temp ) || $slug_original === $temp ) {
 			$temp = '[WPLNG_EMPTY]';

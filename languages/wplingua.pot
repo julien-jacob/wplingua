@@ -2,8 +2,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: wpLingua\n"
-"POT-Creation-Date: 2026-03-17 08:44+0100\n"
-"PO-Revision-Date: 2026-03-17 08:44+0100\n"
+"POT-Creation-Date: 2026-04-28 16:26+0200\n"
+"PO-Revision-Date: 2026-04-28 16:26+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -730,7 +730,7 @@ msgstr ""
 msgid "Edit translations"
 msgstr ""
 
-#: inc/admin/assets.php:380 inc/admin/assets.php:472 inc/assets.php:75
+#: inc/admin/assets.php:380 inc/admin/assets.php:472 inc/assets.php:85
 msgid ""
 "You are about to leave the page without saving your changes. They will be "
 "lost if you continue. Would you like to leave the page anyway?"
@@ -905,8 +905,8 @@ msgid "Exclude elements by CSS selector"
 msgstr ""
 
 #: inc/admin/option-page-exclusions.php:69
-#: inc/admin/option-page-settings.php:91 inc/admin/option-page-switcher.php:496
-#: inc/admin/translation-edit-modal.php:71 inc/assets.php:82
+#: inc/admin/option-page-settings.php:91 inc/admin/option-page-switcher.php:504
+#: inc/admin/translation-edit-modal.php:71 inc/assets.php:92
 msgid "Save"
 msgstr ""
 
@@ -1152,8 +1152,8 @@ msgstr ""
 #: inc/admin/option-page-switcher.php:331
 #: inc/admin/option-page-switcher.php:384
 #: inc/admin/option-page-switcher.php:437
-#: inc/admin/option-page-switcher.php:451
-#: inc/admin/option-page-switcher.php:465
+#: inc/admin/option-page-switcher.php:459
+#: inc/admin/option-page-switcher.php:473
 msgid "Click to expand"
 msgstr ""
 
@@ -1211,7 +1211,7 @@ msgid ""
 msgstr ""
 
 #: inc/admin/option-page-register.php:413
-msgid "Target language: "
+msgid "Language to add: "
 msgstr ""
 
 #: inc/admin/option-page-register.php:421
@@ -1552,7 +1552,7 @@ msgid ""
 msgstr ""
 
 #: inc/admin/option-page-settings.php:545
-msgid "Enable language browser redirection"
+msgid "Enable redirection based on the web browser's language"
 msgstr ""
 
 #: inc/admin/option-page-settings.php:549
@@ -1960,30 +1960,45 @@ msgid ""
 "like Divi, Elementor..."
 msgstr ""
 
-#: inc/admin/option-page-switcher.php:450
+#: inc/admin/option-page-switcher.php:445
+msgid ""
+"You can add parameters to the language selector shortcode, for example: "
+msgstr ""
+
+#: inc/admin/option-page-switcher.php:448
+msgid "Here is a list of all available settings: "
+msgstr ""
+
+#: inc/admin/option-page-switcher.php:451
+msgid ""
+"If a setting is not specified, the value entered on the language switcher "
+"options page will be used."
+msgstr ""
+
+#: inc/admin/option-page-switcher.php:458
 msgid "Gutenberg & FSE: "
 msgstr ""
 
-#: inc/admin/option-page-switcher.php:453
+#: inc/admin/option-page-switcher.php:461
 msgid "Block wpLingua Switcher"
 msgstr ""
 
-#: inc/admin/option-page-switcher.php:457
+#: inc/admin/option-page-switcher.php:465
 msgid ""
 "Block based themes, wpLingua offers a dedicated Gutenberg block. You can "
 "insert the switcher wherever you want, whether in the content or via the "
 "overall site editor."
 msgstr ""
 
-#: inc/admin/option-page-switcher.php:464
+#: inc/admin/option-page-switcher.php:472
 msgid "Switcher in menu: "
 msgstr ""
 
-#: inc/admin/option-page-switcher.php:479
+#: inc/admin/option-page-switcher.php:487
 msgid "Appearance ➔ Menus"
 msgstr ""
 
-#: inc/admin/option-page-switcher.php:490
+#: inc/admin/option-page-switcher.php:498
 msgid ""
 "If the active theme manages menus (classic theme), it is possible to add a "
 "language switcher. The design of these language switchers will be defined by "
@@ -2146,6 +2161,20 @@ msgid ""
 "HTACCESS file, preventing the correct redirection of translated pages. "
 "Please edit the \".htaccess\" file located at the root of the site and "
 "delete the lines between :"
+msgstr ""
+
+#: inc/admin/option-page.php:621
+msgid "wpLingua - Incompatible permalink structure"
+msgstr ""
+
+#: inc/admin/option-page.php:624
+msgid ""
+"wpLingua is not compatible with the \"Plain\" permalink structure. Please "
+"update your permalink settings to use \"Post name\" or \"Custom Structure\"."
+msgstr ""
+
+#: inc/admin/option-page.php:630
+msgid "Manage permalink settings"
 msgstr ""
 
 #: inc/admin/slug-cpt.php:19
@@ -2381,13 +2410,13 @@ msgstr ""
 msgid "API returned an unexpected response."
 msgstr ""
 
-#: inc/assets.php:79
+#: inc/assets.php:89
 msgid ""
 "You are about to exit without saving your changes. They will be lost if you "
 "continue. Would you like to leave anyway?"
 msgstr ""
 
-#: inc/assets.php:83
+#: inc/assets.php:93
 msgid "Save in progress..."
 msgstr ""
 

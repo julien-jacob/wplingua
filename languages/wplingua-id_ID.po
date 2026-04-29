@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: wpLingua\n"
-"POT-Creation-Date: 2026-03-17 08:44+0100\n"
-"PO-Revision-Date: 2026-03-17 09:48+0100\n"
+"POT-Creation-Date: 2026-04-28 16:26+0200\n"
+"PO-Revision-Date: 2026-04-28 16:53+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: id_ID\n"
@@ -729,7 +729,7 @@ msgstr "Terjemahan"
 msgid "Edit translations"
 msgstr "Edit terjemahan"
 
-#: inc/admin/assets.php:380 inc/admin/assets.php:472 inc/assets.php:75
+#: inc/admin/assets.php:380 inc/admin/assets.php:472 inc/assets.php:85
 msgid ""
 "You are about to leave the page without saving your changes. They will be "
 "lost if you continue. Would you like to leave the page anyway?"
@@ -916,8 +916,8 @@ msgid "Exclude elements by CSS selector"
 msgstr "Mengecualikan elemen dengan pemilih CSS"
 
 #: inc/admin/option-page-exclusions.php:69 inc/admin/option-page-settings.php:91
-#: inc/admin/option-page-switcher.php:496
-#: inc/admin/translation-edit-modal.php:71 inc/assets.php:82
+#: inc/admin/option-page-switcher.php:504
+#: inc/admin/translation-edit-modal.php:71 inc/assets.php:92
 msgid "Save"
 msgstr "Simpan"
 
@@ -1186,7 +1186,7 @@ msgstr "halaman pengambilan kunci API"
 #: inc/admin/option-page-switcher.php:124 inc/admin/option-page-switcher.php:179
 #: inc/admin/option-page-switcher.php:237 inc/admin/option-page-switcher.php:331
 #: inc/admin/option-page-switcher.php:384 inc/admin/option-page-switcher.php:437
-#: inc/admin/option-page-switcher.php:451 inc/admin/option-page-switcher.php:465
+#: inc/admin/option-page-switcher.php:459 inc/admin/option-page-switcher.php:473
 msgid "Click to expand"
 msgstr "Klik untuk memperluas"
 
@@ -1259,8 +1259,8 @@ msgstr ""
 "(Pengaturan ➔ Umum ➔ Bahasa Situs Web)."
 
 #: inc/admin/option-page-register.php:413
-msgid "Target language: "
-msgstr "Bahasa target: "
+msgid "Language to add: "
+msgstr "Bahasa yang akan ditambahkan: "
 
 #: inc/admin/option-page-register.php:421
 msgid ""
@@ -1668,8 +1668,8 @@ msgstr ""
 "terhubung."
 
 #: inc/admin/option-page-settings.php:545
-msgid "Enable language browser redirection"
-msgstr "Mengaktifkan pengalihan browser bahasa"
+msgid "Enable redirection based on the web browser's language"
+msgstr "Aktifkan pengalihan berdasarkan bahasa peramban web"
 
 #: inc/admin/option-page-settings.php:549
 msgid ""
@@ -2128,15 +2128,32 @@ msgstr ""
 "tema klasik, atau bahkan pembangun halaman atau tema seperti Divi, "
 "Elementor..."
 
-#: inc/admin/option-page-switcher.php:450
+#: inc/admin/option-page-switcher.php:445
+msgid "You can add parameters to the language selector shortcode, for example: "
+msgstr ""
+"Anda dapat menambahkan parameter ke kode pendek pemilih bahasa, misalnya: "
+
+#: inc/admin/option-page-switcher.php:448
+msgid "Here is a list of all available settings: "
+msgstr "Berikut adalah daftar semua pengaturan yang tersedia: "
+
+#: inc/admin/option-page-switcher.php:451
+msgid ""
+"If a setting is not specified, the value entered on the language switcher "
+"options page will be used."
+msgstr ""
+"Jika pengaturan tidak ditentukan, nilai yang dimasukkan pada halaman opsi "
+"pengalih bahasa akan digunakan."
+
+#: inc/admin/option-page-switcher.php:458
 msgid "Gutenberg & FSE: "
 msgstr "Gutenberg & FSE: "
 
-#: inc/admin/option-page-switcher.php:453
+#: inc/admin/option-page-switcher.php:461
 msgid "Block wpLingua Switcher"
 msgstr "Blokir wpLingua Switcher"
 
-#: inc/admin/option-page-switcher.php:457
+#: inc/admin/option-page-switcher.php:465
 msgid ""
 "Block based themes, wpLingua offers a dedicated Gutenberg block. You can "
 "insert the switcher wherever you want, whether in the content or via the "
@@ -2146,15 +2163,15 @@ msgstr ""
 "menyisipkan pengalih di mana pun Anda inginkan, baik di dalam konten atau "
 "melalui editor situs secara keseluruhan."
 
-#: inc/admin/option-page-switcher.php:464
+#: inc/admin/option-page-switcher.php:472
 msgid "Switcher in menu: "
 msgstr "Pengalih dalam menu: "
 
-#: inc/admin/option-page-switcher.php:479
+#: inc/admin/option-page-switcher.php:487
 msgid "Appearance ➔ Menus"
 msgstr "Penampilan ➔ Menu"
 
-#: inc/admin/option-page-switcher.php:490
+#: inc/admin/option-page-switcher.php:498
 msgid ""
 "If the active theme manages menus (classic theme), it is possible to add a "
 "language switcher. The design of these language switchers will be defined by "
@@ -2338,6 +2355,23 @@ msgstr ""
 "file HTACCESS situs, sehingga mencegah pengalihan yang benar dari halaman "
 "yang diterjemahkan. Harap edit file \".htaccess\" yang terletak di root situs "
 "dan hapus baris di antara file :"
+
+#: inc/admin/option-page.php:621
+msgid "wpLingua - Incompatible permalink structure"
+msgstr "wpLingua - Struktur permalink tidak kompatibel"
+
+#: inc/admin/option-page.php:624
+msgid ""
+"wpLingua is not compatible with the \"Plain\" permalink structure. Please "
+"update your permalink settings to use \"Post name\" or \"Custom Structure\"."
+msgstr ""
+"wpLingua tidak kompatibel dengan struktur permalink \"Plain\". Silakan "
+"perbarui pengaturan permalink Anda untuk menggunakan \"Nama Posting\" atau "
+"\"Struktur Kustom\"."
+
+#: inc/admin/option-page.php:630
+msgid "Manage permalink settings"
+msgstr "Kelola pengaturan permalink"
 
 #: inc/admin/slug-cpt.php:19
 msgid "wpLingua - Website slugs"
@@ -2574,7 +2608,7 @@ msgstr "Kode"
 msgid "API returned an unexpected response."
 msgstr "API mengembalikan respons yang tidak diharapkan."
 
-#: inc/assets.php:79
+#: inc/assets.php:89
 msgid ""
 "You are about to exit without saving your changes. They will be lost if you "
 "continue. Would you like to leave anyway?"
@@ -2582,7 +2616,7 @@ msgstr ""
 "Anda akan keluar tanpa menyimpan perubahan Anda. Perubahan tersebut akan "
 "hilang jika Anda melanjutkan. Apakah Anda tetap ingin keluar?"
 
-#: inc/assets.php:83
+#: inc/assets.php:93
 msgid "Save in progress..."
 msgstr "Menyimpan dalam proses..."
 
@@ -2751,6 +2785,12 @@ msgstr ""
 #. Author of the plugin/theme
 msgid "wpLingua Translation Service"
 msgstr "layanan Terjemahan wpLingua"
+
+#~ msgid "Target language: "
+#~ msgstr "Bahasa target: "
+
+#~ msgid "Enable language browser redirection"
+#~ msgstr "Mengaktifkan pengalihan browser bahasa"
 
 #~ msgid "wplingua.com : Contact support"
 #~ msgstr "wplingua.com : Hubungi dukungan"
