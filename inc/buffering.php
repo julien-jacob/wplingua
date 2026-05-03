@@ -186,17 +186,19 @@ function wplng_ob_callback_ajax( $output ) {
 
 	global $wplng_request_uri;
 
+	$output_translated = $output;
+
 	if ( wplng_str_is_json( $output ) ) {
 
-		$output_translated = wplng_translate_json( $output );
+		$output_translated = apply_filters( 'wplng_intercepted_json', $output_translated );
+		$output_translated = wplng_translate_json( $output_translated );
+		$output_translated = apply_filters( 'wplng_translated_json', $output_translated );
 
 	} elseif ( wplng_str_is_html( $output ) ) {
 
-		$output_translated = wplng_translate_html( $output );
-
-	} else {
-
-		$output_translated = $output;
+		$output_translated = apply_filters( 'wplng_intercepted_html', $output_translated );
+		$output_translated = wplng_translate_html( $output_translated );
+		$output_translated = apply_filters( 'wplng_translated_html', $output_translated );
 
 	}
 
@@ -315,10 +317,12 @@ function wplng_ob_callback_wp_json( $output ) {
 
 	global $wplng_request_uri;
 
+	$output_translated = $output;
+
 	if ( wplng_str_is_json( $output ) ) {
-		$output_translated = wplng_translate_json( $output );
-	} else {
-		$output_translated = $output;
+		$output_translated = apply_filters( 'wplng_intercepted_json', $output_translated );
+		$output_translated = wplng_translate_json( $output_translated );
+		$output_translated = apply_filters( 'wplng_translated_json', $output_translated );
 	}
 
 	// Print debug data in debug.log file
