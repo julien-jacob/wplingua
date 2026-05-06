@@ -90,6 +90,7 @@ jQuery(document).ready(function ($) {
                 // once the 3 loads are complete, show the UI
                 $("#wplng-notice-first-loading-loading").hide();
                 $("#wplng-notice-first-loading-loaded").slideDown();
+                wplngLaunchConfetti();
                 $("#wplng-option-settings-form").slideDown();
                 $("#toplevel_page_wplingua-settings .wp-submenu-wrap").slideDown();
             })();
@@ -723,5 +724,89 @@ jQuery(document).ready(function ($) {
         $("#wplng-api-key-fake").show();
         $("#wplng_api_key").hide();
     });
+
+
+    /**
+     * Confetti effect on first loading success
+     */
+    function wplngLaunchConfetti() {
+
+        const canvas = document.createElement( 'canvas' );
+        canvas.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:99999;';
+        document.body.appendChild( canvas );
+
+        const ctx    = canvas.getContext( '2d' );
+        canvas.width  = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        const colors    = [ '#e8a0a0', '#e8b4c8', '#c4a8d4', '#a8b8e0', '#a8ccec', '#a8d8e0', '#a8d4b8', '#e8e0a0', '#e8cca0', '#d8d8d8' ];
+        const particles = [];
+
+        function spawnBurst( originX, directionX ) {
+            for ( let i = 0; i < 80; i++ ) {
+                const angle = ( Math.random() * 40 - 20 ) * Math.PI / 180;
+                const speed = Math.random() * 16 + 10;
+                particles.push( {
+                    x:        originX,
+                    y:        canvas.height,
+                    vx:       Math.cos( angle ) * speed * directionX,
+                    vy:       -Math.abs( Math.sin( angle ) * speed ) - Math.random() * 12 - 8,
+                    w:        Math.random() * 10 + 5,
+                    h:        Math.random() * 5 + 3,
+                    color:    colors[ Math.floor( Math.random() * colors.length ) ],
+                    rot:      Math.random() * Math.PI * 2,
+                    rotSpeed: ( Math.random() - 0.5 ) * 0.15,
+                    gravity:  0.3,
+                    alpha:    1
+                } );
+            }
+        }
+
+        spawnBurst( canvas.width * 0.1,  1 );  // left cannon
+        spawnBurst( canvas.width * 0.9, -1 );  // right cannon
+
+        let frame;
+        const startTime = performance.now();
+        const duration  = 5000;
+
+        function animate() {
+            const elapsed = performance.now() - startTime;
+            ctx.clearRect( 0, 0, canvas.width, canvas.height );
+
+            let active = false;
+
+            particles.forEach( function ( p ) {
+                p.vy += p.gravity;
+                p.x  += p.vx;
+                p.y  += p.vy;
+                p.rot += p.rotSpeed;
+
+                if ( elapsed > duration - 1000 ) {
+                    p.alpha = Math.max( 0, p.alpha - 0.02 );
+                }
+
+                if ( p.y < canvas.height + 20 && p.alpha > 0 ) {
+                    active = true;
+                }
+
+                ctx.save();
+                ctx.globalAlpha = p.alpha;
+                ctx.translate( p.x, p.y );
+                ctx.rotate( p.rot );
+                ctx.fillStyle = p.color;
+                ctx.fillRect( -p.w / 2, -p.h / 2, p.w, p.h );
+                ctx.restore();
+            } );
+
+            if ( active && elapsed < duration ) {
+                frame = requestAnimationFrame( animate );
+            } else {
+                cancelAnimationFrame( frame );
+                canvas.remove();
+            }
+        }
+
+        frame = requestAnimationFrame( animate );
+    }
 
 }); // End jQuery loaded event
