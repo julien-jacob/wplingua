@@ -15,13 +15,21 @@ if ( ! defined( 'WPINC' ) ) {
  * @return array Array of function names with dot notation.
  */
 function wplng_data_json_in_js_functions() {
-	return apply_filters(
+	global $wplng_data_json_in_js_functions;
+
+	if ( null !== $wplng_data_json_in_js_functions ) {
+		return $wplng_data_json_in_js_functions;
+	}
+
+	$wplng_data_json_in_js_functions = apply_filters(
 		'wplng_json_in_js_functions',
 		array(
 			'jQuery.datepicker.setDefaults',
 			'$.datepicker.setDefaults',
 		)
 	);
+
+	return $wplng_data_json_in_js_functions;
 }
 
 
@@ -34,6 +42,11 @@ function wplng_data_json_in_js_functions() {
  * @return array Array of callback functions defining exclusion rules.
  */
 function wplng_data_json_rules_exclusion() {
+	global $wplng_data_json_rules_exclusion;
+
+	if ( null !== $wplng_data_json_rules_exclusion ) {
+		return $wplng_data_json_rules_exclusion;
+	}
 
 	$logical_rules = array();
 
@@ -88,10 +101,12 @@ function wplng_data_json_rules_exclusion() {
 		);
 	};
 
-	return apply_filters(
+	$wplng_data_json_rules_exclusion = apply_filters(
 		'wplng_json_rules_exclusion',
 		$logical_rules
 	);
+
+	return $wplng_data_json_rules_exclusion;
 }
 
 
@@ -104,6 +119,11 @@ function wplng_data_json_rules_exclusion() {
  * @return array Array of callback functions defining inclusion rules.
  */
 function wplng_data_json_rules_inclusion() {
+	global $wplng_data_json_rules_inclusion;
+
+	if ( null !== $wplng_data_json_rules_inclusion ) {
+		return $wplng_data_json_rules_inclusion;
+	}
 
 	$logical_rules = array();
 
@@ -839,8 +859,10 @@ function wplng_data_json_rules_inclusion() {
 		);
 	};
 
-	return apply_filters(
+	$wplng_data_json_rules_inclusion = apply_filters(
 		'wplng_json_rules_inclusion',
 		$logical_rules
 	);
+
+	return $wplng_data_json_rules_inclusion;
 }

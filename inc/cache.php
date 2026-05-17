@@ -205,7 +205,7 @@ function wplng_clear_website_cache() {
  * @return void
  */
 function wplng_clear_translations_cache() {
-	delete_transient( 'wplng_cached_translations' );
+	delete_option( 'wplng_cached_translations' );
 	wplng_clear_website_cache();
 }
 
@@ -233,12 +233,12 @@ function wplng_clear_translations_cache_trash_untrash( $post_id ) {
 /**
  * Clear cached slugs
  *
- * Deletes the slugs transient and clears the website cache.
+ * Deletes the slugs option and clears the website cache.
  *
  * @return void
  */
 function wplng_clear_slugs_cache() {
-	delete_transient( 'wplng_cached_slugs' );
+	delete_option( 'wplng_cached_slugs' );
 	wplng_clear_website_cache();
 }
 

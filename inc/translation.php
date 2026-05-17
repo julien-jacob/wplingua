@@ -46,12 +46,10 @@ function wplng_get_translated_text_from_translations( $text, $translations ) {
 	$text       = wplng_text_esc( $text );
 	$translated = $text;
 
-	if ( wplng_text_is_translatable( $text ) ) {
-		foreach ( $translations as $translation ) {
-			if ( $text === $translation['source'] ) {
-				$translated = $translation['translation'];
-				break;
-			}
+	foreach ( $translations as $translation ) {
+		if ( $text === $translation['source'] ) {
+			$translated = $translation['translation'];
+			break;
 		}
 	}
 
@@ -240,12 +238,8 @@ function wplng_get_translations_from_query() {
 		$translations[ $array_index ][] = $translation;
 	}
 
-	// Cache translations for better performance
-	set_transient(
-		'wplng_cached_translations',
-		$translations,
-		MONTH_IN_SECONDS
-	);
+	// Cache translations as a persistent option
+	update_option( 'wplng_cached_translations', $translations, false );
 
 	return $translations;
 }

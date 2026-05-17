@@ -12,7 +12,13 @@ if ( ! defined( 'WPINC' ) ) {
  * @return array
  */
 function wplng_data_attr_json_to_translate() {
-	return apply_filters(
+	global $wplng_data_attr_json_to_translate;
+
+	if ( null !== $wplng_data_attr_json_to_translate ) {
+		return $wplng_data_attr_json_to_translate;
+	}
+
+	$wplng_data_attr_json_to_translate = apply_filters(
 		'wplng_attr_json_to_translate',
 		array(
 			// Theme: Divi
@@ -58,6 +64,8 @@ function wplng_data_attr_json_to_translate() {
 			),
 		)
 	);
+
+	return $wplng_data_attr_json_to_translate;
 }
 
 
@@ -67,7 +75,13 @@ function wplng_data_attr_json_to_translate() {
  * @return array
  */
 function wplng_data_attr_text_to_translate() {
-	return apply_filters(
+	global $wplng_data_attr_text_to_translate;
+
+	if ( null !== $wplng_data_attr_text_to_translate ) {
+		return $wplng_data_attr_text_to_translate;
+	}
+
+	$wplng_data_attr_text_to_translate = apply_filters(
 		'wplng_attr_text_to_translate',
 		array(
 			// Default tags
@@ -220,6 +234,8 @@ function wplng_data_attr_text_to_translate() {
 			
 		)
 	);
+
+	return $wplng_data_attr_text_to_translate;
 }
 
 
@@ -229,7 +245,13 @@ function wplng_data_attr_text_to_translate() {
  * @return array
  */
 function wplng_data_attr_html_to_translate() {
-	return apply_filters(
+	global $wplng_data_attr_html_to_translate;
+
+	if ( null !== $wplng_data_attr_html_to_translate ) {
+		return $wplng_data_attr_html_to_translate;
+	}
+
+	$wplng_data_attr_html_to_translate = apply_filters(
 		'wplng_attr_html_to_translate',
 		array(
 			array(
@@ -238,6 +260,8 @@ function wplng_data_attr_html_to_translate() {
 			),
 		)
 	);
+
+	return $wplng_data_attr_html_to_translate;
 }
 
 
@@ -247,7 +271,13 @@ function wplng_data_attr_html_to_translate() {
  * @return array
  */
 function wplng_data_attr_url_to_translate() {
-	return apply_filters(
+	global $wplng_data_attr_url_to_translate;
+
+	if ( null !== $wplng_data_attr_url_to_translate ) {
+		return $wplng_data_attr_url_to_translate;
+	}
+
+	$wplng_data_attr_url_to_translate = apply_filters(
 		'wplng_attr_url_to_translate',
 		array(
 			array(
@@ -290,6 +320,8 @@ function wplng_data_attr_url_to_translate() {
 			),
 		)
 	);
+
+	return $wplng_data_attr_url_to_translate;
 }
 
 
@@ -299,7 +331,13 @@ function wplng_data_attr_url_to_translate() {
  * @return array
  */
 function wplng_data_attr_lang_id_to_replace() {
-	return apply_filters(
+	global $wplng_data_attr_lang_id_to_replace;
+
+	if ( null !== $wplng_data_attr_lang_id_to_replace ) {
+		return $wplng_data_attr_lang_id_to_replace;
+	}
+
+	$wplng_data_attr_lang_id_to_replace = apply_filters(
 		'wplng_attr_lang_id_to_replace',
 		array(
 			array(
@@ -322,4 +360,6 @@ function wplng_data_attr_lang_id_to_replace() {
 			),
 		)
 	);
+
+	return $wplng_data_attr_lang_id_to_replace;
 }

@@ -97,7 +97,13 @@ function wplng_data_excluded_selector_default() {
  * @return array
  */
 function wplng_data_excluded_editor_link() {
-	return apply_filters(
+	global $wplng_data_excluded_editor_link;
+
+	if ( null !== $wplng_data_excluded_editor_link ) {
+		return $wplng_data_excluded_editor_link;
+	}
+
+	$wplng_data_excluded_editor_link = apply_filters(
 		'wplng_excluded_editor_link',
 		array(
 			'textarea',
@@ -105,6 +111,8 @@ function wplng_data_excluded_editor_link() {
 			'option',
 		)
 	);
+
+	return $wplng_data_excluded_editor_link;
 }
 
 
@@ -115,7 +123,13 @@ function wplng_data_excluded_editor_link() {
  * @return array
  */
 function wplng_data_excluded_node_text() {
-	return apply_filters(
+	global $wplng_data_excluded_node_text;
+
+	if ( null !== $wplng_data_excluded_node_text ) {
+		return $wplng_data_excluded_node_text;
+	}
+
+	$wplng_data_excluded_node_text = apply_filters(
 		'wplng_excluded_node_text',
 		array(
 			'style',
@@ -129,4 +143,6 @@ function wplng_data_excluded_node_text() {
 			'.wpcf7-textarea',
 		)
 	);
+
+	return $wplng_data_excluded_node_text;
 }

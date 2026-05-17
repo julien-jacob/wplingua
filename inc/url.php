@@ -118,14 +118,19 @@ function wplng_url_translate_no_filter( $url, $language_target_id = '' ) {
 	}
 
 	$languages_target = wplng_get_languages_target();
-	$preg_domain      = '';
-	$parsed_url_home  = wp_parse_url( home_url() );
 	$home_base_path   = wplng_get_home_base_path();
 
-	if ( isset( $parsed_url_home['host'] )
-		&& is_string( $parsed_url_home['host'] )
-	) {
-		$preg_domain = preg_quote( $parsed_url_home['host'] );
+	static $preg_domain     = null;
+	static $parsed_url_home = null;
+
+	if ( null === $parsed_url_home ) {
+		$parsed_url_home = wp_parse_url( home_url() );
+		$preg_domain     = '';
+		if ( isset( $parsed_url_home['host'] )
+			&& is_string( $parsed_url_home['host'] )
+		) {
+			$preg_domain = preg_quote( $parsed_url_home['host'] );
+		}
 	}
 
 	if ( ! empty( $preg_domain )

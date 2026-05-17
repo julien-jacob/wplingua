@@ -106,6 +106,9 @@ function wplng_start() {
 		wplng_clear_translations_cache();
 		wplng_clear_slugs_cache();
 		wplng_clear_folder_cache();
+
+		delete_transient( 'wplng_cached_translations' );
+		delete_transient( 'wplng_cached_slugs' );
 	}
 
 	// Load plugin text domain /languages/
@@ -417,3 +420,16 @@ function wplng_start() {
 	}
 }
 wplng_start();
+
+
+/**
+ * Delete translation and slug cache options on plugin deactivation.
+ *
+ * @return void
+ */
+function wplng_deactivate() {
+	delete_option( 'wplng_cached_translations' );
+	delete_option( 'wplng_cached_slugs' );
+	delete_option( 'wplng_api_key_data' );
+}
+register_deactivation_hook( __FILE__, 'wplng_deactivate' );
