@@ -46,12 +46,10 @@ function wplng_get_translated_text_from_translations( $text, $translations ) {
 	$text       = wplng_text_esc( $text );
 	$translated = $text;
 
-	if ( wplng_text_is_translatable( $text ) ) {
-		foreach ( $translations as $translation ) {
-			if ( $text === $translation['source'] ) {
-				$translated = $translation['translation'];
-				break;
-			}
+	foreach ( $translations as $translation ) {
+		if ( $text === $translation['source'] ) {
+			$translated = $translation['translation'];
+			break;
 		}
 	}
 
