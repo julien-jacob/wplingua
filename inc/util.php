@@ -15,6 +15,9 @@ if ( ! defined( 'WPINC' ) ) {
  * @return bool
  */
 function wplng_str_contains( $haystack, $needle ) {
+	if ( ! is_string( $haystack ) || ! is_string( $needle ) ) {
+		return false;
+	}
 	return ( strpos( $haystack, $needle ) !== false );
 }
 
@@ -62,7 +65,6 @@ function wplng_str_ends_with( $haystack, $needle ) {
  */
 function wplng_str_is_url( $str ) {
 
-	$parsed = wp_parse_url( $str );
 	$is_url = false;
 
 	if ( is_string( $str )
@@ -73,6 +75,8 @@ function wplng_str_is_url( $str ) {
 		&& ! wplng_str_starts_with( $str, 'GlotPress/' ) // Plugin: WooCommerce
 		&& ! wplng_str_starts_with( $str, 'contact-form-7/v1' ) // Plugin: Contact Form 7
 	) {
+		$parsed = wp_parse_url( $str );
+
 		if ( isset( $parsed['scheme'] )
 			&& (
 				( 'https' === $parsed['scheme'] )
@@ -99,6 +103,10 @@ function wplng_str_is_url( $str ) {
  * @return bool
  */
 function wplng_text_is_translatable( $text ) {
+
+	if ( ! is_string( $text ) ) {
+		return false;
+	}
 
 	$text = trim( $text );
 
@@ -370,6 +378,9 @@ function wplng_str_is_script_i18n( $str ) {
  * @return bool true is $str is a JSON
  */
 function wplng_str_is_json( $str ) {
+	if ( ! is_string( $str ) ) {
+		return false;
+	}
 	$decoded = json_decode( $str, true );
 	return ( json_last_error() === JSON_ERROR_NONE ) && is_array( $decoded );
 }
