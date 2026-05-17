@@ -162,6 +162,15 @@ function wplng_load_script_translation_file( $file, $handle, $domain ) {
 		$domain
 	);
 
+	// If JSON generation failed, write empty sentinel and return original file
+	if ( '' === $json_content ) {
+		wplng_put_cache_file(
+			'/script-i18n' . $file_cache_relative,
+			''
+		);
+		return $file;
+	}
+
 	/**
 	 * Generate the wpLingua cached JSON file
 	 */
@@ -361,5 +370,11 @@ function wplng_i18n_script_generate_json( $texts, $domain = 'messages' ) {
 		),
 	);
 
-	return wp_json_encode( $json_data, JSON_UNESCAPED_UNICODE );
+	$encoded = wp_json_encode( $json_data, JSON_UNESCAPED_UNICODE );
+
+	if ( false === $encoded ) {
+		return '';
+	}
+
+	return $encoded;
 }
