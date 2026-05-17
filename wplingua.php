@@ -108,6 +108,7 @@ function wplng_start() {
 		wplng_clear_folder_cache();
 
 		delete_transient( 'wplng_cached_translations' );
+		delete_transient( 'wplng_cached_slugs' );
 	}
 
 	// Load plugin text domain /languages/
