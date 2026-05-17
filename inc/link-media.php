@@ -192,11 +192,16 @@ function wplng_link_media_apply_rules( $url, $language_id ) {
 				break;
 
 			case 'regex':
-				$url_processed = preg_replace(
-					'#' . $entry['source'] . '#',
-					$entry['rules'][ $language_id ],
-					$url
-				);
+				if ( false !== @preg_match( '#' . $entry['source'] . '#', '' ) ) {
+					$url_processed = preg_replace(
+						'#' . $entry['source'] . '#',
+						$entry['rules'][ $language_id ],
+						$url
+					);
+					if ( null === $url_processed ) {
+						$url_processed = $url;
+					}
+				}
 				break;
 		}
 
