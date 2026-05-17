@@ -38,7 +38,7 @@ function wplng_get_translated_text_from_translations( $text, $translations ) {
 		$spaces_before = $temp[1];
 	}
 
-	preg_match( '/.*(\s*)$/U', $text, $temp );
+	preg_match( '/(\s+)$/', $text, $temp );
 	if ( ! empty( $temp[1] ) ) {
 		$spaces_after = $temp[1];
 	}
