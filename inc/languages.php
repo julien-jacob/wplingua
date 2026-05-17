@@ -380,7 +380,10 @@ function wplng_get_language_current_id() {
 		}
 	}
 
-	return wplng_get_language_website_id();
+	$website_language_id       = wplng_get_language_website_id();
+	$wplng_language_current_id = $website_language_id;
+
+	return $website_language_id;
 }
 
 
