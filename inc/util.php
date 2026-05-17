@@ -111,19 +111,10 @@ function wplng_text_is_translatable( $text ) {
 		return false;
 	}
 
-	if ( wplng_str_is_malicious( $text ) ) {
-		return false;
-	}
-
 	// Check for better plugin compatibility
 	if ( wplng_str_contains( $text, 'presto_player' )
 		|| wplng_str_contains( $text, 'presto-player' )
 	) {
-		return false;
-	}
-
-	// Check if it's a email address
-	if ( filter_var( $text, FILTER_VALIDATE_EMAIL ) ) {
 		return false;
 	}
 
@@ -141,13 +132,27 @@ function wplng_text_is_translatable( $text ) {
 		return false;
 	}
 
+	// Check if it's a email address
+	if ( filter_var( $text, FILTER_VALIDATE_EMAIL ) ) {
+		return false;
+	}
+
 	// Get letters only
 	$letters = $text;
 	$letters = html_entity_decode( $letters );
 	$letters = preg_replace( '#[^\p{L}\p{N}]#u', '', $letters );
 	$letters = preg_replace( '#[\d\s]#u', '', $letters );
 
-	return ! empty( $letters );
+	if ( empty( $letters ) ) {
+		return false;
+	}
+
+	// Check if string is malicious
+	if ( wplng_str_is_malicious( $text ) ) {
+		return false;
+	}
+
+	return true;
 }
 
 
