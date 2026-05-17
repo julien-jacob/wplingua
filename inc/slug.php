@@ -573,15 +573,14 @@ function wplng_get_slug_saved_from_original( $original ) {
 	$args = array(
 		'post_type'      => 'wplng_slug',
 		'posts_per_page' => -1,
+		'fields'         => 'ids',
 		'meta_query'     => array(
+			'relation' => 'AND',
 			array(
 				'key'     => 'wplng_slug_md5',
 				'value'   => md5( $original ),
 				'compare' => '=',
 			),
-		),
-		'fields'         => 'ids',
-		'meta_query'     => array(
 			array(
 				'key'     => 'wplng_slug_original_language_id',
 				'value'   => wplng_get_language_website_id(),
