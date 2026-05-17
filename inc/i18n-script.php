@@ -145,8 +145,6 @@ function wplng_load_script_translation_file( $file, $handle, $domain ) {
 
 	if ( $texts_is_empty ) {
 
-		// file_put_contents( $file_cache_relative, '' );
-
 		wplng_put_cache_file(
 			'/script-i18n' . $file_cache_relative,
 			''
