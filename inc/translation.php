@@ -240,12 +240,8 @@ function wplng_get_translations_from_query() {
 		$translations[ $array_index ][] = $translation;
 	}
 
-	// Cache translations for better performance
-	set_transient(
-		'wplng_cached_translations',
-		$translations,
-		MONTH_IN_SECONDS
-	);
+	// Cache translations as a persistent option
+	update_option( 'wplng_cached_translations', $translations, false );
 
 	return $translations;
 }

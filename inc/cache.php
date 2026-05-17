@@ -205,7 +205,7 @@ function wplng_clear_website_cache() {
  * @return void
  */
 function wplng_clear_translations_cache() {
-	delete_transient( 'wplng_cached_translations' );
+	delete_option( 'wplng_cached_translations' );
 	wplng_clear_website_cache();
 }
 
