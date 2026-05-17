@@ -496,18 +496,13 @@ function wplng_get_slugs_from_query() {
 
 	// Delete invalid slugs, limit to 32 deletions
 	if ( ! empty( $slug_to_delete ) ) {
-
 		foreach ( array_slice( $slug_to_delete, 0, 32 ) as $id ) {
 			wp_delete_post( $id, true );
 		}
-
-		// Cache slugs for 30 seconds after deletion
-		set_transient( 'wplng_cached_slugs', $slugs, 30 );
-
-	} else {
-		// Cache slugs for a month if no deletions occurred
-		set_transient( 'wplng_cached_slugs', $slugs, MONTH_IN_SECONDS );
 	}
+
+	// Cache slugs as a persistent option
+	update_option( 'wplng_cached_slugs', $slugs, false );
 
 	return $slugs;
 }
@@ -520,7 +515,7 @@ function wplng_get_slugs_from_query() {
  */
 function wplng_get_slugs() {
 
-	$slugs_from_cache = get_transient( 'wplng_cached_slugs' );
+	$slugs_from_cache = get_option( 'wplng_cached_slugs' );
 
 	if ( ! is_array( $slugs_from_cache ) ) {
 		return wplng_get_slugs_from_query();
