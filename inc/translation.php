@@ -95,15 +95,14 @@ function wplng_get_translation_saved_from_original( $original ) {
 	$args = array(
 		'post_type'      => 'wplng_translation',
 		'posts_per_page' => -1,
+		'fields'         => 'ids',
 		'meta_query'     => array(
+			'relation' => 'AND',
 			array(
 				'key'     => 'wplng_translation_md5',
 				'value'   => md5( $original ),
 				'compare' => '=',
 			),
-		),
-		'fields'         => 'ids',
-		'meta_query'     => array(
 			array(
 				'key'     => 'wplng_translation_original_language_id',
 				'value'   => wplng_get_language_website_id(),
