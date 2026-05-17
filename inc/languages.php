@@ -202,9 +202,8 @@ function wplng_get_language_name_translated( $language, $language_target = '' ) 
 	// Get target language ID
 	if ( empty( $language_target ) ) {
 		$language_target = wplng_get_language_current_id();
-	} else {
-		$language_target_id = wplng_get_language_id( $language_target );
 	}
+	$language_target_id = wplng_get_language_id( $language_target );
 
 	// Get language array
 	if ( empty( $language['id'] ) ) {
