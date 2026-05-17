@@ -430,5 +430,6 @@ wplng_start();
 function wplng_deactivate() {
 	delete_option( 'wplng_cached_translations' );
 	delete_option( 'wplng_cached_slugs' );
+	delete_option( 'wplng_api_key_data' );
 }
 register_deactivation_hook( __FILE__, 'wplng_deactivate' );
