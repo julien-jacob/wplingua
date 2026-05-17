@@ -589,9 +589,11 @@ function wplng_get_languages_allow() {
 	$languages      = array();
 
 	if ( 'all' === $languages_alow ) {
-		return wplng_get_languages_all();
+		$wplng_languages_allow = wplng_get_languages_all();
+		return $wplng_languages_allow;
 	} elseif ( empty( $languages_alow ) || ! is_array( $languages_alow ) ) {
-		return array();
+		$wplng_languages_allow = array();
+		return $wplng_languages_allow;
 	} else {
 		foreach ( $languages_alow as $language_id_alow ) {
 			$languages[] = wplng_get_language_by_id( $language_id_alow );
