@@ -420,3 +420,15 @@ function wplng_start() {
 	}
 }
 wplng_start();
+
+
+/**
+ * Delete translation and slug cache options on plugin deactivation.
+ *
+ * @return void
+ */
+function wplng_deactivate() {
+	delete_option( 'wplng_cached_translations' );
+	delete_option( 'wplng_cached_slugs' );
+}
+register_deactivation_hook( __FILE__, 'wplng_deactivate' );
