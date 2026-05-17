@@ -492,14 +492,14 @@ function wplng_update_translation( $post, $language_id, $translation ) {
 			if ( $target_language === $language_id && $translation !== '[WPLNG_EMPTY]' ) {
 				$translation_meta[] = array(
 					'language_id' => $target_language,
-					'translation' => '[WPLNG_EMPTY]',
-					'status'      => 'ungenerated',
+					'translation' => esc_html( $translation ),
+					'status'      => 'generated',
 				);
 			} else {
 				$translation_meta[] = array(
 					'language_id' => $target_language,
-					'translation' => esc_html( $translation ),
-					'status'      => 'generated',
+					'translation' => '[WPLNG_EMPTY]',
+					'status'      => 'ungenerated',
 				);
 			}
 		}
