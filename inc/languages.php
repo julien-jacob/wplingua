@@ -327,8 +327,10 @@ function wplng_get_languages_target() {
  */
 function wplng_get_languages_target_ids() {
 
-	if ( ! empty( $languages ) ) {
-		return $languages;
+	global $wplng_languages_target_ids;
+
+	if ( null !== $wplng_languages_target_ids ) {
+		return $wplng_languages_target_ids;
 	}
 
 	$languages_target     = wplng_get_languages_target();
@@ -337,6 +339,8 @@ function wplng_get_languages_target_ids() {
 	foreach ( $languages_target as $language_target ) {
 		$languages_target_ids[] = $language_target['id'];
 	}
+
+	$wplng_languages_target_ids = $languages_target_ids;
 
 	return $languages_target_ids;
 }
