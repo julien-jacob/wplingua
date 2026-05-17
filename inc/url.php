@@ -370,7 +370,7 @@ function wplng_get_url_exclude_regex() {
 	// Check each URL REGEX
 	foreach ( $option as $regex ) {
 		$regex = trim( $regex );
-		if ( '' !== $regex ) {
+		if ( '' !== $regex && false !== @preg_match( '#' . $regex . '#', '' ) ) {
 			$url_exclude[] = '#' . $regex . '#';
 		}
 	}
