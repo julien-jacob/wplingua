@@ -624,14 +624,14 @@ function wplng_save_translation( $target_language_id, $original, $translation, $
 
 	if ( empty( $saved_translation ) ) {
 		// Create new translation post
-		return wplng_save_translation_new(
+		$result = wplng_save_translation_new(
 			$target_language_id,
 			$original,
 			$translation
 		);
 	} else {
 		// Update the translation post
-		return wplng_update_translation(
+		$result = wplng_update_translation(
 			$saved_translation,
 			$target_language_id,
 			$translation
@@ -641,4 +641,6 @@ function wplng_save_translation( $target_language_id, $original, $translation, $
 	if ( $clear_cache ) {
 		wplng_clear_translations_cache();
 	}
+
+	return $result;
 }
