@@ -412,7 +412,7 @@ function wplng_get_languages_by_ids( $language_ids ) {
  * Get language data from ID
  *
  * @param string $language_id
- * @return array
+ * @return array|false Language data array, or false if not found
  */
 function wplng_get_language_by_id( $language_id ) {
 
@@ -424,7 +424,12 @@ function wplng_get_language_by_id( $language_id ) {
 		}
 	}
 
-	// Return a default value if $language_id not exist
+	// Avoid infinite recursion: if 'en' itself is not found, return false
+	if ( 'en' === $language_id ) {
+		return false;
+	}
+
+	// Return English as fallback if the requested language ID does not exist
 	return wplng_get_language_by_id( 'en' );
 }
 
