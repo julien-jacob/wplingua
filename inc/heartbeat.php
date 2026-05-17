@@ -94,7 +94,7 @@ function wplng_ajax_heartbeat_clear_bad_translations( $counter ) {
 				$debug = array(
 					'title'  => 'wpLingua HeartBeat debug',
 					'action' => 'Delete translation - Invalid data',
-					'title'  => get_the_title( $id ),
+					'title_post'  => get_the_title( $id ),
 					'id'     => $id,
 				);
 
