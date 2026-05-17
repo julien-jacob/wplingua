@@ -121,6 +121,11 @@ function wplng_load_script_translation_file( $file, $handle, $domain ) {
 		return $file;
 	}
 
+	// Skip files larger than 2MB to avoid memory issues
+	if ( filesize( $script_path ) > 2 * 1024 * 1024 ) {
+		return $file;
+	}
+
 	$script_content = file_get_contents( $script_path );
 
 	/**
