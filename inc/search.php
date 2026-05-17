@@ -68,12 +68,8 @@ function wplng_translate_search_query( $query ) {
 	 * Check and clear the translation
 	 */
 
-	// Remove added ponctuation
-	$translated_search = preg_replace(
-		'#[^A-Za-z0-9]#',
-		'',
-		$translated_search
-	);
+	// Remove leading/trailing punctuation added by translation API
+	$translated_search = trim( $translated_search, " \t\n\r\0\x0B.,;:!?\"'()[]{}…" );
 
 	// Clear translation
 	$translated_search = trim( esc_attr( $translated_search ) );
