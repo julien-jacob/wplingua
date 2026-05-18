@@ -170,7 +170,7 @@ function wplng_api_call_validate_api_key( $api_key = '' ) {
 		if ( ! empty( $response['expiration'] )
 			&& is_string( $response['expiration'] )
 		) {
-			$response_checked['expiration'] = $response['expiration'];
+			$response_checked['expiration'] = sanitize_text_field( $response['expiration'] );
 		}
 	} elseif ( isset( $response['error'] )
 		&& ( true === $response['error'] )
@@ -186,7 +186,7 @@ function wplng_api_call_validate_api_key( $api_key = '' ) {
 
 		$error_message  = __( 'Code', 'wplingua' ) . ' ';
 		$error_message .= $response['code'] . ' - ';
-		$error_message .= $response['message'];
+		$error_message .= sanitize_text_field( $response['message'] );
 
 		set_transient(
 			'wplng_api_key_error',
