@@ -26,7 +26,7 @@ function wplng_translation_edit_modal_get_html() {
 	$all_languages_button .= ' href="javascript:void(0);"';
 	$all_languages_button .= ' id="wplng-modal-edit-show-all"';
 	$all_languages_button .= '>';
-	$all_languages_button .= esc_attr__( 'All languages', 'wplingua' );
+	$all_languages_button .= esc_html__( 'All languages', 'wplingua' );
 	$all_languages_button .= '</a>';
 
 	$edit_link_template = add_query_arg(
@@ -91,7 +91,7 @@ function wplng_ajax_edit_modal() {
 	 */
 
 	if ( empty( $_POST['post_id'] )
-		|| ! current_user_can( 'edit_post', $_POST['post_id'] )
+		|| ! current_user_can( 'edit_post', absint( $_POST['post_id'] ) )
 	) {
 		wp_send_json_error( __( 'Invalid translation ID', 'wplingua' ) );
 		return;
@@ -101,7 +101,7 @@ function wplng_ajax_edit_modal() {
 	 * Get and check the translation post
 	 */
 
-	$translation_post = get_post( $_POST['post_id'] );
+	$translation_post = get_post( absint( $_POST['post_id'] ) );
 
 	if ( empty( $translation_post ) ) {
 		wp_send_json_error( __( 'Invalid translation post', 'wplingua' ) );
@@ -112,10 +112,8 @@ function wplng_ajax_edit_modal() {
 	 * Get the translation editor HTML
 	 */
 
-	$data['wplng_edit_html'] = esc_html(
-		wplng_translation_editor_get_html(
+$data['wplng_edit_html'] = wplng_translation_editor_get_html(
 			$translation_post
-		)
 	);
 
 	/**
@@ -150,7 +148,7 @@ function wplng_ajax_save_modal() {
 	 */
 
 	if ( empty( $_POST['post_id'] )
-		|| ! current_user_can( 'edit_post', $_POST['post_id'] )
+		|| ! current_user_can( 'edit_post', absint( $_POST['post_id'] ) )
 	) {
 		wp_send_json_error( __( 'Invalid translation ID', 'wplingua' ) );
 		return;
@@ -163,7 +161,7 @@ function wplng_ajax_save_modal() {
 	 * in variable $saved.
 	 */
 
-	$saved = wplng_translation_save_meta_boxes_data( $_POST['post_id'] );
+	$saved = wplng_translation_save_meta_boxes_data( absint( $_POST['post_id'] ) );
 
 	/**
 	 * Send AJAX success or error
