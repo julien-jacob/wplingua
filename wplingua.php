@@ -126,7 +126,9 @@ function wplng_start() {
 
 	// Return if incompatibility is detected
 	if ( ! empty( wplng_get_incompatible_plugins() )
-		|| is_multisite()
+		|| (  is_multisite() 
+			&& ! apply_filters( 'wplng_bypass_multisite_incompatibility', false ) 
+		)
 		|| ( version_compare( PHP_VERSION, WPLNG_PHP_MIN_VERSION ) < 0 )
 		|| ! wplng_htaccess_is_valid()
 		|| empty( get_option( 'permalink_structure' ) )
