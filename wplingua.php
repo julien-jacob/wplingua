@@ -102,11 +102,15 @@ function wplng_start() {
 
 	// The plugin version has changed
 	if ( get_option( 'wplng_version' ) !== WPLNG_PLUGIN_VERSION ) {
+		// Update version number in DB
 		update_option( 'wplng_version', WPLNG_PLUGIN_VERSION, true );
+
+		// Clear all wpLingua cache
 		wplng_clear_translations_cache();
 		wplng_clear_slugs_cache();
 		wplng_clear_folder_cache();
 
+		// Clear old cache method (version <= 2.12.3)
 		delete_transient( 'wplng_cached_translations' );
 		delete_transient( 'wplng_cached_slugs' );
 	}
