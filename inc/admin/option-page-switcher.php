@@ -332,7 +332,7 @@ function wplng_option_page_switcher() {
 						</p>
 						<div class="wplng-help-box" id="wplng-hb-css">
 							<p>
-								<?php _e( 'First of all, note that the CSS class <code>.switcher-content</code> allows you to act on the entire block of the language switcher while the class <code>.wplng-langague</code> allows you to act on the languages ​​themselves.', 'wplingua' ); ?>
+								<?php echo wp_kses( __( 'First of all, note that the CSS class <code>.switcher-content</code> allows you to act on the entire block of the language switcher while the class <code>.wplng-langague</code> allows you to act on the languages ​​themselves.', 'wplingua' ), array( 'code' => array() ) ); ?>
 							</p>
 							
 							<?php
@@ -347,7 +347,7 @@ function wplng_option_page_switcher() {
 							<hr>
 
 							<p>
-								<?php _e( 'To change the background and border colors of languages, here is the CSS:' ); ?>
+								<?php esc_html_e( 'To change the background and border colors of languages, here is the CSS:', 'wplingua' ); ?>
 							</p>
 
 							<?php
@@ -362,7 +362,7 @@ function wplng_option_page_switcher() {
 							<hr>
 
 							<p>
-								<a href="https://wplingua.com/documentation/user/how-to-customize-the-language-switcher/" target="_blank"><?php _e( 'More example on wplingua.com' ); ?></a>
+								<a href="https://wplingua.com/documentation/user/how-to-customize-the-language-switcher/" target="_blank"><?php esc_html_e( 'More example on wplingua.com', 'wplingua' ); ?></a>
 							</p>
 						</div>
 
@@ -380,7 +380,7 @@ function wplng_option_page_switcher() {
 							<fieldset>
 
 								<label for="wplng_insert" class="wplng-fe-50">
-									<strong><?php _e( 'Automatic insert: ', 'wplingua' ); ?></strong> 
+							<strong><?php esc_html_e( 'Automatic insert: ', 'wplingua' ); ?></strong>
 									<span title="<?php esc_attr_e( 'Click to expand', 'wplingua' ); ?>" wplng-help-box="#wplng-hb-insert-automatic"></span>
 								</label>
 
@@ -501,7 +501,7 @@ function wplng_option_page_switcher() {
 					</td>
 				</tr>
 				<tr class="wplng-tr-submit">
-					<th scope="row"><span class="dashicons dashicons-yes-alt"></span> <?php _e( 'Save', 'wplingua' ); ?></th>
+					<th scope="row"><span class="dashicons dashicons-yes-alt"></span> <?php esc_html_e( 'Save', 'wplingua' ); ?></th>
 					<td>
 						<?php submit_button(); ?>
 					</td>
