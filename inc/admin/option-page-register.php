@@ -137,7 +137,7 @@ function wplng_option_page_register() {
 						</p>
 
 						<p>
-							<strong><?php esc_html_e( 'The API key has been correctly created and sent to the following e-mail address: ', 'wplingua' ); ?><span id="wplng-register-success-mail"><?php esc_html_e( $mail ); ?><span></strong>
+							<strong><?php esc_html_e( 'The API key has been correctly created and sent to the following e-mail address: ', 'wplingua' ); ?><span id="wplng-register-success-mail"><?php echo esc_html( $mail ); ?><span></strong>
 						</p>
 
 						<hr>
@@ -188,19 +188,19 @@ function wplng_option_page_register() {
 						<br>
 						<hr>
 
-						<p><span class="dashicons dashicons-star-filled"></span> <?php _e( 'An <strong>instantly multilingual website</strong> thanks to automatic text detection and translation. Easy to use, no knowledge required.', 'wplingua' ); ?></p>
+						<p><span class="dashicons dashicons-star-filled"></span> <?php echo wp_kses( __( 'An <strong>instantly multilingual website</strong> thanks to automatic text detection and translation. Easy to use, no knowledge required.', 'wplingua' ), array( 'strong' => array() ) ); ?></p>
 
 						<hr>
 
-						<p><span class="dashicons dashicons-admin-site"></span> <?php _e( '<strong>SEO friendly</strong> to allow search engines to index translated pages. Open up your website and your business to the whole world.', 'wplingua' ); ?></p>
+						<p><span class="dashicons dashicons-admin-site"></span> <?php echo wp_kses( __( '<strong>SEO friendly</strong> to allow search engines to index translated pages. Open up your website and your business to the whole world.', 'wplingua' ), array( 'strong' => array() ) ); ?></p>
 
 						<hr>
 
-						<p><span class="dashicons dashicons-edit"></span> <?php _e( 'All <strong>translations are editable</strong>. Discover the visual editor and edit translations simply by clicking on them. With a fully customizable language switcher.', 'wplingua' ); ?></p>
+						<p><span class="dashicons dashicons-edit"></span> <?php echo wp_kses( __( 'All <strong>translations are editable</strong>. Discover the visual editor and edit translations simply by clicking on them. With a fully customizable language switcher.', 'wplingua' ), array( 'strong' => array() ) ); ?></p>
 
 						<hr>
 
-						<p><span class="dashicons dashicons-heart"></span> <?php _e( 'One <strong>free and unlimited</strong> language for personal blogs and non-commercial websites. And many more features!', 'wplingua' ); ?></p>
+						<p><span class="dashicons dashicons-heart"></span> <?php echo wp_kses( __( 'One <strong>free and unlimited</strong> language for personal blogs and non-commercial websites. And many more features!', 'wplingua' ), array( 'strong' => array() ) ); ?></p>
 
 						<hr>
 						<br>
@@ -334,9 +334,11 @@ function wplng_register_part_free_api_key() {
 	$url    = get_home_url();
 	$email  = sanitize_email( get_bloginfo( 'admin_email' ) );
 
+	$host = parse_url( $url, PHP_URL_HOST );
+
 	if ( wplng_str_contains( $email, '.local' )
 		|| wplng_str_contains( $email, 'admin' )
-		|| wplng_str_contains( $email, parse_url( $url, PHP_URL_HOST ) )
+		|| ( is_string( $host ) && wplng_str_contains( $email, $host ) )
 	) {
 		$email = '';
 	}
