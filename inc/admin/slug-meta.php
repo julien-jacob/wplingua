@@ -447,7 +447,7 @@ function wplng_slug_save_meta_boxes_data( $post_id ) {
 			}
 		}
 
-		$translations[ $key ]['translation'] = esc_html( $temp );
+		$translations[ $key ]['translation'] = $temp;
 	}
 
 	wplng_clear_slugs_cache();
@@ -509,7 +509,7 @@ function wplng_ajax_generate_slug() {
 	 * Check and sanitize text to translate
 	 */
 
-	$text = $_POST['text'];
+	$text = wp_unslash( $_POST['text'] );
 	$text = wplng_text_esc( $text );
 
 	// Replace certain characters for slug compatibility
