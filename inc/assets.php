@@ -119,6 +119,8 @@ function wplng_add_custom_inline_styles() {
 
 	if ( ! empty( $custom_css ) && is_string( $custom_css ) ) {
 		$custom_css = wp_strip_all_tags( $custom_css );
+		// Prevent breaking out of the <style> context
+		$custom_css = str_replace( '</style', '', $custom_css );
 		echo '<style id="wplingua-inline-styles">' . $custom_css . '</style>';
 	}
 }
