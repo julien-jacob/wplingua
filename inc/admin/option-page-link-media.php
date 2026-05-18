@@ -156,8 +156,8 @@ function wplng_option_page_link_media_entries_html() {
 			$html .= esc_html__( 'Mode: ', 'wplingua' );
 			$html .= '</strong>';
 
-			if ( empty( $entry['rules'] ) ) {
-				$entry['rules'] = 'exactly';
+			if ( empty( $entry['mode'] ) ) {
+				$entry['mode'] = 'exactly';
 			}
 
 			switch ( $entry['mode'] ) {
@@ -303,7 +303,7 @@ function wplng_option_page_link_media_new_entry_html() {
 
 		$name = 'wplng-new-always-translate-' . $language['id'];
 
-		$html .= '<div class="wplng-new-rule" wplng-rule="' . esc_html( $language['id'] ) . '">';
+		$html .= '<div class="wplng-new-rule" wplng-rule="' . esc_attr( $language['id'] ) . '">';
 		$html .= '<hr>';
 		$html .= '<fieldset>';
 		$html .= '<label for="' . esc_attr( $name ) . '">';
@@ -439,7 +439,7 @@ function wplng_option_page_link_media_edit_entry_html() {
 
 		$name = 'wplng-edit-always-translate-' . $language['id'];
 
-		$html .= '<div class="wplng-edit-rule" wplng-rule="' . esc_html( $language['id'] ) . '">';
+		$html .= '<div class="wplng-edit-rule" wplng-rule="' . esc_attr( $language['id'] ) . '">';
 		$html .= '<hr>';
 		$html .= '<fieldset>';
 		$html .= '<label for="' . esc_attr( $name ) . '">';
