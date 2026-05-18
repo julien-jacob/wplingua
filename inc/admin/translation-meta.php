@@ -279,7 +279,7 @@ function wplng_translation_editor_get_html( $post ) {
 
 		$html .= '<div id="wplng-discovery-url">';
 		$html .= '<strong>';
-		$html .= esc_html__( 'Discovery URL: ' ) . ' ';
+		$html .= esc_html__( 'Discovery URL: ', 'wplingua' ) . ' ';
 		$html .= '</strong>';
 		$html .= '<a';
 		$html .= ' href="' . esc_url( $url ) . '"';
@@ -381,7 +381,7 @@ function wplng_translation_save_meta_boxes_data( $post_id ) {
 			continue;
 		}
 
-		$temp = stripslashes( wplng_text_esc( $_POST[ $name ] ) );
+		$temp = wplng_text_esc( wp_unslash( $_POST[ $name ] ) );
 
 		if ( empty( $temp ) ) {
 			$temp                           = '[WPLNG_EMPTY]';
@@ -403,7 +403,7 @@ function wplng_translation_save_meta_boxes_data( $post_id ) {
 			}
 		}
 
-		$translations[ $key ]['translation'] = esc_html( $temp );
+		$translations[ $key ]['translation'] = $temp;
 	}
 
 	/**
@@ -489,7 +489,7 @@ function wplng_ajax_generate_translation() {
 	// (And convert img emoji to emoji)
 
 	$text = wp_kses(
-		$_POST['text'],
+		wp_unslash( $_POST['text'] ),
 		array(
 			'img' => array(
 				'alt' => array(),
