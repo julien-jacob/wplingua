@@ -246,6 +246,7 @@ function wplng_str_is_malicious( $text ) {
  */
 function wplng_text_esc( $text ) {
 
+	$text = wp_strip_all_tags( $text );
 	$text = html_entity_decode( $text );
 	$text = esc_html( $text );
 	$text = esc_attr( $text );
@@ -256,6 +257,7 @@ function wplng_text_esc( $text ) {
 	);
 
 	$text = str_replace( '\\', '', $text );
+	$text = preg_replace( '/[\x00-\x1F\x7F]+/u', '', $text );
 	$text = preg_replace( '/\s+/u', ' ', $text );
 	$text = trim( $text );
 
