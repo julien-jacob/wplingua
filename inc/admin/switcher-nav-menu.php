@@ -246,7 +246,7 @@ function wp_nav_menu_switcher_box_add() {
 					<input type="hidden" class="menu-item-object-id" name="menu-item[1][menu-item-object-id]" value="wplingua" />
 					<input type="hidden" class="menu-item-object" name="menu-item[1][menu-item-object]" value="wplingua" />
 					<input type="hidden" class="menu-item-type" name="menu-item[1][menu-item-type]" value="custom" />
-					<input type="hidden" class="menu-item-title" name="menu-item[1][menu-item-title]" value="<?php esc_html_e( 'Language switcher', 'wplingua' ); ?>" />
+					<input type="hidden" class="menu-item-title" name="menu-item[1][menu-item-title]" value="<?php esc_attr_e( 'Language switcher', 'wplingua' ); ?>" />
 					<input type="hidden" class="menu-item-classes" name="menu-item[1][menu-item-classes]" value="wplingua-menu-switcher-untreated"/>
 					<input type="hidden" class="menu-item-url" name="menu-item[1][menu-item-url]" value="" id="wplng-menu-switcher-url"/>
 				</li>
@@ -276,7 +276,7 @@ function wp_nav_menu_switcher_box_add() {
 function wp_nav_menu_switcher_box_edit( $item_id, $menu_item ) {
 
 	if ( ! is_array( $menu_item->classes )
-		|| ! in_array( 'wplingua-menu-switcher-untreated', $menu_item->classes )
+		|| ! in_array( 'wplingua-menu-switcher-untreated', $menu_item->classes, true )
 		|| empty( $menu_item->url )
 	) {
 		return;
@@ -294,14 +294,14 @@ function wp_nav_menu_switcher_box_edit( $item_id, $menu_item ) {
 
 	?>
 	<div class="wplng-menu-item-settings-switcher">
-		<label for="wplng-menu-name-format-<?php esc_attr_e( $item_id ); ?>">
+		<label for="wplng-menu-name-format-<?php echo esc_attr( $item_id ); ?>">
 			<?php esc_html_e( 'Displayed names: ', 'wplingua' ); ?>
 		</label>
 		<select 
 			class="wplng-menu-name-format-edit" 
-			id="wplng-menu-name-format-<?php esc_attr_e( $item_id ); ?>" 
-			name="wplng-menu-name-format-<?php esc_attr_e( $item_id ); ?>"
-			item="<?php esc_attr_e( $item_id ); ?>" 
+			id="wplng-menu-name-format-<?php echo esc_attr( $item_id ); ?>" 
+			name="wplng-menu-name-format-<?php echo esc_attr( $item_id ); ?>"
+			item="<?php echo esc_attr( $item_id ); ?>" 
 		>
 			<?php
 			foreach ( $valid_name_format as $key => $value ) {
@@ -316,14 +316,14 @@ function wp_nav_menu_switcher_box_edit( $item_id, $menu_item ) {
 			?>
 		</select>
 		<hr>
-		<label for="wplng-menu-flag-<?php esc_attr_e( $item_id ); ?>">
+		<label for="wplng-menu-flag-<?php echo esc_attr( $item_id ); ?>">
 			<?php esc_html_e( 'Displayed flag: ', 'wplingua' ); ?>
 		</label>
 		<select 
 			class="wplng-menu-flag-edit" 
-			id="wplng-menu-flag-<?php esc_attr_e( $item_id ); ?>" 
-			name="wplng-menu-flag-<?php esc_attr_e( $item_id ); ?>"
-			item="<?php esc_attr_e( $item_id ); ?>" 
+			id="wplng-menu-flag-<?php echo esc_attr( $item_id ); ?>" 
+			name="wplng-menu-flag-<?php echo esc_attr( $item_id ); ?>"
+			item="<?php echo esc_attr( $item_id ); ?>" 
 		>
 			<?php
 			foreach ( $valid_flags_style as $key => $value ) {
@@ -338,14 +338,14 @@ function wp_nav_menu_switcher_box_edit( $item_id, $menu_item ) {
 			?>
 		</select>
 		<hr>
-		<label for="wplng-menu-layout-<?php esc_attr_e( $item_id ); ?>">
+		<label for="wplng-menu-layout-<?php echo esc_attr( $item_id ); ?>">
 			<?php esc_html_e( 'Layout: ', 'wplingua' ); ?>
 		</label>
 		<select 
 			class="wplng-menu-layout-edit" 
-			id="wplng-menu-layout-<?php esc_attr_e( $item_id ); ?>" 
-			name="wplng-menu-layout-<?php esc_attr_e( $item_id ); ?>"
-			item="<?php esc_attr_e( $item_id ); ?>" 
+			id="wplng-menu-layout-<?php echo esc_attr( $item_id ); ?>" 
+			name="wplng-menu-layout-<?php echo esc_attr( $item_id ); ?>"
+			item="<?php echo esc_attr( $item_id ); ?>" 
 		>
 			<?php
 			foreach ( $valid_layout as $key => $value ) {

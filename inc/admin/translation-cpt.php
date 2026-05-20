@@ -400,17 +400,17 @@ function wplng_translation_status_item( $column, $post_id ) {
 
 	$html  = '<span';
 	$html .= ' class="dashicons dashicons-yes-alt wplng-status wplng-status-full-review"';
-	$html .= ' title="' . __( 'Full reviewed', 'wplingua' ) . '"';
+	$html .= ' title="' . esc_attr__( 'Full reviewed', 'wplingua' ) . '"';
 	$html .= '></span>';
 
 	$html .= '<span';
 	$html .= ' class="dashicons dashicons-yes-alt wplng-status wplng-status-has-review"';
-	$html .= ' title="' . __( 'Partially reviewed', 'wplingua' ) . '"';
+	$html .= ' title="' . esc_attr__( 'Partially reviewed', 'wplingua' ) . '"';
 	$html .= '></span>';
 
 	$html .= '<span';
 	$html .= ' class="dashicons dashicons-yes-alt wplng-status wplng-status-unreview"';
-	$html .= ' title="' . __( 'Unreviewed', 'wplingua' ) . '"';
+	$html .= ' title="' . esc_attr__( 'Unreviewed', 'wplingua' ) . '"';
 	$html .= '></span>';
 
 	echo $html;
@@ -432,24 +432,24 @@ function wplng_post_row_actions_translation_status( $actions, $post ) {
 		return $actions;
 	}
 
-	$html = __( 'Translation status: ', 'wplingua' );
+	$html = esc_html__( 'Translation status: ', 'wplingua' );
 
 	$html .= '<span';
 	$html .= ' class="wplng-status wplng-status-full-review"';
 	$html .= '>';
-	$html .= __( 'Full reviewed', 'wplingua' );
+	$html .= esc_html__( 'Full reviewed', 'wplingua' );
 	$html .= '</span>';
 
 	$html .= '<span';
 	$html .= ' class="wplng-status wplng-status-has-review"';
 	$html .= '>';
-	$html .= __( 'Partially reviewed', 'wplingua' );
+	$html .= esc_html__( 'Partially reviewed', 'wplingua' );
 	$html .= '</span>';
 
 	$html .= '<span';
 	$html .= ' class="wplng-status wplng-status-unreview"';
 	$html .= '>';
-	$html .= __( 'Unreviewed', 'wplingua' );
+	$html .= esc_html__( 'Unreviewed', 'wplingua' );
 	$html .= '</span>';
 
 	$actions['wplng-status-text'] = $html;

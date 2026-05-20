@@ -66,7 +66,7 @@ function wplng_option_page_exclusions() {
 					</td>
 				</tr>
 				<tr class="wplng-tr-submit">
-					<th scope="row"><span class="dashicons dashicons-yes-alt"></span> <?php _e( 'Save', 'wplingua' ); ?></th>
+					<th scope="row"><span class="dashicons dashicons-yes-alt"></span> <?php esc_html_e( 'Save', 'wplingua' ); ?></th>
 					<td>
 						<?php submit_button(); ?>
 					</td>

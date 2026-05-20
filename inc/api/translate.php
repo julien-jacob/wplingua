@@ -75,8 +75,6 @@ function wplng_api_call_translate(
 	foreach ( $texts as $key => $text ) {
 		if ( ! is_string( $text ) ) {
 			$texts[ $key ] = '';
-		} else {
-			$texts[ $key ] = esc_html( $text );
 		}
 	}
 

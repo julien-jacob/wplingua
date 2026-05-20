@@ -7,12 +7,82 @@ if ( ! defined( 'WPINC' ) ) {
 
 
 /**
- * Translate search query if page is translated
+ * Replace the search query value by a placeholder tag.
+ *
+ * Used before page translation to prevent the search query
+ * from being translated as part of the page content.
+ *
+ * @param string $search The current search query string.
+ * @return string The placeholder tag, or the original search string if no translation is pending.
+ */
+function wplng_search_put_tag( $search ) {
+
+	global $wplng_translate_search_query;
+
+	if ( $wplng_translate_search_query === null ) {
+		return $search;
+	}
+
+	return '%wplng-search-query%';
+}
+
+
+
+/**
+ * Restore the translated search query in the page HTML.
+ *
+ * Replaces the placeholder tag previously inserted by wplng_search_put_tag()
+ * with the actual (translated) search query string.
+ *
+ * @param string $html The page HTML content containing the placeholder tag.
+ * @return string The HTML with the placeholder replaced by the translated search query.
+ */
+function wplng_search_replace_tag( $html ) {
+
+	global $wplng_translate_search_query;
+
+	if ( $wplng_translate_search_query === null ) {
+		return $html;
+	}
+
+	if ( current_user_can( 'edit_posts' )
+		&& ! empty( $_GET['wplng-mode'] )
+		&& ( $_GET['wplng-mode'] === 'editor'
+			|| $_GET['wplng-mode'] === 'list'
+		)
+	) {
+		return $html;
+	}
+
+	$html = str_replace(
+		'%wplng-search-query%',
+		wplng_text_esc(
+			$wplng_translate_search_query
+		),
+		$html
+	);
+
+	return $html;
+}
+
+
+/**
+ * Translate search query if page is translated and e
+ * enable visitors to search on your website in their own language.
+ *
+ * Example: if your website is translated from English to French and
+ * you have a post named "Hello". When a French visitor searches for
+ * the term "Bonjour" on the website, this feature will translate it
+ * on the fly to "Hello" before launching the search. This will allow
+ * WordPress to find the post named "Hello" when your visitor has
+ * searched for "Bonjour".
  *
  * @param object $query
  * @return void
  */
 function wplng_translate_search_query( $query ) {
+
+	global $wplng_translate_search_query;
 
 	/**
 	 * Check if it's a search query
@@ -48,6 +118,13 @@ function wplng_translate_search_query( $query ) {
 		return;
 	}
 
+	if ( wplng_str_is_malicious( $search_string ) ) {
+		$query->set( 's', '' );
+		return;
+	}
+
+	$wplng_translate_search_query = $search_string;
+
 	/**
 	 * Call API to get the translation
 	 */
@@ -68,15 +145,11 @@ function wplng_translate_search_query( $query ) {
 	 * Check and clear the translation
 	 */
 
-	// Remove added ponctuation
-	$translated_search = preg_replace(
-		'#[^A-Za-z0-9]#',
-		'',
-		$translated_search
-	);
+	// Remove leading/trailing punctuation added by translation API
+	$translated_search = trim( $translated_search, " \t\n\r\0\x0B.,;:!?\"'()[]{}…" );
 
 	// Clear translation
-	$translated_search = trim( esc_attr( $translated_search ) );
+	$translated_search = wplng_text_esc( $translated_search );
 
 	// Check if translation is not empty after cleaning
 	if ( '' === $translated_search ) {

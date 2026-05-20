@@ -202,9 +202,8 @@ function wplng_get_language_name_translated( $language, $language_target = '' ) 
 	// Get target language ID
 	if ( empty( $language_target ) ) {
 		$language_target = wplng_get_language_current_id();
-	} else {
-		$language_target_id = wplng_get_language_id( $language_target );
 	}
+	$language_target_id = wplng_get_language_id( $language_target );
 
 	// Get language array
 	if ( empty( $language['id'] ) ) {
@@ -328,8 +327,10 @@ function wplng_get_languages_target() {
  */
 function wplng_get_languages_target_ids() {
 
-	if ( ! empty( $languages ) ) {
-		return $languages;
+	global $wplng_languages_target_ids;
+
+	if ( null !== $wplng_languages_target_ids ) {
+		return $wplng_languages_target_ids;
 	}
 
 	$languages_target     = wplng_get_languages_target();
@@ -338,6 +339,8 @@ function wplng_get_languages_target_ids() {
 	foreach ( $languages_target as $language_target ) {
 		$languages_target_ids[] = $language_target['id'];
 	}
+
+	$wplng_languages_target_ids = $languages_target_ids;
 
 	return $languages_target_ids;
 }
@@ -377,7 +380,10 @@ function wplng_get_language_current_id() {
 		}
 	}
 
-	return wplng_get_language_website_id();
+	$website_language_id       = wplng_get_language_website_id();
+	$wplng_language_current_id = $website_language_id;
+
+	return $website_language_id;
 }
 
 
@@ -409,7 +415,7 @@ function wplng_get_languages_by_ids( $language_ids ) {
  * Get language data from ID
  *
  * @param string $language_id
- * @return array
+ * @return array|false Language data array, or false if not found
  */
 function wplng_get_language_by_id( $language_id ) {
 
@@ -421,7 +427,12 @@ function wplng_get_language_by_id( $language_id ) {
 		}
 	}
 
-	// Return a default value if $language_id not exist
+	// Avoid infinite recursion: if 'en' itself is not found, return false
+	if ( 'en' === $language_id ) {
+		return false;
+	}
+
+	// Return English as fallback if the requested language ID does not exist
 	return wplng_get_language_by_id( 'en' );
 }
 
@@ -578,9 +589,11 @@ function wplng_get_languages_allow() {
 	$languages      = array();
 
 	if ( 'all' === $languages_alow ) {
-		return wplng_get_languages_all();
+		$wplng_languages_allow = wplng_get_languages_all();
+		return $wplng_languages_allow;
 	} elseif ( empty( $languages_alow ) || ! is_array( $languages_alow ) ) {
-		return array();
+		$wplng_languages_allow = array();
+		return $wplng_languages_allow;
 	} else {
 		foreach ( $languages_alow as $language_id_alow ) {
 			$languages[] = wplng_get_language_by_id( $language_id_alow );

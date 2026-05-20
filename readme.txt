@@ -4,7 +4,7 @@ Donate link: https://wplingua.com/
 Tags: translate, translation, multilingual, localization, language
 Requires at least: 6.0
 Tested up to: 6.9
-Stable tag: 2.12.3
+Stable tag: 2.13.0
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -196,6 +196,48 @@ Your server’s database holds all the translations locally.
 12. SEO-Friendly: wpLingua add the HTML code needed for your translated pages to be indexed by search engines.
 
 == Changelog ==
+
+= 2.13.0 =
+
+* Performance:
+ * Refactor caching mechanism from transients to options for translations and slugs
+ * Add caching for translated attributes, JSON functions, URL parsing and language lists
+ * Optimize `wplng_get_translated_text_from_translations()`, meta_query structures and `wplng_text_is_translatable()`
+ * Skip JS script translation files larger than 2MB for JSON translation files
+ * Handle JSON generation failures gracefully in script translation functions
+ * Replace `strpos`/`str_contains` with `wplng_str_contains` wrapper throughout codebase
+* Improvement:
+ * Implement search query translation with placeholder tags and restore functionality
+ * Add notice for original text containing search query tag in translation editor
+ * Decode slug before truncating to ensure accurate title length
+ * Better wplng_text_esc() function
+ * Add cache and option cleanup on plugin deactivation
+ * Add input validation to string utility functions
+ * Add wplng_bypass_multisite_incompatibility filter
+* Security:
+ * Prevent path traversal attacks in cache file operations
+ * Sanitize custom CSS output to prevent breaking out of `<style>` context
+ * Add input validation and strict type checks across admin option pages (escaping, `esc_html_e`, `esc_attr__`)
+ * Sanitize post ID in AJAX modal edit and save functions
+ * Sanitize API key expiration date and error messages from API responses
+ * Improve sanitization in slug and translation save functions (replace `stripslashes` with `wp_unslash`)
+ * Add error handling for invalid IV length in encryption functions
+ * Enforce strict type checking for API feature flags
+* Fix:
+ * Normalize slugs in translation to prevent cache misses for non-ASCII characters
+ * Slug creation logic in admin bar using wrong variable after loop
+ * Undefined `$language_target_id` in `wplng_get_language_name_translated()`
+ * Cache variable not properly set in `wplng_get_language_current_id()`
+ * `wplng_get_language_by_id()` now handles missing language IDs and prevents infinite recursion
+ * Regex pattern in `wplng_get_translated_text_from_translations()` to correctly capture trailing whitespace
+ * Regex pattern in `wplng_url_is_translatable_no_filter()` to correctly match file URLs
+ * Regex validation in `wplng_get_url_exclude_regex()` to prevent PHP errors on invalid patterns
+ * Regex fallback in `wplng_link_media_apply_rules()` to return original URL if `preg_replace` fails
+ * Return value handling in `wplng_translate_html()` and incorrect type casting of DOM object
+ * Non-ASCII characters now preserved in translated search queries
+ * Slug sanitization and decoding in `wplng_create_slug()`
+ * Removed incorrect `esc_attr` from `wplng_get_switcher_class()` return value
+ * `wplng_save_translation()` now returns the result of save or update operations
 
 = 2.12.3 =
 

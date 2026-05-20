@@ -209,7 +209,9 @@ function wplng_get_api_data( $try_update_from_api = false ) {
 		if ( ! empty( $data['expiration'] )
 			&& is_string( $data['expiration'] )
 		) {
-			$data_checked['expiration'] = $data['expiration'];
+			$data_checked['expiration'] = sanitize_text_field(
+				$data['expiration']
+			);
 		}
 	}
 
@@ -312,7 +314,7 @@ function wplng_get_api_feature() {
 
 	if ( ! empty( $data['features'] ) && is_array( $data['features'] ) ) {
 		foreach ( $data['features'] as $feature_name => $feature_allow ) {
-			if ( $feature_allow && in_array( $feature_name, $all ) ) {
+			if ( $feature_allow && in_array( $feature_name, $all, true ) ) {
 				$features[] = $feature_name;
 			}
 		}
@@ -329,7 +331,7 @@ function wplng_get_api_feature() {
  * @return bool
  */
 function wplng_api_feature_is_allow( $feature_name ) {
-	return in_array( $feature_name, wplng_get_api_feature() );
+	return in_array( $feature_name, wplng_get_api_feature(), true );
 }
 
 

@@ -175,7 +175,7 @@ function wplng_sitemap_modify_xsl( $content ) {
 	}
 
 	// Check if this XSL already has translations support
-	if ( strpos( $content, 'wplng-translations' ) !== false ) {
+	if ( wplng_str_contains( $content, 'wplng-translations' ) ) {
 		return $content;
 	}
 

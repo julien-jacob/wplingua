@@ -85,13 +85,13 @@ function wplng_translate_html( $html, $args = array() ) {
 	 * Dom is ready: check, apply filter and return
 	 */
 
-	$dom->save();
-	$dom = (string) wplng_sdh_str_get_html( $dom );
-	$dom = str_replace( '_wplingua_no_translate_', '', $dom );
+	$html = $dom->save();
 
-	if ( empty( $dom ) ) {
-		return $html;
+	$html = str_replace( '_wplingua_no_translate_', '', $html );
+
+	if ( empty( $html ) ) {
+		return '';
 	}
 
-	return $dom;
+	return $html;
 }

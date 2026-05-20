@@ -51,7 +51,12 @@ function wplng_encryption_encrypt( $text ) {
 
 	// Generate a random IV (initialization vector)
 	$iv_length = openssl_cipher_iv_length( $method );
-	$iv        = random_bytes( $iv_length );
+
+	if ( false === $iv_length ) {
+		return '';
+	}
+
+	$iv = random_bytes( $iv_length );
 
 	// Encrypt the text with AES-256-GCM
 	$tag       = '';
@@ -104,6 +109,13 @@ function wplng_encryption_decrypt( $text ) {
 
 	// Extract the IV, tag and encrypted text
 	$iv_length = openssl_cipher_iv_length( $method );
+
+	if ( false === $iv_length
+		|| strlen( $data ) < $iv_length + 16 + 1
+	) {
+		return '';
+	}
+
 	$iv        = substr( $data, 0, $iv_length );
 	$tag       = substr( $data, $iv_length, 16 );
 	$encrypted = substr( $data, $iv_length + 16 );

@@ -82,13 +82,13 @@ function wplng_option_page_settings() {
 					</td>
 				</tr>
 				<tr>
-					<th scope="row"><span class="dashicons dashicons-admin-network"></span> <?php _e( 'API Key', 'wplingua' ); ?></th>
+					<th scope="row"><span class="dashicons dashicons-admin-network"></span> <?php esc_html_e( 'API Key', 'wplingua' ); ?></th>
 					<td>
 						<?php wplng_settings_part_api_key(); ?>
 					</td>
 				</tr>
 				<tr class="wplng-tr-submit">
-					<th scope="row"><span class="dashicons dashicons-yes-alt"></span> <?php _e( 'Save', 'wplingua' ); ?></th>
+					<th scope="row"><span class="dashicons dashicons-yes-alt"></span> <?php esc_html_e( 'Save', 'wplingua' ); ?></th>
 					<td>
 						<?php submit_button(); ?>
 					</td>
@@ -267,13 +267,13 @@ function wplng_settings_part_language_website() {
 	}
 	?>
 
-	<div id="wplng-flags-radio-original-website-custom"><?php _e( 'Custom', 'wplingua' ); ?></div>
+	<div id="wplng-flags-radio-original-website-custom"><?php esc_html_e( 'Custom', 'wplingua' ); ?></div>
 
 	<div id="wplng-website-language-box">
 
 		<div class="wplng-website-language-displayed">
 			<div id="wplng-website-language" class="wplng-website-language-left">
-				<img src="<?php echo esc_url( wplng_get_language_website_flag() ); ?>" id="wplng-website-flag"><?php echo esc_html( $website_language['name'] ); ?>
+				<img src="<?php echo esc_url( wplng_get_language_website_flag() ); ?>" id="wplng-website-flag"><?php echo isset( $website_language['name'] ) ? esc_html( $website_language['name'] ) : ''; ?>
 			</div>
 			<div class="wplng-target-language-right">
 				<a href="javascript:void(0);" id="wplng-website-lang-update-flag"><?php esc_html_e( 'Edit', 'wplingua' ); ?></a>
@@ -354,8 +354,8 @@ function wplng_settings_part_languages_target() {
 				</div>
 				<hr>
 				<fieldset>
-					[PRIVATE_INPUT]<label for="wplng-language-private-[LANG]"><strong><?php _e( 'Make this language private', 'wplingua' ); ?></strong></label>
-					<p><?php _e( 'Private languages will only be visible to logged-in users with editing rights. This option allows administrators to pre-generate and correct translations before they are accessible to the public.', 'wplingua' ); ?></p>
+					[PRIVATE_INPUT]<label for="wplng-language-private-[LANG]"><strong><?php esc_html_e( 'Make this language private', 'wplingua' ); ?></strong></label>
+					<p><?php esc_html_e( 'Private languages will only be visible to logged-in users with editing rights. This option allows administrators to pre-generate and correct translations before they are accessible to the public.', 'wplingua' ); ?></p>
 				</fieldset>
 			</div>
 		</div>
@@ -385,7 +385,7 @@ function wplng_settings_part_languages_target() {
 		$last_language_key = count( $languages_all ) - 1;
 
 		foreach ( $languages_all as $key => $language ) {
-			echo $language['name'];
+			echo esc_html( $language['name'] );
 			if ( $key !== $last_language_key ) {
 				echo '&nbsp;- ';
 			}
@@ -397,7 +397,7 @@ function wplng_settings_part_languages_target() {
 
 		<p>
 			<a href="https://wplingua.com/pricing/" target="_blank">
-				<?php esc_attr_e( 'wplingua.com : Upgrade your API key', 'wplingua' ); ?>
+				<?php esc_html_e( 'wplingua.com : Upgrade your API key', 'wplingua' ); ?>
 			</a>
 		</p>
 	</div>
@@ -430,7 +430,7 @@ function wplng_settings_part_features_api() {
 		<hr>
 		<p>
 			<a href="https://wplingua.com/pricing/" target="_blank">
-				<?php esc_attr_e( 'wplingua.com : Upgrade your API key', 'wplingua' ); ?>
+				<?php esc_html_e( 'wplingua.com : Upgrade your API key', 'wplingua' ); ?>
 			</a>
 		</p>
 	</div>
@@ -448,7 +448,7 @@ function wplng_settings_part_features_api() {
 		<hr>
 		<p>
 			<a href="https://wplingua.com/pricing/" target="_blank">
-				<?php esc_attr_e( 'wplingua.com : Upgrade your API key', 'wplingua' ); ?>
+				<?php esc_html_e( 'wplingua.com : Upgrade your API key', 'wplingua' ); ?>
 			</a>
 		</p>
 		
@@ -622,7 +622,7 @@ function wplng_settings_part_api_key() {
 			<hr>
 			<p>
 				<a href="https://wplingua.com/pricing/" target="_blank">
-					<?php esc_attr_e( 'wplingua.com : Upgrade your API key', 'wplingua' ); ?>
+					<?php esc_html_e( 'wplingua.com : Upgrade your API key', 'wplingua' ); ?>
 				</a>
 			</p>
 		</div>

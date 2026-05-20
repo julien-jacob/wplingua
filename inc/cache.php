@@ -205,7 +205,7 @@ function wplng_clear_website_cache() {
  * @return void
  */
 function wplng_clear_translations_cache() {
-	delete_transient( 'wplng_cached_translations' );
+	delete_option( 'wplng_cached_translations' );
 	wplng_clear_website_cache();
 }
 
@@ -233,12 +233,12 @@ function wplng_clear_translations_cache_trash_untrash( $post_id ) {
 /**
  * Clear cached slugs
  *
- * Deletes the slugs transient and clears the website cache.
+ * Deletes the slugs option and clears the website cache.
  *
  * @return void
  */
 function wplng_clear_slugs_cache() {
-	delete_transient( 'wplng_cached_slugs' );
+	delete_option( 'wplng_cached_slugs' );
 	wplng_clear_website_cache();
 }
 
@@ -273,6 +273,11 @@ function wplng_clear_slugs_cache_trash_untrash( $post_id ) {
  * @return int|false Number of bytes written, or false on failure.
  */
 function wplng_put_cache_file( $file_name, $data ) {
+
+	// Security: prevent path traversal
+	if ( wplng_str_contains( $file_name, '..' ) ) {
+		return false;
+	}
 
 	// Create main wpLingua cache folder if not exist
 	if ( ! is_dir( WPLNG_CACHE_DIR ) ) {
@@ -393,6 +398,11 @@ function wplng_create_cache_index_html_recursive( $target_dir ) {
  */
 function wplng_get_cache_file( $file_name ) {
 
+	// Security: prevent path traversal
+	if ( wplng_str_contains( $file_name, '..' ) ) {
+		return false;
+	}
+
 	$file_path = WPLNG_CACHE_DIR . $file_name;
 
 	if ( ! is_readable( $file_path ) ) {
@@ -417,7 +427,9 @@ function wplng_clear_folder_cache( $file = false ) {
 		$path = wp_normalize_path( WPLNG_CACHE_DIR . $file );
 
 		// Security: ensure path is within cache directory
-		if ( strpos( $path, wp_normalize_path( WPLNG_CACHE_DIR ) ) !== 0 ) {
+		if ( wplng_str_contains( $file, '..' )
+			|| ! wplng_str_starts_with( $path, wp_normalize_path( WPLNG_CACHE_DIR ) )
+		) {
 			return false;
 		}
 	}

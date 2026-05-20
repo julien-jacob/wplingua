@@ -92,10 +92,10 @@ function wplng_ajax_heartbeat_clear_bad_translations( $counter ) {
 			// Debug (if enabled)
 			if ( true === WPLNG_DEBUG_BEAT ) {
 				$debug = array(
-					'title'  => 'wpLingua HeartBeat debug',
-					'action' => 'Delete translation - Invalid data',
-					'title'  => get_the_title( $id ),
-					'id'     => $id,
+					'title'      => 'wpLingua HeartBeat debug',
+					'action'     => 'Delete translation - Invalid data',
+					'title_post' => get_the_title( $id ),
+					'id'         => $id,
 				);
 
 				error_log( var_export( $debug, true ) );
@@ -116,10 +116,10 @@ function wplng_ajax_heartbeat_clear_bad_translations( $counter ) {
 			// Debug (if enabled)
 			if ( true === WPLNG_DEBUG_BEAT ) {
 				$debug = array(
-					'title'  => 'wpLingua HeartBeat debug',
-					'action' => 'Delete translation - Incorrect original language',
-					'title'  => get_the_title( $id ),
-					'id'     => $id,
+					'title'      => 'wpLingua HeartBeat debug',
+					'action'     => 'Delete translation - Incorrect original language',
+					'title_post' => get_the_title( $id ),
+					'id'         => $id,
 				);
 
 				error_log( var_export( $debug, true ) );
@@ -190,10 +190,10 @@ function wplng_ajax_heartbeat_clear_bad_slugs( $counter ) {
 			// Debug (if enabled)
 			if ( true === WPLNG_DEBUG_BEAT ) {
 				$debug = array(
-					'title'  => 'wpLingua HeartBeat debug',
-					'action' => 'Delete slug - Invalid data',
-					'title'  => get_the_title( $id ),
-					'id'     => $id,
+					'title'      => 'wpLingua HeartBeat debug',
+					'action'     => 'Delete slug - Invalid data',
+					'title_post' => get_the_title( $id ),
+					'id'         => $id,
 				);
 
 				error_log( var_export( $debug, true ) );
@@ -204,7 +204,7 @@ function wplng_ajax_heartbeat_clear_bad_slugs( $counter ) {
 			continue;
 		}
 
-		// Check language of the translation
+		// Check language of the slug
 		if ( empty( $meta['wplng_slug_original_language_id'][0] )
 			|| $meta['wplng_slug_original_language_id'][0] !== $language_website_id
 		) {
@@ -214,16 +214,16 @@ function wplng_ajax_heartbeat_clear_bad_slugs( $counter ) {
 			// Debug (if enabled)
 			if ( true === WPLNG_DEBUG_BEAT ) {
 				$debug = array(
-					'title'  => 'wpLingua HeartBeat debug',
-					'action' => 'Delete slug - Incorrect original language',
-					'title'  => get_the_title( $id ),
-					'id'     => $id,
+					'title'      => 'wpLingua HeartBeat debug',
+					'action'     => 'Delete slug - Incorrect original language',
+					'title_post' => get_the_title( $id ),
+					'id'         => $id,
 				);
 
 				error_log( var_export( $debug, true ) );
 			}
 
-			// Permanently delete the translation
+			// Permanently delete the slug
 			wp_delete_post( $id, true );
 			continue;
 		}

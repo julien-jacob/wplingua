@@ -130,6 +130,18 @@ function wplng_slug_translate( $slug, $language_id, $slugs_translations = false 
 		$slugs_translations = wplng_get_slugs();
 	}
 
+	/**
+	 * Normalize slug to match how sources are stored in cache/DB
+	 * (wplng_create_slug applies sanitize_title before storing).
+	 * This prevents cache misses and duplicate entries for non-ASCII
+	 * slugs (e.g. Japanese/CJK) where the raw URL segment differs
+	 * from its sanitized form.
+	 */
+	$slug_sanitized = sanitize_title( $slug );
+	if ( '' !== $slug_sanitized ) {
+		$slug = $slug_sanitized;
+	}
+
 	$slug_translation_exist = false;
 
 	foreach ( $slugs_translations as $slug_translations ) {
@@ -151,9 +163,13 @@ function wplng_slug_translate( $slug, $language_id, $slugs_translations = false 
 	 * Check if exist in DB
 	 *
 	 * If not exist, create it
+	 *
+	 * Skip if sanitize_title() returns empty (e.g. pure CJK with no
+	 * sanitize_title filter) to avoid costly meta_query DB calls.
 	 */
 
 	if ( false === $slug_translation_exist
+		&& '' !== $slug_sanitized
 		&& false === wplng_get_slug_saved_from_original( $slug )
 	) {
 		wplng_create_slug( $slug );
@@ -286,11 +302,12 @@ function wplng_create_slug( $slug ) {
 	 */
 
 	$tite_max_length = 100;
-	$title           = mb_substr( $slug, 0, $tite_max_length );
-	$title           = sanitize_title( $slug );
-	$title           = urldecode( $slug );
+	$slug_decoded    = urldecode( $slug );
+	$title           = mb_substr( $slug_decoded, 0, $tite_max_length );
+	$title           = sanitize_title( $title );
+	$title           = urldecode( $title );
 
-	if ( strlen( $slug ) > $tite_max_length ) {
+	if ( mb_strlen( $slug_decoded ) > $tite_max_length ) {
 		$title = '/' . $title . __( '...', 'wplingua' );
 	} else {
 		$title = '/' . $title . '/';
@@ -496,18 +513,13 @@ function wplng_get_slugs_from_query() {
 
 	// Delete invalid slugs, limit to 32 deletions
 	if ( ! empty( $slug_to_delete ) ) {
-
 		foreach ( array_slice( $slug_to_delete, 0, 32 ) as $id ) {
 			wp_delete_post( $id, true );
 		}
-
-		// Cache slugs for 30 seconds after deletion
-		set_transient( 'wplng_cached_slugs', $slugs, 30 );
-
-	} else {
-		// Cache slugs for a month if no deletions occurred
-		set_transient( 'wplng_cached_slugs', $slugs, MONTH_IN_SECONDS );
 	}
+
+	// Cache slugs as a persistent option
+	update_option( 'wplng_cached_slugs', $slugs, false );
 
 	return $slugs;
 }
@@ -520,7 +532,7 @@ function wplng_get_slugs_from_query() {
  */
 function wplng_get_slugs() {
 
-	$slugs_from_cache = get_transient( 'wplng_cached_slugs' );
+	$slugs_from_cache = get_option( 'wplng_cached_slugs' );
 
 	if ( ! is_array( $slugs_from_cache ) ) {
 		return wplng_get_slugs_from_query();
@@ -578,15 +590,14 @@ function wplng_get_slug_saved_from_original( $original ) {
 	$args = array(
 		'post_type'      => 'wplng_slug',
 		'posts_per_page' => -1,
+		'fields'         => 'ids',
 		'meta_query'     => array(
+			'relation' => 'AND',
 			array(
 				'key'     => 'wplng_slug_md5',
 				'value'   => md5( $original ),
 				'compare' => '=',
 			),
-		),
-		'fields'         => 'ids',
-		'meta_query'     => array(
 			array(
 				'key'     => 'wplng_slug_original_language_id',
 				'value'   => wplng_get_language_website_id(),

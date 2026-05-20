@@ -7,7 +7,7 @@
  * Author URI: https://wplingua.com/
  * Text Domain: wplingua
  * Domain Path: /languages/
- * Version: 2.12.3
+ * Version: 2.13.0
  * Requires PHP: 7.4
  * License: GPL v2 or later
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -24,7 +24,7 @@ if ( ! defined( 'WPINC' ) ) {
 define( 'WPLNG_API_URL', 'https://api.wplingua.com' );
 define( 'WPLNG_API_VERSION', '3.0' );
 define( 'WPLNG_API_SSLVERIFY', true );
-define( 'WPLNG_PLUGIN_VERSION', '2.12.3' );
+define( 'WPLNG_PLUGIN_VERSION', '2.13.0' );
 define( 'WPLNG_PLUGIN_FILE', plugin_basename( __FILE__ ) );
 define( 'WPLNG_PLUGIN_DIR', __DIR__ );
 define( 'WPLNG_CACHE_DIR', WP_CONTENT_DIR . '/wplingua-cache' );
@@ -102,10 +102,17 @@ function wplng_start() {
 
 	// The plugin version has changed
 	if ( get_option( 'wplng_version' ) !== WPLNG_PLUGIN_VERSION ) {
+		// Update version number in DB
 		update_option( 'wplng_version', WPLNG_PLUGIN_VERSION, true );
+
+		// Clear all wpLingua cache
 		wplng_clear_translations_cache();
 		wplng_clear_slugs_cache();
 		wplng_clear_folder_cache();
+
+		// Clear old cache method (version <= 2.12.3)
+		delete_transient( 'wplng_cached_translations' );
+		delete_transient( 'wplng_cached_slugs' );
 	}
 
 	// Load plugin text domain /languages/
@@ -123,7 +130,9 @@ function wplng_start() {
 
 	// Return if incompatibility is detected
 	if ( ! empty( wplng_get_incompatible_plugins() )
-		|| is_multisite()
+		|| (  is_multisite() 
+			&& ! apply_filters( 'wplng_bypass_multisite_incompatibility', false ) 
+		)
 		|| ( version_compare( PHP_VERSION, WPLNG_PHP_MIN_VERSION ) < 0 )
 		|| ! wplng_htaccess_is_valid()
 		|| empty( get_option( 'permalink_structure' ) )
@@ -380,6 +389,8 @@ function wplng_start() {
 			&& wplng_api_feature_is_allow( 'search' )
 		) {
 			add_action( 'parse_query', 'wplng_translate_search_query' );
+			add_filter( 'get_search_query', 'wplng_search_put_tag' );
+			add_filter( 'wplng_translated_html', 'wplng_search_replace_tag', 5 );
 		} else {
 			add_filter( 'wplng_url_is_translatable', 'wplng_exclude_search', 20 );
 		}
@@ -417,3 +428,16 @@ function wplng_start() {
 	}
 }
 wplng_start();
+
+
+/**
+ * Delete translation and slug cache options on plugin deactivation.
+ *
+ * @return void
+ */
+function wplng_deactivate() {
+	delete_option( 'wplng_cached_translations' );
+	delete_option( 'wplng_cached_slugs' );
+	delete_option( 'wplng_api_key_data' );
+}
+register_deactivation_hook( __FILE__, 'wplng_deactivate' );

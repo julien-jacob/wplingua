@@ -252,7 +252,7 @@ function wplng_get_switcher_class( $arg = array() ) {
 		$class .= ' ' . $arg['class'];
 	}
 
-	return esc_attr( $class );
+	return $class;
 }
 
 

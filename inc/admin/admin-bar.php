@@ -184,7 +184,7 @@ function wplng_admin_bar_menu() {
 	$slug_id = wplng_get_slug_saved_from_original( $last_slug );
 
 	if ( false === $slug_id ) {
-		$slug_id = wplng_create_slug( $slug );
+		$slug_id = wplng_create_slug( $last_slug );
 	}
 
 	$edit_slug_link = get_edit_post_link( $slug_id );

@@ -15,6 +15,9 @@ if ( ! defined( 'WPINC' ) ) {
  * @return bool
  */
 function wplng_str_contains( $haystack, $needle ) {
+	if ( ! is_string( $haystack ) || ! is_string( $needle ) ) {
+		return false;
+	}
 	return ( strpos( $haystack, $needle ) !== false );
 }
 
@@ -62,29 +65,31 @@ function wplng_str_ends_with( $haystack, $needle ) {
  */
 function wplng_str_is_url( $str ) {
 
-	$parsed = wp_parse_url( $str );
-	$is_url = false;
-
-	if ( is_string( $str )
-		&& ( '' !== trim( $str ) )
-		&& wplng_str_contains( $str, '/' )
-		&& ! wplng_str_starts_with( $str, 'wpgb-content-block/' ) // Plugin: WP Grid Builder
-		&& ! wplng_str_starts_with( $str, '/wc/store/v1' ) // Plugin: WooCommerce
-		&& ! wplng_str_starts_with( $str, 'GlotPress/' ) // Plugin: WooCommerce
-		&& ! wplng_str_starts_with( $str, 'contact-form-7/v1' ) // Plugin: Contact Form 7
+	if ( ! is_string( $str )
+		|| trim( $str ) === ''
+		|| ! wplng_str_contains( $str, '/' )
+		|| wplng_str_starts_with( $str, 'GlotPress/' ) 			// JSON WP translation system
+		|| wplng_str_starts_with( $str, 'wpgb-content-block/' ) // Plugin: WP Grid Builder
+		|| wplng_str_starts_with( $str, '/wc/store/v1' ) 		// Plugin: WooCommerce
+		|| wplng_str_starts_with( $str, 'contact-form-7/v1' ) 	// Plugin: Contact Form 7
 	) {
-		if ( isset( $parsed['scheme'] )
-			&& (
-				( 'https' === $parsed['scheme'] )
-				|| ( 'http' === $parsed['scheme'] )
-			)
-		) {
-			// URL has http/https/...
-			$is_url = ! ( filter_var( $str, FILTER_VALIDATE_URL ) === false );
-		} else {
-			// PHP filter_var does not support relative urls, so we simulate a full URL
-			$is_url = ( filter_var( 'https://website.com/' . ltrim( $str, '/' ), FILTER_VALIDATE_URL ) !== false );
-		}
+		return false;
+	}
+
+	$is_url = false;
+	$parsed = wp_parse_url( $str );
+
+	if ( isset( $parsed['scheme'] )
+		&& (
+			( 'https' === $parsed['scheme'] )
+			|| ( 'http' === $parsed['scheme'] )
+		)
+	) {
+		// URL has http/https/...
+		$is_url = ! ( filter_var( $str, FILTER_VALIDATE_URL ) === false );
+	} else {
+		// PHP filter_var does not support relative urls, so we simulate a full URL
+		$is_url = ( filter_var( 'https://website.com/' . ltrim( $str, '/' ), FILTER_VALIDATE_URL ) !== false );
 	}
 
 	return $is_url;
@@ -100,6 +105,10 @@ function wplng_str_is_url( $str ) {
  */
 function wplng_text_is_translatable( $text ) {
 
+	if ( ! is_string( $text ) ) {
+		return false;
+	}
+
 	$text = trim( $text );
 
 	if ( '' === $text ) {
@@ -111,19 +120,10 @@ function wplng_text_is_translatable( $text ) {
 		return false;
 	}
 
-	if ( wplng_str_is_malicious( $text ) ) {
-		return false;
-	}
-
 	// Check for better plugin compatibility
 	if ( wplng_str_contains( $text, 'presto_player' )
 		|| wplng_str_contains( $text, 'presto-player' )
 	) {
-		return false;
-	}
-
-	// Check if it's a email address
-	if ( filter_var( $text, FILTER_VALIDATE_EMAIL ) ) {
 		return false;
 	}
 
@@ -141,13 +141,27 @@ function wplng_text_is_translatable( $text ) {
 		return false;
 	}
 
+	// Check if it's a email address
+	if ( filter_var( $text, FILTER_VALIDATE_EMAIL ) ) {
+		return false;
+	}
+
 	// Get letters only
 	$letters = $text;
 	$letters = html_entity_decode( $letters );
 	$letters = preg_replace( '#[^\p{L}\p{N}]#u', '', $letters );
 	$letters = preg_replace( '#[\d\s]#u', '', $letters );
 
-	return ! empty( $letters );
+	if ( empty( $letters ) ) {
+		return false;
+	}
+
+	// Check if string is malicious
+	if ( wplng_str_is_malicious( $text ) ) {
+		return false;
+	}
+
+	return true;
 }
 
 
@@ -232,6 +246,7 @@ function wplng_str_is_malicious( $text ) {
  */
 function wplng_text_esc( $text ) {
 
+	$text = wp_strip_all_tags( $text );
 	$text = html_entity_decode( $text );
 	$text = esc_html( $text );
 	$text = esc_attr( $text );
@@ -242,6 +257,7 @@ function wplng_text_esc( $text ) {
 	);
 
 	$text = str_replace( '\\', '', $text );
+	$text = preg_replace( '/[\x00-\x1F\x7F]+/u', '', $text );
 	$text = preg_replace( '/\s+/u', ' ', $text );
 	$text = trim( $text );
 
@@ -365,6 +381,9 @@ function wplng_str_is_script_i18n( $str ) {
  * @return bool true is $str is a JSON
  */
 function wplng_str_is_json( $str ) {
+	if ( ! is_string( $str ) ) {
+		return false;
+	}
 	$decoded = json_decode( $str, true );
 	return ( json_last_error() === JSON_ERROR_NONE ) && is_array( $decoded );
 }

@@ -452,11 +452,23 @@ function wplng_admin_notice_incompatible_plugin() {
 /**
  * Display a notice if is a multisite
  *
+ * Note: wpLingua does not officially support multisite installations and
+ * does not guarantee compatibility. Advanced users can bypass this
+ * incompatibility check by returning true from the
+ * `wplng_bypass_multisite_incompatibility` filter.
+ *
+ * @see apply_filters( 'wplng_bypass_multisite_incompatibility', false )
+ *
  * @return void|string Outputs the admin notice if applicable, or returns void if no action is needed.
  */
 function wplng_admin_notice_incompatible_multisite() {
 
-	if ( ! is_multisite() ) {
+	// Advanced users can bypass the multisite incompatibility notice by
+	// returning true to this filter. Note that bypassing does NOT make
+	// wpLingua officially compatible with multisite installations.
+	if ( ! is_multisite() 
+		|| apply_filters( 'wplng_bypass_multisite_incompatibility', false ) 
+	) {
 		return;
 	}
 

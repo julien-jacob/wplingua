@@ -118,14 +118,19 @@ function wplng_url_translate_no_filter( $url, $language_target_id = '' ) {
 	}
 
 	$languages_target = wplng_get_languages_target();
-	$preg_domain      = '';
-	$parsed_url_home  = wp_parse_url( home_url() );
 	$home_base_path   = wplng_get_home_base_path();
 
-	if ( isset( $parsed_url_home['host'] )
-		&& is_string( $parsed_url_home['host'] )
-	) {
-		$preg_domain = preg_quote( $parsed_url_home['host'] );
+	static $preg_domain     = null;
+	static $parsed_url_home = null;
+
+	if ( null === $parsed_url_home ) {
+		$parsed_url_home = wp_parse_url( home_url() );
+		$preg_domain     = '';
+		if ( isset( $parsed_url_home['host'] )
+			&& is_string( $parsed_url_home['host'] )
+		) {
+			$preg_domain = preg_quote( $parsed_url_home['host'] );
+		}
 	}
 
 	if ( ! empty( $preg_domain )
@@ -203,8 +208,8 @@ function wplng_url_translate_no_filter( $url, $language_target_id = '' ) {
 
 		// Check if URL is already translated
 		foreach ( $languages_target as $language_target ) {
-			if ( substr( $url, 0, 4 ) === ( '/' . $language_target['id'] . '/' )
-				|| substr( $url, 0, 3 ) === ( $language_target['id'] . '/' )
+			if ( wplng_str_starts_with( $url, '/' . $language_target['id'] . '/' )
+				|| wplng_str_starts_with( $url, $language_target['id'] . '/' )
 			) {
 				return $url;
 			}
@@ -316,7 +321,7 @@ function wplng_url_is_translatable_no_filter( $url ) {
 	}
 
 	// Exclude files URL
-	$regex_is_file = '#\.(avi|css|js|map|docx?|exe|gif|html?|jfif|jpe?g|webp|bmp|midi?|mp3|mpe?g|avif|mov|qt|pdf|png|ra?m|rar|tiff?|txt|wav|zip|ico|xml|rss|xls[x]?|ttf|otf|woff2?|eot|svg)?\/$#i';
+	$regex_is_file = '#\.(avi|css|js|map|docx?|exe|gif|html?|jfif|jpe?g|webp|bmp|midi?|mp3|mpe?g|avif|mov|qt|pdf|png|ra?m|rar|tiff?|txt|wav|zip|ico|xml|rss|xls[x]?|ttf|otf|woff2?|eot|svg)\/$#i';
 
 	if ( preg_match( $regex_is_file, $url ) ) {
 		return false;
@@ -365,7 +370,7 @@ function wplng_get_url_exclude_regex() {
 	// Check each URL REGEX
 	foreach ( $option as $regex ) {
 		$regex = trim( $regex );
-		if ( '' !== $regex ) {
+		if ( '' !== $regex && false !== @preg_match( '#' . $regex . '#', '' ) ) {
 			$url_exclude[] = '#' . $regex . '#';
 		}
 	}
@@ -505,7 +510,7 @@ function wplng_url_is_sitemap_xml( $url = '' ) {
 	$url_path   = isset( $parsed_url['path'] ) ? $parsed_url['path'] : '';
 
 	// Check if the URL matches common sitemap patterns
-	$is_sitemap = str_contains( $url_path, 'sitemap' ) && str_contains( $url_path, '.xml' );
+	$is_sitemap = wplng_str_contains( $url_path, 'sitemap' ) && wplng_str_contains( $url_path, '.xml' );
 
 	/**
 	 * Filter to allow customization of the sitemap detection logic
