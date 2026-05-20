@@ -130,6 +130,18 @@ function wplng_slug_translate( $slug, $language_id, $slugs_translations = false 
 		$slugs_translations = wplng_get_slugs();
 	}
 
+	/**
+	 * Normalize slug to match how sources are stored in cache/DB
+	 * (wplng_create_slug applies sanitize_title before storing).
+	 * This prevents cache misses and duplicate entries for non-ASCII
+	 * slugs (e.g. Japanese/CJK) where the raw URL segment differs
+	 * from its sanitized form.
+	 */
+	$slug_sanitized = sanitize_title( $slug );
+	if ( '' !== $slug_sanitized ) {
+		$slug = $slug_sanitized;
+	}
+
 	$slug_translation_exist = false;
 
 	foreach ( $slugs_translations as $slug_translations ) {
@@ -151,9 +163,13 @@ function wplng_slug_translate( $slug, $language_id, $slugs_translations = false 
 	 * Check if exist in DB
 	 *
 	 * If not exist, create it
+	 *
+	 * Skip if sanitize_title() returns empty (e.g. pure CJK with no
+	 * sanitize_title filter) to avoid costly meta_query DB calls.
 	 */
 
 	if ( false === $slug_translation_exist
+		&& '' !== $slug_sanitized
 		&& false === wplng_get_slug_saved_from_original( $slug )
 	) {
 		wplng_create_slug( $slug );
