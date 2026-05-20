@@ -65,7 +65,7 @@ function wplng_translation_editor_get_html( $post ) {
 
 	$meta = get_post_meta( $post->ID );
 
-	// Display original text
+	// Display original text and notice if necesary
 	if ( ! empty( $meta['wplng_translation_original'][0] )
 		&& is_string( $meta['wplng_translation_original'][0] )
 		&& ! empty( $meta['wplng_translation_original_language_id'][0] )
@@ -75,8 +75,27 @@ function wplng_translation_editor_get_html( $post ) {
 		$language_id = $meta['wplng_translation_original_language_id'][0];
 		$language    = wplng_get_language_by_id( $language_id );
 		$alt         = __( 'Flag for language: ', 'wplingua' ) . $language['name'];
+		$text_source = wplng_text_esc_displayed( $meta['wplng_translation_original'][0] );
+		$html_notice = '';
 
-		$html .= '<div id="wplng-original-language" wplng-lang="' . esc_attr( $language_id ) . '">';
+		// Make the notice
+		if ( wplng_str_contains( $text_source, '%wplng-search-query%' ) ) {
+			$html_notice .= '<div';
+			$html_notice .= ' class="wplng-help-box"';
+			$html_notice .= ' style="display: block; margin: 15px 0 -10px;"';
+			$html_notice .= '>';
+			$html_notice .= sprintf(
+				esc_html__( 'This text contains the tag %s, which will be replaced by the term the visitor searched for. Please keep it in your translation.', 'wplingua' ),
+				'<u>%wplng-search-query%</u>'
+			);
+			$html_notice .= '</div>';
+		}
+
+		$html .= '<div';
+		$html .= ' id="wplng-original-language" wplng-lang="' . esc_attr( $language_id ) . '"';
+		$html .= ' wplng-lang="' . esc_attr( $language_id ) . '"';
+		$html .= '>';
+
 		$html .= '<div id="wplng-source-title">';
 		$html .= '<img';
 		$html .= ' src="' . esc_url( $language['flag'] ) . '"';
@@ -87,9 +106,10 @@ function wplng_translation_editor_get_html( $post ) {
 		$html .= esc_html__( ' - Original text: ', 'wplingua' );
 		$html .= '</div>'; // End #wplng-source-title
 		$html .= '<div id="wplng-source">';
-		$html .= esc_html( wplng_text_esc_displayed( $meta['wplng_translation_original'][0] ) );
+		$html .= esc_html( $text_source );
 		$html .= '</div>'; // End #wplng-source
 		$html .= '</div>'; // End #wplng-original-language
+		$html .= $html_notice;
 
 	}
 
