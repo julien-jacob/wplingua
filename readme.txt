@@ -4,7 +4,7 @@ Donate link: https://wplingua.com/
 Tags: translate, translation, multilingual, localization, language
 Requires at least: 6.0
 Tested up to: 6.9
-Stable tag: 2.12.3.1
+Stable tag: 2.13.0
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -197,7 +197,7 @@ Your server’s database holds all the translations locally.
 
 == Changelog ==
 
-= 2.12.3.1 =
+= 2.13.0 =
 
 * Performance:
  * Refactor caching mechanism from transients to options for translations and slugs
@@ -207,6 +207,10 @@ Your server’s database holds all the translations locally.
  * Handle JSON generation failures gracefully in script translation functions
  * Replace `strpos`/`str_contains` with `wplng_str_contains` wrapper throughout codebase
 * Improvement:
+ * Implement search query translation with placeholder tags and restore functionality
+ * Add notice for original text containing search query tag in translation editor
+ * Decode slug before truncating to ensure accurate title length
+ * Better wplng_text_esc() function
  * Add cache and option cleanup on plugin deactivation
  * Add input validation to string utility functions
  * Add wplng_bypass_multisite_incompatibility filter
@@ -220,6 +224,7 @@ Your server’s database holds all the translations locally.
  * Add error handling for invalid IV length in encryption functions
  * Enforce strict type checking for API feature flags
 * Fix:
+ * Normalize slugs in translation to prevent cache misses for non-ASCII characters
  * Slug creation logic in admin bar using wrong variable after loop
  * Undefined `$language_target_id` in `wplng_get_language_name_translated()`
  * Cache variable not properly set in `wplng_get_language_current_id()`
