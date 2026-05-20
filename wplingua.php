@@ -389,6 +389,8 @@ function wplng_start() {
 			&& wplng_api_feature_is_allow( 'search' )
 		) {
 			add_action( 'parse_query', 'wplng_translate_search_query' );
+			add_filter( 'get_search_query', 'wplng_search_put_tag' );
+			add_filter( 'wplng_translated_html', 'wplng_search_replace_tag', 5 );
 		} else {
 			add_filter( 'wplng_url_is_translatable', 'wplng_exclude_search', 20 );
 		}
