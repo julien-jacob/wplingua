@@ -39,14 +39,6 @@
     vertical-align: baseline;
 }
 
-// Hide other plusgins ads and notices
-
-#nri-slug-wrapper,
-// Plugin: backup-backup
-.notice:not(.wplng-notice) {
-    display: none !important;
-}
-
 .wplng-form-table {
 
     padding-right: 200px;
@@ -181,4 +173,16 @@
 
     }
 
+}
+
+
+// --------------------------------------------------------------
+// Hide other plusgins ads and notices
+// --------------------------------------------------------------
+
+
+#nri-slug-wrapper, // Plugin: /backup-backup/
+.fs_notice_board, // Plugin: /advanced-post-block/
+.notice:not(.wplng-notice) {
+    display: none !important;
 }
