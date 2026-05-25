@@ -16,7 +16,7 @@ Make your websites multilingual and translate them automatically: no word limits
 **An all-in-one solution that makes your websites multilingual and translate them automatically, without word limits.**
 
 ✓ One free first language for non-commercial websites
-✓ Automatic translation API
+✓ Automatic translation API connector
 ✓ Unlimited number of translated words
 ✓ SEO-friendly: indexing of translated pages in search engines
 ✓ On-page visual editor for editing translations
@@ -82,10 +82,10 @@ wpLingua's language switcher is fully customizable. You can display the language
 
 You can also control the appearance of the language switcher using:
 
-✓ Switcher styles (dropdown, inline, block...)
+✓ Switcher styles (dropdown, inline and block)
 ✓ Predefined themes (light, dark, chameleon, etc.)
 ✓ Configurable language names (translated name, original name, language ID, etc.)
-✓ Flag shapes (round, rectangle, wavy)
+✓ Flag shapes (round, rectangle and wavy)
 ✓ Language-based flag choices or import your own flag images
 ✓ Adding custom CSS in a dedicated insert
 
@@ -126,10 +126,10 @@ The method used by wpLingua to translate website texts ensures compatibility wit
 
 **Compatible themes tested:** Divi, Twenty Twenty-One, Astra, OceanWP, Blocksy, Hello, GeneratePress, Neve, Envince, Twenty Twenty-Four, Twenty Twenty-Five, Poe, Neve FSE, Frost, Tove, and more...
 
-### ⚡️ The wpLingua API ###
+### ⚡️ The wpLingua API and plugin connectors ###
 The wpLingua plugin relies on our own wpLingua API, an integrated third-party service, to provide its machine translation functionality. The call to this Third Party Service (wpLingua API) is made when creating an API key from the plugin, during API key verification and when your website requests a new automatic translation (new texts discovered on a page web or request automatic translations from the translation edition). We invite you to consult our [Terms & Conditions page](https://wplingua.com/terms-and-conditions/) for more information.
 
-**Keywords**: wpLingua, WP Lingua, WP-Lingua, Multilingual, Bilingual, Translation, Translate, Translated, Translator, Localization, Automatic translation, Machine translation, Languages, Language switcher, Language selector, API, SEO, Custom flags
+**Keywords**: wpLingua, WP Lingua, WP-Lingua, Multilingual, Bilingual, Translation, Translate, Translated, Translator, Localization, Automatic translation, Machine translation, Translation connector, Languages, Language switcher, Language selector, API, SEO, Custom flags
 
 
 == Installation ==
