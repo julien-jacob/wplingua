@@ -59,13 +59,19 @@ function wplng_dom_exclusions_put_tags( $dom, &$excluded_elements ) {
 	 * and fill $excluded_elements array
 	 */
 
-	$excluded_elements = array();
+	$excluded_elements     = array();
+	$excluded_elements_ids = array();
 
 	foreach ( $selector_exclude as $selector ) {
 		foreach ( $dom->find( $selector ) as $element ) {
-			$excluded_elements[] = $element->outertext;
-			$attr                = count( $excluded_elements ) - 1;
-			$element->outertext  = '<div wplng-tag-exclude="' . esc_attr( $attr ) . '"></div>';
+			$element_id = spl_object_id( $element );
+			if ( isset( $excluded_elements_ids[ $element_id ] ) ) {
+				continue;
+			}
+			$excluded_elements_ids[ $element_id ] = true;
+			$excluded_elements[]                  = $element->outertext;
+			$attr                                 = count( $excluded_elements ) - 1;
+			$element->outertext                   = '<div wplng-tag-exclude="' . esc_attr( $attr ) . '"></div>';
 		}
 	}
 
