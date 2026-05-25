@@ -33,7 +33,7 @@ function wplng_dom_exclusions_put_tags( $dom, &$excluded_elements ) {
 
 	// Sanitize each selectors
 	foreach ( $option as $selector ) {
-		$selector = esc_attr( trim( $selector ) );
+		$selector = trim( $selector );
 		if ( ! empty( $selector ) ) {
 			$selector_exclude[] = $selector;
 		}
@@ -49,7 +49,7 @@ function wplng_dom_exclusions_put_tags( $dom, &$excluded_elements ) {
 	$selector_exclude = array_unique( $selector_exclude );
 
 	// Apply wplng_selector_exclude filters
-	$selector_exclude = apply_filters(
+	$selector_exclude = (array) apply_filters(
 		'wplng_selector_exclude',
 		$selector_exclude
 	);
