@@ -38,7 +38,10 @@ function wplng_dom_replace_links( $dom, $args ) {
 				$args['language_target']
 			);
 
-			$element->setAttribute( $attr['attr'], esc_url( $translated_url ) );
+			$element->setAttribute(
+				$attr['attr'],
+				esc_url( $translated_url )
+			);
 
 		}
 	}
@@ -53,7 +56,7 @@ function wplng_dom_replace_links( $dom, $args ) {
 			continue;
 		}
 
-		$link = esc_attr( $element->attr['srcset'] );
+		$link = $element->attr['srcset'];
 
 		$url_link_media_applied = wplng_link_media_apply_rules(
 			$link,
@@ -61,7 +64,10 @@ function wplng_dom_replace_links( $dom, $args ) {
 		);
 
 		if ( $url_link_media_applied !== $link ) {
-			$element->setAttribute( 'srcset', esc_attr( $url_link_media_applied ) );
+			$element->setAttribute(
+				'srcset',
+				esc_attr( $url_link_media_applied )
+			);
 		}
 	}
 
