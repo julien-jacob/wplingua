@@ -43,7 +43,7 @@ function wplng_parse_html( $html ) {
 	}
 
 	/**
-	 * Parse texts in attriutes
+	 * Parse texts in attributes
 	 */
 
 	$attr_texts_to_translate = wplng_data_attr_text_to_translate();
@@ -66,7 +66,7 @@ function wplng_parse_html( $html ) {
 	}
 
 	/**
-	 * Parse HTML in attriutes
+	 * Parse HTML in attributes
 	 */
 
 	$attr_html_to_translate = wplng_data_attr_html_to_translate();
@@ -80,7 +80,7 @@ function wplng_parse_html( $html ) {
 
 			$html = wp_specialchars_decode(
 				$element->attr[ $attr['attr'] ],
-				ENT_QUOTES | ENT_SUBSTITUTE | ENT_HTML401
+				ENT_QUOTES | ENT_HTML5
 			);
 
 			$texts = array_merge(
@@ -92,7 +92,7 @@ function wplng_parse_html( $html ) {
 	}
 
 	/**
-	 * Parse JSON in attriutes
+	 * Parse JSON in attributes
 	 */
 
 	$attr_json_to_translate = wplng_data_attr_json_to_translate();
@@ -106,7 +106,7 @@ function wplng_parse_html( $html ) {
 
 			$json = wp_specialchars_decode(
 				$element->attr[ $attr['attr'] ],
-				ENT_QUOTES | ENT_SUBSTITUTE | ENT_HTML401
+				ENT_QUOTES | ENT_HTML5
 			);
 
 			$texts = array_merge(
