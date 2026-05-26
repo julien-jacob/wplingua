@@ -223,6 +223,15 @@
     }
 }
 
+#wplng-flag-website-container,
+.wplng-flag-target-container {
+    input[type="checkbox"], 
+    input[type="radio"] {
+        vertical-align: center;
+    }
+}
+
+
 #wplng-website-flag,
 .wplng-target-language img.wplng-target-flag,
 .wplng-flags-radio img,

@@ -27,10 +27,16 @@
     width: 45px;
     text-align: center;
     padding: 0;
+    height: 33.3px;
+    min-height: 33.3px;
+    max-height: 33.3px;
+    line-height: 1.2;
+    border-radius: 3px;
 
     .dashicons {
-        vertical-align: text-top;
-        line-height: 1rem;
+        // vertical-align: text-top;
+        // line-height: 1rem;
+        line-height: 1.9rem;
     }
 
 }
@@ -39,7 +45,7 @@
     vertical-align: baseline;
 }
 
-.wplng-form-table {
+body .wplng-form-table {
 
     padding-right: 200px;
     border-collapse: initial;
@@ -61,6 +67,31 @@
         &:hover {
             text-decoration: underline;
         }
+    }
+
+    
+
+    // .button, 
+    // .button-primary, 
+    // .button-secondary,
+    select ,
+    input[type="date"], 
+    input[type="datetime-local"], 
+    input[type="datetime"], 
+    input[type="email"], 
+    input[type="month"], 
+    input[type="number"], 
+    input[type="password"], 
+    input[type="search"], 
+    input[type="tel"], 
+    input[type="text"], 
+    input[type="time"], 
+    input[type="url"], 
+    input[type="week"] {
+        line-height: 1.2;
+        min-height: 33.3px;
+        max-height: 33.3px;
+        border-radius: 3px;
     }
 
     td {
