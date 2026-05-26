@@ -31,13 +31,12 @@ function wplng_dom_translate_json_attr( $dom, $args ) {
 			}
 
 			// Prepare arguments for translation
-			wplng_args_setup( $args );
 			$args['parents'] = array( $attr['attr'] );
 
 			$translated_json = wplng_translate_json(
 				wp_specialchars_decode(
 					$element->attr[ $attr['attr'] ],
-					ENT_QUOTES | ENT_SUBSTITUTE | ENT_HTML401
+					ENT_QUOTES | ENT_HTML5
 				),
 				$args
 			);
