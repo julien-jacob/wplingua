@@ -7,7 +7,7 @@ if ( ! defined( 'WPINC' ) ) {
 
 
 /**
- * Modify the ody class in dom for translated pages
+ * Modify the body class in dom for translated pages
  *
  * @param object $dom
  * @param array  $args
@@ -18,9 +18,9 @@ function wplng_dom_replace_body_class( $dom, $args ) {
 	wplng_args_setup( $args );
 
 	// Replace languages IDs in <body> class
-	foreach ( $dom->find( 'body[class]' ) as $element ) {
+	foreach ( $dom->find( 'body' ) as $element ) {
 
-		$class_array = explode( ' ', $element->class );
+		$class_array = ! empty( $element->class ) ? explode( ' ', $element->class ) : array();
 
 		foreach ( $class_array as $key => $class ) {
 			if ( wplng_str_is_locale_id( $class ) ) {
