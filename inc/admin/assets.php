@@ -179,7 +179,12 @@ function wplng_option_page_switcher_assets( $hook ) {
 	if ( function_exists( 'wp_enqueue_code_editor' ) ) {
 		$cm_settings               = array();
 		$cm_settings['codeEditor'] = wp_enqueue_code_editor(
-			array( 'type' => 'text/css' )
+			array(
+				'type'       => 'text/css',
+				'codemirror' => array(
+					'lineWrapping' => true,
+				),
+			)
 		);
 
 		wp_localize_script( 'jquery', 'cm_settings', $cm_settings );
