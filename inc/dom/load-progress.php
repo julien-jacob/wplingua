@@ -160,12 +160,12 @@ function wplng_dom_load_progress( $dom, $args ) {
 	$html .= '<span';
 	$html .= ' id="wplng-in-progress-error-close"';
 	$html .= ' class="dashicons dashicons-no-alt"';
-	$html .= ' title="' . esc_attr__( 'Close', 'wpLingua' ) . '"';
+	$html .= ' title="' . esc_attr__( 'Close', 'wplingua' ) . '"';
 	$html .= '></span>';
 
 	$html .= '</div>'; // End wplng-in-progress-error
 
-	$html .= '</div>'; // End #wplng-in-progress-containe
+	$html .= '</div>'; // End #wplng-in-progress-container
 
 	/**
 	 * Prepare the texts chunks
@@ -347,7 +347,7 @@ function wplng_ajax_load_in_progress() {
 		return;
 	}
 
-	$language_target = $_POST['wplng_language'];
+	$language_target = sanitize_text_field( wp_unslash( $_POST['wplng_language'] ) );
 
 	// Check if is a valid language ID
 
@@ -367,7 +367,7 @@ function wplng_ajax_load_in_progress() {
 		wp_send_json_error(
 			array(
 				'error_load_in_progress' => true,
-				'error_message'          => 'Unauthorized website language - ' . esc_attr(),
+				'error_message'          => 'Unauthorized website language - ' . esc_attr( $language_target ),
 			)
 		);
 		return;
@@ -389,7 +389,7 @@ function wplng_ajax_load_in_progress() {
 		return;
 	}
 
-	$texts_original_encrypted = $_POST['wplng_texts'];
+	$texts_original_encrypted = wp_unslash( $_POST['wplng_texts'] );
 	$texts_original           = array();
 
 	foreach ( $texts_original_encrypted as $text_encrypted ) {
