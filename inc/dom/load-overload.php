@@ -54,7 +54,7 @@ function wplng_dom_load_overload( $dom, $args ) {
 	$html .= '<span';
 	$html .= ' id="wplng-overloaded-close"';
 	$html .= ' class="dashicons dashicons-no-alt"';
-	$html .= ' title="' . esc_attr__( 'Close', 'wpLingua' ) . '"';
+	$html .= ' title="' . esc_attr__( 'Close', 'wplingua' ) . '"';
 	$html .= '></span>';
 
 	$html .= '</div>'; // End #wplng-overloaded-container
