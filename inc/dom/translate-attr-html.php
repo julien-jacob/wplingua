@@ -38,7 +38,7 @@ function wplng_dom_translate_html_attr( $dom, $args ) {
 
 			$html = wp_specialchars_decode(
 				$html,
-				ENT_QUOTES | ENT_SUBSTITUTE | ENT_HTML401
+				ENT_QUOTES | ENT_HTML5
 			);
 
 			$html = wplng_translate_html(
