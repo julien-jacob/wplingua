@@ -29,8 +29,12 @@ function wplng_dom_mode_editor( $dom, $args ) {
 	 * Add body class : wplingua-list
 	 */
 
-	foreach ( $dom->find( 'body[class]' ) as $element ) {
-		$element->class = $element->class . ' wplingua-editor';
+	foreach ( $dom->find( 'body' ) as $element ) {
+		if ( ! empty( $element->class ) ) {
+			$element->class = $element->class . ' wplingua-editor';
+		} else {
+			$element->class = 'wplingua-editor';
+		}
 	}
 
 	/**
@@ -64,9 +68,7 @@ function wplng_dom_mode_editor( $dom, $args ) {
 		$class = 'wplingua-editor-link';
 
 		if ( ! empty( $element->class ) ) {
-			$class = esc_attr( $class . ' ' . $element->class );
-
-			$element->class = $class;
+			$element->class = $class . ' ' . $element->class;
 		} else {
 			$element->setAttribute( 'class', $class );
 		}
