@@ -27,8 +27,12 @@ function wplng_dom_mode_list( $dom, $args ) {
 	 * Add body class : wplingua-list
 	 */
 
-	foreach ( $dom->find( 'body[class]' ) as $element ) {
-		$element->class = $element->class . ' wplingua-list';
+	foreach ( $dom->find( 'body' ) as $element ) {
+		if ( ! empty( $element->class ) ) {
+			$element->class = $element->class . ' wplingua-list';
+		} else {
+			$element->class = 'wplingua-list';
+		}
 	}
 
 	/**
@@ -61,7 +65,7 @@ function wplng_dom_mode_list( $dom, $args ) {
 	$languages_target    = wplng_get_languages_target();
 
 	if ( empty( $languages_target ) ) {
-		return '';
+		return $dom;
 	}
 
 	$class = wplng_get_switcher_class(
@@ -329,7 +333,7 @@ function wplng_dom_mode_list( $dom, $args ) {
 	$html .= '<div id="wplng-modal-items">';
 
 	$html .= '<p id="wplng-modal-no-item-found" style="display: none;">';
-	$html .= esc_html( 'No translation found.', 'wplingua' );
+	$html .= esc_html__( 'No translation found.', 'wplingua' );
 	$html .= '</p>'; // End #wplng-modal-no-item-found
 
 	foreach ( $translations as $key => $translation ) {
@@ -375,7 +379,7 @@ function wplng_dom_mode_list( $dom, $args ) {
 		$html .= ' data-wplng-post="' . esc_attr( $translation['post_id'] ) . '"';
 		$html .= ' class="wplng-button-icon wplng-edit-link"';
 		$html .= '>';
-		$html .= '<span class="dashicons dashicons-edit"></span></a>';
+		$html .= '<span class="dashicons dashicons-edit"></span>';
 		$html .= '</a>';
 
 		$html .= '</div>'; // End .wplng-item-edit

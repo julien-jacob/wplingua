@@ -18,7 +18,7 @@ if ( ! defined( 'WPINC' ) ) {
 function wplng_option_page_register() {
 
 	// Check if DB size is compatible with wpLingua
-	if ( wplng_count_public_content() > 500
+	if ( wplng_count_public_content() > 2500
 		&& ! empty( wplng_get_translation_count() )
 		&& ! empty( wplng_get_slug_count() )
 	) {
@@ -160,7 +160,7 @@ function wplng_option_page_register() {
 				<!-- Display forms for getting or setting the API key -->
 				<tr id="wplng-get-api-key">
 					<th scope="row"><span class="dashicons dashicons-yes-alt"></span> <?php esc_html_e( 'Get API key', 'wplingua' ); ?></th>
-					<td>
+					<td class="wplng-flex-container">
 						<?php wplng_register_part_free_api_key(); ?>
 					</td>
 				</tr>
@@ -172,7 +172,7 @@ function wplng_option_page_register() {
 					</td>
 				</tr>
 
-				<tr>
+				<tr class="wplng-flex-container">
 					<th scope="row"><span class="dashicons dashicons-info"></span> <?php esc_html_e( 'Start with wpLingua', 'wplingua' ); ?></th>
 					<td>
 						<p>
@@ -205,13 +205,16 @@ function wplng_option_page_register() {
 						<hr>
 						<br>
 
-						<div class="wplng-fe-50">
-							<a href="#wplng-get-api-key" class="button button-primary"><?php esc_html_e( 'Get API key', 'wplingua' ); ?></a>
-						</div>
+						<div class="wplng-flex-row">
+							<div class="wplng-flex-item">
+								<a href="#wplng-get-api-key" class="button button-primary"><?php esc_html_e( 'Get API key', 'wplingua' ); ?></a>
+							</div>
 
-						<div class="wplng-fe-50">
-							<a href="#wplng-set-api-key" class="button button-primary"><?php esc_html_e( 'Set API key', 'wplingua' ); ?></a>
+							<div class="wplng-flex-item">
+								<a href="#wplng-set-api-key" class="button button-primary"><?php esc_html_e( 'Set API key', 'wplingua' ); ?></a>
+							</div>
 						</div>
+						
 					</td>
 				</tr>
 
@@ -361,65 +364,73 @@ function wplng_register_part_free_api_key() {
 	<br>
 	<hr>
 
-	<p>
-		<fieldset>
-			<label for="wplng-email" class="wplng-fe-50">
+	<fieldset class="wplng-flex-row">
+		<div class="wplng-flex-item">
+			<label for="wplng-email">
 				<strong><?php esc_html_e( 'Email address: ', 'wplingua' ); ?> </strong> 
-				<span title="<?php esc_attr_e( 'Click to expand', 'wplingua' ); ?>" wplng-help-box="#wplng-hb-register-email"></span>
 			</label>
-			<input type="email" name="wplng-email" id="wplng-email" class="wplng-fe-50" value="<?php echo esc_attr( $email ); ?>">
-		</fieldset>
-	</p>
+			<span title="<?php esc_attr_e( 'Click to expand', 'wplingua' ); ?>" wplng-help-box="#wplng-hb-register-email"></span>
+		</div>
+		<div class="wplng-flex-item">
+			<input type="email" name="wplng-email" id="wplng-email" class="wplng-width-full" value="<?php echo esc_attr( $email ); ?>">
+		</div>
+	</fieldset>
 
-	<div class="wplng-help-box" id="wplng-hb-register-email">
+	<div class="wplng-help-box wplng-spacing-top" id="wplng-hb-register-email">
 		<p><?php esc_html_e( 'The email address is detected and pre-filled. This is the administrative email address entered in the Settings ➔ General tab. You can use another email address used to receive your API key.', 'wplingua' ); ?></p>
 	</div>
 
 	<hr>
 
-	<p>
-		<fieldset>
-			<label for="wplng-website-url" class="wplng-fe-50">
+	<fieldset class="wplng-flex-row">
+		<div class="wplng-flex-item">
+			<label for="wplng-website-url">
 				<strong><?php esc_html_e( 'Website URL: ', 'wplingua' ); ?> </strong> 
-				<span title="<?php esc_attr_e( 'Click to expand', 'wplingua' ); ?>" wplng-help-box="#wplng-hb-register-url"></span>
 			</label>
-			<input type="url" name="wplng-website-url" id="wplng-website-url" class="wplng-fe-50" value="<?php echo esc_url( $url ); ?>">
-		</fieldset>
-	</p>
+			<span title="<?php esc_attr_e( 'Click to expand', 'wplingua' ); ?>" wplng-help-box="#wplng-hb-register-url"></span>
+		</div>
+		<div class="wplng-flex-item">
+			<input type="url" name="wplng-website-url" id="wplng-website-url" class="wplng-width-full" value="<?php echo esc_url( $url ); ?>">
+		</div>
+	</fieldset>
 
-	<div class="wplng-help-box" id="wplng-hb-register-url">
+	<div class="wplng-help-box wplng-spacing-top" id="wplng-hb-register-url">
 		<p><?php esc_html_e( 'This is the URL of your website, it is detected and pre-filled automatically. Please check it and only enter the address of your production website (no test website or development environment).', 'wplingua' ); ?></p>
 	</div>
 
 	<hr>
 
-	<p>
-		<fieldset>
-			<label for="wplng-language-website" class="wplng-fe-50">
+	<fieldset class="wplng-flex-row">
+		<div class="wplng-flex-item">
+			<label for="wplng-language-website">
 				<strong><?php esc_html_e( 'Website language: ', 'wplingua' ); ?> </strong> 
-				<span title="<?php esc_attr_e( 'Click to expand', 'wplingua' ); ?>" wplng-help-box="#wplng-hb-register-language-website"></span>
 			</label>
-			<select name="wplng-language-website" id="wplng-language-website" class="wplng-fe-50"></select>
-		</fieldset>
-	</p>
+			<span title="<?php esc_attr_e( 'Click to expand', 'wplingua' ); ?>" wplng-help-box="#wplng-hb-register-language-website"></span>
+		</div>
+		<div class="wplng-flex-item">
+			<select name="wplng-language-website" id="wplng-language-website" class="wplng-width-full"></select>
+		</div>
+	</fieldset>
 
-	<div class="wplng-help-box" id="wplng-hb-register-language-website">
+	<div class="wplng-help-box wplng-spacing-top" id="wplng-hb-register-language-website">
 		<p><?php esc_html_e( 'This is the language of your website, defined by the associated API key. Make sure your website language is also correctly set in WordPress options (Settings ➔ General ➔ Website Language).', 'wplingua' ); ?></p>
 	</div>
 
 	<hr>
 
-	<p>
-		<fieldset>
-			<label for="wplng-language-target" class="wplng-fe-50">
+	<fieldset class="wplng-flex-row">
+		<div class="wplng-flex-item">
+			<label for="wplng-language-target">
 				<strong><?php esc_html_e( 'Language to add: ', 'wplingua' ); ?> </strong> 
-				<span title="<?php esc_attr_e( 'Click to expand', 'wplingua' ); ?>" wplng-help-box="#wplng-hb-register-language-target"></span>
 			</label>
-			<select name="wplng-language-target" id="wplng-language-target" class="wplng-fe-50"></select>
-		</fieldset>
-	</p>
+			<span title="<?php esc_attr_e( 'Click to expand', 'wplingua' ); ?>" wplng-help-box="#wplng-hb-register-language-target"></span>
+		</div>
+		<div class="wplng-flex-item">
+			<select name="wplng-language-target" id="wplng-language-target" class="wplng-width-full"></select>
+		</div>
+	</fieldset>
 
-	<div class="wplng-help-box" id="wplng-hb-register-language-target">
+	<div class="wplng-help-box wplng-spacing-top" id="wplng-hb-register-language-target">
 		<p><?php esc_html_e( 'This is the language you want to translate your website into. Be careful not to make a mistake because you will not be able to change the language afterwards.', 'wplingua' ); ?></p>
 	</div>
 

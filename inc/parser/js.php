@@ -98,7 +98,7 @@ function wplng_parse_js_json_in_i18n_script( $js ) {
 	$json  = array();
 
 	preg_match_all(
-		'#\(\s?["|\'](.*)["|\'],\s?(.*)\s?\);#Ui',
+		'#\(\s?["\'](.*)["\'],\s?(.*)\s?\);#Ui',
 		$js,
 		$json
 	);

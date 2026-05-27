@@ -59,13 +59,13 @@ function wplng_option_page_settings() {
 			<table class="form-table wplng-form-table">
 				<tr>
 					<th scope="row"><span class="dashicons dashicons-location"></span> <?php esc_html_e( 'Website language', 'wplingua' ); ?></th>
-					<td>
+					<td class="wplng-flex-container">
 						<?php wplng_settings_part_language_website(); ?>
 					</td>
 				</tr>
 				<tr>
 					<th scope="row"><span class="dashicons dashicons-location-alt"></span> <?php esc_html_e( 'Translated languages', 'wplingua' ); ?></th>
-					<td>
+					<td class="wplng-flex-container">
 						<?php wplng_settings_part_languages_target(); ?>
 					</td>
 				</tr>
@@ -74,14 +74,14 @@ function wplng_option_page_settings() {
 					<td>
 						<fieldset>
 							<?php wplng_settings_part_features_api(); ?>
-							<br><br><hr>
+							<br><hr>
 							<?php wplng_settings_part_features_seo(); ?>
-							<br><br><hr>
+							<br><hr>
 							<?php wplng_settings_part_features_more(); ?>
 						</fieldset>
 					</td>
 				</tr>
-				<tr>
+				<tr class="wplng-flex-container">
 					<th scope="row"><span class="dashicons dashicons-admin-network"></span> <?php esc_html_e( 'API Key', 'wplingua' ); ?></th>
 					<td>
 						<?php wplng_settings_part_api_key(); ?>
@@ -210,13 +210,17 @@ function wplng_settings_part_language_website() {
 		echo '<fieldset>';
 	}
 
-	echo '<label for="wplng_website_language" class="wplng-fe-50">';
+	echo '<div class="wplng-flex-row">';
+	echo '<div class="wplng-flex-item">';
+	echo '<label for="wplng_website_language">';
 	echo '<strong>';
 	esc_html_e( 'Original website language: ', 'wplingua' );
 	echo ' </strong>';
 	echo '</label>';
-
-	echo '<select id="wplng_website_language" name="wplng_website_language" class="wplng-fe-50">';
+	echo '</div>'; // End .wplng-flex-item
+	
+	echo '<div class="wplng-flex-item">';
+	echo '<select id="wplng_website_language" name="wplng_website_language" class="wplng-width-full">';
 	$website_language_saved = true;
 	if ( empty( wplng_get_language_website_id() ) ) {
 		$website_language_saved = false;
@@ -243,6 +247,8 @@ function wplng_settings_part_language_website() {
 	}
 
 	echo '</select>';
+	echo '</div>'; // End .wplng-flex-item
+	echo '</div>'; // End .wplng-flex-row
 	echo '<hr>';
 	echo '</fieldset>';
 
@@ -308,22 +314,23 @@ function wplng_settings_part_languages_target() {
 	$languages_target = wplng_get_languages_target_simplified();
 
 	?>
-	<fieldset id="fieldset-add-target-language">
+	<fieldset id="fieldset-add-target-language" class="wplng-flex-row">
 
 		<div id="wplng_add_new_target_language_message" style="display: none !important;"><?php esc_html_e( 'Important: space out the addition of new languages ​​by at least ten days and browse your site for the first time in the added languages. This promotes better indexing by search engines, reduces the load on your server and minimizes the risk of slowdowns on your site.', 'wplingua' ); ?></div>
 
-		<p class="wplng-fe-50">
+		<div class="wplng-flex-item">
 			<label for="wplng_add_new_target_language">
 				<strong><?php esc_html_e( 'Add new target Language: ', 'wplingua' ); ?></strong>
 			</label>
-		</p>
+		</div>
+		
 
-		<p class="wplng-fe-50">
+		<div class="wplng-flex-item">
 			<select id="wplng_add_new_target_language" name="wplng_add_new_target_language"></select>
 			<a class="button button-primary wplng-icon-button" id="wplng-target-lang-add" title="<?php esc_html_e( 'Add language', 'wplingua' ); ?>" href="javascript:void(0);">
 				<span class="dashicons dashicons-insert"></span>
 			</a>
-		</p>
+		</div>
 	</fieldset>
 
 	<hr id="wplng-languages-target-separator">
@@ -369,10 +376,12 @@ function wplng_settings_part_languages_target() {
 
 	<hr>
 
-	<p><?php esc_html_e( 'Access more target languages by upgrading your API key.', 'wplingua' ); ?></strong>
-		<span title="<?php esc_attr_e( 'Click to expand', 'wplingua' ); ?>" wplng-help-box="#wplng-hb-language-adding"></span></p>
+	<div>
+		<?php esc_html_e( 'Access more target languages by upgrading your API key.', 'wplingua' ); ?>
+		<span title="<?php esc_attr_e( 'Click to expand', 'wplingua' ); ?>" wplng-help-box="#wplng-hb-language-adding"></span>
+	</div>
 
-	<div class="wplng-help-box" id="wplng-hb-language-adding">
+	<div class="wplng-help-box wplng-spacing-top" id="wplng-hb-language-adding">
 		<p>
 		<?php
 
@@ -425,7 +434,7 @@ function wplng_settings_part_features_api() {
 		<span title="<?php esc_attr_e( 'Click to expand', 'wplingua' ); ?>" wplng-help-box="#wplng-hb-feature-commercial"></span>
 	</fieldset>
 
-	<div class="wplng-help-box" id="wplng-hb-feature-commercial">
+	<div class="wplng-help-box wplng-spacing-bottom" id="wplng-hb-feature-commercial">
 		<p><?php esc_html_e( 'Use of the free wpLingua API keys is reserved for personal blogs and non-profit websites; paid subscriptions are available for companies and commercial websites.', 'wplingua' ); ?></p>
 		<hr>
 		<p>
@@ -475,7 +484,7 @@ function wplng_settings_part_features_seo() {
 		<span title="<?php esc_attr_e( 'Click to expand', 'wplingua' ); ?>" wplng-help-box="#wplng-hb-feature-hreflang"></span>
 	</fieldset>
 
-	<div class="wplng-help-box" id="wplng-hb-feature-hreflang">
+	<div class="wplng-help-box wplng-spacing-bottom" id="wplng-hb-feature-hreflang">
 		<p><?php esc_html_e( 'This option automatically adds hreflang tags to your pages that are available in multiple languages.', 'wplingua' ); ?></p>
 		<hr>
 		<p><?php esc_html_e( 'Hreflang tags are HTML metadata used to indicate the URLs of each language version of a page. They are not visible to visitors, but they allow search engines (Google, Bing, etc.) to identify the multilingual structure of the site and display the correct version according to the user\'s language.', 'wplingua' ); ?></p>
@@ -535,7 +544,7 @@ function wplng_settings_part_features_more() {
 		<span title="<?php esc_attr_e( 'Click to expand', 'wplingua' ); ?>" wplng-help-box="#wplng-hb-feature-load-in-progress"></span>
 	</fieldset>
 
-	<div class="wplng-help-box" id="wplng-hb-feature-load-in-progress">
+	<div class="wplng-help-box wplng-spacing-bottom" id="wplng-hb-feature-load-in-progress">
 		<p><?php esc_html_e( 'Enable progress bar: Smooth translations loading for editors', 'wplingua' ); ?></p>
 		<hr>
 		<p><?php esc_html_e( 'Activate a progress bar when a page requires the generation of more than 10 new string translations. This feature only applies to connected editors.', 'wplingua' ); ?></p>
@@ -641,23 +650,40 @@ function wplng_settings_part_api_key() {
 	<?php if ( ! empty( $data['status'] ) ) : ?>
 		
 		<hr>
-		<p class="wplng-fe-50"><?php esc_html_e( 'API key status: ', 'wplingua' ); ?></p>
+		<div class="wplng-flex-row">
 
-		<?php if ( 'FREE' === $data['status'] ) : ?>
-			<p class="wplng-fe-50" style="text-align: right;"><span class="dashicons dashicons-saved"></span> FREE</p>
-		<?php elseif ( 'PREMIUM' === $data['status'] ) : ?>
-			<p class="wplng-fe-50" style="text-align: right;"><span class="dashicons dashicons-superhero-alt"></span> PREMIUM</p>
-		<?php elseif ( 'VIP' === $data['status'] ) : ?>
-			<p class="wplng-fe-50" style="text-align: right;"><span class="dashicons dashicons-star-empty"></span> VIP</p>
-		<?php endif; ?>
+			<div class="wplng-flex-item">
+				<p><?php esc_html_e( 'API key status: ', 'wplingua' ); ?></p>
+			</div>
 
+			<div class="wplng-flex-item">
+				<?php if ( 'FREE' === $data['status'] ) : ?>
+					<p style="text-align: right;"><span class="dashicons dashicons-saved"></span> FREE</p>
+				<?php elseif ( 'PREMIUM' === $data['status'] ) : ?>
+					<p style="text-align: right;"><span class="dashicons dashicons-superhero-alt"></span> PREMIUM</p>
+				<?php elseif ( 'VIP' === $data['status'] ) : ?>
+					<p style="text-align: right;"><span class="dashicons dashicons-star-empty"></span> VIP</p>
+				<?php endif; ?>
+			</div>
+
+		</div>
 
 	<?php endif; ?>
 
 	<?php if ( ! empty( $data['expiration'] ) ) : ?>
 
-		<p class="wplng-fe-50"><?php esc_html_e( 'Premium expiration: ', 'wplingua' ); ?></p>
-		<p class="wplng-fe-50" style="text-align: right;"><?php echo esc_html( $data['expiration'] ); ?></p>
+		<hr>
+		<div class="wplng-flex-row">
+
+			<div class="wplng-flex-item">
+				<p><?php esc_html_e( 'Premium expiration: ', 'wplingua' ); ?></p>
+			</div>
+
+			<div class="wplng-flex-item">
+				<p style="text-align: right;"><?php echo esc_html( $data['expiration'] ); ?></p>
+			</div>
+
+		</div>
 		
 	<?php endif; ?>
 

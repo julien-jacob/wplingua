@@ -109,7 +109,7 @@ function wplng_translate_js_json_in_i18n_script( $js, $args = array() ) {
 	$json = array();
 
 	preg_match_all(
-		'#\(\s?["|\'](.*)["|\'],\s?(.*)\s?\);#Ui',
+		'#\(\s?["\'](.*)["\'],\s?(.*)\s?\);#Ui',
 		$js,
 		$json
 	);
@@ -221,7 +221,7 @@ function wplng_translate_js_json_in_function_call( $js, $args = array() ) {
 	$allowed_functions = wplng_data_json_in_js_functions();
 
 	if ( empty( $allowed_functions ) ) {
-		return array();
+		return $js;
 	}
 
 	preg_match_all(

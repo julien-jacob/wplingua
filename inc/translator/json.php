@@ -132,7 +132,7 @@ function wplng_translate_json_array( $json_decoded, $args = array() ) {
 		 * Don't parse element if it's exclude
 		 */
 
-		if ( wplng_json_element_is_excluded( $json_decoded, $current_parents ) ) {
+		if ( wplng_json_element_is_excluded( $value, $current_parents ) ) {
 
 			if ( true === WPLNG_DEBUG_JSON ) {
 

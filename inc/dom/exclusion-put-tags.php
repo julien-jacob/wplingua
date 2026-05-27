@@ -33,7 +33,7 @@ function wplng_dom_exclusions_put_tags( $dom, &$excluded_elements ) {
 
 	// Sanitize each selectors
 	foreach ( $option as $selector ) {
-		$selector = esc_attr( trim( $selector ) );
+		$selector = trim( $selector );
 		if ( ! empty( $selector ) ) {
 			$selector_exclude[] = $selector;
 		}
@@ -49,7 +49,7 @@ function wplng_dom_exclusions_put_tags( $dom, &$excluded_elements ) {
 	$selector_exclude = array_unique( $selector_exclude );
 
 	// Apply wplng_selector_exclude filters
-	$selector_exclude = apply_filters(
+	$selector_exclude = (array) apply_filters(
 		'wplng_selector_exclude',
 		$selector_exclude
 	);
@@ -59,13 +59,19 @@ function wplng_dom_exclusions_put_tags( $dom, &$excluded_elements ) {
 	 * and fill $excluded_elements array
 	 */
 
-	$excluded_elements = array();
+	$excluded_elements     = array();
+	$excluded_elements_ids = array();
 
 	foreach ( $selector_exclude as $selector ) {
 		foreach ( $dom->find( $selector ) as $element ) {
-			$excluded_elements[] = $element->outertext;
-			$attr                = count( $excluded_elements ) - 1;
-			$element->outertext  = '<div wplng-tag-exclude="' . esc_attr( $attr ) . '"></div>';
+			$element_id = spl_object_id( $element );
+			if ( isset( $excluded_elements_ids[ $element_id ] ) ) {
+				continue;
+			}
+			$excluded_elements_ids[ $element_id ] = true;
+			$excluded_elements[]                  = $element->outertext;
+			$attr                                 = count( $excluded_elements ) - 1;
+			$element->outertext                   = '<div wplng-tag-exclude="' . esc_attr( $attr ) . '"></div>';
 		}
 	}
 

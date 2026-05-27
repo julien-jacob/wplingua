@@ -1,6 +1,60 @@
-.wplng-fe-50 {
-    min-width: 49%;
-    display: inline-block;
+
+.wplng-flex-container {
+
+    --wplng-flex-gap: 0.5rem;
+
+    .wplng-flex-row {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: stretch;
+        gap: var(--wplng-flex-gap);
+
+        > .wplng-flex-item {
+            box-sizing: border-box;
+            min-width: 0;
+            flex: 0 0 calc(50% - (var(--wplng-flex-gap) / 2));
+            max-width: calc(50% - (var(--wplng-flex-gap) / 2));
+        }
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .wplng-flex-container {
+
+
+        .wplng-flex-row {
+
+            > .wplng-flex-item {
+                flex: 0 0 100%;
+                max-width: 100%;
+            }
+        }
+    }
+}
+
+.wplng-width-full {
+    width: 100%;
+    display: block;
+}
+
+.wplng-spacing-top {
+    margin-top: 8px;
+}
+
+.wplng-spacing-bottom {
+    margin-bottom: 8px;
+}
+
+.wplng-spacing-top-bottom {
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+
+.wplng-tag-code {
+    min-height: 33.3px;
+    line-height: 2rem;
+    border-radius: 3px;
+    padding: 0 12px;
 }
 
 .wplng-option-page-title {
@@ -27,10 +81,14 @@
     width: 45px;
     text-align: center;
     padding: 0;
+    height: 33.3px;
+    min-height: 33.3px;
+    max-height: 33.3px;
+    line-height: 1.2;
+    border-radius: 3px;
 
     .dashicons {
-        vertical-align: text-top;
-        line-height: 1rem;
+        line-height: 1.9rem;
     }
 
 }
@@ -39,15 +97,7 @@
     vertical-align: baseline;
 }
 
-// Hide other plusgins ads and notices
-
-#nri-slug-wrapper,
-// Plugin: backup-backup
-.notice:not(.wplng-notice) {
-    display: none !important;
-}
-
-.wplng-form-table {
+body .wplng-form-table {
 
     padding-right: 200px;
     border-collapse: initial;
@@ -69,6 +119,31 @@
         &:hover {
             text-decoration: underline;
         }
+    }
+
+    
+
+    // .button, 
+    // .button-primary, 
+    // .button-secondary,
+    select ,
+    input[type="date"], 
+    input[type="datetime-local"], 
+    input[type="datetime"], 
+    input[type="email"], 
+    input[type="month"], 
+    input[type="number"], 
+    input[type="password"], 
+    input[type="search"], 
+    input[type="tel"], 
+    input[type="text"], 
+    input[type="time"], 
+    input[type="url"], 
+    input[type="week"] {
+        line-height: 1.2;
+        min-height: 33.3px;
+        max-height: 33.3px;
+        border-radius: 3px;
     }
 
     td {
@@ -132,7 +207,7 @@
         text-align: center;
     }
 
-    .wplng-form-table {
+    body .wplng-form-table {
 
         padding-right: 0;
 
@@ -181,4 +256,16 @@
 
     }
 
+}
+
+
+// --------------------------------------------------------------
+// Hide other plusgins ads and notices
+// --------------------------------------------------------------
+
+
+#nri-slug-wrapper, // Plugin: /backup-backup/
+.fs_notice_board, // Plugin: /advanced-post-block/
+.notice:not(.wplng-notice) {
+    display: none !important;
 }
