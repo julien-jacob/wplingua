@@ -4,7 +4,7 @@ Donate link: https://wplingua.com/
 Tags: translate, translation, multilingual, localization, language
 Requires at least: 6.0
 Tested up to: 6.9
-Stable tag: 2.13.0
+Stable tag: 2.13.1
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -196,6 +196,27 @@ Your server’s database holds all the translations locally.
 12. SEO-Friendly: wpLingua add the HTML code needed for your translated pages to be indexed by search engines.
 
 == Changelog ==
+
+= 2.13.1 =
+
+* Improvement:
+ * Update option page design for WordPress 7.0 compatibility (flex layout)
+ * Enhance CodeMirror editor settings and styles for better usability in option page switcher
+ * Prevent duplicate excluded elements in DOM processing
+ * Refactor exclusion tag processing to streamline checks
+ * Refactor selector sanitization and ensure filters return an array
+ * Refactor attribute setting for translated links and media URLs for improved readability
+ * Hide advanced-post-block admin notice
+* Fix:
+ * Fix translation text retrieval in `wplng_dom_translate_nodes_texts` function
+ * Update HTML entity decoding to use `ENT_HTML5` for improved compatibility across attribute, JSON and HTML translators
+ * Fix regex pattern in i18n script JSON parsing to correctly match quotes
+ * Fix regex pattern in i18n script translation and adjust return value in function call translation
+ * Fix exclusion check in JSON translation to use the correct element
+ * Fix body class assignment in editor mode and list mode
+ * Fix body element selector in body class modification
+ * Fix translation domain in close button title for overload notification
+ * Improve error handling in AJAX overload function
 
 = 2.13.0 =
 
