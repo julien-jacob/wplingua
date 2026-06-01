@@ -3,8 +3,8 @@ Contributors: wpr0ck, lyly13, pierrelannoy, wplingua
 Donate link: https://wplingua.com/
 Tags: translate, translation, multilingual, localization, language
 Requires at least: 6.0
-Tested up to: 6.9
-Stable tag: 2.13.1
+Tested up to: 7.0
+Stable tag: 2.14.0
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -110,7 +110,7 @@ With wpLingua, you're always in command of what gets translated and what doesn't
 
 #### The plugin supports the following languages ####
 
-Arabic ∘ Chinese ∘ Danish ∘ Dutch ∘ Slovak ∘ English ∘ Finnish ∘ French ∘ German ∘ Greek ∘ Hebrew ∘ Hindi ∘ Hungarian ∘ Indonesian ∘ Italian ∘ Japanese ∘ Korean ∘ Polish ∘ Portuguese ∘ Russian ∘ Spanish ∘ Swedish ∘ Turkish ∘ Ukrainian ∘ Vietnamese 
+Arabic ∘ Chinese ∘ Danish ∘ Dutch ∘ Slovak ∘ English ∘ Finnish ∘ French ∘ German ∘ Greek ∘ Hebrew ∘ Hindi ∘ Hungarian ∘ Indonesian ∘ Italian ∘ Japanese ∘ Korean ∘ Norwegian ∘ Polish ∘ Portuguese ∘ Russian ∘ Spanish ∘ Swedish ∘ Turkish ∘ Ukrainian ∘ Vietnamese 
 
 #### The plugin is translated into the following languages ####
 
@@ -145,7 +145,7 @@ The wpLingua plugin relies on our own wpLingua API, an integrated third-party se
 For the time being, the plugin administration is available in Danish, Dutch, English, Finnish, French, German, Hindi, Hungarian, Indonesian, Italian, Japanese, Korean, Portuguese, Spanish, and Swedish. If you want to help us translate it into more languages, don't hesitate!
 
 = What languages are available for translation? =
-The plugin supports the following languages: Arabic ∘ Chinese ∘ Danish ∘ Dutch ∘ Slovak ∘ English ∘ Finnish ∘ French ∘ German ∘ Greek ∘ Hebrew ∘ Hindi ∘ Hungarian ∘ Indonesian ∘ Italian ∘ Japanese ∘ Korean ∘ Polish ∘ Portuguese ∘ Russian ∘ Spanish ∘ Swedish ∘ Turkish ∘ Ukrainian ∘ Vietnamese
+The plugin supports the following languages: Arabic ∘ Chinese ∘ Danish ∘ Dutch ∘ Slovak ∘ English ∘ Finnish ∘ French ∘ German ∘ Greek ∘ Hebrew ∘ Hindi ∘ Hungarian ∘ Indonesian ∘ Italian ∘ Japanese ∘ Korean ∘ Norwegian ∘ Polish ∘ Portuguese ∘ Russian ∘ Spanish ∘ Swedish ∘ Turkish ∘ Ukrainian ∘ Vietnamese
 
 = How it works? =
 wpLingua intercepts page content and analyzes HTML and JS code. It discovers all texts, translates them and makes the pages multilingual. This approach ensures compatibility with most themes, plugins and page builders such as Gutenberg, Elementor, Divi…
@@ -169,7 +169,7 @@ Quite ! And it's even recommended to cache your pages and translations to improv
 Yes! If your website uses a block-based theme (like Twenty Twenty Five, Neve FSE, etc.), you can easily edit the website header via the Site Editor to add the Language switcher block in the location of your choice. You can also easily display the language switcher wherever you want using our shortcode provided for this purpose. Simply copy and paste this shortcode where you want: **[wplng_switcher]**
 
 = How can I get more languages? =
-To get more than one language, you need to opt for the Premium package, which gives you access to up to 24 translated languages.
+To get more than one language, you need to opt for the Premium package, which gives you access to up to 25 translated languages.
 
 = Do I need a DeepL or Google Translate plan in addition to wpLingua? =
 No. Translations are managed by our API integrated in wpLingua. You do not need to purchase an additional plan.
@@ -196,6 +196,11 @@ Your server’s database holds all the translations locally.
 12. SEO-Friendly: wpLingua add the HTML code needed for your translated pages to be indexed by search engines.
 
 == Changelog ==
+
+= 2.14.0 =
+
+* New language supported: Norwegian
+* Tested up to WordPress version 7.0
 
 = 2.13.1 =
 
