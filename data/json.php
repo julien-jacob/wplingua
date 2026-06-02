@@ -746,6 +746,65 @@ function wplng_data_json_rules_inclusion() {
 	};
 
 	// ------------------------------------------------------------------------
+	// Plugin: advanced-post-block
+	// ------------------------------------------------------------------------
+
+	$logical_rules[] = function ( $element, $parents ) {
+		return (
+			isset( $parents[0] )
+			&& isset( $parents[1] )
+			&& isset( $parents[2] )
+			&& isset( $parents[3] )
+			&& isset( $parents[4] )
+			&& $parents[0] === 'data'
+			&& $parents[1] === 'posts'
+			&& is_int($parents[2])
+			&& $parents[3] === 'thumbnail'
+			&& $parents[4] === 'alt'
+		);
+	};
+
+	$logical_rules[] = function ( $element, $parents ) {
+		return (
+			isset( $parents[0] )
+			&& isset( $parents[1] )
+			&& isset( $parents[2] )
+			&& isset( $parents[3] )
+			&& $parents[0] === 'data'
+			&& $parents[1] === 'posts'
+			&& is_int($parents[2])
+			&& (
+				$parents[3] === 'title'
+				|| $parents[3] === 'date'
+				|| $parents[3] === 'excerpt'
+			)
+		);
+	};
+
+	$logical_rules[] = function ( $element, $parents ) {
+		return in_array(
+			$parents,
+			array(
+				array( 'data-attributes', 'readMoreLabel' ),
+			)
+		);
+	};
+
+	// ------------------------------------------------------------------------
+	// Theme: GeneratePress
+	// ------------------------------------------------------------------------
+
+	$logical_rules[] = function ( $element, $parents ) {
+		return in_array(
+			$parents,
+			array(
+				array( 'generatepressMenu', 'openSubMenuLabel' ),
+				array( 'generatepressMenu', 'closeSubMenuLabel' ),
+			)
+		);
+	};
+
+	// ------------------------------------------------------------------------
 	// Theme: Divi
 	// ------------------------------------------------------------------------
 

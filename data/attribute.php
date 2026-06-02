@@ -62,6 +62,12 @@ function wplng_data_attr_json_to_translate() {
 				'attr'     => 'data-events',
 				'selector' => '.eael-event-calendar-cls[data-events]',
 			),
+
+			// Plugin: advanced-post-block
+			array(
+				'attr'     => 'data-attributes',
+				'selector' => '.wp-block-ap-block-posts[data-attributes]',
+			),
 		)
 	);
 
