@@ -751,11 +751,7 @@ function wplng_data_json_rules_inclusion() {
 
 	$logical_rules[] = function ( $element, $parents ) {
 		return (
-			isset( $parents[0] )
-			&& isset( $parents[1] )
-			&& isset( $parents[2] )
-			&& isset( $parents[3] )
-			&& isset( $parents[4] )
+			isset( $parents[0], $parents[1], $parents[2], $parents[3], $parents[4] )
 			&& $parents[0] === 'data'
 			&& $parents[1] === 'posts'
 			&& is_int($parents[2])
@@ -766,10 +762,7 @@ function wplng_data_json_rules_inclusion() {
 
 	$logical_rules[] = function ( $element, $parents ) {
 		return (
-			isset( $parents[0] )
-			&& isset( $parents[1] )
-			&& isset( $parents[2] )
-			&& isset( $parents[3] )
+			isset( $parents[0], $parents[1], $parents[2], $parents[3] )
 			&& $parents[0] === 'data'
 			&& $parents[1] === 'posts'
 			&& is_int($parents[2])
@@ -897,7 +890,7 @@ function wplng_data_json_rules_inclusion() {
 	};
 
 	// ------------------------------------------------------------------------
-	// Theme: Breaks
+	// Theme: Briks
 	// ------------------------------------------------------------------------
 
 	$logical_rules[] = function ( $element, $parents ) {
@@ -915,6 +908,14 @@ function wplng_data_json_rules_inclusion() {
 			&& $parents[0] === 'data'
 			&& $parents[1] === 'message'
 			&& is_int( $parents[2] )
+		);
+	};
+
+	$logical_rules[] = function ( $element, $parents ) {
+		return (
+			isset( $parents[0], $parents[1], $parents[2] )
+			&& $parents[0] === 'bricksData'
+			&& $parents[1] === 'i18n'
 		);
 	};
 

@@ -232,10 +232,14 @@ function wplng_data_attr_text_to_translate() {
 				'selector' => '[data-caption-desc]',
 			),
 
-			// Theme: Breaks builder
+			// Theme: Briks builder
 			array(
 				'attr'     => 'data-error-message',
 				'selector' => '[data-error-message]',
+			),
+			array(
+				'attr'     => 'arialabelledby',
+				'selector' => '[arialabelledby]',
 			),
 			
 		)
