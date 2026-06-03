@@ -746,6 +746,58 @@ function wplng_data_json_rules_inclusion() {
 	};
 
 	// ------------------------------------------------------------------------
+	// Plugin: advanced-post-block
+	// ------------------------------------------------------------------------
+
+	$logical_rules[] = function ( $element, $parents ) {
+		return (
+			isset( $parents[0], $parents[1], $parents[2], $parents[3], $parents[4] )
+			&& $parents[0] === 'data'
+			&& $parents[1] === 'posts'
+			&& is_int($parents[2])
+			&& $parents[3] === 'thumbnail'
+			&& $parents[4] === 'alt'
+		);
+	};
+
+	$logical_rules[] = function ( $element, $parents ) {
+		return (
+			isset( $parents[0], $parents[1], $parents[2], $parents[3] )
+			&& $parents[0] === 'data'
+			&& $parents[1] === 'posts'
+			&& is_int($parents[2])
+			&& (
+				$parents[3] === 'title'
+				|| $parents[3] === 'date'
+				|| $parents[3] === 'excerpt'
+			)
+		);
+	};
+
+	$logical_rules[] = function ( $element, $parents ) {
+		return in_array(
+			$parents,
+			array(
+				array( 'data-attributes', 'readMoreLabel' ),
+			)
+		);
+	};
+
+	// ------------------------------------------------------------------------
+	// Theme: GeneratePress
+	// ------------------------------------------------------------------------
+
+	$logical_rules[] = function ( $element, $parents ) {
+		return in_array(
+			$parents,
+			array(
+				array( 'generatepressMenu', 'openSubMenuLabel' ),
+				array( 'generatepressMenu', 'closeSubMenuLabel' ),
+			)
+		);
+	};
+
+	// ------------------------------------------------------------------------
 	// Theme: Divi
 	// ------------------------------------------------------------------------
 
@@ -838,7 +890,7 @@ function wplng_data_json_rules_inclusion() {
 	};
 
 	// ------------------------------------------------------------------------
-	// Theme: Breaks
+	// Theme: Briks
 	// ------------------------------------------------------------------------
 
 	$logical_rules[] = function ( $element, $parents ) {
@@ -856,6 +908,14 @@ function wplng_data_json_rules_inclusion() {
 			&& $parents[0] === 'data'
 			&& $parents[1] === 'message'
 			&& is_int( $parents[2] )
+		);
+	};
+
+	$logical_rules[] = function ( $element, $parents ) {
+		return (
+			isset( $parents[0], $parents[1], $parents[2] )
+			&& $parents[0] === 'bricksData'
+			&& $parents[1] === 'i18n'
 		);
 	};
 

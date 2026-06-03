@@ -87,6 +87,9 @@ function wplng_data_excluded_selector_default() {
 
 		// Plugin: events-calendar-pro
 		'.tribe-event-date-start',
+
+		// Plugin: top-10
+		'tptn_counter',
 	);
 }
 
