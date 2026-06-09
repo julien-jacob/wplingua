@@ -21,7 +21,7 @@ if ( ! defined( 'WPINC' ) ) {
 
 
 // Define wpLingua constants
-define( 'WPLNG_API_URL', 'https://backend.wplingua.com' );
+define( 'WPLNG_API_URL', 'https://api.wplingua.com' );
 define( 'WPLNG_API_VERSION', '3.0' );
 define( 'WPLNG_API_SSLVERIFY', true );
 define( 'WPLNG_PLUGIN_VERSION', '2.14.2' );
