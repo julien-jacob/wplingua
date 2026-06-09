@@ -4,7 +4,7 @@ Donate link: https://wplingua.com/
 Tags: translate, translation, multilingual, localization, language
 Requires at least: 6.0
 Tested up to: 7.0
-Stable tag: 2.14.2
+Stable tag: 2.14.3
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -196,6 +196,12 @@ Your server’s database holds all the translations locally.
 12. SEO-Friendly: wpLingua add the HTML code needed for your translated pages to be indexed by search engines.
 
 == Changelog ==
+
+= 2.14.3 =
+
+* Set api.wplingua.com as the API URL
+* Fixed the issue with spaces being preserved between strings
+* Fixed the dictionary option page: textarea height in WP 7.0 
 
 = 2.14.2 =
 

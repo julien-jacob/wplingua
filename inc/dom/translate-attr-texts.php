@@ -37,7 +37,7 @@ function wplng_dom_translate_attr_texts( $dom, $args ) {
 			}
 
 			$translated_attr = wplng_get_translated_text_from_translations(
-				$text,
+				$element->attr[ $attr['attr'] ],
 				$args['translations']
 			);
 

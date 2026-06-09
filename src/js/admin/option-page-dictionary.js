@@ -231,8 +231,18 @@ jQuery(document).ready(function ($) {
      */
 
     function wplngResizeTextArea($element) {
-        $element.height(0);
-        $element.height($element[0].scrollHeight);
+        $element.each(function () {
+            const el = this;
+            el.style.height = '0px';
+            const computed = window.getComputedStyle(el);
+            if (computed.boxSizing === 'border-box') {
+                const borders = parseFloat(computed.borderTopWidth) + parseFloat(computed.borderBottomWidth);
+                el.style.height = (el.scrollHeight + borders) + 'px';
+            } else {
+                const paddings = parseFloat(computed.paddingTop) + parseFloat(computed.paddingBottom);
+                el.style.height = (el.scrollHeight - paddings) + 'px';
+            }
+        });
     }
 
     let $wplngTextArea = $("textarea.wplng-adaptive-textarea");
