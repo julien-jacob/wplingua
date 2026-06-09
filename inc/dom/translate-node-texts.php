@@ -46,7 +46,7 @@ function wplng_dom_translate_nodes_texts( $dom, $args ) {
 		}
 
 		$translated_text = wplng_get_translated_text_from_translations(
-			$text,
+			$element->innertext,
 			$args['translations']
 		);
 
