@@ -29,7 +29,7 @@ function wplng_dictionary_get_entries() {
 
 		if ( ! isset( $entry['source'] )
 			|| ! is_string( $entry['source'] )
-			|| strlen( $entry['source'] ) >= 256
+			|| mb_strlen( $entry['source'] ) >= 256
 		) {
 			continue;
 		}
@@ -80,7 +80,7 @@ function wplng_dictionary_get_entries() {
 				|| ! is_string( $rule )
 				|| '' === trim( $rule )
 				|| $rule === $source_clear
-				|| strlen( $rule ) >= 256
+				|| mb_strlen( $rule ) >= 256
 			) {
 				continue;
 			}
@@ -111,7 +111,7 @@ function wplng_dictionary_get_entries() {
 	usort(
 		$entries_clear,
 		function ( $a, $b ) {
-			return strlen( $b['source'] ) - strlen( $a['source'] );
+			return mb_strlen( $b['source'] ) - mb_strlen( $a['source'] );
 		}
 	);
 
@@ -159,7 +159,7 @@ function wplng_dictionary_add_tags( $texts, $language_target_id, $dictionary_ent
 	 */
 
 	foreach ( $dictionary_entries as $entry_key => $entry ) {
-		$dictionary_entries[ $entry_key ]['source'] = preg_quote( $entry['source'] );
+		$dictionary_entries[ $entry_key ]['source'] = preg_quote( $entry['source'], '#' );
 	}
 
 	foreach ( $texts as $text_key => $text ) {
@@ -183,7 +183,7 @@ function wplng_dictionary_add_tags( $texts, $language_target_id, $dictionary_ent
 			$preg_match = array();
 
 			preg_match_all(
-				'#' . $entry['source'] . '#i',
+				'#' . $entry['source'] . '#iu',
 				$text,
 				$preg_match
 			);
@@ -193,12 +193,18 @@ function wplng_dictionary_add_tags( $texts, $language_target_id, $dictionary_ent
 			foreach ( $preg_match as $key => $match ) {
 
 				$upper = 'none';
-				if ( $match === strtoupper( $match ) ) {
-					// Check uppercase
-					$upper = 'all';
-				} elseif ( $match === ucfirst( $match ) ) {
-					// Check capitalize
-					$upper = 'first';
+				// Caseless scripts (CJK, digits…) must not trigger uppercase detection:
+				// mb_strtoupper('テスト') === 'テスト' is true, which would incorrectly
+				// mark every CJK match as 'all' and uppercase the replacement.
+				$is_caseless = mb_strtolower( $match ) === mb_strtoupper( $match );
+				if ( ! $is_caseless ) {
+					if ( $match === mb_strtoupper( $match ) ) {
+						// Check uppercase
+						$upper = 'all';
+					} elseif ( $match === mb_strtoupper( mb_substr( $match, 0, 1 ) ) . mb_substr( $match, 1 ) ) {
+						// Check capitalize
+						$upper = 'first';
+					}
 				}
 
 				$entry_current           = $entry;
@@ -222,8 +228,16 @@ function wplng_dictionary_add_tags( $texts, $language_target_id, $dictionary_ent
 		 */
 
 		foreach ( $entries_used as $entry_key => $entry_used ) {
+			// CJK scripts (Japanese, Chinese, etc.) have no word separators,
+			// so word boundaries cannot be used. For all other scripts (including
+			// Greek), (*UCP) makes \b Unicode-aware so letters are treated as \w.
+			if ( preg_match( '#[\x{2E80}-\x{9FFF}\x{F900}-\x{FAFF}]#u', $entry_used['source'] ) ) {
+				$boundary_pattern = '#' . $entry_used['source'] . '#u';
+			} else {
+				$boundary_pattern = '#(*UCP)\b' . $entry_used['source'] . '\b#u';
+			}
 			$text = preg_replace(
-				'#\b' . $entry_used['source'] . '\b#',
+				$boundary_pattern,
 				'⊕' . str_repeat( '⊖', $entry_key + 1 ) . '⊕',
 				$text
 			);
@@ -276,6 +290,24 @@ function wplng_dictionary_replace_tags( $texts, $language_target_id, $dictionary
 	}
 
 	foreach ( $texts as $text_key => $text ) {
+
+		// Ensure spaces around dictionary tags when adjacent to letters from scripts
+		// that use word spaces (Latin, Greek, Cyrillic, Arabic, Hebrew, Devanagari…).
+		// This fixes CJK-source → alphabetic-target replacements where the translation
+		// API may not add spaces around the preserved tag (e.g. Japanese → French).
+		// CJK scripts (U+2E80–U+9FFF, U+F900–U+FAFF, U+AC00–U+D7AF) are intentionally
+		// excluded: they don't use word spaces, so no space should be inserted there.
+		$text = preg_replace(
+			'/(?<=[A-Za-z\x{00C0}-\x{04FF}\x{0590}-\x{097F}\d])\[wplng_dictionary /u',
+			' [wplng_dictionary ',
+			$text
+		);
+		$text = preg_replace(
+			'/\[\/wplng_dictionary\](?=[A-Za-z\x{00C0}-\x{04FF}\x{0590}-\x{097F}\d])/u',
+			'[/wplng_dictionary] ',
+			$text
+		);
+
 		foreach ( $dictionary_entries as $key => $entry ) {
 
 			// For ruls "Do not translate
@@ -288,21 +320,21 @@ function wplng_dictionary_replace_tags( $texts, $language_target_id, $dictionary
 
 			// Replacement for text in uppercase
 			$text = preg_replace(
-				'#\[wplng_dictionary key="' . $key . '" upper="all"\].+\[\/wplng_dictionary\]#U',
-				strtoupper( $replacement ),
+				'#\[wplng_dictionary key="' . $key . '" upper="all"\].+\[\/wplng_dictionary\]#Uu',
+				mb_strtoupper( $replacement ),
 				$text
 			);
 
 			// Replacement for text when only the first letter is uppercase
 			$text = preg_replace(
-				'#\[wplng_dictionary key="' . $key . '" upper="first"\].+\[\/wplng_dictionary\]#U',
-				ucfirst( $replacement ),
+				'#\[wplng_dictionary key="' . $key . '" upper="first"\].+\[\/wplng_dictionary\]#Uu',
+				mb_strtoupper( mb_substr( $replacement, 0, 1 ) ) . mb_substr( $replacement, 1 ),
 				$text
 			);
 
 			// Replacement for other case
 			$text = preg_replace(
-				'#\[wplng_dictionary key="' . $key . '" upper="none"\].+\[\/wplng_dictionary\]#U',
+				'#\[wplng_dictionary key="' . $key . '" upper="none"\].+\[\/wplng_dictionary\]#Uu',
 				$replacement,
 				$text
 			);
@@ -311,7 +343,7 @@ function wplng_dictionary_replace_tags( $texts, $language_target_id, $dictionary
 
 		// Cleaning of any residual rules
 		$text = preg_replace(
-			'#\[wplng_dictionary key=".*" upper=".*"\](.+)\[\/wplng_dictionary\]#U',
+			'#\[wplng_dictionary key=".*" upper=".*"\](.+)\[\/wplng_dictionary\]#Uu',
 			'${1}',
 			$text
 		);
