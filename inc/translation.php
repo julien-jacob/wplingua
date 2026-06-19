@@ -134,6 +134,25 @@ function wplng_get_translation_saved_from_original( $original ) {
 
 
 /**
+ * Get all saved translations for all languages from cache or wp_query
+ *
+ * @return array
+ */
+function wplng_get_translations() {
+
+	$translations = get_option( 'wplng_cached_translations' );
+
+	if ( empty( $translations )
+		|| ! is_array( $translations )
+	) {
+		$translations = wplng_get_translations_from_query();
+	}
+
+	return $translations;
+}
+
+
+/**
  * Get all saved translations from a wp_query for all languages
  *
  * @return array
