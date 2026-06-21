@@ -373,27 +373,36 @@ function wplng_option_page_dictionary_update_translations_html( $translations_to
 
 	$html .= '<td>';
 	$html .= '<fieldset>';
-	$html .= '<p>';
+	$html .= '<label>';
 	$html .= '<strong>' . esc_html( 'Translations Affected by Dictionary Changes', 'wplingua' ) . '</strong>';
+	$html .= '</label>';
+	$html .= '<p>';
+	$html .= esc_html( 'Some translations have been identified as needing to be updated following the latest changes to the dictionary rules.', 'wplingua' );
 	$html .= '</p>';
 	$html .= '<p>';
-	$html .= esc_html( 'Some translations need to be updated following the latest changes to the dictionary rules.', 'wplingua' );
+	$html .= esc_html(
+		sprintf(
+			__( 'Number of translations to update: %d', 'wplingua' ),
+			count( $translations_to_update )
+		)
+	);
 	$html .= '</p>';
 	$html .= '<hr>';
+	$html .= '<label>';
+	$html .= '<strong>' . esc_html( 'Translations to update: ', 'wplingua' ) . '</strong>';
+	$html .= '</label>';
 
-	foreach ($translations_to_update as $key => $translation_to_update) {
+	foreach ( $translations_to_update as $key => $translation_to_update ) {
 
-		if (!isset($translation_to_update['post_id'])
-			|| !isset($translation_to_update['source'])
+		if ( ! isset( $translation_to_update['post_id'] )
+			|| ! isset( $translation_to_update['source'] )
 		) {
 			continue;
 		}
 
-
-
-		$html .= '<p class="wplng-dictionnary-text-to-update-entry">';
+		$html .= '<div class="wplng-dictionnary-text-to-update-entry">';
 		$html .= '<strong>';
-		$html .= esc_html('ID: ') . esc_html($translation_to_update['post_id']) . ' | ';
+		$html .= esc_html( 'ID: ' ) . esc_html( $translation_to_update['post_id'] ) . ' | ';
 		$html .= '</strong>';
 
 		// Truncate source at the last word boundary before 200 characters.
@@ -410,7 +419,7 @@ function wplng_option_page_dictionary_update_translations_html( $translations_to
 		$html .= esc_html( $source_display );
 		$html .= '</span>';
 
-		$html .= '</p>';
+		$html .= '</div>';
 	}
 
 	$html .= '</fieldset>';
