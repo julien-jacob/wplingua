@@ -5,266 +5,6 @@ if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
-add_action(
-	'update_option_wplng_dictionary_entries',
-	'wplng_on_dictionary_entries_updated',
-	10,
-	2
-);
-
-/**
- * Fired when the 'wplng_dictionary_entries' option is saved.
- *
- * Compares the old and new dictionary entries to determine which source texts
- * and target languages are affected by the change. Builds $update_todo, a list
- * of items whose cached translations need to be regenerated.
- *
- * Each item in $update_todo has the shape:
- *   [ 'source' => string, 'impacted_languages' => 'all' | string[] ]
- *
- * 'impacted_languages' is the string 'all' when the entry has no per-language
- * rules (i.e., it is a "never translate" rule that applies to every language).
- *
- * @param string $old_value The previous JSON value of the option.
- * @param string $new_value The new JSON value of the option.
- */
-function wplng_on_dictionary_entries_updated( $old_value, $new_value ) {
-
-	// Entries are stored as a JSON string in the WordPress options table.
-	// Decode them; fall back to an empty array if the value is absent or invalid.
-	$old_entries = json_decode( $old_value, true );
-	$new_entries = json_decode( $new_value, true );
-
-	if ( ! is_array( $old_entries ) ) {
-		$old_entries = array();
-	}
-
-	if ( ! is_array( $new_entries ) ) {
-		$new_entries = array();
-	}
-
-	// Re-index entries by their source text for O(1) lookup in the loops below.
-	// The dictionary is stored as a plain list; keying by source avoids nested loops.
-	$old_by_source = array();
-	foreach ( $old_entries as $entry ) {
-		if ( isset( $entry['source'] ) ) {
-			$old_by_source[ $entry['source'] ] = $entry;
-		}
-	}
-
-	$new_by_source = array();
-	foreach ( $new_entries as $entry ) {
-		if ( isset( $entry['source'] ) ) {
-			$new_by_source[ $entry['source'] ] = $entry;
-		}
-	}
-
-	// Will hold the list of source/language pairs whose translations need refreshing.
-	$update_todo = array();
-
-	/**
-	 * Detect removed entries.
-	 *
-	 * When a rule is deleted, cached translations built with that rule may be
-	 * outdated (e.g., a forced translation that should revert to the default
-	 * AI output). All languages covered by the old rule must be refreshed.
-	 */
-
-	foreach ( $old_by_source as $source => $old_entry ) {
-
-		// Skip entries that still exist in the new value.
-		if ( isset( $new_by_source[ $source ] ) ) {
-			continue;
-		}
-
-		$impacted_languages = array();
-
-		if ( empty( $old_entry['rules'] ) ) {
-			// No per-language rules → this was a "never translate" rule affecting all languages.
-			$impacted_languages = 'all';
-		} else {
-			// Collect every language that had a rule for this source.
-			foreach ( $old_entry['rules'] as $language_id => $rule ) {
-				$impacted_languages[] = $language_id;
-			}
-		}
-
-		$update_todo[] = array(
-			'source'             => $source,
-			'impacted_languages' => $impacted_languages,
-		);
-	}
-
-	/**
-	 * Detect added and modified entries
-	 */
-
-	foreach ( $new_by_source as $source => $new_entry ) {
-		if ( ! isset( $old_by_source[ $source ] ) ) {
-
-			/**
-			 * Added.
-			 *
-			 * Existing translations were produced without this rule, so they may
-			 * not yet reflect the new forced translation or exclusion.
-			 */
-
-			$impacted_languages = array();
-
-			if ( empty( $new_entry['rules'] ) ) {
-				// No per-language rules → "never translate" rule affecting all languages.
-				$impacted_languages = 'all';
-			} else {
-				// Collect every language that has a rule for this new source.
-				foreach ( $new_entry['rules'] as $language_id => $rule ) {
-					$impacted_languages[] = $language_id;
-				}
-			}
-
-			$update_todo[] = array(
-				'source'             => $source,
-				'impacted_languages' => $impacted_languages,
-			);
-
-		} elseif ( $new_entry != $old_by_source[ $source ] ) {
-
-			/**
-			 * Modified.
-			 *
-			 * Loose comparison (!=) is intentional: strict (!==) would treat arrays
-			 * with the same key/value pairs but different key order as unequal,
-			 * causing false positives when WordPress re-encodes the JSON.
-			 */
-
-			$old_entry          = $old_by_source[ $source ];
-			$impacted_languages = array();
-
-			if ( empty( $new_entry['rules'] ) || empty( $old_entry['rules'] ) ) {
-				// One side has no per-language rules, meaning the entry was or became a
-				// "never translate" rule — all languages are affected by the change.
-				$impacted_languages = 'all';
-			} else {
-				// Find every language whose rule value changed, was added, or was removed.
-				// array_diff_assoc() catches rules that changed value or were newly added.
-				// array_diff_key()  catches rules that existed in the old entry but were removed.
-				// Merging both and taking the keys gives the full list of impacted languages.
-				$impacted_languages = array_keys(
-					array_merge(
-						array_diff_assoc( $new_entry['rules'], $old_entry['rules'] ),
-						array_diff_key( $old_entry['rules'], $new_entry['rules'] ),
-					)
-				);
-			}
-
-			if ( ! empty( $impacted_languages ) ) {
-				$update_todo[] = array(
-					'source'             => $source,
-					'impacted_languages' => $impacted_languages,
-				);
-			}
-		}
-	}
-
-	if ( empty( $update_todo ) ) {
-		return;
-	}
-
-	// Normalize: if impacted_languages lists every active target language,
-	// collapse it to 'all' to avoid unnecessary per-language filtering later.
-	$all_target_ids = wplng_get_languages_target_ids();
-	foreach ( $update_todo as &$item ) {
-		if ( is_array( $item['impacted_languages'] )
-			&& ! array_diff( $all_target_ids, $item['impacted_languages'] )
-		) {
-			$item['impacted_languages'] = 'all';
-		}
-	}
-	unset( $item );
-
-	/**
-	 * Get all translations
-	 */
-
-	$translations           = wplng_get_translations();
-	$translations_to_update = array();
-
-	// Foreach translations
-	foreach ( $translations as $index_strings => $translations_chunk ) {
-		foreach ( $translations_chunk as $key => $translation ) {
-
-			// Foreach $update_todo
-			foreach ( $update_todo as $todo ) {
-				$source_todo        = mb_strtolower( $todo['source'] );
-				$source_translation = mb_strtolower( $translation['source'] );
-
-				// Use a simple substring match for CJK sources (no word boundaries in CJK text).
-				// For all other scripts, require word boundaries to avoid false matches (e.g. "men" in "women").
-				$is_cjk  = (bool) preg_match( '#[\x{2E80}-\x{9FFF}\x{F900}-\x{FAFF}]#u', $source_todo );
-				$pattern = $is_cjk
-					? '#' . preg_quote( $source_todo, '#' ) . '#iu'
-					: '#(*UCP)\b' . preg_quote( $source_todo, '#' ) . '\b#iu';
-
-				if ( ! wplng_str_contains( $source_translation, $source_todo )
-					|| ! preg_match( $pattern, $source_translation )
-				) {
-					continue;
-				}
-
-				$impacted_languages = 'all';
-
-				if ( $todo['impacted_languages'] !== 'all' ) {
-
-					$impacted_languages = array();
-
-					$translation_review = $translation['review'] ?? array();
-
-					foreach ( $translation['translations'] as $language_id => $value ) {
-						if ( in_array( $language_id, $todo['impacted_languages'], true )
-							&& ! in_array( $language_id, $translation_review, true )
-						) {
-							$impacted_languages[] = $language_id;
-						}
-					}
-				}
-
-				// If impacted_languages covers every language that has been translated,
-				// collapse it to 'all' to avoid unnecessary per-language filtering later.
-				if ( is_array( $impacted_languages ) ) {
-					$temp_translations = $translation['translations'];
-					foreach ( $impacted_languages as $language_id ) {
-						unset( $temp_translations[ $language_id ] );
-					}
-					if ( empty( $temp_translations ) ) {
-						$impacted_languages = 'all';
-					}
-				}
-
-				$translations_to_update[] = array(
-					'source'             => $translation['source'],
-					'post_id'            => $translation['post_id'],
-					'impacted_languages' => $impacted_languages,
-				);
-
-			}
-		}
-	}
-
-	// Clear $translations_to_update when no loanguage impacted
-	foreach ( $translations_to_update as $key => $value ) {
-		if ( empty( $value['impacted_languages'] ) ) {
-			unset( $translations_to_update[ $key ] );
-		}
-	}
-
-	if ( ! empty( $translations_to_update ) ) {
-		// Store the list in a short-lived transient so it survives the redirect
-		// that options.php performs after saving. The page function reads and
-		// immediately deletes it so it is only displayed once.
-		set_transient( 'wplng_dictionary_updated_data', $translations_to_update, 60 );
-	}
-	// error_log( var_export( $translations_to_update, true ) );
-}
-
 
 /**
  * Print HTML Option page : wpLingua Dictionary
@@ -273,14 +13,10 @@ function wplng_on_dictionary_entries_updated( $old_value, $new_value ) {
  */
 function wplng_option_page_dictionary() {
 
-	// Read the transient set by wplng_on_dictionary_entries_updated() during the
-	// previous POST request, then delete it immediately so it shows only once.
+	$entries_json                  = wplng_dictionary_get_entries_json();
 	$wplng_dictionary_updated_data = get_transient( 'wplng_dictionary_updated_data' );
-	if ( false !== $wplng_dictionary_updated_data ) {
-		delete_transient( 'wplng_dictionary_updated_data' );
-	}
 
-	$entries_json = wplng_dictionary_get_entries_json();
+	delete_transient( 'wplng_dictionary_updated_data' );
 
 	?>
 
@@ -300,8 +36,10 @@ function wplng_option_page_dictionary() {
 				$style_section_entries_all = '';
 
 				if ( false !== $wplng_dictionary_updated_data ) {
-					// $style_section_entries_all = 'display: none;';
-					wplng_option_page_dictionary_update_translations_html( $wplng_dictionary_updated_data );
+					$style_section_entries_all = 'display: none;';
+					wplng_option_page_dictionary_update_translationss_html(
+						$wplng_dictionary_updated_data
+					);
 				}
 				?>
 
@@ -362,16 +100,56 @@ function wplng_option_page_dictionary() {
 }
 
 
-function wplng_option_page_dictionary_update_translations_html( $translations_to_update ) {
+/**
+ * Print HTML subsection of Option page : wpLingua Dictionary - Update translations
+ *
+ * Displays the list of translations impacted by the latest dictionary rule
+ * changes, along with the controls used to launch, ignore, or track the
+ * progress of the AJAX update queue.
+ *
+ * @param array $translations_to_update List of items with 'post_id', 'source' and 'impacted_languages' ('all' or an array of language IDs).
+ * @return void
+ */
+function wplng_option_page_dictionary_update_translationss_html( $translations_to_update ) {
 
-	$html = '<tr id="wplng-section-dictionnary-update-translations">';
+	/**
+	 * HTML Buttons
+	 */
+
+	$html_buttons = '<div class="wplng-flex-row wplng-dictionary-update-subsection-launch">';
+
+	$html_buttons .= '<div class="wplng-flex-item">';
+	$html_buttons .= '<a';
+	$html_buttons .= ' href="javascript:void(0);"';
+	$html_buttons .= ' class="button wplng-dictionary-update-button-ignore"';
+	$html_buttons .= '>';
+	$html_buttons .= esc_html__( 'Ignore', 'wplingua' );
+	$html_buttons .= '</a>';
+	$html_buttons .= '</div>'; // End .wplng-flex-item
+
+	$html_buttons .= '<div class="wplng-flex-item">';
+	$html_buttons .= '<a';
+	$html_buttons .= ' href="javascript:void(0);"';
+	$html_buttons .= ' class="button button-primary wplng-dictionary-update-button-start"';
+	$html_buttons .= '>';
+	$html_buttons .= esc_html__( 'Update translations', 'wplingua' );
+	$html_buttons .= '</a>';
+	$html_buttons .= '</div>'; // End .wplng-flex-item
+
+	$html_buttons .= '</div>'; // End .wplng-flex-row
+
+	/**
+	 * HTML Section
+	 */
+
+	$html = '<tr id="wplng-section-dictionary-update-translations">';
 
 	$html .= '<th scope="row">';
 	$html .= '<span class="dashicons dashicons-update"></span> ';
 	$html .= esc_html( 'Update translations', 'wplingua' );
 	$html .= '</th>'; // End .row
 
-	$html .= '<td>';
+	$html .= '<td class="wplng-flex-container">';
 	$html .= '<fieldset>';
 	$html .= '<label>';
 	$html .= '<strong>' . esc_html( 'Translations Affected by Dictionary Changes', 'wplingua' ) . '</strong>';
@@ -379,6 +157,14 @@ function wplng_option_page_dictionary_update_translations_html( $translations_to
 	$html .= '<p>';
 	$html .= esc_html( 'Some translations have been identified as needing to be updated following the latest changes to the dictionary rules.', 'wplingua' );
 	$html .= '</p>';
+
+	$html .= '<hr>';
+
+	/**
+	 * Subsection info before process
+	 */
+
+	$html .= '<div class="wplng-dictionary-update-subsection-info">';
 	$html .= '<p>';
 	$html .= esc_html(
 		sprintf(
@@ -387,23 +173,85 @@ function wplng_option_page_dictionary_update_translations_html( $translations_to
 		)
 	);
 	$html .= '</p>';
+	$html .= '</div>'; // End .wplng-dictionary-update-subsection-info
+
+	/**
+	 * Subsection info in process
+	 */
+
+	$progression_info  = '<span class="wplng-count-processed">0</span>';
+	$progression_info .= ' / ' . count( $translations_to_update );
+	// $progression_info .= ' - <span class="wplng-count-percent">0 %</span>';
+
+	$html .= '<div class="wplng-dictionary-update-subsection-info-progress" style="display: none;">';
+	$html .= '<p>';
+	$html .= esc_html__( 'Translations are currently being updated.', 'wplingua' );
+	$html .= '</p>';
+	$html .= '<p>';
+	$html .= sprintf(
+		__( 'Number of translations updated: %1$s', 'wplingua' ),
+		$progression_info
+	);
+	$html .= '</p>';
+	$html .= '</div>'; // End .wplng-dictionary-update-subsection-info
+
+	/**
+	 * Subsection info before process
+	 */
+
+	$html .= '<div class="wplng-dictionary-update-subsection-info-end" style="display: none;">';
+	$html .= '<p>';
+	$html .= esc_html__( 'End of translations update.', 'wplingua' );
+	$html .= '</p>';
+	$html .= '<a';
+	$html .= ' href="javascript:void(0);"';
+	$html .= ' class="button button-primary wplng-dictionary-update-button-end"';
+	$html .= '>';
+	$html .= esc_html__( 'Back to the dictionary', 'wplingua' );
+	$html .= '</a>';
+	$html .= '</div>'; // End .wplng-dictionary-update-subsection-info
+
+	$html .= $html_buttons;
+
 	$html .= '<hr>';
-	$html .= '<label>';
+	$html .= '<p>';
 	$html .= '<strong>' . esc_html( 'Translations to update: ', 'wplingua' ) . '</strong>';
-	$html .= '</label>';
+	$html .= '</p>';
 
 	foreach ( $translations_to_update as $key => $translation_to_update ) {
 
 		if ( ! isset( $translation_to_update['post_id'] )
 			|| ! isset( $translation_to_update['source'] )
+			|| ! isset( $translation_to_update['impacted_languages'] )
+			|| ( $translation_to_update['impacted_languages'] !== 'all'
+				&& ! is_array( $translation_to_update['impacted_languages'] )
+			)
 		) {
 			continue;
 		}
 
-		$html .= '<div class="wplng-dictionnary-text-to-update-entry">';
+		// Write 'all' as a plain string so jQuery's .data() returns the string 'all'
+		// (jQuery only auto-parses values starting with '{' or '[').
+		// Arrays are JSON-encoded so jQuery parses them back into JS arrays.
+		$impacted_languages_attr = 'all';
+		if ( $translation_to_update['impacted_languages'] !== 'all' ) {
+			$impacted_languages_attr = wp_json_encode( $translation_to_update['impacted_languages'] );
+		}
+
+		$html .= '<div';
+		$html .= ' class="wplng-dictionary-text-to-update-entry"';
+		$html .= ' data-post-id="' . esc_attr( $translation_to_update['post_id'] ) . '"';
+		$html .= ' data-impacted-languages="' . esc_attr( $impacted_languages_attr ) . '"';
+		$html .= '>';
+
+		// $html .= '<span class="wplng-dictionary-update-state dashicons dashicons-yes-alt"></span>';
+		$html .= '<span class="wplng-dictionary-update-state dashicons"></span>';
+
 		$html .= '<strong>';
-		$html .= esc_html( 'ID: ' ) . esc_html( $translation_to_update['post_id'] ) . ' | ';
+		$html .= ' | ' . esc_html__( 'ID: ', 'wplingua' ) . esc_html( $translation_to_update['post_id'] );
 		$html .= '</strong>';
+
+		$html .= '<hr>';
 
 		// Truncate source at the last word boundary before 200 characters.
 		$source_display = $translation_to_update['source'];
@@ -415,11 +263,11 @@ function wplng_option_page_dictionary_update_translations_html( $translations_to
 			}
 			$source_display .= '…';
 		}
-		$html .= '<span class="wplng-dictionnary-text-to-update">';
+		$html .= '<p class="wplng-dictionary-text-to-update">';
 		$html .= esc_html( $source_display );
-		$html .= '</span>';
+		$html .= '</p>';
 
-		$html .= '</div>';
+		$html .= '</div>'; // End .wplng-dictionary-text-to-update-entry
 	}
 
 	$html .= '</fieldset>';

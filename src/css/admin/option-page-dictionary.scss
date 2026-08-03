@@ -79,12 +79,74 @@ p.submit,
 }
 
 
-#wplng-section-dictionnary-update-translations {
-    .wplng-dictionnary-text-to-update-entry {
+#wplng-section-dictionary-update-translations {
+
+    .button {
+        width: 100%;
+        text-align: center;
+    }
+
+    .wplng-dictionary-text-to-update-entry {
         border: 1px solid #c3c4c7;
         padding: 5px 10px 8px 6px;
         margin-bottom: 15px;
         background-color: #fff;
         border-radius: 3px;
+
+        .wplng-dictionary-update-state {
+            color: #c3c4c7;
+
+            &::before {
+                content: "\f12a";
+            }
+        }
+
+        .wplng-dictionary-text-to-update {
+            margin: 0;
+        }
+
+        &.progress {
+            border-color: #72aee6;
+
+            .wplng-dictionary-update-state {
+                color: #72aee6;
+
+                &::before {
+                    content: "\f463";
+                }
+            }
+        }
+
+        &.done {
+            border-color: #00a32a;
+
+            .wplng-dictionary-update-state {
+                color: #00a32a;
+
+                &::before {
+                    content: "\f12a";
+                }
+            }
+        }
+
+        &.error {
+            border-color: #ffa500;
+
+            .wplng-dictionary-update-state {
+                color: #ffa500;
+
+                &::before {
+                    content: "\f534";
+                }
+            }
+        }
+
+        .wplng-dictionary-update-ajax-error-message {
+            background-color: rgba(255, 165, 0, .75);
+            border: 1px solid #ffa500;
+            border-radius: 3px;
+            padding: 4px 8px;
+            margin-top: 10px;
+        }
     }
 }
