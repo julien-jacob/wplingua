@@ -37,7 +37,7 @@ function wplng_option_page_dictionary() {
 
 				if ( false !== $wplng_dictionary_updated_data ) {
 					$style_section_entries_all = 'display: none;';
-					wplng_option_page_dictionary_update_translationss_html(
+					wplng_option_page_dictionary_update_translations_html(
 						$wplng_dictionary_updated_data
 					);
 				}
@@ -110,7 +110,7 @@ function wplng_option_page_dictionary() {
  * @param array $translations_to_update List of items with 'post_id', 'source' and 'impacted_languages' ('all' or an array of language IDs).
  * @return void
  */
-function wplng_option_page_dictionary_update_translationss_html( $translations_to_update ) {
+function wplng_option_page_dictionary_update_translations_html( $translations_to_update ) {
 
 	/**
 	 * HTML Buttons
