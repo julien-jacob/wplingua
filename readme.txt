@@ -4,7 +4,7 @@ Donate link: https://wplingua.com/
 Tags: translate, translation, multilingual, localization, language
 Requires at least: 6.0
 Tested up to: 7.0
-Stable tag: 2.14.3
+Stable tag: 2.15.0
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -197,6 +197,15 @@ Your server’s database holds all the translations locally.
 
 == Changelog ==
 
+= 2.15.0 =
+
+* Make the dictionary retroactive:
+ * Analyze translations affected by changes to dictionary rules
+ * Add a user interface for managing affected translations
+ * Automate the management of changes to be made to translations
+* Fix dictionary: support non-Latin text matching and replacement (Japanese, Greek, etc.)
+* Fix dictionary: correct CJK uppercase detection, mb_strlen checks, and regex safety
+
 = 2.14.3 =
 
 * Set api.wplingua.com as the API URL
@@ -295,15 +304,6 @@ Your server’s database holds all the translations locally.
 = 2.12.1 =
 
 * Update plugin translations
-
-= 2.12.0 =
-
-* Make wpLingua compatible with websites in subfolders
-* Refactor translation and dictionary functions to include target language IDs, improving tagging and replacement logic
-* Fix missing jQuery dependency for "Load in progress"
-* Enqueue Dashicons for better compatibility when the admin bar is disabled
-* Update the target language label in free API key registration
-* Clarify how default settings are used in switcher options documentation
 
 
 All changelogs and previous versions of the wpLingua plugin are available on the releases page of the project's GitHub repo: [https://github.com/julien-jacob/wplingua/releases](https://github.com/julien-jacob/wplingua/releases).
