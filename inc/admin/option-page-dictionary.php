@@ -238,10 +238,13 @@ function wplng_option_page_dictionary_update_translations_html( $translations_to
 			$impacted_languages_attr = wp_json_encode( $translation_to_update['impacted_languages'] );
 		}
 
+		$check = wplng_encryption_encrypt( $translation_to_update['post_id'] . '-' . $impacted_languages_attr);
+
 		$html .= '<div';
 		$html .= ' class="wplng-dictionary-text-to-update-entry"';
 		$html .= ' data-post-id="' . esc_attr( $translation_to_update['post_id'] ) . '"';
 		$html .= ' data-impacted-languages="' . esc_attr( $impacted_languages_attr ) . '"';
+		$html .= ' data-check="' . esc_attr( $check ) . '"';
 		$html .= '>';
 
 		// $html .= '<span class="wplng-dictionary-update-state dashicons dashicons-yes-alt"></span>';

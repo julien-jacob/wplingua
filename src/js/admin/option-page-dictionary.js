@@ -273,6 +273,7 @@ jQuery(document).ready(function ($) {
             queue.push({
                 postId: $(this).data("post-id"),
                 impactedLanguages: $(this).data("impacted-languages"),
+                check: $(this).data("check"),
                 $el: $(this),
             });
         });
@@ -318,6 +319,7 @@ jQuery(document).ready(function ($) {
                     action: "wplng_dictionary_update_translations",
                     nonce: wplngDictionaryAjax.nonce,
                     post_id: item.postId,
+                    check: item.check,
                     impacted_languages: impactedLanguagesParam,
                 },
                 success: function (response) {

@@ -721,6 +721,10 @@ function wplng_ajax_dictionary_update_translations() {
 
 	$impacted_languages = sanitize_text_field( wp_unslash( $_POST['impacted_languages'] ) );
 
+	// Keep the raw (pre-decode) string: it is what was used to build the
+	// "check" value server-side, and is needed below to verify it again.
+	$impacted_languages_raw = $impacted_languages;
+
 	if ( $impacted_languages !== 'all' ) {
 
 		// We suppose it's a JSON with the list of impacted languages IDs
@@ -740,6 +744,39 @@ function wplng_ajax_dictionary_update_translations() {
 	}
 
 	/**
+	 * Check the "check" parameter.
+	 *
+	 * It is an encrypted copy of "post_id-impacted_languages" generated when
+	 * the HTML was rendered (see wplng_option_page_dictionary_update_translations_html()).
+	 * Decrypting it and comparing it to the values actually received prevents
+	 * the browser (or an attacker via devtools) from tampering with post_id
+	 * or impacted_languages before the request is sent.
+	 */
+
+	if ( empty( $_POST['check'] ) || ! is_string( $_POST['check'] ) ) {
+		wp_send_json_error(
+			array(
+				'error'   => true,
+				'message' => __( 'Error [5]: Parameter "check" not found', 'wplingua' ),
+			)
+		);
+		return;
+	}
+
+	$check_received = wplng_encryption_decrypt( sanitize_text_field( wp_unslash( $_POST['check'] ) ) );
+	$check_expected = $post_id . '-' . $impacted_languages_raw;
+
+	if ( '' === $check_received || ! hash_equals( $check_expected, $check_received ) ) {
+		wp_send_json_error(
+			array(
+				'error'   => true,
+				'message' => __( 'Error [6]: Invalid "check" parameter', 'wplingua' ),
+			)
+		);
+		return;
+	}
+
+	/**
 	 * Get and check the translation post
 	 */
 
@@ -751,7 +788,7 @@ function wplng_ajax_dictionary_update_translations() {
 		wp_send_json_error(
 			array(
 				'error'   => true,
-				'message' => __( 'Error [5]: Invalid post ID or post type', 'wplingua' ),
+				'message' => __( 'Error [7]: Invalid post ID or post type', 'wplingua' ),
 			)
 		);
 		return;
@@ -771,7 +808,7 @@ function wplng_ajax_dictionary_update_translations() {
 			wp_send_json_error(
 				array(
 					'error'   => true,
-					'message' => __( 'Error [6]: Failed to delete the translation', 'wplingua' ),
+					'message' => __( 'Error [8]: Failed to delete the translation', 'wplingua' ),
 				)
 			);
 			return;
@@ -803,7 +840,7 @@ function wplng_ajax_dictionary_update_translations() {
 			wp_send_json_error(
 				array(
 					'error'   => true,
-					'message' => __( 'Error [7]: Translation meta "translations" not found', 'wplingua' ),
+					'message' => __( 'Error [9]: Translation meta "translations" not found', 'wplingua' ),
 				)
 			);
 			return;
@@ -819,7 +856,7 @@ function wplng_ajax_dictionary_update_translations() {
 			wp_send_json_error(
 				array(
 					'error'   => true,
-					'message' => __( 'Error [8]: Invalid translation meta', 'wplingua' ),
+					'message' => __( 'Error [10]: Invalid translation meta', 'wplingua' ),
 				)
 			);
 			return;
@@ -833,7 +870,7 @@ function wplng_ajax_dictionary_update_translations() {
 			wp_send_json_error(
 				array(
 					'error'   => true,
-					'message' => __( 'Error [9]: Translation meta "original language" not found', 'wplingua' ),
+					'message' => __( 'Error [11]: Translation meta "original language" not found', 'wplingua' ),
 				)
 			);
 			return;
@@ -845,7 +882,7 @@ function wplng_ajax_dictionary_update_translations() {
 			wp_send_json_error(
 				array(
 					'error'   => true,
-					'message' => __( 'Error [10]: The language of the translation is not the same as the language of the site\'s settings', 'wplingua' ),
+					'message' => __( 'Error [12]: The language of the translation is not the same as the language of the site\'s settings', 'wplingua' ),
 				)
 			);
 			return;
@@ -887,7 +924,7 @@ function wplng_ajax_dictionary_update_translations() {
 				wp_send_json_error(
 					array(
 						'error'   => true,
-						'message' => __( 'Error [11]: Failed to delete the translation', 'wplingua' ),
+						'message' => __( 'Error [13]: Failed to delete the translation', 'wplingua' ),
 					)
 				);
 				return;
@@ -911,7 +948,7 @@ function wplng_ajax_dictionary_update_translations() {
 				wp_send_json_error(
 					array(
 						'error'   => true,
-						'message' => __( 'Error [12]: Failed to update the translation meta', 'wplingua' ),
+						'message' => __( 'Error [14]: Failed to update the translation meta', 'wplingua' ),
 					)
 				);
 				return;
