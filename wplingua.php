@@ -130,8 +130,8 @@ function wplng_start() {
 
 	// Return if incompatibility is detected
 	if ( ! empty( wplng_get_incompatible_plugins() )
-		|| (  is_multisite() 
-			&& ! apply_filters( 'wplng_bypass_multisite_incompatibility', false ) 
+		|| ( is_multisite()
+			&& ! apply_filters( 'wplng_bypass_multisite_incompatibility', false )
 		)
 		|| ( version_compare( PHP_VERSION, WPLNG_PHP_MIN_VERSION ) < 0 )
 		|| ! wplng_htaccess_is_valid()
@@ -194,6 +194,10 @@ function wplng_start() {
 
 		// Update flags URL
 		add_action( 'update_option_wplng_flags_style', 'wplng_options_switcher_update_flags_style', 10, 2 );
+
+		// Update translations on dictionary changes
+		add_action( 'update_option_wplng_dictionary_entries', 'wplng_on_dictionary_entries_updated', 10, 2 );
+		add_action( 'wp_ajax_wplng_dictionary_update_translations', 'wplng_ajax_dictionary_update_translations' );
 
 		// Reset API data on API key changing
 		add_action( 'update_option_wplng_api_key', 'wplng_on_update_option_wplng_api_key', 10, 2 );

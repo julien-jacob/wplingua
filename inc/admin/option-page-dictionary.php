@@ -13,7 +13,10 @@ if ( ! defined( 'WPINC' ) ) {
  */
 function wplng_option_page_dictionary() {
 
-	$entries_json = wplng_dictionary_get_entries_json();
+	$entries_json                  = wplng_dictionary_get_entries_json();
+	$wplng_dictionary_updated_data = get_transient( 'wplng_dictionary_updated_data' );
+
+	delete_transient( 'wplng_dictionary_updated_data' );
 
 	?>
 
@@ -28,6 +31,18 @@ function wplng_option_page_dictionary() {
 			?>
 			<table class="form-table wplng-form-table">
 
+				<?php
+
+				$style_section_entries_all = '';
+
+				if ( false !== $wplng_dictionary_updated_data ) {
+					$style_section_entries_all = 'display: none;';
+					wplng_option_page_dictionary_update_translations_html(
+						$wplng_dictionary_updated_data
+					);
+				}
+				?>
+
 				<tr class="wplng-beta-hidden" style="display: none;">
 					<th scope="row"><span class="dashicons dashicons-printer"></span> <?php esc_html_e( 'Debug', 'wplingua' ); ?></th>
 					<td>
@@ -37,7 +52,7 @@ function wplng_option_page_dictionary() {
 					</td>
 				</tr>
 					
-				<tr id="wplng-section-entries-all">
+				<tr id="wplng-section-entries-all" style="<?php echo esc_attr( $style_section_entries_all ); ?>">
 					<th scope="row"><span class="dashicons dashicons-book"></span> <?php esc_html_e( 'Dictionary entries', 'wplingua' ); ?></th>
 					<td>
 						<fieldset>
@@ -82,6 +97,187 @@ function wplng_option_page_dictionary() {
 		</form>
 	</div>
 	<?php
+}
+
+
+/**
+ * Print HTML subsection of Option page : wpLingua Dictionary - Update translations
+ *
+ * Displays the list of translations impacted by the latest dictionary rule
+ * changes, along with the controls used to launch, ignore, or track the
+ * progress of the AJAX update queue.
+ *
+ * @param array $translations_to_update List of items with 'post_id', 'source' and 'impacted_languages' ('all' or an array of language IDs).
+ * @return void
+ */
+function wplng_option_page_dictionary_update_translations_html( $translations_to_update ) {
+
+	/**
+	 * HTML Buttons
+	 */
+
+	$html_buttons = '<div class="wplng-flex-row wplng-dictionary-update-subsection-launch">';
+
+	$html_buttons .= '<div class="wplng-flex-item">';
+	$html_buttons .= '<a';
+	$html_buttons .= ' href="javascript:void(0);"';
+	$html_buttons .= ' class="button wplng-dictionary-update-button-ignore"';
+	$html_buttons .= '>';
+	$html_buttons .= esc_html__( 'Ignore', 'wplingua' );
+	$html_buttons .= '</a>';
+	$html_buttons .= '</div>'; // End .wplng-flex-item
+
+	$html_buttons .= '<div class="wplng-flex-item">';
+	$html_buttons .= '<a';
+	$html_buttons .= ' href="javascript:void(0);"';
+	$html_buttons .= ' class="button button-primary wplng-dictionary-update-button-start"';
+	$html_buttons .= '>';
+	$html_buttons .= esc_html__( 'Update translations', 'wplingua' );
+	$html_buttons .= '</a>';
+	$html_buttons .= '</div>'; // End .wplng-flex-item
+
+	$html_buttons .= '</div>'; // End .wplng-flex-row
+
+	/**
+	 * HTML Section
+	 */
+
+	$html = '<tr id="wplng-section-dictionary-update-translations">';
+
+	$html .= '<th scope="row">';
+	$html .= '<span class="dashicons dashicons-update"></span> ';
+	$html .= esc_html( 'Update translations', 'wplingua' );
+	$html .= '</th>'; // End .row
+
+	$html .= '<td class="wplng-flex-container">';
+	$html .= '<fieldset>';
+	$html .= '<label>';
+	$html .= '<strong>' . esc_html( 'Translations Affected by Dictionary Changes', 'wplingua' ) . '</strong>';
+	$html .= '</label>';
+	$html .= '<p>';
+	$html .= esc_html( 'Some translations have been identified as needing to be updated following the latest changes to the dictionary rules.', 'wplingua' );
+	$html .= '</p>';
+
+	$html .= '<hr>';
+
+	/**
+	 * Subsection info before process
+	 */
+
+	$html .= '<div class="wplng-dictionary-update-subsection-info">';
+	$html .= '<p>';
+	$html .= esc_html(
+		sprintf(
+			__( 'Number of translations to update: %d', 'wplingua' ),
+			count( $translations_to_update )
+		)
+	);
+	$html .= '</p>';
+	$html .= '</div>'; // End .wplng-dictionary-update-subsection-info
+
+	/**
+	 * Subsection info in process
+	 */
+
+	$progression_info  = '<span class="wplng-count-processed">0</span>';
+	$progression_info .= ' / ' . count( $translations_to_update );
+	// $progression_info .= ' - <span class="wplng-count-percent">0 %</span>';
+
+	$html .= '<div class="wplng-dictionary-update-subsection-info-progress" style="display: none;">';
+	$html .= '<p>';
+	$html .= esc_html__( 'Translations are currently being updated.', 'wplingua' );
+	$html .= '</p>';
+	$html .= '<p>';
+	$html .= sprintf(
+		__( 'Number of translations updated: %1$s', 'wplingua' ),
+		$progression_info
+	);
+	$html .= '</p>';
+	$html .= '</div>'; // End .wplng-dictionary-update-subsection-info
+
+	/**
+	 * Subsection info before process
+	 */
+
+	$html .= '<div class="wplng-dictionary-update-subsection-info-end" style="display: none;">';
+	$html .= '<p>';
+	$html .= esc_html__( 'End of translations update.', 'wplingua' );
+	$html .= '</p>';
+	$html .= '<a';
+	$html .= ' href="javascript:void(0);"';
+	$html .= ' class="button button-primary wplng-dictionary-update-button-end"';
+	$html .= '>';
+	$html .= esc_html__( 'Back to the dictionary', 'wplingua' );
+	$html .= '</a>';
+	$html .= '</div>'; // End .wplng-dictionary-update-subsection-info
+
+	$html .= $html_buttons;
+
+	$html .= '<hr>';
+	$html .= '<p>';
+	$html .= '<strong>' . esc_html( 'Translations to update: ', 'wplingua' ) . '</strong>';
+	$html .= '</p>';
+
+	foreach ( $translations_to_update as $key => $translation_to_update ) {
+
+		if ( ! isset( $translation_to_update['post_id'] )
+			|| ! isset( $translation_to_update['source'] )
+			|| ! isset( $translation_to_update['impacted_languages'] )
+			|| ( $translation_to_update['impacted_languages'] !== 'all'
+				&& ! is_array( $translation_to_update['impacted_languages'] )
+			)
+		) {
+			continue;
+		}
+
+		// Write 'all' as a plain string so jQuery's .data() returns the string 'all'
+		// (jQuery only auto-parses values starting with '{' or '[').
+		// Arrays are JSON-encoded so jQuery parses them back into JS arrays.
+		$impacted_languages_attr = 'all';
+		if ( $translation_to_update['impacted_languages'] !== 'all' ) {
+			$impacted_languages_attr = wp_json_encode( $translation_to_update['impacted_languages'] );
+		}
+
+		$check = wplng_encryption_encrypt( $translation_to_update['post_id'] . '-' . $impacted_languages_attr);
+
+		$html .= '<div';
+		$html .= ' class="wplng-dictionary-text-to-update-entry"';
+		$html .= ' data-post-id="' . esc_attr( $translation_to_update['post_id'] ) . '"';
+		$html .= ' data-impacted-languages="' . esc_attr( $impacted_languages_attr ) . '"';
+		$html .= ' data-check="' . esc_attr( $check ) . '"';
+		$html .= '>';
+
+		// $html .= '<span class="wplng-dictionary-update-state dashicons dashicons-yes-alt"></span>';
+		$html .= '<span class="wplng-dictionary-update-state dashicons"></span>';
+
+		$html .= '<strong>';
+		$html .= ' | ' . esc_html__( 'ID: ', 'wplingua' ) . esc_html( $translation_to_update['post_id'] );
+		$html .= '</strong>';
+
+		$html .= '<hr>';
+
+		// Truncate source at the last word boundary before 200 characters.
+		$source_display = $translation_to_update['source'];
+		if ( mb_strlen( $source_display ) > 200 ) {
+			$source_display = mb_substr( $source_display, 0, 200 );
+			$last_space     = mb_strrpos( $source_display, ' ' );
+			if ( false !== $last_space ) {
+				$source_display = mb_substr( $source_display, 0, $last_space );
+			}
+			$source_display .= '…';
+		}
+		$html .= '<p class="wplng-dictionary-text-to-update">';
+		$html .= esc_html( $source_display );
+		$html .= '</p>';
+
+		$html .= '</div>'; // End .wplng-dictionary-text-to-update-entry
+	}
+
+	$html .= '</fieldset>';
+	$html .= '</td>';
+	$html .= '</tr>';
+
+	echo $html;
 }
 
 
