@@ -953,6 +953,9 @@ function wplng_ajax_dictionary_update_translations() {
 				);
 				return;
 			}
+
+			// Clear cache explicitly.
+			wplng_clear_translations_cache();
 		}
 	}
 
