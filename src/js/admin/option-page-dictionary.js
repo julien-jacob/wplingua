@@ -261,4 +261,117 @@ jQuery(document).ready(function ($) {
         wplngResizeTextArea($(this));
     });
 
+    /**
+     * Manage translation updating after dictionary rules updated
+     */
+
+    $(".wplng-dictionary-update-button-start").click(function () {
+
+        // Build the queue from DOM entries before starting.
+        let queue = [];
+        $(".wplng-dictionary-text-to-update-entry").each(function () {
+            queue.push({
+                postId: $(this).data("post-id"),
+                impactedLanguages: $(this).data("impacted-languages"),
+                check: $(this).data("check"),
+                $el: $(this),
+            });
+        });
+
+        if (queue.length === 0) {
+            return;
+        }
+
+        // Disable the button for the duration of the process.
+        $(".wplng-dictionary-update-subsection-info").hide();
+        $(".wplng-dictionary-update-subsection-launch").hide();
+        $(".wplng-dictionary-update-subsection-info-progress").show();
+        $(".wplng-dictionary-update-ajax-error-message").remove();
+
+        /**
+         * Process items one at a time (sequential AJAX).
+         * Calls itself recursively only when the current request has completed.
+         */
+        function processNext(index) {
+
+            $(".wplng-dictionary-update-subsection-info-progress .wplng-count-processed").text(index);
+
+            if (index >= queue.length) {
+                $(".wplng-dictionary-update-subsection-info-progress").hide();
+                $(".wplng-dictionary-update-subsection-info-end").show();
+                return;
+            }
+
+            let item = queue[index];
+
+            item.$el.addClass("progress");
+
+            // impacted_languages: jQuery already parsed the JSON attribute,
+            // so re-stringify to send a consistent string to PHP.
+            let impactedLanguagesParam = item.impactedLanguages === "all"
+                ? "all"
+                : JSON.stringify(item.impactedLanguages);
+
+            $.ajax({
+                url: wplngDictionaryAjax.ajaxurl,
+                method: "POST",
+                data: {
+                    action: "wplng_dictionary_update_translations",
+                    nonce: wplngDictionaryAjax.nonce,
+                    post_id: item.postId,
+                    check: item.check,
+                    impacted_languages: impactedLanguagesParam,
+                },
+                success: function (response) {
+
+                    if (response && response.success === true) {
+                        item.$el.removeClass("progress");
+                        item.$el.addClass("done");
+                    } else {
+
+                        item.$el.removeClass("progress");
+                        item.$el.addClass("error");
+
+                        let errorMessage = (response && response.data && response.data.message)
+                            ? response.data.message
+                            : wplngDictionaryAjax.errorMessageAjax;
+
+                        item.$el.find(".wplng-dictionary-update-ajax-error-message").remove();
+                        item.$el.append(
+                            '<div class="wplng-dictionary-update-ajax-error-message">' +
+                            $("<div>").text(errorMessage).html() +
+                            '</div>'
+                        );
+                    }
+
+                    processNext(index + 1);
+                },
+                error: function (xhr, status, error) {
+
+                    let errorMessage = wplngDictionaryAjax.errorMessageAjax;
+
+                    item.$el.find(".wplng-dictionary-update-ajax-error-message").remove();
+                    item.$el.append(
+                        '<div class="wplng-dictionary-update-ajax-error-message">' +
+                        $("<div>").text(errorMessage).html() +
+                        '</div>'
+                    );
+
+                    item.$el.removeClass("progress");
+                    item.$el.addClass("error");
+
+                    processNext(index + 1);
+                },
+            });
+        }
+
+        processNext(0);
+
+    });
+
+    $(".wplng-dictionary-update-button-end, .wplng-dictionary-update-button-ignore").click(function () {
+        $("#wplng-section-dictionary-update-translations").hide();
+        $("#wplng-section-entries-all").show();
+    });
+
 }); // End jQuery loaded event

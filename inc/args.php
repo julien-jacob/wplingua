@@ -253,13 +253,7 @@ function wplng_args_update_from_texts( &$args, $texts ) {
 	 * Get all translations for all languages
 	 */
 
-	$translations_all_languages = get_option( 'wplng_cached_translations' );
-
-	if ( empty( $translations_all_languages )
-		|| ! is_array( $translations_all_languages )
-	) {
-		$translations_all_languages = wplng_get_translations_from_query();
-	}
+	$translations_all_languages = wplng_get_translations();
 
 	/**
 	 * Get unknow texts & Separate page translations

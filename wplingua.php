@@ -7,7 +7,7 @@
  * Author URI: https://wplingua.com/
  * Text Domain: wplingua
  * Domain Path: /languages/
- * Version: 2.14.3
+ * Version: 2.15.0
  * Requires PHP: 7.4
  * License: GPL v2 or later
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -24,7 +24,7 @@ if ( ! defined( 'WPINC' ) ) {
 define( 'WPLNG_API_URL', 'https://api.wplingua.com' );
 define( 'WPLNG_API_VERSION', '3.0' );
 define( 'WPLNG_API_SSLVERIFY', true );
-define( 'WPLNG_PLUGIN_VERSION', '2.14.3' );
+define( 'WPLNG_PLUGIN_VERSION', '2.15.0' );
 define( 'WPLNG_PLUGIN_FILE', plugin_basename( __FILE__ ) );
 define( 'WPLNG_PLUGIN_DIR', __DIR__ );
 define( 'WPLNG_CACHE_DIR', WP_CONTENT_DIR . '/wplingua-cache' );
@@ -130,8 +130,8 @@ function wplng_start() {
 
 	// Return if incompatibility is detected
 	if ( ! empty( wplng_get_incompatible_plugins() )
-		|| (  is_multisite() 
-			&& ! apply_filters( 'wplng_bypass_multisite_incompatibility', false ) 
+		|| ( is_multisite()
+			&& ! apply_filters( 'wplng_bypass_multisite_incompatibility', false )
 		)
 		|| ( version_compare( PHP_VERSION, WPLNG_PHP_MIN_VERSION ) < 0 )
 		|| ! wplng_htaccess_is_valid()
@@ -194,6 +194,10 @@ function wplng_start() {
 
 		// Update flags URL
 		add_action( 'update_option_wplng_flags_style', 'wplng_options_switcher_update_flags_style', 10, 2 );
+
+		// Update translations on dictionary changes
+		add_action( 'update_option_wplng_dictionary_entries', 'wplng_on_dictionary_entries_updated', 10, 2 );
+		add_action( 'wp_ajax_wplng_dictionary_update_translations', 'wplng_ajax_dictionary_update_translations' );
 
 		// Reset API data on API key changing
 		add_action( 'update_option_wplng_api_key', 'wplng_on_update_option_wplng_api_key', 10, 2 );

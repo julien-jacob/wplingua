@@ -331,6 +331,16 @@ function wplng_option_page_dictionary_assets( $hook ) {
 		WPLNG_PLUGIN_VERSION
 	);
 
+	wp_localize_script(
+		'wplingua-option-dictionary',
+		'wplngDictionaryAjax',
+		array(
+			'ajaxurl'          => admin_url( 'admin-ajax.php' ),
+			'nonce'            => wp_create_nonce( 'wplng_dictionary_update_translations' ),
+			'errorMessageAjax' => esc_html__( 'Error [0]: The AJAX call failed.', 'wplingua' ),
+		)
+	);
+
 	/**
 	 * Enqueue wpLingua CSS styles
 	 */
