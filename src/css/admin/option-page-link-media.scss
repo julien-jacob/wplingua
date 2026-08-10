@@ -3,87 +3,107 @@
 @use "help-box";
 @use "option-page";
 
-#wplng_link_media_entries {
-    width: 100%;
-    height: 150px;
-}
 
-.wplng-flag {
-    max-width: 1.5em;
-    max-height: 1.5em;
-    height: auto;
-    margin-right: .4em;
-    vertical-align: text-top;
-    display: inline;
-}
+#wplng-option-link-media-form {
 
-#wplng-section-entry-edit input[type="text"],
-#wplng-link-media-entry-new input[type="text"] {
-    overflow: hidden;
-    width: 100%;
-    resize: none;
-}
+    // ------------------------------------------------------------------------
+    // General
+    // ------------------------------------------------------------------------
 
-p.submit,
-#submit {
-    display: none;
-}
+    .wplng-flag {
+        max-width: 1.5em;
+        max-height: 1.5em;
+        height: auto;
+        margin-right: .4em;
+        vertical-align: text-top;
+        display: inline;
+    }
 
-#wplng-link-media-entries {
+    #wplng-section-entry-edit input[type="text"],
+    #wplng-link-media-entry-new input[type="text"] {
+        overflow: hidden;
+        width: 100%;
+        resize: none;
+    }
 
-    margin-top: 5px;
+    .button {
+        width: 100%;
+        text-align: center;
+    }
 
-    .wplng-link-media-entry {
+    p.submit,
+    #submit {
+        display: none;
+    }
 
-        border: 1px solid #c3c4c7;
-        padding: 5px 10px 8px 6px;
-        margin-bottom: 15px;
-        background-color: #fff;
-        border-radius: 3px;
+    // ------------------------------------------------------------------------
+    // Debug
+    // ------------------------------------------------------------------------
 
-        .wplng-rule-header {
-            display: flex;
-            justify-content: space-between;
+    #wplng_link_media_entries {
+        width: 100%;
+        height: 150px;
+    }
 
-            .wplng-rule-link-remove::before {
-                content: "|";
-                display: inline;
-                color: #8c8f94;
-                text-decoration: none;
-                margin-right: 5px;
-                font-weight: lighter;
+    // ------------------------------------------------------------------------
+    // Rules list
+    // ------------------------------------------------------------------------
+
+    #wplng-link-media-entries {
+
+        margin-top: 5px;
+
+        .wplng-link-media-entry {
+
+            border: 1px solid #c3c4c7;
+            padding: 5px 10px 8px 6px;
+            margin-bottom: 15px;
+            background-color: #fff;
+            border-radius: 3px;
+
+            .wplng-rule-header {
+                display: flex;
+                justify-content: space-between;
+
+                .wplng-rule-link-remove::before {
+                    content: "|";
+                    display: inline;
+                    color: #8c8f94;
+                    text-decoration: none;
+                    margin-right: 5px;
+                    font-weight: lighter;
+                }
             }
         }
     }
-}
 
-#wplng-new-rule-button {
-    width: 100%;
-    text-align: center;
-}
+    // ------------------------------------------------------------------------
+    // New and edit rule
+    // ------------------------------------------------------------------------
 
-#wplng-link-media-entry-new {
-    #wplng-new-action-section {
-        display: flex;
-        justify-content: space-between;
-        margin-top: 20px;
+    // New rule
+    #wplng-link-media-entry-new {
+        #wplng-new-rules {
+            margin-bottom: 20px;
+        }
     }
-}
+    
 
-#wplng-link-media-entry-edit {
-    #wplng-edit-action-section {
-        display: flex;
-        justify-content: space-between;
-        margin-top: 20px;
+    // Edit rule
+    #wplng-link-media-entry-edit {
+        #wplng-edit-rules {
+            margin-bottom: 20px;
+        }
     }
-}
 
+    // New and edit
+    .wplng-link-media-mode {
 
-.wplng-link-media-mode {
+        margin: 6px 0;
 
-    margin: 6px 0;
-
-    label {
-        padding-right: 15px;
+        label {
+            padding-right: 15px;
+        }
     }
+    
 }
