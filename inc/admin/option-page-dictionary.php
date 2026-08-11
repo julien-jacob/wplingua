@@ -24,7 +24,7 @@ function wplng_option_page_dictionary() {
 
 	<div class="wrap">
 		<hr class="wp-header-end">
-		<form method="post" action="options.php">
+		<form id="wplng-option-dictionary-form" method="post" action="options.php">
 			<?php
 			settings_fields( 'wplng_dictionary' );
 			do_settings_sections( 'wplng_dictionary' );
@@ -75,7 +75,7 @@ function wplng_option_page_dictionary() {
 
 				<tr id="wplng-section-entry-new" style="display: none;">
 					<th scope="row"><span class="dashicons dashicons-welcome-add-page"></span> <?php esc_html_e( 'Add an entry', 'wplingua' ); ?></th>
-					<td>
+					<td class="wplng-flex-container">
 						<div id="wplng-dictionary-entry-new">
 							<?php wplng_option_page_dictionary_new_entry_html(); ?>
 						</div>
@@ -84,7 +84,7 @@ function wplng_option_page_dictionary() {
 
 				<tr id="wplng-section-entry-edit" style="display: none;">
 					<th scope="row"><span class="dashicons dashicons-welcome-write-blog"></span> <?php esc_html_e( 'Edit the entry', 'wplingua' ); ?></th>
-					<td>
+					<td class="wplng-flex-container">
 						<div id="wplng-dictionary-entry-edit">
 							<?php wplng_option_page_dictionary_edit_entry_html(); ?>
 						</div>
@@ -470,10 +470,11 @@ function wplng_option_page_dictionary_new_entry_html() {
 		$html .= '</div>';
 
 	}
-	$html .= '</div>';
+	$html .= '</div>';  // End #wplng-new-rules 
 
-	$html .= '<div id="wplng-new-action-section">';
-
+	$html .= '<div id="wplng-new-action-section" class="wplng-flex-row">';
+	
+	$html .= '<div class="wplng-flex-item">';
 	$html .= '<a';
 	$html .= ' href="javascript:void(0);"';
 	$html .= ' id="wplng-new-cancel-button"';
@@ -481,7 +482,9 @@ function wplng_option_page_dictionary_new_entry_html() {
 	$html .= '>';
 	$html .= esc_html__( 'Cancel', 'wplingua' );
 	$html .= '</a>';
+	$html .= '</div>'; // End .wplng-flex-item
 
+	$html .= '<div class="wplng-flex-item">';
 	$html .= '<a';
 	$html .= ' href="javascript:void(0);"';
 	$html .= ' id="wplng-new-add-button"';
@@ -489,8 +492,9 @@ function wplng_option_page_dictionary_new_entry_html() {
 	$html .= '>';
 	$html .= esc_html__( 'Save new entry', 'wplingua' );
 	$html .= '</a>';
+	$html .= '</div>'; // End .wplng-flex-item
 
-	$html .= '</div>';
+	$html .= '</div>'; // End #wplng-new-action-section
 
 	echo $html;
 }
@@ -586,8 +590,9 @@ function wplng_option_page_dictionary_edit_entry_html() {
 	}
 	$html .= '</div>';
 
-	$html .= '<div id="wplng-edit-action-section">';
+	$html .= '<div id="wplng-edit-action-section" class="wplng-flex-row">';
 
+	$html .= '<div class="wplng-flex-item">';
 	$html .= '<a';
 	$html .= ' href="javascript:void(0);"';
 	$html .= ' id="wplng-edit-cancel-button"';
@@ -595,7 +600,9 @@ function wplng_option_page_dictionary_edit_entry_html() {
 	$html .= '>';
 	$html .= esc_html__( 'Cancel', 'wplingua' );
 	$html .= '</a>';
+	$html .= '</div>'; // End .wplng-flex-item
 
+	$html .= '<div class="wplng-flex-item">';
 	$html .= '<a';
 	$html .= ' href="javascript:void(0);"';
 	$html .= ' id="wplng-edit-save-button"';
@@ -603,8 +610,9 @@ function wplng_option_page_dictionary_edit_entry_html() {
 	$html .= '>';
 	$html .= esc_html__( 'Save edited entry', 'wplingua' );
 	$html .= '</a>';
+	$html .= '</div>'; // End .wplng-flex-item
 
-	$html .= '</div>';
+	$html .= '</div>'; // End #wplng-edit-action-section
 
 	echo $html;
 }
