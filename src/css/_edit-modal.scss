@@ -1,18 +1,17 @@
 @use "admin/edit-translation";
 
-/** 
- ** Compatibility
- **/
+// ------------------------------------------------------------------------
+// Compatibility
+// ------------------------------------------------------------------------
 
 // Divi
 body.et_divi_theme #main-header {
     z-index: 99997 !important;
 }
 
-
-/** 
- ** modal
- **/
+// ------------------------------------------------------------------------
+// Modal
+// ------------------------------------------------------------------------
 
 #wplng-modal-edit a.wplng-button-icon {
 
@@ -195,9 +194,3 @@ body.et_divi_theme #main-header {
     }
 
 }
-
-// @media screen and (max-width: 600px) {
-//     #wplng-modal-title {
-//         display: none;
-//     }
-// }
