@@ -125,6 +125,7 @@ document.addEventListener('DOMContentLoaded', function () {
         if (shouldReinit) {
             wplngInitSwitcherEvents();
             wplngUpdateSwitcherOpening();
+            wplngUpdateSwitcherLinksAnchor();
         }
     });
 
@@ -134,6 +135,42 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     wplngInitSwitcherEvents();
+
+    // ------------------------------------------------------------------------
+    // Manage anchor in current URL for the switcher
+    // ------------------------------------------------------------------------
+
+    function wplngUpdateSwitcherLinksAnchor() {
+        const currentHash = window.location.hash;
+        const selector = '.wplng-switcher .switcher-content a[href], .menu-item.wplingua-menu a[href]';
+
+        document.querySelectorAll(selector).forEach(function (link) {
+            if (!link.dataset.wplngBaseHref) {
+                link.dataset.wplngBaseHref = link.getAttribute('href') || '';
+            }
+
+            const baseHref = link.dataset.wplngBaseHref;
+
+            if (!baseHref) {
+                return;
+            }
+
+            const linkUrl = new URL(baseHref, window.location.href);
+            linkUrl.hash = currentHash;
+
+            link.setAttribute('href', linkUrl.toString());
+        });
+    }
+
+    wplngUpdateSwitcherLinksAnchor();
+
+    window.addEventListener('hashchange', function () {
+        wplngUpdateSwitcherLinksAnchor();
+    });
+
+    window.addEventListener('popstate', function () {
+        wplngUpdateSwitcherLinksAnchor();
+    });
 
     // ------------------------------------------------------------------------
     // Code for switcher Cookie for language browser redirection
