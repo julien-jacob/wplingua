@@ -376,7 +376,7 @@ function wplng_option_page_switcher() {
 							<hr>
 
 							<p>
-								<a href="https://wplingua.com/documentation/user/how-to-customize-the-language-switcher/" target="_blank"><?php esc_html_e( 'More example on wplingua.com', 'wplingua' ); ?></a>
+								<a href="https://wplingua.com/documentation/user/how-to-customize-the-language-switcher/" target="_blank" rel="noopener noreferrer"><?php esc_html_e( 'More example on wplingua.com', 'wplingua' ); ?></a>
 							</p>
 						</div>
 
@@ -515,9 +515,10 @@ function wplng_option_page_switcher() {
 									$support_menus = ! empty( get_nav_menu_locations() );
 
 									if ( $support_menus ) {
-										echo '<a ';
-										echo 'href="' . esc_url( get_admin_url() . 'nav-menus.php' ) . '" ';
-										echo 'target="_blank"';
+										echo '<a';
+										echo ' href="' . esc_url( get_admin_url() . 'nav-menus.php' ) . '"';
+										echo ' target="_blank"';
+										echo ' rel="noopener noreferrer"';
 										echo '>';
 									}
 
