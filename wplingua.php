@@ -206,6 +206,9 @@ function wplng_start() {
 		add_filter( 'page_row_actions', 'wplng_row_edit_translation_link', 10, 2 );
 		add_filter( 'post_row_actions', 'wplng_row_edit_translation_link', 10, 2 );
 
+		// Notice for obtaining the PRO version
+		add_action( 'admin_notices', 'wplng_admin_notice_get_pro_version', 1 );
+
 		/**
 		 * wplng_translation : CPT, taxo, meta
 		 */
