@@ -64,7 +64,9 @@ function wplng_redirect_translated_slug() {
  */
 function wplng_ob_start() {
 
-	if ( defined( 'DOING_AJAX' ) && DOING_AJAX ) {
+	if ( wp_doing_cron() ) {
+		return;
+	} elseif ( defined( 'DOING_AJAX' ) && DOING_AJAX ) {
 
 		/**
 		 * Is an AJAX call
