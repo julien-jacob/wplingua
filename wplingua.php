@@ -206,6 +206,9 @@ function wplng_start() {
 		add_filter( 'page_row_actions', 'wplng_row_edit_translation_link', 10, 2 );
 		add_filter( 'post_row_actions', 'wplng_row_edit_translation_link', 10, 2 );
 
+		// Notice for obtaining the PRO version
+		add_action( 'admin_notices', 'wplng_admin_notice_get_pro_version', 1 );
+
 		/**
 		 * wplng_translation : CPT, taxo, meta
 		 */
@@ -346,6 +349,9 @@ function wplng_start() {
 
 		// Redirect page if is called with an untranslate slug
 		add_action( 'template_redirect', 'wplng_redirect_translated_slug' );
+
+		// Translate WooCommerce cart URL
+		add_filter( 'woocommerce_get_cart_url', 'wplng_url_translate' );
 
 		/**
 		 * Generate JSON translation on the fly for wp-i18n.js
