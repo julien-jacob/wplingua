@@ -1,4 +1,4 @@
-=== wpLingua - Automatic translation - Translate and make website multilingual ===
+=== wpLingua - Automatic AI translation - Translate and Go multilingual ===
 Contributors: wpr0ck, lyly13, pierrelannoy, wplingua
 Donate link: https://wplingua.com/
 Tags: translate, translation, multilingual, localization, language
