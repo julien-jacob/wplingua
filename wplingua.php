@@ -7,7 +7,7 @@
  * Author URI: https://wplingua.com/
  * Text Domain: wplingua
  * Domain Path: /languages/
- * Version: 2.15.1
+ * Version: 2.15.2
  * Requires PHP: 7.4
  * License: GPL v2 or later
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -24,7 +24,7 @@ if ( ! defined( 'WPINC' ) ) {
 define( 'WPLNG_API_URL', 'https://api.wplingua.com' );
 define( 'WPLNG_API_VERSION', '3.0' );
 define( 'WPLNG_API_SSLVERIFY', true );
-define( 'WPLNG_PLUGIN_VERSION', '2.15.1' );
+define( 'WPLNG_PLUGIN_VERSION', '2.15.2' );
 define( 'WPLNG_PLUGIN_FILE', plugin_basename( __FILE__ ) );
 define( 'WPLNG_PLUGIN_DIR', __DIR__ );
 define( 'WPLNG_CACHE_DIR', WP_CONTENT_DIR . '/wplingua-cache' );
@@ -346,6 +346,9 @@ function wplng_start() {
 
 		// Redirect page if is called with an untranslate slug
 		add_action( 'template_redirect', 'wplng_redirect_translated_slug' );
+
+		// Translate WooCommerce cart URL
+		add_filter( 'woocommerce_get_cart_url', 'wplng_url_translate' );
 
 		/**
 		 * Generate JSON translation on the fly for wp-i18n.js

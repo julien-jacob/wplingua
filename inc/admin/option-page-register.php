@@ -298,7 +298,7 @@ function wplng_register_part_api_key( $api_key ) {
 		<hr>
 
 		<p>
-			<?php esc_html_e( 'If you already have an API key, enter it below. If you\'ve forgotten your website\'s API key, visit', 'wplingua' ); ?> <a href="https://wplingua.com/recovery/" target="_blank"><?php esc_html_e( 'the API key retrieval page', 'wplingua' ); ?></a>. 
+			<?php esc_html_e( 'If you already have an API key, enter it below. If you\'ve forgotten your website\'s API key, visit', 'wplingua' ); ?> <a href="https://wplingua.com/recovery/" target="_blank" rel="noopener noreferrer"><?php esc_html_e( 'the API key retrieval page', 'wplingua' ); ?></a>. 
 			<span title="<?php esc_attr_e( 'Click to expand', 'wplingua' ); ?>" wplng-help-box="#wplng-hb-api-key"></span>
 		</p>
 
@@ -440,7 +440,7 @@ function wplng_register_part_free_api_key() {
 		<fieldset>
 			<input type="checkbox" name="wplng-accept-eula" id="wplng-accept-eula">
 			<label for="wplng-accept-eula">
-				<strong><?php esc_html_e( 'I have read and accept the', 'wplingua' ); ?> <a href="https://wplingua.com/terms/" target="_blank"><?php esc_html_e( 'API terms of use', 'wplingua' ); ?></a> </strong>
+				<strong><?php esc_html_e( 'I have read and accept the', 'wplingua' ); ?> <a href="https://wplingua.com/terms/" target="_blank" rel="noopener noreferrer"><?php esc_html_e( 'API terms of use', 'wplingua' ); ?></a> </strong>
 			</label>
 		</fieldset>
 	</p>
@@ -486,6 +486,6 @@ function wplng_register_part_premium() {
 
 	<br>
 
-	<a class="button button-primary" href="https://wplingua.com/" target="_blank"><?php esc_html_e( 'Visit wpLingua website', 'wplingua' ); ?></a>
+	<a class="button button-primary" href="https://wplingua.com/" target="_blank" rel="noopener noreferrer"><?php esc_html_e( 'Visit wpLingua website', 'wplingua' ); ?></a>
 	<?php
 }

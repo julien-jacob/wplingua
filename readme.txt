@@ -1,10 +1,10 @@
-=== wpLingua - Automatic translation - Translate and make website multilingual ===
+=== wpLingua - Automatic AI translation - Translate and Go multilingual ===
 Contributors: wpr0ck, lyly13, pierrelannoy, wplingua
 Donate link: https://wplingua.com/
 Tags: translate, translation, multilingual, localization, language
 Requires at least: 6.0
-Tested up to: 7.0
-Stable tag: 2.15.1
+Tested up to: 7.1
+Stable tag: 2.15.2
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -197,6 +197,13 @@ Your server’s database holds all the translations locally.
 
 == Changelog ==
 
+= 2.15.2 =
+
+* Fix WooCommerce automatic cart redirect
+* Do not translate cron
+* Set "Tested up to" to 7.1
+* Add rel="noopener noreferrer" for all external links
+
 = 2.15.1 =
 
 * Dynamic management of the current URL anchor in language switchers
@@ -304,10 +311,6 @@ Your server’s database holds all the translations locally.
 
 * Change menu access capability from 'administrator' to 'edit_posts'
 * Add confetti effect on successful first loading
-
-= 2.12.2 =
-
-* Enhance JSON and HTML translation handling in AJAX callbacks with filter hooks
 
 
 All changelogs and previous versions of the wpLingua plugin are available on the releases page of the project's GitHub repo: [https://github.com/julien-jacob/wplingua/releases](https://github.com/julien-jacob/wplingua/releases).

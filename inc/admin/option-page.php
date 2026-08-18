@@ -225,7 +225,7 @@ function wplng_admin_footer_text( $text ) {
 		} else {
 			$text .= sprintf(
 				esc_html__( 'If you like wpLingua please leave us a %1$s rating. A huge thanks!', 'wplingua' ),
-				'<a href="https://wordpress.org/support/plugin/wplingua/reviews/?filter=5" target="_blank" class="wc-rating-link" aria-label="' . esc_attr__( 'five stars', 'wplingua' ) . '">&#9733;&#9733;&#9733;&#9733;&#9733;</a>'
+				'<a href="https://wordpress.org/support/plugin/wplingua/reviews/?filter=5" target="_blank" rel="noopener noreferrer" class="wc-rating-link" aria-label="' . esc_attr__( 'five stars', 'wplingua' ) . '">&#9733;&#9733;&#9733;&#9733;&#9733;</a>'
 			);
 		}
 	}
@@ -243,10 +243,10 @@ function wplng_admin_footer_text( $text ) {
 function wplng_update_footer( $text ) {
 
 	if ( wplng_is_wplingua_admin_page() ) {
-		$text  = '<a href="https://wplingua.com/" target="_blank">';
+		$text  = '<a href="https://wplingua.com/" target="_blank" rel="noopener noreferrer">';
 		$text .= 'wplingua.com';
 		$text .= '</a> | ';
-		$text .= '<a href="https://github.com/julien-jacob/wplingua" target="_blank">';
+		$text .= '<a href="https://github.com/julien-jacob/wplingua" target="_blank" rel="noopener noreferrer">';
 		$text .= 'GitHub';
 		$text .= '</a> | ';
 		$text .= esc_html__( 'Version', 'wplingua' );
