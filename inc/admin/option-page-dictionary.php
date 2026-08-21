@@ -24,6 +24,7 @@ function wplng_option_page_dictionary() {
 
 	<div class="wrap">
 		<hr class="wp-header-end">
+		<?php echo wplng_option_page_settings_menu(); ?>
 		<form id="wplng-option-dictionary-form" method="post" action="options.php">
 			<?php
 			settings_fields( 'wplng_dictionary' );

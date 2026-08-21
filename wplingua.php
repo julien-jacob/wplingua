@@ -175,6 +175,9 @@ function wplng_start() {
 
 		// Add menu in back office
 		add_action( 'admin_menu', 'wplng_create_menu' );
+		add_filter( 'parent_file', 'wplng_option_page_parent_file' );
+		add_filter( 'submenu_file', 'wplng_option_page_submenu_file' );
+		add_action( 'admin_head', 'wplng_option_page_hide_submenu' );
 
 		// Add admin Bar menu
 		add_action( 'admin_bar_menu', 'wplng_admin_bar_menu', 81 );
