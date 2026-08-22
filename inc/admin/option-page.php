@@ -338,12 +338,12 @@ function wplng_option_page_settings_menu( $display_none = false ) {
 		),
 		array(
 			'page'     => 'wplingua-dictionary',
-			'title'    => __( 'Exclusion', 'wplingua' ),
+			'title'    => __( 'Dictionary', 'wplingua' ),
 			'dashicon' => 'dashicons-filter',
 		),
 		array(
 			'page'     => 'wplingua-exclusions',
-			'title'    => __( 'Dictionary', 'wplingua' ),
+			'title'    => __( 'Exclusion', 'wplingua' ),
 			'dashicon' => 'dashicons-book',
 		),
 		array(
@@ -407,7 +407,7 @@ function wplng_admin_footer_text( $text ) {
 		} else {
 			$text .= sprintf(
 				esc_html__( 'If you like wpLingua please leave us a %1$s rating. A huge thanks!', 'wplingua' ),
-				'<a href="https://wordpress.org/support/plugin/wplingua/reviews/?filter=5" target="_blank" rel="noopener noreferrer" class="wc-rating-link" aria-label="' . esc_attr__( 'five stars', 'wplingua' ) . '">&#9733;&#9733;&#9733;&#9733;&#9733;</a>'
+				'<a href="https://wordpress.org/support/plugin/wplingua/reviews/?filter=5" target="_blank" rel="noopener noreferrer" aria-label="' . esc_attr__( 'five stars', 'wplingua' ) . '">&#9733;&#9733;&#9733;&#9733;&#9733;</a>'
 			);
 		}
 	}
