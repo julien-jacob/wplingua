@@ -106,9 +106,11 @@ function wplng_start() {
 		update_option( 'wplng_version', WPLNG_PLUGIN_VERSION, true );
 
 		// Clear all wpLingua cache
-		wplng_clear_translations_cache();
-		wplng_clear_slugs_cache();
+		delete_option( 'wplng_cached_translations' );
+		delete_option( 'wplng_cached_slugs' );
+		delete_option( 'wplng_api_key_data' );
 		wplng_clear_folder_cache();
+		wplng_clear_website_cache();
 
 		// Clear old cache method (version <= 2.12.3)
 		delete_transient( 'wplng_cached_translations' );
