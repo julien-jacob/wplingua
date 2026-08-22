@@ -89,7 +89,7 @@ function wplng_data_excluded_selector_default() {
 		'.tribe-event-date-start',
 
 		// Plugin: top-10
-		'tptn_counter',
+		'.tptn_counter',
 	);
 }
 
