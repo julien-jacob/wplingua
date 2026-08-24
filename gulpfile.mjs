@@ -147,6 +147,8 @@ function folder_create(cb) {
         "**",
         "!wplingua/",
         "!wplingua/**",
+        "!wiki/",
+        "!wiki/**",
         "!node_modules/",
         "!node_modules/**",
         "!src/",
