@@ -337,13 +337,13 @@ function wplng_option_page_settings_menu( $display_none = false ) {
 			'dashicon' => 'dashicons-admin-settings',
 		),
 		array(
-			'page'     => 'wplingua-dictionary',
-			'title'    => __( 'Dictionary', 'wplingua' ),
+			'page'     => 'wplingua-exclusions',
+			'title'    => __( 'Exclusion', 'wplingua' ),
 			'dashicon' => 'dashicons-filter',
 		),
 		array(
-			'page'     => 'wplingua-exclusions',
-			'title'    => __( 'Exclusion', 'wplingua' ),
+			'page'     => 'wplingua-dictionary',
+			'title'    => __( 'Dictionary', 'wplingua' ),
 			'dashicon' => 'dashicons-book',
 		),
 		array(
