@@ -1,4 +1,4 @@
-=== wpLingua - Automatic AI translation - Translate and Go multilingual ===
+=== Translate and Go multilingual - Automatic AI translation - wpLingua ===
 Contributors: wpr0ck, lyly13, pierrelannoy, wplingua
 Donate link: https://wplingua.com/
 Tags: translate, translation, multilingual, localization, language
@@ -9,7 +9,7 @@ Requires PHP: 7.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Make your websites multilingual and translate them automatically: no word limits, editable translations, SEO-friendly, no coding knowledge needed
+Translate and make your websites multilingual : no word limits, SEO-friendly, automatic translator, AI translation API and editable translations
 
 == Description ==
 
