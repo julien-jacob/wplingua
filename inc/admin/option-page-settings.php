@@ -40,6 +40,8 @@ function wplng_option_page_settings() {
 		$is_first = wplng_settings_part_first_use();
 		$form_css = '';
 
+		echo wplng_option_page_settings_menu( $is_first );
+
 		if ( $is_first ) {
 			$form_css = 'display: none !important;';
 		}
@@ -218,7 +220,7 @@ function wplng_settings_part_language_website() {
 	echo ' </strong>';
 	echo '</label>';
 	echo '</div>'; // End .wplng-flex-item
-	
+
 	echo '<div class="wplng-flex-item">';
 	echo '<select id="wplng_website_language" name="wplng_website_language" class="wplng-width-full">';
 	$website_language_saved = true;

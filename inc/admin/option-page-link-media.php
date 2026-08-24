@@ -21,6 +21,7 @@ function wplng_option_page_link_media() {
 
 	<div class="wrap">
 		<hr class="wp-header-end">
+		<?php echo wplng_option_page_settings_menu(); ?>
 		<form id="wplng-option-link-media-form" method="post" action="options.php">
 			<?php
 			settings_fields( 'wplng_link_media' );

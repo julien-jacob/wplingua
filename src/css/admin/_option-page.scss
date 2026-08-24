@@ -1,3 +1,7 @@
+// ------------------------------------------------------------------------
+// Layout class
+// ------------------------------------------------------------------------
+
 .wplng-flex-container {
 
     --wplng-flex-gap: 0.5rem;
@@ -49,12 +53,9 @@
     margin-bottom: 8px;
 }
 
-.wplng-tag-code {
-    min-height: 33.3px;
-    line-height: 2rem;
-    border-radius: 3px;
-    padding: 0 12px;
-}
+// ------------------------------------------------------------------------
+// Option page title
+// ------------------------------------------------------------------------
 
 .wplng-option-page-title {
     background-color: #f6f7f7;
@@ -74,6 +75,52 @@
         height: 1.1em;
     }
 }
+
+// ------------------------------------------------------------------------
+// Option page menu
+// ------------------------------------------------------------------------
+
+.wplng-option-page-menu {
+
+    ul {
+
+        text-align: center;
+        border-bottom: 1px solid #c3c4c7;
+        padding-bottom: 16px;
+
+        li {
+
+            display: inline-block;
+            padding: 0 10px;
+
+            a.button {
+
+                font-weight: 600;
+
+                .dashicons {
+                    margin-right: 4px;
+                    font-size: 1.2em;
+                    vertical-align: ideographic;
+                }
+            }
+        }
+    }
+}
+
+// ------------------------------------------------------------------------
+// Inline code tag
+// ------------------------------------------------------------------------
+
+.wplng-tag-code {
+    min-height: 33.3px;
+    line-height: 2rem;
+    border-radius: 3px;
+    padding: 0 12px;
+}
+
+// ------------------------------------------------------------------------
+// General elements design
+// ------------------------------------------------------------------------
 
 .button.wplng-icon-button {
 
@@ -120,11 +167,6 @@ body .wplng-form-table {
         }
     }
 
-
-
-    // .button, 
-    // .button-primary, 
-    // .button-secondary,
     select,
     input[type="date"],
     input[type="datetime-local"],
@@ -261,11 +303,9 @@ body .wplng-form-table {
 
 }
 
-
-// --------------------------------------------------------------
+// ------------------------------------------------------------------------
 // Hide other plusgins ads and notices
-// --------------------------------------------------------------
-
+// ------------------------------------------------------------------------
 
 // Plugin: /backup-backup/
 #nri-slug-wrapper,

@@ -7,7 +7,7 @@
  * Author URI: https://wplingua.com/
  * Text Domain: wplingua
  * Domain Path: /languages/
- * Version: 2.15.2
+ * Version: 2.16.0
  * Requires PHP: 7.4
  * License: GPL v2 or later
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -24,7 +24,7 @@ if ( ! defined( 'WPINC' ) ) {
 define( 'WPLNG_API_URL', 'https://api.wplingua.com' );
 define( 'WPLNG_API_VERSION', '3.0' );
 define( 'WPLNG_API_SSLVERIFY', true );
-define( 'WPLNG_PLUGIN_VERSION', '2.15.2' );
+define( 'WPLNG_PLUGIN_VERSION', '2.16.0' );
 define( 'WPLNG_PLUGIN_FILE', plugin_basename( __FILE__ ) );
 define( 'WPLNG_PLUGIN_DIR', __DIR__ );
 define( 'WPLNG_CACHE_DIR', WP_CONTENT_DIR . '/wplingua-cache' );
@@ -106,9 +106,11 @@ function wplng_start() {
 		update_option( 'wplng_version', WPLNG_PLUGIN_VERSION, true );
 
 		// Clear all wpLingua cache
-		wplng_clear_translations_cache();
-		wplng_clear_slugs_cache();
+		delete_option( 'wplng_cached_translations' );
+		delete_option( 'wplng_cached_slugs' );
+		delete_option( 'wplng_api_key_data' );
 		wplng_clear_folder_cache();
+		wplng_clear_website_cache();
 
 		// Clear old cache method (version <= 2.12.3)
 		delete_transient( 'wplng_cached_translations' );
@@ -175,6 +177,9 @@ function wplng_start() {
 
 		// Add menu in back office
 		add_action( 'admin_menu', 'wplng_create_menu' );
+		add_filter( 'parent_file', 'wplng_option_page_parent_file' );
+		add_filter( 'submenu_file', 'wplng_option_page_submenu_file' );
+		add_action( 'admin_head', 'wplng_option_page_hide_submenu' );
 
 		// Add admin Bar menu
 		add_action( 'admin_bar_menu', 'wplng_admin_bar_menu', 81 );

@@ -1,15 +1,15 @@
-=== wpLingua - Automatic AI translation - Translate and Go multilingual ===
+=== Translate and Go multilingual - Automatic AI translation - wpLingua ===
 Contributors: wpr0ck, lyly13, pierrelannoy, wplingua
 Donate link: https://wplingua.com/
 Tags: translate, translation, multilingual, localization, language
 Requires at least: 6.0
 Tested up to: 7.1
-Stable tag: 2.15.2
+Stable tag: 2.16.0
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Make your websites multilingual and translate them automatically: no word limits, editable translations, SEO-friendly, no coding knowledge needed
+Translate and make your websites multilingual : no word limits, SEO-friendly, automatic translator, AI translation API and editable translations
 
 == Description ==
 
@@ -197,8 +197,15 @@ Your server’s database holds all the translations locally.
 
 == Changelog ==
 
-= 2.15.2 =
+= 2.16.0 = 
 
+* New option pages management for settings
+ * Redesigned the settings navigation in the WordPress admin.
+ * Consolidated wpLingua settings under a single Settings menu entry.
+ * Added navigation between the different settings pages.
+* Optimize clearing cache system on plugin update
+
+= 2.15.2 =
 * Fix WooCommerce automatic cart redirect
 * Do not translate cron
 * Set "Tested up to" to 7.1
@@ -306,11 +313,6 @@ Your server’s database holds all the translations locally.
  * Slug sanitization and decoding in `wplng_create_slug()`
  * Removed incorrect `esc_attr` from `wplng_get_switcher_class()` return value
  * `wplng_save_translation()` now returns the result of save or update operations
-
-= 2.12.3 =
-
-* Change menu access capability from 'administrator' to 'edit_posts'
-* Add confetti effect on successful first loading
 
 
 All changelogs and previous versions of the wpLingua plugin are available on the releases page of the project's GitHub repo: [https://github.com/julien-jacob/wplingua/releases](https://github.com/julien-jacob/wplingua/releases).

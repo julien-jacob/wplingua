@@ -14,6 +14,9 @@
 #              https://wplingua.com/
 # -------------------------------------------------
 
+# Wiki folder
+/wiki/
+
 # Assets: Images, CSS and JS
 /assets/
 

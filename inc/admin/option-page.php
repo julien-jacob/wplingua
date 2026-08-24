@@ -7,107 +7,6 @@ if ( ! defined( 'WPINC' ) ) {
 
 
 /**
- * Add wpLingua admin menu when API Key is not registered
- *
- * @return void
- */
-function wplng_create_menu_register() {
-
-	add_menu_page(
-		__( 'wpLingua: Register', 'wplingua' ),
-		__( 'wpLingua', 'wplingua' ),
-		'edit_posts',
-		'wplingua-settings',
-		'wplng_option_page_register',
-		'dashicons-translation',
-		31
-	);
-}
-
-
-/**
- * Add wpLingua admin menu when key is registered
- *
- * @return void
- */
-function wplng_create_menu() {
-
-	add_menu_page(
-		__( 'wpLingua: Settings', 'wplingua' ),
-		__( 'wpLingua', 'wplingua' ),
-		'edit_posts',
-		'wplingua-settings',
-		'',
-		'dashicons-translation',
-		31
-	);
-
-	add_submenu_page(
-		'wplingua-settings',
-		__( 'wpLingua: Settings', 'wplingua' ),
-		__( 'General settings', 'wplingua' ),
-		'edit_posts',
-		'wplingua-settings',
-		'wplng_option_page_settings'
-	);
-
-	add_submenu_page(
-		'wplingua-settings',
-		__( 'wpLingua: Switcher', 'wplingua' ),
-		__( 'Switcher', 'wplingua' ),
-		'edit_posts',
-		'wplingua-switcher',
-		'wplng_option_page_switcher'
-	);
-
-	add_submenu_page(
-		'wplingua-settings',
-		__( 'wpLingua: Exclusion', 'wplingua' ),
-		__( 'Exclusion', 'wplingua' ),
-		'edit_posts',
-		'wplingua-exclusions',
-		'wplng_option_page_exclusions'
-	);
-
-	add_submenu_page(
-		'wplingua-settings',
-		__( 'wpLingua: Dictionary', 'wplingua' ),
-		__( 'Dictionary', 'wplingua' ),
-		'edit_posts',
-		'wplingua-dictionary',
-		'wplng_option_page_dictionary'
-	);
-
-	add_submenu_page(
-		'wplingua-settings',
-		__( 'wplingua: Links & Medias', 'wplingua' ),
-		__( 'Links & Medias', 'wplingua' ),
-		'edit_posts',
-		'wplingua-link-media',
-		'wplng_option_page_link_media'
-	);
-
-	add_submenu_page(
-		'wplingua-settings',
-		__( 'wpLingua: Website slugs', 'wplingua' ),
-		__( 'Website slugs', 'wplingua' ),
-		'edit_posts',
-		'edit.php?post_type=wplng_slug',
-		false
-	);
-
-	add_submenu_page(
-		'wplingua-settings',
-		__( 'wpLingua: Translations', 'wplingua' ),
-		__( 'All translations', 'wplingua' ),
-		'edit_posts',
-		'edit.php?post_type=wplng_translation',
-		false
-	);
-}
-
-
-/**
  * Register wpLingua settings
  *
  * @return void
@@ -144,6 +43,30 @@ function wplng_register_settings() {
 
 	// Option page : Links & Medias
 	register_setting( 'wplng_link_media', 'wplng_link_media_entries' );
+}
+
+
+/**
+ * Determine whether the current page is one of
+ * wpLingua's hidden option pages.
+ */
+function wplng_is_wplingua_settings_page() {
+
+    if ( empty( $_GET['page'] ) ) {
+        return false;
+    }
+
+    return in_array(
+        sanitize_key( $_GET['page'] ),
+        array(
+            'wplingua-settings',
+            'wplingua-switcher',
+            'wplingua-exclusions',
+            'wplingua-dictionary',
+            'wplingua-link-media',
+        ),
+        true
+    );
 }
 
 
@@ -209,6 +132,265 @@ function wplng_is_wplingua_admin_page() {
 
 
 /**
+ * Add wpLingua admin menu when API Key is not registered
+ *
+ * @return void
+ */
+function wplng_create_menu_register() {
+
+	add_menu_page(
+		__( 'wpLingua: Register', 'wplingua' ),
+		__( 'wpLingua', 'wplingua' ),
+		'edit_posts',
+		'wplingua-settings',
+		'wplng_option_page_register',
+		'dashicons-translation',
+		31
+	);
+}
+
+
+/**
+ * Create wpLingua admin menu.
+ */
+function wplng_create_menu() {
+
+    /*
+     * Main wpLingua menu
+     */
+    add_menu_page(
+        __( 'wpLingua: Settings', 'wplingua' ),
+        __( 'wpLingua', 'wplingua' ),
+        'edit_posts',
+        'wplingua-settings',
+        '',
+        'dashicons-translation',
+        31
+    );
+
+
+    /*
+     * Settings
+     *
+     * This is the visible entry used as the parent
+     * for all wpLingua option pages.
+     */
+    add_submenu_page(
+        'wplingua-settings',
+        __( 'wpLingua: Settings', 'wplingua' ),
+        __( 'Settings', 'wplingua' ),
+        'edit_posts',
+        'wplingua-settings',
+        'wplng_option_page_settings'
+    );
+
+
+    /*
+     * Hidden option pages
+     *
+     * These pages remain registered as children of
+     * wplingua-settings, but their menu entries are
+     * hidden later with CSS.
+     */
+
+    add_submenu_page(
+        'wplingua-settings',
+        __( 'wpLingua: Switcher', 'wplingua' ),
+        __( 'Switcher', 'wplingua' ),
+        'edit_posts',
+        'wplingua-switcher',
+        'wplng_option_page_switcher'
+    );
+
+    add_submenu_page(
+        'wplingua-settings',
+        __( 'wpLingua: Exclusion', 'wplingua' ),
+        __( 'Exclusion', 'wplingua' ),
+        'edit_posts',
+        'wplingua-exclusions',
+        'wplng_option_page_exclusions'
+    );
+
+    add_submenu_page(
+        'wplingua-settings',
+        __( 'wpLingua: Dictionary', 'wplingua' ),
+        __( 'Dictionary', 'wplingua' ),
+        'edit_posts',
+        'wplingua-dictionary',
+        'wplng_option_page_dictionary'
+    );
+
+    add_submenu_page(
+        'wplingua-settings',
+        __( 'wplingua: Links & Medias', 'wplingua' ),
+        __( 'Links & Medias', 'wplingua' ),
+        'edit_posts',
+        'wplingua-link-media',
+        'wplng_option_page_link_media'
+    );
+
+
+    /*
+     * Visible custom post type pages
+     */
+
+    add_submenu_page(
+        'wplingua-settings',
+        __( 'wpLingua: Website slugs', 'wplingua' ),
+        __( 'Website slugs', 'wplingua' ),
+        'edit_posts',
+        'edit.php?post_type=wplng_slug',
+        false
+    );
+
+    add_submenu_page(
+        'wplingua-settings',
+        __( 'wpLingua: Translations', 'wplingua' ),
+        __( 'All translations', 'wplingua' ),
+        'edit_posts',
+        'edit.php?post_type=wplng_translation',
+        false
+    );
+}
+
+
+/**
+ * Keep wpLingua as the active parent menu
+ * on all wpLingua option pages.
+ *
+ * @param string $parent_file The current parent menu file.
+ *
+ * @return string The parent menu file.
+ */
+function wplng_option_page_parent_file( $parent_file ) {
+
+    if ( wplng_is_wplingua_settings_page() ) {
+        return 'wplingua-settings';
+    }
+
+    return $parent_file;
+}
+
+
+/**
+ * Keep "Settings" as the active submenu
+ * on all wpLingua option pages.
+ *
+ * @param string $submenu_file The current submenu file.
+ *
+ * @return string The submenu file.
+ */
+function wplng_option_page_submenu_file( $submenu_file ) {
+
+    if ( wplng_is_wplingua_settings_page() ) {
+        return 'wplingua-settings';
+    }
+
+    return $submenu_file;
+}
+
+
+/**
+ * Hide the option pages from the wpLingua submenu.
+ *
+ * The pages themselves remain registered in WordPress.
+ * Therefore, they are still accessible directly by URL
+ * and remain correctly associated with the wpLingua menu.
+ */
+function wplng_option_page_hide_submenu() {
+
+	$css = '<style>';
+	$css .= '#adminmenu .wp-submenu a[href*="page=wplingua-switcher"], ';
+	$css .= '#adminmenu .wp-submenu a[href*="page=wplingua-exclusions"], ';
+	$css .= '#adminmenu .wp-submenu a[href*="page=wplingua-dictionary"], ';
+	$css .= '#adminmenu .wp-submenu a[href*="page=wplingua-link-media"] {';
+	$css .= 'display: none;';
+	$css .= '}';
+	$css .= '</style>';
+
+	echo $css;
+}
+
+
+
+/**
+ * Generates the navigation menu for wpLingua option pages.
+ *
+ * Creates a list of links to the different wpLingua settings pages,
+ * highlighting the current page with the `button-primary` class.
+ *
+ * @param bool $display_none Whether to hide the menu by default.
+ *
+ * @return string The HTML markup for the option pages navigation menu.
+ */
+function wplng_option_page_settings_menu( $display_none = false ) {
+
+	$data = array(
+		array(
+			'page'     => 'wplingua-settings',
+			'title'    => __( 'General settings', 'wplingua' ),
+			'dashicon' => 'dashicons-admin-generic',
+		),
+		array(
+			'page'     => 'wplingua-switcher',
+			'title'    => __( 'Language switcher', 'wplingua' ),
+			'dashicon' => 'dashicons-admin-settings',
+		),
+		array(
+			'page'     => 'wplingua-exclusions',
+			'title'    => __( 'Exclusion', 'wplingua' ),
+			'dashicon' => 'dashicons-filter',
+		),
+		array(
+			'page'     => 'wplingua-dictionary',
+			'title'    => __( 'Dictionary', 'wplingua' ),
+			'dashicon' => 'dashicons-book',
+		),
+		array(
+			'page'     => 'wplingua-link-media',
+			'title'    => __( 'Links & Medias', 'wplingua' ),
+			'dashicon' => 'dashicons-format-gallery',
+		),
+	);
+
+	$style = '';
+	if ( $display_none === true ) {
+		$style = ' style="display: none;"';
+	}
+
+	$html  = '<div class="wplng-option-page-menu"' . $style . '>';
+	$html .= '<ul>';
+
+	foreach ( $data as $value ) {
+
+		$url = add_query_arg(
+			'page',
+			$value['page'],
+			admin_url( 'admin.php' )
+		);
+
+		$class_attr = '';
+		if ( $_GET['page'] === $value['page'] ) {
+			$class_attr = ' button-primary';
+		}
+
+		$html .= '<li>';
+		$html .= '<a href="' . esc_url( $url ) . '" class="button' . $class_attr . '">';
+		$html .= '<span class="dashicons ' . esc_attr( $value['dashicon'] ) . '">';
+		$html .= '</span> ';
+		$html .= esc_html( $value['title'] );
+		$html .= '</a>';
+		$html .= '</li>';
+	}
+
+	$html .= '</ul>';
+	$html .= '</div>'; // End .wplng-option-page-menu
+
+	return $html;
+}
+
+
+/**
  * Customize the admin footer text displayed on wpLingua option pages.
  *
  * @param string $text The default footer text.
@@ -225,7 +407,7 @@ function wplng_admin_footer_text( $text ) {
 		} else {
 			$text .= sprintf(
 				esc_html__( 'If you like wpLingua please leave us a %1$s rating. A huge thanks!', 'wplingua' ),
-				'<a href="https://wordpress.org/support/plugin/wplingua/reviews/?filter=5" target="_blank" rel="noopener noreferrer" class="wc-rating-link" aria-label="' . esc_attr__( 'five stars', 'wplingua' ) . '">&#9733;&#9733;&#9733;&#9733;&#9733;</a>'
+				'<a href="https://wordpress.org/support/plugin/wplingua/reviews/?filter=5" target="_blank" rel="noopener noreferrer" aria-label="' . esc_attr__( 'five stars', 'wplingua' ) . '">&#9733;&#9733;&#9733;&#9733;&#9733;</a>'
 			);
 		}
 	}
@@ -466,8 +648,8 @@ function wplng_admin_notice_incompatible_multisite() {
 	// Advanced users can bypass the multisite incompatibility notice by
 	// returning true to this filter. Note that bypassing does NOT make
 	// wpLingua officially compatible with multisite installations.
-	if ( ! is_multisite() 
-		|| apply_filters( 'wplng_bypass_multisite_incompatibility', false ) 
+	if ( ! is_multisite()
+		|| apply_filters( 'wplng_bypass_multisite_incompatibility', false )
 	) {
 		return;
 	}

@@ -18,6 +18,7 @@ function wplng_option_page_exclusions() {
 
 	<div class="wrap">
 		<hr class="wp-header-end">
+		<?php echo wplng_option_page_settings_menu(); ?>
 		<form method="post" action="options.php">
 			<?php
 			settings_fields( 'wplng_exclusions' );

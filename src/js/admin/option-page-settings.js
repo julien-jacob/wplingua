@@ -92,7 +92,9 @@ jQuery(document).ready(function ($) {
                 $("#wplng-notice-first-loading-loaded").slideDown();
                 wplngLaunchConfetti();
                 $("#wplng-option-settings-form").slideDown();
+                $(".wplng-option-page-menu").slideDown();
                 $("#toplevel_page_wplingua-settings .wp-submenu-wrap").slideDown();
+                
             })();
         }
 
