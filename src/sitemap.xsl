@@ -224,7 +224,7 @@
 
                 <div class="credit">
                     Multilingual XML Sitemap powered by 
-                    <a href="https://wplingua.com" target="_blank"rel="noopener noreferrer">wpLingua</a>
+                    <a href="https://wplingua.com" target="_blank" rel="noopener noreferrer">wpLingua</a>
                 </div>
             </body>
         </html>
