@@ -456,25 +456,3 @@ function wplng_post_row_actions_translation_status( $actions, $post ) {
 
 	return $actions;
 }
-
-
-/**
- * Add inline CSS for status on translations
- *
- * @return void
- */
-function wplng_translation_status_style() {
-
-	global $typenow;
-
-	if ( 'wplng_translation' !== $typenow ) {
-		return;
-	}
-
-	?>
-	<style>
-
-		
-	</style>
-	<?php
-}
