@@ -839,16 +839,14 @@ function wplng_admin_notice_incompatible_plain_permalink() {
  */
 function wplng_admin_notice_get_pro_version() {
 
-	if ( ! wplng_is_wplingua_admin_page() 
-		|| is_plugin_active( 'wplingua-pro/wplingua-pro.php' )
-	) {
+	if ( is_plugin_active( 'wplingua-pro/wplingua-pro.php' ) ) {
 		return;
 	}
 
 	$data = wplng_get_api_data();
 	
 	if ( empty( $data['status'] ) 
-		|| $data['status'] !== 'FREE'
+		|| $data['status'] === 'FREE'
 	) {
 		return;
 	}
@@ -868,7 +866,7 @@ function wplng_admin_notice_get_pro_version() {
 	$html .= '<p>';
 	$html .= esc_html__( 'Download and install wpLingua PRO to access the features included with your wpLingua plan.', 'wplingua' );
 	$html .= '</p>';
-	// $html .= '<hr>';
+
 	$html .= '<br>';
 	$html .= '<a';
 	$html .= ' href="https://wplingua.com/download/"';
