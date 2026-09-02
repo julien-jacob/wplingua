@@ -434,47 +434,19 @@ function wplng_post_row_actions_translation_status( $actions, $post ) {
 
 	$html = esc_html__( 'Translation status: ', 'wplingua' );
 
-	$html .= '<span';
-	$html .= ' class="wplng-status wplng-status-full-review"';
-	$html .= '>';
+	$html .= '<span class="wplng-status wplng-status-full-review">';
 	$html .= esc_html__( 'Full reviewed', 'wplingua' );
 	$html .= '</span>';
 
-	$html .= '<span';
-	$html .= ' class="wplng-status wplng-status-has-review"';
-	$html .= '>';
+	$html .= '<span class="wplng-status wplng-status-has-review">';
 	$html .= esc_html__( 'Partially reviewed', 'wplingua' );
 	$html .= '</span>';
 
-	$html .= '<span';
-	$html .= ' class="wplng-status wplng-status-unreview"';
-	$html .= '>';
+	$html .= '<span class="wplng-status wplng-status-unreview">';
 	$html .= esc_html__( 'Unreviewed', 'wplingua' );
 	$html .= '</span>';
 
 	$actions['wplng-status-text'] = $html;
 
 	return $actions;
-}
-
-
-/**
- * Add inline CSS for status on translations
- *
- * @return void
- */
-function wplng_translation_status_style() {
-
-	global $typenow;
-
-	if ( 'wplng_translation' !== $typenow ) {
-		return;
-	}
-
-	?>
-	<style>
-
-		
-	</style>
-	<?php
 }

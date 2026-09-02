@@ -827,3 +827,56 @@ function wplng_admin_notice_incompatible_plain_permalink() {
 
 	echo $html;
 }
+
+
+/**
+ * Display a notice for obtaining the PRO version of the plugin
+ * - Only for non free user
+ * - Only on wpLingua option's pages
+ * - Only if PRO plugin not already activated
+ *
+ * @return void|string Outputs the admin notice if applicable, or returns void if no notice is required.
+ */
+function wplng_admin_notice_get_pro_version() {
+
+	if ( is_plugin_active( 'wplingua-pro/wplingua-pro.php' ) ) {
+		return;
+	}
+
+	$data = wplng_get_api_data();
+	
+	if ( empty( $data['status'] ) 
+		|| $data['status'] === 'FREE'
+	) {
+		return;
+	}
+
+	$html  = '<div';
+	$html .= ' class="wplng-notice notice notice-warning is-dismissible"';
+	$html .= ' style="text-align: center;"';
+	$html .= '>';
+	$html .= '<p style="font-weight: 600;">';
+	$html .= '<span class="dashicons dashicons-translation"></span> ';
+	$html .= esc_html__( 'wpLingua - Unlock PRO Features', 'wplingua' );
+	$html .= '</p>';
+	$html .= '<hr>';
+	$html .= '<p>';
+	$html .= esc_html__( 'Extend wpLingua with additional features and advanced translation capabilities.', 'wplingua' );
+	$html .= '</p>';
+	$html .= '<p>';
+	$html .= esc_html__( 'Download and install wpLingua PRO to access the features included with your wpLingua plan.', 'wplingua' );
+	$html .= '</p>';
+
+	$html .= '<br>';
+	$html .= '<a';
+	$html .= ' href="https://wplingua.com/download/"';
+	$html .= ' target="_blank"';
+	$html .= ' rel="noopener noreferrer"';
+	$html .= ' class="button button-primary"';
+	$html .= '>';
+	$html .= esc_html__( 'wpLingua.com : Download PRO plugin', 'wplingua' );
+	$html .= '</a>';
+	$html .= '</div>'; // End .notice
+
+	echo $html;
+}

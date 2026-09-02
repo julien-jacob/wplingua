@@ -174,8 +174,8 @@ function wplng_dom_load_progress( $dom, $args ) {
 	$texts_unknow_by_chunk = array();
 	$current_chunk         = array();
 	$current_chars         = 0;
-	$max_items_per_chunk   = (int) ( WPLNG_MAX_TRANSLATIONS_STR / 2 );
-	$max_chars_per_chunk   = (int) ( WPLNG_MAX_TRANSLATIONS_CHAR / 2 );
+	$max_items_per_chunk   = (int) ( WPLNG_MAX_TRANSLATIONS_STR / 4 );
+	$max_chars_per_chunk   = (int) ( WPLNG_MAX_TRANSLATIONS_CHAR / 4 );
 
 	foreach ( $args['texts_unknow'] as $text_unknow ) {
 
@@ -203,6 +203,9 @@ function wplng_dom_load_progress( $dom, $args ) {
 		$current_chunk[] = wplng_encryption_encrypt( $text );
 		$current_chars  += $len;
 		++$numer_of_translated_texts;
+
+		$max_items_per_chunk   = (int) ( WPLNG_MAX_TRANSLATIONS_STR / 2 );
+		$max_chars_per_chunk   = (int) ( WPLNG_MAX_TRANSLATIONS_CHAR / 2 );
 	}
 
 	// Push last chunk if any

@@ -292,8 +292,6 @@ function wplng_posts_filter_slug_status( $query ) {
 }
 
 
-
-
 /**
  * Add status custom column on translations
  *
