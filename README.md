@@ -27,6 +27,12 @@ An all-in-one solution that makes your websites multilingual and translates them
 
 **The project website - [wpLingua.com](https://wplingua.com)**
 
+<hr>
+
+**Developer documentation: - [github.com/julien-jacob/wplingua/wiki](https://github.com/julien-jacob/wplingua/wiki)**
+
+**User documentation: - [wplingua.com/documentation/](https://wplingua.com/documentation/)**
+
 <hr><br><br>
 
 ## 🚀 Optimized for international search engines (SEO)
