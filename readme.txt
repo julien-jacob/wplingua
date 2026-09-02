@@ -4,7 +4,7 @@ Donate link: https://wplingua.com/
 Tags: translate, translation, multilingual, localization, language
 Requires at least: 6.0
 Tested up to: 7.1
-Stable tag: 2.16.2
+Stable tag: 2.16.3
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -197,6 +197,11 @@ Your server’s database holds all the translations locally.
 
 == Changelog ==
 
+= 2.16.3 =
+
+* Smoother load in progress mode
+* Some code review
+
 = 2.16.2 =
 
 * Fix wpLingua sitemap design (BETA feature)
@@ -258,27 +263,6 @@ Your server’s database holds all the translations locally.
 
 * New language supported: Norwegian
 * Tested up to WordPress version 7.0
-
-= 2.13.1 =
-
-* Improvement:
- * Update option page design for WordPress 7.0 compatibility (flex layout)
- * Enhance CodeMirror editor settings and styles for better usability in option page switcher
- * Prevent duplicate excluded elements in DOM processing
- * Refactor exclusion tag processing to streamline checks
- * Refactor selector sanitization and ensure filters return an array
- * Refactor attribute setting for translated links and media URLs for improved readability
- * Hide advanced-post-block admin notice
-* Fix:
- * Fix translation text retrieval in `wplng_dom_translate_nodes_texts` function
- * Update HTML entity decoding to use `ENT_HTML5` for improved compatibility across attribute, JSON and HTML translators
- * Fix regex pattern in i18n script JSON parsing to correctly match quotes
- * Fix regex pattern in i18n script translation and adjust return value in function call translation
- * Fix exclusion check in JSON translation to use the correct element
- * Fix body class assignment in editor mode and list mode
- * Fix body element selector in body class modification
- * Fix translation domain in close button title for overload notification
- * Improve error handling in AJAX overload function
 
 
 All changelogs and previous versions of the wpLingua plugin are available on the releases page of the project's GitHub repo: [https://github.com/julien-jacob/wplingua/releases](https://github.com/julien-jacob/wplingua/releases).
