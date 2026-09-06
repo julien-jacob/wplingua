@@ -4,7 +4,7 @@ Donate link: https://wplingua.com/
 Tags: translate, translation, multilingual, localization, language
 Requires at least: 6.0
 Tested up to: 7.1
-Stable tag: 2.16.3
+Stable tag: 2.16.4
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -197,6 +197,13 @@ Your server’s database holds all the translations locally.
 
 == Changelog ==
 
+= 2.16.4 =
+
+* Added guidance on using a reliable email address to receive the API key
+* Added a warning about potential email filtering by some hosting providers
+* Added an option to request a new API key using a different email address if the email is not received
+* Improved link visibility by underlining certain links for better UX
+
 = 2.16.3 =
 
 * Smoother load in progress mode
@@ -258,11 +265,6 @@ Your server’s database holds all the translations locally.
  * Theme: GeneratePress
  * Plugin: advanced-post-block
  * Plugin: top-10
-
-= 2.14.0 =
-
-* New language supported: Norwegian
-* Tested up to WordPress version 7.0
 
 
 All changelogs and previous versions of the wpLingua plugin are available on the releases page of the project's GitHub repo: [https://github.com/julien-jacob/wplingua/releases](https://github.com/julien-jacob/wplingua/releases).
