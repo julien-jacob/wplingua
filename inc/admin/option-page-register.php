@@ -123,10 +123,7 @@ function wplng_option_page_register() {
 			?>
 			<table class="form-table wplng-form-table">
 
-				<?php
-				// Display success message if an API key was created and sent via email
-				if ( ! empty( $mail ) ) :
-					?>
+				<?php if ( ! empty( $mail ) ) : ?>
 
 				<tr>
 					<th scope="row"><span class="dashicons dashicons-yes-alt"></span> <?php esc_html_e( 'API key created', 'wplingua' ); ?></th>
@@ -145,6 +142,31 @@ function wplng_option_page_register() {
 						<p>
 							<?php esc_html_e( 'Go to your mailbox and copy the API key sent to you (don\'t forget to check the spam section of your mailbox). Then paste it in the section below, and click "Set API key" to make your website multilingual.', 'wplingua' ); ?>
 						</p>
+
+						<?php if ( ! wplng_str_ends_with( $mail, '@gmail.com' ) ) : ?>
+						<hr>
+						<p>
+							<strong><?php esc_html_e( 'Please note:', 'wplingua' ); ?></strong>
+							<?php
+							printf(
+								/* translators: %s: link to request a new API key */
+								wp_kses(
+									__( 'Some web hosting providers may block or prevent emails from reaching your mailbox. If you don\'t receive the email, please %s using a different email address, such as a Gmail address.', 'wplingua' ),
+									array(
+										'a' => array(
+											'href'  => array(),
+											'style' => array(),
+										),
+									)
+								),
+								'<a href="' . esc_url( admin_url( 'admin.php?page=wplingua-settings' ) ) . '" style="text-decoration: underline;">' .
+									esc_html__( 'try requesting a new API key', 'wplingua' ) .
+								'</a>'
+							);
+							?>
+						</p>
+						<?php endif; ?>
+
 					</td>
 				</tr>
 
@@ -377,6 +399,7 @@ function wplng_register_part_free_api_key() {
 	</fieldset>
 
 	<div class="wplng-help-box wplng-spacing-top" id="wplng-hb-register-email">
+		<p><?php esc_html_e( 'For better reliability, we recommend using a personal email address such as Gmail, as some hosting providers may filter or block emails sent by external services.', 'wplingua' ); ?></p>
 		<p><?php esc_html_e( 'The email address is detected and pre-filled. This is the administrative email address entered in the Settings ➔ General tab. You can use another email address used to receive your API key.', 'wplingua' ); ?></p>
 	</div>
 
@@ -440,7 +463,7 @@ function wplng_register_part_free_api_key() {
 		<fieldset>
 			<input type="checkbox" name="wplng-accept-eula" id="wplng-accept-eula">
 			<label for="wplng-accept-eula">
-				<strong><?php esc_html_e( 'I have read and accept the', 'wplingua' ); ?> <a href="https://wplingua.com/terms/" target="_blank" rel="noopener noreferrer"><?php esc_html_e( 'API terms of use', 'wplingua' ); ?></a> </strong>
+				<strong><?php esc_html_e( 'I have read and accept the', 'wplingua' ); ?> <a href="https://wplingua.com/terms/" target="_blank" rel="noopener noreferrer" style="text-decoration: underline;"><?php esc_html_e( 'API terms of use', 'wplingua' ); ?></a> </strong>
 			</label>
 		</fieldset>
 	</p>
