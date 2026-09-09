@@ -4,7 +4,7 @@ Donate link: https://wplingua.com/
 Tags: ai translation, automatic translation, multilingual, translate, translation
 Requires at least: 6.0
 Tested up to: 7.1
-Stable tag: 2.16.4
+Stable tag: 2.16.5
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -197,6 +197,10 @@ Your server’s database holds all the translations locally.
 
 == Changelog ==
 
+= 2.16.5 =
+
+* Update plugin translations for all supported languages
+
 = 2.16.4 =
 
 * Added guidance on using a reliable email address to receive the API key
@@ -257,14 +261,6 @@ Your server’s database holds all the translations locally.
 = 2.14.2 =
 
 * Quick fix for API proxy
-
-= 2.14.1 =
-
-* Improve compatibility:
- * Theme: Bricks
- * Theme: GeneratePress
- * Plugin: advanced-post-block
- * Plugin: top-10
 
 
 All changelogs and previous versions of the wpLingua plugin are available on the releases page of the project's GitHub repo: [https://github.com/julien-jacob/wplingua/releases](https://github.com/julien-jacob/wplingua/releases).
