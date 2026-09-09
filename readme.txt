@@ -1,7 +1,7 @@
 === Translate and Go multilingual - Automatic AI translation - wpLingua ===
 Contributors: wpr0ck, lyly13, pierrelannoy, wplingua
 Donate link: https://wplingua.com/
-Tags: translate, translation, multilingual, localization, language
+Tags: ai translation, automatic translation, multilingual, translate, translation
 Requires at least: 6.0
 Tested up to: 7.1
 Stable tag: 2.16.4
