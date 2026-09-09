@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: wpLingua\n"
-"POT-Creation-Date: 2026-04-28 16:26+0200\n"
-"PO-Revision-Date: 2026-04-28 18:35+0200\n"
+"POT-Creation-Date: 2026-09-07 14:21+0200\n"
+"PO-Revision-Date: 2026-09-07 16:38+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: sv_SE\n"
@@ -19,519 +19,527 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: *.min.js\n"
 
-#: data/language.php:57
+#: data/language.php:58
 msgid "Arabic"
 msgstr "Arabiska"
 
-#: data/language.php:64 data/language.php:219
+#: data/language.php:65 data/language.php:221
 msgid "Global"
 msgstr "Global"
 
-#: data/language.php:69
+#: data/language.php:70
 msgid "Egypt"
 msgstr "Egypten"
 
-#: data/language.php:74
+#: data/language.php:75
 msgid "Saudi Arabia"
 msgstr "Saudiarabien"
 
-#: data/language.php:79
+#: data/language.php:80
 msgid "Algeria"
 msgstr "Algeriet"
 
-#: data/language.php:84
+#: data/language.php:85
 msgid "Bahrain"
 msgstr "Bahrain"
 
-#: data/language.php:89
+#: data/language.php:90
 msgid "Chad"
 msgstr "Tchad"
 
-#: data/language.php:94
+#: data/language.php:95
 msgid "Comoros"
 msgstr "Komorerna"
 
-#: data/language.php:99
+#: data/language.php:100
 msgid "Djibouti"
 msgstr "Djibouti"
 
-#: data/language.php:104
+#: data/language.php:105
 msgid "Iraq"
 msgstr "Irak"
 
-#: data/language.php:109
+#: data/language.php:110
 msgid "Jordan"
 msgstr "Jordanien"
 
-#: data/language.php:114
+#: data/language.php:115
 msgid "Kuwait"
 msgstr "Kuwait"
 
-#: data/language.php:119
+#: data/language.php:120
 msgid "Lebanon"
 msgstr "Libanon"
 
-#: data/language.php:124
+#: data/language.php:125
 msgid "Libya"
 msgstr "Libyen"
 
-#: data/language.php:129
+#: data/language.php:130
 msgid "Mauritania"
 msgstr "Mauritanien"
 
-#: data/language.php:134
+#: data/language.php:135
 msgid "Morocco"
 msgstr "Marocko"
 
-#: data/language.php:139
+#: data/language.php:140
 msgid "Oman"
 msgstr "Oman"
 
-#: data/language.php:144
+#: data/language.php:145
 msgid "Palestine"
 msgstr "Palestina"
 
-#: data/language.php:149
+#: data/language.php:150
 msgid "Qatar"
 msgstr "Qatar"
 
-#: data/language.php:154
+#: data/language.php:155
 msgid "Somalia"
 msgstr "Somalia"
 
-#: data/language.php:159
+#: data/language.php:160
 msgid "Sudan"
 msgstr "Sudan"
 
-#: data/language.php:164
+#: data/language.php:165
 msgid "Syria"
 msgstr "Syrien"
 
-#: data/language.php:169
+#: data/language.php:170
 msgid "Tunisia"
 msgstr "Tunisien"
 
-#: data/language.php:174
+#: data/language.php:175
 msgid "United Arab Emirates"
 msgstr "Förenade Arabemiraten"
 
-#: data/language.php:179
+#: data/language.php:180
 msgid "Yemen"
 msgstr "Jemen"
 
-#: data/language.php:213
+#: data/language.php:215
 msgid "Chinese"
 msgstr "Kinesiska"
 
-#: data/language.php:224
+#: data/language.php:226
 msgid "China"
 msgstr "Kina"
 
-#: data/language.php:229
+#: data/language.php:231
 msgid "Hong Kong"
 msgstr "Hongkong"
 
-#: data/language.php:234
+#: data/language.php:236
 msgid "Malaysia"
 msgstr "Malaysia"
 
-#: data/language.php:239 data/language.php:479
+#: data/language.php:241 data/language.php:485
 msgid "Singapore"
 msgstr "Singapore"
 
-#: data/language.php:273
+#: data/language.php:276
 msgid "Danish"
 msgstr "Danska"
 
-#: data/language.php:279
+#: data/language.php:282
 msgid "Denmark"
 msgstr "Danmark"
 
-#: data/language.php:313
+#: data/language.php:317
 msgid "Dutch"
 msgstr "Nederländska"
 
-#: data/language.php:319
+#: data/language.php:323
 msgid "Netherlands"
 msgstr "Nederländerna"
 
-#: data/language.php:324 data/language.php:574
+#: data/language.php:328 data/language.php:582
 msgid "Belgium"
 msgstr "Belgien"
 
-#: data/language.php:329
+#: data/language.php:333
 msgid "Suriname"
 msgstr "Surinam"
 
-#: data/language.php:363
+#: data/language.php:368
 msgid "Slovak"
 msgstr "Slovakiska"
 
-#: data/language.php:369
+#: data/language.php:374
 msgid "Slovakia"
 msgstr "Slovakien"
 
-#: data/language.php:374
+#: data/language.php:379
 msgid "Czech Republic"
 msgstr "Tjeckien"
 
-#: data/language.php:408
+#: data/language.php:414
 msgid "English"
 msgstr "Engelska"
 
-#: data/language.php:414
+#: data/language.php:420
 msgid "US / GB"
 msgstr "USA / GB"
 
-#: data/language.php:419
+#: data/language.php:425
 msgid "United Kingdom"
 msgstr "Storbritannien"
 
-#: data/language.php:424
+#: data/language.php:430
 msgid "United States"
 msgstr "USA"
 
-#: data/language.php:429
+#: data/language.php:435
 msgid "Australia"
 msgstr "Australien"
 
-#: data/language.php:434 data/language.php:584
+#: data/language.php:440 data/language.php:592
 msgid "Canada"
 msgstr "Kanada"
 
-#: data/language.php:439
+#: data/language.php:445
 msgid "Ireland"
 msgstr "Irland"
 
-#: data/language.php:444
+#: data/language.php:450
 msgid "New Zealand"
 msgstr "Nya Zeeland"
 
-#: data/language.php:449
+#: data/language.php:455
 msgid "Nigeria"
 msgstr "Nigeria"
 
-#: data/language.php:454
+#: data/language.php:460
 msgid "South Africa"
 msgstr "Sydafrika"
 
-#: data/language.php:459
+#: data/language.php:465
 msgid "Kenya"
 msgstr "Kenya"
 
-#: data/language.php:464
+#: data/language.php:470
 msgid "Ghana"
 msgstr "Ghana"
 
-#: data/language.php:469
+#: data/language.php:475
 msgid "South Sudan"
 msgstr "Sydsudan"
 
-#: data/language.php:474
+#: data/language.php:480
 msgid "Sierra Leone"
 msgstr "Sierra Leone"
 
-#: data/language.php:484
+#: data/language.php:490
 msgid "Liberia"
 msgstr "Liberia"
 
-#: data/language.php:489
+#: data/language.php:495
 msgid "Jamaica"
 msgstr "Jamaica"
 
-#: data/language.php:523
+#: data/language.php:530
 msgid "Finnish"
 msgstr "Finska"
 
-#: data/language.php:529 data/language.php:1330
+#: data/language.php:536 data/language.php:1395
 msgid "Finland"
 msgstr "Finland"
 
-#: data/language.php:563
+#: data/language.php:571
 msgid "French"
 msgstr "Franska"
 
-#: data/language.php:569
+#: data/language.php:577
 msgid "France"
 msgstr "Frankrike"
 
-#: data/language.php:579
+#: data/language.php:587
 msgid "Quebec"
 msgstr "Quebec"
 
-#: data/language.php:589
+#: data/language.php:597
 msgid "Congo - Kinshasa"
 msgstr "Kongo - Kinshasa"
 
-#: data/language.php:594
+#: data/language.php:602
 msgid "Congo - Brazzaville"
 msgstr "Kongo - Brazzaville"
 
-#: data/language.php:599
+#: data/language.php:607
 msgid "Cameroon"
 msgstr "Kamerun"
 
-#: data/language.php:604
+#: data/language.php:612
 msgid "Ivory Coast"
 msgstr "Elfenbenskusten"
 
-#: data/language.php:609 data/language.php:659
+#: data/language.php:617 data/language.php:668
 msgid "Switzerland"
 msgstr "Schweiz"
 
-#: data/language.php:643
+#: data/language.php:652
 msgid "German"
 msgstr "Tyska"
 
-#: data/language.php:649
+#: data/language.php:658
 msgid "Germany"
 msgstr "Tyskland"
 
-#: data/language.php:654
+#: data/language.php:663
 msgid "Austria"
 msgstr "Österrike"
 
-#: data/language.php:664
+#: data/language.php:673
 msgid "Liechtenstein"
 msgstr "Liechtenstein"
 
-#: data/language.php:698
+#: data/language.php:708
 msgid "Greek"
 msgstr "Grekiska"
 
-#: data/language.php:704
+#: data/language.php:714
 msgid "Greece"
 msgstr "Grekland"
 
-#: data/language.php:709 data/language.php:1375
+#: data/language.php:719 data/language.php:1441
 msgid "Cyprus"
 msgstr "Cypern"
 
-#: data/language.php:743
+#: data/language.php:754
 msgid "Hebrew"
 msgstr "Hebreiska"
 
-#: data/language.php:750
+#: data/language.php:761
 msgid "Israel"
 msgstr "Israel"
 
-#: data/language.php:784
+#: data/language.php:796
 msgid "Hindi"
 msgstr "Hindi"
 
-#: data/language.php:790
+#: data/language.php:802
 msgid "India"
 msgstr "Indien"
 
-#: data/language.php:795
+#: data/language.php:807
 msgid "Pakistan"
 msgstr "Pakistan"
 
-#: data/language.php:829
+#: data/language.php:842
 msgid "Hungarian"
 msgstr "Ungerska"
 
-#: data/language.php:835
+#: data/language.php:848
 msgid "Hungary"
 msgstr "Ungern"
 
-#: data/language.php:869
+#: data/language.php:883
 msgid "Indonesian"
 msgstr "Indonesiska"
 
-#: data/language.php:875
+#: data/language.php:889
 msgid "Indonesia"
 msgstr "Indonesien"
 
-#: data/language.php:909
+#: data/language.php:924
 msgid "Italian"
 msgstr "Italienska"
 
-#: data/language.php:915
+#: data/language.php:930
 msgid "Italy"
 msgstr "Italien"
 
-#: data/language.php:949
+#: data/language.php:965
 msgid "Japanese"
 msgstr "Japanska"
 
-#: data/language.php:955
+#: data/language.php:971
 msgid "Japan"
 msgstr "Japan"
 
-#: data/language.php:989
+#: data/language.php:1007
+msgid "Norwegian"
+msgstr "Norska"
+
+#: data/language.php:1013
+msgid "Norway"
+msgstr "Norge"
+
+#: data/language.php:1049
 msgid "Korean"
 msgstr "Koreanska"
 
-#: data/language.php:995
+#: data/language.php:1055
 msgid "South Korea"
 msgstr "Sydkorea"
 
-#: data/language.php:1000
+#: data/language.php:1060
 msgid "North Korea"
 msgstr "Nord Korea"
 
-#: data/language.php:1034
+#: data/language.php:1095
 msgid "Polish"
 msgstr "Polska"
 
-#: data/language.php:1040
+#: data/language.php:1101
 msgid "Poland"
 msgstr "Polen"
 
-#: data/language.php:1074
+#: data/language.php:1136
 msgid "Portuguese"
 msgstr "Portugisiska"
 
-#: data/language.php:1080
+#: data/language.php:1142
 msgid "Portugal"
 msgstr "Portugal"
 
-#: data/language.php:1085
+#: data/language.php:1147
 msgid "Brazil"
 msgstr "Brasilien"
 
-#: data/language.php:1090
+#: data/language.php:1152
 msgid "Mozambique"
 msgstr "Mozambique"
 
-#: data/language.php:1095
+#: data/language.php:1157
 msgid "Angola"
 msgstr "Angola"
 
-#: data/language.php:1129
+#: data/language.php:1192
 msgid "Russian"
 msgstr "Ryska"
 
-#: data/language.php:1135
+#: data/language.php:1198
 msgid "Russia"
 msgstr "Ryssland"
 
-#: data/language.php:1140
+#: data/language.php:1203
 msgid "Kazakhstan"
 msgstr "Kazakstan"
 
-#: data/language.php:1145
+#: data/language.php:1208
 msgid "Belarus"
 msgstr "Vitryssland"
 
-#: data/language.php:1150
+#: data/language.php:1213
 msgid "Kyrgyzstan"
 msgstr "Kirgizistan"
 
-#: data/language.php:1155
+#: data/language.php:1218
 msgid "Tajikistan"
 msgstr "Tadzjikistan"
 
-#: data/language.php:1189
+#: data/language.php:1253
 msgid "Spanish"
 msgstr "Spanska"
 
-#: data/language.php:1195
+#: data/language.php:1259
 msgid "Spain"
 msgstr "Spanien"
 
-#: data/language.php:1200
+#: data/language.php:1264
 msgid "Mexico"
 msgstr "Mexiko"
 
-#: data/language.php:1205
+#: data/language.php:1269
 msgid "Argentina"
 msgstr "Argentina"
 
-#: data/language.php:1210
+#: data/language.php:1274
 msgid "Colombia"
 msgstr "Colombia"
 
-#: data/language.php:1215
+#: data/language.php:1279
 msgid "Peru"
 msgstr "Peru"
 
-#: data/language.php:1220
+#: data/language.php:1284
 msgid "Ecuador"
 msgstr "Ecuador"
 
-#: data/language.php:1225
+#: data/language.php:1289
 msgid "Bolivia"
 msgstr "Bolivia"
 
-#: data/language.php:1230
+#: data/language.php:1294
 msgid "Chile"
 msgstr "Chile"
 
-#: data/language.php:1235
+#: data/language.php:1299
 msgid "Equatorial Guinea"
 msgstr "Equatorial Guinea"
 
-#: data/language.php:1240
+#: data/language.php:1304
 msgid "Guatemala"
 msgstr "Guatemala"
 
-#: data/language.php:1245
+#: data/language.php:1309
 msgid "Cuba"
 msgstr "Kuba"
 
-#: data/language.php:1250
+#: data/language.php:1314
 msgid "Dominican Republic"
 msgstr "Dominikanska republiken"
 
-#: data/language.php:1255
+#: data/language.php:1319
 msgid "Honduras"
 msgstr "Honduras"
 
-#: data/language.php:1260
+#: data/language.php:1324
 msgid "Paraguay"
 msgstr "Paraguay"
 
-#: data/language.php:1265
+#: data/language.php:1329
 msgid "El Salvador"
 msgstr "El Salvador"
 
-#: data/language.php:1270
+#: data/language.php:1334
 msgid "Nicaragua"
 msgstr "Nicaragua"
 
-#: data/language.php:1275
+#: data/language.php:1339
 msgid "Costa Rica"
 msgstr "Costa Rica"
 
-#: data/language.php:1280
+#: data/language.php:1344
 msgid "Panama"
 msgstr "Panama"
 
-#: data/language.php:1285
+#: data/language.php:1349
 msgid "Uruguay"
 msgstr "Uruguay"
 
-#: data/language.php:1319
+#: data/language.php:1384
 msgid "Swedish"
 msgstr "Svenska"
 
-#: data/language.php:1325
+#: data/language.php:1390
 msgid "Sweden"
 msgstr "Sverige"
 
-#: data/language.php:1364
+#: data/language.php:1430
 msgid "Turkish"
 msgstr "Turkiska"
 
-#: data/language.php:1370
+#: data/language.php:1436
 msgid "Turkey"
 msgstr "Turkiet"
 
-#: data/language.php:1409
+#: data/language.php:1476
 msgid "Ukrainian"
 msgstr "Ukrainska"
 
-#: data/language.php:1415
+#: data/language.php:1482
 msgid "Ukraine"
 msgstr "Ukraina"
 
-#: data/language.php:1449
+#: data/language.php:1517
 msgid "Vietnamese"
 msgstr "Vietnamesisk"
 
-#: data/language.php:1455
+#: data/language.php:1523
 msgid "Vietnam"
 msgstr "Vietnam"
 
@@ -693,8 +701,8 @@ msgid "Sub-list"
 msgstr "Underlista"
 
 #. Plugin Name of the plugin/theme
-#: inc/admin/admin-bar.php:25 inc/admin/option-page-register.php:241
-#: inc/admin/option-page.php:18 inc/admin/option-page.php:37
+#: inc/admin/admin-bar.php:25 inc/admin/option-page-register.php:266
+#: inc/admin/option-page.php:143 inc/admin/option-page.php:163
 #: inc/admin/switcher-nav-menu.php:167
 msgid "wpLingua"
 msgstr "wpLingua"
@@ -704,7 +712,7 @@ msgid "This URL is excluded from translation"
 msgstr "Denna URL är utesluten från översättning"
 
 #: inc/admin/admin-bar.php:65 inc/admin/translation-edit-modal.php:18
-#: inc/dom/mode-list.php:158
+#: inc/dom/mode-list.php:162
 msgid "Return on page"
 msgstr "Återgå till sidan"
 
@@ -712,7 +720,7 @@ msgstr "Återgå till sidan"
 msgid "Visual editor"
 msgstr "Visuell editor"
 
-#: inc/admin/admin-bar.php:84 inc/dom/mode-list.php:250
+#: inc/admin/admin-bar.php:84 inc/dom/mode-list.php:254
 msgid "All translations on page"
 msgstr "Alla översättningar på sidan"
 
@@ -729,7 +737,11 @@ msgstr "Översättningar"
 msgid "Edit translations"
 msgstr "Redigera översättningar"
 
-#: inc/admin/assets.php:380 inc/admin/assets.php:472 inc/assets.php:85
+#: inc/admin/assets.php:340
+msgid "Error [0]: The AJAX call failed."
+msgstr "Fel [0]: AJAX-anropet misslyckades."
+
+#: inc/admin/assets.php:397 inc/admin/assets.php:489 inc/assets.php:85
 msgid ""
 "You are about to leave the page without saving your changes. They will be "
 "lost if you continue. Would you like to leave the page anyway?"
@@ -737,24 +749,24 @@ msgstr ""
 "Du är på väg att lämna sidan utan att spara dina ändringar. De kommer att gå "
 "förlorade om du fortsätter. Vill du lämna sidan ändå?"
 
-#: inc/admin/option-page-dictionary.php:20
+#: inc/admin/option-page-dictionary.php:23
 msgid "wpLingua - Dictionary rules"
 msgstr "wpLingua - Regler för ordböcker"
 
-#: inc/admin/option-page-dictionary.php:32
-#: inc/admin/option-page-link-media.php:32
+#: inc/admin/option-page-dictionary.php:48
+#: inc/admin/option-page-link-media.php:33
 msgid "Debug"
 msgstr "Debugg"
 
-#: inc/admin/option-page-dictionary.php:41
+#: inc/admin/option-page-dictionary.php:57
 msgid "Dictionary entries"
 msgstr "Ordboksinlägg"
 
-#: inc/admin/option-page-dictionary.php:45
+#: inc/admin/option-page-dictionary.php:61
 msgid "Translation rules by dictionary: "
 msgstr "Översättningsregler med hjälp av ordbok: "
 
-#: inc/admin/option-page-dictionary.php:47
+#: inc/admin/option-page-dictionary.php:63
 msgid ""
 "The dictionary allows you to define translation rules that apply when "
 "generating machine translations. You can specify words or sets of words that "
@@ -765,83 +777,117 @@ msgstr ""
 "maskinöversättningar genereras. Du kan ange ord eller ordgrupper som aldrig "
 "ska översättas, eller definiera hur de ska översättas för varje språk."
 
-#: inc/admin/option-page-dictionary.php:54
+#: inc/admin/option-page-dictionary.php:70
 msgid "Add a dictionary entry"
 msgstr "Lägga till en ordbokspost"
 
-#: inc/admin/option-page-dictionary.php:62
-#: inc/admin/option-page-link-media.php:62
+#: inc/admin/option-page-dictionary.php:78
+#: inc/admin/option-page-link-media.php:63
 msgid "Add an entry"
 msgstr "Lägg till en post"
 
-#: inc/admin/option-page-dictionary.php:71
-#: inc/admin/option-page-link-media.php:71
+#: inc/admin/option-page-dictionary.php:87
+#: inc/admin/option-page-link-media.php:72
 msgid "Edit the entry"
 msgstr "Redigera posten"
 
-#: inc/admin/option-page-dictionary.php:109
-msgid "All dictionary entries: "
-msgstr "Alla ordboksinlägg: "
+#: inc/admin/option-page-dictionary.php:127
+msgid "Ignore"
+msgstr "Ignorera"
 
-#: inc/admin/option-page-dictionary.php:124
-#: inc/admin/option-page-link-media.php:124
+#: inc/admin/option-page-dictionary.php:136
+msgid "Update translations"
+msgstr "Uppdatera översättningarna"
+
+#: inc/admin/option-page-dictionary.php:172
+#, php-format
+msgid "Number of translations to update: %d"
+msgstr "Antal översättningar som ska uppdateras: %d"
+
+#: inc/admin/option-page-dictionary.php:189
+msgid "Translations are currently being updated."
+msgstr "Översättningarna håller för närvarande på att uppdateras."
+
+#: inc/admin/option-page-dictionary.php:193
+#, php-format
+msgid "Number of translations updated: %1$s"
+msgstr "Antal uppdaterade översättningar: %1$s"
+
+#: inc/admin/option-page-dictionary.php:205
+msgid "End of translations update."
+msgstr "Slut på uppdateringen av översättningarna."
+
+#: inc/admin/option-page-dictionary.php:211
+msgid "Back to the dictionary"
+msgstr "Tillbaka till ordboken"
+
+#: inc/admin/option-page-dictionary.php:255
+msgid "ID: "
+msgstr "ID: "
+
+#: inc/admin/option-page-dictionary.php:306
+msgid "All dictionary entries: "
+msgstr "Alla uppslagsord: "
+
+#: inc/admin/option-page-dictionary.php:321
+#: inc/admin/option-page-link-media.php:125
 msgid "Rule N°"
 msgstr "Regel nr"
 
-#: inc/admin/option-page-dictionary.php:134
-#: inc/admin/option-page-link-media.php:134
-#: inc/admin/option-page-settings.php:279 inc/admin/option-page-settings.php:342
+#: inc/admin/option-page-dictionary.php:331
+#: inc/admin/option-page-link-media.php:135
+#: inc/admin/option-page-settings.php:287 inc/admin/option-page-settings.php:351
 msgid "Edit"
 msgstr "Redigera"
 
-#: inc/admin/option-page-dictionary.php:141
-#: inc/admin/option-page-link-media.php:141
-#: inc/admin/option-page-settings.php:343
+#: inc/admin/option-page-dictionary.php:338
+#: inc/admin/option-page-link-media.php:142
+#: inc/admin/option-page-settings.php:352
 msgid "Remove"
 msgstr "Ta bort"
 
-#: inc/admin/option-page-dictionary.php:153
+#: inc/admin/option-page-dictionary.php:350
 msgid "Always translate: "
 msgstr "Översätt alltid: "
 
-#: inc/admin/option-page-dictionary.php:169
+#: inc/admin/option-page-dictionary.php:366
 msgid " - By: "
 msgstr " - Av: "
 
-#: inc/admin/option-page-dictionary.php:175
+#: inc/admin/option-page-dictionary.php:372
 msgid "Never translate: "
 msgstr "Översätt aldrig: "
 
-#: inc/admin/option-page-dictionary.php:213
-#: inc/admin/option-page-dictionary.php:327
+#: inc/admin/option-page-dictionary.php:410
+#: inc/admin/option-page-dictionary.php:528
 msgid "Source text: "
 msgstr "Källtext: "
 
-#: inc/admin/option-page-dictionary.php:237
-#: inc/admin/option-page-dictionary.php:351
+#: inc/admin/option-page-dictionary.php:434
+#: inc/admin/option-page-dictionary.php:552
 msgid "Never translate"
 msgstr "Översätt aldrig"
 
-#: inc/admin/option-page-dictionary.php:259
-#: inc/admin/option-page-dictionary.php:373
-#: inc/admin/option-page-link-media.php:453
+#: inc/admin/option-page-dictionary.php:456
+#: inc/admin/option-page-dictionary.php:574
+#: inc/admin/option-page-link-media.php:458
 msgid " - Always translate by: "
 msgstr " - Översätt alltid av: "
 
-#: inc/admin/option-page-dictionary.php:286
-#: inc/admin/option-page-dictionary.php:400
-#: inc/admin/option-page-link-media.php:343
-#: inc/admin/option-page-link-media.php:479
+#: inc/admin/option-page-dictionary.php:484
+#: inc/admin/option-page-dictionary.php:602
+#: inc/admin/option-page-link-media.php:345
+#: inc/admin/option-page-link-media.php:485
 msgid "Cancel"
 msgstr "Avbryt"
 
-#: inc/admin/option-page-dictionary.php:294
-#: inc/admin/option-page-link-media.php:351
+#: inc/admin/option-page-dictionary.php:494
+#: inc/admin/option-page-link-media.php:355
 msgid "Save new entry"
 msgstr "Spara ny post"
 
-#: inc/admin/option-page-dictionary.php:408
-#: inc/admin/option-page-link-media.php:487
+#: inc/admin/option-page-dictionary.php:612
+#: inc/admin/option-page-link-media.php:495
 msgid "Save edited entry"
 msgstr "Spara redigerad post"
 
@@ -849,15 +895,15 @@ msgstr "Spara redigerad post"
 msgid "wpLingua - Exclusion rules"
 msgstr "wpLingua - Regler för uteslutning"
 
-#: inc/admin/option-page-exclusions.php:28
+#: inc/admin/option-page-exclusions.php:29
 msgid "Exclude URL"
 msgstr "Uteslut URL"
 
-#: inc/admin/option-page-exclusions.php:31
+#: inc/admin/option-page-exclusions.php:32
 msgid "Exclude URL from translation: "
 msgstr "Uteslut URL från översättning: "
 
-#: inc/admin/option-page-exclusions.php:35
+#: inc/admin/option-page-exclusions.php:36
 msgid ""
 "You can exclude from translations pages you wish to offer only in the "
 "website's original language. To do this, list the REGEXs that match the URL "
@@ -867,31 +913,31 @@ msgstr ""
 "webbplatsens originalspråk. För att göra detta listar du de REGEX som matchar "
 "den URL som ska uteslutas, en per rad. Exempel på detta: "
 
-#: inc/admin/option-page-exclusions.php:38
+#: inc/admin/option-page-exclusions.php:39
 msgid "Exclude URL \"/my-page/\""
 msgstr "Uteslut URL \"/my-page/\""
 
-#: inc/admin/option-page-exclusions.php:39
+#: inc/admin/option-page-exclusions.php:40
 msgid "Exclude URL starting with \"/my-page/\""
 msgstr "Uteslut URL som börjar med \"/my-page/\""
 
-#: inc/admin/option-page-exclusions.php:40
+#: inc/admin/option-page-exclusions.php:41
 msgid "Exclude URL ending with \"/my-page/\""
 msgstr "Uteslut URL som slutar med \"/my-page/\""
 
-#: inc/admin/option-page-exclusions.php:41
+#: inc/admin/option-page-exclusions.php:42
 msgid "Exclude URL containing \"/my-page/\""
 msgstr "Undantag för URL som innehåller \"/my-page/\""
 
-#: inc/admin/option-page-exclusions.php:49
+#: inc/admin/option-page-exclusions.php:50
 msgid "Exclude elements"
 msgstr "Utesluta element"
 
-#: inc/admin/option-page-exclusions.php:52
+#: inc/admin/option-page-exclusions.php:53
 msgid "Exclude HTML elements: "
 msgstr "Uteslut HTML-element: "
 
-#: inc/admin/option-page-exclusions.php:56
+#: inc/admin/option-page-exclusions.php:57
 msgid ""
 "You can leave some elements of your web pages untranslated. To do this, list "
 "below the CSS selectors for the elements to be excluded, one per line. "
@@ -901,20 +947,20 @@ msgstr ""
 "listar du nedan CSS-selektorerna för de element som ska uteslutas, en per "
 "rad. Exempel på detta: "
 
-#: inc/admin/option-page-exclusions.php:59
+#: inc/admin/option-page-exclusions.php:60
 msgid "Exclude elements by ID attribute"
 msgstr "Uteslut element med ID-attribut"
 
-#: inc/admin/option-page-exclusions.php:60
+#: inc/admin/option-page-exclusions.php:61
 msgid "Exclude elements by class attribute"
 msgstr "Uteslut element med klassattribut"
 
-#: inc/admin/option-page-exclusions.php:61
+#: inc/admin/option-page-exclusions.php:62
 msgid "Exclude elements by CSS selector"
 msgstr "Uteslut element med CSS-väljare"
 
-#: inc/admin/option-page-exclusions.php:69 inc/admin/option-page-settings.php:91
-#: inc/admin/option-page-switcher.php:504
+#: inc/admin/option-page-exclusions.php:70 inc/admin/option-page-settings.php:93
+#: inc/admin/option-page-switcher.php:545
 #: inc/admin/translation-edit-modal.php:71 inc/assets.php:92
 msgid "Save"
 msgstr "Spara"
@@ -923,15 +969,15 @@ msgstr "Spara"
 msgid "wpLingua - Links & Medias"
 msgstr "wpLingua - Länkar & medier"
 
-#: inc/admin/option-page-link-media.php:41
+#: inc/admin/option-page-link-media.php:42
 msgid "Links & medias"
 msgstr "Länkar & medier"
 
-#: inc/admin/option-page-link-media.php:45
+#: inc/admin/option-page-link-media.php:46
 msgid "Links and medias translations rules: "
 msgstr "Regler för länkar och medieöversättningar: "
 
-#: inc/admin/option-page-link-media.php:47
+#: inc/admin/option-page-link-media.php:48
 msgid ""
 "Translation rules on links and media allow different images to be displayed "
 "or link URLs to be changed according to the current language. These rules "
@@ -943,53 +989,53 @@ msgstr ""
 "element som: länkmål-URL:er, bildkäll-URL:er, iframe-käll-URL:er, URL:er i "
 "avlyssnade JSON:er..."
 
-#: inc/admin/option-page-link-media.php:54
+#: inc/admin/option-page-link-media.php:55
 msgid "Add a rule"
 msgstr "Lägg till en regel"
 
-#: inc/admin/option-page-link-media.php:109
+#: inc/admin/option-page-link-media.php:110
 msgid "All links and medias rules: "
 msgstr "Alla länkar och medias regler: "
 
-#: inc/admin/option-page-link-media.php:156
+#: inc/admin/option-page-link-media.php:157
 msgid "Mode: "
 msgstr "Läge: "
 
-#: inc/admin/option-page-link-media.php:165
-#: inc/admin/option-page-link-media.php:273
-#: inc/admin/option-page-link-media.php:409
+#: inc/admin/option-page-link-media.php:166
+#: inc/admin/option-page-link-media.php:274
+#: inc/admin/option-page-link-media.php:414
 msgid "Exactly equal"
 msgstr "Exakt lika"
 
-#: inc/admin/option-page-link-media.php:169
-#: inc/admin/option-page-link-media.php:282
-#: inc/admin/option-page-link-media.php:418
+#: inc/admin/option-page-link-media.php:170
+#: inc/admin/option-page-link-media.php:283
+#: inc/admin/option-page-link-media.php:423
 msgid "Partially equal"
 msgstr "Delvis lika"
 
-#: inc/admin/option-page-link-media.php:173
+#: inc/admin/option-page-link-media.php:174
 msgid "Regex"
 msgstr "Regex"
 
-#: inc/admin/option-page-link-media.php:177
+#: inc/admin/option-page-link-media.php:178
 msgid "Error"
 msgstr "Fel"
 
-#: inc/admin/option-page-link-media.php:189
+#: inc/admin/option-page-link-media.php:190
 msgid "Original: "
 msgstr "Webbplatsens originalspråk: "
 
-#: inc/admin/option-page-link-media.php:248
-#: inc/admin/option-page-link-media.php:384
+#: inc/admin/option-page-link-media.php:249
+#: inc/admin/option-page-link-media.php:389
 msgid "Original URL: "
 msgstr "Original URL: "
 
-#: inc/admin/option-page-link-media.php:291
-#: inc/admin/option-page-link-media.php:427
+#: inc/admin/option-page-link-media.php:292
+#: inc/admin/option-page-link-media.php:432
 msgid "REGEX"
 msgstr "REGEX"
 
-#: inc/admin/option-page-link-media.php:317
+#: inc/admin/option-page-link-media.php:318
 msgid " - URL: "
 msgstr " - URL: "
 
@@ -1013,22 +1059,22 @@ msgstr "Ett fel inträffade när API-nyckeln skapades."
 msgid "wpLingua - Register API key"
 msgstr "wpLingua - Registrera API-nyckel"
 
-#: inc/admin/option-page-register.php:132
+#: inc/admin/option-page-register.php:129
 msgid "API key created"
 msgstr "API-nyckel skapad"
 
-#: inc/admin/option-page-register.php:136
+#: inc/admin/option-page-register.php:133
 msgid "API key created and sent by email"
 msgstr "API-nyckel skapad och skickad via e-post"
 
-#: inc/admin/option-page-register.php:140
+#: inc/admin/option-page-register.php:137
 msgid ""
 "The API key has been correctly created and sent to the following e-mail "
 "address: "
 msgstr ""
 "API-nyckeln har skapats på rätt sätt och skickats till följande e-postadress: "
 
-#: inc/admin/option-page-register.php:146
+#: inc/admin/option-page-register.php:143
 msgid ""
 "Go to your mailbox and copy the API key sent to you (don't forget to check "
 "the spam section of your mailbox). Then paste it in the section below, and "
@@ -1039,24 +1085,43 @@ msgstr ""
 "nedan och klicka på \"Ange API-nyckel\" för att göra din webbplats "
 "flerspråkig."
 
-#: inc/admin/option-page-register.php:152 inc/admin/option-page-register.php:169
-msgid "Set API Key"
-msgstr "Ange API-nyckel"
+#: inc/admin/option-page-register.php:149
+msgid "Please note:"
+msgstr "Vänligen observera:"
 
-#: inc/admin/option-page-register.php:162 inc/admin/option-page-register.php:209
-#: inc/admin/option-page-register.php:445
+#: inc/admin/option-page-register.php:154
+#, php-format
+msgid ""
+"Some web hosting providers may block or prevent emails from reaching your "
+"mailbox. If you don't receive the email, please %s using a different email "
+"address, such as a Gmail address."
+msgstr ""
+"Vissa webbhotell kan blockera eller hindra att e-postmeddelanden når din "
+"inkorg. Om du inte får e-postmeddelandet, vänligen %s med en annan e-"
+"postadress, till exempel en Gmail-adress."
+
+#: inc/admin/option-page-register.php:163
+msgid "try requesting a new API key"
+msgstr "försök att begära en ny API-nyckel"
+
+#: inc/admin/option-page-register.php:174 inc/admin/option-page-register.php:191
+msgid "Set API Key"
+msgstr "Ställ in API-nyckel"
+
+#: inc/admin/option-page-register.php:184 inc/admin/option-page-register.php:232
+#: inc/admin/option-page-register.php:481
 msgid "Get API key"
 msgstr "Skaffa API-nyckel"
 
-#: inc/admin/option-page-register.php:176
+#: inc/admin/option-page-register.php:198
 msgid "Start with wpLingua"
 msgstr "Börja med wpLingua"
 
-#: inc/admin/option-page-register.php:179
+#: inc/admin/option-page-register.php:201
 msgid "You are just a few clicks away from making your website multilingual!"
 msgstr "Du är bara några klick från att göra din webbplats flerspråkig!"
 
-#: inc/admin/option-page-register.php:185
+#: inc/admin/option-page-register.php:207
 msgid ""
 "For wpLingua to work, an API key is required so that your website has access "
 "to the automatic translation service. On this page you can enter your API key "
@@ -1066,7 +1131,7 @@ msgstr ""
 "tillgång till den automatiska översättningstjänsten. På den här sidan kan du "
 "ange din API-nyckel om du redan har en, eller skapa en gratis."
 
-#: inc/admin/option-page-register.php:191
+#: inc/admin/option-page-register.php:213
 msgid ""
 "An <strong>instantly multilingual website</strong> thanks to automatic text "
 "detection and translation. Easy to use, no knowledge required."
@@ -1074,7 +1139,7 @@ msgstr ""
 "En <strong>direkt flerspråkig webbplats</strong> tack vare automatisk "
 "textdetektering och översättning. Lätt att använda, inga förkunskaper krävs."
 
-#: inc/admin/option-page-register.php:195
+#: inc/admin/option-page-register.php:217
 msgid ""
 "<strong>SEO friendly</strong> to allow search engines to index translated "
 "pages. Open up your website and your business to the whole world."
@@ -1083,7 +1148,7 @@ msgstr ""
 "indexera översatta sidor. Öppna upp din webbplats och ditt företag för hela "
 "världen."
 
-#: inc/admin/option-page-register.php:199
+#: inc/admin/option-page-register.php:221
 msgid ""
 "All <strong>translations are editable</strong>. Discover the visual editor "
 "and edit translations simply by clicking on them. With a fully customizable "
@@ -1093,7 +1158,7 @@ msgstr ""
 "redigeraren och redigera översättningar genom att helt enkelt klicka på dem. "
 "Med en helt anpassningsbar språkväxlare."
 
-#: inc/admin/option-page-register.php:203
+#: inc/admin/option-page-register.php:225
 msgid ""
 "One <strong>free and unlimited</strong> language for personal blogs and non-"
 "commercial websites. And many more features!"
@@ -1101,23 +1166,23 @@ msgstr ""
 "Ett <strong>gratis och obegränsat</strong> språk för personliga bloggar och "
 "icke-kommersiella webbplatser. Och många fler funktioner!"
 
-#: inc/admin/option-page-register.php:213 inc/admin/option-page-register.php:315
+#: inc/admin/option-page-register.php:236 inc/admin/option-page-register.php:340
 msgid "Set API key"
 msgstr "Ange API-nyckel"
 
-#: inc/admin/option-page-register.php:219
+#: inc/admin/option-page-register.php:244
 msgid "Advanced API features"
 msgstr "Avancerade API-funktioner"
 
-#: inc/admin/option-page-register.php:248
+#: inc/admin/option-page-register.php:273
 msgid "Important Notice"
 msgstr "Viktigt meddelande"
 
-#: inc/admin/option-page-register.php:250
+#: inc/admin/option-page-register.php:275
 msgid "Website incompatible with string translation"
 msgstr "Webbplatsen är inte kompatibel med strängöversättning"
 
-#: inc/admin/option-page-register.php:254
+#: inc/admin/option-page-register.php:279
 msgid ""
 "Your website contains a large amount of content, which exceeds the limits of "
 "the string translation method used by wpLingua."
@@ -1125,11 +1190,11 @@ msgstr ""
 "Din webbplats innehåller en stor mängd innehåll, vilket överskrider gränserna "
 "för den strängöversättningsmetod som används av wpLingua."
 
-#: inc/admin/option-page-register.php:259
+#: inc/admin/option-page-register.php:284
 msgid "Why the website is incompatible"
 msgstr "Varför webbplatsen är inkompatibel"
 
-#: inc/admin/option-page-register.php:263
+#: inc/admin/option-page-register.php:288
 msgid ""
 "wpLingua works by identifying and translating each string of characters "
 "individually. On a large website, this method generates a very large number "
@@ -1139,11 +1204,11 @@ msgstr ""
 "individuellt. På en stor webbplats genererar denna metod ett mycket stort "
 "antal databasposter, vilket orsakar överbelastning och fördröjningar."
 
-#: inc/admin/option-page-register.php:268
+#: inc/admin/option-page-register.php:293
 msgid "Recommended solution"
 msgstr "Rekommenderad lösning"
 
-#: inc/admin/option-page-register.php:272
+#: inc/admin/option-page-register.php:297
 msgid ""
 "To make large websites multilingual, we recommend using a translation plugin "
 "based on content duplication, such as Polylang or WPML. These solutions are "
@@ -1154,11 +1219,11 @@ msgstr ""
 "Polylang eller WPML. Dessa lösningar är särskilt utformade för att effektivt "
 "hantera stora webbplatser."
 
-#: inc/admin/option-page-register.php:292
+#: inc/admin/option-page-register.php:317
 msgid "Set the wpLingua API key: "
 msgstr "Ange wpLingua API-nyckel: "
 
-#: inc/admin/option-page-register.php:298
+#: inc/admin/option-page-register.php:323
 msgid ""
 "If you already have an API key, enter it below. If you've forgotten your "
 "website's API key, visit"
@@ -1166,26 +1231,26 @@ msgstr ""
 "Om du redan har en API-nyckel kan du ange den nedan. Om du har glömt din "
 "webbplats API-nyckel, besök"
 
-#: inc/admin/option-page-register.php:298
+#: inc/admin/option-page-register.php:323
 msgid "the API key retrieval page"
 msgstr "sidan för hämtning av API-nyckel"
 
-#: inc/admin/option-page-register.php:299 inc/admin/option-page-register.php:366
-#: inc/admin/option-page-register.php:382 inc/admin/option-page-register.php:398
-#: inc/admin/option-page-register.php:414 inc/admin/option-page-settings.php:255
-#: inc/admin/option-page-settings.php:373 inc/admin/option-page-settings.php:425
-#: inc/admin/option-page-settings.php:441 inc/admin/option-page-settings.php:475
-#: inc/admin/option-page-settings.php:487 inc/admin/option-page-settings.php:503
-#: inc/admin/option-page-settings.php:535 inc/admin/option-page-settings.php:546
-#: inc/admin/option-page-settings.php:615 inc/admin/option-page-switcher.php:73
-#: inc/admin/option-page-switcher.php:124 inc/admin/option-page-switcher.php:179
-#: inc/admin/option-page-switcher.php:237 inc/admin/option-page-switcher.php:331
-#: inc/admin/option-page-switcher.php:384 inc/admin/option-page-switcher.php:437
-#: inc/admin/option-page-switcher.php:459 inc/admin/option-page-switcher.php:473
+#: inc/admin/option-page-register.php:324 inc/admin/option-page-register.php:394
+#: inc/admin/option-page-register.php:413 inc/admin/option-page-register.php:431
+#: inc/admin/option-page-register.php:449 inc/admin/option-page-settings.php:263
+#: inc/admin/option-page-settings.php:383 inc/admin/option-page-settings.php:436
+#: inc/admin/option-page-settings.php:452 inc/admin/option-page-settings.php:486
+#: inc/admin/option-page-settings.php:498 inc/admin/option-page-settings.php:514
+#: inc/admin/option-page-settings.php:546 inc/admin/option-page-settings.php:557
+#: inc/admin/option-page-settings.php:626 inc/admin/option-page-switcher.php:75
+#: inc/admin/option-page-switcher.php:129 inc/admin/option-page-switcher.php:189
+#: inc/admin/option-page-switcher.php:251 inc/admin/option-page-switcher.php:346
+#: inc/admin/option-page-switcher.php:401 inc/admin/option-page-switcher.php:458
+#: inc/admin/option-page-switcher.php:487 inc/admin/option-page-switcher.php:508
 msgid "Click to expand"
 msgstr "Visa större"
 
-#: inc/admin/option-page-register.php:303 inc/admin/option-page-settings.php:620
+#: inc/admin/option-page-register.php:328 inc/admin/option-page-settings.php:631
 msgid ""
 "A wpLingua API key consists of 42 characters (uppercase, lowercase and "
 "numbers). It is emailed to you when you request it using the form provided "
@@ -1198,11 +1263,11 @@ msgstr ""
 "hålla den här nyckeln hemlig och endast kommunicera den till wplingua.com-"
 "tjänster."
 
-#: inc/admin/option-page-register.php:350
+#: inc/admin/option-page-register.php:377
 msgid "Register wpLingua API key: "
 msgstr "Registrera wpLingua API-nyckel: "
 
-#: inc/admin/option-page-register.php:356
+#: inc/admin/option-page-register.php:383
 msgid ""
 "Claim a wpLingua API key and make your website multilingual in a minute! For "
 "a personal blog or a non-commercial website, get one unlimited free language."
@@ -1211,11 +1276,18 @@ msgstr ""
 "minut! För en personlig blogg eller en icke-kommersiell webbplats får du ett "
 "obegränsat gratis språk."
 
-#: inc/admin/option-page-register.php:365
+#: inc/admin/option-page-register.php:392
 msgid "Email address: "
 msgstr "Epostadress: "
 
-#: inc/admin/option-page-register.php:373
+#: inc/admin/option-page-register.php:402
+msgid ""
+"For better reliability, we recommend using a personal email address such as "
+"Gmail, as some hosting providers may filter or block emails sent by external "
+"services."
+msgstr ""
+
+#: inc/admin/option-page-register.php:403
 msgid ""
 "The email address is detected and pre-filled. This is the administrative "
 "email address entered in the Settings ➔ General tab. You can use another "
@@ -1225,11 +1297,11 @@ msgstr ""
 "e-postadressen som anges i fliken Inställningar ➔ Allmänt. Du kan använda en "
 "annan e-postadress som används för att ta emot din API-nyckel."
 
-#: inc/admin/option-page-register.php:381
+#: inc/admin/option-page-register.php:411
 msgid "Website URL: "
 msgstr "Webbplatsens URL: "
 
-#: inc/admin/option-page-register.php:389
+#: inc/admin/option-page-register.php:421
 msgid ""
 "This is the URL of your website, it is detected and pre-filled automatically. "
 "Please check it and only enter the address of your production website (no "
@@ -1239,11 +1311,11 @@ msgstr ""
 "automatiskt. Kontrollera detta och ange endast adressen till din "
 "produktionswebbplats (ingen testwebbplats eller utvecklingsmiljö)."
 
-#: inc/admin/option-page-register.php:397
+#: inc/admin/option-page-register.php:429
 msgid "Website language: "
 msgstr "Webbplatsens språk: "
 
-#: inc/admin/option-page-register.php:405 inc/admin/option-page-settings.php:262
+#: inc/admin/option-page-register.php:439 inc/admin/option-page-settings.php:270
 msgid ""
 "This is the language of your website, defined by the associated API key. Make "
 "sure your website language is also correctly set in WordPress options "
@@ -1253,11 +1325,11 @@ msgstr ""
 "nyckeln. Se till att språket på din webbplats också är korrekt inställt i "
 "WordPress-alternativen (Inställningar ➔ Allmänt ➔ Webbplatsspråk)."
 
-#: inc/admin/option-page-register.php:413
+#: inc/admin/option-page-register.php:447
 msgid "Language to add: "
 msgstr "Språk att lägga till: "
 
-#: inc/admin/option-page-register.php:421
+#: inc/admin/option-page-register.php:457
 msgid ""
 "This is the language you want to translate your website into. Be careful not "
 "to make a mistake because you will not be able to change the language "
@@ -1267,23 +1339,23 @@ msgstr ""
 "så att du inte gör ett misstag eftersom du inte kommer att kunna ändra "
 "språket i efterhand."
 
-#: inc/admin/option-page-register.php:430
+#: inc/admin/option-page-register.php:466
 msgid "I have read and accept the"
 msgstr "Jag har läst och accepterar"
 
-#: inc/admin/option-page-register.php:430
+#: inc/admin/option-page-register.php:466
 msgid "API terms of use"
 msgstr "Användarvillkor för API"
 
-#: inc/admin/option-page-register.php:438
+#: inc/admin/option-page-register.php:474
 msgid "Website Locale: "
 msgstr "Webbplatsens geografiska läge: "
 
-#: inc/admin/option-page-register.php:459
+#: inc/admin/option-page-register.php:495
 msgid "Get more target languages and advanced features: "
 msgstr "Få fler målspråk och avancerade funktioner: "
 
-#: inc/admin/option-page-register.php:465
+#: inc/admin/option-page-register.php:501
 msgid ""
 "To translate your website into more languages and access advanced features, "
 "visit wpLingua website."
@@ -1291,19 +1363,19 @@ msgstr ""
 "Om du vill översätta din webbplats till fler språk och få tillgång till "
 "avancerade funktioner kan du besöka webbplatsen wpLingua."
 
-#: inc/admin/option-page-register.php:469 inc/admin/option-page-settings.php:424
+#: inc/admin/option-page-register.php:505 inc/admin/option-page-settings.php:435
 msgid "Use wpLingua on commercial website"
 msgstr "Använd wpLingua på en kommersiell webbplats"
 
-#: inc/admin/option-page-register.php:470
+#: inc/admin/option-page-register.php:506
 msgid "Allow search from all languages"
 msgstr "Tillåt sökning från alla språk"
 
-#: inc/admin/option-page-register.php:471
+#: inc/admin/option-page-register.php:507
 msgid "Get more target languages"
 msgstr "Få fler målspråk"
 
-#: inc/admin/option-page-register.php:476
+#: inc/admin/option-page-register.php:512
 msgid "Visit wpLingua website"
 msgstr "Besök wpLinguas webbplats"
 
@@ -1311,28 +1383,28 @@ msgstr "Besök wpLinguas webbplats"
 msgid "wpLingua - General settings"
 msgstr "wpLingua - Allmänna inställningar"
 
-#: inc/admin/option-page-settings.php:61
+#: inc/admin/option-page-settings.php:63
 msgid "Website language"
 msgstr "Webbplatsens språk"
 
-#: inc/admin/option-page-settings.php:67
+#: inc/admin/option-page-settings.php:69
 msgid "Translated languages"
 msgstr "Översatta språk"
 
-#: inc/admin/option-page-settings.php:73
+#: inc/admin/option-page-settings.php:75
 msgid "Features"
 msgstr "Funktioner"
 
-#: inc/admin/option-page-settings.php:85
+#: inc/admin/option-page-settings.php:87
 msgid "API Key"
 msgstr "API-nyckel"
 
-#: inc/admin/option-page-settings.php:174
+#: inc/admin/option-page-settings.php:176
 msgid "Your website is being translated and will be ready soon."
 msgstr ""
 "Din webbplats håller på att översättas och kommer att vara klar inom kort."
 
-#: inc/admin/option-page-settings.php:175
+#: inc/admin/option-page-settings.php:177
 msgid ""
 "In just a few seconds, your website will be multilingual, and search engines "
 "will be able to index these new pages. wpLingua detects all the texts on your "
@@ -1347,19 +1419,19 @@ msgstr ""
 "redigeraren från administrationsfältet och redigera dem genom att helt enkelt "
 "klicka på texterna på din webbplats."
 
-#: inc/admin/option-page-settings.php:176
+#: inc/admin/option-page-settings.php:178
 msgid "Translation progress: "
 msgstr "Översättningsförlopp: "
 
-#: inc/admin/option-page-settings.php:181
+#: inc/admin/option-page-settings.php:183
 msgid "Your website is now multilingual!"
 msgstr "Din webbplats är nu flerspråkig!"
 
-#: inc/admin/option-page-settings.php:183
+#: inc/admin/option-page-settings.php:185
 msgid "You can start visiting the translated version."
 msgstr "Du kan börja besöka den översatta versionen."
 
-#: inc/admin/option-page-settings.php:185
+#: inc/admin/option-page-settings.php:187
 msgid ""
 "The first time a translated page is loaded, the translations are "
 "automatically generated and saved in the database. This may take some time "
@@ -1373,7 +1445,7 @@ msgstr ""
 "rekommenderar att du bläddrar igenom hela webbplatsen för första gången för "
 "att generera alla flerspråkiga versioner."
 
-#: inc/admin/option-page-settings.php:186
+#: inc/admin/option-page-settings.php:188
 msgid ""
 "All translations are editable: open the visual editor from the administration "
 "bar and edit them simply by clicking on the texts on your website."
@@ -1382,23 +1454,23 @@ msgstr ""
 "administrationsfältet och redigera dem genom att klicka på texterna på din "
 "webbplats."
 
-#: inc/admin/option-page-settings.php:189
+#: inc/admin/option-page-settings.php:191
 msgid "Visit your multilingual website"
 msgstr "Besök din flerspråkiga webbplats"
 
-#: inc/admin/option-page-settings.php:215
+#: inc/admin/option-page-settings.php:219
 msgid "Original website language: "
 msgstr "Webbplatsens originalspråk: "
 
-#: inc/admin/option-page-settings.php:241
+#: inc/admin/option-page-settings.php:247
 msgid "Please choose an option"
 msgstr "Vänligen välj ett alternativ"
 
-#: inc/admin/option-page-settings.php:252
+#: inc/admin/option-page-settings.php:260
 msgid "Original website language, defined by API key: "
 msgstr "Webbplatsens originalspråk, definierat med API-nyckel: "
 
-#: inc/admin/option-page-settings.php:264
+#: inc/admin/option-page-settings.php:272
 msgid ""
 "If you have mistakenly selected the wrong language, you can delete the API "
 "key in the site options below and request a new API key."
@@ -1406,19 +1478,19 @@ msgstr ""
 "Om du av misstag har valt fel språk kan du radera API-nyckeln i "
 "webbplatsalternativen nedan och begära en ny API-nyckel."
 
-#: inc/admin/option-page-settings.php:270
+#: inc/admin/option-page-settings.php:278
 msgid "Custom"
 msgstr "Anpassad"
 
-#: inc/admin/option-page-settings.php:284 inc/admin/option-page-settings.php:348
+#: inc/admin/option-page-settings.php:292 inc/admin/option-page-settings.php:357
 msgid "Flag to use for this language: "
 msgstr "Flagga att använda för detta språk: "
 
-#: inc/admin/option-page-settings.php:290 inc/admin/option-page-settings.php:352
+#: inc/admin/option-page-settings.php:298 inc/admin/option-page-settings.php:361
 msgid "Custom flag URL for this language: "
 msgstr "URL för anpassad flagga för detta språk: "
 
-#: inc/admin/option-page-settings.php:313
+#: inc/admin/option-page-settings.php:321
 msgid ""
 "Important: space out the addition of new languages ​​by at least ten days and "
 "browse your site for the first time in the added languages. This promotes "
@@ -1430,31 +1502,31 @@ msgstr ""
 "indexering av sökmotorer, minskar belastningen på din server och minimerar "
 "risken för att din webbplats blir långsammare."
 
-#: inc/admin/option-page-settings.php:317
+#: inc/admin/option-page-settings.php:325
 msgid "Add new target Language: "
 msgstr "Lägg till nytt målspråk Language: "
 
-#: inc/admin/option-page-settings.php:323
+#: inc/admin/option-page-settings.php:332
 msgid "Add language"
 msgstr "Lägg till språk"
 
-#: inc/admin/option-page-settings.php:336
+#: inc/admin/option-page-settings.php:345
 msgid "(Private)"
 msgstr "(Privat)"
 
-#: inc/admin/option-page-settings.php:340
+#: inc/admin/option-page-settings.php:349
 msgid "Move up"
 msgstr "Flytta upp"
 
-#: inc/admin/option-page-settings.php:341
+#: inc/admin/option-page-settings.php:350
 msgid "Move down"
 msgstr "Flytta ner"
 
-#: inc/admin/option-page-settings.php:357
+#: inc/admin/option-page-settings.php:366
 msgid "Make this language private"
 msgstr "Gör detta språk privat"
 
-#: inc/admin/option-page-settings.php:358
+#: inc/admin/option-page-settings.php:367
 msgid ""
 "Private languages will only be visible to logged-in users with editing "
 "rights. This option allows administrators to pre-generate and correct "
@@ -1465,28 +1537,28 @@ msgstr ""
 "att i förväg generera och korrigera översättningar innan de blir tillgängliga "
 "för allmänheten."
 
-#: inc/admin/option-page-settings.php:365
+#: inc/admin/option-page-settings.php:374
 msgid "Target languages enabled: "
 msgstr "Målspråk aktiverade: "
 
-#: inc/admin/option-page-settings.php:372
+#: inc/admin/option-page-settings.php:382
 msgid "Access more target languages by upgrading your API key."
 msgstr "Få tillgång till fler målspråk genom att uppgradera din API-nyckel."
 
-#: inc/admin/option-page-settings.php:380
+#: inc/admin/option-page-settings.php:391
 msgid "Available languages: "
 msgstr "Tillgängliga språk: "
 
-#: inc/admin/option-page-settings.php:400 inc/admin/option-page-settings.php:433
-#: inc/admin/option-page-settings.php:451 inc/admin/option-page-settings.php:625
+#: inc/admin/option-page-settings.php:411 inc/admin/option-page-settings.php:444
+#: inc/admin/option-page-settings.php:462 inc/admin/option-page-settings.php:636
 msgid "wplingua.com : Upgrade your API key"
 msgstr "wplingua.com : Uppgradera din API-nyckel"
 
-#: inc/admin/option-page-settings.php:418
+#: inc/admin/option-page-settings.php:429
 msgid "API translation features: "
 msgstr "Funktioner för API-översättning: "
 
-#: inc/admin/option-page-settings.php:420
+#: inc/admin/option-page-settings.php:431
 msgid ""
 "The options below require extended access to the wpLingua API to be "
 "functional on your website."
@@ -1494,7 +1566,7 @@ msgstr ""
 "Alternativen nedan kräver utökad åtkomst till wpLingua API för att fungera på "
 "din webbplats."
 
-#: inc/admin/option-page-settings.php:429
+#: inc/admin/option-page-settings.php:440
 msgid ""
 "Use of the free wpLingua API keys is reserved for personal blogs and non-"
 "profit websites; paid subscriptions are available for companies and "
@@ -1504,16 +1576,16 @@ msgstr ""
 "personliga bloggar och icke-vinstdrivande webbplatser; betalda "
 "prenumerationer är tillgängliga för företag och kommersiella webbplatser."
 
-#: inc/admin/option-page-settings.php:440
+#: inc/admin/option-page-settings.php:451
 msgid "Search from translated languages"
 msgstr "Sök från översatta språk"
 
-#: inc/admin/option-page-settings.php:445
+#: inc/admin/option-page-settings.php:456
 msgid "Enable visitors to search on your website in their own language."
 msgstr ""
 "Gör det möjligt för besökare att söka på din webbplats på sitt eget språk."
 
-#: inc/admin/option-page-settings.php:447
+#: inc/admin/option-page-settings.php:458
 msgid ""
 "Example: if your website is translated from English to French and you have a "
 "post named \"Hello\". When a French visitor searches for the term \"Bonjour\" "
@@ -1527,15 +1599,15 @@ msgstr ""
 "till \"Hello\" innan sökningen startas. Detta gör att WordPress kan hitta "
 "inlägget med namnet \"Hello\" när din besökare har sökt efter \"Bonjour\"."
 
-#: inc/admin/option-page-settings.php:468
+#: inc/admin/option-page-settings.php:479
 msgid "SEO features: "
 msgstr "SEO-funktioner: "
 
-#: inc/admin/option-page-settings.php:474
+#: inc/admin/option-page-settings.php:485
 msgid "Add hreflang tags to translated pages"
 msgstr "Lägg till hreflang-taggar på översatta sidor"
 
-#: inc/admin/option-page-settings.php:479
+#: inc/admin/option-page-settings.php:490
 msgid ""
 "This option automatically adds hreflang tags to your pages that are available "
 "in multiple languages."
@@ -1543,7 +1615,7 @@ msgstr ""
 "Det här alternativet lägger automatiskt till hreflang-taggar på dina sidor "
 "som finns tillgängliga på flera språk."
 
-#: inc/admin/option-page-settings.php:481
+#: inc/admin/option-page-settings.php:492
 msgid ""
 "Hreflang tags are HTML metadata used to indicate the URLs of each language "
 "version of a page. They are not visible to visitors, but they allow search "
@@ -1555,11 +1627,11 @@ msgstr ""
 "det möjligt för sökmotorer (Google, Bing etc.) att identifiera webbplatsens "
 "flerspråkiga struktur och visa rätt version beroende på användarens språk."
 
-#: inc/admin/option-page-settings.php:486
+#: inc/admin/option-page-settings.php:497
 msgid "Enable multilingual XML Sitemap"
 msgstr "Aktivera flerspråkig XML Sitemap"
 
-#: inc/admin/option-page-settings.php:491
+#: inc/admin/option-page-settings.php:502
 msgid ""
 "This option automatically adds your wpLingua translated pages into your XML "
 "Sitemap files."
@@ -1567,7 +1639,7 @@ msgstr ""
 "Detta alternativ lägger automatiskt till dina wpLingua-översatta sidor i dina "
 "XML Sitemap-filer."
 
-#: inc/admin/option-page-settings.php:493
+#: inc/admin/option-page-settings.php:504
 msgid ""
 "An XML Sitemap is used by search engines (Google, Bing, etc.) to better "
 "discover and index the pages of your website. By default, only the default "
@@ -1579,7 +1651,7 @@ msgstr ""
 "endast sidorna på standardspråket. Med det här alternativet aktiverat kommer "
 "alla översatta versioner av ditt innehåll också att listas."
 
-#: inc/admin/option-page-settings.php:494
+#: inc/admin/option-page-settings.php:505
 msgid ""
 "This greatly improves SEO visibility, ensuring that search engines can easily "
 "find and index your content in every language."
@@ -1587,7 +1659,7 @@ msgstr ""
 "Detta förbättrar SEO-synligheten avsevärt och säkerställer att sökmotorer "
 "enkelt kan hitta och indexera ditt innehåll på alla språk."
 
-#: inc/admin/option-page-settings.php:496
+#: inc/admin/option-page-settings.php:507
 msgid ""
 "wpLingua uses a universal method that intercepts and extends sitemap. It "
 "works with the native WordPress sitemap and with popular SEO plugins such as "
@@ -1598,11 +1670,11 @@ msgstr ""
 "med populära SEO-plugins som Yoast SEO, Rank Math, All in One SEO, SEOPress, "
 "etc."
 
-#: inc/admin/option-page-settings.php:502
+#: inc/admin/option-page-settings.php:513
 msgid "Use wpLingua display for XML Sitemap"
 msgstr "Använd wpLingua-visningen för XML-webbplatskarta"
 
-#: inc/admin/option-page-settings.php:507
+#: inc/admin/option-page-settings.php:518
 msgid ""
 "This option replaces the default XML Sitemap stylesheet with wpLingua's "
 "custom display."
@@ -1610,7 +1682,7 @@ msgstr ""
 "Det här alternativet ersätter standardformatmallen för XML-webbplatskartan "
 "med wpLinguas anpassade visning."
 
-#: inc/admin/option-page-settings.php:509
+#: inc/admin/option-page-settings.php:520
 msgid ""
 "When enabled, the XML Sitemap will use a wpLingua-designed stylesheet that "
 "visually displays all translated URLs directly under each original URL. This "
@@ -1622,7 +1694,7 @@ msgstr ""
 "respektive originaladress. Detta gör det enkelt att kontrollera att alla "
 "språkversioner finns med i webbplatskartan."
 
-#: inc/admin/option-page-settings.php:511
+#: inc/admin/option-page-settings.php:522
 msgid ""
 "Note: This only affects how the sitemap is displayed in your browser. The "
 "actual XML data sent to search engines remains unchanged and fully compatible "
@@ -1632,7 +1704,7 @@ msgstr ""
 "faktiska XML-data som skickas till sökmotorerna förblir oförändrad och är "
 "fullt kompatibel med alla SEO-standarder."
 
-#: inc/admin/option-page-settings.php:512
+#: inc/admin/option-page-settings.php:523
 msgid ""
 "This option has no effect when using All In One SEO, as this plugin handles "
 "the display of translated links itself."
@@ -1640,20 +1712,20 @@ msgstr ""
 "Det här alternativet har ingen effekt när du använder All In One SEO, "
 "eftersom det här tillägget själv sköter visningen av översatta länkar."
 
-#: inc/admin/option-page-settings.php:528
+#: inc/admin/option-page-settings.php:539
 msgid "More features: "
 msgstr "Fler funktioner: "
 
-#: inc/admin/option-page-settings.php:534
+#: inc/admin/option-page-settings.php:545
 msgid "Translation progress bar for editors"
 msgstr "Förloppsindikator för översättning för redaktörer"
 
-#: inc/admin/option-page-settings.php:539
+#: inc/admin/option-page-settings.php:550
 msgid "Enable progress bar: Smooth translations loading for editors"
 msgstr ""
 "Aktivera förloppsindikator: Smidig laddning av översättningar för redaktörer"
 
-#: inc/admin/option-page-settings.php:541
+#: inc/admin/option-page-settings.php:552
 msgid ""
 "Activate a progress bar when a page requires the generation of more than 10 "
 "new string translations. This feature only applies to connected editors."
@@ -1662,11 +1734,11 @@ msgstr ""
 "strängöversättningar genereras. Denna funktion gäller endast för anslutna "
 "redigerare."
 
-#: inc/admin/option-page-settings.php:545
+#: inc/admin/option-page-settings.php:556
 msgid "Enable redirection based on the web browser's language"
 msgstr "Aktivera omdirigering baserat på webbläsarens språk"
 
-#: inc/admin/option-page-settings.php:549
+#: inc/admin/option-page-settings.php:560
 msgid ""
 "This option automatically redirects visitors to the translated version of "
 "your site that matches their browser language when they land on the main "
@@ -1680,11 +1752,11 @@ msgstr ""
 "på rätt språk direkt, men beroende på din konfiguration kan det leda till "
 "biverkningar."
 
-#: inc/admin/option-page-settings.php:551
+#: inc/admin/option-page-settings.php:562
 msgid "Disabled (recommended):"
 msgstr "Inaktiverad (rekommenderas):"
 
-#: inc/admin/option-page-settings.php:552
+#: inc/admin/option-page-settings.php:563
 msgid ""
 "No redirection is applied. Every visitor always sees the default homepage, "
 "regardless of their browser language. This is the safest option and ensures "
@@ -1696,11 +1768,11 @@ msgstr ""
 "garanterar maximal kompatibilitet med cachningssystem, SEO och delade länkar. "
 "Rekommenderas om du är osäker på vilket alternativ du ska välja."
 
-#: inc/admin/option-page-settings.php:554
+#: inc/admin/option-page-settings.php:565
 msgid "JS only:"
 msgstr "Endast JS:"
 
-#: inc/admin/option-page-settings.php:555
+#: inc/admin/option-page-settings.php:566
 msgid ""
 "The redirect is handled with JavaScript, after the default homepage has "
 "loaded. This method works in almost all cases and avoids issues with caching "
@@ -1713,11 +1785,11 @@ msgstr ""
 "kommer kort att se standardsidan innan de omdirigeras till den översatta "
 "versionen."
 
-#: inc/admin/option-page-settings.php:557
+#: inc/admin/option-page-settings.php:568
 msgid "PHP and JS:"
 msgstr "PHP och JS:"
 
-#: inc/admin/option-page-settings.php:558
+#: inc/admin/option-page-settings.php:569
 msgid ""
 "The redirect is performed server-side with PHP, which makes it faster and "
 "more seamless for visitors. In addition, a cookie is set via JavaScript to "
@@ -1733,23 +1805,23 @@ msgstr ""
 "cachningssystem (statiska sidor, CDN, aggressiva cache-inställningar) och kan "
 "orsaka felaktiga omdirigeringar i vissa konfigurationer."
 
-#: inc/admin/option-page-settings.php:576
+#: inc/admin/option-page-settings.php:587
 msgid "Disable (recommended)"
 msgstr "Avaktivera (rekommenderas)"
 
-#: inc/admin/option-page-settings.php:583
+#: inc/admin/option-page-settings.php:594
 msgid "Enable with JS only"
 msgstr "Aktivera endast med JS"
 
-#: inc/admin/option-page-settings.php:590
+#: inc/admin/option-page-settings.php:601
 msgid "Enable with PHP and JS"
 msgstr "Möjliggör med PHP och JS"
 
-#: inc/admin/option-page-settings.php:609
+#: inc/admin/option-page-settings.php:620
 msgid "Website API key: "
 msgstr "Webbplatsens API-nyckel: "
 
-#: inc/admin/option-page-settings.php:614
+#: inc/admin/option-page-settings.php:625
 msgid ""
 "The API key connects the website to wpLingua's online services and automatic "
 "translation generators."
@@ -1757,19 +1829,19 @@ msgstr ""
 "API-nyckeln kopplar webbplatsen till wpLinguas onlinetjänster och automatiska "
 "översättningsgeneratorer."
 
-#: inc/admin/option-page-settings.php:636
+#: inc/admin/option-page-settings.php:647
 msgid "Show API key"
 msgstr "Visa API-nyckel"
 
-#: inc/admin/option-page-settings.php:638
+#: inc/admin/option-page-settings.php:649
 msgid "Hide API key"
 msgstr "Dölj API-nyckel"
 
-#: inc/admin/option-page-settings.php:644
+#: inc/admin/option-page-settings.php:658
 msgid "API key status: "
 msgstr "Status för API-nyckel: "
 
-#: inc/admin/option-page-settings.php:659
+#: inc/admin/option-page-settings.php:681
 msgid "Premium expiration: "
 msgstr "Premien upphör att gälla: "
 
@@ -1777,50 +1849,50 @@ msgstr "Premien upphör att gälla: "
 msgid "wpLingua - Switcher settings"
 msgstr "wpLingua - Inställningar för omkopplare"
 
-#: inc/admin/option-page-switcher.php:51
+#: inc/admin/option-page-switcher.php:52
 msgid "No target language selected."
 msgstr "Inget målspråk valt."
 
-#: inc/admin/option-page-switcher.php:56
+#: inc/admin/option-page-switcher.php:57
 msgid "Preview"
 msgstr "Förhandsvisa"
 
-#: inc/admin/option-page-switcher.php:66
+#: inc/admin/option-page-switcher.php:67
 msgid "Design"
 msgstr "Design"
 
-#: inc/admin/option-page-switcher.php:72 inc/admin/switcher-nav-menu.php:229
+#: inc/admin/option-page-switcher.php:73 inc/admin/switcher-nav-menu.php:229
 #: inc/admin/switcher-nav-menu.php:342 inc/switcher-block.php:176
 msgid "Layout: "
 msgstr "Layout: "
 
-#: inc/admin/option-page-switcher.php:99
+#: inc/admin/option-page-switcher.php:102
 msgid ""
 "This option allow you to define the layout of the languages ​​in the switcher."
 msgstr ""
 "Med detta alternativ kan du definiera layouten för språken i omkopplaren."
 
-#: inc/admin/option-page-switcher.php:104
+#: inc/admin/option-page-switcher.php:107
 msgid "Inline list: "
 msgstr "Inline-lista: "
 
-#: inc/admin/option-page-switcher.php:105
+#: inc/admin/option-page-switcher.php:108
 msgid "the languages ​​are lined up next to each other."
 msgstr "språken är uppradade bredvid varandra."
 
-#: inc/admin/option-page-switcher.php:108
+#: inc/admin/option-page-switcher.php:111
 msgid "Block: "
 msgstr "Block: "
 
-#: inc/admin/option-page-switcher.php:109
+#: inc/admin/option-page-switcher.php:112
 msgid "the languages ​​are placed in columns, one under the other."
 msgstr "språken är placerade i kolumner, det ena under det andra."
 
-#: inc/admin/option-page-switcher.php:112
+#: inc/admin/option-page-switcher.php:115
 msgid "Dropdown: "
 msgstr "Rullgardinsmeny: "
 
-#: inc/admin/option-page-switcher.php:113
+#: inc/admin/option-page-switcher.php:116
 msgid ""
 "the languages ​​appear in a drop-down menu; this is recommended when your "
 "website offers several languages."
@@ -1828,32 +1900,32 @@ msgstr ""
 "språken visas i en rullgardinsmeny; detta rekommenderas när din webbplats "
 "erbjuder flera språk."
 
-#: inc/admin/option-page-switcher.php:123 inc/admin/switcher-nav-menu.php:197
+#: inc/admin/option-page-switcher.php:127 inc/admin/switcher-nav-menu.php:197
 #: inc/admin/switcher-nav-menu.php:298 inc/switcher-block.php:177
 msgid "Displayed names: "
 msgstr "Visade namn: "
 
-#: inc/admin/option-page-switcher.php:148
+#: inc/admin/option-page-switcher.php:156
 msgid ""
 "This option allow you to choose how the languages names should be written in "
 "the switcher."
 msgstr ""
 "Med detta alternativ kan du välja hur språknamnen ska skrivas i omkopplaren."
 
-#: inc/admin/option-page-switcher.php:155
+#: inc/admin/option-page-switcher.php:163
 msgid "Translated names: "
 msgstr "Översatta namn: "
 
-#: inc/admin/option-page-switcher.php:156
+#: inc/admin/option-page-switcher.php:164
 msgid ""
 "the name of the languages ​​is translated into the current language displayed."
 msgstr "översätts namnet på språken till det aktuella språket som visas."
 
-#: inc/admin/option-page-switcher.php:159
+#: inc/admin/option-page-switcher.php:167
 msgid "Original name: "
 msgstr "Ursprungligt namn: "
 
-#: inc/admin/option-page-switcher.php:160
+#: inc/admin/option-page-switcher.php:168
 msgid ""
 "each language retains its name in its own language (English, Français, 日本"
 "語, Português, Español, etc.)."
@@ -1861,61 +1933,61 @@ msgstr ""
 "varje språk behåller sitt namn på sitt eget språk (English, Français, 日本語, "
 "Português, Español, etc.)."
 
-#: inc/admin/option-page-switcher.php:163
+#: inc/admin/option-page-switcher.php:171
 msgid "Language ID: "
 msgstr "Språk-ID: "
 
-#: inc/admin/option-page-switcher.php:164
+#: inc/admin/option-page-switcher.php:172
 msgid "language names use language ID (FR, EN, DE, RU, etc.)."
 msgstr "språknamn använda språk-ID (FR, EN, DE, RU, etc.)."
 
-#: inc/admin/option-page-switcher.php:167 inc/admin/option-page-switcher.php:220
+#: inc/admin/option-page-switcher.php:175 inc/admin/option-page-switcher.php:232
 msgid "No display: "
 msgstr "Ingen visning: "
 
-#: inc/admin/option-page-switcher.php:168
+#: inc/admin/option-page-switcher.php:176
 msgid "no text, only flags are displayed."
 msgstr "ingen text, endast flaggor visas."
 
-#: inc/admin/option-page-switcher.php:178 inc/switcher-block.php:178
+#: inc/admin/option-page-switcher.php:187 inc/switcher-block.php:178
 msgid "Flags style: "
 msgstr "Flaggor stil: "
 
-#: inc/admin/option-page-switcher.php:202
+#: inc/admin/option-page-switcher.php:214
 msgid ""
 "This option allow you to choose the appearance of the flags in the switcher. "
 msgstr ""
 "Med detta alternativ kan du välja hur flaggorna ska se ut i omkopplaren. "
 
-#: inc/admin/option-page-switcher.php:208
+#: inc/admin/option-page-switcher.php:220
 msgid "Circle: "
 msgstr "Cirkel: "
 
-#: inc/admin/option-page-switcher.php:209
+#: inc/admin/option-page-switcher.php:221
 msgid "display round flags."
 msgstr "visa runda flaggor."
 
-#: inc/admin/option-page-switcher.php:212
+#: inc/admin/option-page-switcher.php:224
 msgid "Rectangular: "
 msgstr "Rektangulär: "
 
-#: inc/admin/option-page-switcher.php:213
+#: inc/admin/option-page-switcher.php:225
 msgid "display rectangular flags."
 msgstr "visa rektangulära flaggor."
 
-#: inc/admin/option-page-switcher.php:216
+#: inc/admin/option-page-switcher.php:228
 msgid "Wave: "
 msgstr "Wave: "
 
-#: inc/admin/option-page-switcher.php:217
+#: inc/admin/option-page-switcher.php:229
 msgid "display wavy flags."
 msgstr "visa vågiga flaggor."
 
-#: inc/admin/option-page-switcher.php:221
+#: inc/admin/option-page-switcher.php:233
 msgid "no display any flags, only the language name will be displayed."
 msgstr "inte visa några flaggor, endast språknamnet visas."
 
-#: inc/admin/option-page-switcher.php:227
+#: inc/admin/option-page-switcher.php:239
 msgid ""
 "You can also change the country flag or set a custom flag from wpLingua ➔ "
 "General settings. For example, you can set the flag of Mexico for Spanish "
@@ -1925,11 +1997,11 @@ msgstr ""
 "Allmänna inställningar. Du kan t.ex. ställa in Mexikos flagga för spanska i "
 "stället för Spaniens flagga."
 
-#: inc/admin/option-page-switcher.php:236 inc/switcher-block.php:179
+#: inc/admin/option-page-switcher.php:249 inc/switcher-block.php:179
 msgid "Color theme: "
 msgstr "Färg tema: "
 
-#: inc/admin/option-page-switcher.php:262
+#: inc/admin/option-page-switcher.php:277
 msgid ""
 "This option allows you to choose the color and border styles of the languages "
 "switcher."
@@ -1937,101 +2009,101 @@ msgstr ""
 "Med det här alternativet kan du välja färg och kantlinjer för "
 "språkomkopplaren."
 
-#: inc/admin/option-page-switcher.php:268
+#: inc/admin/option-page-switcher.php:283
 msgid "The color options offer 5 themes: "
 msgstr "Färgalternativen erbjuder 5 teman: "
 
-#: inc/admin/option-page-switcher.php:273
+#: inc/admin/option-page-switcher.php:288
 msgid "Light: "
 msgstr "Ljus: "
 
-#: inc/admin/option-page-switcher.php:274
+#: inc/admin/option-page-switcher.php:289
 msgid "white color in the background of the switcher."
 msgstr "vit färg i bakgrunden på omkopplaren."
 
-#: inc/admin/option-page-switcher.php:277
+#: inc/admin/option-page-switcher.php:292
 msgid "Grey: "
 msgstr "Grå: "
 
-#: inc/admin/option-page-switcher.php:278
+#: inc/admin/option-page-switcher.php:293
 msgid "grey background color."
 msgstr "grå bakgrundsfärg."
 
-#: inc/admin/option-page-switcher.php:281
+#: inc/admin/option-page-switcher.php:296
 msgid "Dark: "
 msgstr "Mörk: "
 
-#: inc/admin/option-page-switcher.php:282
+#: inc/admin/option-page-switcher.php:297
 msgid "black background color."
 msgstr "svart bakgrundsfärg."
 
-#: inc/admin/option-page-switcher.php:285
+#: inc/admin/option-page-switcher.php:300
 msgid "Blur Black: "
 msgstr "Blur Black: "
 
-#: inc/admin/option-page-switcher.php:286
+#: inc/admin/option-page-switcher.php:301
 msgid "transparent and blurred background color with black text and borders."
 msgstr "transparent och suddig bakgrundsfärg med svart text och kanter."
 
-#: inc/admin/option-page-switcher.php:289
+#: inc/admin/option-page-switcher.php:304
 msgid "Blur White: "
 msgstr "Blur White: "
 
-#: inc/admin/option-page-switcher.php:290
+#: inc/admin/option-page-switcher.php:305
 msgid "transparent and blurred background color with white text and borders."
 msgstr "transparent och suddig bakgrundsfärg med vit text och kanter."
 
-#: inc/admin/option-page-switcher.php:297
+#: inc/admin/option-page-switcher.php:312
 msgid "Each theme is then broken down by shape and border style:"
 msgstr "Varje tema delas sedan upp efter form och kantstil:"
 
-#: inc/admin/option-page-switcher.php:302
+#: inc/admin/option-page-switcher.php:317
 msgid "Double – Smooth: "
 msgstr "Dubbel - Smidig: "
 
-#: inc/admin/option-page-switcher.php:303
+#: inc/admin/option-page-switcher.php:318
 msgid "the switcher will be framed by a double border with rounded corners."
 msgstr "omkopplaren kommer att inramas av en dubbel kant med rundade hörn."
 
-#: inc/admin/option-page-switcher.php:306
+#: inc/admin/option-page-switcher.php:321
 msgid "Double – Square: "
 msgstr "Dubbel - Kvadratisk: "
 
-#: inc/admin/option-page-switcher.php:307
+#: inc/admin/option-page-switcher.php:322
 msgid "double border with square corners."
 msgstr "dubbel kant med fyrkantiga hörn."
 
-#: inc/admin/option-page-switcher.php:310
+#: inc/admin/option-page-switcher.php:325
 msgid "Simple – Smooth: "
 msgstr "Enkelt - smidigt: "
 
-#: inc/admin/option-page-switcher.php:311
+#: inc/admin/option-page-switcher.php:326
 msgid "single border with rounded corners."
 msgstr "enkel kant med rundade hörn."
 
-#: inc/admin/option-page-switcher.php:314
+#: inc/admin/option-page-switcher.php:329
 msgid "Simple – Square: "
 msgstr "Enkel - Fyrkantig: "
 
-#: inc/admin/option-page-switcher.php:315
+#: inc/admin/option-page-switcher.php:330
 msgid "single border with square corners."
 msgstr "enkel kant med fyrkantiga hörn."
 
-#: inc/admin/option-page-switcher.php:325
+#: inc/admin/option-page-switcher.php:340
 msgid "Custom CSS"
 msgstr "Anpassad CSS"
 
-#: inc/admin/option-page-switcher.php:327
+#: inc/admin/option-page-switcher.php:342
 msgid "Set custom CSS: "
 msgstr "Ställ in anpassad CSS: "
 
-#: inc/admin/option-page-switcher.php:330
+#: inc/admin/option-page-switcher.php:345
 msgid ""
 "The field below allows you to add custom CSS code that will run on all pages."
 msgstr ""
 "I fältet nedan kan du lägga till anpassad CSS-kod som körs på alla sidor."
 
-#: inc/admin/option-page-switcher.php:335
+#: inc/admin/option-page-switcher.php:350
 msgid ""
 "First of all, note that the CSS class <code>.switcher-content</code> allows "
 "you to act on the entire block of the language switcher while the class "
@@ -2041,64 +2113,64 @@ msgstr ""
 "gör att du kan agera på hela blocket i språkväxlaren medan klassen "
 "<code>.wplng-langague</code> gör att du kan agera på själva språken."
 
-#: inc/admin/option-page-switcher.php:350
+#: inc/admin/option-page-switcher.php:365
 msgid ""
 "To change the background and border colors of languages, here is the CSS:"
 msgstr "Här är CSS för att ändra bakgrunds- och kantfärger för språk:"
 
-#: inc/admin/option-page-switcher.php:365
+#: inc/admin/option-page-switcher.php:380
 msgid "More example on wplingua.com"
 msgstr "Fler exempel på wplingua.com"
 
-#: inc/admin/option-page-switcher.php:376
+#: inc/admin/option-page-switcher.php:391
 msgid "Insertion"
 msgstr "Insättning"
 
-#: inc/admin/option-page-switcher.php:383
+#: inc/admin/option-page-switcher.php:399
 msgid "Automatic insert: "
 msgstr "Automatisk insats: "
 
-#: inc/admin/option-page-switcher.php:409
+#: inc/admin/option-page-switcher.php:428
 msgid "Choose a predefined location: "
 msgstr "Välj en fördefinierad plats: "
 
-#: inc/admin/option-page-switcher.php:413
+#: inc/admin/option-page-switcher.php:432
 msgid "Bottom right: "
 msgstr "Längst ner till höger: "
 
-#: inc/admin/option-page-switcher.php:414
+#: inc/admin/option-page-switcher.php:433
 msgid "the switcher is placed at the bottom right of the screen."
 msgstr "omkopplaren är placerad längst ner till höger på skärmen."
 
-#: inc/admin/option-page-switcher.php:417
+#: inc/admin/option-page-switcher.php:436
 msgid "Bottom Center: "
 msgstr "Nedre mitten: "
 
-#: inc/admin/option-page-switcher.php:418
+#: inc/admin/option-page-switcher.php:437
 msgid "bottom center of the screen."
 msgstr "längst ner i mitten av skärmen."
 
-#: inc/admin/option-page-switcher.php:421
+#: inc/admin/option-page-switcher.php:440
 msgid "Bottom left: "
 msgstr "Längst ner till vänster: "
 
-#: inc/admin/option-page-switcher.php:422
+#: inc/admin/option-page-switcher.php:441
 msgid "bottom left of the screen."
 msgstr "längst ner till vänster på skärmen."
 
-#: inc/admin/option-page-switcher.php:425
+#: inc/admin/option-page-switcher.php:444
 msgid "None: "
 msgstr "Ingen: "
 
-#: inc/admin/option-page-switcher.php:426
+#: inc/admin/option-page-switcher.php:445
 msgid "the switcher is not inserted automatically."
 msgstr "omkopplaren sätts inte in automatiskt."
 
-#: inc/admin/option-page-switcher.php:436
+#: inc/admin/option-page-switcher.php:457
 msgid "Shortcode switcher: "
 msgstr "Växlare för kortkoder: "
 
-#: inc/admin/option-page-switcher.php:443
+#: inc/admin/option-page-switcher.php:469
 msgid ""
 "If you want to insert the language switcher only in certain places on your "
 "website, you can use the shortcode provided for this purpose. Note that in "
@@ -2114,16 +2186,16 @@ msgstr ""
 "du använder ett Gutenberg blockbaserat tema (FSE), ett klassiskt tema eller "
 "till och med en sid- eller temabyggare som Divi, Elementor..."
 
-#: inc/admin/option-page-switcher.php:445
+#: inc/admin/option-page-switcher.php:471
 msgid "You can add parameters to the language selector shortcode, for example: "
 msgstr ""
 "Du kan lägga till parametrar i kortkoden för språkväljaren, till exempel: "
 
-#: inc/admin/option-page-switcher.php:448
+#: inc/admin/option-page-switcher.php:474
 msgid "Here is a list of all available settings: "
 msgstr "Här är en lista över alla tillgängliga inställningar: "
 
-#: inc/admin/option-page-switcher.php:451
+#: inc/admin/option-page-switcher.php:477
 msgid ""
 "If a setting is not specified, the value entered on the language switcher "
 "options page will be used."
@@ -2131,15 +2203,15 @@ msgstr ""
 "Om ingen inställning anges kommer det värde som angetts på inställningssidan "
 "för språkväljaren att användas."
 
-#: inc/admin/option-page-switcher.php:458
+#: inc/admin/option-page-switcher.php:486
 msgid "Gutenberg & FSE: "
 msgstr "Gutenberg & FSE: "
 
-#: inc/admin/option-page-switcher.php:461
+#: inc/admin/option-page-switcher.php:492
 msgid "Block wpLingua Switcher"
 msgstr "Blockera wpLingua Switcher"
 
-#: inc/admin/option-page-switcher.php:465
+#: inc/admin/option-page-switcher.php:498
 msgid ""
 "Block based themes, wpLingua offers a dedicated Gutenberg block. You can "
 "insert the switcher wherever you want, whether in the content or via the "
@@ -2149,15 +2221,15 @@ msgstr ""
 "infoga switchen var du vill, oavsett om det är i innehållet eller via den "
 "övergripande webbplatsredigeraren."
 
-#: inc/admin/option-page-switcher.php:472
+#: inc/admin/option-page-switcher.php:507
 msgid "Switcher in menu: "
 msgstr "Omkopplare i menyn: "
 
-#: inc/admin/option-page-switcher.php:487
+#: inc/admin/option-page-switcher.php:526
 msgid "Appearance ➔ Menus"
 msgstr "Utseende ➔ Menyer"
 
-#: inc/admin/option-page-switcher.php:498
+#: inc/admin/option-page-switcher.php:539
 msgid ""
 "If the active theme manages menus (classic theme), it is possible to add a "
 "language switcher. The design of these language switchers will be defined by "
@@ -2170,93 +2242,97 @@ msgstr ""
 "ett menyalternativ. Det är också möjligt att lägga till den som ett "
 "underelement."
 
-#: inc/admin/option-page.php:17
+#: inc/admin/option-page.php:142
 msgid "wpLingua: Register"
 msgstr "wpLingua: Registrera dig"
 
-#: inc/admin/option-page.php:36 inc/admin/option-page.php:47
+#: inc/admin/option-page.php:162 inc/admin/option-page.php:180
 msgid "wpLingua: Settings"
 msgstr "wpLingua: Inställningar"
 
-#: inc/admin/option-page.php:48
-msgid "General settings"
-msgstr "Generella inställningar"
+#: inc/admin/option-page.php:181 inc/admin/option-page.php:457
+msgid "Settings"
+msgstr "Inställningar"
 
-#: inc/admin/option-page.php:56
+#: inc/admin/option-page.php:198
 msgid "wpLingua: Switcher"
 msgstr "wpLingua: Omkopplare"
 
-#: inc/admin/option-page.php:57
+#: inc/admin/option-page.php:199
 msgid "Switcher"
 msgstr "Knapp för att byta innehåll"
 
-#: inc/admin/option-page.php:65
+#: inc/admin/option-page.php:207
 msgid "wpLingua: Exclusion"
 msgstr "wpLingua: Uteslutning"
 
-#: inc/admin/option-page.php:66
+#: inc/admin/option-page.php:208 inc/admin/option-page.php:341
 msgid "Exclusion"
 msgstr "Exkludering"
 
-#: inc/admin/option-page.php:74
+#: inc/admin/option-page.php:216
 msgid "wpLingua: Dictionary"
 msgstr "wpLingua: Ordbok"
 
-#: inc/admin/option-page.php:75
+#: inc/admin/option-page.php:217 inc/admin/option-page.php:346
 msgid "Dictionary"
 msgstr "Ordbok"
 
-#: inc/admin/option-page.php:83
+#: inc/admin/option-page.php:225
 msgid "wplingua: Links & Medias"
 msgstr "wplingua: Länkar & Medier"
 
-#: inc/admin/option-page.php:84
+#: inc/admin/option-page.php:226 inc/admin/option-page.php:351
 msgid "Links & Medias"
 msgstr "Länkar & Medier"
 
-#: inc/admin/option-page.php:92
+#: inc/admin/option-page.php:239
 msgid "wpLingua: Website slugs"
 msgstr "wpLingua: Sniglar för webbplatser"
 
-#: inc/admin/option-page.php:93 inc/admin/slug-cpt.php:23
+#: inc/admin/option-page.php:240 inc/admin/slug-cpt.php:23
 msgid "Website slugs"
 msgstr "Webbplatsens sniglar"
 
-#: inc/admin/option-page.php:101
+#: inc/admin/option-page.php:248
 msgid "wpLingua: Translations"
 msgstr "wpLingua: Översättningar"
 
-#: inc/admin/option-page.php:102
+#: inc/admin/option-page.php:249
 msgid "All translations"
 msgstr "Alla översättningar"
 
-#: inc/admin/option-page.php:224
+#: inc/admin/option-page.php:331
+msgid "General settings"
+msgstr "Generella inställningar"
+
+#: inc/admin/option-page.php:336 inc/admin/switcher-nav-menu.php:249
+msgid "Language switcher"
+msgstr "Språkväxlare"
+
+#: inc/admin/option-page.php:406
 msgid "Thank you for choosing wpLingua!"
 msgstr "Tack för att du valde wpLingua!"
 
-#: inc/admin/option-page.php:227
+#: inc/admin/option-page.php:409
 #, php-format
 msgid "If you like wpLingua please leave us a %1$s rating. A huge thanks!"
 msgstr ""
 "Om du gillar wpLingua vänligen lämna oss ett %1$s betyg. Ett stort tack!"
 
-#: inc/admin/option-page.php:228
+#: inc/admin/option-page.php:410
 msgid "five stars"
 msgstr "fem stjärnor"
 
-#: inc/admin/option-page.php:252
+#: inc/admin/option-page.php:434
 msgid "Version"
 msgstr "Version"
 
-#: inc/admin/option-page.php:275
-msgid "Settings"
-msgstr "Inställningar"
-
-#: inc/admin/option-page.php:317
+#: inc/admin/option-page.php:499
 msgid "wpLingua - Translation solution for multilingual website"
 msgstr "wpLingua - Översättningslösning för flerspråkiga webbplatser"
 
-#: inc/admin/option-page.php:320
+#: inc/admin/option-page.php:502
 msgid ""
 "wpLingua is installed, but not yet configured. You are just a few clicks away "
 "from making your website multilingual!"
@@ -2264,15 +2340,15 @@ msgstr ""
 "wpLingua är installerat, men ännu inte konfigurerat. Nu är du bara några "
 "klick från att göra din webbplats flerspråkig!"
 
-#: inc/admin/option-page.php:323
+#: inc/admin/option-page.php:505
 msgid "Go to the configuration page"
 msgstr "Gå till konfigurationssidan"
 
-#: inc/admin/option-page.php:397
+#: inc/admin/option-page.php:579
 msgid "wpLingua - Incompatible plugin detected"
 msgstr "wpLingua - Inkompatibelt insticksprogram upptäckt"
 
-#: inc/admin/option-page.php:400
+#: inc/admin/option-page.php:582
 msgid ""
 "You have several translation plugins. This may result in unpredictable or "
 "incorrect behavior. For best results, use only one translation plugin at a "
@@ -2282,41 +2358,41 @@ msgstr ""
 "felaktigt beteende. För bästa resultat, använd endast ett översättningsplugin "
 "åt gången. Dessa insticksprogram kan orsaka problem med wpLingua: "
 
-#: inc/admin/option-page.php:417
+#: inc/admin/option-page.php:599
 #, php-format
 msgid "Deactivate plugin: %1$s"
 msgstr "Avaktivera plugin: %1$s"
 
-#: inc/admin/option-page.php:426
+#: inc/admin/option-page.php:608
 msgid "Deactivate"
 msgstr "Inaktivera"
 
-#: inc/admin/option-page.php:443
+#: inc/admin/option-page.php:625
 msgid "Manage active plugins"
 msgstr "Hantera aktiva plugins"
 
-#: inc/admin/option-page.php:468
+#: inc/admin/option-page.php:662
 msgid "wpLingua - Incompatible with multisite"
 msgstr "wpLingua - Inkompatibel med multisite"
 
-#: inc/admin/option-page.php:471
+#: inc/admin/option-page.php:665
 msgid "wpLingua is not compatible with multisite."
 msgstr "wpLingua är inte kompatibel med multisite."
 
-#: inc/admin/option-page.php:495
+#: inc/admin/option-page.php:689
 msgid "wpLingua - Incompatible with WordPress installed in a subfolder"
 msgstr "wpLingua - Inkompatibel med WordPress installerad i en undermapp"
 
-#: inc/admin/option-page.php:498
+#: inc/admin/option-page.php:692
 msgid "wpLingua is not compatible with WordPress installed in a subfolder."
 msgstr ""
 "wpLingua är inte kompatibel med WordPress som är installerat i en undermapp."
 
-#: inc/admin/option-page.php:522
+#: inc/admin/option-page.php:716
 msgid "wpLingua - Incompatible PHP version"
 msgstr "wpLingua - Inkompatibel PHP-version"
 
-#: inc/admin/option-page.php:525
+#: inc/admin/option-page.php:719
 msgid ""
 "wpLingua is not compatible with your PHP version. wpLingua requires PHP 7.4 "
 "or higher."
@@ -2324,11 +2400,11 @@ msgstr ""
 "wpLingua är inte kompatibel med din PHP-version. wpLingua kräver PHP 7.4 "
 "eller högre."
 
-#: inc/admin/option-page.php:588
+#: inc/admin/option-page.php:782
 msgid "wpLingua - Incompatible HTACCESS file"
 msgstr "wpLingua - Inkompatibel HTACCESS-fil"
 
-#: inc/admin/option-page.php:591
+#: inc/admin/option-page.php:785
 msgid ""
 "It seems that a plugin was incorrectly deactivated and corrupted the site's "
 "HTACCESS file, preventing the correct redirection of translated pages. Please "
@@ -2340,11 +2416,11 @@ msgstr ""
 "översatta sidor. Vänligen redigera filen \".htaccess\" som finns i roten av "
 "webbplatsen och radera raderna mellan :"
 
-#: inc/admin/option-page.php:621
+#: inc/admin/option-page.php:815
 msgid "wpLingua - Incompatible permalink structure"
 msgstr "wpLingua – Oförenlig struktur för permanenta länkar"
 
-#: inc/admin/option-page.php:624
+#: inc/admin/option-page.php:818
 msgid ""
 "wpLingua is not compatible with the \"Plain\" permalink structure. Please "
 "update your permalink settings to use \"Post name\" or \"Custom Structure\"."
@@ -2353,9 +2429,33 @@ msgstr ""
 "permalänksinställningar så att du använder ”Inläggets namn” eller ”Anpassad "
 "struktur”."
 
-#: inc/admin/option-page.php:630
+#: inc/admin/option-page.php:824
 msgid "Manage permalink settings"
 msgstr "Hantera inställningar för permanenta länkar"
+
+#: inc/admin/option-page.php:860
+msgid "wpLingua - Unlock PRO Features"
+msgstr "wpLingua – Lås upp PRO-funktionerna"
+
+#: inc/admin/option-page.php:864
+msgid ""
+"Extend wpLingua with additional features and advanced translation "
+"capabilities."
+msgstr ""
+"Utöka wpLingua med ytterligare funktioner och avancerade "
+"översättningsmöjligheter."
+
+#: inc/admin/option-page.php:867
+msgid ""
+"Download and install wpLingua PRO to access the features included with your "
+"wpLingua plan."
+msgstr ""
+"Ladda ner och installera wpLingua PRO för att få tillgång till de funktioner "
+"som ingår i ditt wpLingua-abonnemang."
+
+#: inc/admin/option-page.php:877
+msgid "wpLingua.com : Download PRO plugin"
+msgstr "wpLingua.com: Ladda ner PRO-plugin"
 
 #: inc/admin/slug-cpt.php:19
 msgid "wpLingua - Website slugs"
@@ -2383,26 +2483,26 @@ msgstr "Alla slug status"
 
 #: inc/admin/slug-cpt.php:160 inc/admin/slug-cpt.php:172
 #: inc/admin/translation-cpt.php:145 inc/admin/translation-cpt.php:153
-#: inc/dom/mode-list.php:193
+#: inc/dom/mode-list.php:197
 msgid "Reviewed"
 msgstr "Granskad"
 
-#: inc/admin/slug-cpt.php:161 inc/admin/slug-cpt.php:432
-#: inc/admin/slug-cpt.php:471 inc/admin/translation-cpt.php:146
-#: inc/admin/translation-cpt.php:413 inc/admin/translation-cpt.php:452
-#: inc/dom/mode-list.php:197
+#: inc/admin/slug-cpt.php:161 inc/admin/slug-cpt.php:430
+#: inc/admin/slug-cpt.php:469 inc/admin/translation-cpt.php:146
+#: inc/admin/translation-cpt.php:413 inc/admin/translation-cpt.php:446
+#: inc/dom/mode-list.php:201
 msgid "Unreviewed"
 msgstr "Ej Recenserade"
 
-#: inc/admin/slug-cpt.php:170 inc/admin/slug-cpt.php:422
-#: inc/admin/slug-cpt.php:459 inc/admin/translation-cpt.php:151
-#: inc/admin/translation-cpt.php:403 inc/admin/translation-cpt.php:440
+#: inc/admin/slug-cpt.php:170 inc/admin/slug-cpt.php:420
+#: inc/admin/slug-cpt.php:457 inc/admin/translation-cpt.php:151
+#: inc/admin/translation-cpt.php:403 inc/admin/translation-cpt.php:438
 msgid "Full reviewed"
 msgstr "Fullständigt granskad"
 
-#: inc/admin/slug-cpt.php:171 inc/admin/slug-cpt.php:427
-#: inc/admin/slug-cpt.php:465 inc/admin/translation-cpt.php:152
-#: inc/admin/translation-cpt.php:408 inc/admin/translation-cpt.php:446
+#: inc/admin/slug-cpt.php:171 inc/admin/slug-cpt.php:425
+#: inc/admin/slug-cpt.php:463 inc/admin/translation-cpt.php:152
+#: inc/admin/translation-cpt.php:408 inc/admin/translation-cpt.php:442
 msgid "Partially reviewed"
 msgstr "Delvis granskad"
 
@@ -2410,11 +2510,11 @@ msgstr "Delvis granskad"
 msgid "Full unreviewed"
 msgstr "Fullständigt oöverträffad"
 
-#: inc/admin/slug-cpt.php:318
+#: inc/admin/slug-cpt.php:316
 msgid "Slug status"
 msgstr "Status för slug"
 
-#: inc/admin/slug-cpt.php:454
+#: inc/admin/slug-cpt.php:452
 msgid "Slug status: "
 msgstr "Status för slug: "
 
@@ -2423,7 +2523,7 @@ msgid "Slug"
 msgstr "Slug"
 
 #: inc/admin/slug-meta.php:75 inc/admin/slug-meta.php:154
-#: inc/admin/translation-meta.php:77 inc/admin/translation-meta.php:146
+#: inc/admin/translation-meta.php:77 inc/admin/translation-meta.php:166
 msgid "Flag for language: "
 msgstr "Flagga för språk: "
 
@@ -2431,19 +2531,19 @@ msgstr "Flagga för språk: "
 msgid " - Original slug: "
 msgstr " - Ursprunglig slug: "
 
-#: inc/admin/slug-meta.php:153 inc/admin/translation-meta.php:145
+#: inc/admin/slug-meta.php:153 inc/admin/translation-meta.php:165
 msgid "Regenerate translation"
 msgstr "Förnya översättning"
 
-#: inc/admin/slug-meta.php:156 inc/admin/translation-meta.php:148
+#: inc/admin/slug-meta.php:156 inc/admin/translation-meta.php:168
 msgid "Mark as review"
 msgstr "Markera som recension"
 
-#: inc/admin/slug-meta.php:171 inc/admin/translation-meta.php:157
+#: inc/admin/slug-meta.php:171 inc/admin/translation-meta.php:177
 msgid "Generate translation"
 msgstr "Generera översättning"
 
-#: inc/admin/slug-meta.php:197 inc/admin/translation-meta.php:183
+#: inc/admin/slug-meta.php:197 inc/admin/translation-meta.php:203
 msgid "Reviewed on "
 msgstr "Granskad på "
 
@@ -2451,19 +2551,19 @@ msgstr "Granskad på "
 msgid " - Slug translation: "
 msgstr " - Slug översättning: "
 
-#: inc/admin/slug-meta.php:261 inc/admin/translation-meta.php:247
+#: inc/admin/slug-meta.php:261 inc/admin/translation-meta.php:267
 msgid "Is reviewed"
 msgstr "Är granskad"
 
-#: inc/admin/slug-meta.php:492 inc/admin/translation-meta.php:471
+#: inc/admin/slug-meta.php:492 inc/admin/translation-meta.php:491
 msgid "Invalid parameters"
 msgstr "Ogiltiga parametrar"
 
-#: inc/admin/slug-meta.php:504 inc/admin/translation-meta.php:484
+#: inc/admin/slug-meta.php:504 inc/admin/translation-meta.php:504
 msgid "Invalid languages parameters"
 msgstr "Ogiltiga språkparametrar"
 
-#: inc/admin/slug-meta.php:561 inc/admin/translation-meta.php:524
+#: inc/admin/slug-meta.php:561 inc/admin/translation-meta.php:544
 msgid "Invalid API response"
 msgstr "Ogiltigt API-svar"
 
@@ -2478,10 +2578,6 @@ msgstr ""
 #: inc/admin/switcher-nav-menu.php:213 inc/admin/switcher-nav-menu.php:320
 msgid "Displayed flag: "
 msgstr "Visad flagga: "
-
-#: inc/admin/switcher-nav-menu.php:249
-msgid "Language switcher"
-msgstr "Språkväxlare"
 
 #: inc/admin/switcher-nav-menu.php:259
 msgid "Add to menu"
@@ -2532,7 +2628,7 @@ msgid "Edit translation"
 msgstr "Redigera översättning"
 
 #: inc/admin/translation-edit-modal.php:96
-#: inc/admin/translation-edit-modal.php:155
+#: inc/admin/translation-edit-modal.php:153
 msgid "Invalid translation ID"
 msgstr "Ogiltigt översättnings-ID"
 
@@ -2540,7 +2636,7 @@ msgstr "Ogiltigt översättnings-ID"
 msgid "Invalid translation post"
 msgstr "Ogiltig översättningspost"
 
-#: inc/admin/translation-edit-modal.php:178
+#: inc/admin/translation-edit-modal.php:176
 msgid "Translation saving failed"
 msgstr "Spara översättning misslyckades"
 
@@ -2548,15 +2644,24 @@ msgstr "Spara översättning misslyckades"
 msgid "Translation"
 msgstr "Översättning"
 
-#: inc/admin/translation-meta.php:87
+#: inc/admin/translation-meta.php:88
+#, php-format
+msgid ""
+"This text contains the tag %s, which will be replaced by the term the visitor "
+"searched for. Please keep it in your translation."
+msgstr ""
+"Denna text innehåller taggen %s, som kommer att ersättas med det sökord som "
+"besökaren sökte efter. Behåll den gärna i din översättning."
+
+#: inc/admin/translation-meta.php:106
 msgid " - Original text: "
 msgstr " - Originaltext: "
 
-#: inc/admin/translation-meta.php:212
+#: inc/admin/translation-meta.php:232
 msgid " - Translation: "
 msgstr " - Översättning: "
 
-#: inc/admin/translation-meta.php:282
+#: inc/admin/translation-meta.php:302
 msgid "Discovery URL: "
 msgstr "URL för upptäckt: "
 
@@ -2604,6 +2709,68 @@ msgstr ""
 msgid "Save in progress..."
 msgstr "Spara under pågående..."
 
+#: inc/dictionary.php:684
+msgid "Error [1]: The current user is not authorized to edit translations"
+msgstr ""
+"Fel [1]: Den aktuella användaren har inte behörighet att redigera "
+"översättningar"
+
+#: inc/dictionary.php:698
+msgid "Error [2]: Invalid post ID parameter"
+msgstr "Fel [2]: Ogiltig parameter för inläggs-ID"
+
+#: inc/dictionary.php:716
+msgid "Error [3]: Invalid impacted languages parameter"
+msgstr "Fel [3]: Ogiltig parameter för berörda språk"
+
+#: inc/dictionary.php:739
+msgid "Error [4]: Invalid impacted languages data"
+msgstr "Fel [4]: Ogiltiga uppgifter om berörda språk"
+
+#: inc/dictionary.php:760
+msgid "Error [5]: Parameter \"check\" not found"
+msgstr "Fel [5]: Parametern ”check” hittades inte"
+
+#: inc/dictionary.php:773
+msgid "Error [6]: Invalid \"check\" parameter"
+msgstr "Fel [6]: Ogiltig ”check”-parameter"
+
+#: inc/dictionary.php:791
+msgid "Error [7]: Invalid post ID or post type"
+msgstr "Fel [7]: Ogiltigt inläggs-ID eller inläggstyp"
+
+#: inc/dictionary.php:811
+msgid "Error [8]: Failed to delete the translation"
+msgstr "Fel [8]: Det gick inte att ta bort översättningen"
+
+#: inc/dictionary.php:843
+msgid "Error [9]: Translation meta \"translations\" not found"
+msgstr "Fel [9]: Översättningsmetadata ”translations” hittades inte"
+
+#: inc/dictionary.php:859
+msgid "Error [10]: Invalid translation meta"
+msgstr "Fel [10]: Ogiltig översättningsmetadata"
+
+#: inc/dictionary.php:873
+msgid "Error [11]: Translation meta \"original language\" not found"
+msgstr "Fel [11]: Översättningsmetadata för ”ursprungsspråk” hittades inte"
+
+#: inc/dictionary.php:885
+msgid ""
+"Error [12]: The language of the translation is not the same as the language "
+"of the site's settings"
+msgstr ""
+"Fel [12]: Översättningens språk stämmer inte överens med språket i "
+"webbplatsens inställningar"
+
+#: inc/dictionary.php:927
+msgid "Error [13]: Failed to delete the translation"
+msgstr "Fel [13]: Det gick inte att ta bort översättningen"
+
+#: inc/dictionary.php:951
+msgid "Error [14]: Failed to update the translation meta"
+msgstr "Fel [14]: Det gick inte att uppdatera översättningsmetadata"
+
 #: inc/dom/load-overload.php:35
 msgid "Translation API overloaded"
 msgstr "Översättnings-API överbelastat"
@@ -2647,51 +2814,55 @@ msgstr ""
 "Ett fel uppstod under översättningen. Kontrollera webbläsarens konsol för mer "
 "information."
 
-#: inc/dom/mode-editor.php:120 inc/dom/mode-list.php:374
+#: inc/dom/mode-editor.php:122 inc/dom/mode-list.php:378
 msgid "Edit this translation"
 msgstr "Redigera denna översättning"
 
-#: inc/dom/mode-list.php:171
+#: inc/dom/mode-list.php:175
 msgid "Search"
 msgstr "Sök"
 
-#: inc/dom/mode-list.php:183
+#: inc/dom/mode-list.php:187
 msgid "Status"
 msgstr "Status"
 
-#: inc/dom/mode-list.php:189
+#: inc/dom/mode-list.php:193
 msgid "All"
 msgstr "Alla"
 
-#: inc/dom/mode-list.php:211
+#: inc/dom/mode-list.php:215
 msgid "Order"
 msgstr "Order"
 
-#: inc/dom/mode-list.php:217
+#: inc/dom/mode-list.php:221
 msgid "Occurrence order"
 msgstr "Ordning för förekomst"
 
-#: inc/dom/mode-list.php:221
+#: inc/dom/mode-list.php:225
 msgid "Alphabetical - sources"
 msgstr "Alfabetisk - källor"
 
-#: inc/dom/mode-list.php:225
+#: inc/dom/mode-list.php:229
 msgid "Alphabetical - translations"
 msgstr "Alfabetisk - översättningar"
 
-#: inc/dom/mode-list.php:302
+#: inc/dom/mode-list.php:306
 msgid "SEO - Title:"
 msgstr "SEO – Titel:"
 
-#: inc/dom/mode-list.php:306
+#: inc/dom/mode-list.php:310
 msgid "SEO - Description:"
 msgstr "SEO-funktioner:"
 
-#: inc/dom/mode-list.php:391
+#: inc/dom/mode-list.php:336
+msgid "No translation found."
+msgstr "Ingen översättning hittades."
+
+#: inc/dom/mode-list.php:395
 msgid "Go to top"
 msgstr "Gå till toppen"
 
-#: inc/slug.php:294 inc/translation.php:275
+#: inc/slug.php:311 inc/translation.php:287
 msgid "..."
 msgstr "..."
 
