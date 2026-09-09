@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: wpLingua\n"
-"POT-Creation-Date: 2026-04-28 16:26+0200\n"
-"PO-Revision-Date: 2026-04-28 16:51+0200\n"
+"POT-Creation-Date: 2026-09-07 14:21+0200\n"
+"PO-Revision-Date: 2026-09-07 16:17+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: hu_HU\n"
@@ -19,519 +19,527 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: *.min.js\n"
 
-#: data/language.php:57
+#: data/language.php:58
 msgid "Arabic"
 msgstr "Arab"
 
-#: data/language.php:64 data/language.php:219
+#: data/language.php:65 data/language.php:221
 msgid "Global"
 msgstr "Globális"
 
-#: data/language.php:69
+#: data/language.php:70
 msgid "Egypt"
 msgstr "Egyiptom"
 
-#: data/language.php:74
+#: data/language.php:75
 msgid "Saudi Arabia"
 msgstr "Szaud-Arábia"
 
-#: data/language.php:79
+#: data/language.php:80
 msgid "Algeria"
 msgstr "Algéria"
 
-#: data/language.php:84
+#: data/language.php:85
 msgid "Bahrain"
 msgstr "Bahrein"
 
-#: data/language.php:89
+#: data/language.php:90
 msgid "Chad"
 msgstr "Csád"
 
-#: data/language.php:94
+#: data/language.php:95
 msgid "Comoros"
 msgstr "Comore-szigetek"
 
-#: data/language.php:99
+#: data/language.php:100
 msgid "Djibouti"
 msgstr "Dzsibuti"
 
-#: data/language.php:104
+#: data/language.php:105
 msgid "Iraq"
 msgstr "Irak"
 
-#: data/language.php:109
+#: data/language.php:110
 msgid "Jordan"
 msgstr "Jordánia"
 
-#: data/language.php:114
+#: data/language.php:115
 msgid "Kuwait"
 msgstr "Kuvait"
 
-#: data/language.php:119
+#: data/language.php:120
 msgid "Lebanon"
 msgstr "Libanon"
 
-#: data/language.php:124
+#: data/language.php:125
 msgid "Libya"
 msgstr "Líbia"
 
-#: data/language.php:129
+#: data/language.php:130
 msgid "Mauritania"
 msgstr "Mauritánia"
 
-#: data/language.php:134
+#: data/language.php:135
 msgid "Morocco"
 msgstr "Marokkó"
 
-#: data/language.php:139
+#: data/language.php:140
 msgid "Oman"
 msgstr "Omán"
 
-#: data/language.php:144
+#: data/language.php:145
 msgid "Palestine"
 msgstr "Palesztina"
 
-#: data/language.php:149
+#: data/language.php:150
 msgid "Qatar"
 msgstr "Katar"
 
-#: data/language.php:154
+#: data/language.php:155
 msgid "Somalia"
 msgstr "Szomália"
 
-#: data/language.php:159
+#: data/language.php:160
 msgid "Sudan"
 msgstr "Szudán"
 
-#: data/language.php:164
+#: data/language.php:165
 msgid "Syria"
 msgstr "Szíria"
 
-#: data/language.php:169
+#: data/language.php:170
 msgid "Tunisia"
 msgstr "Tunézia"
 
-#: data/language.php:174
+#: data/language.php:175
 msgid "United Arab Emirates"
 msgstr "Egyesült Arab Emírségek"
 
-#: data/language.php:179
+#: data/language.php:180
 msgid "Yemen"
 msgstr "Jemen"
 
-#: data/language.php:213
+#: data/language.php:215
 msgid "Chinese"
 msgstr "Kínai"
 
-#: data/language.php:224
+#: data/language.php:226
 msgid "China"
 msgstr "Kína"
 
-#: data/language.php:229
+#: data/language.php:231
 msgid "Hong Kong"
 msgstr "Hongkong"
 
-#: data/language.php:234
+#: data/language.php:236
 msgid "Malaysia"
 msgstr "Malajzia"
 
-#: data/language.php:239 data/language.php:479
+#: data/language.php:241 data/language.php:485
 msgid "Singapore"
 msgstr "Szingapúr"
 
-#: data/language.php:273
+#: data/language.php:276
 msgid "Danish"
 msgstr "Dánia"
 
-#: data/language.php:279
+#: data/language.php:282
 msgid "Denmark"
 msgstr "Dánia"
 
-#: data/language.php:313
+#: data/language.php:317
 msgid "Dutch"
 msgstr "Holland"
 
-#: data/language.php:319
+#: data/language.php:323
 msgid "Netherlands"
 msgstr "Hollandia"
 
-#: data/language.php:324 data/language.php:574
+#: data/language.php:328 data/language.php:582
 msgid "Belgium"
 msgstr "Belgium"
 
-#: data/language.php:329
+#: data/language.php:333
 msgid "Suriname"
 msgstr "Surinam"
 
-#: data/language.php:363
+#: data/language.php:368
 msgid "Slovak"
 msgstr "Szlovák"
 
-#: data/language.php:369
+#: data/language.php:374
 msgid "Slovakia"
 msgstr "Szlovákia"
 
-#: data/language.php:374
+#: data/language.php:379
 msgid "Czech Republic"
 msgstr "Cseh Köztársaság"
 
-#: data/language.php:408
+#: data/language.php:414
 msgid "English"
 msgstr "Angol"
 
-#: data/language.php:414
+#: data/language.php:420
 msgid "US / GB"
 msgstr "US / GB"
 
-#: data/language.php:419
+#: data/language.php:425
 msgid "United Kingdom"
 msgstr "Egyesült Királyság"
 
-#: data/language.php:424
+#: data/language.php:430
 msgid "United States"
 msgstr "Egyesült Államok"
 
-#: data/language.php:429
+#: data/language.php:435
 msgid "Australia"
 msgstr "Ausztrália"
 
-#: data/language.php:434 data/language.php:584
+#: data/language.php:440 data/language.php:592
 msgid "Canada"
 msgstr "Kanada"
 
-#: data/language.php:439
+#: data/language.php:445
 msgid "Ireland"
 msgstr "Írország"
 
-#: data/language.php:444
+#: data/language.php:450
 msgid "New Zealand"
 msgstr "Új-Zéland"
 
-#: data/language.php:449
+#: data/language.php:455
 msgid "Nigeria"
 msgstr "Nigéria"
 
-#: data/language.php:454
+#: data/language.php:460
 msgid "South Africa"
 msgstr "Dél-Afrikai Köztársaság"
 
-#: data/language.php:459
+#: data/language.php:465
 msgid "Kenya"
 msgstr "Kenya"
 
-#: data/language.php:464
+#: data/language.php:470
 msgid "Ghana"
 msgstr "Gana"
 
-#: data/language.php:469
+#: data/language.php:475
 msgid "South Sudan"
 msgstr "Dél-Szudán"
 
-#: data/language.php:474
+#: data/language.php:480
 msgid "Sierra Leone"
 msgstr "Sierra Leone"
 
-#: data/language.php:484
+#: data/language.php:490
 msgid "Liberia"
 msgstr "Libéria"
 
-#: data/language.php:489
+#: data/language.php:495
 msgid "Jamaica"
 msgstr "Jamaika"
 
-#: data/language.php:523
+#: data/language.php:530
 msgid "Finnish"
 msgstr "Finn"
 
-#: data/language.php:529 data/language.php:1330
+#: data/language.php:536 data/language.php:1395
 msgid "Finland"
 msgstr "Finnország"
 
-#: data/language.php:563
+#: data/language.php:571
 msgid "French"
 msgstr "Francia"
 
-#: data/language.php:569
+#: data/language.php:577
 msgid "France"
 msgstr "Franciaország"
 
-#: data/language.php:579
+#: data/language.php:587
 msgid "Quebec"
 msgstr "Québec"
 
-#: data/language.php:589
+#: data/language.php:597
 msgid "Congo - Kinshasa"
 msgstr "Kongó - Kinshasa"
 
-#: data/language.php:594
+#: data/language.php:602
 msgid "Congo - Brazzaville"
 msgstr "Kongó - Brazzaville"
 
-#: data/language.php:599
+#: data/language.php:607
 msgid "Cameroon"
 msgstr "Kamerun"
 
-#: data/language.php:604
+#: data/language.php:612
 msgid "Ivory Coast"
 msgstr "Elefántcsontpart"
 
-#: data/language.php:609 data/language.php:659
+#: data/language.php:617 data/language.php:668
 msgid "Switzerland"
 msgstr "Svájc"
 
-#: data/language.php:643
+#: data/language.php:652
 msgid "German"
 msgstr "Német"
 
-#: data/language.php:649
+#: data/language.php:658
 msgid "Germany"
 msgstr "Németország"
 
-#: data/language.php:654
+#: data/language.php:663
 msgid "Austria"
 msgstr "Ausztria"
 
-#: data/language.php:664
+#: data/language.php:673
 msgid "Liechtenstein"
 msgstr "Liechtenstein"
 
-#: data/language.php:698
+#: data/language.php:708
 msgid "Greek"
 msgstr "Görög"
 
-#: data/language.php:704
+#: data/language.php:714
 msgid "Greece"
 msgstr "Görögország"
 
-#: data/language.php:709 data/language.php:1375
+#: data/language.php:719 data/language.php:1441
 msgid "Cyprus"
 msgstr "Ciprus"
 
-#: data/language.php:743
+#: data/language.php:754
 msgid "Hebrew"
 msgstr "Héber"
 
-#: data/language.php:750
+#: data/language.php:761
 msgid "Israel"
 msgstr "Izrael"
 
-#: data/language.php:784
+#: data/language.php:796
 msgid "Hindi"
 msgstr "Hindi"
 
-#: data/language.php:790
+#: data/language.php:802
 msgid "India"
 msgstr "India"
 
-#: data/language.php:795
+#: data/language.php:807
 msgid "Pakistan"
 msgstr "Pakisztán"
 
-#: data/language.php:829
+#: data/language.php:842
 msgid "Hungarian"
 msgstr "Magyar"
 
-#: data/language.php:835
+#: data/language.php:848
 msgid "Hungary"
 msgstr "Magyarország"
 
-#: data/language.php:869
+#: data/language.php:883
 msgid "Indonesian"
 msgstr "Indonézia"
 
-#: data/language.php:875
+#: data/language.php:889
 msgid "Indonesia"
 msgstr "Indonézia"
 
-#: data/language.php:909
+#: data/language.php:924
 msgid "Italian"
 msgstr "Olasz"
 
-#: data/language.php:915
+#: data/language.php:930
 msgid "Italy"
 msgstr "Olaszország"
 
-#: data/language.php:949
+#: data/language.php:965
 msgid "Japanese"
 msgstr "Japán"
 
-#: data/language.php:955
+#: data/language.php:971
 msgid "Japan"
 msgstr "Japán"
 
-#: data/language.php:989
+#: data/language.php:1007
+msgid "Norwegian"
+msgstr "Norvég"
+
+#: data/language.php:1013
+msgid "Norway"
+msgstr "Norvégia"
+
+#: data/language.php:1049
 msgid "Korean"
 msgstr "Korea"
 
-#: data/language.php:995
+#: data/language.php:1055
 msgid "South Korea"
 msgstr "Dél-Korea"
 
-#: data/language.php:1000
+#: data/language.php:1060
 msgid "North Korea"
 msgstr "Észak-Korea"
 
-#: data/language.php:1034
+#: data/language.php:1095
 msgid "Polish"
 msgstr "Lengyelország"
 
-#: data/language.php:1040
+#: data/language.php:1101
 msgid "Poland"
 msgstr "Lengyelország"
 
-#: data/language.php:1074
+#: data/language.php:1136
 msgid "Portuguese"
 msgstr "Portugál"
 
-#: data/language.php:1080
+#: data/language.php:1142
 msgid "Portugal"
 msgstr "Portugália"
 
-#: data/language.php:1085
+#: data/language.php:1147
 msgid "Brazil"
 msgstr "Brazília"
 
-#: data/language.php:1090
+#: data/language.php:1152
 msgid "Mozambique"
 msgstr "Mozambik"
 
-#: data/language.php:1095
+#: data/language.php:1157
 msgid "Angola"
 msgstr "Angola"
 
-#: data/language.php:1129
+#: data/language.php:1192
 msgid "Russian"
 msgstr "Orosz"
 
-#: data/language.php:1135
+#: data/language.php:1198
 msgid "Russia"
 msgstr "Oroszország"
 
-#: data/language.php:1140
+#: data/language.php:1203
 msgid "Kazakhstan"
 msgstr "Kazahsztán"
 
-#: data/language.php:1145
+#: data/language.php:1208
 msgid "Belarus"
 msgstr "Belarusz"
 
-#: data/language.php:1150
+#: data/language.php:1213
 msgid "Kyrgyzstan"
 msgstr "Kirgizisztán"
 
-#: data/language.php:1155
+#: data/language.php:1218
 msgid "Tajikistan"
 msgstr "Tádzsikisztán"
 
-#: data/language.php:1189
+#: data/language.php:1253
 msgid "Spanish"
 msgstr "Spanyol"
 
-#: data/language.php:1195
+#: data/language.php:1259
 msgid "Spain"
 msgstr "Spanyolország"
 
-#: data/language.php:1200
+#: data/language.php:1264
 msgid "Mexico"
 msgstr "Mexikó"
 
-#: data/language.php:1205
+#: data/language.php:1269
 msgid "Argentina"
 msgstr "Argentína"
 
-#: data/language.php:1210
+#: data/language.php:1274
 msgid "Colombia"
 msgstr "Kolumbia"
 
-#: data/language.php:1215
+#: data/language.php:1279
 msgid "Peru"
 msgstr "Peru"
 
-#: data/language.php:1220
+#: data/language.php:1284
 msgid "Ecuador"
 msgstr "Equador"
 
-#: data/language.php:1225
+#: data/language.php:1289
 msgid "Bolivia"
 msgstr "Bolívia"
 
-#: data/language.php:1230
+#: data/language.php:1294
 msgid "Chile"
 msgstr "Chile"
 
-#: data/language.php:1235
+#: data/language.php:1299
 msgid "Equatorial Guinea"
 msgstr "Egyenlítői-Guinea"
 
-#: data/language.php:1240
+#: data/language.php:1304
 msgid "Guatemala"
 msgstr "Guatemala"
 
-#: data/language.php:1245
+#: data/language.php:1309
 msgid "Cuba"
 msgstr "Kuba"
 
-#: data/language.php:1250
+#: data/language.php:1314
 msgid "Dominican Republic"
 msgstr "Dominikai Köztársaság"
 
-#: data/language.php:1255
+#: data/language.php:1319
 msgid "Honduras"
 msgstr "Honduras"
 
-#: data/language.php:1260
+#: data/language.php:1324
 msgid "Paraguay"
 msgstr "Paraguay"
 
-#: data/language.php:1265
+#: data/language.php:1329
 msgid "El Salvador"
 msgstr "Salvador"
 
-#: data/language.php:1270
+#: data/language.php:1334
 msgid "Nicaragua"
 msgstr "Nikaragua"
 
-#: data/language.php:1275
+#: data/language.php:1339
 msgid "Costa Rica"
 msgstr "Costa Rica"
 
-#: data/language.php:1280
+#: data/language.php:1344
 msgid "Panama"
 msgstr "Panama"
 
-#: data/language.php:1285
+#: data/language.php:1349
 msgid "Uruguay"
 msgstr "Uruguay"
 
-#: data/language.php:1319
+#: data/language.php:1384
 msgid "Swedish"
 msgstr "Svéd"
 
-#: data/language.php:1325
+#: data/language.php:1390
 msgid "Sweden"
 msgstr "Svédország"
 
-#: data/language.php:1364
+#: data/language.php:1430
 msgid "Turkish"
 msgstr "Török"
 
-#: data/language.php:1370
+#: data/language.php:1436
 msgid "Turkey"
 msgstr "Törökország"
 
-#: data/language.php:1409
+#: data/language.php:1476
 msgid "Ukrainian"
 msgstr "Ukrajna"
 
-#: data/language.php:1415
+#: data/language.php:1482
 msgid "Ukraine"
 msgstr "Ukrajna"
 
-#: data/language.php:1449
+#: data/language.php:1517
 msgid "Vietnamese"
 msgstr "Vietnám"
 
-#: data/language.php:1455
+#: data/language.php:1523
 msgid "Vietnam"
 msgstr "Vietnám"
 
@@ -693,8 +701,8 @@ msgid "Sub-list"
 msgstr "Allista"
 
 #. Plugin Name of the plugin/theme
-#: inc/admin/admin-bar.php:25 inc/admin/option-page-register.php:241
-#: inc/admin/option-page.php:18 inc/admin/option-page.php:37
+#: inc/admin/admin-bar.php:25 inc/admin/option-page-register.php:266
+#: inc/admin/option-page.php:143 inc/admin/option-page.php:163
 #: inc/admin/switcher-nav-menu.php:167
 msgid "wpLingua"
 msgstr "wpLingua"
@@ -704,7 +712,7 @@ msgid "This URL is excluded from translation"
 msgstr "Ez az URL nem tartozik a fordításhoz"
 
 #: inc/admin/admin-bar.php:65 inc/admin/translation-edit-modal.php:18
-#: inc/dom/mode-list.php:158
+#: inc/dom/mode-list.php:162
 msgid "Return on page"
 msgstr "Vissza az oldalra"
 
@@ -712,7 +720,7 @@ msgstr "Vissza az oldalra"
 msgid "Visual editor"
 msgstr "Vizuális szerkesztő"
 
-#: inc/admin/admin-bar.php:84 inc/dom/mode-list.php:250
+#: inc/admin/admin-bar.php:84 inc/dom/mode-list.php:254
 msgid "All translations on page"
 msgstr "Minden fordítás az oldalon"
 
@@ -729,7 +737,11 @@ msgstr "Fordítások"
 msgid "Edit translations"
 msgstr "Fordítások szerkesztése"
 
-#: inc/admin/assets.php:380 inc/admin/assets.php:472 inc/assets.php:85
+#: inc/admin/assets.php:340
+msgid "Error [0]: The AJAX call failed."
+msgstr "Hiba [0]: Az AJAX-hívás sikertelen volt."
+
+#: inc/admin/assets.php:397 inc/admin/assets.php:489 inc/assets.php:85
 msgid ""
 "You are about to leave the page without saving your changes. They will be "
 "lost if you continue. Would you like to leave the page anyway?"
@@ -737,24 +749,24 @@ msgstr ""
 "A módosítások mentése nélkül készül elhagyni az oldalt. Ha folytatja, "
 "elvesznek. Szeretné mégis elhagyni az oldalt?"
 
-#: inc/admin/option-page-dictionary.php:20
+#: inc/admin/option-page-dictionary.php:23
 msgid "wpLingua - Dictionary rules"
 msgstr "wpLingua - Szótári szabályok"
 
-#: inc/admin/option-page-dictionary.php:32
-#: inc/admin/option-page-link-media.php:32
+#: inc/admin/option-page-dictionary.php:48
+#: inc/admin/option-page-link-media.php:33
 msgid "Debug"
 msgstr "Hibakeresés"
 
-#: inc/admin/option-page-dictionary.php:41
+#: inc/admin/option-page-dictionary.php:57
 msgid "Dictionary entries"
 msgstr "Szótári bejegyzések"
 
-#: inc/admin/option-page-dictionary.php:45
+#: inc/admin/option-page-dictionary.php:61
 msgid "Translation rules by dictionary: "
 msgstr "Fordítási szabályok szótár szerint: "
 
-#: inc/admin/option-page-dictionary.php:47
+#: inc/admin/option-page-dictionary.php:63
 msgid ""
 "The dictionary allows you to define translation rules that apply when "
 "generating machine translations. You can specify words or sets of words that "
@@ -766,83 +778,117 @@ msgstr ""
 "szócsoportokat, amelyeket soha nem szabad lefordítani, vagy meghatározhatja, "
 "hogyan kell lefordítani őket az egyes nyelvekre."
 
-#: inc/admin/option-page-dictionary.php:54
+#: inc/admin/option-page-dictionary.php:70
 msgid "Add a dictionary entry"
 msgstr "Szótári bejegyzés hozzáadása"
 
-#: inc/admin/option-page-dictionary.php:62
-#: inc/admin/option-page-link-media.php:62
+#: inc/admin/option-page-dictionary.php:78
+#: inc/admin/option-page-link-media.php:63
 msgid "Add an entry"
 msgstr "Bejegzés hozzáadása"
 
-#: inc/admin/option-page-dictionary.php:71
-#: inc/admin/option-page-link-media.php:71
+#: inc/admin/option-page-dictionary.php:87
+#: inc/admin/option-page-link-media.php:72
 msgid "Edit the entry"
 msgstr "A bejegyzés szerkesztése"
 
-#: inc/admin/option-page-dictionary.php:109
+#: inc/admin/option-page-dictionary.php:127
+msgid "Ignore"
+msgstr "Kihagy"
+
+#: inc/admin/option-page-dictionary.php:136
+msgid "Update translations"
+msgstr "Fordítások frissítése"
+
+#: inc/admin/option-page-dictionary.php:172
+#, php-format
+msgid "Number of translations to update: %d"
+msgstr "Frissítendő fordítások száma: %d"
+
+#: inc/admin/option-page-dictionary.php:189
+msgid "Translations are currently being updated."
+msgstr "A fordítások jelenleg frissítés alatt állnak."
+
+#: inc/admin/option-page-dictionary.php:193
+#, php-format
+msgid "Number of translations updated: %1$s"
+msgstr "Frissített fordítások száma: %1$s"
+
+#: inc/admin/option-page-dictionary.php:205
+msgid "End of translations update."
+msgstr "A fordítások frissítésének vége."
+
+#: inc/admin/option-page-dictionary.php:211
+msgid "Back to the dictionary"
+msgstr "Vissza a szótárhoz"
+
+#: inc/admin/option-page-dictionary.php:255
+msgid "ID: "
+msgstr "ID: "
+
+#: inc/admin/option-page-dictionary.php:306
 msgid "All dictionary entries: "
 msgstr "Minden szótári bejegyzés: "
 
-#: inc/admin/option-page-dictionary.php:124
-#: inc/admin/option-page-link-media.php:124
+#: inc/admin/option-page-dictionary.php:321
+#: inc/admin/option-page-link-media.php:125
 msgid "Rule N°"
 msgstr "Szabályszám"
 
-#: inc/admin/option-page-dictionary.php:134
-#: inc/admin/option-page-link-media.php:134
-#: inc/admin/option-page-settings.php:279 inc/admin/option-page-settings.php:342
+#: inc/admin/option-page-dictionary.php:331
+#: inc/admin/option-page-link-media.php:135
+#: inc/admin/option-page-settings.php:287 inc/admin/option-page-settings.php:351
 msgid "Edit"
 msgstr "Szerkesztés"
 
-#: inc/admin/option-page-dictionary.php:141
-#: inc/admin/option-page-link-media.php:141
-#: inc/admin/option-page-settings.php:343
+#: inc/admin/option-page-dictionary.php:338
+#: inc/admin/option-page-link-media.php:142
+#: inc/admin/option-page-settings.php:352
 msgid "Remove"
 msgstr "Eltávolítás"
 
-#: inc/admin/option-page-dictionary.php:153
+#: inc/admin/option-page-dictionary.php:350
 msgid "Always translate: "
 msgstr "Mindig fordítson: "
 
-#: inc/admin/option-page-dictionary.php:169
+#: inc/admin/option-page-dictionary.php:366
 msgid " - By: "
 msgstr " - By: "
 
-#: inc/admin/option-page-dictionary.php:175
+#: inc/admin/option-page-dictionary.php:372
 msgid "Never translate: "
 msgstr "Soha ne fordítson: "
 
-#: inc/admin/option-page-dictionary.php:213
-#: inc/admin/option-page-dictionary.php:327
+#: inc/admin/option-page-dictionary.php:410
+#: inc/admin/option-page-dictionary.php:528
 msgid "Source text: "
 msgstr "Forrás: "
 
-#: inc/admin/option-page-dictionary.php:237
-#: inc/admin/option-page-dictionary.php:351
+#: inc/admin/option-page-dictionary.php:434
+#: inc/admin/option-page-dictionary.php:552
 msgid "Never translate"
 msgstr "Soha ne fordítson"
 
-#: inc/admin/option-page-dictionary.php:259
-#: inc/admin/option-page-dictionary.php:373
-#: inc/admin/option-page-link-media.php:453
+#: inc/admin/option-page-dictionary.php:456
+#: inc/admin/option-page-dictionary.php:574
+#: inc/admin/option-page-link-media.php:458
 msgid " - Always translate by: "
 msgstr " - Mindig lefordítja: "
 
-#: inc/admin/option-page-dictionary.php:286
-#: inc/admin/option-page-dictionary.php:400
-#: inc/admin/option-page-link-media.php:343
-#: inc/admin/option-page-link-media.php:479
+#: inc/admin/option-page-dictionary.php:484
+#: inc/admin/option-page-dictionary.php:602
+#: inc/admin/option-page-link-media.php:345
+#: inc/admin/option-page-link-media.php:485
 msgid "Cancel"
 msgstr "Mégsem"
 
-#: inc/admin/option-page-dictionary.php:294
-#: inc/admin/option-page-link-media.php:351
+#: inc/admin/option-page-dictionary.php:494
+#: inc/admin/option-page-link-media.php:355
 msgid "Save new entry"
 msgstr "Új bejegyzés mentése"
 
-#: inc/admin/option-page-dictionary.php:408
-#: inc/admin/option-page-link-media.php:487
+#: inc/admin/option-page-dictionary.php:612
+#: inc/admin/option-page-link-media.php:495
 msgid "Save edited entry"
 msgstr "Szerkesztett bejegyzés mentése"
 
@@ -850,15 +896,15 @@ msgstr "Szerkesztett bejegyzés mentése"
 msgid "wpLingua - Exclusion rules"
 msgstr "wpLingua - Kizárási szabályok"
 
-#: inc/admin/option-page-exclusions.php:28
+#: inc/admin/option-page-exclusions.php:29
 msgid "Exclude URL"
 msgstr "URL kizárása"
 
-#: inc/admin/option-page-exclusions.php:31
+#: inc/admin/option-page-exclusions.php:32
 msgid "Exclude URL from translation: "
 msgstr "URL kizárása a fordításból: "
 
-#: inc/admin/option-page-exclusions.php:35
+#: inc/admin/option-page-exclusions.php:36
 msgid ""
 "You can exclude from translations pages you wish to offer only in the "
 "website's original language. To do this, list the REGEXs that match the URL "
@@ -868,31 +914,31 @@ msgstr ""
 "eredeti nyelvén kíván felajánlani. Ehhez soronként sorolja fel a kizárandó "
 "URL-nek megfelelő REGEX-eket. Példák: "
 
-#: inc/admin/option-page-exclusions.php:38
+#: inc/admin/option-page-exclusions.php:39
 msgid "Exclude URL \"/my-page/\""
 msgstr "URL \"/my-page/\" kizárása"
 
-#: inc/admin/option-page-exclusions.php:39
+#: inc/admin/option-page-exclusions.php:40
 msgid "Exclude URL starting with \"/my-page/\""
 msgstr "\"/my-page/\" kezdetű URL kizárása"
 
-#: inc/admin/option-page-exclusions.php:40
+#: inc/admin/option-page-exclusions.php:41
 msgid "Exclude URL ending with \"/my-page/\""
 msgstr "\"/my-page/\" végződésű URL kizárása"
 
-#: inc/admin/option-page-exclusions.php:41
+#: inc/admin/option-page-exclusions.php:42
 msgid "Exclude URL containing \"/my-page/\""
 msgstr "Kizárja a \"/my-page/\" URL-t tartalmazó URL-t"
 
-#: inc/admin/option-page-exclusions.php:49
+#: inc/admin/option-page-exclusions.php:50
 msgid "Exclude elements"
 msgstr "Elemek kizárása"
 
-#: inc/admin/option-page-exclusions.php:52
+#: inc/admin/option-page-exclusions.php:53
 msgid "Exclude HTML elements: "
 msgstr "HTML elemek kizárása: "
 
-#: inc/admin/option-page-exclusions.php:56
+#: inc/admin/option-page-exclusions.php:57
 msgid ""
 "You can leave some elements of your web pages untranslated. To do this, list "
 "below the CSS selectors for the elements to be excluded, one per line. "
@@ -901,20 +947,20 @@ msgstr ""
 "A weboldalak egyes elemeit lefordítatlanul is hagyhatja. Ehhez soronként "
 "sorolja fel a kizárandó elemek CSS-szelektorait. Példák: "
 
-#: inc/admin/option-page-exclusions.php:59
+#: inc/admin/option-page-exclusions.php:60
 msgid "Exclude elements by ID attribute"
 msgstr "Elemek kizárása ID attribútum alapján"
 
-#: inc/admin/option-page-exclusions.php:60
+#: inc/admin/option-page-exclusions.php:61
 msgid "Exclude elements by class attribute"
 msgstr "Elemek kizárása osztály attribútum alapján"
 
-#: inc/admin/option-page-exclusions.php:61
+#: inc/admin/option-page-exclusions.php:62
 msgid "Exclude elements by CSS selector"
 msgstr "Elemek kizárása CSS szelektorral"
 
-#: inc/admin/option-page-exclusions.php:69 inc/admin/option-page-settings.php:91
-#: inc/admin/option-page-switcher.php:504
+#: inc/admin/option-page-exclusions.php:70 inc/admin/option-page-settings.php:93
+#: inc/admin/option-page-switcher.php:545
 #: inc/admin/translation-edit-modal.php:71 inc/assets.php:92
 msgid "Save"
 msgstr "Mentés"
@@ -923,15 +969,15 @@ msgstr "Mentés"
 msgid "wpLingua - Links & Medias"
 msgstr "wpLingua - Linkek és médiumok"
 
-#: inc/admin/option-page-link-media.php:41
+#: inc/admin/option-page-link-media.php:42
 msgid "Links & medias"
 msgstr "Linkek és médiumok"
 
-#: inc/admin/option-page-link-media.php:45
+#: inc/admin/option-page-link-media.php:46
 msgid "Links and medias translations rules: "
 msgstr "Linkek és médiumok fordítási szabályok: "
 
-#: inc/admin/option-page-link-media.php:47
+#: inc/admin/option-page-link-media.php:48
 msgid ""
 "Translation rules on links and media allow different images to be displayed "
 "or link URLs to be changed according to the current language. These rules "
@@ -944,53 +990,53 @@ msgstr ""
 "linkek cél-URL-jei, a képek forrás-URL-jei, az iframe forrás-URL-jei, az "
 "elkapott JSON-okban lévő URL-ek..."
 
-#: inc/admin/option-page-link-media.php:54
+#: inc/admin/option-page-link-media.php:55
 msgid "Add a rule"
 msgstr "Szabály hozzáadása"
 
-#: inc/admin/option-page-link-media.php:109
+#: inc/admin/option-page-link-media.php:110
 msgid "All links and medias rules: "
 msgstr "Minden link és médiaszabály: "
 
-#: inc/admin/option-page-link-media.php:156
+#: inc/admin/option-page-link-media.php:157
 msgid "Mode: "
 msgstr "Mód: "
 
-#: inc/admin/option-page-link-media.php:165
-#: inc/admin/option-page-link-media.php:273
-#: inc/admin/option-page-link-media.php:409
+#: inc/admin/option-page-link-media.php:166
+#: inc/admin/option-page-link-media.php:274
+#: inc/admin/option-page-link-media.php:414
 msgid "Exactly equal"
 msgstr "Pontosan egyenlő"
 
-#: inc/admin/option-page-link-media.php:169
-#: inc/admin/option-page-link-media.php:282
-#: inc/admin/option-page-link-media.php:418
+#: inc/admin/option-page-link-media.php:170
+#: inc/admin/option-page-link-media.php:283
+#: inc/admin/option-page-link-media.php:423
 msgid "Partially equal"
 msgstr "Részben egyenlő"
 
-#: inc/admin/option-page-link-media.php:173
+#: inc/admin/option-page-link-media.php:174
 msgid "Regex"
 msgstr "Regex"
 
-#: inc/admin/option-page-link-media.php:177
+#: inc/admin/option-page-link-media.php:178
 msgid "Error"
 msgstr "Hiba"
 
-#: inc/admin/option-page-link-media.php:189
+#: inc/admin/option-page-link-media.php:190
 msgid "Original: "
 msgstr "Eredeti: "
 
-#: inc/admin/option-page-link-media.php:248
-#: inc/admin/option-page-link-media.php:384
+#: inc/admin/option-page-link-media.php:249
+#: inc/admin/option-page-link-media.php:389
 msgid "Original URL: "
 msgstr "Eredeti URL: "
 
-#: inc/admin/option-page-link-media.php:291
-#: inc/admin/option-page-link-media.php:427
+#: inc/admin/option-page-link-media.php:292
+#: inc/admin/option-page-link-media.php:432
 msgid "REGEX"
 msgstr "REGEX"
 
-#: inc/admin/option-page-link-media.php:317
+#: inc/admin/option-page-link-media.php:318
 msgid " - URL: "
 msgstr " - URL: "
 
@@ -1014,22 +1060,22 @@ msgstr "Hiba történt az API-kulcs létrehozása során."
 msgid "wpLingua - Register API key"
 msgstr "wpLingua - API kulcs regisztrálása"
 
-#: inc/admin/option-page-register.php:132
+#: inc/admin/option-page-register.php:129
 msgid "API key created"
 msgstr "Létrehozott API kulcs"
 
-#: inc/admin/option-page-register.php:136
+#: inc/admin/option-page-register.php:133
 msgid "API key created and sent by email"
 msgstr "API-kulcs létrehozása és elküldése e-mailben"
 
-#: inc/admin/option-page-register.php:140
+#: inc/admin/option-page-register.php:137
 msgid ""
 "The API key has been correctly created and sent to the following e-mail "
 "address: "
 msgstr ""
 "Az API-kulcs helyesen lett létrehozva és elküldve a következő e-mail címre: "
 
-#: inc/admin/option-page-register.php:146
+#: inc/admin/option-page-register.php:143
 msgid ""
 "Go to your mailbox and copy the API key sent to you (don't forget to check "
 "the spam section of your mailbox). Then paste it in the section below, and "
@@ -1040,25 +1086,45 @@ msgstr ""
 "részbe, és kattintson az \"API-kulcs beállítása\" gombra, hogy weboldalát "
 "többnyelvűvé tegye."
 
-#: inc/admin/option-page-register.php:152 inc/admin/option-page-register.php:169
+#: inc/admin/option-page-register.php:149
+msgid "Please note:"
+msgstr "Felhívjuk figyelmét:"
+
+#: inc/admin/option-page-register.php:154
+#, php-format
+msgid ""
+"Some web hosting providers may block or prevent emails from reaching your "
+"mailbox. If you don't receive the email, please %s using a different email "
+"address, such as a Gmail address."
+msgstr ""
+"Előfordulhat, hogy egyes webtárhely-szolgáltatók blokkolják az e-maileket, "
+"vagy megakadályozzák, hogy azok eljussanak az Ön postaládájába. Ha nem kapja "
+"meg az e-mailt, kérjük, %s próbálja meg egy másik e-mail-címről, például egy "
+"Gmail-címről."
+
+#: inc/admin/option-page-register.php:163
+msgid "try requesting a new API key"
+msgstr "próbálj meg új API-kulcsot kérni"
+
+#: inc/admin/option-page-register.php:174 inc/admin/option-page-register.php:191
 msgid "Set API Key"
 msgstr "API kulcs beállítása"
 
-#: inc/admin/option-page-register.php:162 inc/admin/option-page-register.php:209
-#: inc/admin/option-page-register.php:445
+#: inc/admin/option-page-register.php:184 inc/admin/option-page-register.php:232
+#: inc/admin/option-page-register.php:481
 msgid "Get API key"
 msgstr "API-kulcs beszerzése"
 
-#: inc/admin/option-page-register.php:176
+#: inc/admin/option-page-register.php:198
 msgid "Start with wpLingua"
 msgstr "Kezdje a wpLingua-val"
 
-#: inc/admin/option-page-register.php:179
+#: inc/admin/option-page-register.php:201
 msgid "You are just a few clicks away from making your website multilingual!"
 msgstr ""
 "Csak néhány kattintás választja el attól, hogy többnyelvűvé tegye weboldalát!"
 
-#: inc/admin/option-page-register.php:185
+#: inc/admin/option-page-register.php:207
 msgid ""
 "For wpLingua to work, an API key is required so that your website has access "
 "to the automatic translation service. On this page you can enter your API key "
@@ -1068,7 +1134,7 @@ msgstr ""
 "automatikus fordítási szolgáltatáshoz. Ezen az oldalon megadhatja API-"
 "kulcsát, ha már rendelkezik ilyennel, vagy ingyenesen létrehozhat egyet."
 
-#: inc/admin/option-page-register.php:191
+#: inc/admin/option-page-register.php:213
 msgid ""
 "An <strong>instantly multilingual website</strong> thanks to automatic text "
 "detection and translation. Easy to use, no knowledge required."
@@ -1077,7 +1143,7 @@ msgstr ""
 "szövegfelismerésnek és fordításnak köszönhetően. Könnyen használható, nem "
 "igényel ismereteket."
 
-#: inc/admin/option-page-register.php:195
+#: inc/admin/option-page-register.php:217
 msgid ""
 "<strong>SEO friendly</strong> to allow search engines to index translated "
 "pages. Open up your website and your business to the whole world."
@@ -1085,7 +1151,7 @@ msgstr ""
 "<strong>SEO-barát</strong>, hogy a keresőmotorok indexelhessék a lefordított "
 "oldalakat. Nyissa meg weboldalát és vállalkozását az egész világ számára."
 
-#: inc/admin/option-page-register.php:199
+#: inc/admin/option-page-register.php:221
 msgid ""
 "All <strong>translations are editable</strong>. Discover the visual editor "
 "and edit translations simply by clicking on them. With a fully customizable "
@@ -1095,7 +1161,7 @@ msgstr ""
 "szerkesztőt, és szerkessze a fordításokat egyszerűen a rájuk kattintva. "
 "Teljesen testreszabható nyelvváltóval."
 
-#: inc/admin/option-page-register.php:203
+#: inc/admin/option-page-register.php:225
 msgid ""
 "One <strong>free and unlimited</strong> language for personal blogs and non-"
 "commercial websites. And many more features!"
@@ -1103,23 +1169,23 @@ msgstr ""
 "Egy <strong>ingyenes és korlátlan</strong> nyelv személyes blogokhoz és nem "
 "kereskedelmi weboldalakhoz. És még sok más funkció!"
 
-#: inc/admin/option-page-register.php:213 inc/admin/option-page-register.php:315
+#: inc/admin/option-page-register.php:236 inc/admin/option-page-register.php:340
 msgid "Set API key"
 msgstr "API kulcs beállítása"
 
-#: inc/admin/option-page-register.php:219
+#: inc/admin/option-page-register.php:244
 msgid "Advanced API features"
 msgstr "Fejlett API funkciók"
 
-#: inc/admin/option-page-register.php:248
+#: inc/admin/option-page-register.php:273
 msgid "Important Notice"
 msgstr "Fontos tudnivaló"
 
-#: inc/admin/option-page-register.php:250
+#: inc/admin/option-page-register.php:275
 msgid "Website incompatible with string translation"
 msgstr "A webhely nem kompatibilis a karakterlánc-fordítással"
 
-#: inc/admin/option-page-register.php:254
+#: inc/admin/option-page-register.php:279
 msgid ""
 "Your website contains a large amount of content, which exceeds the limits of "
 "the string translation method used by wpLingua."
@@ -1127,11 +1193,11 @@ msgstr ""
 "Webhelyed nagy mennyiségű tartalmat tartalmaz, amely meghaladja a wpLingua "
 "által használt karakterlánc-fordítási módszer korlátait."
 
-#: inc/admin/option-page-register.php:259
+#: inc/admin/option-page-register.php:284
 msgid "Why the website is incompatible"
 msgstr "Miért nem kompatibilis a weboldal"
 
-#: inc/admin/option-page-register.php:263
+#: inc/admin/option-page-register.php:288
 msgid ""
 "wpLingua works by identifying and translating each string of characters "
 "individually. On a large website, this method generates a very large number "
@@ -1141,26 +1207,26 @@ msgstr ""
 "Nagy weboldalakon ez a módszer nagyon nagy számú adatbázis-bejegyzést "
 "generál, ami túlterhelést és lassulást okoz."
 
-#: inc/admin/option-page-register.php:268
+#: inc/admin/option-page-register.php:293
 msgid "Recommended solution"
 msgstr "Ajánlott megoldás"
 
-#: inc/admin/option-page-register.php:272
+#: inc/admin/option-page-register.php:297
 msgid ""
 "To make large websites multilingual, we recommend using a translation plugin "
 "based on content duplication, such as Polylang or WPML. These solutions are "
 "specifically designed to efficiently manage large websites."
 msgstr ""
-"A nagy weboldalak többnyelvűvé tételéhez olyan fordító plugint ajánlunk, "
-"amely a tartalom duplikálásán alapul, például a Polylang vagy a WPML. Ezek a "
-"megoldások kifejezetten nagy weboldalak hatékony kezelésére lettek "
-"kifejlesztve."
+"A nagy weboldalak többnyelvűvé tételéhez olyan, a tartalom duplikálásán "
+"alapuló fordítóplugin használatát javasoljuk, mint például a Polylang vagy a "
+"WPML. Ezeket a megoldásokat kifejezetten nagy weboldalak hatékony kezelésére "
+"tervezték."
 
-#: inc/admin/option-page-register.php:292
+#: inc/admin/option-page-register.php:317
 msgid "Set the wpLingua API key: "
 msgstr "Állítsa be a wpLingua API kulcsát: "
 
-#: inc/admin/option-page-register.php:298
+#: inc/admin/option-page-register.php:323
 msgid ""
 "If you already have an API key, enter it below. If you've forgotten your "
 "website's API key, visit"
@@ -1168,26 +1234,26 @@ msgstr ""
 "Ha már rendelkezik API-kulccsal, adja meg azt az alábbiakban. Ha elfelejtette "
 "weboldalának API-kulcsát, látogasson el a következő weboldalra"
 
-#: inc/admin/option-page-register.php:298
+#: inc/admin/option-page-register.php:323
 msgid "the API key retrieval page"
 msgstr "az API kulcs lekérdezési oldal"
 
-#: inc/admin/option-page-register.php:299 inc/admin/option-page-register.php:366
-#: inc/admin/option-page-register.php:382 inc/admin/option-page-register.php:398
-#: inc/admin/option-page-register.php:414 inc/admin/option-page-settings.php:255
-#: inc/admin/option-page-settings.php:373 inc/admin/option-page-settings.php:425
-#: inc/admin/option-page-settings.php:441 inc/admin/option-page-settings.php:475
-#: inc/admin/option-page-settings.php:487 inc/admin/option-page-settings.php:503
-#: inc/admin/option-page-settings.php:535 inc/admin/option-page-settings.php:546
-#: inc/admin/option-page-settings.php:615 inc/admin/option-page-switcher.php:73
-#: inc/admin/option-page-switcher.php:124 inc/admin/option-page-switcher.php:179
-#: inc/admin/option-page-switcher.php:237 inc/admin/option-page-switcher.php:331
-#: inc/admin/option-page-switcher.php:384 inc/admin/option-page-switcher.php:437
-#: inc/admin/option-page-switcher.php:459 inc/admin/option-page-switcher.php:473
+#: inc/admin/option-page-register.php:324 inc/admin/option-page-register.php:394
+#: inc/admin/option-page-register.php:413 inc/admin/option-page-register.php:431
+#: inc/admin/option-page-register.php:449 inc/admin/option-page-settings.php:263
+#: inc/admin/option-page-settings.php:383 inc/admin/option-page-settings.php:436
+#: inc/admin/option-page-settings.php:452 inc/admin/option-page-settings.php:486
+#: inc/admin/option-page-settings.php:498 inc/admin/option-page-settings.php:514
+#: inc/admin/option-page-settings.php:546 inc/admin/option-page-settings.php:557
+#: inc/admin/option-page-settings.php:626 inc/admin/option-page-switcher.php:75
+#: inc/admin/option-page-switcher.php:129 inc/admin/option-page-switcher.php:189
+#: inc/admin/option-page-switcher.php:251 inc/admin/option-page-switcher.php:346
+#: inc/admin/option-page-switcher.php:401 inc/admin/option-page-switcher.php:458
+#: inc/admin/option-page-switcher.php:487 inc/admin/option-page-switcher.php:508
 msgid "Click to expand"
 msgstr "Kattintson a kibontáshoz"
 
-#: inc/admin/option-page-register.php:303 inc/admin/option-page-settings.php:620
+#: inc/admin/option-page-register.php:328 inc/admin/option-page-settings.php:631
 msgid ""
 "A wpLingua API key consists of 42 characters (uppercase, lowercase and "
 "numbers). It is emailed to you when you request it using the form provided "
@@ -1195,15 +1261,15 @@ msgid ""
 "communicate it to wplingua.com services."
 msgstr ""
 "A wpLingua API-kulcs 42 karakterből áll (nagybetűk, kisbetűk és számok). Ezt "
-"e-mailben kapod meg, amikor a bővítmény telepítésekor megadott űrlapon "
-"keresztül igényled. Ezt a kulcsot titokban kell tartania, és csak a "
-"wplingua.com szolgáltatásainak kell közölnie."
+"e-mailben kapja meg, ha a bővítmény telepítésekor megadott űrlapon keresztül "
+"kéri. Ezt a kulcsot titokban kell tartania, és kizárólag a wplingua.com "
+"szolgáltatások számára adhatja meg."
 
-#: inc/admin/option-page-register.php:350
+#: inc/admin/option-page-register.php:377
 msgid "Register wpLingua API key: "
 msgstr "Regisztrálja a wpLingua API kulcsát: "
 
-#: inc/admin/option-page-register.php:356
+#: inc/admin/option-page-register.php:383
 msgid ""
 "Claim a wpLingua API key and make your website multilingual in a minute! For "
 "a personal blog or a non-commercial website, get one unlimited free language."
@@ -1212,11 +1278,21 @@ msgstr ""
 "alatt! Személyes bloghoz vagy nem kereskedelmi weboldalhoz egy korlátlan "
 "ingyenes nyelvet kaphat."
 
-#: inc/admin/option-page-register.php:365
+#: inc/admin/option-page-register.php:392
 msgid "Email address: "
 msgstr "E-mail cím: "
 
-#: inc/admin/option-page-register.php:373
+#: inc/admin/option-page-register.php:402
+msgid ""
+"For better reliability, we recommend using a personal email address such as "
+"Gmail, as some hosting providers may filter or block emails sent by external "
+"services."
+msgstr ""
+"A nagyobb megbízhatóság érdekében azt javasoljuk, hogy személyes e-mail-címet "
+"használjon, például Gmail-fiókot, mivel egyes tárhelyszolgáltatók szűrhetik "
+"vagy blokkolhatják a külső szolgáltatások által küldött e-maileket."
+
+#: inc/admin/option-page-register.php:403
 msgid ""
 "The email address is detected and pre-filled. This is the administrative "
 "email address entered in the Settings ➔ General tab. You can use another "
@@ -1226,11 +1302,11 @@ msgstr ""
 "➔ Általános lapon megadott adminisztrátori e-mail cím. Használhat egy másik, "
 "az API-kulcs fogadására használt e-mail címet is."
 
-#: inc/admin/option-page-register.php:381
+#: inc/admin/option-page-register.php:411
 msgid "Website URL: "
 msgstr "Weboldal URL: "
 
-#: inc/admin/option-page-register.php:389
+#: inc/admin/option-page-register.php:421
 msgid ""
 "This is the URL of your website, it is detected and pre-filled automatically. "
 "Please check it and only enter the address of your production website (no "
@@ -1240,11 +1316,11 @@ msgstr ""
 "kitöltődik. Kérjük, ellenőrizze, és csak a gyártott weboldal címét adja meg "
 "(nem tesztweboldal vagy fejlesztői környezet)."
 
-#: inc/admin/option-page-register.php:397
+#: inc/admin/option-page-register.php:429
 msgid "Website language: "
 msgstr "Weboldal nyelve: "
 
-#: inc/admin/option-page-register.php:405 inc/admin/option-page-settings.php:262
+#: inc/admin/option-page-register.php:439 inc/admin/option-page-settings.php:270
 msgid ""
 "This is the language of your website, defined by the associated API key. Make "
 "sure your website language is also correctly set in WordPress options "
@@ -1254,11 +1330,11 @@ msgstr ""
 "Győződj meg róla, hogy a WordPress beállításaiban (Beállítások ➔ Általános ➔ "
 "Weboldal nyelve) a weboldal nyelve is helyesen van beállítva."
 
-#: inc/admin/option-page-register.php:413
+#: inc/admin/option-page-register.php:447
 msgid "Language to add: "
 msgstr "Hozzáadandó nyelv: "
 
-#: inc/admin/option-page-register.php:421
+#: inc/admin/option-page-register.php:457
 msgid ""
 "This is the language you want to translate your website into. Be careful not "
 "to make a mistake because you will not be able to change the language "
@@ -1267,23 +1343,23 @@ msgstr ""
 "Ez az a nyelv, amelyre le szeretné fordítani a webhelyét. Vigyázzon, nehogy "
 "hibázzon, mert utólag már nem tudja megváltoztatni a nyelvet."
 
-#: inc/admin/option-page-register.php:430
+#: inc/admin/option-page-register.php:466
 msgid "I have read and accept the"
 msgstr "Elolvastam és elfogadom az"
 
-#: inc/admin/option-page-register.php:430
+#: inc/admin/option-page-register.php:466
 msgid "API terms of use"
 msgstr "API felhasználási feltételek"
 
-#: inc/admin/option-page-register.php:438
+#: inc/admin/option-page-register.php:474
 msgid "Website Locale: "
 msgstr "Webhelyszín: "
 
-#: inc/admin/option-page-register.php:459
+#: inc/admin/option-page-register.php:495
 msgid "Get more target languages and advanced features: "
 msgstr "További célnyelvek és fejlett funkciók: "
 
-#: inc/admin/option-page-register.php:465
+#: inc/admin/option-page-register.php:501
 msgid ""
 "To translate your website into more languages and access advanced features, "
 "visit wpLingua website."
@@ -1291,19 +1367,19 @@ msgstr ""
 "Ha több nyelvre szeretné lefordítani weboldalát, és szeretne hozzáférni a "
 "speciális funkciókhoz, látogasson el a wpLingua weboldalára."
 
-#: inc/admin/option-page-register.php:469 inc/admin/option-page-settings.php:424
+#: inc/admin/option-page-register.php:505 inc/admin/option-page-settings.php:435
 msgid "Use wpLingua on commercial website"
 msgstr "A wpLingua használata kereskedelmi weboldalon"
 
-#: inc/admin/option-page-register.php:470
+#: inc/admin/option-page-register.php:506
 msgid "Allow search from all languages"
 msgstr "Minden nyelven történő keresés engedélyezése"
 
-#: inc/admin/option-page-register.php:471
+#: inc/admin/option-page-register.php:507
 msgid "Get more target languages"
 msgstr "További célnyelvek beszerzése"
 
-#: inc/admin/option-page-register.php:476
+#: inc/admin/option-page-register.php:512
 msgid "Visit wpLingua website"
 msgstr "Látogasson el a wpLingua weboldalára"
 
@@ -1311,27 +1387,27 @@ msgstr "Látogasson el a wpLingua weboldalára"
 msgid "wpLingua - General settings"
 msgstr "wpLingua - Általános beállítások"
 
-#: inc/admin/option-page-settings.php:61
+#: inc/admin/option-page-settings.php:63
 msgid "Website language"
 msgstr "Weboldal nyelve"
 
-#: inc/admin/option-page-settings.php:67
+#: inc/admin/option-page-settings.php:69
 msgid "Translated languages"
 msgstr "Fordított nyelvek"
 
-#: inc/admin/option-page-settings.php:73
+#: inc/admin/option-page-settings.php:75
 msgid "Features"
 msgstr "Jellemzők"
 
-#: inc/admin/option-page-settings.php:85
+#: inc/admin/option-page-settings.php:87
 msgid "API Key"
 msgstr "API kulcs"
 
-#: inc/admin/option-page-settings.php:174
+#: inc/admin/option-page-settings.php:176
 msgid "Your website is being translated and will be ready soon."
 msgstr "A weboldalát lefordítják, és hamarosan elkészül."
 
-#: inc/admin/option-page-settings.php:175
+#: inc/admin/option-page-settings.php:177
 msgid ""
 "In just a few seconds, your website will be multilingual, and search engines "
 "will be able to index these new pages. wpLingua detects all the texts on your "
@@ -1346,19 +1422,19 @@ msgstr ""
 "az adminisztrációs sávból, és szerkessze őket egyszerűen a weboldalán "
 "található szövegekre kattintva."
 
-#: inc/admin/option-page-settings.php:176
+#: inc/admin/option-page-settings.php:178
 msgid "Translation progress: "
 msgstr "A fordítás előrehaladása: "
 
-#: inc/admin/option-page-settings.php:181
+#: inc/admin/option-page-settings.php:183
 msgid "Your website is now multilingual!"
 msgstr "A weboldalad mostantól többnyelvű!"
 
-#: inc/admin/option-page-settings.php:183
+#: inc/admin/option-page-settings.php:185
 msgid "You can start visiting the translated version."
 msgstr "Mostantól megtekintheti a lefordított változatot."
 
-#: inc/admin/option-page-settings.php:185
+#: inc/admin/option-page-settings.php:187
 msgid ""
 "The first time a translated page is loaded, the translations are "
 "automatically generated and saved in the database. This may take some time "
@@ -1372,7 +1448,7 @@ msgstr ""
 "alkalommal a teljes webhelyét böngészze át, hogy az összes többnyelvű "
 "változatot generálni lehessen."
 
-#: inc/admin/option-page-settings.php:186
+#: inc/admin/option-page-settings.php:188
 msgid ""
 "All translations are editable: open the visual editor from the administration "
 "bar and edit them simply by clicking on the texts on your website."
@@ -1381,23 +1457,23 @@ msgstr ""
 "adminisztrációs sávból, és szerkessze őket egyszerűen a weboldalon található "
 "szövegekre kattintva."
 
-#: inc/admin/option-page-settings.php:189
+#: inc/admin/option-page-settings.php:191
 msgid "Visit your multilingual website"
 msgstr "Látogasson el az Ön többnyelvű weboldalára"
 
-#: inc/admin/option-page-settings.php:215
+#: inc/admin/option-page-settings.php:219
 msgid "Original website language: "
 msgstr "A weboldal eredeti nyelve: "
 
-#: inc/admin/option-page-settings.php:241
+#: inc/admin/option-page-settings.php:247
 msgid "Please choose an option"
 msgstr "Kérjük, válasszon egy opciót"
 
-#: inc/admin/option-page-settings.php:252
+#: inc/admin/option-page-settings.php:260
 msgid "Original website language, defined by API key: "
 msgstr "A weboldal eredeti nyelve, amelyet az API-kulcs határoz meg: "
 
-#: inc/admin/option-page-settings.php:264
+#: inc/admin/option-page-settings.php:272
 msgid ""
 "If you have mistakenly selected the wrong language, you can delete the API "
 "key in the site options below and request a new API key."
@@ -1405,19 +1481,19 @@ msgstr ""
 "Ha tévedésből rossz nyelvet választott ki, az API-kulcsot törölheti az alábbi "
 "webhelyopciókban, és új API-kulcsot kérhet."
 
-#: inc/admin/option-page-settings.php:270
+#: inc/admin/option-page-settings.php:278
 msgid "Custom"
 msgstr "Egyedi"
 
-#: inc/admin/option-page-settings.php:284 inc/admin/option-page-settings.php:348
+#: inc/admin/option-page-settings.php:292 inc/admin/option-page-settings.php:357
 msgid "Flag to use for this language: "
 msgstr "A nyelvhez használandó zászló: "
 
-#: inc/admin/option-page-settings.php:290 inc/admin/option-page-settings.php:352
+#: inc/admin/option-page-settings.php:298 inc/admin/option-page-settings.php:361
 msgid "Custom flag URL for this language: "
 msgstr "Egyéni zászló URL-címe ehhez a nyelvhez: "
 
-#: inc/admin/option-page-settings.php:313
+#: inc/admin/option-page-settings.php:321
 msgid ""
 "Important: space out the addition of new languages ​​by at least ten days and "
 "browse your site for the first time in the added languages. This promotes "
@@ -1429,31 +1505,31 @@ msgstr ""
 "keresőmotorok általi jobb indexelést, csökkenti a szerver terhelését, és "
 "minimalizálja a webhely lassulásának kockázatát."
 
-#: inc/admin/option-page-settings.php:317
+#: inc/admin/option-page-settings.php:325
 msgid "Add new target Language: "
 msgstr "Új célnyelv hozzáadása Nyelv: "
 
-#: inc/admin/option-page-settings.php:323
+#: inc/admin/option-page-settings.php:332
 msgid "Add language"
 msgstr "Nyelv hozzáadása"
 
-#: inc/admin/option-page-settings.php:336
+#: inc/admin/option-page-settings.php:345
 msgid "(Private)"
 msgstr "(Magán)"
 
-#: inc/admin/option-page-settings.php:340
+#: inc/admin/option-page-settings.php:349
 msgid "Move up"
 msgstr "Mozgatás felfelé"
 
-#: inc/admin/option-page-settings.php:341
+#: inc/admin/option-page-settings.php:350
 msgid "Move down"
 msgstr "Mozgatás lefelé"
 
-#: inc/admin/option-page-settings.php:357
+#: inc/admin/option-page-settings.php:366
 msgid "Make this language private"
 msgstr "Tegye ezt a nyelvet magánjellegűvé"
 
-#: inc/admin/option-page-settings.php:358
+#: inc/admin/option-page-settings.php:367
 msgid ""
 "Private languages will only be visible to logged-in users with editing "
 "rights. This option allows administrators to pre-generate and correct "
@@ -1464,28 +1540,28 @@ msgstr ""
 "rendszergazdák számára, hogy a fordításokat előzetesen létrehozzák és "
 "javítsák, mielőtt azok a nyilvánosság számára elérhetővé válnának."
 
-#: inc/admin/option-page-settings.php:365
+#: inc/admin/option-page-settings.php:374
 msgid "Target languages enabled: "
 msgstr "Célnyelvek engedélyezve: "
 
-#: inc/admin/option-page-settings.php:372
+#: inc/admin/option-page-settings.php:382
 msgid "Access more target languages by upgrading your API key."
 msgstr "API-kulcsának frissítésével több célnyelvhez férhet hozzá."
 
-#: inc/admin/option-page-settings.php:380
+#: inc/admin/option-page-settings.php:391
 msgid "Available languages: "
 msgstr "Elérhető nyelvek: "
 
-#: inc/admin/option-page-settings.php:400 inc/admin/option-page-settings.php:433
-#: inc/admin/option-page-settings.php:451 inc/admin/option-page-settings.php:625
+#: inc/admin/option-page-settings.php:411 inc/admin/option-page-settings.php:444
+#: inc/admin/option-page-settings.php:462 inc/admin/option-page-settings.php:636
 msgid "wplingua.com : Upgrade your API key"
 msgstr "wplingua.com : Frissítse API kulcsát"
 
-#: inc/admin/option-page-settings.php:418
+#: inc/admin/option-page-settings.php:429
 msgid "API translation features: "
 msgstr "API fordítási funkciók: "
 
-#: inc/admin/option-page-settings.php:420
+#: inc/admin/option-page-settings.php:431
 msgid ""
 "The options below require extended access to the wpLingua API to be "
 "functional on your website."
@@ -1493,7 +1569,7 @@ msgstr ""
 "Az alábbi lehetőségekhez a wpLingua API kiterjesztett hozzáférése szükséges "
 "ahhoz, hogy működőképesek legyenek a weboldalán."
 
-#: inc/admin/option-page-settings.php:429
+#: inc/admin/option-page-settings.php:440
 msgid ""
 "Use of the free wpLingua API keys is reserved for personal blogs and non-"
 "profit websites; paid subscriptions are available for companies and "
@@ -1503,17 +1579,17 @@ msgstr ""
 "weboldalak számára van fenntartva; fizetős előfizetés cégek és kereskedelmi "
 "weboldalak számára érhető el."
 
-#: inc/admin/option-page-settings.php:440
+#: inc/admin/option-page-settings.php:451
 msgid "Search from translated languages"
 msgstr "Keresés lefordított nyelvekből"
 
-#: inc/admin/option-page-settings.php:445
+#: inc/admin/option-page-settings.php:456
 msgid "Enable visitors to search on your website in their own language."
 msgstr ""
 "Lehetővé teszi a látogatók számára, hogy a saját nyelvükön keressenek a "
 "weboldalán."
 
-#: inc/admin/option-page-settings.php:447
+#: inc/admin/option-page-settings.php:458
 msgid ""
 "Example: if your website is translated from English to French and you have a "
 "post named \"Hello\". When a French visitor searches for the term \"Bonjour\" "
@@ -1528,15 +1604,15 @@ msgstr ""
 "\"Hello\" nevű bejegyzést, amikor a látogató a \"Bonjour\" kifejezésre "
 "keresett."
 
-#: inc/admin/option-page-settings.php:468
+#: inc/admin/option-page-settings.php:479
 msgid "SEO features: "
 msgstr "SEO funkciók: "
 
-#: inc/admin/option-page-settings.php:474
+#: inc/admin/option-page-settings.php:485
 msgid "Add hreflang tags to translated pages"
 msgstr "Hreflang címkék hozzáadása a lefordított oldalakhoz"
 
-#: inc/admin/option-page-settings.php:479
+#: inc/admin/option-page-settings.php:490
 msgid ""
 "This option automatically adds hreflang tags to your pages that are available "
 "in multiple languages."
@@ -1544,7 +1620,7 @@ msgstr ""
 "Ez az opció automatikusan hreflang címkéket ad a több nyelven elérhető "
 "oldalakhoz."
 
-#: inc/admin/option-page-settings.php:481
+#: inc/admin/option-page-settings.php:492
 msgid ""
 "Hreflang tags are HTML metadata used to indicate the URLs of each language "
 "version of a page. They are not visible to visitors, but they allow search "
@@ -1557,11 +1633,11 @@ msgstr ""
 "az oldal többnyelvű szerkezetét, és a felhasználó nyelvének megfelelő "
 "változatot jelenítsék meg."
 
-#: inc/admin/option-page-settings.php:486
+#: inc/admin/option-page-settings.php:497
 msgid "Enable multilingual XML Sitemap"
 msgstr "Többnyelvű XML-térkép engedélyezése"
 
-#: inc/admin/option-page-settings.php:491
+#: inc/admin/option-page-settings.php:502
 msgid ""
 "This option automatically adds your wpLingua translated pages into your XML "
 "Sitemap files."
@@ -1569,7 +1645,7 @@ msgstr ""
 "Ez az opció automatikusan hozzáadja a wpLingua lefordított oldalait az XML "
 "Sitemap fájljaihoz."
 
-#: inc/admin/option-page-settings.php:493
+#: inc/admin/option-page-settings.php:504
 msgid ""
 "An XML Sitemap is used by search engines (Google, Bing, etc.) to better "
 "discover and index the pages of your website. By default, only the default "
@@ -1581,7 +1657,7 @@ msgstr ""
 "alapértelmezett nyelvű oldalakat tartalmazza. Ha engedélyezi ezt az opciót, a "
 "tartalom összes lefordított változata is felkerül a listára."
 
-#: inc/admin/option-page-settings.php:494
+#: inc/admin/option-page-settings.php:505
 msgid ""
 "This greatly improves SEO visibility, ensuring that search engines can easily "
 "find and index your content in every language."
@@ -1589,7 +1665,7 @@ msgstr ""
 "Ez nagymértékben javítja a SEO láthatóságot, biztosítva, hogy a keresőmotorok "
 "minden nyelven könnyen megtalálják és indexeljék a tartalmát."
 
-#: inc/admin/option-page-settings.php:496
+#: inc/admin/option-page-settings.php:507
 msgid ""
 "wpLingua uses a universal method that intercepts and extends sitemap. It "
 "works with the native WordPress sitemap and with popular SEO plugins such as "
@@ -1600,11 +1676,11 @@ msgstr ""
 "SEO bővítményekkel, mint például a Yoast SEO, Rank Math, All in One SEO, "
 "SEOPress stb."
 
-#: inc/admin/option-page-settings.php:502
+#: inc/admin/option-page-settings.php:513
 msgid "Use wpLingua display for XML Sitemap"
 msgstr "Használja a wpLingua megjelenítést az XML-sitemaphez"
 
-#: inc/admin/option-page-settings.php:507
+#: inc/admin/option-page-settings.php:518
 msgid ""
 "This option replaces the default XML Sitemap stylesheet with wpLingua's "
 "custom display."
@@ -1612,7 +1688,7 @@ msgstr ""
 "Ez az opció az alapértelmezett XML-sitemap stíluslapot a wpLingua egyedi "
 "megjelenítésével váltja fel."
 
-#: inc/admin/option-page-settings.php:509
+#: inc/admin/option-page-settings.php:520
 msgid ""
 "When enabled, the XML Sitemap will use a wpLingua-designed stylesheet that "
 "visually displays all translated URLs directly under each original URL. This "
@@ -1624,7 +1700,7 @@ msgstr ""
 "ek alatt jeleníti meg. Így könnyen ellenőrizhető, hogy az összes nyelvi "
 "változat helyesen szerepel-e a sitemapben."
 
-#: inc/admin/option-page-settings.php:511
+#: inc/admin/option-page-settings.php:522
 msgid ""
 "Note: This only affects how the sitemap is displayed in your browser. The "
 "actual XML data sent to search engines remains unchanged and fully compatible "
@@ -1634,7 +1710,7 @@ msgstr ""
 "keresőmotoroknak elküldött tényleges XML-adatok változatlanok maradnak, és "
 "teljes mértékben megfelelnek az összes SEO-szabványnak."
 
-#: inc/admin/option-page-settings.php:512
+#: inc/admin/option-page-settings.php:523
 msgid ""
 "This option has no effect when using All In One SEO, as this plugin handles "
 "the display of translated links itself."
@@ -1642,21 +1718,21 @@ msgstr ""
 "Ez az opció az All In One SEO használata esetén nem érvényesül, mivel ez a "
 "bővítmény maga kezeli a lefordított linkek megjelenítését."
 
-#: inc/admin/option-page-settings.php:528
+#: inc/admin/option-page-settings.php:539
 msgid "More features: "
 msgstr "További funkciók: "
 
-#: inc/admin/option-page-settings.php:534
+#: inc/admin/option-page-settings.php:545
 msgid "Translation progress bar for editors"
 msgstr "Fordítási állapotjelző sáv a szerkesztők számára"
 
-#: inc/admin/option-page-settings.php:539
+#: inc/admin/option-page-settings.php:550
 msgid "Enable progress bar: Smooth translations loading for editors"
 msgstr ""
 "Haladási sáv engedélyezése: A fordítások zökkenőmentes betöltése a "
 "szerkesztők számára"
 
-#: inc/admin/option-page-settings.php:541
+#: inc/admin/option-page-settings.php:552
 msgid ""
 "Activate a progress bar when a page requires the generation of more than 10 "
 "new string translations. This feature only applies to connected editors."
@@ -1665,11 +1741,11 @@ msgstr ""
 "karakterlánc-fordítás létrehozása szükséges. Ez a funkció csak a "
 "csatlakoztatott szerkesztőkre vonatkozik."
 
-#: inc/admin/option-page-settings.php:545
+#: inc/admin/option-page-settings.php:556
 msgid "Enable redirection based on the web browser's language"
 msgstr "A böngésző nyelvének megfelelő átirányítás engedélyezése"
 
-#: inc/admin/option-page-settings.php:549
+#: inc/admin/option-page-settings.php:560
 msgid ""
 "This option automatically redirects visitors to the translated version of "
 "your site that matches their browser language when they land on the main "
@@ -1683,11 +1759,11 @@ msgstr ""
 "azonnal a megfelelő nyelven jeleníti meg, de a beállításoktól függően "
 "mellékhatásokat okozhat."
 
-#: inc/admin/option-page-settings.php:551
+#: inc/admin/option-page-settings.php:562
 msgid "Disabled (recommended):"
 msgstr "Kikapcsolva (ajánlott):"
 
-#: inc/admin/option-page-settings.php:552
+#: inc/admin/option-page-settings.php:563
 msgid ""
 "No redirection is applied. Every visitor always sees the default homepage, "
 "regardless of their browser language. This is the safest option and ensures "
@@ -1700,11 +1776,11 @@ msgstr ""
 "rendszerekkel, a SEO-val és a megosztott linkekkel. Akkor ajánlott, ha nem "
 "biztos abban, hogy melyik opciót válassza."
 
-#: inc/admin/option-page-settings.php:554
+#: inc/admin/option-page-settings.php:565
 msgid "JS only:"
 msgstr "Csak JS:"
 
-#: inc/admin/option-page-settings.php:555
+#: inc/admin/option-page-settings.php:566
 msgid ""
 "The redirect is handled with JavaScript, after the default homepage has "
 "loaded. This method works in almost all cases and avoids issues with caching "
@@ -1717,11 +1793,11 @@ msgstr ""
 "villódzó hatást okozhat: a felhasználók rövid ideig az alapértelmezett oldalt "
 "látják, mielőtt a lefordított változatra irányítanák át őket."
 
-#: inc/admin/option-page-settings.php:557
+#: inc/admin/option-page-settings.php:568
 msgid "PHP and JS:"
 msgstr "PHP és JS:"
 
-#: inc/admin/option-page-settings.php:558
+#: inc/admin/option-page-settings.php:569
 msgid ""
 "The redirect is performed server-side with PHP, which makes it faster and "
 "more seamless for visitors. In addition, a cookie is set via JavaScript to "
@@ -1738,23 +1814,23 @@ msgstr ""
 "rendszerekkel (statikus oldalak, CDN, agresszív gyorsítótár-beállítások), és "
 "bizonyos beállítások esetén hibás átirányításokat okozhat."
 
-#: inc/admin/option-page-settings.php:576
+#: inc/admin/option-page-settings.php:587
 msgid "Disable (recommended)"
 msgstr "Letiltás (ajánlott)"
 
-#: inc/admin/option-page-settings.php:583
+#: inc/admin/option-page-settings.php:594
 msgid "Enable with JS only"
 msgstr "Csak a JS használatával engedélyezhető"
 
-#: inc/admin/option-page-settings.php:590
+#: inc/admin/option-page-settings.php:601
 msgid "Enable with PHP and JS"
 msgstr "PHP és JS engedélyezése"
 
-#: inc/admin/option-page-settings.php:609
+#: inc/admin/option-page-settings.php:620
 msgid "Website API key: "
 msgstr "Webhely API-kulcsa: "
 
-#: inc/admin/option-page-settings.php:614
+#: inc/admin/option-page-settings.php:625
 msgid ""
 "The API key connects the website to wpLingua's online services and automatic "
 "translation generators."
@@ -1762,19 +1838,19 @@ msgstr ""
 "Az API-kulcs összekapcsolja a weboldalt a wpLingua online szolgáltatásaival "
 "és automatikus fordításgenerátorával."
 
-#: inc/admin/option-page-settings.php:636
+#: inc/admin/option-page-settings.php:647
 msgid "Show API key"
 msgstr "API-kulcs megjelenítése"
 
-#: inc/admin/option-page-settings.php:638
+#: inc/admin/option-page-settings.php:649
 msgid "Hide API key"
 msgstr "API kulcs elrejtése"
 
-#: inc/admin/option-page-settings.php:644
+#: inc/admin/option-page-settings.php:658
 msgid "API key status: "
 msgstr "API-kulcs állapota: "
 
-#: inc/admin/option-page-settings.php:659
+#: inc/admin/option-page-settings.php:681
 msgid "Premium expiration: "
 msgstr "Prémium lejárat: "
 
@@ -1782,50 +1858,50 @@ msgstr "Prémium lejárat: "
 msgid "wpLingua - Switcher settings"
 msgstr "wpLingua - Váltó beállításai"
 
-#: inc/admin/option-page-switcher.php:51
+#: inc/admin/option-page-switcher.php:52
 msgid "No target language selected."
 msgstr "Nincs célnyelv kiválasztva."
 
-#: inc/admin/option-page-switcher.php:56
+#: inc/admin/option-page-switcher.php:57
 msgid "Preview"
 msgstr "Előnézet"
 
-#: inc/admin/option-page-switcher.php:66
+#: inc/admin/option-page-switcher.php:67
 msgid "Design"
 msgstr "Kinézet"
 
-#: inc/admin/option-page-switcher.php:72 inc/admin/switcher-nav-menu.php:229
+#: inc/admin/option-page-switcher.php:73 inc/admin/switcher-nav-menu.php:229
 #: inc/admin/switcher-nav-menu.php:342 inc/switcher-block.php:176
 msgid "Layout: "
 msgstr "Elrendezés: "
 
-#: inc/admin/option-page-switcher.php:99
+#: inc/admin/option-page-switcher.php:102
 msgid ""
 "This option allow you to define the layout of the languages ​​in the switcher."
 msgstr ""
 "Ez az opció lehetővé teszi a nyelvek elrendezésének meghatározását a váltóban."
 
-#: inc/admin/option-page-switcher.php:104
+#: inc/admin/option-page-switcher.php:107
 msgid "Inline list: "
 msgstr "Inline lista: "
 
-#: inc/admin/option-page-switcher.php:105
+#: inc/admin/option-page-switcher.php:108
 msgid "the languages ​​are lined up next to each other."
 msgstr "a nyelvek egymás mellett sorakoznak."
 
-#: inc/admin/option-page-switcher.php:108
+#: inc/admin/option-page-switcher.php:111
 msgid "Block: "
 msgstr "Blokk: "
 
-#: inc/admin/option-page-switcher.php:109
+#: inc/admin/option-page-switcher.php:112
 msgid "the languages ​​are placed in columns, one under the other."
 msgstr "a nyelvek oszlopokban, egymás alatt helyezkednek el."
 
-#: inc/admin/option-page-switcher.php:112
+#: inc/admin/option-page-switcher.php:115
 msgid "Dropdown: "
 msgstr "Dropdown: "
 
-#: inc/admin/option-page-switcher.php:113
+#: inc/admin/option-page-switcher.php:116
 msgid ""
 "the languages ​​appear in a drop-down menu; this is recommended when your "
 "website offers several languages."
@@ -1833,12 +1909,12 @@ msgstr ""
 "a nyelvek egy legördülő menüben jelennek meg; ez akkor ajánlott, ha a "
 "weboldal több nyelvet kínál."
 
-#: inc/admin/option-page-switcher.php:123 inc/admin/switcher-nav-menu.php:197
+#: inc/admin/option-page-switcher.php:127 inc/admin/switcher-nav-menu.php:197
 #: inc/admin/switcher-nav-menu.php:298 inc/switcher-block.php:177
 msgid "Displayed names: "
 msgstr "Megjelenített nevek: "
 
-#: inc/admin/option-page-switcher.php:148
+#: inc/admin/option-page-switcher.php:156
 msgid ""
 "This option allow you to choose how the languages names should be written in "
 "the switcher."
@@ -1846,20 +1922,20 @@ msgstr ""
 "Ez az opció lehetővé teszi, hogy kiválassza, hogyan íródjanak a nyelvek nevei "
 "a kapcsolóban."
 
-#: inc/admin/option-page-switcher.php:155
+#: inc/admin/option-page-switcher.php:163
 msgid "Translated names: "
 msgstr "Lefordított nevek: "
 
-#: inc/admin/option-page-switcher.php:156
+#: inc/admin/option-page-switcher.php:164
 msgid ""
 "the name of the languages ​​is translated into the current language displayed."
 msgstr "a nyelvek nevét lefordítja az aktuálisan megjelenített nyelvre."
 
-#: inc/admin/option-page-switcher.php:159
+#: inc/admin/option-page-switcher.php:167
 msgid "Original name: "
 msgstr "Eredeti neve: "
 
-#: inc/admin/option-page-switcher.php:160
+#: inc/admin/option-page-switcher.php:168
 msgid ""
 "each language retains its name in its own language (English, Français, 日本"
 "語, Português, Español, etc.)."
@@ -1867,62 +1943,62 @@ msgstr ""
 "minden nyelv megtartja a nevét a saját nyelvén (English, Français, 日本語, "
 "Português, Español stb.)."
 
-#: inc/admin/option-page-switcher.php:163
+#: inc/admin/option-page-switcher.php:171
 msgid "Language ID: "
 msgstr "Nyelvi azonosító: "
 
-#: inc/admin/option-page-switcher.php:164
+#: inc/admin/option-page-switcher.php:172
 msgid "language names use language ID (FR, EN, DE, RU, etc.)."
 msgstr "a nyelvi nevek a nyelvi azonosítót használják (FR, EN, DE, RU stb.)."
 
-#: inc/admin/option-page-switcher.php:167 inc/admin/option-page-switcher.php:220
+#: inc/admin/option-page-switcher.php:175 inc/admin/option-page-switcher.php:232
 msgid "No display: "
 msgstr "Nincs kijelző: "
 
-#: inc/admin/option-page-switcher.php:168
+#: inc/admin/option-page-switcher.php:176
 msgid "no text, only flags are displayed."
 msgstr "nincs szöveg, csak a zászlók jelennek meg."
 
-#: inc/admin/option-page-switcher.php:178 inc/switcher-block.php:178
+#: inc/admin/option-page-switcher.php:187 inc/switcher-block.php:178
 msgid "Flags style: "
 msgstr "Zászlók stílusa: "
 
-#: inc/admin/option-page-switcher.php:202
+#: inc/admin/option-page-switcher.php:214
 msgid ""
 "This option allow you to choose the appearance of the flags in the switcher. "
 msgstr ""
 "Ez az opció lehetővé teszi, hogy kiválassza a zászlók megjelenését a "
 "kapcsolóban. "
 
-#: inc/admin/option-page-switcher.php:208
+#: inc/admin/option-page-switcher.php:220
 msgid "Circle: "
 msgstr "Kör: "
 
-#: inc/admin/option-page-switcher.php:209
+#: inc/admin/option-page-switcher.php:221
 msgid "display round flags."
 msgstr "kerek zászlók megjelenítése."
 
-#: inc/admin/option-page-switcher.php:212
+#: inc/admin/option-page-switcher.php:224
 msgid "Rectangular: "
 msgstr "Téglalap alakú: "
 
-#: inc/admin/option-page-switcher.php:213
+#: inc/admin/option-page-switcher.php:225
 msgid "display rectangular flags."
 msgstr "téglalap alakú zászlók megjelenítése."
 
-#: inc/admin/option-page-switcher.php:216
+#: inc/admin/option-page-switcher.php:228
 msgid "Wave: "
 msgstr "Hullám: "
 
-#: inc/admin/option-page-switcher.php:217
+#: inc/admin/option-page-switcher.php:229
 msgid "display wavy flags."
 msgstr "hullámos zászlók megjelenítése."
 
-#: inc/admin/option-page-switcher.php:221
+#: inc/admin/option-page-switcher.php:233
 msgid "no display any flags, only the language name will be displayed."
 msgstr "nem jelenít meg semmilyen zászlót, csak a nyelv neve jelenik meg."
 
-#: inc/admin/option-page-switcher.php:227
+#: inc/admin/option-page-switcher.php:239
 msgid ""
 "You can also change the country flag or set a custom flag from wpLingua ➔ "
 "General settings. For example, you can set the flag of Mexico for Spanish "
@@ -1932,11 +2008,11 @@ msgstr ""
 "országzászlót vagy beállíthat egy egyéni zászlót. Például a spanyol zászló "
 "helyett beállíthatja Mexikó zászlaját."
 
-#: inc/admin/option-page-switcher.php:236 inc/switcher-block.php:179
+#: inc/admin/option-page-switcher.php:249 inc/switcher-block.php:179
 msgid "Color theme: "
 msgstr "Színes téma: "
 
-#: inc/admin/option-page-switcher.php:262
+#: inc/admin/option-page-switcher.php:277
 msgid ""
 "This option allows you to choose the color and border styles of the languages "
 "switcher."
@@ -1944,102 +2020,102 @@ msgstr ""
 "Ez az opció lehetővé teszi a nyelvváltó színének és szegélystílusának "
 "kiválasztását."
 
-#: inc/admin/option-page-switcher.php:268
+#: inc/admin/option-page-switcher.php:283
 msgid "The color options offer 5 themes: "
 msgstr "A színválaszték 5 témát kínál: "
 
-#: inc/admin/option-page-switcher.php:273
+#: inc/admin/option-page-switcher.php:288
 msgid "Light: "
 msgstr "Fény: "
 
-#: inc/admin/option-page-switcher.php:274
+#: inc/admin/option-page-switcher.php:289
 msgid "white color in the background of the switcher."
 msgstr "fehér szín a kapcsoló hátterében."
 
-#: inc/admin/option-page-switcher.php:277
+#: inc/admin/option-page-switcher.php:292
 msgid "Grey: "
 msgstr "Szürke: "
 
-#: inc/admin/option-page-switcher.php:278
+#: inc/admin/option-page-switcher.php:293
 msgid "grey background color."
 msgstr "szürke háttérszín."
 
-#: inc/admin/option-page-switcher.php:281
+#: inc/admin/option-page-switcher.php:296
 msgid "Dark: "
 msgstr "Sötét: "
 
-#: inc/admin/option-page-switcher.php:282
+#: inc/admin/option-page-switcher.php:297
 msgid "black background color."
 msgstr "fekete háttérszín."
 
-#: inc/admin/option-page-switcher.php:285
+#: inc/admin/option-page-switcher.php:300
 msgid "Blur Black: "
 msgstr "Blur Black: "
 
-#: inc/admin/option-page-switcher.php:286
+#: inc/admin/option-page-switcher.php:301
 msgid "transparent and blurred background color with black text and borders."
 msgstr "átlátszó és elmosódott háttérszín fekete szöveggel és szegéllyel."
 
-#: inc/admin/option-page-switcher.php:289
+#: inc/admin/option-page-switcher.php:304
 msgid "Blur White: "
 msgstr "Blur White: "
 
-#: inc/admin/option-page-switcher.php:290
+#: inc/admin/option-page-switcher.php:305
 msgid "transparent and blurred background color with white text and borders."
 msgstr "átlátszó és elmosódott háttérszín fehér szöveggel és szegéllyel."
 
-#: inc/admin/option-page-switcher.php:297
+#: inc/admin/option-page-switcher.php:312
 msgid "Each theme is then broken down by shape and border style:"
 msgstr "Ezután minden témát formára és szegélystílusra bontunk:"
 
-#: inc/admin/option-page-switcher.php:302
+#: inc/admin/option-page-switcher.php:317
 msgid "Double – Smooth: "
 msgstr "Dupla - Sima: "
 
-#: inc/admin/option-page-switcher.php:303
+#: inc/admin/option-page-switcher.php:318
 msgid "the switcher will be framed by a double border with rounded corners."
 msgstr "a kapcsolót egy dupla keret fogja keretezni, lekerekített sarkokkal."
 
-#: inc/admin/option-page-switcher.php:306
+#: inc/admin/option-page-switcher.php:321
 msgid "Double – Square: "
 msgstr "Dupla - négyzet: "
 
-#: inc/admin/option-page-switcher.php:307
+#: inc/admin/option-page-switcher.php:322
 msgid "double border with square corners."
 msgstr "dupla szegély, négyzetes sarkokkal."
 
-#: inc/admin/option-page-switcher.php:310
+#: inc/admin/option-page-switcher.php:325
 msgid "Simple – Smooth: "
 msgstr "Egyszerű - Sima: "
 
-#: inc/admin/option-page-switcher.php:311
+#: inc/admin/option-page-switcher.php:326
 msgid "single border with rounded corners."
 msgstr "egyetlen szegéllyel, lekerekített sarkokkal."
 
-#: inc/admin/option-page-switcher.php:314
+#: inc/admin/option-page-switcher.php:329
 msgid "Simple – Square: "
 msgstr "Egyszerű - négyzet alakú: "
 
-#: inc/admin/option-page-switcher.php:315
+#: inc/admin/option-page-switcher.php:330
 msgid "single border with square corners."
 msgstr "szimpla szegély, négyzetes sarkokkal."
 
-#: inc/admin/option-page-switcher.php:325
+#: inc/admin/option-page-switcher.php:340
 msgid "Custom CSS"
 msgstr "Egyedi CSS"
 
-#: inc/admin/option-page-switcher.php:327
+#: inc/admin/option-page-switcher.php:342
 msgid "Set custom CSS: "
 msgstr "Egyéni CSS beállítása: "
 
-#: inc/admin/option-page-switcher.php:330
+#: inc/admin/option-page-switcher.php:345
 msgid ""
 "The field below allows you to add custom CSS code that will run on all pages."
 msgstr ""
 "Az alábbi mező lehetővé teszi, hogy egyéni CSS-kódot adjon hozzá, amely "
 "minden oldalon futni fog."
 
-#: inc/admin/option-page-switcher.php:335
+#: inc/admin/option-page-switcher.php:350
 msgid ""
 "First of all, note that the CSS class <code>.switcher-content</code> allows "
 "you to act on the entire block of the language switcher while the class "
@@ -2050,64 +2126,64 @@ msgstr ""
 "<code>.wplng-langague</code> osztály lehetővé teszi, hogy magukra a nyelvekre "
 "hatjon."
 
-#: inc/admin/option-page-switcher.php:350
+#: inc/admin/option-page-switcher.php:365
 msgid ""
 "To change the background and border colors of languages, here is the CSS:"
 msgstr "A nyelvek háttér- és keretszínének megváltoztatásához itt a CSS:"
 
-#: inc/admin/option-page-switcher.php:365
+#: inc/admin/option-page-switcher.php:380
 msgid "More example on wplingua.com"
 msgstr "További példa a wplingua.com oldalon"
 
-#: inc/admin/option-page-switcher.php:376
+#: inc/admin/option-page-switcher.php:391
 msgid "Insertion"
 msgstr "Beszúrás"
 
-#: inc/admin/option-page-switcher.php:383
+#: inc/admin/option-page-switcher.php:399
 msgid "Automatic insert: "
 msgstr "Automatikus betét: "
 
-#: inc/admin/option-page-switcher.php:409
+#: inc/admin/option-page-switcher.php:428
 msgid "Choose a predefined location: "
 msgstr "Válasszon egy előre meghatározott helyet: "
 
-#: inc/admin/option-page-switcher.php:413
+#: inc/admin/option-page-switcher.php:432
 msgid "Bottom right: "
 msgstr "Jobbra lent: "
 
-#: inc/admin/option-page-switcher.php:414
+#: inc/admin/option-page-switcher.php:433
 msgid "the switcher is placed at the bottom right of the screen."
 msgstr "a kapcsoló a képernyő jobb alsó sarkában található."
 
-#: inc/admin/option-page-switcher.php:417
+#: inc/admin/option-page-switcher.php:436
 msgid "Bottom Center: "
 msgstr "Alul középen: "
 
-#: inc/admin/option-page-switcher.php:418
+#: inc/admin/option-page-switcher.php:437
 msgid "bottom center of the screen."
 msgstr "a képernyő alsó közepe."
 
-#: inc/admin/option-page-switcher.php:421
+#: inc/admin/option-page-switcher.php:440
 msgid "Bottom left: "
 msgstr "Balra lent: "
 
-#: inc/admin/option-page-switcher.php:422
+#: inc/admin/option-page-switcher.php:441
 msgid "bottom left of the screen."
 msgstr "a képernyő bal alsó sarkában."
 
-#: inc/admin/option-page-switcher.php:425
+#: inc/admin/option-page-switcher.php:444
 msgid "None: "
 msgstr "Nincs: "
 
-#: inc/admin/option-page-switcher.php:426
+#: inc/admin/option-page-switcher.php:445
 msgid "the switcher is not inserted automatically."
 msgstr "a kapcsoló nem kerül automatikusan beillesztésre."
 
-#: inc/admin/option-page-switcher.php:436
+#: inc/admin/option-page-switcher.php:457
 msgid "Shortcode switcher: "
 msgstr "Shortcode váltó: "
 
-#: inc/admin/option-page-switcher.php:443
+#: inc/admin/option-page-switcher.php:469
 msgid ""
 "If you want to insert the language switcher only in certain places on your "
 "website, you can use the shortcode provided for this purpose. Note that in "
@@ -2123,15 +2199,15 @@ msgstr ""
 "blokk alapú témát (FSE), akár klasszikus témát, vagy akár oldal- vagy "
 "témaépítőt használ, mint a Divi, Elementor..."
 
-#: inc/admin/option-page-switcher.php:445
+#: inc/admin/option-page-switcher.php:471
 msgid "You can add parameters to the language selector shortcode, for example: "
 msgstr "A nyelvválasztó rövidkódhoz paramétereket is hozzáadhat, például: "
 
-#: inc/admin/option-page-switcher.php:448
+#: inc/admin/option-page-switcher.php:474
 msgid "Here is a list of all available settings: "
 msgstr "Az alábbiakban felsoroljuk az összes elérhető beállítást: "
 
-#: inc/admin/option-page-switcher.php:451
+#: inc/admin/option-page-switcher.php:477
 msgid ""
 "If a setting is not specified, the value entered on the language switcher "
 "options page will be used."
@@ -2139,15 +2215,15 @@ msgstr ""
 "Ha nincs beállítás megadva, akkor a nyelvválasztó beállítási oldalán megadott "
 "érték kerül alkalmazásra."
 
-#: inc/admin/option-page-switcher.php:458
+#: inc/admin/option-page-switcher.php:486
 msgid "Gutenberg & FSE: "
 msgstr "Gutenberg és FSE: "
 
-#: inc/admin/option-page-switcher.php:461
+#: inc/admin/option-page-switcher.php:492
 msgid "Block wpLingua Switcher"
 msgstr "Blokk wpLingua váltó"
 
-#: inc/admin/option-page-switcher.php:465
+#: inc/admin/option-page-switcher.php:498
 msgid ""
 "Block based themes, wpLingua offers a dedicated Gutenberg block. You can "
 "insert the switcher wherever you want, whether in the content or via the "
@@ -2157,15 +2233,15 @@ msgstr ""
 "bárhová beillesztheti, akár a tartalomba, akár a teljes webhelyszerkesztőn "
 "keresztül."
 
-#: inc/admin/option-page-switcher.php:472
+#: inc/admin/option-page-switcher.php:507
 msgid "Switcher in menu: "
 msgstr "Váltó a menüben: "
 
-#: inc/admin/option-page-switcher.php:487
+#: inc/admin/option-page-switcher.php:526
 msgid "Appearance ➔ Menus"
 msgstr "Megjelenés ➔ Menük"
 
-#: inc/admin/option-page-switcher.php:498
+#: inc/admin/option-page-switcher.php:539
 msgid ""
 "If the active theme manages menus (classic theme), it is possible to add a "
 "language switcher. The design of these language switchers will be defined by "
@@ -2177,94 +2253,98 @@ msgstr ""
 "Menj a Megjelenés ➔ Menü fülre, hogy a wpLingua nyelvváltót menüpontként "
 "hozzáadhasd. Lehetőség van arra is, hogy alelemként adjuk hozzá."
 
-#: inc/admin/option-page.php:17
+#: inc/admin/option-page.php:142
 msgid "wpLingua: Register"
 msgstr "wpLingua: Regisztráció"
 
-#: inc/admin/option-page.php:36 inc/admin/option-page.php:47
+#: inc/admin/option-page.php:162 inc/admin/option-page.php:180
 msgid "wpLingua: Settings"
 msgstr "wpLingua: Beállítások"
 
-#: inc/admin/option-page.php:48
-msgid "General settings"
-msgstr "Általános beállítások"
+#: inc/admin/option-page.php:181 inc/admin/option-page.php:457
+msgid "Settings"
+msgstr "Beállítások"
 
-#: inc/admin/option-page.php:56
+#: inc/admin/option-page.php:198
 msgid "wpLingua: Switcher"
 msgstr "wpLingua: Váltó"
 
-#: inc/admin/option-page.php:57
+#: inc/admin/option-page.php:199
 msgid "Switcher"
 msgstr "Kapcsoló"
 
-#: inc/admin/option-page.php:65
+#: inc/admin/option-page.php:207
 msgid "wpLingua: Exclusion"
 msgstr "wpLingua: Kizárás"
 
-#: inc/admin/option-page.php:66
+#: inc/admin/option-page.php:208 inc/admin/option-page.php:341
 msgid "Exclusion"
 msgstr "Kizárás"
 
-#: inc/admin/option-page.php:74
+#: inc/admin/option-page.php:216
 msgid "wpLingua: Dictionary"
 msgstr "wpLingua: Szótár"
 
-#: inc/admin/option-page.php:75
+#: inc/admin/option-page.php:217 inc/admin/option-page.php:346
 msgid "Dictionary"
 msgstr "Szótár"
 
-#: inc/admin/option-page.php:83
+#: inc/admin/option-page.php:225
 msgid "wplingua: Links & Medias"
 msgstr "wplingua: Linkek és médiumok"
 
-#: inc/admin/option-page.php:84
+#: inc/admin/option-page.php:226 inc/admin/option-page.php:351
 msgid "Links & Medias"
 msgstr "Linkek és médiumok"
 
-#: inc/admin/option-page.php:92
+#: inc/admin/option-page.php:239
 msgid "wpLingua: Website slugs"
 msgstr "wpLingua: Weboldal csigák"
 
-#: inc/admin/option-page.php:93 inc/admin/slug-cpt.php:23
+#: inc/admin/option-page.php:240 inc/admin/slug-cpt.php:23
 msgid "Website slugs"
 msgstr "Weboldal csigák"
 
-#: inc/admin/option-page.php:101
+#: inc/admin/option-page.php:248
 msgid "wpLingua: Translations"
 msgstr "wpLingua: Fordítások"
 
-#: inc/admin/option-page.php:102
+#: inc/admin/option-page.php:249
 msgid "All translations"
 msgstr "Minden fordítás"
 
-#: inc/admin/option-page.php:224
+#: inc/admin/option-page.php:331
+msgid "General settings"
+msgstr "Általános beállítások"
+
+#: inc/admin/option-page.php:336 inc/admin/switcher-nav-menu.php:249
+msgid "Language switcher"
+msgstr "Nyelvválasztó"
+
+#: inc/admin/option-page.php:406
 msgid "Thank you for choosing wpLingua!"
 msgstr "Köszönjük, hogy a wpLingua-t választotta!"
 
-#: inc/admin/option-page.php:227
+#: inc/admin/option-page.php:409
 #, php-format
 msgid "If you like wpLingua please leave us a %1$s rating. A huge thanks!"
 msgstr ""
 "Ha tetszik a wpLingua, kérjük, hagyjon nekünk egy %1$s értékelést. Hatalmas "
 "köszönet!"
 
-#: inc/admin/option-page.php:228
+#: inc/admin/option-page.php:410
 msgid "five stars"
 msgstr "öt csillag"
 
-#: inc/admin/option-page.php:252
+#: inc/admin/option-page.php:434
 msgid "Version"
 msgstr "Verzió"
 
-#: inc/admin/option-page.php:275
-msgid "Settings"
-msgstr "Beállítások"
-
-#: inc/admin/option-page.php:317
+#: inc/admin/option-page.php:499
 msgid "wpLingua - Translation solution for multilingual website"
 msgstr "wpLingua - Fordítási megoldás többnyelvű honlapokhoz"
 
-#: inc/admin/option-page.php:320
+#: inc/admin/option-page.php:502
 msgid ""
 "wpLingua is installed, but not yet configured. You are just a few clicks away "
 "from making your website multilingual!"
@@ -2272,15 +2352,15 @@ msgstr ""
 "a wpLingua telepítve van, de még nincs konfigurálva. Már csak néhány "
 "kattintás választja el attól, hogy többnyelvűvé tegye weboldalát!"
 
-#: inc/admin/option-page.php:323
+#: inc/admin/option-page.php:505
 msgid "Go to the configuration page"
 msgstr "Menjen a konfigurációs oldalra"
 
-#: inc/admin/option-page.php:397
+#: inc/admin/option-page.php:579
 msgid "wpLingua - Incompatible plugin detected"
 msgstr "wpLingua - Kompatibilis plugin észlelve"
 
-#: inc/admin/option-page.php:400
+#: inc/admin/option-page.php:582
 msgid ""
 "You have several translation plugins. This may result in unpredictable or "
 "incorrect behavior. For best results, use only one translation plugin at a "
@@ -2291,40 +2371,40 @@ msgstr ""
 "csak egy fordítási plugint használjon. Ezek a bővítmények problémákat "
 "okozhatnak a wpLingua használatával: "
 
-#: inc/admin/option-page.php:417
+#: inc/admin/option-page.php:599
 #, php-format
 msgid "Deactivate plugin: %1$s"
 msgstr "Plugin kikapcsolása: %1$s"
 
-#: inc/admin/option-page.php:426
+#: inc/admin/option-page.php:608
 msgid "Deactivate"
 msgstr "Kikapcsolás"
 
-#: inc/admin/option-page.php:443
+#: inc/admin/option-page.php:625
 msgid "Manage active plugins"
 msgstr "Aktív bővítmények kezelése"
 
-#: inc/admin/option-page.php:468
+#: inc/admin/option-page.php:662
 msgid "wpLingua - Incompatible with multisite"
 msgstr "wpLingua - Nem kompatibilis a multisite-tal"
 
-#: inc/admin/option-page.php:471
+#: inc/admin/option-page.php:665
 msgid "wpLingua is not compatible with multisite."
 msgstr "a wpLingua nem kompatibilis a multisite-tal."
 
-#: inc/admin/option-page.php:495
+#: inc/admin/option-page.php:689
 msgid "wpLingua - Incompatible with WordPress installed in a subfolder"
 msgstr "wpLingua - Nem kompatibilis az almappába telepített WordPress-szel"
 
-#: inc/admin/option-page.php:498
+#: inc/admin/option-page.php:692
 msgid "wpLingua is not compatible with WordPress installed in a subfolder."
 msgstr "a wpLingua nem kompatibilis az almappába telepített WordPress-szel."
 
-#: inc/admin/option-page.php:522
+#: inc/admin/option-page.php:716
 msgid "wpLingua - Incompatible PHP version"
 msgstr "wpLingua - Nem kompatibilis PHP verzió"
 
-#: inc/admin/option-page.php:525
+#: inc/admin/option-page.php:719
 msgid ""
 "wpLingua is not compatible with your PHP version. wpLingua requires PHP 7.4 "
 "or higher."
@@ -2332,11 +2412,11 @@ msgstr ""
 "a wpLingua nem kompatibilis az Ön PHP verziójával. wpLingua 7.4 vagy magasabb "
 "PHP verziót igényel."
 
-#: inc/admin/option-page.php:588
+#: inc/admin/option-page.php:782
 msgid "wpLingua - Incompatible HTACCESS file"
 msgstr "wpLingua - Nem kompatibilis HTACCESS fájl"
 
-#: inc/admin/option-page.php:591
+#: inc/admin/option-page.php:785
 msgid ""
 "It seems that a plugin was incorrectly deactivated and corrupted the site's "
 "HTACCESS file, preventing the correct redirection of translated pages. Please "
@@ -2348,11 +2428,11 @@ msgstr ""
 "átirányítását. Kérjük, szerkessze meg a webhely gyökerében található "
 "\".htaccess\" fájlt, és törölje a :"
 
-#: inc/admin/option-page.php:621
+#: inc/admin/option-page.php:815
 msgid "wpLingua - Incompatible permalink structure"
 msgstr "wpLingua – Nem kompatibilis állandó link szerkezet"
 
-#: inc/admin/option-page.php:624
+#: inc/admin/option-page.php:818
 msgid ""
 "wpLingua is not compatible with the \"Plain\" permalink structure. Please "
 "update your permalink settings to use \"Post name\" or \"Custom Structure\"."
@@ -2361,9 +2441,33 @@ msgstr ""
 "módosítsd az állandó link beállításait úgy, hogy a „Bejegyzés neve” vagy az "
 "„Egyéni szerkezet” opciót használd."
 
-#: inc/admin/option-page.php:630
+#: inc/admin/option-page.php:824
 msgid "Manage permalink settings"
 msgstr "Az állandó linkek beállításainak kezelése"
+
+#: inc/admin/option-page.php:860
+msgid "wpLingua - Unlock PRO Features"
+msgstr "wpLingua – A PRO-funkciók feloldása"
+
+#: inc/admin/option-page.php:864
+msgid ""
+"Extend wpLingua with additional features and advanced translation "
+"capabilities."
+msgstr ""
+"Bővítse a wpLingua programot további funkciókkal és fejlett fordítási "
+"lehetőségekkel."
+
+#: inc/admin/option-page.php:867
+msgid ""
+"Download and install wpLingua PRO to access the features included with your "
+"wpLingua plan."
+msgstr ""
+"Töltse le és telepítse a wpLingua PRO-t, hogy hozzáférhessen a wpLingua-"
+"csomagjában szereplő funkciókhoz."
+
+#: inc/admin/option-page.php:877
+msgid "wpLingua.com : Download PRO plugin"
+msgstr "wpLingua.com: PRO bővítmény letöltése"
 
 #: inc/admin/slug-cpt.php:19
 msgid "wpLingua - Website slugs"
@@ -2391,26 +2495,26 @@ msgstr "Összes slug állapot"
 
 #: inc/admin/slug-cpt.php:160 inc/admin/slug-cpt.php:172
 #: inc/admin/translation-cpt.php:145 inc/admin/translation-cpt.php:153
-#: inc/dom/mode-list.php:193
+#: inc/dom/mode-list.php:197
 msgid "Reviewed"
 msgstr "Felülvizsgált"
 
-#: inc/admin/slug-cpt.php:161 inc/admin/slug-cpt.php:432
-#: inc/admin/slug-cpt.php:471 inc/admin/translation-cpt.php:146
-#: inc/admin/translation-cpt.php:413 inc/admin/translation-cpt.php:452
-#: inc/dom/mode-list.php:197
+#: inc/admin/slug-cpt.php:161 inc/admin/slug-cpt.php:430
+#: inc/admin/slug-cpt.php:469 inc/admin/translation-cpt.php:146
+#: inc/admin/translation-cpt.php:413 inc/admin/translation-cpt.php:446
+#: inc/dom/mode-list.php:201
 msgid "Unreviewed"
 msgstr "Nem felülvizsgált"
 
-#: inc/admin/slug-cpt.php:170 inc/admin/slug-cpt.php:422
-#: inc/admin/slug-cpt.php:459 inc/admin/translation-cpt.php:151
-#: inc/admin/translation-cpt.php:403 inc/admin/translation-cpt.php:440
+#: inc/admin/slug-cpt.php:170 inc/admin/slug-cpt.php:420
+#: inc/admin/slug-cpt.php:457 inc/admin/translation-cpt.php:151
+#: inc/admin/translation-cpt.php:403 inc/admin/translation-cpt.php:438
 msgid "Full reviewed"
 msgstr "Teljes áttekintés"
 
-#: inc/admin/slug-cpt.php:171 inc/admin/slug-cpt.php:427
-#: inc/admin/slug-cpt.php:465 inc/admin/translation-cpt.php:152
-#: inc/admin/translation-cpt.php:408 inc/admin/translation-cpt.php:446
+#: inc/admin/slug-cpt.php:171 inc/admin/slug-cpt.php:425
+#: inc/admin/slug-cpt.php:463 inc/admin/translation-cpt.php:152
+#: inc/admin/translation-cpt.php:408 inc/admin/translation-cpt.php:442
 msgid "Partially reviewed"
 msgstr "Részben felülvizsgált"
 
@@ -2418,11 +2522,11 @@ msgstr "Részben felülvizsgált"
 msgid "Full unreviewed"
 msgstr "Teljesen felül nem vizsgált"
 
-#: inc/admin/slug-cpt.php:318
+#: inc/admin/slug-cpt.php:316
 msgid "Slug status"
 msgstr "Csiga státusz"
 
-#: inc/admin/slug-cpt.php:454
+#: inc/admin/slug-cpt.php:452
 msgid "Slug status: "
 msgstr "Csiga státusz: "
 
@@ -2431,7 +2535,7 @@ msgid "Slug"
 msgstr "Keresőbarát név"
 
 #: inc/admin/slug-meta.php:75 inc/admin/slug-meta.php:154
-#: inc/admin/translation-meta.php:77 inc/admin/translation-meta.php:146
+#: inc/admin/translation-meta.php:77 inc/admin/translation-meta.php:166
 msgid "Flag for language: "
 msgstr "Nyelvi zászló: "
 
@@ -2439,19 +2543,19 @@ msgstr "Nyelvi zászló: "
 msgid " - Original slug: "
 msgstr " - Eredeti csiga: "
 
-#: inc/admin/slug-meta.php:153 inc/admin/translation-meta.php:145
+#: inc/admin/slug-meta.php:153 inc/admin/translation-meta.php:165
 msgid "Regenerate translation"
 msgstr "Regenerálja a fordítást"
 
-#: inc/admin/slug-meta.php:156 inc/admin/translation-meta.php:148
+#: inc/admin/slug-meta.php:156 inc/admin/translation-meta.php:168
 msgid "Mark as review"
 msgstr "Jelölje meg felülvizsgálatként"
 
-#: inc/admin/slug-meta.php:171 inc/admin/translation-meta.php:157
+#: inc/admin/slug-meta.php:171 inc/admin/translation-meta.php:177
 msgid "Generate translation"
 msgstr "Fordítás generálása"
 
-#: inc/admin/slug-meta.php:197 inc/admin/translation-meta.php:183
+#: inc/admin/slug-meta.php:197 inc/admin/translation-meta.php:203
 msgid "Reviewed on "
 msgstr "Áttekintve a "
 
@@ -2459,19 +2563,19 @@ msgstr "Áttekintve a "
 msgid " - Slug translation: "
 msgstr " - Csiga fordítás: "
 
-#: inc/admin/slug-meta.php:261 inc/admin/translation-meta.php:247
+#: inc/admin/slug-meta.php:261 inc/admin/translation-meta.php:267
 msgid "Is reviewed"
 msgstr "Felülvizsgálják"
 
-#: inc/admin/slug-meta.php:492 inc/admin/translation-meta.php:471
+#: inc/admin/slug-meta.php:492 inc/admin/translation-meta.php:491
 msgid "Invalid parameters"
 msgstr "Érvénytelen paraméterek"
 
-#: inc/admin/slug-meta.php:504 inc/admin/translation-meta.php:484
+#: inc/admin/slug-meta.php:504 inc/admin/translation-meta.php:504
 msgid "Invalid languages parameters"
 msgstr "Érvénytelen nyelvi paraméterek"
 
-#: inc/admin/slug-meta.php:561 inc/admin/translation-meta.php:524
+#: inc/admin/slug-meta.php:561 inc/admin/translation-meta.php:544
 msgid "Invalid API response"
 msgstr "Érvénytelen API-válasz"
 
@@ -2480,16 +2584,12 @@ msgid ""
 "These options are used to add a language switcher in a menu. This language "
 "switcher automatically uses the menu design."
 msgstr ""
-"Ezek a beállítások egy nyelvváltó hozzáadására szolgálnak egy menüben. Ez a "
-"nyelvváltó automatikusan használja a menü kialakítását."
+"Ezekkel a beállításokkal nyelvválasztó gombot lehet hozzáadni a menühöz. Ez a "
+"nyelvválasztó gomb automatikusan átveszi a menü megjelenését."
 
 #: inc/admin/switcher-nav-menu.php:213 inc/admin/switcher-nav-menu.php:320
 msgid "Displayed flag: "
 msgstr "Kijelzett zászló: "
-
-#: inc/admin/switcher-nav-menu.php:249
-msgid "Language switcher"
-msgstr "Nyelvválasztó"
 
 #: inc/admin/switcher-nav-menu.php:259
 msgid "Add to menu"
@@ -2540,7 +2640,7 @@ msgid "Edit translation"
 msgstr "Fordítás szerkesztése"
 
 #: inc/admin/translation-edit-modal.php:96
-#: inc/admin/translation-edit-modal.php:155
+#: inc/admin/translation-edit-modal.php:153
 msgid "Invalid translation ID"
 msgstr "Érvénytelen fordítási azonosító"
 
@@ -2548,7 +2648,7 @@ msgstr "Érvénytelen fordítási azonosító"
 msgid "Invalid translation post"
 msgstr "Érvénytelen fordítás post"
 
-#: inc/admin/translation-edit-modal.php:178
+#: inc/admin/translation-edit-modal.php:176
 msgid "Translation saving failed"
 msgstr "A fordítás mentése sikertelen"
 
@@ -2556,15 +2656,24 @@ msgstr "A fordítás mentése sikertelen"
 msgid "Translation"
 msgstr "Fordítás"
 
-#: inc/admin/translation-meta.php:87
+#: inc/admin/translation-meta.php:88
+#, php-format
+msgid ""
+"This text contains the tag %s, which will be replaced by the term the visitor "
+"searched for. Please keep it in your translation."
+msgstr ""
+"Ez a szöveg tartalmazza a %s címkét, amelyet a látogató által keresett "
+"kifejezéssel helyettesítünk. Kérjük, hagyja meg a fordításban."
+
+#: inc/admin/translation-meta.php:106
 msgid " - Original text: "
 msgstr " - Eredeti szöveg: "
 
-#: inc/admin/translation-meta.php:212
+#: inc/admin/translation-meta.php:232
 msgid " - Translation: "
 msgstr " - Fordítás: "
 
-#: inc/admin/translation-meta.php:282
+#: inc/admin/translation-meta.php:302
 msgid "Discovery URL: "
 msgstr "Felfedezés URL: "
 
@@ -2612,6 +2721,68 @@ msgstr ""
 msgid "Save in progress..."
 msgstr "Mentés folyamatban..."
 
+#: inc/dictionary.php:684
+msgid "Error [1]: The current user is not authorized to edit translations"
+msgstr ""
+"Hiba [1]: Az aktuális felhasználónak nincs jogosultsága a fordítások "
+"szerkesztésére"
+
+#: inc/dictionary.php:698
+msgid "Error [2]: Invalid post ID parameter"
+msgstr "Hiba [2]: Érvénytelen „post ID” paraméter"
+
+#: inc/dictionary.php:716
+msgid "Error [3]: Invalid impacted languages parameter"
+msgstr "Hiba [3]: Érvénytelen „impacted languages” paraméter"
+
+#: inc/dictionary.php:739
+msgid "Error [4]: Invalid impacted languages data"
+msgstr "Hiba [4]: Érvénytelen adatok a befolyásolt nyelvekről"
+
+#: inc/dictionary.php:760
+msgid "Error [5]: Parameter \"check\" not found"
+msgstr "Hiba [5]: A „check” paraméter nem található"
+
+#: inc/dictionary.php:773
+msgid "Error [6]: Invalid \"check\" parameter"
+msgstr "Hiba [6]: Érvénytelen „check” paraméter"
+
+#: inc/dictionary.php:791
+msgid "Error [7]: Invalid post ID or post type"
+msgstr "Hiba [7]: Érvénytelen bejegyzés-azonosító vagy bejegyzéstípus"
+
+#: inc/dictionary.php:811
+msgid "Error [8]: Failed to delete the translation"
+msgstr "Hiba [8]: A fordítás törlése nem sikerült"
+
+#: inc/dictionary.php:843
+msgid "Error [9]: Translation meta \"translations\" not found"
+msgstr "Hiba [9]: A „translations” fordítási metaelem nem található"
+
+#: inc/dictionary.php:859
+msgid "Error [10]: Invalid translation meta"
+msgstr "Hiba [10]: Érvénytelen fordítási metaadat"
+
+#: inc/dictionary.php:873
+msgid "Error [11]: Translation meta \"original language\" not found"
+msgstr "Hiba [11]: A „eredeti nyelv” fordítási metaadat nem található"
+
+#: inc/dictionary.php:885
+msgid ""
+"Error [12]: The language of the translation is not the same as the language "
+"of the site's settings"
+msgstr ""
+"Hiba [12]: A fordítás nyelve nem egyezik meg a webhely beállításaiban "
+"megadott nyelvvel"
+
+#: inc/dictionary.php:927
+msgid "Error [13]: Failed to delete the translation"
+msgstr "Hiba [13]: A fordítás törlése nem sikerült"
+
+#: inc/dictionary.php:951
+msgid "Error [14]: Failed to update the translation meta"
+msgstr "Hiba [14]: A fordítási metaadatok frissítése nem sikerült"
+
 #: inc/dom/load-overload.php:35
 msgid "Translation API overloaded"
 msgstr "Fordítási API túlterhelt"
@@ -2657,51 +2828,55 @@ msgstr ""
 "Fordítás közben hiba történt. További információkért nézd meg a böngésző "
 "konzolját."
 
-#: inc/dom/mode-editor.php:120 inc/dom/mode-list.php:374
+#: inc/dom/mode-editor.php:122 inc/dom/mode-list.php:378
 msgid "Edit this translation"
 msgstr "A fordítás szerkesztése"
 
-#: inc/dom/mode-list.php:171
+#: inc/dom/mode-list.php:175
 msgid "Search"
 msgstr "Keresés"
 
-#: inc/dom/mode-list.php:183
+#: inc/dom/mode-list.php:187
 msgid "Status"
 msgstr "Állapot"
 
-#: inc/dom/mode-list.php:189
+#: inc/dom/mode-list.php:193
 msgid "All"
 msgstr "Összes"
 
-#: inc/dom/mode-list.php:211
+#: inc/dom/mode-list.php:215
 msgid "Order"
 msgstr "Rendezés"
 
-#: inc/dom/mode-list.php:217
+#: inc/dom/mode-list.php:221
 msgid "Occurrence order"
 msgstr "Előfordulási sorrend"
 
-#: inc/dom/mode-list.php:221
+#: inc/dom/mode-list.php:225
 msgid "Alphabetical - sources"
 msgstr "Ábécé - források"
 
-#: inc/dom/mode-list.php:225
+#: inc/dom/mode-list.php:229
 msgid "Alphabetical - translations"
 msgstr "Ábécé - fordítások"
 
-#: inc/dom/mode-list.php:302
+#: inc/dom/mode-list.php:306
 msgid "SEO - Title:"
 msgstr "SEO – Cím:"
 
-#: inc/dom/mode-list.php:306
+#: inc/dom/mode-list.php:310
 msgid "SEO - Description:"
 msgstr "SEO – Leírás:"
 
-#: inc/dom/mode-list.php:391
+#: inc/dom/mode-list.php:336
+msgid "No translation found."
+msgstr "Nem találtam fordítást."
+
+#: inc/dom/mode-list.php:395
 msgid "Go to top"
 msgstr "Ugrás felülre"
 
-#: inc/slug.php:294 inc/translation.php:275
+#: inc/slug.php:311 inc/translation.php:287
 msgid "..."
 msgstr "…"
 
