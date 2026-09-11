@@ -302,6 +302,15 @@ body .wplng-form-table {
 
 }
 
+@media screen and (max-width: 782px) {
+    body .wplng-form-table select,
+    body.wp-admin.wp-core-ui .wplng-form-table select {
+        line-height: 1.2;
+        min-height: 33.3px;
+        max-height: 33.3px;
+    }
+}
+
 // ------------------------------------------------------------------------
 // Hide other plusgins ads and notices
 // ------------------------------------------------------------------------
