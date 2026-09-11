@@ -91,16 +91,16 @@
         li {
 
             display: inline-block;
-            padding: 0 10px;
+            padding: 0 6px;
 
             a.button {
 
                 font-weight: 600;
 
                 .dashicons {
-                    margin-right: 4px;
-                    font-size: 1.2em;
-                    vertical-align: ideographic;
+                    margin-right: 2px;
+                    font-size: 1.1em;
+                    vertical-align: sub;
                 }
             }
         }
@@ -278,7 +278,6 @@ body .wplng-form-table {
 
                 .dashicons {
                     vertical-align: middle;
-                    line-height: .8em;
                 }
 
             }
@@ -301,6 +300,15 @@ body .wplng-form-table {
 
     }
 
+}
+
+@media screen and (max-width: 782px) {
+    body .wplng-form-table select,
+    body.wp-admin.wp-core-ui .wplng-form-table select {
+        line-height: 1.2;
+        min-height: 33.3px;
+        max-height: 33.3px;
+    }
 }
 
 // ------------------------------------------------------------------------

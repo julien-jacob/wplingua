@@ -4,7 +4,7 @@ Donate link: https://wplingua.com/
 Tags: ai translation, automatic translation, multilingual, translate, translation
 Requires at least: 6.0
 Tested up to: 7.1
-Stable tag: 2.16.5
+Stable tag: 2.16.6
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -197,6 +197,15 @@ Your server’s database holds all the translations locally.
 
 == Changelog ==
 
+= 2.16.6 =
+
+* Navigation menu settings
+ * Fix icon alignment in Chrome
+ * Review size and spacing
+* Option pages
+ * Fix select input height on WordPress 7.1
+ * Fix icon alignment in buttons on WordPress 7.1
+
 = 2.16.5 =
 
 * Update plugin translations for all supported languages
@@ -257,10 +266,6 @@ Your server’s database holds all the translations locally.
 * Set api.wplingua.com as the API URL
 * Fixed the issue with spaces being preserved between strings
 * Fixed the dictionary option page: textarea height in WP 7.0 
-
-= 2.14.2 =
-
-* Quick fix for API proxy
 
 
 All changelogs and previous versions of the wpLingua plugin are available on the releases page of the project's GitHub repo: [https://github.com/julien-jacob/wplingua/releases](https://github.com/julien-jacob/wplingua/releases).
