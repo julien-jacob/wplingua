@@ -111,10 +111,15 @@ function wplng_option_page_register() {
 
 	// Display the main option page content
 	?>
-	<h1 class="wplng-option-page-title"><span class="dashicons dashicons-translation"></span> <?php esc_html_e( 'wpLingua - Register API key', 'wplingua' ); ?></h1>
 
 	<div class="wrap">
+
+		<header id="wplng-option-page-header">
+			<h1 class="wplng-option-page-title"><span class="dashicons dashicons-translation"></span> <?php esc_html_e( 'wpLingua - Register API key', 'wplingua' ); ?></h1>
+		</header>
+
 		<hr class="wp-header-end">
+
 		<form method="post" action="options.php">
 			<?php
 			// Output settings fields and sections for the plugin

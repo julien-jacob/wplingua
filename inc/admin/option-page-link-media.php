@@ -17,11 +17,14 @@ function wplng_option_page_link_media() {
 
 	?>
 
-	<h1 class="wplng-option-page-title"><span class="dashicons dashicons-translation"></span> <?php esc_html_e( 'wpLingua - Links & Medias', 'wplingua' ); ?></h1>
-
 	<div class="wrap">
+		<header id="wplng-option-page-header">
+			<h1 class="wplng-option-page-title"><span class="dashicons dashicons-translation"></span> <?php esc_html_e( 'wpLingua - Links & Medias', 'wplingua' ); ?></h1>
+			<?php echo wplng_option_page_settings_menu(); ?>
+		</header>
+
 		<hr class="wp-header-end">
-		<?php echo wplng_option_page_settings_menu(); ?>
+
 		<form id="wplng-option-link-media-form" method="post" action="options.php">
 			<?php
 			settings_fields( 'wplng_link_media' );

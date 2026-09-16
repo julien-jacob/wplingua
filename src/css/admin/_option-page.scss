@@ -54,57 +54,72 @@
 }
 
 // ------------------------------------------------------------------------
-// Option page title
+// Option page header
 // ------------------------------------------------------------------------
 
-.wplng-option-page-title {
+#wplng-option-page-header {
+
     background-color: #f6f7f7;
-    font-size: 20px;
-    margin: 0 0 0 -20px;
-    padding: 15px 25px;
-    line-height: 22px;
-    font-weight: 500;
     box-shadow: 0 0 8px rgba(0, 0, 0, .05);
     border-bottom: 1px solid #c3c4c7;
-    text-align: center;
+    margin: -10px -20px 0 -20px;
 
-    .dashicons {
-        font-size: 1.1em;
-        line-height: inherit;
-        width: 1.1em;
-        height: 1.1em;
-    }
-}
+    // ------------------------------------------------------------------------
+    // Option page title
+    // ------------------------------------------------------------------------
 
-// ------------------------------------------------------------------------
-// Option page menu
-// ------------------------------------------------------------------------
+    .wplng-option-page-title {
 
-.wplng-option-page-menu {
-
-    ul {
-
+        font-size: 20px;
+        line-height: 22px;
+        font-weight: 500;
         text-align: center;
-        border-bottom: 1px solid #c3c4c7;
-        padding-bottom: 16px;
+        margin: 0;
+        padding: 15px;
 
-        li {
+        .dashicons {
+            font-size: 1.1em;
+            line-height: inherit;
+            width: 1.1em;
+            height: 1.1em;
+        }
+    }
 
-            display: inline-block;
-            padding: 0 6px;
+    // ------------------------------------------------------------------------
+    // Option page menu
+    // ------------------------------------------------------------------------
 
-            a.button {
+    .wplng-option-page-menu {
 
-                font-weight: 600;
+        margin: 0;
+        padding: 10px 15px;
+        border-top: 1px solid #c3c4c7;
 
-                .dashicons {
-                    margin-right: 2px;
-                    font-size: 1.1em;
-                    vertical-align: sub;
+        ul {
+
+            text-align: center;
+            margin: 0 0 -6px 0;
+            padding: 0;
+
+            li {
+
+                display: inline-block;
+                padding: 0 6px;
+
+                a.button {
+
+                    font-weight: 600;
+
+                    .dashicons {
+                        margin-right: 2px;
+                        font-size: 1.1em;
+                        vertical-align: sub;
+                    }
                 }
             }
         }
     }
+
 }
 
 // ------------------------------------------------------------------------
@@ -303,6 +318,7 @@ body .wplng-form-table {
 }
 
 @media screen and (max-width: 782px) {
+
     body .wplng-form-table select,
     body.wp-admin.wp-core-ui .wplng-form-table select {
         line-height: 1.2;

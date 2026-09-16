@@ -32,13 +32,15 @@ function wplng_option_page_switcher() {
 
 	?>
 
-	<h1 class="wplng-option-page-title"><span class="dashicons dashicons-translation"></span> <?php esc_html_e( 'wpLingua - Switcher settings', 'wplingua' ); ?></h1>
-
-	
-
 	<div class="wrap">
+
+		<header id="wplng-option-page-header">
+			<h1 class="wplng-option-page-title"><span class="dashicons dashicons-translation"></span> <?php esc_html_e( 'wpLingua - Switcher settings', 'wplingua' ); ?></h1>
+			<?php echo wplng_option_page_settings_menu(); ?>
+		</header>
+		
 		<hr class="wp-header-end">
-		<?php echo wplng_option_page_settings_menu(); ?>
+		
 		<form method="post" action="options.php">
 			<?php
 			settings_fields( 'wplng_switcher' );
@@ -405,9 +407,9 @@ function wplng_option_page_switcher() {
 							<div class="wplng-flex-item">
 								<select id="wplng_insert" name="wplng_insert" class="wplng-width-full">
 									<?php
-	
+
 									$insert_options = wplng_data_switcher_valid_insert();
-	
+
 									foreach ( $insert_options as $option_value => $option_name ) {
 										if ( $insert === $option_value ) {
 											echo '<option value="' . esc_attr( $option_value ) . '" selected>';
@@ -417,7 +419,7 @@ function wplng_option_page_switcher() {
 										echo esc_html( $option_name );
 										echo '</option>';
 									}
-	
+
 									?>
 								</select>
 							</div>
