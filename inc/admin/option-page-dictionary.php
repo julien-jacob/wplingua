@@ -20,11 +20,15 @@ function wplng_option_page_dictionary() {
 
 	?>
 
-	<h1 class="wplng-option-page-title"><span class="dashicons dashicons-translation"></span> <?php esc_html_e( 'wpLingua - Dictionary rules', 'wplingua' ); ?></h1>
-
 	<div class="wrap">
+
+		<header id="wplng-option-page-header">
+			<h1 class="wplng-option-page-title"><span class="dashicons dashicons-translation"></span> <?php esc_html_e( 'wpLingua - Dictionary rules', 'wplingua' ); ?></h1>
+			<?php echo wplng_option_page_settings_menu(); ?>
+		</header>
+
 		<hr class="wp-header-end">
-		<?php echo wplng_option_page_settings_menu(); ?>
+		
 		<form id="wplng-option-dictionary-form" method="post" action="options.php">
 			<?php
 			settings_fields( 'wplng_dictionary' );
@@ -239,7 +243,7 @@ function wplng_option_page_dictionary_update_translations_html( $translations_to
 			$impacted_languages_attr = wp_json_encode( $translation_to_update['impacted_languages'] );
 		}
 
-		$check = wplng_encryption_encrypt( $translation_to_update['post_id'] . '-' . $impacted_languages_attr);
+		$check = wplng_encryption_encrypt( $translation_to_update['post_id'] . '-' . $impacted_languages_attr );
 
 		$html .= '<div';
 		$html .= ' class="wplng-dictionary-text-to-update-entry"';
@@ -471,10 +475,10 @@ function wplng_option_page_dictionary_new_entry_html() {
 		$html .= '</div>';
 
 	}
-	$html .= '</div>';  // End #wplng-new-rules 
+	$html .= '</div>';  // End #wplng-new-rules
 
 	$html .= '<div id="wplng-new-action-section" class="wplng-flex-row">';
-	
+
 	$html .= '<div class="wplng-flex-item">';
 	$html .= '<a';
 	$html .= ' href="javascript:void(0);"';

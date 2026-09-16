@@ -29,24 +29,25 @@ function wplng_option_page_settings() {
 		return;
 	}
 
+	$is_first = wplng_settings_part_first_use();
+	$form_css = '';
+
+	if ( $is_first ) {
+		$form_css = 'display: none !important;';
+	}
+
 	?>
 
-	<h1 class="wplng-option-page-title"><span class="dashicons dashicons-translation"></span> <?php esc_html_e( 'wpLingua - General settings', 'wplingua' ); ?></h1>
 
 	<div class="wrap">
+
+		<header id="wplng-option-page-header">
+			<h1 class="wplng-option-page-title"><span class="dashicons dashicons-translation"></span> <?php esc_html_e( 'wpLingua - General settings', 'wplingua' ); ?></h1>
+			<?php echo wplng_option_page_settings_menu( $is_first ); ?>
+		</header>
+
 		<hr class="wp-header-end">
-		<?php
 
-		$is_first = wplng_settings_part_first_use();
-		$form_css = '';
-
-		echo wplng_option_page_settings_menu( $is_first );
-
-		if ( $is_first ) {
-			$form_css = 'display: none !important;';
-		}
-
-		?>
 		<form 
 			method="post" 
 			action="options.php" 
