@@ -219,6 +219,10 @@ function wplng_data_attr_text_to_translate() {
 				'attr'     => 'data-order_button_text',
 				'selector' => '[data-order_button_text]',
 			),
+			array(
+				'attr'     => 'data-value',
+				'selector' => '#place_order[data-value]',
+			),
 
 			// Plugin: Elementor Essential Addons (Event Calendar)
 			array(
