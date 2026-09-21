@@ -571,6 +571,17 @@ function wplng_data_json_rules_inclusion() {
 		);
 	};
 
+	$logical_rules[] = function ( $element, $parents ) {
+		return (
+			isset( $parents[0] )
+			&& isset( $parents[1] )
+			&& isset( $parents[2] )
+			&& $parents[0] === 'quiz'
+			&& is_string($parents[1])
+			&& is_int($parents[2])
+		);
+	};
+
 	// ------------------------------------------------------------------------
 	// Plugin: YITH
 	// ------------------------------------------------------------------------
