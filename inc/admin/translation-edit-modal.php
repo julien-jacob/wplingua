@@ -112,8 +112,8 @@ function wplng_ajax_edit_modal() {
 	 * Get the translation editor HTML
 	 */
 
-$data['wplng_edit_html'] = wplng_translation_editor_get_html(
-			$translation_post
+	$data['wplng_edit_html'] = wplng_translation_editor_get_html(
+		$translation_post
 	);
 
 	/**

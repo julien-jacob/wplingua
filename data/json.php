@@ -577,8 +577,8 @@ function wplng_data_json_rules_inclusion() {
 			&& isset( $parents[1] )
 			&& isset( $parents[2] )
 			&& $parents[0] === 'quiz'
-			&& is_string($parents[1])
-			&& is_int($parents[2])
+			&& is_string( $parents[1] )
+			&& is_int( $parents[2] )
 		);
 	};
 
@@ -765,7 +765,7 @@ function wplng_data_json_rules_inclusion() {
 			isset( $parents[0], $parents[1], $parents[2], $parents[3], $parents[4] )
 			&& $parents[0] === 'data'
 			&& $parents[1] === 'posts'
-			&& is_int($parents[2])
+			&& is_int( $parents[2] )
 			&& $parents[3] === 'thumbnail'
 			&& $parents[4] === 'alt'
 		);
@@ -776,7 +776,7 @@ function wplng_data_json_rules_inclusion() {
 			isset( $parents[0], $parents[1], $parents[2], $parents[3] )
 			&& $parents[0] === 'data'
 			&& $parents[1] === 'posts'
-			&& is_int($parents[2])
+			&& is_int( $parents[2] )
 			&& (
 				$parents[3] === 'title'
 				|| $parents[3] === 'date'
