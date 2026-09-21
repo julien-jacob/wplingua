@@ -869,7 +869,7 @@ function wplng_admin_notice_get_pro_version() {
 
 	$html .= '<br>';
 	$html .= '<a';
-	$html .= ' href="https://wplingua.com/download/"';
+	$html .= ' href="https://wplingua.com/download/#pro"';
 	$html .= ' target="_blank"';
 	$html .= ' rel="noopener noreferrer"';
 	$html .= ' class="button button-primary"';
