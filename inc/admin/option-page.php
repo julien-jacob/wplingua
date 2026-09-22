@@ -52,21 +52,21 @@ function wplng_register_settings() {
  */
 function wplng_is_wplingua_settings_page() {
 
-    if ( empty( $_GET['page'] ) ) {
-        return false;
-    }
+	if ( empty( $_GET['page'] ) ) {
+		return false;
+	}
 
-    return in_array(
-        sanitize_key( $_GET['page'] ),
-        array(
-            'wplingua-settings',
-            'wplingua-switcher',
-            'wplingua-exclusions',
-            'wplingua-dictionary',
-            'wplingua-link-media',
-        ),
-        true
-    );
+	return in_array(
+		sanitize_key( $_GET['page'] ),
+		array(
+			'wplingua-settings',
+			'wplingua-switcher',
+			'wplingua-exclusions',
+			'wplingua-dictionary',
+			'wplingua-link-media',
+		),
+		true
+	);
 }
 
 
@@ -155,102 +155,99 @@ function wplng_create_menu_register() {
  */
 function wplng_create_menu() {
 
-    /*
-     * Main wpLingua menu
-     */
-    add_menu_page(
-        __( 'wpLingua: Settings', 'wplingua' ),
-        __( 'wpLingua', 'wplingua' ),
-        'edit_posts',
-        'wplingua-settings',
-        '',
-        'dashicons-translation',
-        31
-    );
+	/*
+	 * Main wpLingua menu
+	 */
+	add_menu_page(
+		__( 'wpLingua: Settings', 'wplingua' ),
+		__( 'wpLingua', 'wplingua' ),
+		'edit_posts',
+		'wplingua-settings',
+		'',
+		'dashicons-translation',
+		31
+	);
 
+	/*
+	 * Settings
+	 *
+	 * This is the visible entry used as the parent
+	 * for all wpLingua option pages.
+	 */
+	add_submenu_page(
+		'wplingua-settings',
+		__( 'wpLingua: Settings', 'wplingua' ),
+		__( 'Settings', 'wplingua' ),
+		'edit_posts',
+		'wplingua-settings',
+		'wplng_option_page_settings'
+	);
 
-    /*
-     * Settings
-     *
-     * This is the visible entry used as the parent
-     * for all wpLingua option pages.
-     */
-    add_submenu_page(
-        'wplingua-settings',
-        __( 'wpLingua: Settings', 'wplingua' ),
-        __( 'Settings', 'wplingua' ),
-        'edit_posts',
-        'wplingua-settings',
-        'wplng_option_page_settings'
-    );
+	/*
+	 * Hidden option pages
+	 *
+	 * These pages remain registered as children of
+	 * wplingua-settings, but their menu entries are
+	 * hidden later with CSS.
+	 */
 
+	add_submenu_page(
+		'wplingua-settings',
+		__( 'wpLingua: Switcher', 'wplingua' ),
+		__( 'Switcher', 'wplingua' ),
+		'edit_posts',
+		'wplingua-switcher',
+		'wplng_option_page_switcher'
+	);
 
-    /*
-     * Hidden option pages
-     *
-     * These pages remain registered as children of
-     * wplingua-settings, but their menu entries are
-     * hidden later with CSS.
-     */
+	add_submenu_page(
+		'wplingua-settings',
+		__( 'wpLingua: Exclusion', 'wplingua' ),
+		__( 'Exclusion', 'wplingua' ),
+		'edit_posts',
+		'wplingua-exclusions',
+		'wplng_option_page_exclusions'
+	);
 
-    add_submenu_page(
-        'wplingua-settings',
-        __( 'wpLingua: Switcher', 'wplingua' ),
-        __( 'Switcher', 'wplingua' ),
-        'edit_posts',
-        'wplingua-switcher',
-        'wplng_option_page_switcher'
-    );
+	add_submenu_page(
+		'wplingua-settings',
+		__( 'wpLingua: Dictionary', 'wplingua' ),
+		__( 'Dictionary', 'wplingua' ),
+		'edit_posts',
+		'wplingua-dictionary',
+		'wplng_option_page_dictionary'
+	);
 
-    add_submenu_page(
-        'wplingua-settings',
-        __( 'wpLingua: Exclusion', 'wplingua' ),
-        __( 'Exclusion', 'wplingua' ),
-        'edit_posts',
-        'wplingua-exclusions',
-        'wplng_option_page_exclusions'
-    );
+	add_submenu_page(
+		'wplingua-settings',
+		__( 'wplingua: Links & Medias', 'wplingua' ),
+		__( 'Links & Medias', 'wplingua' ),
+		'edit_posts',
+		'wplingua-link-media',
+		'wplng_option_page_link_media'
+	);
 
-    add_submenu_page(
-        'wplingua-settings',
-        __( 'wpLingua: Dictionary', 'wplingua' ),
-        __( 'Dictionary', 'wplingua' ),
-        'edit_posts',
-        'wplingua-dictionary',
-        'wplng_option_page_dictionary'
-    );
+	/*
+	 * Visible custom post type pages
+	 */
 
-    add_submenu_page(
-        'wplingua-settings',
-        __( 'wplingua: Links & Medias', 'wplingua' ),
-        __( 'Links & Medias', 'wplingua' ),
-        'edit_posts',
-        'wplingua-link-media',
-        'wplng_option_page_link_media'
-    );
+	add_submenu_page(
+		'wplingua-settings',
+		__( 'wpLingua: Website slugs', 'wplingua' ),
+		__( 'Website slugs', 'wplingua' ),
+		'edit_posts',
+		'edit.php?post_type=wplng_slug',
+		false
+	);
 
-
-    /*
-     * Visible custom post type pages
-     */
-
-    add_submenu_page(
-        'wplingua-settings',
-        __( 'wpLingua: Website slugs', 'wplingua' ),
-        __( 'Website slugs', 'wplingua' ),
-        'edit_posts',
-        'edit.php?post_type=wplng_slug',
-        false
-    );
-
-    add_submenu_page(
-        'wplingua-settings',
-        __( 'wpLingua: Translations', 'wplingua' ),
-        __( 'All translations', 'wplingua' ),
-        'edit_posts',
-        'edit.php?post_type=wplng_translation',
-        false
-    );
+	add_submenu_page(
+		'wplingua-settings',
+		__( 'wpLingua: Translations', 'wplingua' ),
+		__( 'All translations', 'wplingua' ),
+		'edit_posts',
+		'edit.php?post_type=wplng_translation',
+		false
+	);
 }
 
 
@@ -264,11 +261,11 @@ function wplng_create_menu() {
  */
 function wplng_option_page_parent_file( $parent_file ) {
 
-    if ( wplng_is_wplingua_settings_page() ) {
-        return 'wplingua-settings';
-    }
+	if ( wplng_is_wplingua_settings_page() ) {
+		return 'wplingua-settings';
+	}
 
-    return $parent_file;
+	return $parent_file;
 }
 
 
@@ -282,11 +279,11 @@ function wplng_option_page_parent_file( $parent_file ) {
  */
 function wplng_option_page_submenu_file( $submenu_file ) {
 
-    if ( wplng_is_wplingua_settings_page() ) {
-        return 'wplingua-settings';
-    }
+	if ( wplng_is_wplingua_settings_page() ) {
+		return 'wplingua-settings';
+	}
 
-    return $submenu_file;
+	return $submenu_file;
 }
 
 
@@ -299,7 +296,7 @@ function wplng_option_page_submenu_file( $submenu_file ) {
  */
 function wplng_option_page_hide_submenu() {
 
-	$css = '<style>';
+	$css  = '<style>';
 	$css .= '#adminmenu .wp-submenu a[href*="page=wplingua-switcher"], ';
 	$css .= '#adminmenu .wp-submenu a[href*="page=wplingua-exclusions"], ';
 	$css .= '#adminmenu .wp-submenu a[href*="page=wplingua-dictionary"], ';
@@ -844,8 +841,8 @@ function wplng_admin_notice_get_pro_version() {
 	}
 
 	$data = wplng_get_api_data();
-	
-	if ( empty( $data['status'] ) 
+
+	if ( empty( $data['status'] )
 		|| $data['status'] === 'FREE'
 	) {
 		return;
@@ -866,10 +863,9 @@ function wplng_admin_notice_get_pro_version() {
 	$html .= '<p>';
 	$html .= esc_html__( 'Download and install wpLingua PRO to access the features included with your wpLingua plan.', 'wplingua' );
 	$html .= '</p>';
-
 	$html .= '<br>';
 	$html .= '<a';
-	$html .= ' href="https://wplingua.com/download/"';
+	$html .= ' href="https://wplingua.com/download/#pro"';
 	$html .= ' target="_blank"';
 	$html .= ' rel="noopener noreferrer"';
 	$html .= ' class="button button-primary"';

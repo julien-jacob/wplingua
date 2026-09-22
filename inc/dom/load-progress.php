@@ -204,8 +204,8 @@ function wplng_dom_load_progress( $dom, $args ) {
 		$current_chars  += $len;
 		++$numer_of_translated_texts;
 
-		$max_items_per_chunk   = (int) ( WPLNG_MAX_TRANSLATIONS_STR / 2 );
-		$max_chars_per_chunk   = (int) ( WPLNG_MAX_TRANSLATIONS_CHAR / 2 );
+		$max_items_per_chunk = (int) ( WPLNG_MAX_TRANSLATIONS_STR / 2 );
+		$max_chars_per_chunk = (int) ( WPLNG_MAX_TRANSLATIONS_CHAR / 2 );
 	}
 
 	// Push last chunk if any

@@ -18,7 +18,7 @@ if ( ! defined( 'WPINC' ) ) {
 function wplng_option_page_register() {
 
 	// Check if DB size is compatible with wpLingua
-	if ( wplng_count_public_content() > 2500
+	if ( wplng_count_public_content() > 8000
 		&& ! empty( wplng_get_translation_count() )
 		&& ! empty( wplng_get_slug_count() )
 	) {
