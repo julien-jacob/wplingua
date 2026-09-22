@@ -4,7 +4,7 @@ Donate link: https://wplingua.com/
 Tags: ai translation, automatic translation, translate, translation, SEO
 Requires at least: 6.0
 Tested up to: 7.1
-Stable tag: 2.16.7
+Stable tag: 2.16.8
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -197,6 +197,13 @@ Your server’s database holds all the translations locally.
 
 == Changelog ==
 
+= 2.16.8 =
+
+* Improved plugin compatibility:
+ * WooCommerce: Translate the "Place order" button
+ * Contact Form 7: Translate quiz questions
+* Improved options page design
+
 = 2.16.7 =
 
 * Improved settings menu design
@@ -255,15 +262,6 @@ Your server’s database holds all the translations locally.
  * Dictionary
  * Links & Media
  * Some border-radius elements
-
-= 2.15.0 =
-
-* Make the dictionary retroactive:
- * Analyze translations affected by changes to dictionary rules
- * Add a user interface for managing affected translations
- * Automate the management of changes to be made to translations
-* Fix dictionary: support non-Latin text matching and replacement (Japanese, Greek, etc.)
-* Fix dictionary: correct CJK uppercase detection, mb_strlen checks, and regex safety
 
 
 All changelogs and previous versions of the wpLingua plugin are available on the releases page of the project's GitHub repo: [https://github.com/julien-jacob/wplingua/releases](https://github.com/julien-jacob/wplingua/releases).
