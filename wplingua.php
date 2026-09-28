@@ -39,7 +39,7 @@ defined( 'WPLNG_DEBUG_JSON' ) || define( 'WPLNG_DEBUG_JSON', false );
 defined( 'WPLNG_DEBUG_AJAX' ) || define( 'WPLNG_DEBUG_AJAX', false );
 defined( 'WPLNG_DEBUG_REST' ) || define( 'WPLNG_DEBUG_REST', false );
 defined( 'WPLNG_DEBUG_BEAT' ) || define( 'WPLNG_DEBUG_BEAT', false );
-defined( 'WPLNG_DEBUG_MAIL' ) || define( 'WPLNG_DEBUG_MAIL', true );
+defined( 'WPLNG_DEBUG_MAIL' ) || define( 'WPLNG_DEBUG_MAIL', false );
 defined( 'WPLNG_DEBUG_XML' ) || define( 'WPLNG_DEBUG_XML', false );
 
 
