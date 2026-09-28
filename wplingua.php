@@ -39,6 +39,7 @@ defined( 'WPLNG_DEBUG_JSON' ) || define( 'WPLNG_DEBUG_JSON', false );
 defined( 'WPLNG_DEBUG_AJAX' ) || define( 'WPLNG_DEBUG_AJAX', false );
 defined( 'WPLNG_DEBUG_REST' ) || define( 'WPLNG_DEBUG_REST', false );
 defined( 'WPLNG_DEBUG_BEAT' ) || define( 'WPLNG_DEBUG_BEAT', false );
+defined( 'WPLNG_DEBUG_MAIL' ) || define( 'WPLNG_DEBUG_MAIL', true );
 defined( 'WPLNG_DEBUG_XML' ) || define( 'WPLNG_DEBUG_XML', false );
 
 
@@ -196,6 +197,7 @@ function wplng_start() {
 		add_action( 'admin_enqueue_scripts', 'wplng_option_page_exclusions_assets' );
 		add_action( 'admin_enqueue_scripts', 'wplng_option_page_dictionary_assets' );
 		add_action( 'admin_enqueue_scripts', 'wplng_option_page_link_media_assets' );
+		add_action( 'admin_enqueue_scripts', 'wplng_option_page_mail_assets' );
 
 		// Update flags URL
 		add_action( 'update_option_wplng_flags_style', 'wplng_options_switcher_update_flags_style', 10, 2 );
