@@ -12,6 +12,19 @@ if ( ! defined( 'WPINC' ) ) {
  * @return void
  */
 function wplng_option_page_mail() {
+
+	$data = wplng_get_api_data();
+
+	$checkbox_mail_enable_attr = 'value="1" disabled';
+
+	if ( $data['status'] !== 'FREE' ) {
+		$checkbox_mail_enable_attr = checked(
+			1,
+			get_option( 'wplng_mail_enable' ),
+			true,
+			false
+		);
+	}
 	?>
 
 	<div class="wrap">
@@ -37,7 +50,7 @@ function wplng_option_page_mail() {
 						<hr>
 
 						<fieldset>
-							<input type="checkbox" id="wplng_mail_enable" name="wplng_mail_enable" value="1" <?php checked( 1, get_option( 'wplng_mail_enable' ), true ); ?>/>
+							<input type="checkbox" id="wplng_mail_enable" name="wplng_mail_enable" value="1" <?php echo $checkbox_mail_enable_attr; ?>/>
 							<label for="wplng_mail_enable">PRO - <?php esc_html_e( 'Translate emails automatically', 'wplingua' ); ?></label> 
 							<span title="<?php esc_attr_e( 'Click to expand', 'wplingua' ); ?>" wplng-help-box="#wplng-hb-feature-mail"></span>
 						</fieldset>
