@@ -25,6 +25,32 @@ function wplng_option_page_mail() {
 			false
 		);
 	}
+
+	/**
+	 * Get excluded mail addresses
+	 *
+	 * If the option was never saved by the user (get_option() returns
+	 * false, its 3rd param, only when the option doesn't exist in DB),
+	 * fallback on a default value excluding the site admin email
+	 */
+
+	$mail_exclude_address = get_option( 'wplng_mail_exclude_address', false );
+
+	if ( false === $mail_exclude_address ) {
+
+		$admin_email = get_option( 'admin_email' );
+
+		$mail_exclude_address = '';
+
+		if ( is_string( $admin_email ) && '' !== trim( $admin_email ) ) {
+			$mail_exclude_address = '^' . preg_quote( $admin_email, '#' ) . '$';
+		}
+
+		$mail_exclude_address = apply_filters(
+			'wplng_mail_exclude_address_default',
+			$mail_exclude_address
+		);
+	}
 	?>
 
 	<div class="wrap">
@@ -78,7 +104,7 @@ function wplng_option_page_mail() {
 								<li><code>@example\.com$</code> - <?php esc_html_e( 'Exclude mail address ending with "@example.com"', 'wplingua' ); ?></li>
 							</ul>
 							<br>
-							<textarea name="wplng_mail_exclude_address" id="wplng_mail_exclude_address" rows="6"><?php echo esc_textarea( get_option( 'wplng_mail_exclude_address' ) ); ?></textarea>
+							<textarea name="wplng_mail_exclude_address" id="wplng_mail_exclude_address" rows="6"><?php echo esc_textarea( $mail_exclude_address ); ?></textarea>
 						</fieldset>
 					</td>
 				</tr>
