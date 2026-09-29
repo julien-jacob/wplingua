@@ -50,6 +50,29 @@ function wplng_option_page_mail() {
 			$mail_exclude_address
 		);
 	}
+
+	/**
+	 * Get excluded URL for mail translation
+	 *
+	 * If the option was never saved by the user, fallback on a default
+	 * value excluding the '/contact/' page, if it exists
+	 */
+
+	$mail_exclude_url = get_option( 'wplng_mail_exclude_url', false );
+
+	if ( false === $mail_exclude_url ) {
+
+		$mail_exclude_url = '';
+
+		if ( get_page_by_path( 'contact', OBJECT, 'page' ) ) {
+			$mail_exclude_url = '^/contact/$';
+		}
+
+		$mail_exclude_url = apply_filters(
+			'wplng_mail_exclude_url_default',
+			$mail_exclude_url
+		);
+	}
 	?>
 
 	<div class="wrap">
@@ -104,6 +127,27 @@ function wplng_option_page_mail() {
 							</ul>
 							<br>
 							<textarea name="wplng_mail_exclude_address" id="wplng_mail_exclude_address" rows="6"><?php echo esc_textarea( $mail_exclude_address ); ?></textarea>
+						</fieldset>
+					</td>
+				</tr>
+				<tr>
+					<th scope="row"><span class="dashicons dashicons-admin-links"></span> <?php esc_html_e( 'Exclude URL', 'wplingua' ); ?></th>
+					<td>
+						<fieldset>
+							<label for="wplng_mail_exclude_url"><strong><?php esc_html_e( 'URL to exclude from mail translation: ', 'wplingua' ); ?></strong></label>
+
+							<hr>
+
+							<p><?php esc_html_e( 'Enter one regular expression per line. Emails triggered from a matching page URL will not be translated. Examples: ', 'wplingua' ); ?></p>
+
+							<ul>
+								<li><code>^/contact/$</code> - <?php esc_html_e( 'Exclude URL "/contact/"', 'wplingua' ); ?></li>
+								<li><code>^/contact/</code> - <?php esc_html_e( 'Exclude URL starting with "/contact/"', 'wplingua' ); ?></li>
+								<li><code>/contact/$</code> - <?php esc_html_e( 'Exclude URL ending with "/contact/"', 'wplingua' ); ?></li>
+								<li><code>/contact/</code> - <?php esc_html_e( 'Exclude URL containing "/contact/"', 'wplingua' ); ?></li>
+							</ul>
+							<br>
+							<textarea name="wplng_mail_exclude_url" id="wplng_mail_exclude_url" rows="6"><?php echo esc_textarea( $mail_exclude_url ); ?></textarea>
 						</fieldset>
 					</td>
 				</tr>
