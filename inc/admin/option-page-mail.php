@@ -21,7 +21,6 @@ function wplng_option_page_mail() {
 		$checkbox_mail_enable_attr = checked(
 			1,
 			get_option( 'wplng_mail_enable' ),
-			true,
 			false
 		);
 	}
