@@ -371,6 +371,7 @@ function wplng_option_page_settings_menu( $display_none = false ) {
 			'page'     => 'wplingua-mail',
 			'title'    => __( 'Emails translation', 'wplingua' ),
 			'dashicon' => 'dashicons-email-alt',
+			'is_beta'  => true,
 		),
 	);
 
@@ -390,13 +391,20 @@ function wplng_option_page_settings_menu( $display_none = false ) {
 			admin_url( 'admin.php' )
 		);
 
-		$class_attr = '';
+		$class_attr_a = '';
 		if ( $_GET['page'] === $value['page'] ) {
-			$class_attr = ' button-primary';
+			$class_attr_a = ' button-primary';
 		}
 
-		$html .= '<li>';
-		$html .= '<a href="' . esc_url( $url ) . '" class="button' . $class_attr . '">';
+		if ( isset( $value['is_beta'] )
+			&& $value['is_beta'] === true
+		) {
+			$html .= '<li class="wplng-beta-hidden" style="display: none;">';
+		} else {
+			$html .= '<li>';
+		}
+
+		$html .= '<a href="' . esc_url( $url ) . '" class="button' . $class_attr_a . '">';
 		$html .= '<span class="dashicons ' . esc_attr( $value['dashicon'] ) . '">';
 		$html .= '</span> ';
 		$html .= esc_html( $value['title'] );

@@ -99,7 +99,7 @@ function wplng_option_page_mail() {
 
 						<fieldset>
 							<input type="checkbox" id="wplng_mail_enable" name="wplng_mail_enable" value="1" <?php echo $checkbox_mail_enable_attr; ?>/>
-							<label for="wplng_mail_enable">PRO - <?php esc_html_e( 'Translate emails automatically', 'wplingua' ); ?></label> 
+							<label for="wplng_mail_enable">PRO - BETA - <?php esc_html_e( 'Translate emails automatically', 'wplingua' ); ?></label> 
 							<span title="<?php esc_attr_e( 'Click to expand', 'wplingua' ); ?>" wplng-help-box="#wplng-hb-feature-mail"></span>
 						</fieldset>
 
