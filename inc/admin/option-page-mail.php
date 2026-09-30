@@ -16,6 +16,7 @@ function wplng_option_page_mail() {
 	$data = wplng_get_api_data();
 
 	$checkbox_mail_enable_attr = 'value="1" disabled';
+	$textarea_enable_attr      = ' disabled';
 
 	if ( $data['status'] !== 'FREE' ) {
 		$checkbox_mail_enable_attr = checked(
@@ -23,6 +24,7 @@ function wplng_option_page_mail() {
 			get_option( 'wplng_mail_enable' ),
 			false
 		);
+		$textarea_enable_attr      = '';
 	}
 
 	/**
@@ -126,7 +128,7 @@ function wplng_option_page_mail() {
 								<li><code>@example\.com$</code> - <?php esc_html_e( 'Exclude mail address ending with "@example.com"', 'wplingua' ); ?></li>
 							</ul>
 							<br>
-							<textarea name="wplng_mail_exclude_address" id="wplng_mail_exclude_address" rows="6"><?php echo esc_textarea( $mail_exclude_address ); ?></textarea>
+							<textarea name="wplng_mail_exclude_address" id="wplng_mail_exclude_address" rows="6" <?php echo $textarea_enable_attr; ?>><?php echo esc_textarea( $mail_exclude_address ); ?></textarea>
 						</fieldset>
 					</td>
 				</tr>
@@ -147,7 +149,7 @@ function wplng_option_page_mail() {
 								<li><code>/contact/</code> - <?php esc_html_e( 'Exclude URL containing "/contact/"', 'wplingua' ); ?></li>
 							</ul>
 							<br>
-							<textarea name="wplng_mail_exclude_url" id="wplng_mail_exclude_url" rows="6"><?php echo esc_textarea( $mail_exclude_url ); ?></textarea>
+							<textarea name="wplng_mail_exclude_url" id="wplng_mail_exclude_url" rows="6" <?php echo $textarea_enable_attr; ?>><?php echo esc_textarea( $mail_exclude_url ); ?></textarea>
 						</fieldset>
 					</td>
 				</tr>
