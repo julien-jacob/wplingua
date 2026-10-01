@@ -98,7 +98,7 @@ function wplng_str_is_url( $str ) {
 
 /**
  * Return true is $str is a translatable text
- * Return false if $str is a number, mail addredd, symbol, ...
+ * Return false if $str is a number, mail address, symbol, ...
  *
  * @param string $text
  * @return bool

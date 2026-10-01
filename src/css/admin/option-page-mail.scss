@@ -1,0 +1,10 @@
+@use "../header";
+@use "admin-footer";
+@use "help-box";
+@use "option-page";
+
+#wplng_mail_exclude_address,
+#wplng_mail_exclude_url {
+    width: 100%;
+    resize: none;
+}

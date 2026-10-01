@@ -203,6 +203,18 @@ function wplng_args_setup( &$args ) {
 		$args_clear['texts_unknow'] = $args['texts_unknow'];
 	}
 
+	/**
+	 * Ckeck "save_translations"
+	 */
+
+	$args_clear['save_translations'] = true;
+
+	if ( isset( $args['save_translations'] )
+		&& is_bool( $args['save_translations'] )
+	) {
+		$args_clear['save_translations'] = $args['save_translations'];
+	}
+
 	$args = $args_clear;
 }
 
@@ -413,10 +425,12 @@ function wplng_args_update_from_texts( &$args, $texts ) {
 		}
 	}
 
-	$translations_new = wplng_save_translations(
-		$translations_new,
-		$args['language_target']
-	);
+	if ( $args['save_translations'] === true ) {
+		$translations_new = wplng_save_translations(
+			$translations_new,
+			$args['language_target']
+		);
+	}
 
 	/**
 	 * Merge know and new translations

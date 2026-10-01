@@ -43,6 +43,11 @@ function wplng_register_settings() {
 
 	// Option page : Links & Medias
 	register_setting( 'wplng_link_media', 'wplng_link_media_entries' );
+
+	// Option page : Links & Medias
+	register_setting( 'wplng_mail', 'wplng_mail_enable' );
+	register_setting( 'wplng_mail', 'wplng_mail_exclude_address' );
+	register_setting( 'wplng_mail', 'wplng_mail_exclude_url' );
 }
 
 
@@ -64,6 +69,7 @@ function wplng_is_wplingua_settings_page() {
 			'wplingua-exclusions',
 			'wplingua-dictionary',
 			'wplingua-link-media',
+			'wplingua-mail',
 		),
 		true
 	);
@@ -84,6 +90,8 @@ function wplng_is_wplingua_admin_page() {
 	 * Check if is a wpLingua option page
 	 */
 
+	// TODO : Check if use wplng_is_wplingua_settings_page()
+
 	if ( 'admin.php' === $pagenow
 		&& isset( $_GET['page'] )
 		&& (
@@ -92,6 +100,7 @@ function wplng_is_wplingua_admin_page() {
 			|| $_GET['page'] === 'wplingua-dictionary'
 			|| $_GET['page'] === 'wplingua-exclusions'
 			|| $_GET['page'] === 'wplingua-link-media'
+			|| $_GET['page'] === 'wplingua-mail'
 		)
 	) {
 		return true;
@@ -227,6 +236,15 @@ function wplng_create_menu() {
 		'wplng_option_page_link_media'
 	);
 
+	add_submenu_page(
+		'wplingua-settings',
+		__( 'wplingua: Emails translation', 'wplingua' ),
+		__( 'Emails translation', 'wplingua' ),
+		'edit_posts',
+		'wplingua-mail',
+		'wplng_option_page_mail'
+	);
+
 	/*
 	 * Visible custom post type pages
 	 */
@@ -300,7 +318,8 @@ function wplng_option_page_hide_submenu() {
 	$css .= '#adminmenu .wp-submenu a[href*="page=wplingua-switcher"], ';
 	$css .= '#adminmenu .wp-submenu a[href*="page=wplingua-exclusions"], ';
 	$css .= '#adminmenu .wp-submenu a[href*="page=wplingua-dictionary"], ';
-	$css .= '#adminmenu .wp-submenu a[href*="page=wplingua-link-media"] {';
+	$css .= '#adminmenu .wp-submenu a[href*="page=wplingua-link-media"], ';
+	$css .= '#adminmenu .wp-submenu a[href*="page=wplingua-mail"] {';
 	$css .= 'display: none;';
 	$css .= '}';
 	$css .= '</style>';
@@ -348,6 +367,12 @@ function wplng_option_page_settings_menu( $display_none = false ) {
 			'title'    => __( 'Links & Medias', 'wplingua' ),
 			'dashicon' => 'dashicons-format-gallery',
 		),
+		array(
+			'page'     => 'wplingua-mail',
+			'title'    => __( 'Emails translation', 'wplingua' ),
+			'dashicon' => 'dashicons-email-alt',
+			'is_beta'  => true,
+		),
 	);
 
 	$style = '';
@@ -366,13 +391,20 @@ function wplng_option_page_settings_menu( $display_none = false ) {
 			admin_url( 'admin.php' )
 		);
 
-		$class_attr = '';
+		$class_attr_a = '';
 		if ( $_GET['page'] === $value['page'] ) {
-			$class_attr = ' button-primary';
+			$class_attr_a = ' button-primary';
 		}
 
-		$html .= '<li>';
-		$html .= '<a href="' . esc_url( $url ) . '" class="button' . $class_attr . '">';
+		if ( isset( $value['is_beta'] )
+			&& $value['is_beta'] === true
+		) {
+			$html .= '<li class="wplng-beta-hidden" style="display: none;">';
+		} else {
+			$html .= '<li>';
+		}
+
+		$html .= '<a href="' . esc_url( $url ) . '" class="button' . $class_attr_a . '">';
 		$html .= '<span class="dashicons ' . esc_attr( $value['dashicon'] ) . '">';
 		$html .= '</span> ';
 		$html .= esc_html( $value['title'] );
