@@ -459,9 +459,13 @@ function wplng_update_footer( $text ) {
 		$text .= '</a> | ';
 		$text .= '<a href="https://github.com/julien-jacob/wplingua" target="_blank" rel="noopener noreferrer">';
 		$text .= 'GitHub';
-		$text .= '</a> | ';
-		$text .= esc_html__( 'Version', 'wplingua' );
-		$text .= ' ' . esc_html( WPLNG_PLUGIN_VERSION );
+		$text .= '</a> | wpLingua ';
+		$text .= esc_html( WPLNG_PLUGIN_VERSION );
+
+		if ( defined( 'WPLNGPRO_PLUGIN_VERSION' ) ) {
+			$text .= ' | wpLingua PRO ';
+			$text .= esc_html( WPLNGPRO_PLUGIN_VERSION );
+		}
 	}
 
 	return $text;
