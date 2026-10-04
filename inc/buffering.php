@@ -25,7 +25,7 @@ function wplng_redirect_translated_slug() {
 	}
 
 	if ( empty( $_COOKIE['wplingua'] )
-		&& apply_filters( 'wplng_cookie_check', true )
+		&& apply_filters( 'wplng_cookie_check', false )
 	) {
 		wplng_do_not_cache_page();
 	}
