@@ -371,7 +371,6 @@ function wplng_option_page_settings_menu( $display_none = false ) {
 			'page'     => 'wplingua-mail',
 			'title'    => __( 'Emails translation', 'wplingua' ),
 			'dashicon' => 'dashicons-email-alt',
-			'is_beta'  => true,
 		),
 	);
 
