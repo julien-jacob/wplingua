@@ -106,10 +106,23 @@ function wplng_option_page_mail() {
 						</fieldset>
 
 						<div class="wplng-help-box wplng-spacing-bottom" id="wplng-hb-feature-mail">
-							<p><?php esc_html_e( 'Translate emails automatically', 'wplingua' ); ?></p>
+							<p><strong><?php esc_html_e( 'Translate emails automatically', 'wplingua' ); ?></strong></p>
 							<hr>
-							<p><?php esc_html_e( 'You must have installed and activated the wpLingua PRO plugin for emails to be translated.', 'wplingua' ); ?> <a href="https://wplingua.com/download/#pro" target="_blank" rel="noopener noreferrer"><?php esc_html_e( 'wpLingua.com : Download PRO plugin', 'wplingua' ); ?></a></p>
+							<p><?php esc_html_e( 'Emails sent from a translated page are automatically translated into the language of that page before being sent.', 'wplingua' ); ?></p>
+							<p><?php esc_html_e( 'Email translations are generated on the fly and are not stored with your site`\'s translations. To customize or edit the translations used in emails, use the Dictionary Rules feature.', 'wplingua' ); ?></p>
+							<hr>
+							<p><?php esc_html_e( 'This feature requires a STARTER or PREMIUM plan and the wpLingua PRO plugin to be installed and activated.', 'wplingua' ); ?></p>
+
+							<ul>
+								<li><a href="https://wplingua.com/pricing/" target="_blank" rel="noopener noreferrer"><?php esc_html_e( 'wplingua.com : Upgrade your API key', 'wplingua' ); ?></a></li>
+								<li><a href="https://wplingua.com/download/#pro" target="_blank" rel="noopener noreferrer"><?php esc_html_e( 'wpLingua.com : Download PRO plugin', 'wplingua' ); ?></a></li>
+							</ul>
 						</div>
+
+						<hr>
+
+						<p><?php esc_html_e( 'This feature is intended for emails sent to your users, such as registration or order confirmations. It should not be used for emails sent to site administrators or contact form notifications.', 'wplingua' ); ?></p>
+
 					</td>
 				</tr>
 				<tr>
