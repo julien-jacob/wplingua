@@ -862,52 +862,103 @@ function wplng_admin_notice_incompatible_plain_permalink() {
 
 
 /**
- * Display a notice for obtaining the PRO version of the plugin
- * - Only for non free user
- * - Only on wpLingua option's pages
- * - Only if PRO plugin not already activated
+ * Display a notice related to the PRO plan on wpLingua admin pages
+ * - Only for non free users (STARTER or PREMIUM plans)
+ * - Only on wpLingua admin pages
+ * - If the plan has expired: display an error notice inviting to renew it
+ * - Otherwise, if the PRO plugin is not active: display a warning notice
+ *   inviting to download and install it
  *
- * @return void|string Outputs the admin notice if applicable, or returns void if no notice is required.
+ * @return void Outputs the admin notice if applicable, or nothing otherwise.
  */
-function wplng_admin_notice_get_pro_version() {
-
-	if ( is_plugin_active( 'wplingua-pro/wplingua-pro.php' ) ) {
-		return;
-	}
+function wplng_admin_notice_pro() {
 
 	$data = wplng_get_api_data();
 
-	if ( empty( $data['status'] )
-		|| $data['status'] === 'FREE'
+	if ( empty( $data['plan'] )
+		|| $data['plan'] === 'FREE'
 	) {
 		return;
 	}
 
-	$html  = '<div';
-	$html .= ' class="wplng-notice notice notice-warning is-dismissible"';
-	$html .= ' style="text-align: center;"';
-	$html .= '>';
-	$html .= '<p style="font-weight: 600;">';
-	$html .= '<span class="dashicons dashicons-translation"></span> ';
-	$html .= esc_html__( 'wpLingua - Unlock PRO Features', 'wplingua' );
-	$html .= '</p>';
-	$html .= '<hr>';
-	$html .= '<p>';
-	$html .= esc_html__( 'Extend wpLingua with additional features and advanced translation capabilities.', 'wplingua' );
-	$html .= '</p>';
-	$html .= '<p>';
-	$html .= esc_html__( 'Download and install wpLingua PRO to access the features included with your wpLingua plan.', 'wplingua' );
-	$html .= '</p>';
-	$html .= '<br>';
-	$html .= '<a';
-	$html .= ' href="https://wplingua.com/download/#pro"';
-	$html .= ' target="_blank"';
-	$html .= ' rel="noopener noreferrer"';
-	$html .= ' class="button button-primary"';
-	$html .= '>';
-	$html .= esc_html__( 'wpLingua.com : Download PRO plugin', 'wplingua' );
-	$html .= '</a>';
-	$html .= '</div>'; // End .notice
+	$expired = ! empty( $data['expired'] );
 
-	echo $html;
+	if ( wplng_is_wplingua_admin_page() ) {
+
+		if ( $expired === true ) {
+
+			$html  = '<div';
+			$html .= ' class="wplng-notice notice notice-error is-dismissible"';
+			$html .= ' style="text-align: center;"';
+			$html .= '>';
+			$html .= '<p style="font-weight: 600;">';
+			$html .= '<span class="dashicons dashicons-translation"></span> ';
+			$html .= esc_html__( 'wpLingua - Your plan has expired', 'wplingua' );
+			$html .= '</p>';
+			$html .= '<hr>';
+			$html .= '<br>';
+			$html .= '<p>';
+			$html .= sprintf(
+				wp_kses(
+					/* translators: 1: plan name (STARTER or PREMIUM), 2: expiration date */
+					__( 'Your <strong>wpLingua %1$s plan</strong> expired on <strong>%2$s</strong>. Your access to automatic translation services and PRO features has expired.', 'wplingua' ),
+					array( 'strong' => array() )
+				),
+				esc_html( $data['plan'] ),
+				esc_html( ! empty( $data['expiration'] ) ? $data['expiration'] : '' )
+			);
+			$html .= '</p>';
+
+			$html .= '<p>';
+			$html .= esc_html__( 'Keep your website translated as you add new content. Renew your plan to restore automatic translations and all wpLingua PRO features.', 'wplingua' );
+			$html .= '</p>';
+
+			$html .= '<br>';
+			$html .= '<p>';
+			$html .= '<a';
+			$html .= ' href="https://wplingua.com/pricing/#choose-features"';
+			$html .= ' target="_blank"';
+			$html .= ' rel="noopener noreferrer"';
+			$html .= ' class="button button-primary"';
+			$html .= '>';
+			$html .= esc_html__( 'wpLingua.com : Renew your plan', 'wplingua' );
+			$html .= '</a>';
+			$html .= '</p>';
+
+			$html .= '</div>'; // End .notice
+
+			echo $html;
+
+		} elseif ( ! is_plugin_active( 'wplingua-pro/wplingua-pro.php' ) ) {
+
+			$html  = '<div';
+			$html .= ' class="wplng-notice notice notice-warning is-dismissible"';
+			$html .= ' style="text-align: center;"';
+			$html .= '>';
+			$html .= '<p style="font-weight: 600;">';
+			$html .= '<span class="dashicons dashicons-translation"></span> ';
+			$html .= esc_html__( 'wpLingua - Unlock PRO Features', 'wplingua' );
+			$html .= '</p>';
+			$html .= '<hr>';
+			$html .= '<p>';
+			$html .= esc_html__( 'Extend wpLingua with additional features and advanced translation capabilities.', 'wplingua' );
+			$html .= '</p>';
+			$html .= '<p>';
+			$html .= esc_html__( 'Download and install wpLingua PRO to access the features included with your wpLingua plan.', 'wplingua' );
+			$html .= '</p>';
+			$html .= '<br>';
+			$html .= '<a';
+			$html .= ' href="https://wplingua.com/download/#pro"';
+			$html .= ' target="_blank"';
+			$html .= ' rel="noopener noreferrer"';
+			$html .= ' class="button button-primary"';
+			$html .= '>';
+			$html .= esc_html__( 'wpLingua.com : Download PRO plugin', 'wplingua' );
+			$html .= '</a>';
+
+			$html .= '</div>'; // End .notice
+
+			echo $html;
+		}
+	}
 }
