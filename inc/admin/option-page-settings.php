@@ -650,7 +650,7 @@ function wplng_settings_part_api_key() {
 		<a class="button button-primary wplng-icon-button" id="wplng-api-key-hide" href="javascript:void(0);" title="<?php esc_html_e( 'Hide API key', 'wplingua' ); ?>" style="display: none;"><span class="dashicons dashicons-hidden"></span></a>
 	</fieldset>
 
-	<?php if ( ! empty( $data['plan'] ) && is_string($data['plan'])) : ?>
+	<?php if ( ! empty( $data['plan'] ) && is_string( $data['plan'] ) ) : ?>
 		
 		<hr>
 		<div class="wplng-flex-row">
