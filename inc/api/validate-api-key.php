@@ -156,6 +156,20 @@ function wplng_api_call_validate_api_key( $api_key = '' ) {
 			$status = $response['status'];
 		}
 
+		// Sanitize plan
+
+		$plan = 'FREE';
+
+		if ( ! empty( $response['plan'] )
+			&& in_array(
+				$response['plan'],
+				array( 'STARTER', 'PREMIUM', 'VIP STARTER', 'VIP PREMIUM' ),
+				true
+			)
+		) {
+			$plan = $response['plan'];
+		}
+
 		// Make the checked response
 
 		$response_checked = array(
@@ -163,6 +177,7 @@ function wplng_api_call_validate_api_key( $api_key = '' ) {
 			'languages_target'  => $languages_target,
 			'features'          => $features,
 			'status'            => $status,
+			'plan'              => $plan,
 		);
 
 		// Add expiration
@@ -171,6 +186,10 @@ function wplng_api_call_validate_api_key( $api_key = '' ) {
 			&& is_string( $response['expiration'] )
 		) {
 			$response_checked['expiration'] = sanitize_text_field( $response['expiration'] );
+		}
+
+		if ( ! empty( $response['expired'] ) && $response['expired'] === true ) {
+			$response_checked['expired'] = true;
 		}
 	} elseif ( isset( $response['error'] )
 		&& ( true === $response['error'] )
