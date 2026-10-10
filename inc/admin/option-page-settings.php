@@ -433,7 +433,7 @@ function wplng_settings_part_features_api() {
 	<hr>
 	<fieldset>
 		<input type="checkbox" id="wplng_commercial_use" name="wplng_commercial_use" value="1" <?php checked( 1, in_array( 'commercial', $api_features ), true ); ?> disabled="disabled"/>
-		<label for="wplng_commercial_use">PREMIUM - <?php esc_html_e( 'Use wpLingua on commercial website', 'wplingua' ); ?></label> 
+		<label for="wplng_commercial_use">PRO - <?php esc_html_e( 'Use wpLingua on commercial website', 'wplingua' ); ?></label> 
 		<span title="<?php esc_attr_e( 'Click to expand', 'wplingua' ); ?>" wplng-help-box="#wplng-hb-feature-commercial"></span>
 	</fieldset>
 
@@ -449,7 +449,7 @@ function wplng_settings_part_features_api() {
 
 	<fieldset>
 		<input type="checkbox" id="wplng_translate_search" name="wplng_translate_search" value="1" <?php checked( 1, get_option( 'wplng_translate_search' ) && in_array( 'search', $api_features ), true ); ?>  <?php disabled( false, in_array( 'search', $api_features ), true ); ?>/>
-		<label for="wplng_translate_search">PREMIUM - <?php esc_html_e( 'Search from translated languages', 'wplingua' ); ?></label> 
+		<label for="wplng_translate_search">PRO - <?php esc_html_e( 'Search from translated languages', 'wplingua' ); ?></label> 
 		<span title="<?php esc_attr_e( 'Click to expand', 'wplingua' ); ?>" wplng-help-box="#wplng-hb-feature-search"></span>
 	</fieldset>
 
