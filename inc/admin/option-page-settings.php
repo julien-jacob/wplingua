@@ -618,7 +618,7 @@ function wplng_settings_part_api_key() {
 
 	?>
 	<fieldset>
-		<p><label for="wplng_api_key"><strong><?php esc_html_e( 'Website API key: ', 'wplingua' ); ?></strong></label></p>
+		<p><label for="wplng_api_key"><strong><?php esc_html_e( 'wpLingua API key: ', 'wplingua' ); ?></strong></label></p>
 
 		<hr>
 

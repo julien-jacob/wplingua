@@ -891,11 +891,12 @@ function wplng_admin_notice_pro() {
 			$html .= ' class="wplng-notice notice notice-error is-dismissible"';
 			$html .= ' style="text-align: center;"';
 			$html .= '>';
-			$html .= '<p style="font-weight: 600;">';
+			$html .= '<p style="font-weight: 600; margin-bottom: 15px;">';
 			$html .= '<span class="dashicons dashicons-translation"></span> ';
 			$html .= esc_html__( 'wpLingua - Your plan has expired', 'wplingua' );
 			$html .= '</p>';
 			$html .= '<hr>';
+			$html .= '<div style="max-width: 850px; margin: 0 auto;">';
 			$html .= '<br>';
 			$html .= '<p>';
 			$html .= sprintf(
@@ -910,7 +911,10 @@ function wplng_admin_notice_pro() {
 			$html .= '</p>';
 
 			$html .= '<p>';
-			$html .= esc_html__( 'Keep your website translated as you add new content. Renew your plan to restore automatic translations and all wpLingua PRO features.', 'wplingua' );
+			$html .= wp_kses(
+				__( 'Keep your website translated as you add new content. Renew your plan to restore automatic translations and all wpLingua PRO features. To renew your wpLingua plan, all you need is your API key, which is available under <strong>wpLingua ➔ Settings ➔ wpLingua API key</strong>.', 'wplingua' ),
+				array( 'strong' => array() )
+			);
 			$html .= '</p>';
 
 			$html .= '<br>';
@@ -925,6 +929,7 @@ function wplng_admin_notice_pro() {
 			$html .= '</a>';
 			$html .= '</p>';
 
+			$html .= '</div>';
 			$html .= '</div>'; // End .notice
 
 			echo $html;
