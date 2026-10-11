@@ -352,7 +352,12 @@ function wplng_args_update_from_texts( &$args, $texts ) {
 	 * Check if the current page is overloaded
 	 */
 
-	$args['overloaded'] = wplng_get_api_overloaded() && ! empty( $args['count_texts_unknow'] );
+	$api_data = wplng_get_api_data();
+
+	$args['overloaded'] = (
+		wplng_get_api_overloaded()
+		&& ! empty( $args['count_texts_unknow'] )
+	) || ! empty( $api_data['expired'] );
 
 	/**
 	 * Define $max_translations

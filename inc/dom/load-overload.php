@@ -27,17 +27,58 @@ function wplng_dom_load_overload( $dom, $args ) {
 		return $dom;
 	}
 
-	$html = '<div id="wplng-overloaded-container">';
-
-	$html .= '<span class="dashicons dashicons-info-outline"></span> ';
-
-	$html .= '<span id="wplng-overloaded-text-mobile">';
-	$html .= esc_html__( 'Translation API overloaded', 'wplingua' );
-	$html .= '</span>';
-
 	$api_data = wplng_get_api_data();
 
-	if ( empty( $api_data['status'] ) || $api_data['status'] === 'FREE' ) {
+	$html = '<div id="wplng-overloaded-container">';
+
+	// Icon
+	$html .= '<span class="dashicons dashicons-info-outline"></span> ';
+
+	if ( ( $api_data['expired'] === true ) && ! empty( $api_data['plan'] ) && is_string( $api_data['plan'] ) ) {
+
+		/**
+		 * wpLingua plan expired
+		 */
+
+		// Link "Learn more"
+		$html_link = '<a';
+		$html_link .= ' href="' . esc_url( admin_url( 'admin.php?page=wplingua-settings' ) ) . '"';
+		$html_link .= '>';
+		$html_link .= esc_html__( 'Learn more', 'wplingua' );
+		$html_link .= '</a>';
+
+		// Mobile text
+		$html .= '<span id="wplng-overloaded-text-mobile">';
+		$html .= esc_html__( 'wpLingua plan expired.', 'wplingua' );
+		$html .= ' ' . $html_link;
+		$html .= '</span>';
+
+		// Desktop text
+		$html .= '<span id="wplng-overloaded-text-desktop">';
+
+		$html .= sprintf(
+			/* translators: 1: plan name (STARTER or PREMIUM), 2: expiration date */
+			esc_html__( 'Your wpLingua %1$s plan expired on %2$s. Automatic translations are no longer available.', 'wplingua' ),
+			esc_html( $api_data['plan'] ),
+			esc_html( ! empty( $api_data['expiration'] ) ? $api_data['expiration'] : '' )
+		);
+
+		$html .= ' ' . $html_link;
+
+		$html .= '</span>';
+
+	} elseif ( empty( $api_data['status'] ) || $api_data['status'] === 'FREE' ) {
+
+		/**
+		 * API overload message for FREE users
+		 */
+
+		// Mobile text
+		$html .= '<span id="wplng-overloaded-text-mobile">';
+		$html .= esc_html__( 'Translation API overloaded', 'wplingua' );
+		$html .= '</span>';
+
+		// Desktop text
 		$html .= '<span id="wplng-overloaded-text-desktop">';
 		$html .= esc_html__( 'Translation API overloaded. Retry in a few minutes or ', 'wplingua' );
 		$html .= '<a href="https://wplingua.com/pricing/" target="_blank" rel="noopener noreferrer">';
@@ -46,11 +87,23 @@ function wplng_dom_load_overload( $dom, $args ) {
 		$html .= esc_html__( ' to get priority API access.', 'wplingua' );
 		$html .= '</span>';
 	} else {
+
+		/**
+		 * API overload message for PRO users
+		 */
+
+		// Mobile text
+		$html .= '<span id="wplng-overloaded-text-mobile">';
+		$html .= esc_html__( 'Translation API overloaded', 'wplingua' );
+		$html .= '</span>';
+
+		// Desktop text
 		$html .= '<span id="wplng-overloaded-text-desktop">';
 		$html .= esc_html__( 'Translation API overloaded. Please retry in a few minutes.', 'wplingua' );
 		$html .= '</span>';
 	}
 
+	// Close icon / button
 	$html .= '<span';
 	$html .= ' id="wplng-overloaded-close"';
 	$html .= ' class="dashicons dashicons-no-alt"';
