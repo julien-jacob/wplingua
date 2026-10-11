@@ -273,11 +273,11 @@ function wplng_args_update_from_texts( &$args, $texts ) {
 
 	$texts_unknow         = array();
 	$translations_in_page = array();
+	$detection            = wplng_api_feature_is_allow( 'detection' );
 
 	foreach ( $texts as $text ) {
 
-		$is_in     = false;
-		$detection = wplng_api_feature_is_allow( 'detection' );
+		$is_in = false;
 
 		$array_index  = (string) mb_substr( $text, 0, 1 );
 		$array_index .= (string) strlen( $text );
@@ -375,7 +375,7 @@ function wplng_args_update_from_texts( &$args, $texts ) {
 	} elseif ( $args['load'] === 'enabled'
 		&& $args['count_texts_unknow'] > 10
 		&& ! $args['overloaded']
-		&& wplng_api_feature_is_allow( 'detection' )
+		&& $detection
 		&& current_user_can( 'edit_posts' )
 	) {
 
