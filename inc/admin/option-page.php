@@ -896,8 +896,7 @@ function wplng_admin_notice_pro() {
 			$html .= esc_html__( 'wpLingua - Your plan has expired', 'wplingua' );
 			$html .= '</p>';
 			$html .= '<hr>';
-			$html .= '<div style="max-width: 850px; margin: 0 auto;">';
-			$html .= '<br>';
+			$html .= '<div style="max-width: 850px; margin: 15px auto 20px;">';
 			$html .= '<p>';
 			$html .= sprintf(
 				wp_kses(
@@ -917,7 +916,7 @@ function wplng_admin_notice_pro() {
 			);
 			$html .= '</p>';
 
-			$html .= '<br>';
+			$html .= '</div>';
 			$html .= '<p>';
 			$html .= '<a';
 			$html .= ' href="https://wplingua.com/pricing/#choose-features"';
@@ -929,7 +928,6 @@ function wplng_admin_notice_pro() {
 			$html .= '</a>';
 			$html .= '</p>';
 
-			$html .= '</div>';
 			$html .= '</div>'; // End .notice
 
 			echo $html;
@@ -940,18 +938,20 @@ function wplng_admin_notice_pro() {
 			$html .= ' class="wplng-notice notice notice-warning is-dismissible"';
 			$html .= ' style="text-align: center;"';
 			$html .= '>';
-			$html .= '<p style="font-weight: 600;">';
+			$html .= '<p style="font-weight: 600; margin-bottom: 15px;">';
 			$html .= '<span class="dashicons dashicons-translation"></span> ';
 			$html .= esc_html__( 'wpLingua - Unlock PRO Features', 'wplingua' );
 			$html .= '</p>';
 			$html .= '<hr>';
+			$html .= '<div style="margin: 15px 0 20px;">';
 			$html .= '<p>';
 			$html .= esc_html__( 'Extend wpLingua with additional features and advanced translation capabilities.', 'wplingua' );
 			$html .= '</p>';
 			$html .= '<p>';
 			$html .= esc_html__( 'Download and install wpLingua PRO to access the features included with your wpLingua plan.', 'wplingua' );
 			$html .= '</p>';
-			$html .= '<br>';
+			$html .= '</div>';
+			$html .= '<p>';
 			$html .= '<a';
 			$html .= ' href="https://wplingua.com/download/#pro"';
 			$html .= ' target="_blank"';
@@ -960,6 +960,7 @@ function wplng_admin_notice_pro() {
 			$html .= '>';
 			$html .= esc_html__( 'wpLingua.com : Download PRO plugin', 'wplingua' );
 			$html .= '</a>';
+			$html .= '</p>';
 
 			$html .= '</div>'; // End .notice
 
