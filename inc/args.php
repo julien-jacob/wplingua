@@ -285,8 +285,6 @@ function wplng_args_update_from_texts( &$args, $texts ) {
 		if ( ! empty( $translations_all_languages[ $array_index ] ) ) {
 			foreach ( $translations_all_languages[ $array_index ] as $translation ) {
 
-				// $source = $translation['source'];
-
 				if ( $text === $translation['source']
 					&& isset( $translation['translations'][ $args['language_target'] ] )
 					&& is_string( $translation['translations'][ $args['language_target'] ] )
