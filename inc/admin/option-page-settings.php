@@ -433,7 +433,7 @@ function wplng_settings_part_features_api() {
 	<hr>
 	<fieldset>
 		<input type="checkbox" id="wplng_commercial_use" name="wplng_commercial_use" value="1" <?php checked( 1, in_array( 'commercial', $api_features ), true ); ?> disabled="disabled"/>
-		<label for="wplng_commercial_use">PREMIUM - <?php esc_html_e( 'Use wpLingua on commercial website', 'wplingua' ); ?></label> 
+		<label for="wplng_commercial_use">PRO - <?php esc_html_e( 'Use wpLingua on commercial website', 'wplingua' ); ?></label> 
 		<span title="<?php esc_attr_e( 'Click to expand', 'wplingua' ); ?>" wplng-help-box="#wplng-hb-feature-commercial"></span>
 	</fieldset>
 
@@ -449,7 +449,7 @@ function wplng_settings_part_features_api() {
 
 	<fieldset>
 		<input type="checkbox" id="wplng_translate_search" name="wplng_translate_search" value="1" <?php checked( 1, get_option( 'wplng_translate_search' ) && in_array( 'search', $api_features ), true ); ?>  <?php disabled( false, in_array( 'search', $api_features ), true ); ?>/>
-		<label for="wplng_translate_search">PREMIUM - <?php esc_html_e( 'Search from translated languages', 'wplingua' ); ?></label> 
+		<label for="wplng_translate_search">PRO - <?php esc_html_e( 'Search from translated languages', 'wplingua' ); ?></label> 
 		<span title="<?php esc_attr_e( 'Click to expand', 'wplingua' ); ?>" wplng-help-box="#wplng-hb-feature-search"></span>
 	</fieldset>
 
@@ -618,7 +618,7 @@ function wplng_settings_part_api_key() {
 
 	?>
 	<fieldset>
-		<p><label for="wplng_api_key"><strong><?php esc_html_e( 'Website API key: ', 'wplingua' ); ?></strong></label></p>
+		<p><label for="wplng_api_key"><strong><?php esc_html_e( 'wpLingua API key: ', 'wplingua' ); ?></strong></label></p>
 
 		<hr>
 
@@ -650,22 +650,26 @@ function wplng_settings_part_api_key() {
 		<a class="button button-primary wplng-icon-button" id="wplng-api-key-hide" href="javascript:void(0);" title="<?php esc_html_e( 'Hide API key', 'wplingua' ); ?>" style="display: none;"><span class="dashicons dashicons-hidden"></span></a>
 	</fieldset>
 
-	<?php if ( ! empty( $data['status'] ) ) : ?>
+	<?php if ( ! empty( $data['plan'] ) && is_string( $data['plan'] ) ) : ?>
 		
 		<hr>
 		<div class="wplng-flex-row">
 
 			<div class="wplng-flex-item">
-				<p><?php esc_html_e( 'API key status: ', 'wplingua' ); ?></p>
+				<p><?php esc_html_e( 'wpLingua plan: ', 'wplingua' ); ?></p>
 			</div>
 
 			<div class="wplng-flex-item">
-				<?php if ( 'FREE' === $data['status'] ) : ?>
+				<?php if ( $data['plan'] === 'FREE' ) : ?>
 					<p style="text-align: right;"><span class="dashicons dashicons-saved"></span> FREE</p>
-				<?php elseif ( 'PREMIUM' === $data['status'] ) : ?>
+				<?php elseif ( $data['plan'] === 'STARTER' ) : ?>
+					<p style="text-align: right;"><span class="dashicons dashicons-superhero-alt"></span> STARTER</p>
+				<?php elseif ( $data['plan'] === 'PREMIUM' ) : ?>
 					<p style="text-align: right;"><span class="dashicons dashicons-superhero-alt"></span> PREMIUM</p>
-				<?php elseif ( 'VIP' === $data['status'] ) : ?>
-					<p style="text-align: right;"><span class="dashicons dashicons-star-empty"></span> VIP</p>
+				<?php elseif ( $data['plan'] === 'VIP STARTER' ) : ?>
+					<p style="text-align: right;"><span class="dashicons dashicons-star-empty"></span> VIP STARTER</p>
+				<?php elseif ( $data['plan'] === 'VIP PREMIUM' ) : ?>
+					<p style="text-align: right;"><span class="dashicons dashicons-star-empty"></span> VIP PREMIUM</p>
 				<?php endif; ?>
 			</div>
 
@@ -679,7 +683,7 @@ function wplng_settings_part_api_key() {
 		<div class="wplng-flex-row">
 
 			<div class="wplng-flex-item">
-				<p><?php esc_html_e( 'Premium expiration: ', 'wplingua' ); ?></p>
+				<p><?php esc_html_e( 'Expiration: ', 'wplingua' ); ?></p>
 			</div>
 
 			<div class="wplng-flex-item">

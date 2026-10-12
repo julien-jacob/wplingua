@@ -4,7 +4,7 @@ Donate link: https://wplingua.com/
 Tags: ai translation, automatic translation, translate, translation, SEO
 Requires at least: 6.0
 Tested up to: 7.1
-Stable tag: 2.16.8
+Stable tag: 3.0.0
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -197,6 +197,14 @@ Your server’s database holds all the translations locally.
 
 == Changelog ==
 
+= 3.0.0 =
+
+* New settings page for automatic email translation
+* Do not translate URLs of WP JSON heartbeat requests
+* Disable the cookie check by default for better compatibility (Complianz, iubenda)
+* Minor design improvements
+* Clear and optimize some code
+
 = 2.16.8 =
 
 * Improved plugin compatibility:
@@ -254,14 +262,6 @@ Your server’s database holds all the translations locally.
 * Do not translate cron
 * Set "Tested up to" to 7.1
 * Add rel="noopener noreferrer" for all external links
-
-= 2.15.1 =
-
-* Dynamic management of the current URL anchor in language switchers
-* Improved UI/UX
- * Dictionary
- * Links & Media
- * Some border-radius elements
 
 
 All changelogs and previous versions of the wpLingua plugin are available on the releases page of the project's GitHub repo: [https://github.com/julien-jacob/wplingua/releases](https://github.com/julien-jacob/wplingua/releases).

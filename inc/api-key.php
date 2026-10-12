@@ -191,6 +191,22 @@ function wplng_get_api_data( $try_update_from_api = false ) {
 		}
 
 		/**
+		 * Sanitize plan
+		 */
+
+		$plan = 'FREE';
+
+		if ( ! empty( $data['plan'] )
+			&& in_array(
+				$data['plan'],
+				array( 'STARTER', 'PREMIUM', 'VIP STARTER', 'VIP PREMIUM' ),
+				true
+			)
+		) {
+			$plan = $data['plan'];
+		}
+
+		/**
 		 * Make the checked response
 		 */
 
@@ -199,6 +215,7 @@ function wplng_get_api_data( $try_update_from_api = false ) {
 			'languages_target'  => $languages_target,
 			'features'          => $features,
 			'status'            => $status,
+			'plan'              => $plan,
 			'time'              => $data['time'],
 		);
 
@@ -212,6 +229,12 @@ function wplng_get_api_data( $try_update_from_api = false ) {
 			$data_checked['expiration'] = sanitize_text_field(
 				$data['expiration']
 			);
+		}
+
+		if ( ! empty( $data['expired'] )
+			&& $data['expired'] === true
+		) {
+			$data_checked['expired'] = true;
 		}
 	}
 

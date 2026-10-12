@@ -303,6 +303,10 @@ function wplng_url_is_translatable_no_filter( $url ) {
 		|| wplng_str_contains( $url, '&feed=' )
 		|| wplng_str_contains( $url, '&embed=' )
 		|| wplng_str_contains( $url, 'builder=true&builder_id=' ) // Fusion builder
+		|| (
+			wplng_str_contains( $url, '/wp-json/' )
+			&& wplng_str_contains( $url, 'heartbeat' )
+		)
 	) {
 		return false;
 	}

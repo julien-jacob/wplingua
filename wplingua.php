@@ -7,7 +7,7 @@
  * Author URI: https://wplingua.com/
  * Text Domain: wplingua
  * Domain Path: /languages/
- * Version: 2.16.8
+ * Version: 3.0.0
  * Requires PHP: 7.4
  * License: GPL v2 or later
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -24,7 +24,7 @@ if ( ! defined( 'WPINC' ) ) {
 define( 'WPLNG_API_URL', 'https://api.wplingua.com' );
 define( 'WPLNG_API_VERSION', '3.0' );
 define( 'WPLNG_API_SSLVERIFY', true );
-define( 'WPLNG_PLUGIN_VERSION', '2.16.8' );
+define( 'WPLNG_PLUGIN_VERSION', '3.0.0' );
 define( 'WPLNG_PLUGIN_FILE', plugin_basename( __FILE__ ) );
 define( 'WPLNG_PLUGIN_DIR', __DIR__ );
 define( 'WPLNG_CACHE_DIR', WP_CONTENT_DIR . '/wplingua-cache' );
@@ -39,6 +39,7 @@ defined( 'WPLNG_DEBUG_JSON' ) || define( 'WPLNG_DEBUG_JSON', false );
 defined( 'WPLNG_DEBUG_AJAX' ) || define( 'WPLNG_DEBUG_AJAX', false );
 defined( 'WPLNG_DEBUG_REST' ) || define( 'WPLNG_DEBUG_REST', false );
 defined( 'WPLNG_DEBUG_BEAT' ) || define( 'WPLNG_DEBUG_BEAT', false );
+defined( 'WPLNG_DEBUG_MAIL' ) || define( 'WPLNG_DEBUG_MAIL', false );
 defined( 'WPLNG_DEBUG_XML' ) || define( 'WPLNG_DEBUG_XML', false );
 
 
@@ -196,6 +197,7 @@ function wplng_start() {
 		add_action( 'admin_enqueue_scripts', 'wplng_option_page_exclusions_assets' );
 		add_action( 'admin_enqueue_scripts', 'wplng_option_page_dictionary_assets' );
 		add_action( 'admin_enqueue_scripts', 'wplng_option_page_link_media_assets' );
+		add_action( 'admin_enqueue_scripts', 'wplng_option_page_mail_assets' );
 
 		// Update flags URL
 		add_action( 'update_option_wplng_flags_style', 'wplng_options_switcher_update_flags_style', 10, 2 );
@@ -211,8 +213,8 @@ function wplng_start() {
 		add_filter( 'page_row_actions', 'wplng_row_edit_translation_link', 10, 2 );
 		add_filter( 'post_row_actions', 'wplng_row_edit_translation_link', 10, 2 );
 
-		// Notice for obtaining the PRO version
-		// add_action( 'admin_notices', 'wplng_admin_notice_get_pro_version', 1 );
+		// Notice for PRO users
+		add_action( 'admin_notices', 'wplng_admin_notice_pro', 1 );
 
 		/**
 		 * wplng_translation : CPT, taxo, meta

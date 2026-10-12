@@ -355,6 +355,50 @@ function wplng_option_page_dictionary_assets( $hook ) {
 
 
 /**
+ * Register wpLingua assets for option page : Mail translation
+ *
+ * @param string $hook
+ * @return void
+ */
+function wplng_option_page_mail_assets( $hook ) {
+	
+	if ( ! is_admin()
+		|| $hook !== 'wplingua_page_wplingua-mail'
+	) {
+		return;
+	}
+
+	/**
+	 * Enqueue jQuery
+	 */
+
+	wp_enqueue_script( 'jquery' );
+
+	/**
+	 * Enqueue wpLingua JS scripts
+	 */
+
+	wp_enqueue_script(
+		'wplingua-option',
+		plugins_url() . '/wplingua/assets/js/admin/option-page.js',
+		array( 'jquery' ),
+		WPLNG_PLUGIN_VERSION
+	);
+
+	/**
+	 * Enqueue wpLingua CSS styles
+	 */
+
+	wp_enqueue_style(
+		'wplingua-option-mail',
+		plugins_url() . '/wplingua/assets/css/admin/option-page-mail.css',
+		array(),
+		WPLNG_PLUGIN_VERSION
+	);
+}
+
+
+/**
  * Register wpLingua assets on translations edit pages
  *
  * @return void

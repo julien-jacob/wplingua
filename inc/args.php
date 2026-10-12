@@ -203,6 +203,18 @@ function wplng_args_setup( &$args ) {
 		$args_clear['texts_unknow'] = $args['texts_unknow'];
 	}
 
+	/**
+	 * Ckeck "save_translations"
+	 */
+
+	$args_clear['save_translations'] = true;
+
+	if ( isset( $args['save_translations'] )
+		&& is_bool( $args['save_translations'] )
+	) {
+		$args_clear['save_translations'] = $args['save_translations'];
+	}
+
 	$args = $args_clear;
 }
 
@@ -261,19 +273,17 @@ function wplng_args_update_from_texts( &$args, $texts ) {
 
 	$texts_unknow         = array();
 	$translations_in_page = array();
+	$detection            = wplng_api_feature_is_allow( 'detection' );
 
 	foreach ( $texts as $text ) {
 
-		$is_in     = false;
-		$detection = wplng_api_feature_is_allow( 'detection' );
+		$is_in = false;
 
 		$array_index  = (string) mb_substr( $text, 0, 1 );
 		$array_index .= (string) strlen( $text );
 
 		if ( ! empty( $translations_all_languages[ $array_index ] ) ) {
 			foreach ( $translations_all_languages[ $array_index ] as $translation ) {
-
-				// $source = $translation['source'];
 
 				if ( $text === $translation['source']
 					&& isset( $translation['translations'][ $args['language_target'] ] )
@@ -342,7 +352,12 @@ function wplng_args_update_from_texts( &$args, $texts ) {
 	 * Check if the current page is overloaded
 	 */
 
-	$args['overloaded'] = wplng_get_api_overloaded() && ! empty( $args['count_texts_unknow'] );
+	$api_data = wplng_get_api_data();
+
+	$args['overloaded'] = (
+		wplng_get_api_overloaded()
+		&& ! empty( $args['count_texts_unknow'] )
+	) || ! empty( $api_data['expired'] );
 
 	/**
 	 * Define $max_translations
@@ -363,7 +378,7 @@ function wplng_args_update_from_texts( &$args, $texts ) {
 	} elseif ( $args['load'] === 'enabled'
 		&& $args['count_texts_unknow'] > 10
 		&& ! $args['overloaded']
-		&& wplng_api_feature_is_allow( 'detection' )
+		&& $detection
 		&& current_user_can( 'edit_posts' )
 	) {
 
@@ -413,10 +428,12 @@ function wplng_args_update_from_texts( &$args, $texts ) {
 		}
 	}
 
-	$translations_new = wplng_save_translations(
-		$translations_new,
-		$args['language_target']
-	);
+	if ( $args['save_translations'] === true ) {
+		$translations_new = wplng_save_translations(
+			$translations_new,
+			$args['language_target']
+		);
+	}
 
 	/**
 	 * Merge know and new translations
