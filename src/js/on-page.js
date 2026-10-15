@@ -53,6 +53,8 @@
                         "Content-Type": "application/x-www-form-urlencoded"
                     },
                     body: new URLSearchParams({ action: "wplng_ajax_heartbeat" })
+                }).catch(() => {
+                    // Ignore network errors (offline, suspended tab, etc.)
                 });
             }, i * 1000 * 60 * 11);
         }
