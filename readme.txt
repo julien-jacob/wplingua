@@ -4,7 +4,7 @@ Donate link: https://wplingua.com/
 Tags: ai translation, automatic translation, translate, translation, SEO
 Requires at least: 6.0
 Tested up to: 7.1
-Stable tag: 3.0.0
+Stable tag: 3.0.1
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -197,6 +197,10 @@ Your server’s database holds all the translations locally.
 
 == Changelog ==
 
+= 3.0.1 =
+
+* Fix uncaught "Failed to fetch" / "Load failed" JavaScript errors caused by the front-end heartbeat requests (notably on Safari/iOS)
+
 = 3.0.0 =
 
 * New settings page for automatic email translation
@@ -256,12 +260,6 @@ Your server’s database holds all the translations locally.
  * Consolidated wpLingua settings under a single Settings menu entry.
  * Added navigation between the different settings pages.
 * Optimize clearing cache system on plugin update
-
-= 2.15.2 =
-* Fix WooCommerce automatic cart redirect
-* Do not translate cron
-* Set "Tested up to" to 7.1
-* Add rel="noopener noreferrer" for all external links
 
 
 All changelogs and previous versions of the wpLingua plugin are available on the releases page of the project's GitHub repo: [https://github.com/julien-jacob/wplingua/releases](https://github.com/julien-jacob/wplingua/releases).
