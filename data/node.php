@@ -90,6 +90,10 @@ function wplng_data_excluded_selector_default() {
 
 		// Plugin: top-10
 		'.tptn_counter',
+
+		// Plugin: royal-elementor-addons
+		'.wpr-comment-author',
+		'.wpr-comment-content',
 	);
 }
 
