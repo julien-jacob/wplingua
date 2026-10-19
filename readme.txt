@@ -4,7 +4,7 @@ Donate link: https://wplingua.com/
 Tags: ai translation, automatic translation, translate, translation, SEO
 Requires at least: 6.0
 Tested up to: 7.1
-Stable tag: 3.0.1
+Stable tag: 3.1.0
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -197,6 +197,15 @@ Your server’s database holds all the translations locally.
 
 == Changelog ==
 
+= 3.1.0 =
+
+* Better theme compatibility:
+ * Divi
+ * Movedo
+* Better plugin compatibility:
+ * royal-elementor-addons
+* Fix corrupted translations saving/regeneration
+
 = 3.0.1 =
 
 * Fix uncaught "Failed to fetch" / "Load failed" JavaScript errors caused by the front-end heartbeat requests (notably on Safari/iOS)
@@ -252,14 +261,6 @@ Your server’s database holds all the translations locally.
 = 2.16.1 =
 
 * Fix the triple border on the visual translation editor with WP 7.1
-
-= 2.16.0 = 
-
-* New option pages management for settings
- * Redesigned the settings navigation in the WordPress admin.
- * Consolidated wpLingua settings under a single Settings menu entry.
- * Added navigation between the different settings pages.
-* Optimize clearing cache system on plugin update
 
 
 All changelogs and previous versions of the wpLingua plugin are available on the releases page of the project's GitHub repo: [https://github.com/julien-jacob/wplingua/releases](https://github.com/julien-jacob/wplingua/releases).

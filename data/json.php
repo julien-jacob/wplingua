@@ -101,6 +101,26 @@ function wplng_data_json_rules_exclusion() {
 		);
 	};
 
+	// ------------------------------------------------------------------------
+	// Theme: Divi
+	// ------------------------------------------------------------------------
+
+	$logical_rules[] = function ( $element, $parents ) {
+		return (
+			isset( $parents[0] )
+			&& isset( $parents[1] )
+			&& isset( $parents[2] )
+			&& $parents[0] === 'diviElementMultiViewData'
+			&& is_int( $parents[1] )
+			&& $parents[2] === 'moduleName'
+		);
+	};
+
+	// ------------------------------------------------------------------------
+	// End of the exclusion rules declaration.
+	// Apply the filter and return the exclusion rules.
+	// ------------------------------------------------------------------------
+
 	$wplng_data_json_rules_exclusion = apply_filters(
 		'wplng_json_rules_exclusion',
 		$logical_rules
