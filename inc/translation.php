@@ -482,24 +482,19 @@ function wplng_update_translation( $post, $language_id, $translation ) {
 		? wplng_get_language_website_id()
 		: $meta['wplng_translation_original_language_id'][0];
 
-	// If translation found is not valid
-	if ( empty( $translation_meta )
-		|| $website_language !== $original_language_id_meta
-	) {
-
-		/**
-		 * $original_language_id_meta must be the same as in option page
-		 */
-
-		$meta_return = update_post_meta(
+	/**
+	 * $original_language_id_meta must be the same as in option page
+	 */
+	if ( $website_language !== $original_language_id_meta ) {
+		update_post_meta(
 			$post->ID,
 			'wplng_translation_original_language_id',
 			$website_language
 		);
+	}
 
-		if ( false === $meta_return ) {
-			return false;
-		}
+	// If translation found is not valid
+	if ( empty( $translation_meta ) ) {
 
 		/**
 		 * Make $translation_meta
@@ -522,6 +517,7 @@ function wplng_update_translation( $post, $language_id, $translation ) {
 				);
 			}
 		}
+
 	} else { // Translation is valid
 
 		// Set or update new translation
