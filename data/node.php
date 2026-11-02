@@ -95,6 +95,9 @@ function wplng_data_excluded_selector_default() {
 		'.wpr-comment-author',
 		'.wpr-comment-content',
 
+		// Plugin : wordfence
+		'#wfi18njs-js-extra',
+
 		// Theme: movedo
 		'grve-comment-text',
 		'grve-author',
