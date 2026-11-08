@@ -27,7 +27,7 @@ function wplng_parse_html( $html ) {
 
 	$node_text_excluded = wplng_data_excluded_node_text();
 
-	foreach ( $dom->find( 'text' ) as $element ) {
+	foreach ( $dom->find( 'raw_text_node' ) as $element ) {
 
 		if ( in_array( $element->parent->tag, $node_text_excluded ) ) {
 			continue;
