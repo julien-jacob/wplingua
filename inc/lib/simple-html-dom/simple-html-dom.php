@@ -67,7 +67,7 @@ if ( ! defined( 'WPINC' ) ) {
  *
  * "wplng_" prefix was appended to all functions and class
  *
- * MAX_FILE_SIZE has been modified from value defined in /wplingua/wplingua.php
+ * WPLNG_MAX_FILE_SIZE has been modified from value defined in /wplingua/wplingua.php
  *
  * Replace 'trptext' by 'raw_text_node"
  */
