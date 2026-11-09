@@ -30,7 +30,7 @@ function wplng_dom_load_progress( $dom, $args ) {
 	$edit_link_excluded = wplng_data_excluded_editor_link();
 	$node_text_excluded = wplng_data_excluded_node_text();
 
-	foreach ( $dom->find( 'body text' ) as $element ) {
+	foreach ( $dom->find( 'body raw_text_node' ) as $element ) {
 
 		if ( in_array( $element->parent->tag, $edit_link_excluded )
 			|| in_array( $element->parent->tag, $node_text_excluded )
