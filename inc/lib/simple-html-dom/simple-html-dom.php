@@ -7,10 +7,15 @@ if ( ! defined( 'WPINC' ) ) {
 
 
 /**
- * Lib modified for wpLingua
+ * Lib based on Simple HTML DOM
+ * Updated by wpLingua and TranslatePress
  */
 
 /**
+ * ----------------------------------------------------------------------------
+ * Original lib - Simple HTML DOM
+ * ----------------------------------------------------------------------------
+ *
  * Website: http://sourceforge.net/projects/simplehtmldom/
  * Additional projects: http://sourceforge.net/projects/debugobject/
  * Acknowledge: Jose Solorzano (https://sourceforge.net/projects/php-html/)
@@ -30,6 +35,41 @@ if ( ! defined( 'WPINC' ) ) {
  *   Antcs
  *
  * Version Rev. 1.9.1 (291)
+ *
+ * ----------------------------------------------------------------------------
+ * TranslatePress modifications
+ * ----------------------------------------------------------------------------
+ *
+ * Plugin version: 3.3.9
+ *
+ * In class wplng_simple_html_dom_node, property $tag has been renamed from 'text' to 'trptext'.
+ * Also, all other 3 occurrences of 'text' where changed to 'trptext'.
+ * (Reason for this change: tag <text> exists in HTML docs so we need a different reserved tag.)
+ *
+ * In function makeup() the default $quote was changed from '' to double quotes, ' " ', because it was causing a JS security issue when onclick()
+ * function was used as translation for a link where title was set without double quotes.
+ *
+ * In function load(), added edge case where it considered this group of symbols <!---> as an opening comment but not a closed one.
+ * Browsers seem to be forgiving about this. For more details: issue #85zrvd20k
+ *
+ * $token_attr was changed from ' >' to " \t\n\r\f>" so unquoted attribute values are terminated by any ASCII whitespace
+ * (per the HTML5 / Infra spec), not just U+0020 SPACE. Without this, markup like Elementor's atomic form widget — which
+ * uses tab-indented, newline-separated unquoted attributes — gets merged into one corrupted attribute when
+ * re-serialized for secondary languages. Issue #CU-869de6159.
+ *
+ * ----------------------------------------------------------------------------
+ * wpLingua modifications
+ * ----------------------------------------------------------------------------
+ *
+ * Add check to abort if file is called directly
+ *
+ * "WPLNG_" prefix was appended to all the define constants.
+ *
+ * "wplng_" prefix was appended to all functions and class
+ *
+ * WPLNG_MAX_FILE_SIZE has been modified from value defined in /wplingua/wplingua.php
+ *
+ * Replace 'trptext' by 'raw_text_node"
  */
 
 define( 'WPLNG_HDOM_TYPE_ELEMENT', 1 );
@@ -56,32 +96,25 @@ defined( 'WPLNG_DEFAULT_SPAN_TEXT' ) || define( 'WPLNG_DEFAULT_SPAN_TEXT', ' ' )
 defined( 'WPLNG_MAX_FILE_SIZE' ) || define( 'WPLNG_MAX_FILE_SIZE', 600000 );
 define( 'WPLNG_HDOM_SMARTY_AS_TEXT', 1 );
 
-function wplng_sdh_file_get_html(
-	$url,
-	$use_include_path = false,
-	$context = null,
-	$offset = 0,
-	$maxLen = -1,
-	$lowercase = true,
-	$forceTagsClosed = true,
-	$target_charset = WPLNG_DEFAULT_TARGET_CHARSET,
-	$stripRN = false,
-	$defaultBRText = WPLNG_DEFAULT_BR_TEXT,
-	$defaultSpanText = WPLNG_DEFAULT_SPAN_TEXT ) {
-
-		// Updated by wpLingua
-		return false;
-}
+/*
+ * TranslatePress modifications
+ *
+ * -- Removed function file_get_html -- see https://simplehtmldom.sourceforge.io/docs/1.9/api/file_get_html/
+ * It internally uses file_get_contents and got flagged during a WordPress plugin scan with: Avoiding the use of certain PHP functions on remote files.
+ *
+ * Issue CU-869dmp6aw.
+ */
 
 function wplng_sdh_str_get_html(
 	$str,
 	$lowercase = true,
 	$forceTagsClosed = true,
 	$target_charset = WPLNG_DEFAULT_TARGET_CHARSET,
-	$stripRN = false,
+	$stripRN = true,
 	$defaultBRText = WPLNG_DEFAULT_BR_TEXT,
-	$defaultSpanText = WPLNG_DEFAULT_SPAN_TEXT ) {
-	$dom = new wplng_sdh_simple_html_dom(
+	$defaultSpanText = WPLNG_DEFAULT_SPAN_TEXT
+) {
+	$dom = new wplng_simple_html_dom(
 		null,
 		$lowercase,
 		$forceTagsClosed,
@@ -99,14 +132,15 @@ function wplng_sdh_str_get_html(
 	return $dom->load( $str, $lowercase, $stripRN );
 }
 
-function wplng_sdh_dump_html_tree( $node, $show_attr = true, $deep = 0 ) {
-	return $node->dump( $node );
-}
+/**
+ * wpLingua modifications
+ * Remove function dump_html_tree()
+ */
 
-class wplng_sdh_simple_html_dom_node {
+class wplng_simple_html_dom_node {
 
 	public $nodetype  = WPLNG_HDOM_TYPE_TEXT;
-	public $tag       = 'text';
+	public $tag       = 'raw_text_node';
 	public $attr      = array();
 	public $children  = array();
 	public $nodes     = array();
@@ -136,29 +170,26 @@ class wplng_sdh_simple_html_dom_node {
 	}
 
 	function dump( $show_attr = true, $depth = 0 ) {
-
-		$string = str_repeat( "\t", $depth ) . $this->tag;
+		echo str_repeat("\t", $depth) . $this->tag; //phpcs:ignore
 
 		if ( $show_attr && count( $this->attr ) > 0 ) {
-			$string .= '(';
+			echo '(';
 			foreach ( $this->attr as $k => $v ) {
-				$string .= "[$k]=>\"$v\", ";
+				echo "[$k]=>\"$v\", "; //phpcs:ignore
 			}
-			$string .= ')';
+			echo ')';
 		}
 
-		$string .= "\n";
+		echo "\n";
 
 		if ( $this->nodes ) {
 			foreach ( $this->nodes as $node ) {
-				$string .= $node->dump( $show_attr, $depth + 1 );
+				$node->dump( $show_attr, $depth + 1 );
 			}
 		}
-
-		return $string;
 	}
 
-	function dump_node() {
+	function dump_node( $echo = true ) {
 		$string = $this->tag;
 
 		if ( count( $this->attr ) > 0 ) {
@@ -189,7 +220,7 @@ class wplng_sdh_simple_html_dom_node {
 			$string .= " text: ({$this->text})";
 		}
 
-		$string .= ' WPLNG_HDOM_INNER_INFO: ';
+		$string .= ' HDOM_INNER_INFO: ';
 
 		if ( isset( $node->_[ WPLNG_HDOM_INFO_INNER ] ) ) {
 			$string .= "'" . $node->_[ WPLNG_HDOM_INFO_INNER ] . "'";
@@ -202,7 +233,12 @@ class wplng_sdh_simple_html_dom_node {
 		$string .= ' tag_start: ' . $this->tag_start;
 		$string .= "\n";
 
-		return $string;
+		if ( $echo ) {
+			echo $string; //phpcs:ignore
+			return;
+		} else {
+			return $string;
+		}
 	}
 
 	function parent( $parent = null ) {
@@ -326,7 +362,7 @@ class wplng_sdh_simple_html_dom_node {
 		if ( is_object( $debug_object ) ) {
 			$text = '';
 
-			if ( $this->tag === 'text' ) {
+			if ( $this->tag === 'raw_text_node' ) {
 				if ( ! empty( $this->text ) ) {
 					$text = ' with text: ' . $this->text;
 				}
@@ -447,7 +483,7 @@ class wplng_sdh_simple_html_dom_node {
 
 			$ret .= $this->_[ WPLNG_HDOM_INFO_SPACE ][ $i ][0];
 
-			//no value attr: nowrap, checked selected...
+			// no value attr: nowrap, checked selected...
 			if ( $val === true ) {
 				$ret .= $key;
 			} else {
@@ -458,8 +494,15 @@ class wplng_sdh_simple_html_dom_node {
 					case WPLNG_HDOM_QUOTE_SINGLE:
 						$quote = '\'';
 						break;
-					default:
-						$quote = '';
+					/*
+					 * TranslatePress modifications
+					 * We changed the default $quote from '' to ' " ' to avoid JS security issue. There is a filter applied on this global, $WPLNG_HDOM_QUOTE_DEFAULT,
+					 * so it can be changed in case there is a problem for some clients.
+					*/
+					default: {
+						global $WPLNG_HDOM_QUOTE_DEFAULT;
+						$quote = $WPLNG_HDOM_QUOTE_DEFAULT ?? '"';
+					}
 				}
 
 				$ret .= $key
@@ -501,7 +544,7 @@ class wplng_sdh_simple_html_dom_node {
 
 				foreach ( $head as $k => $v ) {
 					$n = ( $k === -1 ) ? $this->dom->root : $this->dom->nodes[ $k ];
-					//PaperG - Pass this optional parameter on to the seek function.
+					// PaperG - Pass this optional parameter on to the seek function.
 					$n->seek( $selectors[ $c ][ $l ], $ret, $cmd, $lowercase );
 				}
 
@@ -583,8 +626,8 @@ class wplng_sdh_simple_html_dom_node {
 				$pass = false;
 			}
 
-			// Handle 'text' selector
-			if ( $pass && $tag === 'text' && $node->tag === 'text' ) {
+			// Handle 'raw_text_node' selector
+			if ( $pass && $tag === 'raw_text_node' && $node->tag === 'raw_text_node' ) {
 				$ret[ array_search( $node, $this->dom->nodes, true ) ] = 1;
 				unset( $node );
 				continue;
@@ -893,7 +936,8 @@ class wplng_sdh_simple_html_dom_node {
 			if ( $m[3] !== '' ) {
 				$m[3] = explode( '.', $m[3] ); }
 
-			/* Extract attributes (pattern based on the pattern above!)
+			/*
+			Extract attributes (pattern based on the pattern above!)
 
 			 * [0] - full match
 			 * [1] - attribute name
@@ -1006,7 +1050,7 @@ class wplng_sdh_simple_html_dom_node {
 			case 'plaintext':
 				return true;
 		}
-		//no value attr: nowrap, checked selected...
+		// no value attr: nowrap, checked selected...
 		return ( array_key_exists( $name, $this->attr ) ) ? true : isset( $this->attr[ $name ] );
 	}
 
@@ -1079,18 +1123,18 @@ class wplng_sdh_simple_html_dom_node {
 					$bits = 6; } elseif ( $c >= 248 ) {
 						$bits = 5; } elseif ( $c >= 240 ) {
 						$bits = 4; } elseif ( $c >= 224 ) {
-							$bits = 3; } elseif ( $c >= 192 ) {
-							$bits = 2; } else {
-								return false; }
-							if ( ( $i + $bits ) > $len ) {
-								return false; }
-							while ( $bits > 1 ) {
-								$i++;
-								$b = ord( $str[ $i ] );
-								if ( $b < 128 || $b > 191 ) {
-									return false; }
-								$bits--;
-							}
+									$bits = 3; } elseif ( $c >= 192 ) {
+									$bits = 2; } else {
+										return false; }
+									if ( ( $i + $bits ) > $len ) {
+										return false; }
+									while ( $bits > 1 ) {
+										++$i;
+										$b = ord( $str[ $i ] );
+										if ( $b < 128 || $b > 191 ) {
+											return false; }
+										--$bits;
+									}
 			}
 		}
 		return true;
@@ -1182,10 +1226,9 @@ class wplng_sdh_simple_html_dom_node {
 	function save( $filepath = '' ) {
 		$ret = $this->outertext();
 
-		// Commented by wpLingua
-		// if ( $filepath !== '' ) {
-		// 	file_put_contents( $filepath, $ret, LOCK_EX );
-		// }
+		if ( $filepath !== '' ) {
+			file_put_contents( $filepath, $ret, LOCK_EX );
+		}
 
 		return $ret;
 	}
@@ -1207,10 +1250,8 @@ class wplng_sdh_simple_html_dom_node {
 					$this->class = $c;
 				}
 			}
-		} else {
-			if ( is_object( $debug_object ) ) {
+		} elseif ( is_object( $debug_object ) ) {
 				$debug_object->debug_log( 2, 'Invalid type: ', gettype( $class ) );
-			}
 		}
 	}
 
@@ -1219,10 +1260,8 @@ class wplng_sdh_simple_html_dom_node {
 			if ( isset( $this->class ) ) {
 				return in_array( $class, explode( ' ', $this->class ), true );
 			}
-		} else {
-			if ( is_object( $debug_object ) ) {
+		} elseif ( is_object( $debug_object ) ) {
 				$debug_object->debug_log( 2, 'Invalid type: ', gettype( $class ) );
-			}
 		}
 
 		return false;
@@ -1360,10 +1399,9 @@ class wplng_sdh_simple_html_dom_node {
 		$node->parent( $this );
 		return $node;
 	}
-
 }
 
-class wplng_sdh_simple_html_dom {
+class wplng_simple_html_dom {
 
 	public $root      = null;
 	public $nodes     = array();
@@ -1378,11 +1416,34 @@ class wplng_sdh_simple_html_dom {
 
 	protected $cursor;
 	protected $parent;
-	protected $noise       = array();
+	protected $noise = array();
+	/*
+	 * TranslatePress security modification (CU-869ektm82)
+	 * Per-parse random salt embedded in every noise placeholder key. The parser
+	 * temporarily swaps the contents of <script>/<style>/<code>/comments/etc. for
+	 * placeholder keys while parsing, then restores them. Historically those keys
+	 * were fully predictable ("___noise___ NNNN"), so attacker-authored text (e.g.
+	 * a forged "___noise___ NNNN" inside a comment's title attribute) could
+	 * impersonate a real placeholder and have unrelated element content restored
+	 * INTO an attribute value, breaking out of the quotes (stored XSS). Binding the
+	 * key to a secret, per-parse salt makes the placeholder unforgeable. The salt is
+	 * regenerated on every parse in prepare() and never appears in output.
+	 */
+	protected $noise_salt  = '';
 	protected $token_blank = " \t\r\n";
 	protected $token_equal = ' =/>';
 	protected $token_slash = " />\r\n\t";
-	protected $token_attr  = ' >';
+	/*
+	 * TranslatePress modifications
+	 * Added \t, \n, \r, \f to the unquoted-attribute-value terminator set so it
+	 * matches the HTML5 spec's "ASCII whitespace" (Infra: U+0009 TAB, U+000A LF,
+	 * U+000C FF, U+000D CR, U+0020 SPACE). Upstream value was ' >', which only
+	 * terminated unquoted values at literal space or '>'. That caused tab- or
+	 * newline-separated unquoted attributes (e.g. Elementor's atomic form
+	 * widget) to be merged into one corrupted attribute when re-serialized for
+	 * secondary languages. Issue #CU-869de6159.
+	 */
+	protected $token_attr = " \t\n\r\f>";
 
 	public $_charset        = '';
 	public $_target_charset = '';
@@ -1471,10 +1532,11 @@ class wplng_sdh_simple_html_dom {
 		$lowercase = true,
 		$forceTagsClosed = true,
 		$target_charset = WPLNG_DEFAULT_TARGET_CHARSET,
-		$stripRN = false,
+		$stripRN = true,
 		$defaultBRText = WPLNG_DEFAULT_BR_TEXT,
 		$defaultSpanText = WPLNG_DEFAULT_SPAN_TEXT,
-		$options = 0 ) {
+		$options = 0
+	) {
 		if ( $str ) {
 			if ( preg_match( '/^http:\/\//i', $str ) || is_file( $str ) ) {
 				$this->load_file( $str );
@@ -1505,10 +1567,11 @@ class wplng_sdh_simple_html_dom {
 	function load(
 		$str,
 		$lowercase = true,
-		$stripRN = false,
+		$stripRN = true,
 		$defaultBRText = WPLNG_DEFAULT_BR_TEXT,
 		$defaultSpanText = WPLNG_DEFAULT_SPAN_TEXT,
-		$options = 0 ) {
+		$options = 0
+	) {
 		global $debug_object;
 
 		// prepare
@@ -1528,6 +1591,15 @@ class wplng_sdh_simple_html_dom {
 			// set the length of content since we have changed it.
 			$this->size = strlen( $this->doc );
 		}
+
+		/*
+		 * TranslatePress modifications
+		 * Added edge case where it considered this group of symbols <!---> as an opening comment but not a closed one.
+		 * Browsers seem to be forgiving about this. For more details: issue #85zrvd20k
+		 */
+		$this->doc = str_replace( '<!--->', '<!---->', $this->doc );
+		// set the length of content since we have changed it.
+		$this->size = strlen( $this->doc );
 
 		// strip out cdata
 		$this->remove_noise( "'<!\[CDATA\[(.*?)\]\]>'is", true );
@@ -1575,10 +1647,8 @@ class wplng_sdh_simple_html_dom {
 
 	function save( $filepath = '' ) {
 		$ret = $this->root->innertext();
-		// Commented by wpLingua
-		// if ( $filepath !== '' ) {
-		//  file_put_contents( $filepath, $ret, LOCK_EX );
-		// }
+		if ( $filepath !== '' ) {
+			file_put_contents( $filepath, $ret, LOCK_EX ); }
 		return $ret;
 	}
 
@@ -1619,13 +1689,15 @@ class wplng_sdh_simple_html_dom {
 	}
 
 	function dump( $show_attr = true ) {
-		return $this->root->dump( $show_attr );
+		$this->root->dump( $show_attr );
 	}
 
 	protected function prepare(
-		$str, $lowercase = true,
+		$str,
+		$lowercase = true,
 		$defaultBRText = WPLNG_DEFAULT_BR_TEXT,
-		$defaultSpanText = WPLNG_DEFAULT_SPAN_TEXT ) {
+		$defaultSpanText = WPLNG_DEFAULT_SPAN_TEXT
+	) {
 		$this->clear();
 
 		$this->doc                              = trim( $str );
@@ -1634,11 +1706,12 @@ class wplng_sdh_simple_html_dom {
 		$this->pos                              = 0;
 		$this->cursor                           = 1;
 		$this->noise                            = array();
+		$this->noise_salt                       = $this->generate_noise_salt(); // TranslatePress security modification (CU-869ektm82)
 		$this->nodes                            = array();
 		$this->lowercase                        = $lowercase;
 		$this->default_br_text                  = $defaultBRText;
 		$this->default_span_text                = $defaultSpanText;
-		$this->root                             = new wplng_sdh_simple_html_dom_node( $this );
+		$this->root                             = new wplng_simple_html_dom_node( $this );
 		$this->root->tag                        = 'root';
 		$this->root->_[ WPLNG_HDOM_INFO_BEGIN ] = -1;
 		$this->root->nodetype                   = WPLNG_HDOM_TYPE_ROOT;
@@ -1660,7 +1733,7 @@ class wplng_sdh_simple_html_dom {
 			}
 
 			// Add a text node for text between tags
-			$node = new wplng_sdh_simple_html_dom_node( $this );
+			$node = new wplng_simple_html_dom_node( $this );
 			++$this->cursor;
 			$node->_[ WPLNG_HDOM_INFO_TEXT ] = $s;
 			$this->link_nodes( $node, false );
@@ -1908,7 +1981,7 @@ class wplng_sdh_simple_html_dom {
 		}
 
 		// start tag
-		$node                             = new wplng_sdh_simple_html_dom_node( $this );
+		$node                             = new wplng_simple_html_dom_node( $this );
 		$node->_[ WPLNG_HDOM_INFO_BEGIN ] = $this->cursor;
 		++$this->cursor;
 		$tag             = $this->copy_until( $this->token_slash ); // Get tag name
@@ -2007,7 +2080,7 @@ class wplng_sdh_simple_html_dom {
 				$node->nodetype                  = WPLNG_HDOM_TYPE_TEXT;
 				$node->_[ WPLNG_HDOM_INFO_END ]  = 0;
 				$node->_[ WPLNG_HDOM_INFO_TEXT ] = '<' . $tag . $space[0] . $name;
-				$node->tag                       = 'text';
+				$node->tag                       = 'raw_text_node';
 				$this->link_nodes( $node, false );
 				return true;
 			}
@@ -2016,7 +2089,7 @@ class wplng_sdh_simple_html_dom {
 			// Attributes cannot start after opening tag
 			if ( $this->doc[ $this->pos - 1 ] == '<' ) {
 				$node->nodetype                  = WPLNG_HDOM_TYPE_TEXT;
-				$node->tag                       = 'text';
+				$node->tag                       = 'raw_text_node';
 				$node->attr                      = array();
 				$node->_[ WPLNG_HDOM_INFO_END ]  = 0;
 				$node->_[ WPLNG_HDOM_INFO_TEXT ] = substr(
@@ -2043,7 +2116,7 @@ class wplng_sdh_simple_html_dom {
 					$this->char = ( ++$this->pos < $this->size ) ? $this->doc[ $this->pos ] : null; // next
 					$this->parse_attr( $node, $name, $space ); // get attribute value
 				} else {
-					//no value attr: nowrap, checked selected...
+					// no value attr: nowrap, checked selected...
 					$node->_[ WPLNG_HDOM_INFO_QUOTE ][] = WPLNG_HDOM_QUOTE_NO;
 					$node->attr[ $name ]                = true;
 					if ( $this->char != '>' ) {
@@ -2142,7 +2215,7 @@ class wplng_sdh_simple_html_dom {
 	}
 
 	protected function as_text_node( $tag ) {
-		$node = new wplng_sdh_simple_html_dom_node( $this );
+		$node = new wplng_simple_html_dom_node( $this );
 		++$this->cursor;
 		$node->_[ WPLNG_HDOM_INFO_TEXT ] = '</' . $tag . '>';
 		$this->link_nodes( $node, false );
@@ -2206,7 +2279,9 @@ class wplng_sdh_simple_html_dom {
 		);
 
 		for ( $i = $count - 1; $i > -1; --$i ) {
-			$key = '___noise___' . sprintf( '% 5d', count( $this->noise ) + 1000 );
+			// TranslatePress security modification (CU-869ektm82): embed the secret
+			// per-parse salt so the placeholder key cannot be forged from user input.
+			$key = '___noise___' . $this->noise_salt . sprintf( '% 5d', count( $this->noise ) + 1000 );
 
 			if ( is_object( $debug_object ) ) {
 				$debug_object->debug_log( 2, 'key is: ' . $key );
@@ -2225,25 +2300,44 @@ class wplng_sdh_simple_html_dom {
 		}
 	}
 
+	/*
+	 * TranslatePress security modification (CU-869ektm82)
+	 * Returns the cryptographically-strong, per-parse salt woven into every noise
+	 * placeholder key. Fails closed if a secure random source is unavailable.
+	 */
+	protected function generate_noise_salt() {
+		return bin2hex( random_bytes( 16 ) ); // 32 hex chars / 128 bits
+	}
+
 	function restore_noise( $text ) {
 		global $debug_object;
 		if ( is_object( $debug_object ) ) {
 			$debug_object->debug_log_entry( 1 ); }
 
-		while ( ( $pos = strpos( $text, '___noise___' ) ) !== false ) {
-			// Sometimes there is a broken piece of markup, and we don't GET the
-			// pos+11 etc... token which indicates a problem outside of us...
+		/*
+		 * TranslatePress security modification (CU-869ektm82)
+		 * Match the FULL salted marker ("___noise___" + secret salt) instead of the
+		 * bare, guessable "___noise___" token. Because the salt is random per-parse
+		 * and never exposed, attacker-authored text cannot forge a placeholder, so
+		 * unrelated element content can no longer be restored into an attribute
+		 * value (the stored-XSS vector). A bare "___noise___" appearing in real
+		 * content is now left untouched.
+		 *
+		 * This also removes the historical infinite-loop DoS: the old "undefined
+		 * key" fallback re-emitted a "___noise___" token that strpos() found again
+		 * on the next iteration, looping forever (an unauthenticated visitor could
+		 * trigger it with a forged key). Unknown/truncated markers are now dropped
+		 * and skipped. A hard iteration cap guarantees termination regardless.
+		 */
+		$marker     = '___noise___' . $this->noise_salt;
+		$marker_len = strlen( $marker );
+		$offset     = 0;
+		$guard      = 1000000; // absolute safety cap against pathological input
 
-			// todo: "___noise___1000" (or any number with four or more digits)
-			// in the DOM causes an infinite loop which could be utilized by
-			// malicious software
-			if ( strlen( $text ) > $pos + 15 ) {
-				$key = '___noise___'
-				. $text[ $pos + 11 ]
-				. $text[ $pos + 12 ]
-				. $text[ $pos + 13 ]
-				. $text[ $pos + 14 ]
-				. $text[ $pos + 15 ];
+		while ( $guard-- > 0 && ( $pos = strpos( $text, $marker, $offset ) ) !== false ) {
+			// The numeric part is a fixed 5-character field (see sprintf('% 5d')).
+			if ( strlen( $text ) >= $pos + $marker_len + 5 ) {
+				$key = $marker . substr( $text, $pos + $marker_len, 5 );
 
 				if ( is_object( $debug_object ) ) {
 					$debug_object->debug_log( 2, 'located key of: ' . $key );
@@ -2252,21 +2346,22 @@ class wplng_sdh_simple_html_dom {
 				if ( isset( $this->noise[ $key ] ) ) {
 					$text = substr( $text, 0, $pos )
 					. $this->noise[ $key ]
-					. substr( $text, $pos + 16 );
+					. substr( $text, $pos + $marker_len + 5 );
 				} else {
-					// do this to prevent an infinite loop.
+					// Unknown key: drop the placeholder. Do NOT re-emit a
+					// "___noise___" token here or the scan would find it again.
 					$text = substr( $text, 0, $pos )
-					. 'UNDEFINED NOISE FOR KEY: '
-					. $key
-					. substr( $text, $pos + 16 );
+					. substr( $text, $pos + $marker_len + 5 );
 				}
 			} else {
-				// There is no valid key being given back to us... We must get
-				// rid of the ___noise___ or we will have a problem.
+				// Truncated marker at the tail of the string: drop it and stop.
 				$text = substr( $text, 0, $pos )
-				. 'NO NUMERIC NOISE KEY'
-				. substr( $text, $pos + 11 );
+				. substr( $text, $pos + $marker_len );
 			}
+
+			// Continue scanning from the same position so nested placeholders in
+			// restored content are still resolved; the guard prevents any loop.
+			$offset = $pos;
 		}
 		return $text;
 	}
@@ -2315,11 +2410,11 @@ class wplng_sdh_simple_html_dom {
 	}
 
 	function createElement( $name, $value = null ) {
-		return @wplng_sdh_str_get_html( "<$name>$value</$name>" )->firstChild();
+		return @wplng_str_get_html( "<$name>$value</$name>" )->firstChild();
 	}
 
 	function createTextNode( $value ) {
-		return @end( wplng_sdh_str_get_html( $value )->nodes );
+		return @end( wplng_str_get_html( $value )->nodes );
 	}
 
 	function getElementById( $id ) {

@@ -23,12 +23,12 @@ function wplng_dom_translate_nodes_texts( $dom, $args ) {
 		return $dom;
 	}
 
-	$selector = 'text';
+	$selector = 'raw_text_node';
 
 	if ( $args['mode'] === 'editor'
 		|| $args['mode'] === 'list'
 	) {
-		$selector = 'head text';
+		$selector = 'head raw_text_node';
 	}
 
 	$node_text_excluded = wplng_data_excluded_node_text();

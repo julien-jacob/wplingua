@@ -84,7 +84,7 @@ require_once WPLNG_PLUGIN_DIR . '/inc/dom/translate-node-texts.php';
 require_once WPLNG_PLUGIN_DIR . '/inc/dom/translate-script.php';
 
 // Require files in /inc/lib/ folder
-require_once WPLNG_PLUGIN_DIR . '/inc/lib/simple-html-dom.php';
+require_once WPLNG_PLUGIN_DIR . '/inc/lib/simple-html-dom/simple-html-dom.php';
 
 // Require files in /inc/parser/ folder
 require_once WPLNG_PLUGIN_DIR . '/inc/parser/html.php';
