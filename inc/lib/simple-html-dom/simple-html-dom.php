@@ -499,8 +499,9 @@ class wplng_simple_html_dom_node {
 					 * We changed the default $quote from '' to ' " ' to avoid JS security issue. There is a filter applied on this global, $WPLNG_HDOM_QUOTE_DEFAULT,
 					 * so it can be changed in case there is a problem for some clients.
 					*/
-					default: { global $WPLNG_HDOM_QUOTE_DEFAULT;
-						$quote = $WPLNG_HDOM_QUOTE_DEFAULT;
+					default: {
+						global $WPLNG_HDOM_QUOTE_DEFAULT;
+						$quote = $WPLNG_HDOM_QUOTE_DEFAULT ?? '"';
 					}
 				}
 
@@ -2302,27 +2303,10 @@ class wplng_simple_html_dom {
 	/*
 	 * TranslatePress security modification (CU-869ektm82)
 	 * Returns the cryptographically-strong, per-parse salt woven into every noise
-	 * placeholder key. Falls back gracefully if random_bytes() is unavailable.
+	 * placeholder key. Fails closed if a secure random source is unavailable.
 	 */
 	protected function generate_noise_salt() {
-		if ( function_exists( 'random_bytes' ) ) {
-			try {
-				return bin2hex( random_bytes( 8 ) ); // 16 hex chars
-			} catch ( \Exception $e ) {
-				// fall through to the fallbacks below
-			} catch ( \Error $e ) {
-				// fall through to the fallbacks below
-			}
-		}
-
-		if ( function_exists( 'wp_generate_password' ) ) {
-			$salt = preg_replace( '/[^a-zA-Z0-9]/', '', wp_generate_password( 24, false ) );
-			if ( strlen( $salt ) >= 16 ) {
-				return substr( $salt, 0, 16 );
-			}
-		}
-
-		return substr( md5( uniqid( (string) mt_rand(), true ) ), 0, 16 );
+		return bin2hex( random_bytes( 16 ) ); // 32 hex chars / 128 bits
 	}
 
 	function restore_noise( $text ) {
