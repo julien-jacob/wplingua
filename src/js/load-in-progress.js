@@ -117,6 +117,7 @@ jQuery(document).ready(function ($) {
                 action: 'wplng_load_in_progress',
                 wplng_language: language,
                 wplng_texts: texts,
+                wplng_discovery_url: wplngLoadInProgressData.urlDiscovery,
                 wplng_nonce: wplngLoadInProgressData.nonce,
             },
             success: function (response) {

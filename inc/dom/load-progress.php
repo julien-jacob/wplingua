@@ -243,11 +243,12 @@ function wplng_dom_load_progress( $dom, $args ) {
 	 */
 
 	$load_in_progress_data_js = array(
-		'urlAjax'   => esc_url_raw( admin_url( 'admin-ajax.php' ) ),
-		'urlReload' => $url_reload_for_js,
-		'language'  => esc_attr( $args['language_target'] ),
-		'chunks'    => $texts_unknow_by_chunk,
-		'nonce'     => wp_create_nonce( 'wplng_load_in_progress' ),
+		'urlAjax'      => esc_url_raw( admin_url( 'admin-ajax.php' ) ),
+		'urlReload'    => $url_reload_for_js,
+		'urlDiscovery' => esc_url_raw( $args['url_current'] ),
+		'language'     => esc_attr( $args['language_target'] ),
+		'chunks'       => $texts_unknow_by_chunk,
+		'nonce'        => wp_create_nonce( 'wplng_load_in_progress' ),
 	);
 
 	$html .= '<script id="wplingua-js-load-in-progress-data">';
@@ -351,6 +352,44 @@ function wplng_ajax_load_in_progress() {
 	}
 
 	$language_target = sanitize_text_field( wp_unslash( $_POST['wplng_language'] ) );
+
+	/**
+	 * Validate the page URL sent by the browser. The progressive loader runs
+	 * through admin-ajax.php, so the request URI itself is not the discovery page.
+	 */
+	$discovery_candidates = array();
+	if ( ! empty( $_POST['wplng_discovery_url'] ) && is_string( $_POST['wplng_discovery_url'] ) ) {
+		$discovery_candidates[] = wp_unslash( $_POST['wplng_discovery_url'] );
+	}
+	if ( ! empty( $_SERVER['HTTP_REFERER'] ) && is_string( $_SERVER['HTTP_REFERER'] ) ) {
+		$discovery_candidates[] = wp_unslash( $_SERVER['HTTP_REFERER'] );
+	}
+
+	foreach ( $discovery_candidates as $discovery_candidate ) {
+		$discovery_candidate = esc_url_raw( $discovery_candidate );
+		$discovery_parts     = wp_parse_url( $discovery_candidate );
+		$home_parts          = wp_parse_url( home_url() );
+
+		if ( is_array( $discovery_parts ) && is_array( $home_parts ) ) {
+			$valid_host   = empty( $discovery_parts['host'] )
+				|| ( isset( $home_parts['host'] ) && strtolower( $discovery_parts['host'] ) === strtolower( $home_parts['host'] ) );
+			$valid_scheme = empty( $discovery_parts['scheme'] )
+				|| in_array( strtolower( $discovery_parts['scheme'] ), array( 'http', 'https' ), true );
+
+			if ( $valid_host && $valid_scheme && empty( $discovery_parts['user'] ) && empty( $discovery_parts['pass'] ) ) {
+				$discovery_path = isset( $discovery_parts['path'] ) ? $discovery_parts['path'] : '/';
+				$discovery_path = wplng_normalize_request_path( $discovery_path );
+				if ( isset( $discovery_parts['query'] ) && '' !== $discovery_parts['query'] ) {
+					$discovery_path .= '?' . $discovery_parts['query'];
+				}
+
+				// URL helpers use this request path to determine the original page.
+				global $wplng_request_uri;
+				$wplng_request_uri = $discovery_path;
+				break;
+			}
+		}
+	}
 
 	// Check if is a valid language ID
 

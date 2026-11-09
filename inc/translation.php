@@ -517,7 +517,6 @@ function wplng_update_translation( $post, $language_id, $translation ) {
 				);
 			}
 		}
-
 	} else { // Translation is valid
 
 		// Set or update new translation
@@ -651,6 +650,7 @@ function wplng_save_translation( $target_language_id, $original, $translation, $
 			$target_language_id,
 			$translation
 		);
+
 	}
 
 	if ( $clear_cache ) {
