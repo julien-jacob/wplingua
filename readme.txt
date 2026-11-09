@@ -4,7 +4,7 @@ Donate link: https://wplingua.com/
 Tags: ai translation, automatic translation, translate, translation, SEO
 Requires at least: 6.0
 Tested up to: 7.1
-Stable tag: 3.1.1
+Stable tag: 3.2.0
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -197,9 +197,18 @@ Your server’s database holds all the translations locally.
 
 == Changelog ==
 
+= 3.2.0 =
+
+* Better plugin compatibility: Elementor Atomic design
+* Review the HTML DOM Parser library:
+ * Improved security to prevent malicious comments from injecting scripts into translated pages.
+ * Fixed an issue that could cause pages to stop processing when they contain certain text.
+ * Improved handling of HTML attributes and comments, reducing the risk of broken page layouts.
+ * Updated the parser to work reliably with wpLingua and avoid conflicts with other plugins.
+
 = 3.1.1 =
 
-* Better plugin compatibility : wordfence
+* Better plugin compatibility: wordfence
 
 = 3.1.0 =
 
@@ -257,10 +266,6 @@ Your server’s database holds all the translations locally.
 
 * Smoother load in progress mode
 * Some code review
-
-= 2.16.2 =
-
-* Fix wpLingua sitemap design (BETA feature)
 
 
 All changelogs and previous versions of the wpLingua plugin are available on the releases page of the project's GitHub repo: [https://github.com/julien-jacob/wplingua/releases](https://github.com/julien-jacob/wplingua/releases).
