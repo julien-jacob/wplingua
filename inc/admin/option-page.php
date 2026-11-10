@@ -381,6 +381,9 @@ function wplng_option_page_settings_menu( $display_none = false ) {
 
 	$html  = '<div class="wplng-option-page-menu"' . $style . '>';
 	$html .= '<ul>';
+	$current_page = isset( $_GET['page'] ) && is_string( $_GET['page'] )
+		? sanitize_key( wp_unslash( $_GET['page'] ) )
+		: '';
 
 	foreach ( $data as $value ) {
 
@@ -391,7 +394,7 @@ function wplng_option_page_settings_menu( $display_none = false ) {
 		);
 
 		$class_attr_a = '';
-		if ( $_GET['page'] === $value['page'] ) {
+		if ( $current_page === $value['page'] ) {
 			$class_attr_a = ' button-primary';
 		}
 
