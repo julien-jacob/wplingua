@@ -90,19 +90,7 @@ function wplng_is_wplingua_admin_page() {
 	 * Check if is a wpLingua option page
 	 */
 
-	// TODO : Check if use wplng_is_wplingua_settings_page()
-
-	if ( 'admin.php' === $pagenow
-		&& isset( $_GET['page'] )
-		&& (
-			$_GET['page'] === 'wplingua-settings'
-			|| $_GET['page'] === 'wplingua-switcher'
-			|| $_GET['page'] === 'wplingua-dictionary'
-			|| $_GET['page'] === 'wplingua-exclusions'
-			|| $_GET['page'] === 'wplingua-link-media'
-			|| $_GET['page'] === 'wplingua-mail'
-		)
-	) {
+	if ( 'admin.php' === $pagenow && wplng_is_wplingua_settings_page() ) {
 		return true;
 	}
 
@@ -381,6 +369,7 @@ function wplng_option_page_settings_menu( $display_none = false ) {
 
 	$html  = '<div class="wplng-option-page-menu"' . $style . '>';
 	$html .= '<ul>';
+
 	$current_page = isset( $_GET['page'] ) && is_string( $_GET['page'] )
 		? sanitize_key( wp_unslash( $_GET['page'] ) )
 		: '';
