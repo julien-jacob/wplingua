@@ -95,15 +95,28 @@ function wplng_str_is_url( $str ) {
 	return $is_url;
 }
 
-
 /**
- * Return true is $str is a translatable text
- * Return false if $str is a number, mail address, symbol, ...
+ * Check whether a text is translatable and allow filters to override the result.
  *
- * @param string $text
- * @return bool
+ * @param string $text The text to check.
+ * @return bool Whether the text is translatable.
  */
 function wplng_text_is_translatable( $text ) {
+	return apply_filters(
+		'wplng_text_is_translatable',
+		wplng_text_is_translatable_no_filter( $text ),
+		$text
+	);
+}
+
+
+/**
+ * Check whether a text is translatable without applying the filter.
+ *
+ * @param string $text The text to check.
+ * @return bool Whether the text is translatable.
+ */
+function wplng_text_is_translatable_no_filter( $text ) {
 
 	if ( ! is_string( $text ) ) {
 		return false;
