@@ -7,7 +7,7 @@
  * Author URI: https://wplingua.com/
  * Text Domain: wplingua
  * Domain Path: /languages/
- * Version: 3.2.0
+ * Version: 3.2.1
  * Requires PHP: 7.4
  * License: GPL v2 or later
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -24,14 +24,14 @@ if ( ! defined( 'WPINC' ) ) {
 define( 'WPLNG_API_URL', 'https://api.wplingua.com' );
 define( 'WPLNG_API_VERSION', '3.0' );
 define( 'WPLNG_API_SSLVERIFY', true );
-define( 'WPLNG_PLUGIN_VERSION', '3.2.0' );
+define( 'WPLNG_PLUGIN_VERSION', '3.2.1' );
 define( 'WPLNG_PLUGIN_FILE', plugin_basename( __FILE__ ) );
 define( 'WPLNG_PLUGIN_DIR', __DIR__ );
 define( 'WPLNG_CACHE_DIR', WP_CONTENT_DIR . '/wplingua-cache' );
 define( 'WPLNG_PHP_MIN_VERSION', '7.4' );
 define( 'WPLNG_MAX_TRANSLATIONS_STR', 220 );
 define( 'WPLNG_MAX_TRANSLATIONS_CHAR', 4200 );
-define( 'WPLNG_MAX_FILE_SIZE', 5000000 );
+define( 'WPLNG_MAX_FILE_SIZE', 100000000 );
 
 
 // Define debug constants

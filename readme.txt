@@ -4,7 +4,7 @@ Donate link: https://wplingua.com/
 Tags: ai translation, automatic translation, translate, translation, SEO
 Requires at least: 6.0
 Tested up to: 7.1
-Stable tag: 3.2.0
+Stable tag: 3.2.1
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -197,6 +197,12 @@ Your server’s database holds all the translations locally.
 
 == Changelog ==
 
+= 3.2.1 =
+
+* Increase the maximum HTML document size from 5,000,000 to 100,000,000 characters.
+* Fix incorrect discovery URLs in “Load in progress” mode.
+* Improve the settings layout by adjusting margins.
+
 = 3.2.0 =
 
 * Better plugin compatibility: Elementor Atomic design
@@ -227,7 +233,7 @@ Your server’s database holds all the translations locally.
 
 * New settings page for automatic email translation
 * Do not translate URLs of WP JSON heartbeat requests
-* Disable the cookie check by default for better compatibility (Complianz, iubenda)
+* isable the cookie check by default for better compatibility (Complianz, iubenda)
 * Minor design improvements
 * Clear and optimize some code
 
@@ -261,11 +267,6 @@ Your server’s database holds all the translations locally.
 * Added a warning about potential email filtering by some hosting providers
 * Added an option to request a new API key using a different email address if the email is not received
 * Improved link visibility by underlining certain links for better UX
-
-= 2.16.3 =
-
-* Smoother load in progress mode
-* Some code review
 
 
 All changelogs and previous versions of the wpLingua plugin are available on the releases page of the project's GitHub repo: [https://github.com/julien-jacob/wplingua/releases](https://github.com/julien-jacob/wplingua/releases).
