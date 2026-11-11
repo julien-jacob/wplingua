@@ -677,22 +677,34 @@ function wplng_settings_part_api_key() {
 
 	<?php endif; ?>
 
-	<?php if ( ! empty( $data['expiration'] ) ) : ?>
-
-		<hr>
-		<div class="wplng-flex-row">
-
-			<div class="wplng-flex-item">
-				<p><?php esc_html_e( 'Expiration: ', 'wplingua' ); ?></p>
-			</div>
-
-			<div class="wplng-flex-item">
-				<p style="text-align: right;"><?php echo esc_html( $data['expiration'] ); ?></p>
-			</div>
-
-		</div>
-		
-	<?php endif; ?>
-
 	<?php
+	if ( ! empty( $data['expiration'] ) ) {
+
+		$expiration = DateTime::createFromFormat( '!d/m/Y', $data['expiration'] );
+
+		if ( $expiration !== false ) {
+
+			$expiration_style = 'text-align: right;';
+			$today            = new DateTime( 'today' );
+
+			if ( $expiration < $today ) {
+				$expiration_style .= ' color: #cc1818;';
+			} elseif ( $expiration < ( clone $today )->modify( '+28 days' ) ) {
+				$expiration_style .= ' color: #cf9c35;';
+			}
+
+			echo '<hr>';
+			echo '<div class="wplng-flex-row">';
+			echo '<div class="wplng-flex-item">';
+			echo '<p>' . esc_html__( 'Expiration: ', 'wplingua' ) . '</p>';
+			echo '</div>'; // End .wplng-flex-item
+			echo '<div class="wplng-flex-item">';
+			echo '<p style="' . esc_attr( $expiration_style ) . '">';
+			echo esc_html( $data['expiration'] );
+
+			echo '</p>';
+			echo '</div>'; // End .wplng-flex-item
+			echo '</div>'; // End .wplng-flex-row
+		}
+	}
 }
