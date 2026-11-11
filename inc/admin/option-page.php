@@ -44,7 +44,7 @@ function wplng_register_settings() {
 	// Option page : Links & Medias
 	register_setting( 'wplng_link_media', 'wplng_link_media_entries' );
 
-	// Option page : Links & Medias
+	// Option page : Mail
 	register_setting( 'wplng_mail', 'wplng_mail_enable' );
 	register_setting( 'wplng_mail', 'wplng_mail_exclude_address' );
 	register_setting( 'wplng_mail', 'wplng_mail_exclude_url' );
