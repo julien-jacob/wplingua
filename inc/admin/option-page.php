@@ -152,6 +152,21 @@ function wplng_create_menu_register() {
  */
 function wplng_create_menu() {
 
+	$data      = wplng_get_api_data();
+	$main_icon = 'dashicons-translation';
+
+	if ( ! empty( $data['plan'] )
+		&& $data['plan'] !== 'FREE'
+	) {
+		$expired = ! empty( $data['expired'] );
+
+		if ( $expired === true ) {
+			$main_icon = 'dashicons-warning';
+		} elseif ( ! is_plugin_active( 'wplingua-pro/wplingua-pro.php' ) ) {
+			$main_icon = 'dashicons-info-outline';
+		}
+	}
+
 	/*
 	 * Main wpLingua menu
 	 */
@@ -161,7 +176,7 @@ function wplng_create_menu() {
 		'edit_posts',
 		'wplingua-settings',
 		'',
-		'dashicons-translation',
+		$main_icon,
 		31
 	);
 
@@ -294,15 +309,17 @@ function wplng_option_page_submenu_file( $submenu_file ) {
 
 
 /**
+ * Color menu icons in some cases.
+ *
  * Hide the option pages from the wpLingua submenu.
  *
  * The pages themselves remain registered in WordPress.
  * Therefore, they are still accessible directly by URL
  * and remain correctly associated with the wpLingua menu.
  */
-function wplng_option_page_hide_submenu() {
+function wplng_option_page_inline_style() {
 
-	$css  = '<style>';
+	$css  = '<style id="wplng-option-page-inline-style">';
 	$css .= '#adminmenu .wp-submenu a[href*="page=wplingua-switcher"], ';
 	$css .= '#adminmenu .wp-submenu a[href*="page=wplingua-exclusions"], ';
 	$css .= '#adminmenu .wp-submenu a[href*="page=wplingua-dictionary"], ';
@@ -310,11 +327,16 @@ function wplng_option_page_hide_submenu() {
 	$css .= '#adminmenu .wp-submenu a[href*="page=wplingua-mail"] {';
 	$css .= 'display: none;';
 	$css .= '}';
+	$css .= '#toplevel_page_wplingua-settings .dashicons-warning::before {';
+	$css .= 'color: #cc1818 !important;';
+	$css .= '}';
+	$css .= '#toplevel_page_wplingua-settings .dashicons-info-outline::before {';
+	$css .= 'color: #f0b849 !important;';
+	$css .= '}';
 	$css .= '</style>';
 
 	echo $css;
 }
-
 
 
 /**
