@@ -4,7 +4,7 @@ Donate link: https://wplingua.com/
 Tags: ai translation, automatic translation, translate, translation, SEO
 Requires at least: 6.0
 Tested up to: 7.1
-Stable tag: 3.2.1
+Stable tag: 3.3.0
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -197,6 +197,16 @@ Your server’s database holds all the translations locally.
 
 == Changelog ==
 
+= 3.3.0 =
+
+* New filter added:
+ * wplng_text_is_translatable
+ * wplng_heartbeat_delete_translation
+ * wplng_heartbeat_delete_slug
+* Refactorisation of the heartbeat system
+* Refactorisation current page detection in settings menu
+* Some revew design in admin
+
 = 3.2.1 =
 
 * Increase the maximum HTML document size from 5,000,000 to 100,000,000 characters.
@@ -260,13 +270,6 @@ Your server’s database holds all the translations locally.
 = 2.16.5 =
 
 * Update plugin translations for all supported languages
-
-= 2.16.4 =
-
-* Added guidance on using a reliable email address to receive the API key
-* Added a warning about potential email filtering by some hosting providers
-* Added an option to request a new API key using a different email address if the email is not received
-* Improved link visibility by underlining certain links for better UX
 
 
 All changelogs and previous versions of the wpLingua plugin are available on the releases page of the project's GitHub repo: [https://github.com/julien-jacob/wplingua/releases](https://github.com/julien-jacob/wplingua/releases).
