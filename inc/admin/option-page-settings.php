@@ -696,12 +696,13 @@ function wplng_settings_part_api_key() {
 			echo '<hr>';
 			echo '<div class="wplng-flex-row">';
 			echo '<div class="wplng-flex-item">';
-			echo '<p>' . esc_html__( 'Expiration: ', 'wplingua' ) . '</p>';
+			echo '<p>';
+			echo esc_html__( 'Expiration: ', 'wplingua' );
+			echo '</p>';
 			echo '</div>'; // End .wplng-flex-item
 			echo '<div class="wplng-flex-item">';
 			echo '<p style="' . esc_attr( $expiration_style ) . '">';
 			echo esc_html( $data['expiration'] );
-
 			echo '</p>';
 			echo '</div>'; // End .wplng-flex-item
 			echo '</div>'; // End .wplng-flex-row
