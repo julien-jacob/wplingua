@@ -89,6 +89,10 @@ function wplng_do_not_cache_page() {
  */
 function wplng_clear_website_cache() {
 
+	if ( apply_filters( 'wplng_allow_clear_website_cache', true ) === false ) {
+		return;
+	}
+
 	// WordPress Cache
 	wp_cache_flush();
 
