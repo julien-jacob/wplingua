@@ -33,7 +33,6 @@ require_once WPLNG_PLUGIN_DIR . '/inc/languages.php';
 require_once WPLNG_PLUGIN_DIR . '/inc/link-media.php';
 require_once WPLNG_PLUGIN_DIR . '/inc/search.php';
 require_once WPLNG_PLUGIN_DIR . '/inc/shortcode.php';
-require_once WPLNG_PLUGIN_DIR . '/inc/sitemap.php';
 require_once WPLNG_PLUGIN_DIR . '/inc/slug.php';
 require_once WPLNG_PLUGIN_DIR . '/inc/switcher-block.php';
 require_once WPLNG_PLUGIN_DIR . '/inc/switcher-nav-menu.php';

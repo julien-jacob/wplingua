@@ -75,13 +75,7 @@ function wplng_option_page_settings() {
 				<tr>
 					<th scope="row"><span class="dashicons dashicons-admin-settings"></span> <?php esc_html_e( 'Features', 'wplingua' ); ?></th>
 					<td>
-						<fieldset>
-							<?php wplng_settings_part_features_api(); ?>
-							<br><hr>
-							<?php wplng_settings_part_features_seo(); ?>
-							<br><hr>
-							<?php wplng_settings_part_features_more(); ?>
-						</fieldset>
+						<?php wplng_settings_part_features(); ?>
 					</td>
 				</tr>
 				<tr class="wplng-flex-container">
@@ -106,7 +100,7 @@ function wplng_option_page_settings() {
 /**
  * Print HTML subsection of Option page : wpLingua Settings - First use
  *
- * @return void
+ * @return bool
  */
 function wplng_settings_part_first_use() {
 
@@ -417,20 +411,75 @@ function wplng_settings_part_languages_target() {
 }
 
 
-/**
- * Print HTML subsection of Option page : wpLingua Settings - API feature
- *
- * @return void
- */
-function wplng_settings_part_features_api() {
+function wplng_settings_part_features() {
 
 	$api_features = wplng_get_api_feature();
 
+	// ------------------------------------------------------------------------
+	// Feature part: SEO
+	// ------------------------------------------------------------------------
+
 	?>
-	<p><strong><?php esc_html_e( 'API translation features: ', 'wplingua' ); ?></strong></p>
+	<p><strong><?php esc_html_e( 'SEO features: ', 'wplingua' ); ?></strong></p>
+
 	<hr>
-	<p><?php esc_html_e( 'The options below require extended access to the wpLingua API to be functional on your website.', 'wplingua' ); ?></p>
+
+	<fieldset>
+		<input type="checkbox" id="wplng_hreflang" name="wplng_hreflang" value="1" <?php checked( 1, get_option( 'wplng_hreflang', 1 ), true ); ?>/>
+		<label for="wplng_hreflang"><?php esc_html_e( 'Add hreflang tags to translated pages', 'wplingua' ); ?></label> 
+		<span title="<?php esc_attr_e( 'Click to expand', 'wplingua' ); ?>" wplng-help-box="#wplng-hb-feature-hreflang"></span>
+	</fieldset>
+
+	<div class="wplng-help-box wplng-spacing-bottom" id="wplng-hb-feature-hreflang">
+		<p><?php esc_html_e( 'This option automatically adds hreflang tags to your pages that are available in multiple languages.', 'wplingua' ); ?></p>
+		<hr>
+		<p><?php esc_html_e( 'Hreflang tags are HTML metadata used to indicate the URLs of each language version of a page. They are not visible to visitors, but they allow search engines (Google, Bing, etc.) to identify the multilingual structure of the site and display the correct version according to the user\'s language.', 'wplingua' ); ?></p>
+	</div>
+
+	<fieldset>
+		<input type="checkbox" id="wplng_sitemap_xml" name="wplng_sitemap_xml" value="1" <?php checked( 1, get_option( 'wplng_sitemap_xml', 1 ), true ); ?>/>
+		<label for="wplng_sitemap_xml">PRO - <?php esc_html_e( 'Enable multilingual XML Sitemap', 'wplingua' ); ?></label> 
+		<span title="<?php esc_attr_e( 'Click to expand', 'wplingua' ); ?>" wplng-help-box="#wplng-hb-feature-sitemap-xml"></span>
+	</fieldset>
+
+	<div class="wplng-help-box" id="wplng-hb-feature-sitemap-xml">
+		<p><?php esc_html_e( 'This option automatically adds your wpLingua translated pages into your XML Sitemap files.', 'wplingua' ); ?></p>
+		<hr>
+		<p><?php esc_html_e( 'An XML Sitemap is used by search engines (Google, Bing, etc.) to better discover and index the pages of your website. By default, only the default language pages are included. With this option enabled, all translated versions of your content will also be listed.', 'wplingua' ); ?></p>
+		<p><?php esc_html_e( 'This greatly improves SEO visibility, ensuring that search engines can easily find and index your content in every language.', 'wplingua' ); ?></p>
+		<hr>
+		<p><?php esc_html_e( 'wpLingua uses a universal method that intercepts and extends sitemap. It works with the native WordPress sitemap and with popular SEO plugins such as Yoast SEO, Rank Math, All in One SEO, SEOPress, etc.', 'wplingua' ); ?></p>
+	</div>
+
+	<fieldset>
+		<input type="checkbox" id="wplng_sitemap_xsl_override" name="wplng_sitemap_xsl_override" value="1" <?php checked( 1, get_option( 'wplng_sitemap_xsl_override', false ), true ); ?>/>
+		<label for="wplng_sitemap_xsl_override">PRO - <?php esc_html_e( 'Use wpLingua design for XML Sitemap', 'wplingua' ); ?></label> 
+		<span title="<?php esc_attr_e( 'Click to expand', 'wplingua' ); ?>" wplng-help-box="#wplng-hb-feature-sitemap-xsl"></span>
+	</fieldset>
+
+	<div class="wplng-help-box" id="wplng-hb-feature-sitemap-xsl">
+		<p><?php esc_html_e( 'This option replaces the default XML Sitemap stylesheet with wpLingua\'s custom display.', 'wplingua' ); ?></p>
+		<hr>
+		<p><?php esc_html_e( 'When enabled, the XML Sitemap will use a wpLingua-designed stylesheet that visually displays all translated URLs directly under each original URL. This makes it easy to verify that all language versions are correctly included in your sitemap.', 'wplingua' ); ?></p>
+		<hr>
+		<p><?php esc_html_e( 'Note: This only affects how the sitemap is displayed in your browser. The actual XML data sent to search engines remains unchanged and fully compatible with all SEO standards.', 'wplingua' ); ?></p>
+		<p><?php esc_html_e( 'This option has no effect when using All In One SEO, as this plugin handles the display of translated links itself.', 'wplingua' ); ?></p>
+	</div>
+	<br>
+	
+	<?php
+
+	// ------------------------------------------------------------------------
+	// Feature part: Translation
+	// ------------------------------------------------------------------------
+
+	?>
 	<hr>
+
+	<p><strong><?php esc_html_e( 'Translation Features: ', 'wplingua' ); ?></strong></p>
+
+	<hr>
+
 	<fieldset>
 		<input type="checkbox" id="wplng_commercial_use" name="wplng_commercial_use" value="1" <?php checked( 1, in_array( 'commercial', $api_features ), true ); ?> disabled="disabled"/>
 		<label for="wplng_commercial_use">PRO - <?php esc_html_e( 'Use wpLingua on commercial website', 'wplingua' ); ?></label> 
@@ -465,110 +514,25 @@ function wplng_settings_part_features_api() {
 		</p>
 		
 	</div>
-	<?php
-}
-
-
-/**
- * Print HTML subsection of Option page : wpLingua Settings - Plugin feature
- *
- * @return void
- */
-function wplng_settings_part_features_seo() {
-
-	?>
-	<p><strong><?php esc_html_e( 'SEO features: ', 'wplingua' ); ?></strong></p>
-
-	<hr>
 
 	<fieldset>
-		<input type="checkbox" id="wplng_hreflang" name="wplng_hreflang" value="1" <?php checked( 1, get_option( 'wplng_hreflang', 1 ), true ); ?>/>
-		<label for="wplng_hreflang"><?php esc_html_e( 'Add hreflang tags to translated pages', 'wplingua' ); ?></label> 
-		<span title="<?php esc_attr_e( 'Click to expand', 'wplingua' ); ?>" wplng-help-box="#wplng-hb-feature-hreflang"></span>
-	</fieldset>
+		<input type="checkbox" id="wplng_browser_language_redirect_checkbox" name="wplng_browser_language_redirect_checkbox" value="1"/> 
+		<label for="wplng_browser_language_redirect_checkbox"><?php esc_html_e( 'Enable redirection based on the web browser\'s language', 'wplingua' ); ?></label> 
+		<span title="<?php esc_attr_e( 'Click to expand', 'wplingua' ); ?>" wplng-help-box="#wplng-hb-feature-browser-language-redirect"></span>
 
-	<div class="wplng-help-box wplng-spacing-bottom" id="wplng-hb-feature-hreflang">
-		<p><?php esc_html_e( 'This option automatically adds hreflang tags to your pages that are available in multiple languages.', 'wplingua' ); ?></p>
-		<hr>
-		<p><?php esc_html_e( 'Hreflang tags are HTML metadata used to indicate the URLs of each language version of a page. They are not visible to visitors, but they allow search engines (Google, Bing, etc.) to identify the multilingual structure of the site and display the correct version according to the user\'s language.', 'wplingua' ); ?></p>
-	</div>
-
-	<fieldset>
-		<input type="checkbox" id="wplng_sitemap_xml" name="wplng_sitemap_xml" value="1" <?php checked( 1, get_option( 'wplng_sitemap_xml', 1 ), true ); ?>/>
-		<label for="wplng_sitemap_xml"><?php esc_html_e( 'Enable multilingual XML Sitemap', 'wplingua' ); ?></label> 
-		<span title="<?php esc_attr_e( 'Click to expand', 'wplingua' ); ?>" wplng-help-box="#wplng-hb-feature-sitemap-xml"></span>
-	</fieldset>
-
-	<div class="wplng-help-box" id="wplng-hb-feature-sitemap-xml">
-		<p><?php esc_html_e( 'This option automatically adds your wpLingua translated pages into your XML Sitemap files.', 'wplingua' ); ?></p>
-		<hr>
-		<p><?php esc_html_e( 'An XML Sitemap is used by search engines (Google, Bing, etc.) to better discover and index the pages of your website. By default, only the default language pages are included. With this option enabled, all translated versions of your content will also be listed.', 'wplingua' ); ?></p>
-		<p><?php esc_html_e( 'This greatly improves SEO visibility, ensuring that search engines can easily find and index your content in every language.', 'wplingua' ); ?></p>
-		<hr>
-		<p><?php esc_html_e( 'wpLingua uses a universal method that intercepts and extends sitemap. It works with the native WordPress sitemap and with popular SEO plugins such as Yoast SEO, Rank Math, All in One SEO, SEOPress, etc.', 'wplingua' ); ?></p>
-	</div>
-
-	<div class="wplng-beta-hidden" style="display: none;">
-		<fieldset>
-			<input type="checkbox" id="wplng_sitemap_xsl_override" name="wplng_sitemap_xsl_override" value="1" <?php checked( 1, get_option( 'wplng_sitemap_xsl_override', false ), true ); ?>/>
-			<label for="wplng_sitemap_xsl_override">BETA - <?php esc_html_e( 'Use wpLingua display for XML Sitemap', 'wplingua' ); ?></label> 
-			<span title="<?php esc_attr_e( 'Click to expand', 'wplingua' ); ?>" wplng-help-box="#wplng-hb-feature-sitemap-xsl"></span>
-		</fieldset>
-
-		<div class="wplng-help-box" id="wplng-hb-feature-sitemap-xsl">
-			<p><?php esc_html_e( 'This option replaces the default XML Sitemap stylesheet with wpLingua\'s custom display.', 'wplingua' ); ?></p>
+		<div class="wplng-help-box" id="wplng-hb-feature-browser-language-redirect">
+			<p><?php esc_html_e( 'This option automatically redirects visitors to the translated version of your site that matches their browser language when they land on the main homepage. It can improve user experience by showing content in the right language immediately, but depending on your setup, it may introduce side effects.', 'wplingua' ); ?></p>
 			<hr>
-			<p><?php esc_html_e( 'When enabled, the XML Sitemap will use a wpLingua-designed stylesheet that visually displays all translated URLs directly under each original URL. This makes it easy to verify that all language versions are correctly included in your sitemap.', 'wplingua' ); ?></p>
+			<p><strong><?php esc_html_e( 'Disabled (recommended):', 'wplingua' ); ?></strong></p>
+			<p><?php esc_html_e( 'No redirection is applied. Every visitor always sees the default homepage, regardless of their browser language. This is the safest option and ensures maximum compatibility with caching systems, SEO, and shared links. Recommended if you are unsure which option to choose.', 'wplingua' ); ?></p>
 			<hr>
-			<p><?php esc_html_e( 'Note: This only affects how the sitemap is displayed in your browser. The actual XML data sent to search engines remains unchanged and fully compatible with all SEO standards.', 'wplingua' ); ?></p>
-			<p><?php esc_html_e( 'This option has no effect when using All In One SEO, as this plugin handles the display of translated links itself.', 'wplingua' ); ?></p>
+			<p><strong><?php esc_html_e( 'JS only:', 'wplingua' ); ?></strong></p>
+			<p><?php esc_html_e( 'The redirect is handled with JavaScript, after the default homepage has loaded. This method works in almost all cases and avoids issues with caching plugins. However, it may cause a short flicker effect: users will briefly see the default page before being redirected to the translated version.', 'wplingua' ); ?></p>
+			<hr>
+			<p><strong><?php esc_html_e( 'PHP and JS:', 'wplingua' ); ?></strong></p>
+			<p><?php esc_html_e( 'The redirect is performed server-side with PHP, which makes it faster and more seamless for visitors. In addition, a cookie is set via JavaScript to remember the user’s preferred language for future visits. While this provides the smoothest experience, it can sometimes conflict with caching systems (static pages, CDN, aggressive cache settings) and may cause incorrect redirects in certain setups.', 'wplingua' ); ?></p>
 		</div>
-	</div>
-	
-	<?php
-}
-
-
-/**
- * Print HTML subsection of Option page : wpLingua Settings - Plugin feature
- *
- * @return void
- */
-function wplng_settings_part_features_more() {
-
-	?>
-	<p><strong><?php esc_html_e( 'More features: ', 'wplingua' ); ?></strong></p>
-
-	<hr>
-
-	<fieldset>
-		<input type="checkbox" id="wplng_load_in_progress" name="wplng_load_in_progress" value="1" <?php checked( 1, get_option( 'wplng_load_in_progress' ), true ); ?>/>
-		<label for="wplng_load_in_progress"><?php esc_html_e( 'Translation progress bar for editors', 'wplingua' ); ?></label> 
-		<span title="<?php esc_attr_e( 'Click to expand', 'wplingua' ); ?>" wplng-help-box="#wplng-hb-feature-load-in-progress"></span>
 	</fieldset>
-
-	<div class="wplng-help-box wplng-spacing-bottom" id="wplng-hb-feature-load-in-progress">
-		<p><?php esc_html_e( 'Enable progress bar: Smooth translations loading for editors', 'wplingua' ); ?></p>
-		<hr>
-		<p><?php esc_html_e( 'Activate a progress bar when a page requires the generation of more than 10 new string translations. This feature only applies to connected editors.', 'wplingua' ); ?></p>
-	</div>
-
-	<input type="checkbox" id="wplng_browser_language_redirect_checkbox" name="wplng_browser_language_redirect_checkbox" value="1"/> 
-	<label for="wplng_browser_language_redirect_checkbox"><?php esc_html_e( 'Enable redirection based on the web browser\'s language', 'wplingua' ); ?></label> 
-	<span title="<?php esc_attr_e( 'Click to expand', 'wplingua' ); ?>" wplng-help-box="#wplng-hb-feature-browser-language-redirect"></span>
-
-	<div class="wplng-help-box" id="wplng-hb-feature-browser-language-redirect">
-		<p><?php esc_html_e( 'This option automatically redirects visitors to the translated version of your site that matches their browser language when they land on the main homepage. It can improve user experience by showing content in the right language immediately, but depending on your setup, it may introduce side effects.', 'wplingua' ); ?></p>
-		<hr>
-		<p><strong><?php esc_html_e( 'Disabled (recommended):', 'wplingua' ); ?></strong></p>
-		<p><?php esc_html_e( 'No redirection is applied. Every visitor always sees the default homepage, regardless of their browser language. This is the safest option and ensures maximum compatibility with caching systems, SEO, and shared links. Recommended if you are unsure which option to choose.', 'wplingua' ); ?></p>
-		<hr>
-		<p><strong><?php esc_html_e( 'JS only:', 'wplingua' ); ?></strong></p>
-		<p><?php esc_html_e( 'The redirect is handled with JavaScript, after the default homepage has loaded. This method works in almost all cases and avoids issues with caching plugins. However, it may cause a short flicker effect: users will briefly see the default page before being redirected to the translated version.', 'wplingua' ); ?></p>
-		<hr>
-		<p><strong><?php esc_html_e( 'PHP and JS:', 'wplingua' ); ?></strong></p>
-		<p><?php esc_html_e( 'The redirect is performed server-side with PHP, which makes it faster and more seamless for visitors. In addition, a cookie is set via JavaScript to remember the user’s preferred language for future visits. While this provides the smoothest experience, it can sometimes conflict with caching systems (static pages, CDN, aggressive cache settings) and may cause incorrect redirects in certain setups.', 'wplingua' ); ?></p>
-	</div>
 
 	<fieldset id="wplng-browser-language-fieldset">
 		<?php
@@ -602,8 +566,63 @@ function wplng_settings_part_features_more() {
 			<?php esc_html_e( 'Enable with PHP and JS', 'wplingua' ); ?> 
 		</label>
 	</fieldset>
-	
+
+	<br>
+
 	<?php
+
+	// ------------------------------------------------------------------------
+	// Feature part: Editor
+	// ------------------------------------------------------------------------
+
+	?>
+
+	<hr>
+	
+	<p><strong><?php esc_html_e( 'Features for editors: ', 'wplingua' ); ?></strong></p>
+
+	<hr>
+
+	<fieldset>
+		<input type="checkbox" id="wplng_load_in_progress" name="wplng_load_in_progress" value="1" <?php checked( 1, get_option( 'wplng_load_in_progress' ), true ); ?>/>
+		<label for="wplng_load_in_progress"><?php esc_html_e( 'Translation progress bar for editors', 'wplingua' ); ?></label> 
+		<span title="<?php esc_attr_e( 'Click to expand', 'wplingua' ); ?>" wplng-help-box="#wplng-hb-feature-load-in-progress"></span>
+	</fieldset>
+
+	<div class="wplng-help-box wplng-spacing-bottom" id="wplng-hb-feature-load-in-progress">
+		<p><?php esc_html_e( 'Enable progress bar: Smooth translations loading for editors', 'wplingua' ); ?></p>
+		<hr>
+		<p><?php esc_html_e( 'Activate a progress bar when a page requires the generation of more than 10 new string translations. This feature only applies to connected editors.', 'wplingua' ); ?></p>
+	</div>
+
+	<?php
+}
+
+
+/**
+ * Print HTML subsection of Option page : wpLingua Settings - API feature
+ *
+ * @return void
+ */
+function wplng_settings_part_features_api() {
+}
+
+
+/**
+ * Print HTML subsection of Option page : wpLingua Settings - Plugin feature
+ *
+ * @return void
+ */
+function wplng_settings_part_features_seo() {
+}
+
+
+/**
+ * Print HTML subsection of Option page : wpLingua Settings - Plugin feature
+ *
+ * @return void
+ */
+function wplng_settings_part_features_more() {
 }
 
 

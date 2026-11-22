@@ -141,11 +141,13 @@ function wplng_ob_start() {
 		 * Is an XML sitemap
 		 */
 
-		if ( ! get_option( 'wplng_sitemap_xml', true ) ) {
+		if ( ! get_option( 'wplng_sitemap_xml', true )
+			|| ! function_exists( 'wplngpro_sitemap_add_hreflang_links' )
+		) {
 			return;
 		}
 
-		ob_start( 'wplng_ob_callback_sitemap_xml' );
+		ob_start( 'wplngpro_sitemap_add_hreflang_links' );
 
 	} else {
 
@@ -229,17 +231,6 @@ function wplng_ob_callback_ajax( $output ) {
 	}
 
 	return $output_translated;
-}
-
-
-/**
- * Callback function for output buffering to process and modify sitemap XML content.
- *
- * @param string $content The original XML content.
- * @return string The modified XML content with added <xhtml:link> tags or the original content if no changes are made.
- */
-function wplng_ob_callback_sitemap_xml( $content ) {
-	return wplng_sitemap_add_hreflang_links( $content );
 }
 
 
